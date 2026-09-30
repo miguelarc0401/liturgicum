@@ -15,13 +15,16 @@ const RUTA_DATOS = 'datos/';
 const POR_OMISION = {
   fuente: 'clementina', acentos: true, numeros: true, tam: 100, tema: 'auto',
   epifania: 'domingo', ascension: 'domingo', corpus: 'domingo',
-  memorias: 'santo', inicio: 'menu'
+  memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun'
 };
 
 const E = {              // todo el estado de la app
   cfg: Object.assign({}, POR_OMISION),
   indice: null, cal: null, lecturas: null,
   horas: null, horasDias: null, hora: null,
+  oficio: null,          // la hora que se está rezando, con sus opciones
+  horasCel: null,        // la celebración elegida, cuando hay donde elegir
+  elecciones: {},        // lo elegido en cada sección, mientras dura la sesión
   diaDe: new Map(),      // slug -> día del índice
   diaDeClave: new Map(), // clave de formulario -> día
   colorDe: new Map(),    // slug -> color litúrgico
@@ -504,6 +507,15 @@ function verAjustes() {
       + 'primero.',
       [['santo', 'Las del santo (Tabla de los días litúrgicos)'],
         ['feria', 'La lectura continua de la feria (OLM 82)']]),
+    '<h2 class="seccion">Liturgia de las Horas</h2>',
+    sel('hLibre', 'En las memorias libres, rezar',
+      'Una memoria libre se puede celebrar o dejar. Las dos opciones salen '
+      + 'siempre arriba: esto sólo decide cuál viene marcada.',
+      [['santo', 'El oficio del santo'], ['feria', 'El de la feria']]),
+    sel('hComun', 'En las memorias, lo que no es propio',
+      'Las rúbricas dejan tomarlo del común o del día, y cada sección lleva '
+      + 'su selector: esto sólo decide cuál viene marcado.',
+      [['comun', 'Del común'], ['dia', 'Del día']]),
     '<p class="pie">' + esc(E.lecturas.cabecera) + '<br><br>'
     + 'Calendario general romano y latinoamericano, con el propio y el común '
     + 'de los santos (leccionario V), las misas por diversas necesidades y '
@@ -608,50 +620,328 @@ async function cargaHoras() {
   E.horasDias = dias;
 }
 
-/** Las secciones de una hora, armadas en cascada: lo propio del santo; si no
- *  lo tiene, lo de su común; si no, lo del tiempo; la salmodia, del salterio;
- *  y lo que no cambia nunca, del ordinario. Es el orden en que manda el
- *  libro, y el mismo en que la fase 3 separó las piezas. */
-function armaHora(iso, hora) {
+/* --------------------------------------------------- lo que se puede elegir
+ * El oficio de un día no siempre es uno solo. Las rúbricas del Ordinario de
+ * la Liturgia de las Horas dejan elegir en dos niveles, y la app ofrece los
+ * dos sin decidir por nadie:
+ *
+ *  · la celebración: una memoria libre se puede celebrar o dejar, y en las
+ *    ferias privilegiadas una memoria sólo puede hacerse como conmemoración.
+ *    Se elige arriba, con los chips de la cabecera.
+ *  · cada sección: en las memorias, lo que el santo no tiene propio «puede
+ *    elegirse del Común o de la feria». Se elige en la sección misma, con un
+ *    selector discreto junto a su rótulo.
+ *
+ * Qué se celebra cada día, y con qué grado, viene resuelto de casa
+ * (horas_dias.json, con la precedencia del calendario); aquí sólo se
+ * aplican las rúbricas de cada sección. */
+
+// En las memorias, sección por sección:
+//   elige  «si no tiene propio, puede elegirse el del Común o el de la
+//          feria»: el invitatorio, el himno, y en Laudes y Vísperas de la
+//          lectura breve a las preces
+//   santo  del Propio o del Común, nunca de la feria: la lectura
+//          hagiográfica del Oficio y la oración
+//   dia    del Propio del tiempo aunque la fuente traiga otra cosa: la
+//          lectura bíblica del Oficio sólo es propia en las fiestas
+//   (lo demás) del salterio, «excepto cuando tienen propios esos
+//          elementos»: la salmodia
+const EN_MEMORIA = {
+  invitatorio: 'elige', himno: 'elige', lectura_breve: 'elige',
+  responsorio_breve: 'elige', cantico_evangelico: 'elige', preces: 'elige',
+  lectura2: 'santo', responsorio2: 'santo', oracion: 'santo',
+  lectura1: 'dia', responsorio: 'dia'
+};
+// «En la Hora intermedia nunca se hace mención de las memorias de los
+// santos», y Completas se toman siempre del salterio.
+const SIN_MEMORIAS = ['tercia', 'sexta', 'nona', 'completas'];
+
+function bonito(g) { return g ? g.charAt(0) + g.slice(1).toLowerCase() : ''; }
+
+/** Qué oficios puede rezar quien abre el día, y cuál sale primero. */
+function celebracionesHoras(d) {
+  const feria = { id: 'feria', t: d.tt, g: '', modo: 'feria' };
+  const cs = (d.c || []).map((c) => ({
+    id: c[0], t: c[2], g: c[3], cel: c,
+    modo: d.cm ? 'conmemoracion'
+      : /^MEMORIA/.test(c[3]) ? 'memoria' : 'entero'
+  }));
+  if (d.cm) return { ops: [feria].concat(cs), def: 'feria' };
+  if (cs.length && d.w && cs[0].g !== 'MEMORIA LIBRE') {
+    return { ops: [cs[0]], def: cs[0].id };
+  }
+  // memorias libres: cualquiera de ellas, o la feria
+  return {
+    ops: cs.concat([feria]),
+    def: cs.length && E.cfg.hLibre !== 'feria' ? cs[0].id : 'feria'
+  };
+}
+
+/* En el Oficio, algunos días la fuente da el invitatorio con otra forma
+ * («Si el Oficio de lectura es la primera oración del día…») y lo llama de
+ * otra manera: es la misma pieza, y va en el mismo sitio. */
+function pieza(tabla, prefijo, hora, cl) {
+  return tabla[prefijo + hora + '/' + cl]
+    || (hora === 'oficio' && cl === 'invitatorio'
+      && tabla[prefijo + hora + '/preambulo']) || null;
+}
+
+/** Lo del día: el propio del tiempo, el salterio y el ordinario. */
+function delDia(d, hora, cl) {
+  const L = E.horas;
+  return pieza(L.tiempo, d.k + '/', hora, cl)
+    || (cl === 'salmodia' && d.p
+      && L.salterio[d.t + '/' + d.p + '/' + d.d + '/' + hora])
+    || L.ordinario[d.t + '/' + hora + '/' + cl]
+    || L.ordinario['@/' + hora + '/' + cl] || null;
+}
+
+function delSanto(op, hora, cl) {
+  return pieza(E.horas.santoral, op.cel[1] + '/' + op.cel[0] + '/', hora, cl);
+}
+
+function deSusComunes(op, hora, cl) {
+  const L = E.horas;
+  return (L.comun_de[op.id] || []).map((k) => {
+    const c = pieza(L.comunes, k + '/', hora, cl);
+    return c && { id: 'c:' + k, rot: L.rotulo_comun[k] || 'Común', c: c };
+  }).filter(Boolean);
+}
+
+/** Sin repetir: dos comunes que dan el mismo texto son una sola opción. */
+function distintas(ops) {
+  const textos = new Set(), rotulos = new Set();
+  return ops.filter((o) => {
+    const k = JSON.stringify(o.c.l);
+    if (textos.has(k) || rotulos.has(o.rot)) return false;
+    textos.add(k); rotulos.add(o.rot);
+    return true;
+  });
+}
+
+/** Las opciones de una sección, cada una con su rótulo para el selector.
+ *  Una sola, casi siempre; dos o tres, donde las rúbricas dejan elegir. */
+function opcionesSeccion(d, op, hora, cl) {
+  const dia = delDia(d, hora, cl);
+  const soloDia = dia ? [{ id: 'dia', rot: 'Del día', c: dia }] : [];
+  // el sábado, las vísperas son las primeras del domingo (lo dice `v`)
+  const cedeVisperas = d.v && (hora === 'visperas' || hora === 'completas');
+  let regla = 'dia';
+  if (op.modo === 'entero' && !cedeVisperas) regla = 'entero';
+  if (op.modo === 'memoria' && !cedeVisperas && !SIN_MEMORIAS.includes(hora)) {
+    regla = EN_MEMORIA[cl] || 'salterio';
+  }
+  if (regla === 'dia') return soloDia;
+  const propio = delSanto(op, hora, cl);
+  if (propio) return [{ id: 'propio', rot: 'Propio', c: propio }];
+  if (regla === 'salterio') return soloDia;
+  const comunes = deSusComunes(op, hora, cl);
+  if (regla === 'elige') return distintas(soloDia.concat(comunes));
+  // solemnidades, fiestas y lo que en las memorias es del santo: del
+  // propio o del común, y del día sólo si no hay otra cosa
+  return comunes.length ? distintas(comunes) : soloDia;
+}
+
+/* Lo que se elige en cada sección se recuerda mientras dura la sesión,
+ * para que pasar de Laudes a Vísperas y volver no lo deshaga. */
+function claveEleccion(iso, idCel, hora, cl) {
+  return [iso, idCel, hora, cl].join('|');
+}
+function cargaElecciones() {
+  try {
+    E.elecciones = JSON.parse(sessionStorage.getItem('elecciones') || '{}');
+  } catch (_) { E.elecciones = {}; }
+}
+function guardaElecciones() {
+  try {
+    sessionStorage.setItem('elecciones', JSON.stringify(E.elecciones));
+  } catch (_) { /* sin almacenamiento: vale para esta vista */ }
+}
+function eleccionDe(iso, idCel, hora, cl, alts) {
+  const guardada = E.elecciones[claveEleccion(iso, idCel, hora, cl)];
+  let i = alts.findIndex((o) => o.id === guardada);
+  if (i < 0) {
+    i = alts.findIndex((o) =>
+      E.cfg.hComun === 'dia' ? o.id === 'dia' : o.id !== 'dia');
+  }
+  return Math.max(0, i);
+}
+
+/** El orden de las secciones. La invocación inicial va delante (el orden
+ *  recuperado del volcado la dejaba al final de Laudes), y el preámbulo
+ *  del Oficio es el invitatorio con otra forma, que ya ocupa su sitio. */
+function ordenDe(hora) {
+  let o = (E.horas.orden[hora] || []).slice();
+  if (hora === 'oficio') o = o.filter((cl) => cl !== 'preambulo');
+  if (o.includes('invocacion')) {
+    o = ['invocacion'].concat(o.filter((cl) => cl !== 'invocacion'));
+  }
+  return o;
+}
+
+/** Una sección que no se elige: la que añade la conmemoración. */
+function fija(cl, rotulo, lineas) {
+  return { cl: cl, alts: [{ id: 'propio', rot: '', c: { r: rotulo, l: lineas } }], i: 0 };
+}
+
+/** La conmemoración (Principios y normas generales, nn. 238-239): el oficio
+ *  es entero de la feria, y del santo se añade, en el Oficio de lectura, la
+ *  lectura hagiográfica con su responsorio y la oración; en Laudes y
+ *  Vísperas, después de la oración, la antífona y la oración del santo. */
+function conmemora(secs, op, hora) {
+  const L = E.horas;
+  const delSantoOComun = (cl) => delSanto(op, hora, cl)
+    || (L.comun_de[op.id] || []).map((k) => L.comunes[k + '/' + hora + '/' + cl])
+      .find(Boolean) || null;
+  const rub = (t) => [[1, t]];
+  const tras = (cl) => {
+    const i = secs.findIndex((s) => s.cl === cl);
+    return i < 0 ? secs.length : i + 1;
+  };
+  const orac = delSantoOComun('oracion');
+  if (hora === 'oficio') {
+    const lec = delSantoOComun('lectura2');
+    if (!lec) return;
+    const resp = delSantoOComun('responsorio2');
+    const extra = [fija('conm', 'Conmemoración: ' + op.t,
+      [rub('Después de la lectura patrística se añade la del santo, con su '
+        + 'responsorio, y se concluye con su oración.')]),
+    fija('conm_lectura', lec.r, lec.l)];
+    if (resp) extra.push(fija('conm_resp', resp.r, resp.l));
+    secs.splice(tras(secs.some((s) => s.cl === 'responsorio2')
+      ? 'responsorio2' : 'lectura2'), 0, ...extra);
+    const o = secs.find((s) => s.cl === 'oracion');
+    if (o && orac) o.alts = [{ id: 'propio', rot: '', c: orac }];
+  } else if ((hora === 'laudes' || hora === 'visperas') && orac) {
+    const cant = delSantoOComun('cantico_evangelico');
+    const ant = cant ? cant.l.filter((ln) => ln.length && ln[0][0]
+      && /^Ant/.test(ln[0][1])).slice(0, 1) : [];
+    secs.splice(tras('oracion'), 0, fija('conm', 'Conmemoración: ' + op.t,
+      [rub('Se omite la conclusión de la oración del día, y se añade:'), []]
+        .concat(ant, [[]], orac.l)));
+  }
+}
+
+/** Las secciones de una hora, con sus opciones. La cascada es la del libro
+ *  —lo propio del santo; si no lo tiene, lo de su común; si no, lo del
+ *  tiempo; la salmodia, del salterio; lo que no cambia, del ordinario—,
+ *  pero ahora cada sección sabe además si se puede tomar de otro sitio. */
+function armaHora(iso, hora, idCel) {
   const d = E.horasDias.dias[iso];
   if (!d) return null;
-  const L = E.horas;
-  const md = iso.slice(5);
-  const usaSanto = !!d.s
-    && (d.g !== 'MEMORIA LIBRE' || E.cfg.memorias === 'santo');
-  const comun = usaSanto ? L.comun_de[d.s] : null;
-  const secciones = [];
-  for (const cl of (L.orden[hora] || [])) {
-    let c = null, de = null;
-    if (usaSanto && (c = L.santoral[md + '/' + d.s + '/' + hora + '/' + cl])) de = 'santo';
-    if (!c && comun && (c = L.comunes[comun + '/' + hora + '/' + cl])) de = 'comun';
-    if (!c && (c = L.tiempo[d.k + '/' + hora + '/' + cl])) de = 'tiempo';
-    if (!c && cl === 'salmodia' && d.p
-      && (c = L.salterio[d.t + '/' + d.p + '/' + d.d + '/' + hora])) de = 'salterio';
-    if (!c && (c = L.ordinario[d.t + '/' + hora + '/' + cl])) de = 'ordinario';
-    if (!c && (c = L.ordinario['@/' + hora + '/' + cl])) de = 'ordinario';
-    if (c) secciones.push({ clase: cl, de: de, rotulo: c.r, lineas: c.l });
+  const cels = celebracionesHoras(d);
+  const op = cels.ops.find((o) => o.id === idCel)
+    || cels.ops.find((o) => o.id === cels.def);
+  let secciones = [];
+  for (const cl of ordenDe(hora)) {
+    const alts = opcionesSeccion(d, op, hora, cl);
+    if (alts.length) {
+      secciones.push({ cl: cl, alts: alts,
+        i: eleccionDe(iso, op.id, hora, cl, alts) });
+    }
   }
-  return { dia: d, secciones: secciones };
+  // Laudes empiezan con el invitatorio, que ya trae «Señor, abre mis
+  // labios»; la invocación sola, sólo cuando no lo hay
+  if (secciones.some((s) => s.cl === 'invitatorio')) {
+    secciones = secciones.filter((s) => s.cl !== 'invocacion');
+  }
+  if (op.modo === 'conmemoracion') conmemora(secciones, op, hora);
+  return { iso: iso, hora: hora, dia: d, cels: cels, op: op,
+    secciones: secciones };
 }
 
 /* El texto va tal cual: la acentuación que se puede apagar en Ajustes es la
  * del latín, y quitarle las tildes al castellano sería estropearlo. */
 function pintaSeccionHora(s) {
+  const o = s.alts[s.i];
   const h = [];
-  if (s.rotulo) h.push('<h2 class="rotulo">' + esc(s.rotulo) + '</h2>');
+  const selector = s.alts.length < 2 ? ''
+    : '<div class="alterna" role="group" aria-label="De dónde se toma">'
+      + s.alts.map((a, j) => '<button type="button" aria-pressed="'
+        + (j === s.i) + '" data-op="' + esc(a.id) + '">' + esc(a.rot)
+        + '</button>').join('') + '</div>';
+  if (o.c.r || selector) {
+    h.push('<div class="sec-cab"><h2 class="rotulo">' + esc(o.c.r || '')
+      + '</h2>' + selector + '</div>');
+  }
   let parrafo = [];
   const cierra = () => {
     if (parrafo.length) h.push('<p class="verso">' + parrafo.join('<br>') + '</p>');
     parrafo = [];
   };
-  for (const ln of s.lineas) {
+  for (const ln of o.c.l) {
     const t = ln.map((tr) => tr[0]
       ? '<b class="rub">' + esc(tr[1]) + '</b>' : esc(tr[1])).join('');
     if (t.trim()) parrafo.push(t); else cierra();
   }
   cierra();
-  return '<section class="hora-sec">' + h.join('') + '</section>';
+  return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
+    + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
+}
+
+/** Al tocar una opción se repinta sólo esa sección: repintar la hora
+ *  entera devolvería la página arriba, a media oración. */
+function alElegirOpcion(ev) {
+  const b = ev.target.closest('.alterna button');
+  if (!b || E.vista !== 'horas' || !E.oficio) return;
+  const sec = b.closest('.hora-sec');
+  const s = E.oficio.secciones.find((x) => x.cl === sec.dataset.cl);
+  const i = s ? s.alts.findIndex((a) => a.id === b.dataset.op) : -1;
+  if (i < 0 || i === s.i) return;
+  s.i = i;
+  const o = E.oficio;
+  E.elecciones[claveEleccion(o.iso, o.op.id, o.hora, s.cl)] = s.alts[i].id;
+  guardaElecciones();
+  const t = document.createElement('template');
+  t.innerHTML = pintaSeccionHora(s);
+  const nueva = t.content.firstElementChild;
+  nueva.classList.add('cambia');
+  sec.replaceWith(nueva);
+  nueva.querySelector('[aria-pressed="true"]').focus({ preventScroll: true });
+}
+
+function pintaChipsCelebracionesHoras(o) {
+  const c = $('#celebraciones');
+  if (o.cels.ops.length < 2) { c.innerHTML = ''; return; }
+  c.innerHTML = o.cels.ops.map((x) =>
+    '<button aria-pressed="' + (x.id === o.op.id) + '" data-cel="'
+    + esc(x.id) + '">' + esc(corto(x.t)) + '<small>'
+    + esc(x.modo === 'feria' ? 'feria'
+      : x.modo === 'conmemoracion' ? 'conmemoración' : bonito(x.g))
+    + '</small></button>').join('');
+}
+
+/** El color del día, del calendario de la misa: el del santo si se reza
+ *  su oficio, el del tiempo si no. */
+function colorHoras(iso, titulo) {
+  const val = entradasDe(iso);
+  if (!val) return 'neutro';
+  const e = val.c.find((x) => x[2] && x[2].t === titulo)
+    || val.c.find((x) => x[2] && x[2].k === 't') || val.c[0];
+  return E.colorDe.get(e[0]) || 'neutro';
+}
+
+function notaHoras(o) {
+  const n = [], d = o.dia;
+  if (d.x) {
+    const g = bonito(d.x[1]).toLowerCase();
+    n.push(d.x[0] + (d.x[0].toLowerCase().includes(g) ? '' : ' (' + g + ')')
+      + ': no tengo sus textos, y el oficio sale de la feria.');
+  }
+  if (o.op.modo === 'conmemoracion') {
+    n.push('En este tiempo la memoria sólo puede hacerse como '
+      + 'conmemoración: en el Oficio de lectura se añade su lectura, y en '
+      + 'Laudes y Vísperas, su antífona y su oración.');
+  } else if (o.op.modo === 'memoria'
+      && ['tercia', 'sexta', 'nona'].includes(o.hora)) {
+    n.push('En la Hora intermedia no se hace mención de la memoria.');
+  }
+  if (o.op.cel && d.v && o.hora === 'visperas') {
+    n.push('Las vísperas de hoy son las primeras del domingo.');
+  }
+  const p = $('#nota-dia');
+  p.textContent = n.join(' ');
+  p.style.display = n.length ? '' : 'none';
 }
 
 function pintaChipsHoras(iso, hora) {
@@ -660,7 +950,7 @@ function pintaChipsHoras(iso, hora) {
     + '>' + esc(corto) + '</button>').join('');
 }
 
-async function verHoras(iso, hora) {
+async function verHoras(iso, hora, idCel) {
   E.vista = 'horas';
   marcaBarra('horas');
   E.fecha = iso;
@@ -678,9 +968,10 @@ async function verHoras(iso, hora) {
       + esc(err.message) + ').</p>';
     return;
   }
-  const o = armaHora(iso, hora);
+  const o = E.oficio = armaHora(iso, hora, idCel);
   pintaChipsHoras(iso, hora);
   if (!o) {
+    E.horasCel = null;
     document.body.dataset.color = 'neutro';
     $('#titulo-dia').textContent = 'Sin oficio';
     $('#subtitulo-dia').textContent = '';
@@ -689,11 +980,19 @@ async function verHoras(iso, hora) {
       + E.horasDias.rango[1] + ').</p>';
     return;
   }
+  // la celebración elegida viaja con la hora: pasar de Laudes a Vísperas
+  // no debe devolver a quien reza al oficio que no escogió
+  E.horasCel = o.cels.ops.length > 1 ? o.op.id : null;
+  pintaChipsCelebracionesHoras(o);
+  notaHoras(o);
   const d = o.dia;
+  // la conmemoración no cambia el oficio, que sigue siendo de la feria: ni
+  // su título ni su color
+  const conm = o.op.modo === 'conmemoracion';
+  document.body.dataset.color = colorHoras(iso, conm ? d.tt : o.op.t);
   $('#titulo-dia').textContent = HORAS.find((x) => x[0] === hora)[1];
-  // el calendario del leccionario nombra mejor el día que el volcado,
-  // que va en versales; el del volcado queda para cotejar
-  const partes = [d.tt || d.st].filter(Boolean);
+  const partes = [conm ? d.tt : o.op.t];
+  if (o.op.g && !conm) partes.push(bonito(o.op.g));
   if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
   $('#subtitulo-dia').textContent = partes.join(' · ');
   vista.innerHTML = o.secciones.length
@@ -731,7 +1030,7 @@ function enruta() {
   }
   if (p[0] === 'menu') return verPortada();
   if (p[0] === 'misa') return verDia(hoyISO());
-  if (p[0] === 'h') return verHoras(p[1] || hoyISO(), p[2]);
+  if (p[0] === 'h') return verHoras(p[1] || hoyISO(), p[2], p[3]);
   if (p[0] === 'd' && p[1]) return verDia(p[1], p[2], p[3] ? +p[3] : undefined);
   if (E.cfg.inicio === 'misa') return verDia(hoyISO());
   if (E.cfg.inicio === 'horas') return verHoras(hoyISO());
@@ -741,6 +1040,7 @@ function enruta() {
 /* ------------------------------------------------------------- arranque */
 async function arranca() {
   cargaCfg();
+  cargaElecciones();
   aplicaCfg();
   try {
     const [ind, cal] = await Promise.all([json('indice.json'),
@@ -761,6 +1061,7 @@ async function arranca() {
     enruta();
   });
   vista.addEventListener('change', alCambiarAjuste);
+  vista.addEventListener('click', alElegirOpcion);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'tam') alCambiarAjuste(ev);
   });
@@ -791,7 +1092,13 @@ async function arranca() {
     const b = ev.target.closest('button');
     if (!b) return;
     if (b.dataset.hora) {
-      location.hash = '#/h/' + (E.fecha || hoyISO()) + '/' + b.dataset.hora;
+      location.hash = '#/h/' + (E.fecha || hoyISO()) + '/' + b.dataset.hora
+        + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '');
+      return;
+    }
+    if (b.dataset.cel) {
+      location.hash = '#/h/' + (E.fecha || hoyISO()) + '/' + E.hora + '/'
+        + encodeURIComponent(b.dataset.cel);
       return;
     }
     const iso = E.vista === 'hoy' ? E.fecha : null;

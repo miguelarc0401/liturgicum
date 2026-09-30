@@ -301,13 +301,56 @@ h2.seccion {
   background: var(--acento); border-color: var(--acento); color: #fff;
 }
 .hora-sec { margin: 0 0 1.35rem; }
+/* El rotulo y, cuando las rubricas dejan elegir, el selector a su derecha,
+   sobre el mismo filete: la opcion va con la seccion a la que toca y no se
+   lleva mas sitio que el que ya ocupaba el rotulo. */
+.sec-cab {
+  display: flex; align-items: flex-end; gap: .6rem;
+  margin: 1.5rem 0 .55rem; border-bottom: 1px solid var(--filete);
+}
+.hora-sec:first-child .sec-cab { margin-top: .2rem; }
 .hora-sec .rotulo {
+  flex: 1; min-width: 0;
   font-family: var(--sans); font-size: .76rem; font-weight: 600;
   letter-spacing: .07em; text-transform: uppercase;
-  color: var(--rubrica); margin: 1.5rem 0 .55rem;
-  padding-bottom: .25rem; border-bottom: 1px solid var(--filete);
+  color: var(--rubrica); margin: 0; padding-bottom: .25rem;
 }
-.hora-sec:first-child .rotulo { margin-top: .2rem; }
+
+/* El selector: una pildora fina, con la opcion elegida apenas tenida del
+   color de la rubrica. Discreto a proposito: se toca una vez, si acaso, y
+   despues se reza. */
+.alterna {
+  flex: none; display: inline-flex; margin-bottom: .3rem; padding: 2px;
+  border: 1px solid var(--filete); border-radius: 999px;
+  background: var(--papel);
+}
+.alterna button {
+  font-family: var(--sans); font-size: .66rem; letter-spacing: .03em;
+  line-height: 1.3; padding: .2rem .6rem; cursor: pointer;
+  border: 0; border-radius: 999px; background: transparent;
+  color: var(--tinta-suave); white-space: nowrap;
+  transition: background-color .15s, color .15s;
+}
+.alterna button[aria-pressed="true"] {
+  color: var(--rubrica); font-weight: 600;
+  background: var(--filete);
+  background: color-mix(in srgb, var(--rubrica) 13%, transparent);
+}
+.alterna button:focus-visible {
+  outline: 2px solid var(--rubrica); outline-offset: 1px;
+}
+/* al cambiar de opcion el texto nuevo entra sin sobresalto */
+.hora-sec.cambia { animation: aparece .22s ease-out; }
+@keyframes aparece { from { opacity: .35; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .hora-sec.cambia { animation: none; }
+  .alterna button { transition: none; }
+}
+
+/* lo que añade la conmemoracion se distingue del oficio de la feria */
+.hora-sec.conm {
+  border-left: 2px solid var(--filete); padding-left: .8rem;
+}
 .hora-sec .verso {
   margin: 0 0 .85rem; line-height: 1.5; text-indent: 0;
 }

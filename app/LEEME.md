@@ -47,6 +47,16 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   salterio y el ordinario para lo que no cambia. Sale de
   [`Breviarium/`](../Breviarium/LEEME.md), que es un módulo aparte y con
   su propia fuente.
+* **Lo que las rúbricas dejan elegir, se ofrece.** Qué se celebra cada día
+  lo dice el mismo calendario que la misa, con su precedencia. En las
+  memorias, lo que el santo no tiene propio —el invitatorio, el himno y, en
+  Laudes y Vísperas, de la lectura breve a las preces— lleva junto a su
+  rótulo un selector discreto: *Del día · Doctores* (o *Pastores*, si el
+  santo admite los dos comunes). La salmodia, la lectura bíblica del Oficio,
+  la Hora intermedia y Completas no lo llevan, porque ahí no se elige. Una
+  memoria libre se puede celebrar o dejar, y en Cuaresma y las ferias
+  privilegiadas sólo cabe como conmemoración: eso se elige arriba, con los
+  chips de la cabecera. En Ajustes se dice qué opción sale marcada.
 
 **Lo que no trae:** el leccionario IX (misas con niños), que sí está en `out/`,
 en Word y en PDF.

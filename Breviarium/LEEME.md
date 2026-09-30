@@ -156,6 +156,39 @@ testigos lo avalan y desde cuándo; y, si los años discrepan, la lista de
 
 ---
 
+## Qué se celebra cada día, y qué se puede elegir
+
+El libro guarda las piezas; qué día se reza cuál no lo decide este módulo,
+sino el **calendario del proyecto**, el mismo de la misa, que ya resolvió
+la concurrencia con la Tabla de los días litúrgicos. La fase 4 sólo
+aprende en qué casillas del santoral están los textos de cada celebración
+de ese calendario: comparando los nombres en las fechas en que la fuente
+y el calendario se solapan, y, para lo que no coincidió nunca, por el
+nombre a secas. Así un santo no sale en domingo, y las fiestas móviles
+—el Sagrado Corazón, Cristo Rey— caen en su día y no en el que cayeron el
+año del volcado. Lo que el calendario celebra y la fuente no dio nunca
+queda en el informe (`app_qa.txt`), y la app lo dice en vez de callárselo.
+
+Sobre eso la app aplica las rúbricas del *Ordinario de la Liturgia de las
+Horas* (están al final de cada tomo en los PDF de esta carpeta, que sólo
+se consultan por sus rúbricas: los textos son siempre los de la fuente):
+
+| en las memorias | de dónde |
+|---|---|
+| invitatorio, himno; en Laudes y Vísperas, de la lectura breve a las preces | propio; si no, **a elegir** entre el común y la feria |
+| salmodia | del salterio, salvo que sea propia |
+| lectura bíblica del Oficio | del propio del tiempo |
+| lectura hagiográfica y oración | propio o común |
+| Hora intermedia y Completas | de la feria: no mencionan la memoria |
+
+Una memoria libre se puede celebrar o dejar; en las ferias privilegiadas
+una memoria sólo cabe como **conmemoración** (lectura hagiográfica y
+oración en el Oficio; antífona y oración en Laudes y Vísperas); y el
+sábado las vísperas son las primeras del domingo, que en la Tabla están
+por encima de cualquier memoria y de las fiestas de los santos.
+
+---
+
 ## Aviso sobre los textos
 
 La traducción es la litúrgica aprobada para México, y se reproduce tal

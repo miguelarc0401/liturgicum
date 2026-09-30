@@ -9,15 +9,200 @@ horas_dias.json     2.0 MB  13510 fechas
    13504  casillas en tiempo
     4737  casillas en santoral
      226  casillas en comunes
-      75  santos con común conocido
+      71  santos con común conocido
+     109  celebraciones del calendario con textos (100 aprendidas del volcado, 9 por el nombre)
 
 Cómo se resolvió cada fecha
 --------------------------------------------
    12484  aprendido del volcado
-     267  con santo (del volcado)
-    5469  con santo (por fecha fija)
+    1925  celebración sin textos
+      37  con conmemoración posible
+    3436  con santo
       36  del calendario del leccionario
      990  del volcado
      359  sin textos del tiempo
 
 Días del leccionario cuyas coordenadas se aprendieron del volcado: 383
+
+Celebraciones del calendario -> casillas del santoral
+--------------------------------------------
+  Dedicación de la basílica de Letrán  ->  la dedicacion de la basilica de san juan de letran
+  Domingo XXXIV del Tiempo Ordinario: Jesucristo, Rey del universo  ->  nuestro senor jesucristo rey universal
+  El Bautismo del Señor  ->  el bautismo del senor
+  El Inmaculado Corazón de la Santísima Virgen María  ->  el inmaculado corazon de la santisima virgen maria
+  El Martirio de san Juan Bautista  ->  el martirio de san juan bautista
+  El Nacimiento de san Juan Bautista  ->  el nacimiento de san juan bautista
+  La Anunciación del Señor  ->  la anunciacion del senor
+  La Asunción de la Santísima Virgen María  ->  la asuncion de la santisima virgen maria
+  La Conversión de san Pablo, apóstol  ->  la conversion de san pablo
+  La Cátedra de san Pedro, apóstol  ->  la catedra de san pedro apostol
+  La Epifanía del Señor  ->  la epifania del senor
+  La Exaltación de la Santa Cruz  ->  la exaltacion de la santa cruz
+  La Inmaculada Concepción de la Santísima Virgen María  ->  la inmaculada concepcion de la santisima virgen maria
+  La Natividad de la Santísima Virgen María  ->  la natividad de la santisima virgen maria
+  La Presentación de la Santísima Virgen María  ->  la presentacion de la santisima virgen maria
+  La Presentación del Señor  ->  la presentacion del senor
+  La Santísima Virgen María, Reina  ->  la santisima virgen maria reina
+  La Transfiguración del Señor  ->  la transfiguracion del senor
+  La Visitación de la Santísima Virgen María  ->  la visitacion de la santisima virgen maria
+  Los Santos Inocentes, mártires  ->  los santos inocentes martires
+  Nuestra Señora de Guadalupe  ->  nuestra senora de guadalupe
+  Nuestra Señora de los Dolores  ->  nuestra senora de los dolores
+  Nuestra Señora del Carmen  ->  nuestra senora del carmen
+  Nuestra Señora del Rosario  ->  nuestra senora del rosario
+  San Agustín, obispo y doctor de la Iglesia  ->  san agustin obispo y doctor de la iglesia
+  San Alfonso María de Ligorio, obispo y doctor de la Iglesia  ->  san alfonso maria de ligorio obispo y doctor de la iglesia
+  San Ambrosio, obispo y doctor de la Iglesia  ->  san ambrosio obispo y doctor de la iglesia
+  San Andrés, apóstol  ->  san andres apostol
+  San Antonio de Padua, presbítero y doctor de la Iglesia  ->  san antonio de padua presbitero y doctor de la iglesia
+  San Antonio, abad  ->  san antonio abad
+  San Atanasio, obispo y doctor de la Iglesia  ->  san atanasio obispo y doctor de la iglesia
+  San Bartolomé, apóstol  ->  san bartolome apostol
+  San Benito, abad  ->  san benito abad patrono de europa
+  San Bernabé, apóstol  ->  san bernabe apostol
+  San Bernardo, abad y doctor de la Iglesia  ->  san bernardo abad y doctor de la iglesia
+  San Bonifacio, obispo y mártir  ->  san bonifacio obispo y martir
+  San Buenaventura, obispo y doctor de la Iglesia  ->  san buenaventura obispo y doctor de la iglesia
+  San Carlos Borromeo, obispo  ->  san carlos borromeo obispo
+  San Estanislao, obispo y mártir  ->  san estanislao obispo y martir
+  San Esteban, protomártir  ->  san esteban protomartir
+  San Felipe Neri, presbítero  ->  san felipe neri presbitero
+  San Francisco Javier, presbítero  ->  san francisco javier presbitero
+  San Francisco de Asís  ->  san francisco de asis
+  San Francisco de Sales, obispo y doctor de la Iglesia  ->  san francisco de sales obispo y doctor de la iglesia
+  San Gregorio Magno, papa y doctor de la Iglesia  ->  san gregorio magno papa y doctor de la iglesia
+  San Ignacio de Antioquía, obispo y mártir  ->  san ignacio de antioquia obispo y martir
+  San Ignacio de Loyola, presbítero  ->  san ignacio de loyola presbitero
+  San Ireneo, obispo y mártir  ->  san ireneo obispo y martir
+  San Jerónimo, presbítero y doctor de la Iglesia  ->  san jeronimo presbitero y doctor de la iglesia
+  San Josafat, obispo y mártir  ->  san josafat obispo y martir
+  San José Obrero  ->  san jose obrero
+  San José, esposo de santa María Virgen  ->  san jose esposo de la bienaventurada virgen maria
+  San Juan Bautista de la Salle, presbítero  ->  san juan bautista de la salle presbitero
+  San Juan Bosco, presbítero  ->  san juan bosco presbitero
+  San Juan Crisóstomo, obispo y doctor de la Iglesia  ->  san juan crisostomo obispo y doctor de la iglesia
+  San Juan María Vianney, presbítero  ->  san juan maria vianney presbitero
+  San Juan de la Cruz, presbítero y doctor de la Iglesia  ->  san juan de la cruz presbitero y doctor de la iglesia
+  San Juan, apóstol y evangelista  ->  san juan apostol y evangelista
+  San Justino, mártir  ->  san justino martir
+  San León Magno, papa y doctor de la Iglesia  ->  san leon magno papa y doctor de la iglesia
+  San Lorenzo, diácono y mártir  ->  san lorenzo diacono y martir
+  San Lucas, evangelista  ->  san lucas evangelista
+  San Luis Gonzaga, religioso  ->  san luis gonzaga religioso
+  San Marcos, evangelista  ->  san marcos evangelista
+  San Martín de Porres, religioso  ->  san martin de porres religioso
+  San Martín, obispo  ->  san martin de tours obispo
+  San Mateo, apóstol y evangelista  ->  san mateo apostol y evangelista
+  San Matías, apóstol  ->  san matias apostol
+  San Maximiliano María Kolbe, presbítero y mártir  ->  san maximiliano maria kolbe presbitero y martir
+  San Policarpo, obispo y mártir  ->  san policarpo obispo y martir
+  San Pío X, papa  ->  san pio x papa
+  San Vicente de Paúl, presbítero  ->  san vicente de paul presbitero
+  Santa Catalina de Siena, virgen y doctora de la Iglesia  ->  santa catalina de siena virgen y doctora de la iglesia
+  Santa Cecilia, virgen y mártir  ->  santa cecilia virgen y martir
+  Santa Clara, virgen  ->  santa clara virgen
+  Santa Escolástica, virgen  ->  santa escolastica virgen
+  Santa Inés, virgen y mártir  ->  santa ines virgen y martir
+  Santa Isabel de Hungría  ->  santa isabel de hungria
+  Santa Lucía, virgen y mártir  ->  santa lucia virgen y martir
+  Santa Marta  ->  santa marta
+  Santa María Magdalena  ->  santa maria magdalena
+  Santa Mónica  ->  santa monica
+  Santa Rosa de Lima, virgen  ->  santa rosa de lima virgen patrona de america latina
+  Santa Teresa de Jesús, virgen y doctora de la Iglesia  ->  santa teresa de jesus virgen y doctora de la iglesia
+  Santa Teresa del Niño Jesús, virgen  ->  santa teresa del nino jesus
+  Santa Águeda, virgen y mártir  ->  santa agueda virgen y martir
+  Santiago, apóstol  ->  santiago apostol
+  Santo Domingo, presbítero  ->  santo domingo presbitero
+  Santo Tomás de Aquino, presbítero y doctor de la Iglesia  ->  santo tomas de aquino presbitero y doctor de la iglesia
+  Santo Tomás, apóstol  ->  santo tomas apostol
+  Santos Andrés Dung-Lac, presbítero, y compañeros, mártires  ->  santos andres dung lac presbitero y companeros martires
+  Santos Andrés Kim Taegon, presbítero, Pablo Chong Hasang y compañeros, mártires  ->  santos andres kim taegon presbitero pablo chong hasang y companeros martires
+  Santos Arcángeles Miguel, Gabriel y Rafael  ->  santos arcangeles miguel gabriel y rafael
+  Santos Basilio Magno y Gregorio de Nacianzo, obispos y doctores de la Iglesia  ->  santos basilio magno y gregorio nacianzo obispos y doctores de la iglesia
+  Santos Carlos Lwanga y compañeros, mártires  ->  santos carlos lwanga y companeros martires
+  Santos Cirilo, monje, y Metodio, obispo  ->  santos cirilo monje y metodio obispo
+  Santos Cornelio, papa, y Cipriano, obispo, mártires  ->  santos cornelio papa y cipriano obispo martires
+  Santos Felipe y Santiago, apóstoles  ->  santos felipe y santiago apostoles
+  Santos Joaquín y Ana, padres de la Santísima Virgen María  ->  santos joaquin y ana padres de la santisima virgen maria
+  Santos Pablo Miki y compañeros, mártires  ->  santos pablo miki y companeros martires
+  Santos Pedro y Pablo, apóstoles  ->  santos pedro y pablo apostoles
+  Santos Simón y Judas, apóstoles  ->  santos simon y judas apostoles
+  Santos Timoteo y Tito, obispos  ->  santos timoteo y tito obispos
+  Santos Ángeles Custodios  ->  los santos angeles custodios
+  Solemnidad de Santa María, Madre de Dios  ->  santa maria madre de dios
+  Solemnidad de la Santísima Trinidad  ->  la santisima trinidad
+  Solemnidad del Sagrado Corazón de Jesús  ->  el sagrado corazon de jesus
+  Solemnidad del Santísimo Cuerpo y Sangre de Cristo  ->  el santisimo cuerpo y sangre de cristo
+  Todos los Santos  ->  todos los santos
+
+Se celebran, pero la fuente no dio nunca sus textos (el oficio sale de la feria)
+--------------------------------------------
+      37  Conmemoración de todos los fieles difuntos (conmemoración)
+      33  San Juan Damasceno, presbítero y doctor de la Iglesia (memoria libre)
+      33  San Dámaso I, papa (memoria libre)
+      33  San Vicente, diácono y mártir (memoria libre)
+      33  San Romualdo, abad (memoria libre)
+      33  Santos Sixto II, papa, y compañeros, mártires (memoria libre)
+      33  Santos Dionisio, obispo, y compañeros, mártires (memoria libre)
+      33  Santa Eduviges, religiosa (memoria libre)
+      33  San Juan de Capistrano, presbítero (memoria libre)
+      32  San Nicolás, obispo (memoria libre)
+      32  San Hilario, obispo y doctor de la Iglesia (memoria libre)
+      32  San Fabián, papa y mártir (memoria libre)
+      32  Santa Ángela de Merici, virgen (memoria libre)
+      32  San Blas, obispo y mártir (memoria libre)
+      32  San Bernardino de Siena, presbítero (memoria libre)
+      32  San Agustín de Cantorbery, obispo (memoria libre)
+      32  San Antonio María Zaccarías, presbítero (memoria libre)
+      32  Santa Brígida, religiosa (memoria libre)
+      32  San Pedro Crisólogo, obispo y doctor de la Iglesia (memoria libre)
+      32  San Eusebio de Vercelli, obispo (memoria libre)
+      32  Dedicación de la basílica de Santa María (memoria libre)
+      32  Santos Ponciano, papa, e Hipólito, mártires (memoria libre)
+      32  San Esteban de Hungría (memoria libre)
+      32  San Juan Eudes, presbítero (memoria libre)
+      32  San Pedro Claver, presbítero (memoria libre)
+      32  San Roberto Belarmino, obispo y doctor de la Iglesia (memoria libre)
+      32  San Calixto I, papa y mártir (memoria libre)
+      32  San Alberto Magno, obispo y doctor de la Iglesia (memoria libre)
+      32  Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles (memoria libre)
+      31  San Pío V, papa (memoria libre)
+      31  San Juan I, papa y mártir (memoria libre)
+      31  San Beda el Venerable, presbítero y doctor de la Iglesia (memoria libre)
+      31  San Paulino de Nola, obispo (memoria libre)
+      31  Santa Isabel de Portugal (memoria libre)
+      31  Santa María Goretti, virgen y mártir (memoria libre)
+      31  San Enrique (memoria libre)
+      31  San Jenaro, obispo y mártir (memoria libre)
+      31  Santos Cosme y Damián, mártires (memoria libre)
+      31  San Wenceslao, mártir (memoria libre)
+      31  Santos Juan de Brébeuf e Isaac Jogues, presbíteros, y compañeros, mártires (memoria libre)
+      31  San Antonio María Claret, obispo (memoria libre)
+      31  Santa Margarita de Escocia (memoria libre)
+      31  San Clemente I, papa y mártir (memoria libre)
+      31  San Raimundo de Peñafort, presbítero (memoria libre)
+      31  Santos Nereo y Aquileo, mártires (memoria libre)
+      31  Santos Marcelino y Pedro, mártires (memoria libre)
+      31  Primeros mártires de la Iglesia de Roma (memoria libre)
+      31  San Camilo de Lelis, presbítero (memoria libre)
+      31  San Lorenzo de Brindis, presbítero y doctor de la Iglesia (memoria libre)
+      31  San Luis (memoria libre)
+      31  San Bruno, presbítero (memoria libre)
+      30  San Norberto, obispo (memoria libre)
+      30  San Cirilo de Alejandría, obispo y doctor de la Iglesia (memoria libre)
+      29  San Jerónimo Emiliano (memoria libre)
+      29  San Pedro Chanel, presbítero y mártir (memoria libre)
+      29  San Efrén, diácono y doctor de la Iglesia (memoria libre)
+      27  Nuestra Señora de Lourdes (memoria libre)
+      24  San Fidel de Sigmaringen, presbítero y mártir (memoria libre)
+      22  San Anselmo, obispo y doctor de la Iglesia (memoria libre)
+      21  San Jorge, mártir (memoria libre)
+      20  Los siete santos Fundadores de la Orden de los Siervos de santa María Virgen (memoria libre)
+      16  San Pedro Damián, obispo y doctor de la Iglesia (memoria libre)
+      14  San Martín I, papa y mártir (memoria libre)
+       5  San Casimiro (memoria)
+       2  San Isidoro, obispo y doctor de la Iglesia (memoria libre)
+       2  San Vicente Ferrer, presbítero (memoria libre)
+       1  San Juan de Dios, religioso (memoria libre)
+       1  Santa Francisca Romana, religiosa (memoria libre)

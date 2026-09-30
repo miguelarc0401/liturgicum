@@ -9,10 +9,15 @@ respeta. Este módulo deja dos ficheros en `app/datos/`:
     horas_dias.json   fecha civil -> coordenadas del oficio de ese día
 
 El segundo es el que hace el trabajo. Para las fechas del volcado
-(2019-2026) sale de la propia fuente, exacta. Para las demás —el
-calendario del leccionario llega a 2060— se deriva: el tiempo y la semana,
-del calendario del proyecto; el día de la semana, de la fecha; el salterio,
-de la semana; y el santo, del santoral, que es de fecha fija.
+(2019-2026) el tiempo y la semana salen de la propia fuente, exactos. Para
+las demás —el calendario del leccionario llega a 2060— se derivan: el
+tiempo y la semana, del calendario del proyecto; el día de la semana, de la
+fecha; el salterio, de la semana.
+
+Qué santo se celebra, y con qué grado, sale siempre del calendario del
+proyecto, que ya resolvió la precedencia con la Tabla de los días
+litúrgicos: así las horas dicen lo mismo que la misa. De la fuente sólo se
+aprende dónde están los textos de cada celebración.
 
 Los días señalados —el Triduo, la Navidad, la Epifanía— no se numeran por
 semana, y la fuente y el leccionario les dan nombres distintos. La
@@ -24,6 +29,7 @@ dos calendarios se solapan, que es para lo que la fase 3 dejó
 """
 
 import datetime as dt
+import difflib
 import json
 import os
 import re
@@ -79,6 +85,50 @@ def semana_de(titulo_grupo):
         if re.search(r'\b' + pal + r'\s+semana', t, re.I):
             return n
     return None
+
+
+# Para comparar el nombre que da la fuente con el que da el calendario:
+# «SAN JERÓNIMO, presbítero y doctor de la iglesia» y «San Jerónimo,
+# presbítero y doctor de la Iglesia» son el mismo; «La Epifanía del Señor» y
+# «El Bautismo del Señor» no, aunque compartan el Señor.
+VACIAS = set('de del la las los el y en san santa santo santos santas '
+             'senor domingo semana tiempo ordinario solemnidad'.split())
+
+
+def fichas(t):
+    return {w for w in clave(t).split() if w not in VACIAS and len(w) > 2}
+
+
+def parecido(calendario, fuente):
+    """De 0 a 1: cuánto del nombre más largo está en el otro."""
+    # «En la Argentina: … En México: SAN FELIPE DE JESÚS»: el calendario del
+    # proyecto es el latinoamericano, y la traducción, la de México
+    if 'En México:' in fuente:
+        fuente = fuente.split('En México:')[1]
+    a, b = fichas(calendario), fichas(fuente)
+    if not a or not b:
+        return 0
+    return len(a & b) / max(len(a), len(b))
+
+
+# El rótulo corto de cada común, para el selector de la app: «Del día ·
+# Doctores». Se nombra por el último que cita («pastores… y del común de
+# doctores» trae los textos de doctores: lo dice la medida, no la teoría).
+ROTULOS_COMUN = [
+    ('doctores', 'Doctores'), ('pastores', 'Pastores'),
+    ('apostoles', 'Apóstoles'), ('un martir', 'Un mártir'),
+    ('varios martires', 'Mártires'), ('virgenes', 'Vírgenes'),
+    ('santas mujeres', 'Santas mujeres'), ('santos varones', 'Santos varones'),
+    ('santisima virgen maria', 'Santa María'), ('dedicacion', 'Dedicación'),
+]
+
+
+def rotulo_de_comun(nombre):
+    ultimo = nombre.split(' y del comun de ')[-1]
+    for prefijo, rotulo in ROTULOS_COMUN:
+        if ultimo.startswith(prefijo):
+            return rotulo
+    return ultimo.capitalize()
 
 
 def carga(nombre, base=LIBRO):
@@ -163,43 +213,108 @@ def main():
         aprendido[temporal[0]][coord] += 1
     aprendido = {s: c.most_common(1)[0][0] for s, c in aprendido.items()}
 
-    # --- el santoral, por fecha fija --------------------------------------
-    # Cuando en una fecha se ha celebrado más de una cosa a lo largo de los
-    # ocho años (los días que ofrecen oficios alternativos), manda el que
-    # más veces salió.
-    indice_santos = carga('santoral_indice.json')
-    santo_de_fecha = {}
-    for md, lista in indice_santos.items():
-        casillas = {k.split('/', 2)[1] for k in santoral
-                    if k.startswith(md + '/')}
-        for nombre, _ in lista:
-            if clave(nombre) in casillas:
-                santo_de_fecha[md] = (clave(nombre), nombre)
-                break
+    # --- qué celebración del calendario es cada santo del libro -----------
+    # Qué se celebra cada día, y con qué grado, no lo decide este módulo: lo
+    # decide el calendario del proyecto, que ya resolvió la concurrencia con
+    # la Tabla de los días litúrgicos (src/18_santoral.py) y es el mismo que
+    # sigue la misa. Pegar el santo por fecha fija, como se hacía antes, lo
+    # sacaba en domingo (san Francisco el 4 de octubre de 2026) y ponía las
+    # fiestas móviles en la fecha en que cayeron el año del volcado.
+    #
+    # Lo que hace falta aquí es saber en qué casillas del santoral están los
+    # textos de cada celebración del calendario. Tampoco eso se tabula a
+    # mano: se aprende de las fechas en que la fuente y el calendario se
+    # solapan, por el nombre.
+    casillas = defaultdict(Counter)         # santo -> {mm-dd: nº de casillas}
+    for k in santoral:
+        md, santo = k.split('/', 2)[:2]
+        casillas[santo][md] += 1
 
-    # el rango con que se celebra cada santo, para poder decirlo y para
-    # poder saltárselo cuando es memoria libre y así lo prefiera quien reza
-    rango_voto = defaultdict(Counter)
-    for cab in fuente.values():
-        if cab.get('celebracion') and cab.get('rango'):
-            rango_voto[clave(cab['celebracion'])][cab['rango']] += 1
-    rango_de_santo = {k: c.most_common(1)[0][0] for k, c in rango_voto.items()}
+    votos = defaultdict(Counter)
+    for fecha, cab in fuente.items():
+        cel = cab.get('celebracion')
+        ent = civil['fechas'].get(fecha, {}).get('c') or []
+        if not cel or clave(cel) not in casillas or not ent:
+            continue
+        p, e = max(((parecido(e[2]['t'], cel), e) for e in ent),
+                   key=lambda x: x[0])
+        if p >= 0.5:
+            votos[e[0]][clave(cel)] += 1
+    santo_de_slug = {slug: c.most_common(1)[0][0] for slug, c in votos.items()}
+    n_aprendidos = len(santo_de_slug)
+
+    # Lo que no coincidió nunca se busca por el nombre: los santos, entre
+    # los de su misma fecha; las celebraciones del Señor, entre todas, porque
+    # la fuente y el calendario pueden no ponerlas el mismo día (la
+    # Epifanía, el 6 de enero allá y en domingo aquí).
+    titulos = {}
+    for ent in civil['fechas'].values():
+        for slug, _, m in ent.get('c') or []:
+            titulos.setdefault(slug, m)
+    for slug, m in titulos.items():
+        if slug in santo_de_slug:
+            continue
+        f = re.match(r'st_(\d\d)(\d\d)_', slug)
+        if f:
+            cands = [s for s, mds in casillas.items()
+                     if f'{f[1]}-{f[2]}' in mds]
+        elif m.get('k') == 't' and (m.get('r') or 99) <= 5:
+            cands = list(casillas)
+        else:
+            continue
+        if cands:
+            p, s = max((parecido(m['t'].split(':')[-1], s), s) for s in cands)
+            if p >= 0.5:
+                santo_de_slug[slug] = s
+
+    def md_de(santo, fecha):
+        """En qué fecha del santoral buscar sus textos: la suya si la tiene;
+        si no —las fiestas móviles—, la más completa."""
+        mds = casillas[santo]
+        return fecha[5:] if fecha[5:] in mds else mds.most_common(1)[0][0]
+
+    def grado(m):
+        if m.get('g'):
+            return m['g'].upper()
+        r = m.get('r') or 99                  # las del Señor, por su número
+        return 'SOLEMNIDAD' if r <= 4 else 'FIESTA' if r <= 8 else 'MEMORIA'
 
     # --- de qué común toma su oficio cada santo ---------------------------
     # La app arma el día en cascada —lo del santo, si no lo de su común, si
     # no lo del tiempo— y para el segundo escalón necesita saber cuál es el
     # común de cada santo. Lo dice el propio volcado, en la línea que
     # encabeza el día («Del Común de pastores. Salterio III»).
+    #
+    # Pueden ser dos: «del común de pastores, o del común de doctores». En
+    # las memorias las rúbricas dejan elegir, y la app ofrece los dos; por
+    # eso se guarda una lista, con el que usó la fuente delante.
     comun_voto = defaultdict(Counter)
     for cab in fuente.values():
         cel, origen = cab.get('celebracion'), cab.get('origen') or ''
         m = re.search(r'com[uú]n\s+(?:de\s+)?(?:l[oa]s?\s+)?(.+)$', origen, re.I)
         if cel and m:
             comun_voto[clave(cel)][clave(m.group(1))] += 1
-    comun_de_santo = {s: c.most_common(1)[0][0] for s, c in comun_voto.items()}
+    nombres_comunes = sorted({k.split('/', 1)[0] for k in comunes})
+
+    def comunes_de(nombre):
+        nombre = re.sub(r'\s+salterio\s+[ivx]+$', '', nombre)
+        partes = [nombre] + nombre.split(' y del comun de ')
+        lista = []
+        for p in partes:
+            k = p if p in nombres_comunes else next(iter(
+                difflib.get_close_matches(p, nombres_comunes, 1, 0.9)), None)
+            if k and k not in lista:
+                lista.append(k)
+        return lista
+    comun_de_santo = {}
+    for s, c in comun_voto.items():
+        lista = comunes_de(c.most_common(1)[0][0])
+        if lista:
+            comun_de_santo[s] = lista
+    rotulo_comun = {k: rotulo_de_comun(k) for k in nombres_comunes}
 
     # --- fecha -> coordenadas ---------------------------------------------
-    dias, cuentas, avisos = {}, Counter(), []
+    dias, cuentas, avisos, sin_textos = {}, Counter(), [], Counter()
     huecos_tiempo = {k.rsplit('/', 2)[0] for k in tiempo}
 
     for fecha, ent in sorted(civil['fechas'].items()):
@@ -243,21 +358,57 @@ def main():
         if clave_dia not in huecos_tiempo:
             cuentas['sin textos del tiempo'] += 1
 
-        reg = {'t': ti, 'k': clave_dia, 'd': ds, 'tt': meta.get('t')}
+        # el título es el del día del tiempo; el del santo, si se celebra,
+        # lo pone la app, que es la que sabe si quien reza lo ha elegido
+        reg = {'t': ti, 'k': clave_dia, 'd': ds, 'tt': temporal[2]['t']}
         if salt:
             reg['p'] = salt
 
-        # el santo: de fecha fija, y sólo si el día lo admite
-        md = fecha[5:]
-        if cab and cab.get('celebracion'):
-            reg['s'] = clave(cab['celebracion'])
-            reg['st'] = cab['celebracion']
-            reg['g'] = cab.get('rango')
-            cuentas['con santo (del volcado)'] += 1
-        elif md in santo_de_fecha:
-            reg['s'], reg['st'] = santo_de_fecha[md]
-            reg['g'] = rango_de_santo.get(reg['s'])
-            cuentas['con santo (por fecha fija)'] += 1
+        # Las celebraciones con textos, en el orden de precedencia del
+        # calendario y sin las impedidas: [santo, mm-dd, título, grado,
+        # número en la Tabla]. `w` dice si la primera es la que gana el día.
+        # `cm`, que gana una feria privilegiada (la Cuaresma, del 17 al 24
+        # de diciembre, la octava de Navidad: el n. 9 de la Tabla), y
+        # entonces las memorias que vienen detrás sólo pueden hacerse como
+        # conmemoración (Principios y normas generales, nn. 238-239).
+        cels = []
+        for i, (sl, _, m) in enumerate(ent['c']):
+            if m.get('z'):
+                continue
+            s = santo_de_slug.get(sl)
+            if s:
+                cels.append([s, md_de(s, fecha), m['t'], grado(m),
+                             m.get('r')])
+                if i == 0:
+                    reg['w'] = 1
+            elif i == 0 and m.get('k') == 's':
+                # se celebra algo de lo que la fuente no dio nunca textos:
+                # la app lo dice en vez de callárselo
+                reg['x'] = [m['t'], grado(m)]
+                cuentas['celebración sin textos'] += 1
+                sin_textos[f'{m["t"]} ({grado(m).lower()})'] += 1
+        primera = ent['c'][0][2]
+        if cels:
+            reg['c'] = cels
+            if (not reg.get('w') and primera.get('k') == 't'
+                    and (primera.get('r') or 99) <= 9):
+                reg['cm'] = 1
+                cuentas['con conmemoración posible'] += 1
+            else:
+                cuentas['con santo'] += 1
+
+        # Las vísperas del sábado son las primeras del domingo, que en la
+        # Tabla está por encima de cualquier memoria y de las fiestas de los
+        # santos: esas no tienen vísperas ese día («si coinciden, prevalecen
+        # las de la celebración de mayor grado», PNLH 61). Y la fuente guarda
+        # las primeras vísperas del domingo en el sábado, así que la app sólo
+        # tiene que saber que ese día las vísperas son «del día». Sólo en las
+        # semanas numeradas: en Navidad el sábado no tiene casilla propia.
+        manana = civil['fechas'].get(str(d + dt.timedelta(days=1)), {})
+        if cels and ds == 6 and sem is not None and manana.get('c'):
+            r_dom = manana['c'][0][2].get('r') or 99
+            if r_dom < (cels[0][4] or 99):
+                reg['v'] = 1
 
         dias[fecha] = reg
 
@@ -265,6 +416,7 @@ def main():
     libro = {
         'orden': carga('orden.json'),
         'comun_de': comun_de_santo,
+        'rotulo_comun': rotulo_comun,
         'ordinario': poda(ordinario),
         'salterio': poda(salterio),
         'tiempo': poda(tiempo),
@@ -304,11 +456,24 @@ def main():
         for k in ('ordinario', 'salterio', 'tiempo', 'santoral', 'comunes'):
             f.write(f'{len(libro[k]):8d}  casillas en {k}\n')
         f.write(f'{len(comun_de_santo):8d}  santos con común conocido\n')
+        f.write(f'{len(santo_de_slug):8d}  celebraciones del calendario con '
+                f'textos ({n_aprendidos} aprendidas del volcado, '
+                f'{len(santo_de_slug) - n_aprendidos} por el nombre)\n')
         f.write('\nCómo se resolvió cada fecha\n' + '-' * 44 + '\n')
         for k, v in sorted(cuentas.items()):
             f.write(f'{v:8d}  {k}\n')
         f.write('\nDías del leccionario cuyas coordenadas se aprendieron '
                 f'del volcado: {len(aprendido)}\n')
+        f.write('\nCelebraciones del calendario -> casillas del santoral\n'
+                + '-' * 44 + '\n')
+        for sl, santo in sorted(santo_de_slug.items(),
+                                key=lambda x: titulos[x[0]]['t']):
+            f.write(f'  {titulos[sl]["t"]}  ->  {santo}\n')
+        if sin_textos:
+            f.write('\nSe celebran, pero la fuente no dio nunca sus textos '
+                    '(el oficio sale de la feria)\n' + '-' * 44 + '\n')
+            for t, n in sin_textos.most_common():
+                f.write(f'{n:8d}  {t}\n')
         if avisos:
             f.write(f'\nAvisos: {len(avisos)}\n' + '-' * 44 + '\n')
             for a in avisos[:200]:
