@@ -1,0 +1,81 @@
+{
+ "oficio": [
+  "invitatorio",
+  "himno",
+  "salmodia",
+  "lectura1",
+  "responsorio",
+  "lectura2",
+  "responsorio2",
+  "oracion",
+  "conclusion",
+  "himno2",
+  "lectura12",
+  "oracion2",
+  "oracion3",
+  "preambulo",
+  "salmodia2"
+ ],
+ "laudes": [
+  "invitatorio",
+  "himno",
+  "salmodia",
+  "lectura_breve",
+  "responsorio_breve",
+  "cantico_evangelico",
+  "preces",
+  "oracion",
+  "conclusion",
+  "invocacion"
+ ],
+ "tercia": [
+  "invocacion",
+  "himno",
+  "salmodia",
+  "lectura_breve",
+  "oracion",
+  "conclusion"
+ ],
+ "sexta": [
+  "invocacion",
+  "himno",
+  "salmodia",
+  "lectura_breve",
+  "oracion",
+  "conclusion"
+ ],
+ "nona": [
+  "invocacion",
+  "himno",
+  "salmodia",
+  "lectura_breve",
+  "oracion",
+  "conclusion"
+ ],
+ "visperas": [
+  "invocacion",
+  "himno",
+  "salmodia",
+  "lectura_breve",
+  "responsorio_breve",
+  "cantico_evangelico",
+  "preces",
+  "oracion",
+  "conclusion",
+  "invitatorio",
+  "oracion2",
+  "preambulo"
+ ],
+ "completas": [
+  "invocacion",
+  "examen",
+  "himno",
+  "salmodia",
+  "lectura_breve",
+  "responsorio_breve",
+  "cantico_evangelico",
+  "oracion",
+  "bendicion",
+  "antifona_final"
+ ]
+}

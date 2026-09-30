@@ -278,15 +278,90 @@ h2.seccion {
 /* --------------------------------------------------------------- barra */
 #barra {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(6, 1fr);
   background: var(--papel-alto); border-top: 1px solid var(--filete);
   padding-bottom: env(safe-area-inset-bottom);
 }
 #barra button {
   display: flex; flex-direction: column; align-items: center; gap: .1rem;
-  padding: .5rem 0 .55rem; cursor: pointer;
+  padding: .5rem 0 .55rem; cursor: pointer; min-width: 0;
   background: none; border: 0; color: var(--tinta-suave);
-  font-family: var(--sans); font-size: .68rem; letter-spacing: .03em;
+  font-family: var(--sans); font-size: .64rem; letter-spacing: .01em;
 }
 #barra button span { font-size: 1.15rem; line-height: 1.1; }
 #barra button.activo { color: var(--acento); }
+
+/* ------------------------------------------------ la liturgia de las horas
+   El original distingue la rubrica del texto por el color, y solo por el
+   color: rojo lo que se indica, negro lo que se reza. Aqui se conserva esa
+   distincion con la variable --rubrica, que ya cambia con el color
+   liturgico del dia y con el tema, de modo que las horas se leen igual que
+   el resto de la app. */
+#formularios button.sel {
+  background: var(--acento); border-color: var(--acento); color: #fff;
+}
+.hora-sec { margin: 0 0 1.35rem; }
+.hora-sec .rotulo {
+  font-family: var(--sans); font-size: .76rem; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--rubrica); margin: 1.5rem 0 .55rem;
+  padding-bottom: .25rem; border-bottom: 1px solid var(--filete);
+}
+.hora-sec:first-child .rotulo { margin-top: .2rem; }
+.hora-sec .verso {
+  margin: 0 0 .85rem; line-height: 1.5; text-indent: 0;
+}
+.hora-sec .rub {
+  /* En el original la rubrica se distingue del texto por el color y por
+     nada mas: ni negrita ni cursiva. Se respeta. */
+  color: var(--rubrica); font-weight: inherit; font-style: normal;
+}
+
+/* -------------------------------------------------------------- portada
+   Las dos puertas de la app, una encima de otra y del mismo tamano: no hay
+   una principal y otra secundaria, son dos libros distintos. */
+#cabecera.portada { border-bottom-width: 0; }
+#cabecera.portada h1 {
+  font-size: 1.05rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--acento); text-align: center; font-weight: 600;
+}
+.portada-fecha {
+  margin: .2rem 0 0; text-align: center;
+  font-family: var(--sans); font-size: .74rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--tinta-suave);
+}
+.portada-dia {
+  margin: .35rem 0 0; text-align: center; font-size: 1.05rem;
+  line-height: 1.35; color: var(--tinta);
+}
+.portada-elige {
+  display: flex; flex-direction: column; gap: .85rem; margin: 1.6rem 0 0;
+}
+.tarjeta {
+  display: block; text-decoration: none; color: inherit;
+  border: 1px solid var(--filete); border-radius: .7rem;
+  background: var(--papel-alto);
+  padding: 1.15rem 1.1rem 1.2rem; position: relative;
+  border-left: 4px solid var(--acento);
+}
+.tarjeta:active { background: var(--filete); }
+.tarjeta-icono {
+  display: block; font-size: 1.5rem; line-height: 1;
+  color: var(--acento); margin-bottom: .5rem;
+}
+.tarjeta-t {
+  display: block; font-size: 1.18rem; line-height: 1.25; margin-bottom: .3rem;
+}
+.tarjeta-p {
+  display: block; font-family: var(--sans); font-size: .74rem;
+  line-height: 1.45; color: var(--tinta-suave);
+}
+.portada-menudo {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: .25rem 1.4rem; margin: 1.7rem 0 .5rem;
+}
+.portada-menudo a {
+  font-family: var(--sans); font-size: .78rem; color: var(--tinta-suave);
+  text-decoration: none; border-bottom: 1px solid var(--filete);
+  padding-bottom: .1rem;
+}

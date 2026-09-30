@@ -15,12 +15,13 @@ const RUTA_DATOS = 'datos/';
 const POR_OMISION = {
   fuente: 'clementina', acentos: true, numeros: true, tam: 100, tema: 'auto',
   epifania: 'domingo', ascension: 'domingo', corpus: 'domingo',
-  memorias: 'santo'
+  memorias: 'santo', inicio: 'menu'
 };
 
 const E = {              // todo el estado de la app
   cfg: Object.assign({}, POR_OMISION),
   indice: null, cal: null, lecturas: null,
+  horas: null, horasDias: null, hora: null,
   diaDe: new Map(),      // slug -> día del índice
   diaDeClave: new Map(), // clave de formulario -> día
   colorDe: new Map(),    // slug -> color litúrgico
@@ -299,7 +300,7 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
 function verDia(iso, slug, bloque) {
   E.vista = 'hoy';
   marcaBarra('hoy');
-  $('#cabecera').classList.remove('compacta');
+  $('#cabecera').classList.remove('compacta', 'portada');
   $('#rotulo-fecha').textContent = fechaLarga(iso);
   $('#selector-fecha').value = iso;
   E.fecha = iso;
@@ -326,6 +327,7 @@ function verDia(iso, slug, bloque) {
 
 function modoPanel(titulo) {
   $('#cabecera').classList.add('compacta');
+  $('#cabecera').classList.remove('portada');
   $('#titulo-dia').textContent = titulo;
   $('#subtitulo-dia').textContent = '';
   $('#celebraciones').innerHTML = '';
@@ -480,6 +482,11 @@ function verAjustes() {
     sel('tema', 'Aspecto', '',
       [['auto', 'Según el teléfono'], ['claro', 'Claro'],
         ['sepia', 'Sepia'], ['oscuro', 'Oscuro']]),
+    sel('inicio', 'Al abrir la app',
+      'La app lleva dentro dos libros. Si siempre vas al mismo, dilo aquí y '
+      + 'no se te vuelve a preguntar.',
+      [['menu', 'Preguntar'], ['misa', 'Las lecturas de la misa'],
+        ['horas', 'La liturgia de las horas']]),
     '<h2 class="seccion">Calendario</h2>',
     sel('epifania', 'Epifanía',
       'En España se celebra el 6 de enero; en gran parte de América, el '
@@ -533,6 +540,181 @@ function marcaBarra(cual) {
     b.classList.toggle('activo', b.dataset.ir === cual));
 }
 
+/* ---------------------------------------------------------------- portada
+ * La app lleva dentro dos libros distintos —el leccionario de la misa y el
+ * oficio divino— y el que se quiere a cada hora no lo sabe nadie más que
+ * quien abre. Así que se pregunta, en vez de suponer; y quien siempre va al
+ * mismo sitio lo dice una vez en Ajustes y no se le vuelve a preguntar. */
+function verPortada() {
+  E.vista = 'portada';
+  marcaBarra('portada');
+  const iso = hoyISO();
+  E.fecha = iso;
+  modoPanel('');
+  $('#cabecera').classList.add('portada');
+  $('#titulo-dia').textContent = 'Liturgicum';
+
+  const val = entradasDe(iso);
+  const cels = val ? celebracionesDe(val) : [];
+  const hoy = cels.length ? (E.diaDe.get(cels[0].slug) || {}).t : null;
+  const anio = anioDe(iso);
+  const hora = HORAS.find((x) => x[0] === horaSugerida());
+
+  vista.innerHTML = [
+    '<p class="portada-fecha">' + esc(fechaLarga(iso)) + '</p>',
+    hoy ? '<p class="portada-dia">' + esc(hoy) + '</p>' : '',
+    '<div class="portada-elige">',
+    '<a class="tarjeta" href="#/d/' + iso + '">',
+    '<span class="tarjeta-icono">☩</span>',
+    '<span class="tarjeta-t">Lecturas de la Misa</span>',
+    '<span class="tarjeta-p">El leccionario romano en latín'
+    + (anio ? ' · Ciclo ' + anio.ciclo + ' · Año ' + anio.ferial : '')
+    + '</span>',
+    '</a>',
+    '<a class="tarjeta" href="#/h/' + iso + '">',
+    '<span class="tarjeta-icono">☾</span>',
+    '<span class="tarjeta-t">Liturgia de las Horas</span>',
+    '<span class="tarjeta-p">El oficio divino en castellano · ahora, '
+    + esc(hora[1]) + '</span>',
+    '</a>',
+    '</div>',
+    '<nav class="portada-menudo">',
+    '<a href="#/indice">Índice del año</a>',
+    '<a href="#/buscar">Buscar</a>',
+    '<a href="#/ajustes">Ajustes</a>',
+    '</nav>'
+  ].join('');
+  window.scrollTo(0, 0);
+}
+
+/* ----------------------------------------------- la liturgia de las horas */
+/* Las horas van en ficheros aparte y no se cargan hasta que se piden: son
+ * 25 MB, y quien sólo venga a las lecturas no tiene por qué esperarlos. */
+const HORAS = [
+  ['oficio', 'Oficio de Lectura', 'Lectura'],
+  ['laudes', 'Laudes', 'Laudes'],
+  ['tercia', 'Tercia', 'Tercia'],
+  ['sexta', 'Sexta', 'Sexta'],
+  ['nona', 'Nona', 'Nona'],
+  ['visperas', 'Vísperas', 'Vísperas'],
+  ['completas', 'Completas', 'Completas']
+];
+
+async function cargaHoras() {
+  if (E.horas) return;
+  const [libro, dias] = await Promise.all(
+    [json('horas.json'), json('horas_dias.json')]);
+  E.horas = libro;
+  E.horasDias = dias;
+}
+
+/** Las secciones de una hora, armadas en cascada: lo propio del santo; si no
+ *  lo tiene, lo de su común; si no, lo del tiempo; la salmodia, del salterio;
+ *  y lo que no cambia nunca, del ordinario. Es el orden en que manda el
+ *  libro, y el mismo en que la fase 3 separó las piezas. */
+function armaHora(iso, hora) {
+  const d = E.horasDias.dias[iso];
+  if (!d) return null;
+  const L = E.horas;
+  const md = iso.slice(5);
+  const usaSanto = !!d.s
+    && (d.g !== 'MEMORIA LIBRE' || E.cfg.memorias === 'santo');
+  const comun = usaSanto ? L.comun_de[d.s] : null;
+  const secciones = [];
+  for (const cl of (L.orden[hora] || [])) {
+    let c = null, de = null;
+    if (usaSanto && (c = L.santoral[md + '/' + d.s + '/' + hora + '/' + cl])) de = 'santo';
+    if (!c && comun && (c = L.comunes[comun + '/' + hora + '/' + cl])) de = 'comun';
+    if (!c && (c = L.tiempo[d.k + '/' + hora + '/' + cl])) de = 'tiempo';
+    if (!c && cl === 'salmodia' && d.p
+      && (c = L.salterio[d.t + '/' + d.p + '/' + d.d + '/' + hora])) de = 'salterio';
+    if (!c && (c = L.ordinario[d.t + '/' + hora + '/' + cl])) de = 'ordinario';
+    if (!c && (c = L.ordinario['@/' + hora + '/' + cl])) de = 'ordinario';
+    if (c) secciones.push({ clase: cl, de: de, rotulo: c.r, lineas: c.l });
+  }
+  return { dia: d, secciones: secciones };
+}
+
+/* El texto va tal cual: la acentuación que se puede apagar en Ajustes es la
+ * del latín, y quitarle las tildes al castellano sería estropearlo. */
+function pintaSeccionHora(s) {
+  const h = [];
+  if (s.rotulo) h.push('<h2 class="rotulo">' + esc(s.rotulo) + '</h2>');
+  let parrafo = [];
+  const cierra = () => {
+    if (parrafo.length) h.push('<p class="verso">' + parrafo.join('<br>') + '</p>');
+    parrafo = [];
+  };
+  for (const ln of s.lineas) {
+    const t = ln.map((tr) => tr[0]
+      ? '<b class="rub">' + esc(tr[1]) + '</b>' : esc(tr[1])).join('');
+    if (t.trim()) parrafo.push(t); else cierra();
+  }
+  cierra();
+  return '<section class="hora-sec">' + h.join('') + '</section>';
+}
+
+function pintaChipsHoras(iso, hora) {
+  $('#formularios').innerHTML = HORAS.map(([cl, , corto]) =>
+    '<button data-hora="' + cl + '"' + (cl === hora ? ' class="sel"' : '')
+    + '>' + esc(corto) + '</button>').join('');
+}
+
+async function verHoras(iso, hora) {
+  E.vista = 'horas';
+  marcaBarra('horas');
+  E.fecha = iso;
+  E.hora = hora = hora || horaSugerida();
+  $('#cabecera').classList.remove('compacta', 'portada');
+  $('#rotulo-fecha').textContent = fechaLarga(iso);
+  $('#selector-fecha').value = iso;
+  $('#celebraciones').innerHTML = '';
+  $('#nota-dia').style.display = 'none';
+  vista.innerHTML = '<p class="aviso">Abriendo el oficio…</p>';
+  try {
+    await cargaHoras();
+  } catch (err) {
+    vista.innerHTML = '<p class="aviso">No he podido cargar las horas ('
+      + esc(err.message) + ').</p>';
+    return;
+  }
+  const o = armaHora(iso, hora);
+  pintaChipsHoras(iso, hora);
+  if (!o) {
+    document.body.dataset.color = 'neutro';
+    $('#titulo-dia').textContent = 'Sin oficio';
+    $('#subtitulo-dia').textContent = '';
+    vista.innerHTML = '<p class="aviso">Esta fecha cae fuera del calendario '
+      + 'que trae la app (' + E.horasDias.rango[0] + '–'
+      + E.horasDias.rango[1] + ').</p>';
+    return;
+  }
+  const d = o.dia;
+  $('#titulo-dia').textContent = HORAS.find((x) => x[0] === hora)[1];
+  // el calendario del leccionario nombra mejor el día que el volcado,
+  // que va en versales; el del volcado queda para cotejar
+  const partes = [d.tt || d.st].filter(Boolean);
+  if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
+  $('#subtitulo-dia').textContent = partes.join(' · ');
+  vista.innerHTML = o.secciones.length
+    ? o.secciones.map(pintaSeccionHora).join('')
+    : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
+  vista.scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+
+/** A qué hora del día corresponde la hora del reloj. */
+function horaSugerida() {
+  const h = new Date().getHours();
+  if (h < 6) return 'oficio';
+  if (h < 9) return 'laudes';
+  if (h < 12) return 'tercia';
+  if (h < 15) return 'sexta';
+  if (h < 17) return 'nona';
+  if (h < 21) return 'visperas';
+  return 'completas';
+}
+
 /* ------------------------------------------------------------------ rutas */
 function enruta() {
   const h = location.hash.slice(2);
@@ -543,12 +725,17 @@ function enruta() {
   if (p[0] === 'f' && p[1]) {
     E.vista = 'hoy';
     marcaBarra('hoy');
-    $('#cabecera').classList.remove('compacta');
+    $('#cabecera').classList.remove('compacta', 'portada');
     $('#nota-dia').style.display = 'none';
     return pintaFormulario(p[1], +(p[2] || 0), null, null, null);
   }
+  if (p[0] === 'menu') return verPortada();
+  if (p[0] === 'misa') return verDia(hoyISO());
+  if (p[0] === 'h') return verHoras(p[1] || hoyISO(), p[2]);
   if (p[0] === 'd' && p[1]) return verDia(p[1], p[2], p[3] ? +p[3] : undefined);
-  return verDia(hoyISO());
+  if (E.cfg.inicio === 'misa') return verDia(hoyISO());
+  if (E.cfg.inicio === 'horas') return verHoras(hoyISO());
+  return verPortada();
 }
 
 /* ------------------------------------------------------------- arranque */
@@ -580,20 +767,33 @@ async function arranca() {
   document.querySelectorAll('#barra button').forEach((b) =>
     b.addEventListener('click', () => {
       const ir = b.dataset.ir;
-      const destino = ir === 'hoy' ? '#/d/' + hoyISO() : '#/' + ir;
+      const destino = ir === 'portada' ? '#/menu'
+        : ir === 'hoy' ? '#/d/' + (E.fecha || hoyISO())
+        : ir === 'horas' ? '#/h/' + (E.fecha || hoyISO())
+        : '#/' + ir;
       if (location.hash === destino) enruta(); else location.hash = destino;
     }));
-  $('#anterior').addEventListener('click', () =>
-    location.hash = '#/d/' + suma(E.fecha || hoyISO(), -1));
-  $('#siguiente').addEventListener('click', () =>
-    location.hash = '#/d/' + suma(E.fecha || hoyISO(), 1));
+  const otroDia = (n) => {
+    const iso = suma(E.fecha || hoyISO(), n);
+    location.hash = E.vista === 'horas'
+      ? '#/h/' + iso + '/' + (E.hora || '') : '#/d/' + iso;
+  };
+  $('#anterior').addEventListener('click', () => otroDia(-1));
+  $('#siguiente').addEventListener('click', () => otroDia(1));
   const selector = $('#selector-fecha');
   selector.addEventListener('change', () => {
-    if (selector.value) location.hash = '#/d/' + selector.value;
+    if (!selector.value) return;
+    location.hash = E.vista === 'horas'
+      ? '#/h/' + selector.value + '/' + (E.hora || '')
+      : '#/d/' + selector.value;
   });
   const alPulsarChip = (ev) => {
     const b = ev.target.closest('button');
     if (!b) return;
+    if (b.dataset.hora) {
+      location.hash = '#/h/' + (E.fecha || hoyISO()) + '/' + b.dataset.hora;
+      return;
+    }
     const iso = E.vista === 'hoy' ? E.fecha : null;
     location.hash = iso
       ? '#/d/' + iso + '/' + encodeURIComponent(b.dataset.slug) + '/' + b.dataset.bloque

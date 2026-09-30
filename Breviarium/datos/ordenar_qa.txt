@@ -1,0 +1,23 @@
+Fase 3 — el libro: tiempos, salterio, santoral, comunes
+==============================================================
+
+Días leídos: 2728
+Textos distintos: 6904
+
+ordinario      75 casillas     0.1 MB  con variantes: 41 (55 %)
+salterio      868 casillas     5.0 MB  con variantes: 354 (41 %)
+tiempo      13504 casillas    15.3 MB  con variantes: 2225 (16 %)
+santoral     4737 casillas     8.7 MB  con variantes: 727 (15 %)
+comunes       226 casillas     0.4 MB  con variantes: 54 (24 %)
+
+Cómo se repartieron las secciones
+--------------------------------------------
+    6782  a los comunes
+   19018  al santoral
+   31045  del santo pero ferial
+   50623  ordinario
+   25800  propio de la celebración
+   21441  salterio
+   70088  tiempo
+
+Días del año con celebración: 155

@@ -39,6 +39,14 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * Epifanía, Ascensión y Corpus se pueden poner en su fecha o trasladados al
   domingo, según el uso del país; y en las memorias se puede preferir la
   lectura del santo o la continua de la feria.
+* **La Liturgia de las Horas**, en la traducción litúrgica de México: las
+  siete horas —Oficio de Lectura, Laudes, Tercia, Sexta, Nona, Vísperas y
+  Completas— con sus rúbricas en rojo, como en el libro. Al entrar propone
+  la hora que toca por el reloj. El oficio se arma en cascada: lo propio
+  del santo, si no lo de su común, si no lo del tiempo, la salmodia del
+  salterio y el ordinario para lo que no cambia. Sale de
+  [`Breviarium/`](../Breviarium/LEEME.md), que es un módulo aparte y con
+  su propia fuente.
 
 **Lo que no trae:** el leccionario IX (misas con niños), que sí está en `out/`,
 en Word y en PDF.
@@ -78,8 +86,9 @@ primera vez están en el [README](../README.md) de la raíz.
 Abre esa dirección en **Chrome**, toca los tres puntos y elige **«Añadir a la
 pantalla de inicio»** o **«Instalar aplicación»**. Aparece el icono, y al
 abrirla va a pantalla completa, sin barra del navegador. La primera vez
-descarga unos 8 MB (y otros 6 por detrás, la segunda versión latina); a partir
-de ahí abre sin conexión.
+descarga unos 8 MB; por detrás y sin estorbar se guardan la segunda versión
+latina (6 MB) y la liturgia de las horas (unos 25). A partir de ahí abre sin
+conexión.
 
 > Si el navegador no ofrece instalarla, casi siempre es que la dirección es
 > `http` y no `https`. Es el único requisito.
@@ -92,6 +101,7 @@ python src/16_parse_anexos.py      # los apéndices
 python src/5_resolve.py --anexos   # y con --fuente nova
 python src/18_santoral.py          # santoral + precedencia -> calendario completo
 python src/15_app_data.py          # -> app/datos/*.json + los iconos
+python Breviarium/src/4_app.py     # -> app/datos/horas*.json (la liturgia de las horas)
 ```
 
 Las dos últimas son las que hay que repetir cuando se toca `data/santoral.csv`
@@ -122,4 +132,5 @@ sw.js                   el service worker: lo que la hace funcionar sin conexió
 manifest.webmanifest    nombre, iconos y modo pantalla completa
 icono-*.png             los dibuja src/15_app_data.py
 datos/                  lo generado; no se edita a mano
+datos/horas*.json       la liturgia de las horas (la hace Breviarium/src/4_app.py)
 ```

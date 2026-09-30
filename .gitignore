@@ -30,6 +30,20 @@ data/indice_textos.json
 # santoral, las reglas de versificacion, los acentos) y los informes de
 # control de calidad, que son el historial del proyecto.
 
+# --- la liturgia de las horas ---------------------------------------------
+# El volcado del sitio (29 000 HTML) y el corpus dia-a-dia que sale de el
+# (200 MB) no estan aqui siquiera: viven fuera del proyecto, en la carpeta
+# que dice Breviarium/src/breviario.py (TRABAJO), porque esta carpeta esta
+# sincronizada con la nube y subir eso en cada pasada multiplica por quince
+# lo que tarda la extraccion. Se rehacen con 1_bajar.py y 2_extraer.py.
+# Lo que SI entra es el libro ya ordenado, Breviarium/datos/libro/, que es
+# de donde sale lo que lee la app.
+
+# --- los volumenes impresos de la Liturgia de las Horas -------------------
+# Material de consulta: ni el proyecto ni la app los necesitan, y son la
+# obra entera. Se quedan en la carpeta, fuera del repositorio.
+Breviarium/*.pdf
+
 # --- restos ---------------------------------------------------------------
 __pycache__/
 *.pyc

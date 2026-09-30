@@ -2,8 +2,8 @@ name: Publicar la app
 
 # Cada vez que cambie algo dentro de app/ y se suba a main, GitHub vuelve a
 # publicar la carpeta en GitHub Pages. No compila nada: app/ ya lleva dentro
-# todo lo que necesita (los datos los genera src/15_app_data.py en tu
-# ordenador, y viajan con el commit).
+# todo lo que necesita (los datos los generan src/15_app_data.py y
+# Breviarium/src/4_app.py en tu ordenador, y viajan con el commit).
 
 on:
   push:
@@ -23,17 +23,33 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Van en dos trabajos, y no por gusto: subir el artefacto y publicarlo son
+# dos cosas distintas, y separarlas es lo que permite reintentar. Cuando
+# estaban juntos, darle a "Re-run jobs" volvia a subir el artefacto dentro
+# de la MISMA ejecucion, quedaban dos con el nombre "github-pages", y el
+# despliegue fallaba sin saber cual publicar:
+#
+#   Error: Multiple artifacts named "github-pages" were unexpectedly found
+#   for this workflow run. Artifact count is 2.
+#
+# Asi, reintentar el trabajo fallido reintenta solo "publicar", que no sube
+# nada, y el artefacto sigue siendo uno.
 jobs:
-  publicar:
+  construir:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.despliegue.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app
+
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
       - id: despliegue
         uses: actions/deploy-pages@v4

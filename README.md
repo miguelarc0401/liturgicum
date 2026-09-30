@@ -1,17 +1,26 @@
-# Lectionarium — el leccionario romano en latín
+# Lectionarium — el leccionario romano y el oficio divino
 
-El leccionario completo en latín (Vulgata Clementina y Nova Vulgata), en tres
-formas: **documentos** (DOCX y PDF maquetados como libro), un **índice maestro
-de citas** y una **app para el teléfono** que funciona sin conexión.
+Dos libros litúrgicos, hechos con el mismo método y servidos por la misma app:
 
-Cómo está hecho y por qué, paso a paso, en [Vision.md](Vision.md).
+* el **leccionario** completo en latín (Vulgata Clementina y Nova Vulgata), en
+  tres formas: **documentos** (DOCX y PDF maquetados como libro), un **índice
+  maestro de citas** y la app;
+* la **Liturgia de las Horas** en la traducción litúrgica que se usa en
+  México, con sus siete horas, extraída y ordenada por
+  [`Breviarium/`](Breviarium/LEEME.md), que es un módulo aparte con su propia
+  fuente y su propio proceso.
+
+Cómo está hecho y por qué, paso a paso, en [Vision.md](Vision.md); lo del
+oficio divino, en [Breviarium/LEEME.md](Breviarium/LEEME.md).
 
 ---
 
 ## La app
 
-`app/` es una PWA: una página web que se instala en la pantalla de inicio y
-lleva el leccionario entero dentro, así que abre sin conexión.
+`app/` es una PWA —**Liturgicum**— : una página web que se instala en la
+pantalla de inicio y lleva los dos libros dentro, así que abre sin conexión.
+Al abrirse pregunta cuál de los dos se quiere, y quien siempre va al mismo lo
+dice una vez en Ajustes.
 
 Para verla en el ordenador:
 
@@ -87,6 +96,18 @@ eso es todo lo que hay que hacer. Si tocas el texto latino o el índice de
 citas, hay que rehacer antes las fases que correspondan (ver
 [Vision.md](Vision.md), §7.4).
 
+> **Si la publicación sale en rojo, no le des a «Re-run jobs».** Reintentar
+> vuelve a subir el artefacto dentro de la misma ejecución, quedan dos con
+> el mismo nombre y el despliegue falla sin saber cuál publicar
+> (*Multiple artifacts named "github-pages"…*). Para volver a publicar sin
+> haber cambiado nada, usa **«Run workflow»** en la pestaña *Actions*, que
+> abre una ejecución nueva y limpia. El flujo está partido en dos trabajos
+> —*construir* y *publicar*— precisamente para que reintentar el fallido
+> reintente sólo el segundo, que no sube nada.
+>
+> Y si el sitio sigue viéndose bien aunque la ejecución esté en rojo, es que
+> el despliegue anterior sigue en pie: no se ha perdido nada.
+
 ### Lo que la app hace para enterarse
 
 Un service worker guarda la app entera en caché —es lo que la hace funcionar
@@ -105,8 +126,14 @@ vieja y la vuelve a llenar. Al terminar, la página se recarga una sola vez.
 | `src/` | el proceso, por fases numeradas (ver Vision.md, §7.4) |
 | `data/` | las tablas editables a mano y los informes de control de calidad |
 | `app/` | la PWA: lo único que se publica |
+| `Breviarium/` | la Liturgia de las Horas: su proceso y el libro ya ordenado |
 | `out/` | los documentos compuestos (no va al repositorio: son 500 MB) |
 | `cache/` | las páginas descargadas (tampoco va: se vuelven a bajar) |
+
+El volcado del sitio de las horas y su corpus intermedio no están ni en
+`cache/`: viven **fuera del proyecto**, porque esta carpeta se sincroniza con
+la nube y subir 200 MB en cada pasada multiplica por quince lo que tarda la
+extracción. Lo dice `Breviarium/src/breviario.py`.
 
 Los tres PDF de rúbricas (*Tabla de los días litúrgicos*, *Tabla de
 celebraciones*, *Calendario de celebraciones*) sí van al repositorio: son la

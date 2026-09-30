@@ -1,7 +1,7 @@
 {
-  "name": "Leccionario latino",
-  "short_name": "Leccionario",
-  "description": "El leccionario romano en latín (Vulgata Clementina y Nova Vulgata), con las lecturas del día y sin conexión.",
+  "name": "Liturgicum",
+  "short_name": "Liturgicum",
+  "description": "El leccionario romano en latín y la Liturgia de las Horas en castellano, con lo del día y sin conexión.",
   "lang": "es",
   "dir": "ltr",
   "start_url": "./",
@@ -18,7 +18,8 @@
     { "src": "icono-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
-    { "name": "Lecturas de hoy", "url": "./", "icons": [{ "src": "icono-192.png", "sizes": "192x192" }] },
+    { "name": "Lecturas de la misa", "url": "./#/misa", "icons": [{ "src": "icono-192.png", "sizes": "192x192" }] },
+    { "name": "Liturgia de las horas", "url": "./#/h" },
     { "name": "Índice del año", "url": "./#/indice" },
     { "name": "Buscar", "url": "./#/buscar" }
   ]

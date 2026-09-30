@@ -28,10 +28,16 @@ const FICHEROS = [
   'datos/lecturas_clementina.json'
 ];
 
-/* La segunda versión latina son casi 6 MB. Se guarda igual —el objetivo es
- * poder cambiar de versión sin cobertura— pero después, para que instalar la
- * app no dependa de bajar el doble de golpe con mala conexión. */
-const DESPUES = ['datos/lecturas_nova.json'];
+/* Lo que pesa se guarda igual —el objetivo es poder rezar sin cobertura—
+ * pero después, para que instalar la app no dependa de bajarlo todo de
+ * golpe con mala conexión: la segunda versión latina son casi 6 MB, y la
+ * liturgia de las horas, con sus ocho años de testigos destilados, unos 25.
+ * Mientras tanto la app funciona, y las horas se cargan cuando se piden. */
+const DESPUES = [
+  'datos/lecturas_nova.json',
+  'datos/horas_dias.json',
+  'datos/horas.json'
+];
 
 async function guarda(c, ficheros) {
   // de uno en uno: si falla un fichero suelto, el resto de la app queda

@@ -1,0 +1,23 @@
+Fase 4 — el libro de horas empaquetado para la app
+==========================================================
+
+horas.json         20.6 MB
+horas_dias.json     2.0 MB  13510 fechas
+
+      75  casillas en ordinario
+     868  casillas en salterio
+   13504  casillas en tiempo
+    4737  casillas en santoral
+     226  casillas en comunes
+      75  santos con común conocido
+
+Cómo se resolvió cada fecha
+--------------------------------------------
+   12484  aprendido del volcado
+     267  con santo (del volcado)
+    5469  con santo (por fecha fija)
+      36  del calendario del leccionario
+     990  del volcado
+     359  sin textos del tiempo
+
+Días del leccionario cuyas coordenadas se aprendieron del volcado: 383
