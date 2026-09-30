@@ -44,7 +44,7 @@ funcionando con lo último que tuviera).
 ### La primera vez
 
 1. **Crear el repositorio en GitHub.** En <https://github.com/new>, con el
-   nombre que quieras (por ejemplo `lectionarium`). *Sin* README, sin
+   nombre que quieras (aqui, `liturgicum`). *Sin* README, sin
    `.gitignore` y sin licencia: la carpeta ya los trae.
 
    > GitHub Pages es gratis en repositorios **públicos**. En privados hace
@@ -59,7 +59,7 @@ funcionando con lo último que tuviera).
    git config user.email "tu@correo"
    git add -A
    git commit -m "Primera version"
-   git remote add origin https://github.com/USUARIO/lectionarium.git
+   git remote add origin https://github.com/TU-USUARIO/liturgicum.git
    git push -u origin main
    ```
 
@@ -69,7 +69,7 @@ funcionando con lo último que tuviera).
    que publica `app/` en cada empujón a `main`.
 
 4. **Instalarla en el teléfono.** Abrir en Chrome
-   `https://USUARIO.github.io/lectionarium/` y usar *Añadir a la pantalla de
+   `https://TU-USUARIO.github.io/liturgicum/` y usar *Añadir a la pantalla de
    inicio*. A partir de ahí no necesita ni servidor ni conexión.
 
 ### Cada vez que cambies algo
