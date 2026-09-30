@@ -1,0 +1,292 @@
+/* Leccionario latino — hoja de estilo unica.
+   Nada de fuentes remotas: la app tiene que abrir sin conexion desde el primer
+   dia, asi que todo lo tipografico sale de lo que el telefono ya trae. */
+
+:root {
+  --tinta: #21180f;
+  --tinta-suave: #6b6054;
+  --papel: #fbf7ef;
+  --papel-alto: #ffffff;
+  --filete: #e2d8c6;
+  --rubrica: #9a1b1b;
+  --acento: #6b1220;
+  --realce: #f6e6a8;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+           Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --cuerpo: 1.0625rem;
+  --alto-cabecera: 0px;
+}
+
+/* color liturgico del tiempo, como filete bajo la cabecera */
+body[data-color="morado"] { --acento: #4c2a63; --rubrica: #7c4a99; }
+body[data-color="blanco"] { --acento: #8a6a1f; --rubrica: #9a7b22; }
+body[data-color="verde"]  { --acento: #2f5d3f; --rubrica: #2f6b45; }
+body[data-color="rojo"]   { --acento: #8e1b1b; --rubrica: #a32020; }
+body[data-color="neutro"] { --acento: #6b1220; }
+
+body[data-tema="sepia"] {
+  --papel: #f4e9d6; --papel-alto: #fbf3e4; --tinta: #3b2c19;
+  --filete: #ddcbab; --tinta-suave: #7a6849;
+}
+body[data-tema="oscuro"] {
+  --tinta: #e6ded2; --tinta-suave: #9a9186; --papel: #14120f;
+  --papel-alto: #1c1a16; --filete: #33302a; --rubrica: #d98b8b;
+  --realce: #4a3f18;
+}
+body[data-tema="oscuro"][data-color="morado"] { --rubrica: #b79ad4; }
+body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #ddb85c; }
+body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #7bc194; }
+body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #e79a9a; }
+
+@media (prefers-color-scheme: dark) {
+  body[data-tema="auto"] {
+    --tinta: #e6ded2; --tinta-suave: #9a9186; --papel: #14120f;
+    --papel-alto: #1c1a16; --filete: #33302a; --rubrica: #d98b8b;
+    --realce: #4a3f18;
+  }
+  body[data-tema="auto"][data-color="morado"] { --rubrica: #b79ad4; }
+  body[data-tema="auto"][data-color="blanco"] { --rubrica: #ddb85c; }
+  body[data-tema="auto"][data-color="verde"]  { --rubrica: #7bc194; }
+  body[data-tema="auto"][data-color="rojo"]   { --rubrica: #e79a9a; }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: var(--cuerpo);
+  line-height: 1.62;
+  overflow-wrap: break-word;
+}
+
+/* ---------------------------------------------------------------- cabecera */
+#cabecera {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--papel-alto);
+  border-bottom: 2px solid var(--acento);
+  padding: calc(env(safe-area-inset-top) + .4rem) 16px .5rem;
+}
+#cabecera.compacta .fila-fecha,
+#cabecera.compacta #subtitulo-dia,
+#cabecera.compacta #formularios,
+#cabecera.compacta #celebraciones,
+#cabecera.compacta #nota-dia { display: none; }
+#cabecera.compacta h1 { margin-top: .3rem; }
+
+.fila-fecha { display: flex; align-items: center; gap: .25rem; }
+.fila-fecha .icono {
+  flex: none; width: 2.5rem; height: 2.5rem;
+  font-size: 1.6rem; line-height: 1;
+  background: none; border: 0; color: var(--acento); cursor: pointer;
+  border-radius: 999px;
+}
+.fila-fecha .icono:active { background: var(--filete); }
+/* El rotulo ensena la fecha en cristiano ("Lunes, 28 de septiembre de 2026")
+   y el <input type="date"> va encima, invisible: al tocarlo abre el
+   calendario nativo del telefono, que es el que sabe hacerlo bien. */
+.envoltorio-fecha { position: relative; flex: 1; min-width: 0; }
+.fecha {
+  display: block; text-align: center; padding: .45rem 0;
+  font-family: var(--sans); font-size: .78rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--tinta-suave);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#selector-fecha {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; border: 0; padding: 0; cursor: pointer;
+  font-size: 16px;                 /* evita el zoom de iOS al enfocar */
+}
+#cabecera h1 {
+  margin: .15rem 0 0;
+  font-size: 1.24rem; font-weight: 600; line-height: 1.25;
+  letter-spacing: -.01em;
+}
+#subtitulo-dia {
+  margin: .15rem 0 0;
+  font-family: var(--sans); font-size: .76rem; color: var(--tinta-suave);
+}
+#subtitulo-dia:empty { display: none; }
+
+/* Los formularios de un dia pueden ser seis (los domingos de Cuaresma con las
+   lecturas del ciclo A). En una cabecera fija no caben en varias filas sin
+   comerse la pantalla: una sola tira que se desplaza a dedo. */
+.chips {
+  display: flex; gap: .3rem; margin-top: .5rem;
+  overflow-x: auto; scrollbar-width: none;
+  margin-left: -16px; margin-right: -16px; padding: 0 16px .1rem;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chips:empty { display: none; }
+.chips button {
+  flex: none; white-space: nowrap;
+  font-family: var(--sans); font-size: .74rem;
+  padding: .28rem .6rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--filete); background: transparent;
+  color: var(--tinta-suave);
+}
+.chips button[aria-pressed="true"] {
+  background: var(--acento); border-color: var(--acento); color: #fff;
+}
+/* El chip de celebracion lleva el grado debajo del nombre, en pequeno: es lo
+   que distingue una memoria libre de una fiesta de un vistazo. */
+#celebraciones button {
+  display: flex; flex-direction: column; align-items: flex-start;
+  line-height: 1.2; text-align: left; padding: .3rem .65rem;
+}
+#celebraciones button small {
+  font-size: .64rem; letter-spacing: .04em; text-transform: uppercase;
+  opacity: .75;
+}
+/* Lo que ese ano no se celebra se ofrece igual -sus lecturas son las del
+   ciclo- pero no se ofrece como si tocara. */
+#celebraciones button.apagado { border-style: dashed; opacity: .72; }
+.chips.finos button { font-size: .7rem; padding: .22rem .55rem; }
+.chips.finos { margin-top: .3rem; }
+
+.nota-dia {
+  margin: .45rem 0 0;
+  font-family: var(--sans); font-size: .72rem; line-height: 1.45;
+  color: var(--tinta-suave);
+}
+.nota-dia:empty { display: none; }
+
+/* ------------------------------------------------------------------- vista */
+#vista {
+  max-width: 38rem; margin: 0 auto;
+  padding: 1rem 16px calc(5rem + env(safe-area-inset-bottom));
+  outline: none;
+}
+
+.aviso {
+  font-family: var(--sans); font-size: .85rem; color: var(--tinta-suave);
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  border-radius: 10px; padding: .8rem .9rem;
+}
+
+/* -------------------------------------------------------------- lecturas */
+.lect { margin: 0 0 2rem; }
+.lect + .lect { border-top: 1px solid var(--filete); padding-top: 1.4rem; }
+
+.rubrica {
+  margin: 0 0 .45rem;
+  font-family: var(--sans); font-size: .72rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--rubrica);
+}
+.formula { margin: 0 0 .7rem; font-style: italic; color: var(--tinta-suave); }
+.cita {
+  display: block; font-style: normal; font-family: var(--sans);
+  font-size: .78rem; letter-spacing: .03em; color: var(--rubrica);
+  margin-top: .1rem;
+}
+/* En ancho de telefono el justificado abre rios de blanco, porque no hay
+   diccionario de particion para el latin: a esta medida manda la bandera. */
+.texto { margin: 0 0 .7rem; text-wrap: pretty; }
+.texto sup {
+  font-size: .62em; color: var(--tinta-suave);
+  vertical-align: .45em; margin-right: .15em; line-height: 0;
+}
+.omision { margin: .3rem 0 .8rem; color: var(--tinta-suave); text-align: center; }
+.cierre, .resp { margin: 0; font-style: italic; color: var(--rubrica); }
+.antifona {
+  margin: 0 0 .8rem; padding: .55rem .75rem;
+  background: var(--papel-alto); border-left: 3px solid var(--rubrica);
+  border-radius: 0 6px 6px 0; font-style: italic;
+}
+.estrofa { margin: 0 0 .15rem; text-wrap: pretty; }
+.estrofa + .resp { margin: 0 0 .9rem; }
+
+@media (min-width: 34rem) {
+  .texto, .estrofa { text-align: justify; hyphens: auto; }
+}
+
+/* --------------------------------------------------------------- indice */
+.sec { margin: 0 0 .4rem; }
+.sec > summary {
+  cursor: pointer; list-style: none;
+  font-family: var(--sans); font-size: .76rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--acento);
+  padding: .7rem 0; border-bottom: 1px solid var(--filete);
+}
+.sec > summary::-webkit-details-marker { display: none; }
+.sec > summary::before { content: "▸ "; }
+.sec[open] > summary::before { content: "▾ "; }
+.grupo { margin: .8rem 0 1rem; }
+.grupo h3 {
+  margin: 0 0 .3rem; font-size: .95rem; font-weight: 600;
+  color: var(--tinta-suave);
+}
+.dias { display: flex; flex-wrap: wrap; gap: .3rem; }
+.dias a {
+  font-family: var(--sans); font-size: .82rem; text-decoration: none;
+  color: var(--tinta); background: var(--papel-alto);
+  border: 1px solid var(--filete); border-radius: 8px;
+  padding: .35rem .55rem;
+}
+.dias a:active { background: var(--filete); }
+
+/* -------------------------------------------------------------- buscador */
+.campo {
+  width: 100%; font-family: var(--serif); font-size: 1rem;
+  padding: .65rem .8rem; border-radius: 10px;
+  border: 1px solid var(--filete); background: var(--papel-alto);
+  color: var(--tinta);
+}
+.resultado {
+  display: block; text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--filete); padding: .8rem 0;
+}
+.resultado b { font-weight: 600; }
+.resultado .donde {
+  display: block; font-family: var(--sans); font-size: .74rem;
+  color: var(--rubrica); letter-spacing: .04em; margin-bottom: .2rem;
+}
+.resultado .frag { display: block; font-size: .92rem; color: var(--tinta-suave); }
+mark { background: var(--realce); color: inherit; padding: 0 .1em; }
+
+/* --------------------------------------------------------------- ajustes */
+.ajuste {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--filete);
+}
+.ajuste label { font-family: var(--sans); font-size: .9rem; }
+.ajuste .pista {
+  display: block; font-size: .76rem; color: var(--tinta-suave);
+  margin-top: .15rem; max-width: 22rem;
+}
+.ajuste select, .ajuste input[type="range"] {
+  font-family: var(--sans); font-size: .88rem; flex: none;
+  background: var(--papel-alto); color: var(--tinta);
+  border: 1px solid var(--filete); border-radius: 8px; padding: .35rem;
+}
+.ajuste input[type="range"] { width: 8rem; padding: 0; }
+h2.seccion {
+  margin: 1.8rem 0 .2rem; font-family: var(--sans); font-size: .72rem;
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--acento);
+}
+.pie {
+  margin-top: 2rem; font-family: var(--sans); font-size: .74rem;
+  color: var(--tinta-suave); line-height: 1.5;
+}
+
+/* --------------------------------------------------------------- barra */
+#barra {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: var(--papel-alto); border-top: 1px solid var(--filete);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+#barra button {
+  display: flex; flex-direction: column; align-items: center; gap: .1rem;
+  padding: .5rem 0 .55rem; cursor: pointer;
+  background: none; border: 0; color: var(--tinta-suave);
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .03em;
+}
+#barra button span { font-size: 1.15rem; line-height: 1.1; }
+#barra button.activo { color: var(--acento); }

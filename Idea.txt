@@ -1,0 +1,16 @@
+En esta pagina web https://servicioskoinonia.org/leccionario/Index.html  hay un indice en la parte izquierda con enlaces a distintos "leccionarios" para la organización de los textos litúrgicos de la Misa. 
+Mi OBJETIVO es hacer leccionario pero con las lecturas correspondientes en Latin de la Vulgata. 
+
+Cada leccionario en la pagina web tiene links que abren las lecturas correspondientes de ese día (ej. Domingo I de Adviento (ciclo a). Aquí están los leccionarios que nos interesan
+
+Leccionario I-III: Domingos tiempo ordinario ciclo a, b y c respectivamente
+
+Leccionario IV: Ferias tiempo ordinario Año I y II
+
+Leccionario VII: Ferias tiempo de Adviento, Navidad, Cuaresma, Pascua
+
+Lo que quiero hacer es primero extraer un indice de todos los textos correspondientes de cada fecha (domingos, ferias, vigilias, solemnidades, etc.), separando 1. primera lectura; 2. salmo; 3. Segunda lectura (si hay); 4. Evangelio, etc.,  pero unicamente la cita del libro bíblico, no el texto completo. (ej. En el Domingo I de Adviento, ciclo A aparece la "primera lectura" como "Lectura del libro de Isaías 2, 1-5". Lo que quiero es esta ultima parte diciendo que corresponde al "Domingo I de Adviento, ciclo A", y así con el salmo, evangelio y segunda lectura.)
+
+Este gran índice lo quiero para después buscar esos textos en la vulgata latina, y ahora sí extraer el texto correspondiente a la cita y hacer un leccionario en latín de todo el ciclo litúrgico.
+
+Te adjunto en la carpeta "Lectionarium" el archivo de "vulgate.pdf" que es la biblia en latín. Y un archivo de "siglas" que corresponde a como aparecen las siglas y el nombre de los libros bíblicos tanto en los leccionarios electrónicos como en la vulgata.

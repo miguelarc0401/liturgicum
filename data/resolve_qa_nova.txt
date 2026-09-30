@@ -1,0 +1,72 @@
+fuente                          : nova
+lecturas con referencia biblica : 6929
+resueltas del todo              : 6929 (100.0%)
+con algun versiculo ausente     : 0
+sin referencia (aleluyas libres): 126
+versiculos latinos extraidos    : 43307
+citas resueltas por override    : 1
+
+versiculos que la edicion NO TRAE porque faltan en el texto critico (23):
+   Actus Apostolorum 8,37
+   Ad Romanos 16,24
+   Ecclesiasticus 35,3
+   Lucas 17,36
+   Lucas 23,17
+   Marcus 11,26
+   Marcus 15,28
+   Marcus 7,16
+   Marcus 9,44
+   Marcus 9,46
+   Matthaeus 23,14
+
+salmos renumerados con desplazamiento de versiculo (19):
+   Ps 113,10 -> 115,2 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,11 -> 115,3 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,12 -> 115,4 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,13 -> 115,5 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,14 -> 115,6 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,15 -> 115,7 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,16 -> 115,8 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,17 -> 115,9 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,18 -> 115,10 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,23 -> 115,15 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,24 -> 115,16 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 113,9 -> 115,1 (y los vv. 9-26 son el Sal 115, renumerados 1-18. El lecciona)
+   Ps 9,22 -> 10,1 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+   Ps 9,23 -> 10,2 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+   Ps 9,24 -> 10,3 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+   Ps 9,25 -> 10,4 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+   Ps 9,28 -> 10,7 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+   Ps 9,29 -> 10,8 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+   Ps 9,35 -> 10,14 (y los vv. 22-39 son el Sal 10, renumerados 1-18)
+
+sufijos a/b/c encontrados (se toma el versiculo entero):
+   -a    1124
+   -b    1079
+   -ab   411
+   -c    180
+   -bc   156
+   -cd   83
+   -bcd  80
+   -ac   38
+   -d    31
+   -abcd 30
+   -abc  19
+   -bcde 14
+
+libros mas usados:
+   Psalmi                   1554 lecturas
+   Ioannes                  831 lecturas
+   Matthaeus                806 lecturas
+   Lucas                    653 lecturas
+   Marcus                   331 lecturas
+   Isaias                   227 lecturas
+   Actus Apostolorum        226 lecturas
+   I Ad Corinthios          165 lecturas
+   Ad Romanos               163 lecturas
+   Ad Ephesios              138 lecturas
+   Apocalypsis              122 lecturas
+   Genesis                  118 lecturas
+   II Ad Corinthios         109 lecturas
+   Ad Hebraeos              103 lecturas
+   I Ioannis                92 lecturas

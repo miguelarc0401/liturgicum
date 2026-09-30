@@ -1,0 +1,3 @@
+libro_vulgata,cap,vers_desde,vers_hasta,cap_destino,offset,expandir,nota
+Psalmi,95,14,14,96,-1,0,"la Nova Vulgata cierra el Sal 96 (= 95 griego) en el v. 13; el leccionario parte ese versiculo en 13 y 14. El cap_destino ya va en numeracion de la Nova Vulgata"
+Psalmi,150,6,6,150,-1,0,"la Nova Vulgata cierra el Sal 150 en el v. 5, que abarca los vv. 5 y 6 del leccionario"

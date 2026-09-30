@@ -1,0 +1,55 @@
+Leccionario I: 70 entradas de indice, 67 archivos con texto
+  en el indice pero sin texto (3): 1068aleluyaTO.html, 1017AclamCU.html, 1069TEXTCOM.html
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (2): 1023APAD01.html[0, 1], 1028APAD06.html[0, 1]
+
+Leccionario II: 71 entradas de indice, 67 archivos con texto
+  en el indice pero sin texto (4): 2068aleluyaTO.html, 2019AclamCU.html, 2069TEXTCOM.html, 2070INDITEXT.html
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (6): 2016BCUD03.html[0, 1], 2017BCUD04.html[0, 1], 2018BCUD05.html[0, 1], 2023BPAD01.html[0, 1], 2028BPAD06.html[0, 1], 2029BFASCE.html[0, 1]
+
+Leccionario III: 70 entradas de indice, 67 archivos con texto
+  en el indice pero sin texto (3): 3068aleluyaTO.html, 30171AclamCU.html, 3069TEXTCOM.html
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (6): 3016CCUD03.html[0, 1], 3017CCUD04.html[0, 1], 3018CCUD05.html[0, 1], 3023CPAD01.html[0, 1], 3028CPAD06.html[0, 1], 3029CFASCE.html[0, 1]
+
+Leccionario IV: 410 entradas de indice, 408 archivos con texto
+  en el indice pero sin texto (2): 4409TEXTCOM.html, 4410INDITEXT.html
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (0): -
+
+Leccionario V: 229 entradas de indice, 220 archivos con texto
+  en el indice pero sin texto (0): -
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (9): 5006TA0120_1.html, 5011TA0123.html, 5045TA0413_2.html, 5059TA0510.html, 5084TA0615.html, 5090TA0626.html, 5176TA1019.html, 5190TA1113.html, 5207TA1210.html
+  archivos con varias celebraciones (1): 5058TA0503.html[0, 1]
+
+Leccionario VI: 51 entradas de indice, 51 archivos con texto
+  en el indice pero sin texto (0): -
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (11): 6016TGU.html[0, 1], 6019ETSI.html[0, 1], 6020PDCO.html[0, 1], 6023PLCA.html[0, 1], 6024PLEM.html[0, 1], 6029PLFA.html[0, 1, 2], 6032DLST.html[0, 1, 2], 6033DLMD.html[0, 1, 2], 6040DESA.html[0, 1, 2, 3], 6044DSAN.html[0, 1], 6045DSJO.html[0, 1]
+
+Leccionario VII: 132 entradas de indice, 124 archivos con texto
+  en el indice pero sin texto (8): 7000INDITEXT.html, 701AleluyaAdviento.html, 7002AleluyaAdviento18_24.html, 7003Aleluya_Navidad_antes de Epifania.html, 7004Aleluya_Navidad_despues de Epifania.html, 70705AleluyaCuaresma.html, 7006AleluyaPascua_antes_de Ascension.html, 70707AleluyaPascua_despues_de Ascension.html
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (0): -
+
+Leccionario VIII: 28 entradas de indice, 28 archivos con texto
+  en el indice pero sin texto (0): -
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (5): 8002IN.html[0, 1, 2], 8009IC.html[0, 1], 8011BP.html[0, 1, 2], 8013CN.html[0, 1], 8020PE.html[0, 1]
+
+Leccionario IX: 58 entradas de indice, 51 archivos con texto
+  en el indice pero sin texto (7): 9002intro.html, 9001AL.html, 9551IAV.html, 9056INAV.html, 9057ICU.html, 9058ISS.html, 9059ITP.html
+  con texto pero fuera del indice (0): -
+  resueltos con una remision al Comun (0): -
+  archivos con varias celebraciones (2): 9032DP6.html[0, 1], 9033ASCES.html[0, 1]
+
+erratas del indice corregidas por toc_overrides.csv: 1

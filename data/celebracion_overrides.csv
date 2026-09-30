@@ -1,0 +1,2 @@
+archivo,titulo,motivo
+4091ITOL16.html,Lunes de la 16ª semana de Tiempo Ordinario,"La pagina del sitio no lleva <p class=Santo>, asi que el parser cayo en el <title> del HTML, que es el que pone Word al exportar: 'Documento sin titulo'. El indice del sitio la publica como el lunes de la semana 16, y sus lecturas (Ex 14,5-18 / Ex 15 / Mt 12,38-42) son las del lunes de la 16a semana, ano I."

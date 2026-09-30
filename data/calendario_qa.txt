@@ -1,0 +1,484 @@
+EL ANO LITURGICO EN UN SOLO LECCIONARIO
+
+bloques de lectura en los datos : 747
+descartados por duplicar otro   : 5
+colocados en el calendario      : 742
+SIN COLOCAR                     : 0
+colocados dos veces             : 0
+dias del calendario             : 395
+nombres corregidos a mano       : 1 de 1
+
+dias comunes cuyas tres paginas difieren:
+   Misa de la vigilia: las paginas de los tres ciclos no son idénticas; se toma 2005TNSMDV.html (5 lecturas) — I:4, II:5, III:5
+   Misa de la aurora: las paginas de los tres ciclos no son idénticas; se toma 1007TNSMDA.html (5 lecturas) — I:5, II:4, III:5
+   La Epifanía del Señor: las paginas de los tres ciclos no son idénticas; se toma 1012TEPIFA.html (5 lecturas) — I:5, II:5, III:5
+   Misa del día de Pascua: las paginas de los tres ciclos no son idénticas; se toma 1023APAD01.html (6 lecturas) — I:6, II:6, III:6
+
+--- el ano entero ---
+
+== TIEMPO DE ADVIENTO
+  -- I semana de Adviento
+     Domingo I de Adviento                          Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 1ª semana de Adviento              Ciclos A, B y C
+     Martes de la 1ª semana de Adviento             Ciclos A, B y C
+     Miércoles de la 1ª semana de Adviento          Ciclos A, B y C
+     Jueves de la 1ª semana de Adviento             Ciclos A, B y C
+     Viernes de la 1ª semana de Adviento            Ciclos A, B y C
+     Sábado de la 1ª semana de Adviento             Ciclos A, B y C
+  -- II semana de Adviento
+     Domingo II de Adviento                         Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 2ª semana de Adviento              Ciclos A, B y C
+     Martes de la 2ª semana de Adviento             Ciclos A, B y C
+     Miércoles de la 2ª semana de Adviento          Ciclos A, B y C
+     Jueves de la 2ª semana de Adviento             Ciclos A, B y C
+     Viernes de la 2ª semana de Adviento            Ciclos A, B y C
+     Sábado de la 2ª semana de Adviento             Ciclos A, B y C
+  -- III semana de Adviento
+     Domingo III de Adviento                        Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 3ª semana de Adviento              Ciclos A, B y C
+     Martes de la 3ª semana de Adviento             Ciclos A, B y C
+     Miércoles de la 3ª semana de Adviento          Ciclos A, B y C
+     Jueves de la 3ª semana de Adviento             Ciclos A, B y C
+     Viernes de la 3ª semana de Adviento            Ciclos A, B y C
+  -- IV semana de Adviento
+     Domingo IV de Adviento                         Ciclo A | Ciclo B | Ciclo C
+  -- Ferias del 17 al 24 de diciembre
+     17 de diciembre                                Ciclos A, B y C
+     18 de diciembre                                Ciclos A, B y C
+     19 de diciembre                                Ciclos A, B y C
+     20 de diciembre                                Ciclos A, B y C
+     21 de diciembre                                Ciclos A, B y C
+     22 de diciembre                                Ciclos A, B y C
+     23 de diciembre                                Ciclos A, B y C
+     24 de diciembre                                Ciclos A, B y C
+
+== TIEMPO DE NAVIDAD
+  -- Natividad del Señor
+     Misa de la vigilia                             Ciclos A, B y C
+     Misa de medianoche                             Ciclos A, B y C
+     Misa de la aurora                              Ciclos A, B y C
+     Misa del día                                   Ciclos A, B y C
+  -- Octava de Navidad
+     La Sagrada Familia: Jesús, María y José        Ciclo A | Ciclo B | Ciclo C
+     29 de diciembre: 5º día de la octava de Navida Ciclos A, B y C
+     30 de diciembre: 6º día de la octava de Navida Ciclos A, B y C
+     31 de diciembre: 7º día de la octava de Navida Ciclos A, B y C
+     Solemnidad de Santa María, Madre de Dios       Ciclos A, B y C
+     Segundo domingo después de Navidad             Ciclos A, B y C
+  -- Ferias antes de la Epifanía
+     2 de enero                                     Ciclos A, B y C
+     3 de enero                                     Ciclos A, B y C
+     4 de enero                                     Ciclos A, B y C
+     5 de enero                                     Ciclos A, B y C
+     6 de enero                                     Ciclos A, B y C
+     7 de enero                                     Ciclos A, B y C
+     La Epifanía del Señor                          Ciclos A, B y C
+  -- Ferias después de la Epifanía
+     7 de enero — Lunes después de Epifanía         Ciclos A, B y C
+     8 de enero — Martes después de Epifanía        Ciclos A, B y C
+     9 de enero — Miércoles después de Epifanía     Ciclos A, B y C
+     10 de enero — Jueves después de Epifanía       Ciclos A, B y C
+     11 de enero — Viernes después de Epifanía      Ciclos A, B y C
+     12 de enero — Sábado después de Epifanía       Ciclos A, B y C
+     El Bautismo del Señor                          Ciclo A | Ciclo B | Ciclo C
+
+== TIEMPO DE CUARESMA
+  -- Miércoles de Ceniza y ferias siguientes
+     Miércoles de Ceniza                            Ciclos A, B y C
+     Jueves después de Cenizas                      Ciclos A, B y C
+     Viernes después de Cenizas                     Ciclos A, B y C
+     Sábado después de Cenizas                      Ciclos A, B y C
+  -- I semana de Cuaresma
+     Domingo I de Cuaresma                          Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 1ª semana de Cuaresma              Ciclos A, B y C
+     Martes de la 1ª semana de Cuaresma             Ciclos A, B y C
+     Miércoles de la 1ª semana de Cuaresma          Ciclos A, B y C
+     Jueves de la 1ª semana de Cuaresma             Ciclos A, B y C
+     Viernes de la 1ª semana de Cuaresma            Ciclos A, B y C
+     Sábado de la 1ª semana de Cuaresma             Ciclos A, B y C
+  -- II semana de Cuaresma
+     Domingo II de Cuaresma                         Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 2ª semana de Cuaresma              Ciclos A, B y C
+     Martes de la 2ª semana de Cuaresma             Ciclos A, B y C
+     Miércoles de la 2ª semana de Cuaresma          Ciclos A, B y C
+     Jueves de la 2ª semana de Cuaresma             Ciclos A, B y C
+     Viernes de la 2ª semana de Cuaresma            Ciclos A, B y C
+     Sábado de la 2ª semana de Cuaresma             Ciclos A, B y C
+  -- III semana de Cuaresma
+     Domingo III de Cuaresma                        Ciclo A | Ciclo B | Ciclo B · lecturas del ciclo A | Ciclo C | Ciclo C · lecturas del ciclo A
+     Misa de libre elección                         Ciclos A, B y C
+     Lunes de la 3ª semana de Cuaresma              Ciclos A, B y C
+     Martes de la 3ª semana de Cuaresma             Ciclos A, B y C
+     Miércoles de la 3ª semana de Cuaresma          Ciclos A, B y C
+     Jueves de la 3ª semana de Cuaresma             Ciclos A, B y C
+     Viernes de la 3ª semana de Cuaresma            Ciclos A, B y C
+     Sábado de la 3ª semana de Cuaresma             Ciclos A, B y C
+  -- IV semana de Cuaresma
+     Domingo IV de Cuaresma                         Ciclo A | Ciclo B | Ciclo B · lecturas del ciclo A | Ciclo C | Ciclo C · lecturas del ciclo A
+     Misa de libre elección                         Ciclos A, B y C
+     Lunes de la 4ª semana de Cuaresma              Ciclos A, B y C
+     Martes de la 4ª semana de Cuaresma             Ciclos A, B y C
+     Miércoles de la 4ª semana de Cuaresma          Ciclos A, B y C
+     Jueves de la 4ª semana de Cuaresma             Ciclos A, B y C
+     Viernes de la 4ª semana de Cuaresma            Ciclos A, B y C
+     Sábado de la 4ª semana de Cuaresma             Ciclos A, B y C
+  -- V semana de Cuaresma
+     Domingo V de Cuaresma                          Ciclo A | Ciclo B | Ciclo B · lecturas del ciclo A | Ciclo C | Ciclo C · lecturas del ciclo A
+     Misa de libre elección                         Ciclos A, B y C
+     Lunes de la 5ª semana de Cuaresma              Ciclos A, B y C
+     Martes de la 5ª semana de Cuaresma             Ciclos A, B y C
+     Miércoles de la 5ª semana de Cuaresma          Ciclos A, B y C
+     Jueves de la 5ª semana de Cuaresma             Ciclos A, B y C
+     Viernes de la 5ª semana de Cuaresma            Ciclos A, B y C
+     Sábado de la 5ª semana de Cuaresma             Ciclos A, B y C
+  -- Semana Santa
+     Domingo de Ramos en la Pasión del Señor        Ciclo A | Ciclo B | Ciclo C
+     Lunes santo                                    Ciclos A, B y C
+     Martes santo                                   Ciclos A, B y C
+     Miércoles santo                                Ciclos A, B y C
+     Jueves Santo — Misa Crismal                    Ciclos A, B y C
+
+== TRIDUO PASCUAL Y TIEMPO DE PASCUA
+  -- Triduo pascual
+     Jueves santo de la Cena del Señor              Ciclos A, B y C
+     Viernes santo. Celebración de la Pasión del Se Ciclos A, B y C
+     Vigilia pascual en la noche santa              Ciclo A | Ciclo B | Ciclo C
+     Misa del día de Pascua                         Ciclos A, B y C | Ciclo A · evangelios alternativos | Ciclo B · evangelios alternativos | Ciclo C · evangelios alternativos
+  -- Octava de Pascua
+     Lunes de la octava de Pascua                   Ciclos A, B y C
+     Martes de la octava de Pascua                  Ciclos A, B y C
+     Miércoles de la octava de Pascua               Ciclos A, B y C
+     Jueves de la octava de Pascua                  Ciclos A, B y C
+     Viernes de la octava de Pascua                 Ciclos A, B y C
+     Sábado de la octava de Pascua                  Ciclos A, B y C
+  -- II semana de Pascua
+     Domingo II de Pascua                           Ciclo A | Ciclo B | Ciclo C
+     Lunes de la segunda semana de Pascua           Ciclos A, B y C
+     Martes de la segunda semana de Pascua          Ciclos A, B y C
+     Miércoles de la segunda semana de Pascua       Ciclos A, B y C
+     Jueves de la segunda semana de Pascua          Ciclos A, B y C
+     Viernes de la segunda semana de Pascua         Ciclos A, B y C
+     Sábado de la segunda semana de Pascua          Ciclos A, B y C
+  -- III semana de Pascua
+     Domingo III de Pascua                          Ciclo A | Ciclo B | Ciclo C
+     Lunes de la tercera semana de Pascua           Ciclos A, B y C
+     Martes de la tercera semana de Pascua          Ciclos A, B y C
+     Miércoles de la tercera semana de Pascua       Ciclos A, B y C
+     Jueves de la tercera semana de Pascua          Ciclos A, B y C
+     Viernes de la tercera semana de Pascua         Ciclos A, B y C
+     Sábado de la tercera semana de Pascua          Ciclos A, B y C
+  -- IV semana de Pascua
+     Domingo IV de Pascua                           Ciclo A | Ciclo B | Ciclo C
+     Lunes de la cuarta semana de Pascua            Ciclos A, B y C
+     Martes de la cuarta semana de Pascua           Ciclos A, B y C
+     Miércoles de la cuarta semana de Pascua        Ciclos A, B y C
+     Jueves de la cuarta semana de Pascua           Ciclos A, B y C
+     Viernes de la cuarta semana de Pascua          Ciclos A, B y C
+     Sábado de la cuarta semana de Pascua           Ciclos A, B y C
+  -- V semana de Pascua
+     Domingo V de Pascua                            Ciclo A | Ciclo B | Ciclo C
+     Lunes de la quinta semana de Pascua            Ciclos A, B y C
+     Martes de la quinta semana de Pascua           Ciclos A, B y C
+     Miércoles de la quinta semana de Pascua        Ciclos A, B y C
+     Jueves de la quinta semana de Pascua           Ciclos A, B y C
+     Viernes de la quinta semana de Pascua          Ciclos A, B y C
+     Sábado de la quinta semana de Pascua           Ciclos A, B y C
+  -- VI semana de Pascua
+     Domingo VI de Pascua                           Ciclo A | Ciclo B | Ciclo C
+     Lunes de la sexta semana de Pascua             Ciclos A, B y C
+     Martes de la sexta semana de Pascua            Ciclos A, B y C
+     Miércoles de la sexta semana de Pascua         Ciclos A, B y C
+     Jueves de la sexta semana de Pascua            Ciclos A, B y C
+     Viernes de la sexta semana de Pascua           Ciclos A, B y C
+     Sábado de la sexta semana de Pascua            Ciclos A, B y C
+     La Ascensión del Señor                         Ciclo A | Ciclo B | Ciclo C
+  -- VII semana de Pascua
+     Domingo VII de Pascua                          Ciclo A | Ciclo B | Ciclo C
+     Lunes de la séptima semana de Pascua           Ciclos A, B y C
+     Martes de la séptima semana de Pascua          Ciclos A, B y C
+     Miércoles de la séptima semana de Pascua       Ciclos A, B y C
+     Jueves de la séptima semana de Pascua          Ciclos A, B y C
+     Viernes de la séptima semana de Pascua         Ciclos A, B y C
+     Sábado de la séptima semana de Pascua          Ciclos A, B y C
+     Domingo de Pentecostés                         Ciclo A | Ciclo B | Ciclo C
+
+== SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO
+     Solemnidad de la Santísima Trinidad            Ciclo A | Ciclo B | Ciclo C
+     Solemnidad del Santísimo Cuerpo y Sangre de Cr Ciclo A | Ciclo B | Ciclo C
+     Solemnidad del Sagrado Corazón de Jesús        Ciclo A | Ciclo B | Ciclo C
+
+== TIEMPO ORDINARIO
+  -- Semana I del Tiempo Ordinario
+     Lunes de la 1ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 1ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 1ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 1ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 1ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 1ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana II del Tiempo Ordinario
+     Domingo II del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 2ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 2ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 2ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 2ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 2ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 2ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana III del Tiempo Ordinario
+     Domingo III del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 3ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 3ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 3ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 3ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 3ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 3ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana IV del Tiempo Ordinario
+     Domingo IV del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 4ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 4ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 4ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 4ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 4ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 4ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana V del Tiempo Ordinario
+     Domingo V del Tiempo Ordinario                 Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 5ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 5ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 5ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 5ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 5ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 5ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana VI del Tiempo Ordinario
+     Domingo VI del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 6ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 6ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 6ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 6ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 6ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 6ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana VII del Tiempo Ordinario
+     Domingo VII del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 7ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 7ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 7ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 7ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 7ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 7ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana VIII del Tiempo Ordinario
+     Domingo VIII del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 8ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 8ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 8ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 8ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 8ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 8ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana IX del Tiempo Ordinario
+     Domingo IX del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 9ª semana de Tiempo Ordinario      Año I (años impares) | Año II (años pares)
+     Martes de la 9ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Miércoles de la 9ª semana de Tiempo Ordinario  Año I (años impares) | Año II (años pares)
+     Jueves de la 9ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Viernes de la 9ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Sábado de la 9ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+  -- Semana X del Tiempo Ordinario
+     Domingo X del Tiempo Ordinario                 Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 10ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 10ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 10ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 10ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 10ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 10ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XI del Tiempo Ordinario
+     Domingo XI del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 11ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 11ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 11ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 11ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 11ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 11ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XII del Tiempo Ordinario
+     Domingo XII del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 12ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 12ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 12ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 12ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 12ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 12ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XIII del Tiempo Ordinario
+     Domingo XIII del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 13ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 13ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 13ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 13ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 13ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 13ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XIV del Tiempo Ordinario
+     Domingo XIV del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 14ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 14ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 14ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 14ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 14ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 14ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XV del Tiempo Ordinario
+     Domingo XV del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 15ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 15ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 15ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 15ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 15ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 15ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XVI del Tiempo Ordinario
+     Domingo XVI del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 16ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 16ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 16ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 16ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 16ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 16ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XVII del Tiempo Ordinario
+     Domingo XVII del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 17ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 17ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 17ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 17ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 17ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 17ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XVIII del Tiempo Ordinario
+     Domingo XVIII del Tiempo Ordinario             Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 18ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 18ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 18ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 18ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 18ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 18ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XIX del Tiempo Ordinario
+     Domingo XIX del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 19ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 19ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 19ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 19ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 19ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 19ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XX del Tiempo Ordinario
+     Domingo XX del Tiempo Ordinario                Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 20ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 20ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 20ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 20ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 20ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 20ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXI del Tiempo Ordinario
+     Domingo XXI del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 21ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 21ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 21ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 21ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 21ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 21ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXII del Tiempo Ordinario
+     Domingo XXII del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 22ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 22ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 22ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 22ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 22ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 22ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXIII del Tiempo Ordinario
+     Domingo XXIII del Tiempo Ordinario             Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 23ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 23ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 23ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 23ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 23ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 23ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXIV del Tiempo Ordinario
+     Domingo XXIV del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 24ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 24ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 24ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 24ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 24ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 24ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXV del Tiempo Ordinario
+     Domingo XXV del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 25ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 25ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 25ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 25ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 25ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 25ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXVI del Tiempo Ordinario
+     Domingo XXVI del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 26ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 26ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 26ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 26ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 26ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 26ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXVII del Tiempo Ordinario
+     Domingo XXVII del Tiempo Ordinario             Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 27ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 27ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 27ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 27ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 27ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 27ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXVIII del Tiempo Ordinario
+     Domingo XXVIII del Tiempo Ordinario            Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 28ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 28ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 28ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 28ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 28ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 28ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXIX del Tiempo Ordinario
+     Domingo XXIX del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 29ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 29ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 29ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 29ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 29ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 29ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXX del Tiempo Ordinario
+     Domingo XXX del Tiempo Ordinario               Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 30ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 30ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 30ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 30ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 30ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 30ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXXI del Tiempo Ordinario
+     Domingo XXXI del Tiempo Ordinario              Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 31ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 31ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 31ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 31ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 31ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 31ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXXII del Tiempo Ordinario
+     Domingo XXXII del Tiempo Ordinario             Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 32ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 32ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 32ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 32ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 32ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 32ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXXIII del Tiempo Ordinario
+     Domingo XXXIII del Tiempo Ordinario            Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 33ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 33ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 33ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 33ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 33ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 33ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+  -- Semana XXXIV del Tiempo Ordinario
+     Domingo XXXIV del Tiempo Ordinario: Jesucristo Ciclo A | Ciclo B | Ciclo C
+     Lunes de la 34ª semana de Tiempo Ordinario     Año I (años impares) | Año II (años pares)
+     Martes de la 34ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Miércoles de la 34ª semana de Tiempo Ordinario Año I (años impares) | Año II (años pares)
+     Jueves de la 34ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+     Viernes de la 34ª semana de Tiempo Ordinario   Año I (años impares) | Año II (años pares)
+     Sábado de la 34ª semana de Tiempo Ordinario    Año I (años impares) | Año II (años pares)
+
+== FORMULARIOS SUELTOS
+     TEXTOS COMUNES PARA EL CANTO DEL SALMO RESPONS Ciclos A, B y C

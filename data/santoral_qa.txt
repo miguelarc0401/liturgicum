@@ -1,0 +1,122 @@
+EL SANTORAL Y LA PRECEDENCIA ENTRE CELEBRACIONES
+
+celebraciones del calendario : 196 (195 en fecha fija, 1 moviles)
+   por grado                 : Solemnidad 7, Conmemoración 1, Fiesta 25, Memoria 68, Memoria libre 95
+   leidas del PDF            : 153; reconstruidas del calco del reverso (agosto y septiembre, que faltan en el escaneo): 43
+formularios del leccionario V: 229 (217 con fecha, 7 comunes)
+emparejadas con su propio    : 194 de 195
+   con un dia de diferencia entre el calendario y el leccionario: 2
+      San Isidoro, obispo y doctor de la Iglesia: calendario 4/4, leccionario 26 de abril
+      San Pedro Claver, presbítero: calendario 9/9, leccionario 8 de septiembre
+
+grados: el calendario y el leccionario V discrepan en 15 de 194 celebraciones emparejadas
+   (manda el calendario que aportaste; el leccionario V de Koinonia es el de Espana y sube o baja algunos grados)
+      Santa Inés, virgen y mártir                                calendario: Memoria        leccionario: Memoria libre
+      San Vicente, diácono y mártir                              calendario: Memoria libre  leccionario: Memoria
+      San Francisco de Sales, obispo y doctor de la Iglesia      calendario: Memoria        leccionario: Memoria libre
+      Santos Cirilo, monje, y Metodio, obispo                    calendario: Memoria        leccionario: Fiesta
+      San Isidoro, obispo y doctor de la Iglesia                 calendario: Memoria libre  leccionario: Fiesta
+      Santa Catalina de Siena, virgen y doctora de la Iglesia    calendario: Memoria        leccionario: Fiesta
+      San José Obrero                                            calendario: Memoria libre  leccionario: Memoria
+      San Benito, abad                                           calendario: Memoria        leccionario: Fiesta
+      Nuestra Señora del Carmen                                  calendario: Memoria libre  leccionario: Memoria
+      Santa Brígida, religiosa                                   calendario: Memoria libre  leccionario: Fiesta
+      Santiago, apóstol                                          calendario: Fiesta         leccionario: Solemnidad
+      Santa Rosa de Lima, virgen                                 calendario: Fiesta         leccionario: Memoria libre
+      Santa Teresa de Jesús, virgen y doctora de la Iglesia      calendario: Memoria        leccionario: Fiesta
+      Conmemoración de todos los fieles difuntos                 calendario: Conmemoración  leccionario: Fiesta
+      Santa Cecilia, virgen y mártir                             calendario: Memoria        leccionario: Memoria libre
+
+formularios del leccionario V con fecha que el calendario no trae: 23
+   (siguen accesibles por el indice, pero no se colocan en ninguna fecha; casi todos son del propio de Espana)
+      9 de enero: San Eulogio de Córdoba, presbítero y mártir
+      20 de enero: San Fructuoso, obispo y mártir, y sus diáconos, santos Augurio y Eulog
+      23 de enero: San Ildefonso, obispo
+      13 de abril: San Hermenegildo, mártir
+      10 de mayo: San Juan de Ávila, presbítero
+      15 de mayo: San Isidro, labrador
+      17 de mayo: San Pascual Bailón, religioso
+      22 de mayo: Santa Joaquina Vedruna, religiosa
+      30 de mayo: San Fernando
+      15 de junio: Santa María Micaela del Santísimo Sacramento, virgen
+      26 de junio: San Pelayo, mártir
+      9 de agosto: SANTA TERESA BENEDICTA DE LA CRUZ (EDITH STEIN), RELIGIOSA, MÁRTIR Y C
+      19 de agosto: San Ezequiel Moreno, obispo
+      26 de agosto: Santa Teresa de Jesús Jornet e Ibars, virgen, Patrona de la ancianidad
+      3 de octubre: San Francisco de Borja, presbítero
+      10 de octubre: Santo Tomás de Villanueva, obispo
+      11 de octubre: Santa Soledad Torres Acosta, virgen
+      12 de octubre: NUESTRA SENORA DEL PILAR
+      19 de octubre: San Pedro de Alcántara, presbítero
+      13 de noviembre: San Leandro, obispo
+      10 de diciembre: Santa Eulalia de Mérida, virgen y mártir
+      12 de diciembre: Santa Juana Francisca de Chantal, religiosa
+      5 de octubre: TÉMPORAS DE ACCIÓN DE GRACIAS Y DE PETICIÓN
+
+fechas con al menos una celebracion: 13510 (anos 2024-2060)
+parche epifania_6enero     : 188 fechas cambian
+parche ascension_jueves    : 74 fechas cambian
+parche corpus_jueves       : 74 fechas cambian
+dias sin ninguna celebracion en 2024-2026: 0
+
+solemnidades trasladadas por concurrencia: 24
+   2024-03-25 -> 2024-04-08  La Anunciación del Señor
+   2024-12-08 -> 2024-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2027-03-25 -> 2027-04-05  La Anunciación del Señor
+   2028-03-19 -> 2028-03-20  San José, esposo de santa María Virgen
+   2029-03-25 -> 2029-04-09  La Anunciación del Señor
+   2030-12-08 -> 2030-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2032-03-25 -> 2032-04-05  La Anunciación del Señor
+   2034-03-19 -> 2034-03-20  San José, esposo de santa María Virgen
+   2035-03-19 -> 2035-04-02  San José, esposo de santa María Virgen
+   2035-03-25 -> 2035-04-03  La Anunciación del Señor
+   2040-03-25 -> 2040-04-09  La Anunciación del Señor
+   2041-12-08 -> 2041-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2043-03-25 -> 2043-04-06  La Anunciación del Señor
+   2045-03-19 -> 2045-03-20  San José, esposo de santa María Virgen
+   2046-03-19 -> 2046-04-02  San José, esposo de santa María Virgen
+   2046-03-25 -> 2046-04-03  La Anunciación del Señor
+   2047-12-08 -> 2047-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2051-03-19 -> 2051-03-20  San José, esposo de santa María Virgen
+   2052-12-08 -> 2052-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2054-03-25 -> 2054-04-06  La Anunciación del Señor
+   2056-03-19 -> 2056-03-20  San José, esposo de santa María Virgen
+   2057-03-25 -> 2057-03-26  La Anunciación del Señor
+   2058-12-08 -> 2058-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2059-03-25 -> 2059-04-07  La Anunciación del Señor
+
+celebraciones por dia: 7693 dia(s) con 1, 5268 dia(s) con 2, 516 dia(s) con 3, 33 dia(s) con 4
+
+Tabla de celebraciones movibles (2016-2027): 132 cotejos, 6 diferencias
+   2024 ciclo              calculado B-C           impreso C-A
+   2024 ceniza             calculado 2024-02-14    impreso 2024-02-13
+   2024 to_hasta           calculado 2024-02-13    impreso 2024-02-12
+   2024 to_semana_antes    calculado 6             impreso 5
+   2025 ciclo              calculado C-A           impreso B-C
+   2027 ciclo              calculado B-C           impreso C-D
+
+   Las seis diferencias estan todas en el ultimo bloque de la
+   tabla impresa (2024-2027) y son erratas suyas, no del computo:
+
+   * Ceniza de 2024. La tabla imprime el 13 de febrero. La Pascua
+     de 2024 es el 31 de marzo, la misma que la de 2013, y 2013
+     si tuvo la Ceniza el 13 de febrero; pero 2024 es bisiesto y
+     restar 46 dias cae en el 14. La fila parece copiada de la de
+     2013 sin contar el 29 de febrero. De ahi salen tambien las
+     otras dos diferencias de 2024 (el ultimo dia y la ultima
+     semana del tiempo ordinario antes de Cuaresma).
+   * Ciclo de 2024 y 2025: la tabla los da cambiados entre si
+     (imprime C-A donde toca B-C, y B-C donde toca C-A). La serie
+     es regular y correcta en los ocho anos anteriores y en 2026.
+   * Ciclo de 2027: la tabla imprime «C-D», y no existe un ciclo
+     dominical D.
+
+   Comprobacion independiente: la Ceniza de 2024 fue el 14 de
+   febrero, y el ciclo dominical de 2024 fue el B y el de 2025 el
+   C. Los 126 cotejos restantes cuadran.
+
+escrito data/calendario_completo.json  (2174 KB)
+
+AVISOS:
+   leccionario V: 5058TA0503.html (cel 1) dice «28 de octubre» y el fichero codifica el 3/5; se descarta por bloque repetido
+   celebraciones del calendario sin formulario propio en el leccionario V: 1 (Nuestra Señora de Guadalupe)

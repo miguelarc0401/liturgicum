@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Leccionario latino</title>
+<meta name="description" content="El leccionario romano en latín, sin conexión.">
+<meta name="theme-color" content="#6b1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icono-192.png">
+<link rel="apple-touch-icon" href="icono-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body data-tema="auto">
+
+<header id="cabecera">
+  <div class="fila-fecha">
+    <button id="anterior" class="icono" aria-label="Día anterior">‹</button>
+    <span class="envoltorio-fecha">
+      <span id="rotulo-fecha" class="fecha"></span>
+      <input type="date" id="selector-fecha" aria-label="Elegir fecha">
+    </span>
+    <button id="siguiente" class="icono" aria-label="Día siguiente">›</button>
+  </div>
+  <h1 id="titulo-dia"></h1>
+  <p id="subtitulo-dia"></p>
+  <div id="celebraciones" class="chips"></div>
+  <div id="formularios" class="chips finos"></div>
+  <p id="nota-dia" class="nota-dia"></p>
+</header>
+
+<main id="vista" tabindex="-1">
+  <p class="aviso" id="arranque">Abriendo el leccionario…</p>
+</main>
+
+<nav id="barra">
+  <button data-ir="hoy" class="activo"><span>☩</span>Hoy</button>
+  <button data-ir="indice"><span>❡</span>Índice</button>
+  <button data-ir="buscar"><span>⌕</span>Buscar</button>
+  <button data-ir="ajustes"><span>⚙</span>Ajustes</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

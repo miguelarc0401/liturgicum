@@ -1,0 +1,114 @@
+Acentuacion liturgica - cobertura sobre readings_latin_nova.json
+
+palabras de 3+ silabas: 119908 apariciones en 18234 formas distintas
+
+  manual                    348    0.29 %
+  posicion                21267   17.74 %
+  uso                     93294   77.80 %
+  cantidad (uso debil)       13    0.01 %
+  uso (variante ae/oe)       23    0.02 %
+  sin marca (uso)           921    0.77 %
+  hiato                     670    0.56 %
+  cantidad                 2050    1.71 %
+  prefijo                   122    0.10 %
+  terminacion               417    0.35 %
+  cantidad ambigua          178    0.15 %
+  omision                   605    0.50 %
+
+resueltas con fundamento: 119303 de 119908 (99.50 %)
+integridad: 0 formas cambiarian de letras al acentuar
+
+se dejan desnudas porque el uso liturgico no las marca (7 formas / 921 apariciones);
+para marcarlas, poner su acento en data/acentos_overrides.csv:
+      722  Israel
+      106  Isaac
+       43  Aaron
+       25  Isai
+       10  Amalec
+       10  Absalom
+        5  Elcana
+
+ya venian acentuadas en la fuente y no se han tocado (1 formas):
+        1  commoratío
+
+sin fundamento (acentuadas en la penultima por omision): 362 formas / 605 apariciones
+      17  Meriba                     -> Meríba
+       8  ieiunabunt                 -> ieiunábunt
+       7  sadducaeorum               -> sadducaeórum
+       7  Noemi                      -> Noémi
+       6  inveniaris                 -> inveniáris
+       5  rebellavi                  -> rebellávi
+       5  Iosetis                    -> Iosétis
+       5  Nazarene                   -> Nazaréne
+       5  evigilavero                -> evigilavéro
+       5  Gennesaret                 -> Gennesáret
+       5  Iezrahelitae               -> Iezrahelítae
+       4  Antecede                   -> Antecéde
+       4  exsuscitem                 -> exsuscítem
+       4  Parascevem                 -> Parascévem
+       4  Iscariotis                 -> Iscariótis
+       4  indurabo                   -> indurábo
+       4  divisaque                  -> divisáque
+       4  fundabo                    -> fundábo
+       4  proselytum                 -> proselýtum
+       4  dilexeritis                -> dilexerítis
+       4  Raphidim                   -> Raphídim
+       4  sanctifices                -> sanctifíces
+       4  evangelizavero             -> evangelizavéro
+       4  Iairus                     -> Iaírus
+       4  Talitha                    -> Talítha
+       4  Amorraeorum                -> Amorraeórum
+       4  uxorern                    -> uxórern
+       4  diffficile                 -> diffficíle
+       4  decimatis                  -> decimátis
+       3  benedicetis                -> benedicétis
+       3  abscondebamus              -> abscondebámus
+       3  plagatum                   -> plagátum
+       3  Cleopae                    -> Cleópae
+       3  sapphiris                  -> sapphíris
+       3  Elamitae                   -> Elamítae
+       3  Cyrenem                    -> Cyrénem
+       3  Bariona                    -> Barióna
+       3  Ligate                     -> Ligáte
+       3  Contremiscite              -> Contremiscíte
+       3  congregas                  -> congrégas
+       3  congrego                   -> congrégo
+       3  glorificarent              -> glorificárent
+       3  Effetha                    -> Effétha
+       3  tractabatis                -> tractabátis
+       3  disputaverant              -> disputavérant
+       3  prohibebamus               -> prohibebámus
+       3  Ierichum                   -> Ieríchum
+       3  municipatus                -> municipátus
+       3  reinvitent                 -> reinvítent
+       3  delibor                    -> delíbor
+       3  lacrimata                  -> lacrimáta
+       3  supersubstantialem         -> supersubstantiálem
+       3  ieiunamus                  -> ieiunámus
+       3  Moabitide                  -> Moabitíde
+       3  Ninevitis                  -> Ninevítis
+       3  Cainan                     -> Caínan
+       2  Bethfage                   -> Bethfáge
+       2  clamydem                   -> clamýdem
+       2  clamyde                    -> clamýde
+       2  gradiaris                  -> gradiáris
+       2  participamur               -> participámur
+       2  sublimita                  -> sublimíta
+       2  oboedieritis               -> oboedierítis
+       2  complanans                 -> complánans
+       2  germini                    -> germíni
+       2  supervincimus              -> supervincímus
+       2  propitiabor                -> propitiábor
+       2  Bethsatha                  -> Bethsátha
+       2  portabam                   -> portábam
+       2  Adama                      -> Adáma
+       2  lactabo                    -> lactábo
+       2  Bucinate                   -> Bucináte
+       2  squamatum                  -> squamátum
+       2  murmurarent                -> murmurárent
+       2  impleretis                 -> implerétis
+       2  iustaque                   -> iustáque
+       2  concupi                    -> concúpi
+       2  hinnite                    -> hinníte
+       2  personate                  -> personáte
+       2  Ephratha                   -> Ephrátha

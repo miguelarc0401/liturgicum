@@ -1,0 +1,34 @@
+fuente                          : nova
+lecturas con referencia biblica : 105
+resueltas del todo              : 105 (100.0%)
+con algun versiculo ausente     : 0
+sin referencia (aleluyas libres): 8
+versiculos latinos extraidos    : 305
+citas resueltas por override    : 0
+
+sufijos a/b/c encontrados (se toma el versiculo entero):
+   -b    33
+   -a    24
+   -ab   9
+   -c    9
+   -cd   5
+   -bc   4
+   -d    2
+   -ac   2
+
+libros mas usados:
+   Psalmi                   52 lecturas
+   Ioannes                  13 lecturas
+   Lucas                    9 lecturas
+   Matthaeus                7 lecturas
+   Isaias                   4 lecturas
+   Ezechiel                 2 lecturas
+   II Ad Corinthios         2 lecturas
+   Iacobi                   2 lecturas
+   I Ad Timotheum           1 lecturas
+   Ioel                     1 lecturas
+   Amos                     1 lecturas
+   I Samuelis               1 lecturas
+   Actus Apostolorum        1 lecturas
+   Ad Ephesios              1 lecturas
+   Ad Philippenses          1 lecturas

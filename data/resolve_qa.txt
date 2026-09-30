@@ -1,0 +1,37 @@
+fuente                          : clementina
+lecturas con referencia biblica : 6929
+resueltas del todo              : 6929 (100.0%)
+con algun versiculo ausente     : 0
+sin referencia (aleluyas libres): 126
+versiculos latinos extraidos    : 43347
+
+sufijos a/b/c encontrados (se toma el versiculo entero):
+   -a    1124
+   -b    1079
+   -ab   411
+   -c    180
+   -bc   156
+   -cd   83
+   -bcd  80
+   -ac   38
+   -d    31
+   -abcd 30
+   -abc  19
+   -bcde 14
+
+libros mas usados:
+   Psalmi                   1554 lecturas
+   Joannes                  831 lecturas
+   Matthæus                 806 lecturas
+   Lucas                    653 lecturas
+   Marcus                   331 lecturas
+   Isaias                   227 lecturas
+   Actus Apostolorum        226 lecturas
+   Ad Corinthios I          165 lecturas
+   Ad Romanos               163 lecturas
+   Ad Ephesios              138 lecturas
+   Apocalypsis              122 lecturas
+   Genesis                  118 lecturas
+   Ad Corinthios II         109 lecturas
+   Ad Hebræos               103 lecturas
+   Joannis I                92 lecturas

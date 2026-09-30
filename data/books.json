@@ -1,0 +1,849 @@
+[
+ {
+  "sigla": "Ab",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Abdías"
+  ],
+  "vulgata": "Abdias",
+  "match": [
+   "profecia de abdias"
+  ]
+ },
+ {
+  "sigla": "Ag",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Ageo"
+  ],
+  "vulgata": "Aggæus",
+  "match": [
+   "profecia de ageo"
+  ]
+ },
+ {
+  "sigla": "Am",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Amós"
+  ],
+  "vulgata": "Amos",
+  "match": [
+   "profecia de amos"
+  ]
+ },
+ {
+  "sigla": "Ap",
+  "siglas_alt": [],
+  "es": [
+   "Libro del Apocalipsis"
+  ],
+  "vulgata": "Apocalypsis",
+  "match": [
+   "libro del apocalipsis"
+  ]
+ },
+ {
+  "sigla": "Ba",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Baruc"
+  ],
+  "vulgata": "Baruch",
+  "match": [
+   "libro de baruc"
+  ]
+ },
+ {
+  "sigla": "1 Co",
+  "siglas_alt": [],
+  "es": [
+   "Primera carta del apóstol san Pablo a los Corintios",
+   "1 Co"
+  ],
+  "vulgata": "Ad Corinthios I",
+  "match": [
+   "primera carta del apostol san pablo a los corintios",
+   "1 co"
+  ]
+ },
+ {
+  "sigla": "2 Co",
+  "siglas_alt": [],
+  "es": [
+   "Segunda carta del apóstol san Pablo a los Corintios",
+   "2 Co"
+  ],
+  "vulgata": "Ad Corinthios II",
+  "match": [
+   "segunda carta del apostol san pablo a los corintios",
+   "2 co"
+  ]
+ },
+ {
+  "sigla": "Col",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a los Colosenses"
+  ],
+  "vulgata": "Ad Colossenses",
+  "match": [
+   "carta del apostol san pablo a los colosenses"
+  ]
+ },
+ {
+  "sigla": "1 Cro",
+  "siglas_alt": [],
+  "es": [
+   "Primero libro de las Crónicas",
+   "1 Cro"
+  ],
+  "vulgata": "Paralipomenon I",
+  "match": [
+   "primero libro de las cronicas",
+   "1 cro"
+  ]
+ },
+ {
+  "sigla": "2 Cro",
+  "siglas_alt": [],
+  "es": [
+   "Segundo libro de las Crónicas",
+   "2 Cro"
+  ],
+  "vulgata": "Paralipomenon II",
+  "match": [
+   "segundo libro de las cronicas",
+   "2 cro"
+  ]
+ },
+ {
+  "sigla": "Ct",
+  "siglas_alt": [],
+  "es": [
+   "Libro del Cantar de los cantares"
+  ],
+  "vulgata": "Canticum Canticorum",
+  "match": [
+   "libro del cantar de los cantares"
+  ]
+ },
+ {
+  "sigla": "Dn",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Daniel"
+  ],
+  "vulgata": "Daniel",
+  "match": [
+   "profecia de daniel"
+  ]
+ },
+ {
+  "sigla": "Dt",
+  "siglas_alt": [],
+  "es": [
+   "Libro del Deuteronomio"
+  ],
+  "vulgata": "Deuteronomium",
+  "match": [
+   "libro del deuteronomio"
+  ]
+ },
+ {
+  "sigla": "Ef",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a los Efesios"
+  ],
+  "vulgata": "Ad Ephesios",
+  "match": [
+   "carta del apostol san pablo a los efesios"
+  ]
+ },
+ {
+  "sigla": "Esd",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Esdras"
+  ],
+  "vulgata": "Esdræ",
+  "match": [
+   "libro de esdras"
+  ]
+ },
+ {
+  "sigla": "Est",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Ester"
+  ],
+  "vulgata": "Esther",
+  "match": [
+   "libro de ester"
+  ]
+ },
+ {
+  "sigla": "Ex",
+  "siglas_alt": [],
+  "es": [
+   "Libro del Éxodo"
+  ],
+  "vulgata": "Exodus",
+  "match": [
+   "libro del exodo"
+  ]
+ },
+ {
+  "sigla": "Ez",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Ezequiel"
+  ],
+  "vulgata": "Ezechiel",
+  "match": [
+   "profecia de ezequiel"
+  ]
+ },
+ {
+  "sigla": "Flm",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a Filemón"
+  ],
+  "vulgata": "Ad Philemonem",
+  "match": [
+   "carta del apostol san pablo a filemon"
+  ]
+ },
+ {
+  "sigla": "Flp",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a los Filipenses"
+  ],
+  "vulgata": "Ad Philippenses",
+  "match": [
+   "carta del apostol san pablo a los filipenses"
+  ]
+ },
+ {
+  "sigla": "Ga",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a los Gálatas"
+  ],
+  "vulgata": "Ad Galatas",
+  "match": [
+   "carta del apostol san pablo a los galatas"
+  ]
+ },
+ {
+  "sigla": "Gn",
+  "siglas_alt": [],
+  "es": [
+   "Libro del Génesis"
+  ],
+  "vulgata": "Genesis",
+  "match": [
+   "libro del genesis"
+  ]
+ },
+ {
+  "sigla": "Ha",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Habacuc"
+  ],
+  "vulgata": "Habacuc",
+  "match": [
+   "profecia de habacuc"
+  ]
+ },
+ {
+  "sigla": "Hb",
+  "siglas_alt": [],
+  "es": [
+   "Carta a los Hebreos"
+  ],
+  "vulgata": "Ad Hebræos",
+  "match": [
+   "carta a los hebreos"
+  ]
+ },
+ {
+  "sigla": "Hch",
+  "siglas_alt": [],
+  "es": [
+   "Libro de los Hechos de los apóstoles"
+  ],
+  "vulgata": "Actus Apostolorum",
+  "match": [
+   "libro de los hechos de los apostoles"
+  ]
+ },
+ {
+  "sigla": "Is",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Isaías"
+  ],
+  "vulgata": "Isaias",
+  "match": [
+   "libro de isaias"
+  ]
+ },
+ {
+  "sigla": "Jb",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Job"
+  ],
+  "vulgata": "Job",
+  "match": [
+   "libro de job"
+  ]
+ },
+ {
+  "sigla": "Jc",
+  "siglas_alt": [],
+  "es": [
+   "Libro de los Jueces"
+  ],
+  "vulgata": "Judicum",
+  "match": [
+   "libro de los jueces"
+  ]
+ },
+ {
+  "sigla": "Jdt",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Judit"
+  ],
+  "vulgata": "Judith",
+  "match": [
+   "libro de judit"
+  ]
+ },
+ {
+  "sigla": "Jl",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Joel"
+  ],
+  "vulgata": "Joel",
+  "match": [
+   "profecia de joel"
+  ]
+ },
+ {
+  "sigla": "Jn",
+  "siglas_alt": [],
+  "es": [
+   "Evangelio según san Juan"
+  ],
+  "vulgata": "Joannes",
+  "match": [
+   "evangelio segun san juan"
+  ]
+ },
+ {
+  "sigla": "1 Jn",
+  "siglas_alt": [],
+  "es": [
+   "Primera carta del apóstol san Juan",
+   "1 Jn"
+  ],
+  "vulgata": "Joannis I",
+  "match": [
+   "primera carta del apostol san juan",
+   "1 jn"
+  ]
+ },
+ {
+  "sigla": "2 Jn",
+  "siglas_alt": [],
+  "es": [
+   "Segunda carta del apóstol san Juan",
+   "2 Jn"
+  ],
+  "vulgata": "Joannis II",
+  "match": [
+   "segunda carta del apostol san juan",
+   "2 jn"
+  ]
+ },
+ {
+  "sigla": "3 Jn",
+  "siglas_alt": [],
+  "es": [
+   "Tercera carta del apóstol san Juan",
+   "3 Jn"
+  ],
+  "vulgata": "Joannis III",
+  "match": [
+   "tercera carta del apostol san juan",
+   "3 jn"
+  ]
+ },
+ {
+  "sigla": "Jon",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Jonás"
+  ],
+  "vulgata": "Jonas",
+  "match": [
+   "profecia de jonas"
+  ]
+ },
+ {
+  "sigla": "Jos",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Josué"
+  ],
+  "vulgata": "Josue",
+  "match": [
+   "libro de josue"
+  ]
+ },
+ {
+  "sigla": "Jr",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Jeremías"
+  ],
+  "vulgata": "Jeremias",
+  "match": [
+   "libro de jeremias"
+  ]
+ },
+ {
+  "sigla": "Judas",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Judas"
+  ],
+  "vulgata": "Judæ",
+  "match": [
+   "carta del apostol san judas"
+  ]
+ },
+ {
+  "sigla": "Lc",
+  "siglas_alt": [],
+  "es": [
+   "Evangelio según san Lucas"
+  ],
+  "vulgata": "Lucas",
+  "match": [
+   "evangelio segun san lucas"
+  ]
+ },
+ {
+  "sigla": "Lm",
+  "siglas_alt": [],
+  "es": [
+   "Libro de las Lamentaciones"
+  ],
+  "vulgata": "Lamentationes",
+  "match": [
+   "libro de las lamentaciones"
+  ]
+ },
+ {
+  "sigla": "Lv",
+  "siglas_alt": [],
+  "es": [
+   "Libro del Levítico"
+  ],
+  "vulgata": "Leviticus",
+  "match": [
+   "libro del levitico"
+  ]
+ },
+ {
+  "sigla": "1 M",
+  "siglas_alt": [],
+  "es": [
+   "Primero libro de los Macabeos",
+   "1 M"
+  ],
+  "vulgata": "Machabæorum I",
+  "match": [
+   "primero libro de los macabeos",
+   "1 m"
+  ]
+ },
+ {
+  "sigla": "2 M",
+  "siglas_alt": [],
+  "es": [
+   "Segundo libro de los Macabeos",
+   "2 M"
+  ],
+  "vulgata": "Machabæorum II",
+  "match": [
+   "segundo libro de los macabeos",
+   "2 m"
+  ]
+ },
+ {
+  "sigla": "Mc",
+  "siglas_alt": [],
+  "es": [
+   "Evangelio según san Marcos"
+  ],
+  "vulgata": "Marcus",
+  "match": [
+   "evangelio segun san marcos"
+  ]
+ },
+ {
+  "sigla": "Mi",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Miqueas"
+  ],
+  "vulgata": "Michæa",
+  "match": [
+   "profecia de miqueas"
+  ]
+ },
+ {
+  "sigla": "Ml",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Malaquías"
+  ],
+  "vulgata": "Malachias",
+  "match": [
+   "profecia de malaquias"
+  ]
+ },
+ {
+  "sigla": "Mt",
+  "siglas_alt": [],
+  "es": [
+   "Evangelio según san Mateo"
+  ],
+  "vulgata": "Matthæus",
+  "match": [
+   "evangelio segun san mateo"
+  ]
+ },
+ {
+  "sigla": "Na",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Nahúm"
+  ],
+  "vulgata": "Nahum",
+  "match": [
+   "profecia de nahum"
+  ]
+ },
+ {
+  "sigla": "Ne",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Nehemías"
+  ],
+  "vulgata": "Nehemiæ",
+  "match": [
+   "libro de nehemias"
+  ]
+ },
+ {
+  "sigla": "Nm",
+  "siglas_alt": [],
+  "es": [
+   "Libro de los Números"
+  ],
+  "vulgata": "Numeri",
+  "match": [
+   "libro de los numeros"
+  ]
+ },
+ {
+  "sigla": "Os",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Oseas"
+  ],
+  "vulgata": "Osee",
+  "match": [
+   "profecia de oseas"
+  ]
+ },
+ {
+  "sigla": "1 P",
+  "siglas_alt": [],
+  "es": [
+   "Primera carta del apóstol san Pedro",
+   "1 P"
+  ],
+  "vulgata": "Petri I",
+  "match": [
+   "primera carta del apostol san pedro",
+   "1 p"
+  ]
+ },
+ {
+  "sigla": "2 P",
+  "siglas_alt": [],
+  "es": [
+   "Segunda carta del apóstol san Pedro",
+   "2 P"
+  ],
+  "vulgata": "Petri II",
+  "match": [
+   "segunda carta del apostol san pedro",
+   "2 p"
+  ]
+ },
+ {
+  "sigla": "Pr",
+  "siglas_alt": [],
+  "es": [
+   "Libro de los Proverbios"
+  ],
+  "vulgata": "Proverbia",
+  "match": [
+   "libro de los proverbios"
+  ]
+ },
+ {
+  "sigla": "Ecl",
+  "siglas_alt": [
+   "Qo"
+  ],
+  "es": [
+   "Libro del Eclesiastés (Qohélet)",
+   "Libro del Qohélet"
+  ],
+  "vulgata": "Ecclesiastes",
+  "match": [
+   "libro del eclesiastes qohelet",
+   "libro del qohelet"
+  ]
+ },
+ {
+  "sigla": "1 R",
+  "siglas_alt": [],
+  "es": [
+   "Primero libro de los Reyes",
+   "1 R"
+  ],
+  "vulgata": "Regum III",
+  "match": [
+   "primero libro de los reyes",
+   "1 r"
+  ]
+ },
+ {
+  "sigla": "2 R",
+  "siglas_alt": [],
+  "es": [
+   "Segundo libro de los Reyes",
+   "2 R"
+  ],
+  "vulgata": "Regum IV",
+  "match": [
+   "segundo libro de los reyes",
+   "2 r"
+  ]
+ },
+ {
+  "sigla": "Rm",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a los Romanos"
+  ],
+  "vulgata": "Ad Romanos",
+  "match": [
+   "carta del apostol san pablo a los romanos"
+  ]
+ },
+ {
+  "sigla": "Rt",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Rut"
+  ],
+  "vulgata": "Ruth",
+  "match": [
+   "libro de rut"
+  ]
+ },
+ {
+  "sigla": "1 S",
+  "siglas_alt": [],
+  "es": [
+   "Primero libro de Samuel",
+   "1 S"
+  ],
+  "vulgata": "Regum I",
+  "match": [
+   "primero libro de samuel",
+   "1 s"
+  ]
+ },
+ {
+  "sigla": "2 S",
+  "siglas_alt": [],
+  "es": [
+   "Segundo libro de Samuel",
+   "2 S"
+  ],
+  "vulgata": "Regum II",
+  "match": [
+   "segundo libro de samuel",
+   "2 s"
+  ]
+ },
+ {
+  "sigla": "Sal",
+  "siglas_alt": [],
+  "es": [
+   "Libro de los Salmos"
+  ],
+  "vulgata": "Psalmi",
+  "match": [
+   "libro de los salmos"
+  ]
+ },
+ {
+  "sigla": "Sb",
+  "siglas_alt": [],
+  "es": [
+   "Libro de la Sabiduría"
+  ],
+  "vulgata": "Sapientia",
+  "match": [
+   "libro de la sabiduria"
+  ]
+ },
+ {
+  "sigla": "Eclo",
+  "siglas_alt": [
+   "Si"
+  ],
+  "es": [
+   "Libro del Eclesiástico (Sirácida)"
+  ],
+  "vulgata": "Ecclesiasticus",
+  "match": [
+   "libro del eclesiastico siracida"
+  ]
+ },
+ {
+  "sigla": "So",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Sofonías"
+  ],
+  "vulgata": "Sophonias",
+  "match": [
+   "profecia de sofonias"
+  ]
+ },
+ {
+  "sigla": "St",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol Santiago"
+  ],
+  "vulgata": "Jacobi",
+  "match": [
+   "carta del apostol santiago"
+  ]
+ },
+ {
+  "sigla": "Tb",
+  "siglas_alt": [],
+  "es": [
+   "Libro de Tobías"
+  ],
+  "vulgata": "Tobiæ",
+  "match": [
+   "libro de tobias"
+  ]
+ },
+ {
+  "sigla": "1 Tm",
+  "siglas_alt": [],
+  "es": [
+   "Primera del apóstol san Pablo a Timoteo",
+   "1 Tm"
+  ],
+  "vulgata": "Ad Timotheum I",
+  "match": [
+   "primera del apostol san pablo a timoteo",
+   "1 tm"
+  ]
+ },
+ {
+  "sigla": "2 Tm",
+  "siglas_alt": [],
+  "es": [
+   "Segunda del apóstol san Pablo a Timoteo",
+   "2 Tm"
+  ],
+  "vulgata": "Ad Timotheum II",
+  "match": [
+   "segunda del apostol san pablo a timoteo",
+   "2 tm"
+  ]
+ },
+ {
+  "sigla": "1 Ts",
+  "siglas_alt": [],
+  "es": [
+   "Primera carta del apóstol san Pablo a los Tesalonicenses",
+   "1 Ts"
+  ],
+  "vulgata": "Ad Thessalonicenses I",
+  "match": [
+   "primera carta del apostol san pablo a los tesalonicenses",
+   "1 ts"
+  ]
+ },
+ {
+  "sigla": "2 Ts",
+  "siglas_alt": [],
+  "es": [
+   "Segunda carta del apóstol san Pablo a los Tesalonicenses",
+   "2 Ts"
+  ],
+  "vulgata": "Ad Thessalonicenses II",
+  "match": [
+   "segunda carta del apostol san pablo a los tesalonicenses",
+   "2 ts"
+  ]
+ },
+ {
+  "sigla": "Tt",
+  "siglas_alt": [],
+  "es": [
+   "Carta del apóstol san Pablo a Tito"
+  ],
+  "vulgata": "Ad Titum",
+  "match": [
+   "carta del apostol san pablo a tito"
+  ]
+ },
+ {
+  "sigla": "Za",
+  "siglas_alt": [],
+  "es": [
+   "Profecía de Zacarías"
+  ],
+  "vulgata": "Zacharias",
+  "match": [
+   "profecia de zacarias"
+  ]
+ }
+]

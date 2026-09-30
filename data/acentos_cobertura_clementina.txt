@@ -1,0 +1,111 @@
+Acentuacion liturgica - cobertura sobre readings_latin.json
+
+palabras de 3+ silabas: 121376 apariciones en 18161 formas distintas
+
+  manual                    296    0.24 %
+  posicion                21439   17.66 %
+  uso                     95820   78.94 %
+  cantidad (uso debil)       10    0.01 %
+  uso (variante ae/oe)        8    0.01 %
+  sin marca (uso)           923    0.76 %
+  hiato                     450    0.37 %
+  cantidad                 1490    1.23 %
+  prefijo                    62    0.05 %
+  terminacion               275    0.23 %
+  cantidad ambigua          173    0.14 %
+  omision                   430    0.35 %
+
+resueltas con fundamento: 120946 de 121376 (99.65 %)
+integridad: 0 formas cambiarian de letras al acentuar
+
+se dejan desnudas porque el uso liturgico no las marca (7 formas / 923 apariciones);
+para marcarlas, poner su acento en data/acentos_overrides.csv:
+      727  Israël
+      102  Isaac
+       43  Aaron
+       25  Isai
+       11  Absalom
+       10  Amalec
+        5  Elcana
+
+sin fundamento (acentuadas en la penultima por omision): 266 formas / 430 apariciones
+       9  Joakim                     -> Joákim
+       8  jejunabunt                 -> jejunábunt
+       7  sadducæorum                -> sadducæórum
+       6  paulominus                 -> paulomínus
+       6  Noëmi                      -> Noémi
+       6  legisperitis               -> legisperítis
+       5  Nazarene                   -> Nazaréne
+       5  Jezrahelitæ                -> Jezrahelítæ
+       4  Antecede                   -> Antecéde
+       4  indurabo                   -> indurábo
+       4  divisaque                  -> divisáque
+       4  fundabo                    -> fundábo
+       4  Raphidim                   -> Raphídim
+       4  sanctifices                -> sanctifíces
+       4  evangelizavero             -> evangelizavéro
+       4  honorificent               -> honorifícent
+       4  Jairus                     -> Jaírus
+       4  Talitha                    -> Talítha
+       4  decimatis                  -> decimátis
+       4  paropsidis                 -> paropsídis
+       3  benedicetis                -> benedicétis
+       3  hæreditare                 -> hæreditáre
+       3  Barrabas                   -> Barrábas
+       3  sapphiris                  -> sapphíris
+       3  intelligetis               -> intelligétis
+       3  congregas                  -> congrégas
+       3  semino                     -> semíno
+       3  congrego                   -> congrégo
+       3  tractabatis                -> tractabátis
+       3  reinvitent                 -> reinvítent
+       3  hæreditabunt               -> hæreditábunt
+       3  Bethsaidam                 -> Bethsaídam
+       3  supersubstantialem         -> supersubstantiálem
+       3  jejunamus                  -> jejunámus
+       3  Genesar                    -> Genésar
+       3  Moabitide                  -> Moabitíde
+       3  Elimelech                  -> Elimélech
+       3  Cainan                     -> Caínan
+       2  gradiaris                  -> gradiáris
+       2  obedieritis                -> obedierítis
+       2  quadrigam                  -> quadrígam
+       2  adultabis                  -> adultábis
+       2  propitiabor                -> propitiábor
+       2  portabam                   -> portábam
+       2  Adama                      -> Adáma
+       2  lactabo                    -> lactábo
+       2  Discumberunt               -> Discumbérunt
+       2  murmurarent                -> murmurárent
+       2  implebitis                 -> implebítis
+       2  justaque                   -> justáque
+       2  hinnite                    -> hinníte
+       2  personate                  -> personáte
+       2  sanctificatos              -> sanctificátos
+       2  recordatæ                  -> recordátæ
+       2  Hasbadana                  -> Hasbadána
+       2  Athersatha                 -> Athersátha
+       2  Abdemelech                 -> Abdemélech
+       2  fatigeris                  -> fatigéris
+       2  argueris                   -> arguéris
+       2  conteritis                 -> conterítis
+       2  imminuamus                 -> imminuámus
+       2  supponamus                 -> supponámus
+       2  stateras                   -> statéras
+       2  negaverimus                -> negaverímus
+       2  delibor                    -> delíbor
+       2  denuntiabamus              -> denuntiabámus
+       2  manifestarent              -> manifestárent
+       2  superscribam               -> superscríbam
+       2  Dalmanutha                 -> Dalmanútha
+       2  peccatrice                 -> peccatríce
+       2  femoris                    -> femóris
+       2  Gomorrhæorum               -> Gomorrhæórum
+       2  Locutaque                  -> Locutáque
+       2  lunaticus                  -> lunatícus
+       2  Misique                    -> Misíque
+       2  intratis                   -> intrátis
+       2  proselytum                 -> proselýtum
+       2  dealbatis                  -> dealbátis
+       2  tangitis                   -> tangítis
+       2  exactori                   -> exactóri

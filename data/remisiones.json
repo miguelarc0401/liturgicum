@@ -1,0 +1,140 @@
+[
+ {
+  "leccionario": "V",
+  "archivo": "5006TA0120_1.html",
+  "cel_n": 0,
+  "celebracion": "San Fructuoso, obispo y mártir, y sus diáconos, santos Augurio y Eulogio, mártires",
+  "fecha": "20 de enero",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de mártires",
+    "archivo": "5225COMMAR.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5011TA0123.html",
+  "cel_n": 0,
+  "celebracion": "San Ildefonso, obispo",
+  "fecha": "23 de enero",
+  "grado": "Memoria",
+  "comunes": [
+   {
+    "texto": "Del Común de pastores",
+    "archivo": "5226COMPAS.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5045TA0413_2.html",
+  "cel_n": 0,
+  "celebracion": "San Hermenegildo, mártir",
+  "fecha": "13 de abril",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de mártires",
+    "archivo": "5225COMMAR.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5059TA0510.html",
+  "cel_n": 0,
+  "celebracion": "San Juan de Ávila, presbítero",
+  "fecha": "10 de mayo",
+  "grado": "Memoria",
+  "comunes": [
+   {
+    "texto": "Del Común de pastores",
+    "archivo": "5226COMPAS.html"
+   },
+   {
+    "texto": "O bien del Común de santos y santas",
+    "archivo": "5229COMSAN.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5084TA0615.html",
+  "cel_n": 0,
+  "celebracion": "Santa María Micaela del Santísimo Sacramento, virgen",
+  "fecha": "15 de junio",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de vírgenes",
+    "archivo": "5228COMVIR.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5090TA0626.html",
+  "cel_n": 0,
+  "celebracion": "San Pelayo, mártir",
+  "fecha": "26 de junio",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de mártires",
+    "archivo": "5225COMMAR.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5176TA1019.html",
+  "cel_n": 0,
+  "celebracion": "San Pedro de Alcántara, presbítero",
+  "fecha": "19 de octubre",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de pastores",
+    "archivo": "5226COMPAS.html"
+   },
+   {
+    "texto": "O bien del Común de santos y santas",
+    "archivo": "5229COMSAN.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5190TA1113.html",
+  "cel_n": 0,
+  "celebracion": "San Leandro, obispo",
+  "fecha": "13 de noviembre",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de pastores",
+    "archivo": "5226COMPAS.html"
+   }
+  ]
+ },
+ {
+  "leccionario": "V",
+  "archivo": "5207TA1210.html",
+  "cel_n": 0,
+  "celebracion": "Santa Eulalia de Mérida, virgen y mártir",
+  "fecha": "10 de diciembre",
+  "grado": "Memoria libre",
+  "comunes": [
+   {
+    "texto": "Del Común de mártires",
+    "archivo": "5225COMMAR.html"
+   },
+   {
+    "texto": "O bien del Común de vírgenes",
+    "archivo": "5228COMVIR.html"
+   }
+  ]
+ }
+]

@@ -1,0 +1,36 @@
+LOS ANEXOS DEL LECCIONARIO
+
+copias del mismo anexo:
+   7004Aleluya_Navidad_despues de Epifania.html   NO ESTA EN CACHE
+   aclamaciones_cuaresma            4 copias, se toma 70705AleluyaCuaresma.html  (citas que normalizan: 70705AleluyaCuaresma.html 16/17, 1017AclamCU.html 15/17, 2019AclamCU.html 15/17, 30171AclamCU.html 0/0)
+   7006AleluyaPascua_antes_de Ascension.html      NO ESTA EN CACHE
+   70707AleluyaPascua_despues_de Ascension.html   NO ESTA EN CACHE
+   aleluya_ordinario                4 copias, se toma 400aleluyaTO.html  (citas que normalizan: 400aleluyaTO.html 45/45, 3068aleluyaTO.html 44/45, 1068aleluyaTO.html 44/45, 2068aleluyaTO.html 44/45)
+   salmos_comunes                   3 copias, se toma 1069TEXTCOM.html  (citas que normalizan: 1069TEXTCOM.html 23/23, 2069TEXTCOM.html 21/21, 3069TEXTCOM.html 21/21)
+
+anexos del catalogo          : 10
+anexos sin su pagina         : 3
+   aleluya_navidad_despues_epifania   7004Aleluya_Navidad_despues de Epifania.html
+   aleluya_pascua_antes_ascension     7006AleluyaPascua_antes_de Ascension.html
+   aleluya_pascua_despues_ascension   70707AleluyaPascua_despues_de Ascension.html
+citas encontradas            : 113
+citas normalizadas           : 105 (92.9%)
+sin cita biblica (benigno)   : 8
+FALLOS                       : 0
+erratas del sitio corregidas : 2 (citation_overrides.csv)
+   1069TEXTCOM.html                               Salmo 94, 1-2. 6-7. 8-90 (R.:8)
+   4409TEXTCOM.html                               Salmo 94, 1-2. 6-7. 8-90 (R.:8)
+textos que no son Escritura  : 15 (latin de anexos_latin_fijo.csv)
+respuestas salmodicas        : 11 (solo castellano: son antifonas sin cita)
+
+por anexo:
+   aleluya_adviento_1_16              701AleluyaAdviento.html                         14 citas  0 sin cita
+   aleluya_adviento_17_24             7002AleluyaAdviento18_24.html                    0 citas  7 sin cita
+   aleluya_navidad_antes_epifania     7003Aleluya_Navidad_antes de Epifania.html       5 citas  0 sin cita
+   aleluya_navidad_despues_epifania   (sin pagina)                                     0 citas  0 sin cita   AUSENTE
+   aclamaciones_cuaresma              70705AleluyaCuaresma.html                       17 citas  8 sin cita
+   aleluya_pascua_antes_ascension     (sin pagina)                                     0 citas  0 sin cita   AUSENTE
+   aleluya_pascua_despues_ascension   (sin pagina)                                     0 citas  0 sin cita   AUSENTE
+   aleluya_ordinario                  400aleluyaTO.html                               45 citas  0 sin cita
+   salmos_comunes                     1069TEXTCOM.html                                23 citas  0 sin cita
+   salmos_comunes_ferias              4409TEXTCOM.html                                 9 citas  0 sin cita

@@ -1,0 +1,74 @@
+clementina,nova,nota
+Genesis,Genesis,
+Exodus,Exodus,
+Leviticus,Leviticus,
+Numeri,Numeri,
+Deuteronomium,Deuteronomium,
+Josue,Iosue,j -> i
+Judicum,Iudicum,j -> i
+Ruth,Ruth,
+Regum I,I Samuelis,"la Nova Vulgata usa los nombres modernos: Regum I-II de la Clementina son I-II Samuelis"
+Regum II,II Samuelis,idem
+Regum III,I Regum,"Regum III-IV de la Clementina son I-II Regum"
+Regum IV,II Regum,idem
+Paralipomenon I,I Paralipomenon,"la Nova Vulgata conserva Paralipomenon; el leccionario los llama Chronicorum"
+Paralipomenon II,II Paralipomenon,idem
+Esdræ,Esdrae,ae por ligadura
+Nehemiæ,Nehemiae,ae por ligadura
+Tobiæ,Thobis,"la Nova Vulgata titula el libro Liber Thobis"
+Judith,Iudith,j -> i
+Esther,Esther,
+Job,Iob,j -> i
+Psalmi,Psalmi,"OJO: la Nova Vulgata numera los salmos por el hebreo; ver psalmi_lect_nova.csv"
+Proverbia,Proverbia,
+Ecclesiastes,Ecclesiastes,
+Canticum Canticorum,Canticum Canticorum,
+Sapientia,Sapientia,
+Ecclesiasticus,Ecclesiasticus,
+Isaias,Isaias,
+Jeremias,Ieremias,j -> i
+Lamentationes,Lamentationes,
+Baruch,Baruch,
+Ezechiel,Ezechiel,
+Daniel,Daniel,
+Osee,Osee,
+Joel,Ioel,j -> i
+Amos,Amos,
+Abdias,Abdias,
+Jonas,Ionas,j -> i
+Michæa,Michaeas,"la Nova Vulgata titula Prophetia Michaeae; la forma de cita es Michaeas"
+Nahum,Nahum,
+Habacuc,Habacuc,
+Sophonias,Sophonias,
+Aggæus,Aggaeus,ae por ligadura
+Zacharias,Zacharias,
+Malachias,Malachias,"la Nova Vulgata tiene 3 capitulos, no 4: Ml 3,19-24 no hay que remapear"
+Machabæorum I,I Maccabaeorum,cc y ae
+Machabæorum II,II Maccabaeorum,cc y ae
+Matthæus,Matthaeus,ae por ligadura
+Marcus,Marcus,
+Lucas,Lucas,
+Joannes,Ioannes,j -> i
+Actus Apostolorum,Actus Apostolorum,
+Ad Romanos,Ad Romanos,
+Ad Corinthios I,I Ad Corinthios,
+Ad Corinthios II,II Ad Corinthios,
+Ad Galatas,Ad Galatas,
+Ad Ephesios,Ad Ephesios,
+Ad Philippenses,Ad Philippenses,
+Ad Colossenses,Ad Colossenses,
+Ad Thessalonicenses I,I Ad Thessalonicenses,
+Ad Thessalonicenses II,II Ad Thessalonicenses,
+Ad Timotheum I,I Ad Timotheum,
+Ad Timotheum II,II Ad Timotheum,
+Ad Titum,Ad Titum,
+Ad Philemonem,Ad Philemonem,
+Ad Hebræos,Ad Hebraeos,ae por ligadura
+Jacobi,Iacobi,j -> i
+Petri I,I Petri,
+Petri II,II Petri,
+Joannis I,I Ioannis,j -> i
+Joannis II,II Ioannis,j -> i
+Joannis III,III Ioannis,j -> i
+Judæ,Iudae,j -> i
+Apocalypsis,Apocalypsis,

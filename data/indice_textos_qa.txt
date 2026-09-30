@@ -1,0 +1,65 @@
+EL INDICE DE TEXTOS
+
+construido de data/index_master.json:
+   libros   : 71
+   pasajes  : 1949
+   lugares  : 2675
+   lecturas sin cita biblica (no entran): 57
+
+COTEJO contra las tablas del propio sitio (testigo independiente):
+   alias cortos anadidos para leer la tabla (13): (qohelet), (siracida), apostoles, cantares, colosenses, efesios, filemon, filipenses, galatas, hebreos, romanos, santiago, tito
+
+   LI    1070INDTEXT.html          294 citas,  282 casan (95.9%)
+   LII   2070INDITEXT.html         316 citas,  305 casan (96.5%)
+   LIV   4410INDITEXT.html        1216 citas, 1186 casan (97.5%)
+   LVII  7000INDITEXT.html         384 citas,  375 casan (97.7%)
+
+   citas de las tablas          : 2210
+   casan con nuestro indice     : 2148 (97.2%)
+   la cita de la tabla no se entiende : 19
+   apuntan a una pagina que no tenemos: 1
+   DISCREPAN                    : 42
+
+las discrepancias, una a una (lo que dice la tabla -> lo que dice la pagina):
+   LI    1050ATOD17.html            1 R 3,5.7-1                -> 1 R 3,5.7-12, Mt 11,25, Mt 13,44-46, Mt 13,44-52, Rm 8,28-30, Sal 118,
+   LI    1054ATOD21.html            Rm 11,3-36                 -> Is 22,19-23, Mt 16,13-20, Mt 16,18, Rm 11,33-36, Sal 137,1-2a.2bc-3.6.
+   LI    1001AAVD01.html            Rm 13,11-14                -> Is 2,1-5, Mt 24,37-44, Rm 13,11-14a, Sal 121,1-2.4-5.6-7.8-9, Sal 84,8
+   LI    1061ATOD28.html            Flp 4,12-14.9-20           -> Ef 1,17-18, Flp 4,12-14.19-20, Is 25,6-10a, Mt 22,1-10, Mt 22,1-14, Sa
+   LI    1065ATOD32.html            Sal 62,2.3-4.5-6.7-8r      -> 1 Ts 4,13-18, Mt 24,42a.44, Mt 25,1-13, Sal 62,2.3-4.5-6.7-8, Sb 6,12-
+   LI    1048ATOD15.html            Sal 64,10abcd.10e-11.12-13.14 -> Is 55,10-11, Mt 13,1-23, Mt 13,1-9, Rm 8,18-23, Sal 64,10.11.12-13.14
+   LI    1031TFDOPE.html            Sal 103,1-2a.24.35c.27-28.29bc-30 -> 1 Co 12,3b-7.12-13, Ex 19,3-8a.16-20b, Ez 37,1-14, Gn 11,1-9, Hch 2,1-
+   LII   2022BVIPAS.html            Gn 1,2                     -> Ba 3,9-15.32—4,4, Ex 14,15—15,1, Ex 15,1-2.3-4.5-6.17-18, Ez 36,16-28,
+   LII   2021TFVISA.html            Is 52,12                   -> Flp 2,8-9, Hb 4,14-16.5,7-9, Is 52,13—53,12, Jn 18,1—19,42, Sal 30,2.6
+   LII   2019BFDORA.html            Jn 12,12-16                -> Flp 2,6-11, Flp 2,8-9, Is 50,4-7, Mc 11,1-10, Mc 14,1—15,47, Sal 21,8-
+   LII   2028BPAD06.html            Jn 17,11b-19               -> 1 Jn 4,11-16, 1 Jn 4,7-10, Hch 10,25-26.34-35.44-48, Jn 14,18, Jn 14,2
+   LII   2021TFVISA.html            Jn 18,1-19.42              -> Flp 2,8-9, Hb 4,14-16.5,7-9, Is 52,13—53,12, Jn 18,1—19,42, Sal 30,2.6
+   LII   2039BTOD06.html            1 Co 10,1                  -> 1 Co 10,31—11,1, Lc 7,16, Lv 13,1-2.44-46, Mc 1,40-45, Sal 31,1-2.5.11
+   LII   2054BTOD21.html            Ef 5,32                    -> Ef 5,21-32, Jn 6,60-69, Jn 6,63c.68c, Jos 24,1-2a.15-17.18b, Sal 33,2-
+   LII   2018BCUD05.html            Sal 50,3-4.12-13.14-15.18-19 -> Ez 37,12-14, Hb 5,7-9, Jn 11,1-45, Jn 11,25a.26, Jn 11,3-7.17.20-27.33
+   LII   2031TFDOPE.html            Sal 103,1-2a.24.35c.27-28.29bc-30 -> 1 Co 12,3b-7.12-13, Ex 19,3-8a.16-20b, Ez 37,1-14, Ga 5,16-25, Gn 11,1
+   LIV   4089ITOV15.html            Ex 11,14                   -> Ex 11,10—12,14, Jn 10,27, Mt 12,1-8, Sal 115,12-13.15-16bc.17-18
+   LIV   4217PTOL03.html            1 S 5,1-7.10               -> 2 S 5,1-7.10, 2 Tm 1,10, Mc 3,22-30, Sal 88,20.21-22.25-26
+   LIV   4218PTOM03.html            1 S 6,12b-15.17-19         -> 2 S 6,12b-15.17-19, Mc 3,31-35, Mt 11,25, Sal 23,7.8.9.10
+   LIV   4224PTOM04.html            2 S 18,9-10.14b.24-25a.3   -> 2 S 18,9-10.14b.24-25a.30—19,3, Mc 5,21-43, Mt 8,17, Sal 85,1-2.3-4.5-
+   LIV   4225PTOX04.html            2 S 24,2.9-1.7             -> 2 S 24,2.9-17, Jn 10,27, Mc 6,1-6, Sal 31,1-2.5.6.7
+   LIV   4269PTOV11.html            1 R 11,1-4.9-18.20         -> 2 R 11,1-4.9-18.20, Mt 5,3, Mt 6,19-23, Sal 131,11.12.13-14.17-18
+   LIV   4104ITOM18.html            Mt 15,1-2.10-14            -> Jn 1,49b, Mt 14,22-36, Nm 12,1-13, Sal 50,3-4.5-6.12-13
+   LIV   4235PTOL06.html            Mc 8,11-1.3                -> Jn 14,6, Mc 8,11-13, Sal 118,67.68.71.72.75.76, St 1,1-11
+   LIV   4180ITOS30.html            Rm 11,1-2a.1-12.25-29      -> Lc 14,1.7-11, Mt 11,29ab, Rm 11,1-2a.11-12.25-29, Sal 93,12-13a.14-15.
+   LIV   4195ITOX33.html            Sal 16,1.56.8ab.15         -> 2 M 7,1.20-31, Jn 15,16, Lc 19,11-28, Sal 16,1.5-6.8ab.15
+   LIV   4016ITOJ03.html            Sal 23,1-2.3-4.5-6         -> Hb 10,19-25, Mc 4,21-25, Sal 118,105, Sal 23,1-2.3-4ab.5-6
+   LIV   4303PTOX17.html            Sal 58,23.4-5a.10-11.17.18 -> Jn 15,15b, Jr 15,10.16-21, Mt 13,44-46, Sal 58,2-3.4-5a.10-11.17.18
+   LIV   4351PTOX25.html            Sal 118,29.72.89.101.104   -> Lc 9,1-6, Mc 1,15, Pr 30,5-9, Sal 118,29.72.89.101.104.163
+   LIV   4113ITOV19.html            Sal 135,1.3.16.18.21.22.24 -> 1 Ts 2,13, Jos 24,1-13, Mt 19,3-12, Sal 135,1-3.16-18.21-22.24
+   LIV   4362PTOM27.html            Sal 138,13.13-14ab.14c-15  -> Ga 1,13-24, Lc 10,38-42, Lc 11,28, Sal 138,1-3.13-14ab.14c-15
+   LIV   4249PTOX08.html            Sal 147,12-13.14-15        -> 1 P 1,18-25, Mc 10,32-45, Mc 10,45, Sal 147,12-13.14-15.19-20
+   LIV   4313PTOL19.html            Sal 148,1-2.11-12ab.12c-14a.14bcd -> 2 Ts 2,14, Ez 1,2-5.24-28c, Mt 17,22-27, Sal 148,1-2.11-12ab.12c-14a
+   LVII  7055TCUV02.html            Gn 37,3-28                 -> Gn 37,3-4.12-13a.17b-28, Jn 3,16, Mt 21,33-43.45-46, Sal 104,16-17.18-
+   LVII  7004TAVJ01.html            Is 26,1-6                  -> Is 55,6, Mt 7,21.24-27
+   LVII  7022TFPD21.html            So 3,14-18a                -> Ct 2,8-14, Lc 1,39-45, Sal 32,2-3.11-12.20-21
+   LVII  7006TAVS01.html            Mt 9,35-10.1.6-8           -> Is 30,19-21.23-26, Is 33,22, Mt 9,35—10,1.6-8, Sal 146,1-2.3-4.5-6
+   LVII  7112TPAL06.html            Jn 15,26-16.4a             -> Hch 16,11-15, Jn 15,26b.27a, Jn 15,26—16,4a, Sal 149,1-2.3-4.5-6a.9b
+   LVII  7124Textos_comunes.html    Sal 24,4-5ab.8-9.10.14     -> Sal 117,1-2.16ab-17.22-23, Sal 129,1-2.3-4.5-6ab.7bc-8, Sal 21,8-9.17-
+   LVII  7043TFVIDC.html            Sal 50,3-4.5-6a.18-19      -> Am 5,14, Is 58,1-9a, Mt 9,14-15
+   LVII  7019TFPD18.html            Sal 71,1-2.12-13.18-19     -> Jr 23,5-8, Mt 1,18-24
+   LVII  7081JUSAMC.html            Sal 88,21-22.25.27         -> Ap 1,5-8, Is 61,1-3a.6a.8b-9, Lc 4,16-21

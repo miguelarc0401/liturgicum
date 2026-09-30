@@ -1,0 +1,177 @@
+Acentuacion liturgica - construccion de los lexicos
+
+Fuentes:
+  corpus liturgico acentuado (Divinum Officium): 80834 renglones
+  cantidades vocalicas (Morpheus, via CLTK): 755557 analisis
+
+Tablas:
+  formas con acento del uso liturgico ...  52007
+  formas que el uso deja desnudas ......     81
+  formas en conflicto (sin decidir) ....    209
+  formas con acento por cantidades .....  31519
+  terminaciones aprendidas .............    371
+  hiatos de 'ae'/'oe' ..................    110
+  i consonanticas ......................   1322
+
+1. Regla de posicion contra uso liturgico
+   La posicion (diptongo o penultima trabada) decide sin lexico. Formas en que
+   el uso dice otra cosa: 38 de 52007. Son erratas del corpus liturgico, y no
+   afectan al resultado porque la posicion se aplica antes que el uso.
+     ambulantur                 uso=4
+     venerunta                  uso=3
+     exspectando                uso=3
+     ieruraslem                 uso=3
+     condescendendum            uso=3
+     enarranda                  uso=3
+     inferrentur                uso=3
+     vexationesque              uso=3
+     angelosque                 uso=4
+     conservandosque            uso=3
+     perfecisse                 uso=3
+     rutillans                  uso=3
+     piestas                    uso=3
+     priscillianistae           uso=3
+     frigescit                  uso=3
+     vocationisque              uso=3
+     conferrenti                uso=3
+     intelligeendi              uso=3
+     septiformem                uso=4
+     favillae                   uso=3
+     plumbatisque               uso=3
+     aeteerna                   uso=3
+     extensisque                uso=3
+     confirmandam               uso=3
+     defecisse                  uso=3
+
+2. Uso liturgico contra cantidades clasicas
+   discrepancias: 119 formas, de ellas 74 en hiato
+   En hiato manda el uso ('María', 'illíus', 'diéi': i larga que la
+   cantidad de Morpheus no marca). Fuera del hiato manda el uso si tiene 4
+   testigos o mas, y si no, la cantidad clasica.
+   Las 30 mas atestiguadas fuera del hiato:
+     paraclitus               uso=3 (33)  cantidad=2  -> 3
+     paraclitum               uso=3 (18)  cantidad=2  -> 3
+     deducis                  uso=2 (17)  cantidad=3  -> 2
+     alicuius                 uso=2 (10)  cantidad=3  -> 2
+     cuidam                   uso=2 (8)  cantidad=3  -> 2
+     azymis                   uso=3 (8)  cantidad=2  -> 3
+     azymos                   uso=3 (7)  cantidad=2  -> 3
+     candacis                 uso=2 (5)  cantidad=3  -> 2
+     iudaica                  uso=3 (5)  cantidad=2  -> 3
+     persidis                 uso=3 (5)  cantidad=2  -> 3
+     venumdari                uso=3 (4)  cantidad=2  -> 3
+     iudaici                  uso=3 (4)  cantidad=2  -> 3
+     cuique                   uso=2 (4)  cantidad=3  -> 2
+     azyma                    uso=3 (4)  cantidad=2  -> 3
+     deduci                   uso=2 (4)  cantidad=3  -> 2
+     ephesi                   uso=2 (3)  cantidad=3  -> 3
+     confirmandam             uso=3 (3)  cantidad=2  -> 2
+     arbori                   uso=2 (3)  cantidad=3  -> 3
+     coniugum                 uso=2 (3)  cantidad=3  -> 3
+     butyrum                  uso=2 (3)  cantidad=3  -> 3
+     iudaicae                 uso=3 (2)  cantidad=2  -> 2
+     gratuita                 uso=3 (2)  cantidad=2  -> 2
+     elata                    uso=2 (2)  cantidad=3  -> 3
+     favillae                 uso=3 (2)  cantidad=2  -> 2
+     iudaicis                 uso=3 (2)  cantidad=2  -> 2
+     elatae                   uso=2 (2)  cantidad=3  -> 3
+     bilibres                 uso=3 (1)  cantidad=2  -> 2
+     speculatoris             uso=3 (1)  cantidad=2  -> 2
+     disputem                 uso=2 (1)  cantidad=3  -> 3
+     inferrentur              uso=3 (1)  cantidad=2  -> 2
+
+   Formas que el uso liturgico deja desnudas (se respeta solo en
+   nombre propio), las 40 mas frecuentes:
+       957  israel
+       305  africa
+       144  abraham
+       139  anglia
+       121  angelo
+       113  postcommunio
+        96  isaac
+        94  umbria
+        66  abrahae
+        65  appia
+        62  aaron
+        56  parochus
+        56  idibus
+        43  genuflectitur
+        40  absalom
+        37  altovadensis
+        34  asia
+        33  actuum
+        32  asiae
+        29  africam
+        27  agios
+        22  prosequitur
+        22  isai
+        20  angliam
+        19  arabum
+        18  prefatio
+        18  plassensis
+        17  ursulae
+        17  austria
+        17  agatha
+        14  ephesum
+        14  angliae
+        14  administrator
+        13  sedlicensis
+        12  zarensis
+        12  anthimi
+        12  agapis
+        11  india
+        11  amalec
+        10  rubrica
+
+3. Validacion por retencion (lexico construido SIN el Salterio)
+   versiculos del Salterio comparados: 2613; sin alinear por diferencias de texto: 658
+   palabras de 3+ silabas comparadas: 8377
+   coinciden con el Salterio impreso: 8341 (99.57 %)
+   no coinciden: 36 (0.43 %)
+   discrepancias mas repetidas (forma / la nuestra / la impresa):
+        3  irasceris            irásceris            irascéris
+        1  Transmigra           Transmígra           Tránsmigra
+        1  disperderem          disperdérem          dispérderem
+        1  nycticorax           nycticórax           nyctícorax
+        1  fumigant             fumígant             fúmigant
+        1  Beelphegor           Beelphégor           Beélphegor
+        1  beneplacita          beneplacíta          beneplácita
+        1  Præveni              Prǽveni              Prævéni
+        1  deliqui              déliqui              delíqui
+        1  introiero            introiéro            introíero
+        1  Ephrata              Ephráta              Éphrata
+        1  habitavero           habitavéro           habitávero
+        1  Præcinite            Præciníte            Præcínite
+        1  repuli               repúli               répuli
+        1  perverteris          pervérteris          pervertéris
+        1  invocaverimus        invocaverímus        invocavérimus
+        1  maria                maría                mária
+        1  proteges             protéges             Próteges
+        1  Educes               Éduces               Edúces
+        1  compungimini         compungimíni         compungímini
+        1  expandimus           expandímus           expándimus
+        1  complectimini        complectimíni        complectímini
+        1  irruitis             irruítis             irrúitis
+        1  interficitis         interficítis         interfícitis
+        1  absconderent         abscondérent         abscónderent
+        1  speciei              specíei              speciéi
+        1  dividere             dividére             divídere
+        1  moreris              móreris              moréris
+        1  irritat              írritat              irrítat
+        1  cœnomyiam            cœnomýiam            cœnomyíam
+        1  Ephraim              Ephraim              Éphraim
+        1  persequeris          perséqueris          persequéris
+        1  concidam             cóncidam             concídam
+        1  erudieris            erudiéris            erudíeris
+
+4. El Salterio con el lexico completo
+   versiculos del Salterio comparados: 2613; sin alinear por diferencias de texto: 658
+   palabras de 3+ silabas comparadas: 8377
+   coinciden con el Salterio impreso: 8370 (99.92 %)
+   no coinciden: 7 (0.08 %)
+   discrepancias mas repetidas (forma / la nuestra / la impresa):
+        3  irasceris            irásceris            irascéris
+        1  maria                maría                mária
+        1  speciei              specíei              speciéi
+        1  moreris              móreris              moréris
+        1  persequeris          perséqueris          persequéris

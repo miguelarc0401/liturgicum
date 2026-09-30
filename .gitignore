@@ -1,0 +1,38 @@
+# Lo que no va al repositorio. Dos criterios, y ninguno es el tamaño por el
+# tamaño: se deja fuera (1) lo que se vuelve a generar con una orden y (2) lo
+# que cambia entero cada vez que se regenera, porque git guarda cada version
+# completa y el repositorio se hincharia sin que nadie lo mire.
+
+# --- lo que se descarga ---------------------------------------------------
+cache/
+
+# --- lo que se compone (los documentos: 500 MB de DOCX y PDF) -------------
+out/
+
+# --- los JSON grandes derivados de vulgate.pdf y del rastreo --------------
+# Se rehacen con:  python src/4_build_vulgate.py, 4c_build_nova.py,
+#                  2_parse_readings.py, 3_normalize_refs.py, 5_resolve.py
+data/vulgata.json
+data/vulgata_qa.txt
+data/nova_vulgata.json
+data/nova_vulgata_stichos.json
+data/readings.json
+data/readings_latin.json
+data/readings_latin_nova.json
+data/anexos_readings_latin.json
+data/anexos_readings_latin_nova.json
+data/index_master.json
+data/index_master.csv
+data/calendario_completo.json
+data/indice_textos.json
+
+# Lo que SI entra de data/: las tablas editables a mano (los overrides, el
+# santoral, las reglas de versificacion, los acentos) y los informes de
+# control de calidad, que son el historial del proyecto.
+
+# --- restos ---------------------------------------------------------------
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+~$*

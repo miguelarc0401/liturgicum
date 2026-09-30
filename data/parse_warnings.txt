@@ -1,0 +1,36 @@
+3063CTOD30.html: cita sin seccion, deducida por la formula como lectura_1: Lectura del libro de Sirácida 35, 12-14. 16-18
+5003TA0109.html: sin evangelio (San Eulogio de Córdoba, presbítero y mártir)
+5019TA0203_1.html: sin evangelio (San Blas, obispo y mártir)
+5026TA0214.html: cita sin seccion, deducida por la formula como lectura_1: Lectura del libro de los Hechos de los apóstoles 13, 46-49
+5115TA0802_2.html: cita sin seccion, deducida por la formula como lectura_1: Lectura de la primera carta del apóstol san Pablo a los Cori
+5115TA0802_2.html: cita sin seccion, deducida por la formula como evangelio: Lectura del santo evangelio según san Mateo 19, 27-29
+5133TA0822.html: sin evangelio (Santa María Virgen, Reina)
+5145TA0913.html: cita sin seccion, deducida por la formula como lectura_1: Lectura de la carta del apóstol san Pablo a los Efesios 4, 1
+5170TA1014.html: sin evangelio (San Calixto I, papa y mártir)
+5185TA1104.html: sin evangelio (San Carlos Borromeo, obispo)
+5192TA1116.html: sin evangelio (Santa Margarita de Escocia)
+5205TA1207.html: sin evangelio (San Ambrosio, obispo y doctor de la Iglesia)
+7081JUSAMC.html: cita sin seccion, deducida por la formula como lectura_1: Lectura del libro de Isaías 61, 1-3a. 6a. 8b-9
+7124Textos_comunes.html: sin evangelio (TEXTOS COMUNES PARA EL CANTO DEL SALMO RESPONSORIA)
+8008BP.html: cita sin seccion, deducida por la formula como lectura_1: Lectura del libro del Génesis 1, 1—2, 2
+8008BP.html: cita sin seccion, deducida por la formula como lectura_1: Génesis 1, 1. 26-31a
+8009IC.html: sin evangelio (Lecturas del Antiguo Testamento para la Vigilia pa)
+8011BP.html: sin evangelio (POR LA UNIDAD DE LOS CRISTIANOS)
+8011BP.html: sin evangelio (EN LA INICIACIÓN CRISTIANA CELEBRADA FUERA DE LA V)
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: Lectura de la profecía de Zacarías 12, 10-11a. 12a
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: Lectura de las cartas del apóstol san Pablo a los Colosenses
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: Col 1, 24-25. 28-29
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: 1 Co 1, 17-18
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: Lectura de la primera carta del apóstol san Pedro 2, 20b-24a
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: 4, 13-16
+9026SSA.html: cita sin seccion, deducida por la formula como evangelio: Lectura del santo evangelio según san Juan 19, 25-27
+9026SSA.html: cita sin seccion, deducida por la formula como evangelio: Lectura del santo evangelio según san Marcos 15, 40-47
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: Lectura del libro de los Salmos y del libro de Isaías
+9026SSA.html: cita sin seccion, deducida por la formula como lectura_1: Isaías 38, 10a. 11-14. 17
+9036TO1.html: sin evangelio (Tiempo Ordinario — PRIMERAS LECTURAS DEL ANTIGUO T)
+9037TO2.html: sin evangelio (Tiempo Ordinario — PRIMERAS LECTURAS DEL NUEVO TES)
+9056INAV.html: celebracion sin lecturas (TIEMPO DE NAVIDAD — Introducción)
+9057ICU.html: celebracion sin lecturas (TIEMPO DE CUARESMA — Introducción)
+9058ISS.html: celebracion sin lecturas (SEMANA SANTA — Introducción)
+9059ITP.html: celebracion sin lecturas (TIEMPO PASCUAL — Introducción)
+9551IAV.html: celebracion sin lecturas (TIEMPO DE ADVIENTO — Introducción)

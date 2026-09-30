@@ -1,0 +1,21 @@
+EL CALENDARIO CIVIL: QUE DIA LITURGICO ES CADA FECHA
+
+anos liturgicos          : 2024-2060 (37)
+configuracion base       : ascension=domingo, corpus=domingo, epifania=domingo
+dias del leccionario     : 394 reconocidos, 1 sin reconocer
+   sin reconocer: FORMULARIOS SUELTOS /  / TEXTOS COMUNES PARA EL CANTO DEL SALMO RESPONSORIAL
+computo (Pascua y Adviento): 14 comprobaciones, 0 fallos
+fechas del calendario base : 13415
+parche epifania_6enero     : 188 fechas cambian
+parche ascension_jueves    : 74 fechas cambian
+parche corpus_jueves       : 74 fechas cambian
+claves sin dia en el leccionario: 0
+dias del leccionario sin ninguna fecha: 0
+
+fechas sin formulario en 2024-2026: 8 (son del propio de los santos, fuera del alcance de los leccionarios I-IV y VII)
+   2023-12-26, 2023-12-27, 2023-12-28, 2024-12-26, 2024-12-27, 2024-12-28, 2025-12-26, 2025-12-27
+
+independencia de las tres opciones (8 combinaciones x 6 anos): 0 fallos
+fechas conocidas: 10 comprobadas, 0 fallos
+
+escrito data/calendario_civil.json  (391 KB)

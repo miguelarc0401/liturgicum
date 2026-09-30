@@ -1,0 +1,8782 @@
+{
+ "I": {
+  "titulo": "LECCIONARIO I (A)",
+  "subtitulo": "LECCIONARIO DOMINICAL Y FESTIVO",
+  "nodos": [
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Adviento",
+    "archivo": "1001AAVD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Adviento",
+    "archivo": "1002AAVD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Adviento",
+    "archivo": "1003AAVD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Adviento",
+    "archivo": "1004AAVD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE NAVIDAD"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Natividad del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de la vigilia",
+    "archivo": "1005TNSMDV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de medianoche",
+    "archivo": "1006TNSMDM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de la aurora",
+    "archivo": "1007TNSMDA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día",
+    "archivo": "1008TNSMDD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Sagrada Familia: Jesús, María y José",
+    "archivo": "1009AFSAFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de Santa María, Madre de Dios",
+    "archivo": "1010SMMDD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Segundo domingo después de Navidad",
+    "archivo": "1011NAD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Epifanía del Señor",
+    "archivo": "1012TEPIFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "El Bautismo del Señor",
+    "archivo": "1013AFBASE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Cuaresma",
+    "archivo": "1014ACUD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Cuaresma",
+    "archivo": "1015ACUD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Cuaresma",
+    "archivo": "1016ACUD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Cuaresma",
+    "archivo": "1017ACUD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Cuaresma",
+    "archivo": "1018ACUD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Ramos en la Pasión del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Procesión de las palmas",
+    "archivo": "1019AFDORA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa",
+    "archivo": "1019AFDORA.html",
+    "ancla_web": "SMisa"
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TRIDUO PASCUAL Y DOMINGOS DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Jueves santo de la Cena del Señor",
+    "archivo": "1020TFJUSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Viernes santo. Celebración de la Pasión del Señor",
+    "archivo": "1021TFVISA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Pascua de la Resurrección del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Vigilia pascual en la noche santa",
+    "archivo": "1022AVIPAS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día de Pascua",
+    "archivo": "1023APAD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Pascua",
+    "archivo": "1024APAD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Pascua",
+    "archivo": "1025APAD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Pascua",
+    "archivo": "1026APAD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Pascua",
+    "archivo": "1027APAD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI de Pascua",
+    "archivo": "1028APAD06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Ascensión del Señor",
+    "archivo": "1029AFASCE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII de Pascua",
+    "archivo": "1030APAD07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Pentecostés"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa vespertina de la vigilia",
+    "archivo": "1031TFDOPE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día",
+    "archivo": "1031TFDOPE.html",
+    "ancla_web": "Mdia"
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "SOLEMNIDADES DEL SEÑOR DEL TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de la Santísima Trinidad",
+    "archivo": "1032AFSATR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad del Santísimo Cuerpo y Sangre de Cristo",
+    "archivo": "1033AFCORP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad del Sagrado Corazón de Jesús",
+    "archivo": "1034AFSCDJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II del Tiempo Ordinario",
+    "archivo": "1035ATOD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III del Tiempo Ordinario",
+    "archivo": "1036ATOD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV del Tiempo Ordinario",
+    "archivo": "1037ATOD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V del Tiempo Ordinario",
+    "archivo": "1038ATOD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI del Tiempo Ordinario",
+    "archivo": "1039ATOD06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII del Tiempo Ordinario",
+    "archivo": "1040ATOD07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VIII del Tiempo Ordinario",
+    "archivo": "1041ATOD08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IX del Tiempo Ordinario",
+    "archivo": "1042ATOD09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo X del Tiempo Ordinario",
+    "archivo": "1043ATOD10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XI del Tiempo Ordinario",
+    "archivo": "1044ATOD11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XII del Tiempo Ordinario",
+    "archivo": "1045ATOD12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIII del Tiempo Ordinario",
+    "archivo": "1046ATOD13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIV del Tiempo Ordinario",
+    "archivo": "1047ATOD14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XV del Tiempo Ordinario",
+    "archivo": "1048ATOD15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVI del Tiempo Ordinario",
+    "archivo": "1049ATOD16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVII del Tiempo Ordinario",
+    "archivo": "1050ATOD17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVIII del Tiempo Ordinario",
+    "archivo": "1051ATOD18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIX del Tiempo Ordinario",
+    "archivo": "1052ATOD19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XX del Tiempo Ordinario",
+    "archivo": "1053ATOD20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXI del Tiempo Ordinario",
+    "archivo": "1054ATOD21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXII del Tiempo Ordinario",
+    "archivo": "1055ATOD22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIII del Tiempo Ordinario",
+    "archivo": "1056ATOD23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIV del Tiempo Ordinario",
+    "archivo": "1057ATOD24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXV del Tiempo Ordinario",
+    "archivo": "1058ATOD25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVI del Tiempo Ordinario",
+    "archivo": "1059ATOD26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVII del Tiempo Ordinario",
+    "archivo": "1060ATOD27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVIII del Tiempo Ordinario",
+    "archivo": "1061ATOD28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIX del Tiempo Ordinario",
+    "archivo": "1062ATOD29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXX del Tiempo Ordinario",
+    "archivo": "1063ATOD30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXI del Tiempo Ordinario",
+    "archivo": "1064ATOD31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXII del Tiempo Ordinario",
+    "archivo": "1065ATOD32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXIII del Tiempo Ordinario",
+    "archivo": "1066ATOD33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXIV del Tiempo Ordinario: Jesucristo, Rey del universo",
+    "archivo": "1067ATOD34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Aclamaciones substitutivas del Aleluya para los d omingos del Tiempo Ordinario",
+    "archivo": "1068aleluyaTO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Aclamaciones substitutivas del Aleluya para el tiempo de Cuaresma",
+    "archivo": "1017AclamCU.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Textos comunes para el canto del salmo responsorial",
+    "archivo": "1069TEXTCOM.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "II": {
+  "titulo": "LECCIONARIO II (B)",
+  "subtitulo": "LECCIONARIO DOMINICAL Y FESTIVO",
+  "nodos": [
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Adviento",
+    "archivo": "2001BAVD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Adviento",
+    "archivo": "2002BAVD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Adviento",
+    "archivo": "2003BAVD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Adviento",
+    "archivo": "2004BAVD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE NAVIDAD"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Natividad del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de la vigilia",
+    "archivo": "2005TNSMDV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de medianoche",
+    "archivo": "2006TNSMDM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de la aurora",
+    "archivo": "2007TNSMDA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día",
+    "archivo": "2008TNSMDD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Sagrada Familia: Jesús, María y José",
+    "archivo": "2009BFSAFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de Santa María, Madre de Dios",
+    "archivo": "2010SMMDD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Segundo domingo después de Navidad",
+    "archivo": "2011TNAD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Epifanía del Señor",
+    "archivo": "2012TEPIFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "El Bautismo del Señor",
+    "archivo": "2013BFBASE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Cuaresma",
+    "archivo": "2014BCUD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Cuaresma",
+    "archivo": "2015BCUD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Cuaresma",
+    "archivo": "2016BCUD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Cuaresma",
+    "archivo": "2017BCUD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Cuaresma",
+    "archivo": "2018BCUD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Ramos en la Pasión del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Procesión de las palmas",
+    "archivo": "2019BFDORA.html",
+    "ancla_web": "LE1"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa",
+    "archivo": "2019BFDORA.html",
+    "ancla_web": "Smisa"
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TRIDUO PASCUAL Y DOMINGOS DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Jueves santo de la Cena del Señor",
+    "archivo": "2020TFJUSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Viernes santo. Celebración de la Pasión del Señor",
+    "archivo": "2021TFVISA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Pascua de la Resurrección del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Vigilia pascual en la noche santa",
+    "archivo": "2022BVIPAS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día de Pascua",
+    "archivo": "2023BPAD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Pascua",
+    "archivo": "2024BPAD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Pascua",
+    "archivo": "2025BPAD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Pascua",
+    "archivo": "2026BPAD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Pascua",
+    "archivo": "2027BPAD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI de Pascua",
+    "archivo": "2028BPAD06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Ascensión del Señor",
+    "archivo": "2029BFASCE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII de Pascua",
+    "archivo": "2030BPAD07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Pentecostés"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa vespertina de la vigilia",
+    "archivo": "2031TFDOPE.html",
+    "ancla_web": "LE1"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día",
+    "archivo": "2031TFDOPE.html",
+    "ancla_web": "Mdia"
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "SOLEMNIDADES DEL SEÑOR DEL TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de la Santísima Trinidad",
+    "archivo": "2032BFSATR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad del Santísimo Cuerpo y Sangre de Cristo",
+    "archivo": "2033BFCORP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad del Sagrado Corazón de Jesús",
+    "archivo": "2034BFSCDJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II del Tiempo Ordinario",
+    "archivo": "2035BTOD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III del Tiempo Ordinario",
+    "archivo": "2036BTOD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV del Tiempo Ordinario",
+    "archivo": "2037BTOD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V del Tiempo Ordinario",
+    "archivo": "2038BTOD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI del Tiempo Ordinario",
+    "archivo": "2039BTOD06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII del Tiempo Ordinario",
+    "archivo": "2040BTOD07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VIII del Tiempo Ordinario",
+    "archivo": "2041BTOD08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IX del Tiempo Ordinario",
+    "archivo": "2042BTOD09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo X del Tiempo Ordinario",
+    "archivo": "2043BTOD10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XI del Tiempo Ordinario",
+    "archivo": "2044BTOD11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XII del Tiempo Ordinario",
+    "archivo": "2045BTOD12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIII del Tiempo Ordinario",
+    "archivo": "2046BTOD13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIV del Tiempo Ordinario",
+    "archivo": "2047BTOD14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XV del Tiempo Ordinario",
+    "archivo": "2048BTOD15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVI del Tiempo Ordinario",
+    "archivo": "2049BTOD16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVII del Tiempo Ordinario",
+    "archivo": "2050BTOD17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVIII del Tiempo Ordinario",
+    "archivo": "2051BTOD18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIX del Tiempo Ordinario",
+    "archivo": "2052BTOD19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XX del Tiempo Ordinario",
+    "archivo": "2053BTOD20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXI del Tiempo Ordinario",
+    "archivo": "2054BTOD21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXII del Tiempo Ordinario",
+    "archivo": "2055BTOD22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIII del Tiempo Ordinario",
+    "archivo": "2056BTOD23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIV del Tiempo Ordinario",
+    "archivo": "2057BTOD24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXV del Tiempo Ordinario",
+    "archivo": "2058BTOD25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVI del Tiempo Ordinario",
+    "archivo": "2059BTOD26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVII del Tiempo Ordinario",
+    "archivo": "2060BTOD27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVIII del Tiempo Ordinario",
+    "archivo": "2061BTOD28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIX del Tiempo Ordinario",
+    "archivo": "2062BTOD29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXX del Tiempo Ordinario",
+    "archivo": "2063BTOD30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXI del Tiempo Ordinario",
+    "archivo": "2064BTOD31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXII del Tiempo Ordinario",
+    "archivo": "2065BTOD32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXIII del Tiempo Ordinario",
+    "archivo": "2066BTOD33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXIV del Tiempo Ordinario: Jesucristo, Rey del universo",
+    "archivo": "2067BTOD34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Aclamaciones substitutivas del Aleluya para los domingos del Tiempo Ordinario",
+    "archivo": "2068aleluyaTO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Aclamaciones substitutivas del Aleluya para el tiempo de Cuaresma",
+    "archivo": "2019AclamCU.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Textos comunes para el canto del salmo responsorial",
+    "archivo": "2069TEXTCOM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Indice de textos",
+    "archivo": "2070INDITEXT.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "III": {
+  "titulo": "LECCIONARIO III (C)",
+  "subtitulo": "LECCIONARIO DOMINICAL Y FESTIVO",
+  "nodos": [
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Adviento",
+    "archivo": "3001CAVD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Adviento",
+    "archivo": "3002CAVD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Adviento",
+    "archivo": "3003CAVD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Adviento",
+    "archivo": "3004CAVD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE NAVIDAD"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Natividad del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de la vigilia",
+    "archivo": "3005TNSMDV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de medianoche",
+    "archivo": "3006TNSMDM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de la aurora",
+    "archivo": "3007TNSMDA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día",
+    "archivo": "3008TNSMDD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Sagrada Familia: Jesús, María y José",
+    "archivo": "3009CFSAFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de Santa María, Madre de Dios",
+    "archivo": "3010SMMDD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Segundo domingo después de Navidad",
+    "archivo": "3011TNAD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Epifanía del Señor",
+    "archivo": "3012TEPIFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "El Bautismo del Señor",
+    "archivo": "3013CFBASE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Cuaresma",
+    "archivo": "3014CCUD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Cuaresma",
+    "archivo": "3015CCUD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Cuaresma",
+    "archivo": "3016CCUD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Cuaresma",
+    "archivo": "3017CCUD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Cuaresma",
+    "archivo": "3018CCUD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Ramos en la Pasión del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Procesión de las palmas",
+    "archivo": "3019CFDORA.html",
+    "ancla_web": "Ppalma"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa",
+    "archivo": "3019CFDORA.html",
+    "ancla_web": "Misa"
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TRIDUO PASCUAL Y DOMINGOS DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Jueves santo de la Cena del Señor",
+    "archivo": "3020TFJUSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Viernes santo. Celebración de la Pasión del Señor",
+    "archivo": "3021TFVISA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Pascua de la Resurrección del Señor"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Vigilia pascual en la noche santa",
+    "archivo": "3022AVIPAS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día de Pascua",
+    "archivo": "3023CPAD01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Pascua",
+    "archivo": "3024CPAD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Pascua",
+    "archivo": "3025CPAD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Pascua",
+    "archivo": "3026CPAD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Pascua",
+    "archivo": "3027CPAD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI de Pascua",
+    "archivo": "3028CPAD06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Ascensión del Señor",
+    "archivo": "3029CFASCE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII de Pascua",
+    "archivo": "3030CPAD07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Domingo de Pentecostés"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa vespertina de la vigilia",
+    "archivo": "3031TFDOPE.html",
+    "ancla_web": "Mvig"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa del día",
+    "archivo": "3031TFDOPE.html",
+    "ancla_web": "Mdi"
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "SOLEMNIDADES DEL SEÑOR DEL TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de la Santísima Trinidad",
+    "archivo": "3032CFSATR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad del Santísimo Cuerpo y Sangre de Cristo",
+    "archivo": "3033CFCORP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad del Sagrado Corazón de Jesús",
+    "archivo": "3034CFSCDJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II del Tiempo Ordinario",
+    "archivo": "3035CTOD02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III del Tiempo Ordinario",
+    "archivo": "3036CTOD03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV del Tiempo Ordinario",
+    "archivo": "3037CTOD04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V del Tiempo Ordinario",
+    "archivo": "3038CTOD05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI del Tiempo Ordinario",
+    "archivo": "3039CTOD06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII del Tiempo Ordinario",
+    "archivo": "3040CTOD07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VIII del Tiempo Ordinario",
+    "archivo": "3041CTOD08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IX del Tiempo Ordinario",
+    "archivo": "3042CTOD09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo X del Tiempo Ordinario",
+    "archivo": "3043CTOD10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XI del Tiempo Ordinario",
+    "archivo": "3044CTOD11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XII del Tiempo Ordinario",
+    "archivo": "3045CTOD12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIII del Tiempo Ordinario",
+    "archivo": "3046CTOD13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIV del Tiempo Ordinario",
+    "archivo": "3047CTOD14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XV del Tiempo Ordinario",
+    "archivo": "3048CTOD15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVI del Tiempo Ordinario",
+    "archivo": "3049CTOD16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVII del Tiempo Ordinario",
+    "archivo": "3050CTOD17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XVIII del Tiempo Ordinario",
+    "archivo": "3051CTOD18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XIX del Tiempo Ordinario",
+    "archivo": "3052CTOD19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XX del Tiempo Ordinario",
+    "archivo": "3053CTOD20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXI del Tiempo Ordinario",
+    "archivo": "3054CTOD21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXII del Tiempo Ordinario",
+    "archivo": "3055CTOD22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIII del Tiempo Ordinario",
+    "archivo": "3056CTOD23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIV del Tiempo Ordinario",
+    "archivo": "3057CTOD24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXV del Tiempo Ordinario",
+    "archivo": "3058CTOD25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVI del Tiempo Ordinario",
+    "archivo": "3059CTOD26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVII del Tiempo Ordinario",
+    "archivo": "3060CTOD27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXVIII del Tiempo Ordinario",
+    "archivo": "3061CTOD28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXIX del Tiempo Ordinario",
+    "archivo": "3062CTOD29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXX del Tiempo Ordinario",
+    "archivo": "3063CTOD30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXI del Tiempo Ordinario",
+    "archivo": "3064CTOD31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXII del Tiempo Ordinario",
+    "archivo": "3065CTOD32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXIII del Tiempo Ordinario",
+    "archivo": "3066CTOD33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo XXXIV del Tiempo Ordinario: Jesucristo, Rey del universo",
+    "archivo": "3067CTOD34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Aclamaciones substitutivas del Aleluya para los domingos del Tiempo Ordinario",
+    "archivo": "3068aleluyaTO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Aclamaciones substitutivas del Aleluya para el tiempo de Cuaresma",
+    "archivo": "30171AclamCU.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Textos comunes para el canto del salmo responsorial",
+    "archivo": "3069TEXTCOM.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "IV": {
+  "titulo": "LECCIONARIO IV",
+  "subtitulo": "TIEMPO ORDINARIO LECTURA CONTINUADA PARA LOS DÍAS FERIALES (CICLO COMPLETO)",
+  "nodos": [
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Textos comunes",
+    "archivo": "4409TEXTCOM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Índice de textos",
+    "archivo": "4410INDITEXT.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 1,
+    "texto": "AÑO I (años impares)"
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana I"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4001ITOL01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4002ITOM01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4003ITOX01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4004ITOJ01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4005ITOV01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4006ITOS01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana II"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4007ITOL02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4008ITOM02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4009ITOX02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4010ITOJ02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4011ITOV02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4012ITOS02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana III"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4013ITOL03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4014ITOM03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4015ITOX03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4016ITOJ03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4017ITOV03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4018ITOS03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana IV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4019ITOL04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4020ITOM04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4021ITOX04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4022ITOJ04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4023ITOV04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4024ITOS04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana V"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4025ITOL05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4026ITOM05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4027ITOX05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4028ITOJ05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4029ITOV05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4030ITOS05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana VI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4031ITOL06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4032ITOM06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4033ITOX06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4034ITOJ06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4035ITOV06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4036ITOS06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana VII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4037ITOL07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4038ITOM07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4039ITOX07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4040ITOJ07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4041ITOV07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4042ITOS07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana VIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4043ITOL08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4044ITOM08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4045ITOX08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4046ITOJ08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4047TOV08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4048ITOS08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana IX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4049ITOL09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4050ITOM09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4051ITOX09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4052ITOJ09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4053ITOV09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4054ITOS09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana X"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4055ITOL10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4056ITOM10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4057ITOX10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4058ITOJ10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4059ITOV10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4060ITOS10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4061ITOL11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4062ITOM11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4063ITOX11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4064TOJ11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4065ITOV11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4066ITOS11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4067ITOL12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4068ITOM12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4069ITOX12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4070ITOJ12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4071ITOV12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4072ITOS12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4073ITOL13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4074ITOM13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4075ITOX13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4076ITOJ13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4077ITOV13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4078ITOS13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XIV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4079ITOL14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4080ITOM14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4081ITOX14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4082ITOJ14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4083ITOV14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4084ITOS14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4085ITOL15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4086ITOM15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4087ITOX15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4088ITOJ15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4089ITOV15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4090ITOS15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XVI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4091ITOL16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4092ITOM16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4093ITOX16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4094ITOJ16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4095ITOV16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4096ITOS16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XVII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4097ITOL17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4098ITOM17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4099ITOX17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4100ITOJ17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4101ITOV17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4102ITOS17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XVIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4103ITOL18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4104ITOM18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4105ITOX18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4106ITOJ18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4107ITOV18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4108ITOS18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XIX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4109ITOL19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4110ITOM19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4111ITOX19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4112ITOJ19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4113ITOV19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4114ITOS19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4115ITOL20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4116ITOM20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4117ITOX20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4118ITOJ20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4119ITOV20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4120ITOS20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4121ITOL21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4122ITOM21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4123ITOX21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4124ITOJ21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4125ITOV21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4126ITOS21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4127ITOL22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4128ITOM22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4129ITOX22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4130ITOJ22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4131ITOV22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4132ITOS22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4133ITOL23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4134ITOM23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4135ITOX23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4136ITOJ23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4137ITOV23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4138ITOS23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXIV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4139ITOL24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4140ITOM24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4141ITOX24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4142ITOJ24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4143ITOV24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4144ITOS24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4145ITOL25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4146ITOM25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4147ITOX25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4148ITOJ25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4149ITOV25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4150ITOS25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXVI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4151ITOL26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4152ITOM26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4153ITOX26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4154ITOJ26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4155ITOV26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4156ITOS26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXVII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4157ITOL27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4158ITOM27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4159ITOX27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4160ITOJ27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4161ITOV27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4162ITOS27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXVIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4163ITOL28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4164ITOM28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4165ITOX28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4166ITOJ28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4167ITOV28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4168ITOS28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXIX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4169ITOL29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4170ITOM29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4171ITOX29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4172ITOJ29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4173ITOV29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4174ITOS29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4175ITOL30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4176ITOM30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4177ITOX30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4178ITOJ30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4179ITOV30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4180ITOS30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4181ITOL31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4182ITOM31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4183ITOX31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4184ITOJ31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4185ITOV31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4186ITOS31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4187ITOL32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4188ITOM32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4189ITOX32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4190ITOJ32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4191ITOV32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4192ITOS32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4193ITOL33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4194ITOM33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4195ITOX33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4196ITOJ33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4197ITOV33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4198ITOS33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXIV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4199ITOL34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4200ITOM34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4201ITOX34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4202ITOJ34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4203ITOV34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4204ITOS34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 1,
+    "texto": "AÑO II (años pares)"
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana I"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4205PTOL01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4206PTOM01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4207PTOX01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4208PTOJ01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4209PTOV01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4210PTOS01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana II"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4211PTOL02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4212PTOM02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4213PTOX02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4214PTOJ02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4215PTOV02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4216PTOS02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana III"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4217PTOL03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4218PTOM03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4219PTOX03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4220PTOJ03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4221PTOV03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4222PTOS03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana IV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4223PTOL04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4224PTOM04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4225PTOX04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4226PTOJ04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4227PTOV04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4228PTOS04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana V"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4229PTOL05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4230PTOM05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4231PTOX05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4232PTOJ05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4233PTOV05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4234PTOS05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana VI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4235PTOL06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4236PTOM06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4237PTOX06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4238PTOJ06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4239PTOV06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4240PTOS06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana VII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4241PTOL07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4242PTOM07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4243PTOX07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4244PTOJ07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4245PTOV07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4246PTOS07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana VIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4247PTOL08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4248PTOM08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4249PTOX08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4250PTOJ08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4251PTOV08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4252PTOS08.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana IX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4253PTOL09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4254PTOM09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4255PTOX09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4256PTOJ09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4257PTOV09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4258PTOS09.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana X"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4259PTOL10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4260PTOM10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4261PTOX10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4262PTOJ10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4263PTOV10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4264PTOS10.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4265PTOL11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4266PTOM11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4267PTOX11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4268PTOJ11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4269PTOV11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4270PTOS11.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4271PTOL12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4272PTOM12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4273PTOX12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4274PTOJ12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4275PTOV12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4276PTOS12.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4277PTOL13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4278PTOM13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4279PTOX13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4280PTOJ13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4281PTOV13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4282PTOS13.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XIV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4283PTOL14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4284PTOM14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4285PTOX14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4286PTOJ14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4287PTOV14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4288PTOS14.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4289PTOL15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4290PTOM15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4291PTOX15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4292PTOJ15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4293PTOV15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4294PTOS15.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XVI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4295PTOL16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4296PTOM16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4297PTOX16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4298PTOJ16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4299PTOV16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4300PTOS16.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XVII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4301PTOL17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4302PTOM17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4303PTOX17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4304PTOJ17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4305PTOV17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4306PTOS17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XVIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4307PTOL18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4308PTOM18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4309PTOX18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4310PTOJ18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4311PTOV18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4312PTOS18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XIX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4313PTOL19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4314PTOM19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4315PTOX19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4316PTOJ19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4317PTOV19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4318PTOS19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4319PTOL20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4320PTOM20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4321PTOX20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4322PTOJ20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4323PTOV20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4324PTOS20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4325PTOL21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4326PTOM21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4327PTOX21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4328PTOJ21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4329PTOV21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4330PTOS21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4331PTOL22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4332PTOM22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4333PTOX22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4334PTOJ22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4335PTOV22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4336PTOS22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4337PTOL23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4338PTOM23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4339PTOX23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4340PTOJ23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4341PTOV23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4342PTOS23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXIV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4343PTOL24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4344PTOM24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4345PTOX24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4346PTOJ24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4347PTOV24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4348PTOS24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4349PTOL25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4350PTOM25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4351PTOX25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4352PTOJ25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4353PTOV25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4354PTOS25.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXVI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4355PTOL26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4356PTOM26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4357PTOX26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4358PTOJ26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4359PTOV26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4360PTOS26.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXVII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4361PTOL27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4362PTOM27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4363PTOX27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4364PTOJ27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4365PTOV27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4366PTOS27.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXVIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4367PTOL28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4368PTOM28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4369PTOX28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4370PTOJ28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4371PTOV28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4372PTOS28.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXIX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4373PTOL29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4374PTOM29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4375PTOX29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4376PTOJ29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4377PTOV29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4378PTOS29.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXX"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4379PTOL30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4380PTOM30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4381PTOX30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4382PTOJ30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4383PTOV30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4384PTOS30.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXI"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4385PTOL31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4386PTOM31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4387PTOX31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4388PTOJ31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4389PTOV31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4390PTOS31.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4391PTOL32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4392PTOM32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4393PTOX32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4394PTOJ32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4395PTOV32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4396PTOS32.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXIII"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4397PTOL33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4398PTOM33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4399PTOX33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4400PTOJ33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4401PTOV33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4402PTOS33.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 2,
+    "texto": "Semana XXXIV"
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Lunes",
+    "archivo": "4403PTOL34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Martes",
+    "archivo": "4404PTOM34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Miércoles",
+    "archivo": "4405PTOX34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Jueves",
+    "archivo": "4406PTOJ34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Viernes",
+    "archivo": "4407PTOV34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 3,
+    "texto": "Sábado",
+    "archivo": "4408PTOS34.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Textos comunes",
+    "archivo": "4409TEXTCOM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Índice de textos",
+    "archivo": "4410INDITEXT.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "V": {
+  "titulo": "LECCIONARIO V",
+  "subtitulo": "PROPIO Y COMÚN DE LOS SANTOS",
+  "nodos": [
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "ENERO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: San Basilio Magno y san Gregorio Nacianceno",
+    "archivo": "5001TA0102.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: San Raimundo de Peñafort",
+    "archivo": "5002TA0107.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: San Eulogio de Córdoba",
+    "archivo": "5003TA0109.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Hilario",
+    "archivo": "5004TA0113.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: San Antonio",
+    "archivo": "5005TA0117.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20: San Fructuoso y sus diáconos, santos Augurio y Eulogio",
+    "archivo": "5006TA0120_1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20: San Fabián",
+    "archivo": "5007TA0120_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20: San Sebastián",
+    "archivo": "5008TA0120_3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: Santa Inés",
+    "archivo": "5009TA0121.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: San Vicente",
+    "archivo": "5010TA0122.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Ildefonso",
+    "archivo": "5011TA0123.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24: San Francisco de Sales",
+    "archivo": "5012TA0124.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: La Conversión del apóstol san Pablo",
+    "archivo": "5013TA0125.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Timoteo y san Tito",
+    "archivo": "5014TA0126.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27: Santa Ángela de Mérici",
+    "archivo": "5015TA0127.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: Santo Tomás de Aquino",
+    "archivo": "5016TA0128.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "31: San Juan Bosco",
+    "archivo": "5017TA0131.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "FEBRERO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: La Presentación del Señor",
+    "archivo": "5018TA0202.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Blas",
+    "archivo": "5019TA0203_1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Óscar",
+    "archivo": "5020TA0203_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5: Santa Águeda",
+    "archivo": "5021TA0205.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6: San Pablo Miki y compañeros",
+    "archivo": "5022TA0206.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8: San Jerónimo Emiliani",
+    "archivo": "5023TA0208.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10: Santa Escolástica",
+    "archivo": "5024TA0210.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: Nuestra Señora de Lourdes",
+    "archivo": "5025TA0211.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: San Cirilo y san Metodio",
+    "archivo": "5026TA0214.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: Los siete santos Fundadores de la Orden de los Siervos de la Virgen María",
+    "archivo": "5027TA0217.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Pedro Damiani",
+    "archivo": "5028TA0221.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: La Cátedra del apóstol san Pedro",
+    "archivo": "5029TA0222.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Policarpo",
+    "archivo": "5030TA0223.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "MARZO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4: San Casimiro",
+    "archivo": "5031TA0304.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: Santa Perpetua y santa Felicidad",
+    "archivo": "5032TA0307.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8: San Juan de Dios",
+    "archivo": "5033TA0308.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: Santa Francisca Romana",
+    "archivo": "5034TA0309.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: San Patricio",
+    "archivo": "5035TA0317.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "18: San Cirilo de Jerusalén",
+    "archivo": "5036TA0318.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San José",
+    "archivo": "5037TA0319.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: Santo Toribio de Mogrovejo",
+    "archivo": "5038TA0323.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: La Anunciación del Señor",
+    "archivo": "5039TA0325.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "ABRIL"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: San Francisco de Paula",
+    "archivo": "5040TA0402.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5: San Vicente Ferrer",
+    "archivo": "5041TA0405.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: San Juan Bautista de la Salle",
+    "archivo": "5042TA0407.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: San Estanislao",
+    "archivo": "5043TA0411.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Martín I",
+    "archivo": "5044TA0413.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Hermenegildo",
+    "archivo": "5045TA0413_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Anselmo",
+    "archivo": "5046TA0421.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Jorge",
+    "archivo": "5047TA0423.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Adalberto, obispo y mártir",
+    "archivo": "5048TA0423_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24: San Fidel de Sigmaringa",
+    "archivo": "5049TA0424.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: San Marcos",
+    "archivo": "5050TA0425.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Isidoro",
+    "archivo": "5051TA0426.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Pedro Chanel",
+    "archivo": "5052TA0428.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Luis María Griñón de Montfort",
+    "archivo": "5053TA0428_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29: Santa Catalina de Siena",
+    "archivo": "5054TA0429.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30: San Pío V",
+    "archivo": "5055TA0430.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "MAYO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1: San José",
+    "archivo": "5056TA0501.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: San Atanasio",
+    "archivo": "5057TA0502.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Felipe y Santiago",
+    "archivo": "5058TA0503.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10: San Juan de Ávila",
+    "archivo": "5059TA0510.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "12: San Nereo y san Aquiles",
+    "archivo": "5060TA0512.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "12: San Pancracio",
+    "archivo": "5061TA0512_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: San Matías",
+    "archivo": "5062TA0514.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: San Isidro",
+    "archivo": "5063TA0515.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: San Pascual Bailón",
+    "archivo": "5064TA0517.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "18: San Juan I",
+    "archivo": "5065TA0518.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20: San Bernardino de Siena",
+    "archivo": "5066TA0520.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: Santa Joaquina Vedruna",
+    "archivo": "5067TA0522.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: San Beda el Venerable",
+    "archivo": "5068TA0525.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: San Gregorio VII",
+    "archivo": "5069TA0525_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: Santa María Magdalena de Pazzi",
+    "archivo": "5070TA0525_3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Felipe Neri",
+    "archivo": "5071TA0526.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27: San Agustín de Cantorbery",
+    "archivo": "5072TA0527.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30: San Fernando",
+    "archivo": "5073TA0530.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "31: La Visitación de la Virgen María",
+    "archivo": "5074TA0531.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Jueves después de Pentecostés: Jesucristo, sumo y eterno Sacerdote",
+    "archivo": "5075TA0532.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "JUNIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1: San Justino",
+    "archivo": "5076TA0601.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: San Marcelino y san Pedro",
+    "archivo": "5077TA0602.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Carlos Luanga y compañeros",
+    "archivo": "5078TA0603.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5: San Bonifacio",
+    "archivo": "5079TA0605.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6: San Norberto",
+    "archivo": "5080TA0606.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: San Efrén",
+    "archivo": "5081TA0609.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: San Bernabé",
+    "archivo": "5082TA0611.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Antonio de Padua",
+    "archivo": "5083TA0613.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: Santa María Micaela del Santísimo Sacramento",
+    "archivo": "5084TA0615.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San Romualdo",
+    "archivo": "5085TA0619.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Luis Gonzaga",
+    "archivo": "5086TA0621.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: San Paulino de Nola",
+    "archivo": "5087TA0622.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: San Juan Fisher y santo Tomás Moro",
+    "archivo": "5088TA0622_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24: La Natividad de san Juan Bautista",
+    "archivo": "5089TA0624.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Pelayo",
+    "archivo": "5090TA0626.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27: San Cirilo de Alejandría",
+    "archivo": "5091TA0627.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Ireneo",
+    "archivo": "5092TA0628.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29: San Pedro y san Pablo",
+    "archivo": "5093TA0629.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30: Santos Protomártires de la santa Iglesia Romana",
+    "archivo": "5094TA0630.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Sábado posterior al 11 domingo después de Pentecostés: El Inmaculado Corazón de la Virgen María",
+    "archivo": "5095TA0632.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "JULIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: Santo Tomás",
+    "archivo": "5096TA0703.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4: Santa Isabel de Portugal",
+    "archivo": "5097TA0704.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5: San Antonio María Zaccaría",
+    "archivo": "5098TA0705.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6: Santa María Goretti",
+    "archivo": "5099TA0706.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: San Benito",
+    "archivo": "5100TA0711.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Enrique",
+    "archivo": "5101TA0713.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: San Camilo de Lelis",
+    "archivo": "5102TA0714.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: San Buenaventura",
+    "archivo": "5103TA0715.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: Nuestra Señora del Carmen",
+    "archivo": "5104TA0716.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Lorenzo de Brindis",
+    "archivo": "5105TA0721.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: Santa María Magdalena",
+    "archivo": "5106TA0722.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: Santa Brígida",
+    "archivo": "5107TA0723.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: Santiago Apóstol",
+    "archivo": "5108TA0725.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Joaquín y santa Ana",
+    "archivo": "5109TA0726.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29: Santa Marta",
+    "archivo": "5110TA0729.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30: San Pedro Crisólogo",
+    "archivo": "5111TA0730.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "31: San Ignacio de Loyola",
+    "archivo": "5112TA0731.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "AGOSTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1: San Alfonso María de Ligorio",
+    "archivo": "5113TA0801.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: San Eusebio de Vercelli",
+    "archivo": "5114TA0802.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Pedro Julián Eymard",
+    "archivo": "5115TA0802_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4: San Juan María Vianney",
+    "archivo": "5116TA0804.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5: La Dedicación de la basílica de Santa María",
+    "archivo": "5117TA0805.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6: La Transfiguración del Señor",
+    "archivo": "5118TA0806.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: San Sixto II y compañeros",
+    "archivo": "5119TA0807.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: San Cayetano",
+    "archivo": "5120TA0807_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8: Santo Domingo de Guzmán",
+    "archivo": "5121TA0808.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: Santa Teresa Benedicta de la Cruz (Edith Stein)",
+    "archivo": "5122TA0809.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10: San Lorenzo",
+    "archivo": "5123TA0810.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: Santa Clara",
+    "archivo": "5124TA0811.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Ponciano y san Hipólito",
+    "archivo": "5125TA0813.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: San Maximiliano María Kolbe",
+    "archivo": "5126TA0814.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: La Asunción de la Virgen María",
+    "archivo": "5127TA0815.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: San Esteban de Hungría",
+    "archivo": "5128TA0816.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San Juan Eudes",
+    "archivo": "5129TA0819.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San Ezequiel Moreno",
+    "archivo": "5130TA0819_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20: San Bernardo",
+    "archivo": "5131TA0820.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Pío X",
+    "archivo": "5132TA0821.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: Santa María Virgen, Reina",
+    "archivo": "5133TA0822.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: Santa Rosa de Lima",
+    "archivo": "5134TA0823.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24: San Bartolomé",
+    "archivo": "5135TA0824.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: San Luis de Francia",
+    "archivo": "5136TA0825.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25: San José de Calasanz",
+    "archivo": "5137TA0825_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: Santa Teresa de Jesús Jornet e Ibars",
+    "archivo": "5138TA0826.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27: Santa Mónica",
+    "archivo": "5139TA0827.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Agustín",
+    "archivo": "5140TA0828.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29: El Martirio de san Juan Bautista",
+    "archivo": "5141TA0829.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "SEPTIEMBRE"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Gregorio Magno",
+    "archivo": "5142TA0903.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8: La Natividad de la Santísima Virgen María",
+    "archivo": "5143TA0908.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8: San Pedro Claver",
+    "archivo": "5144TA0908_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Juan Crisóstomo",
+    "archivo": "5145TA0913.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: La Exaltación de la Santa Cruz",
+    "archivo": "5146TA0914.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: Nuestra Señora, la Virgen de los Dolores",
+    "archivo": "5147A0915.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: San Cornelio y san Cipriano",
+    "archivo": "5148TA0916.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: San Roberto Belarmino",
+    "archivo": "5149TA0917.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San Jenaro",
+    "archivo": "5150TA0919.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20: San Andrés Kim Taegon, san Pablo Chong Hasang y compañeros",
+    "archivo": "5151TA0920.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Mateo",
+    "archivo": "5152TA0921.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Cosme y san Damián",
+    "archivo": "5153TA0926.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27: San Vicente de Paúl",
+    "archivo": "5154TA0927.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Wenceslao",
+    "archivo": "5155TA0928.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Lorenzo Ruiz y compañeros",
+    "archivo": "5156TA0928_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29: Santos arcángeles Miguel, Gabriel y Rafael",
+    "archivo": "5157TA0929.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30: San Jerónimo",
+    "archivo": "5158TA0930.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "OCTUBRE"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1: Santa Teresa del Niño Jesús",
+    "archivo": "5159TA1001.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: Santos Ángeles Custodios",
+    "archivo": "5160TA1002.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Francisco de Borja",
+    "archivo": "5161TA1003.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4: San Francisco de Asís",
+    "archivo": "5162TA1004.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5: Témporas de acción de gracias y de petición (o si se celebra un solo día)",
+    "archivo": "5219TATEMP_1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Día de acción de gracias",
+    "archivo": "5220TATEMP_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Día penitencial",
+    "archivo": "5221TATEMP_3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Día de petición por la actividad humana",
+    "archivo": "5222TATEMP_4.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6: San Bruno",
+    "archivo": "5163TA1006.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: Nuestra Señora, la Virgen del Rosario",
+    "archivo": "5164TA1007.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: San Dionisio y compañeros",
+    "archivo": "5165TA1009.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: San Juan Leonardi",
+    "archivo": "5166TA1009_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10: Santo Tomás de Villanueva",
+    "archivo": "5167TA1010.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: Santa Soledad Torres Acosta",
+    "archivo": "5168TA1011.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "12: Nuestra Señora del Pilar",
+    "archivo": "5169TA1012.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: San Calixto I",
+    "archivo": "5170TA1014.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: Santa Teresa de Jesús",
+    "archivo": "5171TA1015.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: Santa Eduvigis",
+    "archivo": "5172TA1016.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: Santa Margarita María de Alacoque",
+    "archivo": "5173TA1016_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: San Ignacio de Antioquía",
+    "archivo": "5174TA1017.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "18: San Lucas",
+    "archivo": "5175TA1018.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San Pedro de Alcántara",
+    "archivo": "5176TA1019.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19. San Juan de Brébeuf, san Isaac Jogues y compañeros",
+    "archivo": "5177TA1019_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19: San Pablo de la Cruz",
+    "archivo": "5178TA1019_3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Juan de Capistrano",
+    "archivo": "5179TA1023.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24: San Antonio María Claret",
+    "archivo": "5180TA1024.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: San Simón y san Judas",
+    "archivo": "5181TA1028.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "NOVIEMBRE"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1: Todos los Santos",
+    "archivo": "5182TA1101.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2: Conmemoración de todos los fieles difuntos",
+    "archivo": "5183TA1102.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Martín de Porres",
+    "archivo": "5184TA1103.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4: San Carlos Borromeo",
+    "archivo": "5185TA1104.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9: La Dedicación de la basílica de Letrán",
+    "archivo": "5186TA1109.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10: San León Magno",
+    "archivo": "5187TA1110.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: San Martín de Tours",
+    "archivo": "5188TA1111.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "12: San Josafat",
+    "archivo": "5189TA1112.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: San Leandro",
+    "archivo": "5190TA1113.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15: San Alberto Magno",
+    "archivo": "5191TA1115.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: Santa Margarita de Escocia",
+    "archivo": "5192TA1116.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16: Santa Gertrudis",
+    "archivo": "5193TA1116_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17: Santa Isabel de Hungría",
+    "archivo": "5194TA1117.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "18: La Dedicación de las basílicas de los apóstoles San Pedro y San Pablo",
+    "archivo": "5195TA1118.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: La Presentación de la Santísima Virgen",
+    "archivo": "5196TA1121.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22: Santa Cecilia",
+    "archivo": "5197TA1122.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Clemente I",
+    "archivo": "5198TA1123.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Columbano",
+    "archivo": "5199TA1123_2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24: San Andrés Dung-Lac y compañeros",
+    "archivo": "5200TA1124.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30: San Andrés",
+    "archivo": "5201TA1130.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "DICIEMBRE"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3: San Francisco Javier",
+    "archivo": "5202TA1203.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4: San Juan Damasceno",
+    "archivo": "5203TA1204.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6: San Nicolás",
+    "archivo": "5204TA1206.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7: San Ambrosio",
+    "archivo": "5205TA1207.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8: La Inmaculada Concepción de santa María Virgen",
+    "archivo": "5206TA1208.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10: Santa Eulalia de Mérida",
+    "archivo": "5207TA1210.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11: San Dámaso I",
+    "archivo": "5208TA1211.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "12: Santa Juana Francisca de Chantal",
+    "archivo": "5209TA1212.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13: Santa Lucía",
+    "archivo": "5210TA1213.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14: San Juan de la Cruz",
+    "archivo": "5211TA1214.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21: San Pedro Canisio",
+    "archivo": "5212TA1221.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23: San Juan de Kety",
+    "archivo": "5213TA1223.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26: San Esteban",
+    "archivo": "5214TA1226.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27: San Juan",
+    "archivo": "5215TA1227.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28: Los santos Inocentes",
+    "archivo": "5216TA1228.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29: Santo Tomás Becket",
+    "archivo": "5217TA1229.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "31: San Silvestre I",
+    "archivo": "5218TA1231.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "COMUNES"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de la dedicación de una iglesia",
+    "archivo": "5223COMDBA.htm",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de santa María Virgen",
+    "archivo": "5224COMSVI.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de mártires",
+    "archivo": "5225COMMAR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de pastores",
+    "archivo": "5226COMPAS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de doctores de la Iglesia",
+    "archivo": "5227COMDOC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de vírgenes",
+    "archivo": "5228COMVIR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Común de santos y santas",
+    "archivo": "5229COMSAN.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "VI": {
+  "titulo": "LECCIONARIO VI",
+  "subtitulo": "MISAS POR DIVERSAS NECESIDADES",
+  "nodos": [
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "I. POR LA SANTA IGLESIA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1. Por la Iglesia",
+    "archivo": "6001PLIG.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2. Por el Papa o por el Obispo, sobre todo en sus aniversarios",
+    "archivo": "6002PEPA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "3. Para elegir un Papa o un Obispo",
+    "archivo": "6003PEUP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "4. Por el Concilio o el Sínodo en una reunión espiritual o pastoral",
+    "archivo": "6004PELC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "5. Por los sacerdotes",
+    "archivo": "6005PLSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "6. Por los ministros de la Iglesia",
+    "archivo": "6006PLMI.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "7. Por los religiosos",
+    "archivo": "6007PLRE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "8. Por las vocaciones a las sagradas órdenes o religiosas",
+    "archivo": "6008PLVO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "9. Por los laicos",
+    "archivo": "6009PLLA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "10. Por la unidad de los cristianos",
+    "archivo": "6010PLUC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "11. Por la evangelización de los pueblos",
+    "archivo": "6011PLEP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "12. Por los cristianos perseguidos",
+    "archivo": "6012PLCP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "II POR LAS NECESIDADES PÚBLICAS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "13. Por la patria o por la ciudad, por los que gobiernan, por la reunión de los gobernantes de las naciones, por el supremo gobernante de la nación, por el progreso de los pueblos",
+    "archivo": "6013PLPA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "14. Por la paz y la justicia",
+    "archivo": "6014PLPJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "15. Para la reconciliación",
+    "archivo": "6015PLRE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "16. En tiempo de guerra o desorden",
+    "archivo": "6016TGU.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "III. EN DIVERSAS CIRCUNSTANCIAS PÚBLICAS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "17. Al comienzo del año civil",
+    "archivo": "6017ACAN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "18. Por la santificación del trabajo humano",
+    "archivo": "6018PSDT.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "19. En tiempo de siembra",
+    "archivo": "6019ETSI.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "20. Para después de la cosecha",
+    "archivo": "6020PDCO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "21. En tiempo de hambre, o por los que padecen hambre",
+    "archivo": "6021ETHA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "22. Por los prófugos y exiliados",
+    "archivo": "6022PLPR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "23. Por los cautivos, por los encarcelados",
+    "archivo": "6023PLCA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "24. Por los enfermos",
+    "archivo": "6024PLEM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "25. En tiempo de terremoto, para pedir lluvia, para pedir el buen tiempo, para alejar las tempestades, en cualquier necesidad",
+    "archivo": "6025ETTE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "26. Para dar gracias a Dios",
+    "archivo": "6026PGGR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "IV. POR ALGUNAS NECESIDADES PARTICULARES"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "27. Por el perdón de los pecados",
+    "archivo": "6027PEPP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "28. Para pedir la caridad, para fomentar la concordia, por los familiares y amigos",
+    "archivo": "6028PPCA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "29. Por la familia",
+    "archivo": "6029PLFA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "30. Por los que nos afligen",
+    "archivo": "6030PNAF.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "31. Para pedir la gracia de una buena muerte",
+    "archivo": "6031PPGR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "MISAS VOTIVAS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De la Santísima Trinidad",
+    "archivo": "6032DLST.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De la misericordia de Dios",
+    "archivo": "6033DLMD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Del Misterio de la Santa Cruz",
+    "archivo": "6034DMSC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De la Santísima Eucaristía",
+    "archivo": "6035DSEU.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De Jesucristo, sumo y eterno sacerdote",
+    "archivo": "6036JSES.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Del Santísimo Nombre de Jesús",
+    "archivo": "6037DSNJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De la preciosísima Sangre de nuestro Señor Jesucristo",
+    "archivo": "6038DPSC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Del Sagrado Corazón de Jesús",
+    "archivo": "6039SDSCJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Del Espíritu Santo",
+    "archivo": "6040DESA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De la Santísima Virgen María",
+    "archivo": "6041DSVI.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De Santa María Virgen, Madre de la Iglesia",
+    "archivo": "6042DSMV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Del Santísimo Nombre de María",
+    "archivo": "6043DSNM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De los santos Ángeles",
+    "archivo": "6044DSAN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De san José",
+    "archivo": "6045DSJO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De todos los santos Apóstoles",
+    "archivo": "6046DTSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De san Pedro y san Pablo, apóstoles",
+    "archivo": "6047DSPP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De san Pedro, apóstol",
+    "archivo": "6048DSPA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De san Pablo, apóstol",
+    "archivo": "6049DSPA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De un santo Apóstol",
+    "archivo": "6050DUSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "De todos los santos",
+    "archivo": "6051DTLS.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "VII": {
+  "titulo": "LECCIONARIO VII",
+  "subtitulo": "FERIAS DE ADVIENTO, NAVIDAD, CUARESMA Y TIEMPO PASCUAL",
+  "nodos": [
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Índice de textos",
+    "archivo": "7000INDITEXT.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE ADVIENTO"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "PRIMERA SEMANA DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7001TAVL01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7002TAVM01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7003TAVX01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7004TAVJ01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7005TAVV01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7006TAVS01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "SEGUNDA SEMANA DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7007TAVL02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7008TAVM02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7009TAVX02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7010TAVJ02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7011TAVV02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7012TAVS02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "TERCERA SEMANA DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7013TAVL03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7014TAVM03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7015TAVX03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7016TAVJ03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7017TAVV03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Versículos para el Aleluya Ferias de Adviento hasta el día 16 de diciembre",
+    "archivo": "701AleluyaAdviento.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "FERIAS DE ADVIENTO DESDE EL DÍA 17 AL 24 DE DICIEMBRE"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "17 de diciembre",
+    "archivo": "7018TFPD17.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "18 de diciembre",
+    "archivo": "7019TFPD18.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "19 de diciembre",
+    "archivo": "7020TFPD19.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "20 de diciembre",
+    "archivo": "7021TFPD20.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "21 de diciembre",
+    "archivo": "7022TFPD21.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "22 de diciembre",
+    "archivo": "7023TFPD22.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "23 de diciembre",
+    "archivo": "7024TFPD23.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "24 de diciembre: Misa de la mañana",
+    "archivo": "7025TFPD24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Versículos para el Aleluya. Ferias de Adviento desde el día 17 al 24 de diciembre",
+    "archivo": "7002AleluyaAdviento18_24.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE NAVIDAD"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "OCTAVA DE NAVIDAD"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "29 de diciembre",
+    "archivo": "7026TON529.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "30 de diciembre",
+    "archivo": "7027TON630.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "31 de diciembre",
+    "archivo": "7028TON731.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "LECTURAS PARA ANTES DE LA EPIFANÍA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "2 de enero",
+    "archivo": "7029TF02EN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "3 de enero",
+    "archivo": "7030TF03EN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "4 de enero",
+    "archivo": "7031TF04EN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "5 de enero",
+    "archivo": "7032TF05EN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "6 de enero",
+    "archivo": "7033TF06EN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "7 de enero",
+    "archivo": "7034TF07EN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Versículos para el Aleluya. Ferias del tiempo de Navidad antes de la Epifanía",
+    "archivo": "7003Aleluya_Navidad_antes de Epifania.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "LECTURAS PARA DESPUÉS DE LA EPIFANÍA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "7 de enero o bien lunes después del domingo de Epifanía",
+    "archivo": "7035TFLDEP.html",
+    "ancla_web": "",
+    "corregido": true
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "8 de enero o bien martes después del domingo de Epifanía",
+    "archivo": "7036TFMDEP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "9 de enero o bien miércoles después del domingo de Epifanía",
+    "archivo": "7037TFXDEP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "10 de enero o bien jueves después del domingo de Epifanía",
+    "archivo": "7038TFJDEP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "11 de enero o bien viernes después del domingo de Epifanía",
+    "archivo": "7039TFVDEP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "12 de enero o bien sábado después del domingo de Epifanía",
+    "archivo": "7040TFSDEP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Aleluya. Ferias del tiempo de Navidad después de la Epifanía",
+    "archivo": "7004Aleluya_Navidad_despues de Epifania.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles de Ceniza",
+    "archivo": "7041TFMICE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves después de Ceniza",
+    "archivo": "7042TFJUDC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes después de Ceniza",
+    "archivo": "7043TFVIDC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado después de Ceniza",
+    "archivo": "7044TFSACE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "PRIMERA SEMANA DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7045TCUL01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7046TCUM01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7047TCUX01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7048TCUJ01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7049TCUV01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7050TCUS01.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "SEGUNDA SEMANA DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7051TCUL02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7052TCUM02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7053TCUX02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7054TCUJ02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7055TCUV02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7056TCUS02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "TERCERA SEMANA DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de libre elección",
+    "archivo": "7057MLCU03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7058TCUL03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7059TCUM03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7060TCUX03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7061TCUJ03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7062TCUV03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7063TCUS03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "CUARTA SEMANA DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de libre elección",
+    "archivo": "7064MLCU04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7065TCUL04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7066TCUM04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7067TCUX04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7068TCUJ04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7069TCUV04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7070TCUS04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "QUINTA SEMANA DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Misa de libre elección",
+    "archivo": "7071MLCU05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7072TCUL05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7073TCUM05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7074TCUX05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7075TCUJ05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7076TCUV05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7077TCUS05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Aclamaciones substitutivas del Aleluya para el tiempo de Cuaresma",
+    "archivo": "70705AleluyaCuaresma.html",
+    "ancla_web": "LE1"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Versículos antes del evangelio. Ferias de Cuaresma",
+    "archivo": "70705AleluyaCuaresma.html",
+    "ancla_web": "LE2"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "SEMANA SANTA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes Santo",
+    "archivo": "7078TLSESA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes Santo",
+    "archivo": "7079TMSESA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles Santo",
+    "archivo": "7080TXSESA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves Santo: Misa Crismal",
+    "archivo": "7081JUSAMC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO PASCUAL"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "OCTAVA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7082TOCPAL.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7083TOCPAM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7084TOCPAX.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7085TOCPAJ.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7086TOCPAV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7087TOCPAS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "SEGUNDA SEMANA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7088TPAL02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7089TPAM02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7090TPAX02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7091TPAJ02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7092TPAV02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7093TPAS02.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "TERCERA SEMANA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7094TPAL03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7095TPAM03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7096TPAX03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7097TPAJ03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7098TPAV03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7099TPAS03.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "CUARTA SEMANA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7100TPAL04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7101TPAM04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7102TPAX04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7103TPAJ04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7104TPAV04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7105TPAS04.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "QUINTA SEMANA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7106TPAL05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7107TPAM05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7108TPAX05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7109TPAJ05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7110TPAV05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7111TPAS05.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "SEXTA SEMANA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7112TPAL06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7113TPAM06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7114TPAX06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7115TPAJ06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7116TPAV06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado",
+    "archivo": "7117TPAS06.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "SÉPTIMA SEMANA DE PASCUA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Lunes",
+    "archivo": "7118TPAL07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Martes",
+    "archivo": "7119TPAM07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Miércoles",
+    "archivo": "7120TPAX07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Jueves",
+    "archivo": "7121TPAJ07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Viernes",
+    "archivo": "7122TPAV07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Sábado: Misa de la mañana",
+    "archivo": "7123TPAS07.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Versículos para el Aleluya"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Ferias del tiempo pascual antes de la Ascensión",
+    "archivo": "7006AleluyaPascua_antes_de Ascension.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Ferias del tiempo pascual después de la Ascensión",
+    "archivo": "70707AleluyaPascua_despues_de Ascension.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "APÉNDICE"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Respuestas",
+    "archivo": "7124Textos_comunes.html",
+    "ancla_web": "a1"
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Textos comunes para el canto del salmo responsorial"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Salmos",
+    "archivo": "7124Textos_comunes.html",
+    "ancla_web": "LE1"
+   }
+  ]
+ },
+ "VIII": {
+  "titulo": "LECCIONARIO VIII",
+  "subtitulo": "PARA LAS MISAS RITUALES",
+  "nodos": [
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "I. EN LA CELEBRACIÓN DE LOS SACRAMENTOS DE LA INICIACIÓN CRISTIANA"
+   },
+   {
+    "nivel": 2,
+    "sangria": 1,
+    "texto": "1. Para el catecumenado y la iniciación sacramental de los adultos"
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "Para la entrada en el catecumenado",
+    "archivo": "8001EC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En la elección o inscripción del nombre",
+    "archivo": "8002IN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En el primer escrutinio",
+    "archivo": "8003PE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En el segundo escrutinio",
+    "archivo": "8004SE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En el tercer escrutinio",
+    "archivo": "8005TE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En la entrega del Símbolo de la fe",
+    "archivo": "8006SF.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En la entrega de la oración del Señor",
+    "archivo": "8007OS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En el bautismo celebrado dentro de la Vigilia pascual",
+    "archivo": "8008BP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "En la iniciación cristiana celebrada fuera de la Vigilia pascual",
+    "archivo": "8009IC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "2. En la administración del bautismo de niños",
+    "archivo": "8010BN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "3. Para la admisión a la plena comunión con la Iglesia de los ya bautizados válidamente",
+    "archivo": "8011BP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "4. En la administración de la confirmación",
+    "archivo": "8012AC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "5. Para la primera comunión de los niños",
+    "archivo": "8013CN.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "II. EN LA ADMINISTRACIÓN DE LAS SAGRADAS ÓRDENES",
+    "archivo": "8014AO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "III. PARA LA ADMISIÓN DE CANDIDATOS AL DIACONADO Y AL PRESBITERAD0",
+    "archivo": "8015AD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "IV. EN LA COLACIÓN DE MINISTERIOS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "1. Para la institución de lectores",
+    "archivo": "8016IL.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "2. Para la institución de acólitos",
+    "archivo": "8017IA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "V. EN LA ADMINISTRACIÓN DE LOS SACRAMENTOS A LOS ENFERMOS Y MORIBUNDOS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "1. En la administración de la unción de los enfermos",
+    "archivo": "8018UE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "2. En la administración del viático",
+    "archivo": "8019AV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "VI. POR LOS ESPOSOS",
+    "archivo": "8020PE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "VII. EN LA BENDICIÓN DE UN ABAD O DE UNA ABADESA",
+    "archivo": "8021BA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "VIII. EN LA CONSAGRACIÓN DE VÍRGENES Y EN LA PROFESIÓN RELIGIOSA",
+    "archivo": "8022PR.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "IX. EN LA DEDICACIÓN O BENDICIÓN DE UNA IGLESIA O DE UN ALTAR",
+    "archivo": "8023DI.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "1. En la dedicación de una iglesia",
+    "archivo": "8023DI.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "2. En la dedicación de un altar",
+    "archivo": "8024DE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "3. En la bendición del cáliz y de la patena",
+    "archivo": "8025BC.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "X. MISAS DE DIFUNTOS",
+    "archivo": "8026MD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "1. En las exequias de un niño bautizado",
+    "archivo": "8027NB.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "2. En las exequias de un niño aún no bautizado",
+    "archivo": "8028NB.html",
+    "ancla_web": ""
+   }
+  ]
+ },
+ "IX": {
+  "titulo": "LECCIONARIO IX",
+  "subtitulo": "PARA LAS MISAS CON NIÑOS",
+  "nodos": [
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Orientaciones pastorales",
+    "archivo": "9002intro.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Introducción general al año litúrgico",
+    "archivo": "9001AL.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE ADVIENTO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Introducción",
+    "archivo": "9551IAV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo I de Adviento",
+    "archivo": "9004AD1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Adviento",
+    "archivo": "9005AD2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Adviento",
+    "archivo": "9006AD3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Adviento",
+    "archivo": "9007AD4.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE NAVIDAD"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Introducción",
+    "archivo": "9056INAV.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Natividad del Señor",
+    "archivo": "9008NDS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Sagrada Familia: Jesús, María y José",
+    "archivo": "9009LSF.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Solemnidad de Santa María, Madre de Dios",
+    "archivo": "9010SMD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Epifanía del Señor",
+    "archivo": "9011EPS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "El Bautismo del Señor",
+    "archivo": "9012BDS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO DE CUARESMA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Introducción",
+    "archivo": "9057ICU.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "CICLO PRIMERO (Perspectiva bautismal)"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario I",
+    "archivo": "9013C1F1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario II",
+    "archivo": "9014C1F2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario III",
+    "archivo": "9015C1F3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario IV",
+    "archivo": "9016C1F4.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario V",
+    "archivo": "9017C1F5.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "CICLO SEGUNDO (Perspectiva penitencial)"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario I",
+    "archivo": "9018C2F1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario II",
+    "archivo": "9019C2F2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario III",
+    "archivo": "9020C2F3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario IV",
+    "archivo": "9021C2F4.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Formulario V",
+    "archivo": "9022C2F5.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "SEMANA SEMANA SANTA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Introducción",
+    "archivo": "9058ISS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo de Ramos en la Pasión del Señor",
+    "archivo": "9023DRA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Jueves santo",
+    "archivo": "9024JUS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Viernes santo",
+    "archivo": "9025VIS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Sábado santo",
+    "archivo": "9026SSA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO TIEMPO PASCUAL"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Introducción",
+    "archivo": "9059ITP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo de Pascua de la Resurrección del Señor",
+    "archivo": "9027DPA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo II de Pascua",
+    "archivo": "9028DP2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo III de Pascua",
+    "archivo": "9029DP3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo IV de Pascua",
+    "archivo": "9030DP4.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo V de Pascua",
+    "archivo": "9031DP5.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VI de Pascua",
+    "archivo": "9032DP6.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "La Ascensión del Señor",
+    "archivo": "9033ASCES.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo VII de Pascua",
+    "archivo": "9034DP7.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Domingo de Pentecostés",
+    "archivo": "9035DPE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TIEMPO ORDINARIO"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Primeras lecturas del Antiguo Testamento",
+    "archivo": "9036TO1.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Primeras lecturas del Nuevo Testamento",
+    "archivo": "9037TO2.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 0,
+    "texto": "Evangelios"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "I. Jesús anuncia la Buena Noticia con hechos y palabras: El Reino está entre nosotros",
+    "archivo": "9038TO3.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 2,
+    "sangria": 1,
+    "texto": "II. Jesús dice: «Ven y sígueme»"
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "II, 1. Llamadas de Jesús",
+    "archivo": "9039TO4.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 2,
+    "texto": "II, 2. Seguir a Jesús es una gran alegría y una gran exigencia",
+    "archivo": "9040TO5.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "III. Los hombres se preguntan: «¿Quién es Jesús?»",
+    "archivo": "9041TO6.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "IV. Jesús es nuestro Señor y nuestro Dios",
+    "archivo": "9042TO7.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "V. Ven, Señor Jesús",
+    "archivo": "9043TO8.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "SANTÍSIMA VIRGEN MARÍA"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "15 de agosto: La Asunción de la Virgen María",
+    "archivo": "9044AMA.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "8 de diciembre: La Inmaculada Concepción de santa María Virgen",
+    "archivo": "9045ICO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "Otras celebraciones de Santa María Virgen",
+    "archivo": "9046OCM.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TODOS LOS SANTOS Y FIELES DIFUNTOS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "1 de noviembre: Todos los santos",
+    "archivo": "9047TLS.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "2 de noviembre: Conmemoración de todos los Fieles difuntos",
+    "archivo": "9048TFD.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "PRINCIPALES SANTOS"
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "19 de marzo: San José, esposo de la Virgen María",
+    "archivo": "9049SJO.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "24 de junio: La Natividad de san Juan Bautista",
+    "archivo": "9050SJB.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "29 de junio: San Pedro y san Pablo, apóstoles",
+    "archivo": "9051SPP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 1,
+    "texto": "25 de julio: Santiago, apóstol",
+    "archivo": "9052SAP.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 1,
+    "sangria": 0,
+    "texto": "TEXTOS PARA MISAS DE TEMA EUCARÍSTICO Y PENITENCIAL"
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Textos para misas de tema eucarístico",
+    "archivo": "9053MTE.html",
+    "ancla_web": ""
+   },
+   {
+    "nivel": 0,
+    "sangria": 0,
+    "texto": "Textos para misas de tema penitencial",
+    "archivo": "9054TPE.html",
+    "ancla_web": ""
+   }
+  ]
+ }
+}
