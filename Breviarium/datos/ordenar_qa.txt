@@ -9,6 +9,7 @@ salterio      868 casillas     5.0 MB  con variantes: 354 (41 %)
 tiempo      13460 casillas    15.0 MB  con variantes: 2086 (15 %)
 santoral     4776 casillas     8.8 MB  con variantes: 737 (15 %)
 comunes       226 casillas     0.4 MB  con variantes: 54 (24 %)
+bienal        722 casillas  (lectura bíblica del Oficio, distinta en los años I y II)
 
 Cómo se repartieron las secciones
 --------------------------------------------

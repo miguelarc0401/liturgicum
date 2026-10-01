@@ -17,14 +17,24 @@
 
 <header id="cabecera">
   <div class="fila-fecha">
-    <button id="anterior" class="icono" aria-label="Día anterior">‹</button>
+    <button id="anterior" class="icono" aria-label="Día anterior">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
+    </button>
     <span class="envoltorio-fecha">
       <span id="rotulo-fecha" class="fecha"></span>
       <input type="date" id="selector-fecha" aria-label="Elegir fecha">
     </span>
-    <button id="siguiente" class="icono" aria-label="Día siguiente">›</button>
+    <button id="siguiente" class="icono" aria-label="Día siguiente">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg>
+    </button>
+    <button id="ir-hoy" class="ir-hoy" type="button" hidden aria-label="Volver a hoy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Hoy
+    </button>
   </div>
-  <h1 id="titulo-dia"></h1>
+  <div class="fila-titulo">
+    <h1 id="titulo-dia"></h1>
+    <div id="cab-extra"></div>
+  </div>
   <p id="subtitulo-dia"></p>
   <div id="celebraciones" class="chips"></div>
   <div id="formularios" class="chips finos"></div>
@@ -35,13 +45,22 @@
   <p class="aviso" id="arranque">Abriendo…</p>
 </main>
 
-<nav id="barra">
-  <button data-ir="portada" class="activo"><span>⌂</span>Inicio</button>
-  <button data-ir="hoy"><span>☩</span>Misa</button>
-  <button data-ir="horas"><span>☾</span>Horas</button>
-  <button data-ir="calendario"><span>▦</span>Calendario</button>
-  <button data-ir="buscar"><span>⌕</span>Buscar</button>
-  <button data-ir="ajustes"><span>⚙</span>Ajustes</button>
+<nav id="barra" aria-label="Secciones">
+  <button data-ir="portada" class="activo">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h5v-5.5h3V20h5V9"/></svg>Inicio
+  </button>
+  <button data-ir="hoy">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7 4.6 3.5 5v13.2c3.5-.4 6.5.1 8.5 1.6 2-1.5 5-2 8.5-1.6V5C17 4.6 14 5 12 6.5Z"/><path d="M12 6.5v13.3"/></svg>Misa
+  </button>
+  <button data-ir="horas">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Horas
+  </button>
+  <button data-ir="calendario">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Calendario
+  </button>
+  <button data-ir="ajustes">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9.5M18.5 7H20M4 17h3.5M12.5 17H20"/><circle cx="16" cy="7" r="2.5"/><circle cx="10" cy="17" r="2.5"/></svg>Ajustes
+  </button>
 </nav>
 
 <script src="app.js"></script>

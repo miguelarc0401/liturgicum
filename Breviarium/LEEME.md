@@ -146,6 +146,7 @@ antes de fiarse de lo que sale.
 | `santoral.json` | lo propio de cada santo | `mm-dd/santo/hora/sección` |
 | `comunes.json` | los comunes | `común/hora/sección` |
 | `santoral_indice.json` | qué se celebra cada día del año | `mm-dd` |
+| `bienal.json` | la lectura bíblica del Oficio de cada año del ciclo bienal | `tiempo/semana/día/oficio/sección` → `I`, `II` |
 | `resenas.json` | la reseña biográfica de cada celebración | `mm-dd/santo` |
 | `pdf_santoral.json` | el Propio de los santos de los cuatro tomos en PDF | lista de entradas |
 
@@ -244,6 +245,24 @@ cambian los tomos.
   (I *Dios te salve*, II *Madre del Redentor*, III *Salve, Reina de los
   cielos*, IV *Bajo tu amparo*); en Pascua, *Reina del cielo*. La que se
   elige una noche sale marcada la siguiente.
+* **La lectura bíblica del Oficio, por años.** La fuente sigue el ciclo de
+  dos años: medido, en 307 de los 350 días del tiempo la primera lectura
+  (y su responsorio) es una los años impares y otra los pares, y cada año
+  repite siempre la suya. La mayoría de todos los años se quedaba con una
+  sola, y salía la del año I en el II. Ahora `3_ordenar` decide por mayoría
+  *dentro de cada año*, contando también las memorias, que leen la del
+  tiempo, y lo deja en `bienal.json`; la fase 4 lleva a la app sólo el
+  texto del año que no coincide con el de `tiempo.json`.
+* **La Hora intermedia.** La fuente reza las tres horas y reparte: la
+  salmodia del día en una —no siempre la misma— y la complementaria
+  (salmos 119-121, 122-124, 125-127) en las otras dos. La fase 4 deja dicho
+  dónde está la del día de cada día del salterio y cuál es la
+  complementaria de cada hora, y la app ofrece las dos en las tres horas
+  (por omisión, la del día en Sexta). Los himnos de Tercia, Sexta y Nona
+  se ofrecen por tiempos, y en el ordinario por mitades (semanas I-XVII y
+  XVIII-XXXIV, que es el corte de los tomos III y IV), según lo que la
+  fuente reza en cada una: lo que asoma un par de veces en la semana de la
+  frontera (menos del 5 % de los testigos) no cuenta.
 * **El Te Deum** («Himno: Señor, Dios eterno» en la fuente) va tras el
   segundo responsorio, no al final del Oficio.
 

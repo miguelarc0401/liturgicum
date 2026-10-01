@@ -30,6 +30,7 @@ no la conjetura.
     python Breviarium/src/3_ordenar.py
 """
 
+import datetime as dt
 import json
 import os
 import re
@@ -55,15 +56,31 @@ ORDINARIO = {'invocacion', 'conclusion', 'padrenuestro', 'bendicion',
 RANGOS_PROPIOS = ('SOLEMNIDAD', 'FIESTA', 'MEMORIA', 'MEMORIA LIBRE',
                   'CONMEMORACIÓN')
 
+# La lectura bíblica del Oficio sigue el ciclo de dos años: el mismo hueco
+# del tiempo trae una lectura los años impares (I) y otra los pares (II).
+# Medido en el volcado: en 307 de los 350 días del tiempo las dos lecturas
+# son distintas y cada año repite siempre la suya. La mayoría de todos los
+# años, que es lo que guarda `tiempo.json`, se queda con una sola.
+BIENAL = ('lectura1', 'responsorio')
+
 
 # --------------------------------------------------------------------------
 # el año litúrgico de una fecha
 # --------------------------------------------------------------------------
 
+def primer_domingo_de_adviento(anio):
+    """El domingo que cae del 27 de noviembre al 3 de diciembre."""
+    d = dt.date(anio, 11, 27)
+    return (d + dt.timedelta(days=(6 - d.weekday()) % 7)).isoformat()
+
+
 def anio_liturgico(fecha, inicios):
+    # El calendario del proyecto empieza en 2024 y el volcado en 2019: sin
+    # el cálculo, el Adviento de 2019 a 2022 contaba en el año civil que
+    # acababa, con el ciclo y el año ferial del año anterior.
     a = int(fecha[:4])
-    ini = inicios.get(a)
-    return a + 1 if (ini and fecha >= ini) else a
+    ini = inicios.get(a) or primer_domingo_de_adviento(a)
+    return a + 1 if fecha >= ini else a
 
 
 def ciclo_de(anio):
@@ -160,6 +177,8 @@ def main():
     salterio = defaultdict(lambda: defaultdict(list))
     ordinario = defaultdict(lambda: defaultdict(list))
     propios = []                                  # los días que celebran
+    bienal = defaultdict(lambda: defaultdict(Counter))  # hueco -> año -> textos
+    rotulos_bienal = defaultdict(Counter)         # (hueco, texto) -> rótulos
     santos = defaultdict(Counter)
     resenas = defaultdict(Counter)                # mm-dd/santo -> reseñas
     cuentas, avisos = Counter(), []
@@ -253,6 +272,15 @@ def main():
                             cuentas['sin_sitio'] += 1
                             continue
 
+                        # En las memorias la lectura bíblica es la del
+                        # tiempo, así que también ellas atestiguan el año
+                        if (hora_cl == 'oficio' and cl in BIENAL and (
+                                not celebra
+                                or rango in ('MEMORIA', 'MEMORIA LIBRE'))):
+                            bienal[kf][testigo['l']][hu] += 1
+                            if rot:
+                                rotulos_bienal[(kf, hu)][rot] += 1
+
                         if celebra:
                             propios.append((kf, cel, comun_de(of), rango,
                                             hora_cl, cl, hu, rot, testigo))
@@ -341,6 +369,25 @@ def main():
         lineas_qa.append(f'{nombre:10s} {len(datos):6d} casillas  {mb:6.1f} MB  '
                          f'con variantes: {var} ({pc:.0f} %)')
         print(lineas_qa[-1], flush=True)
+
+    # El ciclo de dos años: de cada hueco, el texto de cada año, por mayoría
+    # dentro de ese año. Sólo se guardan los huecos en que los años difieren.
+    bienal_libro = {}
+    for kf, por_anio in sorted(bienal.items()):
+        elegido = {a: c.most_common(1)[0] for a, c in por_anio.items()}
+        if len(elegido) < 2 or len({h for h, _ in elegido.values()}) < 2:
+            continue
+        bienal_libro[kf] = {a: {
+            'rotulo': (rotulos_bienal[(kf, hu)].most_common(1)[0][0]
+                       if rotulos_bienal[(kf, hu)] else None),
+            'lineas': textos[hu],
+            'testigos': n,
+        } for a, (hu, n) in sorted(elegido.items())}
+    with open(os.path.join(LIBRO, 'bienal.json'), 'w', encoding='utf-8') as f:
+        json.dump(bienal_libro, f, ensure_ascii=False, separators=(',', ':'))
+    lineas_qa.append(f'bienal     {len(bienal_libro):6d} casillas  (lectura '
+                     f'bíblica del Oficio, distinta en los años I y II)')
+    print(lineas_qa[-1], flush=True)
 
     with open(os.path.join(LIBRO, 'resenas.json'), 'w', encoding='utf-8') as f:
         json.dump({k: c.most_common(1)[0][0] for k, c in sorted(resenas.items())},

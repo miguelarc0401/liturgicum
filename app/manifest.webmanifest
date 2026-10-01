@@ -21,6 +21,6 @@
     { "name": "Lecturas de la misa", "url": "./#/misa", "icons": [{ "src": "icono-192.png", "sizes": "192x192" }] },
     { "name": "Liturgia de las horas", "url": "./#/h" },
     { "name": "Índice del año", "url": "./#/indice" },
-    { "name": "Buscar", "url": "./#/buscar" }
+    { "name": "Calendario", "url": "./#/calendario" }
   ]
 }

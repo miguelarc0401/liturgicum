@@ -1,57 +1,70 @@
 /* Leccionario latino — hoja de estilo unica.
    Nada de fuentes remotas: la app tiene que abrir sin conexion desde el primer
-   dia, asi que todo lo tipografico sale de lo que el telefono ya trae. */
+   dia, asi que todo lo tipografico sale de lo que el telefono ya trae.
+
+   El aire es el de un libro de coro: papel, tinta y rubrica roja, y el
+   color liturgico del dia como unico adorno. Los controles son discretos a
+   proposito: se tocan una vez, si acaso, y despues se lee y se reza. */
 
 :root {
-  --tinta: #21180f;
-  --tinta-suave: #6b6054;
-  --papel: #fbf7ef;
+  --tinta: #1f1710;
+  --tinta-suave: #685d51;
+  --papel: #fbf8f1;
   --papel-alto: #ffffff;
-  --filete: #e2d8c6;
+  --filete: #e7ddcc;
+  --filete-fuerte: #d5c6ad;
   --rubrica: #9a1b1b;
   --acento: #6b1220;
   --realce: #f6e6a8;
+  --sombra: 0 1px 2px rgb(60 40 20 / .05), 0 6px 20px rgb(60 40 20 / .06);
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-           Georgia, "Times New Roman", serif;
+           "Noto Serif", Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --cuerpo: 1.0625rem;
   --alto-cabecera: 0px;
+  --rapido: .16s;
+  --medio: .24s;
 }
 
-/* color liturgico del tiempo, como filete bajo la cabecera */
-body[data-color="morado"] { --acento: #4c2a63; --rubrica: #7c4a99; }
-body[data-color="blanco"] { --acento: #8a6a1f; --rubrica: #9a7b22; }
-body[data-color="verde"]  { --acento: #2f5d3f; --rubrica: #2f6b45; }
+/* color liturgico del dia: tine la cabecera, las rubricas y los controles.
+   El dorado del blanco se oscurece lo justo para que la rubrica se lea
+   (4.5:1 sobre el papel). */
+body[data-color="morado"] { --acento: #4c2a63; --rubrica: #74418f; }
+body[data-color="blanco"] { --acento: #7a5c17; --rubrica: #7d6118; }
+body[data-color="verde"]  { --acento: #2f5d3f; --rubrica: #2c6542; }
 body[data-color="rojo"]   { --acento: #8e1b1b; --rubrica: #a32020; }
 body[data-color="neutro"] { --acento: #6b1220; }
 
 body[data-tema="sepia"] {
   --papel: #f4e9d6; --papel-alto: #fbf3e4; --tinta: #3b2c19;
-  --filete: #ddcbab; --tinta-suave: #7a6849;
+  --filete: #dfceb0; --filete-fuerte: #cdb790; --tinta-suave: #6f5d40;
 }
 body[data-tema="oscuro"] {
-  --tinta: #e6ded2; --tinta-suave: #9a9186; --papel: #14120f;
-  --papel-alto: #1c1a16; --filete: #33302a; --rubrica: #d98b8b;
-  --realce: #4a3f18;
+  --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
+  --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
+  --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
+  --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
-body[data-tema="oscuro"][data-color="morado"] { --rubrica: #b79ad4; }
-body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #ddb85c; }
-body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #7bc194; }
-body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #e79a9a; }
+body[data-tema="oscuro"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b99bd6; }
+body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
+body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
+body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
 
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
-    --tinta: #e6ded2; --tinta-suave: #9a9186; --papel: #14120f;
-    --papel-alto: #1c1a16; --filete: #33302a; --rubrica: #d98b8b;
-    --realce: #4a3f18;
+    --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
+    --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
+    --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
+    --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
-  body[data-tema="auto"][data-color="morado"] { --rubrica: #b79ad4; }
-  body[data-tema="auto"][data-color="blanco"] { --rubrica: #ddb85c; }
-  body[data-tema="auto"][data-color="verde"]  { --rubrica: #7bc194; }
-  body[data-tema="auto"][data-color="rojo"]   { --rubrica: #e79a9a; }
+  body[data-tema="auto"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b99bd6; }
+  body[data-tema="auto"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
+  body[data-tema="auto"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
+  body[data-tema="auto"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html { -webkit-text-size-adjust: 100%; }
 
@@ -63,37 +76,54 @@ body {
   font-size: var(--cuerpo);
   line-height: 1.62;
   overflow-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+
+svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor;
+      stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+      flex: none; }
+
+button { font: inherit; color: inherit; }
+
+/* el foco del teclado se ve siempre, y con el color del dia */
+:where(a, button, input, select, summary):focus-visible {
+  outline: 2px solid var(--acento); outline-offset: 2px;
 }
 
 /* ---------------------------------------------------------------- cabecera */
 #cabecera {
   position: sticky; top: 0; z-index: 20;
   background: var(--papel-alto);
+  background: color-mix(in srgb, var(--papel-alto) 90%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 2px solid var(--acento);
-  padding: calc(env(safe-area-inset-top) + .4rem) 16px .5rem;
+  padding: calc(env(safe-area-inset-top) + .35rem) 16px .55rem;
 }
 #cabecera.compacta .fila-fecha,
 #cabecera.compacta #subtitulo-dia,
 #cabecera.compacta #formularios,
 #cabecera.compacta #celebraciones,
 #cabecera.compacta #nota-dia { display: none; }
-#cabecera.compacta h1 { margin-top: .3rem; }
+#cabecera.compacta h1 { margin: .35rem 0 .05rem; }
 
-.fila-fecha { display: flex; align-items: center; gap: .25rem; }
+.fila-fecha { display: flex; align-items: center; gap: .15rem; }
 .fila-fecha .icono {
-  flex: none; width: 2.5rem; height: 2.5rem;
-  font-size: 1.6rem; line-height: 1;
+  flex: none; width: 2.75rem; height: 2.75rem;
+  display: grid; place-items: center;
   background: none; border: 0; color: var(--acento); cursor: pointer;
   border-radius: 999px;
+  transition: background-color var(--rapido);
 }
+.fila-fecha .icono svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
 .fila-fecha .icono:active { background: var(--filete); }
 /* El rotulo ensena la fecha en cristiano ("Lunes, 28 de septiembre de 2026")
    y el <input type="date"> va encima, invisible: al tocarlo abre el
    calendario nativo del telefono, que es el que sabe hacerlo bien. */
 .envoltorio-fecha { position: relative; flex: 1; min-width: 0; }
 .fecha {
-  display: block; text-align: center; padding: .45rem 0;
-  font-family: var(--sans); font-size: .78rem; letter-spacing: .06em;
+  display: block; text-align: center; padding: .55rem 0;
+  font-family: var(--sans); font-size: .76rem; letter-spacing: .07em;
   text-transform: uppercase; color: var(--tinta-suave);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
@@ -102,14 +132,33 @@ body {
   opacity: 0; border: 0; padding: 0; cursor: pointer;
   font-size: 16px;                 /* evita el zoom de iOS al enfocar */
 }
+/* «Hoy»: sale sólo cuando se anda por otro día, y vuelve a éste */
+.ir-hoy {
+  flex: none; position: relative;
+  display: inline-flex; align-items: center; gap: .3rem;
+  height: 1.95rem; margin-left: .2rem; padding: 0 .7rem 0 .55rem;
+  font-family: var(--sans); font-size: .74rem; font-weight: 600;
+  letter-spacing: .03em; cursor: pointer;
+  color: var(--acento); background: var(--papel-alto);
+  background: color-mix(in srgb, var(--acento) 9%, var(--papel-alto));
+  border: 1px solid color-mix(in srgb, var(--acento) 35%, transparent);
+  border-radius: 999px;
+  animation: aparece var(--medio) ease-out;
+}
+.ir-hoy svg { width: .95rem; height: .95rem; stroke-width: 2; }
+.ir-hoy::after { content: ""; position: absolute; inset: -.45rem -.2rem; }
+.ir-hoy:active { background: color-mix(in srgb, var(--acento) 18%, var(--papel-alto)); }
+
 #cabecera h1 {
-  margin: .15rem 0 0;
-  font-size: 1.24rem; font-weight: 600; line-height: 1.25;
-  letter-spacing: -.01em;
+  margin: .1rem 0 0;
+  font-size: 1.28rem; font-weight: 600; line-height: 1.25;
+  letter-spacing: -.005em;
+  transition: opacity var(--medio);
 }
 #subtitulo-dia {
-  margin: .15rem 0 0;
-  font-family: var(--sans); font-size: .76rem; color: var(--tinta-suave);
+  margin: .2rem 0 0;
+  font-family: var(--sans); font-size: .76rem; letter-spacing: .01em;
+  color: var(--tinta-suave);
 }
 #subtitulo-dia:empty { display: none; }
 
@@ -117,40 +166,44 @@ body {
    lecturas del ciclo A). En una cabecera fija no caben en varias filas sin
    comerse la pantalla: una sola tira que se desplaza a dedo. */
 .chips {
-  display: flex; gap: .3rem; margin-top: .5rem;
+  display: flex; gap: .35rem; margin-top: .55rem;
   overflow-x: auto; scrollbar-width: none;
   margin-left: -16px; margin-right: -16px; padding: 0 16px .1rem;
 }
 .chips::-webkit-scrollbar { display: none; }
 .chips:empty { display: none; }
 .chips button {
-  flex: none; white-space: nowrap;
-  font-family: var(--sans); font-size: .74rem;
-  padding: .28rem .6rem; border-radius: 999px; cursor: pointer;
-  border: 1px solid var(--filete); background: transparent;
+  flex: none; white-space: nowrap; min-height: 2.15rem;
+  font-family: var(--sans); font-size: .76rem;
+  padding: .3rem .75rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--filete-fuerte); background: transparent;
   color: var(--tinta-suave);
+  transition: background-color var(--rapido), color var(--rapido),
+              border-color var(--rapido);
 }
-.chips button[aria-pressed="true"] {
-  background: var(--acento); border-color: var(--acento); color: #fff;
+.chips button:active { background: var(--filete); }
+.chips button[aria-pressed="true"], #formularios button.sel {
+  background: var(--acento); border-color: var(--acento); color: var(--papel-alto);
 }
 /* El chip de celebracion lleva el grado debajo del nombre, en pequeno: es lo
    que distingue una memoria libre de una fiesta de un vistazo. */
 #celebraciones button {
   display: flex; flex-direction: column; align-items: flex-start;
-  line-height: 1.2; text-align: left; padding: .3rem .65rem;
+  line-height: 1.2; text-align: left; padding: .35rem .8rem;
+  border-radius: .8rem;
 }
 #celebraciones button small {
-  font-size: .64rem; letter-spacing: .04em; text-transform: uppercase;
-  opacity: .75;
+  font-size: .62rem; letter-spacing: .06em; text-transform: uppercase;
+  opacity: .8;
 }
 /* Lo que ese ano no se celebra se ofrece igual -sus lecturas son las del
    ciclo- pero no se ofrece como si tocara. */
 #celebraciones button.apagado { border-style: dashed; opacity: .72; }
-.chips.finos button { font-size: .7rem; padding: .22rem .55rem; }
-.chips.finos { margin-top: .3rem; }
+.chips.finos button { font-size: .74rem; padding: .25rem .72rem; min-height: 2rem; }
+.chips.finos { margin-top: .4rem; }
 
 .nota-dia {
-  margin: .45rem 0 0;
+  margin: .5rem 0 0;
   font-family: var(--sans); font-size: .72rem; line-height: 1.45;
   color: var(--tinta-suave);
 }
@@ -159,26 +212,27 @@ body {
 /* ------------------------------------------------------------------- vista */
 #vista {
   max-width: 38rem; margin: 0 auto;
-  padding: 1rem 16px calc(5rem + env(safe-area-inset-bottom));
+  padding: 1.1rem 16px calc(5.5rem + env(safe-area-inset-bottom));
   outline: none;
 }
 
 .aviso {
-  font-family: var(--sans); font-size: .85rem; color: var(--tinta-suave);
+  font-family: var(--sans); font-size: .85rem; line-height: 1.5;
+  color: var(--tinta-suave);
   background: var(--papel-alto); border: 1px solid var(--filete);
-  border-radius: 10px; padding: .8rem .9rem;
+  border-radius: 12px; padding: .85rem 1rem;
 }
 
 /* -------------------------------------------------------------- lecturas */
 .lect { margin: 0 0 2rem; }
-.lect + .lect { border-top: 1px solid var(--filete); padding-top: 1.4rem; }
+.lect + .lect { border-top: 1px solid var(--filete); padding-top: 1.5rem; }
 
 .rubrica {
   margin: 0 0 .45rem;
   font-family: var(--sans); font-size: .72rem; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase; color: var(--rubrica);
 }
-.formula { margin: 0 0 .7rem; font-style: italic; color: var(--tinta-suave); }
+.formula { margin: 0 0 .75rem; font-style: italic; color: var(--tinta-suave); }
 .cita {
   display: block; font-style: normal; font-family: var(--sans);
   font-size: .78rem; letter-spacing: .03em; color: var(--rubrica);
@@ -186,7 +240,7 @@ body {
 }
 /* En ancho de telefono el justificado abre rios de blanco, porque no hay
    diccionario de particion para el latin: a esta medida manda la bandera. */
-.texto { margin: 0 0 .7rem; text-wrap: pretty; }
+.texto { margin: 0 0 .75rem; text-wrap: pretty; }
 .texto sup {
   font-size: .62em; color: var(--tinta-suave);
   vertical-align: .45em; margin-right: .15em; line-height: 0;
@@ -194,9 +248,9 @@ body {
 .omision { margin: .3rem 0 .8rem; color: var(--tinta-suave); text-align: center; }
 .cierre, .resp { margin: 0; font-style: italic; color: var(--rubrica); }
 .antifona {
-  margin: 0 0 .8rem; padding: .55rem .75rem;
+  margin: 0 0 .9rem; padding: .6rem .85rem;
   background: var(--papel-alto); border-left: 3px solid var(--rubrica);
-  border-radius: 0 6px 6px 0; font-style: italic;
+  border-radius: 0 8px 8px 0; font-style: italic;
 }
 .estrofa { margin: 0 0 .15rem; text-wrap: pretty; }
 .estrofa + .resp { margin: 0 0 .9rem; }
@@ -206,40 +260,49 @@ body {
 }
 
 /* --------------------------------------------------------------- indice */
+.enlace-buscar {
+  display: flex; align-items: center; gap: .6rem; min-height: 3rem;
+  margin: 0 0 1rem; padding: .6rem .95rem;
+  font-family: var(--sans); font-size: .86rem; text-decoration: none;
+  color: var(--tinta); background: var(--papel-alto);
+  border: 1px solid var(--filete); border-radius: 999px;
+}
+.enlace-buscar svg { color: var(--tinta-suave); width: 1.1rem; height: 1.1rem; }
+.enlace-buscar:active { background: var(--filete); }
 .sec { margin: 0 0 .4rem; }
 .sec > summary {
   cursor: pointer; list-style: none;
   font-family: var(--sans); font-size: .76rem; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase; color: var(--acento);
-  padding: .7rem 0; border-bottom: 1px solid var(--filete);
+  padding: .8rem 0; border-bottom: 1px solid var(--filete);
 }
 .sec > summary::-webkit-details-marker { display: none; }
 .sec > summary::before { content: "▸ "; }
 .sec[open] > summary::before { content: "▾ "; }
 .grupo { margin: .8rem 0 1rem; }
 .grupo h3 {
-  margin: 0 0 .3rem; font-size: .95rem; font-weight: 600;
+  margin: 0 0 .35rem; font-size: .95rem; font-weight: 600;
   color: var(--tinta-suave);
 }
-.dias { display: flex; flex-wrap: wrap; gap: .3rem; }
+.dias { display: flex; flex-wrap: wrap; gap: .35rem; }
 .dias a {
   font-family: var(--sans); font-size: .82rem; text-decoration: none;
   color: var(--tinta); background: var(--papel-alto);
   border: 1px solid var(--filete); border-radius: 8px;
-  padding: .35rem .55rem;
+  padding: .45rem .6rem;
 }
 .dias a:active { background: var(--filete); }
 
 /* -------------------------------------------------------------- buscador */
 .campo {
   width: 100%; font-family: var(--serif); font-size: 1rem;
-  padding: .65rem .8rem; border-radius: 10px;
-  border: 1px solid var(--filete); background: var(--papel-alto);
+  padding: .7rem .9rem; border-radius: 12px;
+  border: 1px solid var(--filete-fuerte); background: var(--papel-alto);
   color: var(--tinta);
 }
 .resultado {
   display: block; text-decoration: none; color: inherit;
-  border-bottom: 1px solid var(--filete); padding: .8rem 0;
+  border-bottom: 1px solid var(--filete); padding: .85rem 0;
 }
 .resultado b { font-weight: 600; }
 .resultado .donde {
@@ -247,26 +310,27 @@ body {
   color: var(--rubrica); letter-spacing: .04em; margin-bottom: .2rem;
 }
 .resultado .frag { display: block; font-size: .92rem; color: var(--tinta-suave); }
-mark { background: var(--realce); color: inherit; padding: 0 .1em; }
+mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius: 2px; }
 
 /* --------------------------------------------------------------- ajustes */
 .ajuste {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--filete);
+  gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--filete);
 }
 .ajuste label { font-family: var(--sans); font-size: .9rem; }
 .ajuste .pista {
-  display: block; font-size: .76rem; color: var(--tinta-suave);
-  margin-top: .15rem; max-width: 22rem;
+  display: block; font-size: .76rem; line-height: 1.45;
+  color: var(--tinta-suave); margin-top: .2rem; max-width: 22rem;
 }
 .ajuste select, .ajuste input[type="range"] {
-  font-family: var(--sans); font-size: .88rem; flex: none;
+  font-family: var(--sans); font-size: .88rem; flex: none; max-width: 52%;
+  min-height: 2.5rem;
   background: var(--papel-alto); color: var(--tinta);
-  border: 1px solid var(--filete); border-radius: 8px; padding: .35rem;
+  border: 1px solid var(--filete-fuerte); border-radius: 10px; padding: .35rem .5rem;
 }
-.ajuste input[type="range"] { width: 8rem; padding: 0; }
+.ajuste input[type="range"] { width: 8rem; padding: 0; border: 0; accent-color: var(--acento); }
 h2.seccion {
-  margin: 1.8rem 0 .2rem; font-family: var(--sans); font-size: .72rem;
+  margin: 2rem 0 .2rem; font-family: var(--sans); font-size: .72rem;
   font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--acento);
 }
@@ -275,21 +339,42 @@ h2.seccion {
   color: var(--tinta-suave); line-height: 1.5;
 }
 
-/* --------------------------------------------------------------- barra */
+/* --------------------------------------------------------------- barra
+   Cinco puertas, con icono de trazo y su nombre. La elegida lleva una
+   pildora tenida del color del dia detras del icono. */
 #barra {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  display: grid; grid-template-columns: repeat(6, 1fr);
-  background: var(--papel-alto); border-top: 1px solid var(--filete);
-  padding-bottom: env(safe-area-inset-bottom);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--papel-alto);
+  background: color-mix(in srgb, var(--papel-alto) 92%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  border-top: 1px solid var(--filete);
+  padding: 0 max(4px, env(safe-area-inset-left)) env(safe-area-inset-bottom)
+           max(4px, env(safe-area-inset-right));
 }
 #barra button {
-  display: flex; flex-direction: column; align-items: center; gap: .1rem;
-  padding: .5rem 0 .55rem; cursor: pointer; min-width: 0;
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: .2rem;
+  min-height: 3.6rem; padding: .5rem 0 .5rem; cursor: pointer; min-width: 0;
   background: none; border: 0; color: var(--tinta-suave);
-  font-family: var(--sans); font-size: .64rem; letter-spacing: .01em;
+  font-family: var(--sans); font-size: .66rem; letter-spacing: .02em;
+  transition: color var(--rapido);
 }
-#barra button span { font-size: 1.15rem; line-height: 1.1; }
-#barra button.activo { color: var(--acento); }
+#barra button svg { width: 1.4rem; height: 1.4rem; stroke-width: 1.6; position: relative; z-index: 1; }
+#barra button::before {
+  content: ""; position: absolute; top: .38rem; left: 50%;
+  width: 3.4rem; height: 1.85rem; margin-left: -1.7rem;
+  border-radius: 999px; background: transparent;
+  transition: background-color var(--medio), transform var(--medio);
+  transform: scaleX(.6);
+}
+#barra button.activo { color: var(--acento); font-weight: 600; }
+#barra button.activo::before {
+  background: color-mix(in srgb, var(--acento) 13%, transparent);
+  transform: none;
+}
+#barra button:focus-visible { outline-offset: -4px; border-radius: 12px; }
 
 /* ------------------------------------------------ la liturgia de las horas
    El original distingue la rubrica del texto por el color, y solo por el
@@ -297,40 +382,41 @@ h2.seccion {
    distincion con la variable --rubrica, que ya cambia con el color
    liturgico del dia y con el tema, de modo que las horas se leen igual que
    el resto de la app. */
-#formularios button.sel {
-  background: var(--acento); border-color: var(--acento); color: #fff;
-}
-.hora-sec { margin: 0 0 1.35rem; }
+.hora-sec { margin: 0 0 1.5rem; }
 /* El rotulo y, cuando las rubricas dejan elegir, el selector a su derecha,
    sobre el mismo filete: la opcion va con la seccion a la que toca y no se
    lleva mas sitio que el que ya ocupaba el rotulo. */
 .sec-cab {
-  display: flex; align-items: flex-end; gap: .6rem;
-  margin: 1.5rem 0 .55rem; border-bottom: 1px solid var(--filete);
+  display: flex; align-items: flex-end; flex-wrap: wrap; gap: .35rem .6rem;
+  margin: 1.7rem 0 .65rem; border-bottom: 1px solid var(--filete);
 }
 .hora-sec:first-child .sec-cab { margin-top: .2rem; }
 .hora-sec .rotulo {
-  flex: 1; min-width: 0;
-  font-family: var(--sans); font-size: .76rem; font-weight: 600;
-  letter-spacing: .07em; text-transform: uppercase;
-  color: var(--rubrica); margin: 0; padding-bottom: .25rem;
+  flex: 1 1 auto; min-width: 0;
+  font-family: var(--serif); font-size: 1rem; font-weight: 600;
+  font-variant-caps: all-small-caps; letter-spacing: .08em;
+  color: var(--rubrica); margin: 0; padding-bottom: .2rem; line-height: 1.3;
 }
 
 /* El selector: una pildora fina, con la opcion elegida apenas tenida del
    color de la rubrica. Discreto a proposito: se toca una vez, si acaso, y
-   despues se reza. */
+   despues se reza. El area que se toca es mas alta que lo que se ve. */
 .alterna {
-  flex: none; display: inline-flex; margin-bottom: .3rem; padding: 2px;
-  border: 1px solid var(--filete); border-radius: 999px;
+  flex: none; display: inline-flex; margin-bottom: .35rem; padding: 2px;
+  border: 1px solid var(--filete-fuerte); border-radius: 999px;
   background: var(--papel);
+  max-width: 100%; overflow-x: auto; scrollbar-width: none;
 }
+.alterna::-webkit-scrollbar { display: none; }
 .alterna button {
-  font-family: var(--sans); font-size: .66rem; letter-spacing: .03em;
-  line-height: 1.3; padding: .2rem .6rem; cursor: pointer;
+  position: relative;
+  font-family: var(--sans); font-size: .7rem; letter-spacing: .03em;
+  line-height: 1.3; padding: .3rem .7rem; cursor: pointer;
   border: 0; border-radius: 999px; background: transparent;
   color: var(--tinta-suave); white-space: nowrap;
-  transition: background-color .15s, color .15s;
+  transition: background-color var(--rapido), color var(--rapido);
 }
+.alterna button::after { content: ""; position: absolute; inset: -.45rem 0; }
 .alterna button[aria-pressed="true"] {
   color: var(--rubrica); font-weight: 600;
   background: var(--filete);
@@ -342,93 +428,111 @@ h2.seccion {
 /* al cambiar de opcion el texto nuevo entra sin sobresalto */
 .hora-sec.cambia { animation: aparece .22s ease-out; }
 @keyframes aparece { from { opacity: .35; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) {
-  .hora-sec.cambia { animation: none; }
-  .alterna button { transition: none; }
-}
 
 /* lo que añade la conmemoracion se distingue del oficio de la feria */
 .hora-sec.conm {
-  border-left: 2px solid var(--filete); padding-left: .8rem;
+  border-left: 2px solid var(--filete-fuerte); padding-left: .85rem;
 }
-.hora-sec .verso {
-  margin: 0 0 .85rem; line-height: 1.5; text-indent: 0;
+
+/* Cada renglon del original es un bloque: en los versos, con sangria
+   francesa —el renglon empieza a ras y lo que no cabe entra—; en la prosa,
+   justificado y con particion de palabras (el castellano si la tiene). */
+.estrofa-h { margin: 0 0 .95rem; }
+.hora-sec .ln { display: block; }
+.en-verso .estrofa-h { line-height: 1.5; }
+.en-verso .ln { padding-left: 1.3em; text-indent: -1.3em; }
+.prosa .ln {
+  text-align: justify; -webkit-hyphens: auto; hyphens: auto;
+  text-wrap: pretty;
 }
+.prosa .ln + .ln { margin-top: .5em; }
+.prosa .ln.sigla { padding-left: 1.3em; text-indent: -1.3em; }
+/* el titulo del salmo y los titulillos de las lecturas: en versalitas */
+.hora-sec .ln.tit, .hora-sec .ln.solo-rub {
+  padding-left: 0; text-indent: 0; text-align: left;
+  font-variant-caps: all-small-caps; letter-spacing: .05em; line-height: 1.35;
+}
+.hora-sec .ln.tit { margin: .1rem 0 .1rem; }
 .hora-sec .rub {
   /* En el original la rubrica se distingue del texto por el color y por
      nada mas: ni negrita ni cursiva. Se respeta. */
   color: var(--rubrica); font-weight: inherit; font-style: normal;
 }
+/* donde el salmo repite la antifona: dicha la antifona, se sigue aqui */
+.cruz {
+  color: var(--rubrica); font-weight: 600; font-size: .92em;
+  font-style: normal; text-indent: 0;
+}
 
 /* -------------------------------------------------------------- portada
    Las dos puertas de la app, una encima de otra y del mismo tamano: no hay
    una principal y otra secundaria, son dos libros distintos. */
-#cabecera.portada { border-bottom-width: 0; }
+#cabecera.portada { border-bottom-color: transparent; background: var(--papel); }
 #cabecera.portada h1 {
-  font-size: 1.05rem; letter-spacing: .14em; text-transform: uppercase;
+  font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
   color: var(--acento); text-align: center; font-weight: 600;
 }
 .portada-fecha {
-  margin: .2rem 0 0; text-align: center;
-  font-family: var(--sans); font-size: .74rem; letter-spacing: .06em;
+  margin: .4rem 0 0; text-align: center;
+  font-family: var(--sans); font-size: .74rem; letter-spacing: .08em;
   text-transform: uppercase; color: var(--tinta-suave);
 }
 .portada-dia {
-  margin: .35rem 0 0; text-align: center; font-size: 1.05rem;
-  line-height: 1.35; color: var(--tinta);
+  margin: .4rem auto 0; max-width: 26rem; text-align: center;
+  font-size: 1.12rem; line-height: 1.4; color: var(--tinta);
 }
 .portada-elige {
-  display: flex; flex-direction: column; gap: .85rem; margin: 1.6rem 0 0;
+  display: flex; flex-direction: column; gap: .9rem; margin: 1.8rem 0 0;
 }
 .tarjeta {
   display: block; text-decoration: none; color: inherit;
-  border: 1px solid var(--filete); border-radius: .7rem;
-  background: var(--papel-alto);
-  padding: 1.15rem 1.1rem 1.2rem; position: relative;
+  border: 1px solid var(--filete); border-radius: 16px;
+  background: var(--papel-alto); box-shadow: var(--sombra);
+  padding: 1.2rem 1.15rem 1.25rem; position: relative;
   border-left: 4px solid var(--acento);
+  transition: transform var(--rapido), background-color var(--rapido);
 }
-.tarjeta:active { background: var(--filete); }
-.tarjeta-icono {
-  display: block; font-size: 1.5rem; line-height: 1;
-  color: var(--acento); margin-bottom: .5rem;
-}
+.tarjeta:active { background: var(--filete); transform: scale(.995); }
+.tarjeta-icono { display: block; color: var(--acento); margin-bottom: .55rem; }
+.tarjeta-icono svg { width: 1.7rem; height: 1.7rem; stroke-width: 1.5; }
 .tarjeta-t {
-  display: block; font-size: 1.18rem; line-height: 1.25; margin-bottom: .3rem;
+  display: block; font-size: 1.22rem; line-height: 1.25; margin-bottom: .3rem;
 }
 .tarjeta-p {
-  display: block; font-family: var(--sans); font-size: .74rem;
+  display: block; font-family: var(--sans); font-size: .76rem;
   line-height: 1.45; color: var(--tinta-suave);
 }
 .portada-menudo {
   display: flex; justify-content: center; flex-wrap: wrap;
-  gap: .25rem 1.4rem; margin: 1.7rem 0 .5rem;
+  gap: .25rem 1.4rem; margin: 1.8rem 0 .5rem;
 }
 .portada-menudo a {
-  font-family: var(--sans); font-size: .78rem; color: var(--tinta-suave);
-  text-decoration: none; border-bottom: 1px solid var(--filete);
-  padding-bottom: .1rem;
+  font-family: var(--sans); font-size: .8rem; color: var(--tinta-suave);
+  text-decoration: none; border-bottom: 1px solid var(--filete-fuerte);
+  padding: .5rem 0 .1rem;
 }
 
 /* --------------------------------------------- reseña y edición española
    La reseña del santo va antes del oficio, como en el libro: en letra menor
    y en cursiva, que se lee y no se reza. */
 .hora-sec.resena {
-  margin: .4rem 0 1.4rem; padding: .75rem .9rem;
+  margin: .4rem 0 1.5rem; padding: .85rem 1rem;
   background: var(--papel-alto); border-left: 3px solid var(--rubrica);
-  border-radius: 0 .5rem .5rem 0;
+  border-radius: 0 12px 12px 0; box-shadow: var(--sombra);
 }
 .hora-sec.resena p {
-  margin: 0; font-style: italic; font-size: .92em; line-height: 1.5;
-  color: var(--tinta-suave);
+  margin: 0; font-style: italic; font-size: .92em; line-height: 1.55;
+  color: var(--tinta-suave); text-align: justify; hyphens: auto;
 }
 /* lo que no está en la fuente y se tomó de los tomos impresos */
 .ed-pdf {
-  display: inline-block; margin-left: .5rem; vertical-align: .08em;
+  display: inline-block; margin-left: .5rem; vertical-align: .12em;
   font-family: var(--sans); font-size: .58rem; font-weight: 500;
-  letter-spacing: .06em; text-transform: none; color: var(--tinta-suave);
-  border: 1px solid var(--filete); border-radius: 999px; padding: 0 .4rem;
+  font-variant-caps: normal; letter-spacing: .06em; text-transform: none;
+  color: var(--tinta-suave);
+  border: 1px solid var(--filete-fuerte); border-radius: 999px; padding: 0 .45rem;
 }
-.hora-sec.resena .ed-pdf { margin: .45rem 0 0; }
+.hora-sec.resena .ed-pdf { margin: .5rem 0 0; }
 
 /* ------------------------------------------------------------ calendario */
 .cal-cab { margin: .2rem 0 .6rem; }
@@ -436,70 +540,116 @@ h2.seccion {
   display: flex; align-items: center; justify-content: center; gap: 1.2rem;
 }
 .cal-anio h2 {
-  margin: 0; font-size: 1.5rem; font-weight: 500; letter-spacing: .04em;
+  margin: 0; font-size: 1.6rem; font-weight: 500; letter-spacing: .05em;
   color: var(--acento); min-width: 4.5rem; text-align: center;
 }
 .cal-anio button {
-  width: 2.4rem; height: 2.4rem; border-radius: 50%; cursor: pointer;
-  border: 1px solid var(--filete); background: var(--papel-alto);
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--filete-fuerte); background: var(--papel-alto);
   color: var(--acento); font-size: 1.3rem; line-height: 1;
 }
 .cal-anio button:active { background: var(--filete); }
 .cal-ciclo {
-  margin: .35rem 0 .8rem; text-align: center; font-family: var(--sans);
+  margin: .4rem 0 .9rem; text-align: center; font-family: var(--sans);
   font-size: .74rem; color: var(--tinta-suave);
 }
+/* el buscador de celebraciones */
+.cal-busca {
+  display: flex; align-items: center; gap: .55rem;
+  min-height: 3rem; margin: 0 0 .35rem; padding: 0 .3rem 0 1rem;
+  background: var(--papel-alto); border: 1px solid var(--filete-fuerte);
+  border-radius: 999px; box-shadow: var(--sombra);
+  transition: border-color var(--rapido), box-shadow var(--rapido);
+}
+.cal-busca:focus-within {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--acento) 18%, transparent);
+}
+.cal-busca > svg { color: var(--tinta-suave); width: 1.15rem; height: 1.15rem; }
+.cal-busca input {
+  flex: 1; min-width: 0; height: 2.9rem; border: 0; outline: none;
+  background: transparent; color: var(--tinta);
+  font-family: var(--serif); font-size: 1rem;    /* 16px: sin zoom en iOS */
+}
+.cal-busca input::placeholder { color: var(--tinta-suave); opacity: .85; }
+.cal-busca input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.cal-borra {
+  width: 2.4rem; height: 2.4rem; flex: none; display: grid; place-items: center;
+  border: 0; border-radius: 50%; background: transparent; cursor: pointer;
+  color: var(--tinta-suave);
+}
+.cal-borra svg { width: 1.05rem; height: 1.05rem; }
+.cal-borra:active { background: var(--filete); }
+.cal-busca:has(input:placeholder-shown) .cal-borra { visibility: hidden; }
+.cal-res {
+  margin: .1rem 0 .7rem; text-align: center; font-family: var(--sans);
+  font-size: .74rem; color: var(--tinta-suave); min-height: 1.1em;
+}
+.cal-res:empty { min-height: .3rem; margin: 0; }
+.cal-nada { margin-top: 1rem; }
+#vista.filtrando .cal-meses, #vista.filtrando .cal-ctl { display: none; }
+#vista.filtrando .cal-mes h3 { margin-top: .9rem; }
+
 .cal-ctl {
   display: flex; align-items: center; justify-content: center; gap: .6rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; margin-top: .3rem;
 }
 .cal-et { font-family: var(--sans); font-size: .72rem; color: var(--tinta-suave); }
 .cal-ctl .alterna { margin: 0; }
 .cal-meses {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: .3rem;
-  margin: .9rem 0 0;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: .35rem;
+  margin: 1rem 0 0;
 }
 .cal-meses button {
-  font-family: var(--sans); font-size: .72rem; padding: .35rem 0;
-  border: 1px solid var(--filete); border-radius: .4rem; cursor: pointer;
+  font-family: var(--sans); font-size: .74rem; min-height: 2.5rem;
+  border: 1px solid var(--filete); border-radius: 10px; cursor: pointer;
   background: var(--papel-alto); color: var(--tinta-suave);
 }
 .cal-meses button:active { background: var(--filete); }
 .cal-mes h3 {
   position: sticky; top: var(--alto-cabecera); z-index: 2;
-  margin: 1.3rem 0 .2rem; padding: .45rem 0 .35rem;
+  margin: 1.4rem 0 .2rem; padding: .5rem 0 .4rem;
   background: var(--papel); border-bottom: 1px solid var(--filete);
-  font-family: var(--sans); font-size: .78rem; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--acento);
+  font-family: var(--sans); font-size: .76rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--acento);
 }
 .cal-mes h3 small { font-weight: 400; color: var(--tinta-suave); letter-spacing: .04em; }
 .cal-dia {
-  display: flex; gap: .75rem; align-items: flex-start;
-  padding: .55rem .2rem .55rem .55rem; text-decoration: none; color: inherit;
+  display: flex; gap: .8rem; align-items: flex-start;
+  padding: .65rem .3rem .65rem .6rem; text-decoration: none; color: inherit;
   border-bottom: 1px solid var(--filete);
   border-left: 3px solid var(--c, var(--filete));
+  transition: background-color var(--rapido);
 }
 .cal-dia:active { background: var(--filete); }
 .cal-dia[data-color="verde"]  { --c: #2f6b45; }
 .cal-dia[data-color="morado"] { --c: #7c4a99; }
 .cal-dia[data-color="rojo"]   { --c: #a32020; }
-.cal-dia[data-color="blanco"] { --c: #d9c48a; }
-.cal-dia.hoy { background: color-mix(in srgb, var(--realce) 55%, transparent); }
+.cal-dia[data-color="blanco"] { --c: #d4bd7c; }
+.cal-dia.hoy {
+  background: color-mix(in srgb, var(--realce) 50%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acento) 30%, transparent);
+  border-radius: 0 10px 10px 0;
+}
 .cal-num {
-  flex: none; width: 2.2rem; text-align: center; font-size: 1.15rem;
-  line-height: 1.1; color: var(--tinta);
+  flex: none; width: 2.3rem; text-align: center; font-size: 1.18rem;
+  line-height: 1.1; color: var(--tinta); font-variant-numeric: lining-nums;
 }
 .cal-num small {
-  display: block; font-family: var(--sans); font-size: .62rem;
-  text-transform: uppercase; letter-spacing: .05em; color: var(--tinta-suave);
+  display: block; font-family: var(--sans); font-size: .6rem;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--tinta-suave);
+}
+.cal-dia.hoy .cal-num small::after {
+  content: "hoy"; display: block; margin-top: .1rem;
+  color: var(--acento); font-weight: 700; letter-spacing: .08em;
 }
 .cal-dia.domingo .cal-num { color: var(--rubrica); font-weight: 600; }
 .cal-txt { flex: 1; min-width: 0; }
-.cal-t { display: block; line-height: 1.3; }
+.cal-t { display: block; line-height: 1.32; }
 .cal-dia.domingo .cal-t { font-weight: 600; }
 .cal-g {
-  display: inline-block; margin-top: .2rem; font-family: var(--sans);
-  font-size: .66rem; letter-spacing: .04em; text-transform: uppercase;
+  display: inline-block; margin-top: .22rem; font-family: var(--sans);
+  font-size: .64rem; letter-spacing: .06em; text-transform: uppercase;
   color: var(--tinta-suave);
 }
 .cal-g.g-s { color: var(--rubrica); font-weight: 700; }
@@ -507,10 +657,65 @@ h2.seccion {
 .cal-g.g-d { color: var(--rubrica); }
 .cal-g.g-m { color: var(--tinta); }
 .cal-o {
-  display: block; margin-top: .15rem; font-family: var(--sans);
-  font-size: .72rem; line-height: 1.35; color: var(--tinta-suave);
+  display: block; margin-top: .18rem; font-family: var(--sans);
+  font-size: .72rem; line-height: 1.4; color: var(--tinta-suave);
 }
 .cal-o.omite { font-style: italic; }
 .cal-dia.vacio { opacity: .5; }
 .cal-pie a { color: var(--acento); }
 .cal-mes, .cal-dia { scroll-margin-top: calc(var(--alto-cabecera) + 2.8rem); }
+
+/* La barra resumida del calendario: ocupa el sitio del titulo cuando la
+   cabecera grande ya ha subido. Va encima, sin empujar nada, para que la
+   pagina no salte al aparecer. */
+#cab-extra:empty { display: none; }
+.mini-cal {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  top: env(safe-area-inset-top);
+  display: flex; align-items: center; gap: .25rem;
+  padding: 0 6px 0 4px;
+  opacity: 0; visibility: hidden; transform: translateY(-.35rem);
+  transition: opacity var(--medio), transform var(--medio), visibility var(--medio);
+}
+#cabecera.cal-pegada .mini-cal { opacity: 1; visibility: visible; transform: none; }
+#cabecera.cal-pegada h1 { opacity: 0; }
+.mini-anio { flex: none; display: flex; align-items: center; }
+.mini-anio span {
+  font-size: 1.08rem; font-weight: 600; letter-spacing: .04em;
+  color: var(--acento); min-width: 3rem; text-align: center;
+}
+.mini-anio button, .mini-lupa {
+  width: 2.5rem; height: 2.75rem; display: grid; place-items: center;
+  border: 0; background: none; color: var(--acento); cursor: pointer;
+  border-radius: 999px;
+}
+.mini-anio button svg { width: 1.05rem; height: 1.05rem; stroke-width: 2; }
+.mini-hueco { width: 2.5rem; }
+.mini-anio button:active, .mini-lupa:active { background: var(--filete); }
+.mini-lupa { width: 2.75rem; color: var(--tinta-suave); }
+.mini-meses {
+  flex: 1; min-width: 0; display: flex; gap: .1rem;
+  overflow-x: auto; scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 .9rem, #000 calc(100% - .9rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 .9rem, #000 calc(100% - .9rem), transparent);
+  padding: 0 .6rem;
+}
+.mini-meses::-webkit-scrollbar { display: none; }
+.mini-meses button {
+  flex: none; height: 2.15rem; padding: 0 .62rem;
+  font-family: var(--sans); font-size: .74rem; letter-spacing: .02em;
+  border: 0; border-radius: 999px; background: transparent; cursor: pointer;
+  color: var(--tinta-suave);
+  transition: background-color var(--rapido), color var(--rapido);
+}
+.mini-meses button.actual {
+  color: var(--acento); font-weight: 600;
+  background: color-mix(in srgb, var(--acento) 12%, transparent);
+}
+
+/* ------------------------------------------------------- menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important; transition-duration: .01ms !important;
+  }
+}

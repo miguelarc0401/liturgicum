@@ -30,11 +30,28 @@ const E = {              // todo el estado de la app
   diaDeClave: new Map(), // clave de formulario -> día
   colorDe: new Map(),    // slug -> color litúrgico
   busqueda: null,
-  vista: 'hoy'
+  vista: 'hoy',
+  pos: {},               // vista -> {k, y}: dónde se dejó cada una
+  claveVista: null,      // qué se está leyendo, para saber si es lo mismo
+  ultimaMisa: null,      // la ruta de la misa que se leía
+  calQ: ''               // lo que se busca en el calendario
 };
 
 const $ = (s) => document.querySelector(s);
 const vista = $('#vista');
+
+/* Los iconos, de trazo, del mismo juego que los de la barra (index.html):
+ * un glifo de texto cambia de un teléfono a otro, un trazo no. */
+const svg = (d) => '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
+const ICONO = {
+  buscar: svg('<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/>'),
+  cerrar: svg('<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'),
+  izq: svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>'),
+  der: svg('<path d="M9.5 5.5 16 12l-6.5 6.5"/>'),
+  misa: svg('<path d="M12 6.5C10 5 7 4.6 3.5 5v13.2c3.5-.4 6.5.1 8.5 1.6 '
+    + '2-1.5 5-2 8.5-1.6V5C17 4.6 14 5 12 6.5Z"/><path d="M12 6.5v13.3"/>'),
+  horas: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>')
+};
 
 /* ------------------------------------------------------------ utilidades */
 function esc(s) {
@@ -84,12 +101,55 @@ function suma(iso, n) {
     .map((v, i) => i ? String(v).padStart(2, '0') : v).join('-');
 }
 
-function fechaLarga(iso) {
+function fechaLarga(iso, semana) {
   const d = new Date(iso + 'T12:00:00');
   const s = d.toLocaleDateString('es', {
-    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    weekday: semana || 'long', day: 'numeric', month: 'long', year: 'numeric'
   });
   return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/** La fecha de la cabecera: entera hoy; otro día comparte la fila con el
+ *  botón «Hoy», y para que quepa se calla el año si es el de hoy, o se
+ *  abrevia el día de la semana si no lo es. */
+function rotuloFecha(iso) {
+  const hoy = hoyISO();
+  if (iso === hoy) return fechaLarga(iso);
+  if (iso.slice(0, 4) === hoy.slice(0, 4)) {
+    return fechaLarga(iso).replace(/,? de \d{4}$/, '');
+  }
+  return fechaLarga(iso, 'short');
+}
+
+/* --------------------------------------------- volver donde se estaba
+ * Quien sale de Laudes al calendario y vuelve, vuelve al mismo renglón. Se
+ * recuerda una posición por vista, con la clave de lo que se leía en ella:
+ * otro día, otra hora u otra celebración la cambian, y entonces se empieza
+ * arriba. Vive en memoria, así que cerrar la app la olvida. */
+function claveVista() {
+  if (E.vista === 'horas') {
+    return [E.fecha, E.hora, E.oficio ? E.oficio.op.id : ''].join('|');
+  }
+  return location.hash;
+}
+
+/** Antes de cambiar de vista: lo que se deja, dónde se deja. */
+function guardaPosicion() {
+  if (E.vista && E.claveVista) {
+    E.pos[E.vista] = { k: E.claveVista, y: window.scrollY };
+  }
+}
+
+/** Después de pintar una vista: si es la misma que se dejó, al mismo sitio;
+ *  si no, arriba (o donde diga `siNo`, que devuelve false si no hizo nada). */
+function colocaPosicion(siNo) {
+  E.claveVista = claveVista();
+  const p = E.pos[E.vista];
+  if (p && p.k === E.claveVista) {
+    window.scrollTo(0, p.y);
+    return;
+  }
+  if (!siNo || siNo() === false) window.scrollTo(0, 0);
 }
 
 /* -------------------------------------------------------------- ajustes */
@@ -296,8 +356,13 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
     return;
   }
   vista.innerHTML = lects.map(pintaLectura).join('');
-  vista.scrollTop = 0;
-  window.scrollTo(0, 0);
+  if (iso) E.ultimaMisa = location.hash;
+  colocaPosicion();
+}
+
+/** El botón «Hoy» sale sólo cuando se está en otro día. */
+function marcaHoy(iso) {
+  $('#ir-hoy').hidden = !iso || iso === hoyISO();
 }
 
 /* ------------------------------------------------------------ las vistas */
@@ -305,9 +370,11 @@ function verDia(iso, slug, bloque) {
   E.vista = 'hoy';
   marcaBarra('hoy');
   $('#cabecera').classList.remove('compacta', 'portada');
-  $('#rotulo-fecha').textContent = fechaLarga(iso);
+  limpiaCabExtra();
+  $('#rotulo-fecha').textContent = rotuloFecha(iso);
   $('#selector-fecha').value = iso;
   E.fecha = iso;
+  marcaHoy(iso);
   const val = entradasDe(iso);
   if (!val) {
     document.body.dataset.color = 'neutro';
@@ -329,9 +396,17 @@ function verDia(iso, slug, bloque) {
   pintaFormulario(s, b, iso, cels, val);
 }
 
+/** La barra resumida del calendario vive en la cabecera: fuera de él, nada. */
+function limpiaCabExtra() {
+  $('#cab-extra').innerHTML = '';
+  $('#cabecera').classList.remove('cal-pegada');
+}
+
 function modoPanel(titulo) {
   $('#cabecera').classList.add('compacta');
   $('#cabecera').classList.remove('portada');
+  limpiaCabExtra();
+  marcaHoy(null);
   $('#titulo-dia').textContent = titulo;
   $('#subtitulo-dia').textContent = '';
   $('#celebraciones').innerHTML = '';
@@ -345,7 +420,10 @@ function verIndice() {
   // el índice se abre desde el calendario, y es allí donde se vuelve
   marcaBarra('calendario');
   modoPanel('Índice del leccionario');
-  const h = [];
+  // el buscador del latín salió de la barra de abajo: es cosa del
+  // leccionario, y aquí está a mano de quien lo hojea
+  const h = ['<a class="enlace-buscar" href="#/buscar">' + ICONO.buscar
+    + 'Buscar en el latín del leccionario</a>'];
   E.indice.secciones.forEach((sec, i) => {
     h.push('<details class="sec"' + (i === 0 ? ' open' : '')
       + '><summary>' + esc(sec.t) + '</summary>');
@@ -359,7 +437,7 @@ function verIndice() {
     h.push('</details>');
   });
   vista.innerHTML = h.join('');
-  window.scrollTo(0, 0);
+  colocaPosicion();
 }
 
 /* ------------------------------------------------- el calendario del año
@@ -454,9 +532,14 @@ function filaCal(iso, hoy) {
   if (!cs.length) return '';
   const p = cs[0];
   const color = E.colorDe.get(p.slug) || 'neutro';
+  // lo que encuentra el buscador: todo lo que se celebra o se puede
+  // celebrar ese día, y lo que se omite, sin acentos
+  const q = plano(cs.map((o) => o.t + ' ' + o.g).concat(
+    (val.o || []).map((x) => x.t), vigilia ? [vigilia] : []).join(' · '));
   const h = ['<a class="cal-dia' + (ds === 0 ? ' domingo' : '')
     + (iso === hoy ? ' hoy' : '') + '"' + (iso === hoy ? ' id="cal-hoy"' : '')
-    + ' href="' + abre + iso + '" data-color="' + color + '">', num,
+    + ' href="' + abre + iso + '" data-color="' + color + '" data-q="'
+    + esc(q) + '">', num,
     '<span class="cal-txt"><span class="cal-t">' + esc(p.t) + '</span>',
     '<span class="cal-g g-' + claseGrado(p.g) + '">'
     + esc(p.g) + '</span>'];
@@ -518,15 +601,24 @@ function verCalendario(anio) {
     '</div>',
     '<p class="cal-ciclo">' + esc(ciclo.charAt(0).toUpperCase() + ciclo.slice(1))
       + '</p>',
+    '<label class="cal-busca">' + ICONO.buscar
+      + '<input type="search" id="cal-q" autocomplete="off" '
+      + 'enterkeyhint="search" spellcheck="false" '
+      + 'placeholder="Buscar un santo o una fiesta" '
+      + 'aria-label="Buscar una celebración en el calendario" value="'
+      + esc(E.calQ) + '">'
+      + '<button type="button" class="cal-borra" data-borra="1" '
+      + 'aria-label="Borrar la búsqueda">' + ICONO.cerrar + '</button></label>',
+    '<p class="cal-res" id="cal-res" aria-live="polite"></p>',
     '<div class="cal-ctl"><span class="cal-et">Al tocar un día, abrir</span>'
       + '<div class="alterna" role="group" aria-label="Al tocar un día, abrir">'
       + [['misa', 'Misa'], ['horas', 'Horas']].map(([v, t]) =>
         '<button type="button" data-abre="' + v + '" aria-pressed="'
         + (E.cfg.calAbre === v) + '">' + t + '</button>').join('')
       + '</div></div>',
-    '<nav class="cal-meses">' + MESES.map((m, i) => '<button type="button" '
-      + 'data-mes="' + i + '">' + m.slice(0, 3) + '</button>').join('')
-      + '</nav>',
+    '<nav class="cal-meses" aria-label="Meses">' + MESES.map((m, i) =>
+      '<button type="button" data-mes="' + i + '">' + m.slice(0, 3)
+      + '</button>').join('') + '</nav>',
     '</div>'
   ];
   for (let mes = 0; mes < 12; mes++) {
@@ -539,20 +631,129 @@ function verCalendario(anio) {
     }
     h.push('</section>');
   }
+  h.push('<p class="aviso cal-nada" id="cal-nada" hidden></p>');
   h.push('<p class="pie cal-pie">Calendario general romano y latinoamericano, '
     + 'con la concurrencia resuelta por la Tabla de los días litúrgicos. '
     + '<a href="#/indice">Índice del leccionario</a> (formularios, apéndices, '
     + 'misas votivas y rituales).</p>');
   vista.innerHTML = h.join('');
+  pintaBarraCal(anio, min, max);
   // los rótulos de mes se quedan pegados bajo la cabecera, que también lo está
   document.documentElement.style.setProperty('--alto-cabecera',
     $('#cabecera').offsetHeight + 'px');
-  const marcado = document.getElementById('cal-hoy');
-  if (marcado) {
+  if (E.calQ) filtraCalendario(E.calQ);
+  colocaPosicion(() => {
+    const marcado = !E.calQ && document.getElementById('cal-hoy');
+    if (!marcado) return false;
     marcado.scrollIntoView({ block: 'center' });
-  } else {
-    window.scrollTo(0, 0);
+  });
+  alDesplazarCalendario();
+}
+
+/* La cabecera del calendario se queda arriba al bajar por el año, pero
+ * resumida: el año con sus flechas, los meses en una tira y la lupa. Ocupa
+ * el sitio del título, que a esa altura ya no dice nada, de modo que la
+ * cabecera no cambia de alto y la página no salta. */
+function pintaBarraCal(anio, min, max) {
+  const flecha = (a, dir) => (a < min || a > max)
+    ? '<span class="mini-hueco"></span>'
+    : '<button type="button" data-anio="' + a + '" aria-label="Año '
+      + (dir < 0 ? 'anterior' : 'siguiente') + '">'
+      + (dir < 0 ? ICONO.izq : ICONO.der) + '</button>';
+  $('#cab-extra').innerHTML = '<div class="mini-cal" aria-label="Calendario '
+    + anio + '">'
+    + '<div class="mini-anio">' + flecha(anio - 1, -1) + '<span>' + anio
+    + '</span>' + flecha(anio + 1, 1) + '</div>'
+    + '<div class="mini-meses">' + MESES.map((m, i) => '<button type="button" '
+      + 'data-mes="' + i + '" aria-label="' + m + '">' + m.slice(0, 3)
+      + '</button>').join('') + '</div>'
+    + '<button type="button" class="mini-lupa" data-lupa="1" '
+    + 'aria-label="Buscar en el calendario">' + ICONO.buscar + '</button>'
+    + '</div>';
+}
+
+/** Al bajar: se pega la barra resumida cuando la cabecera grande ya no se
+ *  ve, y se marca en ella el mes que se está leyendo. */
+let _desplazando = false;
+function alDesplazarCalendario() {
+  if (E.vista !== 'calendario' || _desplazando) return;
+  _desplazando = true;
+  requestAnimationFrame(() => {
+    _desplazando = false;
+    if (E.vista !== 'calendario') return;
+    const cab = document.querySelector('.cal-cab');
+    const alto = $('#cabecera').offsetHeight;
+    if (!cab) return;
+    $('#cabecera').classList.toggle('cal-pegada',
+      cab.getBoundingClientRect().bottom < alto);
+    let mes = -1;
+    document.querySelectorAll('.cal-mes').forEach((s, i) => {
+      if (!s.hidden && s.getBoundingClientRect().top <= alto + 48) mes = i;
+    });
+    const tira = document.querySelector('.mini-meses');
+    if (!tira) return;
+    tira.querySelectorAll('button').forEach((b) => {
+      const es = +b.dataset.mes === mes;
+      if (es && !b.classList.contains('actual')) {
+        // la tira se corre sola para que el mes se vea, sin mover la página
+        const x = b.getBoundingClientRect().left - tira.getBoundingClientRect().left;
+        tira.scrollLeft += x - (tira.clientWidth - b.offsetWidth) / 2;
+      }
+      b.classList.toggle('actual', es);
+      if (es) b.setAttribute('aria-current', 'true');
+      else b.removeAttribute('aria-current');
+    });
+  });
+}
+
+/* El buscador del calendario: filtra el año que se ve, que es donde están
+ * las fechas que importan. Ignora acentos y mayúsculas, y basta con que
+ * estén todas las palabras («teresa jesus» encuentra las dos Teresas). */
+let _temporizadorCal = null;
+function filtraCalendario(q) {
+  E.calQ = q;
+  const palabras = plano(q.trim()).split(/\s+/).filter(Boolean);
+  const activo = palabras.length > 0;
+  let n = 0;
+  document.querySelectorAll('.cal-mes').forEach((s) => {
+    let visibles = 0;
+    s.querySelectorAll('.cal-dia').forEach((a) => {
+      const ok = !activo || (a.dataset.q
+        && palabras.every((p) => a.dataset.q.includes(p)));
+      a.hidden = !ok;
+      if (ok && activo && a.dataset.q) visibles++;
+    });
+    s.hidden = activo && !visibles;
+    n += visibles;
+  });
+  vista.classList.toggle('filtrando', activo);
+  const res = $('#cal-res'), nada = $('#cal-nada');
+  const anio = location.hash.split('/')[2] || hoyISO().slice(0, 4);
+  if (res) {
+    res.textContent = !activo ? '' : n === 1 ? 'Un día en ' + anio
+      : n ? n + ' días en ' + anio : '';
   }
+  if (nada) {
+    nada.hidden = !activo || n > 0;
+    nada.textContent = 'Nada con «' + q.trim() + '» en ' + anio + '. Prueba '
+      + 'con una sola palabra del nombre, sin «san» ni «santa» («Francisco», '
+      + '«Guadalupe», «Ángeles»).';
+  }
+}
+
+function alEscribirCalendario(ev) {
+  if (E.vista !== 'calendario' || ev.target.id !== 'cal-q') return;
+  clearTimeout(_temporizadorCal);
+  const v = ev.target.value;
+  _temporizadorCal = setTimeout(() => {
+    filtraCalendario(v);
+    // los resultados empiezan bajo el buscador
+    const cab = document.querySelector('.cal-cab');
+    if (cab && window.scrollY > cab.offsetTop + cab.offsetHeight) {
+      window.scrollTo(0, 0);
+    }
+    alDesplazarCalendario();
+  }, 140);
 }
 
 function alTocarCalendario(ev) {
@@ -568,9 +769,29 @@ function alTocarCalendario(ev) {
     verCalendario(location.hash.split('/')[2]);
     window.scrollTo(0, y);
   } else if (b.dataset.mes) {
+    if (E.calQ) {                      // un mes entero: fuera el filtro
+      const q = $('#cal-q');
+      if (q) q.value = '';
+      filtraCalendario('');
+    }
     const s = document.getElementById('cal-mes-' + b.dataset.mes);
-    if (s) s.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    if (s) s.scrollIntoView({ block: 'start', behavior: suave() });
+  } else if (b.dataset.lupa) {
+    window.scrollTo({ top: 0, behavior: suave() });
+    const q = $('#cal-q');
+    if (q) q.focus({ preventScroll: true });
+  } else if (b.dataset.borra) {
+    const q = $('#cal-q');
+    q.value = '';
+    filtraCalendario('');
+    q.focus();
   }
+}
+
+/** Movimiento suave, salvo para quien ha pedido menos movimiento. */
+function suave() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ? 'auto' : 'smooth';
 }
 
 function construyeBusqueda() {
@@ -592,7 +813,8 @@ function construyeBusqueda() {
 
 function verBusqueda(q) {
   E.vista = 'buscar';
-  marcaBarra('buscar');
+  // se llega desde el índice, que cuelga del calendario
+  marcaBarra('calendario');
   modoPanel('Buscar en el latín');
   vista.innerHTML = '<input class="campo" id="q" type="search" '
     + 'placeholder="Palabra latina o cita (Is 2,1)" value="' + esc(q || '')
@@ -739,7 +961,7 @@ function verAjustes() {
     + '</p>'
   ].join('');
 
-  window.scrollTo(0, 0);
+  colocaPosicion();
 }
 
 /** Un solo oyente para todos los ajustes: la vista se repinta a menudo y
@@ -790,14 +1012,14 @@ function verPortada() {
     hoy ? '<p class="portada-dia">' + esc(hoy) + '</p>' : '',
     '<div class="portada-elige">',
     '<a class="tarjeta" href="#/d/' + iso + '">',
-    '<span class="tarjeta-icono">☩</span>',
+    '<span class="tarjeta-icono">' + ICONO.misa + '</span>',
     '<span class="tarjeta-t">Lecturas de la Misa</span>',
     '<span class="tarjeta-p">El leccionario romano en latín'
     + (anio ? ' · Ciclo ' + anio.ciclo + ' · Año ' + anio.ferial : '')
     + '</span>',
     '</a>',
     '<a class="tarjeta" href="#/h/' + iso + '">',
-    '<span class="tarjeta-icono">☾</span>',
+    '<span class="tarjeta-icono">' + ICONO.horas + '</span>',
     '<span class="tarjeta-t">Liturgia de las Horas</span>',
     '<span class="tarjeta-p">El oficio divino en castellano · ahora, '
     + esc(hora[1]) + '</span>',
@@ -806,11 +1028,10 @@ function verPortada() {
     '<nav class="portada-menudo">',
     '<a href="#/calendario">Calendario</a>',
     '<a href="#/indice">Índice del leccionario</a>',
-    '<a href="#/buscar">Buscar</a>',
     '<a href="#/ajustes">Ajustes</a>',
     '</nav>'
   ].join('');
-  window.scrollTo(0, 0);
+  colocaPosicion();
 }
 
 /* ----------------------------------------------- la liturgia de las horas */
@@ -900,9 +1121,15 @@ function pieza(tabla, prefijo, hora, cl) {
       && tabla[prefijo + hora + '/preambulo']) || null;
 }
 
-/** Lo del día: el propio del tiempo, el salterio y el ordinario. */
+/** Lo del día: el propio del tiempo, el salterio y el ordinario.
+ *
+ *  La lectura bíblica del Oficio sigue el ciclo de dos años: el libro
+ *  guarda la de un año en `tiempo` y la del otro en `tiempo_anio`, y el año
+ *  ferial (I los impares, II los pares) lo dice el calendario. */
 function delDia(d, hora, cl) {
   const L = E.horas;
+  const otroAnio = (L.tiempo_anio || {})[d.k + '/' + hora + '/' + cl];
+  if (otroAnio && otroAnio[d.a]) return otroAnio[d.a];
   return pieza(L.tiempo, d.k + '/', hora, cl)
     || (cl === 'salmodia' && d.p
       && L.salterio[d.t + '/' + d.p + '/' + d.d + '/' + hora])
@@ -957,7 +1184,15 @@ function claveIncipit(c) {
 function otrosHimnos(d, hora, base) {
   const L = E.horas;
   let pool = [];
-  if (hora === 'completas') {
+  if (INTERMEDIAS.includes(hora)) {
+    // la Hora intermedia: los del tiempo, y en el ordinario los de su
+    // mitad (hasta la semana XVII, o desde la XVIII); el Triduo y
+    // Pentecostés traen el suyo, y entonces sólo ése
+    const H = L.himnos_intermedia || {};
+    const sem = +d.k.split('/')[1];
+    pool = H[d.k + '/' + hora] || H[(d.t === 'Ordinario'
+      ? 'Ordinario/' + (sem > 17 ? 2 : 1) : d.t) + '/' + hora] || [];
+  } else if (hora === 'completas') {
     pool = (L.himnos_completas || {})[d.t] || [];
     // en Adviento y Navidad Completas toman también los himnos del tiempo
     // ordinario; Cuaresma y Pascua tienen los suyos
@@ -993,8 +1228,12 @@ function opcionesSeccion(d, op, hora, cl) {
     if (af.length) return af;
   }
   const alts = opcionesSeccionBase(d, op, hora, cl);
-  // los himnos que se pueden escoger se cuelgan del «del día»
   const i = alts.findIndex((o) => o.id === 'dia');
+  if (cl === 'salmodia' && i >= 0 && alts.length === 1) {
+    const sal = salmodiaIntermedia(d, hora, alts[i].c);
+    if (sal) return sal;
+  }
+  // los himnos que se pueden escoger se cuelgan del «del día»
   if (cl === 'himno' && i >= 0) {
     const otros = otrosHimnos(d, hora, alts[i].c);
     if (otros.length) {
@@ -1020,14 +1259,98 @@ function opcionesSeccionBase(d, op, hora, cl) {
     regla = EN_MEMORIA[cl] || 'salterio';
   }
   if (regla === 'dia') return soloDia;
+  // La antífona del Benedictus y del Magníficat: en las memorias y las
+  // fiestas de los santos se ofrece también la del día, detrás de la del
+  // santo (propia o del común), que es la que sale marcada.
+  const yDelDia = (ops) => (cl === 'cantico_evangelico'
+    && /^(MEMORIA|FIESTA)/.test(op.g || '')) ? distintas(ops.concat(soloDia))
+    : ops;
   const propio = delSanto(op, hora, cl);
-  if (propio) return [{ id: 'propio', rot: 'Propio', c: propio }];
+  if (propio) return yDelDia([{ id: 'propio', rot: 'Propio', c: propio }]);
   if (regla === 'salterio') return soloDia;
   const comunes = deSusComunes(op, hora, cl);
   if (regla === 'elige') return distintas(soloDia.concat(comunes));
   // solemnidades, fiestas y lo que en las memorias es del santo: del
   // propio o del común, y del día sólo si no hay otra cosa
-  return comunes.length ? distintas(comunes) : soloDia;
+  return comunes.length ? yDelDia(distintas(comunes)) : soloDia;
+}
+
+/* ---------------------------------------------------- la Hora intermedia
+ * «Quien reza una sola hora intermedia toma la salmodia del día; quien reza
+ * más de una, en las otras toma la complementaria» (Ordinario): los salmos
+ * graduales, 119-121 en Tercia, 122-124 en Sexta y 125-127 en Nona. Aquí la
+ * del día va por omisión en Sexta y la complementaria en Tercia y Nona, y
+ * las tres dejan cambiar.
+ *
+ * La fuente reza las tres y pone la del día donde le parece, así que la
+ * otra se rehace: los salmos de una con las antífonas de la otra. En el
+ * tiempo ordinario cada salmo lleva la suya, que va con él; en Adviento,
+ * Navidad, Cuaresma y Pascua cada hora tiene una sola para toda la
+ * salmodia, y ésa se queda aunque cambien los salmos. */
+const INTERMEDIAS = ['tercia', 'sexta', 'nona'];
+
+const esAntifona = (ln) => ln.length > 0 && ln[0][0] && /^\s*Ant/.test(ln[0][1]);
+const esTituloSalmo = (ln) => ln.length > 0 && ln[0][0]
+  && /^\s*(Salmo|C[áa]ntico)/.test(ln[0][1]);
+const negro = (ln) => ln.filter((tr) => !tr[0]).map((tr) => tr[1]).join('').trim();
+
+/** Una salmodia en sus piezas: las antífonas, sin la repetición del final,
+ *  y cada salmo, del título a la gloria. */
+function despieza(lineas) {
+  const ants = [], salmos = [];
+  let salmo = null;
+  for (const ln of lineas) {
+    if (esAntifona(ln)) {
+      salmo = null;
+      // «Ant 1.», «Ant 2.»… abren; «Ant.» a secas repite la de antes
+      if (/^\s*Ant\.?\s*\d/.test(ln[0][1])) ants.push(negro(ln));
+    } else if (esTituloSalmo(ln)) {
+      salmos.push(salmo = [ln]);
+    } else if (salmo) {
+      salmo.push(ln);
+    }
+  }
+  for (const s of salmos) while (s.length && !s[s.length - 1].length) s.pop();
+  return { ants: ants, salmos: salmos };
+}
+
+/** Y al revés: una antífona por salmo, o una sola para todos. */
+function compone(ants, salmos) {
+  const l = [[]];
+  const ant = (n, t) => l.push([[1, n ? 'Ant ' + n + '. ' : 'Ant. '], [0, t]], []);
+  if (ants.length > 1 && ants.length === salmos.length) {
+    salmos.forEach((s, i) => { ant(i + 1, ants[i]); l.push(...s, []); ant(0, ants[i]); });
+  } else {
+    ant(1, ants[0]);
+    salmos.forEach((s) => l.push(...s, []));
+    ant(0, ants[0]);
+  }
+  return l;
+}
+
+function salmodiaIntermedia(d, hora, dia) {
+  const L = E.horas, I = L.intermedia;
+  if (!I || !d.p || !INTERMEDIAS.includes(hora)) return null;
+  const base = d.t + '/' + d.p + '/' + d.d;
+  // sólo la del salterio: la propia de una fiesta no se toca
+  if (dia !== L.salterio[base + '/' + hora]) return null;
+  let delDiaC = I.dia[base];
+  if (typeof delDiaC === 'string') delDiaC = L.salterio[base + '/' + delDiaC];
+  const compC = I.comp[hora];
+  if (!delDiaC || !compC) return null;
+  const aqui = despieza(dia.l);
+  if (!aqui.ants.length || !aqui.salmos.length) return null;
+  const nums = aqui.salmos.map((s) => +((s[0][0][1].match(/\d+/) || [])[0]));
+  const esComp = nums.join() === I.salmos[hora].join();
+  // una antífona para toda la salmodia: la de esta hora, con cualquier salmo
+  const unica = aqui.ants.length === 1 && aqui.salmos.length > 1;
+  const rehecha = (c) => unica ? compone(aqui.ants, despieza(c.l).salmos) : c.l;
+  return [
+    { id: 'sal-dia', rot: 'Del día', tit: 'Salmodia del día',
+      c: { r: 'SALMODIA', l: esComp ? rehecha(delDiaC) : dia.l } },
+    { id: 'sal-comp', rot: 'Complementaria', tit: 'Salmodia complementaria',
+      c: { r: 'SALMODIA COMPLEMENTARIA', l: esComp ? dia.l : rehecha(compC) } }
+  ];
 }
 
 /* Lo que se elige en cada sección se recuerda mientras dura la sesión,
@@ -1056,6 +1379,12 @@ function eleccionDe(iso, idCel, hora, cl, alts, d) {
       i = alts.findIndex((o) => claveIncipit(o.c) === delDiaK);
     }
   }
+  // la salmodia del día, en Sexta; la complementaria, en Tercia y Nona
+  if (i < 0 && cl === 'salmodia' && alts.some((o) => o.id === 'sal-dia')) {
+    i = alts.findIndex((o) => o.id === (hora === 'sexta' ? 'sal-dia' : 'sal-comp'));
+  }
+  // lo propio del santo, si lo tiene, va siempre delante de lo del día
+  if (i < 0) i = alts.findIndex((o) => o.id === 'propio');
   if (i < 0) {
     i = alts.findIndex((o) => E.cfg.hComun === 'dia'
       ? o.id === 'dia' : !o.id.startsWith('dia'));
@@ -1131,8 +1460,10 @@ function conmemora(secs, op, hora) {
  *  tiempo; la salmodia, del salterio; lo que no cambia, del ordinario—,
  *  pero ahora cada sección sabe además si se puede tomar de otro sitio. */
 function armaHora(iso, hora, idCel) {
-  const d = E.horasDias.dias[iso];
-  if (!d) return null;
+  if (!E.horasDias.dias[iso]) return null;
+  // el año ferial (I o II), para la lectura bíblica del Oficio
+  const d = Object.assign({ a: (anioDe(iso) || {}).ferial },
+    E.horasDias.dias[iso]);
   const cels = celebracionesHoras(d);
   const op = cels.ops.find((o) => o.id === idCel)
     || cels.ops.find((o) => o.id === cels.def);
@@ -1173,7 +1504,7 @@ function pintaSeccionHora(s) {
       + 'de la Liturgia de las Horas de la Conferencia Episcopal Española">'
       + 'ed. española</span>' : '';
   if (s.cl === 'resena') {
-    return '<section class="hora-sec resena" data-cl="resena">'
+    return '<section class="hora-sec resena prosa" data-cl="resena">'
       + o.c.l.filter((ln) => ln.length).map((ln) => '<p>'
         + esc(ln.map((tr) => tr[1]).join('')) + '</p>').join('')
       + ed + '</section>';
@@ -1191,19 +1522,89 @@ function pintaSeccionHora(s) {
     h.push('<div class="sec-cab"><h2 class="rotulo">' + esc(o.c.r || '')
       + ed + '</h2>' + selector + '</div>');
   }
-  let parrafo = [];
-  const cierra = () => {
-    if (parrafo.length) h.push('<p class="verso">' + parrafo.join('<br>') + '</p>');
-    parrafo = [];
+  h.push(pintaLineas(o.c.l, PROSA.test(s.cl)));
+  return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
+    + (PROSA.test(s.cl) ? ' prosa' : ' en-verso')
+    + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
+}
+
+/* Lo que se lee —las lecturas, los responsorios, las preces, la oración—
+ * va justificado, como en el libro. Lo que se canta o se recita en versos
+ * —himnos, salmos, cánticos— va por renglones, con sangría francesa: si la
+ * letra crece y un renglón se parte, la continuación entra y se sigue
+ * viendo dónde empieza el siguiente. */
+const PROSA = /^(lectura|responsorio|oracion|preces|examen|conm)/;
+
+/** Palabras sin acentos ni signos, para comparar antífona y salmo. */
+function palabrasDe(t) {
+  return t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .match(/[a-z0-9]+/g) || [];
+}
+
+/* Cuando el salmo empieza con las mismas palabras que su antífona (con o sin
+ * el «aleluya» del final), una cruz al final de la antífona y otra al
+ * comienzo del renglón que sigue a lo repetido: dicha la antífona, se sigue
+ * desde ahí. Medido en el libro, la antífona acaba siempre en fin de
+ * renglón; si alguna acabara a media línea, no se marca. */
+function cruces(lineas) {
+  const fin = new Set(), ini = new Set();
+  const salta = (n) => {            // renglones vacíos y rúbricas (títulos)
+    while (n < lineas.length && (!lineas[n].length || lineas[n][0][0])) {
+      if (esAntifona(lineas[n])) return -1;
+      n++;
+    }
+    return n < lineas.length ? n : -1;
   };
-  for (const ln of o.c.l) {
+  lineas.forEach((ln, i) => {
+    if (!esAntifona(ln)) return;
+    let j = i + 1;
+    while (j < lineas.length && !lineas[j].length) j++;
+    if (j >= lineas.length || !esTituloSalmo(lineas[j])) return;
+    const a = palabrasDe(negro(ln));
+    while (a.length && a[a.length - 1] === 'aleluya') a.pop();
+    if (a.length < 2) return;
+    let k = 0;
+    for (let n = salta(j + 1); n >= 0; n = salta(n + 1)) {
+      for (const w of palabrasDe(negro(lineas[n]))) {
+        if (k >= a.length || w !== a[k]) return;   // otra cosa, o a media línea
+        k++;
+      }
+      if (k === a.length) {
+        const sigue = salta(n + 1);
+        if (sigue >= 0) { fin.add(i); ini.add(sigue); }
+        return;
+      }
+    }
+  });
+  return { fin: fin, ini: ini };
+}
+
+const CRUZ = '<span class="cruz" aria-hidden="true">†</span>';
+
+function pintaLineas(lineas, prosa) {
+  const marcas = cruces(lineas);
+  const bloques = [];
+  let actual = [];
+  const cierra = () => {
+    if (actual.length) bloques.push(actual);
+    actual = [];
+  };
+  lineas.forEach((ln, i) => {
     const t = ln.map((tr) => tr[0]
       ? '<b class="rub">' + esc(tr[1]) + '</b>' : esc(tr[1])).join('');
-    if (t.trim()) parrafo.push(t); else cierra();
-  }
+    if (!t.trim()) { cierra(); return; }
+    let cl = 'ln';
+    if (esTituloSalmo(ln)) cl += ' tit';
+    else if (ln.every((tr) => tr[0] || !tr[1].trim())) cl += ' solo-rub';
+    // la antífona y los «V.» y «R.» también cuelgan de su sigla
+    else if (ln[0][0] && /^\s*(Ant|V\.|R\.)/.test(ln[0][1])) cl += ' sigla';
+    actual.push('<span class="' + cl + '">'
+      + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
+      + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>');
+  });
   cierra();
-  return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
-    + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
+  return bloques.map((b) => '<p class="estrofa-h">' + b.join('') + '</p>')
+    .join('');
 }
 
 /** Al tocar una opción se repinta sólo esa sección: repintar la hora
@@ -1288,7 +1689,9 @@ async function verHoras(iso, hora, idCel) {
   E.fecha = iso;
   E.hora = hora = hora || horaSugerida();
   $('#cabecera').classList.remove('compacta', 'portada');
-  $('#rotulo-fecha').textContent = fechaLarga(iso);
+  limpiaCabExtra();
+  marcaHoy(iso);
+  $('#rotulo-fecha').textContent = rotuloFecha(iso);
   $('#selector-fecha').value = iso;
   $('#celebraciones').innerHTML = '';
   $('#nota-dia').style.display = 'none';
@@ -1330,8 +1733,7 @@ async function verHoras(iso, hora, idCel) {
   vista.innerHTML = o.secciones.length
     ? o.secciones.map(pintaSeccionHora).join('')
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
-  vista.scrollTop = 0;
-  window.scrollTo(0, 0);
+  colocaPosicion();
 }
 
 /** A qué hora del día corresponde la hora del reloj. */
@@ -1348,6 +1750,8 @@ function horaSugerida() {
 
 /* ------------------------------------------------------------------ rutas */
 function enruta() {
+  guardaPosicion();
+  E.claveVista = null;        // la pone la vista nueva cuando acaba de pintarse
   const h = location.hash.slice(2);
   const p = h.split('/').map(decodeURIComponent);
   if (p[0] === 'indice') return verIndice();
@@ -1358,6 +1762,8 @@ function enruta() {
     E.vista = 'hoy';
     marcaBarra('hoy');
     $('#cabecera').classList.remove('compacta', 'portada');
+    limpiaCabExtra();
+    marcaHoy(null);
     $('#nota-dia').style.display = 'none';
     return pintaFormulario(p[1], +(p[2] || 0), null, null, null);
   }
@@ -1402,11 +1808,24 @@ async function arranca() {
   document.querySelectorAll('#barra button').forEach((b) =>
     b.addEventListener('click', () => {
       const ir = b.dataset.ir;
+      const fecha = E.fecha || hoyISO();
+      // Misa y Horas vuelven a lo que se estaba leyendo: la misma misa, la
+      // misma hora con la misma celebración (y, si es el mismo día, al
+      // mismo renglón)
+      const misa = E.ultimaMisa && E.ultimaMisa.startsWith('#/d/' + fecha)
+        ? E.ultimaMisa : '#/d/' + fecha;
+      const horas = '#/h/' + fecha + (E.hora ? '/' + E.hora
+        + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '') : '');
       const destino = ir === 'portada' ? '#/menu'
-        : ir === 'hoy' ? '#/d/' + (E.fecha || hoyISO())
-        : ir === 'horas' ? '#/h/' + (E.fecha || hoyISO())
+        : ir === 'hoy' ? misa
+        : ir === 'horas' ? horas
         : '#/' + ir;
-      if (location.hash === destino) enruta(); else location.hash = destino;
+      // tocar la sección en la que ya se está la sube al principio
+      if (location.hash === destino) {
+        window.scrollTo({ top: 0, behavior: suave() });
+      } else {
+        location.hash = destino;
+      }
     }));
   const otroDia = (n) => {
     const iso = suma(E.fecha || hoyISO(), n);
@@ -1442,6 +1861,21 @@ async function arranca() {
   };
   $('#celebraciones').addEventListener('click', alPulsarChip);
   $('#formularios').addEventListener('click', alPulsarChip);
+  $('#ir-hoy').addEventListener('click', () => {
+    const hoy = hoyISO();
+    location.hash = E.vista === 'horas'
+      ? '#/h/' + hoy + '/' + (E.hora || '') : '#/d/' + hoy;
+  });
+  // el calendario: su barra resumida vive en la cabecera
+  $('#cab-extra').addEventListener('click', alTocarCalendario);
+  vista.addEventListener('input', alEscribirCalendario);
+  window.addEventListener('scroll', alDesplazarCalendario, { passive: true });
+  window.addEventListener('resize', () => {
+    if (E.vista !== 'calendario') return;
+    document.documentElement.style.setProperty('--alto-cabecera',
+      $('#cabecera').offsetHeight + 'px');
+    alDesplazarCalendario();
+  });
 
   enruta();
 

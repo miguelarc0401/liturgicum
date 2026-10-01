@@ -375,6 +375,136 @@ def poda(libro):
     return {k: {'r': v['rotulo'], 'l': v['lineas']} for k, v in libro.items()}
 
 
+def del_otro_anio(bienal, tiempo):
+    """El ciclo de dos años de la lectura bíblica del Oficio: de cada hueco,
+    sólo el año cuyo texto no es el que ya guarda `tiempo` (el otro se toma
+    de allí), para no llevar dos veces al teléfono la misma lectura."""
+    salida = {}
+    for k, por_anio in bienal.items():
+        canonico = (tiempo.get(k) or {}).get('lineas')
+        otros = {a: {'r': v['rotulo'] or tiempo.get(k, {}).get('rotulo'),
+                     'l': v['lineas']}
+                 for a, v in por_anio.items() if v['lineas'] != canonico}
+        if otros:
+            salida[k] = otros
+    return salida
+
+
+# --- la Hora intermedia ---------------------------------------------------
+# «Quien reza una sola de las horas intermedias toma la salmodia del día;
+# quien reza más de una, en las otras toma la complementaria» (Ordinario):
+# los salmos graduales 119-121 en Tercia, 122-124 en Sexta y 125-127 en
+# Nona. La fuente reza las tres, y reparte: la salmodia del día en una de
+# ellas —no siempre la misma— y la complementaria en las otras dos.
+COMPLEMENTARIOS = {'tercia': (119, 120, 121), 'sexta': (122, 123, 124),
+                   'nona': (125, 126, 127)}
+
+
+def salmos_de(lineas):
+    """Los números de los salmos de una salmodia, por sus títulos."""
+    nums = []
+    for ln in lineas:
+        if ln and ln[0][0]:
+            m = re.match(r'\s*Salmo\s+(\d+)', ln[0][1])
+            if m:
+                nums.append(int(m.group(1)))
+    return tuple(nums)
+
+
+def intermedia(salterio):
+    """La salmodia del día de cada día del salterio, y la complementaria de
+    cada hora, con sus antífonas del tiempo ordinario (en los otros tiempos
+    la app le pone la antífona de la hora, que es una sola para toda la
+    salmodia).
+
+    La del día se busca en las tres horas, con las variantes de todos los
+    años, porque la fuente no siempre la pone en la misma: la que más años
+    atestiguan. Casi siempre es el texto que ya guarda una de las tres
+    casillas, y entonces basta con decir cuál (`'nona'`); si no, va entera."""
+    dia, raros = {}, []
+    comp = defaultdict(Counter)
+    bases = sorted({k.rsplit('/', 1)[0] for k in salterio
+                    if k.rsplit('/', 1)[1] in COMPLEMENTARIOS})
+    for base in bases:
+        votos, texto = Counter(), {}
+        for h, nums in COMPLEMENTARIOS.items():
+            v = salterio.get(f'{base}/{h}')
+            if not v:
+                continue
+            for ls, n in [(v['lineas'], v['testigos'])] + [
+                    (x['lineas'], x['testigos']) for x in v.get('variantes', [])]:
+                if salmos_de(ls) and salmos_de(ls) != nums:
+                    k = json.dumps(ls, ensure_ascii=False)
+                    votos[k] += n
+                    texto[k] = ls
+        if not votos:
+            raros.append(f'{base}: sin salmodia del día')
+            continue
+        mejor = votos.most_common(1)[0][0]
+        casilla = next((h for h in COMPLEMENTARIOS
+                        if f'{base}/{h}' in salterio and json.dumps(
+                            salterio[f'{base}/{h}']['lineas'],
+                            ensure_ascii=False) == mejor), None)
+        dia[base] = casilla or {'r': 'SALMODIA', 'l': texto[mejor]}
+        if not casilla:
+            raros.append(f'{base}: la del día sólo en otros años (va entera)')
+    for k, v in salterio.items():
+        t, _, _, hora = k.split('/')
+        if (t == 'Ordinario' and hora in COMPLEMENTARIOS
+                and salmos_de(v['lineas']) == COMPLEMENTARIOS[hora]):
+            comp[hora][json.dumps(v['lineas'], ensure_ascii=False)] += \
+                v['testigos']
+    complementaria = {h: {'r': 'SALMODIA COMPLEMENTARIA',
+                          'l': json.loads(c.most_common(1)[0][0])}
+                      for h, c in comp.items()}
+    return {'dia': dia, 'comp': complementaria,
+            'salmos': {h: list(n) for h, n in COMPLEMENTARIOS.items()}}, raros
+
+
+def himnos_intermedia(tiempo):
+    """Los himnos de Tercia, Sexta y Nona que corresponden a cada tiempo.
+
+    El libro da para cada hora unos pocos que se turnan, y la medida dice
+    cuáles: en Adviento, Navidad, Cuaresma y Pascua, los mismos todo el
+    tiempo; en el ordinario, unos hasta la semana XVII y otros desde la
+    XVIII (son los tomos III y IV). Algunos días sin semana —el Triduo,
+    Pentecostés— tienen el suyo, y entonces sólo se ofrece ése."""
+    def grupo(t, sem):
+        return f'{t}/{1 if int(sem) <= 17 else 2}' if t == 'Ordinario' else t
+    cuenta = defaultdict(Counter)          # grupo/hora -> incipit -> testigos
+    texto = {}
+    for k, v in tiempo.items():
+        t, sem, *_, hora, cl = k.split('/')
+        if cl != 'himno' or hora not in COMPLEMENTARIOS or sem == '@':
+            continue
+        for ls, n in [(v['lineas'], v['testigos'])] + [
+                (x['lineas'], x['testigos']) for x in v.get('variantes', [])]:
+            i = incipit(ls)
+            if i:
+                cuenta[f'{grupo(t, sem)}/{hora}'][i] += n
+                texto.setdefault(i, ls)
+    pools = {}
+    for g, c in cuenta.items():
+        total = sum(c.values())
+        # lo que sale un par de veces en la semana de la frontera no es del
+        # grupo: un 5 % de los testigos lo separa sin dudas (medido)
+        pools[g] = [{'r': 'HIMNO', 'l': texto[i]} for i, n in c.most_common()
+                    if n >= 0.05 * total]
+    generales = {g: {incipit(x['l']) for x in xs} for g, xs in pools.items()}
+    for k, v in tiempo.items():
+        t, sem, *resto = k.split('/')
+        hora, cl = resto[-2:]
+        if cl != 'himno' or hora not in COMPLEMENTARIOS or sem != '@':
+            continue
+        if incipit(v['lineas']) in generales.get(f'{t}/{hora}', ()):
+            continue
+        propios = opciones_distintas([(v['lineas'], v['testigos'])] + [
+            (x['lineas'], x['testigos']) for x in v.get('variantes', [])])
+        pools[k.rsplit('/', 1)[0]] = [{'r': 'HIMNO', 'l': ls}
+                                      for ls in propios]
+    return pools
+
+
 def refresca_version():
     """Vuelve a firmar `app/datos/`, con la fórmula de `15_app_data.py`."""
     ruta = os.path.join(APP, 'version.js')
@@ -411,6 +541,7 @@ def main():
     fuente = carga('dias_fuente.json')
     resenas = carga('resenas.json', opcional=True) or {}
     pdf = carga('pdf_santoral.json', opcional=True) or []
+    bienal = carga('bienal.json', opcional=True) or {}
 
     # Un mismo santo puede salir en la fuente con dos nombres que sólo
     # difieren en el artículo: «LA EXALTACIÓN DE LA SANTA CRUZ» unos años y
@@ -876,6 +1007,10 @@ def main():
 
         dias[fecha] = reg
 
+    tiempo_anio = del_otro_anio(bienal, tiempo)
+    hora_intermedia, raros_intermedia = intermedia(salterio)
+    pools_intermedia = himnos_intermedia(tiempo)
+
     # --- se escribe --------------------------------------------------------
     libro = {
         'orden': carga('orden.json'),
@@ -884,10 +1019,13 @@ def main():
         'ordinario': poda(ordinario),
         'salterio': poda(salterio),
         'tiempo': poda(tiempo),
+        'tiempo_anio': tiempo_anio,
         'santoral': dict(poda(santoral), **extra),
         'comunes': poda(comunes),
         'otros_himnos': otros_himnos,
         'himnos_completas': himnos_completas,
+        'himnos_intermedia': pools_intermedia,
+        'intermedia': hora_intermedia,
         'antifonas_finales': antifonas_finales,
     }
     ruta_libro = os.path.join(APP, 'horas.json')
@@ -923,6 +1061,18 @@ def main():
         for k in ('ordinario', 'salterio', 'tiempo', 'santoral', 'comunes'):
             f.write(f'{len(libro[k]):8d}  casillas en {k}\n')
         f.write(f'{len(comun_de_santo):8d}  santos con común conocido\n')
+        f.write(f'{len(tiempo_anio):8d}  lecturas del Oficio con texto propio '
+                f'del otro año del ciclo bienal\n')
+        f.write(f'{len(hora_intermedia["dia"]):8d}  días del salterio con la '
+                f'salmodia del día de la Hora intermedia; complementaria de '
+                f'{", ".join(sorted(hora_intermedia["comp"]))}\n')
+        for r in raros_intermedia:
+            f.write(f'          ? {r}\n')
+        f.write(f'{len(pools_intermedia):8d}  juegos de himnos de la Hora '
+                f'intermedia:\n')
+        for g, xs in sorted(pools_intermedia.items()):
+            f.write(f'          {g}: ' + ' | '.join(
+                incipit(x['l'], 5) for x in xs) + '\n')
         f.write(f'{len(santo_de_slug):8d}  celebraciones del calendario con '
                 f'textos ({n_aprendidos} aprendidas del volcado, '
                 f'{len(santo_de_slug) - n_aprendidos} por el nombre)\n')
