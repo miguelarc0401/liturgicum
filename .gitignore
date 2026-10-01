@@ -40,8 +40,9 @@ data/indice_textos.json
 # de donde sale lo que lee la app.
 
 # --- los volumenes impresos de la Liturgia de las Horas -------------------
-# Material de consulta: ni el proyecto ni la app los necesitan, y son la
-# obra entera. Se quedan en la carpeta, fuera del repositorio.
+# Son la obra entera: se quedan en la carpeta, fuera del repositorio. De ellos
+# sale Breviarium/datos/libro/pdf_santoral.json (fase 3b), que si entra, asi
+# que solo hacen falta para rehacer esa fase.
 Breviarium/*.pdf
 
 # --- restos ---------------------------------------------------------------

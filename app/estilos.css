@@ -408,3 +408,109 @@ h2.seccion {
   text-decoration: none; border-bottom: 1px solid var(--filete);
   padding-bottom: .1rem;
 }
+
+/* --------------------------------------------- reseña y edición española
+   La reseña del santo va antes del oficio, como en el libro: en letra menor
+   y en cursiva, que se lee y no se reza. */
+.hora-sec.resena {
+  margin: .4rem 0 1.4rem; padding: .75rem .9rem;
+  background: var(--papel-alto); border-left: 3px solid var(--rubrica);
+  border-radius: 0 .5rem .5rem 0;
+}
+.hora-sec.resena p {
+  margin: 0; font-style: italic; font-size: .92em; line-height: 1.5;
+  color: var(--tinta-suave);
+}
+/* lo que no está en la fuente y se tomó de los tomos impresos */
+.ed-pdf {
+  display: inline-block; margin-left: .5rem; vertical-align: .08em;
+  font-family: var(--sans); font-size: .58rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: none; color: var(--tinta-suave);
+  border: 1px solid var(--filete); border-radius: 999px; padding: 0 .4rem;
+}
+.hora-sec.resena .ed-pdf { margin: .45rem 0 0; }
+
+/* ------------------------------------------------------------ calendario */
+.cal-cab { margin: .2rem 0 .6rem; }
+.cal-anio {
+  display: flex; align-items: center; justify-content: center; gap: 1.2rem;
+}
+.cal-anio h2 {
+  margin: 0; font-size: 1.5rem; font-weight: 500; letter-spacing: .04em;
+  color: var(--acento); min-width: 4.5rem; text-align: center;
+}
+.cal-anio button {
+  width: 2.4rem; height: 2.4rem; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--filete); background: var(--papel-alto);
+  color: var(--acento); font-size: 1.3rem; line-height: 1;
+}
+.cal-anio button:active { background: var(--filete); }
+.cal-ciclo {
+  margin: .35rem 0 .8rem; text-align: center; font-family: var(--sans);
+  font-size: .74rem; color: var(--tinta-suave);
+}
+.cal-ctl {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  flex-wrap: wrap;
+}
+.cal-et { font-family: var(--sans); font-size: .72rem; color: var(--tinta-suave); }
+.cal-ctl .alterna { margin: 0; }
+.cal-meses {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: .3rem;
+  margin: .9rem 0 0;
+}
+.cal-meses button {
+  font-family: var(--sans); font-size: .72rem; padding: .35rem 0;
+  border: 1px solid var(--filete); border-radius: .4rem; cursor: pointer;
+  background: var(--papel-alto); color: var(--tinta-suave);
+}
+.cal-meses button:active { background: var(--filete); }
+.cal-mes h3 {
+  position: sticky; top: var(--alto-cabecera); z-index: 2;
+  margin: 1.3rem 0 .2rem; padding: .45rem 0 .35rem;
+  background: var(--papel); border-bottom: 1px solid var(--filete);
+  font-family: var(--sans); font-size: .78rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--acento);
+}
+.cal-mes h3 small { font-weight: 400; color: var(--tinta-suave); letter-spacing: .04em; }
+.cal-dia {
+  display: flex; gap: .75rem; align-items: flex-start;
+  padding: .55rem .2rem .55rem .55rem; text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--filete);
+  border-left: 3px solid var(--c, var(--filete));
+}
+.cal-dia:active { background: var(--filete); }
+.cal-dia[data-color="verde"]  { --c: #2f6b45; }
+.cal-dia[data-color="morado"] { --c: #7c4a99; }
+.cal-dia[data-color="rojo"]   { --c: #a32020; }
+.cal-dia[data-color="blanco"] { --c: #d9c48a; }
+.cal-dia.hoy { background: color-mix(in srgb, var(--realce) 55%, transparent); }
+.cal-num {
+  flex: none; width: 2.2rem; text-align: center; font-size: 1.15rem;
+  line-height: 1.1; color: var(--tinta);
+}
+.cal-num small {
+  display: block; font-family: var(--sans); font-size: .62rem;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--tinta-suave);
+}
+.cal-dia.domingo .cal-num { color: var(--rubrica); font-weight: 600; }
+.cal-txt { flex: 1; min-width: 0; }
+.cal-t { display: block; line-height: 1.3; }
+.cal-dia.domingo .cal-t { font-weight: 600; }
+.cal-g {
+  display: inline-block; margin-top: .2rem; font-family: var(--sans);
+  font-size: .66rem; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.cal-g.g-s { color: var(--rubrica); font-weight: 700; }
+.cal-g.g-f { color: var(--rubrica); font-weight: 600; }
+.cal-g.g-d { color: var(--rubrica); }
+.cal-g.g-m { color: var(--tinta); }
+.cal-o {
+  display: block; margin-top: .15rem; font-family: var(--sans);
+  font-size: .72rem; line-height: 1.35; color: var(--tinta-suave);
+}
+.cal-o.omite { font-style: italic; }
+.cal-dia.vacio { opacity: .5; }
+.cal-pie a { color: var(--acento); }
+.cal-mes, .cal-dia { scroll-margin-top: calc(var(--alto-cabecera) + 2.8rem); }

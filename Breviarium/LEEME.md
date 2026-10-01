@@ -104,6 +104,8 @@ antífonas finales de la Virgen— es el **ordinario**, y se guarda aparte.
                               ▼
                     datos/libro/*.json        el libro: cada pieza, una vez
                               │
+   Breviarium/*.pdf ──3b_pdf──┤               lo que la fuente no trae
+                              │
                             4_app
                               │
                               ▼
@@ -114,6 +116,7 @@ antífonas finales de la Virgen— es el **ordinario**, y se guarda aparte.
 python Breviarium/src/1_bajar.py
 python Breviarium/src/2_extraer.py
 python Breviarium/src/3_ordenar.py
+python Breviarium/src/3b_pdf.py      # sólo si cambian los PDF; necesita pdftotext
 python Breviarium/src/4_app.py
 ```
 
@@ -143,6 +146,8 @@ antes de fiarse de lo que sale.
 | `santoral.json` | lo propio de cada santo | `mm-dd/santo/hora/sección` |
 | `comunes.json` | los comunes | `común/hora/sección` |
 | `santoral_indice.json` | qué se celebra cada día del año | `mm-dd` |
+| `resenas.json` | la reseña biográfica de cada celebración | `mm-dd/santo` |
+| `pdf_santoral.json` | el Propio de los santos de los cuatro tomos en PDF | lista de entradas |
 
 En las claves, *día* es el día de la semana (0 = domingo) y *sección* es
 una de `invitatorio`, `himno`, `salmodia`, `lectura1`, `lectura2`,
@@ -170,8 +175,7 @@ año del volcado. Lo que el calendario celebra y la fuente no dio nunca
 queda en el informe (`app_qa.txt`), y la app lo dice en vez de callárselo.
 
 Sobre eso la app aplica las rúbricas del *Ordinario de la Liturgia de las
-Horas* (están al final de cada tomo en los PDF de esta carpeta, que sólo
-se consultan por sus rúbricas: los textos son siempre los de la fuente):
+Horas* (están en cada tomo en los PDF de esta carpeta):
 
 | en las memorias | de dónde |
 |---|---|
@@ -197,3 +201,49 @@ compone: sólo ordena. Cuando la fuente trae una errata, la errata llega
 hasta aquí —y por eso el canónico se decide por mayoría de años, que es
 la única manera de que una errata de un año no se imponga a los otros
 siete.
+
+---
+
+## Lo que la fuente no trae: los PDF
+
+La fuente reza la feria en las memorias libres, y por eso de unos noventa
+santos —san Bruno, santa Eduviges, san Juan Damasceno…— no publicó nunca
+nada. No es que se perdieran: no están en ninguno de sus años ni en la
+historia del repositorio, que empieza en 2019.
+
+Los cuatro tomos en PDF de esta carpeta (la edición de la Conferencia
+Episcopal Española) sí los traen. La fase `3b_pdf` lee su Propio de los
+santos —reseña, grado, común del que se toma lo demás, y cada sección— y
+la fase 4 lo usa con un orden de preferencia estricto:
+
+1. **la fuente**, siempre que tenga el texto;
+2. **la fuente en otro sitio**: antes de usar un texto del PDF se busca en
+   todo el libro (tiempo, santoral, comunes, salterio, con las variantes de
+   todos los años), comparando por tripletas de palabras para que dos
+   ediciones del mismo texto se reconozcan aunque difieran en alguna
+   palabra. Si está, se usa el de la fuente (y si era su forma pascual y el
+   santo cae fuera de Pascua, sin el aleluya);
+3. **el PDF**, sólo si no está en ninguna parte. Esos textos llevan la marca
+   `f: "pdf"`, y la app los señala con un discreto «ed. española».
+
+Todo queda apuntado en `datos/pdf_usado.txt`: qué celebraciones salen del
+PDF y con qué común, qué textos se hallaron en la fuente, y un cotejo de
+citas, antífonas e himnos entre el PDF y la fuente en los santos que tienen
+los dos (ahí no se cambia nada: manda la fuente). Los PDF no se versionan;
+`pdf_santoral.json` sí, así que la fase 3b sólo hay que repetirla si
+cambian los tomos.
+
+## Lo que más se puede elegir
+
+* **La reseña** del santo o de la fiesta abre el Oficio de lectura, como en
+  el libro (`resenas.json`, de la fuente; si no la dio, del PDF).
+* **Himnos.** Del himno del día se ofrecen los otros que la fuente dio ese
+  mismo día en otros años; en Completas, todos los del tiempo, que se
+  turnan. Van numerados (I, II, III…) junto al rótulo.
+* **La antífona final de la Virgen**: las cuatro del Ordinario, en su orden
+  (I *Dios te salve*, II *Madre del Redentor*, III *Salve, Reina de los
+  cielos*, IV *Bajo tu amparo*); en Pascua, *Reina del cielo*. La que se
+  elige una noche sale marcada la siguiente.
+* **El Te Deum** («Himno: Señor, Dios eterno» en la fuente) va tras el
+  segundo responsorio, no al final del Oficio.
+

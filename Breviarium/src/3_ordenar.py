@@ -48,7 +48,12 @@ QA = os.path.join(RAIZ, 'Breviarium', 'datos', 'ordenar_qa.txt')
 ORDINARIO = {'invocacion', 'conclusion', 'padrenuestro', 'bendicion',
              'examen', 'antifona_final'}
 
-RANGOS_PROPIOS = ('SOLEMNIDAD', 'FIESTA', 'MEMORIA', 'MEMORIA LIBRE')
+# La conmemoración de todos los fieles difuntos (2 de noviembre) es un oficio
+# entero, el de difuntos, y la fuente la declara con ese rango: si no
+# contara como celebración, sus textos irían a parar al hueco ferial del día
+# de la semana en que cayó cada año.
+RANGOS_PROPIOS = ('SOLEMNIDAD', 'FIESTA', 'MEMORIA', 'MEMORIA LIBRE',
+                  'CONMEMORACIÓN')
 
 
 # --------------------------------------------------------------------------
@@ -156,6 +161,7 @@ def main():
     ordinario = defaultdict(lambda: defaultdict(list))
     propios = []                                  # los días que celebran
     santos = defaultdict(Counter)
+    resenas = defaultdict(Counter)                # mm-dd/santo -> reseñas
     cuentas, avisos = Counter(), []
     dias_vistos = 0
 
@@ -193,6 +199,10 @@ def main():
                 celebra = bool(cel and rango in RANGOS_PROPIOS)
                 if celebra:
                     santos[fecha[5:]][cel] += 1
+                    # la reseña biográfica del índice del día: también por
+                    # mayoría de años, por si alguno trae una errata
+                    if of.get('resena'):
+                        resenas[f'{fecha[5:]}/{clave(cel)}'][of['resena']] += 1
 
                 for hora_cl, h in (of.get('horas') or {}).items():
                     # Una misma clase puede salir dos veces en la misma
@@ -331,6 +341,10 @@ def main():
         lineas_qa.append(f'{nombre:10s} {len(datos):6d} casillas  {mb:6.1f} MB  '
                          f'con variantes: {var} ({pc:.0f} %)')
         print(lineas_qa[-1], flush=True)
+
+    with open(os.path.join(LIBRO, 'resenas.json'), 'w', encoding='utf-8') as f:
+        json.dump({k: c.most_common(1)[0][0] for k, c in sorted(resenas.items())},
+                  f, ensure_ascii=False, indent=1)
 
     with open(os.path.join(LIBRO, 'santoral_indice.json'), 'w',
               encoding='utf-8') as f:

@@ -46,6 +46,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 APP = os.path.join(ROOT, "app")
 DATOS = os.path.join(APP, "datos")
+# el codigo de la app, que tambien firma version.js (y Breviarium/src/4_app.py)
+CODIGO_APP = ["index.html", "app.js", "estilos.css", "manifest.webmanifest"]
 
 COLOR_SECCION = [
     (r"adviento|cuaresma", "morado"),
@@ -533,10 +535,17 @@ def main():
         inf.append("iconos: icono-192.png, icono-512.png, "
                    "icono-maskable-512.png")
 
+    # La firma cubre los datos y tambien el codigo de la app: si solo cambia
+    # app.js (una vista nueva, un arreglo), el telefono tiene que enterarse
+    # igual, y lo que le obliga a tirar la cache es que cambie esta firma.
     version = "%s-%d" % (
         "+".join(fuentes),
         zlib.crc32(b"".join(open(os.path.join(DATOS, f), "rb").read()
-                            for f in sorted(os.listdir(DATOS))))
+                            for f in sorted(os.listdir(DATOS))
+                            if f != "version.js")
+                   + b"".join(open(os.path.join(APP, f), "rb").read()
+                              for f in CODIGO_APP
+                              if os.path.exists(os.path.join(APP, f))))
         & 0xffffffff)
     with open(os.path.join(DATOS, "version.js"), "w", encoding="utf-8") as fh:
         fh.write("// lo escribe src/15_app_data.py; cambia con los datos, y al\n"

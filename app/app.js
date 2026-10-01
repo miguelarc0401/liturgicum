@@ -15,7 +15,8 @@ const RUTA_DATOS = 'datos/';
 const POR_OMISION = {
   fuente: 'clementina', acentos: true, numeros: true, tam: 100, tema: 'auto',
   epifania: 'domingo', ascension: 'domingo', corpus: 'domingo',
-  memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun'
+  memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun',
+  hAntFinal: '', calAbre: 'misa'
 };
 
 const E = {              // todo el estado de la app
@@ -341,8 +342,9 @@ function modoPanel(titulo) {
 
 function verIndice() {
   E.vista = 'indice';
-  marcaBarra('indice');
-  modoPanel('Índice del año');
+  // el índice se abre desde el calendario, y es allí donde se vuelve
+  marcaBarra('calendario');
+  modoPanel('Índice del leccionario');
   const h = [];
   E.indice.secciones.forEach((sec, i) => {
     h.push('<details class="sec"' + (i === 0 ? ' open' : '')
@@ -358,6 +360,217 @@ function verIndice() {
   });
   vista.innerHTML = h.join('');
   window.scrollTo(0, 0);
+}
+
+/* ------------------------------------------------- el calendario del año
+ * Lo que se celebra cada día del año civil, con su grado, del mismo
+ * calendario que siguen la misa y las horas (precedencia ya resuelta en
+ * src/18_santoral.py, parches regionales de Ajustes aplicados). Un toque en
+ * un día lo abre en la misa o en las horas, lo que se haya elegido arriba. */
+const MESES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+  'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+const DSEM = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+
+/** El grado de una celebración. Los santos lo traen; el de los días del
+ *  tiempo se deduce de su lugar en la Tabla de los días litúrgicos. */
+function gradoCal(m) {
+  if (m.g) return m.g;
+  const r = m.r || 99, t = m.t || '';
+  if (r === 1) return 'Triduo pascual';
+  if ((r === 2 || r === 6) && /^(Domingo|Segundo domingo)/i.test(t)) return 'Domingo';
+  if (r <= 4) {
+    if (/Ceniza/i.test(t)) return 'Feria privilegiada';
+    if (/octava de Pascua/i.test(t)) return 'Octava de Pascua';
+    if (/Santo\b|Semana Santa/i.test(t)) return 'Semana Santa';
+    return 'Solemnidad';
+  }
+  if (r <= 8) return 'Fiesta';
+  if (r === 9) {
+    if (/octava/i.test(t)) return 'Octava de Navidad';
+    if (/diciembre/i.test(t)) return 'Feria mayor de Adviento';
+    return 'Feria de Cuaresma';
+  }
+  if (/Adviento/i.test(t)) return 'Feria de Adviento';
+  if (/Pascua/i.test(t)) return 'Feria de Pascua';
+  if (/enero|Epifan|Navidad/i.test(t)) return 'Feria de Navidad';
+  return 'Feria';
+}
+
+/** La clase del grado, para el color de su rótulo. */
+function claseGrado(g) {
+  if (/^(Solemnidad|Triduo|Octava de Pascua|Conmemoración)/.test(g)) return 's';
+  if (/^Fiesta/.test(g)) return 'f';
+  if (/^Domingo/.test(g)) return 'd';
+  if (g === 'Memoria') return 'm';
+  if (g === 'Memoria libre') return 'ml';
+  if (/privilegiada|mayor|Cuaresma|Semana Santa|Octava/.test(g)) return 'fp';
+  return 'fe';
+}
+
+/** El nombre del día para el calendario: el de la celebración, salvo cuando
+ *  el leccionario lo nombra por la misa («Misa del día»). */
+function tituloCal(slug, m) {
+  const d = E.diaDe.get(slug);
+  if (/^Vigilia pascual/.test(m.t)) return 'Sábado santo · Vigilia pascual';
+  if (/^Misa\b/.test(m.t)) {
+    if (/Pascua/.test(m.t)) return 'Domingo de Pascua de la Resurrección del Señor';
+    if (d && d._grp) return d._grp;
+  }
+  // «7 de enero — Lunes después de Epifanía»: lo que dice qué día es va
+  // detrás; «Jueves Santo — Misa Crismal»: va delante
+  const p = m.t.split(/\s+—\s+/);
+  return p.length > 1 && /^\d+ de \w+$/.test(p[0]) ? p[1] : p[0];
+}
+
+function filaCal(iso, hoy) {
+  const val = entradasDe(iso);
+  const d = new Date(iso + 'T12:00:00');
+  const ds = d.getDay();
+  const abre = E.cfg.calAbre === 'horas' ? '#/h/' : '#/d/';
+  const num = '<span class="cal-num">' + d.getDate() + '<small>'
+    + DSEM[ds] + '</small></span>';
+  if (!val) {
+    return '<div class="cal-dia vacio">' + num + '<span class="cal-txt">'
+      + '<span class="cal-t">—</span></span></div>';
+  }
+  // las que se celebran, sin repetir el día (Navidad trae tres misas)
+  const vistas = new Set();
+  const cs = [];
+  let vigilia = null;
+  for (const [slug, , m] of val.c) {
+    if (m.z) continue;
+    // la misa vespertina de la vigilia (Nochebuena) no es el día: el 24 es
+    // feria de Adviento, y la Natividad empieza por la tarde
+    if (/^Misa de la vigilia/.test(m.t) && val.c.length > 1) {
+      const d = E.diaDe.get(slug);
+      vigilia = d && d._grp ? d._grp : m.t;
+      continue;
+    }
+    const t = tituloCal(slug, m);
+    if (vistas.has(t)) continue;
+    vistas.add(t);
+    cs.push({ slug: slug, m: m, t: t, g: gradoCal(m) });
+  }
+  if (!cs.length) return '';
+  const p = cs[0];
+  const color = E.colorDe.get(p.slug) || 'neutro';
+  const h = ['<a class="cal-dia' + (ds === 0 ? ' domingo' : '')
+    + (iso === hoy ? ' hoy' : '') + '"' + (iso === hoy ? ' id="cal-hoy"' : '')
+    + ' href="' + abre + iso + '" data-color="' + color + '">', num,
+    '<span class="cal-txt"><span class="cal-t">' + esc(p.t) + '</span>',
+    '<span class="cal-g g-' + claseGrado(p.g) + '">'
+    + esc(p.g) + '</span>'];
+  // Lo que se puede elegir en vez de lo primero: en una memoria libre, las
+  // otras memorias libres o la feria; en una feria privilegiada, la memoria
+  // sólo como conmemoración. Una memoria obligatoria no deja elegir.
+  if (p.g === 'Memoria libre') {
+    const otras = cs.slice(1, 4).map((o) => o.t + ' · ' + o.g.toLowerCase());
+    if (otras.length) {
+      h.push('<span class="cal-o">o ' + otras.map(esc).join('; o ') + '</span>');
+    }
+  } else if (p.m.k === 't' && p.m.r === 9) {
+    const cm = cs.slice(1).filter((o) => o.m.k === 's');
+    if (cm.length) {
+      h.push('<span class="cal-o">Conmemoración: ' + cm.map((o) =>
+        esc(o.t)).join('; ') + '</span>');
+    }
+  }
+  if (vigilia) {
+    h.push('<span class="cal-o">Por la tarde, misa de la vigilia: '
+      + esc(vigilia) + '</span>');
+  }
+  if (val.o && val.o.length) {
+    h.push('<span class="cal-o omite">Se omite: ' + val.o.map((x) => esc(x.t)
+      + (x.g ? ' (' + esc(x.g.toLowerCase()) + ')' : '')).join('; ') + '</span>');
+  }
+  h.push('</span></a>');
+  return h.join('');
+}
+
+function verCalendario(anio) {
+  E.vista = 'calendario';
+  marcaBarra('calendario');
+  const hoy = hoyISO();
+  const [min, max] = E.cal.rango;
+  anio = Math.min(max, Math.max(min, +anio || +hoy.slice(0, 4)));
+  modoPanel('Calendario litúrgico');
+  // el ciclo dominical y el año ferial cambian el primer domingo de Adviento
+  const ciclos = [];
+  for (const iso of [anio + '-01-01', anio + '-12-31']) {
+    const a = anioDe(iso);
+    if (a && !ciclos.some((c) => c.inicio === a.inicio)) ciclos.push(a);
+  }
+  const fechaCorta = (iso) => {
+    const d = new Date(iso + 'T12:00:00');
+    return d.getDate() + ' de ' + MESES[d.getMonth()].toLowerCase();
+  };
+  const ciclo = ciclos.map((a, i) => (i ? 'desde el ' + fechaCorta(a.inicio)
+    + ': ' : (ciclos.length > 1 ? 'hasta el ' + fechaCorta(suma(ciclos[1].inicio, -1)) + ': ' : ''))
+    + 'ciclo ' + a.ciclo + ', año ' + a.ferial).join(' · ');
+  const h = [
+    '<div class="cal-cab">',
+    '<div class="cal-anio">',
+    anio > min ? '<button type="button" data-anio="' + (anio - 1)
+      + '" aria-label="Año anterior">‹</button>' : '<span></span>',
+    '<h2>' + anio + '</h2>',
+    anio < max ? '<button type="button" data-anio="' + (anio + 1)
+      + '" aria-label="Año siguiente">›</button>' : '<span></span>',
+    '</div>',
+    '<p class="cal-ciclo">' + esc(ciclo.charAt(0).toUpperCase() + ciclo.slice(1))
+      + '</p>',
+    '<div class="cal-ctl"><span class="cal-et">Al tocar un día, abrir</span>'
+      + '<div class="alterna" role="group" aria-label="Al tocar un día, abrir">'
+      + [['misa', 'Misa'], ['horas', 'Horas']].map(([v, t]) =>
+        '<button type="button" data-abre="' + v + '" aria-pressed="'
+        + (E.cfg.calAbre === v) + '">' + t + '</button>').join('')
+      + '</div></div>',
+    '<nav class="cal-meses">' + MESES.map((m, i) => '<button type="button" '
+      + 'data-mes="' + i + '">' + m.slice(0, 3) + '</button>').join('')
+      + '</nav>',
+    '</div>'
+  ];
+  for (let mes = 0; mes < 12; mes++) {
+    h.push('<section class="cal-mes" id="cal-mes-' + mes + '"><h3>'
+      + MESES[mes] + ' <small>' + anio + '</small></h3>');
+    const dias = new Date(anio, mes + 1, 0).getDate();
+    for (let dia = 1; dia <= dias; dia++) {
+      h.push(filaCal(anio + '-' + String(mes + 1).padStart(2, '0') + '-'
+        + String(dia).padStart(2, '0'), hoy));
+    }
+    h.push('</section>');
+  }
+  h.push('<p class="pie cal-pie">Calendario general romano y latinoamericano, '
+    + 'con la concurrencia resuelta por la Tabla de los días litúrgicos. '
+    + '<a href="#/indice">Índice del leccionario</a> (formularios, apéndices, '
+    + 'misas votivas y rituales).</p>');
+  vista.innerHTML = h.join('');
+  // los rótulos de mes se quedan pegados bajo la cabecera, que también lo está
+  document.documentElement.style.setProperty('--alto-cabecera',
+    $('#cabecera').offsetHeight + 'px');
+  const marcado = document.getElementById('cal-hoy');
+  if (marcado) {
+    marcado.scrollIntoView({ block: 'center' });
+  } else {
+    window.scrollTo(0, 0);
+  }
+}
+
+function alTocarCalendario(ev) {
+  if (E.vista !== 'calendario') return;
+  const b = ev.target.closest('button');
+  if (!b) return;
+  if (b.dataset.anio) {
+    location.hash = '#/calendario/' + b.dataset.anio;
+  } else if (b.dataset.abre) {
+    E.cfg.calAbre = b.dataset.abre;
+    guardaCfg();
+    const y = window.scrollY;
+    verCalendario(location.hash.split('/')[2]);
+    window.scrollTo(0, y);
+  } else if (b.dataset.mes) {
+    const s = document.getElementById('cal-mes-' + b.dataset.mes);
+    if (s) s.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
 }
 
 function construyeBusqueda() {
@@ -591,7 +804,8 @@ function verPortada() {
     '</a>',
     '</div>',
     '<nav class="portada-menudo">',
-    '<a href="#/indice">Índice del año</a>',
+    '<a href="#/calendario">Calendario</a>',
+    '<a href="#/indice">Índice del leccionario</a>',
     '<a href="#/buscar">Buscar</a>',
     '<a href="#/ajustes">Ajustes</a>',
     '</nav>'
@@ -719,9 +933,83 @@ function distintas(ops) {
   });
 }
 
+const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+
+/** Las primeras palabras de un texto: el nombre con que se conoce un himno
+ *  o una antífona, para el título del botón que lo elige. */
+function incipit(c) {
+  for (const ln of (c && c.l) || []) {
+    const t = ln.filter((tr) => !tr[0]).map((tr) => tr[1]).join('').trim();
+    if (t) return t.length > 48 ? t.slice(0, 47) + '…' : t;
+  }
+  return '';
+}
+function claveIncipit(c) {
+  return incipit(c).toLowerCase().normalize('NFD').replace(/[^a-z ]/g, '')
+    .split(/\s+/).slice(0, 5).join(' ');
+}
+
+/* «En el Oficio dominical y ferial, se dice el himno que se indica en el
+ * Salterio […]. Pueden usarse también otros cantos oportunos» (Ordinario).
+ * Del himno del día se ofrecen los otros que el libro da para ese mismo día;
+ * en Completas, los del tiempo, que se turnan. Van numerados, como en el
+ * libro, y el primero es siempre el del día. */
+function otrosHimnos(d, hora, base) {
+  const L = E.horas;
+  let pool = [];
+  if (hora === 'completas') {
+    pool = (L.himnos_completas || {})[d.t] || [];
+    // en Adviento y Navidad Completas toman también los himnos del tiempo
+    // ordinario; Cuaresma y Pascua tienen los suyos
+    if (d.t !== 'Cuaresma' && d.t !== 'Pascua' && d.t !== 'Ordinario') {
+      pool = pool.concat((L.himnos_completas || {}).Ordinario || []);
+    }
+  } else {
+    pool = (L.otros_himnos || {})[d.k + '/' + hora + '/himno'] || [];
+  }
+  const vistos = new Set([claveIncipit(base)]);
+  return pool.filter((c) => {
+    const k = claveIncipit(c);
+    if (!k || vistos.has(k)) return false;
+    vistos.add(k);
+    return true;
+  });
+}
+
+/* La antífona final de la Virgen: «se dice una de las siguientes», y en
+ * Pascua, «Reina del cielo». Las cuatro van en el orden del Ordinario. */
+function antifonasFinales(d) {
+  const A = E.horas.antifonas_finales || {};
+  return (A[d.t] || A.Ordinario || []).map((c, j) => ({
+    id: 'af' + j, rot: ROMANOS[j], tit: incipit(c), c: c
+  }));
+}
+
 /** Las opciones de una sección, cada una con su rótulo para el selector.
  *  Una sola, casi siempre; dos o tres, donde las rúbricas dejan elegir. */
 function opcionesSeccion(d, op, hora, cl) {
+  if (cl === 'antifona_final') {
+    const af = antifonasFinales(d);
+    if (af.length) return af;
+  }
+  const alts = opcionesSeccionBase(d, op, hora, cl);
+  // los himnos que se pueden escoger se cuelgan del «del día»
+  const i = alts.findIndex((o) => o.id === 'dia');
+  if (cl === 'himno' && i >= 0) {
+    const otros = otrosHimnos(d, hora, alts[i].c);
+    if (otros.length) {
+      const solo = alts.length === 1;
+      alts[i].rot = solo ? 'I' : alts[i].rot;
+      alts[i].tit = incipit(alts[i].c);
+      alts.splice(i + 1, 0, ...otros.map((c, j) => ({
+        id: 'dia' + (j + 2), rot: ROMANOS[j + 1], tit: incipit(c), c: c
+      })));
+    }
+  }
+  return alts;
+}
+
+function opcionesSeccionBase(d, op, hora, cl) {
   const dia = delDia(d, hora, cl);
   const soloDia = dia ? [{ id: 'dia', rot: 'Del día', c: dia }] : [];
   // el sábado, las vísperas son las primeras del domingo (lo dice `v`)
@@ -757,12 +1045,20 @@ function guardaElecciones() {
     sessionStorage.setItem('elecciones', JSON.stringify(E.elecciones));
   } catch (_) { /* sin almacenamiento: vale para esta vista */ }
 }
-function eleccionDe(iso, idCel, hora, cl, alts) {
+function eleccionDe(iso, idCel, hora, cl, alts, d) {
   const guardada = E.elecciones[claveEleccion(iso, idCel, hora, cl)];
   let i = alts.findIndex((o) => o.id === guardada);
+  if (i < 0 && cl === 'antifona_final') {
+    // la que se eligió la última noche; si no, la que trae el día
+    i = alts.findIndex((o) => claveIncipit(o.c) === E.cfg.hAntFinal);
+    if (i < 0) {
+      const delDiaK = claveIncipit(delDia(d, hora, cl));
+      i = alts.findIndex((o) => claveIncipit(o.c) === delDiaK);
+    }
+  }
   if (i < 0) {
-    i = alts.findIndex((o) =>
-      E.cfg.hComun === 'dia' ? o.id === 'dia' : o.id !== 'dia');
+    i = alts.findIndex((o) => E.cfg.hComun === 'dia'
+      ? o.id === 'dia' : !o.id.startsWith('dia'));
   }
   return Math.max(0, i);
 }
@@ -773,6 +1069,14 @@ function eleccionDe(iso, idCel, hora, cl, alts) {
 function ordenDe(hora) {
   let o = (E.horas.orden[hora] || []).slice();
   if (hora === 'oficio') o = o.filter((cl) => cl !== 'preambulo');
+  // El Te Deum: la fuente lo rotula «Himno: Señor, Dios eterno» y el libro
+  // lo guarda como un segundo himno, que el orden recuperado dejaba detrás
+  // de la conclusión. Va después del segundo responsorio (Ordinario).
+  if (hora === 'oficio' && o.includes('himno2')) {
+    o = o.filter((cl) => cl !== 'himno2');
+    const r = o.indexOf('responsorio2');
+    o.splice(r < 0 ? o.length : r + 1, 0, 'himno2');
+  }
   if (o.includes('invocacion')) {
     o = ['invocacion'].concat(o.filter((cl) => cl !== 'invocacion'));
   }
@@ -837,8 +1141,15 @@ function armaHora(iso, hora, idCel) {
     const alts = opcionesSeccion(d, op, hora, cl);
     if (alts.length) {
       secciones.push({ cl: cl, alts: alts,
-        i: eleccionDe(iso, op.id, hora, cl, alts) });
+        i: eleccionDe(iso, op.id, hora, cl, alts, d) });
     }
+  }
+  // La reseña del santo o de la fiesta, al comienzo del Oficio de lectura,
+  // como la trae el libro antes del oficio de cada celebración
+  if (hora === 'oficio' && op.cel) {
+    const r = delSanto(op, 'oficio', 'resena');
+    if (r) secciones.unshift(fija('resena', null, r.l));
+    if (r && r.f) secciones[0].alts[0].c.f = r.f;
   }
   // Laudes empiezan con el invitatorio, que ya trae «Señor, abre mis
   // labios»; la invocación sola, sólo cuando no lo hay
@@ -855,14 +1166,30 @@ function armaHora(iso, hora, idCel) {
 function pintaSeccionHora(s) {
   const o = s.alts[s.i];
   const h = [];
+  // lo que no está en la fuente y se tomó de los tomos impresos (la
+  // traducción española) lo dice, en pequeño, junto al rótulo
+  const ed = o.c.f === 'pdf'
+    ? '<span class="ed-pdf" title="No está en la fuente de la app: se toma '
+      + 'de la Liturgia de las Horas de la Conferencia Episcopal Española">'
+      + 'ed. española</span>' : '';
+  if (s.cl === 'resena') {
+    return '<section class="hora-sec resena" data-cl="resena">'
+      + o.c.l.filter((ln) => ln.length).map((ln) => '<p>'
+        + esc(ln.map((tr) => tr[1]).join('')) + '</p>').join('')
+      + ed + '</section>';
+  }
   const selector = s.alts.length < 2 ? ''
-    : '<div class="alterna" role="group" aria-label="De dónde se toma">'
+    : '<div class="alterna" role="group" aria-label="'
+      + (s.cl === 'himno' || s.cl === 'antifona_final'
+        ? 'Elegir otro texto' : 'De dónde se toma') + '">'
       + s.alts.map((a, j) => '<button type="button" aria-pressed="'
-        + (j === s.i) + '" data-op="' + esc(a.id) + '">' + esc(a.rot)
-        + '</button>').join('') + '</div>';
-  if (o.c.r || selector) {
+        + (j === s.i) + '" data-op="' + esc(a.id) + '"'
+        + (a.tit ? ' title="' + esc(a.tit) + '" aria-label="' + esc(a.rot
+          + ': ' + a.tit) + '"' : '')
+        + '>' + esc(a.rot) + '</button>').join('') + '</div>';
+  if (o.c.r || selector || ed) {
     h.push('<div class="sec-cab"><h2 class="rotulo">' + esc(o.c.r || '')
-      + '</h2>' + selector + '</div>');
+      + ed + '</h2>' + selector + '</div>');
   }
   let parrafo = [];
   const cierra = () => {
@@ -892,6 +1219,11 @@ function alElegirOpcion(ev) {
   const o = E.oficio;
   E.elecciones[claveEleccion(o.iso, o.op.id, o.hora, s.cl)] = s.alts[i].id;
   guardaElecciones();
+  // la antífona de la Virgen que se elige una noche sale marcada la siguiente
+  if (s.cl === 'antifona_final') {
+    E.cfg.hAntFinal = claveIncipit(s.alts[i].c);
+    guardaCfg();
+  }
   const t = document.createElement('template');
   t.innerHTML = pintaSeccionHora(s);
   const nueva = t.content.firstElementChild;
@@ -1019,6 +1351,7 @@ function enruta() {
   const h = location.hash.slice(2);
   const p = h.split('/').map(decodeURIComponent);
   if (p[0] === 'indice') return verIndice();
+  if (p[0] === 'calendario') return verCalendario(p[1]);
   if (p[0] === 'buscar') return verBusqueda(p[1] || '');
   if (p[0] === 'ajustes') return verAjustes();
   if (p[0] === 'f' && p[1]) {
@@ -1062,6 +1395,7 @@ async function arranca() {
   });
   vista.addEventListener('change', alCambiarAjuste);
   vista.addEventListener('click', alElegirOpcion);
+  vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'tam') alCambiarAjuste(ev);
   });

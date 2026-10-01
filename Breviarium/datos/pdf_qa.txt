@@ -1,0 +1,875 @@
+Fase 3b — el Propio de los santos de los PDF
+==================================================
+
+Entradas leídas: 320; distintas: 272
+
+Secciones halladas
+------------------------------
+    17  i_visperas/cantico_evangelico
+    12  i_visperas/himno
+    15  i_visperas/lectura_breve
+    17  i_visperas/oracion
+    17  i_visperas/preces
+    15  i_visperas/responsorio_breve
+     2  intermedia/himno
+   112  laudes/cantico_evangelico
+    46  laudes/himno
+    49  laudes/lectura_breve
+   265  laudes/oracion
+    49  laudes/preces
+     1  laudes/responsorio
+    48  laudes/responsorio_breve
+     1  nona/himno
+    31  nona/lectura_breve
+    13  nona/oracion
+     1  oficio/cantico_evangelico
+    34  oficio/himno
+    37  oficio/lectura1
+   265  oficio/lectura2
+     1  oficio/lectura_breve
+   265  oficio/oracion
+     1  oficio/preces
+    35  oficio/responsorio
+   264  oficio/responsorio2
+     1  oficio/responsorio_breve
+     1  sexta/himno
+    31  sexta/lectura_breve
+    13  sexta/oracion
+     1  tercia/himno
+    31  tercia/lectura_breve
+    13  tercia/oracion
+   103  visperas/cantico_evangelico
+    35  visperas/himno
+    44  visperas/lectura_breve
+   266  visperas/oracion
+    44  visperas/preces
+    43  visperas/responsorio_breve
+
+Entradas sin ninguna sección: 6
+  08-05  SAN EMIGDIO, OBISPO Y MÁRTIR  [IV]
+  09-08  LA NATIVIDAD DE LA SANTÍSIMA VIRGEN MARÍA, NUESTRA SEÑORA DE MONSERRATE, PATRONA DE ORIHUELA  [IV]
+  10-09  DEDICACIÓN DE LA SANTA IGLESIA CATEDRAL  [IV]
+  10-10  SAN LUIS BELTRÁN, PRESBÍTERO  [IV]
+  10-28    [IV]
+  11-06  MÁRTIRES DE ESPAÑA DEL SIGLO XX  [IV]
+
+Avisos: 0
+
+Entradas
+------------------------------
+01-02  SAN BASILIO MAGNO Y SAN GREGORIO NACIANCENO, OBISPOS Y DOCTORES DE LA IGLESIA  (MEMORIA; tomo I)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+01-03  SANTO NOMBRE DE JESÚS  (—; tomo I)
+      común: Todo del Oficio de la feria correspondiente, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+01-07  SAN RAIMUNDO DE PEÑAFORT, PRESBÍTERO  (—; tomo I)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-09  SAN EULOGIO DE CÓRDOBA, PRESBÍTERO Y MÁRTIR  (—; tomo I)
+      común: Del Común de un mártir o de pastores: para un presbítero.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-10  BEATA ANA DE LOS ÁNGELES MONTEAGUDO  (—; tomo I)
+      común: Del Común de vírgenes.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-13  SAN HILARIO, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-17  SAN ANTONIO, ABAD  (MEMORIA; tomo III)
+      común: Del Común de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-20  SAN FABIÁN, PAPA Y MÁRTIR  (—; tomo III)
+      común: Del Común de un mártir, o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-20  SAN FRUCTUOSO, OBISPO Y MÁRTIR, Y SUS DIÁCONOS, SANTOS AUGURIO Y EULOGIO  (—; tomo III)
+      común: Del Común de mártires o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-20  SAN SEBASTIÁN, MÁRTIR  (—; tomo III)
+      común: Del Común de un mártir
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-21  SANTA INÉS, VIRGEN Y MÁRTIR  (MEMORIA; tomo III)
+      común: Del Común de un mártir o del Común de vírgenes.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/responsorio_breve, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/responsorio_breve
+01-22  SAN VICENTE, DIÁCONO Y MÁRTIR  (MEMORIA; tomo III)
+      común: Del Común de un mártir
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-23  SAN ILDEFONSO, OBISPO  (MEMORIA; tomo III)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-24  SAN FRANCISCO DE SALES OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-25  LA CONVERSIÓN DEL APÓSTOL SAN PABLO  (FIESTA; tomo III)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+01-26  SAN TIMOTEO Y SAN TITO, OBISPOS  (MEMORIA; tomo III)
+      común: Del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+01-27  SANTA ÁNGELA DE MÉRICI, VIRGEN  (—; tomo III)
+      común: Del Común de vírgenes o de santas mujeres: para los santos educadores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+01-28  SANTO TOMÁS DE AQUINO, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo III)
+      común: Del Común de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+01-31  SAN JUAN BOSCO, PRESBÍTERO  (MEMORIA; tomo III)
+      común: Del Común de pastores o del Común de santos varones: para los santos educadores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-02  LA PRESENTACIÓN DEL SEÑOR  (FIESTA; tomo III)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+02-03  SAN BLAS, OBISPO Y MÁRTIR  (—; tomo III)
+      común: Del Común de un mártir, o del Común de pastores. de lectura
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-03  SAN ÓSCAR, OBISPO  (—; tomo III)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-05  SANTA ÁGUEDA, VIRGEN Y MÁRTIR  (MEMORIA; tomo II)
+      común: Del Común de un mártir o del Común de vírgenes.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+02-06  SAN PABLO MIKI Y COMPAÑEROS, MÁRTIRES  (MEMORIA; tomo II)
+      común: Del Común de mártires. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-08  SAN JERÓNIMO EMILIANI  (—; tomo II)
+      común: Del Común de santos varones: para los santos educadores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-08  SANTA JOSEFA BAKHITA, VIRGEN  (—; tomo III)
+      común: Del Común de vírgenes.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-08  SANTA JOSERFINA BAKHITA, VIRGEN  (—; tomo II)
+      común: Del Común de vírgenes. En tiempo de Cuaresma: para la conmemoración.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-10  SANTA ESCOLÁSTICA, VIRGEN  (MEMORIA; tomo II)
+      común: Del Común de vírgenes. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+02-11  NUESTRA SEÑORA DE LOURDES  (—; tomo II)
+      común: Del Común de la Santísima Virgen María.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+02-14  SAN CIRILO, MONJE, Y SAN METODIO, OBISPO, PATRONOS DE EUROPA  (FIESTA; tomo II)
+      común: Del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+02-17  LOS SIETE SANTOS FUNDADORES DE LA ORDEN DE LOS SIERVOS DE LA VIRGEN MARÍA  (—; tomo III)
+      común: Del Común de santos varones: para los santos educadores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-17  LOS SIETE SANTOS FUNDADORES DE LA ORDEN DE LOS SIERVOS DE MARÍA  (—; tomo II)
+      común: Del Común de santos varones: para santos religiosos En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-21  SAN PEDRO DAMIANI, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo II)
+      común: Del Común de pastores o de doctores de la Iglesia. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+02-22  LA CÁTEDRA DEL APÓSTOL SAN PEDRO  (FIESTA; tomo II)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+02-23  SAN POLICARPO, OBISPO Y MÁRTIR  (MEMORIA; tomo II)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+03-04  SAN CASIMIRO  (—; tomo II)
+      común: Del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-07  SANTA PERPETUA Y SANTA FELICIDAD, MÁRTIRES  (MEMORIA; tomo II)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-08  SAN JUAN DE DIOS, RELIGIOSO  (—; tomo II)
+      común: Del Común de santos varones: para los santos religiosos, o para los santos que se distinguieron en la práctica de la caridad.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-09  SANTA FRANCISCA ROMANA, RELIGIOSA  (—; tomo II)
+      común: Del Común de santas mujeres: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-17  SAN PATRICIO, OBISPO  (—; tomo II)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-18  SAN CIRILO DE JERUSALÉN, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo II)
+      común: Del Común de pastores o del Común de doctores de la Iglesia. Para la conmemoración:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-19  SAN JOSÉ, ESPOSO DE LA VIRGEN MARÍA  (SOLEMNIDAD; tomo II)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+03-23  SANTO TORIBIO DE MOGROVEJO, OBISPO  (—; tomo II)
+      común: None
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+03-25  LA ANUNCIACIÓN DEL SEÑOR  (SOLEMNIDAD; tomo II)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+04-02  SAN FRANCISCO DE PAULA, ERMITAÑO  (—; tomo II)
+      común: Del Común de santos varones: para los santos religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-04  SAN ISIDORO DE SEVILLA, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo II)
+      común: Del Común de pastores o de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-05  SAN VICENTE FERRER, PRESBÍTERO  (—; tomo II)
+      común: Del Común de pastores. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-07  SAN JUAN BAUTISTA DE LA SALLE, PRESBÍTERO  (MEMORIA; tomo II)
+      común: Del Común de pastores, o del Común de santos varones: para los santos educadores. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-11  SAN ESTANISLAO, OBISPO Y MÁRTIR  (MEMORIA; tomo II)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-13  SAN HERMENEGILDO, MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-13  SAN MARTÍN I, PAPA Y MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-17  BEATA MARIANA DE JESÚS NAVARRO, VIRGEN  (—; tomo II)
+      común: None
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-21  SAN ANSELMO, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo II)
+      común: Del Común de pastores o de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-23  SAN ADALBERTO, OBISPO Y MÁRTIR  (—; tomo II)
+      común: Del Común de mártires o de pastores: obispos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-23  SAN JORGE, MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-24  SAN FIDEL DE SIGMARINGA, PRESBÍTERO Y MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-25  SAN MARCOS, EVANGELISTA  (FIESTA; tomo II)
+      común: Del Común de Apóstoles en tiempo pascual, excepto lo siguiente: Los himnos latinos de san Marcos, evangelista, se hallan en el Apéndice IV.
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+04-26  SAN ISIDORO, OBISPO Y DOCTOR DE LA IGLESIA  (FIESTA; tomo II)
+      común: Del Común de pastores o de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+04-27  SANTO TORIBIO DE MOGROVEJO, OBISPO, PATRONO DEL EPISCOPADO LATINOAMERICANO  (—; tomo II)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/oracion, i_visperas/preces, laudes/cantico_evangelico, laudes/himno, laudes/oracion, laudes/preces, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/oracion, visperas/preces
+04-28  SAN LUIS MARÍA GRIGNON DE MONFORT, PRESBÍTERO  (—; tomo II)
+      común: Del Común de pastores: presbíteros, o del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-28  SAN PEDRO CHANEL, PRESBÍTERO Y MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+04-29  SANTA CATALINA DE SIENA, VIRGEN Y DOCTORA DE LA IGLESIA, PATRONA DE EUROPA  (FIESTA; tomo II)
+      común: Del Común de vírgenes.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+04-30  SAN PÍO V, PAPA  (—; tomo II)
+      común: Del Común de pastores: para un santo papa.
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+05-01  SAN JOSÉ, OBRERO  (—; tomo II)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+05-02  SAN ATANASIO, OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo II)
+      común: Del Común de pastores: para un santo obispo o de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-03  SAN FELIPE Y SANTIAGO, APÓSTOLES  (FIESTA; tomo II)
+      común: Del Común de apóstoles.
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+05-04  BEATO JOSE MARÍA RUBIO, PRESBÍTERO  (—; tomo II)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, visperas/oracion
+05-10  SAN JUAN DE ÁVILA, PRESBÍTERO  (MEMORIA; tomo II)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-12  SAN NEREO Y SAN AQUILES, MÁRTIRES  (—; tomo II)
+      común: Del Común de varios mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-12  SAN PANCRACIO, MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-13  LA BIENAVENTURADA VIRGEN MARÍA DE FÁTIMA  (—; tomo II)
+      común: Todo del Común de Santa María Virgen, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-14  SAN MATÍAS, APÓSTOL  (FIESTA; tomo II)
+      común: Del Común de apóstoles.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+05-15  SAN ISIDRO, LABRADOR  (MEMORIA; tomo II)
+      común: Del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-17  SAN PASCUAL BAILÓN, RELIGIOSO  (—; tomo II)
+      común: Del Común de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-18  SAN JUAN I, PAPA Y MÁRTIR  (—; tomo II)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-20  SAN BERNARDINO DE SIENA, PRESBÍTERO  (—; tomo II)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-21  SAN CRISTÓBAL MAGALLANES, PRESBÍTERO, Y COMPAÑEROS MÁRTIRES  (—; tomo II)
+      común: Del Común de varios mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-21  SANTOS CRISTÓBAL MAGALLANES Y COMPAÑEROS, MÁRTIRES  (—; tomo III)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-22  SANTA JOAQUINA VEDRUNA, RELIGIOSA  (—; tomo II)
+      común: Del Común de santas mujeres: para los santos religiosos; o para los que se han consagrado a una actividad caritativa; o para los educadores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-22  SANTA RITA DE CASIA, RELIGIOSA  (—; tomo II)
+      común: Del Común de santas mujeres: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-24  SANTA MARÍA, AUXILIO DE LOS CRISTIANOS  (—; tomo II)
+      común: Del Común de Santa María Virgen. O bien en Perú como en "Nuestra Señora de la Paz", 28 de julio (Tomo III).
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+05-25  SAB GREGORIO VII, PAPA  (—; tomo II)
+      común: Del Común de pastores: para un santo papa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-25  SAN BEDA EL VENERABLE, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (—; tomo II)
+      común: Del Común de pastores o de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-25  SAN GREGORIO VII, PAPA  (—; tomo III)
+      común: Del Común de pastores: para un santo papa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-25  SANTA MARÍA MAGDALENA DE PAZZI, VIRGEN  (—; tomo II)
+      común: Del Común de vírgenes o de santas mujeres: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-25  SANTA VICENTA MARÍA LÓPEZ VICUÑA, VIRGEN  (—; tomo II)
+      común: Del Común de vírgenes. Cuando se celebra como memoria:
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+05-26  SAN FELIPE NERI, PRESBÍTERO  (MEMORIA; tomo II)
+      común: Del Común de pastores, o de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-26  SANTA MARIANA DE JESÚS PAREDES  (—; tomo II)
+      común: Todo del Común de vírgenes, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+05-27  SAN AGUSTÍN DE CANTORBERY, OBISPO  (—; tomo II)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-30  SAN FERNANDO  (—; tomo II)
+      común: Del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+05-31  LA VISITACIÓN DE LA VIRGEN MARÍA  (FIESTA; tomo II)
+      común: Del Común de Santa María Virgen, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+06-01  SAN JUSTINO, MÁRTIR  (MEMORIA; tomo II)
+      común: Del Común de un mártir.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+06-02  SAN MARCELINO Y SAN PEDRO, MÁRTIRES  (—; tomo II)
+      común: Del Común de varios mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-03  SAN CARLOS LUANGA Y COMPAÑEROS, MÁRTIRES  (MEMORIA; tomo II)
+      común: Del Común de varios mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-05  SAN BONIFACIO, OBISPO Y MÁRTIR  (MEMORIA; tomo II)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-06  SAN MARCELINO CHAMPAGNAT, PRESBÍTERO  (SOLEMNIDAD; tomo III)
+      común: Del Común de pastores, o de los santos varones.
+      i_visperas/cantico_evangelico, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces
+06-06  SAN NORBERTO, OBISPO  (—; tomo II)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-09  SAN EFRÉN, DIÁCONO Y DOCTOR DE LA IGLESIA  (—; tomo II)
+      común: Del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-11  SAN BERNABÉ, APÓSTOL  (MEMORIA; tomo II)
+      común: Del Común de apóstoles, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+06-13  SAN ANTONIO DE PADUA, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia o de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-15  SANTA MARÍA MICAELA DEL SANTÍSIMO SACRAMENTO  (—; tomo III)
+      común: Del Común de vírgenes o de santas mujeres.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-19  SAN ROMUALDO, ABAD  (—; tomo III)
+      común: Del Común de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-21  SAN LUIS GONZAGA, RELIGIOSO  (MEMORIA; tomo III)
+      común: Del Común de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-22  SAN JUAN FISHER, OBISPO, Y SANTO TOMÁS MORO, MÁRTIRES  (—; tomo III)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-22  SAN PAULINO DE NOLA, OBISPO  (—; tomo III)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-24  NATIVIDAD DE SAN JUAN BAUTISTA  (SOLEMNIDAD; tomo III)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+06-26  SAN JOSEMARÍA ESCRIVÁ DE BALAGUER, PRESBÍTERO  (—; tomo III)
+      común: Del Común de pastores, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/oracion, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/oracion
+06-26  SAN PELAYO, MÁRTIR  (—; tomo III)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-27  SAN CIRILO DE ALEJANDRÍA, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-28  SAN IRENEO, OBISPO Y MÁRTIR  (MEMORIA; tomo III)
+      común: Del Común de un mártir, o del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+06-29  SAN PEDRO Y SAN PABLO, APÓSTOLES  (SOLEMNIDAD; tomo III)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+06-30  SANTOS PROTOMÁRTIRES DE LA SANTA IGLESIA ROMANA  (—; tomo III)
+      común: Del Común de mártires.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+07-03  SANTO TOMÁS, APÓSTOL  (FIESTA; tomo III)
+      común: Del Común de apóstoles, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+07-04  SANTA ISABEL DE PORTUGAL  (—; tomo III)
+      común: Del Común de santas mujeres: para los santos que se consagraron a una actividad caritativa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-05  SAN ANTONIO MARÍA ZACCARÍA, PRESBÍTERO  (—; tomo III)
+      común: Del Común de pastores, o de santos varones: para educadores o para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-06  SANTA MARÍA GORETTI, VIRGEN Y MÁRTIR  (—; tomo III)
+      común: Del Común de un mártir, o del Común de vírgenes.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-09  NUESTRA SEÑORA DEL ROSARIO DE CHIQUINQUIRÁ, PATRONA PRINCIPAL DE COLOMBIA  (—; tomo III)
+      común: Del Común de santa María Virgen.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-09  SAN AGUSTÍN ZHAO RONG, PRESBÍTERO, Y COMPAÑEROS, MÁRTIRES  (—; tomo III)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-11  SAN BENITO, ABAD, PATRONO DE EUROPA  (FIESTA; tomo III)
+      común: Del Común de santos varones: para los santos religiosos, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+07-13  SAN ENRIQUE  (—; tomo III)
+      común: Del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-14  SAN CAMILO DE LELIS, PRESBÍTERO  (—; tomo III)
+      común: Del Común de santos varones: para los santos que se consagraron a una actividad caritativa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-14  SAN FRANCISCO SOLANO, PRESBÍTERO  (—; tomo III)
+      común: Del Común de pastores.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+07-15  SAN BUENAVENTURA, OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-16  NUESTRA SEÑORA DEL CARMEN  (MEMORIA; tomo III)
+      común: Del Común de santa María Virgen.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+07-20  SAN APOLINAR, OBISPO Y MÁRTIR  (—; tomo III)
+      común: Del Común de pastores: obispo, o del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-21  SAN LORENZO DE BRINDIS, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (—; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-22  SANTA MARÍA MAGDALENA  (MEMORIA; tomo III)
+      común: Del Común de santas mujeres, excepto lo siguiente: Los himnos latinos de santa María Magdalena se hallan en el Apéndice IV.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+07-23  SANTA BRÍGIDA, RELIGIOSA, PATRONA DE EUROPA  (FIESTA; tomo III)
+      común: Del Común de santas mujeres: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-24  SAN SARBELIO (CHARBEL) MAKLLÜF, PRESBÍTERO  (—; tomo III)
+      común: Del Común de pastores: presbítero, o de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-25  SANTIAGO, APÓSTOL, PATRONO DE ESPAÑA  (—; tomo III)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+07-26  SAN JOAQUÍN Y SANTA ANA, PADRES DE LA VIRGEN MARÍA  (MEMORIA; tomo III)
+      común: Del Común de los santos varones, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+07-28  NUESTRA SEÑORA DE LA PAZ  (—; tomo III)
+      común: Del Común de Santa María Virgen.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+07-29  SANTA MARTA  (MEMORIA; tomo III)
+      común: Del Común de santas mujeres.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+07-30  SAN PEDRO CRISÓLOGO, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+07-31  SAN IGNACIO DE LOYOLA, PRESBÍTERO  (MEMORIA; tomo III)
+      común: Del Común de pastores o del Común de santos varones: para los santos religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-01  SAN ALFONSO MARÍA DE LIGORIO, OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo III)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-02  SAN EUSEBIO DE VERCELLI, OBISPO  (—; tomo III)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-02  SAN PEDRO JULIÁN EYMARD, PRESBÍTERO  (—; tomo III)
+      común: Del Común de pastores: presbítero, o del Común de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-04  SAN JUAN MARÍA VIANNEY, PRESBÍTERO  (MEMORIA; tomo III)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-05  LA DEDICACIÓN DE LA BASÍLICA DE SANTA MARÍA  (—; tomo III)
+      común: Del Común de santa María Virgen.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-05  NUESTRA SEÑORA DEL REMEDIO, PATRONA DE LA CIUDAD DE ALICANTE  (—; tomo IV)
+      común: Del Común de santa María Virgen, excepto lo siguiente:
+      i_visperas/cantico_evangelico, i_visperas/oracion, i_visperas/preces, laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion, visperas/preces
+08-05  SAN EMIGDIO, OBISPO Y MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir o del Común de pastores: obispos.
+      
+08-06  LA TRANSFIGURACIÓN DEL SEÑOR  (FIESTA; tomo IV)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+08-07  SAN CAYETANO, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-07  SAN SIXTO II, PAPA, Y COMPAÑEROS, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-08  SANTO DOMINGO DE GUZMÁN, PRESBÍTERO  (MEMORIA; tomo IV)
+      común: Del Común de pastores o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-09  SANTA TERESA BENEDICTA DE LA CRUZ (EDITH STEIN), RELIGIOSA Y MÁRTIR, PATRONA DE EUROPA  (FIESTA; tomo IV)
+      común: Del Común de mártires o del Común de santas mujeres: para religiosos, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-10  SAN LORENZO, DIÁCONO Y MÁRTIR  (FIESTA; tomo IV)
+      común: Del Común de un mártir, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+08-11  SANTA CLARA, VIRGEN  (MEMORIA; tomo IV)
+      común: Del Común de vírgenes, o del Común de santas mujeres: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-12  BEATOS ANTONIO PERULLES, PRESBÍTERO, Y COMPAÑEROS, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-12  SANTA JUANA FRANCISCA DE CHANTAL, RELIGIOSA  (—; tomo IV)
+      común: Del Común de santas mujeres: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-13  SAN PONCIANO, PAPA, Y SAN HIPÓLITO, PRESBÍTERO, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-14  SAN MAXIMILIANO MARÍA KOLBE, PRESBÍTERO Y MÁRTIR  (MEMORIA; tomo IV)
+      común: Del Común de un mártir o del Común de pastores: para un misionero.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-15  LA ASUNCIÓN DE LA VIRGEN MARÍA  (SOLEMNIDAD; tomo IV)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+08-16  SAN ESTEBAN DE HUNGRÍA  (—; tomo IV)
+      común: Del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-18  BEATO NICOLÁS FACTOR, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores, o de santos varones: para los religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-18  SAN ROQUE  (—; tomo IV)
+      común: None
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-19  SAN EZEQUIEL MORENO, OBISPO  (—; tomo IV)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-19  SAN JUAN EUDES, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-19  SAN LUIS OBISPO  (—; tomo IV)
+      común: Del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-20  SAN BERNARDO, ABAD Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de doctores de la Iglesia o del Común de santos varones: para religiosos, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, laudes/preces, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-21  SAN PÍO X, PAPA  (MEMORIA; tomo IV)
+      común: Del Común de pastores: para un santo papa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-22  SANTA MARÍA VIRGEN, REINA  (MEMORIA; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/oracion, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/oracion
+08-23  SANTA ROSA DE LIMA, VIRGEN, PATRONA DE AMÉRICA LATINA  (—; tomo IV)
+      común: Del Común de vírgenes, o del Común de santas mujeres: para religiosos.
+      laudes/cantico_evangelico, laudes/himno, laudes/oracion, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/oracion
+08-24  SAN BARTOLOMÉ, APÓSTOL  (FIESTA; tomo IV)
+      común: Del Común de apóstoles, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-25  SAN JOSÉ DE CALASANZ, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de santos varones: para educadores, o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-25  SAN LUÍS DE FRANCIA  (—; tomo IV)
+      común: Del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+08-26  SANTA TERESA DE JESÚS JORNET E IBARS, VIRGEN, PATRONA DE LA ANCIANIDAD  (MEMORIA; tomo IV)
+      común: Del Común de vírgenes, o del Común de santas mujeres: para los que se han consagrado a
+      laudes/cantico_evangelico, oficio/lectura2, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-27  SANTA MÓNICA  (MEMORIA; tomo IV)
+      común: Del Común de santas mujeres.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-28  SAN AGUSTÍN, OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de pastores o del Común de doctores de la Iglesia, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-29  EL MARTIRIO DE SAN JUAN BAUTISTA  (MEMORIA; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/himno, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+08-30  BEATOS JUAN DE PERUSA. PRESBÍTERO, Y PEDRO DE SAXOFERRATO, RELIGIOSO, MÁRTIRES  (—; tomo IV)
+      común: Del Común de varios mártires.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+08-30  SANTA ROSA DE LIMA, VIRGEN, PATRONA DE LIMA, DEL PERÚ Y DE AMÉRICA LATINA  (—; tomo IV)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+09-01  BIENAVENTURADA VIRGEN MARÍA DE LOS ÁNGELES DEL PUIG  (FIESTA; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+09-03  SAN GREGORIO MAGNO, PAPA Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+09-08  LA NATIVIDAD DE LA SANTÍSIMA VIRGEN MARÍA  (FIESTA; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+09-08  LA NATIVIDAD DE LA SANTÍSIMA VIRGEN MARÍA, NUESTRA SEÑORA DE MONSERRATE, PATRONA DE ORIHUELA  (FIESTA; tomo IV)
+      común: del Común Santa María Virgen; Hora intermedia: salmodia complementaria; si es domingo, salmos del domingo I. En todas las Horas, la oración siguiente:
+      
+09-09  SAN PEDRO CLAVER, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores, o para los que se han consagrado a una actividad caritativa.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-11  NUESTRA SEÑORA DE COROMOTO  (—; tomo IV)
+      común: Del Común de santa María Virgen.
+      laudes/oracion, oficio/oracion, visperas/oracion
+09-12  SANTO NOMBRE DE MARÍA  (—; tomo IV)
+      común: Todo del Común de santa María Virgen, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-13  SAN JUAN CRISÓSTOMO, OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de pastores: para un obispo o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-14  LA EXALTACIÓN DE LA SANTA CRUZ  (FIESTA; tomo IV)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+09-15  NUESTRA SEÑORA, LA VIRGEN DE LOS DOLORES  (MEMORIA; tomo IV)
+      común: Del Común de santa María Virgen, excepto lo siguiente.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+09-16  SAN CORNELIO, PAPA Y SAN CIPRIANO, OBISPO, MÁRTIRES  (MEMORIA; tomo IV)
+      común: Del Común de mártires o del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+09-16  SAN JUAN MACÍAS, RELIGIOSO  (—; tomo IV)
+      común: Del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-17  SAN ROBERTO BELARMINO, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo IV)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-18  SAN JUAN MACÍAS, RELIGIOSO  (—; tomo IV)
+      común: Del Común de santos varones: para religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/oracion
+09-19  SAN JENARO, OBISPO Y MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-20  SAN ANDRÉS KIM TAEGON, PRESBÍTERO, Y SAN PABLO CHONG HASANG Y COMPAÑEROS, MÁRTIRES  (MEMORIA; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-21  SAN MATEO, APÓSTOL Y EVANGELISTA  (FIESTA; tomo IV)
+      común: Del Común de apóstoles, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+09-22  BEATO JOSÉ APARICIO SANZ Y CCXXXII COMPAÑEROS MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-23  SAN PÍO DE PIETRALCINA, PRESBÍTERO  (MEMORIA; tomo IV)
+      común: Del Común de pastores: para un presbítero, o del Común de santos varones: para los santos religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-24  NUESTRA SEÑORA DE LA MERCED  (—; tomo IV)
+      común: Del Común de santa María Virgen.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-26  SAN COSME Y SAN DAMIÁN, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-27  SAN VICENTE DE PAÚL, PRESBÍTERO  (MEMORIA; tomo IV)
+      común: Del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+09-28  BEATO FRANCISCO DE PAULA CASTELLÓ ALEU, MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-28  SAN LORENZO RUIZ Y COMPAÑEROS, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-28  SAN WENCESLAO, MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+09-29  SANTOS ARCÁNGELES MIGUEL, GABRIEL Y RAFAEL  (FIESTA; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+09-30  SAN JERÓNIMO, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de doctores de la Iglesia, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-01  SANTA TERESA DEL NIÑO JESÚS, VIRGEN Y DOCTORA DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de vírgenes, o del Común de santas mujeres: para religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+10-02  SANTOS ÁNGELES CUSTODIOS  (MEMORIA; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-03  SAN FRANCISCO DE BORJA, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores o del Común de santos varones: para religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+10-04  SAN FRANCISCO DE ASÍS  (MEMORIA; tomo IV)
+      común: Del Común de santos varones: para los santos religiosos.
+      laudes/cantico_evangelico, laudes/himno, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+10-05    (—; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-06  SAN BRUNO, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-07  NUESTRA SEÑORA, LA VIRGEN DEL ROSARIO  (MEMORIA; tomo IV)
+      común: Del Común de santa María Virgen, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-08  SAN LUIS BERTRÁN, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores: para un misionero; o de santos varones: para los religiosos.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+10-09  DEDICACIÓN DE LA SANTA IGLESIA CATEDRAL  (—; tomo IV)
+      común: Del Común de la dedicación de una Iglesia.
+      
+10-09  SAN DIONISIO, OBISPO, Y COMPAÑEROS MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-09  SAN JUAN LEONARDI, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores o del Común de santos varones: para los que se han consagrado a una actividad caritativa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-10  SAN LUIS BELTRÁN, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores: para un misionero.
+      
+10-10  SANTO TOMÁS DE VILLANUEVA, OBISPO  (—; tomo IV)
+      común: Del Común de pastores: para un obispo.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-11  BEATO JUAN XXIII, PAPA  (—; tomo IV)
+      común: Del Común de pastores,
+      laudes/himno, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/himno, visperas/oracion
+10-11  SANTA SOLEDAD TORRES ACOSTA, VIRGEN  (—; tomo IV)
+      común: Del Común de vírgenes, o del Común de santas mujeres: para los que se han consagrado a una actividad caritativa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-12  NUESTRA SEÑORA DEL PILAR  (FIESTA; tomo IV)
+      común: Del Común de santa María Virgen, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-14  SAN CALIXTO I, PAPA Y MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-15  SANTA TERESA DE JESÚS, VIRGEN Y DOCTORA DE LA IGLESIA  (FIESTA; tomo IV)
+      común: Del Común de vírgenes, o del Común de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-16  SANTA EDUVIGIS, RELIGIOSA  (—; tomo IV)
+      común: Del Común de santas mujeres: para los que se han consagrado a una actividad caritativa o para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-16  SANTA MARGARITA MARÍA DE ALACOQUE, VIRGEN  (—; tomo IV)
+      común: Del Común de vírgenes, o del Común de santas mujeres: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-17  SAN IGNACIO DE ANTIOQUÍA, OBISPO Y MÁRTIR  (MEMORIA; tomo IV)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+10-18  SAN LUCAS, EVANGELISTA  (FIESTA; tomo IV)
+      común: Del Común de apóstoles.
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+10-19  SAN JUAN DE BRÉBEUF Y SAN ISAAC JOGUES, PRESBÍTEROS, Y COMPAÑEROS, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires, o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-19  SAN PABLO DE LA CRUZ, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores, o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-19  SAN PEDRO DE ALCÁNTARA, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores, o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-23  SAN JUAN DE CAPISTRANO, PRESBÍTERO  (—; tomo IV)
+      común: Del Común de pastores: misioneros
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-24  SAN ANTONIO MARÍA CLARET, OBISPO  (—; tomo IV)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-28    (—; tomo IV)
+      común: None
+      
+10-28  SAN SIMÓN Y SAN JUDAS, APÓSTOLES  (FIESTA; tomo IV)
+      común: None
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-01  TODOS LOS SANTOS  (SOLEMNIDAD; tomo IV)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+11-02  CONMEMORACIÓN DE TODOS LOS FIELES DIFUNTOS  (—; tomo IV)
+      común: Todo como en el Oficio de difuntos, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-03  SAN MARTÍN DE PORRES, RELIGIOSO  (—; tomo IV)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/himno, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/himno, sexta/lectura_breve, sexta/oracion, tercia/himno, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+11-04  SAN CARLOS BORROMEO, OBISPO  (MEMORIA; tomo IV)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-06  BEATA JOSEFA NAVAL GIRBÉS, VIRGEN SEGLAR  (—; tomo IV)
+      común: Del Común de vírgenes.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+11-06  MÁRTIRES DE ESPAÑA DEL SIGLO XX  (MEMORIA; tomo IV)
+      común: Todo del Común de mártires.
+      
+11-07    (—; tomo IV)
+      común: Del Común de pastores o del Común de un mártir.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+11-09  LA DEDICACIÓN DE LA BASÍLICA DE LETRÁN  (FIESTA; tomo IV)
+      común: Del Común de la Dedicación de una iglesia, excepto lo siguiente: Cuando esta fiesta coincide con un domingo, tiene I Vísperas.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-10  SAN LEÓN MAGNO, PAPA Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo IV)
+      común: Del Común de pastores o del Común de doctores de la Iglesia.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+11-11  SAN MARTÍN DE TOURS, OBISPO  (MEMORIA; tomo IV)
+      común: Del Común de pastores, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/responsorio_breve, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/responsorio_breve
+11-12  SAN JOSAFAT, OBISPO Y MÁRTIR  (MEMORIA; tomo IV)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-13  SAN LEANDRO, OBISPO  (—; tomo IV)
+      común: Del Común de pastores: obispos, o del Común de santos varones.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-15  SAN ALBERTO MAGNO, OBISPO Y DOCTOR DE LA IGLESIA  (—; tomo IV)
+      común: Del Común de pastores o del Común de doctores de la Iglesia, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-16  SANTA GERTRUDIS, VIRGEN  (—; tomo IV)
+      común: Del Común de vírgenes o del Común de santas mujeres: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-16  SANTA MARGARITA DE ESCOCIA  (—; tomo IV)
+      común: Del Común de santas mujeres: para los que se han consagrado a una actividad caritativa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-17  SANTA ISABEL DE HUNGRÍA  (MEMORIA; tomo IV)
+      común: Del Común de santas mujeres: para los que se han consagrado a una actividad caritativa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-18  LA DEDICACIÓN DE LAS BASÍLICAS DE LOS APÓSTOLES SAN PEDRO Y SAN PABLO  (—; tomo IV)
+      común: Del Común de los apóstoles, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+11-20  BEATAS ÁNGELES DE SAN JOSÉ, MARÍA DEL SUFRAGIO, VÍRGENES, Y COMPAÑERAS, MÁRTIRES  (—; tomo IV)
+      común: Del Común de mártires o del Común de vírgenes.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-21  LA PRESENTACIÓN DE LA SANTÍSIMA VIRGEN  (MEMORIA; tomo IV)
+      común: Del Común de santa María Virgen, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+11-22  SANTA CECILIA, VIRGEN Y MÁRTIR  (MEMORIA; tomo IV)
+      común: Del Común de un mártir o del Común de vírgenes.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+11-23  SAN CLEMENTE I, PAPA Y MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir o del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-23  SAN COLUMBANO, ABAD  (—; tomo IV)
+      común: Del Común de pastores: misioneros, o del Común de santos varones: para religiosos.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-24  SAN ANDRÉS DUNG-LAC Y COMPAÑEROS, MÁRTIRES  (MEMORIA; tomo IV)
+      común: Del Común de mártires.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-25  SANTA CATALINA DE ALEJANDRÍA, VIRGEN Y MÁRTIR  (—; tomo IV)
+      común: Del Común de un mártir, o del Común de vírgenes, excepto lo siguiente:
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+11-30  SAN ANDRÉS, APÓSTOL  (FIESTA; tomo I)
+      común: Del Común de apóstoles, excepto lo siguiente:
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+12-03  SAN FRANCISCO JAVIER, PRESBÍTERO  (MEMORIA; tomo I)
+      común: None
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-04  SAN JUAN DAMASCENO, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (—; tomo I)
+      común: Del Común de pastores: para un presbítero, y de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-06  SAN NICOLÁS, OBISPO  (—; tomo I)
+      común: Del Común de pastores: para un obispo.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-07  SAN AMBROSIO, OBISPO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo I)
+      común: Del Común de pastores: para un obispo, o de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-08  LA INMACULADA CONCEPCIÓN DE SANTA MARÍA VIRGEN  (SOLEMNIDAD; tomo I)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+12-09  SAN JUAN DIEGO DE CUAUHTLATOATZIN  (MEMORIA LIBRE; tomo I)
+      común: None
+      laudes/oracion, oficio/cantico_evangelico, oficio/himno, oficio/lectura2, oficio/lectura_breve, oficio/oracion, oficio/preces, oficio/responsorio2, oficio/responsorio_breve, visperas/oracion
+12-10  SANTA EULALIA DE MÉRIDA, VIRGEN Y MÁRTIR  (—; tomo I)
+      común: Del Común de un mártir o del Común de vírgenes.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-11  SAN DÁMASO I, PAPA  (—; tomo I)
+      común: Del Común de pastores.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-12  NUESTRA SEÑORA DE GUADALUPE, PATRONA DE AMÉRICA LATINA Y DE LAS ISLAS FILIPINAS  (—; tomo I)
+      común: None
+      i_visperas/cantico_evangelico, i_visperas/himno, i_visperas/lectura_breve, i_visperas/oracion, i_visperas/preces, i_visperas/responsorio_breve, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
+12-13  SANTA LUCÍA, VIRGEN Y MÁRTIR  (MEMORIA; tomo I)
+      común: Del Común de un mártir o del Común de vírgenes.
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+12-14  SAN JUAN DE LA CRUZ, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (MEMORIA; tomo I)
+      común: Del Común de doctores de la Iglesia.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+12-21  SAN PEDRO CANISIO, PRESBÍTERO Y DOCTOR DE LA IGLESIA  (—; tomo I)
+      común: Del Común de doctores de la Iglesia. En el tiempo de Adviento: Para la conmemoración sólo lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+12-23  SAN JUAN DE KETY, PRESBÍTERO  (—; tomo I)
+      común: Del Común de pastores. En el tiempo de Adviento: Para la conmemoración sólo lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+12-26  SAN ESTEBAN, PROTOMÁRTIR  (FIESTA; tomo I)
+      común: None
+      laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/oracion
+12-27  SAN JUAN APÓSTOL Y EVANGELISTA  (FIESTA; tomo I)
+      común: None
+      intermedia/himno, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, nona/oracion, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/oracion
+12-28  SANTOS INOCENTES  (FIESTA; tomo I)
+      común: None
+      intermedia/himno, laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, sexta/lectura_breve, sexta/oracion, tercia/lectura_breve, tercia/oracion, visperas/oracion
+12-29  SANTO TOMÁS BECKET, OBISPO Y MÁRTIR  (—; tomo I)
+      común: Del Común de pastores o del Común de un mártir. En el tiempo de Navidad todo del 29 de diciembre, DÍA V INFRAOCTAVA DE NAVIDAD. Para la conmemoración de Santo Tomás Becket sólo se dice lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/cantico_evangelico, visperas/oracion
+12-31  SAN SILVESTRE I, PAPA  (—; tomo I)
+      común: Del Común de pastores: papa. En el tiempo de Navidad todo del 31 de diciembre, DÍA VII INFRAOCTAVA DE NAVIDAD. Para la conmemoración de San Silvestre I, papa sólo se dice lo siguiente:
+      laudes/cantico_evangelico, laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion

@@ -1,0 +1,576 @@
+Lo que se tomó de los PDF del Breviarium
+============================================================
+
+La fuente de los textos es liturgiadelashoras.github.io, en la
+traducción de México. Lo que sigue no estaba en ninguno de sus
+años y se tomó de los cuatro tomos en PDF, que traen la
+traducción de la Conferencia Episcopal Española. En la app esos
+textos llevan la marca «f: pdf».
+
+1. Celebraciones que la fuente no publicó nunca: 93
+------------------------------------------------------------
+De cada texto del PDF se buscó primero si estaba en la fuente
+(en otro día, en un común, en otro año): lo que se halló va
+con la traducción de la fuente; lo demás, con la del PDF.
+
+07/01  San Raimundo de Peñafort, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+13/01  San Hilario, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+20/01  San Fabián, papa y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir, o del Común de pastores.  →  un martir, pastores
+20/01  San Sebastián, mártir (memoria libre)
+        del PDF: segunda lectura, oración
+        hallado en la fuente: responsorio
+        común: Del Común de un mártir  →  un martir
+22/01  San Vicente, diácono y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir  →  un martir
+27/01  Santa Ángela de Merici, virgen (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de vírgenes o de santas mujeres: para los santos educadores.  →  virgenes, santas mujeres
+03/02  San Blas, obispo y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio
+        común: Del Común de un mártir, o del Común de pastores. de lectura  →  un martir, pastores
+03/02  San Óscar, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+08/02  San Jerónimo Emiliano (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de santos varones: para los santos educadores.  →  santos varones para los santos educadores
+11/02  Nuestra Señora de Lourdes (memoria libre)
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, reseña
+        hallado en la fuente: antífona del Magníficat
+        común: Del Común de la Santísima Virgen María.  →  santisima virgen maria
+17/02  Los siete santos Fundadores de la Orden de los Siervos de santa María Virgen (memoria libre)
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, reseña
+        común: Del Común de santos varones: para los santos educadores.  →  santos varones para los santos educadores
+21/02  San Pedro Damián, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o de doctores de la Iglesia. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:  →  pastores, doctores de la iglesia
+04/03  San Casimiro (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+07/03  Santas Perpetua y Felícitas, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires.  →  varios martires
+08/03  San Juan de Dios, religioso (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de santos varones: para los santos religiosos, o para los santos que se distinguieron en la práctica de la caridad.  →  santos varones para los santos religiosos
+09/03  Santa Francisca Romana, religiosa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santas mujeres: para los santos religiosos.  →  santas mujeres
+17/03  San Patricio, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+18/03  San Cirilo de Jerusalén, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de pastores o del Común de doctores de la Iglesia. Para la conmemoración:  →  pastores, doctores de la iglesia
+23/03  Santo Toribio de Mogrovejo, obispo (memoria libre)
+        del PDF: oración, responsorio, reseña
+        hallado en la fuente: segunda lectura
+        común: —  →  (ninguno de los que hay: lo demás, de la feria)
+02/04  San Francisco de Paula, ermitaño (memoria libre)
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
+        común: Del Común de santos varones: para los santos religiosos.  →  santos varones para los santos religiosos
+04/04  San Isidoro, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        común: Del Común de pastores o de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+05/04  San Vicente Ferrer, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, antífona del Magníficat
+        hallado en la fuente: antífona del Benedictus
+        común: Del Común de pastores. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:  →  pastores
+13/04  San Martín I, papa y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
+21/04  San Anselmo, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+23/04  San Jorge, mártir (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de un mártir.  →  un martir
+23/04  San Adalberto, obispo y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires o de pastores: obispos.  →  un martir, pastores para un santo obispo
+24/04  San Fidel de Sigmaringen, presbítero y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir.  →  un martir
+28/04  San Pedro Chanel, presbítero y mártir (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de un mártir.  →  un martir
+28/04  San Luis María Grignion de Monfort, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: presbíteros, o del Común de santos varones.  →  pastores para un santo presbitero
+30/04  San Pío V, papa (memoria libre)
+        del PDF: antífona del Benedictus, lectura breve de Laudes, preces de Laudes, himno del Oficio, primera lectura, segunda lectura, oración, responsorio, antífona del Magníficat, himno de Vísperas, lectura breve de Vísperas, preces de Vísperas, reseña
+        hallado en la fuente: responsorio breve de Laudes, responsorio breve de Vísperas
+        común: Del Común de pastores: para un santo papa.  →  pastores
+12/05  Santos Nereo y Aquileo, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de varios mártires.  →  varios martires
+12/05  San Pancracio, mártir (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de un mártir.  →  un martir
+18/05  San Juan I, papa y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
+20/05  San Bernardino de Siena, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+25/05  San Beda el Venerable, presbítero y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+25/05  San Gregorio VII, papa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: para un santo papa.  →  pastores
+25/05  Santa María Magdalena de Pazzi, virgen (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de vírgenes o de santas mujeres: para los santos religiosos.  →  virgenes, santas mujeres
+27/05  San Agustín de Cantorbery, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+02/06  Santos Marcelino y Pedro, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de varios mártires.  →  varios martires
+06/06  San Norberto, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+09/06  San Efrén, diácono y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de doctores de la Iglesia.  →  doctores de la iglesia
+19/06  San Romualdo, abad (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de santos varones: para los santos religiosos.  →  santos varones para los santos religiosos
+22/06  San Paulino de Nola, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+22/06  Santos Juan Fisher, obispo, y Tomás Moro, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires.  →  varios martires
+27/06  San Cirilo de Alejandría, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+30/06  Primeros mártires de la Iglesia de Roma (memoria libre)
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat
+        común: Del Común de mártires.  →  varios martires
+04/07  Santa Isabel de Portugal (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de santas mujeres: para los santos que se consagraron a una actividad caritativa.  →  santas mujeres
+05/07  San Antonio María Zaccarías, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de pastores, o de santos varones: para educadores o para religiosos.  →  pastores, santos varones para los santos religiosos
+06/07  Santa María Goretti, virgen y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir, o del Común de vírgenes.  →  un martir, virgenes
+13/07  San Enrique (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+14/07  San Camilo de Lelis, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santos varones: para los santos que se consagraron a una actividad caritativa.  →  (ninguno de los que hay: lo demás, de la feria)
+21/07  San Lorenzo de Brindis, presbítero y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+23/07  Santa Brígida, religiosa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santas mujeres: para los santos religiosos.  →  santas mujeres
+30/07  San Pedro Crisólogo, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+02/08  San Eusebio de Vercelli, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+02/08  San Pedro Julián Eymard, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: presbítero, o del Común de santos varones: para los santos religiosos.  →  pastores para un santo presbitero, santos varones para los santos religiosos
+05/08  Dedicación de la basílica de Santa María (memoria libre)
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
+        común: Del Común de santa María Virgen.  →  santisima virgen maria
+07/08  Santos Sixto II, papa, y compañeros, mártires (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de mártires.  →  varios martires
+07/08  San Cayetano, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
+13/08  Santos Ponciano, papa, e Hipólito, mártires (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de mártires o del Común de pastores.  →  varios martires, pastores
+16/08  San Esteban de Hungría (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+19/08  San Juan Eudes, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de pastores o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
+25/08  San Luis (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+25/08  San José de Calasanz, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de santos varones: para educadores, o del Común de pastores.  →  santos varones para los santos educadores, pastores
+09/09  San Pedro Claver, presbítero (memoria libre)
+        del PDF: antífona del Benedictus, segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de pastores, o para los que se han consagrado a una actividad caritativa.  →  pastores
+17/09  San Roberto Belarmino, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de doctores de la Iglesia.  →  pastores, doctores de la iglesia
+19/09  San Jenaro, obispo y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
+26/09  Santos Cosme y Damián, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires.  →  varios martires
+28/09  San Wenceslao, mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir.  →  un martir
+28/09  Santos Lorenzo Ruiz y compañeros, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires.  →  varios martires
+06/10  San Bruno, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
+09/10  Santos Dionisio, obispo, y compañeros, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires.  →  varios martires
+09/10  San Juan Leonardi, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de santos varones: para los que se han consagrado a una actividad caritativa.  →  pastores
+14/10  San Calixto I, papa y mártir (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
+16/10  Santa Eduviges, religiosa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de santas mujeres: para los que se han consagrado a una actividad caritativa o para religiosos.  →  santas mujeres
+16/10  Santa Margarita María Alacoque, virgen (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de vírgenes, o del Común de santas mujeres: para religiosos.  →  virgenes, santas mujeres
+19/10  Santos Juan de Brébeuf e Isaac Jogues, presbíteros, y compañeros, mártires (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de mártires, o del Común de pastores.  →  varios martires, pastores
+19/10  San Pablo de la Cruz, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores, o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
+23/10  San Juan de Capistrano, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: misioneros  →  pastores
+24/10  San Antonio María Claret, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+15/11  San Alberto Magno, obispo y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores o del Común de doctores de la Iglesia, excepto lo siguiente:  →  pastores, doctores de la iglesia
+16/11  Santa Margarita de Escocia (memoria libre)
+        del PDF: oración, responsorio, reseña
+        hallado en la fuente: segunda lectura
+        común: Del Común de santas mujeres: para los que se han consagrado a una actividad caritativa.  →  santas mujeres
+16/11  Santa Gertrudis, virgen (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de vírgenes o del Común de santas mujeres: para religiosos.  →  virgenes, santas mujeres
+18/11  Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, antífona del Magníficat, reseña
+        hallado en la fuente: antífona del Benedictus
+        común: Del Común de los apóstoles, excepto lo siguiente:  →  apostoles
+23/11  San Clemente I, papa y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
+23/11  San Columbano, abad (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: misioneros, o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
+04/12  San Juan Damasceno, presbítero y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: responsorio
+        común: Del Común de pastores: para un presbítero, y de doctores de la Iglesia.  →  pastores para un santo presbitero, doctores de la iglesia
+06/12  San Nicolás, obispo (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: para un obispo.  →  pastores para un santo obispo
+11/12  San Dámaso I, papa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores.  →  pastores
+21/12  San Pedro Canisio, presbítero y doctor de la Iglesia (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        común: Del Común de doctores de la Iglesia. En el tiempo de Adviento: Para la conmemoración sólo lo siguiente:  →  doctores de la iglesia
+23/12  San Juan de Kanty, presbítero (memoria libre)
+        del PDF: segunda lectura, oración, reseña
+        hallado en la fuente: antífona del Benedictus, responsorio, antífona del Magníficat
+        común: Del Común de pastores. En el tiempo de Adviento: Para la conmemoración sólo lo siguiente:  →  pastores
+29/12  Santo Tomás Becket, obispo y mártir (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        común: Del Común de pastores o del Común de un mártir. En el tiempo de Navidad todo del 29 de diciembre, DÍA V INFRAOCTAVA DE NAVIDAD. Para la conmemoración de Santo Tomás Becket sólo se dice lo siguiente:  →  pastores, un martir
+31/12  San Silvestre I, papa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        hallado en la fuente: antífona del Benedictus
+        común: Del Común de pastores: papa. En el tiempo de Navidad todo del 31 de diciembre, DÍA VII INFRAOCTAVA DE NAVIDAD. Para la conmemoración de San Silvestre I, papa sólo se dice lo siguiente:  →  pastores
+
+2. Santos con textos de la fuente a los que les faltaba algo: 2
+------------------------------------------------------------
+  San Juan Bautista de la Salle, presbítero: responsorio (hallado en la fuente: santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio)
+  San Ambrosio, obispo y doctor de la Iglesia: oración de Vísperas (hallado en la fuente: la misma oración, en otra hora)
+
+   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 40
+     San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-29/el martirio de san juan bautista/oficio/responsorio (variante de otro año)
+     San Jerónimo Emiliano — responsorio  ←  tiempo: Ordinario/16/1/oficio/responsorio2
+     Nuestra Señora de Lourdes — antífona del Magníficat  ←  santoral: 12-08/la inmaculada concepcion de la santisima virgen maria/visperas/cantico_evangelico
+     San Juan de Dios, religioso — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
+     San Cirilo de Jerusalén, obispo y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
+     Santo Toribio de Mogrovejo, obispo — segunda lectura  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/lectura2
+     San Isidoro, obispo y doctor de la Iglesia — antífona del Benedictus  ←  santoral: 12-07/san ambrosio obispo y doctor de la iglesia/laudes/cantico_evangelico
+     San Isidoro, obispo y doctor de la Iglesia — antífona del Magníficat  ←  santoral: 09-30/san jeronimo presbitero y doctor de la iglesia/visperas/cantico_evangelico
+     San Vicente Ferrer, presbítero — antífona del Benedictus  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
+     San Juan Bautista de la Salle, presbítero — responsorio  ←  santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio
+     San Martín I, papa y mártir — antífona del Benedictus  ←  santoral: 11-12/san josafat obispo y martir/laudes/cantico_evangelico
+     San Martín I, papa y mártir — antífona del Magníficat  ←  santoral: 06-05/san bonifacio obispo y martir/visperas/cantico_evangelico
+     San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     San Pedro Chanel, presbítero y mártir — responsorio  ←  santoral: 12-03/san francisco javier presbitero/oficio/responsorio (variante de otro año)
+     San Pío V, papa — responsorio breve de Laudes  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/responsorio_breve
+     San Pío V, papa — responsorio breve de Vísperas  ←  santoral: 05-02/san atanasio obispo y doctor de la iglesia/visperas/responsorio_breve
+     San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     Santa María Magdalena de Pazzi, virgen — responsorio  ←  santoral: 12-14/san juan de la cruz presbitero y doctor de la iglesia/oficio/responsorio2
+     San Romualdo, abad — responsorio  ←  tiempo: Ordinario/4/6/oficio/responsorio2
+     Santa Isabel de Portugal — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
+     San Antonio María Zaccarías, presbítero — responsorio  ←  santoral: 06-01/san justino martir/oficio/responsorio2 (variante de otro año)
+     Santos Sixto II, papa, y compañeros, mártires — responsorio  ←  tiempo: Pascua/6/2/oficio/responsorio
+     Santos Ponciano, papa, e Hipólito, mártires — responsorio  ←  santoral: 09-16/santos cornelio papa y cipriano obispo martires/oficio/responsorio2
+     San Juan Eudes, presbítero — responsorio  ←  tiempo: Ordinario/4/3/oficio/responsorio
+     San José de Calasanz, presbítero — responsorio  ←  santoral: 07-24/san francisco solano presbitero/oficio/responsorio2
+     San Pedro Claver, presbítero — responsorio  ←  tiempo: Cuaresma/3/6/oficio/responsorio2
+     San Calixto I, papa y mártir — responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
+     Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2
+     Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles — antífona del Benedictus  ←  santoral: 06-29/santos pedro y pablo apostoles/visperas/cantico_evangelico
+     San Juan Damasceno, presbítero y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
+     San Ambrosio, obispo y doctor de la Iglesia — oración de Vísperas  ←  la misma oración, en otra hora
+     San Pedro Canisio, presbítero y doctor de la Iglesia — antífona del Benedictus  ←  santoral: 12-07/san ambrosio obispo y doctor de la iglesia/laudes/cantico_evangelico
+     San Pedro Canisio, presbítero y doctor de la Iglesia — antífona del Magníficat  ←  santoral: 07-15/san buenaventura obispo y doctor de la iglesia/visperas/cantico_evangelico
+     San Juan de Kanty, presbítero — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
+     San Juan de Kanty, presbítero — antífona del Benedictus  ←  santoral: 11-19/santa isabel de hungria/laudes/cantico_evangelico
+     San Juan de Kanty, presbítero — antífona del Magníficat  ←  santoral: 11-19/santa isabel de hungria/visperas/cantico_evangelico
+     Santo Tomás Becket, obispo y mártir — antífona del Benedictus  ←  santoral: 11-12/san josafat obispo y martir/laudes/cantico_evangelico
+     Santo Tomás Becket, obispo y mártir — antífona del Magníficat  ←  santoral: 06-05/san bonifacio obispo y martir/visperas/cantico_evangelico
+     San Silvestre I, papa — antífona del Benedictus  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
+
+3. Reseñas biográficas tomadas del PDF: 1
+------------------------------------------------------------
+  San Juan Bosco, presbítero
+
+4. Se celebran, y no hay textos ni en la fuente ni en los PDF
+------------------------------------------------------------
+
+5. Cotejo PDF / fuente en los santos que tienen los dos
+------------------------------------------------------------
+Aquí no se cambió nada: manda la fuente. Sólo se apunta.
+
+02/01  Santos Basilio Magno y Gregorio de Nacianzo, obispos y doctores de la Iglesia
+        · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
+21/01  Santa Inés, virgen y mártir
+        · himno de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno del Oficio: el PDF la trae propia; la fuente la toma del común
+        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
+02/02  La Presentación del Señor
+        · himno de Laudes: otro himno — PDF «iglesia santa esposa bella…», fuente «estas aqui senor bien lo…»
+        · himno del Oficio: otro himno — PDF «en el templo entra maria…», fuente «criaturas alegraos…»
+10/02  Santa Escolástica, virgen
+        · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
+        · antífona del Magníficat: otra antífona — PDF «Ven, esposa de Cristo, recibe la corona eterna que el Señor te trae preparada.», fuente «Jesús tocó con la mano al leproso y al instante desapareció la lepra.»
+22/02  La Cátedra de san Pedro, apóstol
+        · himno de Laudes: otro himno — PDF «cristo te llama pedro y…», fuente «tu cefas eres pedro y…»
+        · himno de Vísperas: otro himno — PDF «tu barca de pescador…», fuente «lo que en la tierra…»
+19/03  San José, esposo de santa María Virgen
+        · himno de Laudes: otro himno — PDF «porque fue varon justo…», fuente «escuchen que cosa y cosa…»
+25/03  La Anunciación del Señor
+        · himno de Laudes: otro himno — PDF «oh virginal doncella…», fuente «que hoy bajo dios a…»
+        · himno del Oficio: otro himno — PDF «oh virginal doncella…», fuente «por que bajaste a nosotros…»
+        · lectura breve de Vísperas: cita distinta — PDF «Jn 1, 1-2», fuente «Jn 1, 1-3a»
+07/04  San Juan Bautista de la Salle, presbítero
+        · responsorio: el PDF la trae propia; la fuente la toma de la feria
+11/04  San Estanislao, obispo y mártir
+        · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
+        · antífona del Magníficat: otra antífona — PDF «Los santos tienen su morada en el reino de Dios, y allí han encontrado descanso eterno.», fuente «Si el grano de trigo no cae en tierra y muere, queda infecundo; pero, si muere, da mucho fruto. Aleluya.»
+25/04  San Marcos, evangelista
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · primera lectura: cita distinta — PDF «Efesios 4, 1-16», fuente «apóstoles 11, 19-30»
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+01/05  San José Obrero
+        · himno de Laudes: otro himno — PDF «porque fue varon justo…», fuente «llamando a trabajo al mundo…»
+        · himno de Vísperas: otro himno — PDF «porque fue varon justo…», fuente «que te alaben los celicos…»
+03/05  Santos Felipe y Santiago, apóstoles
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno de Vísperas: otro himno — PDF «columnas de la iglesia…», fuente «tristes estaban los apostoles…»
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+31/05  La Visitación de la Santísima Virgen María
+        · himno de Laudes: otro himno — PDF «y salta el pequeno juan…», fuente «la virgen santa gravida del…»
+24/06  El Nacimiento de san Juan Bautista
+        · himno de Laudes: otro himno — PDF «nino que antes de nacer…», fuente «que sera este nino decia…»
+        · himno de Vísperas: otro himno — PDF «el himno como en las…», fuente «profeta de soledades…»
+29/06  Santos Pedro y Pablo, apóstoles
+        · himno de Laudes: otro himno — PDF «i…», fuente «cuando el gallo tres veces…»
+        · himno de Vísperas: otro himno — PDF «san pedro y san pablo…», fuente «la hermosa luz de eternidad…»
+03/07  Santo Tomás, apóstol
+        · himno de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+22/07  Santa María Magdalena
+        · himno de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+25/07  Santiago, apóstol
+        · himno de Laudes: otro himno — PDF «al celebrar tu memoria…», fuente «vosotros que escuchasteis la llamada…»
+        · himno del Oficio: otro himno — PDF «santo adalid patron de las…», fuente «mensajeros de dios…»
+        · primera lectura: cita distinta — PDF «Corintios 1, 18», fuente «Corintios 4,1-16»
+        · antífona del Magníficat: otra antífona — PDF «¡Oh glorioso apóstol Santiago, elegido entre los primeros! Tú fuiste el primero, entre los apóstoles, en beber el cáliz del Señor. ¡Oh feliz pueblo de España, protegido por un tal patrono! Por ti el Poderoso ha hecho obras grandes. Aleluya.», fuente «Quien aspire a ser el mayor sea siervo vuestro; y quien aspire a ser el primero sea servidor de todos.»
+        · himno de Vísperas: otro himno — PDF «pues que siempre tan amado…», fuente «columnas de la iglesia piedras…»
+06/08  La Transfiguración del Señor
+        · himno de Laudes: otro himno — PDF «transfigurame…», fuente «jesus de dulce memoria…»
+        · himno del Oficio: otro himno — PDF «se puede decir el de…», fuente «para la cruz y la…»
+        · primera lectura: cita distinta — PDF «Corintios 3, 7-4, 6», fuente «Corintios 3, 7»
+        · himno de Vísperas: otro himno — PDF «veante mis ojos…», fuente «en la cumbre del monte…»
+10/08  San Lorenzo, diácono y mártir
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+15/08  La Asunción de la Santísima Virgen María
+        · himno de Laudes: otro himno — PDF «a donde va cuando se…», fuente «solo la nina aquella la…»
+        · himno del Oficio: otro himno — PDF «todo es recuerdo en el…», fuente «a alumbrar la misma luz…»
+20/08  San Bernardo, abad y doctor de la Iglesia
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+29/08  El Martirio de san Juan Bautista
+        · himno de Laudes: otro himno — PDF «pastor que sin ser pastor…», fuente «varon feliz de meritos excelsos…»
+08/09  La Natividad de la Santísima Virgen María
+        · antífona del Benedictus: otra antífona — PDF «Tu nacimiento, Virgen Madre de Dios, anunció la alegría a todo el mundo. De ti nació el sol de la justicia, Cristo, nuestro Dios, que, borrando la maldición, nos trajo la bendición, y, triunfando de la muerte, nos dio la vida eterna.», fuente «Tu nacimiento, santa Madre de Dios, ha anunciado la alegría al mundo entero, pues de ti nació el sol de justicia, Cristo, nuestro Dios: él ha sido quien, destruyendo la maldición, nos ha aportado la bendición y, aniquilando la muerte, nos ha otorgado la vida eterna.»
+        · himno de Laudes: otro himno — PDF «hoy nace una clara estrella…», fuente «desde el albor de nuestra…»
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno del Oficio: otro himno — PDF «nina de dios por nuestro…», fuente «vestida de sol y petalos…»
+        · himno de Vísperas: otro himno — PDF «canten hoy pues naceis vos…», fuente «vino a la vida para…»
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+13/09  San Juan Crisóstomo, obispo y doctor de la Iglesia
+        · responsorio: cita distinta — PDF «Tm 2, 9-10; Sal 26, 1», fuente «Tm 2, 9-10»
+14/09  La Exaltación de la Santa Cruz
+        · himno de Laudes: otro himno — PDF «oh cruz fiel arbol unico…», fuente «brille la cruz del verbo…»
+        · himno del Oficio: otro himno — PDF «oh cruz fiel arbol unico…», fuente «cruz de cristo…»
+        · primera lectura: cita distinta — PDF «Gálatas 2, 19-3, 7. 13-14; 6, 14-16», fuente «Gálatas 2, 19»
+        · himno de Vísperas: otro himno — PDF «en la cruz esta la…», fuente «las banderas reales se adelantan…»
+15/09  Nuestra Señora de los Dolores
+        · himno de Laudes: otro himno — PDF «la madre piadosa estaba…», fuente «habra dolor mas intenso…»
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno del Oficio: otro himno — PDF «ve de la cruz pendiente…», fuente «la madre piadosa estaba…»
+        · himno de Vísperas: otro himno — PDF «ay dolor dolor dolor…», fuente «virgen de virgenes santas…»
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+21/09  San Mateo, apóstol y evangelista
+        · primera lectura: cita distinta — PDF «Efesios 4,1-16», fuente «Tobit 4, 1-6. 20-23-5, 1-22»
+29/09  Santos Arcángeles Miguel, Gabriel y Rafael
+        · himno de Laudes: otro himno — PDF «miguel gabriel rafael…», fuente «en la hora en que…»
+02/10  Santos Ángeles Custodios
+        · himno de Laudes: otro himno — PDF «angel santo de la guarda…», fuente «cantemos hoy a los angeles…»
+04/10  San Francisco de Asís
+        · himno de Laudes: otro himno — PDF «omnipotente altisimo bondadoso senor…», fuente «ven francisco a tus hermanos…»
+07/10  Nuestra Señora del Rosario
+        · himno de Laudes: otro himno — PDF «rezar el santo rosario…», fuente «resplandeciente de alegria…»
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+15/10  Santa Teresa de Jesús, virgen y doctora de la Iglesia
+        · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
+        · himno de Laudes: otro himno — PDF «vuestra soy para vos naci…», fuente «veisme aqui mi dulce amor…»
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · antífona del Magníficat: otra antífona — PDF «Quien cumpla y enseñe mi ley será grande en el reino de los cielos.», fuente «De oriente a occidente no hay otro dios fuera de mí. Yo soy el Señor y no hay otro.»
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+18/10  San Lucas, evangelista
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno del Oficio: el PDF la trae propia; la fuente la toma del común
+        · antífona del Magníficat: otra antífona — PDF «Dichoso evangelista san Lucas, que resplandece en toda la Iglesia por haber destacado en sus escritos la misericordia de Cristo.», fuente «El bienaventurado evangelista Lucas, escriba de la mansedumbre de Cristo, merece las alabanzas de la Iglesia.»
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+01/11  Todos los Santos
+        · himno de Laudes: otro himno — PDF «patriarcas que fuisteis la semilla…», fuente «vosotros sois luz del mundo…»
+        · himno del Oficio: otro himno — PDF «peregrinos del reino celeste…», fuente «nacidos del amor para la…»
+        · himno de Vísperas: otro himno — PDF «cuando contemplo el cielo…», fuente «patriarcas que fuisteis la semilla…»
+03/11  San Martín de Porres, religioso
+        · antífona del Benedictus: otra antífona — PDF «Reparte limosna a los pobres; su caridad es constante, sin falta.», fuente «Bendito sea el Señor, porque ha redimido a todos los pueblos, y a todos los ha llamado de las tinieblas a su luz admirable.»
+        · himno de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno del Oficio: el PDF la trae propia; la fuente la toma del común
+        · primera lectura: cita distinta — PDF «Filipenses 3, 7-4, 1.4-9», fuente «Jeremías 37, 20; 38, 14-28»
+        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+11/11  San Martín, obispo
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+21/11  La Presentación de la Santísima Virgen María
+        · himno de Laudes: otro himno — PDF «la nina maria…», fuente «esta era una nina…»
+22/11  Santa Cecilia, virgen y mártir
+        · responsorio: cita distinta — PDF «Sal 70, 8. 23; 9, 3», fuente «Sal 70, 8. 23; 9»
+24/11  Santos Andrés Dung-Lac, presbítero, y compañeros, mártires
+        · responsorio: cita distinta — PDF «Hb 11, 1-3», fuente «Hb 12, 1-3»
+30/11  San Andrés, apóstol
+        · himno de Laudes: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
+        · primera lectura: cita distinta — PDF «Corintios 1, 18-2, 5», fuente «Corintios 1, 18»
+        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
+        · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
+03/12  San Francisco Javier, presbítero
+        · responsorio: cita distinta — PDF «Lc 4, 10, 2; Hch 1, 8», fuente «Lc 10, 2; Hch 1, 8»
+07/12  San Ambrosio, obispo y doctor de la Iglesia
+        · oración de Vísperas: el PDF la trae propia; la fuente la toma de la feria
+08/12  La Inmaculada Concepción de la Santísima Virgen María
+        · himno de Laudes: otro himno — PDF «ninguno del ser humano…», fuente «pureza inmaculada…»
+        · himno del Oficio: otro himno — PDF «eva nos vistio de luto…», fuente «ninguno del ser humano…»
+        · primera lectura: cita distinta — PDF «Romanos 5, 1 12-21», fuente «Romanos 5, 12-21»
+        · himno de Vísperas: otro himno — PDF «i…», fuente «mistica rosa de intocados petalos…»
+26/12  San Esteban, protomártir
+        · primera lectura: cita distinta — PDF «apóstoles 6, 8-7, 2», fuente «apóstoles 6, 8»
+27/12  San Juan, apóstol y evangelista
+        · himno del Oficio: otro himno — PDF «benditos los pies de los…», fuente «custodio virgen de la virgen…»
+        · primera lectura: cita distinta — PDF «Juan 1, 1-2,3», fuente «Juan 1, 1»

@@ -17,7 +17,12 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Clementina y Nova Vulgata**, con un interruptor en Ajustes.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
-* **Índice del año entero** y **buscador** sobre el latín: ignora acentos y
+* **Calendario litúrgico** de cada año (2024–2060): qué se celebra cada día
+  y con qué grado —solemnidad, fiesta, memoria, memoria libre, domingo,
+  feria de Cuaresma, de Adviento…—, con su color, lo que se puede elegir y
+  lo que se omite. Un toque en un día lo abre en la misa o en las horas.
+  Desde él se llega al **índice del leccionario**.
+* **Buscador** sobre el latín: ignora acentos y
   desata æ/œ, así que escribiendo `quaesumus` encuentra *quǽsumus*. También
   busca por cita: **«salmo 121»** devuelve los siete lugares donde se canta.
 * **Los apéndices**: los versículos que pueden sustituir al del día antes del
@@ -57,6 +62,12 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   memoria libre se puede celebrar o dejar, y en Cuaresma y las ferias
   privilegiadas sólo cabe como conmemoración: eso se elige arriba, con los
   chips de la cabecera. En Ajustes se dice qué opción sale marcada.
+* **Reseña, himnos y antífona final.** El Oficio de lectura abre con la
+  reseña del santo; donde hay varios himnos posibles (Completas, y los
+  días en que el libro da más de uno) y en la antífona final de la Virgen,
+  un selector numerado deja escoger. Lo que no está en la fuente y se tomó
+  de los tomos impresos lleva la marca «ed. española» (ver
+  [Breviarium/LEEME.md](../Breviarium/LEEME.md)).
 
 **Lo que no trae:** el leccionario IX (misas con niños), que sí está en `out/`,
 en Word y en PDF.
