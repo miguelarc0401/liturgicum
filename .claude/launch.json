@@ -18,6 +18,24 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8767", "--directory", "app"],
       "port": 8767
+    },
+    {
+      "name": "leccionario-8768",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8768", "--directory", "app"],
+      "port": 8768
+    },
+    {
+      "name": "leccionario-8769",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8769", "--directory", "app"],
+      "port": 8769
+    },
+    {
+      "name": "leccionario-8770",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8770", "--directory", "app"],
+      "port": 8770
     }
   ]
 }

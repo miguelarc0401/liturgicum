@@ -331,7 +331,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
 
    Textos del PDF que ya estaban en la fuente y se usan con su traducción: 40
      San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
-     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-29/el martirio de san juan bautista/oficio/responsorio (variante de otro año)
+     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-24/san bartolome apostol/oficio/responsorio (variante de otro año)
      San Jerónimo Emiliano — responsorio  ←  tiempo: Ordinario/16/1/oficio/responsorio2
      Nuestra Señora de Lourdes — antífona del Magníficat  ←  santoral: 12-08/la inmaculada concepcion de la santisima virgen maria/visperas/cantico_evangelico
      San Juan de Dios, religioso — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2

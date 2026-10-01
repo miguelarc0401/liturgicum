@@ -16,7 +16,10 @@ const POR_OMISION = {
   fuente: 'clementina', acentos: true, numeros: true, tam: 100, tema: 'auto',
   epifania: 'domingo', ascension: 'domingo', corpus: 'domingo',
   memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun',
-  hAntFinal: '', calAbre: 'misa'
+  hAntFinal: '', calAbre: 'misa',
+  // el formato del texto (Ajustes, «Formato del texto»)
+  letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
+  particion: 'si', cruces: 'si', despierto: false
 };
 
 const E = {              // todo el estado de la app
@@ -109,16 +112,26 @@ function fechaLarga(iso, semana) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-/** La fecha de la cabecera: entera hoy; otro día comparte la fila con el
- *  botón «Hoy», y para que quepa se calla el año si es el de hoy, o se
- *  abrevia el día de la semana si no lo es. */
-function rotuloFecha(iso) {
-  const hoy = hoyISO();
-  if (iso === hoy) return fechaLarga(iso);
-  if (iso.slice(0, 4) === hoy.slice(0, 4)) {
-    return fechaLarga(iso).replace(/,? de \d{4}$/, '');
-  }
-  return fechaLarga(iso, 'short');
+/** La fecha abreviada —«jue, 1 oct»— para la cabecera resumida, que la
+ *  lleva en un solo renglón con la hora y la celebración. */
+function fechaCorta(iso) {
+  const d = new Date(iso + 'T12:00:00');
+  const o = { weekday: 'short', day: 'numeric', month: 'short' };
+  if (iso.slice(0, 4) !== hoyISO().slice(0, 4)) o.year = 'numeric';
+  return d.toLocaleDateString('es', o).replace(/\.(?=,|$| )/g, '');
+}
+
+/** La fecha de la cabecera, entera: el botón «Hoy» ya no le quita sitio
+ *  —flota sobre el texto—, así que no hay que abreviarla nunca. */
+function rotuloFecha(iso) { return fechaLarga(iso); }
+
+/** El rótulo de la fecha, con su forma corta a cuestas (la usa la cabecera
+ *  resumida, que la saca con `content: attr(data-corta)`). */
+function ponFecha(iso) {
+  const r = $('#rotulo-fecha');
+  r.textContent = rotuloFecha(iso);
+  r.dataset.corta = fechaCorta(iso);
+  $('#selector-fecha').value = iso;
 }
 
 /* --------------------------------------------- volver donde se estaba
@@ -162,9 +175,35 @@ function guardaCfg() {
   try { localStorage.setItem('cfg', JSON.stringify(E.cfg)); } catch (_) {}
 }
 function aplicaCfg() {
-  document.body.dataset.tema = E.cfg.tema;
+  const b = document.body.dataset;
+  b.tema = E.cfg.tema;
+  b.letra = E.cfg.letra;
+  b.interlinea = E.cfg.interlinea;
+  b.medida = E.cfg.medida;
+  b.justifica = E.cfg.justifica;
+  b.particion = E.cfg.particion;
+  b.cruces = E.cfg.cruces;
   document.documentElement.style.setProperty(
     '--cuerpo', (E.cfg.tam / 100 * 1.0625).toFixed(3) + 'rem');
+  velaPantalla();
+}
+
+/* La pantalla, despierta mientras se reza: un oficio son diez o quince
+ * minutos de lectura sin tocar nada, y el teléfono se apaga a la mitad. El
+ * permiso lo da el sistema y se pierde al pasar la app a segundo plano, así
+ * que se vuelve a pedir al volver. Donde no exista, el ajuste no se ofrece. */
+let _vela = null;
+async function velaPantalla() {
+  if (!('wakeLock' in navigator)) return;
+  if (E.cfg.despierto && !_vela && !document.hidden) {
+    try {
+      _vela = await navigator.wakeLock.request('screen');
+      _vela.addEventListener('release', () => { _vela = null; });
+    } catch (_) { _vela = null; }
+  } else if (!E.cfg.despierto && _vela) {
+    try { await _vela.release(); } catch (_) { /* ya estaba suelto */ }
+    _vela = null;
+  }
 }
 
 /* --------------------------------------------------------------- datos */
@@ -371,8 +410,7 @@ function verDia(iso, slug, bloque) {
   marcaBarra('hoy');
   $('#cabecera').classList.remove('compacta', 'portada');
   limpiaCabExtra();
-  $('#rotulo-fecha').textContent = rotuloFecha(iso);
-  $('#selector-fecha').value = iso;
+  ponFecha(iso);
   E.fecha = iso;
   marcaHoy(iso);
   const val = entradasDe(iso);
@@ -396,10 +434,71 @@ function verDia(iso, slug, bloque) {
   pintaFormulario(s, b, iso, cels, val);
 }
 
-/** La barra resumida del calendario vive en la cabecera: fuera de él, nada. */
+/** Lo que una vista deja en la cabecera —la barra resumida del calendario,
+ *  el renglón resumido de las horas— no es de las demás: se quita al
+ *  entrar en cualquiera. */
 function limpiaCabExtra() {
   $('#cab-extra').innerHTML = '';
   $('#cabecera').classList.remove('cal-pegada');
+  cabeceraFija(false);
+}
+
+/* --------------------------------------------- la cabecera, al bajar
+ * La cabecera del oficio son cinco filas, y eso es mucha pantalla cuando ya
+ * se está rezando: al bajar se resume en un renglón —la fecha abreviada, la
+ * hora y la celebración— y al subir vuelve entera.
+ *
+ * Mientras eso puede pasar, la cabecera va `fixed` y su sitio lo guarda un
+ * relleno del <body> del alto de la cabecera entera. Así cambiar de alto no
+ * cambia el flujo, y el texto que se está leyendo no da un salto a media
+ * oración (que es lo que pasaría con la cabecera pegada: al encogerse,
+ * todo lo de debajo sube de golpe). */
+let _altoCab = 0, _ultimoY = 0, _midiendoCab = false;
+
+function mideCabecera() {
+  const cab = $('#cabecera');
+  const min = cab.classList.contains('horas-min');
+  if (min) cab.classList.remove('horas-min');
+  _altoCab = cab.offsetHeight;
+  document.documentElement.style.setProperty('--alto-cab', _altoCab + 'px');
+  if (min) cab.classList.add('horas-min');
+}
+
+/** Enciende o apaga el resumen al bajar. Se llama con la cabecera ya
+ *  pintada: su alto entero es el que guarda el sitio. */
+function cabeceraFija(si) {
+  const cab = $('#cabecera');
+  if (!si) {
+    document.body.classList.remove('cab-fija');
+    cab.classList.remove('horas-min');
+    document.documentElement.style.removeProperty('--alto-cab');
+    _altoCab = 0;
+    return;
+  }
+  cab.classList.remove('horas-min');
+  document.body.classList.add('cab-fija');
+  mideCabecera();
+  _ultimoY = Math.max(0, window.scrollY);
+}
+
+/** Al bajar se resume; al subir, vuelve. Con un margen de unos pocos
+ *  píxeles, que el dedo nunca baja recto. */
+function alDesplazarCabecera() {
+  if (!document.body.classList.contains('cab-fija') || _midiendoCab) return;
+  _midiendoCab = true;
+  requestAnimationFrame(() => {
+    _midiendoCab = false;
+    const cab = $('#cabecera');
+    if (!document.body.classList.contains('cab-fija')) return;
+    const min = cab.classList.contains('horas-min');
+    const y = Math.max(0, window.scrollY);
+    if (!min && y > _altoCab + 32 && y > _ultimoY + 4) {
+      cab.classList.add('horas-min');
+    } else if (min && (y < _ultimoY - 4 || y <= _altoCab)) {
+      cab.classList.remove('horas-min');
+    }
+    _ultimoY = y;
+  });
 }
 
 function modoPanel(titulo) {
@@ -583,12 +682,12 @@ function verCalendario(anio) {
     const a = anioDe(iso);
     if (a && !ciclos.some((c) => c.inicio === a.inicio)) ciclos.push(a);
   }
-  const fechaCorta = (iso) => {
+  const diaYMes = (iso) => {
     const d = new Date(iso + 'T12:00:00');
     return d.getDate() + ' de ' + MESES[d.getMonth()].toLowerCase();
   };
-  const ciclo = ciclos.map((a, i) => (i ? 'desde el ' + fechaCorta(a.inicio)
-    + ': ' : (ciclos.length > 1 ? 'hasta el ' + fechaCorta(suma(ciclos[1].inicio, -1)) + ': ' : ''))
+  const ciclo = ciclos.map((a, i) => (i ? 'desde el ' + diaYMes(a.inicio)
+    + ': ' : (ciclos.length > 1 ? 'hasta el ' + diaYMes(suma(ciclos[1].inicio, -1)) + ': ' : ''))
     + 'ciclo ' + a.ciclo + ', año ' + a.ferial).join(' · ');
   const h = [
     '<div class="cal-cab">',
@@ -894,6 +993,38 @@ function pintaResultados(q) {
     }).join('');
 }
 
+/* La muestra de Ajustes: un trozo de salmo y otro de lectura, con las
+ * mismas clases que el oficio de verdad —`en-verso` con sangría francesa,
+ * `prosa` justificada y partida— de modo que lo que se ve es exactamente lo
+ * que se verá rezando, y no una imitación que podría mentir. La lectura es
+ * de las más largas que hay en una lectura breve, para que el justificado
+ * tenga renglones de sobra donde lucirse. */
+function muestraFormato() {
+  const ln = (t, cl) => '<span class="ln' + (cl ? ' ' + cl : '') + '">'
+    + t + '</span>';
+  const rub = (t) => '<b class="rub">' + esc(t) + '</b>';
+  return '<div class="muestra" aria-hidden="true">'
+    + '<section class="hora-sec en-verso">'
+    + '<p class="estrofa-h">'
+    + ln(rub('Ant.') + ' ' + esc('El Señor es mi pastor') + ' ' + CRUZ, 'sigla')
+    + '</p><p class="estrofa-h">'
+    + ln(rub('SALMO 22') + esc('   El buen pastor'), 'tit')
+    + ln(esc('El Señor es mi pastor, nada me falta:'))
+    + ln(CRUZ + ' ' + esc('en verdes praderas me hace recostar;'))
+    + ln(esc('me conduce hacia fuentes tranquilas'))
+    + ln(esc('y repara mis fuerzas.'))
+    + '</p></section>'
+    + '<section class="hora-sec prosa">'
+    + '<div class="sec-cab"><h2 class="rotulo">Lectura breve</h2></div>'
+    + '<p class="estrofa-h">'
+    + ln(esc('Hermanos: Estad siempre alegres en el Señor; os lo repito, '
+      + 'estad alegres. Que vuestra mesura la conozcan todos los hombres. '
+      + 'El Señor está cerca. Nada os preocupe; sino que, en toda ocasión, '
+      + 'en la oración y en la súplica, con acción de gracias, vuestras '
+      + 'peticiones sean presentadas a Dios.'))
+    + '</p></section></div>';
+}
+
 function verAjustes() {
   E.vista = 'ajustes';
   marcaBarra('ajustes');
@@ -905,7 +1036,7 @@ function verAjustes() {
       '<option value="' + v + '"' + (E.cfg[id] === v ? ' selected' : '')
       + '>' + t + '</option>').join('') + '</select></div>';
   vista.innerHTML = [
-    '<h2 class="seccion">Texto</h2>',
+    '<h2 class="seccion">El latín del leccionario</h2>',
     sel('fuente', 'Versión latina',
       'La Nova Vulgata es el latín de los libros litúrgicos vigentes; la '
       + 'Clementina, la Vulgata de siempre.',
@@ -914,12 +1045,51 @@ function verAjustes() {
       'El acento tónico marcado, como en los libros de coro.',
       [[true, 'Sí'], [false, 'No']]),
     sel('numeros', 'Números de versículo', '', [[true, 'Sí'], [false, 'No']]),
-    '<div class="ajuste"><label for="tam">Tamaño de letra</label>'
-    + '<input type="range" id="tam" min="80" max="170" step="5" value="'
-    + E.cfg.tam + '"></div>',
-    sel('tema', 'Aspecto', '',
+    '<h2 class="seccion">Formato del texto</h2>',
+    muestraFormato(),
+    '<div class="ajuste ancho"><label for="tam">Tamaño de letra'
+    + '<span class="pista">Lo de arriba es el texto de verdad, con las '
+    + 'mismas reglas: lo que se vea ahí es lo que se verá rezando.</span>'
+    + '</label>'
+    + '<input type="range" id="tam" min="80" max="200" step="5" value="'
+    + E.cfg.tam + '">'
+    + '<span class="marcas"><span>Menor</span><span id="tam-pct">'
+    + E.cfg.tam + '%</span><span>Mayor</span></span></div>',
+    sel('interlinea', 'Interlineado', '',
+      [['compacto', 'Compacto'], ['normal', 'Normal'], ['holgado', 'Holgado']]),
+    sel('letra', 'Tipo de letra',
+      'La de libro es la de los libros de coro, con remates; la de pantalla '
+      + 'es de palo seco, y se lee mejor con la letra muy pequeña o muy '
+      + 'grande.',
+      [['serif', 'De libro'], ['sans', 'De pantalla']]),
+    sel('justifica', 'Lecturas justificadas',
+      'Las lecturas, los responsorios, las preces y la oración, a caja, '
+      + 'como en el libro. Los himnos, los salmos y los cánticos van '
+      + 'siempre por renglones, con sangría francesa.',
+      [['si', 'Sí'], ['no', 'No: a la izquierda']]),
+    sel('particion', 'Partir las palabras',
+      'Con guiones al final del renglón. Sin partirlas, el justificado abre '
+      + 'más espacio entre palabras.',
+      [['si', 'Sí'], ['no', 'No']]),
+    sel('cruces', 'La cruz del salmo',
+      'Donde el salmo empieza repitiendo su antífona, una cruz dice dónde '
+      + 'seguir: «El Señor es mi pastor †».',
+      [['si', 'Sí'], ['no', 'No']]),
+    sel('medida', 'Ancho de la columna',
+      'En una tableta o en el ordenador, un renglón corto se lee mejor que '
+      + 'uno que cruza la pantalla.',
+      [['normal', 'Estrecha, como un libro'], ['ancha', 'Toda la pantalla']]),
+    '<h2 class="seccion">Aspecto</h2>',
+    sel('tema', 'Color del papel', '',
       [['auto', 'Según el teléfono'], ['claro', 'Claro'],
-        ['sepia', 'Sepia'], ['oscuro', 'Oscuro']]),
+        ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']]),
+    'wakeLock' in navigator
+      ? sel('despierto', 'No apagar la pantalla',
+        'Un oficio son diez o quince minutos de lectura sin tocar nada, y '
+        + 'el teléfono se apaga a la mitad. Mientras la app esté delante, '
+        + 'la pantalla se queda encendida.',
+        [[false, 'No'], [true, 'Sí']])
+      : '',
     sel('inicio', 'Al abrir la app',
       'La app lleva dentro dos libros. Si siempre vas al mismo, dilo aquí y '
       + 'no se te vuelve a preguntar.',
@@ -975,6 +1145,10 @@ async function alCambiarAjuste(ev) {
   E.cfg[id] = id === 'tam' ? +v : v;
   guardaCfg();
   aplicaCfg();
+  if (id === 'tam') {
+    const pct = $('#tam-pct');
+    if (pct) pct.textContent = E.cfg.tam + '%';
+  }
   if (id === 'fuente') {
     vista.innerHTML = '<p class="aviso">Cambiando de versión…</p>';
     await cargaLecturas(v);
@@ -1034,17 +1208,21 @@ function verPortada() {
   colocaPosicion();
 }
 
-/* ----------------------------------------------- la liturgia de las horas */
-/* Las horas van en ficheros aparte y no se cargan hasta que se piden: son
- * 25 MB, y quien sólo venga a las lecturas no tiene por qué esperarlos. */
+/* ----------------------------------------------- la liturgia de las horas
+ * Las horas van en ficheros aparte y no se cargan hasta que se piden: son
+ * 25 MB, y quien sólo venga a las lecturas no tiene por qué esperarlos.
+ *
+ * [clave, título de la cabecera, nombre en la tira, abreviatura]: en la
+ * tira de las horas sólo la elegida lleva su nombre, y las demás tres
+ * letras, para que las siete se vean de golpe y no haya que deslizarla. */
 const HORAS = [
-  ['oficio', 'Oficio de Lectura', 'Lectura'],
-  ['laudes', 'Laudes', 'Laudes'],
-  ['tercia', 'Tercia', 'Tercia'],
-  ['sexta', 'Sexta', 'Sexta'],
-  ['nona', 'Nona', 'Nona'],
-  ['visperas', 'Vísperas', 'Vísperas'],
-  ['completas', 'Completas', 'Completas']
+  ['oficio', 'Oficio de Lectura', 'Oficio', 'Ofi'],
+  ['laudes', 'Laudes', 'Laudes', 'Lau'],
+  ['tercia', 'Tercia', 'Tercia', 'Ter'],
+  ['sexta', 'Sexta', 'Sexta', 'Sex'],
+  ['nona', 'Nona', 'Nona', 'Non'],
+  ['visperas', 'Vísperas', 'Vísperas', 'Vís'],
+  ['completas', 'Completas', 'Completas', 'Com']
 ];
 
 async function cargaHoras() {
@@ -1181,24 +1359,28 @@ function claveIncipit(c) {
  * Del himno del día se ofrecen los otros que el libro da para ese mismo día;
  * en Completas, los del tiempo, que se turnan. Van numerados, como en el
  * libro, y el primero es siempre el del día. */
+/** El grupo de himnos al que pertenece un día: su tiempo, y en el ordinario
+ *  la mitad que le toca —hasta la semana XVII o desde la XVIII, que es el
+ *  corte de los tomos III y IV—. Las dos solemnidades del Señor sin semana
+ *  numerada (la Trinidad y el Corpus) caen en la primera. */
+function grupoHimnos(d) {
+  if (d.t !== 'Ordinario') return d.t;
+  return 'Ordinario/' + (+d.k.split('/')[1] > 17 ? 2 : 1);
+}
+
 function otrosHimnos(d, hora, base) {
   const L = E.horas;
   let pool = [];
   if (INTERMEDIAS.includes(hora)) {
     // la Hora intermedia: los del tiempo, y en el ordinario los de su
-    // mitad (hasta la semana XVII, o desde la XVIII); el Triduo y
-    // Pentecostés traen el suyo, y entonces sólo ése
+    // mitad; el Triduo y Pentecostés traen el suyo, y entonces sólo ése
     const H = L.himnos_intermedia || {};
-    const sem = +d.k.split('/')[1];
-    pool = H[d.k + '/' + hora] || H[(d.t === 'Ordinario'
-      ? 'Ordinario/' + (sem > 17 ? 2 : 1) : d.t) + '/' + hora] || [];
+    pool = H[d.k + '/' + hora] || H[grupoHimnos(d) + '/' + hora] || [];
   } else if (hora === 'completas') {
-    pool = (L.himnos_completas || {})[d.t] || [];
-    // en Adviento y Navidad Completas toman también los himnos del tiempo
-    // ordinario; Cuaresma y Pascua tienen los suyos
-    if (d.t !== 'Cuaresma' && d.t !== 'Pascua' && d.t !== 'Ordinario') {
-      pool = pool.concat((L.himnos_completas || {}).Ordinario || []);
-    }
+    // Completas: los del tiempo, y en el ordinario los de su mitad. Cada
+    // tiempo tiene los suyos —medido, dos por grupo, que se turnan—, así
+    // que no se le añaden los de ningún otro.
+    pool = (L.himnos_completas || {})[grupoHimnos(d)] || [];
   } else {
     pool = (L.otros_himnos || {})[d.k + '/' + hora + '/himno'] || [];
   }
@@ -1522,7 +1704,7 @@ function pintaSeccionHora(s) {
     h.push('<div class="sec-cab"><h2 class="rotulo">' + esc(o.c.r || '')
       + ed + '</h2>' + selector + '</div>');
   }
-  h.push(pintaLineas(o.c.l, PROSA.test(s.cl)));
+  h.push(pintaLineas(o.c.l, PROSA.test(s.cl), s.cl));
   return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
     + (PROSA.test(s.cl) ? ' prosa' : ' en-verso')
     + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
@@ -1579,10 +1761,32 @@ function cruces(lineas) {
   return { fin: fin, ini: ini };
 }
 
+/* Cada prez son dos partes: la petición de quien preside y la respuesta de
+ * todos. La fuente las separa con un renglón en blanco —dos líneas por
+ * bloque— y los tomos impresos abren la respuesta con una raya; las dos
+ * formas se reconocen, y la respuesta se marca para pegarla a su petición y
+ * sangrarla entera. */
+function respuestas(lineas) {
+  const r = new Set();
+  let n = 0;
+  const cierra = (fin) => {
+    if (n === 2) r.add(fin - 1);       // petición y respuesta: la segunda
+    n = 0;
+  };
+  lineas.forEach((ln, i) => {
+    if (!ln.length || !ln.some((tr) => tr[1].trim())) { cierra(i); return; }
+    n++;
+    if (/^\s*[—–-]\s/.test(ln.map((tr) => tr[1]).join(''))) r.add(i);
+  });
+  cierra(lineas.length);
+  return r;
+}
+
 const CRUZ = '<span class="cruz" aria-hidden="true">†</span>';
 
-function pintaLineas(lineas, prosa) {
+function pintaLineas(lineas, prosa, seccion) {
   const marcas = cruces(lineas);
+  const resp = seccion === 'preces' ? respuestas(lineas) : null;
   const bloques = [];
   let actual = [];
   const cierra = () => {
@@ -1598,6 +1802,7 @@ function pintaLineas(lineas, prosa) {
     else if (ln.every((tr) => tr[0] || !tr[1].trim())) cl += ' solo-rub';
     // la antífona y los «V.» y «R.» también cuelgan de su sigla
     else if (ln[0][0] && /^\s*(Ant|V\.|R\.)/.test(ln[0][1])) cl += ' sigla';
+    if (resp && resp.has(i)) cl += ' prez-r';
     actual.push('<span class="' + cl + '">'
       + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
       + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>');
@@ -1678,9 +1883,12 @@ function notaHoras(o) {
 }
 
 function pintaChipsHoras(iso, hora) {
-  $('#formularios').innerHTML = HORAS.map(([cl, , corto]) =>
-    '<button data-hora="' + cl + '"' + (cl === hora ? ' class="sel"' : '')
-    + '>' + esc(corto) + '</button>').join('');
+  $('#formularios').innerHTML = HORAS.map(([cl, , nombre, breve]) => {
+    const es = cl === hora;
+    return '<button data-hora="' + cl + '"' + (es ? ' class="sel"' : '')
+      + (es ? '' : ' aria-label="' + esc(nombre) + '"')
+      + '>' + esc(es ? nombre : breve) + '</button>';
+  }).join('');
 }
 
 async function verHoras(iso, hora, idCel) {
@@ -1691,8 +1899,7 @@ async function verHoras(iso, hora, idCel) {
   $('#cabecera').classList.remove('compacta', 'portada');
   limpiaCabExtra();
   marcaHoy(iso);
-  $('#rotulo-fecha').textContent = rotuloFecha(iso);
-  $('#selector-fecha').value = iso;
+  ponFecha(iso);
   $('#celebraciones').innerHTML = '';
   $('#nota-dia').style.display = 'none';
   vista.innerHTML = '<p class="aviso">Abriendo el oficio…</p>';
@@ -1733,6 +1940,7 @@ async function verHoras(iso, hora, idCel) {
   vista.innerHTML = o.secciones.length
     ? o.secciones.map(pintaSeccionHora).join('')
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
+  cabeceraFija(true);
   colocaPosicion();
 }
 
@@ -1869,8 +2077,15 @@ async function arranca() {
   // el calendario: su barra resumida vive en la cabecera
   $('#cab-extra').addEventListener('click', alTocarCalendario);
   vista.addEventListener('input', alEscribirCalendario);
-  window.addEventListener('scroll', alDesplazarCalendario, { passive: true });
+  window.addEventListener('scroll', () => {
+    alDesplazarCalendario();
+    alDesplazarCabecera();
+  }, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) velaPantalla();
+  });
   window.addEventListener('resize', () => {
+    if (document.body.classList.contains('cab-fija')) mideCabecera();
     if (E.vista !== 'calendario') return;
     document.documentElement.style.setProperty('--alto-cabecera',
       $('#cabecera').offsetHeight + 'px');

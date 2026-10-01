@@ -27,9 +27,6 @@
     <button id="siguiente" class="icono" aria-label="Día siguiente">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg>
     </button>
-    <button id="ir-hoy" class="ir-hoy" type="button" hidden aria-label="Volver a hoy">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Hoy
-    </button>
   </div>
   <div class="fila-titulo">
     <h1 id="titulo-dia"></h1>
@@ -44,6 +41,10 @@
 <main id="vista" tabindex="-1">
   <p class="aviso" id="arranque">Abriendo…</p>
 </main>
+
+<button id="ir-hoy" class="ir-hoy" type="button" hidden aria-label="Volver a hoy">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>Hoy
+</button>
 
 <nav id="barra" aria-label="Secciones">
   <button data-ir="portada" class="activo">

@@ -239,8 +239,10 @@ cambian los tomos.
 * **La reseña** del santo o de la fiesta abre el Oficio de lectura, como en
   el libro (`resenas.json`, de la fuente; si no la dio, del PDF).
 * **Himnos.** Del himno del día se ofrecen los otros que la fuente dio ese
-  mismo día en otros años; en Completas, todos los del tiempo, que se
-  turnan. Van numerados (I, II, III…) junto al rótulo.
+  mismo día en otros años; en Completas, los del tiempo —y en el ordinario,
+  los de su mitad, semanas I-XVII o XVIII-XXXIV, que es el corte de los
+  tomos III y IV—, que son dos y se turnan. Van numerados (I, II, III…)
+  junto al rótulo.
 * **La antífona final de la Virgen**: las cuatro del Ordinario, en su orden
   (I *Dios te salve*, II *Madre del Redentor*, III *Salve, Reina de los
   cielos*, IV *Bajo tu amparo*); en Pascua, *Reina del cielo*. La que se

@@ -21,6 +21,9 @@
            "Noto Serif", Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --cuerpo: 1.0625rem;
+  --interlinea: 1.62;
+  --familia: var(--serif);
+  --medida: 38rem;
   --alto-cabecera: 0px;
   --rapido: .16s;
   --medio: .24s;
@@ -50,6 +53,16 @@ body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d
 body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
 body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
 
+/* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
+   liturgico del dia no tine nada —de noche, lo que importa es no despertar
+   del todo a quien va a dormirse—. */
+body[data-tema="noche"] {
+  --papel: #0b0806; --papel-alto: #120e0b; --tinta: #d8ae80;
+  --tinta-suave: #96714f; --filete: #2a1d13; --filete-fuerte: #3e2c1d;
+  --rubrica: #c8795c; --realce: #3a2a10; --acento: #c08d63;
+  --sombra: 0 1px 2px rgb(0 0 0 / .5), 0 6px 20px rgb(0 0 0 / .4);
+}
+
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
     --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
@@ -72,9 +85,9 @@ body {
   margin: 0;
   background: var(--papel);
   color: var(--tinta);
-  font-family: var(--serif);
+  font-family: var(--familia);
   font-size: var(--cuerpo);
-  line-height: 1.62;
+  line-height: var(--interlinea);
   overflow-wrap: break-word;
   -webkit-tap-highlight-color: transparent;
 }
@@ -107,6 +120,49 @@ button { font: inherit; color: inherit; }
 #cabecera.compacta #nota-dia { display: none; }
 #cabecera.compacta h1 { margin: .35rem 0 .05rem; }
 
+/* ------------------------------------------------- la cabecera, al bajar
+   En las horas la cabecera son cinco filas —la fecha, la hora, la
+   celebracion, los oficios que se pueden elegir y las siete horas—, y eso
+   es mucha pantalla cuando ya se esta rezando. Al bajar se resume en un
+   solo renglon —la fecha abreviada, la hora y la celebracion— y al subir
+   vuelve entera.
+
+   Para que resumirla no mueva el texto que se esta leyendo, en esa vista la
+   cabecera va `fixed` y su sitio lo guarda un relleno del <body>: asi
+   cambiar de alto no cambia el flujo, y la pagina no da un salto a media
+   oracion. */
+body.cab-fija { padding-top: var(--alto-cab, 0px); }
+body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
+
+#cabecera.horas-min {
+  display: flex; align-items: baseline; gap: 0 .5rem;
+  padding-top: calc(env(safe-area-inset-top) + .45rem);
+  padding-bottom: .5rem;
+}
+#cabecera.horas-min #celebraciones,
+#cabecera.horas-min #formularios,
+#cabecera.horas-min #nota-dia,
+#cabecera.horas-min .fila-fecha .icono { display: none; }
+#cabecera.horas-min .fila-fecha,
+#cabecera.horas-min .fila-titulo,
+#cabecera.horas-min .envoltorio-fecha { flex: none; }
+/* la fecha, abreviada: «jue, 1 oct» en vez del renglon entero. El
+   <input type="date"> sigue encima, asi que tocarla abre el calendario. */
+#cabecera.horas-min .fecha { font-size: 0; padding: 0; }
+#cabecera.horas-min .fecha::after {
+  content: attr(data-corta); font-size: .7rem; letter-spacing: .05em;
+}
+#cabecera.horas-min h1 { margin: 0; font-size: .98rem; letter-spacing: 0; }
+#cabecera.horas-min #subtitulo-dia {
+  flex: 1 1 auto; min-width: 0; margin: 0; font-size: .72rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#cabecera.horas-min h1::before,
+#cabecera.horas-min #subtitulo-dia:not(:empty)::before {
+  content: "·"; margin-right: .5rem; font-weight: 400;
+  color: var(--filete-fuerte);
+}
+
 .fila-fecha { display: flex; align-items: center; gap: .15rem; }
 .fila-fecha .icono {
   flex: none; width: 2.75rem; height: 2.75rem;
@@ -132,22 +188,31 @@ button { font: inherit; color: inherit; }
   opacity: 0; border: 0; padding: 0; cursor: pointer;
   font-size: 16px;                 /* evita el zoom de iOS al enfocar */
 }
-/* «Hoy»: sale sólo cuando se anda por otro día, y vuelve a éste */
+/* «Hoy»: sale solo cuando se anda por otro dia, y vuelve a este. Flota
+   sobre el texto, encima de la barra de abajo, y no en la fila de la fecha:
+   ahi le robaba el sitio a la fecha, que se tenia que abreviar. Fuera de la
+   cabecera, ademas, porque su backdrop-filter le haria de marco a un
+   `position: fixed`, y porque la cabecera se resume al bajar. */
 .ir-hoy {
-  flex: none; position: relative;
-  display: inline-flex; align-items: center; gap: .3rem;
-  height: 1.95rem; margin-left: .2rem; padding: 0 .7rem 0 .55rem;
-  font-family: var(--sans); font-size: .74rem; font-weight: 600;
+  position: fixed; z-index: 25;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: calc(4.2rem + env(safe-area-inset-bottom));
+  display: inline-flex; align-items: center; gap: .32rem;
+  height: 2.3rem; padding: 0 .85rem 0 .7rem;
+  font-family: var(--sans); font-size: .78rem; font-weight: 600;
   letter-spacing: .03em; cursor: pointer;
-  color: var(--acento); background: var(--papel-alto);
-  background: color-mix(in srgb, var(--acento) 9%, var(--papel-alto));
-  border: 1px solid color-mix(in srgb, var(--acento) 35%, transparent);
-  border-radius: 999px;
+  color: var(--acento);
+  background: color-mix(in srgb, var(--acento) 10%, var(--papel-alto));
+  border: 1px solid color-mix(in srgb, var(--acento) 32%, transparent);
+  border-radius: 999px; box-shadow: var(--sombra);
   animation: aparece var(--medio) ease-out;
+  transition: background-color var(--rapido), transform var(--rapido);
 }
-.ir-hoy svg { width: .95rem; height: .95rem; stroke-width: 2; }
-.ir-hoy::after { content: ""; position: absolute; inset: -.45rem -.2rem; }
-.ir-hoy:active { background: color-mix(in srgb, var(--acento) 18%, var(--papel-alto)); }
+.ir-hoy svg { width: 1rem; height: 1rem; stroke-width: 2; }
+.ir-hoy:active {
+  background: color-mix(in srgb, var(--acento) 20%, var(--papel-alto));
+  transform: scale(.96);
+}
 
 #cabecera h1 {
   margin: .1rem 0 0;
@@ -200,6 +265,11 @@ button { font: inherit; color: inherit; }
    ciclo- pero no se ofrece como si tocara. */
 #celebraciones button.apagado { border-style: dashed; opacity: .72; }
 .chips.finos button { font-size: .74rem; padding: .25rem .72rem; min-height: 2rem; }
+/* Las siete horas tienen que caber de una vez en una pantalla de telefono:
+   la elegida lleva su nombre y las demas tres letras, y las tres letras van
+   mas justas para que no haya que deslizar la tira. */
+.chips.finos button[data-hora] { padding: .25rem .5rem; }
+.chips.finos button[data-hora].sel { padding: .25rem .72rem; }
 .chips.finos { margin-top: .4rem; }
 
 .nota-dia {
@@ -211,7 +281,7 @@ button { font: inherit; color: inherit; }
 
 /* ------------------------------------------------------------------- vista */
 #vista {
-  max-width: 38rem; margin: 0 auto;
+  max-width: var(--medida); margin: 0 auto;
   padding: 1.1rem 16px calc(5.5rem + env(safe-area-inset-bottom));
   outline: none;
 }
@@ -258,6 +328,22 @@ button { font: inherit; color: inherit; }
 @media (min-width: 34rem) {
   .texto, .estrofa { text-align: justify; hyphens: auto; }
 }
+
+/* ------------------------------------------------- formato, en Ajustes
+   Lo que se puede cambiar del texto cuelga de un atributo del <body>, de
+   modo que la muestra de Ajustes ensena exactamente lo que se vera: es el
+   mismo texto con las mismas reglas, no una imitacion. */
+body[data-letra="sans"] { --familia: var(--sans); }
+body[data-interlinea="compacto"] { --interlinea: 1.42; }
+body[data-interlinea="holgado"] { --interlinea: 1.88; }
+body[data-medida="ancha"] { --medida: 50rem; }
+body[data-justifica="no"] .prosa .ln,
+body[data-justifica="no"] .texto,
+body[data-justifica="no"] .estrofa { text-align: left; }
+body[data-particion="no"] .prosa .ln,
+body[data-particion="no"] .texto,
+body[data-particion="no"] .estrofa { -webkit-hyphens: manual; hyphens: manual; }
+body[data-cruces="no"] .cruz { display: none; }
 
 /* --------------------------------------------------------------- indice */
 .enlace-buscar {
@@ -329,6 +415,26 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   border: 1px solid var(--filete-fuerte); border-radius: 10px; padding: .35rem .5rem;
 }
 .ajuste input[type="range"] { width: 8rem; padding: 0; border: 0; accent-color: var(--acento); }
+/* La muestra: un trozo de salmo y otro de lectura, con las mismas clases
+   que el oficio de verdad, para que el ajuste se vea antes de volver a el. */
+.muestra {
+  margin: .9rem 0 .4rem; padding: .85rem 1rem .75rem;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  border-radius: 12px;
+}
+.muestra .hora-sec { margin: 0; }
+.muestra .hora-sec + .hora-sec { margin-top: .9rem; }
+.muestra .sec-cab { margin-top: 0; }
+.muestra .estrofa-h:last-child { margin-bottom: 0; }
+/* el deslizador del tamano, a lo ancho: la muestra esta justo encima y se
+   mira mientras se arrastra */
+.ajuste.ancho { display: block; }
+.ajuste.ancho input[type="range"] { width: 100%; max-width: none; margin-top: .5rem; }
+.ajuste.ancho .marcas {
+  display: flex; justify-content: space-between;
+  font-family: var(--sans); font-size: .68rem; color: var(--tinta-suave);
+}
+
 h2.seccion {
   margin: 2rem 0 .2rem; font-family: var(--sans); font-size: .72rem;
   font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
@@ -385,9 +491,13 @@ h2.seccion {
 .hora-sec { margin: 0 0 1.5rem; }
 /* El rotulo y, cuando las rubricas dejan elegir, el selector a su derecha,
    sobre el mismo filete: la opcion va con la seccion a la que toca y no se
-   lleva mas sitio que el que ya ocupaba el rotulo. */
+   lleva mas sitio que el que ya ocupaba el rotulo. Sin `wrap`, de modo que
+   el selector se queda a la derecha pase lo que pase y es el rotulo el que
+   se parte en dos renglones: antes, un titulo de himno un poco crecido
+   mandaba los botones a la fila siguiente, y cada seccion los ponia en un
+   sitio distinto. */
 .sec-cab {
-  display: flex; align-items: flex-end; flex-wrap: wrap; gap: .35rem .6rem;
+  display: flex; align-items: flex-end; flex-wrap: nowrap; gap: .35rem .6rem;
   margin: 1.7rem 0 .65rem; border-bottom: 1px solid var(--filete);
 }
 .hora-sec:first-child .sec-cab { margin-top: .2rem; }
@@ -402,10 +512,10 @@ h2.seccion {
    color de la rubrica. Discreto a proposito: se toca una vez, si acaso, y
    despues se reza. El area que se toca es mas alta que lo que se ve. */
 .alterna {
-  flex: none; display: inline-flex; margin-bottom: .35rem; padding: 2px;
+  flex: 0 0 auto; display: inline-flex; margin-bottom: .35rem; padding: 2px;
   border: 1px solid var(--filete-fuerte); border-radius: 999px;
   background: var(--papel);
-  max-width: 100%; overflow-x: auto; scrollbar-width: none;
+  max-width: 62%; overflow-x: auto; scrollbar-width: none;
 }
 .alterna::-webkit-scrollbar { display: none; }
 .alterna button {
@@ -447,6 +557,10 @@ h2.seccion {
 }
 .prosa .ln + .ln { margin-top: .5em; }
 .prosa .ln.sigla { padding-left: 1.3em; text-indent: -1.3em; }
+/* Las preces son de dos partes: la peticion y la respuesta de todos. La
+   respuesta va pegada a su peticion —no a media distancia de la prez
+   siguiente— y entera con sangria, como en el libro. */
+.prosa .ln.prez-r { margin-top: .08em; padding-left: 1.6em; text-indent: 0; }
 /* el titulo del salmo y los titulillos de las lecturas: en versalitas */
 .hora-sec .ln.tit, .hora-sec .ln.solo-rub {
   padding-left: 0; text-indent: 0; text-align: left;

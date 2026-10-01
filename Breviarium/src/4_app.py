@@ -461,6 +461,16 @@ def intermedia(salterio):
             'salmos': {h: list(n) for h, n in COMPLEMENTARIOS.items()}}, raros
 
 
+def grupo_de_tiempo(t, sem):
+    """El grupo de himnos de un día: su tiempo, y en el ordinario la mitad
+    que le toca —hasta la semana XVII o desde la XVIII, que es el corte de
+    los tomos III y IV—. Las dos solemnidades del Señor sin semana numerada
+    (la Trinidad y el Corpus) caen en la primera."""
+    if t != 'Ordinario':
+        return t
+    return f'Ordinario/{2 if sem.isdigit() and int(sem) > 17 else 1}'
+
+
 def himnos_intermedia(tiempo):
     """Los himnos de Tercia, Sexta y Nona que corresponden a cada tiempo.
 
@@ -469,8 +479,6 @@ def himnos_intermedia(tiempo):
     tiempo; en el ordinario, unos hasta la semana XVII y otros desde la
     XVIII (son los tomos III y IV). Algunos días sin semana —el Triduo,
     Pentecostés— tienen el suyo, y entonces sólo se ofrece ése."""
-    def grupo(t, sem):
-        return f'{t}/{1 if int(sem) <= 17 else 2}' if t == 'Ordinario' else t
     cuenta = defaultdict(Counter)          # grupo/hora -> incipit -> testigos
     texto = {}
     for k, v in tiempo.items():
@@ -481,7 +489,7 @@ def himnos_intermedia(tiempo):
                 (x['lineas'], x['testigos']) for x in v.get('variantes', [])]:
             i = incipit(ls)
             if i:
-                cuenta[f'{grupo(t, sem)}/{hora}'][i] += n
+                cuenta[f'{grupo_de_tiempo(t, sem)}/{hora}'][i] += n
                 texto.setdefault(i, ls)
     pools = {}
     for g, c in cuenta.items():
@@ -502,6 +510,36 @@ def himnos_intermedia(tiempo):
             (x['lineas'], x['testigos']) for x in v.get('variantes', [])])
         pools[k.rsplit('/', 1)[0]] = [{'r': 'HIMNO', 'l': ls}
                                       for ls in propios]
+    return pools
+
+
+def himnos_de_completas(tiempo):
+    """Los himnos de Completas que corresponden a cada tiempo.
+
+    Completas tiene unos pocos que se turnan, y la medida dice cuáles: dos
+    por tiempo, y en el ordinario dos hasta la semana XVII y otros dos
+    desde la XVIII (son los tomos III y IV, igual que en la Hora
+    intermedia). Agrupando sólo por tiempo salían los cuatro del ordinario
+    en cualquier semana, y dos de ellos no tocan nunca."""
+    cuenta = defaultdict(Counter)          # grupo -> incipit -> testigos
+    texto = {}
+    for k, v in tiempo.items():
+        p = k.split('/')
+        if p[-2:] != ['completas', 'himno']:
+            continue
+        for ls, n in [(v['lineas'], v['testigos'])] + [
+                (x['lineas'], x['testigos']) for x in v.get('variantes', [])]:
+            i = incipit(ls)
+            if i:
+                cuenta[grupo_de_tiempo(p[0], p[1])][i] += n
+                texto.setdefault(i, ls)
+    pools = {}
+    for g, c in cuenta.items():
+        total = sum(c.values())
+        # lo que asoma un par de veces es de la semana de la frontera, o del
+        # santo que ese día ganó: un 5 % de los testigos lo separa (medido)
+        pools[g] = [{'r': 'HIMNO', 'l': texto[i]} for i, n in c.most_common()
+                    if n >= 0.05 * total]
     return pools
 
 
@@ -865,9 +903,9 @@ def main():
     # «En el Oficio dominical y ferial, se dice el himno que se indica en el
     # Salterio […]. Pueden usarse también otros cantos oportunos» (Ordinario).
     # De cada himno se guardan los otros que la fuente dio en ese mismo día en
-    # otros años; de Completas, todos los del tiempo, que son pocos y se
-    # turnan; y de la antífona final de la Virgen, las cuatro del Ordinario
-    # —en Pascua, sólo «Reina del cielo»—.
+    # otros años; de Completas, los del tiempo —y en el ordinario, los de su
+    # mitad—, que son dos y se turnan; y de la antífona final de la Virgen,
+    # las cuatro del Ordinario —en Pascua, sólo «Reina del cielo»—.
     otros_himnos = {}
     for k, v in tiempo.items():
         if k.endswith('/himno') and v.get('variantes'):
@@ -876,15 +914,7 @@ def main():
                 if incipit(ls) != incipit(v['lineas'])]
             if otros:
                 otros_himnos[k] = [{'r': v['rotulo'], 'l': ls} for ls in otros]
-    pool = defaultdict(list)
-    for k, v in tiempo.items():
-        p = k.split('/')
-        if p[-2:] == ['completas', 'himno']:
-            pool[p[0]] += [(v['lineas'], v['testigos'])] + [
-                (x['lineas'], x['testigos']) for x in v.get('variantes', [])]
-    himnos_completas = {t: [{'r': 'HIMNO', 'l': ls}
-                            for ls in opciones_distintas(pares)]
-                        for t, pares in pool.items()}
+    himnos_completas = himnos_de_completas(tiempo)
     pool = defaultdict(list)
     for k, v in ordinario.items():
         if k.endswith('/completas/antifona_final'):
