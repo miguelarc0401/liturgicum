@@ -345,7 +345,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
      San Martín I, papa y mártir — antífona del Magníficat  ←  santoral: 06-05/san bonifacio obispo y martir/visperas/cantico_evangelico
      San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
      San Pedro Chanel, presbítero y mártir — responsorio  ←  santoral: 12-03/san francisco javier presbitero/oficio/responsorio (variante de otro año)
-     San Pío V, papa — responsorio breve de Laudes  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/responsorio_breve
+     San Pío V, papa — responsorio breve de Laudes  ←  santoral: 05-26/san felipe neri presbitero/laudes/responsorio_breve
      San Pío V, papa — responsorio breve de Vísperas  ←  santoral: 05-02/san atanasio obispo y doctor de la iglesia/visperas/responsorio_breve
      San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
      Santa María Magdalena de Pazzi, virgen — responsorio  ←  santoral: 12-14/san juan de la cruz presbitero y doctor de la iglesia/oficio/responsorio2
