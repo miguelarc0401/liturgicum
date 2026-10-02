@@ -183,7 +183,7 @@ Horas* (están en cada tomo en los PDF de esta carpeta):
 |---|---|
 | invitatorio, himno; en Laudes y Vísperas, de la lectura breve a las preces | propio; si no, **a elegir** entre el común y la feria |
 | salmodia | del salterio, con las antífonas del santo si las tiene |
-| lectura bíblica del Oficio | del propio del tiempo |
+| lectura bíblica del Oficio | del propio del tiempo, salvo que el santo tenga la suya |
 | lectura hagiográfica y oración | propio o común |
 | Hora intermedia y Completas | de la feria: no mencionan la memoria |
 
@@ -256,6 +256,18 @@ cambian los tomos.
   *dentro de cada año*, contando también las memorias, que leen la del
   tiempo, y lo deja en `bienal.json`; la fase 4 lleva a la app sólo el
   texto del año que no coincide con el de `tiempo.json`.
+* **La lectura bíblica del Oficio de las memorias.** «Se toma del Oficio
+  corriente, es decir, del tiempo», salvo que el santo traiga la suya. Cuál
+  la trae no se supone: lo que el santoral guarda como propio es casi
+  siempre la lectura corrida del *otro* año del ciclo, que la fuente publicó
+  aquel día y la fase 2 no supo distinguir. Se mide (`4_app.py`,
+  `lectura_biblica_del_santo`): la que en alguna de las fechas en que se
+  celebra al santo dice lo mismo que la del tiempo —de cualquiera de los dos
+  años— es la del tiempo y se quita; la que no coincide nunca es suya. De
+  141 casillas quedan 14 memorias con lectura o responsorio propios: san
+  Atanasio, san Pío V, san Policarpo, san Ireneo, santa Catalina de Siena,
+  san Martín de Porres… Y el responsorio va con su lectura: elegida una, la
+  otra la sigue.
 * **Las antífonas de la salmodia.** Lo que una celebración tiene propio en
   la salmodia no son los salmos —ésos son los del salterio que toque ese
   día— sino las **antífonas**, y por eso medir la salmodia entera no servía:

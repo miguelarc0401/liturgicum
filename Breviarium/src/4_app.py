@@ -525,6 +525,46 @@ def rubricas_del_invitatorio(libro):
     return n
 
 
+def lectura_biblica_del_santo(santoral, tiempo, tiempo_anio, dias):
+    """Cuáles de las lecturas bíblicas del Oficio que el santoral da como
+    propias lo son de verdad.
+
+    La fase 2 llama propio a todo lo que un día que celebra dice distinto
+    del hueco ferial, y la lectura corrida del Oficio dice distinto por una
+    razón que no es el santo: el ciclo de dos años. La del año II sale
+    «propia» cuando el canónico del hueco es la del año I.
+
+    No se adivina, se mide. Una lectura que en alguna de las fechas en que
+    se celebra al santo dice lo mismo que la del tiempo —la de cualquiera
+    de los dos años— es la del tiempo, y sobra. La que no coincide nunca es
+    suya: unas pocas memorias la tienen, las que el libro trae con lectura
+    propia (san Policarpo, san Ireneo, san Atanasio, santa Catalina de
+    Siena…), y ahí manda ella.
+
+    Devuelve las claves que hay que quitar del santoral, que son las otras.
+    """
+    def texto(v):
+        return clave(' '.join(s for ln in v['lineas'] for _, s in ln))
+
+    ferial, vistas = defaultdict(set), set()
+    for fecha, d in dias.items():
+        for santo, md, _, grado, _ in d.get('c') or ():
+            if not grado.startswith('MEMORIA'):
+                continue
+            for cl in ('lectura1', 'responsorio'):
+                k = f'{md}/{santo}/oficio/{cl}'
+                if k not in santoral:
+                    continue
+                vistas.add(k)
+                hueco = f'{d["k"]}/oficio/{cl}'
+                if hueco in tiempo:
+                    ferial[k].add(texto(tiempo[hueco]))
+                for v in (tiempo_anio.get(hueco) or {}).values():
+                    ferial[k].add(clave(' '.join(s for ln in v['l']
+                                                 for _, s in ln)))
+    return {k for k in vistas if texto(santoral[k]) in ferial[k]}
+
+
 def grupo_de_tiempo(t, sem):
     """El grupo de himnos de un día: su tiempo, y en el ordinario la mitad
     que le toca —hasta la semana XVII o desde la XVIII, que es el corte de
@@ -1102,6 +1142,15 @@ def main():
         dias[fecha] = reg
 
     tiempo_anio = del_otro_anio(bienal, tiempo)
+    # De las lecturas bíblicas que el santoral da como propias, las que son
+    # del tiempo y no del santo sobran: se quitan, y lo que queda es lo que
+    # la app ofrece delante de la del día.
+    sobran = lectura_biblica_del_santo(santoral, tiempo, tiempo_anio, dias)
+    for k in sobran:
+        del santoral[k]
+    biblicas = sorted(k for k in santoral
+                      if k.rsplit('/', 1)[-1] in ('lectura1', 'responsorio')
+                      and k.count('/') == 3)
     hora_intermedia, raros_intermedia = intermedia(salterio)
     pools_intermedia = himnos_intermedia(tiempo)
 
@@ -1168,6 +1217,8 @@ def main():
                    ('ordinario', 'salterio', 'tiempo', 'santoral', 'comunes'))
     print(f'horas.json       {mb1:6.1f} MB  ({casillas} casillas, '
           f'{nr} rúbricas del invitatorio recoloreadas)')
+    print(f'lectura bíblica del Oficio: {len(biblicas)} propias de verdad, '
+          f'{len(sobran)} eran la del tiempo')
     print(f'horas_dias.json  {mb2:6.1f} MB  ({len(dias)} fechas)')
 
     with open(QA, 'w', encoding='utf-8') as f:

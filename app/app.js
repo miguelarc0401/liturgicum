@@ -1421,16 +1421,27 @@ async function cargaHoras() {
 //          lectura breve a las preces
 //   santo  del Propio o del Común, nunca de la feria: la lectura
 //          hagiográfica del Oficio y la oración
-//   dia    del Propio del tiempo aunque la fuente traiga otra cosa: la
-//          lectura bíblica del Oficio sólo es propia en las fiestas
+//   biblica  «la primera lectura, con su responsorio, se toma del Oficio
+//          corriente, es decir, del tiempo», salvo que el santo tenga la
+//          suya. Catorce memorias la tienen —san Atanasio, san Policarpo,
+//          san Ireneo, santa Catalina de Siena…—, y se sabe cuáles porque
+//          se mide: lo que el santoral guarda como propio es casi siempre
+//          la lectura corrida del otro año del ciclo, que la fuente
+//          publicó aquel día y la fase 2 no supo distinguir
 //   (lo demás) del salterio, «excepto cuando tienen propios esos
 //          elementos»: la salmodia
 const EN_MEMORIA = {
   invitatorio: 'elige', himno: 'elige', lectura_breve: 'elige',
   responsorio_breve: 'elige', cantico_evangelico: 'elige', preces: 'elige',
   lectura2: 'santo', responsorio2: 'santo', oracion: 'santo',
-  lectura1: 'dia', responsorio: 'dia'
+  lectura1: 'biblica', responsorio: 'biblica'
 };
+
+/* Lo que va en pareja se elige una vez: la lectura breve manda sobre su
+ * responsorio breve, y la lectura bíblica del Oficio sobre el suyo. Tomar
+ * la del santo y responderle con la de la feria no tiene sentido. */
+const LIGADAS = { responsorio: 'lectura1',
+  responsorio_breve: 'lectura_breve' };
 // «En la Hora intermedia nunca se hace mención de las memorias de los
 // santos», y Completas se toman siempre del salterio.
 const SIN_MEMORIAS = ['tercia', 'sexta', 'nona', 'completas'];
@@ -1646,6 +1657,10 @@ function opcionesSeccionBase(d, op, hora, cl) {
     && /^(MEMORIA|FIESTA)/.test(op.g || '')) ? distintas(ops.concat(soloDia))
     : ops;
   const propio = delSanto(op, hora, cl);
+  if (regla === 'biblica') {
+    return propio ? distintas(
+      [{ id: 'propio', rot: 'Propio', c: propio }].concat(soloDia)) : soloDia;
+  }
   if (propio) return yDelDia([{ id: 'propio', rot: 'Propio', c: propio }]);
   if (regla === 'salterio') return soloDia;
   const comunes = deSusComunes(op, hora, cl);
@@ -1892,13 +1907,13 @@ function armaHora(iso, hora, idCel) {
     secciones = secciones.filter((s) => s.cl !== 'invocacion');
   }
   if (op.modo === 'conmemoracion') conmemora(secciones, op, hora);
-  // El responsorio breve responde a lo que se acaba de leer: no se elige
-  // aparte de la lectura breve, se toma de donde ella.
-  const lb = secciones.find((x) => x.cl === 'lectura_breve');
-  const rb = secciones.find((x) => x.cl === 'responsorio_breve');
-  if (lb && rb && rb.alts.length > 1) {
-    rb.ligada = 'lectura_breve';
-    sigueALaLectura(lb, rb);
+  for (const [resp, lect] of Object.entries(LIGADAS)) {
+    const l = secciones.find((x) => x.cl === lect);
+    const r = secciones.find((x) => x.cl === resp);
+    if (l && r && r.alts.length > 1) {
+      r.ligada = lect;
+      sigueALaLectura(l, r);
+    }
   }
   return { iso: iso, hora: hora, dia: d, cels: cels, op: op,
     secciones: secciones };
@@ -2081,13 +2096,11 @@ function alElegirOpcion(ev) {
   }
   repintaSeccion(sec, s).querySelector('[aria-pressed="true"]')
     .focus({ preventScroll: true });
-  // y con la lectura breve se mueve su responsorio
-  if (s.cl === 'lectura_breve') {
-    const rb = E.oficio.secciones.find((x) => x.ligada === 'lectura_breve');
-    const caja = rb && document.querySelector('.hora-sec[data-cl="'
-      + rb.cl + '"]');
-    if (caja) { sigueALaLectura(s, rb); repintaSeccion(caja, rb); }
-  }
+  // y con la lectura se mueve su responsorio
+  const rb = E.oficio.secciones.find((x) => x.ligada === s.cl);
+  const caja = rb && document.querySelector('.hora-sec[data-cl="'
+    + rb.cl + '"]');
+  if (caja) { sigueALaLectura(s, rb); repintaSeccion(caja, rb); }
 }
 
 /** Cambia una sección por su versión nueva, sin tocar el resto de la hora. */

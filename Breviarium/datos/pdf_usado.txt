@@ -491,6 +491,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · himno de Laudes: otro himno — PDF «la madre piadosa estaba…», fuente «habra dolor mas intenso…»
         · preces de Laudes: el PDF la trae propia; la fuente la toma del común
         · himno del Oficio: otro himno — PDF «ve de la cruz pendiente…», fuente «la madre piadosa estaba…»
+        · primera lectura: el PDF la trae propia; la fuente la toma del común
         · himno de Vísperas: otro himno — PDF «ay dolor dolor dolor…», fuente «virgen de virgenes santas…»
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
 21/09  San Mateo, apóstol y evangelista
@@ -534,7 +535,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · preces de Laudes: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
         · himno del Oficio: el PDF la trae propia; la fuente la toma del común
-        · primera lectura: cita distinta — PDF «Filipenses 3, 7-4, 1.4-9», fuente «Jeremías 37, 20; 38, 14-28»
+        · primera lectura: el PDF la trae propia; la fuente la toma de la feria
         · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
         · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
