@@ -1155,10 +1155,15 @@ def main():
     pools_intermedia = himnos_intermedia(tiempo)
 
     # --- se escribe --------------------------------------------------------
-    # Lo que una celebración tiene propio en la salmodia son sus antífonas,
-    # no sus salmos: los salmos son los del día, y por eso la fase 3 las mide
-    # aparte. La app compone las dos cosas.
-    antifonas = {k: v['antifonas'] for k, v in carga('antifonas.json').items()}
+    # Lo que una celebración tiene propio en la salmodia son sus antífonas;
+    # los salmos, los del día —salvo que el libro le señale otros, con la
+    # rúbrica «se toma la salmodia del domingo I», y entonces `s` dice de qué
+    # casilla del salterio—. La app compone las dos cosas.
+    antifonas = {}
+    for k, v in carga('antifonas.json').items():
+        antifonas[k] = {'a': v['antifonas']}
+        if v.get('salmos'):
+            antifonas[k]['s'] = v['salmos']
 
     # De los comunes, las segundas lecturas que la fuente da como variantes
     # son otras tantas lecturas a elegir: un común ofrece varias, y quien

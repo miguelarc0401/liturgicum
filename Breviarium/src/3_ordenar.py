@@ -154,6 +154,36 @@ def antifonas_de(lineas):
     return tuple(salida)
 
 
+def salmos_de(lineas):
+    """Los títulos de los salmos de una salmodia, que son los que la
+    identifican: «Salmo 62», «Cántico: Dn 3», «Salmo 149»."""
+    return tuple(re.sub(r'\s+', ' ', ln[0][1]).strip()
+                 for ln in lineas
+                 if ln and ln[0][0] and TITULO_SALMO.match(ln[0][1]))
+
+
+def donde_estan_esos_salmos(salterio_libro):
+    """Un índice de los salmos del salterio: qué semana y qué día los tiene.
+
+    Sirve para leer una rúbrica que el libro escribe y la fuente no: «se
+    toma la salmodia del domingo I». La fuente no la escribe, la *aplica* —
+    pone esos salmos y no los del día—, así que la rúbrica se recupera
+    mirando qué casilla del salterio trae los salmos que la fuente puso.
+    Se indexa sólo el tiempo ordinario, porque los salmos de una misma
+    casilla son los mismos en todos los tiempos y sólo cambian las
+    antífonas, que aquí se sustituyen de todos modos.
+    """
+    indice = {}
+    for k, v in salterio_libro.items():
+        tiempo, sem, dia, hora = k.split('/')
+        if tiempo != 'Ordinario':
+            continue
+        sal = salmos_de(v['lineas'])
+        if sal:
+            indice.setdefault((hora, sal), (sem, dia))
+    return indice
+
+
 def texto_de(lineas):
     return clave(' '.join(''.join(t for _, t in ln) for ln in lineas))
 
@@ -303,7 +333,8 @@ def main():
                                 if ants:
                                     kant = (fecha[5:] + '/' + clave(cel)
                                             + '/' + hora_cl)
-                                    antifonas[kant].append((ks, ants))
+                                    antifonas[kant].append(
+                                        (ks, ants, salmos_de(lineas)))
                             continue
 
                         kf = hueco_ferial(of, hora_cl, cl)
@@ -357,24 +388,39 @@ def main():
     # para que una errata de un año no se tome por el propio.
     del_salterio = {antifonas_de(v['lineas']) for v in salterio_libro.values()}
     del_salterio.discard(())
+    donde = donde_estan_esos_salmos(salterio_libro)
     antifonas_libro, dudosas = {}, []
     for k, obs in sorted(antifonas.items()):
-        propias = Counter()
-        for ks, ants in obs:
+        propias, salmos = Counter(), defaultdict(Counter)
+        for ks, ants, sal in obs:
             ferial = salterio_libro.get(ks)
             if ferial is None or antifonas_de(ferial['lineas']) == ants:
                 continue
             propias[ants] += 1
+            if sal:
+                salmos[ants][sal] += 1
         if not propias:
             continue
         ants, n = propias.most_common(1)[0]
-        if n >= 2 and ants not in del_salterio:
-            antifonas_libro[k] = {'antifonas': list(ants), 'testigos': n,
-                                  'de': len(obs)}
-        else:
+        if n < 2 or ants in del_salterio:
             dudosas.append(f'{k}: {n} de {len(obs)} años'
                            + (', son de otra semana del salterio'
                               if ants in del_salterio else ''))
+            continue
+        entrada = {'antifonas': list(ants), 'testigos': n, 'de': len(obs)}
+        # «Se toma la salmodia del domingo I»: el libro lo dice con una
+        # rúbrica y la fuente no la escribe, la aplica. Si los salmos que
+        # puso son siempre los mismos aunque el día caiga en otra semana
+        # del salterio, es que la celebración los tiene señalados, y se
+        # apunta de qué casilla son para que la app los traiga de allí.
+        hora_cl = k.rsplit('/', 1)[-1]
+        if salmos[ants]:
+            sal, ns = salmos[ants].most_common(1)[0]
+            casilla = donde.get((hora_cl, sal))
+            if casilla and ns >= 2 and ns * 2 >= n:
+                entrada['salmos'] = '/'.join(casilla)
+                entrada['salmos_testigos'] = ns
+        antifonas_libro[k] = entrada
     print(f'{len(antifonas_libro)} casillas con antífonas propias '
           f'({len(dudosas)} descartadas)', flush=True)
 

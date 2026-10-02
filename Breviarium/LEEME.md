@@ -277,8 +277,16 @@ cambian los tomos.
   el salterio que le tocaría, se exige además que no sean las de ninguna
   otra semana del salterio, y que dos años al menos las den. Salen 46
   casillas —san Mateo, san Andrés, los Arcángeles, los Ángeles Custodios,
-  la Inmaculada, santa María Magdalena…—, y la app compone las antífonas
-  del santo sobre los salmos del día, ofreciendo también las del salterio.
+  la Inmaculada, santa María Magdalena…—.
+
+  Y en 16 de ellas los **salmos tampoco son los del día**: el libro lo dice
+  con una rúbrica —«se toma la salmodia del domingo I»— que la fuente no
+  escribe, pero *aplica*. Así que la rúbrica se recupera midiendo: si los
+  salmos que la fuente puso son los mismos todos los años aunque el día caiga
+  en otra semana del salterio, es que la celebración los tiene señalados, y
+  se apunta de qué casilla son (`salmos: "1/0"`, semana I, domingo). La app
+  compone las antífonas del santo sobre esos salmos, y ofrece al lado la
+  salmodia del día entera.
 * **La Hora intermedia.** La fuente reza las tres horas y reparte: la
   salmodia del día en una —no siempre la misma— y la complementaria
   (salmos 119-121, 122-124, 125-127) en las otras dos. La fase 4 deja dicho

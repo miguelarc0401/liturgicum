@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Liturgicum">
+  <!-- El icono del navegador se ve a 16 píxeles: ahí no cabe el filete de la
+       tapa, que a ese tamaño se vuelve una mancha. Queda lo que aguanta: el
+       campo rojo, la cruz de oro y la cinta saliendo de detrás de ella. -->
+  <defs>
+    <linearGradient id="campo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#75141f"/>
+      <stop offset="1" stop-color="#4a0a15"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#campo)"/>
+  <!-- la cinta, por detrás -->
+  <path fill="#b9823f" d="M41.5 26h5.6v26.5l-2.8-3-2.8 3z"/>
+  <!-- la cruz: brazos rectos, apenas abiertos hacia las puntas -->
+  <path fill="#e0bc74" d="M28.3 9.5h7.4l-.45 13.2H48.6l.9 7.6H35.1L35.9 54h-7.8l.8-23.7H14.5l.9-7.6h12.95z"/>
+</svg>

@@ -6,7 +6,9 @@
    "Alegraos conmigo y felicitadme, porque he obtenido un trono resplandeciente en la asamblea de los santos."
   ],
   "testigos": 3,
-  "de": 12
+  "de": 12,
+  "salmos": "1/0",
+  "salmos_testigos": 3
  },
  "01-21/santa ines virgen y martir/visperas": {
   "antifonas": [
@@ -24,7 +26,9 @@
    "El Señor dijo a Pedro: «Yo te daré las llaves del reino de los cielos.»"
   ],
   "testigos": 2,
-  "de": 7
+  "de": 7,
+  "salmos": "1/0",
+  "salmos_testigos": 2
  },
  "02-22/la catedra de san pedro apostol/oficio": {
   "antifonas": [
@@ -96,7 +100,9 @@
    "Mientras estaba llorando, se asomó María al sepulcro y vio a dos ángeles vestidos de blanco. Aleluya."
   ],
   "testigos": 6,
-  "de": 16
+  "de": 16,
+  "salmos": "1/0",
+  "salmos_testigos": 6
  },
  "07-22/santa maria magdalena/visperas": {
   "antifonas": [
@@ -132,7 +138,9 @@
    "Celebremos con gozo el nacimiento de santa María y pidámosle que interceda por nosotros ante Jesucristo, nuestro Señor."
   ],
   "testigos": 2,
-  "de": 7
+  "de": 7,
+  "salmos": "1/0",
+  "salmos_testigos": 2
  },
  "09-08/la natividad de la santisima virgen maria/nona": {
   "antifonas": [
@@ -155,7 +163,9 @@
    "Resplandece María, nacida de estirpe real; pidámosle devotamente que nos ayude con sus plegarias."
   ],
   "testigos": 2,
-  "de": 7
+  "de": 7,
+  "salmos": "3/6",
+  "salmos_testigos": 2
  },
  "09-08/la natividad de la santisima virgen maria/visperas": {
   "antifonas": [
@@ -173,7 +183,9 @@
    "Ahora se estableció la salud y el reinado de nuestro Dios."
   ],
   "testigos": 2,
-  "de": 16
+  "de": 16,
+  "salmos": "4/4",
+  "salmos_testigos": 2
  },
  "09-21/san mateo apostol y evangelista/laudes": {
   "antifonas": [
@@ -182,7 +194,9 @@
    "Vosotros sois mis amigos si hacéis lo que yo os mando."
   ],
   "testigos": 8,
-  "de": 15
+  "de": 15,
+  "salmos": "1/0",
+  "salmos_testigos": 8
  },
  "09-21/san mateo apostol y evangelista/oficio": {
   "antifonas": [
@@ -209,7 +223,9 @@
    "En el cielo, Señor, todos los ángeles te proclaman santo, y dicen a una voz: «Oh Dios, tú mereces alabanza.»"
   ],
   "testigos": 2,
-  "de": 8
+  "de": 8,
+  "salmos": "1/0",
+  "salmos_testigos": 2
  },
  "09-29/santos arcangeles miguel gabriel y rafael/oficio": {
   "antifonas": [
@@ -225,14 +241,18 @@
    "Gabriel, el personaje que yo había visto en visión al principio, vino volando hacia mí y me habló."
   ],
   "testigos": 2,
-  "de": 8
+  "de": 8,
+  "salmos": "3/6",
+  "salmos_testigos": 2
  },
  "09-29/santos arcangeles miguel gabriel y rafael/tercia": {
   "antifonas": [
    "Miguel, uno de los primeros príncipes, ha venido en mi ayuda."
   ],
   "testigos": 2,
-  "de": 8
+  "de": 8,
+  "salmos": "3/5",
+  "salmos_testigos": 2
  },
  "09-29/santos arcangeles miguel gabriel y rafael/visperas": {
   "antifonas": [
@@ -250,7 +270,9 @@
    "Alabad al Señor, todos sus ángeles; alabadlo, todos sus ejércitos."
   ],
   "testigos": 5,
-  "de": 12
+  "de": 12,
+  "salmos": "1/0",
+  "salmos_testigos": 5
  },
  "10-02/los santos angeles custodios/visperas": {
   "antifonas": [
@@ -295,7 +317,9 @@
    "Dijo Andrés a su hermano Simón: «Hemos encontrado al Mesías»; y lo presentó a Jesús."
   ],
   "testigos": 7,
-  "de": 13
+  "de": 13,
+  "salmos": "1/0",
+  "salmos_testigos": 7
  },
  "11-30/san andres apostol/nona": {
   "antifonas": [
@@ -339,7 +363,9 @@
    "Arrástranos tras de ti, Virgen inmaculada, y correremos atraídos por el aroma de tus perfumes."
   ],
   "testigos": 2,
-  "de": 7
+  "de": 7,
+  "salmos": "1/0",
+  "salmos_testigos": 2
  },
  "12-08/la inmaculada concepcion de la santisima virgen maria/nona": {
   "antifonas": [
@@ -362,7 +388,9 @@
    "El Señor se complace en ti, y tu Dios encuentra contigo la alegría."
   ],
   "testigos": 2,
-  "de": 7
+  "de": 7,
+  "salmos": "3/6",
+  "salmos_testigos": 2
  },
  "12-08/la inmaculada concepcion de la santisima virgen maria/tercia": {
   "antifonas": [
@@ -387,7 +415,9 @@
    "Cantad al Señor, bendecid su nombre."
   ],
   "testigos": 2,
-  "de": 12
+  "de": 12,
+  "salmos": "3/1",
+  "salmos_testigos": 2
  },
  "12-14/san juan de la cruz presbitero y doctor de la iglesia/laudes": {
   "antifonas": [
@@ -396,6 +426,8 @@
    "Cantad al Señor, bendecid su nombre."
   ],
   "testigos": 2,
-  "de": 12
+  "de": 12,
+  "salmos": "3/1",
+  "salmos_testigos": 2
  }
 }

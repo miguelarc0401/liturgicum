@@ -1617,7 +1617,7 @@ function opcionesSeccion(d, op, hora, cl) {
   const alts = opcionesSeccionBase(d, op, hora, cl);
   const i = alts.findIndex((o) => o.id === 'dia');
   if (cl === 'salmodia' && i >= 0 && alts.length === 1) {
-    const propias = antifonasPropias(op, hora, alts[i].c);
+    const propias = antifonasPropias(d, op, hora, alts[i].c);
     if (propias) return propias;
     const sal = salmodiaIntermedia(d, hora, alts[i].c);
     if (sal) return sal;
@@ -1734,16 +1734,32 @@ function compone(ants, salmos) {
  *
  * Medido sobre ocho años: 46 casillas las tienen (san Mateo, san Andrés,
  * los Arcángeles, los Ángeles Custodios, la Inmaculada…). */
-function antifonasPropias(op, hora, dia) {
-  const ants = op.cel
+const DIAS_SEM = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves',
+  'viernes', 'sábado'];
+
+function antifonasPropias(d, op, hora, dia) {
+  const e = op.cel
     && (E.horas.antifonas || {})[op.cel[1] + '/' + op.cel[0] + '/' + hora];
-  if (!ants || !ants.length) return null;
-  const piezas = despieza(dia.l);
+  if (!e || !e.a || !e.a.length) return null;
+  // «Se toma la salmodia del domingo I»: una rúbrica que el libro escribe y
+  // la fuente no, porque la aplica. Cuando la celebración tiene señalada su
+  // casilla del salterio, los salmos salen de allí; si no, son los del día.
+  let fuente = dia, rotulo = 'Con los salmos del día';
+  if (e.s) {
+    const [sem, ds] = e.s.split('/');
+    const otra = E.horas.salterio[d.t + '/' + e.s + '/' + hora]
+      || E.horas.salterio['Ordinario/' + e.s + '/' + hora];
+    if (otra) {
+      fuente = otra;
+      rotulo = 'Salmos del ' + DIAS_SEM[+ds] + ' ' + ROMANOS[+sem - 1];
+    }
+  }
+  const piezas = despieza(fuente.l);
   if (!piezas.salmos.length) return null;
   return [
-    { id: 'propio', rot: 'Propio', tit: 'Antífonas propias',
-      c: { r: dia.r || 'SALMODIA', l: compone(ants, piezas.salmos) } },
-    { id: 'dia', rot: 'Del día', tit: 'Antífonas del salterio', c: dia }
+    { id: 'propio', rot: 'Propio', tit: 'Antífonas propias · ' + rotulo,
+      c: { r: dia.r || 'SALMODIA', l: compone(e.a, piezas.salmos) } },
+    { id: 'dia', rot: 'Del día', tit: 'La salmodia del día', c: dia }
   ];
 }
 

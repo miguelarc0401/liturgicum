@@ -61,7 +61,7 @@ def cinta(d, tam, color):
                (x, abajo - an * 1.6), (x - an, abajo)], fill=color)
 
 
-def dibuja(tam, sangre):
+def dibuja(tam, sangre, tapa=True):
     """El icono. `sangre` lo lleva a los bordes, para el recorte de Android;
     si no, se le redondean las esquinas.
 
@@ -72,10 +72,12 @@ def dibuja(tam, sangre):
     lado = GRANDE * escala
     capa = Image.new('RGBA', (GRANDE, GRANDE), (0, 0, 0, 0))
     dc = ImageDraw.Draw(capa)
-    # la tapa
-    m = lado * 0.085
-    dc.rounded_rectangle([m, m, lado - m, lado - m],
-                         radius=lado * 0.055, outline=ORO, width=round(lado * 0.011))
+    # la tapa. A tamaño de favicon no se dibuja: un filete de un pixel se
+    # vuelve una mancha, y lo que queda legible es la cruz sola
+    if tapa:
+        m = lado * 0.085
+        dc.rounded_rectangle([m, m, lado - m, lado - m], radius=lado * 0.055,
+                             outline=ORO, width=round(lado * 0.011))
     # la cinta sale de dentro y cruza la tapa: se dibuja encima del filete
     cinta(dc, lado, CINTA)
     cruz(dc, lado, ORO, lado * 0.5, lado * 0.47)
@@ -91,12 +93,14 @@ def dibuja(tam, sangre):
 
 
 def main():
-    salidas = [('icono-192.png', 192, False),
-               ('icono-512.png', 512, False),
-               ('icono-maskable-512.png', 512, True)]
-    for nombre, tam, sangre in salidas:
+    salidas = [('icono-32.png', 32, False, False),
+               ('icono-180.png', 180, False, True),
+               ('icono-192.png', 192, False, True),
+               ('icono-512.png', 512, False, True),
+               ('icono-maskable-512.png', 512, True, True)]
+    for nombre, tam, sangre, tapa in salidas:
         ruta = os.path.join(APP, nombre)
-        dibuja(tam, sangre).save(ruta)
+        dibuja(tam, sangre, tapa).save(ruta)
         print(f'{nombre:26s} {tam}x{tam}  {os.path.getsize(ruta) / 1024:.0f} kB')
 
 
