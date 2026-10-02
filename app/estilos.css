@@ -40,6 +40,9 @@ body[data-color="morado"] { --acento: #4c2a63; --rubrica: #74418f; }
 body[data-color="blanco"] { --acento: #7a5c17; --rubrica: #7d6118; }
 body[data-color="verde"]  { --acento: #2f5d3f; --rubrica: #2c6542; }
 body[data-color="rojo"]   { --acento: #8e1b1b; --rubrica: #a32020; }
+/* el azul de la Virgen: un celeste oscurecido lo justo para que la rubrica
+   se lea sobre el papel (4.5:1) */
+body[data-color="azul"]   { --acento: #1f4e79; --rubrica: #255c8a; }
 body[data-color="neutro"] { --acento: #6b1220; }
 
 body[data-tema="sepia"] {
@@ -56,6 +59,7 @@ body[data-tema="oscuro"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b
 body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
 body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
 body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
+body[data-tema="oscuro"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -78,6 +82,7 @@ body[data-tema="noche"] {
   body[data-tema="auto"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
   body[data-tema="auto"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
   body[data-tema="auto"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
+  body[data-tema="auto"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
 }
 
 * { box-sizing: border-box; }
@@ -139,64 +144,62 @@ button { font: inherit; color: inherit; }
 #cabecera.compacta h1 { margin: .35rem 0 .05rem; }
 
 /* ------------------------------------------------- la cabecera, al bajar
-   En las horas la cabecera son cinco filas —la fecha, la hora, la
-   celebracion, los oficios que se pueden elegir y las siete horas—, y eso
-   es mucha pantalla cuando ya se esta rezando. Al bajar se resume en un
-   solo renglon —la fecha abreviada, la hora y la celebracion— y al subir
-   vuelve entera.
+   La cabecera se pliega siguiendo el dedo. Una sola variable, `--pliegue`,
+   va de 0 a 1 segun lo que se lleve bajado, y con ella se calcula todo lo
+   que la cabecera mide: el alto de la fila de la fecha, el cuerpo del
+   titulo, el aire de las tiras. Asi no hay dos estados y un salto entre
+   ellos, sino un movimiento; y al subir vuelve por donde vino.
 
-   Para que resumirla no mueva el texto que se esta leyendo, en esa vista la
-   cabecera va `fixed` y su sitio lo guarda un relleno del <body>: asi
-   cambiar de alto no cambia el flujo, y la pagina no da un salto a media
-   oracion. */
+   Para que plegarse no mueva el texto que se esta leyendo, en esas vistas
+   la cabecera va `fixed` y su sitio lo guarda un relleno del <body>, del
+   alto de la cabecera entera: cambiar de alto no cambia el flujo. */
 body.cab-fija { padding-top: var(--alto-cab, 0px); }
 body.cab-fija #cabecera {
   position: fixed; top: 0; left: 0; right: 0;
-  overflow: hidden; height: var(--alto-cab);
-  transition: height var(--medio) var(--curva),
-              background-color var(--lento) var(--curva),
-              border-color var(--lento) var(--curva);
+  padding-top: calc(env(safe-area-inset-top) + .35rem - .12rem * var(--pliegue, 0));
+  padding-bottom: calc(.55rem - .22rem * var(--pliegue, 0));
 }
-body.cab-fija #cabecera.horas-min { height: var(--alto-cab-min); }
-/* mientras se mide no hay ni alto impuesto ni transicion que valga */
-#cabecera.midiendo { height: auto !important; transition: none !important; }
-/* lo que se queda al plegarse entra como entra una pagina que pasa */
-#cabecera.horas-min .fila-fecha,
-#cabecera.horas-min .fila-titulo,
-#cabecera.horas-min #subtitulo-dia { animation: entra-renglon var(--medio) var(--curva); }
-@keyframes entra-renglon {
-  from { opacity: 0; transform: translateY(-.25rem); }
-  to { opacity: 1; transform: none; }
+body.cab-fija .fila-fecha .icono {
+  height: calc(2.75rem - 1.05rem * var(--pliegue, 0));
+  width: calc(2.75rem - .45rem * var(--pliegue, 0));
 }
-
-#cabecera.horas-min {
-  display: flex; align-items: baseline; gap: 0 .5rem;
-  padding-top: calc(env(safe-area-inset-top) + .45rem);
-  padding-bottom: .5rem;
+body.cab-fija .fila-fecha .icono svg {
+  width: calc(1.3rem - .34rem * var(--pliegue, 0));
+  height: calc(1.3rem - .34rem * var(--pliegue, 0));
 }
-#cabecera.horas-min #celebraciones,
-#cabecera.horas-min #formularios,
-#cabecera.horas-min #nota-dia,
-#cabecera.horas-min .fila-fecha .icono { display: none; }
-#cabecera.horas-min .fila-fecha,
-#cabecera.horas-min .fila-titulo,
-#cabecera.horas-min .envoltorio-fecha { flex: none; }
-/* la fecha, abreviada: «jue, 1 oct» en vez del renglon entero. El
-   <input type="date"> sigue encima, asi que tocarla abre el calendario. */
-#cabecera.horas-min .fecha { font-size: 0; padding: 0; }
-#cabecera.horas-min .fecha::after {
-  content: attr(data-corta); font-size: .7rem; letter-spacing: .05em;
+body.cab-fija .fecha {
+  padding: calc(.55rem * (1 - var(--pliegue, 0))) 0;
+  font-size: calc(.76rem - .07rem * var(--pliegue, 0));
 }
-#cabecera.horas-min h1 { margin: 0; font-size: .98rem; letter-spacing: 0; }
-#cabecera.horas-min #subtitulo-dia {
-  flex: 1 1 auto; min-width: 0; margin: 0; font-size: .72rem;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+body.cab-fija #cabecera h1 {
+  font-size: calc(1.28rem - .34rem * var(--pliegue, 0));
+  margin-top: calc(.1rem - .1rem * var(--pliegue, 0));
 }
-#cabecera.horas-min h1::before,
-#cabecera.horas-min #subtitulo-dia:not(:empty)::before {
-  content: "·"; margin-right: .5rem; font-weight: 400;
-  color: var(--filete-fuerte);
+body.cab-fija #subtitulo-dia {
+  font-size: calc(.76rem - .05rem * var(--pliegue, 0));
+  margin-top: calc(.2rem - .12rem * var(--pliegue, 0));
 }
+/* las tiras y la nota se recogen del todo: lo que queda al final es la
+   fecha, la hora y la celebracion, que es lo que hace falta saber */
+body.cab-fija #celebraciones,
+body.cab-fija #formularios,
+body.cab-fija #nota-dia {
+  max-height: calc(3.4rem * (1 - var(--pliegue, 0)));
+  margin-top: calc(.5rem * (1 - var(--pliegue, 0)));
+  opacity: calc(1 - 1.5 * var(--pliegue, 0));
+  overflow-y: hidden;
+  padding-bottom: 0;
+}
+/* El pliegue va con el dedo, asi que lo que se calcula con el no lleva
+   transicion: una transicion aqui es un retraso, no una suavidad. */
+body.cab-fija #cabecera h1,
+body.cab-fija .fecha,
+body.cab-fija #subtitulo-dia,
+body.cab-fija .fila-fecha .icono {
+  transition: color var(--lento) var(--curva);
+}
+/* mientras se mide no hay transicion que valga */
+#cabecera.midiendo, #cabecera.midiendo * { transition: none !important; }
 
 .fila-fecha { display: flex; align-items: center; gap: .15rem; }
 .fila-fecha .icono {
@@ -293,9 +296,14 @@ body.cab-fija #cabecera.horas-min { height: var(--alto-cab-min); }
 }
 /* El chip de celebracion lleva el grado debajo del nombre, en pequeno: es lo
    que distingue una memoria libre de una fiesta de un vistazo. */
+/* Los oficios que se pueden rezar ese dia caben en la pantalla y no se
+   deslizan: se reparten el renglon, y si no caben dos en el se pasan al
+   siguiente. El rotulo se parte en varios renglones si hace falta. */
+#celebraciones { flex-wrap: wrap; overflow-x: visible; }
 #celebraciones button {
   display: flex; flex-direction: column; align-items: flex-start;
-  line-height: 1.2; text-align: left; padding: .35rem .8rem;
+  flex: 1 1 8.5rem; min-width: 0; white-space: normal;
+  line-height: 1.2; text-align: left; padding: .35rem .7rem;
   border-radius: .8rem;
 }
 #celebraciones button small {
@@ -524,6 +532,30 @@ h2.seccion {
   font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--acento);
 }
+/* Ajustes, por pestanas: la lista entera de un tiron son cuatro pantallas
+   de deslizar para cambiar una cosa. */
+.ajustes-sec { border-bottom: 1px solid var(--filete); }
+.ajustes-sec > summary {
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--sans); font-size: .76rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--acento);
+  padding: 1.05rem .1rem;
+}
+.ajustes-sec > summary::-webkit-details-marker { display: none; }
+.ajustes-sec > summary::after {
+  content: ""; width: .5rem; height: .5rem; margin-right: .3rem;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--medio) var(--curva);
+}
+.ajustes-sec[open] > summary::after {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+.ajustes-sec > summary:active { background: var(--filete); }
+.ajustes-cuerpo { padding-bottom: .9rem; animation: entra-vista .2s var(--curva); }
+.ajustes-cuerpo > .ajuste:last-child { border-bottom: 0; }
+.ajustes-cuerpo > .pie { margin-top: .6rem; }
 .pie {
   margin-top: 2rem; font-family: var(--sans); font-size: .74rem;
   color: var(--tinta-suave); line-height: 1.5;
@@ -696,11 +728,17 @@ h2.seccion {
    Dos aes y el tanto por ciento, en pequeno y a la derecha, sobre el primer
    rotulo de la hora: se toca una vez, si acaso, y despues se reza. */
 .zoom {
-  display: flex; align-items: center; justify-content: flex-end;
-  gap: .15rem; margin: -.5rem -.4rem .1rem 0;
+  flex: none; display: flex; align-items: center; justify-content: flex-end;
+  gap: .1rem; margin: 0 -.45rem .1rem 0;
 }
+/* con el zoom en la fila van tres cosas en un renglon: se aprietan el
+   hueco entre ellas y el selector, que es lo que mas sitio se lleva */
+.sec-cab:has(.zoom) { gap: .35rem .3rem; }
+.sec-cab:has(.zoom) .alterna { max-width: 46%; }
+.sec-cab:has(.zoom) .alterna button { font-size: .66rem; padding: .3rem .55rem; }
+.sec-cab:has(.zoom) .zoom button { width: 1.55rem; }
 .zoom button {
-  width: 2.1rem; height: 2.1rem; display: grid; place-items: center;
+  width: 1.75rem; height: 1.9rem; display: grid; place-items: center;
   border: 0; border-radius: 999px; background: none; cursor: pointer;
   font-family: var(--familia); line-height: 1; color: var(--tinta-suave);
   transition: background-color var(--rapido), color var(--rapido),
@@ -711,11 +749,8 @@ h2.seccion {
 .zoom button:active {
   background: var(--filete); color: var(--acento); transform: scale(.9);
 }
-.zoom-pct {
-  font-family: var(--sans); font-size: .66rem; letter-spacing: .04em;
-  color: var(--tinta-suave); min-width: 2.7rem; text-align: center;
-  font-variant-numeric: tabular-nums;
-}
+/* el rotulo no se parte a mitad de palabra para dejarle sitio al zoom */
+.hora-sec .rotulo { overflow-wrap: normal; }
 
 /* --------------------------------------------------- el carril de la hora
    Las cintas de un breviario, en una tira de rayas al borde de la caja: una

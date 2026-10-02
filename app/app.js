@@ -55,9 +55,11 @@ const ICONO = {
   cerrar: svg('<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'),
   izq: svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>'),
   der: svg('<path d="M9.5 5.5 16 12l-6.5 6.5"/>'),
-  misa: svg('<path d="M12 6.5C10 5 7 4.6 3.5 5v13.2c3.5-.4 6.5.1 8.5 1.6 '
-    + '2-1.5 5-2 8.5-1.6V5C17 4.6 14 5 12 6.5Z"/><path d="M12 6.5v13.3"/>'),
-  horas: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>')
+  // la cruz del altar y el breviario abierto con su cinta
+  misa: svg('<path d="M12 3v18M6.5 8.2h11"/>'),
+  horas: svg('<path d="M12 7.3C10.2 5.9 7.4 5.5 4 5.9v12.4c3.4-.4 6.2.1 8 '
+    + '1.5 1.8-1.4 4.6-1.9 8-1.5V5.9c-3.4-.4-6.2 0-8 1.4Z"/>'
+    + '<path d="M12 7.3v12.5"/><path d="M15.2 5.6v5l1.6-1.3 1.6 1.3v-5"/>')
 };
 
 /* ------------------------------------------------------------ utilidades */
@@ -155,6 +157,33 @@ function guardaPosicion() {
   if (E.vista && E.claveVista) {
     E.pos[E.vista] = { k: E.claveVista, y: window.scrollY };
   }
+  E.donde = dondeIba();
+}
+
+/* Pasar de Laudes a Vísperas, o del oficio del santo al de la feria, no es
+ * empezar de nuevo: es seguir rezando. Así que no se vuelve al principio,
+ * se vuelve al mismo sitio —a la misma sección y a la misma altura dentro
+ * de ella—, que es donde estaba el ojo. */
+function dondeIba() {
+  if (E.vista !== 'horas') return null;
+  const corte = $('#cabecera').getBoundingClientRect().bottom;
+  let cual = null;
+  document.querySelectorAll('#vista .hora-sec').forEach((x) => {
+    if (x.getBoundingClientRect().top <= corte + 4) cual = x;
+  });
+  if (!cual) return null;
+  return { fecha: E.fecha, cl: cual.dataset.cl,
+    dentro: corte - cual.getBoundingClientRect().top };
+}
+
+function vuelveADonde(d) {
+  if (!d || d.fecha !== E.fecha) return false;
+  const s = document.querySelector('#vista .hora-sec[data-cl="' + d.cl + '"]');
+  if (!s) return false;
+  const corte = $('#cabecera').getBoundingClientRect().bottom;
+  window.scrollTo(0, Math.max(0, window.scrollY
+    + s.getBoundingClientRect().top - corte + d.dentro));
+  return true;
 }
 
 /** La vista nueva entra subiendo un pelo. Se reinicia el animación a mano
@@ -357,6 +386,23 @@ function cabeSantaMariaMisa(iso, cs) {
 }
 
 /** Nombre corto para el chip: lo que va antes de la primera coma. */
+/* El color de las fiestas de la Virgen. El libro dice blanco, pero la
+ * costumbre —y en México la de Guadalupe sobre todas— lo quiere azul, y la
+ * Santa Sede lo concede a España y a sus antiguos reinos. Se reconoce por
+ * el nombre, con una lista cerrada: «santa María Magdalena» empieza igual
+ * que «santa María Virgen» y no es de la Virgen. */
+const DE_LA_VIRGEN = new RegExp([
+  'santisima virgen maria', 'nuestra senora', 'santa maria virgen',
+  'santa maria madre', 'inmaculada concepcion', 'inmaculado corazon',
+  'la asuncion de la', 'la natividad de la santisima',
+  'la visitacion de la santisima', 'la presentacion de la santisima',
+  'maria madre de la iglesia', 'la virgen maria', 'santa maria en sabado'
+].join('|'));
+
+function esDeLaVirgen(titulo) {
+  return DE_LA_VIRGEN.test(plano(titulo || ''));
+}
+
 function corto(t) {
   const s = t.split(/,| · /)[0];
   return s.length > 34 ? s.slice(0, 33) + '…' : s;
@@ -412,8 +458,8 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   const b = d.b[bloque];
   const lects = b && E.lecturas.bloques[b.k];
   const cel = (cels || []).find((o) => o.slug === slug);
-  document.body.dataset.color = (cel && cel.m.smv) ? 'blanco'
-    : E.colorDe.get(slug) || 'neutro';
+  document.body.dataset.color = (cel && cel.m.smv) || esDeLaVirgen(d.t)
+    ? 'azul' : E.colorDe.get(slug) || 'neutro';
   // el común se titula a sí mismo «Leccionario V…»: cuando se abre como la
   // misa de Santa María en sábado, el título es el de la celebración
   $('#titulo-dia').textContent = (cel && cel.m.smv) ? cel.m.t : d.t;
@@ -438,7 +484,7 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
     return;
   }
   vista.innerHTML = lects.map(pintaLectura).join('');
-  if (iso) E.ultimaMisa = location.hash;
+  if (iso) { E.ultimaMisa = location.hash; cabeceraFija(true); }
   colocaPosicion();
 }
 
@@ -488,72 +534,76 @@ function limpiaCabExtra() {
 }
 
 /* --------------------------------------------- la cabecera, al bajar
- * La cabecera del oficio son cinco filas, y eso es mucha pantalla cuando ya
- * se está rezando: al bajar se resume en un renglón —la fecha abreviada, la
- * hora y la celebración— y al subir vuelve entera.
+ * La cabecera se pliega siguiendo el dedo. `--pliegue` va de 0 a 1 según lo
+ * que se lleve bajado, y con esa variable la hoja de estilo calcula todo lo
+ * que la cabecera mide: no hay dos estados y un salto entre ellos, sino un
+ * movimiento, y al subir vuelve por donde vino.
  *
  * Mientras eso puede pasar, la cabecera va `fixed` y su sitio lo guarda un
  * relleno del <body> del alto de la cabecera entera. Así cambiar de alto no
  * cambia el flujo, y el texto que se está leyendo no da un salto a media
- * oración (que es lo que pasaría con la cabecera pegada: al encogerse,
- * todo lo de debajo sube de golpe). */
-let _altoCab = 0, _ultimoY = 0, _midiendoCab = false;
+ * oración (que es lo que haría con la cabecera pegada: al encogerse, todo
+ * lo de debajo subiría de golpe). */
+const PLIEGUE = 130;        // píxeles de dedo que la pliegan del todo
+let _altoCab = 0, _ultimoY = 0, _plegado = 0, _midiendoCab = false;
 
-/* Los dos altos de la cabecera —entera y resumida— se miden aquí y se dejan
- * en dos variables: con los dos en pie, plegarse es una transición de
- * `height` y no un corte. Se mide con la clase `midiendo`, que quita el alto
- * impuesto y la transición, para que medir no dispare la animación. */
+function ponPliegue(p) {
+  _plegado = p;
+  $('#cabecera').style.setProperty('--pliegue', p.toFixed(3));
+}
+
+/** Los dos altos de la cabecera, entera y plegada: el primero guarda su
+ *  sitio en el <body>, el segundo le dice al carril dónde dejar la sección
+ *  a la que salta. Se mide sin transiciones, para que medir no se vea. */
 function mideCabecera() {
   const cab = $('#cabecera');
-  const min = cab.classList.contains('horas-min');
   const est = document.documentElement.style;
+  const antes = _plegado;
   cab.classList.add('midiendo');
-  cab.classList.remove('horas-min');
+  ponPliegue(0);
   _altoCab = cab.offsetHeight;
-  cab.classList.add('horas-min');
+  ponPliegue(1);
   const altoMin = cab.offsetHeight;
-  if (!min) cab.classList.remove('horas-min');
+  ponPliegue(antes);
   cab.classList.remove('midiendo');
   est.setProperty('--alto-cab', _altoCab + 'px');
   est.setProperty('--alto-cab-min', altoMin + 'px');
 }
 
-/** Enciende o apaga el resumen al bajar. Se llama con la cabecera ya
- *  pintada: su alto entero es el que guarda el sitio. */
+/** Enciende o apaga el pliegue. Se llama con la cabecera ya pintada: su
+ *  alto entero es el que guarda el sitio. */
 function cabeceraFija(si) {
   const cab = $('#cabecera');
   if (!si) {
     document.body.classList.remove('cab-fija');
-    cab.classList.remove('horas-min');
+    cab.style.removeProperty('--pliegue');
     document.documentElement.style.removeProperty('--alto-cab');
     document.documentElement.style.removeProperty('--alto-cab-min');
-    _altoCab = 0;
+    _altoCab = 0; _plegado = 0;
     return;
   }
-  cab.classList.remove('horas-min');
   document.body.classList.add('cab-fija');
+  ponPliegue(0);
   mideCabecera();
   _ultimoY = Math.max(0, window.scrollY);
+  alDesplazarCabecera();
 }
 
-/** Al bajar se resume; al subir, vuelve. Con un margen de unos pocos
- *  píxeles, que el dedo nunca baja recto. */
+/** Al bajar se pliega, al subir se despliega, y en la misma proporción en
+ *  que se mueve el dedo. Nunca más plegada de lo que da lo bajado, para que
+ *  al principio de la página no se abra un hueco entre ella y el texto. */
 function alDesplazarCabecera() {
   if (!document.body.classList.contains('cab-fija') || _midiendoCab) return;
-  if (Date.now() < _saltoHasta) { _ultimoY = Math.max(0, window.scrollY); return; }
   _midiendoCab = true;
   requestAnimationFrame(() => {
     _midiendoCab = false;
-    const cab = $('#cabecera');
     if (!document.body.classList.contains('cab-fija')) return;
-    const min = cab.classList.contains('horas-min');
     const y = Math.max(0, window.scrollY);
-    if (!min && y > _altoCab + 32 && y > _ultimoY + 4) {
-      cab.classList.add('horas-min');
-    } else if (min && (y < _ultimoY - 4 || y <= _altoCab)) {
-      cab.classList.remove('horas-min');
-    }
+    const d = y - _ultimoY;
     _ultimoY = y;
+    if (Date.now() < _saltoHasta) return;
+    const p = Math.max(0, Math.min(1, _plegado + d / PLIEGUE, y / PLIEGUE));
+    if (Math.abs(p - _plegado) > 0.002) ponPliegue(p);
   });
 }
 
@@ -1091,8 +1141,15 @@ function verAjustes() {
     + '</label><select id="aj-' + id + '">' + ops.map(([v, t]) =>
       '<option value="' + v + '"' + (E.cfg[id] === v ? ' selected' : '')
       + '>' + t + '</option>').join('') + '</select></div>';
+  // Cada sección, una pestaña que se abre: la lista entera de un tirón son
+  // cuatro pantallas de deslizar para cambiar una cosa. Viene abierta la
+  // del formato, que es a lo que más se vuelve.
+  let n = 0;
+  const ajuste = (titulo) => '</div></details>'
+    + '<details class="ajustes-sec"' + (n++ === 1 ? ' open' : '')
+    + '><summary>' + titulo + '</summary><div class="ajustes-cuerpo">';
   vista.innerHTML = [
-    '<h2 class="seccion">El latín del leccionario</h2>',
+    ajuste('El latín del leccionario'),
     sel('fuente', 'Versión latina',
       'La Nova Vulgata es el latín de los libros litúrgicos vigentes; la '
       + 'Clementina, la Vulgata de siempre.',
@@ -1101,7 +1158,7 @@ function verAjustes() {
       'El acento tónico marcado, como en los libros de coro.',
       [[true, 'Sí'], [false, 'No']]),
     sel('numeros', 'Números de versículo', '', [[true, 'Sí'], [false, 'No']]),
-    '<h2 class="seccion">Formato del texto</h2>',
+    ajuste('Formato del texto'),
     muestraFormato(),
     '<div class="ajuste ancho"><label for="aj-tam">Tamaño de letra'
     + '<span class="pista">Lo de arriba es el texto de verdad, con las '
@@ -1135,7 +1192,7 @@ function verAjustes() {
       'En una tableta o en el ordenador, un renglón corto se lee mejor que '
       + 'uno que cruza la pantalla.',
       [['normal', 'Estrecha, como un libro'], ['ancha', 'Toda la pantalla']]),
-    '<h2 class="seccion">Aspecto</h2>',
+    ajuste('Aspecto'),
     sel('tema', 'Color del papel', '',
       [['auto', 'Según el teléfono'], ['claro', 'Claro'],
         ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']]),
@@ -1146,12 +1203,13 @@ function verAjustes() {
         + 'la pantalla se queda encendida.',
         [[false, 'No'], [true, 'Sí']])
       : '',
+    ajuste('Al abrir la app'),
     sel('inicio', 'Al abrir la app',
       'La app lleva dentro dos libros. Si siempre vas al mismo, dilo aquí y '
       + 'no se te vuelve a preguntar.',
       [['menu', 'Preguntar'], ['misa', 'Las lecturas de la misa'],
         ['horas', 'La liturgia de las horas']]),
-    '<h2 class="seccion">Calendario</h2>',
+    ajuste('Calendario'),
     sel('epifania', 'Epifanía',
       'En España se celebra el 6 de enero; en gran parte de América, el '
       + 'domingo entre el 2 y el 8.',
@@ -1168,7 +1226,7 @@ function verAjustes() {
       + 'primero.',
       [['santo', 'Las del santo (Tabla de los días litúrgicos)'],
         ['feria', 'La lectura continua de la feria (OLM 82)']]),
-    '<h2 class="seccion">Liturgia de las Horas</h2>',
+    ajuste('Liturgia de las Horas'),
     sel('hLibre', 'En las memorias libres, rezar',
       'Una memoria libre se puede celebrar o dejar. Las dos opciones salen '
       + 'siempre arriba: esto sólo decide cuál viene marcada.',
@@ -1197,7 +1255,9 @@ function verAjustes() {
     + 'El leccionario IX (misas con niños) no está incluido. '
     + 'Calendario de ' + E.cal.rango[0] + ' a ' + E.cal.rango[1] + '.'
     + '</p>'
-  ].join('');
+  // el primer `ajuste()` no tiene nada que cerrar, y el último se queda sin
+  // cerrar: se le quita a uno y se le pone al otro
+  ].join('').replace('</div></details>', '') + '</div></details>';
 
   colocaPosicion();
 }
@@ -1265,7 +1325,8 @@ function verPortada() {
   const h = horaDeLaPortada();
   // la portada toma el color del día, como las dos vistas a las que lleva
   if (cels.length) {
-    document.body.dataset.color = E.colorDe.get(cels[0].slug) || 'neutro';
+    document.body.dataset.color = esDeLaVirgen(dia && dia.t) ? 'azul'
+      : E.colorDe.get(cels[0].slug) || 'neutro';
   }
 
   const tira = HORAS.map(([cl, , nombre, breve], i) => {
@@ -1445,10 +1506,19 @@ function delSanto(op, hora, cl) {
 
 function deSusComunes(op, hora, cl) {
   const L = E.horas;
-  return (L.comun_de[op.id] || []).map((k) => {
+  const ops = [];
+  for (const k of L.comun_de[op.id] || []) {
     const c = pieza(L.comunes, k + '/', hora, cl);
-    return c && { id: 'c:' + k, rot: L.rotulo_comun[k] || 'Común', c: c };
-  }).filter(Boolean);
+    if (!c) continue;
+    const rot = L.rotulo_comun[k] || 'Común';
+    ops.push({ id: 'c:' + k, rot: rot, c: c });
+    // Un común ofrece más de una lectura patrística, y se escoge: van
+    // detrás de la suya, numeradas (el Común de la Virgen trae dos).
+    ((L.otras_lecturas || {})[k + '/' + hora + '/' + cl] || []).forEach(
+      (otra, j) => ops.push({ id: 'c:' + k + ':' + (j + 2),
+        rot: rot + ' ' + ROMANOS[j + 1], tit: incipit(otra), c: otra }));
+  }
+  return ops;
 }
 
 /** Sin repetir: dos comunes que dan el mismo texto son una sola opción. */
@@ -1536,6 +1606,8 @@ function opcionesSeccion(d, op, hora, cl) {
   const alts = opcionesSeccionBase(d, op, hora, cl);
   const i = alts.findIndex((o) => o.id === 'dia');
   if (cl === 'salmodia' && i >= 0 && alts.length === 1) {
+    const propias = antifonasPropias(op, hora, alts[i].c);
+    if (propias) return propias;
     const sal = salmodiaIntermedia(d, hora, alts[i].c);
     if (sal) return sal;
   }
@@ -1600,8 +1672,9 @@ function opcionesSeccionBase(d, op, hora, cl) {
 const INTERMEDIAS = ['tercia', 'sexta', 'nona'];
 
 const esAntifona = (ln) => ln.length > 0 && ln[0][0] && /^\s*Ant/.test(ln[0][1]);
+// el título del salmo viene a veces en mayúsculas y a veces no
 const esTituloSalmo = (ln) => ln.length > 0 && ln[0][0]
-  && /^\s*(Salmo|C[áa]ntico)/.test(ln[0][1]);
+  && /^\s*(salmo|c[áa]ntico)/i.test(ln[0][1]);
 const negro = (ln) => ln.filter((tr) => !tr[0]).map((tr) => tr[1]).join('').trim();
 
 /** Una salmodia en sus piezas: las antífonas, sin la repetición del final,
@@ -1636,6 +1709,27 @@ function compone(ants, salmos) {
     ant(0, ants[0]);
   }
   return l;
+}
+
+/* Lo que una celebración tiene propio en la salmodia son sus antífonas: los
+ * salmos son los del salterio que toque ese día, y por eso la misma fiesta
+ * sale con unos salmos u otros según el año. Se componen las dos cosas —las
+ * antífonas del santo sobre los salmos del día— y se ofrece también la
+ * salmodia tal cual, por si quien reza prefiere las del salterio.
+ *
+ * Medido sobre ocho años: 46 casillas las tienen (san Mateo, san Andrés,
+ * los Arcángeles, los Ángeles Custodios, la Inmaculada…). */
+function antifonasPropias(op, hora, dia) {
+  const ants = op.cel
+    && (E.horas.antifonas || {})[op.cel[1] + '/' + op.cel[0] + '/' + hora];
+  if (!ants || !ants.length) return null;
+  const piezas = despieza(dia.l);
+  if (!piezas.salmos.length) return null;
+  return [
+    { id: 'propio', rot: 'Propio', tit: 'Antífonas propias',
+      c: { r: dia.r || 'SALMODIA', l: compone(ants, piezas.salmos) } },
+    { id: 'dia', rot: 'Del día', tit: 'Antífonas del salterio', c: dia }
+  ];
 }
 
 function salmodiaIntermedia(d, hora, dia) {
@@ -1798,13 +1892,21 @@ function armaHora(iso, hora, idCel) {
     secciones = secciones.filter((s) => s.cl !== 'invocacion');
   }
   if (op.modo === 'conmemoracion') conmemora(secciones, op, hora);
+  // El responsorio breve responde a lo que se acaba de leer: no se elige
+  // aparte de la lectura breve, se toma de donde ella.
+  const lb = secciones.find((x) => x.cl === 'lectura_breve');
+  const rb = secciones.find((x) => x.cl === 'responsorio_breve');
+  if (lb && rb && rb.alts.length > 1) {
+    rb.ligada = 'lectura_breve';
+    sigueALaLectura(lb, rb);
+  }
   return { iso: iso, hora: hora, dia: d, cels: cels, op: op,
     secciones: secciones };
 }
 
 /* El texto va tal cual: la acentuación que se puede apagar en Ajustes es la
  * del latín, y quitarle las tildes al castellano sería estropearlo. */
-function pintaSeccionHora(s) {
+function pintaSeccionHora(s, zoom) {
   const o = s.alts[s.i];
   const h = [];
   // lo que no está en la fuente y se tomó de los tomos impresos (la
@@ -1819,7 +1921,8 @@ function pintaSeccionHora(s) {
         + esc(ln.map((tr) => tr[1]).join('')) + '</p>').join('')
       + ed + '</section>';
   }
-  const selector = s.alts.length < 2 ? ''
+  // el responsorio breve no lleva selector: va con el de su lectura breve
+  const selector = s.alts.length < 2 || s.ligada ? ''
     : '<div class="alterna" role="group" aria-label="'
       + (s.cl === 'himno' || s.cl === 'antifona_final'
         ? 'Elegir otro texto' : 'De dónde se toma') + '">'
@@ -1828,9 +1931,9 @@ function pintaSeccionHora(s) {
         + (a.tit ? ' title="' + esc(a.tit) + '" aria-label="' + esc(a.rot
           + ': ' + a.tit) + '"' : '')
         + '>' + esc(a.rot) + '</button>').join('') + '</div>';
-  if (o.c.r || selector || ed) {
+  if (o.c.r || selector || ed || zoom) {
     h.push('<div class="sec-cab"><h2 class="rotulo">' + esc(o.c.r || '')
-      + ed + '</h2>' + selector + '</div>');
+      + ed + '</h2>' + selector + (zoom || '') + '</div>');
   }
   h.push(pintaLineas(o.c.l, PROSA.test(s.cl), s.cl));
   return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
@@ -1951,6 +2054,13 @@ function pintaLineas(lineas, prosa, seccion) {
   }).join('');
 }
 
+/** El responsorio breve, de donde salga la lectura breve: la misma opción
+ *  si la tiene, y si no, la primera. */
+function sigueALaLectura(lectura, resp) {
+  const i = resp.alts.findIndex((o) => o.id === lectura.alts[lectura.i].id);
+  resp.i = i >= 0 ? i : 0;
+}
+
 /** Al tocar una opción se repinta sólo esa sección: repintar la hora
  *  entera devolvería la página arriba, a media oración. */
 function alElegirOpcion(ev) {
@@ -1969,12 +2079,25 @@ function alElegirOpcion(ev) {
     E.cfg.hAntFinal = claveIncipit(s.alts[i].c);
     guardaCfg();
   }
+  repintaSeccion(sec, s).querySelector('[aria-pressed="true"]')
+    .focus({ preventScroll: true });
+  // y con la lectura breve se mueve su responsorio
+  if (s.cl === 'lectura_breve') {
+    const rb = E.oficio.secciones.find((x) => x.ligada === 'lectura_breve');
+    const caja = rb && document.querySelector('.hora-sec[data-cl="'
+      + rb.cl + '"]');
+    if (caja) { sigueALaLectura(s, rb); repintaSeccion(caja, rb); }
+  }
+}
+
+/** Cambia una sección por su versión nueva, sin tocar el resto de la hora. */
+function repintaSeccion(caja, s) {
   const t = document.createElement('template');
   t.innerHTML = pintaSeccionHora(s);
   const nueva = t.content.firstElementChild;
   nueva.classList.add('cambia');
-  sec.replaceWith(nueva);
-  nueva.querySelector('[aria-pressed="true"]').focus({ preventScroll: true });
+  caja.replaceWith(nueva);
+  return nueva;
 }
 
 function pintaChipsCelebracionesHoras(o) {
@@ -1991,7 +2114,8 @@ function pintaChipsCelebracionesHoras(o) {
 /** El color del día, del calendario de la misa: el del santo si se reza
  *  su oficio, el del tiempo si no. */
 function colorHoras(iso, titulo, op) {
-  if (op && op.smv) return 'blanco';          // la Virgen, de blanco
+  if (op && op.smv) return 'azul';
+  if (esDeLaVirgen(titulo)) return 'azul';
   const val = entradasDe(iso);
   if (!val) return 'neutro';
   const e = val.c.find((x) => x[2] && x[2].t === titulo)
@@ -2092,13 +2216,17 @@ async function verHoras(iso, hora, idCel) {
   if (o.op.g && !conm) partes.push(bonito(o.op.g));
   if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
   $('#subtitulo-dia').textContent = partes.join(' · ');
-  vista.innerHTML = (o.secciones.length ? controlZoom() : '')
-    + (o.secciones.length
-      ? o.secciones.map(pintaSeccionHora).join('')
-      : '<p class="aviso">No tengo los textos de esta hora para este día.</p>');
+  // el tamaño de la letra va en la fila del primer rótulo de la hora, a la
+  // derecha; si lo primero es la reseña del santo, en el de la sección que
+  // la sigue, que es donde empieza de verdad el oficio
+  const iz = o.secciones.findIndex((x) => x.cl !== 'resena');
+  vista.innerHTML = o.secciones.length
+    ? o.secciones.map((x, i) => pintaSeccionHora(x, i === iz ? controlZoom() : ''))
+      .join('')
+    : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
   cabeceraFija(true);
   pintaCarril(o);
-  colocaPosicion();
+  colocaPosicion(() => vuelveADonde(E.donde));
 }
 
 /* ---------------------------------------------- el tamaño, a la mano
@@ -2106,9 +2234,11 @@ async function verHoras(iso, hora, idCel) {
  * aes al comienzo de la hora, discretas y a la derecha, y se sigue. Es el
  * mismo ajuste de siempre, así que queda puesto para todo. */
 function controlZoom() {
+  // sin el tanto por ciento: comparte renglón con el rótulo de la sección y
+  // con su selector, y no cabe un número más. Lo que se cambia se ve solo.
   return '<div class="zoom" role="group" aria-label="Tamaño de la letra">'
     + '<button type="button" data-zoom="-5" aria-label="Letra más pequeña">'
-    + 'A</button><span class="zoom-pct">' + E.cfg.tam + '%</span>'
+    + 'A</button>'
     + '<button type="button" data-zoom="5" aria-label="Letra más grande">'
     + 'A</button></div>';
 }
@@ -2121,8 +2251,6 @@ function alTocarZoom(ev) {
   E.cfg.tam = v;
   guardaCfg();
   aplicaCfg();
-  const p = document.querySelector('.zoom-pct');
-  if (p) p.textContent = v + '%';
   if (document.body.classList.contains('cab-fija')) mideCabecera();
 }
 
@@ -2201,9 +2329,9 @@ function alTocarCarril(ev) {
   const i = Array.prototype.indexOf.call($('#carril').children, b);
   const sec = document.querySelectorAll('#vista .hora-sec')[i];
   if (!sec) return;
-  // se salta a un sitio lejano del texto: la cabecera se queda resumida,
+  // se salta a un sitio lejano del texto: la cabecera se queda plegada,
   // que es como está al bajar, y el renglón cae justo debajo de ella
-  $('#cabecera').classList.add('horas-min');
+  ponPliegue(1);
   _saltoHasta = Date.now() + 800;
   sec.scrollIntoView({ block: 'start', behavior: suave() });
   setTimeout(() => { _saltoHasta = 0; alDesplazarCabecera(); }, 820);
@@ -2450,6 +2578,13 @@ async function arranca() {
       $('#cabecera').offsetHeight + 'px');
     alDesplazarCalendario();
   });
+
+  // La app instalada se quedó clavada en vertical porque el manifiesto lo
+  // decía, y el manifiesto se lee al instalarla: cambiarlo no basta para la
+  // que ya está puesta. Esto suelta el cierre desde dentro.
+  if (screen.orientation && screen.orientation.unlock) {
+    try { screen.orientation.unlock(); } catch (_) { /* no deja: paciencia */ }
+  }
 
   enruta();
 

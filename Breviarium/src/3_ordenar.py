@@ -124,6 +124,36 @@ def comun_de(dia):
     return clave(m.group(1)) if m else None
 
 
+ABRE_ANT = re.compile(r'^\s*Ant\b')
+# el titulo va a veces en mayusculas («SALMO 62») y a veces no
+TITULO_SALMO = re.compile(r'^\s*(salmo|c[áa]ntico)\b', re.I)
+
+
+def antifonas_de(lineas):
+    """Las antífonas con que abre cada salmo de una salmodia.
+
+    Una salmodia es antífona, salmo, antífona repetida, y así tres veces.
+    Lo del santo son las antífonas; los salmos son los del salterio que
+    toque ese día, y por eso la salmodia entera cambia de un año a otro
+    aunque la celebración sea la misma —y por eso no hay mayoría que valga
+    si se mide entera—. Se recogen sólo las que abren, es decir, las que van
+    delante de un título de salmo: la repetición del final no cuenta.
+    """
+    salida = []
+    for i, ln in enumerate(lineas):
+        if not (ln and ln[0][0] and ABRE_ANT.match(ln[0][1])):
+            continue
+        j = i + 1
+        while j < len(lineas) and not lineas[j]:
+            j += 1
+        if (j < len(lineas) and lineas[j] and lineas[j][0][0]
+                and TITULO_SALMO.match(lineas[j][0][1])):
+            t = ' '.join(x for rojo, x in ln if not rojo).strip()
+            if t:
+                salida.append(re.sub(r'\s+', ' ', t))
+    return tuple(salida)
+
+
 def texto_de(lineas):
     return clave(' '.join(''.join(t for _, t in ln) for ln in lineas))
 
@@ -177,6 +207,7 @@ def main():
     salterio = defaultdict(lambda: defaultdict(list))
     ordinario = defaultdict(lambda: defaultdict(list))
     propios = []                                  # los días que celebran
+    antifonas = defaultdict(list)                 # celebración/hora -> antífonas
     bienal = defaultdict(lambda: defaultdict(Counter))  # hueco -> año -> textos
     rotulos_bienal = defaultdict(Counter)         # (hueco, texto) -> rótulos
     santos = defaultdict(Counter)
@@ -264,6 +295,15 @@ def main():
                             if rot:
                                 rotulos['sal:' + ks][rot] += 1
                             cuentas['salterio'] += 1
+                            # Lo que un santo tiene propio en la salmodia son
+                            # sus antífonas, no sus salmos: se apuntan aparte
+                            # para cotejarlas luego con las del salterio.
+                            if celebra:
+                                ants = antifonas_de(lineas)
+                                if ants:
+                                    kant = (fecha[5:] + '/' + clave(cel)
+                                            + '/' + hora_cl)
+                                    antifonas[kant].append((ks, ants))
                             continue
 
                         kf = hueco_ferial(of, hora_cl, cl)
@@ -309,6 +349,35 @@ def main():
     # --------------------------------------------------------- segunda pasada
     # una sección de un día que celebra es propia sólo si dice algo
     # distinto de lo que dice el mismo hueco ferial
+    # Las antífonas propias de cada celebración: las que no son las del
+    # salterio. Que difieran de las del hueco de ese día no basta —la fuente
+    # no siempre reza el salterio que le tocaría—, así que se exige además
+    # que no sean las de ninguna otra semana del salterio: si lo fueran,
+    # serían del salterio y no del santo. Y dos años al menos han de darlas,
+    # para que una errata de un año no se tome por el propio.
+    del_salterio = {antifonas_de(v['lineas']) for v in salterio_libro.values()}
+    del_salterio.discard(())
+    antifonas_libro, dudosas = {}, []
+    for k, obs in sorted(antifonas.items()):
+        propias = Counter()
+        for ks, ants in obs:
+            ferial = salterio_libro.get(ks)
+            if ferial is None or antifonas_de(ferial['lineas']) == ants:
+                continue
+            propias[ants] += 1
+        if not propias:
+            continue
+        ants, n = propias.most_common(1)[0]
+        if n >= 2 and ants not in del_salterio:
+            antifonas_libro[k] = {'antifonas': list(ants), 'testigos': n,
+                                  'de': len(obs)}
+        else:
+            dudosas.append(f'{k}: {n} de {len(obs)} años'
+                           + (', son de otra semana del salterio'
+                              if ants in del_salterio else ''))
+    print(f'{len(antifonas_libro)} casillas con antífonas propias '
+          f'({len(dudosas)} descartadas)', flush=True)
+
     candidatos = []
     for kf, cel, comun, rango, hora_cl, cl, hu, rot, testigo in propios:
         ferial_aqui = tiempo_libro.get(kf)
@@ -387,6 +456,13 @@ def main():
         json.dump(bienal_libro, f, ensure_ascii=False, separators=(',', ':'))
     lineas_qa.append(f'bienal     {len(bienal_libro):6d} casillas  (lectura '
                      f'bíblica del Oficio, distinta en los años I y II)')
+    print(lineas_qa[-1], flush=True)
+
+    with open(os.path.join(LIBRO, 'antifonas.json'), 'w', encoding='utf-8') as f:
+        json.dump(antifonas_libro, f, ensure_ascii=False, indent=1)
+    lineas_qa.append(f'antifonas  {len(antifonas_libro):6d} casillas  (las '
+                     f'propias de una celebración, sobre los salmos del día; '
+                     f'{len(dudosas)} descartadas)')
     print(lineas_qa[-1], flush=True)
 
     with open(os.path.join(LIBRO, 'resenas.json'), 'w', encoding='utf-8') as f:

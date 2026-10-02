@@ -149,6 +149,7 @@ antes de fiarse de lo que sale.
 | `bienal.json` | la lectura bíblica del Oficio de cada año del ciclo bienal | `tiempo/semana/día/oficio/sección` → `I`, `II` |
 | `resenas.json` | la reseña biográfica de cada celebración | `mm-dd/santo` |
 | `pdf_santoral.json` | el Propio de los santos de los cuatro tomos en PDF | lista de entradas |
+| `antifonas.json` | las antífonas propias de una celebración | `mm-dd/santo/hora` |
 
 En las claves, *día* es el día de la semana (0 = domingo) y *sección* es
 una de `invitatorio`, `himno`, `salmodia`, `lectura1`, `lectura2`,
@@ -181,7 +182,7 @@ Horas* (están en cada tomo en los PDF de esta carpeta):
 | en las memorias | de dónde |
 |---|---|
 | invitatorio, himno; en Laudes y Vísperas, de la lectura breve a las preces | propio; si no, **a elegir** entre el común y la feria |
-| salmodia | del salterio, salvo que sea propia |
+| salmodia | del salterio, con las antífonas del santo si las tiene |
 | lectura bíblica del Oficio | del propio del tiempo |
 | lectura hagiográfica y oración | propio o común |
 | Hora intermedia y Completas | de la feria: no mencionan la memoria |
@@ -255,6 +256,17 @@ cambian los tomos.
   *dentro de cada año*, contando también las memorias, que leen la del
   tiempo, y lo deja en `bienal.json`; la fase 4 lleva a la app sólo el
   texto del año que no coincide con el de `tiempo.json`.
+* **Las antífonas de la salmodia.** Lo que una celebración tiene propio en
+  la salmodia no son los salmos —ésos son los del salterio que toque ese
+  día— sino las **antífonas**, y por eso medir la salmodia entera no servía:
+  la misma fiesta cae cada año en otra semana del salterio y no hay mayoría
+  que valga. Se miden las antífonas aparte (`3_ordenar`, `antifonas.json`),
+  comparándolas con las del hueco ferial; y como la fuente no siempre reza
+  el salterio que le tocaría, se exige además que no sean las de ninguna
+  otra semana del salterio, y que dos años al menos las den. Salen 46
+  casillas —san Mateo, san Andrés, los Arcángeles, los Ángeles Custodios,
+  la Inmaculada, santa María Magdalena…—, y la app compone las antífonas
+  del santo sobre los salmos del día, ofreciendo también las del salterio.
 * **La Hora intermedia.** La fuente reza las tres horas y reparte: la
   salmodia del día en una —no siempre la misma— y la complementaria
   (salmos 119-121, 122-124, 125-127) en las otras dos. La fase 4 deja dicho

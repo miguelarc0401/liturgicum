@@ -494,6 +494,37 @@ def sin_nombre_del_papa(x):
     return x
 
 
+# El invitatorio trae unas indicaciones —«Si ésta es la primera oración del
+# día:»— que son rúbrica de cabo a rabo, pero que la fuente escribe en negro,
+# como si fueran texto que se reza. Son cinco, se repiten cientos de veces y
+# no hay otra cosa que se les parezca (medido sobre el libro entero), así que
+# se les devuelve su color.
+RUBRICAS_NEGRAS = {
+    'Se añade el Salmo del Invitatorio con la siguiente antífona:',
+    'Si ésta es la primera oración del día:',
+    'Si antes se ha rezado ya alguna otra Hora:',
+    'Si el Oficio de Lectura es la primera oración del día:',
+    'Si antes del Oficio de lectura se ha rezado ya alguna otra Hora:',
+}
+
+
+def rubricas_del_invitatorio(libro):
+    """Pinta de rúbrica las indicaciones del invitatorio que vienen en negro."""
+    n = 0
+    for tabla in ('ordinario', 'tiempo', 'santoral', 'comunes', 'salterio'):
+        for k, v in libro[tabla].items():
+            if k.rsplit('/', 1)[-1] not in ('invitatorio', 'preambulo'):
+                continue
+            for ln in v['l']:
+                if not ln or any(rojo for rojo, _ in ln):
+                    continue
+                if ''.join(t for _, t in ln).strip() in RUBRICAS_NEGRAS:
+                    for tr in ln:
+                        tr[0] = 1
+                    n += 1
+    return n
+
+
 def grupo_de_tiempo(t, sem):
     """El grupo de himnos de un día: su tiempo, y en el ordinario la mitad
     que le toca —hasta la semana XVII o desde la XVIII, que es el corte de
@@ -1075,6 +1106,24 @@ def main():
     pools_intermedia = himnos_intermedia(tiempo)
 
     # --- se escribe --------------------------------------------------------
+    # Lo que una celebración tiene propio en la salmodia son sus antífonas,
+    # no sus salmos: los salmos son los del día, y por eso la fase 3 las mide
+    # aparte. La app compone las dos cosas.
+    antifonas = {k: v['antifonas'] for k, v in carga('antifonas.json').items()}
+
+    # De los comunes, las segundas lecturas que la fuente da como variantes
+    # son otras tantas lecturas a elegir: un común ofrece varias, y quien
+    # reza escoge. (El Común de la Virgen, dos.)
+    otras_lecturas = {}
+    for k, v in comunes.items():
+        if k.rsplit('/', 1)[-1] != 'lectura2' or not v.get('variantes'):
+            continue
+        otras = [ls for ls in opciones_distintas(
+            [(x['lineas'], x['testigos']) for x in v['variantes']])
+            if incipit(ls) != incipit(v['lineas'])]
+        if otras:
+            otras_lecturas[k] = [{'r': v['rotulo'], 'l': ls} for ls in otras]
+
     libro = {
         'orden': carga('orden.json'),
         'comun_de': comun_de_santo,
@@ -1090,8 +1139,11 @@ def main():
         'himnos_intermedia': pools_intermedia,
         'intermedia': hora_intermedia,
         'antifonas_finales': antifonas_finales,
+        'antifonas': antifonas,
+        'otras_lecturas': otras_lecturas,
     }
     sin_nombre_del_papa(libro)
+    nr = rubricas_del_invitatorio(libro)
     ruta_libro = os.path.join(APP, 'horas.json')
     with open(ruta_libro, 'w', encoding='utf-8') as f:
         json.dump(libro, f, ensure_ascii=False, separators=(',', ':'))
@@ -1114,7 +1166,8 @@ def main():
     mb2 = os.path.getsize(ruta_dias) / 1e6
     casillas = sum(len(libro[k]) for k in
                    ('ordinario', 'salterio', 'tiempo', 'santoral', 'comunes'))
-    print(f'horas.json       {mb1:6.1f} MB  ({casillas} casillas)')
+    print(f'horas.json       {mb1:6.1f} MB  ({casillas} casillas, '
+          f'{nr} rúbricas del invitatorio recoloreadas)')
     print(f'horas_dias.json  {mb2:6.1f} MB  ({len(dias)} fechas)')
 
     with open(QA, 'w', encoding='utf-8') as f:
