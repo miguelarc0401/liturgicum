@@ -272,7 +272,14 @@ class Equivalencias:
                 votos[n] += 1
         if not votos:
             return None
-        n, c = votos.most_common(1)[0]
+        # El desempate, por el orden del libro y no por el del recuento: las
+        # tripletas vienen de un conjunto, y recorrer un conjunto de cadenas
+        # sale en un orden distinto en cada proceso (Python aleatoriza el
+        # hash). Con `most_common` eso bastaba para que dos pasadas iguales
+        # eligieran copias distintas del mismo texto y el fichero de la app
+        # cambiara sin que hubiera cambiado nada: el telefono se bajaba 25 MB
+        # para nada.
+        n, c = max(votos.items(), key=lambda par: (par[1], -par[0]))
         # proporción de las tripletas del PDF que están en la fuente: dos
         # ediciones del mismo texto pasan con holgura de la mitad; textos
         # distintos que comparten fórmulas («por nuestro Señor Jesucristo»)
@@ -459,6 +466,32 @@ def intermedia(salterio):
                       for h, c in comp.items()}
     return {'dia': dia, 'comp': complementaria,
             'salmos': {h: list(n) for h, n in COMPLEMENTARIOS.items()}}, raros
+
+
+# La fuente publica el oficio del día y, donde el libro dice «nuestro papa
+# N.», escribe el nombre del que reinaba ese año. El libro no: pone la inicial
+# para que valga siempre, igual que ya hace con «nuestro obispo N.». Se
+# devuelve a su forma, que además no caduca.
+PAPA = re.compile(r'\b([Pp]apa)\s+Francisco\b\.?')
+
+
+def sin_nombre_del_papa(x):
+    """El libro ya armado, con «papa Francisco» vuelto «papa N.».
+
+    Recorre lo que sea —las tablas, los himnos que se pueden escoger, las
+    antífonas finales— y reescribe toda casilla que tenga texto, para que no
+    se escape ninguna por estar guardada de otra forma."""
+    if isinstance(x, dict):
+        if isinstance(x.get('l'), list):
+            x['l'] = [[[rojo, PAPA.sub(r'\1 N.', t)] for rojo, t in ln]
+                      for ln in x['l']]
+            return x
+        for v in x.values():
+            sin_nombre_del_papa(v)
+    elif isinstance(x, list):
+        for v in x:
+            sin_nombre_del_papa(v)
+    return x
 
 
 def grupo_de_tiempo(t, sem):
@@ -1058,6 +1091,7 @@ def main():
         'intermedia': hora_intermedia,
         'antifonas_finales': antifonas_finales,
     }
+    sin_nombre_del_papa(libro)
     ruta_libro = os.path.join(APP, 'horas.json')
     with open(ruta_libro, 'w', encoding='utf-8') as f:
         json.dump(libro, f, ensure_ascii=False, separators=(',', ':'))
@@ -1166,7 +1200,7 @@ def cita_de(rotulo, lineas):
     """La cita bíblica de una pieza: en el rótulo («RESPONSORIO Mt 5, 3-4»),
     o en sus primeras líneas («De la carta a los Romanos 8, 28-30»)."""
     for t in [rotulo or ''] + [''.join(s for _, s in ln) for ln in lineas[:4]]:
-        m = re.search(r'(?:[1-3]\s?)?[A-Za-zÁÉÍÓÚáéíóúñ]+\.?\s*\d+\s*,\s*\d+'
+        m = re.search(r'(?:[1-3]\s?)?[A-Za-zÁÉÍÓÚáéíóúñ]+\.?\s*\d+\s*,\s*\d+'
                       r'[\d\s,.;:abc\-–]*(?:\s?[1-3]?\s?[A-Z][a-z]{0,3}\s?\d+\s*,'
                       r'[\d\s,.;:abc\-–]*)*', t)
         if m:

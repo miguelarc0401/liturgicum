@@ -319,18 +319,41 @@ function pintaLectura(l) {
  *  memorias quiere la lectura continua de la feria (que es lo que prescribe el
  *  Ordo lectionum Missae, n. 82, salvo lecturas propias) o la del santo.
  */
-function celebracionesDe(val) {
+function celebracionesDe(val, iso) {
   const cs = [];
   val.c.forEach(([slug, bloque, m], i) => {
     const d = E.diaDe.get(slug);
     if (d) cs.push({ slug: slug, bloque: bloque, dia: d, m: m, orden: i });
   });
+  if (cabeSantaMariaMisa(iso, cs)) {
+    const d = E.diaDe.get(COMUN_SMV);
+    if (d) {
+      cs.push({ slug: COMUN_SMV, bloque: 0, dia: d, orden: 99,
+        m: { t: SMV.t, g: 'Memoria libre', k: 's', smv: 1,
+          n: 'los sábados del tiempo ordinario en que no hay memoria '
+            + 'obligatoria puede celebrarse la memoria de Santa María '
+            + 'Virgen, con las lecturas del Común de la Virgen' } });
+    }
+  }
   if (E.cfg.memorias === 'feria' && cs.length > 1
       && cs[0].m.k === 's' && cs[0].m.r >= 10) {
     const i = cs.findIndex((c) => c.m.f && !c.m.z);
     if (i > 0) cs.unshift(cs.splice(i, 1)[0]);
   }
   return cs;
+}
+
+/* El sábado de Santa María, también en la misa: el Misal la pone los
+ * sábados del tiempo ordinario libres de memoria obligatoria, y sus
+ * lecturas son las del Común de la Virgen, que es a donde lleva. */
+const COMUN_SMV = 'lv_5224comsvi';
+
+function cabeSantaMariaMisa(iso, cs) {
+  if (!iso || !cs.length || new Date(iso + 'T12:00:00').getDay() !== 6) {
+    return false;
+  }
+  if (cs[0].m.k !== 't' || cs[0].dia._sec !== 'TIEMPO ORDINARIO') return false;
+  return !cs.some((c) => c.m.k === 's' && /^memoria$/i.test(c.m.g || ''));
 }
 
 /** Nombre corto para el chip: lo que va antes de la primera coma. */
@@ -354,6 +377,7 @@ function pintaChipsCelebraciones(cels, slug) {
 
 function pintaChipsFormularios(d, bloque) {
   const c = $('#formularios');
+  c.className = 'chips finos';
   if (!d || d.b.length < 2) { c.innerHTML = ''; return; }
   c.innerHTML = d.b.map((b, i) =>
     '<button aria-pressed="' + (i === bloque) + '" data-slug="' + esc(d.s)
@@ -387,9 +411,12 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   if (bloque >= d.b.length || bloque < 0) bloque = 0;
   const b = d.b[bloque];
   const lects = b && E.lecturas.bloques[b.k];
-  document.body.dataset.color = E.colorDe.get(slug) || 'neutro';
-  $('#titulo-dia').textContent = d.t;
   const cel = (cels || []).find((o) => o.slug === slug);
+  document.body.dataset.color = (cel && cel.m.smv) ? 'blanco'
+    : E.colorDe.get(slug) || 'neutro';
+  // el común se titula a sí mismo «Leccionario V…»: cuando se abre como la
+  // misa de Santa María en sábado, el título es el de la celebración
+  $('#titulo-dia').textContent = (cel && cel.m.smv) ? cel.m.t : d.t;
   const sec = d._sec.toLowerCase();
   const partes = [];
   if (d.g) partes.push(d.g);
@@ -441,7 +468,7 @@ function verDia(iso, slug, bloque) {
       + 'que trae la app (' + E.cal.rango[0] + '–' + E.cal.rango[1] + ').</p>';
     return;
   }
-  const cels = celebracionesDe(val);
+  const cels = celebracionesDe(val, iso);
   if (!cels.length) { vista.innerHTML = '<p class="aviso">Nada que mostrar.</p>'; return; }
   let s = slug, b = bloque;
   const cel = cels.find((o) => o.slug === s);
@@ -1208,6 +1235,20 @@ function marcaBarra(cual) {
  * oficio divino— y el que se quiere a cada hora no lo sabe nadie más que
  * quien abre. Así que se pregunta, en vez de suponer; y quien siempre va al
  * mismo sitio lo dice una vez en Ajustes y no se le vuelve a preguntar. */
+/** La hora por la que abre la portada: la que toca por el reloj y, si ésa
+ *  ya se rezó hoy, la primera de las siguientes que no se haya rezado. */
+function horaDeLaPortada() {
+  const hoy = hoyISO();
+  const ya = (cl) => !!(E.cfg.rezadas !== 'no' && E.rezadas
+    && E.rezadas.d === hoy && E.rezadas.h[cl]);
+  const i = Math.max(0, HORAS.findIndex((x) => x[0] === horaSugerida()));
+  if (!ya(HORAS[i][0])) return { i: i, rotulo: 'Ahora', ya: ya };
+  for (let j = i + 1; j < HORAS.length; j++) {
+    if (!ya(HORAS[j][0])) return { i: j, rotulo: 'Sigue', ya: ya };
+  }
+  return { i: i, rotulo: 'Ahora', ya: ya, todas: true };
+}
+
 function verPortada() {
   E.vista = 'portada';
   marcaBarra('portada');
@@ -1219,13 +1260,26 @@ function verPortada() {
 
   const val = entradasDe(iso);
   const cels = val ? celebracionesDe(val) : [];
-  const hoy = cels.length ? (E.diaDe.get(cels[0].slug) || {}).t : null;
+  const dia = cels.length ? E.diaDe.get(cels[0].slug) : null;
   const anio = anioDe(iso);
-  const hora = HORAS.find((x) => x[0] === horaSugerida());
+  const h = horaDeLaPortada();
+  // la portada toma el color del día, como las dos vistas a las que lleva
+  if (cels.length) {
+    document.body.dataset.color = E.colorDe.get(cels[0].slug) || 'neutro';
+  }
+
+  const tira = HORAS.map(([cl, , nombre, breve], i) => {
+    const marcas = (i === h.i ? ' ahora' : '') + (h.ya(cl) ? ' rezada' : '');
+    return '<a href="#/h/' + iso + '/' + cl + '"' + (marcas ? ' class="'
+      + marcas.trim() + '"' : '') + ' aria-label="' + esc(nombre)
+      + (h.ya(cl) ? ', rezada' : '') + '">' + esc(breve) + '</a>';
+  }).join('');
 
   vista.innerHTML = [
     '<p class="portada-fecha">' + esc(fechaLarga(iso)) + '</p>',
-    hoy ? '<p class="portada-dia">' + esc(hoy) + '</p>' : '',
+    dia ? '<p class="portada-dia">' + esc(dia.t)
+      + (cels[0].m && cels[0].m.g ? '<small>' + esc(cels[0].m.g) + '</small>'
+        : '') + '</p>' : '',
     '<div class="portada-elige">',
     '<a class="tarjeta" href="#/d/' + iso + '">',
     '<span class="tarjeta-icono">' + ICONO.misa + '</span>',
@@ -1234,12 +1288,17 @@ function verPortada() {
     + (anio ? ' · Ciclo ' + anio.ciclo + ' · Año ' + anio.ferial : '')
     + '</span>',
     '</a>',
-    '<a class="tarjeta" href="#/h/' + iso + '">',
+    // la de las horas lleva pegadas las siete, con la que toca marcada y
+    // una rayita bajo las que ya se han rezado hoy: la pregunta de quien
+    // abre la app a media tarde es por dónde iba, no cuál de los dos libros
+    '<a class="tarjeta con-tira" href="#/h/' + iso + '/' + HORAS[h.i][0] + '">',
     '<span class="tarjeta-icono">' + ICONO.horas + '</span>',
     '<span class="tarjeta-t">Liturgia de las Horas</span>',
-    '<span class="tarjeta-p">El oficio divino en castellano · ahora, '
-    + esc(hora[1]) + '</span>',
+    '<span class="tarjeta-p">' + (h.todas
+      ? 'Hoy las has rezado todas · ' + esc(HORAS[h.i][1])
+      : h.rotulo + ', ' + esc(HORAS[h.i][1])) + '</span>',
     '</a>',
+    '<nav class="portada-horas" aria-label="Las horas de hoy">' + tira + '</nav>',
     '</div>',
     '<nav class="portada-menudo">',
     '<a href="#/calendario">Calendario</a>',
@@ -1273,6 +1332,10 @@ async function cargaHoras() {
     [json('horas.json'), json('horas_dias.json')]);
   E.horas = libro;
   E.horasDias = dias;
+  // Santa María en sábado no es un santo del calendario —no tiene día— y su
+  // oficio sale entero del Común de la Virgen: se le da ese común como si
+  // lo fuera, y la cascada de siempre hace el resto
+  libro.comun_de[SMV.id] = [COMUN_VIRGEN];
 }
 
 /* --------------------------------------------------- lo que se puede elegir
@@ -1313,6 +1376,22 @@ const SIN_MEMORIAS = ['tercia', 'sexta', 'nona', 'completas'];
 
 function bonito(g) { return g ? g.charAt(0) + g.slice(1).toLowerCase() : ''; }
 
+/* «Los sábados del tiempo ordinario en que no ocurra una memoria
+ * obligatoria, puede hacerse la memoria libre de Santa María Virgen»
+ * (Normas universales sobre el año litúrgico, n. 15). Todo su oficio se
+ * toma del Común de la Virgen, y de Vísperas no tiene: las del sábado son
+ * siempre las primeras del domingo. */
+const COMUN_VIRGEN = 'santisima virgen maria';
+const SMV = {
+  id: 'smv', t: 'Santa María Virgen en sábado', g: 'MEMORIA LIBRE',
+  modo: 'memoria', smv: 1
+};
+
+function cabeSantaMaria(d) {
+  return d.d === 6 && d.t === 'Ordinario' && !d.cm
+    && !(d.c || []).some((c) => !/LIBRE/.test(c[3] || ''));
+}
+
 /** Qué oficios puede rezar quien abre el día, y cuál sale primero. */
 function celebracionesHoras(d) {
   const feria = { id: 'feria', t: d.tt, g: '', modo: 'feria' };
@@ -1325,9 +1404,11 @@ function celebracionesHoras(d) {
   if (cs.length && d.w && cs[0].g !== 'MEMORIA LIBRE') {
     return { ops: [cs[0]], def: cs[0].id };
   }
-  // memorias libres: cualquiera de ellas, o la feria
+  // memorias libres: cualquiera de ellas, la de la Virgen si es sábado del
+  // tiempo ordinario, o la feria
+  const libres = cabeSantaMaria(d) ? cs.concat([SMV]) : cs;
   return {
-    ops: cs.concat([feria]),
+    ops: libres.concat([feria]),
     def: cs.length && E.cfg.hLibre !== 'feria' ? cs[0].id : 'feria'
   };
 }
@@ -1358,6 +1439,7 @@ function delDia(d, hora, cl) {
 }
 
 function delSanto(op, hora, cl) {
+  if (!op.cel) return null;          // la de la Virgen en sábado no tiene día
   return pieza(E.horas.santoral, op.cel[1] + '/' + op.cel[0] + '/', hora, cl);
 }
 
@@ -1475,8 +1557,10 @@ function opcionesSeccion(d, op, hora, cl) {
 function opcionesSeccionBase(d, op, hora, cl) {
   const dia = delDia(d, hora, cl);
   const soloDia = dia ? [{ id: 'dia', rot: 'Del día', c: dia }] : [];
-  // el sábado, las vísperas son las primeras del domingo (lo dice `v`)
-  const cedeVisperas = d.v && (hora === 'visperas' || hora === 'completas');
+  // el sábado, las vísperas son las primeras del domingo (lo dice `v`); y de
+  // la memoria de la Virgen en sábado, que es de sábado, nunca son
+  const cedeVisperas = (d.v || op.smv)
+    && (hora === 'visperas' || hora === 'completas');
   let regla = 'dia';
   if (op.modo === 'entero' && !cedeVisperas) regla = 'entero';
   if (op.modo === 'memoria' && !cedeVisperas && !SIN_MEMORIAS.includes(hora)) {
@@ -1493,7 +1577,9 @@ function opcionesSeccionBase(d, op, hora, cl) {
   if (propio) return yDelDia([{ id: 'propio', rot: 'Propio', c: propio }]);
   if (regla === 'salterio') return soloDia;
   const comunes = deSusComunes(op, hora, cl);
-  if (regla === 'elige') return distintas(soloDia.concat(comunes));
+  // lo propio del santo —aquí, lo de su común— va siempre delante, y lo
+  // del día detrás: el orden de los botones es el mismo en toda la hora
+  if (regla === 'elige') return distintas(comunes.concat(soloDia));
   // solemnidades, fiestas y lo que en las memorias es del santo: del
   // propio o del común, y del día sólo si no hay otra cosa
   return comunes.length ? yDelDia(distintas(comunes)) : soloDia;
@@ -1842,8 +1928,10 @@ function pintaLineas(lineas, prosa, seccion) {
     let cl = 'ln';
     if (esTituloSalmo(ln)) cl += ' tit';
     else if (ln.every((tr) => tr[0] || !tr[1].trim())) cl += ' solo-rub';
-    // la antífona y los «V.» y «R.» también cuelgan de su sigla
-    else if (ln[0][0] && /^\s*(Ant|V\.|R\.)/.test(ln[0][1])) cl += ' sigla';
+    // los «V.» y los «R.» cuelgan de su sigla; la antífona no, que es un
+    // texto seguido y la sangría le partía el renglón sin falta
+    else if (ln[0][0] && /^\s*Ant/.test(ln[0][1])) cl += ' ant';
+    else if (ln[0][0] && /^\s*(V\.|R\.)/.test(ln[0][1])) cl += ' sigla';
     if (resp && resp.has(i)) cl += ' prez-r';
     actual.push({ sigla: cl.includes(' sigla'),
       h: '<span class="' + cl + '">'
@@ -1902,7 +1990,8 @@ function pintaChipsCelebracionesHoras(o) {
 
 /** El color del día, del calendario de la misa: el del santo si se reza
  *  su oficio, el del tiempo si no. */
-function colorHoras(iso, titulo) {
+function colorHoras(iso, titulo, op) {
+  if (op && op.smv) return 'blanco';          // la Virgen, de blanco
   const val = entradasDe(iso);
   if (!val) return 'neutro';
   const e = val.c.find((x) => x[2] && x[2].t === titulo)
@@ -1928,6 +2017,14 @@ function notaHoras(o) {
   if (o.op.cel && d.v && o.hora === 'visperas') {
     n.push('Las vísperas de hoy son las primeras del domingo.');
   }
+  if (o.op.smv) {
+    n.push('Memoria libre de Santa María Virgen en sábado: su oficio se '
+      + 'toma del Común de la Virgen.');
+    if (o.hora === 'visperas' || o.hora === 'completas') {
+      n.push('No tiene vísperas: las del sábado son las primeras del '
+        + 'domingo.');
+    }
+  }
   const p = $('#nota-dia');
   p.textContent = n.join(' ');
   p.style.display = n.length ? '' : 'none';
@@ -1935,6 +2032,9 @@ function notaHoras(o) {
 
 function pintaChipsHoras(iso, hora) {
   const hoy = iso === hoyISO() && E.cfg.rezadas !== 'no' && E.rezadas;
+  // la tira de las horas ocupa el renglón entero, repartido; la de los
+  // formularios de la misa, no: allí los rótulos son largos y se desliza
+  $('#formularios').className = 'chips finos horas';
   $('#formularios').innerHTML = HORAS.map(([cl, , nombre, breve]) => {
     const es = cl === hora;
     const ya = hoy && E.rezadas.h[cl];
@@ -1986,18 +2086,44 @@ async function verHoras(iso, hora, idCel) {
   // la conmemoración no cambia el oficio, que sigue siendo de la feria: ni
   // su título ni su color
   const conm = o.op.modo === 'conmemoracion';
-  document.body.dataset.color = colorHoras(iso, conm ? d.tt : o.op.t);
+  document.body.dataset.color = colorHoras(iso, conm ? d.tt : o.op.t, o.op);
   $('#titulo-dia').textContent = HORAS.find((x) => x[0] === hora)[1];
   const partes = [conm ? d.tt : o.op.t];
   if (o.op.g && !conm) partes.push(bonito(o.op.g));
   if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
   $('#subtitulo-dia').textContent = partes.join(' · ');
-  vista.innerHTML = o.secciones.length
-    ? o.secciones.map(pintaSeccionHora).join('')
-    : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
+  vista.innerHTML = (o.secciones.length ? controlZoom() : '')
+    + (o.secciones.length
+      ? o.secciones.map(pintaSeccionHora).join('')
+      : '<p class="aviso">No tengo los textos de esta hora para este día.</p>');
   cabeceraFija(true);
   pintaCarril(o);
   colocaPosicion();
+}
+
+/* ---------------------------------------------- el tamaño, a la mano
+ * Que la letra se ve chica se nota al empezar a rezar, no en Ajustes: dos
+ * aes al comienzo de la hora, discretas y a la derecha, y se sigue. Es el
+ * mismo ajuste de siempre, así que queda puesto para todo. */
+function controlZoom() {
+  return '<div class="zoom" role="group" aria-label="Tamaño de la letra">'
+    + '<button type="button" data-zoom="-5" aria-label="Letra más pequeña">'
+    + 'A</button><span class="zoom-pct">' + E.cfg.tam + '%</span>'
+    + '<button type="button" data-zoom="5" aria-label="Letra más grande">'
+    + 'A</button></div>';
+}
+
+function alTocarZoom(ev) {
+  const b = ev.target.closest('[data-zoom]');
+  if (!b) return;
+  const v = Math.min(200, Math.max(80, E.cfg.tam + Number(b.dataset.zoom)));
+  if (v === E.cfg.tam) return;
+  E.cfg.tam = v;
+  guardaCfg();
+  aplicaCfg();
+  const p = document.querySelector('.zoom-pct');
+  if (p) p.textContent = v + '%';
+  if (document.body.classList.contains('cab-fija')) mideCabecera();
 }
 
 /* ------------------------------------------------- el carril de la hora
@@ -2237,6 +2363,7 @@ async function arranca() {
   });
   vista.addEventListener('change', alCambiarAjuste);
   vista.addEventListener('click', alElegirOpcion);
+  vista.addEventListener('click', alTocarZoom);
   vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);

@@ -330,8 +330,8 @@ con la traducción de la fuente; lo demás, con la del PDF.
   San Ambrosio, obispo y doctor de la Iglesia: oración de Vísperas (hallado en la fuente: la misma oración, en otra hora)
 
    Textos del PDF que ya estaban en la fuente y se usan con su traducción: 40
-     San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
-     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-29/el martirio de san juan bautista/oficio/responsorio (variante de otro año)
+     San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
+     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-24/san bartolome apostol/oficio/responsorio (variante de otro año)
      San Jerónimo Emiliano — responsorio  ←  tiempo: Ordinario/16/1/oficio/responsorio2
      Nuestra Señora de Lourdes — antífona del Magníficat  ←  santoral: 12-08/la inmaculada concepcion de la santisima virgen maria/visperas/cantico_evangelico
      San Juan de Dios, religioso — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
@@ -343,11 +343,11 @@ con la traducción de la fuente; lo demás, con la del PDF.
      San Juan Bautista de la Salle, presbítero — responsorio  ←  santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio
      San Martín I, papa y mártir — antífona del Benedictus  ←  santoral: 11-12/san josafat obispo y martir/laudes/cantico_evangelico
      San Martín I, papa y mártir — antífona del Magníficat  ←  santoral: 06-05/san bonifacio obispo y martir/visperas/cantico_evangelico
-     San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
      San Pedro Chanel, presbítero y mártir — responsorio  ←  santoral: 12-03/san francisco javier presbitero/oficio/responsorio (variante de otro año)
-     San Pío V, papa — responsorio breve de Laudes  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/responsorio_breve
+     San Pío V, papa — responsorio breve de Laudes  ←  santoral: 05-26/san felipe neri presbitero/laudes/responsorio_breve
      San Pío V, papa — responsorio breve de Vísperas  ←  santoral: 05-02/san atanasio obispo y doctor de la iglesia/visperas/responsorio_breve
-     San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
      Santa María Magdalena de Pazzi, virgen — responsorio  ←  santoral: 12-14/san juan de la cruz presbitero y doctor de la iglesia/oficio/responsorio2
      San Romualdo, abad — responsorio  ←  tiempo: Ordinario/4/6/oficio/responsorio2
      Santa Isabel de Portugal — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
@@ -355,9 +355,9 @@ con la traducción de la fuente; lo demás, con la del PDF.
      Santos Sixto II, papa, y compañeros, mártires — responsorio  ←  tiempo: Pascua/6/2/oficio/responsorio
      Santos Ponciano, papa, e Hipólito, mártires — responsorio  ←  santoral: 09-16/santos cornelio papa y cipriano obispo martires/oficio/responsorio2
      San Juan Eudes, presbítero — responsorio  ←  tiempo: Ordinario/4/3/oficio/responsorio
-     San José de Calasanz, presbítero — responsorio  ←  santoral: 06-05/san bonifacio obispo y martir/oficio/responsorio (variante de otro año)
+     San José de Calasanz, presbítero — responsorio  ←  santoral: 06-05/san bonifacio obispo y martir/oficio/responsorio2
      San Pedro Claver, presbítero — responsorio  ←  tiempo: Cuaresma/3/6/oficio/responsorio2
-     San Calixto I, papa y mártir — responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
+     San Calixto I, papa y mártir — responsorio  ←  santoral: 08-28/san agustin obispo y doctor de la iglesia/oficio/responsorio
      Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2
      Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles — antífona del Benedictus  ←  santoral: 06-29/santos pedro y pablo apostoles/visperas/cantico_evangelico
      San Juan Damasceno, presbítero y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
@@ -402,7 +402,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
 25/03  La Anunciación del Señor
         · himno de Laudes: otro himno — PDF «oh virginal doncella…», fuente «que hoy bajo dios a…»
         · himno del Oficio: otro himno — PDF «oh virginal doncella…», fuente «por que bajaste a nosotros…»
-        · lectura breve de Vísperas: cita distinta — PDF «Jn 1, 1-2», fuente «Jn 1, 1-3a»
+        · lectura breve de Vísperas: cita distinta — PDF «1 Jn 1, 1-2», fuente «1Jn 1, 1-3a»
 07/04  San Juan Bautista de la Salle, presbítero
         · responsorio: el PDF la trae propia; la fuente la toma de la feria
 11/04  San Estanislao, obispo y mártir
@@ -481,7 +481,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 13/09  San Juan Crisóstomo, obispo y doctor de la Iglesia
-        · responsorio: cita distinta — PDF «Tm 2, 9-10; Sal 26, 1», fuente «Tm 2, 9-10»
+        · responsorio: cita distinta — PDF «2 Tm 2, 9-10; Sal 26, 1», fuente «2Tm 2, 9-10»
 14/09  La Exaltación de la Santa Cruz
         · himno de Laudes: otro himno — PDF «oh cruz fiel arbol unico…», fuente «brille la cruz del verbo…»
         · himno del Oficio: otro himno — PDF «oh cruz fiel arbol unico…», fuente «cruz de cristo…»

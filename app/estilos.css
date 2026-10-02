@@ -309,6 +309,10 @@ body.cab-fija #cabecera.horas-min { height: var(--alto-cab-min); }
 /* Las siete horas tienen que caber de una vez en una pantalla de telefono:
    la elegida lleva su nombre y las demas tres letras, y las tres letras van
    mas justas para que no haya que deslizar la tira. */
+/* Las siete horas no son una tira que se desliza sino un renglon entero:
+   cada boton se lleva su parte de lo que sobra, y la elegida, que lleva su
+   nombre completo, se lleva la suya. */
+.chips.horas button { flex: 1 0 auto; }
 .chips.finos button[data-hora] { padding: .25rem .5rem; position: relative; }
 .chips.finos button[data-hora].sel { padding: .25rem .72rem; }
 /* lo ya rezado hoy: una rayita debajo, que no ensancha la tira */
@@ -656,6 +660,9 @@ h2.seccion {
 .prosa .ln.sigla + .ln.sigla,
 .hora-sec[data-cl="examen"] .ln + .ln { margin-top: .04em; }
 .prosa .ln.sigla { padding-left: 1.3em; text-indent: -1.3em; }
+/* La antifona no cuelga de su «Ant.»: es un texto seguido, casi siempre de
+   dos renglones, y la sangria francesa se los partia sin falta. */
+.hora-sec .ln.ant { padding-left: 0; text-indent: 0; }
 /* una oracion escrita en renglones de sentido —el «Yo confieso»— no se
    justifica: partida en trozos cortos, el justificado la llena de rios */
 .prosa .sentido .ln {
@@ -683,6 +690,31 @@ h2.seccion {
 .cruz {
   color: var(--rubrica); font-weight: 600; font-size: .92em;
   font-style: normal; text-indent: 0;
+}
+
+/* --------------------------------------------- el tamano, al empezar
+   Dos aes y el tanto por ciento, en pequeno y a la derecha, sobre el primer
+   rotulo de la hora: se toca una vez, si acaso, y despues se reza. */
+.zoom {
+  display: flex; align-items: center; justify-content: flex-end;
+  gap: .15rem; margin: -.5rem -.4rem .1rem 0;
+}
+.zoom button {
+  width: 2.1rem; height: 2.1rem; display: grid; place-items: center;
+  border: 0; border-radius: 999px; background: none; cursor: pointer;
+  font-family: var(--familia); line-height: 1; color: var(--tinta-suave);
+  transition: background-color var(--rapido), color var(--rapido),
+              transform var(--rapido) var(--curva);
+}
+.zoom button:first-of-type { font-size: .76rem; }
+.zoom button:last-of-type { font-size: 1.18rem; }
+.zoom button:active {
+  background: var(--filete); color: var(--acento); transform: scale(.9);
+}
+.zoom-pct {
+  font-family: var(--sans); font-size: .66rem; letter-spacing: .04em;
+  color: var(--tinta-suave); min-width: 2.7rem; text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 /* --------------------------------------------------- el carril de la hora
@@ -732,7 +764,10 @@ body.con-carril #vista { padding-right: 2.1rem; }
 
 /* -------------------------------------------------------------- portada
    Las dos puertas de la app, una encima de otra y del mismo tamano: no hay
-   una principal y otra secundaria, son dos libros distintos. */
+   una principal y otra secundaria, son dos libros distintos. A la de las
+   horas van pegadas las siete, porque el oficio se reza siete veces al dia
+   y la pregunta de quien abre la app a media tarde no es cual de los dos
+   libros quiere, sino por donde iba. */
 #cabecera.portada { border-bottom-color: transparent; background: var(--papel); }
 #cabecera.portada h1 {
   font-size: 1rem; letter-spacing: .22em; text-transform: uppercase;
@@ -746,6 +781,12 @@ body.con-carril #vista { padding-right: 2.1rem; }
 .portada-dia {
   margin: .4rem auto 0; max-width: 26rem; text-align: center;
   font-size: 1.12rem; line-height: 1.4; color: var(--tinta);
+  text-wrap: balance;
+}
+.portada-dia small {
+  display: block; margin-top: .2rem;
+  font-family: var(--sans); font-size: .64rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--tinta-suave);
 }
 .portada-elige {
   display: flex; flex-direction: column; gap: .9rem; margin: 1.8rem 0 0;
@@ -764,6 +805,43 @@ body.con-carril #vista { padding-right: 2.1rem; }
 .tarjeta:active {
   background: var(--filete); transform: scale(.985);
   box-shadow: 0 1px 2px rgb(60 40 20 / .04);
+}
+/* la tarjeta de las horas y su tira son una sola pieza: la tarjeta pierde
+   el canto de abajo y la tira se lo pone */
+.tarjeta.con-tira {
+  border-bottom: 0; border-radius: 16px 16px 0 0; padding-bottom: 1rem;
+  box-shadow: none;
+}
+.portada-horas {
+  display: flex; gap: .15rem; margin-top: -.9rem;
+  padding: .55rem .5rem .6rem;
+  background: var(--papel-alto); box-shadow: var(--sombra);
+  border: 1px solid var(--filete); border-left: 4px solid var(--acento);
+  border-radius: 0 0 16px 16px;
+  transition: border-color var(--lento) var(--curva);
+}
+.portada-horas a {
+  flex: 1 0 auto; position: relative; text-align: center;
+  padding: .45rem .15rem .5rem; border-radius: 10px;
+  font-family: var(--sans); font-size: .73rem; letter-spacing: .01em;
+  text-decoration: none; color: var(--tinta-suave);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva),
+              transform var(--rapido) var(--curva);
+}
+.portada-horas a.ahora {
+  color: var(--papel-alto); background: var(--acento); font-weight: 600;
+}
+.portada-horas a:active { background: var(--filete); transform: scale(.94); }
+.portada-horas a.ahora:active { background: var(--acento); }
+/* lo ya rezado hoy, con la misma rayita que en la tira de la cabecera */
+.portada-horas a.rezada::after {
+  content: ""; position: absolute; left: 50%; bottom: .2rem;
+  width: .8rem; height: 2px; margin-left: -.4rem; border-radius: 2px;
+  background: color-mix(in srgb, var(--acento) 55%, transparent);
+}
+.portada-horas a.ahora.rezada::after {
+  background: color-mix(in srgb, var(--papel-alto) 70%, transparent);
 }
 .tarjeta-icono { display: block; color: var(--acento); margin-bottom: .55rem; }
 .tarjeta-icono svg { width: 1.7rem; height: 1.7rem; stroke-width: 1.5; }
@@ -995,6 +1073,23 @@ body.con-carril #vista { padding-right: 2.1rem; }
 .mini-meses button.actual {
   color: var(--acento); font-weight: 600;
   background: color-mix(in srgb, var(--acento) 12%, transparent);
+}
+
+/* ------------------------------------------------------------- acostado
+   Con el telefono de lado quedan 375 px de alto, y la cabecera y la barra
+   se comen la mitad. Encogen las dos, y la caja se ensancha: tumbado se lee
+   con la pantalla entera o no se lee. */
+@media (orientation: landscape) and (max-height: 560px) {
+  #barra button { min-height: 2.7rem; padding: .3rem 0; gap: .1rem; font-size: .62rem; }
+  #barra button svg { width: 1.15rem; height: 1.15rem; }
+  #barra button::before { top: .22rem; height: 1.5rem; }
+  #cabecera { padding-top: calc(env(safe-area-inset-top) + .15rem); padding-bottom: .3rem; }
+  #cabecera h1 { font-size: 1.1rem; }
+  .fila-fecha .icono { height: 2.2rem; }
+  .fecha { padding: .3rem 0; }
+  .chips { margin-top: .35rem; }
+  #vista { padding-bottom: calc(4.4rem + env(safe-area-inset-bottom)); }
+  .ir-hoy { bottom: calc(3.3rem + env(safe-area-inset-bottom)); }
 }
 
 /* ------------------------------------------------------- menos movimiento */
