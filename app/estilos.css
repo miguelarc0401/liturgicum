@@ -27,6 +27,10 @@
   --alto-cabecera: 0px;
   --rapido: .16s;
   --medio: .24s;
+  --lento: .34s;
+  /* Una sola curva para toda la app: sale deprisa y frena al llegar, que es
+     como se mueven las cosas que tienen peso. */
+  --curva: cubic-bezier(.22, .61, .36, 1);
 }
 
 /* color liturgico del dia: tine la cabecera, las rubricas y los controles.
@@ -81,6 +85,20 @@ body[data-tema="noche"] {
 
 html { -webkit-text-size-adjust: 100%; }
 
+/* El color liturgico cambia al pasar de un dia a otro, y el tema al caer la
+   tarde si el telefono lo dice: ninguno de los dos tiene por que dar un
+   corte. Lo que lleva color del dia se desvanece de uno a otro. */
+body, #cabecera, #barra, .aviso, .tarjeta, .muestra, .cal-dia, .campo {
+  transition: background-color var(--lento) var(--curva),
+              border-color var(--lento) var(--curva),
+              color var(--lento) var(--curva);
+}
+.rubrica, .cita, .cierre, .antifona, .hora-sec .rotulo, .hora-sec .rub,
+.cruz, .ed-pdf, h2.seccion, #barra button, .sec > summary, .cal-g, .mini-anio span {
+  transition: color var(--lento) var(--curva),
+              border-color var(--lento) var(--curva);
+}
+
 body {
   margin: 0;
   background: var(--papel);
@@ -132,7 +150,24 @@ button { font: inherit; color: inherit; }
    cambiar de alto no cambia el flujo, y la pagina no da un salto a media
    oracion. */
 body.cab-fija { padding-top: var(--alto-cab, 0px); }
-body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
+body.cab-fija #cabecera {
+  position: fixed; top: 0; left: 0; right: 0;
+  overflow: hidden; height: var(--alto-cab);
+  transition: height var(--medio) var(--curva),
+              background-color var(--lento) var(--curva),
+              border-color var(--lento) var(--curva);
+}
+body.cab-fija #cabecera.horas-min { height: var(--alto-cab-min); }
+/* mientras se mide no hay ni alto impuesto ni transicion que valga */
+#cabecera.midiendo { height: auto !important; transition: none !important; }
+/* lo que se queda al plegarse entra como entra una pagina que pasa */
+#cabecera.horas-min .fila-fecha,
+#cabecera.horas-min .fila-titulo,
+#cabecera.horas-min #subtitulo-dia { animation: entra-renglon var(--medio) var(--curva); }
+@keyframes entra-renglon {
+  from { opacity: 0; transform: translateY(-.25rem); }
+  to { opacity: 1; transform: none; }
+}
 
 #cabecera.horas-min {
   display: flex; align-items: baseline; gap: 0 .5rem;
@@ -172,7 +207,8 @@ body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
   transition: background-color var(--rapido);
 }
 .fila-fecha .icono svg { width: 1.3rem; height: 1.3rem; stroke-width: 2; }
-.fila-fecha .icono:active { background: var(--filete); }
+.fila-fecha .icono { transition: background-color var(--rapido), transform var(--rapido) var(--curva); }
+.fila-fecha .icono:active { background: var(--filete); transform: scale(.9); }
 /* El rotulo ensena la fecha en cristiano ("Lunes, 28 de septiembre de 2026")
    y el <input type="date"> va encima, invisible: al tocarlo abre el
    calendario nativo del telefono, que es el que sabe hacerlo bien. */
@@ -217,8 +253,10 @@ body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
 #cabecera h1 {
   margin: .1rem 0 0;
   font-size: 1.28rem; font-weight: 600; line-height: 1.25;
-  letter-spacing: -.005em;
-  transition: opacity var(--medio);
+  letter-spacing: -.005em; text-wrap: balance;
+  transition: opacity var(--medio) var(--curva),
+              font-size var(--medio) var(--curva),
+              color var(--lento) var(--curva);
 }
 #subtitulo-dia {
   margin: .2rem 0 0;
@@ -243,10 +281,13 @@ body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
   padding: .3rem .75rem; border-radius: 999px; cursor: pointer;
   border: 1px solid var(--filete-fuerte); background: transparent;
   color: var(--tinta-suave);
-  transition: background-color var(--rapido), color var(--rapido),
-              border-color var(--rapido);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva),
+              border-color var(--medio) var(--curva),
+              padding var(--medio) var(--curva),
+              transform var(--rapido) var(--curva);
 }
-.chips button:active { background: var(--filete); }
+.chips button:active { background: var(--filete); transform: scale(.96); }
 .chips button[aria-pressed="true"], #formularios button.sel {
   background: var(--acento); border-color: var(--acento); color: var(--papel-alto);
 }
@@ -268,8 +309,18 @@ body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
 /* Las siete horas tienen que caber de una vez en una pantalla de telefono:
    la elegida lleva su nombre y las demas tres letras, y las tres letras van
    mas justas para que no haya que deslizar la tira. */
-.chips.finos button[data-hora] { padding: .25rem .5rem; }
+.chips.finos button[data-hora] { padding: .25rem .5rem; position: relative; }
 .chips.finos button[data-hora].sel { padding: .25rem .72rem; }
+/* lo ya rezado hoy: una rayita debajo, que no ensancha la tira */
+.chips button[data-hora].rezada::after {
+  content: ""; position: absolute; left: 50%; bottom: .2rem;
+  width: .85rem; height: 2px; margin-left: -.425rem; border-radius: 2px;
+  background: color-mix(in srgb, var(--acento) 55%, transparent);
+  animation: aparece var(--medio) var(--curva);
+}
+.chips button[data-hora].rezada.sel::after {
+  background: color-mix(in srgb, var(--papel-alto) 70%, transparent);
+}
 .chips.finos { margin-top: .4rem; }
 
 .nota-dia {
@@ -286,12 +337,35 @@ body.cab-fija #cabecera { position: fixed; top: 0; left: 0; right: 0; }
   outline: none;
 }
 
+/* Cada vista entra subiendo un pelo: lo justo para que se note que es otra
+   cosa y no tan to que haya que esperarla. Sin `forwards`, para que el
+   transform desaparezca al acabar y no deje una capa de mas. */
+#vista.entra { animation: entra-vista .2s var(--curva); }
+@keyframes entra-vista {
+  from { opacity: 0; transform: translateY(.4rem); }
+  to { opacity: 1; transform: none; }
+}
+/* al deslizar, la hora nueva entra por donde venia el dedo */
+#vista.entra-izq { animation: entra-izq var(--medio) var(--curva); }
+#vista.entra-der { animation: entra-der var(--medio) var(--curva); }
+@keyframes entra-izq {
+  from { opacity: 0; transform: translateX(1.6rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes entra-der {
+  from { opacity: 0; transform: translateX(-1.6rem); }
+  to { opacity: 1; transform: none; }
+}
+
 .aviso {
   font-family: var(--sans); font-size: .85rem; line-height: 1.5;
   color: var(--tinta-suave);
   background: var(--papel-alto); border: 1px solid var(--filete);
   border-radius: 12px; padding: .85rem 1rem;
 }
+/* mientras se esperan los 25 MB del oficio, el aviso respira */
+.aviso.cargando { animation: respira 1.6s ease-in-out infinite; }
+@keyframes respira { 50% { opacity: .55; } }
 
 /* -------------------------------------------------------------- lecturas */
 .lect { margin: 0 0 2rem; }
@@ -354,7 +428,10 @@ body[data-cruces="no"] .cruz { display: none; }
   border: 1px solid var(--filete); border-radius: 999px;
 }
 .enlace-buscar svg { color: var(--tinta-suave); width: 1.1rem; height: 1.1rem; }
-.enlace-buscar:active { background: var(--filete); }
+.enlace-buscar {
+  transition: background-color var(--rapido), transform var(--rapido) var(--curva);
+}
+.enlace-buscar:active { background: var(--filete); transform: scale(.985); }
 .sec { margin: 0 0 .4rem; }
 .sec > summary {
   cursor: pointer; list-style: none;
@@ -377,7 +454,10 @@ body[data-cruces="no"] .cruz { display: none; }
   border: 1px solid var(--filete); border-radius: 8px;
   padding: .45rem .6rem;
 }
-.dias a:active { background: var(--filete); }
+.dias a {
+  transition: background-color var(--rapido), transform var(--rapido) var(--curva);
+}
+.dias a:active { background: var(--filete); transform: scale(.94); }
 
 /* -------------------------------------------------------------- buscador */
 .campo {
@@ -467,12 +547,18 @@ h2.seccion {
   font-family: var(--sans); font-size: .66rem; letter-spacing: .02em;
   transition: color var(--rapido);
 }
-#barra button svg { width: 1.4rem; height: 1.4rem; stroke-width: 1.6; position: relative; z-index: 1; }
+#barra button svg {
+  width: 1.4rem; height: 1.4rem; stroke-width: 1.6; position: relative;
+  z-index: 1; transition: transform var(--medio) var(--curva);
+}
+#barra button:active svg { transform: scale(.88); }
+#barra button.activo svg { transform: translateY(-1px); }
 #barra button::before {
   content: ""; position: absolute; top: .38rem; left: 50%;
   width: 3.4rem; height: 1.85rem; margin-left: -1.7rem;
   border-radius: 999px; background: transparent;
-  transition: background-color var(--medio), transform var(--medio);
+  transition: background-color var(--medio) var(--curva),
+              transform var(--medio) var(--curva);
   transform: scaleX(.6);
 }
 #barra button.activo { color: var(--acento); font-weight: 600; }
@@ -502,7 +588,7 @@ h2.seccion {
 }
 .hora-sec:first-child .sec-cab { margin-top: .2rem; }
 .hora-sec .rotulo {
-  flex: 1 1 auto; min-width: 0;
+  flex: 1 1 auto; min-width: 0; text-wrap: pretty;
   font-family: var(--serif); font-size: 1rem; font-weight: 600;
   font-variant-caps: all-small-caps; letter-spacing: .08em;
   color: var(--rubrica); margin: 0; padding-bottom: .2rem; line-height: 1.3;
@@ -524,8 +610,11 @@ h2.seccion {
   line-height: 1.3; padding: .3rem .7rem; cursor: pointer;
   border: 0; border-radius: 999px; background: transparent;
   color: var(--tinta-suave); white-space: nowrap;
-  transition: background-color var(--rapido), color var(--rapido);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva),
+              transform var(--rapido) var(--curva);
 }
+.alterna button:active { transform: scale(.94); }
 .alterna button::after { content: ""; position: absolute; inset: -.45rem 0; }
 .alterna button[aria-pressed="true"] {
   color: var(--rubrica); font-weight: 600;
@@ -536,8 +625,12 @@ h2.seccion {
   outline: 2px solid var(--rubrica); outline-offset: 1px;
 }
 /* al cambiar de opcion el texto nuevo entra sin sobresalto */
-.hora-sec.cambia { animation: aparece .22s ease-out; }
-@keyframes aparece { from { opacity: .35; } to { opacity: 1; } }
+.hora-sec.cambia { animation: cambia-texto var(--medio) var(--curva); }
+@keyframes cambia-texto {
+  from { opacity: .25; transform: translateY(.2rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes aparece { from { opacity: 0; transform: scale(.9); } to { opacity: 1; } }
 
 /* lo que añade la conmemoracion se distingue del oficio de la feria */
 .hora-sec.conm {
@@ -555,12 +648,26 @@ h2.seccion {
   text-align: justify; -webkit-hyphens: auto; hyphens: auto;
   text-wrap: pretty;
 }
-.prosa .ln + .ln { margin-top: .5em; }
+/* Dentro de un bloque los renglones son del mismo texto: lo que separa un
+   parrafo del siguiente es el renglon en blanco, que ya trae su aire. Asi
+   que aqui basta un respiro; y donde los renglones son una sola cosa
+   partida en varios —el «V.» y su «R.», el yo confieso— ni eso. */
+.prosa .ln + .ln { margin-top: .28em; }
+.prosa .ln.sigla + .ln.sigla,
+.hora-sec[data-cl="examen"] .ln + .ln { margin-top: .04em; }
 .prosa .ln.sigla { padding-left: 1.3em; text-indent: -1.3em; }
+/* una oracion escrita en renglones de sentido —el «Yo confieso»— no se
+   justifica: partida en trozos cortos, el justificado la llena de rios */
+.prosa .sentido .ln {
+  text-align: left; padding-left: 1.3em; text-indent: -1.3em;
+}
 /* Las preces son de dos partes: la peticion y la respuesta de todos. La
    respuesta va pegada a su peticion —no a media distancia de la prez
    siguiente— y entera con sangria, como en el libro. */
-.prosa .ln.prez-r { margin-top: .08em; padding-left: 1.6em; text-indent: 0; }
+.prosa .ln.prez-r { margin-top: .04em; padding-left: 1.6em; text-indent: 0; }
+/* los tomos impresos dan las preces seguidas, sin renglon en blanco: lo que
+   separa una prez de la siguiente es entonces esto */
+.prosa .ln.prez-r + .ln { margin-top: .62em; }
 /* el titulo del salmo y los titulillos de las lecturas: en versalitas */
 .hora-sec .ln.tit, .hora-sec .ln.solo-rub {
   padding-left: 0; text-indent: 0; text-align: left;
@@ -577,6 +684,51 @@ h2.seccion {
   color: var(--rubrica); font-weight: 600; font-size: .92em;
   font-style: normal; text-indent: 0;
 }
+
+/* --------------------------------------------------- el carril de la hora
+   Las cintas de un breviario, en una tira de rayas al borde de la caja: una
+   por seccion, la de donde se va leyendo mas larga y del color del dia.
+   Tocar una lleva a su seccion. En pantalla ancha no se va al borde de la
+   ventana, sino al de la columna, que es donde estaria la cinta. */
+.carril {
+  position: fixed; z-index: 24;
+  top: 50%; transform: translateY(-50%);
+  right: max(.3rem, calc(50% - var(--medida) / 2));
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: .1rem; padding: .35rem 0;
+  animation: aparece var(--medio) var(--curva);
+}
+.carril button {
+  display: block; width: 1.5rem; height: .85rem; padding: 0;
+  border: 0; background: none; cursor: pointer;
+  position: relative;
+}
+/* la raya se dibuja dentro, para que lo que se toca sea mayor que lo que
+   se ve: una raya de dos pixeles no se acierta con el pulgar */
+.carril button::before {
+  content: ""; position: absolute; right: .35rem; top: 50%;
+  width: .42rem; height: 2px; margin-top: -1px; border-radius: 2px;
+  background: var(--filete-fuerte);
+  transition: width var(--medio) var(--curva),
+              background-color var(--medio) var(--curva);
+}
+.carril button[aria-current]::before { width: .95rem; background: var(--acento); }
+.carril button:active::before { width: .95rem; }
+.carril button:focus-visible { outline: none; }
+.carril button:focus-visible::before { width: .95rem; background: var(--acento); }
+/* el nombre de la seccion, mientras se toca */
+.carril button::after {
+  content: attr(data-nombre); position: absolute; right: 1.35rem; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--sans); font-size: .68rem; white-space: nowrap;
+  color: var(--papel-alto); background: var(--acento);
+  padding: .15rem .45rem; border-radius: 999px;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--rapido) var(--curva);
+}
+.carril button:active::after, .carril button:focus-visible::after { opacity: 1; }
+body.con-carril #vista { padding-right: 2.1rem; }
+.hora-sec { scroll-margin-top: calc(var(--alto-cab-min, 0px) + .7rem); }
 
 /* -------------------------------------------------------------- portada
    Las dos puertas de la app, una encima de otra y del mismo tamano: no hay
@@ -604,9 +756,15 @@ h2.seccion {
   background: var(--papel-alto); box-shadow: var(--sombra);
   padding: 1.2rem 1.15rem 1.25rem; position: relative;
   border-left: 4px solid var(--acento);
-  transition: transform var(--rapido), background-color var(--rapido);
+  transition: transform var(--rapido) var(--curva),
+              background-color var(--medio) var(--curva),
+              border-color var(--lento) var(--curva),
+              box-shadow var(--medio) var(--curva);
 }
-.tarjeta:active { background: var(--filete); transform: scale(.995); }
+.tarjeta:active {
+  background: var(--filete); transform: scale(.985);
+  box-shadow: 0 1px 2px rgb(60 40 20 / .04);
+}
 .tarjeta-icono { display: block; color: var(--acento); margin-bottom: .55rem; }
 .tarjeta-icono svg { width: 1.7rem; height: 1.7rem; stroke-width: 1.5; }
 .tarjeta-t {
@@ -662,7 +820,10 @@ h2.seccion {
   border: 1px solid var(--filete-fuerte); background: var(--papel-alto);
   color: var(--acento); font-size: 1.3rem; line-height: 1;
 }
-.cal-anio button:active { background: var(--filete); }
+.cal-anio button {
+  transition: background-color var(--rapido), transform var(--rapido) var(--curva);
+}
+.cal-anio button:active { background: var(--filete); transform: scale(.9); }
 .cal-ciclo {
   margin: .4rem 0 .9rem; text-align: center; font-family: var(--sans);
   font-size: .74rem; color: var(--tinta-suave);
@@ -733,7 +894,8 @@ h2.seccion {
   padding: .65rem .3rem .65rem .6rem; text-decoration: none; color: inherit;
   border-bottom: 1px solid var(--filete);
   border-left: 3px solid var(--c, var(--filete));
-  transition: background-color var(--rapido);
+  transition: background-color var(--rapido),
+              border-color var(--lento) var(--curva);
 }
 .cal-dia:active { background: var(--filete); }
 .cal-dia[data-color="verde"]  { --c: #2f6b45; }
@@ -789,7 +951,9 @@ h2.seccion {
   display: flex; align-items: center; gap: .25rem;
   padding: 0 6px 0 4px;
   opacity: 0; visibility: hidden; transform: translateY(-.35rem);
-  transition: opacity var(--medio), transform var(--medio), visibility var(--medio);
+  transition: opacity var(--medio) var(--curva),
+              transform var(--medio) var(--curva),
+              visibility var(--medio);
 }
 #cabecera.cal-pegada .mini-cal { opacity: 1; visibility: visible; transform: none; }
 #cabecera.cal-pegada h1 { opacity: 0; }
@@ -805,7 +969,12 @@ h2.seccion {
 }
 .mini-anio button svg { width: 1.05rem; height: 1.05rem; stroke-width: 2; }
 .mini-hueco { width: 2.5rem; }
-.mini-anio button:active, .mini-lupa:active { background: var(--filete); }
+.mini-anio button, .mini-lupa {
+  transition: background-color var(--rapido), transform var(--rapido) var(--curva);
+}
+.mini-anio button:active, .mini-lupa:active {
+  background: var(--filete); transform: scale(.88);
+}
 .mini-lupa { width: 2.75rem; color: var(--tinta-suave); }
 .mini-meses {
   flex: 1; min-width: 0; display: flex; gap: .1rem;
@@ -820,7 +989,8 @@ h2.seccion {
   font-family: var(--sans); font-size: .74rem; letter-spacing: .02em;
   border: 0; border-radius: 999px; background: transparent; cursor: pointer;
   color: var(--tinta-suave);
-  transition: background-color var(--rapido), color var(--rapido);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva);
 }
 .mini-meses button.actual {
   color: var(--acento); font-weight: 600;

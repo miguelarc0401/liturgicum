@@ -331,7 +331,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
 
    Textos del PDF que ya estaban en la fuente y se usan con su traducción: 40
      San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
-     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-24/san bartolome apostol/oficio/responsorio (variante de otro año)
+     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-29/el martirio de san juan bautista/oficio/responsorio (variante de otro año)
      San Jerónimo Emiliano — responsorio  ←  tiempo: Ordinario/16/1/oficio/responsorio2
      Nuestra Señora de Lourdes — antífona del Magníficat  ←  santoral: 12-08/la inmaculada concepcion de la santisima virgen maria/visperas/cantico_evangelico
      San Juan de Dios, religioso — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
@@ -355,7 +355,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
      Santos Sixto II, papa, y compañeros, mártires — responsorio  ←  tiempo: Pascua/6/2/oficio/responsorio
      Santos Ponciano, papa, e Hipólito, mártires — responsorio  ←  santoral: 09-16/santos cornelio papa y cipriano obispo martires/oficio/responsorio2
      San Juan Eudes, presbítero — responsorio  ←  tiempo: Ordinario/4/3/oficio/responsorio
-     San José de Calasanz, presbítero — responsorio  ←  santoral: 07-24/san francisco solano presbitero/oficio/responsorio2
+     San José de Calasanz, presbítero — responsorio  ←  santoral: 06-05/san bonifacio obispo y martir/oficio/responsorio (variante de otro año)
      San Pedro Claver, presbítero — responsorio  ←  tiempo: Cuaresma/3/6/oficio/responsorio2
      San Calixto I, papa y mártir — responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
      Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2

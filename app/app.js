@@ -19,7 +19,9 @@ const POR_OMISION = {
   hAntFinal: '', calAbre: 'misa',
   // el formato del texto (Ajustes, «Formato del texto»)
   letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
-  particion: 'si', cruces: 'si', despierto: false
+  particion: 'si', cruces: 'si', despierto: false,
+  // al rezar (Ajustes, «Liturgia de las Horas»)
+  carril: 'si', gestos: 'si', rezadas: 'si'
 };
 
 const E = {              // todo el estado de la app
@@ -33,6 +35,8 @@ const E = {              // todo el estado de la app
   diaDeClave: new Map(), // clave de formulario -> día
   colorDe: new Map(),    // slug -> color litúrgico
   busqueda: null,
+  rezadas: null,        // las horas que ya se han rezado hoy
+  entraDesde: null,     // por qué lado entra la vista nueva, al deslizar
   vista: 'hoy',
   pos: {},               // vista -> {k, y}: dónde se dejó cada una
   claveVista: null,      // qué se está leyendo, para saber si es lo mismo
@@ -153,9 +157,21 @@ function guardaPosicion() {
   }
 }
 
+/** La vista nueva entra subiendo un pelo. Se reinicia el animación a mano
+ *  —quitar la clase, forzar el reflujo, volver a ponerla— porque el elemento
+ *  es siempre el mismo y el navegador, si no, no vuelve a arrancarla. */
+function entraVista() {
+  const dir = E.entraDesde;
+  E.entraDesde = null;
+  vista.classList.remove('entra', 'entra-izq', 'entra-der');
+  void vista.offsetWidth;
+  vista.classList.add(dir ? 'entra-' + dir : 'entra');
+}
+
 /** Después de pintar una vista: si es la misma que se dejó, al mismo sitio;
  *  si no, arriba (o donde diga `siNo`, que devuelve false si no hizo nada). */
 function colocaPosicion(siNo) {
+  entraVista();
   E.claveVista = claveVista();
   const p = E.pos[E.vista];
   if (p && p.k === E.claveVista) {
@@ -441,6 +457,7 @@ function limpiaCabExtra() {
   $('#cab-extra').innerHTML = '';
   $('#cabecera').classList.remove('cal-pegada');
   cabeceraFija(false);
+  limpiaCarril();
 }
 
 /* --------------------------------------------- la cabecera, al bajar
@@ -455,13 +472,23 @@ function limpiaCabExtra() {
  * todo lo de debajo sube de golpe). */
 let _altoCab = 0, _ultimoY = 0, _midiendoCab = false;
 
+/* Los dos altos de la cabecera —entera y resumida— se miden aquí y se dejan
+ * en dos variables: con los dos en pie, plegarse es una transición de
+ * `height` y no un corte. Se mide con la clase `midiendo`, que quita el alto
+ * impuesto y la transición, para que medir no dispare la animación. */
 function mideCabecera() {
   const cab = $('#cabecera');
   const min = cab.classList.contains('horas-min');
-  if (min) cab.classList.remove('horas-min');
+  const est = document.documentElement.style;
+  cab.classList.add('midiendo');
+  cab.classList.remove('horas-min');
   _altoCab = cab.offsetHeight;
-  document.documentElement.style.setProperty('--alto-cab', _altoCab + 'px');
-  if (min) cab.classList.add('horas-min');
+  cab.classList.add('horas-min');
+  const altoMin = cab.offsetHeight;
+  if (!min) cab.classList.remove('horas-min');
+  cab.classList.remove('midiendo');
+  est.setProperty('--alto-cab', _altoCab + 'px');
+  est.setProperty('--alto-cab-min', altoMin + 'px');
 }
 
 /** Enciende o apaga el resumen al bajar. Se llama con la cabecera ya
@@ -472,6 +499,7 @@ function cabeceraFija(si) {
     document.body.classList.remove('cab-fija');
     cab.classList.remove('horas-min');
     document.documentElement.style.removeProperty('--alto-cab');
+    document.documentElement.style.removeProperty('--alto-cab-min');
     _altoCab = 0;
     return;
   }
@@ -485,6 +513,7 @@ function cabeceraFija(si) {
  *  píxeles, que el dedo nunca baja recto. */
 function alDesplazarCabecera() {
   if (!document.body.classList.contains('cab-fija') || _midiendoCab) return;
+  if (Date.now() < _saltoHasta) { _ultimoY = Math.max(0, window.scrollY); return; }
   _midiendoCab = true;
   requestAnimationFrame(() => {
     _midiendoCab = false;
@@ -1030,9 +1059,9 @@ function verAjustes() {
   marcaBarra('ajustes');
   modoPanel('Ajustes');
   const sel = (id, etiqueta, pista, ops) =>
-    '<div class="ajuste"><label for="' + id + '">' + etiqueta
+    '<div class="ajuste"><label for="aj-' + id + '">' + etiqueta
     + (pista ? '<span class="pista">' + pista + '</span>' : '')
-    + '</label><select id="' + id + '">' + ops.map(([v, t]) =>
+    + '</label><select id="aj-' + id + '">' + ops.map(([v, t]) =>
       '<option value="' + v + '"' + (E.cfg[id] === v ? ' selected' : '')
       + '>' + t + '</option>').join('') + '</select></div>';
   vista.innerHTML = [
@@ -1047,13 +1076,13 @@ function verAjustes() {
     sel('numeros', 'Números de versículo', '', [[true, 'Sí'], [false, 'No']]),
     '<h2 class="seccion">Formato del texto</h2>',
     muestraFormato(),
-    '<div class="ajuste ancho"><label for="tam">Tamaño de letra'
+    '<div class="ajuste ancho"><label for="aj-tam">Tamaño de letra'
     + '<span class="pista">Lo de arriba es el texto de verdad, con las '
     + 'mismas reglas: lo que se vea ahí es lo que se verá rezando.</span>'
     + '</label>'
-    + '<input type="range" id="tam" min="80" max="200" step="5" value="'
+    + '<input type="range" id="aj-tam" min="80" max="200" step="5" value="'
     + E.cfg.tam + '">'
-    + '<span class="marcas"><span>Menor</span><span id="tam-pct">'
+    + '<span class="marcas"><span>Menor</span><span id="aj-tam-pct">'
     + E.cfg.tam + '%</span><span>Mayor</span></span></div>',
     sel('interlinea', 'Interlineado', '',
       [['compacto', 'Compacto'], ['normal', 'Normal'], ['holgado', 'Holgado']]),
@@ -1121,6 +1150,18 @@ function verAjustes() {
       'Las rúbricas dejan tomarlo del común o del día, y cada sección lleva '
       + 'su selector: esto sólo decide cuál viene marcado.',
       [['comun', 'Del común'], ['dia', 'Del día']]),
+    sel('carril', 'Índice de la hora',
+      'Las cintas del breviario: una raya por sección al borde de la caja, '
+      + 'más larga la de donde vas. Tocar una lleva a su sección.',
+      [['si', 'Sí'], ['no', 'No']]),
+    sel('gestos', 'Deslizar para cambiar de hora',
+      'Arrastrar sobre el texto pasa a la hora siguiente o a la anterior, y '
+      + 'de Completas al Oficio de lectura del día siguiente.',
+      [['si', 'Sí'], ['no', 'No']]),
+    sel('rezadas', 'Marcar lo ya rezado hoy',
+      'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
+      + 'nada: queda marcada aquella cuyo final has llegado a leer.',
+      [['si', 'Sí'], ['no', 'No']]),
     '<p class="pie">' + esc(E.lecturas.cabecera) + '<br><br>'
     + 'Calendario general romano y latinoamericano, con el propio y el común '
     + 'de los santos (leccionario V), las misas por diversas necesidades y '
@@ -1135,10 +1176,11 @@ function verAjustes() {
 }
 
 /** Un solo oyente para todos los ajustes: la vista se repinta a menudo y
- *  colgar oyentes en cada repintado los iría acumulando. */
+ *  colgar oyentes en cada repintado los iría acumulando. Los controles van
+ *  con el prefijo `aj-` para no chocar con los `id` de la página. */
 async function alCambiarAjuste(ev) {
   if (E.vista !== 'ajustes') return;
-  const id = ev.target.id;
+  const id = (ev.target.id || '').replace(/^aj-/, '');
   if (!(id in E.cfg)) return;
   let v = ev.target.value;
   if (v === 'true' || v === 'false') v = (v === 'true');
@@ -1146,7 +1188,7 @@ async function alCambiarAjuste(ev) {
   guardaCfg();
   aplicaCfg();
   if (id === 'tam') {
-    const pct = $('#tam-pct');
+    const pct = $('#aj-tam-pct');
     if (pct) pct.textContent = E.cfg.tam + '%';
   }
   if (id === 'fuente') {
@@ -1803,13 +1845,22 @@ function pintaLineas(lineas, prosa, seccion) {
     // la antífona y los «V.» y «R.» también cuelgan de su sigla
     else if (ln[0][0] && /^\s*(Ant|V\.|R\.)/.test(ln[0][1])) cl += ' sigla';
     if (resp && resp.has(i)) cl += ' prez-r';
-    actual.push('<span class="' + cl + '">'
-      + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
-      + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>');
+    actual.push({ sigla: cl.includes(' sigla'),
+      h: '<span class="' + cl + '">'
+        + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
+        + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>' });
   });
   cierra();
-  return bloques.map((b) => '<p class="estrofa-h">' + b.join('') + '</p>')
-    .join('');
+  return bloques.map((b) => {
+    // El examen de conciencia es lo único de la prosa que trae una oración
+    // escrita en renglones de sentido —el «Yo confieso»—, y ésa no se
+    // justifica: partida en trozos cortos, el justificado la llena de ríos
+    // de blanco. Va como los versos, a la izquierda y con sangría francesa.
+    // Su primer párrafo, que sí es prosa seguida, es bloque de un renglón.
+    const sentido = seccion === 'examen' && b.length > 1 && !b[0].sigla;
+    return '<p class="estrofa-h' + (sentido ? ' sentido' : '') + '">'
+      + b.map((x) => x.h).join('') + '</p>';
+  }).join('');
 }
 
 /** Al tocar una opción se repinta sólo esa sección: repintar la hora
@@ -1883,10 +1934,14 @@ function notaHoras(o) {
 }
 
 function pintaChipsHoras(iso, hora) {
+  const hoy = iso === hoyISO() && E.cfg.rezadas !== 'no' && E.rezadas;
   $('#formularios').innerHTML = HORAS.map(([cl, , nombre, breve]) => {
     const es = cl === hora;
-    return '<button data-hora="' + cl + '"' + (es ? ' class="sel"' : '')
-      + (es ? '' : ' aria-label="' + esc(nombre) + '"')
+    const ya = hoy && E.rezadas.h[cl];
+    const clases = (es ? 'sel' : '') + (ya ? ' rezada' : '');
+    return '<button data-hora="' + cl + '"'
+      + (clases.trim() ? ' class="' + clases.trim() + '"' : '')
+      + ' aria-label="' + esc(nombre) + (ya ? ', rezada' : '') + '"'
       + '>' + esc(es ? nombre : breve) + '</button>';
   }).join('');
 }
@@ -1902,7 +1957,7 @@ async function verHoras(iso, hora, idCel) {
   ponFecha(iso);
   $('#celebraciones').innerHTML = '';
   $('#nota-dia').style.display = 'none';
-  vista.innerHTML = '<p class="aviso">Abriendo el oficio…</p>';
+  vista.innerHTML = '<p class="aviso cargando">Abriendo el oficio…</p>';
   try {
     await cargaHoras();
   } catch (err) {
@@ -1941,7 +1996,179 @@ async function verHoras(iso, hora, idCel) {
     ? o.secciones.map(pintaSeccionHora).join('')
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
   cabeceraFija(true);
+  pintaCarril(o);
   colocaPosicion();
+}
+
+/* ------------------------------------------------- el carril de la hora
+ * Un breviario lleva cintas, y quien reza las usa: para volver a la
+ * salmodia, para adelantar a la lectura. Aquí son una tira de rayas al
+ * borde de la caja, una por sección; la de donde se va leyendo es más
+ * larga y del color del día, y tocar cualquiera lleva a la suya. */
+const NOMBRE_SEC = {
+  resena: 'Reseña', invocacion: 'Invocación', invitatorio: 'Invitatorio',
+  examen: 'Examen de conciencia', himno: 'Himno', himno2: 'Te Deum',
+  salmodia: 'Salmodia', salmodia2: 'Salmodia', lectura1: 'Primera lectura',
+  responsorio: 'Responsorio', lectura2: 'Segunda lectura',
+  responsorio2: 'Responsorio', lectura12: 'Lectura',
+  lectura_breve: 'Lectura breve', responsorio_breve: 'Responsorio breve',
+  cantico_evangelico: 'Cántico evangélico', preces: 'Preces',
+  oracion: 'Oración', oracion2: 'Oración', oracion3: 'Oración',
+  conclusion: 'Conclusión', bendicion: 'Bendición',
+  antifona_final: 'Antífona final', conm: 'Conmemoración',
+  conm_lectura: 'Lectura del santo', conm_resp: 'Responsorio del santo'
+};
+
+function nombreSeccion(s) {
+  if (NOMBRE_SEC[s.cl]) return NOMBRE_SEC[s.cl];
+  const r = (s.alts[s.i].c.r || '').split(':')[0].trim();
+  return r ? r.charAt(0) + r.slice(1).toLowerCase() : 'Sección';
+}
+
+function pintaCarril(o) {
+  // con tres secciones la hora cabe de un vistazo y la cinta sobra
+  if (E.cfg.carril === 'no' || !o || o.secciones.length < 4) {
+    limpiaCarril();
+    return;
+  }
+  const c = $('#carril');
+  c.innerHTML = o.secciones.map((s) => {
+    const n = esc(nombreSeccion(s));
+    return '<button type="button" data-nombre="' + n + '" aria-label="Ir a '
+      + n + '"></button>';
+  }).join('');
+  c.hidden = false;
+  document.body.classList.add('con-carril');
+  actualizaCarril();
+}
+
+function limpiaCarril() {
+  const c = $('#carril');
+  if (!c.hidden) { c.hidden = true; c.innerHTML = ''; }
+  document.body.classList.remove('con-carril');
+}
+
+/** La raya de la sección que se está leyendo: la última que ha pasado por
+ *  debajo de la cabecera; y al final del todo, la última de la hora. */
+function actualizaCarril() {
+  const c = $('#carril');
+  if (c.hidden) return;
+  const corte = $('#cabecera').getBoundingClientRect().bottom + 24;
+  const secs = document.querySelectorAll('#vista .hora-sec');
+  let n = 0;
+  secs.forEach((s, i) => { if (s.getBoundingClientRect().top <= corte) n = i; });
+  if (window.scrollY + window.innerHeight
+      >= document.documentElement.scrollHeight - 4) n = secs.length - 1;
+  c.querySelectorAll('button').forEach((b, i) => {
+    if (i === n) b.setAttribute('aria-current', 'true');
+    else b.removeAttribute('aria-current');
+  });
+}
+
+/* Mientras dura el salto no se toca la cabecera: subir a una sección
+ * anterior la haría crecer, y la sección quedaría debajo de ella. */
+let _saltoHasta = 0;
+
+function alTocarCarril(ev) {
+  const b = ev.target.closest('button');
+  if (!b || E.vista !== 'horas') return;
+  const i = Array.prototype.indexOf.call($('#carril').children, b);
+  const sec = document.querySelectorAll('#vista .hora-sec')[i];
+  if (!sec) return;
+  // se salta a un sitio lejano del texto: la cabecera se queda resumida,
+  // que es como está al bajar, y el renglón cae justo debajo de ella
+  $('#cabecera').classList.add('horas-min');
+  _saltoHasta = Date.now() + 800;
+  sec.scrollIntoView({ block: 'start', behavior: suave() });
+  setTimeout(() => { _saltoHasta = 0; alDesplazarCabecera(); }, 820);
+}
+
+/* --------------------------------------------------- deslizar de hora
+ * Las siete horas son una cadena, y la cadena no se corta al acabar el
+ * día: de Completas se pasa al Oficio de lectura del día siguiente, y al
+ * revés. El gesto no se recoge donde ya hay algo que se desliza a dedo
+ * —las tiras de la cabecera, los selectores, el carril—. */
+let _dedo = null;
+
+function alEmpezarGesto(ev) {
+  _dedo = null;
+  if (E.cfg.gestos === 'no' || E.vista !== 'horas'
+      || ev.touches.length !== 1) return;
+  if (ev.target.closest('.chips, .alterna, .carril, #cabecera, #barra, '
+    + 'input, select, a')) return;
+  const t = ev.touches[0];
+  _dedo = { x: t.clientX, y: t.clientY, t: Date.now() };
+}
+
+function alAcabarGesto(ev) {
+  const d = _dedo;
+  _dedo = null;
+  if (!d || E.vista !== 'horas' || !E.oficio) return;
+  const t = ev.changedTouches[0];
+  const dx = t.clientX - d.x;
+  const dy = t.clientY - d.y;
+  // ancho de sobra, más ancho que alto, y de una vez: un arrastre lento
+  // es alguien buscando dónde poner el dedo, no un gesto
+  if (Math.abs(dx) < 65 || Math.abs(dx) < Math.abs(dy) * 1.8) return;
+  if (Date.now() - d.t > 700) return;
+  otraHora(dx < 0 ? 1 : -1);
+}
+
+function otraHora(n) {
+  const i = HORAS.findIndex((x) => x[0] === E.hora) + n;
+  const iso = E.fecha || hoyISO();
+  E.entraDesde = n > 0 ? 'izq' : 'der';
+  // al cambiar de día no viaja la celebración elegida: es de aquel día
+  if (i < 0) location.hash = '#/h/' + suma(iso, -1) + '/completas';
+  else if (i >= HORAS.length) location.hash = '#/h/' + suma(iso, 1) + '/oficio';
+  else {
+    location.hash = '#/h/' + iso + '/' + HORAS[i][0]
+      + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '');
+  }
+}
+
+/* --------------------------------------------------- lo ya rezado hoy
+ * Un punto discreto en las horas que ya se han rezado hoy. No hay que
+ * decírselo a la app: cuenta como rezada aquella cuyo final se ha llegado
+ * a leer. Se guarda sólo el día de hoy, y cambiar de día lo olvida. */
+function cargaRezadas() {
+  E.rezadas = { d: hoyISO(), h: {} };
+  try {
+    const r = JSON.parse(localStorage.getItem('rezadas') || '{}');
+    if (r && r.d === hoyISO() && r.h) E.rezadas = r;
+  } catch (_) { /* sin almacenamiento: se marcan sólo en esta sesión */ }
+}
+
+function marcaRezada(hora) {
+  if (E.cfg.rezadas === 'no' || !hora || E.fecha !== hoyISO()) return;
+  if (E.rezadas.d !== hoyISO()) E.rezadas = { d: hoyISO(), h: {} };
+  if (E.rezadas.h[hora]) return;
+  E.rezadas.h[hora] = 1;
+  try {
+    localStorage.setItem('rezadas', JSON.stringify(E.rezadas));
+  } catch (_) {}
+  pintaChipsHoras(E.fecha, E.hora);
+}
+
+/* El carril y la marca de lo rezado miran dónde va la página, y mirarlo
+ * cuesta un reflujo: se hace una vez por cuadro y no una por cada aviso de
+ * desplazamiento, que en un dedo largo son decenas. */
+let _enDesplazamiento = false;
+function alDesplazarHoras() {
+  if (E.vista !== 'horas' || _enDesplazamiento) return;
+  _enDesplazamiento = true;
+  requestAnimationFrame(() => {
+    _enDesplazamiento = false;
+    actualizaCarril();
+    miraSiSeAcabo();
+  });
+}
+
+/** Al llegar al final de la hora, queda rezada. */
+function miraSiSeAcabo() {
+  if (E.vista !== 'horas' || E.cfg.rezadas === 'no') return;
+  if (window.scrollY + window.innerHeight
+      >= document.documentElement.scrollHeight - 120) marcaRezada(E.hora);
 }
 
 /** A qué hora del día corresponde la hora del reloj. */
@@ -1988,6 +2215,7 @@ function enruta() {
 async function arranca() {
   cargaCfg();
   cargaElecciones();
+  cargaRezadas();
   aplicaCfg();
   try {
     const [ind, cal] = await Promise.all([json('indice.json'),
@@ -2011,7 +2239,7 @@ async function arranca() {
   vista.addEventListener('click', alElegirOpcion);
   vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('input', (ev) => {
-    if (ev.target.id === 'tam') alCambiarAjuste(ev);
+    if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);
   });
   document.querySelectorAll('#barra button').forEach((b) =>
     b.addEventListener('click', () => {
@@ -2080,7 +2308,11 @@ async function arranca() {
   window.addEventListener('scroll', () => {
     alDesplazarCalendario();
     alDesplazarCabecera();
+    alDesplazarHoras();
   }, { passive: true });
+  $('#carril').addEventListener('click', alTocarCarril);
+  document.addEventListener('touchstart', alEmpezarGesto, { passive: true });
+  document.addEventListener('touchend', alAcabarGesto, { passive: true });
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) velaPantalla();
   });
