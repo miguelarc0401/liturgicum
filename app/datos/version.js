@@ -1,3 +1,3 @@
 // lo escribe src/15_app_data.py; cambia con los datos, y al
 // cambiar obliga al service worker a rehacer su cache
-self.VERSION_DATOS = "clementina+nova-3797684798";
+self.VERSION_DATOS = "clementina+nova-1313653425";

@@ -1,16 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Liturgicum">
-  <!-- El icono del navegador se ve a 16 píxeles: ahí no cabe el filete de la
-       tapa, que a ese tamaño se vuelve una mancha. Queda lo que aguanta: el
-       campo rojo, la cruz de oro y la cinta saliendo de detrás de ella. -->
+  <!-- La tapa del breviario, para el icono del navegador. A 16 píxeles no
+       cabe el IHS ni la orla de puntos del gofrado: queda la cruz
+       florenzada con sus remates, la ráfaga y el medallón. -->
   <defs>
-    <linearGradient id="campo" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#75141f"/>
-      <stop offset="1" stop-color="#4a0a15"/>
-    </linearGradient>
+    <radialGradient id="piel" cx="50%" cy="42%" r="72%">
+      <stop offset="0" stop-color="#7c161f"/>
+      <stop offset="1" stop-color="#46090f"/>
+    </radialGradient>
+    <g id="rayo"><path d="M32 12.5v7.5" fill="none" stroke="#d4af64" stroke-width="1.05"/></g>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#campo)"/>
-  <!-- la cinta, por detrás -->
-  <path fill="#b9823f" d="M41.5 26h5.6v26.5l-2.8-3-2.8 3z"/>
-  <!-- la cruz: brazos rectos, apenas abiertos hacia las puntas -->
-  <path fill="#e0bc74" d="M28.3 9.5h7.4l-.45 13.2H48.6l.9 7.6H35.1L35.9 54h-7.8l.8-23.7H14.5l.9-7.6h12.95z"/>
+  <rect width="64" height="64" rx="14" fill="url(#piel)"/>
+  <g>
+    <use href="#rayo"/>
+    <use href="#rayo" transform="rotate(30 32 32)"/>
+    <use href="#rayo" transform="rotate(60 32 32)"/>
+    <use href="#rayo" transform="rotate(90 32 32)"/>
+    <use href="#rayo" transform="rotate(120 32 32)"/>
+    <use href="#rayo" transform="rotate(150 32 32)"/>
+    <use href="#rayo" transform="rotate(180 32 32)"/>
+    <use href="#rayo" transform="rotate(210 32 32)"/>
+    <use href="#rayo" transform="rotate(240 32 32)"/>
+    <use href="#rayo" transform="rotate(270 32 32)"/>
+    <use href="#rayo" transform="rotate(300 32 32)"/>
+    <use href="#rayo" transform="rotate(330 32 32)"/>
+  </g>
+  <!-- los cuatro brazos, que se abren hacia la punta -->
+  <path fill="#d4af64" d="M30.3 7.8h3.4l.9 24.2h-5.2zM30.3 56.2h3.4l.9-24.2h-5.2z
+                          M7.8 30.3v3.4l24.2.9v-5.2zM56.2 30.3v3.4l-24.2.9v-5.2z"/>
+  <!-- los remates, con su crucecita -->
+  <g fill="#d4af64">
+    <circle cx="32" cy="8.6" r="4"/><circle cx="32" cy="55.4" r="4"/>
+    <circle cx="8.6" cy="32" r="4"/><circle cx="55.4" cy="32" r="4"/>
+  </g>
+  <g fill="#46090f">
+    <path d="M31.3 6.2h1.4v1.7h1.7v1.4h-1.7v1.7h-1.4V9.3h-1.7V7.9h1.7z"/>
+    <path d="M31.3 53h1.4v1.7h1.7v1.4h-1.7v1.7h-1.4v-1.7h-1.7v-1.4h1.7z"/>
+    <path d="M7.9 29.6h1.4v1.7H11v1.4H9.3v1.7H7.9v-1.7H6.2v-1.4h1.7z"/>
+    <path d="M54.7 29.6h1.4v1.7h1.7v1.4h-1.7v1.7h-1.4v-1.7H53v-1.4h1.7z"/>
+  </g>
+  <!-- el medallón del crucero -->
+  <ellipse cx="32" cy="32" rx="8.2" ry="10" fill="#d4af64"/>
+  <ellipse cx="32" cy="32" rx="7.2" ry="9" fill="#46090f"/>
+  <path fill="#d4af64" d="M30.8 25.5h2.4v3.4h2.6v2.3h-2.6v7.3h-2.4v-7.3h-2.6v-2.3h2.6z"/>
 </svg>

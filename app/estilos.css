@@ -180,15 +180,25 @@ body.cab-fija #subtitulo-dia {
   margin-top: calc(.2rem - .12rem * var(--pliegue, 0));
 }
 /* las tiras y la nota se recogen del todo: lo que queda al final es la
-   fecha, la hora y la celebracion, que es lo que hace falta saber */
+   fecha, la hora y la celebracion, que es lo que hace falta saber. El alto
+   del que se recogen es el suyo, medido al pintar: con un alto fijo, una
+   tira de dos renglones se quedaba cortada aun sin plegar. */
 body.cab-fija #celebraciones,
 body.cab-fija #formularios,
 body.cab-fija #nota-dia {
-  max-height: calc(3.4rem * (1 - var(--pliegue, 0)));
   margin-top: calc(.5rem * (1 - var(--pliegue, 0)));
   opacity: calc(1 - 1.5 * var(--pliegue, 0));
   overflow-y: hidden;
   padding-bottom: 0;
+}
+body.cab-fija #celebraciones {
+  max-height: calc(var(--alto-celebraciones, 6rem) * (1 - var(--pliegue, 0)));
+}
+body.cab-fija #formularios {
+  max-height: calc(var(--alto-formularios, 3.4rem) * (1 - var(--pliegue, 0)));
+}
+body.cab-fija #nota-dia {
+  max-height: calc(var(--alto-nota, 6rem) * (1 - var(--pliegue, 0)));
 }
 /* El pliegue va con el dedo, asi que lo que se calcula con el no lleva
    transicion: una transicion aqui es un retraso, no una suavidad. */
@@ -198,7 +208,7 @@ body.cab-fija #subtitulo-dia,
 body.cab-fija .fila-fecha .icono {
   transition: color var(--lento) var(--curva);
 }
-/* mientras se mide no hay transicion que valga */
+/* mientras se mide no hay transicion que valga, ni alto impuesto */
 #cabecera.midiendo, #cabecera.midiendo * { transition: none !important; }
 
 .fila-fecha { display: flex; align-items: center; gap: .15rem; }
@@ -302,10 +312,19 @@ body.cab-fija .fila-fecha .icono {
 #celebraciones { flex-wrap: wrap; overflow-x: visible; }
 #celebraciones button {
   display: flex; flex-direction: column; align-items: flex-start;
-  flex: 1 1 8.5rem; min-width: 0; white-space: normal;
+  flex: 1 1 0; min-width: 0; white-space: normal;
   line-height: 1.2; text-align: left; padding: .35rem .7rem;
   border-radius: .8rem;
 }
+/* con tres o cuatro posibles, el rotulo se achica para que quepan todas en
+   el mismo renglon: verlas es lo que importa, y se leen igual */
+#celebraciones:has(button:nth-child(3)) button {
+  font-size: .71rem; padding: .3rem .5rem;
+}
+#celebraciones:has(button:nth-child(4)) button {
+  font-size: .66rem; padding: .28rem .4rem;
+}
+#celebraciones:has(button:nth-child(3)) button small { font-size: .58rem; }
 #celebraciones button small {
   font-size: .62rem; letter-spacing: .06em; text-transform: uppercase;
   opacity: .8;
@@ -633,13 +652,20 @@ h2.seccion {
 /* El selector: una pildora fina, con la opcion elegida apenas tenida del
    color de la rubrica. Discreto a proposito: se toca una vez, si acaso, y
    despues se reza. El area que se toca es mas alta que lo que se ve. */
+/* El selector no se desliza ni se recorta: se ve entero o no sirve. Lo que
+   cede es el rotulo, que para eso lo mide la app al pintar. */
 .alterna {
   flex: 0 0 auto; display: inline-flex; margin-bottom: .35rem; padding: 2px;
   border: 1px solid var(--filete-fuerte); border-radius: 999px;
   background: var(--papel);
-  max-width: 62%; overflow-x: auto; scrollbar-width: none;
 }
-.alterna::-webkit-scrollbar { display: none; }
+.sec-cab.apretado .rotulo { font-size: .88rem; letter-spacing: .05em; }
+.sec-cab.muy-apretado .rotulo { font-size: .76rem; letter-spacing: .02em; }
+.sec-cab.muy-apretado .alterna button { font-size: .64rem; padding: .3rem .5rem; }
+/* y si ni asi: el selector baja a su renglon, pero sigue a la derecha */
+.sec-cab.parte { flex-wrap: wrap; }
+.sec-cab.parte .rotulo { flex: 1 1 100%; }
+.sec-cab.parte .alterna { margin-left: auto; margin-top: -.15rem; }
 .alterna button {
   position: relative;
   font-family: var(--sans); font-size: .7rem; letter-spacing: .03em;
@@ -734,7 +760,6 @@ h2.seccion {
 /* con el zoom en la fila van tres cosas en un renglon: se aprietan el
    hueco entre ellas y el selector, que es lo que mas sitio se lleva */
 .sec-cab:has(.zoom) { gap: .35rem .3rem; }
-.sec-cab:has(.zoom) .alterna { max-width: 46%; }
 .sec-cab:has(.zoom) .alterna button { font-size: .66rem; padding: .3rem .55rem; }
 .sec-cab:has(.zoom) .zoom button { width: 1.55rem; }
 .zoom button {

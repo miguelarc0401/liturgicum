@@ -35,6 +35,7 @@ const E = {              // todo el estado de la app
   diaDeClave: new Map(), // clave de formulario -> día
   colorDe: new Map(),    // slug -> color litúrgico
   busqueda: null,
+  sitios: {},           // fecha|hora -> dónde se dejó esa hora, y cuándo
   rezadas: null,        // las horas que ya se han rezado hoy
   entraDesde: null,     // por qué lado entra la vista nueva, al deslizar
   vista: 'hoy',
@@ -158,6 +159,25 @@ function guardaPosicion() {
     E.pos[E.vista] = { k: E.claveVista, y: window.scrollY };
   }
   E.donde = dondeIba();
+  guardaSitioHora();
+}
+
+/* Cada hora guarda el suyo: volver a Laudes es volver donde se dejó
+ * Laudes, no a lo que en Vísperas quedaba a la misma altura. Se olvida al
+ * cambiar de día —cada día es otro oficio— y al cabo de un minuto sin
+ * volver a ella, que entonces ya no se está siguiendo el mismo rezo. */
+const OLVIDO = 60000;
+
+function guardaSitioHora() {
+  if (E.vista !== 'horas' || !E.fecha || !E.hora) return;
+  E.sitios[E.fecha + '|' + E.hora] = { y: window.scrollY, t: Date.now() };
+}
+
+function vuelveAlSitioHora(iso, hora) {
+  const s = E.sitios[iso + '|' + hora];
+  if (!s || Date.now() - s.t > OLVIDO) return false;
+  window.scrollTo(0, s.y);
+  return true;
 }
 
 /* Pasar de Laudes a Vísperas, o del oficio del santo al de la feria, no es
@@ -172,12 +192,12 @@ function dondeIba() {
     if (x.getBoundingClientRect().top <= corte + 4) cual = x;
   });
   if (!cual) return null;
-  return { fecha: E.fecha, cl: cual.dataset.cl,
+  return { fecha: E.fecha, hora: E.hora, cl: cual.dataset.cl,
     dentro: corte - cual.getBoundingClientRect().top };
 }
 
 function vuelveADonde(d) {
-  if (!d || d.fecha !== E.fecha) return false;
+  if (!d || d.fecha !== E.fecha || d.hora !== E.hora) return false;
   const s = document.querySelector('#vista .hora-sec[data-cl="' + d.cl + '"]');
   if (!s) return false;
   const corte = $('#cabecera').getBoundingClientRect().bottom;
@@ -561,6 +581,14 @@ function mideCabecera() {
   const antes = _plegado;
   cab.classList.add('midiendo');
   ponPliegue(0);
+  // El alto propio de cada tira. `scrollHeight` lo da aunque el alto
+  // impuesto la recorte, que es justamente lo que hay que medir: con tres
+  // celebraciones posibles la tira lleva dos renglones y antes se cortaba.
+  for (const [id, v] of [['celebraciones', '--alto-celebraciones'],
+    ['formularios', '--alto-formularios'], ['nota-dia', '--alto-nota']]) {
+    const el = document.getElementById(id);
+    est.setProperty(v, (el ? el.scrollHeight : 0) + 'px');
+  }
   _altoCab = cab.offsetHeight;
   ponPliegue(1);
   const altoMin = cab.offsetHeight;
@@ -1454,18 +1482,22 @@ function bonito(g) { return g ? g.charAt(0) + g.slice(1).toLowerCase() : ''; }
  * toma del Común de la Virgen, y de Vísperas no tiene: las del sábado son
  * siempre las primeras del domingo. */
 const COMUN_VIRGEN = 'santisima virgen maria';
+// La memoria del sábado no pasa de Laudes: en la Hora intermedia no se hace
+// mención de las memorias, y las vísperas del sábado son las primeras del
+// domingo. Así que sólo se ofrece donde se puede rezar.
+const HORAS_SMV = ['oficio', 'laudes'];
 const SMV = {
   id: 'smv', t: 'Santa María Virgen en sábado', g: 'MEMORIA LIBRE',
   modo: 'memoria', smv: 1
 };
 
-function cabeSantaMaria(d) {
-  return d.d === 6 && d.t === 'Ordinario' && !d.cm
+function cabeSantaMaria(d, hora) {
+  return HORAS_SMV.includes(hora) && d.d === 6 && d.t === 'Ordinario' && !d.cm
     && !(d.c || []).some((c) => !/LIBRE/.test(c[3] || ''));
 }
 
 /** Qué oficios puede rezar quien abre el día, y cuál sale primero. */
-function celebracionesHoras(d) {
+function celebracionesHoras(d, hora) {
   const feria = { id: 'feria', t: d.tt, g: '', modo: 'feria' };
   const cs = (d.c || []).map((c) => ({
     id: c[0], t: c[2], g: c[3], cel: c,
@@ -1478,7 +1510,7 @@ function celebracionesHoras(d) {
   }
   // memorias libres: cualquiera de ellas, la de la Virgen si es sábado del
   // tiempo ordinario, o la feria
-  const libres = cabeSantaMaria(d) ? cs.concat([SMV]) : cs;
+  const libres = cabeSantaMaria(d, hora) ? cs.concat([SMV]) : cs;
   return {
     ops: libres.concat([feria]),
     def: cs.length && E.cfg.hLibre !== 'feria' ? cs[0].id : 'feria'
@@ -1899,7 +1931,7 @@ function armaHora(iso, hora, idCel) {
   // el año ferial (I o II), para la lectura bíblica del Oficio
   const d = Object.assign({ a: (anioDe(iso) || {}).ferial },
     E.horasDias.dias[iso]);
-  const cels = celebracionesHoras(d);
+  const cels = celebracionesHoras(d, hora);
   const op = cels.ops.find((o) => o.id === idCel)
     || cels.ops.find((o) => o.id === cels.def);
   let secciones = [];
@@ -2119,6 +2151,32 @@ function alElegirOpcion(ev) {
   if (caja) { sigueALaLectura(s, rb); repintaSeccion(caja, rb); }
 }
 
+/* Las opciones de una sección se ven todas o no sirven: antes se metían en
+ * una tira que se deslizaba, y lo que no cabía no existía. Ahora manda el
+ * selector y cede el rótulo: si la fila no da de sí, el rótulo se achica un
+ * punto, y otro si todavía no cabe. Hace falta medirlo —el ancho de un
+ * texto no se sabe hasta que está puesto—, así que se hace al pintar. */
+function aprietaCabeceras() {
+  document.querySelectorAll('#vista .sec-cab').forEach(aprietaCabecera);
+}
+
+function aprietaCabecera(c) {
+  const r = c.querySelector('.rotulo');
+  if (!r || !c.querySelector('.alterna')) return;
+  const cabe = () => r.scrollWidth <= r.clientWidth + 1;
+  c.classList.remove('apretado', 'muy-apretado', 'parte');
+  if (cabe()) return;
+  c.classList.add('apretado');
+  if (cabe()) return;
+  c.classList.add('muy-apretado');
+  if (cabe()) return;
+  // Ni achicándolo cabe —tres opciones y un rótulo largo no entran en un
+  // teléfono—: entonces el selector baja a su renglón, pegado a la derecha.
+  // Antes que recortar una opción o apretar el rótulo hasta lo ilegible.
+  c.classList.remove('apretado', 'muy-apretado');
+  c.classList.add('parte');
+}
+
 /** Cambia una sección por su versión nueva, sin tocar el resto de la hora. */
 function repintaSeccion(caja, s) {
   const t = document.createElement('template');
@@ -2126,6 +2184,7 @@ function repintaSeccion(caja, s) {
   const nueva = t.content.firstElementChild;
   nueva.classList.add('cambia');
   caja.replaceWith(nueva);
+  aprietaCabecera(nueva.querySelector('.sec-cab'));
   return nueva;
 }
 
@@ -2169,6 +2228,11 @@ function notaHoras(o) {
   }
   if (o.op.cel && d.v && o.hora === 'visperas') {
     n.push('Las vísperas de hoy son las primeras del domingo.');
+  }
+  if (E.horasCel === SMV.id && !o.op.smv) {
+    n.push('La memoria de Santa María en sábado no pasa de Laudes: en la '
+      + 'Hora intermedia no se hace mención de las memorias, y las vísperas '
+      + 'del sábado son las primeras del domingo.');
   }
   if (o.op.smv) {
     n.push('Memoria libre de Santa María Virgen en sábado: su oficio se '
@@ -2230,9 +2294,12 @@ async function verHoras(iso, hora, idCel) {
       + E.horasDias.rango[1] + ').</p>';
     return;
   }
-  // la celebración elegida viaja con la hora: pasar de Laudes a Vísperas
-  // no debe devolver a quien reza al oficio que no escogió
-  E.horasCel = o.cels.ops.length > 1 ? o.op.id : null;
+  // La celebración elegida viaja con la hora: pasar de Laudes a Vísperas no
+  // debe devolver a quien reza al oficio que no escogió. Y si esta hora no
+  // puede rezar la que se pidió —la Virgen del sábado no pasa de Laudes—,
+  // se recuerda igual, que al volver a Laudes se sigue queriendo aquélla.
+  E.horasCel = idCel && !o.cels.ops.some((x) => x.id === idCel) ? idCel
+    : (o.cels.ops.length > 1 ? o.op.id : null);
   pintaChipsCelebracionesHoras(o);
   notaHoras(o);
   const d = o.dia;
@@ -2255,7 +2322,12 @@ async function verHoras(iso, hora, idCel) {
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
   cabeceraFija(true);
   pintaCarril(o);
-  colocaPosicion(() => vuelveADonde(E.donde));
+  // después del carril: es él quien estrecha la caja, y el rótulo se mide
+  // contra el ancho que de verdad le queda
+  aprietaCabeceras();
+  // el mismo oficio en otra forma —del santo, de la feria— se sigue donde
+  // se iba; otra hora, donde se dejó aquélla
+  colocaPosicion(() => vuelveADonde(E.donde) || vuelveAlSitioHora(iso, hora));
 }
 
 /* ---------------------------------------------- el tamaño, a la mano
@@ -2280,6 +2352,7 @@ function alTocarZoom(ev) {
   E.cfg.tam = v;
   guardaCfg();
   aplicaCfg();
+  aprietaCabeceras();
   if (document.body.classList.contains('cab-fija')) mideCabecera();
 }
 
@@ -2367,10 +2440,11 @@ function alTocarCarril(ev) {
 }
 
 /* --------------------------------------------------- deslizar de hora
- * Las siete horas son una cadena, y la cadena no se corta al acabar el
- * día: de Completas se pasa al Oficio de lectura del día siguiente, y al
- * revés. El gesto no se recoge donde ya hay algo que se desliza a dedo
- * —las tiras de la cabecera, los selectores, el carril—. */
+ * El dedo pasa de una hora a la siguiente y se para en los extremos: del
+ * Oficio de lectura no se sale hacia atrás ni de Completas hacia delante.
+ * Cambiar de día es cosa de las flechas de la fecha, que es donde se ve lo
+ * que se hace. El gesto no se recoge donde ya hay algo que se desliza a
+ * dedo —las tiras de la cabecera, los selectores, el carril—. */
 let _dedo = null;
 
 function alEmpezarGesto(ev) {
@@ -2399,15 +2473,10 @@ function alAcabarGesto(ev) {
 
 function otraHora(n) {
   const i = HORAS.findIndex((x) => x[0] === E.hora) + n;
-  const iso = E.fecha || hoyISO();
+  if (i < 0 || i >= HORAS.length) return;
   E.entraDesde = n > 0 ? 'izq' : 'der';
-  // al cambiar de día no viaja la celebración elegida: es de aquel día
-  if (i < 0) location.hash = '#/h/' + suma(iso, -1) + '/completas';
-  else if (i >= HORAS.length) location.hash = '#/h/' + suma(iso, 1) + '/oficio';
-  else {
-    location.hash = '#/h/' + iso + '/' + HORAS[i][0]
-      + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '');
-  }
+  location.hash = '#/h/' + (E.fecha || hoyISO()) + '/' + HORAS[i][0]
+    + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '');
 }
 
 /* --------------------------------------------------- lo ya rezado hoy
