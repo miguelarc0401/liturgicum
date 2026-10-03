@@ -55,6 +55,41 @@ if (-not $hayCambios) {
     exit 0
 }
 
+# Antes de commitear, mirar si entra algo gordo. `git add -A` lo coge todo, y
+# una carpeta de fuentes nueva -los cien misalitos del Missale fueron 364 MB-
+# se cuela sin que nadie lo note y se queda en la historia para siempre, que
+# es de donde ya no se saca sin reescribirla. Esto no decide: avisa, con los
+# ficheros por delante, y espera un "s".
+$umbralMB = 5
+$gordos = @()
+foreach ($ruta in (git diff --cached --name-only --diff-filter=AM)) {
+    if (Test-Path -LiteralPath $ruta -PathType Leaf) {
+        $mb = (Get-Item -LiteralPath $ruta).Length / 1MB
+        if ($mb -ge $umbralMB) { $gordos += [pscustomobject]@{ MB = $mb; Ruta = $ruta } }
+    }
+}
+if ($gordos.Count -gt 0) {
+    $totalMB = ($gordos | Measure-Object -Property MB -Sum).Sum
+    Write-Host ""
+    Write-Host ("Van a entrar {0} fichero(s) de mas de {1} MB, {2:N0} MB en total:" -f `
+        $gordos.Count, $umbralMB, $totalMB) -ForegroundColor Yellow
+    foreach ($g in ($gordos | Sort-Object -Property MB -Descending | Select-Object -First 12)) {
+        Write-Host ("   {0,8:N1} MB  {1}" -f $g.MB, $g.Ruta)
+    }
+    if ($gordos.Count -gt 12) {
+        Write-Host ("   ... y {0} mas" -f ($gordos.Count - 12))
+    }
+    Write-Host ""
+    Write-Host "Si son fuentes -PDF, volcados, cosas que se vuelven a generar con una" -ForegroundColor Yellow
+    Write-Host "orden-, no van al repositorio: ponlas en .gitignore y vuelve a intentarlo." -ForegroundColor Yellow
+    $r = Read-Host "Subirlos de todos modos? (escribe si)"
+    if ($r -notin @("si", "SI", "Si", "s", "S", "yes", "y")) {
+        git reset --quiet
+        Write-Host "`nNo se ha subido nada. Lo que habia preparado se ha des-preparado." -ForegroundColor Yellow
+        exit 1
+    }
+}
+
 if (-not $Mensaje) {
     $Mensaje = "Actualizo el leccionario ({0})" -f (Get-Date -Format "yyyy-MM-dd HH:mm")
 }

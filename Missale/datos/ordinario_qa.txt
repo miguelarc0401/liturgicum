@@ -1,0 +1,758 @@
+Fase 2 — el Ordinario de la Misa de México
+==========================================
+
+fuente: Ordinario de la Misa México (1).pdf
+        3293 líneas de tiradas
+        501 enteramente en rojo (rúbrica), 2365 en negro (texto), 427 mixtas
+
+  Las mixtas son texto rezado con una marca dentro: el «V/.» del
+  diálogo, el «N.» del Papa, el corchete de lo que puede
+  omitirse. Se guardan enteras, con su color tirada a tirada.
+
+  encabezados de página retirados: 125
+  reglas decorativas retiradas: 43
+
+Las secciones
+-------------
+
+  p. 1  RITOS INICIALES
+  p. 7  LITURGIA DE LA PALABRA
+  p. 12  LITURGIA EUCARÍSTICA
+  p. 118  RITO DE COMUNIÓN
+  p. 124  RITO DE CONCLUSIÓN
+
+La numeración de las rúbricas, y lo que el libro imprime mal
+------------------------------------------------------------
+
+  La serie va de 1 a 146 y es monótona, y eso basta para corregir
+  casi todo sin adivinar: si un número rompe la serie y el
+  siguiente es el que vendría después del que falta, el de en
+  medio sólo puede ser ése. El que el testigo no avale se deja
+  como está, porque un hueco puede ser real: el 61 lo es.
+
+  rúbricas numeradas halladas: 145
+
+  corregidas por la serie: 5
+      p. 5: el libro pone «7.» y es el 8
+          7. A continuación, si está prescrito, se canta el himno:
+      p. 8: el libro pone «15.» y es el 16
+          15. Acabado el Evangelio el diácono (o el sacerdote) dice:
+      p. 31: el libro pone «46.» y es el 45
+          46. Este prefacio se dice durante el tiempo pascual.
+      p. 102: el libro pone «122.» y es el 108
+          122. El sacerdote, con las manos extendidas, dice:
+      p. 120: el libro pone «144.» y es el 130
+          144. Mientras tanto se canta o se dice:
+
+  corregidas a mano, con su prueba: 2
+      p. 109: el libro pone «116.» y es el 114
+          116. Toma la patena con el pan consagrado y el cáliz y, sosteniéndolos elevados, dice:
+          porque es la doxología de la plegaria III, que el latino numera 114; el Ordinario la imprime detrás del inserto de difuntos y le repite el 116 de la nota del prefacio
+      p. 123: el libro pone «153.» y es el 139b
+          153. Después el sacerdote, con las manos extendidas, dice la oración después de la comun
+          porque el 153 no existe en una serie de 146; el latino lleva esa indicación dentro de su 139, así que el castellano partió esa rúbrica en dos
+
+  números fuera de serie que **no** son error: 4
+      Son los que vienen detrás de un hueco real o de una
+      corrección, y están bien como están.
+      p. 56: «62.» — 62. Este prefacio se dice en las misas de la Santísima Virgen, añadiendo en su
+      p. 91: «94.» — 94. Inclinado, con las manos juntas prosigue:
+      p. 108: «115.» — 115. Cuando esta plegaria eucarística se utiliza en las misas de difuntos, pue
+      p. 110: «116.» — 116. Esta plegaria eucarística forma un todo con su prefacio, el cual nunca pu
+
+  huecos que quedan en 1-146: [61, 93]
+  números repetidos que quedan: ninguno
+  números mayores de 146 que quedan: ninguno
+
+  Los huecos, con la rúbrica latina del mismo número al lado,
+  que es lo que dice si falta texto o si el castellano lo
+  metió dentro de la rúbrica de antes:
+
+      61
+          la: Sequens præfatio dicitur in sollemnitate Ss.mi Corporis et Sanguinis Christi et in Mi
+      93
+          la: Supra quæ propítio ac seréno vultu respícere dignéris:
+          es 92: Después el sacerdote, con las manos extendidas, dice: Por eso, Padre, nosotros, tus s
+
+Las alternativas: lo que el Ordinario deja elegir
+-------------------------------------------------
+
+  Cada «O bien:» abre una opción dentro de su rúbrica. La
+  primera es la que la app muestra; las demás quedan detrás de
+  un «O bien», que es lo que se pidió para quien reza.
+
+  rúbricas con alternativa: 12
+  alternativas en total: 27
+
+  n. 2 (RITOS INICIALES), p. 1: 3 opciones
+      0: El Señor esté con ustedes.
+      1: La gracia de nuestro Señor Jesucristo, el amor del Padre y la comunión
+      2: La gracia y la paz de Dios, nuestro Padre, y de Jesucristo, el Señor,
+  n. 4 (RITOS INICIALES), p. 2: 4 opciones
+      0: Hermanos: para celebrar dignamente estos sagrados misterios
+      1: El Señor Jesús,
+      2: Al comenzar esta celebración eucarística,
+      3: Humildes y penitentes, como el publicano en el templo,
+  n. 16 (LITURGIA DE LA PALABRA), p. 8: 3 opciones
+      0: Palabra del Señor.
+      1: Tu palabra, Señor, es lámpara
+      2: Tu palabra, Señor,
+  n. 29 (LITURGIA EUCARÍSTICA), p. 13: 3 opciones
+      0: Oren, hermanos,
+      1: En el momento de ofrecer
+      2: Oren, hermanos,
+  n. 91 (PLEGARIA EUCARÍSTICA I), p. 90: 3 opciones
+      0: Éste es el Misterio de la fe.
+      1: Éste es el Sacramento de nuestra fe.
+      2: Éste es el Misterio de la fe.
+  n. 104 (PLEGARIA EUCARÍSTICA II), p. 96: 3 opciones
+      0: Éste es el Misterio de la fe.
+      1: Éste es el Sacramento de nuestra fe.
+      2: Éste es el Misterio de la fe.
+  n. 112 (PLEGARIA EUCARÍSTICA III), p. 104: 3 opciones
+      0: Éste es el Misterio de la fe.
+      1: Éste es el Sacramento de nuestra fe.
+      2: Éste es el Misterio de la fe.
+  n. 121 (PLEGARIA EUCARÍSTICA IV), p. 114: 3 opciones
+      0: Éste es el Misterio de la fe.
+      1: Éste es el Sacramento de nuestra fe.
+      2: Éste es el Misterio de la fe.
+  n. 124 (RITO DE COMUNIÓN), p. 118: 4 opciones
+      0: Fieles a la recomendación del Salvador
+      1: Llenos de alegría por ser hijos de Dios,
+      2: El amor de Dios ha sido derramado
+      3: Antes de participar en el banquete de la Eucaristía,
+  n. 128 (RITO DE COMUNIÓN), p. 120: 4 opciones
+      0: Dense fraternalmente la paz.
+      1: Como hijos de Dios, intercambien ahora
+      2: En Cristo, que nos ha hecho hermanos con su cruz,
+      3: En el Espíritu de Cristo resucitado,
+  n. 131 (RITO DE COMUNIÓN), p. 121: 2 opciones
+      0: Señor Jesucristo, Hijo de Dios vivo,
+      1: Señor Jesucristo,
+  n. 144 (RITO DE CONCLUSIÓN), p. 125: 4 opciones
+      0: Pueden ir en paz.
+      1: La alegría del Señor sea nuestra fuerza.
+      2: Glorifiquen al Señor con su vida.
+      3: En el nombre del Señor,
+
+Las plegarias eucarísticas
+--------------------------
+
+  Cada plegaria son las rúbricas 83-123 de la serie, así que no
+  se guardan dos veces: aquí va de qué número a qué número llega
+  cada una, y sus partes propias, que es lo que el Ordinario
+  abre a elegir.
+
+  PLEGARIA EUCARÍSTICA I o CANON ROMANO  (p. 83)
+      rúbricas 83-98 (15 en total)
+      REUNIDOS EN COMUNIÓN PROPIOS: 33 líneas, 7 indicaciones
+          En los domingos, cuando no hay otro Reunidos en comunión propio:
+          En la Natividad del Señor y durante su octava:
+          En la Epifanía del Señor:
+          En el Jueves Santo:
+          Desde la misa de la Vigilia Pascual hasta el Segundo Domingo de Pascua:
+          En la Ascensión del Señor:
+          En el Domingo de Pentecostés:
+  PLEGARIA EUCARÍSTICA II  (p. 94)
+      rúbricas 99-106 (8 en total)
+      INTERCESIONES PARTICULARES: 58 líneas, 7 indicaciones
+          En las misas de Pascua, de su octava y en la del bautismo de adultos:
+          En la misa del bautismo de niños:
+          En la misa de confirmación:
+          En la misa de primera comunión:
+          En la misa del matrimonio:
+          En la misa por los difuntos:
+          Junta las manos.
+  PLEGARIA EUCARÍSTICA III  (p. 102)
+      rúbricas 107-115 (9 en total)
+      INTERCESIONES PARTICULARES: 45 líneas, 11 indicaciones
+          En las misas de Pascua, de su octava y en la del bautismo de adultos:
+          En la misa del bautismo de niños:
+          En la misa de la confirmación:
+          En la misa de primera comunión:
+          En la misa del matrimonio:
+          En los domingos, cuando no hay otro recuerdo más propio, puede decirse:
+          En la Natividad del Señor y durante su octava:
+          En la Epifanía del Señor:
+          Desde la misa de la Vigilia pascual hasta el segundo domingo de Pascua:
+          En la Ascensión del Señor
+          En el domingo de Pentecostés:
+  PLEGARIA EUCARÍSTICA IV  (p. 110)
+      rúbricas 116-123 (8 en total)
+      INTERCESIONES PARTICULARES: 32 líneas, 5 indicaciones
+          En las misas de Pascua y en la del bautismos:
+          En la misa de la confirmación:
+          En la misa de primera comunión:
+          En la misa del matrimonio:
+          Junta las manos.
+
+Los prefacios
+-------------
+
+  prefacios castellanos: 67
+      numerados (= los que tiene el latín): 50
+      sin número (= los que el latín no tiene): 17
+  prefacios latinos del cuerpo (nn. 33-82): 50
+
+  La tabla de correspondencia, por número de rúbrica:
+
+   33  es  PREFACIO I DE ADVIENTO
+       epígrafe  LAS DOS VENIDAS DE CRISTO
+       la  PRÆFATIO I DE ADVENTU
+       epígrafe  De duobus adventibus Christi
+   34  es  PREFACIO II DE ADVIENTO
+       epígrafe  LA DOBLE ESPERA DE CRISTO
+       la  PRÆFATIO II DE ADVENTU
+       epígrafe  De duplici exspectatione Christi
+   35  es  PREFACIO I DE NAVIDAD
+       epígrafe  CRISTO, LUZ DEL MUNDO
+       la  PRÆFATIO I DE NATIVITATE DOMINI
+       epígrafe  De Christo luce
+   36  es  PREFACIO II DE NAVIDAD
+       epígrafe  LA RESTAURACIÓN DEL UNIVERSO EN LA ENCARNACIÓN
+       la  PRÆFATIO II DE NATIVITATE DOMINI
+       epígrafe  De restauratione universa in Incarnatione
+   37  es  PREFACIO III DE NAVIDAD
+       epígrafe  EL INTERCAMBIO EFECTUADO EN LA ENCARNACIÓN DEL VERBO
+       la  PRÆFATIO III DE NATIVITATE DOMINI
+       epígrafe  De commercio in Incarnatione Verbi
+   38  es  PREFACIO DE LA EPIFANÍA DEL SEÑOR
+       epígrafe  CRISTO, LUZ DE LOS PUEBLOS
+       la  PRÆFATIO DE EPIPHANIA DOMINI
+       epígrafe  De Christo lumine gentium
+   39  es  PREFACIO I DE CUARESMA
+       epígrafe  SIGNIFICACIÓN ESPIRITUAL DE LA CUARESMA
+       la  PRÆFATIO I DE QUADRAGESIMA
+       epígrafe  De spiritali significatione Quadragesimæ
+   40  es  PREFACIO II DE CUARESMA
+       epígrafe  LA PENITENCIA ESPIRITUAL
+       la  PRÆFATIO II DE QUADRAGESIMA
+       epígrafe  De spiritali pænitentia
+   41  es  PREFACIO III DE CUARESMA
+       epígrafe  LOS FRUTOS DE LAS PRIVACIONES VOLUNTARIAS
+       la  PRÆFATIO III DE QUADRAGESIMA
+       epígrafe  De fructibus abstinentiæ
+   42  es  PREFACIO IV DE CUARESMA
+       epígrafe  LOS FRUTOS DEL AYUNO
+       la  PRÆFATIO IV DE QUADRAGESIMA
+       epígrafe  De fructibus ieiunii
+   43  es  PREFACIO I DE LA PASIÓN DEL SEÑOR
+       epígrafe  LA FUERZA DE LA CRUZ
+       la  PRÆFATIO I DE PASSIONE DOMINI
+       epígrafe  De virtute Crucis
+   44  es  PREFACIO II DE LA PASIÓN DEL SEÑOR
+       epígrafe  LA VICTORIA DE LA PASIÓN
+       la  PRÆFATIO II DE PASSIONE DOMINI
+       epígrafe  De victoria Passionis
+   45  es  PREFACIO PASCUAL I
+       epígrafe  EL MISTERIO PASCUAL
+       la  PRÆFATIO PASCHALIS I
+       epígrafe  De mysterio paschali
+   46  es  PREFACIO PASCUAL II
+       epígrafe  LA NUEVA VIDA EN CRISTO
+       la  PRÆFATIO PASCHALIS II
+       epígrafe  De vita nova in Christo
+   47  es  PREFACIO PASCUAL III
+       epígrafe  CRISTO VIVO E INTERCESOR PERPETUO EN FAVOR NUESTRO
+       la  PRÆFATIO PASCHALIS III
+       epígrafe  De Christo vivente et semper interpellante pro nobis
+   48  es  PREFACIO PASCUAL IV
+       epígrafe  LA RESTAURACIÓN DEL UNIVERSO POR LE MISTERIO PASCUAL
+       la  PRÆFATIO PASCHALIS IV
+       epígrafe  De restauratione universi per mysterium paschale
+   49  es  PREFACIO PASCUAL V
+       epígrafe  CRISTO, SACERDOTE Y VÍCTIMA
+       la  PRÆFATIO PASCHALIS V
+       epígrafe  De Christo sacerdote et victima
+   50  es  PREFACIO I DE LA ASCENSIÓN DEL SEÑOR
+       epígrafe  EL MISTERIO DE LA ASCENSIÓN
+       la  PRÆFATIO I DE ASCENSIONE DOMINI
+       epígrafe  De mysterio Ascensionis
+   51  es  PREFACIO II DE LA ASCENSIÓN DEL SEÑOR
+       epígrafe  EL MISTERIO DE LA ASCENSIÓN
+       la  PRÆFATIO II DE ASCENSIONE DOMINI
+       epígrafe  De mysterio Ascensionis
+   52  es  PREFACIO I PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  EL MISTERIO PASCUAL HA HECHO DE NOSOTROS EL PUEBLO DE DIOS
+       la  PRÆFATIO I DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De mysterio paschali et de populo Dei
+   53  es  PREFACIO II PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  EL PLAN DIVINO DE LA SALVACIÓN
+       la  PRÆFATIO II DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De mysterio salutis
+   54  es  PREFACIO III PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  EL HOMBRE SALVADO POR UN HOMBRE
+       la  PRÆFATIO III DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De salvatione hominis per hominem
+   55  es  PREFACIO IV PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  LAS ETAPAS DE LA HISTORIA DE LA SALVACIÓN EN CRISTO
+       la  PRÆFATIO IV DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De historia salutis
+   56  es  PREFACIO V PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  LAS MARAVILLAS DE LA CREACIÓN
+       la  PRÆFATIO V DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De creatione
+   57  es  PREFACIO VI PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  LA PRENDA DE NUESTRA PASCUA ETERNA
+       la  PRÆFATIO VI DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De pignore æterni Paschatis
+   58  es  PREFACIO VII PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  LA SALVACIÓN, FRUTO DE LA OBEDIENCIA DE CRISTO
+       la  PRÆFATIO VII DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De salute per obœdientiam Christi
+   59  es  PREFACIO VIII PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+       epígrafe  LA IGLESIA UNIFICADA POR VIRTUD Y A IMAGEN DE LA TRINIDAD
+       la  PRÆFATIO VIII DE DOMINICIS “ PER ANNUM ”
+       epígrafe  De Ecclesia adunata ex unitate Trinitatis
+   60  es  PREFACIO I DE LA SANTÍSIMA EUCARISTÍA
+       epígrafe  EL SACRIFICIO Y EL SACRAMENTO DE CRISTO
+       la  PRÆFATIO I DE SS.MA EUCHARISTIA
+       epígrafe  De sacrificio et de sacramento Christi
+   61  es  PREFACIO II DE LA SANTÍSIMA EUCARISTÍA
+       epígrafe  LOS FRUTOS DE LA SANTÍSIMA EUCARISTÍA
+       la  PRÆFATIO II DE SS.MA EUCHARISTIA
+       epígrafe  De fructibus Sanctissimæ Eucharistiæ
+   62  es  PREFACIO I DE SANTA MARÍA VIRGEN
+       epígrafe  LA MATERNIDAD DE MARÍA
+       la  PRÆFATIO I DE BEATA MARIA VIRGINE
+       epígrafe  De Maternitate beatae Mariæ Virginis
+   63  es  PREFACIO II DE SANTA MARÍA VIRGEN
+       epígrafe  LA IGLESIA ALABA A DIOS INSPIRÁNDOSE EN LAS PALABRAS DE MARÍA
+       la  PRÆFATIO II DE BEATA MARIA VIRGINE
+       epígrafe  Ecclesia, verbis Mariæ, laudes Deo persolvit
+   64  es  PREFACIO I DE LOS APÓSTOLES
+       epígrafe  LOS APÓSTOLES, PASTORES DEL PUEBLO DE DIOS
+       la  PRÆFATIO I DE APOSTOLIS
+       epígrafe  De Apostolis pastoribus populi Dei
+   65  es  PREFACIO II DE LOS APÓSTOLES
+       epígrafe  LOS APÓSTOLES, FUNDAMENTO DE LA IGLESIA Y TESTIMONIO PARA EL
+       la  PRÆFATIO II DE APOSTOLIS
+       epígrafe  De apostolico fundamento et testimonio
+   66  es  PREFACIO I DE LOS SANTOS
+       epígrafe  LA GLORIA DE LOS SANTOS
+       la  PRÆFATIO I DE SANCTIS
+       epígrafe  De gloria Sanctorum
+   67  es  PREFACIO II DE LOS SANTOS
+       epígrafe  EFICACIA DE LA ACCIÓN DE LOS SANTOS
+       la  PRÆFATIO II DE SANCTIS
+       epígrafe  De actione Sanctorum
+   68  es  PREFACIO I DE LOS SANTOS MÁRTIRES
+       epígrafe  SIGNIFICADO Y EJEMPLARIDAD DEL MARTIRIO
+       la  PRÆFATIO I DE SANCTIS MARTYRIBUS
+       epígrafe  De signo et exemplo martyrii
+   69  es  PREFACIO II DE LOS SANTOS MÁRTIRES
+       epígrafe  SIGNIFICADO Y EJEMPLARIDAD DEL MARTIRIO
+       la  PRÆFATIO II DE SANCTIS MARTYRIBUS
+       epígrafe  De mirabilibus Dei in martyrum victoria
+   70  es  PREFACIO DE LOS SANTOS PASTORES
+       epígrafe  LA PRESENCIA DE LOS SANTOS PASTORES EN LA IGLESIA
+       la  PRÆFATIO DE SANCTIS PASTORIBUS
+       epígrafe  De præsentia sanctorum Pastorum in Ecclesia
+   71  es  PREFACIO DE SANTAS VÍRGENES Y RELIGIOSOS
+       epígrafe  SIGNIFICADO DE LA VIDA CONSAGRADA EXCLUSIVA A DIOS
+       la  PRÆFATIO DE SANCTIS VIRGINIBUS ET RELIGIOSIS
+       epígrafe  De signo vitæ Deo consecratæ
+   72  es  PREFACIO COMÚN I
+       epígrafe  EL UNIVERSO RESTAURADO EN CRISTO
+       la  PRÆFATIO COMMUNIS I
+       epígrafe  De universali restauratione in Christo
+   73  es  PREFACIO COMÚN II
+       epígrafe  LA SALVACIÓN POR CRISTO
+       la  PRÆFATIO COMMUNIS II
+       epígrafe  De salute per Christum
+   74  es  PREFACIO COMÚN III
+       epígrafe  ALABANZA A DIOS QUE NOS CREÓ Y NOS HA REDIMIDO EN CRISTO
+       la  PRÆFATIO COMMUNIS III
+       epígrafe  Laudes Deo pro creatione et reformatione hominis
+   75  es  PREFACIO COMÚN IV
+       epígrafe  NUESTRA MISMA ACCIÓN DE GRACIAS ES UN DON DE DIOS
+       la  PRÆFATIO COMMUNIS IV
+       epígrafe  De laude, dono Dei
+   76  es  PREFACIO COMÚN V
+       epígrafe  PROCLAMACIÓN DEL MISTERIO DE CRISTO
+       la  PRÆFATIO COMMUNIS V
+       epígrafe  Proclamatio mysterii Christi
+   77  es  PREFACIO COMÚN VI
+       epígrafe  EL MISTERIO DE LA SALVACIÓN EN CRISTO
+       la  PRÆFATIO COMMUNIS VI
+       epígrafe  De mysterio salutis in Christo
+   78  es  PREFACIO I DE DIFUNTOS
+       epígrafe  LA ESPERANZA DE LA RESURRECCIÓN EN CRISTO
+       la  PRÆFATIO I DE DEFUNCTIS
+       epígrafe  De spe resurrectionis in Christo
+   79  es  PREFACIO II DE DIFUNTOS
+       epígrafe  CRISTO HA MUERTO PARA NUESTRA VIDA
+       la  PRÆFATIO II DE DEFUNCTIS
+       epígrafe  Christus mortuus est pro vita nostra
+   80  es  PREFACIO III DE DIFUNTOS
+       epígrafe  CRISTO, SALVACIÓN Y VIDA
+       la  PRÆFATIO III DE DEFUNCTIS
+       epígrafe  Christus, salus et vita
+   81  es  PREFACIO IV DE DIFUNTOS
+       epígrafe  LA VIDA TERRENA Y LA GLORIA CELESTE
+       la  PRÆFATIO IV DE DEFUNCTIS
+       epígrafe  De vita terrena ad gloriam cælestem
+   82  es  PREFACIO V DE DIFUNTOS
+       epígrafe  NUESTRA RESURRECCIÓN POR MEDIO DE LA VICTORIA DE CRISTO
+       la  PRÆFATIO V DE DEFUNCTIS
+       epígrafe  De resurrectione nostra per victoriam Christi
+
+  latinos sin pareja castellana: 0
+
+  Los castellanos sin número, que son los que el juego común
+  latino no tiene (17). Varios de ellos sí están en
+  el Misal latino, pero dentro de las misas rituales —el del
+  bautismo, la confirmación, la penitencia, la unción—, y hay
+  que ir a buscarlos ahí; los demás son propios del juego
+  castellano y no tienen latín que mostrar.
+
+      PREFACIO III DE ADVIENTO
+          CRISTO, SEÑOR Y JUEZ DE LA HISTORIA
+      PREFACIO IV DE ADVIENTO
+          MARÍA, NUEVA EVA
+      PREFACIO V DE CUARESMA
+          EL CAMINO DEL ÉXODO EN EL DESIERTO CUARESMAL
+      PREFACIO PARA DESPUÉS DE LA ASCENSIÓN
+          EN LA ESPERA DE LA VENIDA DEL ESPÍRITU SANTO
+      PREFACIO IX PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+          LA ACCIÓN DEL ESPÍRITU SANTO EN LA IGLESIA
+      PREFACIO X PARA LOS DOMINGOS DEL TIEMPO ORDINARIO
+          EL DÍA DEL SEÑOR
+      PREFACIO DEL BAUTISMO
+          EL BAUTISMO, INICIO DE LA VIDA NUEVA
+      PREFACIO DE LA CONFIRMACIÓN
+          MARCADOS CON EL SELLO DEL ESPÍRITU
+      PREFACIO III DE LA SANTÍSIMA EUCARISTÍA
+          LA EUCARISTÍA, VIÁTICO PARA LA PASCUA ETERNA
+      PREFACIO DE LA PENITENCIA
+          EL SACRAMENTO DE LA RECONCILIACIÓN EN EL ESPÍRITU
+      PREFACIO DE LA UNCIÓN DE ENFERMOS
+          EL SUFRIMIENTO, PARTICIPACIÓN EN LA PASCUA DE CRISTO
+      PREFACIO III DE SANTA MARÍA VIRGEN
+          MARÍA, MODELO Y MADRE DE LA IGLESIA
+      PREFACIO IV DE SANTA MARÍA VIRGEN
+          MARÍA, SIGNO DE CONSUELO Y DE ESPERANZA
+      PREFACIO V DE SANTA MARÍA VIRGEN
+          MARÍA, IMAGEN DE LA HUMANIDAD NUEVA
+      PREFACIO COMÚN VII
+          CRISTO, HUÉSPED Y PEREGRINO EN MEDIO DE NOSOTROS
+      PREFACIO COMÚN VIII
+          JESÚS, BUEN SAMARITANO
+      PREFACIO COMÚN IX
+          LA GLORIA DE DIOS ES EL HOMBRE VIVIENTE
+
+El Ordo bilingüe: las 146 rúbricas, una contra otra
+---------------------------------------------------
+
+  rúbricas en latín: 146   en castellano: 145
+  sólo en latín: [93]
+  sólo en castellano: ninguna
+
+  Las dos lenguas, rúbrica a rúbrica. La columna de la izquierda
+  es el castellano y la de la derecha el latín; si el número no
+  dijera lo mismo en los dos, se vería aquí.
+
+    1  es: Reunido el pueblo, el sacerdote con los ministros va al altar 
+       la: Populo congregato, sacerdos cum ministris ad altare accedit, d
+    2  es: El sacerdote, extendiendo las manos, saluda al pueblo con una 
+       la: Deinde sacerdos, manus extendens, populum salutat, dicens: 
+    3  es: El sacerdote, o el diácono, u otro ministro puede hacer una mo
+       la: Sacerdos, vel diaconus vel alius minister, potest brevissimis 
+    4  es: A continuación se hace el acto penitencial, y el sacerdote inv
+       la: Deinde sequitur actus pænitentialis ad quem sacerdos fideles i
+    5  es: Se hace una breve pausa en silencio. Después el sacerdote dice
+       la: Sacerdos fideles invitat ad actum pænitentialem: 
+    6  es: Se hace una breve pausa en silencio. Después el sacerdote dice
+       la: Sacerdos fideles invitat ad actum pænitentialem: 
+    7  es: Siguen las invocaciones Señor, ten piedad, a no ser que ya se 
+       la: Sequuntur invocationes Kýrie, eléison, nisi iam præcesserint i
+    8  es: A continuación, si está prescrito, se canta el himno: Gloria a
+       la: Deinde, quando præscribitur, cantatur vel dicitur hymnus: Toni
+    9  es: Acabado el himno, el sacerdote, con las manos juntas, dice: Or
+       la: Quo hymno expleto, sacerdos, manibus iunctis, dicit: 
+   10  es: El lector va al ambón y lee la primera lectura, que todos escu
+       la: Deinde lector ad ambonem pergit, et legit primam lectionem, qu
+   11  es: El salmista o el cantor proclama el salmo, y el pueblo interca
+       la: Psalmista, seu cantor, psalmum cantat vel dicit, populo respon
+   12  es: Si hay segunda lectura, se lee en el ambón, como la primera. P
+       la: Postea, si habenda sit secunda lectio, lector eam ex ambone le
+   13  es: Sigue el Aleluya o, en tiempo de Cuaresma, el canto antes del 
+       la: Sequitur Allelúia, vel alter cantus a rubricis statutus, prout
+   14  es: Mientras tanto, si se usa incienso, el sacerdote lo pone en el
+       la: Interim sacerdos incensum, si adhibetur, imponit. Postea diaco
+   15  es: Después el diácono (o el sacerdote) va al ambón, acompañado ev
+       la: Postea diaconus, vel sacerdos, ad ambonem pergit, ministris pr
+   16  es: Acabado el Evangelio el diácono (o el sacerdote) dice: Palabra
+       la: Expleto Evangelio, diaconus, vel sacerdos acclamat: 
+   17  es: Luego tiene lugar la homilía; ésta es obligatoria todos los do
+       la: Deinde fit homilia, quæ a sacerdote vel diacono habenda est om
+   18  es: Acabada la homilía, si la liturgia del día lo prescribe, se ha
+       la: Homilia expleta, cantatur vel dicitur, quando præscribitur, sy
+   19  es: Para utilidad de los fieles, en lugar del símbolo niceno-const
+       la: Loco symboli nicæno-constantinopolitani, præsertim tempore Qua
+   20  es: Después se hace la plegaria universal u oración de los fieles.
+       la: Deinde fit oratio universalis, seu oratio fidelium. Liturgia e
+   21  es: Acabada la Liturgia de la palabra, los ministros colocan en el
+       la: His absolutis, incipit cantus ad offertorium. Interim ministri
+   22  es: Conviene que los fieles expresan su participación en la ofrend
+       la: Expedit ut fideles participationem suam oblatione manifestent,
+   23  es: El sacerdote se acerca al altar, toma la patena con el pan y, 
+       la: Sacerdos, stans ad altare, accipit patenam cum pane, eamque am
+   24  es: El diácono, o el sacerdote, echa vino y un poco de agua en el 
+       la: Diaconus, vel sacerdos, infundit vinum et parum aquæ in calice
+   25  es: Después el sacerdote toma el cáliz y, manteniéndolo un poco el
+       la: Postea sacerdos accipit calicem, eumque ambabus manibus aliqua
+   26  es: A continuación, el sacerdote, inclinado, dice en secreto: Acep
+       la: Postea sacerdos, profunde inclinatus, dicit secreto: 
+   27  es: Y, si se juzga oportuno, inciensa las ofrendas y el altar. A c
+       la: Et, pro opportunitate, incensat oblata, crucem et altare. Post
+   28  es: Luego el sacerdote, de pie a un lado del altar, se lava las ma
+       la: Deinde sacerdos, stans ad latus altaris, lavat manus, dicens s
+   29  es: Después, de pie en el centro del altar y de cara al pueblo, ex
+       la: Stans postea in medio altaris, versus ad populum, extendens et
+   30  es: Luego el sacerdote, con las manos extendidas, dice la oración 
+       la: Deinde sacerdos, manibus extensis, dicit orationem super oblat
+   31  es: El sacerdote comienza la plegaria eucarística con el prefacio.
+       la: Tunc sacerdos incipit Precem eucharisticam. Tonus simplex intr
+   32  es: En todas las Misas, el sacerdote puede cantar algunas partes d
+       la: In omnibus Missis licet sacerdoti celebranti partes præsertim 
+   33  es: [PREFACIO I DE ADVIENTO] Este prefacio se dice en las misas de
+       la: Sequens præfatio dicitur: in Missis de tempore a prima dominic
+   34  es: [PREFACIO II DE ADVIENTO] Este prefacio se dice en las misas d
+       la: Sequens præfatio dicitur: in Missis de tempore a die 17 ad die
+   35  es: [PREFACIO I DE NAVIDAD] Este prefacio se dice en las misas de 
+       la: Sequens præfatio dicitur in Missis de Nativitate Domini et de 
+   36  es: [PREFACIO II DE NAVIDAD] Este prefacio se dice en las misas de
+       la: Sequens præfatio dicitur in Missis de Nativitate Domini et de 
+   37  es: [PREFACIO III DE NAVIDAD] Este prefacio se dice en las misas d
+       la: Sequens præfatio dicitur in Missis de Nativitate Domini et de 
+   38  es: [PREFACIO DE LA EPIFANÍA DEL SEÑOR] Este prefacio se dice en l
+       la: Sequens præfatio dicitur in Missis de sollemnitate Epiphaniæ. 
+   39  es: [PREFACIO I DE CUARESMA] Este prefacio se dice en el tiempo de
+       la: Sequens præfatio dicitur tempore Quadragesimæ, præsertim vero 
+   40  es: [PREFACIO II DE CUARESMA] Este prefacio se dice en el tiempo d
+       la: Sequens præfatio dicitur tempore Quadragesimæ, præsertim vero 
+   41  es: [PREFACIO III DE CUARESMA] Este prefacio se dice en las Misas 
+       la: Sequens præfatio dicitur in Missis de feriis Quadragesimæ et i
+   42  es: [PREFACIO IV DE CUARESMA] Este prefacio se dice en las Misas d
+       la: Sequens præfatio dicitur in Missis de feriis Quadragesimæ et i
+   43  es: [PREFACIO I DE LA PASIÓN DEL SEÑOR] Este prefacio se dice en l
+       la: Sequens præfatio dicitur infra hebdomadam quintam Quadragesimæ
+   44  es: [PREFACIO II DE LA PASIÓN DEL SEÑOR] Este prefacio se dice el 
+       la: Sequens præfatio dicitur in feriis II, III et IV Hebdomadæ san
+   45  es: [PREFACIO PASCUAL I] Este prefacio se dice durante el tiempo p
+       la: Sequens præfatio dicitur tempore paschali. In Missa Vigiliæ pa
+   46  es: [PREFACIO PASCUAL II] Este prefacio se dice durante el tiempo 
+       la: Sequens præfatio dicitur tempore paschali. 
+   47  es: [PREFACIO PASCUAL III] Este prefacio se dice durante el tiempo
+       la: Sequens præfatio dicitur tempore paschali. 
+   48  es: [PREFACIO PASCUAL IV] Este prefacio se dice durante el tiempo 
+       la: Sequens præfatio dicitur tempore paschali. 
+   49  es: [PREFACIO PASCUAL V] Este prefacio se dice durante el tiempo p
+       la: Sequens præfatio dicitur tempore paschali. 
+   50  es: [PREFACIO I DE LA ASCENSIÓN DEL SEÑOR] Este prefacio se dice e
+       la: Sequens præfatio dicitur in die Ascensionis Domini; dici potes
+   51  es: [PREFACIO II DE LA ASCENSIÓN DEL SEÑOR] Este prefacio se dice 
+       la: Sequens præfatio dicitur in die Ascensionis Domini; dici potes
+   52  es: [PREFACIO I PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este prefa
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   53  es: [PREFACIO II PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este pref
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   54  es: [PREFACIO III PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este pre
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   55  es: [PREFACIO IV PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este pref
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   56  es: [PREFACIO V PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este prefa
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   57  es: [PREFACIO VI PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este pref
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   58  es: [PREFACIO VII PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este pre
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   59  es: [PREFACIO VIII PARA LOS DOMINGOS DEL TIEMPO ORDINARIO] Este pr
+       la: Sequens præfatio dicitur in dominicis “ per annum ”. 
+   60  es: [PREFACIO I DE LA SANTÍSIMA EUCARISTÍA] Este prefacio se dice 
+       la: Sequens præfatio dicitur in Missa “ In Cena Domini ”; dici pot
+   61  es: [PREFACIO II DE LA SANTÍSIMA EUCARISTÍA] Este prefacio se dice
+       la: Sequens præfatio dicitur in sollemnitate Ss.mi Corporis et San
+   62  es: [PREFACIO I DE SANTA MARÍA VIRGEN] Este prefacio se dice en la
+       la: Sequens præfatio dicitur in Missis de beata Maria Virgine, add
+   63  es: [PREFACIO II DE SANTA MARÍA VIRGEN] Este prefacio se dice en l
+       la: Sequens præfatio dicitur in Missis de beata Maria Virgine. 
+   64  es: [PREFACIO I DE LOS APÓSTOLES] Este prefacio se dice en las mis
+       la: Sequens præfatio dicitur in Missis Apostolorum, præsertim sanc
+   65  es: [PREFACIO II DE LOS APÓSTOLES] MUNDO Este prefacio se dice en 
+       la: Sequens præfatio dicitur in Missis Apostolorum et Evangelistar
+   66  es: [PREFACIO I DE LOS SANTOS] Este prefacio se dice en las misas 
+       la: Sequens præfatio dicitur in Missis “ de omnibus Sanctis ”, de 
+   67  es: [PREFACIO II DE LOS SANTOS] Este prefacio se dice en las misas
+       la: Sequens præfatio dicitur in Missis “ de omnibus Sanctis ”, de 
+   68  es: [PREFACIO I DE LOS SANTOS MÁRTIRES] Este prefacio se dice en l
+       la: Sequens præfatio dicitur in sollemnitatibus et festis Ss. Mart
+   69  es: [PREFACIO II DE LOS SANTOS MÁRTIRES] Este prefacio se dice en 
+       la: Sequens præfatio dicitur in sollemnitatibus et festis Ss. Mart
+   70  es: [PREFACIO DE LOS SANTOS PASTORES] Este prefacio se dice en las
+       la: Sequens præfatio dicitur in sollemnitatibus et festis Ss. Past
+   71  es: [PREFACIO DE SANTAS VÍRGENES Y RELIGIOSOS] Este prefacio se di
+       la: Sequens præfatio dicitur in sollemnitatibus et festis Sanctaru
+   72  es: [PREFACIO COMÚN I] Este prefacio se dice en las misas que care
+       la: Sequens præfatio dicitur in Missis, quæ præfatione propria car
+   73  es: [PREFACIO COMÚN II] Este prefacio se dice en las misas que car
+       la: Sequens præfatio dicitur in Missis, quæ præfatione propria car
+   74  es: [PREFACIO COMÚN III] Este prefacio se dice en las misas que ca
+       la: Sequens præfatio dicitur in Missis, quæ præfatione propria car
+   75  es: [PREFACIO COMÚN IV] Este prefacio se dice en las misas que car
+       la: Sequens præfatio dicitur in Missis, quæ præfatione propria car
+   76  es: [PREFACIO COMÚN V] Este prefacio se dice en las misas que care
+       la: Sequens præfatio dicitur in Missis, quæ præfatione propria car
+   77  es: [PREFACIO COMÚN VI] Este prefacio, tomado de la Plegaria eucar
+       la: Sequens præfatio dicitur in Missis, quæ præfatione propria car
+   78  es: [PREFACIO I DE DIFUNTOS] Este prefacio se dice en las misas de
+       la: Sequens præfatio dicitur in Missis defunctorum. 
+   79  es: [PREFACIO II DE DIFUNTOS] Este prefacio se dice en las misas d
+       la: Sequens præfatio dicitur in Missis defunctorum. 
+   80  es: [PREFACIO III DE DIFUNTOS] Este prefacio se dice en las misas 
+       la: Sequens præfatio dicitur in Missis defunctorum. 
+   81  es: [PREFACIO IV DE DIFUNTOS] Este prefacio se dice en las misas d
+       la: Sequens præfatio dicitur in Missis defunctorum. 
+   82  es: [PREFACIO V DE DIFUNTOS] Este prefacio se dice en las misas de
+       la: Sequens præfatio dicitur in Missis defunctorum. 
+   83  es: V/. El Señor esté con ustedes. R/. Y con tu espíritu.
+       la: V. Dóminus vobíscum. R. Et cum spíritu tuo.
+   84  es: El sacerdote, con las manos extendidas, dice: P
+       la: Sacerdos, manibus extensis, dicit: 
+   85  es: Conmemoración de los vivos Acuérdate, Señor, de tus hijos N. y
+       la: Commemoratio pro vivis. 
+   86  es: Conmemoración de los santos Reunidos en comunión con toda la I
+       la: Infra Actionem. 
+   87  es: Con las manos extendidas prosigue: Acepta, Señor, en tu bondad
+       la: Manibus extensis, prosequitur: 
+   88  es: Extendiendo las manos sobre las ofrendas, dice: Bendice y sant
+       la: Tenens manus expansas super oblata, dicit: 
+   89  es: En las fórmulas que siguen, las palabras del Señor han de pron
+       la: In formulis quæ sequuntur, verba Domini proferantur distincte 
+   90  es: Después prosigue: Del mismo modo, acabada la cena,
+       la: Postea prosequitur: 
+   91  es: Luego dice una de las siguientes fórmulas: Éste es el Misterio
+       la: Deinde dicit: 
+   92  es: Después el sacerdote, con las manos extendidas, dice: Por eso,
+       la: Deinde sacerdos, extensis manibus, dicit: 
+   93  es: —   ← ¡FALTA UNA!
+       la: Supra quæ propítio ac seréno vultu respícere dignéris:
+   94  es: Inclinado, con las manos juntas prosigue: Te pedimos humildeme
+       la: Inclinatus, iunctis manibus, prosequitur: 
+   95  es: Conmemoración de los difuntos. Con las manos expendidas dice:
+       la: Commemoratio pro defunctis Manibus extensis, dicit:
+   96  es: Con la mano derecha se golpea el pecho diciendo: Ya nosotros, 
+       la: Manu dextera percutit sibi pectus, dicens: 
+   97  es: Y continúa: Por quien sigues creando todos los bienes,
+       la: Et prosequitur: 
+   98  es: Toma la patena con el pan consagrado, y el cáliz y, sosteniénd
+       la: Accipit patenam cum hostia et calicem, et utrumque elevans, di
+   99  es: Esta plegaria eucarística tiene un prefacio propio que forma p
+       la: Quamvis præfatione propria instructa sit, Prex eucharistica hæ
+  100  es: El sacerdote, con las manos extendidas, dice: S
+       la: Sacerdos, manibus extensis, dicit: 
+  101  es: Junta las manos y, manteniéndolas extendidas sobre las ofrenda
+       la: Iungit manus, easque expansas super oblata tenens, dicit: 
+  102  es: En las fórmulas que siguen, las palabras del Señor han de pron
+       la: In formulis quæ sequuntur, verba Domini proferantur distincte 
+  103  es: Después prosigue: Del mismo modo, acabada la cena,
+       la: Postea prosequitur: 
+  104  es: Luego dice una de las siguientes fórmulas: Éste es el Misterio
+       la: Deinde dicit: 
+  105  es: Después el sacerdote, con las manos extendidas, dice: Así, pue
+       la: Deinde sacerdos, extensis manibus, dicit: 
+  106  es: Toma la patena con el pan consagrado, y el cáliz y, sosteniénd
+       la: Accipit patenam cum hostia et calicem, et utrumque elevans, di
+  107  es: V/. El Señor esté con ustedes. R/. Y con tu espíritu.
+       la: V. Dóminus vobíscum. R. Et cum spíritu tuo.
+  108  es: El sacerdote, con las manos extendidas, dice: S
+       la: Sacerdos, manibus extensis, dicit: 
+  109  es: Junta las manos y, manteniéndolas extendidas sobre las ofrenda
+       la: Iungit manus, easque expansas super oblata tenens, dicit: 
+  110  es: En las fórmulas que siguen, las palabras del Señor han de pron
+       la: In formulis quæ sequuntur, verba Domini proferantur distincte 
+  111  es: Después prosigue: Del mismo modo, acabada la cena,
+       la: Postea prosequitur: 
+  112  es: Luego dice una de las siguientes fórmulas: Éste es el Misterio
+       la: Deinde dicit: 
+  113  es: Después el sacerdote, con las manos extendidas, dice: Así, pue
+       la: Deinde sacerdos, extensis manibus, dicit: 
+  114  es: Toma la patena con el pan consagrado y el cáliz y, sosteniéndo
+       la: Accipit patenam cum hostia et calicem, et utrumque elevans, di
+  115  es: Cuando esta plegaria eucarística se utiliza en las misas de di
+       la: Quando hæc Prex eucharistica in Missis pro defunctis adhibetur
+  116  es: Esta plegaria eucarística forma un todo con su prefacio, el cu
+       la: Præfatio huius Precis eucharisticæ mutare non licet ratione st
+  117  es: El sacerdote, con las manos extendidas, dice: T
+       la: Sacerdos, manibus extensis, dicit: 
+  118  es: Junta las manos y, manteniéndolas extendidas sobre las ofrenda
+       la: Iungit manus, easque expansas super oblata tenens, dicit: 
+  119  es: En las fórmulas que siguen, las palabras del Señor han de pron
+       la: In formulis quæ sequuntur, verba Domini proferantur distincte 
+  120  es: Después prosigue: Del mismo modo, acabada la cena,
+       la: Postea prosequitur: 
+  121  es: Luego dice una de las siguientes fórmulas: Éste es el Misterio
+       la: Deinde dicit: 
+  122  es: Después el sacerdote, con las manos extendidas, dice: Por eso,
+       la: Deinde sacerdos, extensis manibus, dicit: 
+  123  es: Toma la patena con el pan consagrado y el cáliz y, sosteniéndo
+       la: Accipit patenam cum hostia et calicem, et utrumque elevans, di
+  124  es: Una vez que ha dejado el cáliz y la patena, el sacerdote, con 
+       la: Calice et patena depositis, sacerdos, iunctis manibus, dicit: 
+  125  es: El sacerdote, con las manos extendidas, prosigue él solo: Líbr
+       la: Manibus extensis, sacerdos solus prosequitur, dicens: 
+  126  es: Después el sacerdote, con las manos extendidas, dice en voz al
+       la: Deinde sacerdos, manibus extensis, clara voce dicit: 
+  127  es: El sacerdote, extendiendo y juntando las manos, añade: La paz 
+       la: Sacerdos, ad populum conversus, extendens et iungens manus, su
+  128  es: Luego, si se juzga oportuno, el diácono, o el sacerdote, añade
+       la: Deinde, pro opportunitate, diaconus, vel sacerdos, subiungit: 
+  129  es: Después toma el pan consagrado, lo parte sobre la patena, y de
+       la: Deinde accipit hostiam eamque super patenam frangit, et partic
+  130  es: Mientras tanto se canta o se dice: Cordero de Dios que quitas 
+       la: Interim cantatur vel dicitur: Aliæ melodiæ in Graduali romano 
+  131  es: A continuación el sacerdote, con las manos juntas, dice en sec
+       la: Sacerdos deinde, manibus iunctis, dicit secreto: 
+  132  es: El sacerdote hace genuflexión, toma el pan consagrado y, soste
+       la: Sacerdos genuflectit, accipit hostiam, eamque aliquantulum ele
+  133  es: El sacerdote dice en secreto: El Cuerpo de Cristo me guarde pa
+       la: Et sacerdos, versus ad altare, secreto dicit: 
+  134  es: Después toma la patena o la píxide, se acerca a los que quiere
+       la: Postea accipit patenam vel pyxidem, accedit ad communicandos, 
+  135  es: Si se comulga bajo las dos especies, se observa el rito descri
+       la: Si adsint sub utraque specie communicandi, servetur ritus suo 
+  136  es: Cuando el sacerdote comulga el Cuerpo de Cristo, comienza el c
+       la: Dum sacerdos sumit Corpus Christi, inchoatur cantus ad Communi
+  137  es: Acabada la comunión, el diácono, el acólito, o el mismo sacerd
+       la: Distributione Communionis expleta, sacerdos vel diaconus vel a
+  138  es: Después el sacerdote puede ir a la sede. Si se juzga oportuno,
+       la: Tunc sacerdos ad sedem redire potest. Pro opportunitate sacrum
+  139  es: Luego, de pie en la sede o en el altar, el sacerdote dice: Ore
+       la: Deinde, stans ad altare vel ad sedem, sacerdos, versus ad popu
+  140  es: En este momento se hacen, si es necesario y con brevedad, los 
+       la: Sequuntur, si necessariæ sint, breves annuntiationes ad populu
+  141  es: Después tiene lugar la despedida. El sacerdote extiende las ma
+       la: Deinde fit dimissio. Sacerdos, versus ad populum, extendens ma
+  142  es: En algunas ocasiones y en determinadas misas rituales puede da
+       la: Quibusdam diebus vel occasionibus, huic formulæ benedictionis 
+  143  es: El Obispo, para bendecir al pueblo, usa el siguiente formulari
+       la: In Missa pontificali celebrans accipit mitram et, extendens ma
+  144  es: Luego el diácono, o el mismo sacerdote, con las manos juntas, 
+       la: Deinde diaconus, vel ipse sacerdos, manibus iunctis, versus ad
+  145  es: Después el sacerdote besa con veneración el altar, como al com
+       la: Deinde sacerdos altare osculo de more veneratur, ut initio. Fa
+  146  es: Si sigue inmediatamente otra acción litúrgica, se omite el rit
+       la: Si qua actio liturgica immediate sequatur, ritus dimissionis o
+
+Texto que no cayó en ninguna rúbrica
+------------------------------------
+
+  Debería ser sólo lo que va antes de la rúbrica 1 y los rótulos
+  que ya se guardaron aparte. Si aquí sale una oración, hay
+  texto perdido.
+
+  2 líneas
+      p. None, línea 0: ORDINARIO
+      p. None, línea 1: DE LA MISA

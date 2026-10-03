@@ -51,3 +51,13 @@ __pycache__/
 .DS_Store
 Thumbs.db
 ~$*
+
+# --- el misal (el modulo Missale) -----------------------------------------
+# Los cien misalitos mensuales (2018-2026), el Misal Romano 2002 latino y el
+# Ordinario de Mexico pesan 364 MB, y publicar.ps1 hace `git add -A`: sin
+# estas dos lineas entrarian al repositorio y se quedarian dentro para
+# siempre. Con los tres PDF de rubricas se decidio lo contrario -versionarlos,
+# porque son la fuente del santoral y conviene cotejar-; aqui el cotejo lo
+# hacen los informes de Missale/datos/, que SI entran.
+Missale/Misalitos/
+Missale/*.pdf
