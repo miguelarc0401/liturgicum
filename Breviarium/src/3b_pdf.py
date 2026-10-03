@@ -148,6 +148,10 @@ def limpia(lineas):
 
 FECHA = re.compile(r'^(?:El mismo(?: día)?\s+)?(\d{1,2}) de ('
                    + '|'.join(MESES) + r')$', re.I)
+# el rótulo de una celebración movible, que abre entrada aunque no sea fecha
+MOVIBLE = re.compile(
+    r'^(?:Lunes|Martes|Mi[eé]rcoles|Jueves|Viernes|S[áa]bado|Domingo)\b'
+    r'[^.]*\b(?:despu[eé]s|siguiente|anterior|posterior|antes)\b', re.I)
 GRADOS = {'memoria': 'MEMORIA', 'fiesta': 'FIESTA',
           'solemnidad': 'SOLEMNIDAD', 'memoria libre': 'MEMORIA LIBRE'}
 
@@ -174,11 +178,27 @@ def trocea(lineas):
     """El santoral, partido en entradas: una por cada «6 de octubre»."""
     entradas, act = [], None
     mismo_dia = False
-    for l in lineas:
+    for n, l in enumerate(lineas):
         t = (l or '').strip()
         if t in ('El mismo día', 'El mismo'):
             mismo_dia = True
             continue
+        # No todas las celebraciones del Propio de los santos tienen fecha
+        # fija: «Lunes después del II domingo de Pascua — san Vicente
+        # Ferrer», «Jueves después de Pentecostés — Jesucristo, sumo y
+        # eterno sacerdote». Sin cortar por ahí, el oficio entero de esas
+        # cinco se pegaba al del santo anterior, y san Pío V salía con las
+        # antífonas de san Vicente. El día movible no se guarda —de las
+        # fiestas movibles sabe el calendario del proyecto, que es quien
+        # las coloca—, pero el corte sí.
+        if MOVIBLE.match(t) and len(t) < 80:
+            sig = next((x.strip() for x in lineas[n + 1:n + 6]
+                        if x and x.strip()), '')
+            if es_versal(sig) and not es_hora(sig) and not seccion_de(sig)[0]:
+                act = {'md': None, 'mismo_dia': False, 'lineas': []}
+                entradas.append(act)
+                mismo_dia = False
+                continue
         m = FECHA.match(t)
         if m:
             act = {'md': f'{MESES.index(m.group(2).lower()) + 1:02d}-'
@@ -527,6 +547,129 @@ def antifona(lineas):
     return ants
 
 
+# --------------------------------------------------------------------------
+# la salmodia: lo que el libro dice de ella y la fuente no escribe
+# --------------------------------------------------------------------------
+# La fuente publica días ya armados: pone los salmos que toca y calla de
+# dónde los toma. El libro impreso sí lo dice, y lo dice de tres maneras:
+#
+#   «Los salmos y el cántico se toman del domingo de la I semana del Salterio»
+#   «Los salmos y el cántico se toman del Común de pastores»
+#   —o los escribe enteros, uno detrás de otro, porque son suyos.
+#
+# Esa rúbrica es la que faltaba. De los salmos escritos se guarda sólo su
+# *título* («Salmo 33 I», «Cántico Ap 11, 17-18»): el texto que vale es el
+# de la fuente —es su traducción la que reza la app—, y con el título se
+# sabe cuáles son. Lo que se toma del PDF es la indicación, no el salmo.
+
+DIAS_SEM_PDF = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves',
+                'viernes', 'sábado']
+ROMANOS_PDF = {'I': 1, 'II': 2, 'III': 3, 'IV': 4}
+
+# «del domingo de la I semana del Salterio», «del domingo de la semana I del
+# Salterio»: el día va delante y el número de la semana a un lado o a otro
+DEL_SALTERIO = re.compile(
+    r'\b(domingo|lunes|martes|mi[eé]rcoles|jueves|viernes|s[áa]bado)\b'
+    r'(?:(?:\s+de)?\s+la\s+(?:(I{1,3}|IV)\s+semana|semana\s+(I{1,3}|IV))'
+    r'|\s+(I{1,3}|IV))\s+del\s+[Ss]alterio', re.I)
+DEL_COMUN = re.compile(r'[Cc]om[uú]n\s+de\b')
+DE_LA_FERIA = re.compile(r'\bde la feria\b', re.I)
+# la rúbrica habla de los salmos, no es una antífona ni un verso
+DICE_SALMOS = re.compile(r'^(?:Los salmos|El salmo|Los dos salmos|Salmos|'
+                         r'Los c[áa]nticos|El c[áa]ntico|'
+                         r'Todo\s+(?:del|lo|como))\b')
+TITULO_SALMO_PDF = re.compile(r'^(Salmo|C[áa]ntico)\b')
+ABRE_ANT_PDF = re.compile(r'^Ant\.?\s*(\d)\s*\.?\s*')
+# La antífona y la rúbrica que la sigue caen a veces en el mismo párrafo: el
+# libro las pone en renglones seguidos, sin blanco ni sangría en medio, y
+# entonces «Ant. 1. Establezco hostilidades…» se traía detrás «Los salmos y
+# el cántico se toman del Común de Santa María Virgen». Se cortan las dos.
+PARTE_ANT = re.compile(r'\s+(?=Ant\.\s*\d\s*\.)|'
+                       r'(?<=[.!?»])\s+(?=(?:Los salmos|El salmo|'
+                       r'Los dos salmos|Los c[áa]nticos|El c[áa]ntico)\b)')
+
+
+def dia_del_salterio(t):
+    """«del domingo de la I semana del Salterio» -> «1/0», la casilla del
+    salterio, en la misma forma en que la nombra `antifonas.json`."""
+    m = DEL_SALTERIO.search(t)
+    if not m:
+        return None
+    sem = ROMANOS_PDF.get(
+        (m.group(2) or m.group(3) or m.group(4) or '').upper())
+    dia = clave(m.group(1))
+    ds = next((n for n, d in enumerate(DIAS_SEM_PDF) if clave(d) == dia), None)
+    return f'{sem}/{ds}' if sem and ds is not None else None
+
+
+def titulos_de_salmos(lineas):
+    """Los títulos de los salmos que el libro escribe enteros. Se leen de las
+    líneas físicas y no de los párrafos: el título va centrado, y la maqueta
+    deja a veces el primer verso en su misma línea («Salmo 8        Señor,
+    dueño nuestro,»)."""
+    out = []
+    for l in lineas:
+        if l is None:
+            continue
+        t = l.strip()
+        if not TITULO_SALMO_PDF.match(t):
+            continue
+        t = re.sub(r'\s+', ' ', re.split(r'\s{2,}', t)[0]).strip(' .,')
+        if t and t not in out:
+            out.append(t)
+    return out
+
+
+def salmodia(lineas):
+    """La salmodia de una celebración, como la trae el libro impreso: sus
+    antífonas, de dónde salen los salmos y la rúbrica que lo dice."""
+    pars = []
+    for p in parrafos(lineas):
+        if p:
+            pars += [x.strip() for x in PARTE_ANT.split(p) if x.strip()]
+    ants, rubricas = [], []
+    for p in pars:
+        m = ABRE_ANT_PDF.match(p)
+        if m:
+            ants.append((int(m.group(1)), p[m.end():].strip()))
+            continue
+        if p.startswith('Ant'):            # la que repite al final del salmo
+            continue
+        if DICE_SALMOS.match(p):
+            rubricas.append(p)
+    # las antífonas, en el orden que les da su número, y sin repetir
+    ants = [t for _, t in sorted(ants, key=lambda x: x[0]) if t]
+    titulos = titulos_de_salmos(lineas)
+    rub = ' '.join(rubricas).strip()
+    de = None
+    if rub:
+        sal = dia_del_salterio(rub)
+        if sal:
+            de = {'salterio': sal}
+        elif DEL_COMUN.search(rub):
+            de = {'comun': rub}
+        elif DE_LA_FERIA.search(rub):
+            de = {'feria': 1}
+    # los salmos escritos enteros manda sobre cualquier rúbrica suelta: son
+    # los suyos, y están ahí porque no se toman de ninguna otra parte
+    if titulos and not de:
+        de = {'propios': titulos}
+    if not ants and not de:
+        return None
+    pieza = {'r': 'SALMODIA'}
+    if ants:
+        pieza['ant'] = ants
+    if de:
+        pieza['de'] = de
+        # el texto de la rúbrica vale cuando dice de dónde salen los salmos;
+        # si no apunta a ninguna parte no es una rúbrica de la salmodia
+        if rub:
+            pieza['rub'] = rub
+    if titulos:
+        pieza['salmos'] = titulos
+    return pieza
+
+
 def himno(lineas):
     versos = parrafos(lineas, verso=True)
     primero = next((v for v in versos if v), '')
@@ -548,7 +691,7 @@ def secciones_de(e):
     crudas = e['secciones_crudas']
     for k, ls in crudas.items():
         hora, cl = k.split('/')
-        if cl in ('te_deum', 'salmodia'):
+        if cl == 'te_deum':
             continue
         cuerpo = [l for l in ls if l is None or (l or '').strip()
                   or True]
@@ -588,6 +731,10 @@ def secciones_de(e):
                 cita = pars.pop(0)
             pieza = {'r': ('LECTURA BREVE ' + cita).strip(),
                      'l': [[]] + [[[0, p]] for p in pars]}
+        elif cl == 'salmodia':
+            pieza = salmodia(cuerpo)
+            if not pieza:
+                continue
         elif cl == 'preces':
             pars = parrafos(cuerpo)
             pieza = {'r': 'PRECES', 'l': [[]] + [runs(p) if p else []
@@ -627,7 +774,9 @@ def main():
         prev = por_clave.get(k)
         if prev is None or len(e['piezas']) > len(prev['piezas']):
             por_clave[k] = e
-    finales = sorted(por_clave.values(), key=lambda e: (e['md'], e['titulo']))
+    # las movibles van al final, que no tienen fecha por la que ordenarlas
+    finales = sorted(por_clave.values(),
+                     key=lambda e: (e['md'] or '99-99', e['titulo'] or ''))
 
     os.makedirs(LIBRO, exist_ok=True)
     with open(os.path.join(LIBRO, 'pdf_santoral.json'), 'w',
@@ -655,7 +804,8 @@ def main():
             f.write('  ' + a + '\n')
         f.write('\nEntradas\n' + '-' * 30 + '\n')
         for e in finales:
-            f.write(f'{e["md"]}  {e["titulo"]}  ({e["grado"] or "—"}; '
+            f.write(f'{e["md"] or "movible"}  {e["titulo"]}  '
+                    f'({e["grado"] or "—"}; '
                     f'tomo {e["tomo"]})\n      común: {e["comun"]}\n'
                     f'      {", ".join(sorted(e["piezas"]))}\n')
     print(f'{len(finales)} entradas; QA en {QA}')

@@ -334,7 +334,7 @@ def main():
                                     kant = (fecha[5:] + '/' + clave(cel)
                                             + '/' + hora_cl)
                                     antifonas[kant].append(
-                                        (ks, ants, salmos_de(lineas)))
+                                        (ks, ants, salmos_de(lineas), hu))
                             continue
 
                         kf = hueco_ferial(of, hora_cl, cl)
@@ -390,15 +390,22 @@ def main():
     del_salterio.discard(())
     donde = donde_estan_esos_salmos(salterio_libro)
     antifonas_libro, dudosas = {}, []
+    # los salmos de cada casilla del salterio, para saber si unos salmos son
+    # de alguna casilla o de ninguna
+    salmos_del_salterio = {salmos_de(v['lineas'])
+                           for v in salterio_libro.values()}
+    salmos_del_salterio.discard(())
     for k, obs in sorted(antifonas.items()):
         propias, salmos = Counter(), defaultdict(Counter)
-        for ks, ants, sal in obs:
+        enteras = defaultdict(Counter)
+        for ks, ants, sal, hu in obs:
             ferial = salterio_libro.get(ks)
             if ferial is None or antifonas_de(ferial['lineas']) == ants:
                 continue
             propias[ants] += 1
             if sal:
                 salmos[ants][sal] += 1
+                enteras[(ants, sal)][hu] += 1
         if not propias:
             continue
         ants, n = propias.most_common(1)[0]
@@ -420,6 +427,20 @@ def main():
             if casilla and ns >= 2 and ns * 2 >= n:
                 entrada['salmos'] = '/'.join(casilla)
                 entrada['salmos_testigos'] = ns
+            elif (not casilla and sal not in salmos_del_salterio
+                    and ns >= 2 and ns * 2 >= n):
+                # Y hay celebraciones cuyos salmos no son de ninguna casilla
+                # del salterio: los tiene señalados ella, y el libro los
+                # escribe enteros (los Ángeles Custodios en vísperas, la
+                # Transfiguración, la Exaltación de la Cruz…). También eso lo
+                # dice la medida: unos mismos salmos todos los años, cayendo
+                # el día en semanas distintas del salterio, y que no son los
+                # de ninguna semana. Se guarda la salmodia entera, que de
+                # ella saca la app los salmos y les pone estas antífonas.
+                hu, _ = enteras[(ants, sal)].most_common(1)[0]
+                entrada['salmodia'] = textos[hu]
+                entrada['salmos_testigos'] = ns
+                entrada['salmos_titulos'] = list(sal)
         antifonas_libro[k] = entrada
     print(f'{len(antifonas_libro)} casillas con antífonas propias '
           f'({len(dudosas)} descartadas)', flush=True)

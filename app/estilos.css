@@ -38,8 +38,8 @@
    (4.5:1 sobre el papel). */
 body[data-color="morado"] { --acento: #4c2a63; --rubrica: #74418f; }
 body[data-color="blanco"] { --acento: #7a5c17; --rubrica: #7d6118; }
-body[data-color="verde"]  { --acento: #2f5d3f; --rubrica: #2c6542; }
-body[data-color="rojo"]   { --acento: #8e1b1b; --rubrica: #a32020; }
+body[data-color="verde"]  { --acento: #23492f; --rubrica: #255334; }
+body[data-color="rojo"]   { --acento: #7a1414; --rubrica: #8a1818; }
 /* el azul de la Virgen: un celeste oscurecido lo justo para que la rubrica
    se lea sobre el papel (4.5:1) */
 body[data-color="azul"]   { --acento: #1f4e79; --rubrica: #255c8a; }
@@ -57,8 +57,8 @@ body[data-tema="oscuro"] {
 }
 body[data-tema="oscuro"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b99bd6; }
 body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
-body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
-body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
+body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #6fb98a; --acento: #67b083; }
+body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #e48b8b; --acento: #db8080; }
 body[data-tema="oscuro"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
@@ -80,8 +80,8 @@ body[data-tema="noche"] {
   }
   body[data-tema="auto"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b99bd6; }
   body[data-tema="auto"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
-  body[data-tema="auto"][data-color="verde"]  { --rubrica: #86c79e; --acento: #7dbd95; }
-  body[data-tema="auto"][data-color="rojo"]   { --rubrica: #ec9f9f; --acento: #e39494; }
+  body[data-tema="auto"][data-color="verde"]  { --rubrica: #6fb98a; --acento: #67b083; }
+  body[data-tema="auto"][data-color="rojo"]   { --rubrica: #e48b8b; --acento: #db8080; }
   body[data-tema="auto"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
 }
 
@@ -642,32 +642,48 @@ h2.seccion {
   margin: 1.7rem 0 .65rem; border-bottom: 1px solid var(--filete);
 }
 .hora-sec:first-child .sec-cab { margin-top: .2rem; }
+/* En versalitas va la palabra que nombra la pieza, y solo ella: lo que la
+   acompana —la cita de la lectura, el nombre del salmo, el comienzo del
+   himno— en letra normal, que es como se lee. La app parte el rotulo y
+   marca con `.vs` lo que las lleva. */
 .hora-sec .rotulo {
   flex: 1 1 auto; min-width: 0; text-wrap: pretty;
   font-family: var(--serif); font-size: 1rem; font-weight: 600;
-  font-variant-caps: all-small-caps; letter-spacing: .08em;
   color: var(--rubrica); margin: 0; padding-bottom: .2rem; line-height: 1.3;
 }
+.vs { font-variant-caps: all-small-caps; letter-spacing: .08em; }
 
 /* El selector: una pildora fina, con la opcion elegida apenas tenida del
    color de la rubrica. Discreto a proposito: se toca una vez, si acaso, y
    despues se reza. El area que se toca es mas alta que lo que se ve. */
-/* El selector no se desliza ni se recorta: se ve entero o no sirve. Lo que
-   cede es el rotulo, que para eso lo mide la app al pintar. */
+/* El selector no se desliza ni se recorta: se ve entero o no sirve. Y no
+   pasa de la mitad del renglon, que la otra mitad es del rotulo y tambien
+   hay que leerlo; para caber dentro, las opciones que no estan elegidas se
+   abrevian («Past.», «Ss. varones»), que para eso lo mide la app al
+   pintar. */
 .alterna {
-  flex: 0 0 auto; display: inline-flex; margin-bottom: .35rem; padding: 2px;
+  flex: 0 0 auto; max-width: 50%;
+  display: inline-flex; margin-bottom: .35rem; padding: 2px;
   border: 1px solid var(--filete-fuerte); border-radius: 999px;
   background: var(--papel);
 }
-.sec-cab.apretado .rotulo { font-size: .88rem; letter-spacing: .05em; }
-.sec-cab.muy-apretado .rotulo { font-size: .76rem; letter-spacing: .02em; }
+.alterna .corto { display: none; }
+.alterna.cortas button[aria-pressed="false"] .largo { display: none; }
+.alterna.cortas button[aria-pressed="false"] .corto { display: inline; }
+.sec-cab.apretado .rotulo { font-size: .88rem; }
+.sec-cab.apretado .vs { letter-spacing: .05em; }
+.sec-cab.muy-apretado .rotulo { font-size: .76rem; }
+.sec-cab.muy-apretado .vs { letter-spacing: .02em; }
 .sec-cab.muy-apretado .alterna button { font-size: .64rem; padding: .3rem .5rem; }
-/* y si ni asi: el selector baja a su renglon, pero sigue a la derecha */
+/* y si ni asi: el selector baja a su renglon, pero sigue a la derecha; alli
+   tiene el ancho entero y no la mitad */
 .sec-cab.parte { flex-wrap: wrap; }
 .sec-cab.parte .rotulo { flex: 1 1 100%; }
-.sec-cab.parte .alterna { margin-left: auto; margin-top: -.15rem; }
+.sec-cab.parte .alterna {
+  margin-left: auto; margin-top: -.15rem; max-width: 100%;
+}
 .alterna button {
-  position: relative;
+  position: relative; flex: none;
   font-family: var(--sans); font-size: .7rem; letter-spacing: .03em;
   line-height: 1.3; padding: .3rem .7rem; cursor: pointer;
   border: 0; border-radius: 999px; background: transparent;
@@ -733,11 +749,21 @@ h2.seccion {
 /* los tomos impresos dan las preces seguidas, sin renglon en blanco: lo que
    separa una prez de la siguiente es entonces esto */
 .prosa .ln.prez-r + .ln { margin-top: .62em; }
-/* el titulo del salmo y los titulillos de las lecturas: en versalitas */
-.hora-sec .ln.tit, .hora-sec .ln.solo-rub {
-  padding-left: 0; text-indent: 0; text-align: left;
-  font-variant-caps: all-small-caps; letter-spacing: .05em; line-height: 1.35;
+/* La respuesta de todos, repuesta debajo de «se pueden anadir algunas
+   intenciones libres»: quien reza ya no la tiene a la vista, se ha quedado
+   arriba. En cursiva y sangrada, para que se vea que es la misma. */
+.prosa .ln.prez-libre {
+  margin-top: .3em; padding-left: 1.6em; text-indent: 0; text-align: left;
+  font-style: italic;
 }
+/* El titulo del salmo y los titulillos de las lecturas: de ellos va en
+   versalitas la palabra que nombra la pieza —«SALMO», «CÁNTICO:»— y el
+   nombre en su caja. La fuente los escribe en mayusculas, que es su manera
+   de marcarlos; la app los devuelve a minusculas. */
+.hora-sec .ln.tit, .hora-sec .ln.solo-rub {
+  padding-left: 0; text-indent: 0; text-align: left; line-height: 1.35;
+}
+.hora-sec .ln.tit .vs { letter-spacing: .06em; }
 .hora-sec .ln.tit { margin: .1rem 0 .1rem; }
 .hora-sec .rub {
   /* En el original la rubrica se distingue del texto por el color y por
@@ -750,18 +776,19 @@ h2.seccion {
   font-style: normal; text-indent: 0;
 }
 
-/* --------------------------------------------- el tamano, al empezar
-   Dos aes y el tanto por ciento, en pequeno y a la derecha, sobre el primer
-   rotulo de la hora: se toca una vez, si acaso, y despues se reza. */
+/* --------------------------------------------- el tamano, a la mano
+   Dos aes en la cabecera, a la derecha del titulo de la hora. La cabecera
+   es la que se queda arriba al bajar, asi que estan a mano a media hora y
+   no solo al empezar; y al plegarse encogen con ella. */
+.fila-titulo {
+  display: flex; align-items: flex-end; gap: .4rem;
+}
+.fila-titulo h1 { flex: 1 1 auto; min-width: 0; }
+.fila-titulo #cab-extra { flex: 0 0 auto; }
 .zoom {
   flex: none; display: flex; align-items: center; justify-content: flex-end;
-  gap: .1rem; margin: 0 -.45rem .1rem 0;
+  gap: .1rem; margin: 0 -.45rem 0 0;
 }
-/* con el zoom en la fila van tres cosas en un renglon: se aprietan el
-   hueco entre ellas y el selector, que es lo que mas sitio se lleva */
-.sec-cab:has(.zoom) { gap: .35rem .3rem; }
-.sec-cab:has(.zoom) .alterna button { font-size: .66rem; padding: .3rem .55rem; }
-.sec-cab:has(.zoom) .zoom button { width: 1.55rem; }
 .zoom button {
   width: 1.75rem; height: 1.9rem; display: grid; place-items: center;
   border: 0; border-radius: 999px; background: none; cursor: pointer;
@@ -774,7 +801,19 @@ h2.seccion {
 .zoom button:active {
   background: var(--filete); color: var(--acento); transform: scale(.9);
 }
-/* el rotulo no se parte a mitad de palabra para dejarle sitio al zoom */
+/* al plegarse la cabecera encogen como el titulo, que si no la dejarian
+   mas alta de lo que el titulo pide */
+body.cab-fija .zoom button {
+  height: calc(1.9rem - .45rem * var(--pliegue, 0));
+  width: calc(1.75rem - .25rem * var(--pliegue, 0));
+}
+body.cab-fija .zoom button:first-of-type {
+  font-size: calc(.76rem - .1rem * var(--pliegue, 0));
+}
+body.cab-fija .zoom button:last-of-type {
+  font-size: calc(1.18rem - .2rem * var(--pliegue, 0));
+}
+/* el rotulo no se parte a mitad de palabra */
 .hora-sec .rotulo { overflow-wrap: normal; }
 
 /* --------------------------------------------------- el carril de la hora
@@ -789,6 +828,9 @@ h2.seccion {
   display: flex; flex-direction: column; align-items: flex-end;
   gap: .1rem; padding: .35rem 0;
   animation: aparece var(--medio) var(--curva);
+  /* el dedo recorre la tira sin que la pagina se vaya con el: la cinta de
+     un breviario se busca con el pulgar sin levantarlo */
+  touch-action: none;
 }
 .carril button {
   display: block; width: 1.5rem; height: .85rem; padding: 0;
@@ -808,6 +850,12 @@ h2.seccion {
 .carril button:active::before { width: .95rem; }
 .carril button:focus-visible { outline: none; }
 .carril button:focus-visible::before { width: .95rem; background: var(--acento); }
+/* mientras el dedo arrastra, la raya en que va: la tira entera se ensancha
+   un poco, que es el gesto de hojear, y la suya se marca */
+.carril.arrastrando button::before { width: .6rem; }
+.carril.arrastrando button.en::before {
+  width: 1.15rem; background: var(--acento);
+}
 /* el nombre de la seccion, mientras se toca */
 .carril button::after {
   content: attr(data-nombre); position: absolute; right: 1.35rem; top: 50%;
@@ -818,7 +866,8 @@ h2.seccion {
   opacity: 0; pointer-events: none;
   transition: opacity var(--rapido) var(--curva);
 }
-.carril button:active::after, .carril button:focus-visible::after { opacity: 1; }
+.carril button:active::after, .carril button:focus-visible::after,
+.carril.arrastrando button.en::after { opacity: 1; }
 body.con-carril #vista { padding-right: 2.1rem; }
 .hora-sec { scroll-margin-top: calc(var(--alto-cab-min, 0px) + .7rem); }
 
@@ -1036,10 +1085,19 @@ body.con-carril #vista { padding-right: 2.1rem; }
               border-color var(--lento) var(--curva);
 }
 .cal-dia:active { background: var(--filete); }
-.cal-dia[data-color="verde"]  { --c: #2f6b45; }
-.cal-dia[data-color="morado"] { --c: #7c4a99; }
-.cal-dia[data-color="rojo"]   { --c: #a32020; }
-.cal-dia[data-color="blanco"] { --c: #d4bd7c; }
+/* El color liturgico del dia, en el calendario: el filete de la izquierda y
+   el grado de la celebracion, que es lo que lo nombra. Los mismos tonos que
+   tine la cabecera al abrir el dia, para que uno reconozca el otro. */
+.cal-dia[data-color="verde"]  { --c: #23492f; }
+.cal-dia[data-color="morado"] { --c: #4c2a63; }
+.cal-dia[data-color="rojo"]   { --c: #7a1414; }
+.cal-dia[data-color="blanco"] { --c: #7a5c17; }
+.cal-dia[data-color="azul"]   { --c: #1f4e79; }
+.cal-dia[data-color] .cal-g { color: var(--c); }
+.cal-dia[data-color] .cal-g.g-m,
+.cal-dia[data-color] .cal-g.g-ml,
+.cal-dia[data-color] .cal-g.g-fe { color: var(--tinta-suave); }
+.cal-dia[data-color] .cal-num small { color: var(--c); opacity: .8; }
 .cal-dia.hoy {
   background: color-mix(in srgb, var(--realce) 50%, transparent);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acento) 30%, transparent);

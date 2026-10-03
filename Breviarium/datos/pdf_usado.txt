@@ -44,8 +44,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         hallado en la fuente: responsorio
         común: Del Común de santos varones: para los santos educadores.  →  santos varones para los santos educadores
 11/02  Nuestra Señora de Lourdes (memoria libre)
-        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, reseña
-        hallado en la fuente: antífona del Magníficat
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de la Santísima Virgen María.  →  santisima virgen maria
 17/02  Los siete santos Fundadores de la Orden de los Siervos de santa María Virgen (memoria libre)
         del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, reseña
@@ -81,16 +80,13 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de santos varones: para los santos religiosos.  →  santos varones para los santos religiosos
 04/04  San Isidoro, obispo y doctor de la Iglesia (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, reseña
-        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de pastores o de doctores de la Iglesia.  →  pastores, doctores de la iglesia
 05/04  San Vicente Ferrer, presbítero (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, antífona del Magníficat
-        hallado en la fuente: antífona del Benedictus
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat
         común: Del Común de pastores. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:  →  pastores
 13/04  San Martín I, papa y mártir (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, reseña
-        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
 21/04  San Anselmo, obispo y doctor de la Iglesia (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
@@ -113,8 +109,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: presbíteros, o del Común de santos varones.  →  pastores para un santo presbitero
 30/04  San Pío V, papa (memoria libre)
-        del PDF: antífona del Benedictus, lectura breve de Laudes, preces de Laudes, himno del Oficio, primera lectura, segunda lectura, oración, responsorio, antífona del Magníficat, himno de Vísperas, lectura breve de Vísperas, preces de Vísperas, reseña
-        hallado en la fuente: responsorio breve de Laudes, responsorio breve de Vísperas
+        del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: para un santo papa.  →  pastores
 12/05  Santos Nereo y Aquileo, mártires (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
@@ -288,8 +283,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de vírgenes o del Común de santas mujeres: para religiosos.  →  virgenes, santas mujeres
 18/11  Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, antífona del Magníficat, reseña
-        hallado en la fuente: antífona del Benedictus
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de los apóstoles, excepto lo siguiente:  →  apostoles
 23/11  San Clemente I, papa y mártir (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
@@ -308,20 +302,17 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores.  →  pastores
 21/12  San Pedro Canisio, presbítero y doctor de la Iglesia (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, reseña
-        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de doctores de la Iglesia. En el tiempo de Adviento: Para la conmemoración sólo lo siguiente:  →  doctores de la iglesia
 23/12  San Juan de Kanty, presbítero (memoria libre)
-        del PDF: segunda lectura, oración, reseña
-        hallado en la fuente: antífona del Benedictus, responsorio, antífona del Magníficat
+        del PDF: antífona del Benedictus, segunda lectura, oración, antífona del Magníficat, reseña
+        hallado en la fuente: responsorio
         común: Del Común de pastores. En el tiempo de Adviento: Para la conmemoración sólo lo siguiente:  →  pastores
 29/12  Santo Tomás Becket, obispo y mártir (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, reseña
-        hallado en la fuente: antífona del Benedictus, antífona del Magníficat
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, antífona del Magníficat, reseña
         común: Del Común de pastores o del Común de un mártir. En el tiempo de Navidad todo del 29 de diciembre, DÍA V INFRAOCTAVA DE NAVIDAD. Para la conmemoración de Santo Tomás Becket sólo se dice lo siguiente:  →  pastores, un martir
 31/12  San Silvestre I, papa (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, reseña
-        hallado en la fuente: antífona del Benedictus
+        del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: papa. En el tiempo de Navidad todo del 31 de diciembre, DÍA VII INFRAOCTAVA DE NAVIDAD. Para la conmemoración de San Silvestre I, papa sólo se dice lo siguiente:  →  pastores
 
 2. Santos con textos de la fuente a los que les faltaba algo: 2
@@ -329,24 +320,16 @@ con la traducción de la fuente; lo demás, con la del PDF.
   San Juan Bautista de la Salle, presbítero: responsorio (hallado en la fuente: santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio)
   San Ambrosio, obispo y doctor de la Iglesia: oración de Vísperas (hallado en la fuente: la misma oración, en otra hora)
 
-   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 40
+   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 24
      San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
      Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-24/san bartolome apostol/oficio/responsorio (variante de otro año)
      San Jerónimo Emiliano — responsorio  ←  tiempo: Ordinario/16/1/oficio/responsorio2
-     Nuestra Señora de Lourdes — antífona del Magníficat  ←  santoral: 12-08/la inmaculada concepcion de la santisima virgen maria/visperas/cantico_evangelico
      San Juan de Dios, religioso — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
      San Cirilo de Jerusalén, obispo y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
      Santo Toribio de Mogrovejo, obispo — segunda lectura  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/lectura2
-     San Isidoro, obispo y doctor de la Iglesia — antífona del Benedictus  ←  santoral: 12-07/san ambrosio obispo y doctor de la iglesia/laudes/cantico_evangelico
-     San Isidoro, obispo y doctor de la Iglesia — antífona del Magníficat  ←  santoral: 09-30/san jeronimo presbitero y doctor de la iglesia/visperas/cantico_evangelico
-     San Vicente Ferrer, presbítero — antífona del Benedictus  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
      San Juan Bautista de la Salle, presbítero — responsorio  ←  santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio
-     San Martín I, papa y mártir — antífona del Benedictus  ←  santoral: 11-12/san josafat obispo y martir/laudes/cantico_evangelico
-     San Martín I, papa y mártir — antífona del Magníficat  ←  santoral: 06-05/san bonifacio obispo y martir/visperas/cantico_evangelico
      San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
      San Pedro Chanel, presbítero y mártir — responsorio  ←  santoral: 12-03/san francisco javier presbitero/oficio/responsorio (variante de otro año)
-     San Pío V, papa — responsorio breve de Laudes  ←  santoral: 05-26/san felipe neri presbitero/laudes/responsorio_breve
-     San Pío V, papa — responsorio breve de Vísperas  ←  santoral: 05-02/san atanasio obispo y doctor de la iglesia/visperas/responsorio_breve
      San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
      Santa María Magdalena de Pazzi, virgen — responsorio  ←  santoral: 12-14/san juan de la cruz presbitero y doctor de la iglesia/oficio/responsorio2
      San Romualdo, abad — responsorio  ←  tiempo: Ordinario/4/6/oficio/responsorio2
@@ -359,17 +342,9 @@ con la traducción de la fuente; lo demás, con la del PDF.
      San Pedro Claver, presbítero — responsorio  ←  tiempo: Cuaresma/3/6/oficio/responsorio2
      San Calixto I, papa y mártir — responsorio  ←  santoral: 08-28/san agustin obispo y doctor de la iglesia/oficio/responsorio
      Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2
-     Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles — antífona del Benedictus  ←  santoral: 06-29/santos pedro y pablo apostoles/visperas/cantico_evangelico
      San Juan Damasceno, presbítero y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
      San Ambrosio, obispo y doctor de la Iglesia — oración de Vísperas  ←  la misma oración, en otra hora
-     San Pedro Canisio, presbítero y doctor de la Iglesia — antífona del Benedictus  ←  santoral: 12-07/san ambrosio obispo y doctor de la iglesia/laudes/cantico_evangelico
-     San Pedro Canisio, presbítero y doctor de la Iglesia — antífona del Magníficat  ←  santoral: 07-15/san buenaventura obispo y doctor de la iglesia/visperas/cantico_evangelico
      San Juan de Kanty, presbítero — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
-     San Juan de Kanty, presbítero — antífona del Benedictus  ←  santoral: 11-19/santa isabel de hungria/laudes/cantico_evangelico
-     San Juan de Kanty, presbítero — antífona del Magníficat  ←  santoral: 11-19/santa isabel de hungria/visperas/cantico_evangelico
-     Santo Tomás Becket, obispo y mártir — antífona del Benedictus  ←  santoral: 11-12/san josafat obispo y martir/laudes/cantico_evangelico
-     Santo Tomás Becket, obispo y mártir — antífona del Magníficat  ←  santoral: 06-05/san bonifacio obispo y martir/visperas/cantico_evangelico
-     San Silvestre I, papa — antífona del Benedictus  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
 
 3. Reseñas biográficas tomadas del PDF: 1
 ------------------------------------------------------------
@@ -378,7 +353,31 @@ con la traducción de la fuente; lo demás, con la del PDF.
 4. Se celebran, y no hay textos ni en la fuente ni en los PDF
 ------------------------------------------------------------
 
-5. Cotejo PDF / fuente en los santos que tienen los dos
+5. La salmodia: la rúbrica que el PDF escribe y la fuente calla
+------------------------------------------------------------
+La fuente publica el día armado y no dice de dónde toma los
+salmos; los PDF sí. Con esa rúbrica la app ofrece la salmodia
+que el libro señala —los salmos los pone la fuente, en su
+traducción— y, al lado, la del día.
+
+  Santa Inés, virgen y mártir — Laudes: salmos de 1/0
+  Santa Inés, virgen y mártir — Vísperas: salmos propios
+  Santa María Magdalena — Vísperas: salmos propios
+  La Natividad de la Santísima Virgen María — Vísperas: salmos propios
+  Santos Arcángeles Miguel, Gabriel y Rafael — Laudes: salmos de 1/0
+  Santos Ángeles Custodios — Laudes: salmos de 1/0
+  Santa Teresa de Jesús, virgen y doctora de la Iglesia — Vísperas: antífonas del PDF, salmos de del día
+  San Martín de Porres, religioso — Oficio: antífonas del PDF, salmos de del día
+  San Martín de Porres, religioso — Laudes: antífonas del PDF, salmos de 1/0
+  San Martín de Porres, religioso — Vísperas: antífonas del PDF, salmos de del día
+  San Andrés, apóstol — Vísperas: salmos propios
+  La Inmaculada Concepción de la Santísima Virgen María — Laudes: salmos de 1/0
+  La Inmaculada Concepción de la Santísima Virgen María — Vísperas: salmos propios
+
+   El PDF escribe los salmos enteros y la fuente no los dio nunca: se reza la salmodia del día con las antífonas de la celebración (1)
+     Santa Teresa de Jesús, virgen y doctora de la Iglesia — Vísperas: Salmo 121, Salmo 126, Cántico Cf. Ap 19, 1-7
+
+6. Cotejo PDF / fuente en los santos que tienen los dos
 ------------------------------------------------------------
 Aquí no se cambió nada: manda la fuente. Sólo se apunta.
 

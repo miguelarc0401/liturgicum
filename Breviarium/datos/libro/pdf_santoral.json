@@ -2109,6 +2109,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Mi Señor Jesucristo ha puesto en mi dedo un anillo nupcial y sobre mi cabeza ha colocado una corona de esposa.",
+"Estoy desposada con aquel a quien sirven los ángeles y cuya belleza admiran el sol y la luna.",
+"Alegraos conmigo y felicitadme, porque he obtenido un trono resplandeciente en la asamblea de los santos."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE 2 Co 1, 3-5",
 "l": [
@@ -2334,6 +2346,23 @@
 "y gloria eterna al sempiterno Padre. Amén."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"La virgen de Cristo no temió las amenazas ni se dejó seducir con los halagos.",
+"A él solo guardo fidelidad; a él solo me entrego con todo mi ser. Salmo 115",
+"Te bendigo, Padre de mi Señor Jesucristo, porque has querido que tu sierva alcanzara la victoria por medio de tu Hijo. Cántico Ap 4, 11; 5, 9‑10. 12"
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de un mártir. Salmo 114"
+},
+"rub": "Los salmos y el cántico se toman del Común de un mártir. Salmo 114",
+"salmos": [
+"Salmo 114",
+"Salmo 115",
+"Cántico Ap 4, 11; 5, 9‑10. 12"
 ]
 },
 "visperas/lectura_breve": {
@@ -3104,6 +3133,18 @@
 ]
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"«Señor, ¿quién eres?» «Yo soy Jesús a quien tú persigues; dura cosa será para ti dar coces contra el aguijón.»",
+"Ananías, vete enseguida y pregunta por Saulo, el cual está orando; éste es un instrumento que me he escogido yo para que lleve mi nombre a los gentiles, a los reyes y a los hijos de Israel.",
+"Saulo comenzó a predicar en las sinagogas a los judíos, afirmando que Jesús era el Cristo."
+],
+"de": {
+"comun": "Los salmos se toman del Común de apóstoles."
+},
+"rub": "Los salmos se toman del Común de apóstoles."
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -3412,6 +3453,18 @@
 ]
 ]
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Sé de quien me he fiado y estoy firmemente persuadido de que el justo Juez tiene poder para asegurar hasta el último día el encargo que me dio.",
+"Te basta mi gracia, Pablo; la fuerza se realiza en la debilidad.",
+"La gracia de Dios no se ha frustrado en mí, su gracia trabaja siempre conmigo."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Hch 26, 16b-18",
@@ -3762,6 +3815,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Muy a gusto presumo de mis debilidades, porque así residirá en mí la fuerza de Cristo.",
+"Yo planté, Apolo regó, pero fue Dios quien dio el crecimiento.",
+"Para mí la vida es Cristo, y la muerte una ganancia; líbreme Dios de gloriarme si no es en la cruz de nuestro Señor Jesucristo."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de apóstoles."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE 1 Co 15, 9-10",
@@ -4685,6 +4750,26 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Sus padres llevaron a Jesús a Jerusalén para presentarlo al Señor.",
+"Adorna tu tálamo, oh Sión, y recibe a Cristo, tu rey.",
+"Dichoso eres, Simeón, porque recibiste en tus brazos a Cristo el Señor, salvador de su pueblo."
+],
+"de": {
+"propios": [
+"Salmo 112",
+"Salmo 147",
+"Cántico Flp 2, 6‑11"
+]
+},
+"salmos": [
+"Salmo 112",
+"Salmo 147",
+"Cántico Flp 2, 6‑11"
+]
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE Hb 10, 5-7",
 "l": [
@@ -5043,6 +5128,26 @@
 ]
 ],
 []
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Éste está puesto para que muchos en Israel caigan y se levanten.",
+"¡Levántate, brilla, Jerusalén, que llega tu luz; la gloria del Señor aparecerá sobre ti!",
+"Goza, alégrate, nueva Sión, mira a tu Rey, que viene humilde a salvar a su pueblo."
+],
+"de": {
+"propios": [
+"Salmo 2",
+"Salmo 18 A",
+"Salmo 44"
+]
+},
+"salmos": [
+"Salmo 2",
+"Salmo 18 A",
+"Salmo 44"
 ]
 },
 "oficio/lectura1": {
@@ -5468,6 +5573,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Simeón, hombre justo y piadoso, aguardaba el consuelo de Israel, y el Espíritu Santo moraba en él.",
+"Simeón tomó al Niño en sus brazos, dio gracias y bendijo a Dios.",
+"Luz para alumbrar a las naciones y gloria de tu pueblo Israel."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Ml 3, 1",
 "l": [
@@ -5887,6 +6004,26 @@
 "por los siglos honor. Amén."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Espíritu Santo había revelado a Simeón que no moriría sin haber visto antes al Ungido del Señor.",
+"Ofrecieron por él al Señor un par de tórtolas o dos pichones.",
+"Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos."
+],
+"de": {
+"propios": [
+"Salmo 109, 1-5. 7",
+"Salmo 129",
+"Cántico Col 1, 12‑20"
+]
+},
+"salmos": [
+"Salmo 109, 1-5. 7",
+"Salmo 129",
+"Cántico Col 1, 12‑20"
 ]
 },
 "visperas/lectura_breve": {
@@ -12745,6 +12882,26 @@
 []
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Brotará un renuevo del tronco de Jesé, y de su raíz florecerá un vástago. Sobre él se posará el Espíritu del Señor. (T. P. Aleluya.)",
+"El Señor Dios le dará el trono de David, su padre, y reinará para siempre. (T. P. Aleluya.)",
+"El que era la Palabra substancial del Padre, engendrado antes del tiempo, hoy se ha despojado de su rango haciéndose carne por nosotros. (T. P. Aleluya.)"
+],
+"de": {
+"propios": [
+"Salmo 112",
+"Salmo 147",
+"Cántico Flp 2, 6-11"
+]
+},
+"salmos": [
+"Salmo 112",
+"Salmo 147",
+"Cántico Flp 2, 6-11"
+]
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE 1 Jn 1, 1-2",
 "l": [
@@ -13096,6 +13253,26 @@
 ]
 ],
 []
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Cuando se cumplió el tiempo, envió Dios a su Hijo, nacido de una mujer, para que recibiéramos el ser hijos por adopción. (T. P. Aleluya.)",
+"Cuando entró en este mundo dijo: «Me has preparado un cuerpo; estoy aquí, oh Dios, para hacer tu voluntad.» (T. P. Aleluya.)",
+"En esto se manifestó el amor que Dios nos tiene: en que envió al mundo a su Hijo único para que vivamos por medio de él. (T. P. Aleluya.)"
+],
+"de": {
+"propios": [
+"Salmo 2",
+"Salmo 18 A",
+"Salmo 44"
+]
+},
+"salmos": [
+"Salmo 2",
+"Salmo 18 A",
+"Salmo 44"
 ]
 },
 "oficio/lectura1": {
@@ -13877,6 +14054,26 @@
 "como en las Laudes."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El ángel del Señor anunció a María, y concibió por obra del Espíritu Santo. (T. P. Aleluya.)",
+"No temas, María, porque has encontrado gracia ante Dios. Concebirás en tu seno y darás a luz un hijo, y se llamará Hijo del Altísimo. (T. P. Aleluya.)",
+"Aquí está la esclava del Señor, hágase en mí según tu palabra. (T. P. Aleluya.)"
+],
+"de": {
+"propios": [
+"Salmo 109, 1-5. 7",
+"Salmo 129",
+"Cántico Col 1, 12-20"
+]
+},
+"salmos": [
+"Salmo 109, 1-5. 7",
+"Salmo 129",
+"Cántico Col 1, 12-20"
 ]
 },
 "visperas/lectura_breve": {
@@ -16921,6 +17118,24 @@
 "comun": "Del Común de pastores o de doctores de la Iglesia.",
 "notas": [],
 "piezas": {
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"La plenitud de la sabiduría es temer al Señor. Aleluya.",
+"Dios de sabiduría es el Señor. Aleluya.",
+"El Señor me concedió el conocimiento verdadero de cuanto existe y me dio a conocer la estructura del mundo y las propiedades de los elementos. Aleluya."
+],
+"de": {
+"propios": [
+"Salmo 1",
+"Salmo 91"
+]
+},
+"salmos": [
+"Salmo 1",
+"Salmo 91"
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -17961,6 +18176,13 @@
 ]
 ]
 ]
+},
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"de": {
+"comun": "Los salmos y el cántico con sus antífonas, la lectura breve y el responsorio breve se toman del Común de pastores."
+},
+"rub": "Los salmos y el cántico con sus antífonas, la lectura breve y el responsorio breve se toman del Común de pastores."
 },
 "i_visperas/cantico_evangelico": {
 "r": "CÁNTICO EVANGÉLICO",
@@ -19496,111 +19718,6 @@
 0,
 "La Iglesia, que está fundamentada en Cristo, ha recibido en la persona de Pedro las llaves del reino de los cielos, es decir, el poder de atar y desatar los pecados. La Iglesia, amando y siguiendo a Cristo, se libra de los males. Pero a Cristo le siguen más de cerca aquellos que luchan por la verdad hasta la muerte."
 ]
-],
-[],
-[
-[
-0,
-"Del tratado de san Vicente Ferrer, presbítero, sobre la vida espiritual"
-]
-],
-[],
-[
-[
-0,
-"(Cap. 13: edición Garganta-Forcada, pp. 513-514)."
-]
-],
-[],
-[
-[
-0,
-"DEL MODO DE PREDICAR"
-]
-],
-[],
-[
-[
-0,
-"En la predicación y exhortación debes usar un lenguaje sencillo y un estilo familiar, bajando a los detalles concretos. Utiliza ejemplos, todos los que puedas, para que cualquier pecador se vea retratado en la exposición que haces de su pecado; pero de tal manera que no des la impresión de soberbia e indignación, sino que lo haces llevado de la caridad y espíritu paternal, como un padre que se compadece de sus hijos cuando los ve en pecado o gravemente enfermos o que han caído en un hoyo, esforzándose por sacarlos del peligro y acariciándoles como una madre. Hazlo alegrándote del bien que obtendrán los pecadores y del cielo que les espera si se convierten."
-]
-],
-[],
-[
-[
-0,
-"Este modo de hablar suele ser de gran utilidad para el auditorio. Hablar en abstracto de las virtudes y los vicios no produce impacto en los oyentes."
-]
-],
-[],
-[
-[
-0,
-"En el confesionario debes mostrar igualmente sentimientos de caridad, lo mismo si tienes que animar a los pusilánimes que si tienes que amenazar a los contumaces; el pecador ha de sentir siempre que tus palabras proceden exclusivamente de tu caridad. Las palabras caritativas han de preceder siempre a las recomendaciones punzantes."
-]
-],
-[],
-[
-[
-0,
-"Si quieres ser útil a las almas de tus prójimos, recurre primero a Dios de todo corazón y pídele con sencillez que te conceda esa caridad, suma de todas las virtudes y la mejor garantía de éxito en tus actividades."
-]
-],
-[],
-[
-[
-0,
-"Del «Comentario a los salmos», de san Ambrosio, obispo"
-]
-],
-[],
-[
-[
-0,
-"(PL 14. 1185)"
-]
-],
-[],
-[
-[
-0,
-"BRILLE SOBRE NOSOTROS LA LUZ DE TU ROSTRO, SEÑOR"
-]
-],
-[],
-[
-[
-0,
-"«¿Por qué me escondes tu rostro?» Pensamos que Dios oculta su rostro cuando nos encontramos en cualquier tribulación. Entonces se extiende un velo tenebroso sobre nuestro espíritu, que nos impide percibir el fulgor de la verdad. Pero si Dios se interesa por nosotros y se digna visitarnos, estamos seguros de que nada puede ocurrirnos en la oscuridad. El rostro del hombre es como una luz para quien lo mira. Por él alcanzamos a reconocer a los desconocidos o reconocemos a una persona que recordamos. Al mostrar el rostro somos identificados. Por tanto, si el rostro del hombre es como una luz, ¿cuánto más no lo será de Dios para quien lo contempla…? «El Dios que dijo: Brille la luz del seno de las tinieblas, la encendido en nuestros corazones, haciendo resplandecer el conocimiento de la gloria de Dios, reflejada en el rostro del Mesías»."
-]
-],
-[],
-[
-[
-0,
-"Hemos escuchado, pues, cómo Cristo brilla en nosotros. Él es, en efecto, el resplandor eterno de las almas, enviado por el Padre a la tierra, para iluminarnos con la luz de su rostro, para que podamos ver las cosas eternas y celestes, nosotros, que antes estábamos inmersos en las tinieblas de la tierra."
-]
-],
-[],
-[
-[
-0,
-"Pero, ¿por qué hablar de Cristo, cuando también el apóstol Pedro dijo a aquel lisiado de nacimiento: «Míranos»? Él miró hacia Pedro y fue iluminado por la gracia de la fe; en efecto, no hubiera recibido el don de la salud, si no hubiese creído con fe."
-]
-],
-[],
-[
-[
-0,
-"Sin embargo, pese a toda esta luz de la gloria presente en los apóstoles, Zaqueo prefirió la de Cristo. Oyendo que pasaba en Señor, subió a un árbol, porque, al ser bajo de estatura, no podía verle con tanta multitud. Vio a Cristo y encontró la luz; lo vio y, de robar anteriormente las cosas a los demás, pasó a distribuir las suyas propias…"
-]
-],
-[],
-[
-[
-0,
-"«¿Por qué me escondes tu rostro?» O mejor: aunque se desvíe la mirada de nosotros, permanece igualmente en nosotros la impronta de tu rostro. La tenemos en nuestros corazones y resplandece en lo más íntimo de nuestro espíritu: nadie puede subsistir, si tú apartas de nosotros tu rostro completamente."
-]
 ]
 ]
 },
@@ -19643,189 +19760,7 @@
 ],
 [
 0,
-"Y tú habrás salvado la vida también. Aleluya. Lc 21,27, 2Cor 5,10; Ap 14,7"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Vendrá el Hijo del Hombre sobre las nubes con gran poder y majestad, "
-],
-[
-1,
-"*"
-],
-[
-0,
-" Porque todos tendremos que comparecer ante el tribunal de Cristo. Aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Temed a Dios y dadle gloria, porque se acerca la hora de su juicio."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Porque todos tendremos que comparecer ante el tribunal de Cristo. Aleluya. Cf 2 Tm 4, 2"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Proclama la palabra, insiste a tiempo y a destiempo, reprende, reprocha, exhorta, "
-],
-[
-1,
-"*"
-],
-[
-0,
-" Con toda paciencia y deseo de instruir. Aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"He predicado a los pueblos que se arrepientan y se conviertan a Dios."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Con toda paciencia y deseo de instruir. Aleluya. Cf Is 53, 2b. 5"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Lo vimos sin aspecto atrayente; sin figura, sin belleza; fue traspasado por nuestras rebeliones, triturado por nuestros crímenes. Sus heridas nos han curado. Aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Él soportó nuestros sufrimientos y aguantó nuestros dolores."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Sus heridas nos han curado. Aleluya. Ef 1, 5.6; Rm 8, 29"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Dios nos ha destinado en la persona de Cristo a ser sus hijos. "
-],
-[
-1,
-"*"
-],
-[
-0,
-" Por pura iniciativa suya, para que la gloria de su gracia redunde en alabanza suya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"A los que había escogido, él los predestinó a ser imagen de su Hijo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Por pura iniciativa suya, para que la gloria de su gracia redunde en alabanza suya. O bien: De las Homilías sobre el Año Litúrgico de San León Magno. (Homilías sobre el Año Litúrgico, 1 [12]. ed. M. Garrido Bonaño, OSB. BAC. Madrid, 1969, p. 45-46) EL HOMBRE DEBE IMITAR A SU CREADOR. ESTO ES UN DON DE DIOS. Si fiel y sabiamente, amadísimos, consideramos el principio de nuestra creación, hallaremos que fue formado el hombre a imagen de Dios a fin de que imitara a su Autor. Y en esto precisamente consiste la natural dignidad de nuestro linaje: si en nosotros, como en un espejo, resplandece la hermosura de la benignidad divina. Para conseguirlo, cada día nos auxilia la gracia del Salvador, haciendo que lo perdido por el primer Adán sea reparado por el segundo. La causa de nuestra reparación no es otra que la misericordia de Dios, a quien nosotros no amaríamos si antes Él no nos hubiese amado y con su luz no hubiera hecho desaparecer nuestras tinieblas. Amándonos Dios, nos restituye a su imagen. Y para que halle en nosotros la imagen de su bondad nos concede que podamos hacer lo que Él hace, iluminando nuestras inteligencias e inflamando nuestros corazones a fin de que no solamente amemos a Él, sino también cuanto Él ama. Si entre los hombres se da una firme amistad cuando los ha unido la semejanza de costumbres (sin embargo, sucede muchas veces que la conformidad de costumbres y deseos conduce a malos afectos), ¡cuanto más debemos desear y esforzarnos por no discrepar en aquellas cosas que Dios ama! De esto dice el profeta: Porque la ira está en su indignación, y la vida en su voluntad, ya que en nosotros no estará de otro modo la dignidad de la majestad divina si no se procura la imitación de la voluntad de Dios. Diciendo el Señor: Amarás al Señor, tu Dios, con todo tu corazón, con toda tu alma y con toda tu mente... Amarás al prójimo como a ti mismo, reciba el alma fiel la caridad inmarcesible de su autor y rector y sométase toda a su voluntad, en cuyas obras y juicios nada hay vacío de la verdad de la justicia, ni de la compasión de la clemencia. Pues, aunque alguno esté extenuado por grandes trabajos y muchas incomodidades, es bueno soportarlo para quien conoce que es probado y corregido en la adversidad. Mas no podría ser perfecta la piedad de esta caridad si no amase también al prójimo. Con este nombre no se ha de considerar sólo a los que se unen a nosotros con los brazos de la amistad o del parentesco, sino a todos los hombres, con los cuales tenemos una común naturaleza, ya sean amigos o enemigos, libres o esclavos. 1 Jn 3, 1. 2"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Mirad qué amor nos ha tenido el Padre: "
-],
-[
-1,
-"*"
-],
-[
-0,
-" Para llamarnos hijos de Dios, pues, ¡lo somos! Aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"¡Sabemos que cuando se manifieste, seremos semejantes a él porque lo veremos tal cual es."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Para llamarnos hijos de Dios, pues, ¡lo somos! Aleluya."
+"Y tú habrás salvado la vida también. Aleluya."
 ]
 ]
 ]
@@ -19837,389 +19772,7 @@
 [
 [
 0,
-"Señor, tú que has suscitado providencialmente en la Iglesia al papa san Pío quinto, para proteger la fe y dignificar el culto, concédenos, por su intercesión, participar con fe viva y con amor fecundo en tus santos misterios. Por nuestro Señor Jesucristo. Lunes después del II domingo de Pascua SAN VICENTE FERRER, PRESBÍTERO, PATRONO DE LA ARCHIDIÓCESIS DE VALENCIA Solemnidad Nació en Valencia el año 1350. Miembro de la Orden de Predicadores, enseñó Teología. Como predicador recorrió muchas comarcas con gran fruto, tanto en la defensa de la verdadera fe como en la reforma de las costumbres. Murió en Vannes (Francia), el año 1419. En 1411 consta que predicó en Alicante, Elche y Orihuela. En 1868 fue declarado por S. S. el Beato Pío IX Patrono de la Diócesis, a petición del Obispo de Orihuela D. Pedro Mª. Cubero López de Padilla. Los fieles siguen venerando con devoción especial el día de su fiesta, en la que ha destacado desde tiempo inmemorial la solemne procesión para llevar la comunión pascual a los enfermos. Del Común de pastores o de religiosos excepto lo siguiente: Esta solemnidad no tiene I Vísperas porque se dicen las II Vísperas del Segundo domingo de Pascua. Común de pastores o de religiosos."
-]
-]
-]
-},
-"oficio/lectura1": {
-"r": "PRIMERA LECTURA",
-"l": [
-[],
-[
-[
-0,
-"De la primera carta del apóstol san Pablo a los Corintios 1 Cor 5,1-14a"
-]
-],
-[],
-[
-[
-1,
-"LA ESPERANZA DE LA CASA CELESTIAL. EL MINISTERIO DE LA RECONCILIACIÓN"
-]
-],
-[],
-[
-[
-0,
-"Hermanos: Es cosa que ya sabemos: Si se destruye este nuestro tabernáculo terreno, tenemos un sólido edificio construido por Dios, una casa que no ha sido levantada por mano de hombre y que tiene una duración eterna en los cielos; y, de hecho, por eso suspiramos, por el anhelo de vestirnos encima la morada que viene del cielo, suponiendo que nos encuentre aún vestidos, no desnudos. Los que vivimos en tiendas suspiramos bajo ese peso, porque no querríamos desnudarnos del cuerpo, sino ponernos encima el otro, y que lo mortal quedara absorbido por la vida. Dios mismo nos creó para eso y como garantía nos dio el Espíritu."
-]
-],
-[],
-[
-[
-0,
-"En consecuencia, siempre tenemos confianza, aunque sabemos que, mientras sea el cuerpo nuestro domicilio, estamos desterrados lejos del Señor. Caminamos sin verlo, guiados por la fe. Y es tal nuestra confianza, que preferimos desterrarnos del cuerpo y vivir junto al Señor. Por lo cual, en destierro o en patria, nos esforzamos en agradarle. Porque todos tendremos que comparecer ante el tribunal de Cristo para recibir premio o castigo por lo que hayamos hecho mientras teníamos este cuerpo."
-]
-],
-[],
-[
-[
-0,
-"Conscientes, pues, del temor debido al Señor, tratamos de sincerarnos con los hombres, que Dios nos ve como somos; y espero que vosotros en vuestra conciencia nos veáis también como somos. No estamos otra vez haciéndonos la propaganda, queremos nada más daros motivos para presumir de nosotros, así tendréis algo que responder a los que presumen de apariencias y no de lo que hay dentro. Si empezamos a desatinar, a Dios se debía; si ahora nos moderamos es por vosotros. Nos apremia el amor de Cristo."
-]
-],
-[],
-[
-[
-0,
-"Lectura del libro de Isaías 52, 13—53,1-12"
-]
-],
-[],
-[
-[
-0,
-"LO VIMOS SIN ASPECTO ATRAYENTE, DESPRECIADO Y EVITADO DE LOS HOMBRES"
-]
-],
-[],
-[
-[
-0,
-"Mirad, mi siervo tendrá éxito, subirá y crecerá mucho. Como muchos se espantaron de él, porque desfigurado no parecía hombre, ni tenía aspecto humano, así asombrará a muchos pueblos, ante él los reyes cerrarán la boca, al ver algo inenarrable y contemplar algo inaudito."
-]
-],
-[],
-[
-[
-0,
-"¿Quién creyó nuestro anuncio?, ¿a quién se reveló el brazo del Señor?"
-]
-],
-[],
-[
-[
-0,
-"Creció en su presencia como brote, como raíz en tierra árida, sin figura, sin belleza. Lo vimos sin aspecto atrayente, despreciado y evitado de los hombres, como un hombre de dolores, acostumbrado a sufrimientos, ante el cual se ocultan los rostros, despreciado y desestimado."
-]
-],
-[],
-[
-[
-0,
-"Él soportó nuestros sufrimientos y aguantó nuestros dolores; nosotros lo estimamos leproso, herido de Dios y humillado; pero él fue traspasado por nuestras rebeliones, triturado por nuestros crímenes. Nuestro castigo saludable cayó sobre él, sus cicatrices nos curaron. Todos errábamos como ovejas, cada uno siguiendo su camino; y el Señor cargó sobre él todos nuestros crímenes."
-]
-],
-[],
-[
-[
-0,
-"Maltratado, voluntariamente se humillaba y no abría la boca; como cordero llevado al matadero, como oveja ante el esquilador, enmudecía y no abría la boca. Sin defensa, sin justicia, se lo llevaron, ¿quién meditó en su destino? Lo arrancaron de la tierra de los vivos, por los pecados de mi pueblo lo hirieron. Le dieron sepultura con los malvados, y una tumba con los malhechores, aunque no había cometido crímenes ni hubo engaño en su boca."
-]
-],
-[],
-[
-[
-0,
-"El Señor quiso triturarlo con el sufrimiento, y entregar su vida como expiación; verá su descendencia, prolongará sus años, lo que el Señor quiere prosperará por su mano. Por los trabajos de su alma verá la luz, el justo se saciará de conocimiento. Mi siervo justificará a muchos, porque cargó con los crímenes de ellos. Le daré una multitud como parte, y tendrá como despojo una muchedumbre."
-]
-],
-[],
-[
-[
-0,
-"Porque expuso su vida a la muerte y fue contado entre los pecadores, él tomó el pecado de muchos e intercedió por los pecadores."
-]
-]
-]
-},
-"laudes/lectura_breve": {
-"r": "LECTURA BREVE Ef 3, 8-11",
-"l": [
-[],
-[
-[
-0,
-"A mí, el más insignificante de todo el pueblo santo, se me ha dado esta gracia: anunciar a los gentiles la riqueza insondable que es Cristo; e iluminar la realización del misterio, escondido desde el principio de los siglos en Dios, creador de todo. Así, mediante la Iglesia, los principados y potestades en los cielos conocen ahora la multiforme sabiduría de Dios; según el designio eterno, realizado en Cristo Jesús, Señor Nuestro."
-]
-],
-[
-[
-0,
-"Hch 10, 40-43"
-]
-],
-[
-[
-0,
-"Dios resucitó a Jesús al tercer día y nos lo hizo ver, no a todo el pueblo, sino a los testigos que él había designado: a nosotros, que hemos comido y bebido con él después de su resurrección. Nos encargó predicar al pueblo, dando solemne testimonio de que Dios lo ha nombrado juez de vivos y muertos. El testimonio de los profetas es unánime que los que creen en él reciben, por su nombre, el perdón de los pecados."
-]
-]
-]
-},
-"laudes/responsorio_breve": {
-"r": "RESPONSORIO BREVE Is 62, 6",
-"l": [
-[],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Sobre tus murallas, Jerusalén, he colocado centinelas. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Sobre tus murallas, Jerusalén, he colocado centinelas. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Ni de día ni de noche dejarán de anunciar el nombre del Señor."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Gloria al Padre, y al Hijo, y al Espíritu Santo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Sobre tus murallas, Jerusalén, he colocado centinelas. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Oigo en mi corazón, buscad mi rostro. "
-],
-[
-1,
-"*"
-],
-[
-0,
-" Aleluya, aleluya. Oigo."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Tu Rostro buscaré, Señor, no me escondas tu rostro. "
-],
-[
-1,
-"*"
-],
-[
-0,
-" Aleluya, aleluya. Gloria al Padre. Oigo."
-]
-]
-]
-},
-"laudes/cantico_evangelico": {
-"r": "CÁNTICO EVANGÉLICO",
-"ant": [
-"Vicente fue delante del Señor preparando sus caminos, anunciando a su pueblo la salvación, el perdón de los pecados y guiándolo por los caminos de la paz. Aleluya.",
-"Misericordia y fidelidad preceden tu faz. Dichoso el pueblo que sabe aclamarte: caminará, oh Señor, a la luz de tu rostro; tu nombre es su gozo cada día. Aleluya."
-]
-},
-"laudes/preces": {
-"r": "PRECES",
-"l": [
-[],
-[
-[
-0,
-"Aclamemos a Jesucristo, que envió a san Vicente para predicar la Buena Noticia a los pueblos, y supliquémosle, diciendo: Sé siempre nuestra verdad y nuestra vida"
-]
-],
-[
-[
-0,
-"Señor Jesucristo, enviado del Padre que enviaste a los apóstoles,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"no dejes de mandar al mundo de hoy mensajeros de tu Evangelio."
-]
-],
-[
-[
-0,
-"Señor Jesucristo, que nos llamas a todos a la perfección de tu amor,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que avancemos siempre por la senda de la santidad."
-]
-],
-[
-[
-0,
-"Señor Jesucristo, que diste a nuestra Diócesis de Orihuela-Alicante como maestro al poderoso protector san Vicente Ferrer,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que nuestra fe y nuestra vida se conformen con el Evangelio."
-]
-],
-[
-[
-0,
-"Señor Jesucristo, que por medio de los santos pastores eres el médico de los cuerpos y de las almas,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que nunca falten a tu Iglesia los ministros, que nos guíen por las sendas de una vida santa."
-]
-],
-[
-[
-0,
-"Acudamos a Cristo, Mediador ante el Padre, que derrama sobre sus siervos la luz de su divino Rostro, y digámosle: Señor, ten misericordia de nosotros."
-]
-],
-[
-[
-0,
-"Tú que subiste a Jerusalén para sufrir la pasión y entrar así en la eterna gloria,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"conduce a tu Iglesia a la Pascua eterna."
-]
-],
-[
-[
-0,
-"Tú que cubriste tu rostro de sangre en Getsemaní, y permitiste ser golpeado en tu cara en casa de Anás,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"sana las heridas de nuestros pecados."
-]
-],
-[
-[
-0,
-"Tú que convertiste el madero de la Cruz en árbol de vida,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que los renacidos en el bautismo gocen de la abundancia de los frutos de este árbol."
-]
-],
-[
-[
-0,
-"Tú que clavado en la Cruz perdonaste al ladrón arrepentido,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"perdónanos también a nosotros, pecadores."
+"Señor, tú que has suscitado providencialmente en la Iglesia al papa san Pío quinto, para proteger la fe y dignificar el culto, concédenos, por su intercesión, participar con fe viva y con amor fecundo en tus santos misterios. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -20231,482 +19784,7 @@
 [
 [
 0,
-"Dios todopoderoso, tú que elegiste a san Vicente Ferrer ministro de la predicación evangélica, concédenos la gracia de ver glorioso en el cielo a nuestro Señor Jesucristo, cuya venida a este mundo, como juez, anunció san Vicente en su predicación. Por nuestro Señor Jesucristo. Oh Dios, que por la pasión de Cristo has librado de la muerte, heredada del pecado, a la humanidad; renuévanos a semejanza de tu Hijo, para que borrada por tu gracia la imagen del hombre viejo, brille en nosotros la imagen de Jesucristo, el hombre nuevo. Él, que vive y reina contigo."
-]
-]
-]
-},
-"tercia/lectura_breve": {
-"r": "LECTURA BREVE 2 Tm 1, 8b-9",
-"l": [
-[],
-[
-[
-0,
-"Toma parte en los duros trabajos del Evangelio, según la fuerza de Dios. Él nos salvó y nos llamó a una vida santa, no por nuestros méritos, sino porque dispuso darnos su gracia, por medio de Jesucristo."
-]
-],
-[
-[
-0,
-"V. Estad alegres, dice el Señor."
-]
-],
-[
-[
-0,
-"R. Porque vuestros nombres están inscritos en el cielo."
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
-]
-],
-[
-[
-0,
-"2 Co 3, 18 Nosotros todos, que llevamos la cara descubierta, reflejamos la gloria del Señor y nos vamos transformando en su imagen con resplandor creciente, así es como actúa el Señor, que es Espíritu."
-]
-],
-[
-[
-0,
-"V. En ti, Señor, está la fuente viva. Aleluya."
-]
-],
-[
-[
-0,
-"R. Y tu luz nos hace ver la luz. Aleluya."
-]
-]
-]
-},
-"sexta/lectura_breve": {
-"r": "LECTURA BREVE 1Tm1, 12",
-"l": [
-[],
-[
-[
-0,
-"Doy gracias a Cristo Jesús, nuestro Señor, que me hizo capaz, se fió de mí y me confió este ministerio."
-]
-],
-[
-[
-0,
-"V. No me avergüenzo del Evangelio. Aleluya."
-]
-],
-[
-[
-0,
-"R. Que es una fuerza de Dios para la salvación. Aleluya"
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
-]
-],
-[
-[
-0,
-"Ef 1, 7-8 Por Cristo, por su sangre, hemos recibido la redención, el perdón de los pecados. El tesoro de su gracia, ha sido un derroche para con nosotros."
-]
-],
-[
-[
-0,
-"V. Me has enseñado el sendero de la vida. Aleluya."
-]
-],
-[
-[
-0,
-"R. Me saciarás de gozo en tu presencia. Aleluya."
-]
-]
-]
-},
-"nona/lectura_breve": {
-"r": "LECTURA BREVE 1 Tm 3,13",
-"l": [
-[],
-[
-[
-0,
-"Los que se hayan distinguido en el servicio progresarán y tendrán libertad para exponer la fe en Cristo Jesús."
-]
-],
-[
-[
-0,
-"V. Si el Señor no construye la casa. Aleluya."
-]
-],
-[
-[
-0,
-"R. En vano se cansan los albañiles. Aleluya."
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
-]
-],
-[
-[
-0,
-"Cf Ap 1, 17c-18"
-]
-],
-[
-[
-0,
-"Vi al Hijo del hombre y me dijo: «Yo soy el primero y el último, yo soy el que vive. Estaba muerto, y, ya ves, vivo por los siglos de los siglos, y tengo las llaves de la muerte y del abismo»."
-]
-],
-[
-[
-0,
-"V. Contemplad al Señor y quedaréis radiantes. Aleluya."
-]
-],
-[
-[
-0,
-"R. Vuestro rostro no se avergonzará. Aleluya."
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
-]
-]
-]
-},
-"visperas/lectura_breve": {
-"r": "LECTURA BREVE St 3, 17-18",
-"l": [
-[],
-[
-[
-0,
-"La sabiduría que viene de arriba ante todo es pura y, además, es amante de la paz, comprensiva, dócil, llena de misericordia y buenas obras, constante, sincera. Los que procuran la paz están sembrando la paz, y su fruto es la justicia."
-]
-],
-[
-[
-0,
-"Ap 21, 1a. 22; 22, 3-5"
-]
-],
-[
-[
-0,
-"Vi un cielo nuevo y una tierra nueva. Santuario no vi ninguno, porque es su santuario el Señor Dios todopoderoso y el Cordero. Allí no entrará nada maldito. En la ciudad estarán el trono de Dios y el del Cordero, y sus siervos le prestarán servicio, lo verán cara a cara y llevarán su nombre en la frente. Ya no habrá más noche, no necesitarán luz de lámpara o del sol, porque el Señor Dios irradiará luz sobre ellos, y reinarán por los siglos de los siglos."
-]
-]
-]
-},
-"visperas/responsorio_breve": {
-"r": "RESPONSORIO BREVE",
-"l": [
-[],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"En la asamblea le da la palabra. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"En la asamblea le da la palabra. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Lo llena de espíritu, sabiduría e inteligencia."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Gloria al Padre, y al Hijo, y al Espíritu Santo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"En la asamblea le da la palabra. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Brille tu rostro, Señor, sobre tu siervo. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Brille tu rostro, Señor, sobre tu siervo. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Fuerza y esplendor están en su templo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Gloria al Padre, y al Hijo, y al Espíritu Santo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Brille tu rostro, Señor, sobre tu siervo. Aleluya, aleluya."
-]
-]
-]
-},
-"visperas/cantico_evangelico": {
-"r": "CÁNTICO EVANGÉLICO",
-"ant": [
-"Temed a Dios y dadle gloria, porque ha llegado la hora de su juicio. Aleluya.",
-"Éste será un día memorable para vosotros y lo celebraréis como fiesta en honor del Señor, de generación en generación. Aleluya."
-]
-},
-"visperas/preces": {
-"r": "PRECES",
-"l": [
-[],
-[
-[
-0,
-"Pidamos a Dios Padre, fuente de toda santidad, que con la intercesión y el ejemplo de san Vicente nos impulse a una vida santa, y digamos: Seamos santos porque tú, Señor, eres santo."
-]
-],
-[
-[
-0,
-"Padre santo, que has querido que nos llamáramos y fuéramos hijos tuyos,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que la Iglesia santa, extendida por los confines de la tierra, cante tus grandezas."
-]
-],
-[
-[
-0,
-"Padre santo, que deseas que vivamos de una manera digna, buscando siempre tu beneplácito,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"ayúdanos a dar fruto de buenas obras."
-]
-],
-[
-[
-0,
-"Padre santo, que enviaste tu Hijo al mundo a sembrar la semilla de la Palabra,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"concédenos también a nosotros sembrar tu semilla en nuestro trabajo, para que alegres demos frutos de buenas obras."
-]
-],
-[
-[
-0,
-"Padre santo, que enviaste tu Hijo al mundo para reconciliar contigo al mundo,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que también nosotros cooperemos a la reconciliación de los hombres."
-]
-],
-[
-[
-0,
-"Padre santo, que enviarás a tus ángeles a juntar a los elegidos de los cuatro puntos cardinales,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"permite que todos tus hijos difuntos estén entre tus elegidos. Padre nuestro."
-]
-],
-[
-[
-0,
-"Invoquemos de todo corazón a nuestro Redentor y Salvador, y digámosle: Ten misericordia de nosotros."
-]
-],
-[
-[
-0,
-"Faz Divina, resplandeciente como el sol en la Transfiguración,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"infunde en tu Iglesia el espíritu de oración."
-]
-],
-[
-[
-0,
-"Faz Divina, que te dejaste reconocer al partir el pan en Emaús,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"conduce a todos los cristianos a la unidad de tu Iglesia."
-]
-],
-[
-[
-0,
-"Faz Divina, oculta a nuestra vista desde tu ascensión a los cielos"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que te conozcamos por la fe en los signos de la Iglesia, en los pobres y en todos los que sufren."
-]
-],
-[
-[
-0,
-"Faz Divina, contemplada en el cielo por los ángeles y los santos,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"concede a los que murieron en tu fe contemplarte con ellos en tu gloria. Padre nuestro."
+"Señor, tú que has suscitado providencialmente en la Iglesia al papa san Pío quinto, para proteger la fe y dignificar el culto, concédenos, por su intercesión, participar con fe viva y con amor fecundo en tus santos misterios. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -20718,693 +19796,7 @@
 [
 [
 0,
-"Dios todopoderoso, tú que elegiste a san Vicente Ferrer ministro de la predicación evangélica, concédenos la gracia de ver glorioso en el cielo a nuestro Señor Jesucristo, cuya venida a este mundo, como juez, anunció san Vicente en su predicación. Por nuestro Señor Jesucristo. Jueves de la II semana de Pascua LA SANTA FAZ DE NUESTRO SEÑOR JESUCRISTO Memoria. En la ciudad de Alicante y Mutxamel: Fiesta Desde el siglo XV va creciendo en Alicante la devoción a la santa Faz de Jesucristo, a través de cuya imagen ha recibido numerosas gracias y favores. En testimonio de gratitud, se construyó un Templo. Desde entonces en dicho Templo, custodiado por la Comunidad de Religiosas Clarisas, se guarda con gran veneración, la imagen de la Faz del Señor. En la devoción popular adquirió una gran fuerza y en 1663, el Tercer Sínodo de Orihuela trasladó la celebración al jueves II de Pascua, día en que ahora se celebra. Todo de la feria correspondiente, excepto lo siguiente: Oh Dios, que por la pasión de Cristo has librado de la muerte, heredada del pecado, a la humanidad; renuévanos a semejanza de tu Hijo, para que borrada por tu gracia la imagen del hombre viejo, brille en nosotros la imagen de Jesucristo, el hombre nuevo. Él, que vive y reina contigo."
-]
-]
-]
-},
-"oficio/himno": {
-"r": "HIMNO",
-"l": [
-[],
-[
-[
-0,
-"De la feria correspondiente"
-]
-],
-[],
-[
-[
-0,
-"A LA GLORIA DE JERUSALÉN"
-]
-],
-[],
-[
-[
-0,
-"Me transportó en espíritu a un monte altísimo"
-]
-],
-[
-[
-0,
-"y me enseñó la ciudad santa, Jerusalén"
-]
-],
-[
-[
-0,
-"(Ap 21, 10)."
-]
-],
-[],
-[
-[
-0,
-"Grande es el Señor y muy digno de alabanza"
-]
-],
-[
-[
-0,
-"en la ciudad de nuestro Dios,"
-]
-],
-[
-[
-0,
-"su monte santo, altura hermosa,"
-]
-],
-[
-[
-0,
-"alegría de toda la tierra:"
-]
-],
-[],
-[
-[
-0,
-"el monte Sión, vértice del cielo,"
-]
-],
-[
-[
-0,
-"ciudad del gran rey;"
-]
-],
-[
-[
-0,
-"entre sus palacios,"
-]
-],
-[
-[
-0,
-"Dios descuella como un alcázar."
-]
-],
-[],
-[
-[
-0,
-"Mirad: los reyes se aliaron"
-]
-],
-[
-[
-0,
-"para atacarla juntos;"
-]
-],
-[
-[
-0,
-"pero, al verla, quedaron aterrados"
-]
-],
-[
-[
-0,
-"y huyeron despavoridos;"
-]
-],
-[],
-[
-[
-0,
-"allí los agarró un temblor"
-]
-],
-[
-[
-0,
-"y dolores como de parto;"
-]
-],
-[
-[
-0,
-"como un viento del desierto,"
-]
-],
-[
-[
-0,
-"que destroza las naves de Tarsis."
-]
-],
-[],
-[
-[
-0,
-"Lo que habíamos oído lo hemos visto"
-]
-],
-[
-[
-0,
-"en la ciudad del Señor de los ejércitos,"
-]
-],
-[
-[
-0,
-"en la ciudad de nuestro Dios:"
-]
-],
-[
-[
-0,
-"que Dios la ha fundado para siempre."
-]
-],
-[],
-[
-[
-0,
-"¡Oh Dios!, meditamos tu misericordia"
-]
-],
-[
-[
-0,
-"en medio de tu templo:"
-]
-],
-[
-[
-0,
-"como tu renombre, ¡oh Dios!, tu alabanza"
-]
-],
-[
-[
-0,
-"llega al confín de la tierra;"
-]
-],
-[],
-[
-[
-0,
-"tu diestra está llena de justicia:"
-]
-],
-[
-[
-0,
-"el monte Sión se alegra,"
-]
-],
-[
-[
-0,
-"las ciudades de Judá se gozan"
-]
-],
-[
-[
-0,
-"con tus sentencias."
-]
-],
-[],
-[
-[
-0,
-"Dad la vuelta en torno a Sión,"
-]
-],
-[
-[
-0,
-"contando sus torreones;"
-]
-],
-[
-[
-0,
-"fijaos en sus baluartes,"
-]
-],
-[
-[
-0,
-"observad sus palacios,"
-]
-],
-[],
-[
-[
-0,
-"para poder decirle a la próxima generación:"
-]
-],
-[
-[
-0,
-"«Éste es el Señor, nuestro Dios.»"
-]
-],
-[
-[
-0,
-"Él nos guiará por siempre jamás."
-]
-],
-[],
-[
-[
-0,
-"Ant. Oh Dios, meditamos tu misericordia en medio de tu templo. Aleluya."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
-]
-],
-[],
-[
-[
-0,
-"Salmo 83"
-]
-],
-[],
-[
-[
-0,
-"AÑORANZA DEL TEMPLO"
-]
-],
-[],
-[
-[
-0,
-"¡Qué deseables son tus moradas,                                   No tenemos aquí ciudad permanente,"
-]
-],
-[
-[
-0,
-"Señor de los ejércitos!                                          sino que vamos buscando la futura"
-]
-],
-[
-[
-0,
-"Mi alma se consume y anhela                                                                   (Heb 13, 14)."
-]
-],
-[],
-[
-[
-0,
-"los atrios del Señor,"
-]
-],
-[
-[
-0,
-"mi corazón y mi carne"
-]
-],
-[
-[
-0,
-"retozan por el Dios vivo."
-]
-],
-[],
-[
-[
-0,
-"Hasta el gorrión ha encontrado una casa;"
-]
-],
-[
-[
-0,
-"la golondrina, un nido"
-]
-],
-[
-[
-0,
-"donde colocar sus polluelos:"
-]
-],
-[
-[
-0,
-"tus altares, Señor de los ejércitos,"
-]
-],
-[
-[
-0,
-"Rey mío y Dios mío."
-]
-],
-[],
-[
-[
-0,
-"Dichosos los que viven en tu casa,"
-]
-],
-[
-[
-0,
-"alabándote siempre."
-]
-],
-[
-[
-0,
-"Dichosos los que encuentran en ti su fuerza"
-]
-],
-[
-[
-0,
-"al preparar su peregrinación."
-]
-],
-[],
-[
-[
-0,
-"Cuando atraviesan áridos valles,"
-]
-],
-[
-[
-0,
-"los convierten en oasis,"
-]
-],
-[
-[
-0,
-"como si la lluvia temprana"
-]
-],
-[
-[
-0,
-"los cubriera de bendiciones;"
-]
-],
-[
-[
-0,
-"caminan de baluarte en baluarte"
-]
-],
-[
-[
-0,
-"hasta ver a Dios en Sión."
-]
-],
-[],
-[
-[
-0,
-"Señor de los ejércitos, escucha mi súplica;"
-]
-],
-[
-[
-0,
-"atiéndeme, Dios de Jacob."
-]
-],
-[
-[
-0,
-"Fíjate, oh Dios, en nuestro Escudo,"
-]
-],
-[
-[
-0,
-"mira el rostro de tu Ungido."
-]
-],
-[],
-[
-[
-0,
-"Vale más un día en tus atrios"
-]
-],
-[
-[
-0,
-"que mil en mi casa,"
-]
-],
-[
-[
-0,
-"y prefiero el umbral de la casa de Dios"
-]
-],
-[
-[
-0,
-"a vivir con los malvados."
-]
-],
-[],
-[
-[
-0,
-"Porque el Señor es sol y escudo,"
-]
-],
-[
-[
-0,
-"él da la gracia y la gloria;"
-]
-],
-[
-[
-0,
-"el Señor no niega sus bienes"
-]
-],
-[
-[
-0,
-"a los de conducta intachable."
-]
-],
-[],
-[
-[
-0,
-"¡Señor de los ejércitos, dichoso el hombre"
-]
-],
-[
-[
-0,
-"que confía en ti!"
-]
-],
-[],
-[
-[
-0,
-"Ant. Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
-]
-],
-[
-[
-0,
-"V. Sálvame, ten misericordia de mí. Aleluya."
-]
-],
-[
-[
-0,
-"R. En la asamblea te bendeciré, Señor. Aleluya."
-]
-]
-]
-},
-"visperas/himno": {
-"r": "HIMNO",
-"l": [
-[],
-[
-[
-0,
-"A CRISTO, PRIMOGÉNITO DE TODA CRIATURA Y PRIMER RESUCITADO DE ENTRE"
-]
-],
-[
-[
-0,
-"LOS MUERTOS"
-]
-],
-[],
-[
-[
-0,
-"Damos gracias a Dios Padre,"
-]
-],
-[
-[
-0,
-"que nos ha hecho capaces de compartir"
-]
-],
-[
-[
-0,
-"la herencia del pueblo santo en la luz."
-]
-],
-[],
-[
-[
-0,
-"Él nos ha sacado del dominio de las tinieblas,"
-]
-],
-[
-[
-0,
-"y nos ha trasladado al reino de su Hijo querido,"
-]
-],
-[
-[
-0,
-"por cuya sangre hemos recibido la redención,"
-]
-],
-[
-[
-0,
-"el perdón de los pecados."
-]
-],
-[],
-[
-[
-0,
-"Él es imagen de Dios invisible,"
-]
-],
-[
-[
-0,
-"primogénito de toda criatura;"
-]
-],
-[
-[
-0,
-"porque por medio de él"
-]
-],
-[
-[
-0,
-"fueron creadas todas las cosas:"
-]
-],
-[
-[
-0,
-"celestes y terrestres, visibles e invisibles,"
-]
-],
-[],
-[
-[
-0,
-"Tronos, Dominaciones, Principados, Potestades;"
-]
-],
-[
-[
-0,
-"todo fue creado por él y para él."
-]
-],
-[],
-[
-[
-0,
-"Él es anterior a todo, y todo se mantiene en él."
-]
-],
-[
-[
-0,
-"Él es también la cabeza del cuerpo: de la Iglesia."
-]
-],
-[
-[
-0,
-"Él es el principio, el primogénito de entre los muertos,"
-]
-],
-[
-[
-0,
-"y así es el primero en todo."
-]
-],
-[],
-[
-[
-0,
-"Porque en él quiso Dios que residiera toda la plenitud."
-]
-],
-[
-[
-0,
-"Y por él quiso reconciliar consigo todos los seres:"
-]
-],
-[
-[
-0,
-"los del cielo y los de la tierra,"
-]
-],
-[
-[
-0,
-"haciendo la paz por la sangre de su cruz."
-]
-],
-[],
-[
-[
-0,
-"Ant. Él es imagen de Dios invisible, primogénito de toda criatura. Aleluya."
+"Señor, tú que has suscitado providencialmente en la Iglesia al papa san Pío quinto, para proteger la fe y dignificar el culto, concédenos, por su intercesión, participar con fe viva y con amor fecundo en tus santos misterios. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -26297,12 +24689,14 @@
 {
 "md": "05-25",
 "mismo_dia": true,
-"tomo": "II",
+"tomo": "III",
 "titulo": "SANTA VICENTA MARÍA LÓPEZ VICUÑA, VIRGEN",
 "grado": null,
-"resena": "En Bilbao, Pamplona, Tudela, San Sebastián: Memoria Nacida en la ciudad de Cascante, Navarra, España, el día 22 de marzo de 1847, desde niña se distinguió por su amor a la doctrina cristiana. En 1866, rechazando el matrimonio, hizo voto de castidad. Para atender a las necesidades de las jóvenes sirvientas, fundó en la ciudad de Madrid el Instituto de las Religiosas de María Inmaculada; tomó el hábito en 1876 y emitió sus votos religiosos en 1878. Empleando generosamente su vida por las almas, sobresalió por su eximia caridad a Dios y a sus hermanos, y especialmente a los pobres y humildes, característica que dejó en herencia a sus hijas. Difundida su familia religiosa y confirmada por el dictamen pontificio, terminó la Fundadora su breve vida en Madrid el día 26 de diciembre de 1890.",
-"comun": "Del Común de vírgenes. Cuando se celebra como memoria:",
-"notas": [],
+"resena": "Nacida en la ciudad de Cascante, Navarra, España, el día 22 de marzo de 1847, desde niña se distinguió por su amor a la doctrina cristiana. En 1866, rechazando el matrimonio, hizo voto de castidad. Para atender a las necesidades de las jóvenes sirvientas, fundó en la ciudad de Madrid el Instituto de las Religiosas de María Inmaculada; tomó el hábito en 1876 y emitió sus votos religiosos en 1878. Empleando generosamente su vida por las almas, sobresalió por su eximia caridad a Dios y a sus hermanos, y especialmente a los pobres y humildes, característica que dejó en herencia a sus hijas. Difundida su familia religiosa y confirmada por el dictamen pontificio, terminó la Fundadora su breve vida en Madrid el día 26 de diciembre de 1890.",
+"comun": "Del Común de vírgenes.",
+"notas": [
+"Cuando se celebra como memoria:"
+],
 "piezas": {
 "oficio/lectura2": {
 "r": "SEGUNDA LECTURA",
@@ -26380,7 +24774,7 @@
 [
 [
 0,
-"Con el siguiente responsorio:"
+"Con el siguiente Responsorio:"
 ]
 ],
 [],
@@ -26402,6 +24796,13 @@
 [
 0,
 "R. Y todo el que ama ha nacido de Dios y conoce a Dios."
+]
+],
+[],
+[
+[
+0,
+"Después del segundo Responsorio se dice el himno Te Deum."
 ]
 ]
 ]
@@ -26547,7 +24948,6 @@
 "la suavidad de una niña"
 ]
 ],
-[],
 [
 [
 0,
@@ -26564,7 +24964,7 @@
 [
 [
 0,
-"—lo hemos visto—"
+"-lo hemos visto –"
 ]
 ],
 [
@@ -26645,7 +25045,7 @@
 [
 [
 0,
-"—lo hemos visto—"
+"-lo hemos visto-"
 ]
 ],
 [
@@ -26667,6 +25067,18 @@
 ]
 ]
 ]
+},
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Aprended de mí, que soy manso y humilde de corazón.",
+"Dichosos los pobres de espíritu, porque de ellos es el Reino de los cielos.",
+"Dios ha escogido lo necio del mundo para humillar a los sabios."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de vírgenes."
+},
+"rub": "Los salmos y el cántico se toman del Común de vírgenes."
 },
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -26856,6 +25268,18 @@
 ]
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"No temas, que te he redimido, te he llamado por tu nombre.",
+"Te desposaré conmigo en fidelidad, y tú conocerás a Yahvé.",
+"Y el Señor, tu Dios, prendado está de tu belleza."
+],
+"de": {
+"comun": "Los salmos se toman del Común de vírgenes."
+},
+"rub": "Los salmos se toman del Común de vírgenes."
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -26863,7 +25287,14 @@
 [
 [
 0,
-"De la carta del apóstol san Pablo a los Colosenses 3, 1-5a. 8-17 POR ENCIMA DE TODO PROCURAD EL AMOR"
+"De la carta del apóstol san Pablo a los Colosenses 3, 1-5a. 8-17"
+]
+],
+[],
+[
+[
+1,
+"POR ENCIMA DE TODO PROCURAD EL AMOR"
 ]
 ],
 [],
@@ -26889,14 +25320,26 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Mi alma está unida a ti, y tu diestra me sostiene.",
+"Bendecid vírgenes al Señor; bendecid, humildes de corazón al Señor.",
+"Cantemos al Señor un cántico nuevo, alegrémonos en nuestro rey."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
+},
 "laudes/lectura_breve": {
-"r": "LECTURA BREVE",
+"r": "LECTURA BREVE 1Cor. 13,8-10.12-13.14.1",
 "l": [
 [],
 [
 [
 0,
-"1Cor. 13,8-10.12-13.14.1 El amor no pasa nunca. ¿El don de predicar? Se acabará. ¿El don de lenguas? Enmudecerá. ¿El saber? Se acabará. Porque inmaduro es nuestro saber e inmaduro nuestro predicar; pero cuando venga la madurez, lo inmaduro se acabará. Ahora vemos como en un espejo de adivinar; entonces veremos cara a cara. Mi conocer es por ahora inmaduro, entonces podré conocer como Dios me conoce. En una palabra: quedan la fe, la esperanza, el amor: estas tres. La más grande es el amor. Buscadle amor."
+"El amor no pasa nunca. ¿El don de predicar? Se acabará. ¿El don de lenguas? Enmudecerá. ¿El saber? Se acabará. Porque inmaduro es nuestro saber e inmaduro nuestro predicar; pero cuando venga la madurez, lo inmaduro se acabará. Ahora vemos como en un espejo de adivinar; entonces veremos cara a cara. Mi conocer es por ahora inmaduro, entonces podré conocer como Dios me conoce. En una palabra: quedan la fe, la esperanza, el amor: estas tres. La más grande es el amor. Buscadle amor."
 ]
 ]
 ]
@@ -27077,14 +25520,26 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Alegraos y regocijaos con Jerusalén, todos los que habitáis en ella.",
+"Tus hijas surgirán de todas partes, aclamándote madre bendita.",
+"Gozaos, humildes, porque vuestro es el reino de los cielos."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de vírgenes."
+},
+"rub": "Los salmos y el cántico se toman del Común de vírgenes."
+},
 "visperas/lectura_breve": {
-"r": "LECTURA BREVE",
+"r": "LECTURA BREVE Judas 20-21",
 "l": [
 [],
 [
 [
 0,
-"Judas 20-21 Continuando el edificio de vuestra fe y orando movidos por el Espíritu Santo, manteneos en el amor de Dios, aguardando a que nuestro Señor Jesucristo, por su misericordia, os dé la vida eterna."
+"Continuando el edificio de vuestra fe y orando movidos por el Espíritu Santo, manteneos en el amor de Dios, aguardando a que nuestro Señor Jesucristo, por su misericordia, os dé la vida eterna."
 ]
 ]
 ]
@@ -27158,7 +25613,7 @@
 [
 [
 0,
-", como en las I Vísperas."
+"Como en las I vísperas."
 ]
 ]
 ]
@@ -27879,136 +26334,7 @@
 0,
 "Las antífonas, los salmos y el versículo se toman del Común de la Santísima Virgen María."
 ]
-],
-[],
-[
-[
-0,
-"En Valencia se puede utilizar el himno de la coronación:"
 ]
-],
-[],
-[
-[
-0,
-"La patria valenciana"
-]
-],
-[
-[
-0,
-"s´ampara baix ton mant"
-]
-],
-[
-[
-0,
-"¡Oh, Verge Sobirana"
-]
-],
-[
-[
-0,
-"de terres de Llevant!\"."
-]
-],
-[
-[
-0,
-"La terra llevantina reviu en ta Capella"
-]
-],
-[
-[
-0,
-"al fervos homenaje de pur y ver amor."
-]
-],
-[
-[
-0,
-"Puix sou la nostra Reina y vostra Image bella"
-]
-],
-[
-[
-0,
-"pareix qu´está voltada de magic resplandor."
-]
-],
-[
-[
-0,
-"La rosa perfumada, la mística assussena,"
-]
-],
-[
-[
-0,
-"Lo seu verger formaren als peus de ton altar."
-]
-],
-[
-[
-0,
-"I fervoros en elles lo valenciá t´ofrena"
-]
-],
-[
-[
-0,
-"La devocio mes santa que´s puga profesar."
-]
-],
-[
-[
-0,
-"En terres valencianes"
-]
-],
-[
-[
-0,
-"La fe per Vos no mor"
-]
-],
-[
-[
-0,
-"I vostra Image Santa"
-]
-],
-[
-[
-0,
-"Portem sempre en lo cor."
-]
-],
-[
-[
-0,
-"Salve, Reina del cel i la terra;"
-]
-],
-[
-[
-0,
-"Salve, Verge dels Desamparats;"
-]
-],
-[
-[
-0,
-"Salve, sempre adorada Patrona;"
-]
-],
-[
-[
-0,
-"Salve, Mare del bons valencians."
-]
-],
-[]
 ]
 },
 "oficio/lectura1": {
@@ -28047,55 +26373,6 @@
 [
 0,
 "Ponme como un sello sobre tu brazo, como un sello sobre tu corazón, porque el amor es fuerte como la muerte, es cruel la pasión como el abismo; es centella de fuego, llamarada divina. Las aguas torrenciales no podrían apagar el amor, ni anegarlo los ríos. Si alguien quisiera comprar el amor con todas las riquezas de su casa, se haría despreciable.»"
-]
-],
-[],
-[
-[
-0,
-"De la carta del Apóstol san Pablo a los Gálatas Gal 3,22—4,7"
-]
-],
-[],
-[
-[
-0,
-"POR LA FE SOMOS HIJOS Y HEREDEROS DE DIOS"
-]
-],
-[],
-[
-[
-0,
-"Hermanos: La Escritura presenta al mundo entero prisionero del pecado, para que lo prometido se dé por la fe en Jesucristo a todo el que cree."
-]
-],
-[],
-[
-[
-0,
-"Antes de que llegara la fe, estábamos prisioneros, custodiados por la ley, esperando que la fe se revelase. Así, la ley fue nuestro pedagogo hasta que llegara Cristo y Dios nos justificara por la fe. Una vez que la fe ha llegado, ya no estamos sometidos al pedagogo, porque todos sois hijos de Dios por la fe en Cristo Jesús."
-]
-],
-[],
-[
-[
-0,
-"Los que os habéis incorporado a Cristo por el bautismo os habéis revestido de Cristo. Ya no hay distinción entre judíos y gentiles, esclavos y libres, hombres y mujeres, porque todos sois uno en Cristo Jesús. Y, si sois de Cristo, sois descendencia de Abrahán y herederos de la promesa."
-]
-],
-[],
-[
-[
-0,
-"Quiero decir: mientras el heredero es menor de edad, en nada se diferencia de un esclavo, pues, aunque es dueño de todo, lo tienen bajo tutores y procuradores, hasta la fecha fijada por su padre. Igual nosotros, cuando éramos menores estábamos esclavizados por lo elemental del mundo. Pero, cuando se cumplió el tiempo, envió Dios a su Hijo, nacido de una mujer, nacido bajo la ley, para rescatar a los que estaban bajo la ley, para que recibiéramos el ser hijos por adopción."
-]
-],
-[],
-[
-[
-0,
-"Como sois hijos, Dios envió a vuestros corazones el Espíritu de su Hijo, que clama: «¡Abbá!» (Padre). Así que ya no eres esclavo, sino hijo; y, si eres hijo, eres también heredero por voluntad de Dios."
 ]
 ]
 ]
@@ -28222,41 +26499,6 @@
 0,
 "Por esto se introdujo en la Iglesia la hermosa y saludable costumbre de cantar diariamente este cántico de María en la salmodia de la alabanza vespertina, ya que así el recuerdo frecuente de la encarnación del Señor enardece la devoción de los fieles y la meditación repetida de los ejemplos de la Madre de Dios los corrobora en la solidez de la virtud. Y ello precisamente en la hora de Vísperas, para que nuestra mente, fatigada y tensa por el trabajo y las múltiples preocupaciones del día, al llegar el tiempo del reposo, vuelva a encontrar el recogimiento y la paz del espíritu."
 ]
-],
-[],
-[
-[
-0,
-"De los sermones de santo Tomás de Villanueva, obispo."
-]
-],
-[],
-[
-[
-0,
-"(Sermón 3, de la Natividad de la B. V.M. Sermones de la Virgen, Madrid 1952, pp. 208-212)."
-]
-],
-[],
-[
-[
-0,
-"MARÍA, ELEGIDA PARA SER NUESTRA ABOGADA"
-]
-],
-[],
-[
-[
-0,
-"En todas las tempestades, lluvias y adversidades; si hay peste, guerra, hambre, tribulación, a ti acudimos todos, oh Virgen. Tú eres nuestra protección, tú nuestro refugio, tú nuestro único remedio, sostén y asilo. Como los polluelos, cuando vuela por encima el milano, se acogen bajo las alas de la gallina, así nos escondemos nosotros a la sombra de tus alas. No conocemos otro refugio más que tú; tú sola eres la única esperanza en que podemos confiar, tú la única abogada a la cual nos dirigimos. Mira, por tanto, ahora, ¡oh piadosísima!, la tribulación de esta tu hija, la Iglesia militante; atiende a esta familia, por la que murió tu Hijo Cristo, que yace en la tribulación, rodeada de enemigos, pisoteada por la incredulidad, sumida en el peligro; mira al pequeño rebaño, que en otro tiempo llenaba el orbe, recluido ahora por nuestros pecados. Inclina los ojos de tu piedad y mira qué malos tratos le da, cómo le desgarra ese dragón furibundo, y no hay quien pueda resistirle, ni levantar los ojos contra él. Pero fue elegida María para ser nuestra abogada: pues aunque tenemos por abogado para con el Padre a Jesucristo el justo, como dice san Juan, fue también preciso tener a la Madre como ahogada ante el Hijo. Ya que no es Dios sólo el ofendido por nuestros pecados cuando traspasamos sus preceptos, sino también el Hijo de Dios, cuya sangre pisoteamos con nuestros pecados, crucificándolo de nuevo. Y por eso, como intercede el Hijo ante el Padre, así intercede la Madre ante el Hijo. De lo cual dice Bernardo: El Hijo muestra al Padre el costado herido, y la Madre muestra al Hijo sus pechos. Por eso ha sido constituida digna abogada: digna porque es purísima, digna porque es aceptabilísima, digna porque es piadosísima; pues todo esto se requiere en una abogada."
-]
-],
-[],
-[
-[
-0,
-"¡Oh día feliz y delicioso, en que tal y tan excelsa Abogada se dio al mundo! ¡Oh día digno de ser celebrado con gran regocijo, en que tal don hemos recibido! —exclama san Bernardo: «Quita el sol, y ¿qué queda en el mundo sino tinieblas? Quita a María de la Iglesia, ¿qué queda sino la oscuridad?» «Ea, pues, Abogada, nuestra, vuelve a nosotros esos tus ojos misericordiosos». A ti acudimos en nuestras necesidades, cumple con tu oficio, ejercita tu ministerio. Amén."
-]
 ]
 ]
 },
@@ -28291,67 +26533,7 @@
 ],
 [
 0,
-"Proclama mi alma la grandeza del Señor. Aleluya. Cf. Gal 4, 4-5. Ef 2, 5"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Dios ha enviado a su propio Hijo, nacido de la Virgen, nacido bajo la ley. Para rescatar a los que estaban bajo la ley. (T.P. Aleluya.)"
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Estábamos aún muertos por los pecados y nos ha hecho vivir con Cristo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Para rescatar a los que estaban bajo la ley. (T.P. Aleluya.)"
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Bajo tu amparo nos acogemos. Santa Madre de Dios. (T.P. Aleluya.)"
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"No desoigas nuestras súplicas en las necesidades."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Santa Madre de Dios. (T.P. Aleluya.)"
+"Proclama mi alma la grandeza del Señor. Aleluya."
 ]
 ]
 ]
@@ -28533,18 +26715,6 @@
 0,
 "Sabréis que estoy en medio de Israel, yo, el Señor Dios vuestro, el único. ¡Mi pueblo no será confundido jamás! Después de eso, derramaré mi Espíritu sobre toda carne: profetizarán vuestros hijos y vuestras hijas."
 ]
-],
-[
-[
-0,
-"Ap 12,13-17"
-]
-],
-[
-[
-0,
-"Cuando vio el dragón que lo habían arrojado a la tierra se puso a perseguir a la mujer que había dado a luz el hijo varón. Le pusieron a la mujer dos alas de águila real para que volase a su lugar en el desierto donde será sustentada un año y otro año y medio año, lejos de la serpiente. La serpiente, persiguiendo a la mujer, echó por la boca un río de agua, para que el río la arrastrase; pero la tierra salió en ayuda de la mujer, abrió su boca y se bebió el río salido de la boca de la serpiente. Despechado el dragón por causa de la mujer, se marchó a hacer la guerra al resto de su descendencia, a los que guardan los mandamientos de Dios y mantienen el testimonio de Jesús."
-]
 ]
 ]
 },
@@ -28611,74 +26781,13 @@
 0,
 "El Señor la eligió y la predestinó. Aleluya, aleluya."
 ]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Madre nuestra, aquí tienes a tus hijos. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Madre nuestra, aquí tienes a tus hijos. Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Cristo por ti nos da vida."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Aleluya, aleluya."
-]
-],
-[
-[
-1,
-"V. "
-],
-[
-0,
-"Gloria al Padre, y al Hijo, y al Espíritu Santo."
-]
-],
-[
-[
-1,
-"R. "
-],
-[
-0,
-"Madre nuestra, aquí tienes a tus hijos. Aleluya, aleluya."
-]
 ]
 ]
 },
 "laudes/cantico_evangelico": {
 "r": "CÁNTICO EVANGÉLICO",
 "ant": [
-"Cuando Isabel oyó el saludo de María, dijo a voz en grito: «¿Quién soy yo para que me visite la madre de mi Señor?» Aleluya.",
-"Dichosa tú, María, que has creído, porque lo que te ha dicho el Señor se cumplirá (T.P. Aleluya.)"
+"Cuando Isabel oyó el saludo de María, dijo a voz en grito: «¿Quién soy yo para que me visite la madre de mi Señor?» Aleluya."
 ]
 },
 "laudes/preces": {
@@ -28760,98 +26869,6 @@
 0,
 "haz también de nosotros templos de tu Espíritu. Se pueden añadir algunas intenciones libres. Según el mandato del Señor, digamos confiadamente: Padre nuestro."
 ]
-],
-[
-[
-0,
-"Elevemos nuestras súplicas al Salvador, que quiso nacer de María Virgen, y digámosle:"
-]
-],
-[
-[
-0,
-"Que el amor de tu Madre nos ampare en este mundo."
-]
-],
-[
-[
-0,
-"Salvador del mundo, que, con la eficacia de tu redención, preservaste a tu Madre de toda mancha de pecado,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"líbranos de caer en tentación."
-]
-],
-[
-[
-0,
-"Jesús Salvador que, colgado en la cruz, diste a María como una madre a tu discípulo,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que nosotros vivamos también como hijos suyos."
-]
-],
-[
-[
-0,
-"Tú, Señor, que en las bodas de Caná otorgaste a los tristes una nueva alegría por la intercesión amorosa de tu Madre,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"consuela por medio de su amor a cuantos en este mundo caminan tristes y desamparados."
-]
-],
-[
-[
-0,
-"Devuelve la alegría de la fe cristiana a esta tierra bendecida en tantos siglos por los frutos del martirio y de la santidad,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"haz que no caiga en la tristeza de haber perdido la fe y la esperanza."
-]
-],
-[
-[
-0,
-"Concede, Señor, vida piadosa y tranquila a cuantos tu Madre ampara bajo su manto,"
-]
-],
-[
-[
-1,
-"— "
-],
-[
-0,
-"y dales la gracia de llegar tras la muerte a la gloria."
-]
 ]
 ]
 },
@@ -28862,7 +26879,7 @@
 [
 [
 0,
-"Dios todopoderoso, tú que inspiraste a la Virgen María, cuando llevaba en su seno a tu Hijo, el deseo de visitar a su prima Isabel, concédenos, te rogamos, que, dóciles al soplo del Espíritu, podamos, con María, cantar tus maravillas durante toda nuestra vida. Por nuestro Señor Jesucristo. Dios, Padre de misericordia, a cuantos veneramos a la Virgen María con el título entrañable de Madre de los Desamparados, concédenos que, protegidos por tan tierna Madre, nunca nos veamos abandonados de tu bondad. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+"Dios todopoderoso, tú que inspiraste a la Virgen María, cuando llevaba en su seno a tu Hijo, el deseo de visitar a su prima Isabel, concédenos, te rogamos, que, dóciles al soplo del Espíritu, podamos, con María, cantar tus maravillas durante toda nuestra vida. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -28887,36 +26904,6 @@
 [
 0,
 "R. Y la cumplen. Aleluya."
-]
-],
-[
-[
-0,
-"Sir 24, 3-4"
-]
-],
-[
-[
-0,
-"En medio de su pueblo será ensalzada, y admirada en la congregación plena de los santos; recibirá alabanzas de la muchedumbre de los escogidos y será bendita entre los benditos."
-]
-],
-[
-[
-0,
-"V. Bendita tú entre las mujeres (T.P. Aleluya.)"
-]
-],
-[
-[
-0,
-"R. Y bendito el fruto de tu vientre (T.P. Aleluya.)"
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
 ]
 ]
 ]
@@ -28954,36 +26941,6 @@
 0,
 "R. Que llevó al Hijo del eterno Padre. Aleluya."
 ]
-],
-[
-[
-0,
-"Jdt 13, 22-23b."
-]
-],
-[
-[
-0,
-"El Señor te ha bendecido con su poder, porque por tu medio ha aniquilado a nuestros enemigos. El Altísimo te ha bendecido, hija, más que a todas las mujeres de la tierra."
-]
-],
-[
-[
-0,
-"V. Alégrate, llena de gracia (T.P. Aleluya.)"
-]
-],
-[
-[
-0,
-"R. El Señor está contigo (T.P. Aleluya.)"
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
-]
 ]
 ]
 },
@@ -29019,36 +26976,6 @@
 [
 0,
 "R. Y bendito el fruto de tu vientre. Aleluya."
-]
-],
-[
-[
-0,
-"Prov 8, 31b.34-35"
-]
-],
-[
-[
-0,
-"Yo gozaba con los hijos de los hombres. Dichoso el hombre que me escucha, velando en mi portal cada día, guardando las jambas de mi puerta. Quien me alcanza, alcanza la vida y goza del favor del Señor."
-]
-],
-[
-[
-0,
-"V. Tú eres la gloria de nuestro pueblo (T.P. Aleluya.)"
-]
-],
-[
-[
-0,
-"R. Oh Reina y Madre, Virgen María (T.P. Aleluya.)"
-]
-],
-[
-[
-0,
-"La Oración como en las Laudes."
 ]
 ]
 ]
@@ -29340,7 +27267,7 @@
 [
 [
 0,
-"Dios todopoderoso, tú que inspiraste a la Virgen María, cuando llevaba en su seno a tu Hijo, el deseo de visitar a su prima Isabel, concédenos, te rogamos, que, dóciles al soplo del Espíritu, podamos, con María, cantar tus maravillas durante toda nuestra vida. Por nuestro Señor Jesucristo. Sábado anterior al segundo domingo de mayo, NUESTRA SEÑORA DE LOS DESAMPARADOS Ciudad de Valencia: Solemnidad. Reino de Valencia: Fiesta. Hermanitas de los Ancianos Desamparados: Solemnidad. Diócesis de Orihuela: Fiesta La Región Valenciana, denominada antiguamente «Reino de Valencia», es conocida muy principalmente por el culto que dedica a la Santísima Virgen Madre de Dios. Entre todas las advocaciones destaca la de Madre de Desamparados, a ella se aclaman continuamente y todos sus hijos a ella se encomiendan en vida y a la hora de la muerte. Todo del Común de la Santísima Virgen María, en tiempo pascual."
+"Dios todopoderoso, tú que inspiraste a la Virgen María, cuando llevaba en su seno a tu Hijo, el deseo de visitar a su prima Isabel, concédenos, te rogamos, que, dóciles al soplo del Espíritu, podamos, con María, cantar tus maravillas durante toda nuestra vida. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -30272,6 +28199,18 @@
 "comun": "Del Común de pastores, o de los santos varones.",
 "notas": [],
 "piezas": {
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Os daré pastores conforme a mi corazón, que os apacienten con ciencia y doctrina (T. P. Aleluya).",
+"Yo mismo apacentaré mis ovejas; buscaré a las perdidas y haré volver a las descarriadas (T. P. Aleluya).",
+"El Buen Pastor ha dado su vida por las ovejas (T. P. Aleluya)."
+],
+"de": {
+"comun": "Los salmos se toman del Común de los santos varones."
+},
+"rub": "Los salmos se toman del Común de los santos varones."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE Flp 3, 7-8",
 "l": [
@@ -30503,6 +28442,18 @@
 ]
 ]
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Quien quiera ser el primero, que sea el último de todos y el siervo de todos (T. P. Aleluya).",
+"Cuando se manifieste el supremo Pastor, recibiréis la corona de gloria que no se marchita (T. P. Aleluya).",
+"Siervo bueno y fiel, entra en la gloria de tu Señor."
+],
+"de": {
+"comun": "Los salmos se toman del Común de los santos varones."
+},
+"rub": "Los salmos se toman del Común de los santos varones."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -30761,6 +28712,18 @@
 ]
 ]
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vosotros sois la luz del mundo. No se puede ocultar una ciudad puesta en lo alto de un monte. (T. P. Aleluya).",
+"Alumbre así vuestra luz a los hombres, para que vean vuestras buenas obras y den gloria a vuestro Padre. (T. P. Aleluya).",
+"La palabra de Dios es viva y eficaz, más tajante que espada de doble filo. (T. P. Aleluya)."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Hb 13, 7-9a",
@@ -35996,6 +33959,18 @@
 ]
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"«Tú eres el Mesías, el Hijo de Dios vivo.» «Dichoso tú, Simón, hijo de Jonás.»",
+"Tú eres Pedro, y sobre esta piedra edificaré mi Iglesia.",
+"Tú eres un instrumento escogido, apóstol san Pablo, anunciador de la verdad en todo el mundo."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de Apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de Apóstoles."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE Rm 1, 1-3a. 7",
 "l": [
@@ -36270,6 +34245,18 @@
 ]
 ]
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Si me amas, Simón Pedro, pastorea mis ovejas.",
+"Para mí la vida es Cristo, y una ganancia el morir; yo he de gloriarme en la cruz de nuestro Señor Jesucristo.",
+"Señor, si eres tú, mándame ir hacia ti andando sobre agua."
+],
+"de": {
+"comun": "Los salmos se toman del Común de Apóstoles."
+},
+"rub": "Los salmos se toman del Común de Apóstoles."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -36686,6 +34673,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Sé de quién me he fiado, y estoy firmemente persuadido de que el justo Juez tiene poder para asegurar hasta el último día el encargo que me dio.",
+"La gracia de Dios no se ha frustrado en mí, su gracia trabaja siempre conmigo.",
+"He combatido bien mi combate, he corrido hasta la meta, he mantenido la fe."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE 1 Pe 4, 13-14",
 "l": [
@@ -37084,6 +35083,18 @@
 ],
 []
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Yo he rogado por ti, Pedro, para que tu fe no desfallezca; y tú, una vez convertido, confirma a tus hermanos.",
+"Muy a gusto presumo de mis debilidades, porque así residirá en mí la fuerza de Cristo.",
+"Tú eres pastor de las ovejas, Príncipe de los apóstoles; a ti te han sido entregadas las llaves del reino de los cielos."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de Apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de Apóstoles."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -37658,6 +35669,18 @@
 ]
 ]
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Dijo Tomás: «Señor, si no sabemos adónde vas, ¿cómo vamos a conocer el camino?» Respondióle Jesús: «Yo soy el camino, la verdad y la vida.»",
+"Tomás, llamado Dídimo, no estaba con ellos en el momento de presentarse Jesús; dijéronle los otros discípulos: «Hemos visto al Señor.» Aleluya.",
+"Trae tu mano y métela en mi costado; y no seas incrédulo, sino fiel. Aleluya."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Ef 2, 19-22",
@@ -40899,6 +38922,18 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Dijo Jesús a María: «Mujer, ¿por qué lloras? ¿A quién buscas?»",
+"Se han llevado a mi Señor y no sé dónde lo han dejado.",
+"Jesús dijo: «¡María!» Ella, volviéndose, exclamó: «¡Rabbuní!», es decir: «¡Maestro!»"
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de santas mujeres."
+},
+"rub": "Los salmos y el cántico se toman del Común de santas mujeres."
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Rm 8, 28-30",
 "l": [
@@ -41608,6 +39643,18 @@
 ]
 ]
 ]
+},
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor llamó a Santiago y lo hizo su compañero, para enviarlo a predicar.",
+"Jesús tomó consigo a Pedro, a Santiago y a su hermano Juan y se transfiguró delante de ellos.",
+"Tú fuiste, Santiago, el primero, entre los apóstoles, que derramaste tu sangre para fecundar la Iglesia. Aleluya."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de Apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de Apóstoles."
 },
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE 1Co 4, 15",
@@ -42609,6 +40656,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Pasando Jesús, vio a Santiago, hijo de Zebedeo, y a Juan, su hermano, y los llamó.",
+"Inmediatamente dejaron la barca y a su padre, y lo siguieron.",
+"El cáliz que yo voy a beber lo beberéis, y os bautizaréis con el bautismo con que yo me voy a bautizar."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Ef 2, 19-22",
 "l": [
@@ -43074,6 +41133,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Jesús se llevó a Pedro, a Santiago y a Juan y empezó a sentir terror y angustia.",
+"Entonces les dijo: «Velad y orad, para no caer en la tentación.»",
+"El rey Herodes se puso a perseguir a algunos miembros de la Iglesia e hizo pasar a cuchillo a Santiago, hermano de Juan."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de Apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de Apóstoles."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Ef 4, 11-13",
@@ -43711,6 +41782,13 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"de": {
+"feria": 1
+},
+"rub": "Los salmos y el cántico, con sus antífonas, se toman de la feria correspondiente."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Rm 9, 4-5",
@@ -45916,6 +43994,27 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Jesús tomó consigo a sus discípulos y subió a un monte, y se transfiguró en su presencia.",
+"Y se les aparecieron Moisés y Elías conversando con Jesús.",
+"Señor, qué bien estaría quedarnos aquí; si lo deseas, haremos tres tiendas: una para ti, otra para Moisés y otra para Elías."
+],
+"de": {
+"propios": [
+"Salmo 112",
+"Salmo 116",
+"Cántico Cf. Ap 19, 1-7"
+]
+},
+"rub": "El cántico siguiente se dice con todos los Aleluya intercalados cuando el Oficio es cantado. Cuando el Oficio se dice sin canto es suficiente decir el Aleluya sólo al principio y al final de cada estrofa.",
+"salmos": [
+"Salmo 112",
+"Salmo 116",
+"Cántico Cf. Ap 19, 1-7"
+]
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -46133,6 +44232,26 @@
 "rece el Oficio de lectura."
 ]
 ]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vale más un día en tus atrios que mil en mi casa.",
+"Amanece la luz para el justo, y la alegría para los rectos de corazón. Aleluya.",
+"Ensalzad al Señor, Dios nuestro; postraos ante su monte santo."
+],
+"de": {
+"propios": [
+"Salmo 83",
+"Salmo 96",
+"Salmo 98"
+]
+},
+"salmos": [
+"Salmo 83",
+"Salmo 96",
+"Salmo 98"
 ]
 },
 "oficio/lectura1": {
@@ -46960,6 +45079,26 @@
 ]
 ],
 []
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Jesús tomó consigo a Pedro, a Santiago y a su hermano Juan, y los llevó aparte a un alto monte, y se transfiguró en su presencia.",
+"Una nube brillante los envolvió y de la nube salió una voz que dijo: «Éste es mi Hijo amado, en quien tengo mis complacencias.»",
+"Cuando bajaban del monte, les dio Jesús esta orden: «A nadie deis a conocer esta visión hasta que el Hijo del hombre resucite de entre los muertos.» Aleluya."
+],
+"de": {
+"propios": [
+"Salmo 109, 1-5. 7",
+"Salmo 120",
+"Cántico Cf. 1 Tm 3, 16"
+]
+},
+"salmos": [
+"Salmo 109, 1-5. 7",
+"Salmo 120",
+"Cántico Cf. 1 Tm 3, 16"
 ]
 },
 "visperas/lectura_breve": {
@@ -49319,6 +47458,18 @@
 []
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Subió Cristo al cielo y preparó una mansión de inmortalidad a su Madre Purísima. Aleluya.",
+"Por Eva se cerraron a los hombres las puertas del paraíso, y por María Virgen han sido abiertas de nuevo. Aleluya.",
+"La Virgen María ha sido glorificada por encima de todos los ángeles y santos; venid, pues, y alabemos a Cristo, el rey cuyo reino no tendrá fin."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de santa María Virgen."
+},
+"rub": "Los salmos y el cántico, del Común de santa María Virgen."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -49697,6 +47848,18 @@
 []
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Asciende, Virgen Reina, y sube majestuosamente al espléndido palacio del Rey eterno.",
+"Dios la eligió y la predestinó, la hizo morar en su templo santo.",
+"¡Qué pregón tan glorioso para ti, Virgen María!"
+],
+"de": {
+"comun": "Los salmos, del Común de santa María Virgen."
+},
+"rub": "Los salmos, del Común de santa María Virgen."
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -50058,6 +48221,18 @@
 ],
 []
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Dichosa eres, María, porque de ti vino la salvación del mundo; tú ahora vives ya en la gloria del Señor.",
+"La Virgen María ha sido glorificada sobre los coros de los ángeles; que se alegren los fieles y bendigan todos al Señor.",
+"El Señor ha glorificado tanto tu nombre, que tu alabanza no se apartará de la boca de los hombres."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -50449,6 +48624,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"María ha sido elevada al cielo, los ángeles se alegran y, llenos de gozo, alaban al Señor.",
+"La Virgen María ha sido elevada al tálamo celestial, donde el Rey de reyes tiene un trono adornado con estrellas.",
+"Tú eres la mujer a quien Dios ha bendecido, y por ti hemos recibido el fruto de la vida."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de Santa María."
+},
+"rub": "Los salmos y el cántico, del Común de Santa María."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE 1 Co 15, 22-23",
@@ -55212,6 +53399,18 @@
 ]
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Venid, hijas, contemplad al Señor y quedaréis radiantes.",
+"Ahora te seguimos de todo corazón, te respetamos y buscamos tu rostro; Señor, no nos defraudes.",
+"Alegraos, vírgenes de Cristo, y gozad de vuestro desposorio divino que no tendrá fin."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de vírgenes."
+},
+"rub": "Los salmos y el cántico se toman del Común de vírgenes."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -55529,6 +53728,18 @@
 ]
 ]
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Virgen ilustre, sensata, prudente en tu decisión, tienes como esposo del alma al Verbo inmaculado.",
+"Por amor a mi Señor Jesucristo, tuve en nada los bienes de este mundo y del tiempo presente.",
+"Prendado está el rey de tu belleza, porque él es tu Señor y tu Dios."
+],
+"de": {
+"comun": "Los salmos se toman del Común de vírgenes."
+},
+"rub": "Los salmos se toman del Común de vírgenes."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -56323,6 +54534,18 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Quiero ser solamente tuya, oh Cristo esposo, a ti vengo con mi lámpara encendida.",
+"Dichosos los limpios de corazón, porque ellos verán a Dios.",
+"Mi alma se siente firme, está cimentada en Cristo, el Señor."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de vírgenes."
+},
+"rub": "Los salmos y el cántico, del Común de vírgenes."
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -56678,6 +54901,18 @@
 ]
 ]
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Eres piedra desgajada del monte sin manos humanas.",
+"Esta piedra que he erigido será casa de Dios.",
+"El Señor la ha cimentado sobre el monte santo."
+],
+"de": {
+"comun": "Los salmos, del Común de santa María Virgen."
+},
+"rub": "Los salmos, del Común de santa María Virgen."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -57505,6 +55740,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¡Qué alegría cuando me dijeron: «Vamos a la casa del Señor»!",
+"Tu trono, oh Dios, permanece por los siglos.",
+"Con todos sus ángeles, adoremos al Señor."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de santa María Virgen."
+},
+"rub": "Los salmos y el cántico, del Común de santa María Virgen."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -58868,6 +57115,18 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Del tronco de Jesé ha brotado la Virgen María, en cuyo tálamo ha entrado el Espíritu del Altísimo.",
+"Hoy es el nacimiento de santa María Virgen, en cuya belleza y humildad Dios se ha complacido.",
+"Bendita y venerable eres tú, Virgen María, Madre de Dios, cuyo nacimiento celebramos; intercede por nosotros ante el Señor."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de Santa María Virgen."
+},
+"rub": "Los salmos y el cántico, del Común de Santa María Virgen."
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -59519,6 +57778,26 @@
 "En Perú se celebra el día 3 de mayo."
 ],
 "piezas": {
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Crucificado resucitó de entre los muertos y nos redimió. Aleluya.",
+"En medio de la ciudad santa de Jerusalén está el árbol de la vida, y las hojas del árbol sirven de medicina a las naciones. Aleluya.",
+"Nosotros hemos de gloriarnos en la cruz de nuestro Señor Jesucristo."
+],
+"de": {
+"propios": [
+"Salmo 146",
+"Salmo 147",
+"Cántico Flp 2, 6-11"
+]
+},
+"salmos": [
+"Salmo 146",
+"Salmo 147",
+"Cántico Flp 2, 6-11"
+]
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -59937,6 +58216,26 @@
 []
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Mirad la cruz del Señor, que huyan los enemigos; ha vencido el león de la tribu de Judá, el vástago de David. Aleluya.",
+"En la cruz ha sido ensalzada la majestad del Señor; su nombre ha sido enaltecido sobre los cielos y la tierra. Aleluya.",
+"Oh cruz santa, tú has sido la única digna de llevar al Rey y Señor de los cielos y de la tierra. Aleluya."
+],
+"de": {
+"propios": [
+"Salmo 2",
+"Salmo 8",
+"Salmo 95"
+]
+},
+"salmos": [
+"Salmo 2",
+"Salmo 8",
+"Salmo 95"
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -60288,6 +58587,18 @@
 ],
 []
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Subió al árbol santo de la cruz, destruyó el poderío de la muerte, se revistió de poder, resucitó al tercer día.",
+"¡Cómo brilla la cruz santa! De ella colgó el cuerpo del Señor y desde ella derramó Cristo aquella sangre que ha sanado nuestras heridas.",
+"Resplandece la cruz santa: por ella el mundo ha obtenido la salvación; la cruz vence, la cruz reina, la cruz aleja todo pecado. Aleluya."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Hb 2, 9b-10",
@@ -60820,6 +59131,26 @@
 []
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¡Oh gran obra de amor! Cuando en el árbol murió la Vida, con su muerte destruyó la misma muerte.",
+"Adoramos, Señor, tu cruz y recordamos tu gloriosa muerte; compadécete de nosotros, tú que por nosotros padeciste.",
+"Te adoramos, oh Cristo, y te bendecimos, porque con tu santa cruz redimiste al mundo."
+],
+"de": {
+"propios": [
+"Salmo 109, 1-5. 7",
+"Salmo 115",
+"Cántico Ap 4, 11; 5, 9-10. 12"
+]
+},
+"salmos": [
+"Salmo 109, 1-5. 7",
+"Salmo 115",
+"Cántico Ap 4, 11; 5, 9-10. 12"
+]
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -61285,6 +59616,13 @@
 ],
 []
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"de": {
+"feria": 1
+},
+"rub": "Los salmos, con sus antífonas, de la feria correspondiente."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -61779,6 +60117,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Mi alma está unida a ti, Señor Jesús.",
+"Estemos alegres cuando compartimos los padecimientos de Cristo.",
+"Quiso Dios reconciliar consigo todos los seres por la sangre de Cristo."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la semana I del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -62126,6 +60476,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Cristo es nuestra paz, y por su cruz nos reconcilió con Dios.",
+"Acerquémonos a la ciudad del Dios vivo y al mediador de la nueva alianza, Jesús.",
+"Por la sangre de Cristo hemos recibido la redención."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de Santa María Virgen."
+},
+"rub": "Los salmos y el cántico, del Común de Santa María Virgen."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -65013,6 +63375,25 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Se agitó el mar y la tierra tembló cuando el arcángel Miguel bajaba del cielo.",
+"El ángel Gabriel se apareció a Zacarías y le dijo: «Tu mujer Isabel te dará un hijo, y le pondrás por nombre Juan».",
+"Yo soy el ángel Rafael, que estoy al servicio de Dios; vosotros bendecid al Señor y escribid todo lo que os ha ocurrido.",
+"Yo soy el ángel Rafael, que estoy al servicio de Dios; vosotros bendecid al Señor y escribid todo lo que os ha ocurrido."
+],
+"de": {
+"propios": [
+"Salmo 96",
+"Salmo 102"
+]
+},
+"salmos": [
+"Salmo 96",
+"Salmo 102"
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -65385,6 +63766,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Alabemos al Señor, a quien alaban los ángeles, y los querubines y serafines proclaman tres veces Santo.",
+"Ángeles del Señor, bendecid al Señor eternamente.",
+"Los ángeles en el cielo te aclaman, Señor santo, diciendo a una sola voz: «Oh Dios, tú mereces un himno.»"
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la semana I del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -65627,6 +64020,26 @@
 "La oración como en Laudes."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Ensalzaste tu majestad sobre los cielos, Rey de los ángeles.",
+"Delante de los ángeles, tañeré para ti, Dios mío.",
+"Vi delante del trono a un Cordero en pie; se notaba que lo habían degollado. Y escuché la voz de muchos ángeles alrededor del trono."
+],
+"de": {
+"propios": [
+"Salmo 8",
+"Salmo 137",
+"Cántico Col 1, 12-20"
+]
+},
+"salmos": [
+"Salmo 8",
+"Salmo 137",
+"Cántico Col 1, 12-20"
 ]
 },
 "visperas/lectura_breve": {
@@ -66428,6 +64841,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor enviará su ángel contigo y dirigirá tu camino.",
+"Bendito sea Dios, que envió un ángel a salvar a sus siervos que confiaron en él.",
+"Ángeles, y todos sus ejércitos, alabad al Señor."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -66666,6 +65091,24 @@
 "La oración como en Laudes."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El ángel del Señor acampa en torno a sus fieles y los protege.",
+"Vive el Señor, que su ángel me ha guardado.",
+"Bendecid a Dios y proclamad ante todos los vivientes los beneficios que os ha hecho."
+],
+"de": {
+"propios": [
+"Salmo 33",
+"Cántico Ap 11, 17-18; 12, 10b-12a"
+]
+},
+"salmos": [
+"Salmo 33",
+"Cántico Ap 11, 17-18; 12, 10b-12a"
 ]
 },
 "visperas/lectura_breve": {
@@ -67411,6 +65854,26 @@
 ]
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Te doy gracias, Señor, de todo corazón, porque, cuando te invoqué, me escuchaste.",
+"La tierra ha dado su fruto, nos ha bendecido el Señor, nuestro Dios.",
+"Haz, Señor, prósperas las obras de nuestras manos, y toda nuestra vida será alegría y júbilo."
+],
+"de": {
+"propios": [
+"Salmo 137",
+"Salmo 66",
+"Salmo 89"
+]
+},
+"salmos": [
+"Salmo 137",
+"Salmo 66",
+"Salmo 89"
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -67759,6 +66222,26 @@
 "gracias porque es llegado el tiempo del que ama. Amén."
 ]
 ]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Señor, me abrirás los labios, y mi boca proclamará tu alabanza.",
+"Con el Señor triunfará y se gloriará la estirpe de Israel.",
+"Entrad por las puertas del Señor, dándole gracias y bendiciendo su nombre."
+],
+"de": {
+"propios": [
+"Salmo 50",
+"Cántico Is 45, 15-26",
+"Salmo 99"
+]
+},
+"salmos": [
+"Salmo 50",
+"Cántico Is 45, 15-26",
+"Salmo 99"
 ]
 },
 "laudes/lectura_breve": {
@@ -68185,6 +66668,26 @@
 "el Dios que nos justifica!» Amén."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"En ti confío, Señor, no quede yo defraudado.",
+"Escucha, Señor, mi voz suplicante.",
+"Dios hará justicia a sus elegidos que le gritan. Aleluya."
+],
+"de": {
+"propios": [
+"Salmo 24, 1-11",
+"Salmo 27, 1-3. 6-9",
+"Cántico Ef 1, 3-10"
+]
+},
+"salmos": [
+"Salmo 24, 1-11",
+"Salmo 27, 1-3. 6-9",
+"Cántico Ef 1, 3-10"
 ]
 },
 "visperas/lectura_breve": {
@@ -68735,6 +67238,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"De María nació Jesús, llamado Cristo.",
+"Contigo, Madre, bendecimos al Señor, que al morir nos entregó a ti como hijos.",
+"La Virgen María ha sido ensalzada sobre los coros de los ángeles y coronada con doce estrellas."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Cf. Is 61, 10",
 "l": [
@@ -68842,6 +67357,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El ángel Gabriel anunció a María, y concibió del Espíritu Santo.",
+"Junto a la cruz de Jesús estaba su madre.",
+"Alégrate, Virgen Madre: Cristo ha resucitado del sepulcro. Aleluya."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de Santa María Virgen."
+},
+"rub": "Los salmos y el cántico, del Común de Santa María Virgen."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -71316,6 +69843,18 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Bendita tú entre las mujeres, y bendito el fruto de tu vientre.",
+"Aquí está la esclava del Señor; hágase en mí según tu palabra.",
+"Me felicitarán todas las generaciones."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de santa María Virgen."
+},
+"rub": "Los salmos y el cántico, del Común de santa María Virgen."
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -72630,6 +71169,27 @@
 "por los siglos de los siglos. Amén."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Muchachas de Jerusalén, decid a mi amado que estoy enferma de amor.",
+"Mi amado es mío, y yo soy suya, del pastor de azucenas.",
+"Alegrémonos y gocemos y demos gracias a Dios, porque llegó la boda del Cordero."
+],
+"de": {
+"propios": [
+"Salmo 121",
+"Salmo 126",
+"Cántico Cf. Ap 19, 1-7"
+]
+},
+"rub": "El cántico siguiente se dice con Aleluya, tal como está aquí, solamente cuando el Oficio es cantado. Cuando el Oficio se dice sin canto es suficiente decir Aleluya sólo al principio y al final de cada estrofa.",
+"salmos": [
+"Salmo 121",
+"Salmo 126",
+"Cántico Cf. Ap 19, 1-7"
 ]
 },
 "visperas/lectura_breve": {
@@ -75292,6 +73852,27 @@
 ]
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Una luz sin ocaso iluminará a tus santos, Señor, y la eternidad los esclarecerá. Aleluya.",
+"Jerusalén, ciudad de Dios, te alegrarás en tus hijos, porque todos serán bendecidos y se congregarán junto al Señor. Aleluya.",
+"Los santos cantaban un cántico nuevo ante el trono de Dios y del Cordero, y sus voces llenaban toda la tierra. Aleluya."
+],
+"de": {
+"propios": [
+"Salmo 112",
+"Salmo 147",
+"Cántico Cf. Ap 19, 1-7"
+]
+},
+"rub": "El cántico siguiente se dice con Aleluya, tal como está aquí, solamente cuando el Oficio es cantado. Cuando el Oficio se dice sin canto es suficiente decir Aleluya sólo al principio y al final de cada estrofa.",
+"salmos": [
+"Salmo 112",
+"Salmo 147",
+"Cántico Cf. Ap 19, 1-7"
+]
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -75633,6 +74214,26 @@
 "y al Espíritu que él nos envía. Amén."
 ]
 ]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Admirable es tu nombre, Señor, porque coronaste de gloria y dignidad a tus santos y les diste el mando sobre las obras de tus manos.",
+"Dichosos los limpios de corazón, porque ellos verán a Dios.",
+"A tus santos, Señor, les has enseñado el sendero de la vida y los has saciado de gozo en tu presencia."
+],
+"de": {
+"propios": [
+"Salmo 8",
+"Salmo 14",
+"Salmo 15"
+]
+},
+"salmos": [
+"Salmo 8",
+"Salmo 14",
+"Salmo 15"
 ]
 },
 "oficio/lectura1": {
@@ -76137,6 +74738,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Los santos tienen su morada en el reino de Dios, y allí han encontrado descanso eterno. Aleluya.",
+"Santos del Señor, bendecid al Señor eternamente.",
+"Alabanza de todos sus fieles, de Israel, su pueblo escogido. Es un honor para todos sus fieles."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -76626,6 +75239,26 @@
 "por los siglos de los siglos. Amén."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vi una muchedumbre inmensa, que nadie podría contar, de todos los pueblos, de pie delante del trono.",
+"Dios los puso a prueba, y los halló dignos de sí; por eso recibirán la noble corona de manos del Señor.",
+"Con tu sangre nos compraste, Señor Dios, hombres de toda raza, lengua, pueblo y nación, y has hecho de nosotros un reino para nuestro Dios."
+],
+"de": {
+"propios": [
+"Salmo 109, 1-5. 7",
+"Salmo 115",
+"Cántico Ap 4, 11; 5, 9. 10. 12"
+]
+},
+"salmos": [
+"Salmo 109, 1-5. 7",
+"Salmo 115",
+"Cántico Ap 4, 11; 5, 9. 10. 12"
 ]
 },
 "visperas/lectura_breve": {
@@ -77136,6 +75769,18 @@
 ]
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Cuando hagas limosna, que no sepa tu mano izquierda lo que hace tu derecha.",
+"Venid, benditos de mi Padre, heredad el Reino preparado para vosotros desde la creación del mundo.",
+"Lo que hicisteis con uno de estos mis humildes hermanos, conmigo lo hicisteis."
+],
+"de": {
+"comun": "Los salmos, del Común de santos varones."
+},
+"rub": "Los salmos, del Común de santos varones."
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -77461,6 +76106,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Mi alma está unida a ti, Dios mío.",
+"Dad gracias al Señor que manifestó su misericordia en el humilde Martín con tantos dones celestiales.",
+"Santos y humildes de corazón, bendecid al Señor; ensalzadle con himnos por los siglos."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Rm 12,1-2",
 "l": [
@@ -77669,6 +76326,22 @@
 "Señor, Dios nuestro, que has querido conducir a san Martín de Porres por el camino del servicio y la humildad a la gloria del cielo, concédenos la gracia de seguir sus ejemplos, para que merezcamos ser coronados con él en la gloria. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
+]
+},
+"intermedia/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Es bueno refugiarse en el Señor, porque es eterna su misericordia. Aleluya.",
+"El Señor es mi fuerza y mi energía. Aleluya.",
+"Te doy gracias, Señor, porque me escuchaste. Aleluya."
+],
+"de": {
+"propios": [
+"Salmo 117"
+]
+},
+"salmos": [
+"Salmo 117"
 ]
 },
 "tercia/lectura_breve": {
@@ -77896,6 +76569,19 @@
 []
 ]
 },
+"tercia/salmodia": {
+"r": "SALMODIA",
+"de": {
+"propios": [
+"Salmo 119",
+"Salmo 121"
+]
+},
+"salmos": [
+"Salmo 119",
+"Salmo 121"
+]
+},
 "tercia/oracion": {
 "r": "ORACION",
 "l": [
@@ -77989,6 +76675,21 @@
 []
 ]
 },
+"sexta/salmodia": {
+"r": "SALMODIA",
+"de": {
+"propios": [
+"Salmo 122",
+"Salmo 123",
+"Salmo 124"
+]
+},
+"salmos": [
+"Salmo 122",
+"Salmo 123",
+"Salmo 124"
+]
+},
 "sexta/oracion": {
 "r": "ORACION",
 "l": [
@@ -78080,6 +76781,19 @@
 ]
 ],
 []
+]
+},
+"nona/salmodia": {
+"r": "SALMODIA",
+"de": {
+"propios": [
+"Salmo 125",
+"Salmo 127"
+]
+},
+"salmos": [
+"Salmo 125",
+"Salmo 127"
 ]
 },
 "nona/oracion": {
@@ -78249,6 +76963,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Caminó con rectitud y sencillez de corazón y halló gracia a los ojos del Señor.",
+"Fue honrado en la presencia del Señor, y el Señor fue su fuerza.",
+"Los santos cantaban un cántico nuevo ante el trono de Dios y del Cordero, y sus voces llenaban toda la tierra."
+],
+"de": {
+"comun": "Los salmos y el cántico, del Común de santos varones."
+},
+"rub": "Los salmos y el cántico, del Común de santos varones."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -82746,6 +81472,18 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vio el Señor a Pedro y a Andrés y los llamó.",
+"«Venid en pos de mí —dice el Señor—, y yo os haré pescadores de hombres.»",
+"Ellos, dejando al momento las redes, siguieron al Señor, su redentor."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de apóstoles."
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Ef 4, 11-13",
 "l": [
@@ -83901,6 +82639,18 @@
 ]
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Establezco hostilidades entre ti y la mujer, entre tu estirpe y la suya.",
+"El Señor me ha vestido un traje de gala y me ha envuelto en un manto de triunfo.",
+"Alégrate, María, llena de gracia, el Señor está contigo; bendita tú entre las mujeres."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de Santa María Virgen."
+},
+"rub": "Los salmos y el cántico se toman del Común de Santa María Virgen."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE",
 "l": [
@@ -84608,6 +83358,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¡Oh Madre purísima, que no conoció el pecado y que mereció llevar a Dios!",
+"El Señor Dios Altísimo te ha bendecido, Virgen María, entre todas las mujeres de la tierra.",
+"Llévanos contigo, Virgen inmaculada, correremos tras del aroma de tus perfumes."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del Domingo I del Salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Is 43, 1",
 "l": [
@@ -85169,6 +83931,18 @@
 ]
 ]
 },
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Todo es hermoso en ti, Virgen María, ni siquiera tienes la mancha del pecado original.",
+"Tú eres la gloria de Jerusalén; tú, la alegría de Israel; tú, el orgullo de nuestra raza.",
+"Tus vestidos son blancos como la nieve, tu rostro resplandeciente como el sol."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de santa María Virgen."
+},
+"rub": "Los salmos y el cántico se toman del Común de santa María Virgen."
+},
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Rm 5, 20b-21",
 "l": [
@@ -85727,6 +84501,18 @@
 ]
 ]
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Juan Diego iba muy de madrugada a tomar parte del culto divino y a escuchar los mandatos de Dios.",
+"Juan Diego bendecía a Dios con sencillez y alegría.",
+"He aquí a un varón prudente que construye su casa sobre roca y en cuya boca no se encuentra falsedad."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de santos varones: Laudes — Vísperas"
+},
+"rub": "Los salmos y el cántico se toman del Común de santos varones: Laudes — Vísperas"
 },
 "oficio/lectura_breve": {
 "r": "LECTURA BREVE Ef 2, 19-22",
@@ -86381,6 +85167,18 @@
 ]
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¿Qué es eso que sube del desierto, como nube de incienso y de mirra, y de perfumes preciosos?",
+"Brotan flores en el páramo, y las colinas se ciñen de alegría.",
+"Serás como huerto bien regado, como manantial cuyas aguas nunca faltan."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de Santa María Virgen."
+},
+"rub": "Los salmos y el cántico se toman del Común de Santa María Virgen."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE Ap 11, 19-21",
 "l": [
@@ -86704,6 +85502,18 @@
 ]
 ]
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Tu sol ya no se pondrá, ni menguará tu luna.",
+"Mirad que ya viene mi hijo el más pequeño, saltando sobre los montes, brincando por las colinas, como un ágil cervatillo.",
+"Salgamos al campo, madruguemos para ver las viñas, para ver si las vides ya florecen y echan flores los granados: ahí te mostraré mi amor."
+],
+"de": {
+"comun": "Los salmos se toman del Común de Santa María Virgen."
+},
+"rub": "Los salmos se toman del Común de Santa María Virgen."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -87278,6 +86088,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¿Quién es esa que surge como el alba, hermosa como la luna y límpida como el sol, imponente como escuadrón a banderas desplegadas?",
+"Yo soy la siempre Virgen santa María, Madre del verdadero Dios por quien se vive.",
+"Como el águila incita a volar a sus polluelos y revolotea sobre el nido, así extendió ella sus alas y los llevó sobre su plumaje."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del Domingo I del Salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Cf. Sir 50, 5-10",
 "l": [
@@ -87666,6 +86488,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"He elegido y santificado este lugar, para que en él permanezca mi nombre para siempre y estén fijos en él mis ojos y mi corazón.",
+"Reconozcan, Señor, que aquí está tu mano, que eres tú quien lo ha hecho.",
+"El gorrión ha encontrado una casa, y la tórtola ha hallado un nido para colocar a sus polluelos."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de santa María Virgen."
+},
+"rub": "Los salmos y el cántico se toman del Común de santa María Virgen."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Ap 21, 2-3",
@@ -89004,6 +87838,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Mi alma está unida a ti, Dios mío, pues mi carne fue lapidada por confesar tu nombre.",
+"Esteban vio los cielos abiertos, y al punto entró en ellos; dichoso mortal, para quien los cielos se abrieron.",
+"Veo los cielos abiertos y a Jesús a la diestra del Padre."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del Salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Hch 6, 2b-5a",
 "l": [
@@ -89419,6 +88265,27 @@
 "nos llega por tu amor, partido y tierno."
 ]
 ]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Juan dio testimonio de la Palabra de Dios y fue testigo de las obras que realizó Jesucristo.",
+"Éste es el discípulo a quien Jesús quería con predilección.",
+"Éste es Juan, el que posó su frente en el pecho del Señor durante la cena, es el apóstol afortunado, a quien le fueron revelados secretos celestiales.",
+"Éste es Juan, el que posó su frente en el pecho del Señor durante la cena, es el apóstol afortunado, a quien le fueron revelados secretos celestiales."
+],
+"de": {
+"propios": [
+"Salmo 18 A",
+"Salmo 63",
+"Salmo 98"
+]
+},
+"salmos": [
+"Salmo 18 A",
+"Salmo 63",
+"Salmo 98"
 ]
 },
 "oficio/lectura1": {
@@ -89864,6 +88731,18 @@
 ]
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor eligió a Juan, el apóstol y evangelista que conservó su castidad virginal, y lo distinguió entre los demás con una gran predilección.",
+"Este es Juan, el apóstol virgen, a quien Cristo en la cruz le encomendó su Madre Virgen.",
+"El discípulo a quien Jesús amaba exclamó: «¡Es el Señor!» Aleluya."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del Salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Hch 4, 19-20",
 "l": [
@@ -90301,6 +89180,18 @@
 ]
 ]
 },
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Tus hijos saltaron de gozo como corderos, alabándote a ti, Señor, que los libraste.",
+"Éstos fueron rescatados de entre los hombres, como primicias ofrecidas a Dios y al Cordero, y están sin mancha ante el trono de Dios.",
+"Una dicha eterna coronará su cabeza, gozo y alegría los seguirán y se alejarán de ellos las penas y aflicciones."
+],
+"de": {
+"comun": "Los salmos se toman del Común de mártires."
+},
+"rub": "Los salmos se toman del Común de mártires."
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -90733,6 +89624,18 @@
 ]
 ]
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"«Irán en mi cortejo vestidos de blanco, pues son dignos de ello», dice el Señor.",
+"Los niños Inocentes cantan alabanzas al Señor; lo que en esta vida no pudieron hacer lo han realizado después de su muerte.",
+"De la boca de los niños de pecho has sacado una alabanza contra tus enemigos."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del Salterio"
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Jr 31, 15",
@@ -91419,6 +90322,3886 @@
 [
 0,
 "Socorre, Señor, a tu pueblo que se acoge a la intercesión del papa san Silvestre, para que, pasando esta vida bajo tu pastoreo, pueda alcanzar en la gloria la vida que no acaba. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+}
+}
+},
+{
+"md": null,
+"mismo_dia": false,
+"tomo": "IV",
+"titulo": "DEDICACIÓN DE LA PROPIA IGLESIA",
+"grado": null,
+"resena": null,
+"comun": "Del Común de la dedicación de una iglesia.",
+"notas": [
+"Propio de la Archidiócesis de Valencia."
+],
+"piezas": {}
+},
+{
+"md": null,
+"mismo_dia": false,
+"tomo": "III",
+"titulo": "EL INMACULADO CORAZÓN DE LA VIRGEN MARÍA",
+"grado": "MEMORIA",
+"resena": null,
+"comun": "Del Común de santa María Virgen.",
+"notas": [],
+"piezas": {
+"oficio/lectura2": {
+"r": "SEGUNDA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"De los sermones de san Lorenzo Justiniano, obispo"
+]
+],
+[
+[
+0,
+"(Sermón X, en la fiesta de la Purificación de la Santísima Virgen María: Opera 2, Venecia 1751, 38-39)"
+]
+],
+[],
+[
+[
+1,
+"MARÍA CONSERVABA TODAS ESTAS COSAS EN SU CORAZÓN"
+]
+],
+[],
+[
+[
+0,
+"María iba reflexionando sobre todas las cosas que había conocido leyendo, escuchando, mirando, y de este modo su fe iba en aumento constante, sus méritos crecían, su sabiduría se hacía más clara y su caridad era cada vez más ardiente. Su conocimiento y penetración, siempre renovados, de los misterios celestiales la llenaban de alegría, la hacían gozar de la fecundidad del Espíritu, atraían hacia Dios y la hacían perseverar en su propia humildad. Porque en esto consisten los progresos de la gracia divina, en elevar desde lo más humilde hasta lo más excelso y en ir transformando de resplandor en resplandor. Bienaventurada el alma de la Virgen que, guiada por el magisterio del Espíritu que habitaba en ella, se sometía siempre y en todo a las exigencias de la Palabra de Dios. Ella no se dejaba llevar por su propio instinto o juicio, sino que su actuación exterior correspondía siempre a las insinuaciones internas de la sabiduría que nace de la fe. Convenía, en efecto, que la sabiduría divina, que se iba edificando la casa de la Iglesia para habitar en ella, se valiera de María Santísima para lograr la observancia de la ley, la purificación de la mente, la justa medida de la humildad y el sacrificio espiritual."
+]
+],
+[],
+[
+[
+0,
+"Imítala tú, alma fiel. Entra en el templo de tu corazón, si quieres alcanzar la purificación espiritual y la limpieza de todo contagio de pecado. Allí Dios atiende más a la intención que a la exterioridad de nuestras obras. Por esto, ya sea que por la contemplación salgamos de nosotros mismos para reposar en Dios, ya sea que nos ejercitemos en la práctica de las virtudes o que nos esforcemos en ser útiles a nuestro prójimo con nuestras buenas obras, hagámoslo de manera que la caridad de Cristo sea lo único que nos apremie. Este es el sacrificio de la purificación espiritual, agradable a Dios, que se ofrece no en un templo hecho por mano de hombres, sino en el templo del corazón, en el que Cristo, el Señor, entra de buen grado."
+]
+]
+]
+},
+"oficio/responsorio2": {
+"r": "RESPONSORIO",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"No hay alabanza digna de ti, virginidad inmaculada y santa. "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Porque en tu seno has llevado al que ni el cielo puede contener."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Bendita tú entre las mujeres y bendito el fruto de tu vientre."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Porque en tu seno has llevado al que ni el cielo puede contener."
+]
+]
+]
+},
+"oficio/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Oh Dios, tú que has preparado en el corazón de la Virgen María una digna morada al Espíritu Santo, haz que nosotros, por intercesión de la Virgen, lleguemos a ser templos dignos de tu gloria. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+},
+"laudes/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+"Mi corazón y mi carne se alegran por el Dios vivo."
+]
+},
+"laudes/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Oh Dios, tú que has preparado en el corazón de la Virgen María una digna morada al Espíritu Santo, haz que nosotros, por intercesión de la Virgen, lleguemos a ser templos dignos de tu gloria. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+},
+"visperas/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Oh Dios, tú que has preparado en el corazón de la Virgen María una digna morada al Espíritu Santo, haz que nosotros, por intercesión de la Virgen, lleguemos a ser templos dignos de tu gloria. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+}
+}
+},
+{
+"md": null,
+"mismo_dia": false,
+"tomo": "III",
+"titulo": "JESUCRISTO, SUMO Y ETERNO SACERDOTE",
+"grado": "FIESTA",
+"resena": null,
+"comun": null,
+"notas": [
+"Los himnos latinos de Jesucristo, sumo y eterno sacerdote, se hallan en el Apéndice IV."
+],
+"piezas": {
+"oficio/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"A ti, Jesús, te alaban las naciones;"
+]
+],
+[
+[
+0,
+"que a tu reino nos llevas,"
+]
+],
+[
+[
+0,
+"y en ti cobra esperanza nuestra súplica,"
+]
+],
+[
+[
+0,
+"único mediador de cielo y tierra."
+]
+],
+[],
+[
+[
+0,
+"Verbo de Dios, por quien todo fue hecho,"
+]
+],
+[
+[
+0,
+"Nacido de María;"
+]
+],
+[
+[
+0,
+"Tú, la hostia pura, santa, inmaculada,"
+]
+],
+[
+[
+0,
+"que de ofrecerse a Dios sola fue digna."
+]
+],
+[],
+[
+[
+0,
+"Ungido por el Padre, Jesucristo,"
+]
+],
+[
+[
+0,
+"eterno sacerdote,"
+]
+],
+[
+[
+0,
+"reconcilias al cielo con la tierra,"
+]
+],
+[
+[
+0,
+"los hombres y los ángeles te adoren."
+]
+],
+[],
+[
+[
+0,
+"Dios de Dios verdadero, igual al Padre,"
+]
+],
+[
+[
+0,
+"por nosotros te ofreces"
+]
+],
+[
+[
+0,
+"en sacrificio, y mueres por nosotros,"
+]
+],
+[
+[
+0,
+"trocando en vida eterna nuestra muerte."
+]
+],
+[],
+[
+[
+0,
+"Clavado en cruz, nos miras, te miramos,"
+]
+],
+[
+[
+0,
+"crece el amor, la entrega"
+]
+],
+[
+[
+0,
+"Al Padre, en el Espíritu, contigo,"
+]
+],
+[
+[
+0,
+"eleva nuestro canto y nuestra ofrenda. Amén."
+]
+]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Lo he pedido a mi Padre, y me ha dado en herencia las naciones.",
+"Presentad vuestros cuerpos como hostia viva, santa, agradable a Dios.",
+"Cristo amó a su Iglesia; él se entregó a sí mismo por ella, para consagrarla."
+],
+"de": {
+"propios": [
+"Salmo 2",
+"Salmo 39, 2-13",
+"Salmo 84"
+]
+},
+"salmos": [
+"Salmo 2",
+"Salmo 39, 2-13",
+"Salmo 84"
+]
+},
+"oficio/lectura1": {
+"r": "PRIMERA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"De la carta a los Hebreos 4,14-5,10"
+]
+],
+[],
+[
+[
+1,
+"JESUCRISTO, SUMO SACERDOTE"
+]
+],
+[],
+[
+[
+0,
+"Hermanos: Mantengamos la confesión de la fe, ya que tenemos un sumo sacerdote grande, que ha atravesado el cielo, Jesús, Hijo de Dios."
+]
+],
+[],
+[
+[
+0,
+"No tenemos un sumo sacerdote incapaz de compadecerse de nuestras debilidades, sino que ha sido probado en todo exactamente como nosotros, menos en el pecado. Por eso, acerquémonos con seguridad al trono de la gracia, para alcanzar misericordia y encontrar gracia que nos auxilie oportunamente."
+]
+],
+[],
+[
+[
+0,
+"Porque todo sumo sacerdote, escogido entre los hombres, está puesto para representar a los hombres en el culto a Dios: para ofrecer dones y sacrificios por los pecados. Él puede comprender a los ignorantes y extraviados, ya que él mismo está envuelto en debilidades. A causa de ellas, tiene que ofrecer sacrificios por sus propios pecados, como por los del pueblo. Nadie puede arrogarse este honor: Dios es quien llama, como en el caso de Aarón."
+]
+],
+[],
+[
+[
+0,
+"Tampoco Cristo se confirió a sí mismo la dignidad de sumo sacerdote, sino aquel que le dijo: «Tú eres mi Hijo: yo te he engendrado hoy», o, como dice otro pasaje de la Escritura: «Tú eres sacerdote eterno, según el rito de Melquisedec.»"
+]
+],
+[],
+[
+[
+0,
+"Cristo, en los días de su vida mortal, a gritos y con lágrimas, presentó oraciones y súplicas al que podía salvarlo de la muerte, cuando en su angustia fue escuchado. Él, a pesar de ser Hijo, aprendió, sufriendo, a obedecer. Y, llevado a la consumación, se ha convertido para todos los que le obedecen en autor de salvación eterna, proclamado por Dios sumo sacerdote, según el rito de Melquisedec."
+]
+]
+]
+},
+"oficio/responsorio": {
+"r": "RESPONSORIO Flp 2, 8; Is 53, 7",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Cristo se rebajó "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Hasta someterse incluso a la muerte."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Maltratado, voluntariamente se humillaba."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Hasta someterse incluso a la muerte."
+]
+]
+]
+},
+"oficio/lectura2": {
+"r": "SEGUNDA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"De la carta encíclica Mediator Dei del papa Pío doce"
+]
+],
+[
+[
+0,
+"(AAS 39 [1947], 552-553)"
+]
+],
+[],
+[
+[
+0,
+"CRISTO, SACERDOTE Y VÍCTIMA Cristo es ciertamente sacerdote, pero lo es para nosotros, no para sí mismo, ya que él, en nombre de todo el género humano, presenta al Padre eterno las aspiraciones y sentimientos religiosos de los hombres. Es también víctima, pero lo es igualmente para nosotros, ya que se pone en lugar del hombre pecador. Por esto, aquella frase del Apóstol: Tened entre vosotros los sentimientos propios de Cristo Jesús, exige de todos los cristianos que, en la medida de las posibilidades humanas, reproduzcan en su interior las mismas disposiciones que tenía el divino Redentor cuando ofrecía el sacrificio de sí mismo: disposiciones de una humilde sumisión, de adoración a la suprema majestad divina, de honor, alabanza y acción de gracias."
+]
+],
+[],
+[
+[
+0,
+"Les exige asimismo que asuman en cierto modo la condición de víctimas, que se nieguen a sí mismos, conforme a las normas del Evangelio, que espontánea y libremente practiquen la penitencia, arrepintiéndose y expiando los pecados."
+]
+],
+[],
+[
+[
+0,
+"Exige finalmente que todos, unidos a Cristo, muramos místicamente en la cruz, de modo que podamos hacernos nuestra aquella sentencia de san Pablo: Estoy crucificado con Cristo."
+]
+]
+]
+},
+"oficio/responsorio2": {
+"r": "RESPONSORIO Ga 2, 20",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Vivo de la fe en el Hijo de Dios, "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Que me amó hasta entregarse por mí."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Vivo yo, pero no soy yo, es Cristo quien vive en mí."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Que me amó hasta entregarse por mí."
+]
+]
+]
+},
+"oficio/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Oh Dios, que para gloria tuya y salvación del género humano constituiste a tu Hijo único sumo y eterno Sacerdote; concede a quienes él eligió para ministros y dispensadores de sus misterios la gracia de ser fieles en el cumplimiento del ministerio recibido. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+},
+"laudes/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"Cantan a tu gloria, Cristo Sacerdote,"
+]
+],
+[
+[
+0,
+"los cielos y la tierra:"
+]
+],
+[
+[
+0,
+"a ti que por amor te hiciste hombre"
+]
+],
+[
+[
+0,
+"y al Padre como víctima te ofrendas."
+]
+],
+[],
+[
+[
+0,
+"Tu sacrificio nos abrió las puertas,"
+]
+],
+[
+[
+0,
+"de par en par, del cielo;"
+]
+],
+[
+[
+0,
+"ante el trono de Dios, es elocuente"
+]
+],
+[
+[
+0,
+"tu holocausto en la cruz y tu silencio."
+]
+],
+[],
+[
+[
+0,
+"Todos los sacrificios de los hombres"
+]
+],
+[
+[
+0,
+"quedaron abolidos:"
+]
+],
+[
+[
+0,
+"todos eran figuras que anunciaban"
+]
+],
+[
+[
+0,
+"al Sacerdote eterno, Jesucristo."
+]
+],
+[],
+[
+[
+0,
+"No te basta el morir, que quieres darnos"
+]
+],
+[
+[
+0,
+"alimento de vida:"
+]
+],
+[],
+[
+[
+0,
+"quedarte con nosotros y ofrecerte"
+]
+],
+[
+[
+0,
+"sobre el altar: hacerte eucaristía."
+]
+],
+[],
+[
+[
+0,
+"Clavado en cruz nos miras, te miramos,"
+]
+],
+[
+[
+0,
+"crece el amor, la entrega."
+]
+],
+[
+[
+0,
+"Al Padre, en el Espíritu, contigo,"
+]
+],
+[
+[
+0,
+"eleva nuestro canto y nuestra ofrenda. Amén."
+]
+],
+[
+[
+0,
+"Ant. 1. El Padre, por la sangre de la cruz de Cristo, hizo la paz con todos los seres del cielo"
+]
+],
+[
+[
+0,
+"y de la tierra."
+]
+],
+[
+[
+0,
+"Los salmos y el cántico, del domingo de la I semana del salterio"
+]
+],
+[
+[
+0,
+"Ant. 2. Todo fue creado por Cristo y para Cristo."
+]
+],
+[],
+[
+[
+0,
+"Ant. 3. Todo lo puso bajo sus pies, y lo dio a la Iglesia, como cabeza, sobre todo; ella es"
+]
+],
+[
+[
+0,
+"su cuerpo."
+]
+]
+]
+},
+"laudes/lectura_breve": {
+"r": "LECTURA BREVE",
+"l": [
+[],
+[
+[
+0,
+"Hb 10, 5-10 Cuando Cristo entró en el mundo, dijo: «Tú no quieres sacrificios ni ofrendas, pero me has preparado un cuerpo; no aceptas holocaustos ni víctimas expiatorias. Entonces yo dije lo que está escrito en el libro: \"Aquí estoy, oh Dios, para hacer tu voluntad.\"» Primero dice: «No quieres ni aceptas sacrificios ni ofrendas, holocaustos ni víctimas expiatorias», que se ofrecen según la ley. Después añade: «Aquí estoy yo para hacer tu voluntad.» Niega lo primero, para afirmar lo segundo. Y conforme a esa voluntad todos quedamos santificados por la oblación del cuerpo de Jesucristo, hecha una vez para siempre."
+]
+]
+]
+},
+"laudes/responsorio_breve": {
+"r": "RESPONSORIO BREVE",
+"l": [
+[],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Aquí estoy para hacer tu voluntad."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Aquí estoy para hacer tu voluntad."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Llevo tu ley en las entrañas."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Para hacer tu voluntad."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, al Hijo y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Aquí estoy para hacer tu voluntad."
+]
+]
+]
+},
+"laudes/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+"Padre, que todos sean uno, para que el mundo crea que tú me has enviado."
+]
+},
+"laudes/preces": {
+"r": "PRECES",
+"l": [
+[],
+[
+[
+0,
+"En el comienzo de este día, alabemos a Jesucristo, fuente de salvación eterna para todos los hombres, y pidámosle con humildad: Señor, óyenos."
+]
+],
+[
+[
+0,
+"Jesús, Hijo de Dios vivo,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"guíanos hacia la luz de tu verdad."
+]
+],
+[
+[
+0,
+"Cristo, Palabra de Dios, que estás junto al Padre desde siempre y por siempre,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"consagra a tu Iglesia en la unidad."
+]
+],
+[
+[
+0,
+"Jesús, ungido por el Padre con la fuerza del Espíritu Santo,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"consagra a tu Iglesia en la santidad."
+]
+],
+[
+[
+0,
+"Cristo, sumo sacerdote del nuevo Testamento,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"comunica a los sacerdotes tu santidad, para gloria del Padre."
+]
+],
+[
+[
+0,
+"Cristo, sabiduría de Dios, paz y reconciliación nuestra,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que nos mantengamos todos unánimes y concordes en tu Iglesia."
+]
+],
+[
+[
+0,
+"Cristo, sacerdote eterno, glorificador del Padre,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que sepamos ofrecernos contigo, para alabanza de la gloria eterna."
+]
+],
+[
+[
+0,
+"Con la confianza puesta en la mediación de Jesucristo, sumo y eterno sacerdote, digamos a Dios Padre: Padre nuestro."
+]
+]
+]
+},
+"laudes/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Oh Dios, que para gloria tuya y salvación del género humano constituiste a tu Hijo único sumo y eterno Sacerdote; concede a quienes él eligió para ministros y dispensadores de sus misterios la gracia de ser fieles en el cumplimiento del ministerio recibido. Por nuestro Señor Jesucristo. La conclusión de la Hora como en el Ordinario."
+]
+]
+]
+},
+"tercia/lectura_breve": {
+"r": "LECTURA BREVE",
+"l": [
+[],
+[
+[
+0,
+"Hb 7, 26-27 Tal convenía que fuese nuestro sumo sacerdote: santo, inocente, sin mancha, separado de los pecadores y encumbrado sobre el cielo. Él no necesita ofrecer sacrificios cada día — como los sumos sacerdotes, que ofrecían primero por los propios pecados, después por los del pueblo—, porque Jesucristo, Señor nuestro, lo hizo de una vez para siempre, ofreciéndose a sí mismo."
+]
+],
+[
+[
+0,
+"V. Estad alegres cuando compartís los padecimientos de Cristo."
+]
+],
+[
+[
+0,
+"R. Para que, cuando se manifieste su gloria, reboséis de gozo."
+]
+]
+]
+},
+"sexta/lectura_breve": {
+"r": "LECTURA BREVE",
+"l": [
+[],
+[
+[
+0,
+"1 Pe 2, 4-5 Acercándoos al Señor, la piedra viva desechada por los hombres, pero escogida y preciosa ante Dios, también vosotros, como piedras vivas, entráis en la construcción del templo del Espíritu, formando un sacerdocio sagrado, para ofrecer sacrificios espirituales que Dios acepta por Jesucristo."
+]
+],
+[
+[
+0,
+"V. Ya que habéis aceptado a Cristo Jesús, el Señor, proceded según él."
+]
+],
+[
+[
+0,
+"R. Arraigados en él, dejaos construir y edificar en la fe."
+]
+]
+]
+},
+"nona/lectura_breve": {
+"r": "LECTURA BREVE",
+"l": [
+[],
+[
+[
+0,
+"1 Pe 2, 9-10 Vosotros sois una raza elegida, un sacerdocio real, una nación consagrada, un pueblo adquirido por Dios para proclamar las hazañas del que os llamó a salir de la tiniebla y a entrar en su luz maravillosa. Antes erais «no pueblo», ahora sois «pueblo de Dios»; antes erais «no compadecidos», ahora sois « compadecidos »."
+]
+],
+[
+[
+0,
+"V. Que la paz de Cristo actúe de árbitro en vuestro corazón."
+]
+],
+[
+[
+0,
+"R. A ella habéis sido convocados, en un solo cuerpo. La oración como en las Laudes."
+]
+]
+]
+},
+"visperas/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"A Ti, sumo y eterno Sacerdote"
+]
+],
+[
+[
+0,
+"de la nueva alianza,"
+]
+],
+[
+[
+0,
+"se ofrecen nuestros votos y se elevan"
+]
+],
+[
+[
+0,
+"los corazones en acción de gracias."
+]
+],
+[],
+[
+[
+0,
+"Desde el seno del Padre, descendiste"
+]
+],
+[
+[
+0,
+"al de la Virgen Madre;"
+]
+],
+[
+[
+0,
+"te haces pobre, y así nos enriqueces;"
+]
+],
+[
+[
+0,
+"tu obediencia, de esclavos libres hace."
+]
+],
+[],
+[
+[
+0,
+"Tú eres el Ungido, Jesucristo,"
+]
+],
+[
+[
+0,
+"el Sacerdote único;"
+]
+],
+[
+[
+0,
+"tiene su fin en ti la ley antigua,"
+]
+],
+[
+[
+0,
+"por ti la ley de gracia viene al mundo."
+]
+],
+[],
+[
+[
+0,
+"Al derramar tu sangre por nosotros,"
+]
+],
+[
+[
+0,
+"tu amor complace al Padre;"
+]
+],
+[
+[
+0,
+"siendo la hostia de tu sacrificio,"
+]
+],
+[
+[
+0,
+"hijos de Dios y hermanos tú nos haces."
+]
+],
+[],
+[
+[
+0,
+"Para alcanzar la salvación eterna,"
+]
+],
+[
+[
+0,
+"día a día se ofrece"
+]
+],
+[
+[
+0,
+"tu sacrificio, mientras, junto al Padre,"
+]
+],
+[
+[
+0,
+"sin cesar por nosotros intercedes."
+]
+],
+[],
+[
+[
+0,
+"A ti, Cristo pontífice, la gloria"
+]
+],
+[
+[
+0,
+"por los siglos de los siglos;"
+]
+],
+[
+[
+0,
+"tú que vives y reinas y te ofreces"
+]
+],
+[
+[
+0,
+"al Padre en el amor del santo Espíritu. Amén."
+]
+]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor lo ha jurado y no se arrepiente: «Tú eres sacerdote eterno.»",
+"Dios, rico en misericordia, nos ha hecho vivir con Cristo.",
+"Cristo es imagen de Dios invisible, primogénito de toda criatura."
+],
+"de": {
+"propios": [
+"Salmo 109, 1-5. 7",
+"Salmo 110",
+"Cántico Cf. Col 1, 12-20"
+]
+},
+"salmos": [
+"Salmo 109, 1-5. 7",
+"Salmo 110",
+"Cántico Cf. Col 1, 12-20"
+]
+},
+"visperas/lectura_breve": {
+"r": "LECTURA BREVE Hb 10, 19-23",
+"l": [
+[],
+[
+[
+0,
+"Hermanos, teniendo entrada libre al santuario, en virtud de la sangre de Jesús, contando con el camino nuevo y vivo que él ha inaugurado para nosotros a través de la cortina, o sea, de su carne, y teniendo un gran sacerdote al frente de la casa de Dios, acerquémonos con corazón sincero y llenos de fe, con el corazón purificado de mala conciencia y con el cuerpo lavado en agua pura. Mantengámonos firmes en la esperanza que profesamos, porque es fiel quien hizo la promesa."
+]
+]
+]
+},
+"visperas/responsorio_breve": {
+"r": "RESPONSORIO BREVE",
+"l": [
+[],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Estamos en paz con Dios, por medio de nuestro Señor Jesucristo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Estamos en paz con Dios, por medio de nuestro Señor Jesucristo."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Y nos gloriamos, apoyados en la esperanza de alcanzar la gloria de Dios."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Por medio de nuestro Señor Jesucristo."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, y al Hijo y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Estamos en paz con Dios, por medio de nuestro Señor Jesucristo."
+]
+]
+]
+},
+"visperas/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+"Padre, te ruego por ellos, que son tuyos, y por ellos me consagro yo, para que también se consagren ellos en la verdad."
+]
+},
+"visperas/preces": {
+"r": "PRECES",
+"l": [
+[],
+[
+[
+0,
+"Dirijámonos confiadamente a Cristo, nuestro sumo sacerdote, y presentémosle nuestros deseos y peticiones, diciendo con humildad: Escúchanos, Señor, te suplicamos con fe. Cristo, tú que eres la Palabra del Padre,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"pon en nuestros labios lo que hemos de pedir. Cristo sacerdote, tú que eres el pan de la vida,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que los que tú has elegido vivan el don de su sacerdocio, consumando en ti su propia oblación. Cristo glorioso, que vives siempre para interceder ante el Padre en favor nuestro,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que seamos fieles en la oración por tu Iglesia. Cristo Señor, que fuiste enviado por el Padre,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que todos encuentren en ti la vida y el camino del reino. Cristo, Hijo de Dios vivo, que con tu muerte venciste a la muerte,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que la oblación final de nuestros difuntos los lleve al gozo eterno de la gloria. Con la confianza puesta en la mediación de Jesucristo, sumo y eterno sacerdote, digamos a Dios Padre: Padre nuestro."
+]
+]
+]
+},
+"visperas/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Oh Dios, que para gloria tuya y salvación del género humano constituiste a tu Hijo único sumo y eterno Sacerdote; concede a quienes él eligió para ministros y dispensadores de sus misterios la gracia de ser fieles en el cumplimiento del ministerio recibido. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+}
+}
+},
+{
+"md": null,
+"mismo_dia": false,
+"tomo": "II",
+"titulo": "NUESTRA SEÑORA DE LOS DESAMPARADOS",
+"grado": null,
+"resena": "Ciudad de Valencia: Solemnidad. Reino de Valencia: Fiesta. Hermanitas de los Ancianos Desamparados: Solemnidad. Diócesis de Orihuela: Fiesta La Región Valenciana, denominada antiguamente «Reino de Valencia», es conocida muy principalmente por el culto que dedica a la Santísima Virgen Madre de Dios. Entre todas las advocaciones destaca la de Madre de Desamparados, a ella se aclaman continuamente y todos sus hijos a ella se encomiendan en vida y a la hora de la muerte.",
+"comun": "Todo del Común de la Santísima Virgen María, en tiempo pascual.",
+"notas": [],
+"piezas": {
+"oficio/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"En Valencia se puede utilizar el himno de la coronación:"
+]
+],
+[],
+[
+[
+0,
+"La patria valenciana"
+]
+],
+[
+[
+0,
+"s´ampara baix ton mant"
+]
+],
+[
+[
+0,
+"¡Oh, Verge Sobirana"
+]
+],
+[
+[
+0,
+"de terres de Llevant!\"."
+]
+],
+[
+[
+0,
+"La terra llevantina reviu en ta Capella"
+]
+],
+[
+[
+0,
+"al fervos homenaje de pur y ver amor."
+]
+],
+[
+[
+0,
+"Puix sou la nostra Reina y vostra Image bella"
+]
+],
+[
+[
+0,
+"pareix qu´está voltada de magic resplandor."
+]
+],
+[
+[
+0,
+"La rosa perfumada, la mística assussena,"
+]
+],
+[
+[
+0,
+"Lo seu verger formaren als peus de ton altar."
+]
+],
+[
+[
+0,
+"I fervoros en elles lo valenciá t´ofrena"
+]
+],
+[
+[
+0,
+"La devocio mes santa que´s puga profesar."
+]
+],
+[
+[
+0,
+"En terres valencianes"
+]
+],
+[
+[
+0,
+"La fe per Vos no mor"
+]
+],
+[
+[
+0,
+"I vostra Image Santa"
+]
+],
+[
+[
+0,
+"Portem sempre en lo cor."
+]
+],
+[
+[
+0,
+"Salve, Reina del cel i la terra;"
+]
+],
+[
+[
+0,
+"Salve, Verge dels Desamparats;"
+]
+],
+[
+[
+0,
+"Salve, sempre adorada Patrona;"
+]
+],
+[
+[
+0,
+"Salve, Mare del bons valencians."
+]
+],
+[]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Has salido, oh Madre, para salvar a tu pueblo (T.P. Aleluya.)",
+"Yo congregaré a los afligidos, porque son tuyos, oh hija de Sión. (T.P. Aleluya.)",
+"Se dirá de Sión: «Uno por uno todos han nacido en ella» (T.P. Aleluya.)"
+],
+"de": {
+"propios": [
+"Salmo 23",
+"Salmo 45",
+"Salmo 86"
+]
+},
+"salmos": [
+"Salmo 23",
+"Salmo 45",
+"Salmo 86"
+]
+},
+"oficio/lectura1": {
+"r": "PRIMERA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"De la carta del Apóstol san Pablo a los Gálatas Gal 3,22—4,7"
+]
+],
+[],
+[
+[
+1,
+"POR LA FE SOMOS HIJOS Y HEREDEROS DE DIOS"
+]
+],
+[],
+[
+[
+0,
+"Hermanos: La Escritura presenta al mundo entero prisionero del pecado, para que lo prometido se dé por la fe en Jesucristo a todo el que cree."
+]
+],
+[],
+[
+[
+0,
+"Antes de que llegara la fe, estábamos prisioneros, custodiados por la ley, esperando que la fe se revelase. Así, la ley fue nuestro pedagogo hasta que llegara Cristo y Dios nos justificara por la fe. Una vez que la fe ha llegado, ya no estamos sometidos al pedagogo, porque todos sois hijos de Dios por la fe en Cristo Jesús."
+]
+],
+[],
+[
+[
+0,
+"Los que os habéis incorporado a Cristo por el bautismo os habéis revestido de Cristo. Ya no hay distinción entre judíos y gentiles, esclavos y libres, hombres y mujeres, porque todos sois uno en Cristo Jesús. Y, si sois de Cristo, sois descendencia de Abrahán y herederos de la promesa."
+]
+],
+[],
+[
+[
+0,
+"Quiero decir: mientras el heredero es menor de edad, en nada se diferencia de un esclavo, pues, aunque es dueño de todo, lo tienen bajo tutores y procuradores, hasta la fecha fijada por su padre. Igual nosotros, cuando éramos menores estábamos esclavizados por lo elemental del mundo. Pero, cuando se cumplió el tiempo, envió Dios a su Hijo, nacido de una mujer, nacido bajo la ley, para rescatar a los que estaban bajo la ley, para que recibiéramos el ser hijos por adopción."
+]
+],
+[],
+[
+[
+0,
+"Como sois hijos, Dios envió a vuestros corazones el Espíritu de su Hijo, que clama: «¡Abbá!» (Padre). Así que ya no eres esclavo, sino hijo; y, si eres hijo, eres también heredero por voluntad de Dios."
+]
+]
+]
+},
+"oficio/responsorio": {
+"r": "RESPONSORIO Cf. Gal 4, 4-5. Ef 2, 5",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Dios ha enviado a su propio Hijo, nacido de la Virgen, nacido bajo la ley. Para rescatar a los que estaban bajo la ley. (T.P. Aleluya.)"
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Estábamos aún muertos por los pecados y nos ha hecho vivir con Cristo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Para rescatar a los que estaban bajo la ley. (T.P. Aleluya.)"
+]
+]
+]
+},
+"oficio/lectura2": {
+"r": "SEGUNDA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"De los sermones de santo Tomás de Villanueva, obispo."
+]
+],
+[
+[
+0,
+"(Sermón 3, de la Natividad de la B. V.M. Sermones de la Virgen, Madrid 1952, pp. 208-212)."
+]
+],
+[],
+[
+[
+1,
+"MARÍA, ELEGIDA PARA SER NUESTRA ABOGADA"
+]
+],
+[],
+[
+[
+0,
+"En todas las tempestades, lluvias y adversidades; si hay peste, guerra, hambre, tribulación, a ti acudimos todos, oh Virgen. Tú eres nuestra protección, tú nuestro refugio, tú nuestro único remedio, sostén y asilo. Como los polluelos, cuando vuela por encima el milano, se acogen bajo las alas de la gallina, así nos escondemos nosotros a la sombra de tus alas. No conocemos otro refugio más que tú; tú sola eres la única esperanza en que podemos confiar, tú la única abogada a la cual nos dirigimos. Mira, por tanto, ahora, ¡oh piadosísima!, la tribulación de esta tu hija, la Iglesia militante; atiende a esta familia, por la que murió tu Hijo Cristo, que yace en la tribulación, rodeada de enemigos, pisoteada por la incredulidad, sumida en el peligro; mira al pequeño rebaño, que en otro tiempo llenaba el orbe, recluido ahora por nuestros pecados. Inclina los ojos de tu piedad y mira qué malos tratos le da, cómo le desgarra ese dragón furibundo, y no hay quien pueda resistirle, ni levantar los ojos contra él. Pero fue elegida María para ser nuestra abogada: pues aunque tenemos por abogado para con el Padre a Jesucristo el justo, como dice san Juan, fue también preciso tener a la Madre como ahogada ante el Hijo. Ya que no es Dios sólo el ofendido por nuestros pecados cuando traspasamos sus preceptos, sino también el Hijo de Dios, cuya sangre pisoteamos con nuestros pecados, crucificándolo de nuevo. Y por eso, como intercede el Hijo ante el Padre, así intercede la Madre ante el Hijo. De lo cual dice Bernardo: El Hijo muestra al Padre el costado herido, y la Madre muestra al Hijo sus pechos. Por eso ha sido constituida digna abogada: digna porque es purísima, digna porque es aceptabilísima, digna porque es piadosísima; pues todo esto se requiere en una abogada."
+]
+],
+[],
+[
+[
+0,
+"¡Oh día feliz y delicioso, en que tal y tan excelsa Abogada se dio al mundo! ¡Oh día digno de ser celebrado con gran regocijo, en que tal don hemos recibido! —exclama san Bernardo: «Quita el sol, y ¿qué queda en el mundo sino tinieblas? Quita a María de la Iglesia, ¿qué queda sino la oscuridad?» «Ea, pues, Abogada, nuestra, vuelve a nosotros esos tus ojos misericordiosos». A ti acudimos en nuestras necesidades, cumple con tu oficio, ejercita tu ministerio. Amén."
+]
+]
+]
+},
+"oficio/responsorio2": {
+"r": "RESPONSORIO",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Bajo tu amparo nos acogemos. Santa Madre de Dios. (T.P. Aleluya.)"
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"No desoigas nuestras súplicas en las necesidades."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Santa Madre de Dios. (T.P. Aleluya.)"
+]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¿Quién es esa que se asoma como el alba, hermosa como la luna y límpida como el sol, terrible como escuadrón a banderas desplegadas? (T.P. Aleluya.)",
+"Ya entra la princesa, bellísima, vestida de perlas y brocado. (T.P. Aleluya.)",
+"Entrad por sus puertas con acción de gracias. (T.P. Aleluya.)"
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la semana I del Salterio."
+},
+"laudes/lectura_breve": {
+"r": "LECTURA BREVE Ap 12,13-17",
+"l": [
+[],
+[
+[
+0,
+"Cuando vio el dragón que lo habían arrojado a la tierra se puso a perseguir a la mujer que había dado a luz el hijo varón. Le pusieron a la mujer dos alas de águila real para que volase a su lugar en el desierto donde será sustentada un año y otro año y medio año, lejos de la serpiente. La serpiente, persiguiendo a la mujer, echó por la boca un río de agua, para que el río la arrastrase; pero la tierra salió en ayuda de la mujer, abrió su boca y se bebió el río salido de la boca de la serpiente. Despechado el dragón por causa de la mujer, se marchó a hacer la guerra al resto de su descendencia, a los que guardan los mandamientos de Dios y mantienen el testimonio de Jesús."
+]
+]
+]
+},
+"laudes/responsorio_breve": {
+"r": "RESPONSORIO BREVE",
+"l": [
+[],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Madre nuestra, aquí tienes a tus hijos. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Madre nuestra, aquí tienes a tus hijos. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Cristo por ti nos da vida."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, y al Hijo, y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Madre nuestra, aquí tienes a tus hijos. Aleluya, aleluya."
+]
+]
+]
+},
+"laudes/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+"Dichosa tú, María, que has creído, porque lo que te ha dicho el Señor se cumplirá (T.P. Aleluya.)"
+]
+},
+"laudes/preces": {
+"r": "PRECES",
+"l": [
+[],
+[
+[
+0,
+"Elevemos nuestras súplicas al Salvador, que quiso nacer de María Virgen, y digámosle:"
+]
+],
+[
+[
+0,
+"Que el amor de tu Madre nos ampare en este mundo."
+]
+],
+[
+[
+0,
+"Salvador del mundo, que, con la eficacia de tu redención, preservaste a tu Madre de toda mancha de pecado,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"líbranos de caer en tentación."
+]
+],
+[
+[
+0,
+"Jesús Salvador que, colgado en la cruz, diste a María como una madre a tu discípulo,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que nosotros vivamos también como hijos suyos."
+]
+],
+[
+[
+0,
+"Tú, Señor, que en las bodas de Caná otorgaste a los tristes una nueva alegría por la intercesión amorosa de tu Madre,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"consuela por medio de su amor a cuantos en este mundo caminan tristes y desamparados."
+]
+],
+[
+[
+0,
+"Devuelve la alegría de la fe cristiana a esta tierra bendecida en tantos siglos por los frutos del martirio y de la santidad,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que no caiga en la tristeza de haber perdido la fe y la esperanza."
+]
+],
+[
+[
+0,
+"Concede, Señor, vida piadosa y tranquila a cuantos tu Madre ampara bajo su manto,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"y dales la gracia de llegar tras la muerte a la gloria."
+]
+]
+]
+},
+"laudes/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Dios, Padre de misericordia, a cuantos veneramos a la Virgen María con el título entrañable de Madre de los Desamparados, concédenos que, protegidos por tan tierna Madre, nunca nos veamos abandonados de tu bondad. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+},
+"tercia/lectura_breve": {
+"r": "LECTURA BREVE Sir 24, 3-4",
+"l": [
+[],
+[
+[
+0,
+"En medio de su pueblo será ensalzada, y admirada en la congregación plena de los santos; recibirá alabanzas de la muchedumbre de los escogidos y será bendita entre los benditos."
+]
+],
+[
+[
+0,
+"V. Bendita tú entre las mujeres (T.P. Aleluya.)"
+]
+],
+[
+[
+0,
+"R. Y bendito el fruto de tu vientre (T.P. Aleluya.)"
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+]
+]
+},
+"sexta/lectura_breve": {
+"r": "LECTURA BREVE Jdt 13, 22-23b.",
+"l": [
+[],
+[
+[
+0,
+"El Señor te ha bendecido con su poder, porque por tu medio ha aniquilado a nuestros enemigos. El Altísimo te ha bendecido, hija, más que a todas las mujeres de la tierra."
+]
+],
+[
+[
+0,
+"V. Alégrate, llena de gracia (T.P. Aleluya.)"
+]
+],
+[
+[
+0,
+"R. El Señor está contigo (T.P. Aleluya.)"
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+]
+]
+},
+"nona/lectura_breve": {
+"r": "LECTURA BREVE Prov 8, 31b.34-35",
+"l": [
+[],
+[
+[
+0,
+"Yo gozaba con los hijos de los hombres. Dichoso el hombre que me escucha, velando en mi portal cada día, guardando las jambas de mi puerta. Quien me alcanza, alcanza la vida y goza del favor del Señor."
+]
+],
+[
+[
+0,
+"V. Tú eres la gloria de nuestro pueblo (T.P. Aleluya.)"
+]
+],
+[
+[
+0,
+"R. Oh Reina y Madre, Virgen María (T.P. Aleluya.)"
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+]
+]
+},
+"oficio/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Dios, Padre de misericordia, a cuantos veneramos a la Virgen María con el título entrañable de Madre de los Desamparados, concédenos que, protegidos por tan tierna Madre, nunca nos veamos abandonados de tu bondad. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+},
+"visperas/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Dios, Padre de misericordia, a cuantos veneramos a la Virgen María con el título entrañable de Madre de los Desamparados, concédenos que, protegidos por tan tierna Madre, nunca nos veamos abandonados de tu bondad. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+]
+]
+]
+}
+}
+},
+{
+"md": null,
+"mismo_dia": false,
+"tomo": "II",
+"titulo": "SAN VICENTE FERRER, PRESBÍTERO, PATRONO DE LA ARCHIDIÓCESIS DE VALENCIA",
+"grado": "SOLEMNIDAD",
+"resena": "Nació en Valencia el año 1350. Miembro de la Orden de Predicadores, enseñó Teología. Como predicador recorrió muchas comarcas con gran fruto, tanto en la defensa de la verdadera fe como en la reforma de las costumbres. Murió en Vannes (Francia), el año 1419. En 1411 consta que predicó en Alicante, Elche y Orihuela. En 1868 fue declarado por S. S. el Beato Pío IX Patrono de la Diócesis, a petición del Obispo de Orihuela D. Pedro Mª. Cubero López de Padilla. Los fieles siguen venerando con devoción especial el día de su fiesta, en la que ha destacado desde tiempo inmemorial la solemne procesión para llevar la comunión pascual a los enfermos.",
+"comun": "Del Común de pastores o de religiosos excepto lo siguiente:",
+"notas": [
+"Esta solemnidad no tiene I Vísperas porque se dicen las II Vísperas del Segundo domingo de Pascua.",
+"Común de pastores o de religiosos."
+],
+"piezas": {
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Te pidieron vida tus santos, Señor, y se la has concedido; los has vestido de honor y majestad. Aleluya.",
+"Este es el grupo que busca tu faz, Señor. Aleluya. Cuando el salmo 23 se ha dicho en el Invitatorio, aquí se dice el salmo 94.",
+"Vicente en su predicación proclamó las grandezas del Señor, la alegría de su servicio y la ruina final de los malhechores. Aleluya.",
+"Oh Dios, meditamos tu misericordia en medio de tu templo. Aleluya.",
+"Vicente, plantado en la casa del Señor, creció en los atrios de nuestro Dios y produjo con su predicación fruto abundante en la Iglesia. Aleluya."
+],
+"de": {
+"comun": "Los salmos se toman del Común de pastores"
+},
+"rub": "Los salmos se toman del Común de pastores",
+"salmos": [
+"Salmo 23",
+"Salmo 47"
+]
+},
+"oficio/lectura1": {
+"r": "PRIMERA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"De la primera carta del apóstol san Pablo a los Corintios 1 Cor 5,1-14a"
+]
+],
+[],
+[
+[
+1,
+"LA ESPERANZA DE LA CASA CELESTIAL. EL MINISTERIO DE LA RECONCILIACIÓN"
+]
+],
+[],
+[
+[
+0,
+"Hermanos: Es cosa que ya sabemos: Si se destruye este nuestro tabernáculo terreno, tenemos un sólido edificio construido por Dios, una casa que no ha sido levantada por mano de hombre y que tiene una duración eterna en los cielos; y, de hecho, por eso suspiramos, por el anhelo de vestirnos encima la morada que viene del cielo, suponiendo que nos encuentre aún vestidos, no desnudos. Los que vivimos en tiendas suspiramos bajo ese peso, porque no querríamos desnudarnos del cuerpo, sino ponernos encima el otro, y que lo mortal quedara absorbido por la vida. Dios mismo nos creó para eso y como garantía nos dio el Espíritu."
+]
+],
+[],
+[
+[
+0,
+"En consecuencia, siempre tenemos confianza, aunque sabemos que, mientras sea el cuerpo nuestro domicilio, estamos desterrados lejos del Señor. Caminamos sin verlo, guiados por la fe. Y es tal nuestra confianza, que preferimos desterrarnos del cuerpo y vivir junto al Señor. Por lo cual, en destierro o en patria, nos esforzamos en agradarle. Porque todos tendremos que comparecer ante el tribunal de Cristo para recibir premio o castigo por lo que hayamos hecho mientras teníamos este cuerpo."
+]
+],
+[],
+[
+[
+0,
+"Conscientes, pues, del temor debido al Señor, tratamos de sincerarnos con los hombres, que Dios nos ve como somos; y espero que vosotros en vuestra conciencia nos veáis también como somos. No estamos otra vez haciéndonos la propaganda, queremos nada más daros motivos para presumir de nosotros, así tendréis algo que responder a los que presumen de apariencias y no de lo que hay dentro. Si empezamos a desatinar, a Dios se debía; si ahora nos moderamos es por vosotros. Nos apremia el amor de Cristo."
+]
+],
+[],
+[
+[
+0,
+"Lectura del libro de Isaías 52, 13—53,1-12"
+]
+],
+[],
+[
+[
+0,
+"LO VIMOS SIN ASPECTO ATRAYENTE, DESPRECIADO Y EVITADO DE LOS HOMBRES"
+]
+],
+[],
+[
+[
+0,
+"Mirad, mi siervo tendrá éxito, subirá y crecerá mucho. Como muchos se espantaron de él, porque desfigurado no parecía hombre, ni tenía aspecto humano, así asombrará a muchos pueblos, ante él los reyes cerrarán la boca, al ver algo inenarrable y contemplar algo inaudito."
+]
+],
+[],
+[
+[
+0,
+"¿Quién creyó nuestro anuncio?, ¿a quién se reveló el brazo del Señor?"
+]
+],
+[],
+[
+[
+0,
+"Creció en su presencia como brote, como raíz en tierra árida, sin figura, sin belleza. Lo vimos sin aspecto atrayente, despreciado y evitado de los hombres, como un hombre de dolores, acostumbrado a sufrimientos, ante el cual se ocultan los rostros, despreciado y desestimado."
+]
+],
+[],
+[
+[
+0,
+"Él soportó nuestros sufrimientos y aguantó nuestros dolores; nosotros lo estimamos leproso, herido de Dios y humillado; pero él fue traspasado por nuestras rebeliones, triturado por nuestros crímenes. Nuestro castigo saludable cayó sobre él, sus cicatrices nos curaron. Todos errábamos como ovejas, cada uno siguiendo su camino; y el Señor cargó sobre él todos nuestros crímenes."
+]
+],
+[],
+[
+[
+0,
+"Maltratado, voluntariamente se humillaba y no abría la boca; como cordero llevado al matadero, como oveja ante el esquilador, enmudecía y no abría la boca. Sin defensa, sin justicia, se lo llevaron, ¿quién meditó en su destino? Lo arrancaron de la tierra de los vivos, por los pecados de mi pueblo lo hirieron. Le dieron sepultura con los malvados, y una tumba con los malhechores, aunque no había cometido crímenes ni hubo engaño en su boca."
+]
+],
+[],
+[
+[
+0,
+"El Señor quiso triturarlo con el sufrimiento, y entregar su vida como expiación; verá su descendencia, prolongará sus años, lo que el Señor quiere prosperará por su mano. Por los trabajos de su alma verá la luz, el justo se saciará de conocimiento. Mi siervo justificará a muchos, porque cargó con los crímenes de ellos. Le daré una multitud como parte, y tendrá como despojo una muchedumbre."
+]
+],
+[],
+[
+[
+0,
+"Porque expuso su vida a la muerte y fue contado entre los pecadores, él tomó el pecado de muchos e intercedió por los pecadores."
+]
+]
+]
+},
+"oficio/responsorio": {
+"r": "RESPONSORIO Lc 21,27, 2Cor 5,10; Ap 14,7",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Vendrá el Hijo del Hombre sobre las nubes con gran poder y majestad, "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Porque todos tendremos que comparecer ante el tribunal de Cristo. Aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Temed a Dios y dadle gloria, porque se acerca la hora de su juicio."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Porque todos tendremos que comparecer ante el tribunal de Cristo. Aleluya."
+]
+]
+]
+},
+"oficio/lectura2": {
+"r": "SEGUNDA LECTURA",
+"l": [
+[],
+[
+[
+0,
+"Del tratado de san Vicente Ferrer, presbítero, sobre la vida espiritual"
+]
+],
+[
+[
+0,
+"(Cap. 13: edición Garganta-Forcada, pp. 513-514)."
+]
+],
+[],
+[
+[
+1,
+"DEL MODO DE PREDICAR"
+]
+],
+[],
+[
+[
+0,
+"En la predicación y exhortación debes usar un lenguaje sencillo y un estilo familiar, bajando a los detalles concretos. Utiliza ejemplos, todos los que puedas, para que cualquier pecador se vea retratado en la exposición que haces de su pecado; pero de tal manera que no des la impresión de soberbia e indignación, sino que lo haces llevado de la caridad y espíritu paternal, como un padre que se compadece de sus hijos cuando los ve en pecado o gravemente enfermos o que han caído en un hoyo, esforzándose por sacarlos del peligro y acariciándoles como una madre. Hazlo alegrándote del bien que obtendrán los pecadores y del cielo que les espera si se convierten."
+]
+],
+[],
+[
+[
+0,
+"Este modo de hablar suele ser de gran utilidad para el auditorio. Hablar en abstracto de las virtudes y los vicios no produce impacto en los oyentes."
+]
+],
+[],
+[
+[
+0,
+"En el confesionario debes mostrar igualmente sentimientos de caridad, lo mismo si tienes que animar a los pusilánimes que si tienes que amenazar a los contumaces; el pecador ha de sentir siempre que tus palabras proceden exclusivamente de tu caridad. Las palabras caritativas han de preceder siempre a las recomendaciones punzantes."
+]
+],
+[],
+[
+[
+0,
+"Si quieres ser útil a las almas de tus prójimos, recurre primero a Dios de todo corazón y pídele con sencillez que te conceda esa caridad, suma de todas las virtudes y la mejor garantía de éxito en tus actividades."
+]
+],
+[],
+[
+[
+0,
+"Del «Comentario a los salmos», de san Ambrosio, obispo"
+]
+],
+[],
+[
+[
+0,
+"(PL 14. 1185)"
+]
+],
+[],
+[
+[
+0,
+"BRILLE SOBRE NOSOTROS LA LUZ DE TU ROSTRO, SEÑOR"
+]
+],
+[],
+[
+[
+0,
+"«¿Por qué me escondes tu rostro?» Pensamos que Dios oculta su rostro cuando nos encontramos en cualquier tribulación. Entonces se extiende un velo tenebroso sobre nuestro espíritu, que nos impide percibir el fulgor de la verdad. Pero si Dios se interesa por nosotros y se digna visitarnos, estamos seguros de que nada puede ocurrirnos en la oscuridad. El rostro del hombre es como una luz para quien lo mira. Por él alcanzamos a reconocer a los desconocidos o reconocemos a una persona que recordamos. Al mostrar el rostro somos identificados. Por tanto, si el rostro del hombre es como una luz, ¿cuánto más no lo será de Dios para quien lo contempla…? «El Dios que dijo: Brille la luz del seno de las tinieblas, la encendido en nuestros corazones, haciendo resplandecer el conocimiento de la gloria de Dios, reflejada en el rostro del Mesías»."
+]
+],
+[],
+[
+[
+0,
+"Hemos escuchado, pues, cómo Cristo brilla en nosotros. Él es, en efecto, el resplandor eterno de las almas, enviado por el Padre a la tierra, para iluminarnos con la luz de su rostro, para que podamos ver las cosas eternas y celestes, nosotros, que antes estábamos inmersos en las tinieblas de la tierra."
+]
+],
+[],
+[
+[
+0,
+"Pero, ¿por qué hablar de Cristo, cuando también el apóstol Pedro dijo a aquel lisiado de nacimiento: «Míranos»? Él miró hacia Pedro y fue iluminado por la gracia de la fe; en efecto, no hubiera recibido el don de la salud, si no hubiese creído con fe."
+]
+],
+[],
+[
+[
+0,
+"Sin embargo, pese a toda esta luz de la gloria presente en los apóstoles, Zaqueo prefirió la de Cristo. Oyendo que pasaba en Señor, subió a un árbol, porque, al ser bajo de estatura, no podía verle con tanta multitud. Vio a Cristo y encontró la luz; lo vio y, de robar anteriormente las cosas a los demás, pasó a distribuir las suyas propias…"
+]
+],
+[],
+[
+[
+0,
+"«¿Por qué me escondes tu rostro?» O mejor: aunque se desvíe la mirada de nosotros, permanece igualmente en nosotros la impronta de tu rostro. La tenemos en nuestros corazones y resplandece en lo más íntimo de nuestro espíritu: nadie puede subsistir, si tú apartas de nosotros tu rostro completamente."
+]
+]
+]
+},
+"oficio/responsorio2": {
+"r": "RESPONSORIO Cf 2 Tm 4, 2",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Proclama la palabra, insiste a tiempo y a destiempo, reprende, reprocha, exhorta, "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Con toda paciencia y deseo de instruir. Aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"He predicado a los pueblos que se arrepientan y se conviertan a Dios."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Con toda paciencia y deseo de instruir. Aleluya. Cf Is 53, 2b. 5"
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Lo vimos sin aspecto atrayente; sin figura, sin belleza; fue traspasado por nuestras rebeliones, triturado por nuestros crímenes. Sus heridas nos han curado. Aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Él soportó nuestros sufrimientos y aguantó nuestros dolores."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Sus heridas nos han curado. Aleluya. Ef 1, 5.6; Rm 8, 29"
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Dios nos ha destinado en la persona de Cristo a ser sus hijos. "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Por pura iniciativa suya, para que la gloria de su gracia redunde en alabanza suya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"A los que había escogido, él los predestinó a ser imagen de su Hijo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Por pura iniciativa suya, para que la gloria de su gracia redunde en alabanza suya. O bien: De las Homilías sobre el Año Litúrgico de San León Magno. (Homilías sobre el Año Litúrgico, 1 [12]. ed. M. Garrido Bonaño, OSB. BAC. Madrid, 1969, p. 45-46) EL HOMBRE DEBE IMITAR A SU CREADOR. ESTO ES UN DON DE DIOS. Si fiel y sabiamente, amadísimos, consideramos el principio de nuestra creación, hallaremos que fue formado el hombre a imagen de Dios a fin de que imitara a su Autor. Y en esto precisamente consiste la natural dignidad de nuestro linaje: si en nosotros, como en un espejo, resplandece la hermosura de la benignidad divina. Para conseguirlo, cada día nos auxilia la gracia del Salvador, haciendo que lo perdido por el primer Adán sea reparado por el segundo. La causa de nuestra reparación no es otra que la misericordia de Dios, a quien nosotros no amaríamos si antes Él no nos hubiese amado y con su luz no hubiera hecho desaparecer nuestras tinieblas. Amándonos Dios, nos restituye a su imagen. Y para que halle en nosotros la imagen de su bondad nos concede que podamos hacer lo que Él hace, iluminando nuestras inteligencias e inflamando nuestros corazones a fin de que no solamente amemos a Él, sino también cuanto Él ama. Si entre los hombres se da una firme amistad cuando los ha unido la semejanza de costumbres (sin embargo, sucede muchas veces que la conformidad de costumbres y deseos conduce a malos afectos), ¡cuanto más debemos desear y esforzarnos por no discrepar en aquellas cosas que Dios ama! De esto dice el profeta: Porque la ira está en su indignación, y la vida en su voluntad, ya que en nosotros no estará de otro modo la dignidad de la majestad divina si no se procura la imitación de la voluntad de Dios. Diciendo el Señor: Amarás al Señor, tu Dios, con todo tu corazón, con toda tu alma y con toda tu mente... Amarás al prójimo como a ti mismo, reciba el alma fiel la caridad inmarcesible de su autor y rector y sométase toda a su voluntad, en cuyas obras y juicios nada hay vacío de la verdad de la justicia, ni de la compasión de la clemencia. Pues, aunque alguno esté extenuado por grandes trabajos y muchas incomodidades, es bueno soportarlo para quien conoce que es probado y corregido en la adversidad. Mas no podría ser perfecta la piedad de esta caridad si no amase también al prójimo. Con este nombre no se ha de considerar sólo a los que se unen a nosotros con los brazos de la amistad o del parentesco, sino a todos los hombres, con los cuales tenemos una común naturaleza, ya sean amigos o enemigos, libres o esclavos. 1 Jn 3, 1. 2"
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Mirad qué amor nos ha tenido el Padre: "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Para llamarnos hijos de Dios, pues, ¡lo somos! Aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"¡Sabemos que cuando se manifieste, seremos semejantes a él porque lo veremos tal cual es."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Para llamarnos hijos de Dios, pues, ¡lo somos! Aleluya."
+]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vicente, ansioso de Dios, durante toda la vida le bendijo y alabó. Aleluya.",
+"Con su ejemplo y predicación, Vicente invitó a todos los hombres a bendecir al Señor. Aleluya.",
+"Porque el Señor ama a su pueblo, Vicente trabajó para que su alabanza resonara en la asamblea de los fieles. Aleluya."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del salterio"
+},
+"laudes/lectura_breve": {
+"r": "LECTURA BREVE Ef 3, 8-11",
+"l": [
+[],
+[
+[
+0,
+"A mí, el más insignificante de todo el pueblo santo, se me ha dado esta gracia: anunciar a los gentiles la riqueza insondable que es Cristo; e iluminar la realización del misterio, escondido desde el principio de los siglos en Dios, creador de todo. Así, mediante la Iglesia, los principados y potestades en los cielos conocen ahora la multiforme sabiduría de Dios; según el designio eterno, realizado en Cristo Jesús, Señor Nuestro."
+]
+],
+[
+[
+0,
+"Hch 10, 40-43"
+]
+],
+[
+[
+0,
+"Dios resucitó a Jesús al tercer día y nos lo hizo ver, no a todo el pueblo, sino a los testigos que él había designado: a nosotros, que hemos comido y bebido con él después de su resurrección. Nos encargó predicar al pueblo, dando solemne testimonio de que Dios lo ha nombrado juez de vivos y muertos. El testimonio de los profetas es unánime que los que creen en él reciben, por su nombre, el perdón de los pecados."
+]
+]
+]
+},
+"laudes/responsorio_breve": {
+"r": "RESPONSORIO BREVE Is 62, 6",
+"l": [
+[],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Sobre tus murallas, Jerusalén, he colocado centinelas. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Sobre tus murallas, Jerusalén, he colocado centinelas. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Ni de día ni de noche dejarán de anunciar el nombre del Señor."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, y al Hijo, y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Sobre tus murallas, Jerusalén, he colocado centinelas. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Oigo en mi corazón, buscad mi rostro. "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Aleluya, aleluya. Oigo."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Tu Rostro buscaré, Señor, no me escondas tu rostro. "
+],
+[
+1,
+"*"
+],
+[
+0,
+" Aleluya, aleluya. Gloria al Padre. Oigo."
+]
+]
+]
+},
+"laudes/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+"Vicente fue delante del Señor preparando sus caminos, anunciando a su pueblo la salvación, el perdón de los pecados y guiándolo por los caminos de la paz. Aleluya.",
+"Misericordia y fidelidad preceden tu faz. Dichoso el pueblo que sabe aclamarte: caminará, oh Señor, a la luz de tu rostro; tu nombre es su gozo cada día. Aleluya."
+]
+},
+"laudes/preces": {
+"r": "PRECES",
+"l": [
+[],
+[
+[
+0,
+"Aclamemos a Jesucristo, que envió a san Vicente para predicar la Buena Noticia a los pueblos, y supliquémosle, diciendo: Sé siempre nuestra verdad y nuestra vida"
+]
+],
+[
+[
+0,
+"Señor Jesucristo, enviado del Padre que enviaste a los apóstoles,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"no dejes de mandar al mundo de hoy mensajeros de tu Evangelio."
+]
+],
+[
+[
+0,
+"Señor Jesucristo, que nos llamas a todos a la perfección de tu amor,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que avancemos siempre por la senda de la santidad."
+]
+],
+[
+[
+0,
+"Señor Jesucristo, que diste a nuestra Diócesis de Orihuela-Alicante como maestro al poderoso protector san Vicente Ferrer,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que nuestra fe y nuestra vida se conformen con el Evangelio."
+]
+],
+[
+[
+0,
+"Señor Jesucristo, que por medio de los santos pastores eres el médico de los cuerpos y de las almas,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que nunca falten a tu Iglesia los ministros, que nos guíen por las sendas de una vida santa."
+]
+],
+[
+[
+0,
+"Acudamos a Cristo, Mediador ante el Padre, que derrama sobre sus siervos la luz de su divino Rostro, y digámosle: Señor, ten misericordia de nosotros."
+]
+],
+[
+[
+0,
+"Tú que subiste a Jerusalén para sufrir la pasión y entrar así en la eterna gloria,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"conduce a tu Iglesia a la Pascua eterna."
+]
+],
+[
+[
+0,
+"Tú que cubriste tu rostro de sangre en Getsemaní, y permitiste ser golpeado en tu cara en casa de Anás,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"sana las heridas de nuestros pecados."
+]
+],
+[
+[
+0,
+"Tú que convertiste el madero de la Cruz en árbol de vida,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que los renacidos en el bautismo gocen de la abundancia de los frutos de este árbol."
+]
+],
+[
+[
+0,
+"Tú que clavado en la Cruz perdonaste al ladrón arrepentido,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"perdónanos también a nosotros, pecadores."
+]
+]
+]
+},
+"laudes/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Dios todopoderoso, tú que elegiste a san Vicente Ferrer ministro de la predicación evangélica, concédenos la gracia de ver glorioso en el cielo a nuestro Señor Jesucristo, cuya venida a este mundo, como juez, anunció san Vicente en su predicación. Por nuestro Señor Jesucristo. Oh Dios, que por la pasión de Cristo has librado de la muerte, heredada del pecado, a la humanidad; renuévanos a semejanza de tu Hijo, para que borrada por tu gracia la imagen del hombre viejo, brille en nosotros la imagen de Jesucristo, el hombre nuevo. Él, que vive y reina contigo."
+]
+]
+]
+},
+"tercia/lectura_breve": {
+"r": "LECTURA BREVE 2 Tm 1, 8b-9",
+"l": [
+[],
+[
+[
+0,
+"Toma parte en los duros trabajos del Evangelio, según la fuerza de Dios. Él nos salvó y nos llamó a una vida santa, no por nuestros méritos, sino porque dispuso darnos su gracia, por medio de Jesucristo."
+]
+],
+[
+[
+0,
+"V. Estad alegres, dice el Señor."
+]
+],
+[
+[
+0,
+"R. Porque vuestros nombres están inscritos en el cielo."
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+],
+[
+[
+0,
+"2 Co 3, 18 Nosotros todos, que llevamos la cara descubierta, reflejamos la gloria del Señor y nos vamos transformando en su imagen con resplandor creciente, así es como actúa el Señor, que es Espíritu."
+]
+],
+[
+[
+0,
+"V. En ti, Señor, está la fuente viva. Aleluya."
+]
+],
+[
+[
+0,
+"R. Y tu luz nos hace ver la luz. Aleluya."
+]
+]
+]
+},
+"sexta/lectura_breve": {
+"r": "LECTURA BREVE 1Tm1, 12",
+"l": [
+[],
+[
+[
+0,
+"Doy gracias a Cristo Jesús, nuestro Señor, que me hizo capaz, se fió de mí y me confió este ministerio."
+]
+],
+[
+[
+0,
+"V. No me avergüenzo del Evangelio. Aleluya."
+]
+],
+[
+[
+0,
+"R. Que es una fuerza de Dios para la salvación. Aleluya"
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+],
+[
+[
+0,
+"Ef 1, 7-8 Por Cristo, por su sangre, hemos recibido la redención, el perdón de los pecados. El tesoro de su gracia, ha sido un derroche para con nosotros."
+]
+],
+[
+[
+0,
+"V. Me has enseñado el sendero de la vida. Aleluya."
+]
+],
+[
+[
+0,
+"R. Me saciarás de gozo en tu presencia. Aleluya."
+]
+]
+]
+},
+"nona/lectura_breve": {
+"r": "LECTURA BREVE 1 Tm 3,13",
+"l": [
+[],
+[
+[
+0,
+"Los que se hayan distinguido en el servicio progresarán y tendrán libertad para exponer la fe en Cristo Jesús."
+]
+],
+[
+[
+0,
+"V. Si el Señor no construye la casa. Aleluya."
+]
+],
+[
+[
+0,
+"R. En vano se cansan los albañiles. Aleluya."
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+],
+[
+[
+0,
+"Cf Ap 1, 17c-18"
+]
+],
+[
+[
+0,
+"Vi al Hijo del hombre y me dijo: «Yo soy el primero y el último, yo soy el que vive. Estaba muerto, y, ya ves, vivo por los siglos de los siglos, y tengo las llaves de la muerte y del abismo»."
+]
+],
+[
+[
+0,
+"V. Contemplad al Señor y quedaréis radiantes. Aleluya."
+]
+],
+[
+[
+0,
+"R. Vuestro rostro no se avergonzará. Aleluya."
+]
+],
+[
+[
+0,
+"La Oración como en las Laudes."
+]
+]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Todo lo hago por el Evangelio, para participar yo también de sus bienes. Aleluya.",
+"A mí se me ha dado esta gracia: anunciar la riqueza insondable que es Cristo. Aleluya.",
+"No seréis vosotros los que habléis; el Espíritu de vuestro Padre hablará por vosotros. Aleluya."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de pastores."
+},
+"rub": "Los salmos y el cántico se toman del Común de pastores."
+},
+"visperas/lectura_breve": {
+"r": "LECTURA BREVE St 3, 17-18",
+"l": [
+[],
+[
+[
+0,
+"La sabiduría que viene de arriba ante todo es pura y, además, es amante de la paz, comprensiva, dócil, llena de misericordia y buenas obras, constante, sincera. Los que procuran la paz están sembrando la paz, y su fruto es la justicia."
+]
+],
+[
+[
+0,
+"Ap 21, 1a. 22; 22, 3-5"
+]
+],
+[
+[
+0,
+"Vi un cielo nuevo y una tierra nueva. Santuario no vi ninguno, porque es su santuario el Señor Dios todopoderoso y el Cordero. Allí no entrará nada maldito. En la ciudad estarán el trono de Dios y el del Cordero, y sus siervos le prestarán servicio, lo verán cara a cara y llevarán su nombre en la frente. Ya no habrá más noche, no necesitarán luz de lámpara o del sol, porque el Señor Dios irradiará luz sobre ellos, y reinarán por los siglos de los siglos."
+]
+]
+]
+},
+"visperas/responsorio_breve": {
+"r": "RESPONSORIO BREVE",
+"l": [
+[],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"En la asamblea le da la palabra. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"En la asamblea le da la palabra. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Lo llena de espíritu, sabiduría e inteligencia."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, y al Hijo, y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"En la asamblea le da la palabra. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Brille tu rostro, Señor, sobre tu siervo. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Brille tu rostro, Señor, sobre tu siervo. Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Fuerza y esplendor están en su templo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Aleluya, aleluya."
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, y al Hijo, y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Brille tu rostro, Señor, sobre tu siervo. Aleluya, aleluya."
+]
+]
+]
+},
+"visperas/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+"Temed a Dios y dadle gloria, porque ha llegado la hora de su juicio. Aleluya.",
+"Éste será un día memorable para vosotros y lo celebraréis como fiesta en honor del Señor, de generación en generación. Aleluya."
+]
+},
+"visperas/preces": {
+"r": "PRECES",
+"l": [
+[],
+[
+[
+0,
+"Pidamos a Dios Padre, fuente de toda santidad, que con la intercesión y el ejemplo de san Vicente nos impulse a una vida santa, y digamos: Seamos santos porque tú, Señor, eres santo."
+]
+],
+[
+[
+0,
+"Padre santo, que has querido que nos llamáramos y fuéramos hijos tuyos,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que la Iglesia santa, extendida por los confines de la tierra, cante tus grandezas."
+]
+],
+[
+[
+0,
+"Padre santo, que deseas que vivamos de una manera digna, buscando siempre tu beneplácito,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"ayúdanos a dar fruto de buenas obras."
+]
+],
+[
+[
+0,
+"Padre santo, que enviaste tu Hijo al mundo a sembrar la semilla de la Palabra,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"concédenos también a nosotros sembrar tu semilla en nuestro trabajo, para que alegres demos frutos de buenas obras."
+]
+],
+[
+[
+0,
+"Padre santo, que enviaste tu Hijo al mundo para reconciliar contigo al mundo,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que también nosotros cooperemos a la reconciliación de los hombres."
+]
+],
+[
+[
+0,
+"Padre santo, que enviarás a tus ángeles a juntar a los elegidos de los cuatro puntos cardinales,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"permite que todos tus hijos difuntos estén entre tus elegidos. Padre nuestro."
+]
+],
+[
+[
+0,
+"Invoquemos de todo corazón a nuestro Redentor y Salvador, y digámosle: Ten misericordia de nosotros."
+]
+],
+[
+[
+0,
+"Faz Divina, resplandeciente como el sol en la Transfiguración,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"infunde en tu Iglesia el espíritu de oración."
+]
+],
+[
+[
+0,
+"Faz Divina, que te dejaste reconocer al partir el pan en Emaús,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"conduce a todos los cristianos a la unidad de tu Iglesia."
+]
+],
+[
+[
+0,
+"Faz Divina, oculta a nuestra vista desde tu ascensión a los cielos"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que te conozcamos por la fe en los signos de la Iglesia, en los pobres y en todos los que sufren."
+]
+],
+[
+[
+0,
+"Faz Divina, contemplada en el cielo por los ángeles y los santos,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"concede a los que murieron en tu fe contemplarte con ellos en tu gloria. Padre nuestro."
+]
+]
+]
+},
+"visperas/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Dios todopoderoso, tú que elegiste a san Vicente Ferrer ministro de la predicación evangélica, concédenos la gracia de ver glorioso en el cielo a nuestro Señor Jesucristo, cuya venida a este mundo, como juez, anunció san Vicente en su predicación. Por nuestro Señor Jesucristo. Jueves de la II semana de Pascua LA SANTA FAZ DE NUESTRO SEÑOR JESUCRISTO Memoria. En la ciudad de Alicante y Mutxamel: Fiesta Desde el siglo XV va creciendo en Alicante la devoción a la santa Faz de Jesucristo, a través de cuya imagen ha recibido numerosas gracias y favores. En testimonio de gratitud, se construyó un Templo. Desde entonces en dicho Templo, custodiado por la Comunidad de Religiosas Clarisas, se guarda con gran veneración, la imagen de la Faz del Señor. En la devoción popular adquirió una gran fuerza y en 1663, el Tercer Sínodo de Orihuela trasladó la celebración al jueves II de Pascua, día en que ahora se celebra. Todo de la feria correspondiente, excepto lo siguiente: Oh Dios, que por la pasión de Cristo has librado de la muerte, heredada del pecado, a la humanidad; renuévanos a semejanza de tu Hijo, para que borrada por tu gracia la imagen del hombre viejo, brille en nosotros la imagen de Jesucristo, el hombre nuevo. Él, que vive y reina contigo."
+]
+]
+]
+},
+"oficio/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"De la feria correspondiente"
+]
+],
+[],
+[
+[
+0,
+"A LA GLORIA DE JERUSALÉN"
+]
+],
+[],
+[
+[
+0,
+"Me transportó en espíritu a un monte altísimo"
+]
+],
+[
+[
+0,
+"y me enseñó la ciudad santa, Jerusalén"
+]
+],
+[
+[
+0,
+"(Ap 21, 10)."
+]
+],
+[],
+[
+[
+0,
+"Grande es el Señor y muy digno de alabanza"
+]
+],
+[
+[
+0,
+"en la ciudad de nuestro Dios,"
+]
+],
+[
+[
+0,
+"su monte santo, altura hermosa,"
+]
+],
+[
+[
+0,
+"alegría de toda la tierra:"
+]
+],
+[],
+[
+[
+0,
+"el monte Sión, vértice del cielo,"
+]
+],
+[
+[
+0,
+"ciudad del gran rey;"
+]
+],
+[
+[
+0,
+"entre sus palacios,"
+]
+],
+[
+[
+0,
+"Dios descuella como un alcázar."
+]
+],
+[],
+[
+[
+0,
+"Mirad: los reyes se aliaron"
+]
+],
+[
+[
+0,
+"para atacarla juntos;"
+]
+],
+[
+[
+0,
+"pero, al verla, quedaron aterrados"
+]
+],
+[
+[
+0,
+"y huyeron despavoridos;"
+]
+],
+[],
+[
+[
+0,
+"allí los agarró un temblor"
+]
+],
+[
+[
+0,
+"y dolores como de parto;"
+]
+],
+[
+[
+0,
+"como un viento del desierto,"
+]
+],
+[
+[
+0,
+"que destroza las naves de Tarsis."
+]
+],
+[],
+[
+[
+0,
+"Lo que habíamos oído lo hemos visto"
+]
+],
+[
+[
+0,
+"en la ciudad del Señor de los ejércitos,"
+]
+],
+[
+[
+0,
+"en la ciudad de nuestro Dios:"
+]
+],
+[
+[
+0,
+"que Dios la ha fundado para siempre."
+]
+],
+[],
+[
+[
+0,
+"¡Oh Dios!, meditamos tu misericordia"
+]
+],
+[
+[
+0,
+"en medio de tu templo:"
+]
+],
+[
+[
+0,
+"como tu renombre, ¡oh Dios!, tu alabanza"
+]
+],
+[
+[
+0,
+"llega al confín de la tierra;"
+]
+],
+[],
+[
+[
+0,
+"tu diestra está llena de justicia:"
+]
+],
+[
+[
+0,
+"el monte Sión se alegra,"
+]
+],
+[
+[
+0,
+"las ciudades de Judá se gozan"
+]
+],
+[
+[
+0,
+"con tus sentencias."
+]
+],
+[],
+[
+[
+0,
+"Dad la vuelta en torno a Sión,"
+]
+],
+[
+[
+0,
+"contando sus torreones;"
+]
+],
+[
+[
+0,
+"fijaos en sus baluartes,"
+]
+],
+[
+[
+0,
+"observad sus palacios,"
+]
+],
+[],
+[
+[
+0,
+"para poder decirle a la próxima generación:"
+]
+],
+[
+[
+0,
+"«Éste es el Señor, nuestro Dios.»"
+]
+],
+[
+[
+0,
+"Él nos guiará por siempre jamás."
+]
+],
+[],
+[
+[
+0,
+"Ant. Oh Dios, meditamos tu misericordia en medio de tu templo. Aleluya."
+]
+],
+[],
+[
+[
+0,
+"Ant. 3. Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
+]
+],
+[],
+[
+[
+0,
+"Salmo 83"
+]
+],
+[],
+[
+[
+0,
+"AÑORANZA DEL TEMPLO"
+]
+],
+[],
+[
+[
+0,
+"¡Qué deseables son tus moradas,                                   No tenemos aquí ciudad permanente,"
+]
+],
+[
+[
+0,
+"Señor de los ejércitos!                                          sino que vamos buscando la futura"
+]
+],
+[
+[
+0,
+"Mi alma se consume y anhela                                                                   (Heb 13, 14)."
+]
+],
+[],
+[
+[
+0,
+"los atrios del Señor,"
+]
+],
+[
+[
+0,
+"mi corazón y mi carne"
+]
+],
+[
+[
+0,
+"retozan por el Dios vivo."
+]
+],
+[],
+[
+[
+0,
+"Hasta el gorrión ha encontrado una casa;"
+]
+],
+[
+[
+0,
+"la golondrina, un nido"
+]
+],
+[
+[
+0,
+"donde colocar sus polluelos:"
+]
+],
+[
+[
+0,
+"tus altares, Señor de los ejércitos,"
+]
+],
+[
+[
+0,
+"Rey mío y Dios mío."
+]
+],
+[],
+[
+[
+0,
+"Dichosos los que viven en tu casa,"
+]
+],
+[
+[
+0,
+"alabándote siempre."
+]
+],
+[
+[
+0,
+"Dichosos los que encuentran en ti su fuerza"
+]
+],
+[
+[
+0,
+"al preparar su peregrinación."
+]
+],
+[],
+[
+[
+0,
+"Cuando atraviesan áridos valles,"
+]
+],
+[
+[
+0,
+"los convierten en oasis,"
+]
+],
+[
+[
+0,
+"como si la lluvia temprana"
+]
+],
+[
+[
+0,
+"los cubriera de bendiciones;"
+]
+],
+[
+[
+0,
+"caminan de baluarte en baluarte"
+]
+],
+[
+[
+0,
+"hasta ver a Dios en Sión."
+]
+],
+[],
+[
+[
+0,
+"Señor de los ejércitos, escucha mi súplica;"
+]
+],
+[
+[
+0,
+"atiéndeme, Dios de Jacob."
+]
+],
+[
+[
+0,
+"Fíjate, oh Dios, en nuestro Escudo,"
+]
+],
+[
+[
+0,
+"mira el rostro de tu Ungido."
+]
+],
+[],
+[
+[
+0,
+"Vale más un día en tus atrios"
+]
+],
+[
+[
+0,
+"que mil en mi casa,"
+]
+],
+[
+[
+0,
+"y prefiero el umbral de la casa de Dios"
+]
+],
+[
+[
+0,
+"a vivir con los malvados."
+]
+],
+[],
+[
+[
+0,
+"Porque el Señor es sol y escudo,"
+]
+],
+[
+[
+0,
+"él da la gracia y la gloria;"
+]
+],
+[
+[
+0,
+"el Señor no niega sus bienes"
+]
+],
+[
+[
+0,
+"a los de conducta intachable."
+]
+],
+[],
+[
+[
+0,
+"¡Señor de los ejércitos, dichoso el hombre"
+]
+],
+[
+[
+0,
+"que confía en ti!"
+]
+],
+[],
+[
+[
+0,
+"Ant. Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
+]
+],
+[
+[
+0,
+"V. Sálvame, ten misericordia de mí. Aleluya."
+]
+],
+[
+[
+0,
+"R. En la asamblea te bendeciré, Señor. Aleluya."
+]
+]
+]
+},
+"visperas/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"A CRISTO, PRIMOGÉNITO DE TODA CRIATURA Y PRIMER RESUCITADO DE ENTRE"
+]
+],
+[
+[
+0,
+"LOS MUERTOS"
+]
+],
+[],
+[
+[
+0,
+"Damos gracias a Dios Padre,"
+]
+],
+[
+[
+0,
+"que nos ha hecho capaces de compartir"
+]
+],
+[
+[
+0,
+"la herencia del pueblo santo en la luz."
+]
+],
+[],
+[
+[
+0,
+"Él nos ha sacado del dominio de las tinieblas,"
+]
+],
+[
+[
+0,
+"y nos ha trasladado al reino de su Hijo querido,"
+]
+],
+[
+[
+0,
+"por cuya sangre hemos recibido la redención,"
+]
+],
+[
+[
+0,
+"el perdón de los pecados."
+]
+],
+[],
+[
+[
+0,
+"Él es imagen de Dios invisible,"
+]
+],
+[
+[
+0,
+"primogénito de toda criatura;"
+]
+],
+[
+[
+0,
+"porque por medio de él"
+]
+],
+[
+[
+0,
+"fueron creadas todas las cosas:"
+]
+],
+[
+[
+0,
+"celestes y terrestres, visibles e invisibles,"
+]
+],
+[],
+[
+[
+0,
+"Tronos, Dominaciones, Principados, Potestades;"
+]
+],
+[
+[
+0,
+"todo fue creado por él y para él."
+]
+],
+[],
+[
+[
+0,
+"Él es anterior a todo, y todo se mantiene en él."
+]
+],
+[
+[
+0,
+"Él es también la cabeza del cuerpo: de la Iglesia."
+]
+],
+[
+[
+0,
+"Él es el principio, el primogénito de entre los muertos,"
+]
+],
+[
+[
+0,
+"y así es el primero en todo."
+]
+],
+[],
+[
+[
+0,
+"Porque en él quiso Dios que residiera toda la plenitud."
+]
+],
+[
+[
+0,
+"Y por él quiso reconciliar consigo todos los seres:"
+]
+],
+[
+[
+0,
+"los del cielo y los de la tierra,"
+]
+],
+[
+[
+0,
+"haciendo la paz por la sangre de su cruz."
+]
+],
+[],
+[
+[
+0,
+"Ant. Él es imagen de Dios invisible, primogénito de toda criatura. Aleluya."
+]
+]
+]
+},
+"oficio/oracion": {
+"r": "ORACION",
+"l": [
+[],
+[
+[
+0,
+"Dios todopoderoso, tú que elegiste a san Vicente Ferrer ministro de la predicación evangélica, concédenos la gracia de ver glorioso en el cielo a nuestro Señor Jesucristo, cuya venida a este mundo, como juez, anunció san Vicente en su predicación. Por nuestro Señor Jesucristo. Oh Dios, que por la pasión de Cristo has librado de la muerte, heredada del pecado, a la humanidad; renuévanos a semejanza de tu Hijo, para que borrada por tu gracia la imagen del hombre viejo, brille en nosotros la imagen de Jesucristo, el hombre nuevo. Él, que vive y reina contigo."
 ]
 ]
 ]

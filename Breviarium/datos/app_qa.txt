@@ -1,13 +1,13 @@
 Fase 4 — el libro de horas empaquetado para la app
 ==========================================================
 
-horas.json         22.4 MB
+horas.json         22.5 MB
 horas_dias.json     2.2 MB  13510 fechas
 
       75  casillas en ordinario
      868  casillas en salterio
    13460  casillas en tiempo
-    5315  casillas en santoral
+    5279  casillas en santoral
      226  casillas en comunes
      158  santos con común conocido
      722  lecturas del Oficio con texto propio del otro año del ciclo bienal

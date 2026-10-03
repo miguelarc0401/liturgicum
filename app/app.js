@@ -764,7 +764,10 @@ function filaCal(iso, hoy) {
   }
   if (!cs.length) return '';
   const p = cs[0];
-  const color = E.colorDe.get(p.slug) || 'neutro';
+  // el azul de la Virgen, como al abrir el día: el libro dice blanco, pero
+  // la costumbre —y en México la de Guadalupe sobre todas— lo quiere azul
+  const color = (p.m.smv || esDeLaVirgen(p.t)) ? 'azul'
+    : E.colorDe.get(p.slug) || 'neutro';
   // lo que encuentra el buscador: todo lo que se celebra o se puede
   // celebrar ese día, y lo que se omite, sin acentos
   const q = plano(cs.map((o) => o.t + ' ' + o.g).concat(
@@ -1577,6 +1580,27 @@ function distintas(ops) {
 
 const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
+/* Cuando tres opciones y un rótulo largo no caben en el renglón, las que no
+ * están elegidas se abrevian: la elegida se lee entera, que es la que
+ * importa, y de las otras basta lo que hace falta para reconocerlas. Así la
+ * burbuja no pasa de la mitad del renglón y se siguen viendo todas, que era
+ * lo que se pedía: verlas o no sirven. */
+const ABREVIA = [
+  [/^Santos varones$/, 'Ss. varones'], [/^Santas mujeres$/, 'Stas. mujeres'],
+  [/^Santa María$/, 'Sta. María'], [/^Un mártir$/, 'Un márt.'],
+  [/^Mártires$/, 'Márt.'], [/^Apóstoles$/, 'Apóst.'],
+  [/^Doctores$/, 'Doct.'], [/^Pastores$/, 'Past.'],
+  [/^Vírgenes$/, 'Vírg.'], [/^Propio$/, 'Prop.'],
+  [/^Complementaria$/, 'Compl.'], [/^Común$/, 'Com.']
+];
+
+function abrevia(rot) {
+  for (const [rx, c] of ABREVIA) if (rx.test(rot)) return c;
+  // «Pastores II», «Santa María II»: la lectura segunda de un común
+  const m = /^(.+?) ([IVX]+)$/.exec(rot);
+  return m ? abrevia(m[1]) + ' ' + m[2] : rot;
+}
+
 /** Las primeras palabras de un texto: el nombre con que se conoce un himno
  *  o una antífona, para el título del botón que lo elige. */
 function incipit(c) {
@@ -1770,27 +1794,44 @@ const DIAS_SEM = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves',
   'viernes', 'sábado'];
 
 function antifonasPropias(d, op, hora, dia) {
+  const L = E.horas;
   const e = op.cel
-    && (E.horas.antifonas || {})[op.cel[1] + '/' + op.cel[0] + '/' + hora];
+    && (L.antifonas || {})[op.cel[1] + '/' + op.cel[0] + '/' + hora];
   if (!e || !e.a || !e.a.length) return null;
-  // «Se toma la salmodia del domingo I»: una rúbrica que el libro escribe y
-  // la fuente no, porque la aplica. Cuando la celebración tiene señalada su
-  // casilla del salterio, los salmos salen de allí; si no, son los del día.
+  // De dónde salen los salmos lo dice el libro impreso con una rúbrica que
+  // la fuente no escribe, porque la aplica: «se toma la salmodia del
+  // domingo I», «los salmos, del Común de pastores», o los escribe enteros
+  // porque son suyos. Las tres formas se reconocen —`l` los propios, `s` la
+  // casilla del salterio, `c` el común—, y el texto sale siempre de la
+  // fuente. Si no dice nada, son los del día.
   let fuente = dia, rotulo = 'Con los salmos del día';
-  if (e.s) {
+  if (e.l) {
+    fuente = { l: e.l };
+    rotulo = 'Con sus salmos propios';
+  } else if (e.s) {
     const [sem, ds] = e.s.split('/');
-    const otra = E.horas.salterio[d.t + '/' + e.s + '/' + hora]
-      || E.horas.salterio['Ordinario/' + e.s + '/' + hora];
+    const otra = L.salterio[d.t + '/' + e.s + '/' + hora]
+      || L.salterio['Ordinario/' + e.s + '/' + hora];
     if (otra) {
       fuente = otra;
       rotulo = 'Salmos del ' + DIAS_SEM[+ds] + ' ' + ROMANOS[+sem - 1];
     }
+  } else if (e.c) {
+    const otra = L.comunes[e.c + '/' + hora + '/salmodia'];
+    if (otra) {
+      fuente = otra;
+      rotulo = 'Salmos del Común de '
+        + (L.rotulo_comun[e.c] || '').toLowerCase();
+    }
   }
   const piezas = despieza(fuente.l);
   if (!piezas.salmos.length) return null;
+  // la rúbrica del libro, tal como la escribe, cuando la hay
+  const tit = e.r ? e.r.replace(/\s*\.\s*$/, '')
+    : 'Antífonas propias · ' + rotulo;
   return [
-    { id: 'propio', rot: 'Propio', tit: 'Antífonas propias · ' + rotulo,
-      c: { r: dia.r || 'SALMODIA', l: compone(e.a, piezas.salmos) } },
+    { id: 'propio', rot: 'Propio', tit: tit,
+      c: { r: dia.r || 'SALMODIA', l: compone(e.a, piezas.salmos), f: e.f } },
     { id: 'dia', rot: 'Del día', tit: 'La salmodia del día', c: dia }
   ];
 }
@@ -1967,9 +2008,108 @@ function armaHora(iso, hora, idCel) {
     secciones: secciones };
 }
 
+/* ------------------------------------------------- rótulos y versalitas
+ * En el libro van en versalitas los rótulos que estructuran la hora, y sólo
+ * ellos: la palabra que nombra la pieza. Lo que la acompaña —la cita de la
+ * lectura breve, el nombre del salmo, el comienzo del himno— va en letra
+ * normal. La fuente escribe esos nombres en mayúsculas, que es su manera de
+ * marcarlos en un HTML sin estilos; aquí se les devuelve su caja, que es la
+ * que se lee, y las versalitas quedan para lo que de verdad las lleva.
+ *
+ * La fuente tampoco acentúa las mayúsculas («ORACION», «ANTIFONA»): al
+ * bajarlas a minúsculas la tilde hace falta, así que se repone. */
+const TILDES = [
+  ['ANTIFONA', 'ANTÍFONA'], ['SANTISIMA', 'SANTÍSIMA'],
+  ['ORACION', 'ORACIÓN'], ['CANTICO', 'CÁNTICO'],
+  ['EVANGELICO', 'EVANGÉLICO'], ['BENDICION', 'BENDICIÓN'],
+  ['INVOCACION', 'INVOCACIÓN'], ['CONCLUSION', 'CONCLUSIÓN'],
+  ['MARIA', 'MARÍA'], ['ULTIMA', 'ÚLTIMA']
+];
+
+/* Lo que no baja a minúscula: los nombres de Dios y los propios, y las
+ * letras y cifras que son de la cita («Salmo 18 A», «I», «II»). */
+const MAYUSCULA = new Set(('dios señor cristo jesus jesucristo espiritu padre '
+  + 'hijo verbo mesias cordero trinidad virgen maria iglesia israel jerusalen '
+  + 'sion egipto juda sinai david moises abraham isaac jacob samuel elias '
+  + 'pedro pablo juan mateo marcos lucas andres santiago tomas felipe '
+  + 'esteban zacarias simeon isabel ana jose miguel gabriel rafael benedictus '
+  + 'magnificat pascua navidad adviento cuaresma pentecostes epifania '
+  + 'resurreccion ascension sabado domingo').split(' '));
+
+function esMayuscula(p) {
+  const l = p.replace(/[^A-Za-zÁÉÍÓÚÜÑ]/g, '');
+  return l.length > 0 && l === l.toUpperCase();
+}
+
+/** Una palabra en mayúsculas, bajada a minúscula salvo que no deba. */
+function bajaPalabra(p) {
+  const n = plano(p).replace(/[^a-z]/g, '');
+  if (!n || MAYUSCULA.has(n)) return p;
+  // «18 A», «I», «II»: una letra sola o un número romano son de la cita
+  if (/^[IVX]+$/.test(p.replace(/[^A-Za-z]/g, '')) || n.length < 2) return p;
+  return p.toLowerCase();
+}
+
+/** Las mayúsculas de una rúbrica, devueltas a su caja: minúsculas, con la
+ *  primera en alta y los nombres propios intactos. Lo que ya viene en caja
+ *  mixta no se toca, que entonces la fuente ya lo escribió como se lee. */
+function cajaNormal(t) {
+  if (!t) return '';
+  let s = t;
+  for (const [de, a] of TILDES) s = s.split(de).join(a);
+  let primera = true;
+  return s.split(/(\s+)/).map((p) => {
+    if (!p.trim() || !esMayuscula(p)) return p;
+    const b = bajaPalabra(p);
+    if (b !== p && primera) {
+      primera = false;
+      return b.replace(/\p{Ll}/u, (c) => c.toUpperCase());
+    }
+    if (b !== p) primera = false;
+    return b;
+  }).join('');
+}
+
+/* Las palabras que van en versalitas, y cómo se escriben. El orden importa:
+ * «RESPONSORIO BREVE» antes que nada que empiece por «RESPONSORIO» (que no
+ * lleva versalitas: no está en la lista). */
+const VERSALITAS = [
+  [/^INVOCACI[ÓO]N\s+INICIAL/i, 'Invocación inicial'],
+  [/^HIMNO\s*:?/i, 'Himno:'],
+  [/^SALMODIA/i, 'Salmodia'],
+  [/^RESPONSORIO\s+BREVE/i, 'Responsorio breve'],
+  [/^C[ÁA]NTICO\s+EVANG[ÉE]LICO/i, 'Cántico evangélico'],
+  [/^PRECES/i, 'Preces'],
+  [/^ORACI[ÓO]N\s*\.?/i, 'Oración'],
+  [/^CONCLUSI[ÓO]N/i, 'Conclusión']
+];
+
+/* Y dentro de la salmodia, el título de cada salmo y de cada cántico: la
+ * palabra en versalitas y el nombre en letra normal. */
+const VERSALITAS_TIT = [
+  [/^SALMO\b/i, 'Salmo'],
+  [/^C[ÁA]NTICO\s+DE\s+(\S+?)\s*\.?(?=\s|$)/i,
+    (m) => 'Cántico de ' + cajaNormal(m[1]).replace(/\p{Ll}/u,
+      (c) => c.toUpperCase()) + '.'],
+  [/^C[ÁA]NTICO\s*:?/i, 'Cántico:']
+];
+
+/** Un rótulo, partido en lo que va en versalitas y lo que no. */
+function enVersalitas(t, tabla) {
+  const s = (t || '').trim();
+  for (const [rx, como] of tabla) {
+    const m = rx.exec(s);
+    if (!m) continue;
+    return '<span class="vs">' + esc(typeof como === 'function'
+      ? como(m) : como) + '</span>'
+      + esc(cajaNormal(s.slice(m[0].length)).replace(/^\s+/, ' '));
+  }
+  return esc(cajaNormal(s));
+}
+
 /* El texto va tal cual: la acentuación que se puede apagar en Ajustes es la
  * del latín, y quitarle las tildes al castellano sería estropearlo. */
-function pintaSeccionHora(s, zoom) {
+function pintaSeccionHora(s) {
   const o = s.alts[s.i];
   const h = [];
   // lo que no está en la fuente y se tomó de los tomos impresos (la
@@ -1989,14 +2129,21 @@ function pintaSeccionHora(s, zoom) {
     : '<div class="alterna" role="group" aria-label="'
       + (s.cl === 'himno' || s.cl === 'antifona_final'
         ? 'Elegir otro texto' : 'De dónde se toma') + '">'
-      + s.alts.map((a, j) => '<button type="button" aria-pressed="'
+      + s.alts.map((a, j) => {
+        const cor = abrevia(a.rot);
+        return '<button type="button" aria-pressed="'
         + (j === s.i) + '" data-op="' + esc(a.id) + '"'
         + (a.tit ? ' title="' + esc(a.tit) + '" aria-label="' + esc(a.rot
           + ': ' + a.tit) + '"' : '')
-        + '>' + esc(a.rot) + '</button>').join('') + '</div>';
-  if (o.c.r || selector || ed || zoom) {
-    h.push('<div class="sec-cab"><h2 class="rotulo">' + esc(o.c.r || '')
-      + ed + '</h2>' + selector + (zoom || '') + '</div>');
+        + '>' + (cor === a.rot ? esc(a.rot)
+          : '<span class="largo">' + esc(a.rot) + '</span>'
+            + '<span class="corto">' + esc(cor) + '</span>')
+        + '</button>';
+      }).join('') + '</div>';
+  if (o.c.r || selector || ed) {
+    h.push('<div class="sec-cab"><h2 class="rotulo">'
+      + enVersalitas(o.c.r, VERSALITAS)
+      + ed + '</h2>' + selector + '</div>');
   }
   h.push(pintaLineas(o.c.l, PROSA.test(s.cl), s.cl));
   return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
@@ -2076,11 +2223,35 @@ function respuestas(lineas) {
   return r;
 }
 
+/* Las preces son dos partes: la invitación de quien preside, que acaba en
+ * dos puntos, y la respuesta de todos, que va detrás y se repite después de
+ * cada prez. A media prez el libro deja sitio para las intenciones libres,
+ * y quien reza, al llegar allí, ya no tiene la respuesta a la vista: se ha
+ * quedado arriba. Se repone debajo de la rúbrica, en cursiva y sangrada,
+ * para que se vea que es la misma y no una prez más. */
+const LIBRES = /se pueden a[ñn]adir algunas intenciones/i;
+
+function respuestaGeneral(lineas) {
+  const bloques = [];
+  let b = [];
+  for (const ln of lineas) {
+    const t = ln.map((tr) => tr[1]).join('').trim();
+    if (t) { b.push(t); continue; }
+    if (b.length) { bloques.push(b); b = []; }
+    if (bloques.length > 1) break;
+  }
+  if (b.length) bloques.push(b);
+  if (bloques.length < 2 || bloques[1].length !== 1) return '';
+  if (!/:\s*$/.test(bloques[0].join(' '))) return '';
+  return bloques[1][0];
+}
+
 const CRUZ = '<span class="cruz" aria-hidden="true">†</span>';
 
 function pintaLineas(lineas, prosa, seccion) {
   const marcas = cruces(lineas);
   const resp = seccion === 'preces' ? respuestas(lineas) : null;
+  const respG = seccion === 'preces' ? respuestaGeneral(lineas) : '';
   const bloques = [];
   let actual = [];
   const cierra = () => {
@@ -2088,21 +2259,37 @@ function pintaLineas(lineas, prosa, seccion) {
     actual = [];
   };
   lineas.forEach((ln, i) => {
-    const t = ln.map((tr) => tr[0]
-      ? '<b class="rub">' + esc(tr[1]) + '</b>' : esc(tr[1])).join('');
-    if (!t.trim()) { cierra(); return; }
+    const crudo = ln.map((tr) => tr[1]).join('');
+    if (!crudo.trim()) { cierra(); return; }
     let cl = 'ln';
-    if (esTituloSalmo(ln)) cl += ' tit';
-    else if (ln.every((tr) => tr[0] || !tr[1].trim())) cl += ' solo-rub';
+    const tit = esTituloSalmo(ln);
+    const soloRub = !tit && ln.every((tr) => tr[0] || !tr[1].trim());
+    if (tit) cl += ' tit';
+    else if (soloRub) cl += ' solo-rub';
     // los «V.» y los «R.» cuelgan de su sigla; la antífona no, que es un
     // texto seguido y la sangría le partía el renglón sin falta
     else if (ln[0][0] && /^\s*Ant/.test(ln[0][1])) cl += ' ant';
     else if (ln[0][0] && /^\s*(V\.|R\.)/.test(ln[0][1])) cl += ' sigla';
     if (resp && resp.has(i)) cl += ' prez-r';
+    // El título del salmo y los titulillos de la lectura son rúbrica
+    // entera: de ellos sólo «Salmo» o «Cántico» va en versalitas, y el
+    // nombre en su caja. Lo demás va tirada a tirada, con su rojo.
+    const t = tit
+      ? '<b class="rub">' + enVersalitas(crudo, VERSALITAS_TIT) + '</b>'
+      : soloRub
+        ? '<b class="rub">' + esc(cajaNormal(crudo)) + '</b>'
+        : ln.map((tr) => tr[0]
+          ? '<b class="rub">' + esc(tr[1]) + '</b>' : esc(tr[1])).join('');
     actual.push({ sigla: cl.includes(' sigla'),
       h: '<span class="' + cl + '">'
         + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
         + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>' });
+    // Al llegar a las intenciones libres, la respuesta de todos se ha
+    // quedado quince renglones más arriba: se repone aquí debajo.
+    if (respG && soloRub && LIBRES.test(crudo)) {
+      actual.push({ h: '<span class="ln prez-libre">' + esc(respG)
+        + '</span>' });
+    }
   });
   cierra();
   return bloques.map((b) => {
@@ -2152,29 +2339,40 @@ function alElegirOpcion(ev) {
 }
 
 /* Las opciones de una sección se ven todas o no sirven: antes se metían en
- * una tira que se deslizaba, y lo que no cabía no existía. Ahora manda el
- * selector y cede el rótulo: si la fila no da de sí, el rótulo se achica un
- * punto, y otro si todavía no cabe. Hace falta medirlo —el ancho de un
- * texto no se sabe hasta que está puesto—, así que se hace al pintar. */
+ * una tira que se deslizaba, y lo que no cabía no existía. La burbuja no
+ * pasa de la mitad del renglón —la otra mitad es del rótulo, que también
+ * hay que leerlo—, y para que quepan dentro se va cediendo por partes: se
+ * abrevian las opciones que no están elegidas, se achica el rótulo un punto
+ * y otro, y si ni así, la burbuja baja a su renglón, donde tiene el ancho
+ * entero. Hace falta medirlo —el ancho de un texto no se sabe hasta que
+ * está puesto—, así que se hace al pintar. */
 function aprietaCabeceras() {
   document.querySelectorAll('#vista .sec-cab').forEach(aprietaCabecera);
 }
 
 function aprietaCabecera(c) {
   const r = c.querySelector('.rotulo');
-  if (!r || !c.querySelector('.alterna')) return;
-  const cabe = () => r.scrollWidth <= r.clientWidth + 1;
+  const a = c.querySelector('.alterna');
+  if (!r || !a) return;
+  const cabe = () => r.scrollWidth <= r.clientWidth + 1
+    && a.scrollWidth <= a.clientWidth + 1;
   c.classList.remove('apretado', 'muy-apretado', 'parte');
+  a.classList.remove('cortas');
+  if (cabe()) return;
+  a.classList.add('cortas');
   if (cabe()) return;
   c.classList.add('apretado');
   if (cabe()) return;
   c.classList.add('muy-apretado');
   if (cabe()) return;
-  // Ni achicándolo cabe —tres opciones y un rótulo largo no entran en un
-  // teléfono—: entonces el selector baja a su renglón, pegado a la derecha.
-  // Antes que recortar una opción o apretar el rótulo hasta lo ilegible.
+  // Ni así —tres opciones y un rótulo largo no entran en un teléfono—:
+  // entonces el selector baja a su renglón, pegado a la derecha, y allí se
+  // lee entero. Antes que recortar una opción o apretar el rótulo hasta lo
+  // ilegible.
   c.classList.remove('apretado', 'muy-apretado');
+  a.classList.remove('cortas');
   c.classList.add('parte');
+  if (!cabe()) a.classList.add('cortas');
 }
 
 /** Cambia una sección por su versión nueva, sin tocar el resto de la hora. */
@@ -2312,13 +2510,12 @@ async function verHoras(iso, hora, idCel) {
   if (o.op.g && !conm) partes.push(bonito(o.op.g));
   if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
   $('#subtitulo-dia').textContent = partes.join(' · ');
-  // el tamaño de la letra va en la fila del primer rótulo de la hora, a la
-  // derecha; si lo primero es la reseña del santo, en el de la sección que
-  // la sigue, que es donde empieza de verdad el oficio
-  const iz = o.secciones.findIndex((x) => x.cl !== 'resena');
+  // el tamaño de la letra, en la cabecera: es la que se queda arriba al
+  // bajar, así que las dos aes están a mano a media hora y no sólo al
+  // empezar, y no le quitan sitio al selector de la sección
+  $('#cab-extra').innerHTML = controlZoom();
   vista.innerHTML = o.secciones.length
-    ? o.secciones.map((x, i) => pintaSeccionHora(x, i === iz ? controlZoom() : ''))
-      .join('')
+    ? o.secciones.map((x) => pintaSeccionHora(x)).join('')
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
   cabeceraFija(true);
   pintaCarril(o);
@@ -2331,12 +2528,14 @@ async function verHoras(iso, hora, idCel) {
 }
 
 /* ---------------------------------------------- el tamaño, a la mano
- * Que la letra se ve chica se nota al empezar a rezar, no en Ajustes: dos
- * aes al comienzo de la hora, discretas y a la derecha, y se sigue. Es el
- * mismo ajuste de siempre, así que queda puesto para todo. */
+ * Que la letra se ve chica se nota rezando, no en Ajustes: dos aes en la
+ * cabecera, discretas y a la derecha. Van ahí y no sobre el primer rótulo
+ * porque la cabecera es la que se queda arriba al bajar: así están a mano a
+ * media hora y no sólo al empezar, y no le quitan sitio al selector de la
+ * sección. Es el mismo ajuste de siempre, así que queda puesto para todo. */
 function controlZoom() {
-  // sin el tanto por ciento: comparte renglón con el rótulo de la sección y
-  // con su selector, y no cabe un número más. Lo que se cambia se ve solo.
+  // sin el tanto por ciento: comparte renglón con el título de la hora, y
+  // no cabe un número más. Lo que se cambia se ve solo.
   return '<div class="zoom" role="group" aria-label="Tamaño de la letra">'
     + '<button type="button" data-zoom="-5" aria-label="Letra más pequeña">'
     + 'A</button>'
@@ -2425,18 +2624,89 @@ function actualizaCarril() {
  * anterior la haría crecer, y la sección quedaría debajo de ella. */
 let _saltoHasta = 0;
 
-function alTocarCarril(ev) {
-  const b = ev.target.closest('button');
-  if (!b || E.vista !== 'horas') return;
-  const i = Array.prototype.indexOf.call($('#carril').children, b);
+function vaASeccion(i, animado) {
   const sec = document.querySelectorAll('#vista .hora-sec')[i];
   if (!sec) return;
   // se salta a un sitio lejano del texto: la cabecera se queda plegada,
   // que es como está al bajar, y el renglón cae justo debajo de ella
   ponPliegue(1);
-  _saltoHasta = Date.now() + 800;
-  sec.scrollIntoView({ block: 'start', behavior: suave() });
-  setTimeout(() => { _saltoHasta = 0; alDesplazarCabecera(); }, 820);
+  _saltoHasta = Date.now() + (animado ? 800 : 400);
+  sec.scrollIntoView({ block: 'start', behavior: animado ? suave() : 'auto' });
+  if (animado) {
+    setTimeout(() => { _saltoHasta = 0; alDesplazarCabecera(); }, 820);
+  }
+}
+
+/* Con el teclado el botón se activa y se va a su sección; el dedo y el ratón
+ * pasan por los punteros, más abajo, que es donde se recoge el arrastre. */
+function alTocarCarril(ev) {
+  const b = ev.target.closest('button');
+  if (!b || E.vista !== 'horas' || ev.detail) return;
+  vaASeccion(Array.prototype.indexOf.call($('#carril').children, b), true);
+}
+
+/* ------------------------------------------------- el carril, arrastrando
+ * Las cintas de un breviario se buscan con el pulgar sin levantarlo: se
+ * recorre el canto hasta dar con la que se quería. Aquí igual: el dedo baja
+ * por la tira y la hora va pasando por debajo, con el nombre de la sección
+ * en que va a la vista. Tocar una raya sigue llevando a la suya, con su
+ * movimiento; arrastrando no, que entonces el movimiento va detrás del dedo
+ * y lo que se busca no se ve nunca. */
+let _arrastra = null;
+
+/** La raya que le toca a una altura de la pantalla: la más cercana, para
+ *  que el dedo no tenga que acertar y los extremos respondan. */
+function rayaDelCarril(y) {
+  let n = -1, cerca = Infinity;
+  Array.from($('#carril').children).forEach((b, i) => {
+    const r = b.getBoundingClientRect();
+    const d = Math.abs((r.top + r.bottom) / 2 - y);
+    if (d < cerca) { cerca = d; n = i; }
+  });
+  return n;
+}
+
+function marcaRaya(n) {
+  $('#carril').querySelectorAll('button').forEach((b, i) =>
+    b.classList.toggle('en', i === n));
+}
+
+function alEmpezarCarril(ev) {
+  const c = $('#carril');
+  if (c.hidden || E.vista !== 'horas' || ev.button > 0) return;
+  _arrastra = { n: rayaDelCarril(ev.clientY), movido: false,
+    id: ev.pointerId };
+  c.classList.add('arrastrando');
+  marcaRaya(_arrastra.n);
+  try { c.setPointerCapture(ev.pointerId); } catch (e) { /* da igual */ }
+}
+
+function alMoverCarril(ev) {
+  if (!_arrastra) return;
+  ev.preventDefault();
+  const n = rayaDelCarril(ev.clientY);
+  if (n < 0 || n === _arrastra.n) return;
+  _arrastra.n = n;
+  _arrastra.movido = true;
+  marcaRaya(n);
+  vaASeccion(n, false);
+}
+
+function alSoltarCarril() {
+  const d = _arrastra;
+  if (!d) return;
+  _arrastra = null;
+  const c = $('#carril');
+  c.classList.remove('arrastrando');
+  marcaRaya(-1);
+  try { c.releasePointerCapture(d.id); } catch (e) { /* da igual */ }
+  if (d.movido) {
+    _saltoHasta = 0;
+    alDesplazarCabecera();
+    actualizaCarril();
+  } else if (d.n >= 0) {
+    vaASeccion(d.n, true);
+  }
 }
 
 /* --------------------------------------------------- deslizar de hora
@@ -2657,6 +2927,7 @@ async function arranca() {
   });
   // el calendario: su barra resumida vive en la cabecera
   $('#cab-extra').addEventListener('click', alTocarCalendario);
+  $('#cab-extra').addEventListener('click', alTocarZoom);
   vista.addEventListener('input', alEscribirCalendario);
   window.addEventListener('scroll', () => {
     alDesplazarCalendario();
@@ -2664,6 +2935,10 @@ async function arranca() {
     alDesplazarHoras();
   }, { passive: true });
   $('#carril').addEventListener('click', alTocarCarril);
+  $('#carril').addEventListener('pointerdown', alEmpezarCarril);
+  $('#carril').addEventListener('pointermove', alMoverCarril);
+  $('#carril').addEventListener('pointerup', alSoltarCarril);
+  $('#carril').addEventListener('pointercancel', alSoltarCarril);
   document.addEventListener('touchstart', alEmpezarGesto, { passive: true });
   document.addEventListener('touchend', alAcabarGesto, { passive: true });
   document.addEventListener('visibilitychange', () => {

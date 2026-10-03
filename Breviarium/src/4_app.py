@@ -934,6 +934,9 @@ def main():
         return c
 
     HORAS_PDF = ('oficio', 'laudes', 'visperas')
+    # (mm-dd, santo, entrada del PDF, título) de cada celebración, para la
+    # pasada de la salmodia, que va después y necesita las dos ramas
+    con_pdf = []
     for slug, m in sorted(titulos.items(), key=lambda x: x[0]):
         fm = re.match(r'st_(\d\d)(\d\d)_', slug)
         if not fm or m.get('k') != 's':
@@ -946,7 +949,10 @@ def main():
                 continue
             santo = clave(e['titulo'])
             for k, p in e['piezas'].items():
-                if k.split('/')[0] in HORAS_PDF:
+                # la salmodia no es un texto que se copie: va aparte, con
+                # las antífonas y la rúbrica que dice de dónde salen los
+                # salmos (los salmos los pone la fuente, en su traducción)
+                if k.split('/')[0] in HORAS_PDF and 'l' in p:
                     pieza_del_pdf(md, santo, k, p, m["t"])
             # la reseña, también primero la de la fuente si la dio en otra
             # fecha (santo Toribio: el 27 de abril, que es su día en Perú)
@@ -964,10 +970,13 @@ def main():
             santo_de_slug[slug] = santo
             casillas[santo][md] += 1
             desde_pdf.append((m['t'], grado(m), e, lista))
+            con_pdf.append((md, santo, e, m['t']))
             continue
         santo = santo_de_slug[slug]
         md_s = md if md in casillas[santo] else \
             casillas[santo].most_common(1)[0][0]
+        if e:
+            con_pdf.append((md_s, santo, e, m['t']))
         # la reseña: la de la fuente, y si no la dio, la del PDF
         r = resenas.get(f'{md_s}/{santo}') or next(
             (v for k, v in resenas.items() if k.endswith('/' + santo)), None)
@@ -1154,16 +1163,75 @@ def main():
     hora_intermedia, raros_intermedia = intermedia(salterio)
     pools_intermedia = himnos_intermedia(tiempo)
 
-    # --- se escribe --------------------------------------------------------
+    # --- la salmodia propia de una celebración -----------------------------
     # Lo que una celebración tiene propio en la salmodia son sus antífonas;
-    # los salmos, los del día —salvo que el libro le señale otros, con la
-    # rúbrica «se toma la salmodia del domingo I», y entonces `s` dice de qué
-    # casilla del salterio—. La app compone las dos cosas.
+    # los salmos, los del día —salvo que el libro le señale otros—. Qué
+    # salmos son lo dice la medida sobre la fuente (fase 3): `s`, la casilla
+    # del salterio de la que se toman; `l`, la salmodia entera cuando no son
+    # de ninguna casilla, porque son suyos.
     antifonas = {}
     for k, v in carga('antifonas.json').items():
         antifonas[k] = {'a': v['antifonas']}
         if v.get('salmos'):
             antifonas[k]['s'] = v['salmos']
+        elif v.get('salmodia'):
+            antifonas[k]['l'] = v['salmodia']
+
+    # Y lo que la medida no puede dar es la *rúbrica*: la fuente publica el
+    # día ya armado y calla de dónde toma los salmos. El libro impreso sí lo
+    # dice —«Los salmos y el cántico se toman del domingo de la I semana del
+    # Salterio», «… del Común de pastores»—, y eso se lee de los PDF. Con la
+    # rúbrica delante, lo medido se explica (y se comprueba); y donde la
+    # fuente no publicó nunca al santo, la rúbrica es lo único que hay, así
+    # que de ella salen las antífonas y el sitio de los salmos.
+    sal_pdf, sal_choque, sal_falta = [], [], []
+    for md_s, santo, e, titulo in con_pdf:
+        for hora in HORAS_PDF:
+            p = e['piezas'].get(f'{hora}/salmodia')
+            if not p:
+                continue
+            k = f'{md_s}/{santo}/{hora}'
+            ent = antifonas.get(k)
+            de = p.get('de') or {}
+            nuevo = ent is None
+            if nuevo:
+                # Las solemnidades y las fiestas traen de la fuente su
+                # salmodia entera —salmos y antífonas—, y ésa es la que se
+                # reza: ahí el PDF no añade nada, y poner sus antífonas
+                # (que son de otra traducción) sobre los salmos del día
+                # sería cambiar a peor.
+                if not p.get('ant') \
+                        or f'{md_s}/{santo}/{hora}/salmodia' in santoral:
+                    continue
+                ent = antifonas[k] = {'a': p['ant'], 'f': 'pdf'}
+            tiene = 's' in ent or 'l' in ent
+            if not tiene and de.get('salterio'):
+                ent['s'] = de['salterio']
+            elif not tiene and de.get('comun'):
+                # «del Común de pastores»: los salmos del común, que los
+                # pone la fuente; sólo los comunes cuya salmodia se midió
+                ent['c'] = next(
+                    (c for c in comunes_del_pdf(de['comun'], titulo,
+                                                nombres_comunes)
+                     if f'{c}/{hora}/salmodia' in comunes), None)
+                if not ent['c']:
+                    del ent['c']
+            elif tiene and de.get('salterio') and ent.get('s') \
+                    and ent['s'] != de['salterio']:
+                sal_choque.append((titulo, hora, ent['s'], de['salterio']))
+            # la rúbrica del libro, para decir en la app de dónde salen los
+            # salmos; sólo cuando se puede cumplir, que si no engaña
+            de_donde = ent.get('s') or ent.get('c') \
+                or ('propios' if 'l' in ent else None)
+            if de_donde and p.get('rub'):
+                ent['r'] = p['rub']
+            if not de_donde:
+                if de.get('propios'):
+                    sal_falta.append((titulo, hora, ', '.join(de['propios'])))
+                if nuevo:
+                    sal_pdf.append((titulo, hora, True, 'del día'))
+            elif nuevo or p.get('rub'):
+                sal_pdf.append((titulo, hora, nuevo, de_donde))
 
     # De los comunes, las segundas lecturas que la fuente da como variantes
     # son otras tantas lecturas a elegir: un común ofrece varias, y quien
@@ -1273,7 +1341,7 @@ def main():
     escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas_de(santoral), entrada_pdf,
-                        hallados, extra)
+                        hallados, extra, sal_pdf, sal_choque, sal_falta)
 
 
 def casillas_de(santoral):
@@ -1342,7 +1410,7 @@ def autor_de(lineas):
 def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas, entrada_pdf, hallados,
-                        extra):
+                        extra, sal_pdf=(), sal_choque=(), sal_falta=()):
     """El informe para quien reza: qué se tomó de los PDF (la traducción
     española), qué sigue sin textos en ninguna parte, y en qué difieren los
     PDF de la fuente en los santos que tienen los dos."""
@@ -1464,7 +1532,32 @@ def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                 'PDF\n' + '-' * 60 + '\n')
         for t, n in sin_textos.most_common():
             f.write(f'  {t}\n')
-        f.write('\n5. Cotejo PDF / fuente en los santos que tienen los dos\n'
+        f.write('\n5. La salmodia: la rúbrica que el PDF escribe y la fuente '
+                'calla\n' + '-' * 60 + '\n'
+                'La fuente publica el día armado y no dice de dónde toma los\n'
+                'salmos; los PDF sí. Con esa rúbrica la app ofrece la salmodia\n'
+                'que el libro señala —los salmos los pone la fuente, en su\n'
+                'traducción— y, al lado, la del día.\n\n')
+        HORA_N = {'oficio': 'Oficio', 'laudes': 'Laudes',
+                  'visperas': 'Vísperas'}
+        for t, hora, nuevo, donde in sal_pdf:
+            f.write(f'  {t} — {HORA_N.get(hora, hora)}: '
+                    f'{"antífonas del PDF, " if nuevo else ""}salmos '
+                    f'{"propios" if donde == "propios" else "de " + str(donde)}\n')
+        if sal_choque:
+            f.write(f'\n   Donde el PDF y lo medido en la fuente no dicen lo '
+                    f'mismo (manda la fuente): {len(sal_choque)}\n')
+            for t, hora, medido, pdf in sal_choque:
+                f.write(f'     {t} — {HORA_N.get(hora, hora)}: fuente '
+                        f'«{medido}», PDF «{pdf}»\n')
+        if sal_falta:
+            f.write(f'\n   El PDF escribe los salmos enteros y la fuente no '
+                    f'los dio nunca: se reza la salmodia del día con las '
+                    f'antífonas de la celebración ({len(sal_falta)})\n')
+            for t, hora, titulos_sal in sal_falta:
+                f.write(f'     {t} — {HORA_N.get(hora, hora)}: '
+                        f'{titulos_sal}\n')
+        f.write('\n6. Cotejo PDF / fuente en los santos que tienen los dos\n'
                 + '-' * 60 + '\n'
                 'Aquí no se cambió nada: manda la fuente. Sólo se apunta.\n\n')
         for t, md, notas in cotejo:
