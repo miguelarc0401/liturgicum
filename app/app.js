@@ -1318,9 +1318,6 @@ async function alCambiarAjuste(ev) {
 }
 
 function marcaBarra(cual) {
-  // la vista, en el <body>: las Horas tiñen de otro modo —el rojo y el verde
-  // van más hondos allí—, y eso se resuelve en la hoja de estilo
-  document.body.dataset.vista = cual;
   document.querySelectorAll('#barra button').forEach((b) =>
     b.classList.toggle('activo', b.dataset.ir === cual));
 }
@@ -2045,9 +2042,11 @@ const TILDES = [
   ['MARIA', 'MARÍA'], ['ULTIMA', 'ÚLTIMA']
 ];
 
-/* Lo que no baja a minúscula: los nombres de Dios y los propios, y las
- * letras y cifras que son de la cita («Salmo 18 A», «I», «II»). */
-const MAYUSCULA = new Set(('dios señor cristo jesus jesucristo espiritu padre '
+/* Lo que no baja del todo: los nombres de Dios y los propios, que vuelven a
+ * su caja —«CRISTO» se lee «Cristo», no a gritos—, y las letras y cifras que
+ * son de la cita («Salmo 18 A», «I», «II»), que no se tocan. Van sin tildes
+ * y sin eñe: se comparan contra plano(), que se las quita. */
+const MAYUSCULA = new Set(('dios senor cristo jesus jesucristo espiritu padre '
   + 'hijo verbo mesias cordero trinidad virgen maria iglesia israel jerusalen '
   + 'sion egipto juda sinai david moises abraham isaac jacob samuel elias '
   + 'pedro pablo juan mateo marcos lucas andres santiago tomas felipe '
@@ -2060,12 +2059,22 @@ function esMayuscula(p) {
   return l.length > 0 && l === l.toUpperCase();
 }
 
-/** Una palabra en mayúsculas, bajada a minúscula salvo que no deba. */
-function bajaPalabra(p) {
+/** La inicial en alta, si la palabra no la trae ya. */
+const mayusculaInicial = (p) => /\p{Lu}/u.test(p) ? p
+  : p.replace(/\p{Ll}/u, (c) => c.toUpperCase());
+
+/** Una palabra en mayúsculas, devuelta a su caja: a minúscula, o a su
+ *  inicial en alta si es un nombre propio. `trasCifra` dice si la palabra
+ *  de antes era un número: «Salmo 18 A» lleva ahí una letra de la cita, y
+ *  «el siervo doliente Y Cristo», la conjunción, que sí baja. */
+function bajaPalabra(p, trasCifra) {
   const n = plano(p).replace(/[^a-z]/g, '');
-  if (!n || MAYUSCULA.has(n)) return p;
-  // «18 A», «I», «II»: una letra sola o un número romano son de la cita
-  if (/^[IVX]+$/.test(p.replace(/[^A-Za-z]/g, '')) || n.length < 2) return p;
+  if (!n) return p;
+  if (MAYUSCULA.has(n)) return mayusculaInicial(p.toLowerCase());
+  // «I», «II»: los números romanos son de la cita y no se tocan
+  if (/^[IVX]+$/.test(p.replace(/[^A-Za-z]/g, ''))) return p;
+  // «18 A», «9 B»: la letra que numera un salmo tampoco
+  if (n.length < 2 && trasCifra) return p;
   return p.toLowerCase();
 }
 
@@ -2076,16 +2085,18 @@ function cajaNormal(t) {
   if (!t) return '';
   let s = t;
   for (const [de, a] of TILDES) s = s.split(de).join(a);
-  let primera = true;
+  let primera = true, anterior = '';
   return s.split(/(\s+)/).map((p) => {
-    if (!p.trim() || !esMayuscula(p)) return p;
-    const b = bajaPalabra(p);
-    if (b !== p && primera) {
-      primera = false;
-      return b.replace(/\p{Ll}/u, (c) => c.toUpperCase());
-    }
-    if (b !== p) primera = false;
-    return b;
+    if (!p.trim()) return p;
+    const prev = anterior;
+    anterior = p;
+    if (!esMayuscula(p)) return p;
+    const b = bajaPalabra(p, /\d/.test(prev));
+    if (b === p) return p;
+    // la primera que baja abre la frase, y abre con mayúscula
+    const r = primera ? mayusculaInicial(b) : b;
+    primera = false;
+    return r;
   }).join('');
 }
 
@@ -2123,8 +2134,7 @@ const VERSALITAS = [
 const VERSALITAS_TIT = [
   [/^SALMO\b/i, 'Salmo'],
   [/^C[ÁA]NTICO\s+DE\s+(\S+?)\s*\.?(?=\s|$)/i,
-    (m) => 'Cántico de ' + cajaNormal(m[1]).replace(/\p{Ll}/u,
-      (c) => c.toUpperCase()) + '.'],
+    (m) => 'Cántico de ' + mayusculaInicial(cajaNormal(m[1])) + '.'],
   [/^C[ÁA]NTICO\s*:?/i, 'Cántico:']
 ];
 
@@ -2134,11 +2144,19 @@ function enVersalitas(t, tabla) {
   for (const [rx, como, resto] of tabla) {
     const m = rx.exec(s);
     if (!m) continue;
+    // lo que acompaña al rótulo —la cita, el comienzo del himno, el nombre
+    // del salmo— va en letra normal, pero no más grande que las versalitas:
+    // nombra menos y no tiene por qué pesar más
+    const llano = (resto || '')
+      + cajaNormal(s.slice(m[0].length)).replace(/^\s+/, ' ');
     return '<span class="vs">' + esc(typeof como === 'function'
-      ? como(m) : como) + '</span>' + esc(resto || '')
-      + esc(cajaNormal(s.slice(m[0].length)).replace(/^\s+/, ' '));
+      ? como(m) : como) + '</span>'
+      + (llano ? '<span class="llano">' + esc(llano) + '</span>' : '');
   }
-  return esc(cajaNormal(s));
+  // y el rótulo que no nombra ninguna pieza —«Los salmos y el cántico se
+  // toman del Común de un mártir»— es una rúbrica entera: va en letra
+  // normal, y del mismo cuerpo que las versalitas
+  return '<span class="llano">' + esc(cajaNormal(s)) + '</span>';
 }
 
 /* El texto va tal cual: la acentuación que se puede apagar en Ajustes es la
@@ -2628,9 +2646,19 @@ function alTocarZoom(ev) {
   if (v === E.cfg.tam) return;
   E.cfg.tam = v;
   guardaCfg();
+  const plegado = _plegado;
   aplicaCfg();
   aprietaCabeceras();
-  if (document.body.classList.contains('cab-fija')) mideCabecera();
+  if (!document.body.classList.contains('cab-fija')) return;
+  mideCabecera();
+  // La letra cambia de cuerpo y la página de alto, y al acortarse le mueve
+  // el desplazamiento a quien está leyendo. Eso no es un dedo subiendo: la
+  // cabecera se queda como estaba —plegada, si lo estaba— y vuelve a
+  // desplegarse cuando de verdad se suba. Sin esto, achicar la letra a
+  // media hora abría la cabecera entera y tapaba el renglón.
+  ponPliegue(plegado);
+  _ultimoY = Math.max(0, window.scrollY);
+  _saltoHasta = Date.now() + 400;
 }
 
 /* ------------------------------------------------- el carril de la hora

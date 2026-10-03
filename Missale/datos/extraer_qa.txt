@@ -1,0 +1,843 @@
+FASE 3 — LOS CIEN MISALITOS, DÍA POR DÍA
+========================================
+
+Los cien misalitos, partidos en días y en formularios. Un fichero
+por mes en datos/misalitos/AAAA-MM.json, con cada formulario, su
+cabecera y sus bloques rotulados, en bruto.
+
+ficheros                      : 100
+días del mes alcanzados       : 3044 de 3044
+formularios                   : 3286  (1.08 por día)
+   con la cabecera suplida    : 1  (el día no la lleva y se abre en su «MR p.»)
+   de un día con más de una misa : 67  (la vigilia, la aurora, el día, las tres de los Difuntos)
+bloques                       : 29874 piezas, 2567 rúbricas del Misal, 3189 editoriales, 260 del santoral mexicano
+formularios con reseña        : 1773
+   con misa votiva permitida  : 531  («Feria o / Misa de Santa María en Sábado»)
+párrafos recortados del día siguiente : 16858
+bloques en dos columnas, deshechos    : 38  (las secuencias)
+
+Los días que faltan
+-------------------
+
+Ninguno: los 3044 días de los cien meses tienen formulario.
+
+Las piezas, contadas
+--------------------
+
+   ANTÍFONA DE ENTRADA               3237
+   ORACIÓN COLECTA                   3279
+   PRIMERA LECTURA                   3132
+   SALMO RESPONSORIAL                3186
+   SEGUNDA LECTURA                    632
+   SECUENCIA                           46
+   ACLAMACIÓN ANTES DEL EVANGELIO    3122
+   EVANGELIO                         3154
+   ORACIÓN SOBRE LAS OFRENDAS        3251
+   ANTÍFONA DE LA COMUNIÓN           3251
+   ORACIÓN DESPUÉS DE LA COMUNIÓN    3252
+   ORACIÓN SOBRE EL PUEBLO            332
+
+De los campos de la cabecera, los que la fuente no da:
+   sin color        168 de 3286
+   sin grado        692 de 3286
+   sin titulo      2145 de 3286
+   sin mr           245 de 3286
+
+Los rótulos que la fuente escribe mal
+-------------------------------------
+
+Se reconocen por parecido con el rótulo bueno, y cada uno se
+nombra aquí. Lo que la fuente imprime mal no se corrige en
+silencio.
+
+   ANTIFONA DE LA COMUNION                → ANTÍFONA DE LA COMUNIÓN          55 vez(ces)
+   ORACION DESPUES DE LA COMUNION         → ORACIÓN DESPUÉS DE LA COMUNIÓN   55 vez(ces)
+   ORACION COLECTA                        → ORACIÓN COLECTA                  50 vez(ces)
+   ANTIFONA DE ENTRADA                    → ANTÍFONA DE ENTRADA              46 vez(ces)
+   ACLAMACIÓN ATES DEL EVANGELIO          → ACLAMACIÓN ANTES DEL EVANGELIO   20 vez(ces)
+   ORACIÓN COLETA                         → ORACIÓN COLECTA                  18 vez(ces)
+   ANTIFONA DE LA COMUNIÓN                → ANTÍFONA DE LA COMUNIÓN          17 vez(ces)
+   ORACIÓN DESPUÉS DE LAS COMUNIÓN        → ORACIÓN DESPUÉS DE LA COMUNIÓN   10 vez(ces)
+   SALMO RESPONSORIA                      → SALMO RESPONSORIAL               9 vez(ces)
+   ORACIÓN DESPUÉS DE'LA COMUNIÓN         → ORACIÓN DESPUÉS DE LA COMUNIÓN   8 vez(ces)
+   ORACION DE LOS FIELES                  → ORACIÓN DE LOS FIELES            8 vez(ces)
+   ORACIÓN DE LO FIELES                   → ORACIÓN DE LOS FIELES            6 vez(ces)
+   SALMO RESPONSÓRIAL                     → SALMO RESPONSORIAL               4 vez(ces)
+   SALMO RESPONSORIALD                    → SALMO RESPONSORIAL               4 vez(ces)
+   PROCLAMACIÓN ANTES DEL EVANGELIO       → ACLAMACIÓN ANTES DEL EVANGELIO   3 vez(ces)
+   ORACION DESPUÉS DE LA COMUNIÓN         → ORACIÓN DESPUÉS DE LA COMUNIÓN   2 vez(ces)
+   ORACIÓN DESPUES DE LA COMUNIÓN         → ORACIÓN DESPUÉS DE LA COMUNIÓN   1 vez(ces)
+   ORACIÓN SOBRE EL PUELO                 → ORACIÓN SOBRE EL PUEBLO          1 vez(ces)
+   ANTÍFONA DE LA COMUNÓN                 → ANTÍFONA DE LA COMUNIÓN          1 vez(ces)
+   ORACIÓN DESPUÉSDE LA COMUNIÓN          → ORACIÓN DESPUÉS DE LA COMUNIÓN   1 vez(ces)
+   ANTÍFONA DE ENTRAD                     → ANTÍFONA DE ENTRADA              1 vez(ces)
+   SALMORESPONSORIA                       → SALMO RESPONSORIAL               1 vez(ces)
+   ACLAMACIÓN ANTES DEL EVANGELI          → ACLAMACIÓN ANTES DEL EVANGELIO   1 vez(ces)
+   SALMO RESPONSORI                       → SALMO RESPONSORIAL               1 vez(ces)
+   RIMERA LECTURA                         → PRIMERA LECTURA                  1 vez(ces)
+   ANTÍFONA DE COMUNIÓN                   → ANTÍFONA DE LA COMUNIÓN          1 vez(ces)
+
+Lo que el día deja elegir
+-------------------------
+
+No es una lista que haya que inventar: el misalito la imprime.
+
+Las misas de un mismo día, cuando hay más de una:
+   MISA DEL DÍA                         15
+   MISA VESPERTINA DE LA CENA DEL SEÑ    8
+   MISA VESPERTINA DE LA VIGILIA         8
+   SEGUNDA MISA                          8
+   MISA DE NOCHE BUENA                   7
+   MISA DE LA AURORA                     7
+   PRIMERA MISA                          7
+   TERCERA MISA                          7
+
+Las misas votivas que el día permite en lugar de la feria (531 en total,
+116 distintas):
+   Misa de Santa María en Sábado                            50
+   Misa por las vocaciones a las órdenes sagradas           15
+   Misa por los cristianos perseguidos                      12
+   Misa por los laicos                                      12
+   Misa de San José                                         12
+   Misa para fomentar la concordia                          12
+   Misa de la Sagrada Eucaristía                            12
+   Misa por los prófugos y exiliados                        11
+   Misa del Santísimo Nombre de Jesús                       11
+   Misa por la paz y la justicia                            10
+   Misa del misterio de la Santa Cruz                        9
+   Misa para alejar las tempestades                          9
+   Misa por los familiares y amigos                          9
+   Misa por los enfermos                                     9
+   Misa por los sacerdotes                                   9
+   Misa para pedir la lluvia                                 9
+   Misa para pedir caridad                                   9
+   Misa por la Patria, y para dar gracias a Dios             9
+   Misa por la evangelización de los pueblos “A”             8
+   Misa de la Preciosísima Sangre de N. S. Jesucristo        8
+   Misa para pedir la gracia de una buena muerte             8
+   Misa para después de la cosecha                           8
+   Misa por la reconciliación                                7
+   Misa por el progreso de los pueblos                       7
+   Misa del Sagrado Corazón de Jesús                         7
+   Misa para pedir buen tiempo                               7
+   Misa de Santa María en sábado                             7
+   SANTA TERESA DE CALCUTA                                   7
+   … y 88 más
+
+Los formularios sin lecturas
+----------------------------
+
+155 de 3286. No es un fallo del parseo: son las misas que remiten sus
+lecturas a otro sitio —«Las lecturas son las mismas de la misa del día»—,
+y la fase 4 las resuelve por ahí. Se nombran todas:
+
+   misalAbril2019         2019-04-01 o1  —
+   misalAbril2019         2019-04-03 o1  —
+   misalAbril2019         2019-04-13 o1  —
+   misalAbril2020         2020-04-01 o1  BEATOS JOSÉ LUIS PADILLA GÓMEZ
+   misalAbril2020         2020-04-21 o1  —
+   misalAbril2020         2020-04-27 o1  Memoria
+   misalAbril2021         2021-04-21 o1  —
+   misalAbril2023         2023-04-21 o1  —
+   misalAbril2024         2024-04-13 o1  —
+   misalAbril2026         2026-04-21 o1  —
+   misalAgosto2019        2019-08-07 o1  —
+   misalAgosto2019        2019-08-16 o1  —
+   misalAgosto2019        2019-08-19 o1  —
+   misalAgosto2020        2020-08-19 o1  —
+   misalAgosto2021        2021-08-16 o1  —
+   misalAgosto2021        2021-08-19 o1  —
+   misalAgosto2022        2022-08-19 o1  —
+   misalAgosto2023        2023-08-16 o1  —
+   misalAgosto2023        2023-08-19 o1  —
+   misalAgosto2024        2024-08-19 o1  —
+   misalAgosto2025        2025-08-16 o1  —
+   misalAgosto2026        2026-08-19 o1  —
+   misalAgosto2026        2026-08-30 o1  —
+   misalDiciembre2021     2021-12-06 o1  —
+   misalDiciembre2021     2021-12-10 o1  —
+   misalDiciembre2021     2021-12-11 o1  —
+   misalDiciembre2021     2021-12-21 o1  —
+   misalDiciembre2021     2021-12-23 o1  —
+   misalDiciembre2021     2021-12-29 o1  —
+   misalDiciembre2025     2025-12-24 o1  LA NATIVIDAD DEL SEÑOR
+   misalEnero2019         2019-01-05 o1  LA EPIFANÍA DEL SEÑOR
+   misalEnero2019         2019-01-17 o1  —
+   misalEnero2019         2019-01-23 o1  —
+   misalEnero2019         2019-01-24 o1  —
+   misalEnero2020         2020-01-04 o1  LA EPIFANÍA DEL SEÑOR
+   misalEnero2020         2020-01-17 o1  —
+   misalEnero2021         2021-01-02 o1  —
+   misalEnero2021         2021-01-07 o1  —
+   misalEnero2021         2021-01-13 o1  —
+   misalEnero2021         2021-01-20 o1  —
+   misalEnero2021         2021-01-22 o1  —
+   misalEnero2021         2021-01-27 o1  —
+   misalEnero2022         2022-01-17 o1  —
+   misalEnero2023         2023-01-07 o1  LA EPIFANÍA DEL SEÑOR
+   misalEnero2023         2023-01-17 o1  —
+   misalEnero2024         2024-01-06 o1  LA EPIFANÍA DEL SEÑOR
+   misalEnero2024         2024-01-17 o1  —
+   misalEnero2025         2025-01-04 o1  LA EPIFANÍA DEL SEÑOR
+   misalEnero2025         2025-01-17 o1  —
+   misalEnero2026         2026-01-03 o1  LA EPIFANÍA DEL SEÑOR
+   misalEnero2026         2026-01-17 o1  —
+   misalFebrero2019       2019-02-05 o1  —
+   misalFebrero2019       2019-02-06 o1  —
+   misalFebrero2019       2019-02-09 o1  —
+   misalFebrero2019       2019-02-11 o1  —
+   misalFebrero2019       2019-02-25 o1  —
+   misalFebrero2020       2020-02-05 o1  —
+   misalFebrero2020       2020-02-10 o1  Memoria
+   misalFebrero2020       2020-02-11 o1  —
+   misalFebrero2020       2020-02-25 o1  —
+   misalFebrero2021       2021-02-03 o1  —
+   misalFebrero2021       2021-02-08 o1  —
+   misalFebrero2021       2021-02-23 o1  —
+   misalFebrero2021       2021-02-25 o1  —
+   misalFebrero2022       2022-02-05 o1  —
+   misalFebrero2022       2022-02-10 o1  Memoria
+   misalFebrero2022       2022-02-11 o1  —
+   misalFebrero2022       2022-02-25 o1  —
+   misalFebrero2023       2023-02-06 o1  —
+   misalFebrero2023       2023-02-11 o1  —
+   misalFebrero2023       2023-02-25 o1  —
+   misalFebrero2024       2024-02-05 o1  —
+   misalFebrero2024       2024-02-10 o1  Memoria
+   misalFebrero2025       2025-02-05 o1  —
+   misalFebrero2025       2025-02-06 o1  —
+   misalFebrero2025       2025-02-11 o1  —
+   misalFebrero2025       2025-02-25 o1  —
+   misalFebrero2026       2026-02-25 o1  —
+   misalJulio2018         2018-07-04 o1  —
+   misalJulio2019         2019-07-01 o1  —
+   misalJulio2019         2019-07-04 o1  —
+   misalJulio2019         2019-07-19 o1  —
+   misalJulio2020         2020-07-01 o1  Memoria
+   misalJulio2020         2020-07-04 o1  —
+   misalJulio2022         2022-07-04 o1  —
+   misalJulio2023         2023-07-04 o1  —
+   misalJulio2024         2024-07-04 o1  —
+   misalJulio2025         2025-07-04 o1  —
+   misalJulio2026         2026-07-04 o1  —
+   misalJunio2018         2018-06-21 o1  —
+   misalJunio2018         2018-06-22 o1  —
+   misalJunio2018         2018-06-27 o1  —
+   misalJunio2019         2019-06-01 o1  LA ASCENSIÓN DEL SEÑOR
+   misalJunio2019         2019-06-21 o1  —
+   misalJunio2019         2019-06-22 o1  —
+   misalJunio2019         2019-06-27 o1  —
+   misalJunio2020         2020-06-22 o1  —
+   misalJunio2020         2020-06-27 o1  —
+   misalJunio2021         2021-06-21 o1  —
+   misalJunio2021         2021-06-22 o1  —
+   misalJunio2022         2022-06-21 o1  —
+   misalJunio2022         2022-06-22 o1  —
+   misalJunio2022         2022-06-27 o1  —
+   misalJunio2023         2023-06-21 o1  —
+   misalJunio2023         2023-06-22 o1  —
+   misalJunio2023         2023-06-27 o1  —
+   misalJunio2024         2024-06-21 o1  —
+   misalJunio2024         2024-06-22 o1  —
+   misalJunio2024         2024-06-27 o1  —
+   misalJunio2025         2025-06-21 o1  —
+   misalJunio2026         2026-06-22 o1  —
+   misalJunio2026         2026-06-23 o1  MISA VESPERTINA DE LA VIGILIA
+   misalJunio2026         2026-06-27 o1  —
+   misalMarzo2020         2020-03-24 o1  —
+   misalMayo2020          2020-05-23 o1  LA ASCENCIÓN DEL SEÑOR
+   misalMayo2021          2021-05-15 o1  LA ASCENCIÓN DEL SEÑOR
+   misalMayo2022          2022-05-28 o1  LA ASCENCIÓN DEL SEÑOR
+   misalMayo2023          2023-05-20 o1  LA ASCENCIÓN DEL SEÑOR
+   misalMayo2024          2024-05-11 o1  LA ASCENCIÓN DEL SEÑOR
+   misalMayo2026          2026-05-16 o1  —
+   misalNoviembre2018     2018-11-12 o1  —
+   misalNoviembre2018     2018-11-22 o1  —
+   misalNoviembre2018     2018-11-23 o1  —
+   misalNoviembre2019     2019-11-12 o1  —
+   misalNoviembre2019     2019-11-22 o1  —
+   misalNoviembre2020     2020-11-12 o1  —
+   misalNoviembre2020     2020-11-23 o1  —
+   misalNoviembre2021     2021-11-12 o1  —
+   misalNoviembre2021     2021-11-22 o1  —
+   misalNoviembre2022     2022-11-12 o1  —
+   misalNoviembre2022     2022-11-22 o1  —
+   misalNoviembre2022     2022-11-23 o1  —
+   misalNoviembre2023     2023-11-22 o1  —
+   misalNoviembre2024     2024-11-12 o1  —
+   misalNoviembre2024     2024-11-22 o1  —
+   misalNoviembre2024     2024-11-23 o1  —
+   misalNoviembre2025     2025-11-12 o1  —
+   misalNoviembre2025     2025-11-22 o1  —
+   misalOctubre2018       2018-10-05 o1  —
+   misalOctubre2018       2018-10-19 o1  —
+   misalOctubre2019       2019-10-19 o1  —
+   misalOctubre2020       2020-10-05 o1  —
+   misalOctubre2020       2020-10-19 o1  —
+   misalOctubre2020       2020-10-28 o1  —
+   misalOctubre2021       2021-10-05 o1  —
+   misalOctubre2021       2021-10-19 o1  —
+   misalOctubre2021       2021-10-28 o1  Feria
+   misalOctubre2022       2022-10-05 o1  —
+   misalOctubre2022       2022-10-19 o1  —
+   misalOctubre2022       2022-10-28 o1  —
+   misalOctubre2023       2023-10-28 o1  SAN RODRIGO AGUILAR ALEMÁN
+   misalOctubre2024       2024-10-05 o1  —
+   misalOctubre2024       2024-10-19 o1  —
+   misalOctubre2024       2024-10-28 o1  —
+   misalOctubre2025       2025-10-28 o1  SAN RODRIGO AGUILAR ALEMÁN
+
+Las dos publicaciones
+---------------------
+
+No son tres familias de maqueta por años, como suponía el plan,
+sino dos publicaciones distintas:
+
+   santamisa       97 ficheros
+   palabraviva      3 ficheros
+   los de Palabra Viva: misalDiciembre2021, misalEnero2021, misalFebrero2021
+
+Lo que no cuadró, fichero por fichero
+-------------------------------------
+
+369 avisos en total.
+
+   misalAbril2020
+      p. 126: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 127: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+   misalAbril2022
+      p. 151: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+   misalAbril2023
+      p. 144: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 146: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 152: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 154: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 154: la fuente rotula «ORACIÓN DESPUES DE LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalAbril2024
+      p. 73: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 75: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 82: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalAbril2025
+      p. 35: la fuente rotula «ORACIÓN SOBRE EL PUELO»; se lee «ORACIÓN SOBRE EL PUEBLO»
+   misalAbril2026
+      pie de la p. 187: «martes 30 de abril» — la fuente escribe mal el día de la semana (es «jueves»); el número continúa la serie y se respeta
+      pie de la p. 188: «martes 30 de abril» — la fuente escribe mal el día de la semana (es «jueves»); el número continúa la serie y se respeta
+      pie de la p. 189: «martes 30 de abril» — la fuente escribe mal el día de la semana (es «jueves»); el número continúa la serie y se respeta
+      pie de la p. 190: «martes 30 de abril» — la fuente escribe mal el día de la semana (es «jueves»); el número continúa la serie y se respeta
+      p. 126: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 129: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+   misalAgosto2018
+      pie de la p. 28: «lunes 9 de agosto» — la fuente escribe mal el día de la semana (es «jueves»); el número continúa la serie y se respeta
+      p. 39: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 42: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalAgosto2019
+      p. 15: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 15: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 40: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 63: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 67: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 67: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 78: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 81: la fuente rotula «SALMO RESPONSÓRIAL»; se lee «SALMO RESPONSORIAL»
+      p. 90: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalAgosto2020
+      p. 35: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalAgosto2021
+      pie de la p. 36: «jueves 6 de agosto» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+   misalAgosto2022
+      p. 44: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 47: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 79: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 79: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 88: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 93: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 96: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 96: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 123: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalAgosto2023
+      p. 76: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 80: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 97: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 97: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 115: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 120: la fuente rotula «SALMO RESPONSÓRIAL»; se lee «SALMO RESPONSORIAL»
+      p. 126: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalAgosto2024
+      p. 21: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 30: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 30: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 58: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 61: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 89: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 96: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 96: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 108: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 126: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalAgosto2025
+      el día 24 (domingo) no lleva cabecera «24 domingo»; el formulario se abre en su línea «MR p.», que la fuente sí imprime
+      p. 27: la fuente rotula «ANTÍFONA DE LA COMUNÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 109: la fuente rotula «SALMO RESPONSÓRIAL»; se lee «SALMO RESPONSORIAL»
+   misalAgosto2026
+      p. 67: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalDiciembre2021
+      pie de la p. 20: «doningo 5 de diciembre» — la fuente escribe mal el día de la semana (es «domingo»); el número continúa la serie y se respeta
+      pie de la p. 22: «doningo 5 de diciembre» — la fuente escribe mal el día de la semana (es «domingo»); el número continúa la serie y se respeta
+      pie de la p. 86: «viermes 24 de diciembre» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+   misalEnero2021
+      pie de la p. 10: «miercoles 1 de enero» — el 1 de enero no es miercoles sino viernes, y la página anterior era el 1: manda el día de la semana y la página se cuenta como el 6
+      pie de la p. 92: «viermes 22 de enero» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+      pie de la p. 94: «viermes 22 de enero» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+      pie de la p. 117: «viermes 29 de enero» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+      pie de la p. 119: «viermes 29 de enero» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+      p. 92: la fuente rotula «SALMO RESPONSORIALD»; se lee «SALMO RESPONSORIAL»
+      p. 100: la fuente rotula «SALMO RESPONSORIALD»; se lee «SALMO RESPONSORIAL»
+      p. 108: la fuente rotula «SALMO RESPONSORIALD»; se lee «SALMO RESPONSORIAL»
+      p. 123: la fuente rotula «ORACIÓN DESPUÉSDE LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalEnero2022
+      pie de la p. 28: «lunes 5 de enero» — el 5 de enero no es lunes sino miercoles, y la página anterior era el 3: manda el día de la semana y la página se cuenta como el 3
+      pie de la p. 56: «miercoles 14 de enero» — el 14 de enero no es miercoles sino viernes, y la página anterior era el 12: manda el día de la semana y la página se cuenta como el 12
+      pie de la p. 57: «miercoles 14 de enero» — el 14 de enero no es miercoles sino viernes, y la página anterior era el 12: manda el día de la semana y la página se cuenta como el 12
+      pie de la p. 114: «viermes 28 de enero» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+      p. 41: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 56: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+   misalEnero2025
+      p. 21: la fuente rotula «ANTÍFONA DE ENTRAD»; se lee «ANTÍFONA DE ENTRADA»
+   misalFebrero2021
+      p. 42: la fuente rotula «SALMO RESPONSORIALD»; se lee «SALMO RESPONSORIAL»
+   misalFebrero2022
+      p. 65: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+   misalJulio2018
+      p. 49: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalJulio2019
+      p. 48: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalJulio2022
+      p. 54: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 67: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 67: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 88: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 88: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 92: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 92: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 101: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 101: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 105: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 105: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 108: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 108: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 114: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 114: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 117: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 117: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 128: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 128: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJulio2023
+      pie de la p. 93: «sabado 21 de julio» — el 21 de julio no es sabado sino viernes, y la página anterior era el 21: manda el día de la semana y la página se cuenta como el 22
+      pie de la p. 94: «sabado 21 de julio» — el 21 de julio no es sabado sino viernes, y la página anterior era el 22: manda el día de la semana y la página se cuenta como el 22
+      pie de la p. 95: «sabado 21 de julio» — el 21 de julio no es sabado sino viernes, y la página anterior era el 22: manda el día de la semana y la página se cuenta como el 22
+      pie de la p. 96: «sabado 21 de julio» — el 21 de julio no es sabado sino viernes, y la página anterior era el 22: manda el día de la semana y la página se cuenta como el 22
+      pie de la p. 113: «jueves 26 de julio» — el 26 de julio no es jueves sino miercoles, y la página anterior era el 26: manda el día de la semana y la página se cuenta como el 27
+      pie de la p. 114: «jueves 26 de julio» — el 26 de julio no es jueves sino miercoles, y la página anterior era el 27: manda el día de la semana y la página se cuenta como el 27
+      pie de la p. 115: «jueves 26 de julio» — el 26 de julio no es jueves sino miercoles, y la página anterior era el 27: manda el día de la semana y la página se cuenta como el 27
+      p. 54: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 54: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 70: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 70: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 79: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 79: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 82: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 83: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 83: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 89: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 89: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 93: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 93: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 96: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 96: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 105: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 106: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 109: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 109: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 111: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 113: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 113: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 115: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 115: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 122: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 122: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 128: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 128: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 132: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 132: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJulio2024
+      p. 68: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 69: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 70: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 76: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 76: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 79: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 79: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 97: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 97: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 103: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 104: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 107: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 107: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 111: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 111: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 120: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 120: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 124: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 124: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 132: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 132: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJulio2025
+      p. 21: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 21: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 42: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 42: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 45: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 45: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 52: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 52: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 70: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 71: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 71: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 77: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 77: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 94: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 94: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 98: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 98: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 104: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 104: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 108: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 108: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 111: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 111: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 117: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 117: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 121: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 121: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 124: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 125: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 132: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 132: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJulio2026
+      p. 67: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 118: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 118: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJunio2020
+      pie de la p. 72: «miecoles 24 de junio» — la fuente escribe mal el día de la semana (es «miercoles»); el número continúa la serie y se respeta
+      pie de la p. 73: «miecoles 24 de junio» — la fuente escribe mal el día de la semana (es «miercoles»); el número continúa la serie y se respeta
+      pie de la p. 74: «miecoles 24 de junio» — la fuente escribe mal el día de la semana (es «miercoles»); el número continúa la serie y se respeta
+      pie de la p. 75: «miecoles 24 de junio» — la fuente escribe mal el día de la semana (es «miercoles»); el número continúa la serie y se respeta
+      p. 72: la fuente rotula «ORACION DESPUÉS DE LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJunio2022
+      p. 23: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 23: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 27: la fuente rotula «PROCLAMACIÓN ANTES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 76: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 93: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 97: la fuente rotula «ORACION DESPUÉS DE LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalJunio2023
+      p. 25: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 52: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 96: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalJunio2024
+      p. 26: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 64: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 65: la fuente rotula «SALMORESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 84: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 93: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalJunio2025
+      p. 27: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 36: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 66: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 112: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 112: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalMarzo2021
+      pie de la p. 31: «miercoles 11 de marzo» — el 11 de marzo no es miercoles sino jueves, y la página anterior era el 10: manda el día de la semana y la página se cuenta como el 10
+   misalMarzo2022
+      p. 16: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+   misalMarzo2025
+      pie de la p. 56: «marte 11 de marzo» — la fuente escribe mal el día de la semana (es «martes»); el número continúa la serie y se respeta
+      pie de la p. 57: «marte 11 de marzo» — la fuente escribe mal el día de la semana (es «martes»); el número continúa la serie y se respeta
+   misalMayo2020
+      p. 15: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 17: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 27: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 41: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 54: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 74: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 80: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 90: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 113: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 116: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 120: la fuente rotula «PROCLAMACIÓN ANTES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalMayo2022
+      p. 28: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 56: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 77: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 83: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 112: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 123: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+   misalMayo2023
+      p. 15: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 18: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 26: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 30: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 32: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 32: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 35: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 76: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 77: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 81: la fuente rotula «ACLAMACIÓN ANTES DEL EVANGELI»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 83: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 99: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+   misalMayo2024
+      p. 15: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 17: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 25: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 38: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 46: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 71: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 76: la fuente rotula «PROCLAMACIÓN ANTES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 118: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalMayo2025
+      pie de la p. 74: «sabados 17 de mayo» — la fuente escribe mal el día de la semana (es «sabado»); el número continúa la serie y se respeta
+      pie de la p. 75: «sabados 17 de mayo» — la fuente escribe mal el día de la semana (es «sabado»); el número continúa la serie y se respeta
+      pie de la p. 76: «sabados 17 de mayo» — la fuente escribe mal el día de la semana (es «sabado»); el número continúa la serie y se respeta
+      pie de la p. 77: «sabados 17 de mayo» — la fuente escribe mal el día de la semana (es «sabado»); el número continúa la serie y se respeta
+      p. 15: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 18: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 33: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 35: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 42: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 77: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 87: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 97: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 100: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 115: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 119: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalMayo2026
+      p. 155: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+   misalNoviembre2018
+      p. 15: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 28: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalNoviembre2019
+      p. 22: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalNoviembre2020
+      pie de la p. 32: «maertes 3 de noviembre» — la fuente escribe mal el día de la semana (es «martes»); el número continúa la serie y se respeta
+      pie de la p. 33: «maertes 3 de noviembre» — la fuente escribe mal el día de la semana (es «martes»); el número continúa la serie y se respeta
+      p. 31: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 37: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalNoviembre2021
+      pie de la p. 26: «martes 3 de noviembre» — el 3 de noviembre no es martes sino miercoles, y la página anterior era el 2: manda el día de la semana y la página se cuenta como el 2
+      pie de la p. 95: «domingi 21 de noviembre» — la fuente escribe mal el día de la semana (es «domingo»); el número continúa la serie y se respeta
+      p. 21: la fuente rotula «SALMO RESPONSORI»; se lee «SALMO RESPONSORIAL»
+      p. 29: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 70: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 81: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalNoviembre2022
+      p. 29: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 46: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalNoviembre2023
+      p. 30: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 73: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 125: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 125: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 128: la fuente rotula «ANTIFONA DE LA COMUNION»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 128: la fuente rotula «ORACION DESPUES DE LA COMUNION»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalNoviembre2024
+      p. 38: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 41: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 126: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalNoviembre2025
+      p. 31: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalOctubre2018
+      p. 54: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 78: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalOctubre2019
+      pie de la p. 63: «maartes 22 de octubre» — la fuente escribe mal el día de la semana (es «martes»); el número continúa la serie y se respeta
+      pie de la p. 78: «sdomingo 27 de octubre» — la fuente escribe mal el día de la semana (es «domingo»); el número continúa la serie y se respeta
+      p. 49: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 54: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalOctubre2020
+      p. 126: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalOctubre2022
+      p. 61: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 83: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 89: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 118: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+   misalOctubre2023
+      p. 43: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 55: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 62: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 74: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 78: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 84: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 90: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 110: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalOctubre2024
+      p. 35: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 59: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 65: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 81: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 95: la fuente rotula «RIMERA LECTURA»; se lee «PRIMERA LECTURA»
+      p. 109: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
+      p. 132: la fuente rotula «ORACIÓN DESPUÉS DE'LA COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalOctubre2025
+      p. 73: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+      p. 79: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalSeptiembre2018
+      p. 66: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
+   misalSeptiembre2019
+      p. 16: la fuente rotula «ANTÍFONA DE COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
+      p. 36: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+   misalSeptiembre2020
+      p. 91: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
+   misalSeptiembre2021
+      pie de la p. 23: «jueves 3 de septiembre» — la fuente escribe mal el día de la semana (es «viernes»); el número continúa la serie y se respeta
+      p. 81: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
+   misalSeptiembre2022
+      p. 32: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 68: la fuente rotula «SALMO RESPONSORIA»; se lee «SALMO RESPONSORIAL»
+      p. 72: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 75: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 81: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 85: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 88: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 92: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 112: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 126: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalSeptiembre2023
+      p. 75: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 85: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 89: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 92: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 95: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 108: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 110: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 115: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 123: la fuente rotula «SALMO RESPONSÓRIAL»; se lee «SALMO RESPONSORIAL»
+      p. 130: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalSeptiembre2024
+      p. 48: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 72: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 76: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 79: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 83: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 87: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 90: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 96: la fuente rotula «ORACION COLECTA»; se lee «ORACIÓN COLECTA»
+      p. 98: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 108: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+      p. 125: la fuente rotula «ANTIFONA DE ENTRADA»; se lee «ANTÍFONA DE ENTRADA»
+   misalSeptiembre2026
+      p. 41: la fuente rotula «ACLAMACIÓN ATES DEL EVANGELIO»; se lee «ACLAMACIÓN ANTES DEL EVANGELIO»
+      p. 99: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
+
+Cada fichero
+------------
+
+fichero                publicación   días form. avisos
+misalAbril2019         santamisa    30/30    34     0
+misalAbril2020         santamisa    30/30    33     2
+misalAbril2021         santamisa    30/30    31     0
+misalAbril2022         santamisa    30/30    31     1
+misalAbril2023         santamisa    30/30    31     5
+misalAbril2024         santamisa    30/30    31     3
+misalAbril2025         santamisa    30/30    31     1
+misalAbril2026         santamisa    30/30    31     6
+misalAgosto2018        santamisa    31/31    31     3
+misalAgosto2019        santamisa    31/31    34     9
+misalAgosto2020        santamisa    31/31    32     1
+misalAgosto2021        santamisa    31/31    33     1
+misalAgosto2022        santamisa    31/31    32     9
+misalAgosto2023        santamisa    31/31    33     7
+misalAgosto2024        santamisa    31/31    32    10
+misalAgosto2025        santamisa    31/31    32     3
+misalAgosto2026        santamisa    31/31    34     1
+misalDiciembre2018     santamisa    31/31    34     0
+misalDiciembre2019     santamisa    31/31    34     0
+misalDiciembre2020     santamisa    31/31    34     0
+misalDiciembre2021     palabraviva  31/31    38     3
+misalDiciembre2022     santamisa    31/31    34     0
+misalDiciembre2023     santamisa    31/31    33     0
+misalDiciembre2024     santamisa    31/31    34     0
+misalDiciembre2025     santamisa    31/31    34     0
+misalEnero2019         santamisa    31/31    35     0
+misalEnero2020         santamisa    31/31    35     0
+misalEnero2021         palabraviva  31/31    37     9
+misalEnero2022         santamisa    31/31    32     6
+misalEnero2023         santamisa    31/31    33     0
+misalEnero2024         santamisa    31/31    33     0
+misalEnero2025         santamisa    31/31    33     1
+misalEnero2026         santamisa    31/31    33     0
+misalFebrero2019       santamisa    28/28    33     0
+misalFebrero2020       santamisa    29/29    33     0
+misalFebrero2021       palabraviva  28/28    32     1
+misalFebrero2022       santamisa    28/28    32     1
+misalFebrero2023       santamisa    28/28    31     0
+misalFebrero2024       santamisa    29/29    31     0
+misalFebrero2025       santamisa    28/28    32     0
+misalFebrero2026       santamisa    28/28    29     0
+misalJulio2018         santamisa    31/31    32     1
+misalJulio2019         santamisa    31/31    34     1
+misalJulio2020         santamisa    31/31    33     0
+misalJulio2021         santamisa    31/31    31     0
+misalJulio2022         santamisa    31/31    32    19
+misalJulio2023         santamisa    31/31    32    37
+misalJulio2024         santamisa    31/31    32    21
+misalJulio2025         santamisa    31/31    32    31
+misalJulio2026         santamisa    31/31    32     3
+misalJunio2018         santamisa    30/30    35     0
+misalJunio2019         santamisa    30/30    36     0
+misalJunio2020         santamisa    30/30    33     5
+misalJunio2021         santamisa    30/30    34     0
+misalJunio2022         santamisa    30/30    36     6
+misalJunio2023         santamisa    30/30    34     3
+misalJunio2024         santamisa    30/30    34     5
+misalJunio2025         santamisa    30/30    32     5
+misalJunio2026         santamisa    30/30    33     0
+misalMarzo2019         santamisa    31/31    31     0
+misalMarzo2020         santamisa    31/31    32     0
+misalMarzo2021         santamisa    31/31    32     1
+misalMarzo2022         santamisa    31/31    31     1
+misalMarzo2023         santamisa    31/31    32     0
+misalMarzo2024         santamisa    31/31    31     0
+misalMarzo2025         santamisa    31/31    31     2
+misalMarzo2026         santamisa    31/31    32     0
+misalMayo2019          santamisa    31/31    31     0
+misalMayo2020          santamisa    31/31    33    11
+misalMayo2021          santamisa    31/31    33     0
+misalMayo2022          santamisa    31/31    32     6
+misalMayo2023          santamisa    31/31    33    12
+misalMayo2024          santamisa    31/31    33     8
+misalMayo2025          santamisa    31/31    31    15
+misalMayo2026          santamisa    31/31    34     1
+misalNoviembre2018     santamisa    30/30    35     2
+misalNoviembre2019     santamisa    30/30    35     1
+misalNoviembre2020     santamisa    30/30    34     4
+misalNoviembre2021     santamisa    30/30    35     6
+misalNoviembre2022     santamisa    30/30    35     2
+misalNoviembre2023     santamisa    30/30    33     6
+misalNoviembre2024     santamisa    30/30    33     3
+misalNoviembre2025     santamisa    30/30    35     1
+misalOctubre2018       santamisa    31/31    35     2
+misalOctubre2019       santamisa    31/31    36     4
+misalOctubre2020       santamisa    31/31    37     1
+misalOctubre2021       santamisa    31/31    37     0
+misalOctubre2022       santamisa    31/31    36     4
+misalOctubre2023       santamisa    31/31    34     8
+misalOctubre2024       santamisa    31/31    37     7
+misalOctubre2025       santamisa    31/31    35     2
+misalSeptiembre2018    santamisa    30/30    30     1
+misalSeptiembre2019    santamisa    30/30    30     2
+misalSeptiembre2020    santamisa    30/30    30     1
+misalSeptiembre2021    santamisa    30/30    30     2
+misalSeptiembre2022    santamisa    30/30    30    10
+misalSeptiembre2023    santamisa    30/30    30    10
+misalSeptiembre2024    santamisa    30/30    30    11
+misalSeptiembre2025    santamisa    30/30    30     0
+misalSeptiembre2026    santamisa    30/30    30     2

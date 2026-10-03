@@ -104,6 +104,28 @@ imprimen los misalitos —es el rótulo `ORACIÓN SOBRE EL PUEBLO`, presente en 
 reconciliación, no: los misalitos las citan por página y no las copian. Es un
 hueco pequeño y conocido.
 
+### Los misalitos son regulares, en dos publicaciones —no en tres familias
+
+*Corregido por la fase 3, que lo midió sobre los cien ficheros.* Lo que sigue
+en este apartado se escribió mirando tres meses; al mirar los cien, la
+división por años no se sostiene. Hay **dos publicaciones**:
+
+| publicación | ficheros | de dónde |
+|---|---|---|
+| *La Santa Misa — Misal Diario* | **97** | Guadalajara |
+| *Misal Diario — Palabra Viva* | **3** (enero, febrero y diciembre de 2021) | Mérida, Yucatán |
+
+Los otros nueve meses de 2021 son *La Santa Misa* como los demás. Y el ancla
+del pie no falta en tres ficheros: está en los cien, sólo que *Palabra Viva*
+la escribe sin año («Viernes 1 de Enero») y *La Santa Misa* con él («viernes
+1° de enero de 2026»).
+
+Lo que de verdad cambia de una publicación a otra es la **cabecera** del
+formulario: *La Santa Misa* titula «2 viernes / Blanco / Memoria, / SANTOS
+BASILIO MAGNO…», y *Palabra Viva* «2 de Enero / SÁBADO / SANTOS BASILIO
+MAGNO… / MR. pp. 685-686 (675-676) / Memoria - Blanco», con el grado y el
+color en un mismo renglón.
+
 ### Los misalitos son regulares, en tres familias
 
 Los diez rótulos del formulario —`ANTÍFONA DE ENTRADA`, `ORACIÓN COLECTA`,
@@ -279,10 +301,10 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 
 | fase | fichero | de qué a qué |
 |---|---|---|
-| 0 | — | `python src/18_santoral.py --desde 2018` : el calendario desde 2018, que es lo que hace falta para cosechar. Es un flag; lo primero es comprobar que la Pascua y los traslados salen bien en 2018-2023 |
+| 0 ✓ | — | `python src/18_santoral.py --desde 2018` : el calendario desde 2018. **Hecha.** La Pascua, la Ceniza y los dos ciclos de 2018-2023 cuadran con las fechas conocidas en las 28 comprobaciones, el calendario va ahora del 3 de diciembre de 2017 al 27 de noviembre de 2060 sin un día vacío, y los tres traslados de esos seis años son los que de verdad ocurrieron: la Anunciación de 2018 al 9 de abril, la Inmaculada de 2019 al 9 de diciembre y san José de 2023 al 20 de marzo, los tres de domingo a lunes |
 | 1 | `Missale/src/1_latino.py` | el PDF del Misal 2002 → `datos/misal_latino.json`: formularios con sus cinco o seis piezas, prefacios comunes y propios, Ordo Missæ numerado, plegarias eucarísticas (con las de la reconciliación y diversas necesidades), bendiciones solemnes |
 | 2 | `Missale/src/2_ordinario.py` | el PDF del Ordinario de México → `datos/ordinario_es.json` y `datos/prefacios_es.json`: las 146 rúbricas con sus alternativas («O bien:»), los dos símbolos, las plegarias I-IV con sus propios, y los 67 prefacios con título y epígrafe. **Alinea con el latino por número de rúbrica**, y lo que no cuadre va al informe |
-| 3 | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`: un registro por día, en bruto, con sus bloques y su posición, quitando lo marginal (el lomo vertical, la foliación, el pie) y distinguiendo las tres familias de maqueta |
+| 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
 | 4 | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`: `propios_es.json` (por celebración), `pericopas_es.json` (por cita), los prefacios **propios** y las oraciones sobre el pueblo de la Cuaresma. Canónico por mayoría, variantes con sus años |
 | 5 | `Missale/src/5_resolver.py` | las piezas + el Ordinario + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt` con todo lo que no cuadró |
 | 6 | `Missale/src/6_app.py` | → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json` |
@@ -398,9 +420,17 @@ dice en vez de disimularlo**.
   prefacios castellanos con los 50 latinos, con los diecisiete sin pareja
   nombrados uno a uno; y las alternativas detectadas en cada rúbrica, contadas,
   para que se vea si falta alguna.
-* `extraer_qa.txt` — días no hallados en cada mes (deben ser 0: el ancla del
-  pie está en 97 ficheros y las tres excepciones son conocidas), páginas sin
-  atribuir, rótulos que aparecieron y no estaban previstos.
+* `extraer_qa.txt` — **hecho**. Días no hallados: **0 de 3 044**. Además: las
+  dos publicaciones con sus ficheros; las 31 formas en que la fuente escribe
+  mal un rótulo («ORACIÓN COLETA», «ACLAMACIÓN ATES DEL EVANGELIO»,
+  «SALMORESPONSORIA», «ORACIÓN SOBRE EL PUELO»), una por una, con las veces
+  que aparece; los pies de página que se contradicen y cómo se resolvió cada
+  uno; los 155 formularios sin lecturas, nombrados (son los que las remiten a
+  otro sitio, no un fallo del parseo); y lo que el día **deja elegir**, que no
+  hay que inventar porque el misalito lo imprime: los nueve rótulos de misa
+  propia de un mismo día (la vespertina de la vigilia, la de Noche Buena, la
+  de la aurora, la del día, las tres de los Difuntos) y las 116 misas votivas
+  distintas que las ferias permiten, con sus 531 apariciones.
 * `piezas_qa.txt` — piezas con un solo testigo; piezas cuyos ocho testigos
   discrepan; qué prefacios **propios** se cosecharon y cuáles siguen citados
   por los días sin haberse impreso nunca.
@@ -414,15 +444,41 @@ dice en vez de disimularlo**.
 
 ## Riesgos, y lo que de verdad puede salir mal
 
-1. **El calendario de 2018 a 2023.** Es la pieza de la que cuelga la cosecha
-   entera y hoy no existe: `calendario.json` empieza el 3 de diciembre de 2023.
-   El flag está (`--desde`), pero hay que **verificar** que el santoral y los
-   traslados de esos seis años salen bien antes de construir nada encima. Si no
-   salieran, el emparejamiento por cita aún funciona, y se cosecharía con
-   menos cobertura.
-2. **Tres familias de maqueta, no una.** 2018-2020, 2021 y 2022-2026 difieren
-   en el ancla de día, en las respuestas del diálogo y en qué imprimen aparte.
-   Es trabajo, no incógnita, pero es el trabajo gordo de la fase 3.
+1. ~~**El calendario de 2018 a 2023.**~~ **Cerrado por la fase 0.** Sale
+   bien: Pascua, Ceniza, ciclo dominical y ciclo ferial de 2018 a 2023 cuadran
+   con las fechas conocidas, no hay un solo día sin celebración en 2018-2020,
+   y los tres traslados por concurrencia de esos seis años son los que de
+   verdad ocurrieron. El riesgo era que no saliera; salió.
+
+   Tiene una consecuencia que conviene saber: `data/calendario_completo.json`
+   va ahora de 2018 a 2060 en vez de 2024 a 2060, de modo que la próxima
+   pasada de `src/15_app_data.py` llevará esos seis años también a la app.
+   Para volver atrás basta `python src/18_santoral.py` sin el flag.
+2. ~~**Tres familias de maqueta, no una.**~~ **Cerrado por la fase 3, y no era
+   eso.** No son tres familias por años: son dos publicaciones, *La Santa
+   Misa* (97 ficheros) y *Palabra Viva* (3). El trabajo gordo estuvo en otro
+   sitio, y en dos cosas que una muestra de tres meses no podía mostrar:
+
+   - **ninguna de las dos anclas basta sola.** El pie nombra el día en los
+     cien ficheros, pero una página puede llevar el final de un formulario y
+     el principio del siguiente —nombra el día que *empieza* en ella—, y en
+     trece páginas la fuente se contradice a sí misma: unas veces estropea la
+     palabra («miécoles», «viérnes», «marte», «sábados») y otras el número
+     (julio de 2023, dos veces, con el día de la semana bueno). La cabecera
+     del formulario sí es de fiar: su día de la semana cuadra con el
+     calendario en las 3 031 veces que aparece, sin una excepción. Así que se
+     parte por la cabecera y el pie queda para cotejar, y lo que se
+     contradice lo decide la secuencia —las páginas van en orden y el día no
+     retrocede—, con cada decisión escrita en el informe;
+   - **dónde acaba un formulario no lo dice la maqueta, lo dice el Misal.** La
+     oración después de la comunión es la última pieza propia, y tras ella
+     sólo caben la oración sobre el pueblo y las rúbricas. Hace falta saberlo
+     porque el misalito imprime la reseña y las moniciones del día siguiente
+     *antes* de la cabecera de ese día: sin esa regla cada formulario se
+     tragaba el aparato editorial del que viene —32 488 párrafos—, y las
+     moniciones rotulan sus párrafos con el nombre de la pieza que comentan
+     («EVANGELIO: [Mc 2, 23—3, 6] En franca oposición…»), que es como se
+     cuelan 650 evangelios que no existen.
 3. **Las lecturas propias de las memorias libres.** El misalito reza la feria
    en las memorias, así que las lecturas propias del leccionario V de muchos
    santos puede que no se impriman **nunca** en ocho años. Cuánto es eso no se
@@ -446,7 +502,13 @@ dice en vez de disimularlo**.
    reflexión, oración de los fieles— reduce la cuestión a los textos
    litúrgicos, pero no la elimina. Es decisión tuya, y conviene tomarla antes
    de la fase 6, que es la que publica.
-7. **Los 364 MB de esta carpeta, y `publicar.ps1`.** `Missale/` está hoy sin
+7. **Los 364 MB de esta carpeta, y `publicar.ps1`.** *Resuelto, y con una
+   línea más: la fase 3 escribe 25 MB de días en bruto en
+   `Missale/datos/misalitos/`, que también quedan fuera del repositorio. Son
+   doce veces lo que el Misal latino y el Ordinario juntos —que sí entran,
+   porque son el libro ya estructurado— y se rehacen con una orden; lo que de
+   ellos hace falta para cotejar está en `extraer_qa.txt`, que entra. Si los
+   quieres dentro, se borra la línea de `.gitignore`.* `Missale/` está hoy sin
    versionar, y `publicar.ps1` hace `git add -A`: la próxima vez que publiques,
    los cien misalitos, el Misal latino y el Ordinario entran al repositorio y se quedan
    dentro para siempre. La convención del proyecto ya resuelve esto —

@@ -61,3 +61,10 @@ Thumbs.db
 # hacen los informes de Missale/datos/, que SI entran.
 Missale/Misalitos/
 Missale/*.pdf
+#
+# Y el volcado en bruto de la fase 3: los cien dias-a-dia pesan 25 MB -doce
+# veces lo que el Misal latino y el Ordinario juntos, que SI entran porque
+# son el libro ya estructurado- y se rehacen con `python
+# Missale/src/3_extraer.py`. Lo que de ellos hace falta para cotejar esta en
+# extraer_qa.txt, que entra. Si los quieres dentro, borra la linea.
+Missale/datos/misalitos/

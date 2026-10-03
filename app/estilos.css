@@ -33,16 +33,37 @@
   --curva: cubic-bezier(.22, .61, .36, 1);
 }
 
+/* La paleta liturgica, una sola para toda la app. El verde y el rojo son el
+   del filete del calendario —era de alli de donde habia que copiarlos, que
+   es la vista donde se ven los cinco juntos—, y de ahi salen tambien la
+   cabecera del dia y las rubricas de la hora: el mismo dia se reconoce por
+   el mismo color en cualquier seccion. Sobre papel oscuro son esos mismos
+   colores con otra luz, aclarados lo justo para que se lean (4,5:1): un
+   verde de tinta sobre fondo negro no es un verde, es un borron. */
+:root {
+  --lit-verde: #23492f; --lit-rojo: #7a1414; --lit-morado: #4c2a63;
+  --lit-blanco: #7a5c17; --lit-azul: #1f4e79;
+}
+body[data-tema="oscuro"], body[data-tema="noche"] {
+  --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
+  --lit-blanco: #d9b65e; --lit-azul: #93bcdf;
+}
+@media (prefers-color-scheme: dark) {
+  body[data-tema="auto"] {
+    --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
+    --lit-blanco: #d9b65e; --lit-azul: #93bcdf;
+  }
+}
+
 /* color liturgico del dia: tine la cabecera, las rubricas y los controles.
-   El dorado del blanco se oscurece lo justo para que la rubrica se lea
-   (4.5:1 sobre el papel). */
-body[data-color="morado"] { --acento: #4c2a63; --rubrica: #74418f; }
-body[data-color="blanco"] { --acento: #7a5c17; --rubrica: #7d6118; }
-body[data-color="verde"]  { --acento: #23492f; --rubrica: #255334; }
-body[data-color="rojo"]   { --acento: #7a1414; --rubrica: #8a1818; }
-/* el azul de la Virgen: un celeste oscurecido lo justo para que la rubrica
-   se lea sobre el papel (4.5:1) */
-body[data-color="azul"]   { --acento: #1f4e79; --rubrica: #255c8a; }
+   El morado, el dorado y el azul aclaran un punto la rubrica respecto del
+   acento, que sobre papel claro se leen justos (4,5:1); el verde y el rojo
+   van del mismo tono en los dos sitios. */
+body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: #74418f; }
+body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #7d6118; }
+body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
+body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
+body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #255c8a; }
 body[data-color="neutro"] { --acento: #6b1220; }
 
 body[data-tema="sepia"] {
@@ -55,11 +76,11 @@ body[data-tema="oscuro"] {
   --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
   --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
-body[data-tema="oscuro"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b99bd6; }
-body[data-tema="oscuro"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
-body[data-tema="oscuro"][data-color="verde"]  { --rubrica: #6fb98a; --acento: #67b083; }
-body[data-tema="oscuro"][data-color="rojo"]   { --rubrica: #e48b8b; --acento: #db8080; }
-body[data-tema="oscuro"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
+body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: #c0a3dc; }
+body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #e2bf66; }
+body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
+body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
+body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #9cc3e4; }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -78,28 +99,11 @@ body[data-tema="noche"] {
     --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
     --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
-  body[data-tema="auto"][data-color="morado"] { --rubrica: #c0a3dc; --acento: #b99bd6; }
-  body[data-tema="auto"][data-color="blanco"] { --rubrica: #e2bf66; --acento: #d9b65e; }
-  body[data-tema="auto"][data-color="verde"]  { --rubrica: #6fb98a; --acento: #67b083; }
-  body[data-tema="auto"][data-color="rojo"]   { --rubrica: #e48b8b; --acento: #db8080; }
-  body[data-tema="auto"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
-}
-
-/* En las Horas el color del dia no adorna una pagina: tine la hora entera
-   —los rotulos, las siglas, el filete de la cabecera—, y a esa dosis el
-   rojo y el verde de la misa salian subidos. Aqui van un punto mas hondos,
-   mas de tinta que de rotulador, sin bajar del 4,5:1 sobre el papel. El
-   orden importa: estas reglas empatan en peso con las del tema, asi que las
-   del tema oscuro van detras, y la noche —que no se tine de nada— al
-   final. */
-body[data-vista="horas"][data-color="verde"] { --acento: #18371f; --rubrica: #1d4229; }
-body[data-vista="horas"][data-color="rojo"]  { --acento: #660f0f; --rubrica: #761313; }
-body[data-tema="oscuro"][data-vista="horas"][data-color="verde"] { --acento: #55a06f; --rubrica: #5aa876; }
-body[data-tema="oscuro"][data-vista="horas"][data-color="rojo"]  { --acento: #c86f6f; --rubrica: #d07676; }
-body[data-tema="noche"][data-vista="horas"] { --acento: #c08d63; --rubrica: #c8795c; }
-@media (prefers-color-scheme: dark) {
-  body[data-tema="auto"][data-vista="horas"][data-color="verde"] { --acento: #55a06f; --rubrica: #5aa876; }
-  body[data-tema="auto"][data-vista="horas"][data-color="rojo"]  { --acento: #c86f6f; --rubrica: #d07676; }
+  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: #c0a3dc; }
+  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #e2bf66; }
+  body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
+  body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
+  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #9cc3e4; }
 }
 
 * { box-sizing: border-box; }
@@ -670,6 +674,11 @@ h2.seccion {
   color: var(--rubrica); margin: 0; padding-bottom: .2rem; line-height: 1.3;
 }
 .vs { font-variant-caps: all-small-caps; letter-spacing: .08em; }
+/* Lo que acompana al rotulo en letra normal —la cita de la lectura, el
+   nombre del salmo, el comienzo del himno— al tamano de las versalitas: a
+   cuerpo entero pesaba mas que la palabra que nombra la pieza, que es al
+   reves de lo que dice el libro. */
+.llano { font-size: .84em; }
 
 /* El selector: una pildora fina, con la opcion elegida apenas tenida del
    color de la rubrica. Discreto a proposito: se toca una vez, si acaso, y
@@ -1128,11 +1137,11 @@ body.con-carril #vista { padding-right: 2.1rem; }
 /* El color liturgico del dia, en el calendario: el filete de la izquierda y
    el grado de la celebracion, que es lo que lo nombra. Los mismos tonos que
    tine la cabecera al abrir el dia, para que uno reconozca el otro. */
-.cal-dia[data-color="verde"]  { --c: #23492f; }
-.cal-dia[data-color="morado"] { --c: #4c2a63; }
-.cal-dia[data-color="rojo"]   { --c: #7a1414; }
-.cal-dia[data-color="blanco"] { --c: #7a5c17; }
-.cal-dia[data-color="azul"]   { --c: #1f4e79; }
+.cal-dia[data-color="verde"]  { --c: var(--lit-verde); }
+.cal-dia[data-color="morado"] { --c: var(--lit-morado); }
+.cal-dia[data-color="rojo"]   { --c: var(--lit-rojo); }
+.cal-dia[data-color="blanco"] { --c: var(--lit-blanco); }
+.cal-dia[data-color="azul"]   { --c: var(--lit-azul); }
 .cal-dia[data-color] .cal-g { color: var(--c); }
 .cal-dia[data-color] .cal-g.g-m,
 .cal-dia[data-color] .cal-g.g-ml,
