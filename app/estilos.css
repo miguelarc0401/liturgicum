@@ -85,6 +85,23 @@ body[data-tema="noche"] {
   body[data-tema="auto"][data-color="azul"]   { --rubrica: #9cc3e4; --acento: #93bcdf; }
 }
 
+/* En las Horas el color del dia no adorna una pagina: tine la hora entera
+   —los rotulos, las siglas, el filete de la cabecera—, y a esa dosis el
+   rojo y el verde de la misa salian subidos. Aqui van un punto mas hondos,
+   mas de tinta que de rotulador, sin bajar del 4,5:1 sobre el papel. El
+   orden importa: estas reglas empatan en peso con las del tema, asi que las
+   del tema oscuro van detras, y la noche —que no se tine de nada— al
+   final. */
+body[data-vista="horas"][data-color="verde"] { --acento: #18371f; --rubrica: #1d4229; }
+body[data-vista="horas"][data-color="rojo"]  { --acento: #660f0f; --rubrica: #761313; }
+body[data-tema="oscuro"][data-vista="horas"][data-color="verde"] { --acento: #55a06f; --rubrica: #5aa876; }
+body[data-tema="oscuro"][data-vista="horas"][data-color="rojo"]  { --acento: #c86f6f; --rubrica: #d07676; }
+body[data-tema="noche"][data-vista="horas"] { --acento: #c08d63; --rubrica: #c8795c; }
+@media (prefers-color-scheme: dark) {
+  body[data-tema="auto"][data-vista="horas"][data-color="verde"] { --acento: #55a06f; --rubrica: #5aa876; }
+  body[data-tema="auto"][data-vista="horas"][data-color="rojo"]  { --acento: #c86f6f; --rubrica: #d07676; }
+}
+
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
@@ -137,6 +154,7 @@ button { font: inherit; color: inherit; }
   padding: calc(env(safe-area-inset-top) + .35rem) 16px .55rem;
 }
 #cabecera.compacta .fila-fecha,
+#cabecera.compacta .fila-sub,
 #cabecera.compacta #subtitulo-dia,
 #cabecera.compacta #formularios,
 #cabecera.compacta #celebraciones,
@@ -667,21 +685,35 @@ h2.seccion {
   border: 1px solid var(--filete-fuerte); border-radius: 999px;
   background: var(--papel);
 }
-.alterna .corto { display: none; }
+/* Tres escalones de abreviatura, y se van bajando solo lo que haga falta:
+   primero se abrevian las opciones que no estan elegidas («Past.», «Ss.
+   varones»), que la elegida es la que se lee; despues se achica la letra de
+   los botones; despues se abrevia tambien la elegida; y en el ultimo, todas
+   van en lo mas corto que se reconoce («Ss. var.», «Dia»). La burbuja no
+   pasa de la mitad en ninguno de ellos. */
+.alterna .corto, .alterna .minimo { display: none; }
 .alterna.cortas button[aria-pressed="false"] .largo { display: none; }
 .alterna.cortas button[aria-pressed="false"] .corto { display: inline; }
+.alterna.cortas-todas .largo { display: none; }
+.alterna.cortas-todas .corto { display: inline; }
+.alterna.minimas .largo, .alterna.minimas .corto { display: none; }
+.alterna.minimas .minimo { display: inline; }
+.alterna.menuda button {
+  font-size: .62rem; letter-spacing: .01em; padding: .3rem .5rem;
+}
 .sec-cab.apretado .rotulo { font-size: .88rem; }
 .sec-cab.apretado .vs { letter-spacing: .05em; }
 .sec-cab.muy-apretado .rotulo { font-size: .76rem; }
 .sec-cab.muy-apretado .vs { letter-spacing: .02em; }
-.sec-cab.muy-apretado .alterna button { font-size: .64rem; padding: .3rem .5rem; }
-/* y si ni asi: el selector baja a su renglon, pero sigue a la derecha; alli
-   tiene el ancho entero y no la mitad */
+/* y si ni asi cabe el rotulo en la mitad que le queda: se lleva el renglon
+   entero y la burbuja baja debajo, pegada a la derecha. Sigue sin pasar de
+   la mitad: es el limite de la burbuja, no el del sitio que le sobra. */
 .sec-cab.parte { flex-wrap: wrap; }
 .sec-cab.parte .rotulo { flex: 1 1 100%; }
-.sec-cab.parte .alterna {
-  margin-left: auto; margin-top: -.15rem; max-width: 100%;
-}
+.sec-cab.parte .alterna { margin-left: auto; margin-top: -.15rem; }
+/* el ultimo recurso: ni en lo mas corto cabe en su mitad, y entonces se le
+   da el renglon entero antes que dejarla rota */
+.alterna.desborda { max-width: 100%; }
 .alterna button {
   position: relative; flex: none;
   font-family: var(--sans); font-size: .7rem; letter-spacing: .03em;
@@ -777,17 +809,25 @@ h2.seccion {
 }
 
 /* --------------------------------------------- el tamano, a la mano
-   Dos aes en la cabecera, a la derecha del titulo de la hora. La cabecera
-   es la que se queda arriba al bajar, asi que estan a mano a media hora y
-   no solo al empezar; y al plegarse encogen con ella. */
+   Dos aes en la cabecera, al final del renglon donde se lee que se celebra.
+   La cabecera es la que se queda arriba al bajar, asi que estan a mano a
+   media hora y no solo al empezar; y al plegarse encogen con ella. Los
+   margenes negativos son para que no estiren ese renglon, que es de letra
+   chica: las aes sobresalen de el sin levantar la cabecera. */
 .fila-titulo {
   display: flex; align-items: flex-end; gap: .4rem;
 }
 .fila-titulo h1 { flex: 1 1 auto; min-width: 0; }
 .fila-titulo #cab-extra { flex: 0 0 auto; }
+.fila-sub {
+  display: flex; align-items: center; gap: .4rem;
+}
+.fila-sub #subtitulo-dia { flex: 1 1 auto; min-width: 0; }
+.fila-sub #cab-zoom { flex: 0 0 auto; }
+#cab-zoom:empty { display: none; }
 .zoom {
   flex: none; display: flex; align-items: center; justify-content: flex-end;
-  gap: .1rem; margin: 0 -.45rem 0 0;
+  gap: .1rem; margin: -.32rem -.45rem -.32rem 0;
 }
 .zoom button {
   width: 1.75rem; height: 1.9rem; display: grid; place-items: center;

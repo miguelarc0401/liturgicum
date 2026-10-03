@@ -1,0 +1,10 @@
+Quiero añadir lo siguiente. En la sección de "Misa" acutalmente solo tenemos leccionario en latín. Pero quiero hacer una especie de misalito diario en español, con la traducción latinoamericana. Pero que no solo incluya las lecturas, sino también las oraciones propias de cada día.
+
+Para armar el leccionario tengo una serie de misalitos mensuales por año desde 2026 hasta 2018 (creo). De ahí se pueden tomar las lecturas en español según las lecturas correspondan al latín que ya teníamos cuando hicimo el "lectionarium".
+
+Tengo para hacer un esquema o lo que sea necesario de todas las oraciones y propios, etc, el misal en latín escaneado en pdf.
+
+El OBJETIVO es hacer que aparezcan las lecturas correspondientes del día en español. Y así mismo las oraciones correspondientes del día. Pero también que se puedan escoger otras opciones de Misas a escoger o de prefacios, etc.
+
+Haz un plan para poder conseguir estos objetivos.
+Te pongo en la carpeta "Missale/Misalitos" los misalitos, y en "Missale" el misal en latin "latin_missal2002_organized.pdf".

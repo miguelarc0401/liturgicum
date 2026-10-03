@@ -548,6 +548,7 @@ function verDia(iso, slug, bloque) {
  *  entrar en cualquiera. */
 function limpiaCabExtra() {
   $('#cab-extra').innerHTML = '';
+  $('#cab-zoom').innerHTML = '';
   $('#cabecera').classList.remove('cal-pegada');
   cabeceraFija(false);
   limpiaCarril();
@@ -1317,6 +1318,9 @@ async function alCambiarAjuste(ev) {
 }
 
 function marcaBarra(cual) {
+  // la vista, en el <body>: las Horas tiñen de otro modo —el rojo y el verde
+  // van más hondos allí—, y eso se resuelve en la hoja de estilo
+  document.body.dataset.vista = cual;
   document.querySelectorAll('#barra button').forEach((b) =>
     b.classList.toggle('activo', b.dataset.ir === cual));
 }
@@ -1580,26 +1584,41 @@ function distintas(ops) {
 
 const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
-/* Cuando tres opciones y un rótulo largo no caben en el renglón, las que no
- * están elegidas se abrevian: la elegida se lee entera, que es la que
- * importa, y de las otras basta lo que hace falta para reconocerlas. Así la
- * burbuja no pasa de la mitad del renglón y se siguen viendo todas, que era
- * lo que se pedía: verlas o no sirven. */
+/* La burbuja de las opciones no pasa de la mitad del renglón —la otra mitad
+ * es del rótulo, que también hay que leerlo—, y dentro de esa mitad tienen
+ * que verse todas: una opción que no se ve no sirve. Para que quepan se
+ * abrevian, en dos grados. El primero es el de siempre, el que se lee sin
+ * pensar («Past.», «Ss. varones»); el segundo, para cuando ni ése basta, es
+ * lo más corto que todavía se reconoce («Ss. var.», «Día»). De cuál se usa
+ * en cada sección decide la app al pintar, midiendo. */
 const ABREVIA = [
   [/^Santos varones$/, 'Ss. varones'], [/^Santas mujeres$/, 'Stas. mujeres'],
   [/^Santa María$/, 'Sta. María'], [/^Un mártir$/, 'Un márt.'],
   [/^Mártires$/, 'Márt.'], [/^Apóstoles$/, 'Apóst.'],
   [/^Doctores$/, 'Doct.'], [/^Pastores$/, 'Past.'],
   [/^Vírgenes$/, 'Vírg.'], [/^Propio$/, 'Prop.'],
-  [/^Complementaria$/, 'Compl.'], [/^Común$/, 'Com.']
+  [/^Complementaria$/, 'Compl.'], [/^Común$/, 'Com.'],
+  [/^Dedicación$/, 'Dedic.'], [/^Del día$/, 'Del día']
 ];
 
-function abrevia(rot) {
-  for (const [rx, c] of ABREVIA) if (rx.test(rot)) return c;
+const ABREVIA_MIN = [
+  [/^Santos varones$/, 'Ss. var.'], [/^Santas mujeres$/, 'Stas. muj.'],
+  [/^Santa María$/, 'Sta. M.'], [/^Un mártir$/, 'Márt.'],
+  [/^Mártires$/, 'Márt.'], [/^Apóstoles$/, 'Ap.'],
+  [/^Doctores$/, 'Doct.'], [/^Pastores$/, 'Past.'],
+  [/^Vírgenes$/, 'Vírg.'], [/^Propio$/, 'Prop.'],
+  [/^Complementaria$/, 'Compl.'], [/^Común$/, 'Com.'],
+  [/^Dedicación$/, 'Dedic.'], [/^Del día$/, 'Día']
+];
+
+function abreviaCon(tabla, rot) {
+  for (const [rx, c] of tabla) if (rx.test(rot)) return c;
   // «Pastores II», «Santa María II»: la lectura segunda de un común
   const m = /^(.+?) ([IVX]+)$/.exec(rot);
-  return m ? abrevia(m[1]) + ' ' + m[2] : rot;
+  return m ? abreviaCon(tabla, m[1]) + ' ' + m[2] : rot;
 }
+const abrevia = (rot) => abreviaCon(ABREVIA, rot);
+const abreviaMin = (rot) => abreviaCon(ABREVIA_MIN, rot);
 
 /** Las primeras palabras de un texto: el nombre con que se conoce un himno
  *  o una antífona, para el título del botón que lo elige. */
@@ -2070,17 +2089,32 @@ function cajaNormal(t) {
   }).join('');
 }
 
-/* Las palabras que van en versalitas, y cómo se escriben. El orden importa:
- * «RESPONSORIO BREVE» antes que nada que empiece por «RESPONSORIO» (que no
- * lleva versalitas: no está en la lista). */
+/* Las palabras que van en versalitas, y cómo se escriben: todas las que
+ * nombran una pieza de la hora, que son las que en el libro las llevan. Lo
+ * que las acompaña —la cita de la lectura breve, el comienzo del himno— va
+ * detrás en letra normal. El orden importa: «RESPONSORIO BREVE» antes que
+ * «RESPONSORIO», y «LECTURA BREVE» antes que nada más que empiece igual. */
 const VERSALITAS = [
   [/^INVOCACI[ÓO]N\s+INICIAL/i, 'Invocación inicial'],
+  [/^INVITATORIO/i, 'Invitatorio'],
+  [/^EXAMEN\s+DE\s+CONCIENCIA/i, 'Examen de conciencia'],
   [/^HIMNO\s*:?/i, 'Himno:'],
   [/^SALMODIA/i, 'Salmodia'],
+  [/^PRIMERA\s+LECTURA/i, 'Primera lectura'],
+  [/^SEGUNDA\s+LECTURA/i, 'Segunda lectura'],
+  [/^LECTURA\s+BREVE/i, 'Lectura breve'],
   [/^RESPONSORIO\s+BREVE/i, 'Responsorio breve'],
+  [/^RESPONSORIO/i, 'Responsorio'],
   [/^C[ÁA]NTICO\s+EVANG[ÉE]LICO/i, 'Cántico evangélico'],
   [/^PRECES/i, 'Preces'],
   [/^ORACI[ÓO]N\s*\.?/i, 'Oración'],
+  [/^BENDICI[ÓO]N/i, 'Bendición'],
+  // de este rótulo sólo nombra la pieza «Antífona final»; lo que sigue es
+  // de quién es, y va en letra normal y en su caja, que la fuente lo
+  // escribe todo en mayúsculas
+  [/^ANT[ÍI]FONA\s+FINAL\s+DE\s+LA\s+SANT[ÍI]SIMA\s+VIRGEN/i,
+    'Antífona final', ' de la Santísima Virgen'],
+  [/^ANT[ÍI]FONA\s+FINAL/i, 'Antífona final'],
   [/^CONCLUSI[ÓO]N/i, 'Conclusión']
 ];
 
@@ -2097,11 +2131,11 @@ const VERSALITAS_TIT = [
 /** Un rótulo, partido en lo que va en versalitas y lo que no. */
 function enVersalitas(t, tabla) {
   const s = (t || '').trim();
-  for (const [rx, como] of tabla) {
+  for (const [rx, como, resto] of tabla) {
     const m = rx.exec(s);
     if (!m) continue;
     return '<span class="vs">' + esc(typeof como === 'function'
-      ? como(m) : como) + '</span>'
+      ? como(m) : como) + '</span>' + esc(resto || '')
       + esc(cajaNormal(s.slice(m[0].length)).replace(/^\s+/, ' '));
   }
   return esc(cajaNormal(s));
@@ -2130,14 +2164,18 @@ function pintaSeccionHora(s) {
       + (s.cl === 'himno' || s.cl === 'antifona_final'
         ? 'Elegir otro texto' : 'De dónde se toma') + '">'
       + s.alts.map((a, j) => {
-        const cor = abrevia(a.rot);
+        const cor = abrevia(a.rot), min = abreviaMin(a.rot);
+        // el rótulo entero y sus dos abreviaturas van los tres puestos: cuál
+        // se ve lo decide el CSS, según lo que la app haya medido. Y el
+        // nombre accesible es siempre el largo, se vea o no.
         return '<button type="button" aria-pressed="'
         + (j === s.i) + '" data-op="' + esc(a.id) + '"'
-        + (a.tit ? ' title="' + esc(a.tit) + '" aria-label="' + esc(a.rot
-          + ': ' + a.tit) + '"' : '')
-        + '>' + (cor === a.rot ? esc(a.rot)
+        + ' title="' + esc(a.tit || a.rot) + '" aria-label="'
+        + esc(a.tit ? a.rot + ': ' + a.tit : a.rot) + '"'
+        + '>' + (cor === a.rot && min === a.rot ? esc(a.rot)
           : '<span class="largo">' + esc(a.rot) + '</span>'
-            + '<span class="corto">' + esc(cor) + '</span>')
+            + '<span class="corto">' + esc(cor) + '</span>'
+            + '<span class="minimo">' + esc(min) + '</span>')
         + '</button>';
       }).join('') + '</div>';
   if (o.c.r || selector || ed) {
@@ -2248,6 +2286,14 @@ function respuestaGeneral(lineas) {
 
 const CRUZ = '<span class="cruz" aria-hidden="true">†</span>';
 
+/* La «N.» de las preces es el hueco de un nombre —el del papa, el del
+ * obispo del lugar—, no una palabra del texto: va del color del día, como
+ * las rúbricas, para que al llegar a ella se vea que ahí se dice un nombre
+ * y no una letra. Se marca sobre el texto ya escapado, y sólo cuando va
+ * suelta: «N.» entre letras es otra cosa. */
+const RX_NOMBRE = /(^|[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ])N\./g;
+const marcaNombre = (h) => h.replace(RX_NOMBRE, '$1<b class="rub">N.</b>');
+
 function pintaLineas(lineas, prosa, seccion) {
   const marcas = cruces(lineas);
   const resp = seccion === 'preces' ? respuestas(lineas) : null;
@@ -2279,16 +2325,19 @@ function pintaLineas(lineas, prosa, seccion) {
       : soloRub
         ? '<b class="rub">' + esc(cajaNormal(crudo)) + '</b>'
         : ln.map((tr) => tr[0]
-          ? '<b class="rub">' + esc(tr[1]) + '</b>' : esc(tr[1])).join('');
+          ? '<b class="rub">' + esc(tr[1]) + '</b>'
+          : marcaNombre(esc(tr[1]))).join('');
     actual.push({ sigla: cl.includes(' sigla'),
       h: '<span class="' + cl + '">'
         + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
         + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>' });
     // Al llegar a las intenciones libres, la respuesta de todos se ha
-    // quedado quince renglones más arriba: se repone aquí debajo.
+    // quedado quince renglones más arriba: se repone aquí debajo, con su
+    // «R.» delante —del color del día, como las demás siglas— para que se
+    // lea como lo que es, la respuesta, y no como una prez más.
     if (respG && soloRub && LIBRES.test(crudo)) {
-      actual.push({ h: '<span class="ln prez-libre">' + esc(respG)
-        + '</span>' });
+      actual.push({ h: '<span class="ln prez-libre">'
+        + '<b class="rub">R.</b> ' + marcaNombre(esc(respG)) + '</span>' });
     }
   });
   cierra();
@@ -2341,11 +2390,16 @@ function alElegirOpcion(ev) {
 /* Las opciones de una sección se ven todas o no sirven: antes se metían en
  * una tira que se deslizaba, y lo que no cabía no existía. La burbuja no
  * pasa de la mitad del renglón —la otra mitad es del rótulo, que también
- * hay que leerlo—, y para que quepan dentro se va cediendo por partes: se
- * abrevian las opciones que no están elegidas, se achica el rótulo un punto
- * y otro, y si ni así, la burbuja baja a su renglón, donde tiene el ancho
- * entero. Hace falta medirlo —el ancho de un texto no se sabe hasta que
- * está puesto—, así que se hace al pintar. */
+ * hay que leerlo—, y ése es su límite siempre, baje o no a su renglón.
+ *
+ * Son dos aprietos distintos y se resuelven por separado. Primero la
+ * burbuja, dentro de su mitad: se abrevian las opciones que no están
+ * elegidas, se achica la letra de los botones, se abrevia también la
+ * elegida y, en el último extremo, todas van en lo más corto que se
+ * reconoce. Después el rótulo, en la mitad que le queda: un punto menos, y
+ * otro; y si ni así entra, se lleva el renglón entero y la burbuja baja
+ * debajo, pegada a la derecha. Hace falta medirlo —el ancho de un texto no
+ * se sabe hasta que está puesto—, así que se hace al pintar. */
 function aprietaCabeceras() {
   document.querySelectorAll('#vista .sec-cab').forEach(aprietaCabecera);
 }
@@ -2354,25 +2408,48 @@ function aprietaCabecera(c) {
   const r = c.querySelector('.rotulo');
   const a = c.querySelector('.alterna');
   if (!r || !a) return;
-  const cabe = () => r.scrollWidth <= r.clientWidth + 1
-    && a.scrollWidth <= a.clientWidth + 1;
+  const cabeBurbuja = () => a.scrollWidth <= a.clientWidth + 1;
+  const cabeRotulo = () => r.scrollWidth <= r.clientWidth + 1;
   c.classList.remove('apretado', 'muy-apretado', 'parte');
-  a.classList.remove('cortas');
-  if (cabe()) return;
-  a.classList.add('cortas');
-  if (cabe()) return;
+  a.classList.remove('cortas', 'menuda', 'cortas-todas', 'minimas',
+    'desborda');
+  // La burbuja, en su mitad: se cede lo menos que haga falta, y en este
+  // orden, que es el que menos estorba a quien lee. Cada grado de
+  // abreviatura sustituye al anterior —son tres maneras de escribir lo
+  // mismo, no tres capas—; la letra menuda va aparte, que es otro eje.
+  const grado = (cl) => {
+    a.classList.remove('cortas', 'cortas-todas', 'minimas');
+    a.classList.add(cl);
+  };
+  if (!cabeBurbuja()) {
+    grado('cortas');
+    if (!cabeBurbuja()) {
+      a.classList.add('menuda');
+      if (!cabeBurbuja()) {
+        grado('cortas-todas');
+        if (!cabeBurbuja()) grado('minimas');
+      }
+    }
+  }
+  // Y si ni en lo más corto cabe —cuatro opciones de rótulo largo—, se le
+  // da el renglón entero: la mitad es la regla mientras sirva para que se
+  // vean todas, que es para lo que está; rota no serviría de nada.
+  if (!cabeBurbuja()) {
+    a.classList.add('desborda');
+    c.classList.add('parte');
+  }
+  // y el rótulo, en la que le queda
+  if (cabeRotulo()) return;
   c.classList.add('apretado');
-  if (cabe()) return;
+  if (cabeRotulo()) return;
   c.classList.add('muy-apretado');
-  if (cabe()) return;
-  // Ni así —tres opciones y un rótulo largo no entran en un teléfono—:
-  // entonces el selector baja a su renglón, pegado a la derecha, y allí se
-  // lee entero. Antes que recortar una opción o apretar el rótulo hasta lo
-  // ilegible.
+  if (cabeRotulo()) return;
+  // Ni así —un rótulo largo no entra en media pantalla de teléfono—:
+  // entonces el rótulo se lleva su renglón entero y la burbuja baja debajo,
+  // pegada a la derecha. La burbuja se queda como estaba: su mitad es la
+  // misma arriba que abajo, y lo que ya cabía en ella sigue cabiendo.
   c.classList.remove('apretado', 'muy-apretado');
-  a.classList.remove('cortas');
   c.classList.add('parte');
-  if (!cabe()) a.classList.add('cortas');
 }
 
 /** Cambia una sección por su versión nueva, sin tocar el resto de la hora. */
@@ -2513,7 +2590,7 @@ async function verHoras(iso, hora, idCel) {
   // el tamaño de la letra, en la cabecera: es la que se queda arriba al
   // bajar, así que las dos aes están a mano a media hora y no sólo al
   // empezar, y no le quitan sitio al selector de la sección
-  $('#cab-extra').innerHTML = controlZoom();
+  $('#cab-zoom').innerHTML = controlZoom();
   vista.innerHTML = o.secciones.length
     ? o.secciones.map((x) => pintaSeccionHora(x)).join('')
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
@@ -2529,10 +2606,11 @@ async function verHoras(iso, hora, idCel) {
 
 /* ---------------------------------------------- el tamaño, a la mano
  * Que la letra se ve chica se nota rezando, no en Ajustes: dos aes en la
- * cabecera, discretas y a la derecha. Van ahí y no sobre el primer rótulo
- * porque la cabecera es la que se queda arriba al bajar: así están a mano a
- * media hora y no sólo al empezar, y no le quitan sitio al selector de la
- * sección. Es el mismo ajuste de siempre, así que queda puesto para todo. */
+ * cabecera, discretas y al final del renglón donde se lee lo que se celebra.
+ * Van ahí y no sobre el primer rótulo porque la cabecera es la que se queda
+ * arriba al bajar: así están a mano a media hora y no sólo al empezar, y no
+ * le quitan sitio al selector de la sección. Es el mismo ajuste de siempre,
+ * así que queda puesto para todo. */
 function controlZoom() {
   // sin el tanto por ciento: comparte renglón con el título de la hora, y
   // no cabe un número más. Lo que se cambia se ve solo.
@@ -2927,7 +3005,7 @@ async function arranca() {
   });
   // el calendario: su barra resumida vive en la cabecera
   $('#cab-extra').addEventListener('click', alTocarCalendario);
-  $('#cab-extra').addEventListener('click', alTocarZoom);
+  $('#cab-zoom').addEventListener('click', alTocarZoom);
   vista.addEventListener('input', alEscribirCalendario);
   window.addEventListener('scroll', () => {
     alDesplazarCalendario();
