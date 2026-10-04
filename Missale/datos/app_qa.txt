@@ -29,13 +29,13 @@ Lo que se escribió
 ------------------
 
   app/datos/misa.json                  2522 KB
-  app/datos/lecturas_es.json           4031 KB
+  app/datos/lecturas_es.json           4485 KB
   app/datos/misal_latino.json           775 KB
   app/datos/prefacios.json              240 KB
-  app/datos/ordinario.json              228 KB
-  TOTAL                                7796 KB
+  app/datos/ordinario.json              234 KB
+  TOTAL                                8256 KB
 
-  versión de datos: clementina+nova-2528451745
+  versión de datos: clementina+nova-690043113
 
 Los formularios y sus piezas
 ----------------------------
@@ -71,26 +71,45 @@ Los formularios y sus piezas
 Las lecturas en castellano
 --------------------------
 
-  formularios con alguna lectura castellana: 1035 de 1044
-  lecturas con castellano                       4177
-  lecturas sin castellano                       2265
-  formularios sin una sola lectura en castellano     9
+  formularios con alguna lectura castellana: 1041 de 1044
+  lecturas con castellano                       4907
+  lecturas sin castellano                       1535
+  formularios sin una sola lectura en castellano     3
 
   por tipo de lectura:
                                         total con es     %
-    evangelio                            1577   1244   79%
-    salmo responsorial                   1367    778   57%
-    aleluya                              1233    791   64%
-    primera lectura                      1201    872   73%
-    segunda lectura                       409    266   65%
-    lectura del Nuevo Testamento          355    134   38%
-    lectura del Antiguo Testamento        256     86   34%
+    evangelio                            1577   1254   80%
+    salmo responsorial                   1367   1103   81%
+    aleluya                              1233   1053   85%
+    primera lectura                      1201    935   78%
+    segunda lectura                       409    303   74%
+    lectura del Nuevo Testamento          355    144   41%
+    lectura del Antiguo Testamento        256    100   39%
     tercera lectura                        10      0    0%
-    quinta lectura                         10      3   30%
-    septima lectura                        10      3   30%
+    quinta lectura                         10     10  100%
+    septima lectura                        10      5   50%
     cuarta lectura                          5      0    0%
     sexta lectura                           5      0    0%
     epistola                                4      0    0%
+
+  por la ruta con que la fase 5 la halló:
+    cita                                        4177
+    día                                           75
+    versículos                                   655
+
+  Las dos rutas que no son la cita —los versículos y el día— son
+  de esta pasada, y traen 730 lecturas que la primera versión daba
+  por no impresas teniéndolas el misalito impreso. El informe de la
+  fase 5 explica cada una.
+
+  lecturas que abarcan otros versículos, y se dice    75
+  Son las de la ruta del día: las otras dos exigen la misma cita o
+  el mismo conjunto de versículos, así que no pueden diferir. La
+  app las enseña con las dos citas, la del leccionario y la que el
+  misalito imprime: donde el leccionario de México canta otros
+  versículos del mismo salmo, callarlo sería dar por idéntico lo
+  que no lo es. Y cuando la diferencia es sólo de escritura no se
+  dice: es la misma cita, y repetirla sería ruido.
 
 Desarmar la perícopa impresa
 ----------------------------
@@ -99,13 +118,13 @@ Desarmar la perícopa impresa
   dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
   que salió:
 
-    lecturas con fórmula                        2556
-    lecturas sin fórmula reconocida               52
-    lecturas con sumario                         582
-    lecturas con cierre                         2545
-    lecturas sin cierre reconocido                63
-    lecturas con respuesta del pueblo              2
-    salmo o aclamación sin respuesta               5
+    lecturas con fórmula                        2687
+    lecturas sin fórmula reconocida               64
+    lecturas con sumario                         635
+    lecturas con cierre                         2681
+    lecturas sin cierre reconocido                70
+    lecturas con respuesta del pueblo             20
+    salmo o aclamación sin respuesta              10
     salmo sin estrofas                             0
 
   El cierre se busca en el texto ya juntado y no en el último
@@ -125,11 +144,14 @@ Desarmar la perícopa impresa
     Dn 3,75.76.77.78.79.80.81
     Dn 3,82.83.84.85.86.87
     Dt 32,18-19.20.21
+    Dt 32,26-27ab.27cd-28.30.35cd-36ab
+    Est 4,17
     Is 12,2-3.4bcd.5-6
     Is 38,10.11.12abcd.16
     Jn 18,1—19.42
     Jr 31,10.11-12ab.13
     Lc 1,46-47.48-49.50-51.52-53.54-55
+    Lc 1,46-47.48-49.50y53.54-55
     Lc 1,46-48.49-50.53-54
     Lc 1,69-70.71-72.73-75
 
@@ -144,7 +166,7 @@ Desarmar la perícopa impresa
   ele en vez de uno, y la cita de Ester con «(Neovulgata)»
   detrás.
 
-  Perícopas en que no se halló el cierre (22):
+  Perícopas en que no se halló el cierre (25):
     1 S 2,1.4-5.6-7.8abcd
     Dn 3,52.53.54.55.56
     Dn 3,57.58.59.60.61
@@ -153,6 +175,8 @@ Desarmar la perícopa impresa
     Dn 3,75.76.77.78.79.80.81
     Dn 3,82.83.84.85.86.87
     Dt 32,18-19.20.21
+    Dt 32,26-27ab.27cd-28.30.35cd-36ab
+    Ex 14,21-15.1
     Gn 14,18-20
     Is 12,2-3.4bcd.5-6
     Is 38,10.11.12abcd.16
@@ -160,6 +184,7 @@ Desarmar la perícopa impresa
     Jn 18,1—19.42
     Jr 31,10.11-12ab.13
     Lc 1,46-47.48-49.50-51.52-53.54-55
+    Lc 1,46-47.48-49.50y53.54-55
     Lc 1,46-48.49-50.53-54
     Lc 1,69-70.71-72.73-75
     Lc 19,28-40
@@ -170,7 +195,10 @@ Desarmar la perícopa impresa
 
   Salmos o aclamaciones sin respuesta del pueblo:
     Jn 14,18
+    Sal 131,1-23-5.11.12.13-14
+    Sal 17,2-3a.3bc-4.47y51ab
     Sal 93,12-13a.14-15.17-18
+    Sal 95,1-2a.3a.10ac
 
 El Misal latino
 ---------------
@@ -245,6 +273,103 @@ El Ordinario, bilingüe y por número de rúbrica
   despedidas que el castellano traduce se añadieron después. Así
   que la opción se cuenta por el castellano y el latín se empareja
   por número de rúbrica, que es lo que los dos comparten.
+
+Los propios de la plegaria eucarística, por el día que son
+----------------------------------------------------------
+
+  Las cuatro plegarias traen detrás una tira de propios —el
+  «Reunidos en comunión» de la primera y las «Intercesiones
+  particulares» de las otras tres—, y el Ordinario los imprime
+  todos seguidos con la rúbrica que dice cuándo se usa cada uno.
+  Un libro se lee con el dedo y se salta al que toca; una app no,
+  y enseñarlos todos es enseñar en un martes del Tiempo Ordinario
+  lo que se dice en la Vigilia Pascual. Así que se clasifican por
+  la rúbrica, emparejada por su texto, una por una y nombradas:
+
+    propios de plegaria, de tiempo                  27
+    propios de plegaria, de ritual                  18
+    propios de plegaria, de sigue                  120
+    propios de plegaria sin clasificar               0
+
+  El reparto, plegaria por plegaria:
+
+    PLEGARIA EUCARÍSTICA I
+      tiempo   Los domingos                                 
+      tiempo   La Natividad y su octava                     nav/vigilia nav/noche nav/aurora nav/dia
+      tiempo   La Epifanía                                  epi/dia
+      tiempo   El Jueves Santo                              tri/cena
+      tiempo   De la Vigilia Pascual al domingo II de Pascua tri/vigilia pas/dia pas/oct/1 pas/oct/2 
+      tiempo   La Ascensión                                 asc/dia
+      tiempo   Pentecostés                                  pen/dia
+    PLEGARIA EUCARÍSTICA II
+      tiempo   De la Vigilia Pascual al domingo II de Pascua tri/vigilia pas/dia pas/oct/1 pas/oct/2 
+      ritual   El bautismo de niños                         
+      ritual   La confirmación                              
+      ritual   La primera comunión                          
+      ritual   El matrimonio                                
+      ritual   Por los difuntos                             
+      sigue    —                                            
+    PLEGARIA EUCARÍSTICA III
+      tiempo   De la Vigilia Pascual al domingo II de Pascua tri/vigilia pas/dia pas/oct/1 pas/oct/2 
+      ritual   El bautismo de niños                         
+      ritual   La confirmación                              
+      ritual   La primera comunión                          
+      ritual   El matrimonio                                
+      tiempo   Los domingos                                 
+      tiempo   La Natividad y su octava                     nav/vigilia nav/noche nav/aurora nav/dia
+      tiempo   La Epifanía                                  epi/dia
+      tiempo   De la Vigilia Pascual al domingo II de Pascua tri/vigilia pas/dia pas/oct/1 pas/oct/2 
+      tiempo   La Ascensión                                 asc/dia
+      tiempo   Pentecostés                                  pen/dia
+    PLEGARIA EUCARÍSTICA IV
+      tiempo   De la Vigilia Pascual al domingo II de Pascua tri/vigilia pas/dia pas/oct/1 pas/oct/2 
+      ritual   La confirmación                              
+      ritual   La primera comunión                          
+      ritual   El matrimonio                                
+      sigue    —                                            
+
+  Y los que el Ordinario mete dentro de las rúbricas numeradas de
+  la plegaria, intercalados con el texto corrido:
+
+    rúbrica 87    tiempo   El Jueves Santo
+    rúbrica 87    tiempo   De la Vigilia Pascual al domingo II de Pascua
+    rúbrica 87    ritual   El bautismo de niños
+    rúbrica 87    ritual   La confirmación
+    rúbrica 87    ritual   La primera comunión
+    rúbrica 87    ritual   El matrimonio
+    rúbrica 87    ritual   Por los difuntos
+    rúbrica 89    tiempo   El Jueves Santo
+    rúbrica 102   tiempo   El Jueves Santo
+    rúbrica 105   tiempo   Los domingos
+    rúbrica 105   tiempo   La Natividad y su octava
+    rúbrica 105   tiempo   La Epifanía
+    rúbrica 105   tiempo   De la Vigilia Pascual al domingo II de Pascua
+    rúbrica 105   tiempo   La Ascensión
+    rúbrica 105   tiempo   Pentecostés
+    rúbrica 110   tiempo   El Jueves Santo
+    rúbrica 115   ritual   Por los difuntos
+
+  Y un tramo de fechas, para el único propio al que la unidad del
+  Misal no alcanza:
+    La Natividad y su octava del 12-25 al 01-01
+  Dentro de la octava de Navidad caen san Esteban el 26, san Juan
+  el 27 y los Santos Inocentes el 28, cuyo formulario es del
+  santoral y no de Navidad; el Misal manda el «Reunidos en
+  comunión» de la Natividad los ocho días, así que la unidad no
+  basta y hace falta la fecha. Las demás las cubre la unidad: en
+  la octava de Pascua no se celebra ningún santo, y la Epifanía,
+  la Ascensión y Pentecostés son un día cada una.
+
+  Las de clase `tiempo` las decide el día litúrgico, y el día lo
+  sabe la app: la unidad del Misal que la fase 5 le dio, y para
+  los domingos el día de la semana de la fecha. Las de clase
+  `ritual` las decide la misa que se celebra —un bautismo, una
+  boda, un funeral— y eso el calendario no lo sabe, así que la
+  app no las esconde por el día: las deja juntas y aparte,
+  rotuladas por lo que son. Las de clase `sigue` no son propio de
+  nada: son el final de la intercesión de la plegaria IV, que el
+  volcado del PDF arrastró a esta tira detrás de un «Junta las
+  manos», y van siempre.
 
 La rúbrica latina se reconoce por el acento
 -------------------------------------------
@@ -347,12 +472,16 @@ Lo que esta fase topa y no es suyo
     que 182 perícopas con la respuesta del pueblo impresa no se
     alcancen —por eso esta fase sólo halla 2 lecturas con
     respuesta—. **Medido, cuesta poco:** plegando la raya al
-    guión se recuperarían 27 lecturas (14 perícopas distintas) de
-    las 2265 que hoy no tienen castellano, porque las demás ya están
+    guión se recuperarían 4 lecturas (4 perícopas distintas) de
+    las 1535 que hoy no tienen castellano, porque las demás ya están
     alcanzadas por su gemela con guión. No se arregla aquí: el
     puente de citas es de la fase 5, y `misa.json` es la decisión
     auditada; si la app enseñara texto que esa decisión dice que
     no hay, el fichero dejaría de servir para auditarla.
+    Y de hecho se arregló allí: la ruta de los versículos lee la
+    cita en vez de aplastarla y la raya le da igual, así que lo
+    que aquí queda por recuperar es el residuo que ni siquiera
+    leyéndola se alcanza.
   · siguen en pie los cinco que nombró la fase 5: los 49
     formularios del santoral latino sin fecha, las ferias del
     tiempo de Navidad en un grupo en vez de dos, el trozo del

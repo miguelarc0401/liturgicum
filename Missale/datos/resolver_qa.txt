@@ -1236,6 +1236,62 @@ Los formularios, uno por uno
     VII|7122TPAV07.html|0      LLLLL.  Viernes de la séptima semana de Pascua       —
     VII|7123TPAS07.html|0      CCCCC.  Sábado de la séptima semana de Pascua        3
 
+Las lecturas: por qué ruta se halla la castellana
+-------------------------------------------------
+
+  La cita que el índice del leccionario da y la que el misalito
+  imprime son la misma en dos de cada tres lecturas, y en la otra
+  no, aunque el pasaje sí lo sea. Tres rutas, por este orden:
+
+    1. la cita, aplastada —los dos libros la escriben igual—;
+    2. los versículos: la cita leída cae en el mismo conjunto
+       aunque esté escrita de otra manera;
+    3. el día y la ranura: el calendario dice que el misalito
+       imprimió esa lectura ahí, y la cita confirma el pasaje.
+
+      por la cita                                4177
+      por los versículos                          655
+      por el día y la ranura                       75
+        y la cita lo confirma por versículos       56
+        y la cita lo confirma por libro y capítulo     19
+        y abarca otros versículos, y se dice       75
+      sin castellano                             1535
+
+  **La segunda ruta es la cita leída y no aplastada.** Aplastada,
+  tres maneras de escribir el mismo pasaje son tres citas
+  distintas, y las tres aparecen en la fuente:
+
+    el enlace   el misalito une dos versículos de una estrofa con
+                la conjunción —«Sal 79,9y12»— donde el índice
+                pone un punto —«Sal 79,9.12»—. Es el salmo del
+                domingo XXVII del Tiempo Ordinario, que la primera
+                versión daba por no impreso y está en el misalito
+                de octubre de 2020 y en el de octubre de 2023.
+    la letra    el leccionario cita medio versículo —«Jn 8,12b»—
+                y el misalito imprime el versículo —«Jn 8,12»—.
+    la raya     el intervalo va con guión, con raya o con
+                semirraya según quién lo imprima: «Is 55,1-11» y
+                «Is 55,1–11».
+
+  **La tercera no compara citas: compara calendarios.** Y por eso
+  alcanza lo que ninguna comparación de citas alcanza: los salmos
+  cuya cita el volcado dejó ilegible —«Sal 49» a secas,
+  «Sal 68,8-1014y17.33-35»— y los que el misalito imprime con
+  otros versículos del mismo salmo, que es lo que el leccionario
+  de México hace a menudo.
+
+  **Y lleva guarda, porque el día solo engaña.** El domingo IX del
+  Tiempo Ordinario del ciclo A cae casi siempre en la Trinidad y no
+  se celebra: el misalito de aquel día imprime las lecturas de la
+  Trinidad, y el día sin más se las daría al domingo IX. Así que
+  la cita del misalito tiene que nombrar el mismo libro y el mismo
+  capítulo, y —cuando las dos citas se dejan leer— tocarse en
+  algún versículo. La guarda descarta el evangelio de san Mateo
+  13,1-9 en la fiesta de santos Joaquín y Ana, que manda 13,16-17:
+  mismo capítulo, ningún versículo en común, no es la misma
+  perícopa.
+
+
 Las lecturas: el cotejo de citas
 --------------------------------
 
@@ -1251,20 +1307,20 @@ Las lecturas: el cotejo de citas
     el misalito no imprime lecturas                         155
 
   lecturas que los formularios mandan   : 6442
-  con texto castellano, por la cita     : 4177  (65 %)
-  sin texto castellano                  : 2265
+  con texto castellano, por las tres rutas: 4907  (76 %)
+  sin texto castellano                  : 1535
 
     tipo                                  con    sin
-    evangelio                            1244    333
-    salmo responsorial                    778    589
-    aleluya                               791    442
-    primera lectura                       872    329
-    segunda lectura                       266    143
-    lectura del Nuevo Testamento          134    221
-    lectura del Antiguo Testamento         86    170
+    evangelio                            1254    323
+    salmo responsorial                   1103    264
+    aleluya                              1053    180
+    primera lectura                       935    266
+    segunda lectura                       303    106
+    lectura del Nuevo Testamento          144    211
+    lectura del Antiguo Testamento        100    156
     tercera lectura                         0     10
-    quinta lectura                          3      7
-    septima lectura                         3      7
+    quinta lectura                         10      0
+    septima lectura                         5      5
     cuarta lectura                          0      5
     sexta lectura                           0      5
     epistola                                0      4

@@ -385,11 +385,18 @@ function cuerpoLectura(l) {
   // porque el leccionario latino trae alguna cosa en castellano.
   const t = (s) => esc(l.es ? s : tx(s));
   if (l.t) h.push('<h3 class="rubrica">' + t(l.t) + '</h3>');
+  // La cita es la del leccionario. Cuando el misalito imprime el texto con
+  // otros versículos del mismo capítulo —el leccionario de México escoge a
+  // veces otras estrofas del mismo salmo— el texto que se lee abajo es el de
+  // la cita castellana, no el de la latina, y eso se dice: `l.ces`.
+  const cita = esc(l.c) + (l.ces
+    ? '<span class="cita-es"> · en castellano, ' + esc(l.ces) + '</span>'
+    : '');
   if (l.f) {
     h.push('<p class="formula">' + t(l.f)
-      + '<span class="cita">' + esc(l.c) + '</span></p>');
+      + '<span class="cita">' + cita + '</span></p>');
   } else if (l.c) {
-    h.push('<p class="formula"><span class="cita">' + esc(l.c)
+    h.push('<p class="formula"><span class="cita">' + cita
       + '</span></p>');
   }
   // Lo que el misalito no imprimió en los nueve años: se dice y no se tapa,
@@ -533,6 +540,10 @@ function pintaNota(cel, val) {
 }
 
 function pintaFormulario(slug, bloque, iso, cels, val) {
+  // la fecha del formulario que se está viendo, que no siempre es `E.fecha`:
+  // desde el índice se abre un formulario sin día, y entonces no hay fecha
+  // que mirar. La usan los propios de la plegaria para saber si es domingo.
+  E.isoMisa = iso || null;
   const d = E.diaDe.get(slug);
   if (!d) { vista.innerHTML = '<p class="aviso">No encuentro ese día.</p>'; return; }
   if (bloque >= d.b.length || bloque < 0) bloque = 0;
@@ -814,6 +825,66 @@ function bloquesElegidos(r, lado, e, i) {
   return bs.filter((_, j) => quiero.has(j));
 }
 
+/** Los párrafos castellanos de una rúbrica de la plegaria que el día pide.
+ *
+ *  La fase 6 marcó con `p` los que son propios de un día o de una misa
+ *  ritual; los que no llevan marca son la plegaria misma y van siempre. Se
+ *  quita lo que hoy no se dice, y se deja lo que sí.
+ *
+ *  **Sólo el castellano.** El Misal latino no imprime estos propios donde el
+ *  Ordinario de México los imprime —la rúbrica 105 latina trae el «Meménto»
+ *  de difuntos donde la castellana trae los seis «Acuérdate»—, y los dos
+ *  libros están alineados por número de rúbrica y no por párrafo. Llevar la
+ *  clasificación de uno al otro sería meter la composición de un libro en el
+ *  otro, que es justo lo que el informe de la fase 6 mide y rechaza. El latín
+ *  se enseña como el Misal lo imprime. */
+function bloquesDelDia(bs) {
+  if (!_fMisa || !bs.some((b) => b.p)) return bs;
+  const cuales = propiosQueTocan(bs.map((b) => b.p), _fMisa);
+  return bs.filter((b) => !b.p || cuales.has(b.p.q));
+}
+
+/** Cuáles de unos propios toca decir hoy, por su `cual`.
+ *
+ *  Los del tiempo se emparejan por la unidad del Misal —`tri/cena` es el
+ *  Jueves Santo, `pas/oct/3` el miércoles de la octava de Pascua—, y el del
+ *  domingo no lleva unidad porque el domingo no es una temporada sino un día
+ *  de la semana. **Y va el último**, porque así lo manda su propia rúbrica:
+ *  «en los domingos, cuando no hay otro recuerdo más propio». La Navidad, la
+ *  Epifanía, la Pascua, la Ascensión y Pentecostés caen en domingo y traen el
+ *  suyo; si entra alguno de ésos, el del domingo no.
+ *
+ *  Los rituales no los decide el día —un bautismo o un funeral caen en
+ *  cualquiera—, así que nunca entran por aquí: la tira de detrás los ofrece
+ *  juntos y plegados, que es donde quien celebra los busca. */
+function propiosQueTocan(ps, f) {
+  const fuera = new Set();
+  let domingo = null;
+  for (const q of ps) {
+    if (!q || q.c !== 'tiempo') continue;
+    if (!q.u && !q.d) { domingo = q; continue; }
+    if ((q.u || []).indexOf(f.u) >= 0 || enTramo(q.d)) fuera.add(q.q);
+  }
+  if (domingo && !fuera.size && esDomingo(f)) fuera.add(domingo.q);
+  return fuera;
+}
+
+/** Si el día que se está viendo cae en un tramo de fechas `['12-25','01-01']`.
+ *
+ *  Hace falta para la octava de Navidad y sólo para ella: dentro caen san
+ *  Esteban el 26, san Juan el 27 y los Santos Inocentes el 28, cuyo
+ *  formulario es del santoral y no de Navidad, de modo que la unidad del
+ *  Misal no los alcanza y el Misal manda el «Reunidos en comunión» de la
+ *  Natividad los ocho días. El tramo cruza el año, así que se compara en mes
+ *  y día y se admite la vuelta. Sin fecha —el formulario abierto desde el
+ *  índice— no se puede decir, y entonces manda la unidad sola. */
+function enTramo(d) {
+  if (!d || !E.isoMisa) return false;
+  const hoy = E.isoMisa.slice(5);
+  return d[0] <= d[1] ? (hoy >= d[0] && hoy <= d[1])
+    : (hoy >= d[0] || hoy <= d[1]);
+}
+
 /** Una rúbrica del Ordo, en las lenguas que toquen. */
 function ordoUna(n) {
   const r = E.rubrica.get(String(n));
@@ -823,12 +894,21 @@ function ordoUna(n) {
   const i = e ? elegido(id, e.ops.length) : 0;
   return bilingue(
     conLatin() ? ordoBloques(bloquesElegidos(r, 'la', e, i), 'la') : '',
-    conCastellano() ? ordoBloques(bloquesElegidos(r, 'es', e, i), 'es') : '');
+    conCastellano()
+      ? ordoBloques(bloquesDelDia(bloquesElegidos(r, 'es', e, i)), 'es') : '');
 }
 
 /* El día que no tiene misa no tiene Ordinario, ni suelto ni pegado a un
  * propio: lo pone `armaMisa` al empezar a armar el formulario. */
 let _sinOrdo = false;
+
+/* Y el formulario que se está armando, por la misma razón: las rúbricas
+ * numeradas de la plegaria eucarística llevan dentro propios del tiempo —las
+ * seis variantes del «Acuérdate, Señor, de tu Iglesia» en la 105, el «Hanc
+ * ígitur» del Jueves Santo y de la Pascua en la 87—, y para saber cuál toca
+ * hay que saber qué día se está viendo. `ordoUna` no lo recibe: pinta una
+ * rúbrica por su número y la llaman desde doce sitios. */
+let _fMisa = null;
 
 /** Varias rúbricas seguidas. */
 function ordo(ns) {
@@ -858,7 +938,8 @@ function ordoDesde(n, des, dla) {
   if (!r) return '';
   return bilingue(
     conLatin() ? ordoBloques((r.la || []).slice(dla), 'la') : '',
-    conCastellano() ? ordoBloques((r.es || []).slice(des), 'es') : '');
+    conCastellano()
+      ? ordoBloques(bloquesDelDia((r.es || []).slice(des)), 'es') : '');
 }
 
 /** Las primeras palabras de un texto: con eso se reconoce una alternativa
@@ -1072,17 +1153,117 @@ function plegariasDe() {
   return ops;
 }
 
-function pintaPlegaria(id) {
+/* --------------------------------- los propios de la plegaria eucarística
+ *
+ * Cada plegaria lleva detrás una tira de propios: el «Reunidos en comunión»
+ * de la primera y las «Intercesiones particulares» de las otras tres. El
+ * Ordinario los imprime todos seguidos, cada uno con la rúbrica que dice
+ * cuándo se usa —«En el Jueves Santo:», «En la misa del matrimonio:»—, porque
+ * el libro se lee con el dedo y quien celebra salta al que le toca. Una app
+ * no se lee con el dedo, y enseñarlos todos es enseñar en un martes del
+ * Tiempo Ordinario lo que se dice en la Vigilia Pascual.
+ *
+ * Así que la fase 6 los clasificó por su rúbrica y aquí se escoge el del día.
+ * Dos clases, porque no dependen de lo mismo:
+ *
+ *   `tiempo`  lo decide el día litúrgico, y el día se sabe: la unidad del
+ *             Misal que la fase 5 dio al formulario —`tri/cena` es el Jueves
+ *             Santo, `pas/oct/3` el miércoles de la octava de Pascua— y, para
+ *             los domingos, el día de la semana.
+ *   `ritual`  lo decide la misa que se celebra y no el día: un bautismo, una
+ *             confirmación, una primera comunión, una boda, un funeral. El
+ *             calendario no lo sabe y la app no se lo inventa: no se esconden
+ *             por el día, van juntos y plegados, rotulados por lo que son.
+ *
+ * Y el domingo va detrás de los demás porque así lo manda su propia rúbrica:
+ * «cuando no hay otro Reunidos en comunión propio». La Navidad, la Epifanía,
+ * la Pascua, la Ascensión y Pentecostés caen en domingo y traen el suyo; si
+ * alguno de ésos entra, el del domingo no.
+ */
+
+/** Si el formulario que se está viendo es de un domingo.
+ *
+ *  La fecha lo dice cuando la hay, y es el camino bueno: se mira a mediodía,
+ *  que a medianoche el huso puede correr el día. Cuando no la hay —el
+ *  formulario abierto desde el índice, sin fecha— lo dice el propio
+ *  formulario: en el Tiempo Ordinario el leccionario le pone al domingo la
+ *  etiqueta del ciclo dominical y a las ferias la del año ferial, y en las
+ *  temporadas la unidad del Misal acaba en el día de la semana, `/0` el
+ *  domingo. */
+function esDomingo(f) {
+  if (E.isoMisa) return new Date(E.isoMisa + 'T12:00:00').getDay() === 0;
+  if (f.s === 'TIEMPO ORDINARIO' && /^Ciclo/.test(f.e || '')) return true;
+  return /^(adv|cua|pas)\/\d+\/0$/.test(f.u || '');
+}
+
+/** Los propios de una tira que el día pide, y los rituales aparte.
+ *
+ *  Devuelve `{ dia: [...], ritual: [...] }`: lo primero se enseña, lo segundo
+ *  se pliega. Lo que la fase 6 marcó `sigue` no es propio de nada —es el
+ *  final de la intercesión de la plegaria IV, que el volcado del PDF arrastró
+ *  a esta tira— y va siempre. */
+function propiosDelDia(ps, f) {
+  const cuales = propiosQueTocan((ps || []).map((q) =>
+    ({ c: q.clase, q: q.cual, u: q.u, d: q.d })), f);
+  const dia = [];
+  const ritual = [];
+  for (const q of ps || []) {
+    if (q.clase === 'ritual') ritual.push(q);
+    else if (q.clase === 'sigue' || cuales.has(q.cual)) dia.push(q);
+  }
+  // Una tirada que sigue y no reza nada es una indicación de gesto que cierra
+  // el propio anterior —la plegaria II acaba sus intercesiones particulares
+  // con un «Junta las manos.»—: si hoy no se dice ninguna, tampoco se hace el
+  // gesto, y dejarla sola bajo el rótulo de la tira sería un título sin
+  // nada debajo. La que sí reza —el final de la intercesión de la plegaria
+  // IV— va siempre, que es texto de la plegaria y no propio de nadie.
+  const reza = (q) => (q.bs || []).some((b) => !b.r);
+  if (!dia.some((q) => q.clase !== 'sigue' || reza(q))) {
+    return { dia: dia.filter(reza), ritual: ritual };
+  }
+  return { dia: dia, ritual: ritual };
+}
+
+/** Un propio pintado: su rúbrica y su texto, como vienen del Ordinario. */
+function pintaPropio(q) {
+  return ordoBloques(q.bs, 'es');
+}
+
+function pintaPropias(p, f) {
+  if (!conCastellano()) return '';
+  const h = [];
+  for (const [rot, ps] of Object.entries(p.propias || {})) {
+    const { dia, ritual } = propiosDelDia(ps, f);
+    const cuerpo = dia.map(pintaPropio).join('');
+    if (cuerpo) {
+      h.push('<div class="sub"><h3 class="rubrica">'
+        + esc(bonitoRotulo(rot)) + '</h3>' + cuerpo + '</div>');
+    }
+    if (!ritual.length) continue;
+    // las rituales, plegadas y nombradas: el día no las puede decidir, pero
+    // quien celebra un bautismo o un funeral las busca aquí
+    const id = 'r-pleg-ritual';
+    const abierta = !!E.pliegues[id];
+    h.push('<div class="sub"><div class="plegable"><button type="button" '
+      + 'class="pliega menuda" data-pliega="' + id + '" aria-expanded="'
+      + abierta + '">' + esc(ritual.map((q) => q.rot).join(' · '))
+      + '</button><div class="cuerpo"' + (abierta ? '' : ' hidden') + '>'
+      + (abierta ? '<p class="ordo-p ordo-rub"><span class="ln">'
+        + esc('Estos propios no los decide el día, sino la misa que se '
+          + 'celebra, y eso el calendario no lo sabe.') + '</span></p>'
+        + ritual.map(pintaPropio).join('') : '')
+      + '</div></div></div>');
+  }
+  return h.join('');
+}
+
+function pintaPlegaria(id, f) {
   const O = E.ordinario;
   const p = O.plegarias[id];
   if (p) {
     const ns = [];
     for (let n = p.desde; n <= p.hasta; n++) ns.push(String(n));
-    const propias = conCastellano()
-      ? Object.entries(p.propias || {}).map(([rot, bs]) =>
-        '<div class="sub"><h3 class="rubrica">' + esc(bonitoRotulo(rot))
-        + '</h3>' + ordoBloques(bs, 'es') + '</div>').join('') : '';
-    return ns.map(ordoUna).filter(Boolean).join('') + propias;
+    return ns.map(ordoUna).filter(Boolean).join('') + pintaPropias(p, f);
   }
   const l = O.plegarias_la[id];
   if (!l) return '<p class="omision">No encuentro esa plegaria.</p>';
@@ -1212,6 +1393,7 @@ function armaMisa(clave, lects) {
   }
   const sinMisa = SIN_MISA[f.u];
   _sinOrdo = !!sinMisa;
+  _fMisa = f;
   const hayOrdo = E.cfg.ordinario !== 'no' && !sinMisa;
   const S = [];
   const sec = (cl, cuerpo, extra) => {
@@ -1300,7 +1482,7 @@ function armaMisa(clave, lects) {
   const quiere = (E.cfg.ordoOps || {}).plegaria;
   const idPleg = plegs.some((x) => x.id === quiere) ? quiere
     : 'plegaria-eucaristica-ii';
-  ordoSec('plegaria', pintaPlegaria(idPleg),
+  ordoSec('plegaria', pintaPlegaria(idPleg, f),
     { selPleg: plegs, idPleg: idPleg,
       rot: (plegs.find((x) => x.id === idPleg) || {}).t
         || ROTULO_SEC.plegaria });

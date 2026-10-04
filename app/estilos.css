@@ -435,6 +435,12 @@ body.cab-fija .fila-fecha .icono {
   font-size: .78rem; letter-spacing: .03em; color: var(--rubrica);
   margin-top: .1rem;
 }
+/* La cita castellana, cuando no abarca los mismos versiculos que la del
+   leccionario: el misalito canta otras estrofas del mismo salmo, y el texto
+   de abajo es el suyo. Va pegada a la otra y en tono mas bajo, que la que
+   manda sigue siendo la del leccionario. */
+.cita-es { font-weight: 400; color: var(--tinta-suave); }
+
 /* En ancho de telefono el justificado abre rios de blanco, porque no hay
    diccionario de particion para el latin: a esta medida manda la bandera. */
 .texto { margin: 0 0 .75rem; text-wrap: pretty; }

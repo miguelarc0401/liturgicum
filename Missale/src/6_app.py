@@ -281,6 +281,19 @@ def una_lectura(l, peri, cuenta, raro):
     v = peri[l['es']]
     cuenta['lecturas con castellano'] += 1
     item['n'] = len(v['testigos'])
+    # Por qué ruta la halló la fase 5, y la cita con que el misalito la
+    # imprime cuando no abarca los mismos versículos que la del índice. Las dos
+    # van a la app: la ruta del día empareja a veces un pasaje que el
+    # leccionario de México canta con otros versículos del mismo salmo, y
+    # entonces decirlo es obligado —tapar la diferencia sería dar por idéntico
+    # lo que no lo es—. Cuando la diferencia es sólo de escritura —«Sal 79,9y12»
+    # por «Sal 79,9.12»— no se dice: es la misma cita y repetirla sería ruido.
+    if l.get('via_es'):
+        item['via'] = l['via_es']
+        cuenta['lecturas por la ruta de ' + l['via_es']] += 1
+    if l.get('otros_vers') and l['es'] != l['cita']:
+        item['ces'] = l['es']
+        cuenta['lecturas que abarcan otros versículos, y se dice'] += 1
     if v.get('variantes'):
         item['vn'] = len(v['variantes'])
     extra = []
@@ -828,7 +841,186 @@ def coteja_rubricas(orden):
     return c, fallos
 
 
-def construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas):
+# --------------------------------------------------------------------------
+# los propios de la plegaria eucaristica: a que dia son
+# --------------------------------------------------------------------------
+# Las cuatro plegarias traen, detras del texto corrido, una tira de propios:
+# el «Reunidos en comunion» de la primera y las «Intercesiones particulares»
+# de las otras tres. El Ordinario los imprime todos seguidos, cada uno con la
+# rubrica que dice cuando se usa —«En el Jueves Santo:», «En la misa del
+# matrimonio:»—, porque el libro se lee con el dedo y quien celebra salta al
+# que le toca. Una app no se lee con el dedo: enseñarlos todos es enseñar en
+# un martes del Tiempo Ordinario lo que se dice en la Vigilia Pascual.
+#
+# Asi que se clasifican, y la rubrica es el testigo: **se emparejan por su
+# texto, uno por uno y nombrados**, en la forma canonica de `misal.clave` —sin
+# tildes ni mayusculas ni puntuacion—, porque el Ordinario escribe «Vigilia
+# Pascual» en una plegaria y «Vigilia pascual» en otra, y eso es la misma
+# rubrica. Lo que no esta en la tabla se queda sin clasificar y va al informe;
+# no se adivina por parecido.
+#
+# Y se parten en dos clases, porque no dependen de lo mismo:
+#
+#   `tiempo`  lo decide el dia liturgico, y el dia lo sabe la app: los
+#             domingos, la Natividad y su octava, la Epifania, el Jueves
+#             Santo, desde la Vigilia Pascual hasta el domingo II de Pascua,
+#             la Ascension y Pentecostes. Las unidades del Misal que cada uno
+#             abarca van aqui escritas, que es el nombre estable que les dio
+#             la fase 5; el domingo no lleva unidades porque no es una
+#             temporada sino un dia de la semana, y eso lo mira la app en la
+#             fecha.
+#   `ritual`  lo decide la misa que se celebra y no el dia: un bautismo, una
+#             confirmacion, una primera comunion, una boda, un funeral. El
+#             calendario no puede saberlo, asi que la app no los esconde por
+#             el dia: los deja juntos y aparte, rotulados por lo que son.
+#
+# Lo que no es ni una cosa ni otra es `sigue`: el volcado del PDF arrastro a
+# esta tira el final de la intercesion de la plegaria IV, detras de un «Junta
+# las manos» que es rubrica del texto corrido y no propio de nada.
+
+# las unidades del Misal (fase 5) que cada propio del tiempo abarca
+DIAS_NAVIDAD = ['nav/vigilia', 'nav/noche', 'nav/aurora', 'nav/dia',
+                'nav/familia', 'nav/dic29', 'nav/dic30', 'nav/dic31',
+                'nav/mdd']
+DIAS_PASCUA = ['tri/vigilia', 'pas/dia', 'pas/oct/1', 'pas/oct/2',
+               'pas/oct/3', 'pas/oct/4', 'pas/oct/5', 'pas/oct/6', 'pas/2/0']
+
+PROPIO_DE_PLEGARIA = {
+    # la rubrica, en forma canonica          (clase, cual, unidades)
+    'en los domingos cuando no hay otro reunidos en comunion propio':
+        ('tiempo', 'domingo', None),
+    'en los domingos cuando no hay otro recuerdo mas propio puede decirse':
+        ('tiempo', 'domingo', None),
+    'en la natividad del senor y durante su octava':
+        ('tiempo', 'navidad', DIAS_NAVIDAD),
+    'en la epifania del senor': ('tiempo', 'epifania', ['epi/dia']),
+    'en el jueves santo': ('tiempo', 'cena', ['tri/cena']),
+    'desde la misa de la vigilia pascual hasta el segundo domingo de pascua':
+        ('tiempo', 'pascua', DIAS_PASCUA),
+    'en la ascension del senor': ('tiempo', 'ascension', ['asc/dia']),
+    'en el domingo de pentecostes': ('tiempo', 'pentecostes', ['pen/dia']),
+    # Las de Pascua de las plegarias II, III y IV valen ademas para el
+    # bautismo, que es ritual; se dan por del tiempo, que es lo que el
+    # calendario sabe, y la rubrica entera se enseña igual y lo dice.
+    'en las misas de pascua de su octava y en la del bautismo de adultos':
+        ('tiempo', 'pascua', DIAS_PASCUA),
+    'en las misas de pascua y en la del bautismos':
+        ('tiempo', 'pascua', DIAS_PASCUA),
+    'en la misa del bautismo de ninos': ('ritual', 'bautismo', None),
+    'en la misa del bautismo': ('ritual', 'bautismo', None),
+    'en la misa de confirmacion': ('ritual', 'confirmacion', None),
+    'en la misa de la confirmacion': ('ritual', 'confirmacion', None),
+    'en la misa de primera comunion': ('ritual', 'comunion', None),
+    'en la misa del matrimonio': ('ritual', 'matrimonio', None),
+    'en la misa por los difuntos': ('ritual', 'difuntos', None),
+    'en la misa exequial': ('ritual', 'difuntos', None),
+    'cuando esta plegaria eucaristica se utiliza en las misas de difuntos '
+    'puede decirse': ('ritual', 'difuntos', None),
+    # Y las que el Ordinario mete dentro de las rubricas numeradas, que rotula
+    # con mas palabras que las de la tira de detras.
+    'en el jueves santo durante la misa vespertina de la cena del senor':
+        ('tiempo', 'cena', ['tri/cena']),
+    'en la misa vespertina del jueves santo': ('tiempo', 'cena', ['tri/cena']),
+}
+
+# El tramo de fechas que un propio del tiempo abarca, cuando la unidad del
+# Misal no basta. Solo hace falta para la octava de Navidad: dentro caen san
+# Esteban el 26, san Juan el 27 y los Santos Inocentes el 28, cuyos
+# formularios son del santoral —`st/st_1226_191`— y no de Navidad, y el Misal
+# manda el «Reunidos en comunion» de la Natividad los ocho dias. Las demas
+# octavas y temporadas de esta tabla las cubre la unidad: en la de Pascua no
+# se celebra ningun santo, y la Epifania, la Ascension y Pentecostes son un
+# dia cada una. Va en mes y dia, y el tramo cruza el ano.
+FECHAS_PROPIO = {
+    'navidad': ['12-25', '01-01'],
+}
+
+ROTULO_PROPIO = {
+    'domingo': 'Los domingos', 'navidad': 'La Natividad y su octava',
+    'epifania': 'La Epifanía', 'cena': 'El Jueves Santo',
+    'pascua': 'De la Vigilia Pascual al domingo II de Pascua',
+    'ascension': 'La Ascensión', 'pentecostes': 'Pentecostés',
+    'bautismo': 'El bautismo de niños', 'confirmacion': 'La confirmación',
+    'comunion': 'La primera comunión', 'matrimonio': 'El matrimonio',
+    'difuntos': 'Por los difuntos',
+    'sigue': '',
+}
+
+
+def texto_bloque(b):
+    """El texto de un parrafo del Ordinario castellano, junto y sin marcas: el
+    bloque viene en renglones y cada renglon en tiradas de color."""
+    return ' '.join(''.join(tr[1] for tr in ln) for ln in b['t']).strip()
+
+
+def parte_propios(bloques, cuenta, sin_clase, donde):
+    """Una tirada de parrafos del Ordinario, partida en los propios que trae.
+
+    Van de dos en dos —la rubrica que dice cuando, y el texto— y es **la
+    rubrica la que abre y la que cierra**: una que esta en la tabla abre un
+    propio, y una que no esta lo cierra y devuelve al texto corrido. Esa regla
+    es la que hace falta dentro de las rubricas numeradas, donde los propios
+    no van al final sino intercalados: en la rubrica 105 las seis variantes
+    del «Acuerdate, Senor, de tu Iglesia» van en medio, y detras de ellas la
+    plegaria sigue con «Puede hacerse tambien mencion de los Obispos...».
+
+    Lo que no pertenece a ningun propio queda en una tirada de clase `sigue`,
+    que la app enseña siempre.
+    """
+    salida, actual = [], None
+    for b in bloques:
+        t = texto_bloque(b) if b.get('r') else None
+        ficha = PROPIO_DE_PLEGARIA.get(misal.clave(t)) if t else None
+        if t and not ficha and len(t) < 90 and misal.clave(t).startswith(
+                ('en ', 'desde ', 'cuando esta plegaria')):
+            # una rubrica que parece abrir un propio y no esta en la tabla: se
+            # dice en el informe, y el parrafo vuelve al texto corrido
+            cuenta['propios de plegaria sin clasificar'] += 1
+            sin_clase.append((donde, t))
+        if ficha:
+            clase, cual, unidades = ficha
+            actual = {'clase': clase, 'cual': cual,
+                      'rot': ROTULO_PROPIO.get(cual, cual), 'bs': []}
+            if unidades:
+                actual['u'] = unidades
+            if cual in FECHAS_PROPIO:
+                actual['d'] = FECHAS_PROPIO[cual]
+            salida.append(actual)
+            cuenta['propios de plegaria, de ' + clase] += 1
+        elif t or actual is None:
+            # una rubrica que no abre propio cierra el que hubiera: lo que
+            # viene detras es la plegaria, que sigue
+            actual = {'clase': 'sigue', 'cual': 'sigue', 'rot': '', 'bs': []}
+            salida.append(actual)
+            cuenta['propios de plegaria, de sigue'] += 1
+        actual['bs'].append(b)
+    return salida
+
+
+def marca_propios(bloques, cuenta, sin_clase, donde):
+    """Los mismos parrafos, cada uno con el propio al que pertenece.
+
+    Es `parte_propios` aplanado: las rubricas numeradas de la plegaria se
+    enseñan en su sitio, intercaladas con el resto del Ordo, y lo que la app
+    necesita ahi no es la lista de propios sino saber, parrafo a parrafo, si
+    toca hoy. Los de clase `sigue` no llevan marca y van siempre.
+    """
+    fuera = []
+    for q in parte_propios(bloques, cuenta, sin_clase, donde):
+        for b in q['bs']:
+            if q['clase'] != 'sigue':
+                b = dict(b)
+                b['p'] = {'c': q['clase'], 'q': q['cual'], 'r': q['rot']}
+                if q.get('u'):
+                    b['p']['u'] = q['u']
+                if q.get('d'):
+                    b['p']['d'] = q['d']
+            fuera.append(b)
+    return fuera
+
+
+def construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas,
+                        sin_clase):
     ben = {p['n']: p for p in lat['bendiciones']['piezas']}
     sp = {p['n']: p for p in lat['super_populum']['piezas']}
     todas = set(CABEZAS_APENDICE) | set(APENDICE_SUELTAS)
@@ -852,6 +1044,17 @@ def construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas):
         la_por_n[str(r['n'])] = recorta_apendice(r, ben, sp, todas, cuenta,
                                                  sueltas)
 
+    # Los números de rúbrica que caen dentro de una plegaria eucarística: ahí
+    # el Ordinario intercala, entre el texto corrido, los propios del tiempo y
+    # los rituales —las seis variantes del «Acuérdate, Señor, de tu Iglesia» en
+    # la 105, el «Hanc igitur» del Jueves Santo y de la Pascua en la 87—, y hay
+    # que clasificarlos igual que los de la tira de detrás.
+    de_plegaria = set()
+    for v in ord_es['plegarias'].values():
+        d, h = v.get('n_desde'), v.get('n_hasta')
+        if d and h:
+            de_plegaria |= set(range(int(d), int(h) + 1))
+
     numeros = sorted(set(es_por_n) | set(la_por_n),
                      key=lambda s: (int(re.match(r'\d+', s).group()), s))
     rubricas = []
@@ -874,6 +1077,8 @@ def construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas):
             if len(rs) > 1:
                 e['repetida'] = len(rs)
                 cuenta['rúbricas castellanas repetidas'] += 1
+            if int(re.match(r'\d+', n).group()) in de_plegaria:
+                p = marca_propios(p, cuenta, sin_clase, 'rúbrica ' + n)
             e['es'] = p
             e['op_es'] = op
         elif not pref:
@@ -899,8 +1104,12 @@ def construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas):
             e['sub'] = v['subtitulo']
         if v.get('lineas'):
             e['tx'] = parrafos_es(v['lineas'])[0]
+        # el rotulo que la fuente le da a la tira («REUNIDOS EN COMUNION
+        # PROPIOS», «INTERCESIONES PARTICULARES») y, dentro, los propios uno a
+        # uno con el dia al que son
         e['propias'] = OrderedDict(
-            (nombre, parrafos_es(ls)[0])
+            (nombre, parte_propios(parrafos_es(ls)[0], cuenta, sin_clase,
+                                   k))
             for nombre, ls in sorted((v.get('propias') or {}).items()))
         plegarias[k] = e
     plegarias_la = OrderedDict()
@@ -1042,12 +1251,14 @@ def main():
     ord_es = carga(os.path.join(DATOS, 'ordinario_es.json'))
 
     cuenta, sueltas, raro = Counter(), [], defaultdict(set)
+    sin_clase = []
     inf.titulo('Los prefacios propios cosechados, atribuidos por sus días')
     atribuye_propios(propios_pref, dias, cuenta, inf)
 
     lect = construye_lecturas(misa, peri, cuenta, raro)
     inf.titulo('Las rúbricas del Ordinario que no están en las dos lenguas')
-    orden = construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas)
+    orden = construye_ordinario(ord_es, lat, pref_es, cuenta, inf, sueltas,
+                                sin_clase)
     mis = construye_misa(misa, propios, sueltos, propios_pref, cuenta, inf)
     usados = {f['la'] for f in misa['formularios'].values() if f.get('la')}
     usados |= {x for f in misa['formularios'].values()
@@ -1081,11 +1292,12 @@ def main():
 
     # ----------------------------------------------------------------------
     informe(inf, misa, mis, lect, latino, prefacios, orden, cuenta, sueltas,
-            raro, mide_la_raya(misa, peri), tamanos, total, version)
+            raro, mide_la_raya(misa, peri), tamanos, total, version,
+            sin_clase)
 
 
 def informe(inf, misa, mis, lect, latino, prefacios, orden, cuenta, sueltas,
-            raro, raya, tamanos, total, version):
+            raro, raya, tamanos, total, version, sin_clase):
     inf.titulo('Lo que se escribió')
     for nombre, kb in tamanos:
         inf.di('  app/datos/%-24s %6d KB' % (nombre, kb))
@@ -1140,6 +1352,31 @@ def informe(inf, misa, mis, lect, latino, prefacios, orden, cuenta, sueltas,
     for t in sorted(tot, key=lambda x: -tot[x]):
         inf.di('    %-34s %6d %6d %4.0f%%'
                % (t, tot[t], con[t], 100.0 * con[t] / tot[t]))
+    inf.di('')
+    inf.di('  por la ruta con que la fase 5 la halló:')
+    for k in sorted(cuenta):
+        if k.startswith('lecturas por la ruta de '):
+            inf.di('    %-42s %5d' % (k[len('lecturas por la ruta de '):],
+                                      cuenta[k]))
+    inf.di('')
+    nuevas = sum(cuenta['lecturas por la ruta de ' + v]
+                 for v in ('versículos', 'día'))
+    inf.di('  Las dos rutas que no son la cita —los versículos y el día— son')
+    inf.di('  de esta pasada, y traen %d lecturas que la primera versión daba'
+           % nuevas)
+    inf.di('  por no impresas teniéndolas el misalito impreso. El informe de la')
+    inf.di('  fase 5 explica cada una.')
+    inf.di('')
+    inf.di('  %-44s %5d'
+           % ('lecturas que abarcan otros versículos, y se dice',
+              cuenta['lecturas que abarcan otros versículos, y se dice']))
+    inf.di('  Son las de la ruta del día: las otras dos exigen la misma cita o')
+    inf.di('  el mismo conjunto de versículos, así que no pueden diferir. La')
+    inf.di('  app las enseña con las dos citas, la del leccionario y la que el')
+    inf.di('  misalito imprime: donde el leccionario de México canta otros')
+    inf.di('  versículos del mismo salmo, callarlo sería dar por idéntico lo')
+    inf.di('  que no lo es. Y cuando la diferencia es sólo de escritura no se')
+    inf.di('  dice: es la misma cita, y repetirla sería ruido.')
 
     inf.titulo('Desarmar la perícopa impresa')
     inf.di('  El misalito imprime la lectura en un bloque corrido que lleva')
@@ -1263,6 +1500,72 @@ def informe(inf, misa, mis, lect, latino, prefacios, orden, cuenta, sueltas,
     inf.di('  que la opción se cuenta por el castellano y el latín se empareja')
     inf.di('  por número de rúbrica, que es lo que los dos comparten.')
 
+    inf.titulo('Los propios de la plegaria eucarística, por el día que son')
+    inf.di('  Las cuatro plegarias traen detrás una tira de propios —el')
+    inf.di('  «Reunidos en comunión» de la primera y las «Intercesiones')
+    inf.di('  particulares» de las otras tres—, y el Ordinario los imprime')
+    inf.di('  todos seguidos con la rúbrica que dice cuándo se usa cada uno.')
+    inf.di('  Un libro se lee con el dedo y se salta al que toca; una app no,')
+    inf.di('  y enseñarlos todos es enseñar en un martes del Tiempo Ordinario')
+    inf.di('  lo que se dice en la Vigilia Pascual. Así que se clasifican por')
+    inf.di('  la rúbrica, emparejada por su texto, una por una y nombradas:')
+    inf.di('')
+    for k in ('propios de plegaria, de tiempo', 'propios de plegaria, de '
+              'ritual', 'propios de plegaria, de sigue',
+              'propios de plegaria sin clasificar'):
+        inf.di('    %-44s %5d' % (k, cuenta[k]))
+    inf.di('')
+    inf.di('  El reparto, plegaria por plegaria:')
+    inf.di('')
+    for k, v in orden['plegarias'].items():
+        for rot, ps in (v.get('propias') or {}).items():
+            inf.di('    %s' % v['t'])
+            for q in ps:
+                inf.di('      %-8s %-44s %s'
+                       % (q['clase'], q['rot'] or '—',
+                          ' '.join(q.get('u') or [])[:40]))
+    inf.di('')
+    inf.di('  Y los que el Ordinario mete dentro de las rúbricas numeradas de')
+    inf.di('  la plegaria, intercalados con el texto corrido:')
+    inf.di('')
+    for r in orden['rubricas']:
+        vistos = []
+        for b in (r.get('es') or []):
+            q = b.get('p')
+            if q and (not vistos or vistos[-1] != (q['c'], q['r'])):
+                vistos.append((q['c'], q['r']))
+        for c, rot in vistos:
+            inf.di('    rúbrica %-5s %-8s %s' % (r['n'], c, rot))
+    inf.di('')
+    inf.di('  Y un tramo de fechas, para el único propio al que la unidad del')
+    inf.di('  Misal no alcanza:')
+    for cual, (a_, b_) in sorted(FECHAS_PROPIO.items()):
+        inf.di('    %-12s del %s al %s' % (ROTULO_PROPIO.get(cual, cual),
+                                           a_, b_))
+    inf.di('  Dentro de la octava de Navidad caen san Esteban el 26, san Juan')
+    inf.di('  el 27 y los Santos Inocentes el 28, cuyo formulario es del')
+    inf.di('  santoral y no de Navidad; el Misal manda el «Reunidos en')
+    inf.di('  comunión» de la Natividad los ocho días, así que la unidad no')
+    inf.di('  basta y hace falta la fecha. Las demás las cubre la unidad: en')
+    inf.di('  la octava de Pascua no se celebra ningún santo, y la Epifanía,')
+    inf.di('  la Ascensión y Pentecostés son un día cada una.')
+    inf.di('')
+    inf.di('  Las de clase `tiempo` las decide el día litúrgico, y el día lo')
+    inf.di('  sabe la app: la unidad del Misal que la fase 5 le dio, y para')
+    inf.di('  los domingos el día de la semana de la fecha. Las de clase')
+    inf.di('  `ritual` las decide la misa que se celebra —un bautismo, una')
+    inf.di('  boda, un funeral— y eso el calendario no lo sabe, así que la')
+    inf.di('  app no las esconde por el día: las deja juntas y aparte,')
+    inf.di('  rotuladas por lo que son. Las de clase `sigue` no son propio de')
+    inf.di('  nada: son el final de la intercesión de la plegaria IV, que el')
+    inf.di('  volcado del PDF arrastró a esta tira detrás de un «Junta las')
+    inf.di('  manos», y van siempre.')
+    if sin_clase:
+        inf.di('')
+        inf.di('  Rúbricas que parecen abrir un propio y no están en la tabla:')
+        for pl, t in sin_clase:
+            inf.di('    %-30s «%s»' % (pl, t[:60]))
+
     inf.titulo('La rúbrica latina se reconoce por el acento')
     inf.di('  El Ordinario de México marca sus rúbricas en rojo y la fase 2')
     inf.di('  lo guardó. El Misal latino se leyó con pdftotext, que no guarda')
@@ -1380,6 +1683,10 @@ def informe(inf, misa, mis, lect, latino, prefacios, orden, cuenta, sueltas,
     inf.di('    puente de citas es de la fase 5, y `misa.json` es la decisión')
     inf.di('    auditada; si la app enseñara texto que esa decisión dice que')
     inf.di('    no hay, el fichero dejaría de servir para auditarla.')
+    inf.di('    Y de hecho se arregló allí: la ruta de los versículos lee la')
+    inf.di('    cita en vez de aplastarla y la raya le da igual, así que lo')
+    inf.di('    que aquí queda por recuperar es el residuo que ni siquiera')
+    inf.di('    leyéndola se alcanza.')
     inf.di('  · siguen en pie los cinco que nombró la fase 5: los 49')
     inf.di('    formularios del santoral latino sin fecha, las ferias del')
     inf.di('    tiempo de Navidad en un grupo en vez de dos, el trozo del')

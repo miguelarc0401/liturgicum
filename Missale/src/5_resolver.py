@@ -87,6 +87,111 @@ def squeeze(cita):
     return re.sub(r'[^a-z0-9.\-]', '', t)
 
 
+def versiculos(cita):
+    """La cita leída: el libro y el conjunto de versículos que abarca.
+
+    `squeeze` aplasta la cita y compara las dos formas letra a letra; eso basta
+    cuando los dos libros la escriben igual, y en un tercio de los casos no lo
+    hacen. Aquí se lee de verdad, y entonces tres maneras distintas de escribir
+    el mismo pasaje caen en el mismo conjunto:
+
+      * **el enlace.** El misalito une dos versículos de una estrofa con la
+        conjunción —«Sal 79,9y12»— donde el índice del leccionario pone un
+        punto —«Sal 79,9.12»—. Es la diferencia que dejaba sin castellano el
+        salmo del domingo XXVII del Tiempo Ordinario.
+      * **la letra.** El leccionario cita medio versículo —«Jn 8,12b»— y el
+        misalito imprime el versículo —«Jn 8,12»—. Es el mismo renglón: la
+        letra dice qué parte se lee, no qué versículo es.
+      * **la raya.** El intervalo se escribe con guión, con raya o con semirraya
+        según quién lo imprima: «Is 55,1-11» y «Is 55,1–11».
+
+    Devuelve `None` cuando la cita no se deja leer —el salto de capítulo
+    «Hb 7,25—8,6» no se deja, y los cánticos que se citan por el libro solo
+    tampoco—; quien llama se queda entonces sin este camino, que es lo honrado.
+    """
+    t = sinac(cita or '').strip()
+    for g in '–—‒−':
+        t = t.replace(g, '-')
+    m = re.match(r'^([1-3]?\s*[a-z][a-z0-9ñ ]*?)\s*(\d.*)$', t)
+    if not m:
+        return None
+    libro = re.sub(r'[^a-z0-9]', '', m.group(1))
+    # el enlace, antes de partir: la conjunción entre dos números separa dos
+    # versículos igual que el punto, y el libro la escribe pegada —«9y12»— o
+    # con espacios —«9 y 12»—. El latino del misalito usa «et».
+    resto = re.sub(r'(?<=[0-9a-z])\s*(?:y|et)\s*(?=[0-9])', '.', m.group(2))
+    cap, vs = None, set()
+    for trozo in re.split(r'[.;]', resto):
+        trozo = trozo.strip()
+        if not trozo:
+            continue
+        # «79,9» abre capítulo; de ahí en adelante los trozos son versículos
+        if ',' in trozo:
+            antes, trozo = trozo.split(',', 1)
+            antes, trozo = antes.strip(), trozo.strip()
+            if re.fullmatch(r'\d+', antes):
+                cap = antes
+        mm = re.fullmatch(r'(\d+)[a-z]*\s*-\s*(\d+)[a-z]*', trozo)
+        if mm:
+            a, b = int(mm.group(1)), int(mm.group(2))
+            if cap is None or b < a:
+                return None
+            vs |= {(cap, str(v)) for v in range(a, b + 1)}
+            continue
+        mm = re.fullmatch(r'(\d+)[a-z]*', trozo)
+        if mm:
+            if cap is None:          # el primer número es el capítulo
+                cap = mm.group(1)
+            else:
+                vs.add((cap, mm.group(1)))
+            continue
+        return None
+    return (libro, frozenset(vs)) if vs else None
+
+
+def libro_y_capitulo(cita):
+    """El sitio de la Escritura: el libro y el primer capítulo que la cita
+    nombra. Vale también para las citas que `versiculos` no sabe leer, porque
+    el libro y el capítulo se ven aunque la lista de versículos no."""
+    r = versiculos(cita)
+    if r:
+        return r[0], min(int(c) for c, _ in r[1])
+    t = sinac(cita or '').strip()
+    for g in '–—‒−':
+        t = t.replace(g, '-')
+    m = re.match(r'^([1-3]?\s*[a-z][a-z0-9ñ ]*?)\s*(\d+)', t)
+    return (re.sub(r'[^a-z0-9]', '', m.group(1)), int(m.group(2))) if m else None
+
+
+def mismo_libro(a, b):
+    """Dos nombres de libro que son el mismo. Iguales, o uno es el otro con el
+    numeral delante: el volcado del misalito pierde a veces el «1» de «1 Jn» y
+    lo imprime «Jn», y se ve porque la primera lectura de la Pascua es la
+    primera carta de san Juan diez días seguidos."""
+    return (a == b
+            or bool(re.fullmatch('[123]' + re.escape(b), a))
+            or bool(re.fullmatch('[123]' + re.escape(a), b)))
+
+
+def misma_pericopa(cita_lecc, cita_es):
+    """Si la cita del leccionario y la del misalito hablan del mismo pasaje, y
+    por qué se dice que sí. Es la guarda de la ruta del día: el día y la ranura
+    dicen cuál es la lectura, y esto comprueba que no se ha colado la de otra
+    celebración del mismo día.
+
+    Devuelve `'versículos'` cuando los dos conjuntos de versículos se tocan,
+    `'libro y capítulo'` cuando alguna de las dos citas no se deja leer y sólo
+    se pudo cotejar el sitio, y `None` cuando no es el mismo pasaje.
+    """
+    a, b = libro_y_capitulo(cita_lecc), libro_y_capitulo(cita_es)
+    if not a or not b or a[1] != b[1] or not mismo_libro(a[0], b[0]):
+        return None
+    va, vb = versiculos(cita_lecc), versiculos(cita_es)
+    if va and vb:
+        return 'versículos' if (va[1] & vb[1]) else None
+    return 'libro y capítulo'
+
+
 # --------------------------------------------------------------------------
 # la unidad del Misal: una clave canónica a los dos lados
 # --------------------------------------------------------------------------
@@ -1173,7 +1278,7 @@ def tabla(inf, filas, cab=None):
 
 def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
             sueltos_de, pref, pref_sueltos, cuenta_citas, difieren,
-            discrepancias, fsant, fmisas, fvot, avisos):
+            discrepancias, fsant, fmisas, fvot, avisos, cuenta_rutas):
     lat = d['lat']['formularios']
     inf = Informe(QA, 'FASE 5 — EL RESOLVEDOR: EL FORMULARIO DEL DÍA')
     inf.di('Las piezas de las cuatro fases anteriores puestas en su')
@@ -1317,6 +1422,60 @@ def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
                   min(ts) if ts else '—'))
 
     # --- las lecturas -----------------------------------------------------
+    inf.titulo('Las lecturas: por qué ruta se halla la castellana')
+    inf.di('  La cita que el índice del leccionario da y la que el misalito')
+    inf.di('  imprime son la misma en dos de cada tres lecturas, y en la otra')
+    inf.di('  no, aunque el pasaje sí lo sea. Tres rutas, por este orden:')
+    inf.di()
+    inf.di('    1. la cita, aplastada —los dos libros la escriben igual—;')
+    inf.di('    2. los versículos: la cita leída cae en el mismo conjunto')
+    inf.di('       aunque esté escrita de otra manera;')
+    inf.di('    3. el día y la ranura: el calendario dice que el misalito')
+    inf.di('       imprimió esa lectura ahí, y la cita confirma el pasaje.')
+    inf.di()
+    for k in ('  por la cita', '  por los versículos',
+              '  por el día y la ranura',
+              '    y la cita lo confirma por versículos',
+              '    y la cita lo confirma por libro y capítulo',
+              '    y abarca otros versículos, y se dice',
+              '  sin castellano'):
+        if cuenta_rutas.get(k):
+            inf.di('    %-42s %6d' % (k, cuenta_rutas[k]))
+    inf.di()
+    inf.di('  **La segunda ruta es la cita leída y no aplastada.** Aplastada,')
+    inf.di('  tres maneras de escribir el mismo pasaje son tres citas')
+    inf.di('  distintas, y las tres aparecen en la fuente:')
+    inf.di()
+    inf.di('    el enlace   el misalito une dos versículos de una estrofa con')
+    inf.di('                la conjunción —«Sal 79,9y12»— donde el índice')
+    inf.di('                pone un punto —«Sal 79,9.12»—. Es el salmo del')
+    inf.di('                domingo XXVII del Tiempo Ordinario, que la primera')
+    inf.di('                versión daba por no impreso y está en el misalito')
+    inf.di('                de octubre de 2020 y en el de octubre de 2023.')
+    inf.di('    la letra    el leccionario cita medio versículo —«Jn 8,12b»—')
+    inf.di('                y el misalito imprime el versículo —«Jn 8,12»—.')
+    inf.di('    la raya     el intervalo va con guión, con raya o con')
+    inf.di('                semirraya según quién lo imprima: «Is 55,1-11» y')
+    inf.di('                «Is 55,1–11».')
+    inf.di()
+    inf.di('  **La tercera no compara citas: compara calendarios.** Y por eso')
+    inf.di('  alcanza lo que ninguna comparación de citas alcanza: los salmos')
+    inf.di('  cuya cita el volcado dejó ilegible —«Sal 49» a secas,')
+    inf.di('  «Sal 68,8-1014y17.33-35»— y los que el misalito imprime con')
+    inf.di('  otros versículos del mismo salmo, que es lo que el leccionario')
+    inf.di('  de México hace a menudo.')
+    inf.di()
+    inf.di('  **Y lleva guarda, porque el día solo engaña.** El domingo IX del')
+    inf.di('  Tiempo Ordinario del ciclo A cae casi siempre en la Trinidad y no')
+    inf.di('  se celebra: el misalito de aquel día imprime las lecturas de la')
+    inf.di('  Trinidad, y el día sin más se las daría al domingo IX. Así que')
+    inf.di('  la cita del misalito tiene que nombrar el mismo libro y el mismo')
+    inf.di('  capítulo, y —cuando las dos citas se dejan leer— tocarse en')
+    inf.di('  algún versículo. La guarda descarta el evangelio de san Mateo')
+    inf.di('  13,1-9 en la fiesta de santos Joaquín y Ana, que manda 13,16-17:')
+    inf.di('  mismo capítulo, ningún versículo en común, no es la misma')
+    inf.di('  perícopa.')
+    inf.di()
     inf.titulo('Las lecturas: el cotejo de citas')
     inf.di('  Esto es la prueba de que el emparejamiento no es una')
     inf.di('  coincidencia de calendario. Por cada día de los cien misalitos')
@@ -1331,7 +1490,7 @@ def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
     con = sum(1 for f in formularios.values() for x in f['lecturas']
               if x['es'])
     inf.di('  lecturas que los formularios mandan   : %d' % total)
-    inf.di('  con texto castellano, por la cita     : %d  (%.0f %%)'
+    inf.di('  con texto castellano, por las tres rutas: %d  (%.0f %%)'
            % (con, 100.0 * con / max(1, total)))
     inf.di('  sin texto castellano                  : %d' % (total - con))
     inf.di()
@@ -1523,6 +1682,149 @@ def indice_de_pericopas(pericopas):
     return por
 
 
+def pericopas_por_versiculos(pericopas):
+    """(libro, conjunto de versículos) → la clave de la fase 4 que más testigos
+    trae. Es el índice de la segunda ruta: la cita leída y no aplastada."""
+    por = {}
+    for cita, v in pericopas.items():
+        r = versiculos(cita)
+        if not r:
+            continue
+        if r not in por or len(v['testigos']) > len(pericopas[por[r]]
+                                                   ['testigos']):
+            por[r] = cita
+    return por
+
+
+def pericopas_por_dia(dias, cal, porclave_lect, bloques, anio_de):
+    """(clave del leccionario, tipo, orden) → las citas que el misalito imprimió
+    en esa ranura, con cuántos días lo hicieron.
+
+    Es el índice de la tercera ruta, y la evidencia que trae no es la cita sino
+    **el calendario**: si el 8 de octubre de 2023 era el domingo XXVII del
+    Tiempo Ordinario del ciclo A y el misalito de aquel mes imprimió ese día un
+    salmo responsorial, ese salmo es el salmo de ese formulario, lo escriba la
+    cita como lo escriba. Por eso recupera los salmos cuya cita el volcado dejó
+    ilegible —«Sal 49» a secas, «Sal 68,8-1014y17.33-35»—, que ninguna
+    comparación de citas alcanza.
+
+    Sólo se apunta la ranura cuando el formulario del leccionario tiene **una
+    sola** lectura de ese tipo: donde la Vigilia Pascual manda siete lecturas
+    del Antiguo Testamento no hay manera de saber a cuál corresponde la que el
+    misalito imprimió, y adivinar sería peor que no decir nada.
+    """
+    cand = defaultdict(Counter)
+    for fecha, forms in sorted(dias.items()):
+        anio = anio_de(fecha) or ('A', 'I')
+        for f in forms:
+            k = clave_del_ciclo(bloques.get(f.get('cel')) or [], *anio)
+            if not k:
+                continue
+            por_ranura = defaultdict(list)
+            for x in porclave_lect.get(k) or []:
+                por_ranura[RANURA_DE_TIPO.get(x['tipo'])].append(x)
+            for ranura, cita in (f.get('lecturas') or {}).items():
+                if not cita:
+                    continue
+                xs = por_ranura.get(ranura) or []
+                if len(xs) == 1:
+                    cand[(k, xs[0]['tipo'], xs[0]['o'])][cita] += 1
+    return cand
+
+
+# El misalito rotula sus lecturas por su sitio en la misa y el leccionario por
+# lo que son; es la misma ranura con dos nombres. Las lecturas numeradas de la
+# Vigilia Pascual, la epístola y los dos testamentos caen todas en la primera,
+# que es donde el misalito las imprime.
+RANURA_DE_TIPO = {
+    'primera lectura': 'primera', 'segunda lectura': 'segunda',
+    'salmo responsorial': 'salmo', 'aleluya': 'aclamacion',
+    'evangelio': 'evangelio', 'secuencia': 'secuencia',
+    'epistola': 'primera',
+    'lectura del Antiguo Testamento': 'primera',
+    'lectura del Nuevo Testamento': 'primera',
+    'tercera lectura': 'primera', 'cuarta lectura': 'primera',
+    'quinta lectura': 'primera', 'sexta lectura': 'primera',
+    'septima lectura': 'primera',
+}
+
+
+def mismos_versiculos(a, b):
+    """Si las dos citas abarcan exactamente los mismos versículos. `False`
+    cuando alguna no se deja leer: entonces no se puede afirmar que sí."""
+    va, vb = versiculos(a), versiculos(b)
+    return bool(va and vb and va == vb)
+
+
+def empareja_lectura(clave, x, pericopas, idx_cita, idx_vers, cand, cuenta):
+    """La perícopa castellana de una lectura del formulario, y por qué ruta.
+
+    Tres rutas, en este orden, y cada una se apunta en el informe:
+
+      1. **la cita**, aplastada: los dos libros la escriben igual;
+      2. **los versículos**: la cita dice el mismo pasaje de otra manera —el
+         enlace, la letra, la raya—, y leída cae en el mismo conjunto;
+      3. **el día y la ranura**: el calendario dice que el misalito imprimió
+         esa lectura en esa ranura de ese formulario, y la cita confirma que es
+         del mismo libro y capítulo. Deciden los testigos: la cita que más días
+         imprimieron.
+
+    Las dos últimas son de esta fase y no estaban: la primera versión dejaba
+    sin castellano un tercio de las lecturas que el misalito sí había impreso.
+    """
+    v = idx_cita.get(squeeze(x['cita']))
+    if v:
+        cuenta['  por la cita'] += 1
+        return v, 'cita', False
+    r = versiculos(x['cita'])
+    v = idx_vers.get(r) if r else None
+    if v:
+        cuenta['  por los versículos'] += 1
+        return v, 'versículos', False
+    c = cand.get((clave, x['tipo'], x['o']))
+    if c:
+        # Las candidatas del día, partidas por lo que su cita permite cotejar:
+        # las que dan versículos y se tocan con los del leccionario, y las que
+        # no dan versículos porque el volcado dejó la cita ilegible.
+        buenas, aciegas, rechazada = Counter(), Counter(), False
+        for cita, n in c.items():
+            if cita not in pericopas:
+                continue
+            modo = misma_pericopa(x['cita'], cita)
+            if modo == 'versículos':
+                buenas[cita] = n
+            elif modo == 'libro y capítulo':
+                aciegas[cita] = n
+            elif libro_y_capitulo(cita) == libro_y_capitulo(x['cita']):
+                # misma capítulo y ningún versículo en común: el misalito canta
+                # otra cosa de ese capítulo
+                rechazada = True
+        # **Manda el testigo que se puede leer.** La ilegible sólo vale cuando
+        # no hay ninguna legible de ese capítulo, ni aceptada ni rechazada: si
+        # una legible del mismo capítulo se rechazó por no tocarse con los
+        # versículos del leccionario, la ilegible es casi seguro lo mismo que
+        # ella. Es el salmo 113 del lunes de la V semana de Pascua: el Misal
+        # manda 113,9-10.11-12.23-24 —la segunda mitad del salmo— y el
+        # misalito imprimió dos veces 113,1-2.3-4.15-16 y una vez «Sal 113» a
+        # secas, y las tres son la primera mitad.
+        elegidas = buenas or (Counter() if rechazada else aciegas)
+        if elegidas:
+            v = elegidas.most_common(1)[0][0]
+            cuenta['  por el día y la ranura'] += 1
+            cuenta['    y la cita lo confirma por %s'
+                   % misma_pericopa(x['cita'], v)] += 1
+            # Sólo esta ruta puede dar un texto que no abarque exactamente los
+            # versículos que el leccionario manda: las dos primeras exigen la
+            # misma cita o el mismo conjunto. Cuando pasa, se dice, y la app lo
+            # enseña con las dos citas.
+            otros = not mismos_versiculos(x['cita'], v)
+            if otros:
+                cuenta['    y abarca otros versículos, y se dice'] += 1
+            return v, 'día', otros
+    cuenta['  sin castellano'] += 1
+    return None, None, False
+
+
 def anio_liturgico(cal):
     """fecha → el ciclo dominical y el año ferial que le toca.
 
@@ -1653,7 +1955,13 @@ def main():
 
     porclave, cels = celebraciones_del_indice(indice)
     porclave_lect = lecturas_por_clave(d['imaster'])
+    # las tres rutas con que se busca la perícopa castellana, cada una con su
+    # índice: la cita aplastada, la cita leída y el calendario
     idx_peri = indice_de_pericopas(d['pericopas'])
+    idx_vers = pericopas_por_versiculos(d['pericopas'])
+    cand_dia = pericopas_por_dia(dias, cal, porclave_lect,
+                                 bloques_de_cel(indice), anio_liturgico(cal))
+    cuenta_rutas = Counter()
 
     # --- el puente latino ------------------------------------------------
     pareja_sant, dequien_sant, alternos = puente_santoral(
@@ -1778,10 +2086,12 @@ def main():
             cr = lat[la['k']].get('credo')
         lecturas = []
         for x in porclave_lect.get(clave, []):
-            cita_es = idx_peri.get(squeeze(x['cita']))
+            cita_es, via, otros = empareja_lectura(
+                clave, x, d['pericopas'], idx_peri, idx_vers, cand_dia,
+                cuenta_rutas)
             lecturas.append({
                 'o': x['o'], 'tipo': x['tipo'], 'cita': x['cita'],
-                'es': cita_es,
+                'es': cita_es, 'via_es': via, 'otros_vers': otros,
                 't': (len(d['pericopas'][cita_es]['testigos'])
                       if cita_es else None)})
         formularios[clave] = {
@@ -1817,7 +2127,7 @@ def main():
 
     informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
             sueltos_de, pref, pref_sueltos, cuenta_citas, difieren,
-            discrepancias, fsant, fmisas, fvot, avisos)
+            discrepancias, fsant, fmisas, fvot, avisos, cuenta_rutas)
 
 
 if __name__ == '__main__':

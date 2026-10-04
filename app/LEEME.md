@@ -17,9 +17,13 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Clementina, Nova Vulgata, castellano y bilingüe**, con un interruptor en
   Ajustes. El castellano es la traducción litúrgica aprobada para México,
   cosechada por [`Missale/`](../Missale/LEEME.md) del misalito mensual de
-  2018 a 2026: dos de cada tres lecturas la tienen, y la que no se
+  2018 a 2026: tres de cada cuatro lecturas la tienen, y la que no se
   imprimió ni una vez en los nueve años lo dice en su sitio en vez de
-  disimularlo. No se traduce nada: si no está, se dice que no está. El
+  disimularlo. La cita del leccionario y la que el misalito imprime no
+  siempre son la misma, y la perícopa se busca por tres caminos: la cita,
+  los versículos que abarca y el día del calendario en que se imprimió;
+  cuando el leccionario de México canta otros versículos del mismo salmo,
+  se enseñan las dos citas. No se traduce nada: si no está, se dice que no está. El
   bilingüe enfrenta las dos lenguas —en el teléfono, una debajo de otra; en
   una pantalla ancha, a dos columnas— y el latín que pone es el último que
   se eligió, de modo que quien lee la Nova la sigue teniendo.
