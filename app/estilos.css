@@ -443,6 +443,14 @@ body.cab-fija .fila-fecha .icono {
   vertical-align: .45em; margin-right: .15em; line-height: 0;
 }
 .omision { margin: .3rem 0 .8rem; color: var(--tinta-suave); text-align: center; }
+/* El sumario de la lectura: lo que el misalito imprime antes de la formula
+   para decir de que va. Va en letra mas chica y recogido, que es como lo
+   imprime el libro: hace de titulillo y no se lee en voz alta. */
+.sumario {
+  margin: 0 0 .75rem; padding-left: .85rem;
+  border-left: 2px solid var(--filete);
+  font-size: .88em; color: var(--tinta-suave); text-wrap: pretty;
+}
 .cierre, .resp { margin: 0; font-style: italic; color: var(--rubrica); }
 .antifona {
   margin: 0 0 .9rem; padding: .6rem .85rem;

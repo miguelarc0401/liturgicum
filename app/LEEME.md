@@ -14,7 +14,12 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Las lecturas de hoy** al abrir, con la fecha litúrgica calculada (Pascua,
   Adviento, ciclo A/B/C y año ferial I/II). Flechas para pasar de día y un
   toque en la fecha para saltar a cualquier otra.
-* **Clementina y Nova Vulgata**, con un interruptor en Ajustes.
+* **Clementina, Nova Vulgata y castellano**, con un interruptor en
+  Ajustes. El castellano es la traducción litúrgica aprobada para México,
+  cosechada por [`Missale/`](../Missale/LEEME.md) del misalito mensual de
+  2018 a 2026: dos de cada tres lecturas la tienen, y la que no se
+  imprimió ni una vez en los nueve años lo dice en su sitio en vez de
+  disimularlo. No se traduce nada: si no está, se dice que no está.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **Calendario litúrgico** de cada año (2024–2060): qué se celebra cada día

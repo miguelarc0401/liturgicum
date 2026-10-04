@@ -311,7 +311,9 @@ def una_lectura(l, peri, cuenta, raro):
             item['s'] = s
             cuenta['lecturas con sumario'] += 1
         if z:
-            item['z'] = z
+            # con su punto, como el `cierre` del leccionario latino
+            # («Verbum Dómini.»): así la app lo pinta tal cual
+            item['z'] = z + '.'
             cuenta['lecturas con cierre'] += 1
         else:
             cuenta['lecturas sin cierre reconocido'] += 1

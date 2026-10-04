@@ -38,6 +38,7 @@ const FICHEROS = [
  * Mientras tanto la app funciona, y las horas se cargan cuando se piden. */
 const DESPUES = [
   'datos/lecturas_nova.json',
+  'datos/lecturas_es.json',
   'datos/horas_dias.json',
   'datos/horas.json'
 ];

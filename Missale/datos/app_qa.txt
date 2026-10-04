@@ -29,13 +29,13 @@ Lo que se escribió
 ------------------
 
   app/datos/misa.json                  2522 KB
-  app/datos/lecturas_es.json           4028 KB
+  app/datos/lecturas_es.json           4031 KB
   app/datos/misal_latino.json           775 KB
   app/datos/prefacios.json              240 KB
   app/datos/ordinario.json              228 KB
-  TOTAL                                7793 KB
+  TOTAL                                7796 KB
 
-  versión de datos: clementina+nova-4241240530
+  versión de datos: clementina+nova-633438381
 
 Los formularios y sus piezas
 ----------------------------

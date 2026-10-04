@@ -98,6 +98,11 @@ function planoConMapa(t) {
 
 function tx(t) { return E.cfg.acentos ? t : sinAcento(t); }
 
+/** La lengua en que se está leyendo, para nombrarla donde hace falta. */
+function lengua() {
+  return E.cfg.fuente === 'es' ? 'el castellano' : 'el latín';
+}
+
 function hoyISO() {
   const d = new Date();
   return [d.getFullYear(), d.getMonth() + 1, d.getDate()]
@@ -338,23 +343,43 @@ function versos(tramos, sep, castellano) {
 
 function pintaLectura(l) {
   const h = ['<section class="lect">'];
-  if (l.t) h.push('<h3 class="rubrica">' + esc(l.es ? l.t : tx(l.t)) + '</h3>');
+  // La acentuación litúrgica es del latín: es un agudo que se le pone a la
+  // vocal tónica para recitar, y quitárselo al castellano sería estropearle
+  // la ortografía. `l.es` lo dice pieza por pieza, no la fuente entera,
+  // porque el leccionario latino trae alguna cosa en castellano.
+  const t = (s) => esc(l.es ? s : tx(s));
+  if (l.t) h.push('<h3 class="rubrica">' + t(l.t) + '</h3>');
   if (l.f) {
-    h.push('<p class="formula">' + esc(tx(l.f))
+    h.push('<p class="formula">' + t(l.f)
       + '<span class="cita">' + esc(l.c) + '</span></p>');
   } else if (l.c) {
     h.push('<p class="formula"><span class="cita">' + esc(l.c)
       + '</span></p>');
   }
-  if (l.k === 'salmo') {
-    if (l.r) h.push('<p class="antifona">℟. ' + esc(tx(l.r)) + '</p>');
+  // Lo que el misalito no imprimió en los nueve años: se dice y no se tapa,
+  // y no se traduce del latín. El latín está a un cambio de ajuste.
+  if (l.sin) {
+    return h.join('') + '<p class="omision">No disponible en castellano. '
+      + 'En latín, sí.</p></section>';
+  }
+  if (l.s) h.push('<p class="sumario">' + t(l.s) + '</p>');
+  if (l.k === 'salmo' || l.k === 'aleluya') {
+    if (l.r) h.push('<p class="antifona">℟. ' + t(l.r) + '</p>');
     else if (l.rr) h.push('<p class="antifona">℟. (' + esc(l.rr) + ')</p>');
+  }
+  if (l.k === 'salmo') {
     h.push(versos(l.g, '<p class="resp">℟.</p>', l.es));
     h.push('<p class="resp">℟.</p>');
   } else {
     h.push(versos(l.g, null, l.es));
-    if (l.k === 'lectura') {
-      h.push('<p class="cierre">' + esc(tx(E.lecturas.cierre)) + '</p>');
+    // el cierre: el castellano lo trae por lectura, porque cambia («Palabra
+    // de Dios» en la lectura y «Palabra del Señor» en el evangelio); el
+    // latino es uno para todo el libro y vive en la cabecera del fichero
+    const z = l.z || (l.k === 'lectura' ? E.lecturas.cierre : '');
+    if (z) h.push('<p class="cierre">' + t(z) + '</p>');
+    if (l.rz) h.push('<p class="resp">' + t(l.rz) + '</p>');
+    else if (l.r && l.k === 'aleluya') {
+      h.push('<p class="resp">℟. ' + t(l.r) + '</p>');
     }
   }
   return h.join('') + '</section>';
@@ -654,10 +679,11 @@ function verIndice() {
   // el índice se abre desde el calendario, y es allí donde se vuelve
   marcaBarra('calendario');
   modoPanel('Índice del leccionario');
-  // el buscador del latín salió de la barra de abajo: es cosa del
-  // leccionario, y aquí está a mano de quien lo hojea
+  // el buscador salió de la barra de abajo: es cosa del leccionario, y
+  // aquí está a mano de quien lo hojea. Busca en la lengua que se esté
+  // leyendo, que es la que el lector tiene en la cabeza
   const h = ['<a class="enlace-buscar" href="#/buscar">' + ICONO.buscar
-    + 'Buscar en el latín del leccionario</a>'];
+    + 'Buscar en ' + lengua() + ' del leccionario</a>'];
   E.indice.secciones.forEach((sec, i) => {
     h.push('<details class="sec"' + (i === 0 ? ' open' : '')
       + '><summary>' + esc(sec.t) + '</summary>');
@@ -1039,7 +1065,10 @@ function construyeBusqueda() {
     if (!dia) continue;
     const bloque = Math.max(0, dia.b.findIndex((b) => b.k === clave));
     for (const l of lects) {
-      const t = l.g.map((tr) => tr.map((v) => v[1]).join(' ')).join(' ');
+      // en castellano hay lecturas sin texto —las que el misalito no imprimió
+      // en nueve años—, y van sin tramos: no se indexan, pero su cita sí
+      const t = (l.g || []).map((tr) => tr.map((v) => v[1]).join(' '))
+        .join(' ');
       filas.push({ dia: dia, bloque: bloque, cita: l.c, texto: t,
         plano: plano(t), planoCita: plano(l.c + ' ' + (l.q || '')) });
     }
@@ -1052,9 +1081,10 @@ function verBusqueda(q) {
   E.vista = 'buscar';
   // se llega desde el índice, que cuelga del calendario
   marcaBarra('calendario');
-  modoPanel('Buscar en el latín');
+  modoPanel('Buscar en ' + lengua());
   vista.innerHTML = '<input class="campo" id="q" type="search" '
-    + 'placeholder="Palabra latina o cita (Is 2,1)" value="' + esc(q || '')
+    + 'placeholder="' + (E.cfg.fuente === 'es' ? 'Palabra o cita (Is 2,1)'
+      : 'Palabra latina o cita (Is 2,1)') + '" value="' + esc(q || '')
     + '" autocomplete="off"><div id="res"></div>';
   const campo = $('#q');
   let temporizador = null;
@@ -1181,11 +1211,15 @@ function verAjustes() {
     + '<details class="ajustes-sec"' + (n++ === 1 ? ' open' : '')
     + '><summary>' + titulo + '</summary><div class="ajustes-cuerpo">';
   vista.innerHTML = [
-    ajuste('El latín del leccionario'),
-    sel('fuente', 'Versión latina',
+    ajuste('La lengua del leccionario'),
+    sel('fuente', 'Versión',
       'La Nova Vulgata es el latín de los libros litúrgicos vigentes; la '
-      + 'Clementina, la Vulgata de siempre.',
-      [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata']]),
+      + 'Clementina, la Vulgata de siempre. El castellano es la traducción '
+      + 'litúrgica aprobada para México, cosechada del misalito mensual de '
+      + '2018 a 2026: dos de cada tres lecturas la tienen, y lo que no se '
+      + 'imprimió nunca lo dice en su sitio.',
+      [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata'],
+        ['es', 'Castellano · misalito de México']]),
     sel('acentos', 'Acentuación litúrgica',
       'El acento tónico marcado, como en los libros de coro.',
       [[true, 'Sí'], [false, 'No']]),
@@ -1377,7 +1411,8 @@ function verPortada() {
     '<a class="tarjeta" href="#/d/' + iso + '">',
     '<span class="tarjeta-icono">' + ICONO.misa + '</span>',
     '<span class="tarjeta-t">Lecturas de la Misa</span>',
-    '<span class="tarjeta-p">El leccionario romano en latín'
+    '<span class="tarjeta-p">El leccionario romano en '
+    + (E.cfg.fuente === 'es' ? 'castellano' : 'latín')
     + (anio ? ' · Ciclo ' + anio.ciclo + ' · Año ' + anio.ferial : '')
     + '</span>',
     '</a>',

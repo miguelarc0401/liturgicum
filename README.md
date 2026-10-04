@@ -4,7 +4,9 @@ Dos libros litúrgicos, hechos con el mismo método y servidos por la misma app:
 
 * el **leccionario** completo en latín (Vulgata Clementina y Nova Vulgata), en
   tres formas: **documentos** (DOCX y PDF maquetados como libro), un **índice
-  maestro de citas** y la app;
+  maestro de citas** y la app; y en la app, además, **en castellano**, en la
+  traducción litúrgica que se usa en México, cosechada por
+  [`Missale/`](Missale/LEEME.md) del misalito mensual de 2018 a 2026;
 * la **Liturgia de las Horas** en la traducción litúrgica que se usa en
   México, con sus siete horas, extraída y ordenada por
   [`Breviarium/`](Breviarium/LEEME.md), que es un módulo aparte con su propia
