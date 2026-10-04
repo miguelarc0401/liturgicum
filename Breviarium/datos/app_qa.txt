@@ -2,12 +2,12 @@ Fase 4 — el libro de horas empaquetado para la app
 ==========================================================
 
 horas.json         22.5 MB
-horas_dias.json     2.2 MB  13510 fechas
+horas_dias.json     2.6 MB  15701 fechas
 
       75  casillas en ordinario
      868  casillas en salterio
    13460  casillas en tiempo
-    5279  casillas en santoral
+    5274  casillas en santoral
      226  casillas en comunes
      158  santos con común conocido
      722  lecturas del Oficio con texto propio del otro año del ciclo bienal
@@ -42,18 +42,18 @@ horas_dias.json     2.2 MB  13510 fechas
           Pascua/nona: salvador del mundo | reina el senor alli donde
           Pascua/sexta: cuando la luz del dia | verbo de dios el sol
           Pascua/tercia: espiritu de dios la tierra | al senor confesamos aleluya
-     203  celebraciones del calendario con textos (101 aprendidas del volcado, 102 por el nombre)
+     203  celebraciones del calendario con textos (102 aprendidas del volcado, 101 por el nombre)
 
 Cómo se resolvió cada fecha
 --------------------------------------------
-   12484  aprendido del volcado
-     449  con conmemoración posible
-    5352  con santo
-      36  del calendario del leccionario
-     990  del volcado
-     359  sin textos del tiempo
+   12968  aprendido del volcado
+     522  con conmemoración posible
+    6222  con santo
+       5  del calendario del leccionario
+    2728  del volcado
+     381  sin textos del tiempo
 
-Días del leccionario cuyas coordenadas se aprendieron del volcado: 383
+Días del leccionario cuyas coordenadas se aprendieron del volcado: 387
 
 Celebraciones del calendario -> casillas del santoral
 --------------------------------------------
