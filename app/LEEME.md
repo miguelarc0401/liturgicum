@@ -14,12 +14,47 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Las lecturas de hoy** al abrir, con la fecha litúrgica calculada (Pascua,
   Adviento, ciclo A/B/C y año ferial I/II). Flechas para pasar de día y un
   toque en la fecha para saltar a cualquier otra.
-* **Clementina, Nova Vulgata y castellano**, con un interruptor en
+* **Clementina, Nova Vulgata, castellano y bilingüe**, con un interruptor en
   Ajustes. El castellano es la traducción litúrgica aprobada para México,
   cosechada por [`Missale/`](../Missale/LEEME.md) del misalito mensual de
   2018 a 2026: dos de cada tres lecturas la tienen, y la que no se
   imprimió ni una vez en los nueve años lo dice en su sitio en vez de
-  disimularlo. No se traduce nada: si no está, se dice que no está.
+  disimularlo. No se traduce nada: si no está, se dice que no está. El
+  bilingüe enfrenta las dos lenguas —en el teléfono, una debajo de otra; en
+  una pantalla ancha, a dos columnas— y el latín que pone es el último que
+  se eligió, de modo que quien lee la Nova la sigue teniendo.
+* **La misa entera, no sólo las lecturas.** El formulario de arriba abajo:
+  la reseña, la antífona de entrada, la colecta, las lecturas, la oración
+  sobre las ofrendas, el prefacio, la plegaria eucarística, la antífona de
+  comunión y la oración de después, con el **Ordinario de la misa**
+  intercalado donde va —las 146 rúbricas del Ordo, en las dos lenguas y
+  alineadas por su número—. El Ordinario viene **plegado**, porque no se lee
+  cada día, pero cuando se busca se busca ahí: un toque en su rótulo lo
+  abre, y lo que se deja abierto se queda abierto mientras dure la sesión.
+  En Ajustes puede venir abierto, o no salir.
+* **Lo que la misa deja elegir, se elige.** El saludo (tres fórmulas), la
+  invitación al acto penitencial (cuatro) y su fórmula (I, II y III), el
+  símbolo —niceno o de los apóstoles—, el «Oren, hermanos», el prefacio
+  (los sesenta y siete castellanos, los veintiocho propios cosechados del
+  misalito y los treinta y nueve que sólo existen en latín), la plegaria
+  eucarística (las cuatro del Ordinario y, en latín, las de la
+  reconciliación y las de diversas necesidades), el Misterio de la fe, la
+  invitación al padrenuestro y a la paz, la oración antes de comulgar, la
+  bendición final —las veinte solemnes y las veintiocho oraciones sobre el
+  pueblo del apéndice del Misal— y la despedida. Lo que el día **manda** no
+  se pregunta: el Gloria y el Credo los pone o los calla el formulario, y el
+  prefacio que el día marca viene elegido. Donde el Misal no marca ninguno
+  —los domingos del tiempo ordinario, por ejemplo— se dice que la elección
+  es libre y se ofrece el juego del tiempo.
+* **Las otras misas del mismo día.** Las que el leccionario numera —las tres
+  de Navidad— salen en la tira de formularios de la cabecera; las que no
+  numera —la vespertina de la vigilia de san Juan Bautista y de los
+  Apóstoles, la segunda y la tercera de Difuntos— se eligen dentro, en «La
+  misa»: cambian los propios y no las lecturas.
+* **De dónde sale cada texto castellano**, cuando no salió del sitio obvio:
+  bajo la pieza, en pequeño, «del día» o «del común», con el porqué y los
+  testigos en el título. Lo que el misalito no imprimió en nueve años lo dice
+  en su sitio.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **Calendario litúrgico** de cada año (2024–2060): qué se celebra cada día
@@ -183,4 +218,14 @@ manifest.webmanifest    nombre, iconos y modo pantalla completa
 icono-*.png             los dibuja src/15_app_data.py
 datos/                  lo generado; no se edita a mano
 datos/horas*.json       la liturgia de las horas (la hace Breviarium/src/4_app.py)
+datos/misa.json         el formulario de cada misa, con sus propios
+datos/misal_latino.json el Misal de 2002, una vez y por su propio nombre
+datos/prefacios.json    los dos juegos de prefacios, emparejados
+datos/ordinario.json    el Ordo Missæ bilingüe, por número de rúbrica
+                        (los cuatro los hace Missale/src/6_app.py)
 ```
+
+Los cuatro ficheros de la misa son 3,8 MB y **no** se guardan al instalar la
+app: serían 3,8 MB inútiles en el teléfono de quien sólo lee las lecturas. Se
+piden la primera vez que se abre una misa —ahí hace falta conexión— y de ahí
+en adelante quedan guardados como todo lo demás.

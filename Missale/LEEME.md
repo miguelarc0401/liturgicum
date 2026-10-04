@@ -617,38 +617,75 @@ partir nada.
 
 ---
 
-## La app: qué cambia
+## La app: qué cambia — **hecha**
 
-Hoy la sección «Misa» muestra lecturas. Ha de mostrar **la misa**: el
-formulario de arriba abajo, con los propios en su sitio y las lecturas dentro.
+La sección «Misa» mostraba lecturas. Muestra **la misa**: el formulario de
+arriba abajo, con los propios en su sitio y las lecturas dentro. Son 22
+secciones de media por formulario, y los 1 051 se pintan sin un fallo en las
+tres lenguas.
 
 * **La lengua**, en Ajustes, junto a Clementina y Nova: *castellano* y
-  *bilingüe* (latín y castellano enfrentados, que es como está maquetado el
-  leccionario impreso del proyecto).
-* **El ordinario**, plegable, intercalado donde va: no se lee cada día, pero
-  cuando se busca se busca ahí. Y como viene numerado y alineado en las dos
-  lenguas, el bilingüe se puede dar rúbrica a rúbrica.
+  *bilingüe*. El bilingüe enfrenta las dos —en el teléfono una debajo de
+  otra, a dos columnas desde que la caja da de sí— y el latín que pone es el
+  último que se eligió, de modo que quien lee la Nova la sigue teniendo. Las
+  lecturas se emparejan por su sitio en el bloque: los dos leccionarios dan
+  los mismos bloques en el mismo orden para las mismas claves, comprobado,
+  1 035 claves y ni una desigual.
+* **El ordinario**, plegable, intercalado donde va, y **el texto de lo
+  plegado no se mete en la página**: el Ordo es las tres cuartas partes del
+  formulario, y pintarlo para tenerlo escondido costaba más que pintarlo
+  cuando se abre. Lo que se deja abierto se queda abierto mientras dure la
+  sesión. En Ajustes puede venir abierto, o no salir.
+* **El bilingüe se da rúbrica a rúbrica**, que es lo que los dos libros
+  comparten. Lo demás no se puede emparejar y no se intenta: ver abajo.
 
-Lo que queda a elegir, que es la otra mitad de lo pedido. Unas ya existen y
-otras son nuevas:
+Lo que queda a elegir, que es la otra mitad de lo pedido:
 
 | se elige | de dónde | estado |
 |---|---|---|
 | la celebración del día, cuando concurren | calendario, ya resuelto por precedencia | **existe** |
 | el formulario (ciclo A/B/C, o varios propios) | `indice.json` | **existe** |
 | lecturas de la feria o del santo, en las memorias | ajuste `memorias` | **existe** |
-| **misa vespertina de la vigilia**, de la aurora, del día | Misal latino y misalitos (la familia 2021 las imprime aparte) | nuevo |
-| **el prefacio**: el que marca el día, y los que el Misal permite | `prefacios.json`: los 67 del Ordinario en castellano, los propios cosechados, todos en latín | nuevo |
-| **la plegaria eucarística**: I-IV con sus partes propias y sus embolismos; en latín además las de la reconciliación y de diversas necesidades | `ordinario.json` | nuevo |
-| **el saludo inicial** (tres, más el del obispo), **la invitación al acto penitencial** (cuatro) y **su fórmula** (I, II, III) | Ordinario, rúbricas 2 y 4 | nuevo |
-| **el símbolo**: niceno-constantinopolitano o de los apóstoles | Ordinario, rúbrica 19 | nuevo |
-| **el *Misterio de la fe*** (tres), la invitación al padrenuestro y a la paz, y la **despedida** (cinco) | Ordinario | nuevo |
-| **misas por diversas necesidades, votivas, rituales y de difuntos** | Misal latino completo; castellano, lo cosechado | nuevo |
-| la bendición solemne y la oración sobre el pueblo | Misal latino; misalitos en Cuaresma | nuevo |
+| **misa vespertina de la vigilia**, de la aurora, del día | las que el leccionario numera, en la tira de la cabecera; las que no —la vigilia de san Juan Bautista y de los Apóstoles, la 2ª y la 3ª de Difuntos—, en «La misa», dentro | **hecho** |
+| **el prefacio**: el que marca el día, y los que el Misal permite | los 67 castellanos, los 28 propios cosechados y los 39 que sólo existen en latín, en un selector agrupado | **hecho** |
+| **la plegaria eucarística**: I-IV con sus partes propias y sus embolismos; en latín además las de la reconciliación y de diversas necesidades | `ordinario.json`; las cuatro por número de rúbrica, las otras seis sólo en latín y marcadas | **hecho** |
+| **el saludo inicial** (tres, más el del obispo), **la invitación al acto penitencial** (cuatro) y **su fórmula** (I, II, III) | Ordinario, rúbricas 2 y 4-6 | **hecho** |
+| **el símbolo**: niceno-constantinopolitano o de los apóstoles | Ordinario, rúbricas 18 y 19 | **hecho** |
+| **el *Misterio de la fe*** (tres), la invitación al padrenuestro y a la paz, la oración antes de comulgar y la **despedida** (cinco) | Ordinario | **hecho** |
+| **misas por diversas necesidades, votivas, rituales y de difuntos** | leccionarios VI y VIII, por el índice, como el resto de formularios | **existe** |
+| la bendición solemne y la oración sobre el pueblo | las 20 + 28 del apéndice del Misal, en un selector al final; la oración sobre el pueblo del día, en su sitio como un propio más | **hecho** |
 
 El `Gloria` y el `Credo` no se eligen: los dice el día, y el misalito los
 imprime («Se dice Gloria», «Se dice Credo»), así que entran como dos banderas
 del formulario y la app los pone o los calla sin preguntar.
+
+**Lo que hubo que medir, y que no se puede deducir.** La alternativa del
+Ordinario no se puede repartir por su número: los dos libros no la ordenan
+igual —el latino dice «Dóminus vobíscum» en tercer lugar y el castellano «El
+Señor esté con ustedes» en el primero—, el latino da **una** invitación al
+acto penitencial donde el castellano da cuatro, y en el Misterio de la fe la
+numeración de la fuente no coincide con las tres aclamaciones, porque las dos
+primeras fórmulas comparten la respuesta del pueblo. Así que qué bloques son
+de cada alternativa va en una tabla (`ELIGE`, en `app/app.js`), medida sobre
+el fichero y escrita una por una; **y lo que no está en ella se imprime
+entero, con sus alternativas seguidas, como el libro las imprime**: no se
+pierde nada por no estar. Lo mismo con los rótulos de sección que el
+Ordinario imprime pegados al final de la rúbrica anterior —«PLEGARIA
+EUCARÍSTICA» al final de la oración sobre las ofrendas, «Fórmula II» al final
+del *Yo confieso*—: se quitan por el texto y nombrados uno a uno
+(`ROTULO_PEGADO`), de modo que si la fuente cambia una letra no se quita
+nada.
+
+**El prefacio cuando el Misal no marca ninguno** —los domingos del tiempo
+ordinario, que dejan los ocho a elección— no se inventa: se dice que la
+elección es libre y se ofrece el juego del tiempo, que es lo que el libro
+manda tomar. Lo que no cae en un tiempo va a los comunes, que es lo que su
+propia rúbrica dice.
+
+**Y la rúbrica es prosa; lo que se reza, no.** Los renglones de una rúbrica
+son los del PDF y se juntan, que partidos no dicen nada; los del texto son
+unidades de sentido —así lo compone el Misal, para recitarlo— y se respetan,
+con sangría francesa como los salmos.
 
 ---
 

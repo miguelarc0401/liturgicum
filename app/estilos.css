@@ -1267,6 +1267,106 @@ body.con-carril #vista { padding-right: 2.1rem; }
   .ir-hoy { bottom: calc(3.3rem + env(safe-area-inset-bottom)); }
 }
 
+/* ----------------------------------------------------- la misa entera
+   El formulario se maqueta con las mismas piezas que la hora —.hora-sec,
+   .sec-cab, .rotulo, .alterna—, de modo que el carril, el apretado del
+   rotulo y el selector funcionan igual en los dos sitios y no hay dos
+   maneras de hacer lo mismo. Lo de aqui es lo que la misa anade: el
+   Ordinario plegado, las dos lenguas enfrentadas y la marca de los textos
+   que vienen por un camino mas flojo. */
+
+/* El Ordinario no es lo que se lee cada dia: es lo que se consulta. Pero lo
+   que lleva dentro es la misa, asi que cuando se abre se lee con la misma
+   tinta que lo demas; lo que lo distingue es que viene plegado. */
+
+/* El rotulo que se pliega: un boton que no parece un boton, con su galon
+   delante. El area que se toca es la del renglon entero. */
+.pliega {
+  all: unset; display: flex; align-items: baseline; gap: .4rem;
+  cursor: pointer; color: inherit; font: inherit;
+}
+.rotulo .pliega { width: 100%; }
+.pliega::before {
+  content: ""; flex: 0 0 auto; width: .42rem; height: .42rem;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg) translate(-.04rem, -.04rem);
+  transition: transform var(--rapido) var(--curva);
+}
+.pliega[aria-expanded="true"]::before {
+  transform: rotate(45deg) translate(-.02rem, -.08rem);
+}
+.pliega:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+.misa-sec .cuerpo[hidden] { display: none; }
+/* El mismo pliegue, en menudo: las rubricas del Ordo que caen dentro de una
+   seccion que no es suya —la de la colecta antes de la colecta— no se
+   llevan media pantalla por delante del texto que se busca. */
+.plegable { margin: 0 0 .9rem; }
+.pliega.menuda {
+  font-family: var(--sans); font-size: .7rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--tinta-suave); width: auto;
+}
+.pliega.menuda::before { width: .3rem; height: .3rem; }
+.plegable .cuerpo { margin-top: .7rem; }
+.misa-sec .cuerpo { animation: entra-vista .18s var(--curva); }
+
+/* Los renglones del Ordo: lo que se reza va en unidades de sentido, como
+   lo compone el Misal, con sangria francesa para que la continuacion de un
+   renglon largo no se confunda con el siguiente. La rubrica es prosa. */
+.ordo-p { margin: 0 0 .75rem; }
+.ordo-p .ln { display: block; padding-left: 1.3em; text-indent: -1.3em; }
+.ordo-rub { color: var(--rubrica); font-style: italic; }
+.ordo-rub .ln { padding-left: 0; text-indent: 0; text-wrap: pretty; }
+.misa-sec .ordo-p .rub { color: var(--rubrica); font-style: italic; }
+.misa-sec .epigrafe {
+  margin: -.4rem 0 .7rem; font-family: var(--sans); font-size: .78rem;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--tinta-suave);
+}
+.misa-sec .sub { margin: 1.1rem 0 0; }
+.misa-sec h3.rubrica { margin: 0 0 .45rem; }
+
+/* Las dos lenguas, enfrentadas. En el telefono no caben dos columnas: van
+   una debajo de otra, y el latin lleva el filete que dice donde empieza.
+   Desde que la caja da de si, a dos columnas, que es como esta maquetado
+   el leccionario impreso. */
+.bi { display: block; }
+.bi-la { padding-left: .7rem; border-left: 2px solid var(--filete); }
+.bi-es { margin-top: .55rem; }
+.lect .bi-es { margin-top: .9rem; }
+@media (min-width: 46rem) {
+  .bi { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.6rem; }
+  .bi-la { padding-left: 0; border-left: 0; border-right: 1px solid var(--filete); padding-right: 1.6rem; }
+  .bi-es { margin-top: 0; }
+  .lect .bi-es { margin-top: 0; }
+}
+
+/* El selector de dentro del cuerpo: el que no cabe en el rotulo porque son
+   sesenta y siete prefacios, o porque la seccion elige dos cosas (el acto
+   penitencial elige la invitacion y la formula). */
+.sub-cab {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .3rem .6rem;
+  margin: 0 0 .9rem;
+}
+.sub-rot {
+  font-family: var(--sans); font-size: .74rem; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--tinta-suave);
+}
+select.elige {
+  flex: 1 1 12rem; min-width: 0; max-width: 100%;
+  font-family: var(--sans); font-size: .82rem; color: inherit;
+  background: var(--papel); border: 1px solid var(--filete);
+  border-radius: 9px; padding: .3rem .4rem;
+}
+.sub-cab .alterna { max-width: none; }
+
+/* De donde salio el texto castellano, cuando no salio del sitio obvio: en
+   pequeno, al pie de la pieza y con el porque en el titulo. La regla del
+   proyecto es que lo que no se resolvio del todo se dice. */
+.testigo {
+  margin: -.45rem 0 .8rem; font-family: var(--sans); font-size: .7rem;
+  letter-spacing: .03em; color: var(--tinta-suave);
+}
+.testigo::before { content: "— "; }
+
 /* ------------------------------------------------------- menos movimiento */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -17,6 +17,8 @@ const POR_OMISION = {
   epifania: 'domingo', ascension: 'domingo', corpus: 'domingo',
   memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun',
   hAntFinal: '', calAbre: 'misa',
+  // la misa: el Ordinario intercalado, y lo que se elige en él
+  ordinario: 'plegado', latinBi: 'clementina', ordoOps: {},
   // el formato del texto (Ajustes, «Formato del texto»)
   letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
   particion: 'si', cruces: 'si', despierto: false,
@@ -27,6 +29,12 @@ const POR_OMISION = {
 const E = {              // todo el estado de la app
   cfg: Object.assign({}, POR_OMISION),
   indice: null, cal: null, lecturas: null,
+  lecturasEs: null,      // la pareja castellana, en el bilingüe
+  misa: null, latino: null, prefacios: null, ordinario: null,
+  rubrica: null,         // nº de rúbrica -> la rúbrica del Ordo
+  misaVista: null,       // el formulario que se está leyendo, ya armado
+  misaOps: {},           // lo elegido en cada misa (el prefacio)
+  pliegues: {},          // qué secciones del Ordinario están abiertas
   horas: null, horasDias: null, hora: null,
   oficio: null,          // la hora que se está rezando, con sus opciones
   horasCel: null,        // la celebración elegida, cuando hay donde elegir
@@ -101,6 +109,12 @@ function tx(t) { return E.cfg.acentos ? t : sinAcento(t); }
 /** La lengua en que se está leyendo, para nombrarla donde hace falta. */
 function lengua() {
   return E.cfg.fuente === 'es' ? 'el castellano' : 'el latín';
+}
+
+/** El nombre de la versión que se está leyendo, para decirlo en un aviso. */
+function nombreFuente() {
+  return { clementina: 'la Vulgata Clementina', nova: 'la Nova Vulgata',
+    es: 'el castellano', bi: 'el bilingüe' }[E.cfg.fuente] || E.cfg.fuente;
 }
 
 function hoyISO() {
@@ -283,10 +297,22 @@ async function json(nombre) {
   return r.json();
 }
 
+/* El bilingüe son dos leccionarios a la vez: el latino que se estuviera
+ * leyendo —el que se elija en Ajustes queda recordado, así que quien prefiere
+ * la Nova la sigue teniendo— y el castellano. Los dos traen los mismos
+ * bloques en el mismo orden para las mismas claves (comprobado: 1 035 claves
+ * y ni una desigual), así que la pareja de cada lectura es la que ocupa su
+ * mismo sitio. `E.lecturas` sigue siendo el latino, que es sobre el que se
+ * busca. */
 async function cargaLecturas(fuente) {
-  if (E.lecturas && E.lecturas.fuente === fuente) return;
-  E.lecturas = await json('lecturas_' + fuente + '.json');
-  E.busqueda = null;
+  const la = fuente === 'bi' ? (E.cfg.latinBi || 'clementina') : fuente;
+  if (!E.lecturas || E.lecturas.fuente !== la) {
+    E.lecturas = await json('lecturas_' + la + '.json');
+    E.busqueda = null;
+  }
+  if (fuente === 'bi' && !E.lecturasEs) {
+    E.lecturasEs = await json('lecturas_es.json');
+  }
 }
 
 function indexaIndice() {
@@ -341,8 +367,18 @@ function versos(tramos, sep, castellano) {
   }).join(sep || '<p class="omision">[…]</p>');
 }
 
-function pintaLectura(l) {
-  const h = ['<section class="lect">'];
+/** Una lectura, y en el bilingüe su pareja al lado. Los dos leccionarios
+ *  dan los mismos bloques en el mismo orden, así que la pareja es la que
+ *  ocupa su mismo sitio: no hay que casar nada. */
+function pintaLectura(l, l2) {
+  if (!l2) return '<section class="lect">' + cuerpoLectura(l) + '</section>';
+  return '<section class="lect"><div class="bi">'
+    + '<div class="bi-la" lang="la">' + cuerpoLectura(l) + '</div>'
+    + '<div class="bi-es">' + cuerpoLectura(l2) + '</div></div></section>';
+}
+
+function cuerpoLectura(l) {
+  const h = [];
   // La acentuación litúrgica es del latín: es un agudo que se le pone a la
   // vocal tónica para recitar, y quitárselo al castellano sería estropearle
   // la ortografía. `l.es` lo dice pieza por pieza, no la fuente entera,
@@ -360,7 +396,7 @@ function pintaLectura(l) {
   // y no se traduce del latín. El latín está a un cambio de ajuste.
   if (l.sin) {
     return h.join('') + '<p class="omision">No disponible en castellano. '
-      + 'En latín, sí.</p></section>';
+      + 'En latín, sí.</p>';
   }
   if (l.s) h.push('<p class="sumario">' + t(l.s) + '</p>');
   if (l.k === 'salmo' || l.k === 'aleluya') {
@@ -375,14 +411,14 @@ function pintaLectura(l) {
     // el cierre: el castellano lo trae por lectura, porque cambia («Palabra
     // de Dios» en la lectura y «Palabra del Señor» en el evangelio); el
     // latino es uno para todo el libro y vive en la cabecera del fichero
-    const z = l.z || (l.k === 'lectura' ? E.lecturas.cierre : '');
+    const z = l.z || (l.k === 'lectura' && !l.es ? E.lecturas.cierre : '');
     if (z) h.push('<p class="cierre">' + t(z) + '</p>');
     if (l.rz) h.push('<p class="resp">' + t(l.rz) + '</p>');
     else if (l.r && l.k === 'aleluya') {
       h.push('<p class="resp">℟. ' + t(l.r) + '</p>');
     }
   }
-  return h.join('') + '</section>';
+  return h.join('');
 }
 
 /** Las celebraciones de una fecha, ya ordenadas por preferencia.
@@ -525,12 +561,947 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   pintaNota(cel, val);
   if (!lects) {
     vista.innerHTML = '<p class="aviso">Este formulario no está en '
-      + esc(E.lecturas.fuente) + '.</p>';
+      + esc(nombreFuente()) + '.</p>';
     return;
   }
-  vista.innerHTML = lects.map(pintaLectura).join('');
+  pintaCuerpoMisa(b.k, lects);
   if (iso) { E.ultimaMisa = location.hash; cabeceraFija(true); }
   colocaPosicion();
+}
+
+/* El cuerpo de la misa: el formulario entero si los cuatro ficheros del
+ * Misal ya están, y las lecturas solas mientras no estén. Son 3,8 MB que no
+ * se precachean, así que la primera misa de la sesión se abre por las
+ * lecturas —que es lo que se busca— y el formulario entra cuando llega. */
+function pintaCuerpoMisa(clave, lects) {
+  E.claveMisa = clave;
+  const entero = E.misa ? pintaMisaEntera(clave, lects) : null;
+  if (entero) {
+    vista.innerHTML = entero;
+    pintaCarril(E.misaVista);
+    aprietaCabeceras();
+    return;
+  }
+  E.misaVista = null;
+  limpiaCarril();
+  vista.innerHTML = lects.map((l, i) =>
+    pintaLectura(l, parejaEs(clave, i))).join('')
+    + (E.misa ? '' : '<p class="aviso cargando">Abriendo el formulario…</p>');
+  if (E.misa) return;
+  cargaMisa().then((bien) => {
+    if (E.vista !== 'hoy' || E.claveMisa !== clave) return;
+    if (bien) {
+      const h = pintaMisaEntera(clave, lects);
+      if (h) {
+        vista.innerHTML = h;
+        pintaCarril(E.misaVista);
+        aprietaCabeceras();
+        return;
+      }
+    }
+    const aviso = vista.querySelector('.aviso.cargando');
+    if (!aviso) return;
+    aviso.classList.remove('cargando');
+    aviso.textContent = bien
+      ? 'De esta misa el Misal no trae formulario: sólo sus lecturas.'
+      : 'No he podido abrir el formulario de la misa. Es lo único de la app '
+        + 'que no viene guardado de antemano —son 3,8 MB—: la primera vez '
+        + 'hace falta conexión, y después queda en el teléfono.';
+  });
+}
+
+/* ========================================================= la misa entera
+ *
+ * La sección «Misa» enseñaba las lecturas; lo que el Misal imprime es el
+ * formulario entero. Aquí se arma: los propios en su sitio, las lecturas
+ * dentro, el Ordinario intercalado donde va —plegado, porque no se lee cada
+ * día, pero cuando se busca se busca ahí— y lo que queda a elegir.
+ *
+ * Aquí no se decide nada, igual que con las lecturas: `datos/misa.json` trae
+ * cada pieza ya resuelta y auditada por el módulo Missale —de qué
+ * celebración sale, por qué camino y con cuántos testigos—,
+ * `misal_latino.json` el Misal de 2002 por su propio nombre,
+ * `prefacios.json` los dos juegos emparejados por número de rúbrica y
+ * `ordinario.json` las 146 rúbricas del Ordo en las dos lenguas. Son 3,8 MB
+ * que el service worker no precachea a propósito —serían 3,8 MB inútiles en
+ * el teléfono de quien sólo lee las lecturas—, pero que sí guarda en cuanto
+ * se piden: la primera misa necesita conexión y de ahí en adelante no. Si no
+ * llegan, las lecturas se enseñan igual y se dice qué es lo que falta.
+ */
+let _pidiendoMisa = null;
+
+async function cargaMisa() {
+  if (E.misa) return true;
+  if (!_pidiendoMisa) {
+    _pidiendoMisa = Promise.all([json('misa.json'), json('misal_latino.json'),
+      json('prefacios.json'), json('ordinario.json')]).then(([m, l, p, o]) => {
+      E.misa = m; E.latino = l; E.prefacios = p; E.ordinario = o;
+      E.rubrica = new Map(o.rubricas.map((r) => [String(r.n), r]));
+      return true;
+    }, () => { _pidiendoMisa = null; return false; });
+  }
+  return _pidiendoMisa;
+}
+
+/* La lengua del formulario es la misma que la de las lecturas, que es la que
+ * se elige en Ajustes: el castellano es la traducción de México cosechada
+ * del misalito, el latín el Misal típico de 2002, y en bilingüe van los dos.
+ * Se emparejan rúbrica a rúbrica, que es lo que los dos libros comparten:
+ * el Ordinario de México numera como el latino. */
+function conLatin() { return E.cfg.fuente !== 'es'; }
+function conCastellano() { return E.cfg.fuente === 'es' || E.cfg.fuente === 'bi'; }
+
+/* Los rótulos de sección que el Ordinario imprime pegados al final de la
+ * rúbrica anterior —el libro los compone como un titulillo y el volcado los
+ * deja donde caen—: «PLEGARIA EUCARÍSTICA» al final de la oración sobre las
+ * ofrendas, «Fórmula II» al final del Yo confieso, «Ritus conclusionis» al
+ * final de la poscomunión. Se quitan por el texto, uno por uno y nombrados:
+ * si la fuente cambia una letra, no se quita nada. */
+const ROTULO_PEGADO = new Set([
+  'Acto Penitencial', 'Actus pænitentialis *',
+  'Fórmula I', 'Fórmula II', 'Fórmula III',
+  'Liturgia verbi', 'Liturgia eucharistica',
+  'PLEGARIA EUCARÍSTICA', 'PREX EUCHARISTICA', 'PREX EUCHARISTICA II',
+  'PREX EUCHARISTICA III', 'PREX EUCHARISTICA IV',
+  'PRÆFATIO I DE ADVENTU', 'De duobus adventibus Christi',
+  'Ritus communionis', 'Ritus conclusionis'
+]);
+
+function textoLinea(ln) { return ln.map((tr) => tr[1]).join('').trim(); }
+
+/** Una línea del Ordinario castellano: viene en tiradas, y el rojo es la
+ *  rúbrica (así la marca el PDF del Ordinario de México). */
+function lineaEs(ln) {
+  return '<span class="ln">' + ln.map((tr) => tr[0]
+    ? '<i class="rub">' + esc(tr[1]) + '</i>' : esc(tr[1])).join('')
+    + '</span>';
+}
+
+/** Los párrafos de un lado del Ordo, en su lengua. El latín pasa por `tx()`
+ *  porque su acentuación es la litúrgica y se puede apagar en Ajustes; el
+ *  castellano va tal cual, que quitarle las tildes sería estropearlo. */
+function ordoBloques(bs, lado) {
+  const h = [];
+  for (const b of bs || []) {
+    const lns = (b.t || []).filter((ln) => !ROTULO_PEGADO.has(
+      lado === 'es' ? textoLinea(ln) : String(ln).trim()));
+    if (!lns.length) continue;
+    // La rúbrica es prosa y sus renglones son los del PDF: se juntan, que
+    // partidos no dicen nada. Lo que se reza va por renglones, que así lo
+    // compone el Misal —en unidades de sentido, para recitarlo— y así se
+    // lee: con sangría francesa, como los salmos.
+    if (b.r) {
+      const t = lado === 'es'
+        ? lns.map(textoLinea).join(' ')
+        : lns.map((ln) => String(ln).trim()).join(' ');
+      h.push('<p class="ordo-p ordo-rub"><span class="ln">'
+        + esc(lado === 'es' ? t : tx(t)) + '</span></p>');
+      continue;
+    }
+    h.push('<p class="ordo-p">' + lns.map((ln) => lado === 'es'
+      ? lineaEs(ln) : '<span class="ln">' + esc(tx(ln)) + '</span>')
+      .join('') + '</p>');
+  }
+  return h.join('');
+}
+
+/** Renglones llanos —los prefacios, las bendiciones del apéndice—, que no
+ *  vienen en tiradas sino en texto seguido. Van en un solo párrafo: lo que
+ *  el Misal parte son unidades de sentido, no párrafos. */
+function ordoLlano(xs, lado) {
+  if (!(xs || []).length) return '';
+  return '<p class="ordo-p">' + xs.map((s) => '<span class="ln">'
+    + esc(lado === 'la' ? tx(s) : s) + '</span>').join('') + '</p>';
+}
+
+/** Las dos lenguas, enfrentadas. En una pantalla estrecha no caben dos
+ *  columnas, así que van una debajo de otra y el latín lleva su filete. */
+function bilingue(hla, hes) {
+  if (!hla) return hes || '';
+  if (!hes) return hla;
+  return '<div class="bi"><div class="bi-la" lang="la">' + hla + '</div>'
+    + '<div class="bi-es">' + hes + '</div></div>';
+}
+
+/* ------------------------------------------------------ lo que se elige
+ *
+ * Qué bloques de una rúbrica son de cada alternativa, medido sobre el
+ * fichero y escrito aquí uno por uno. No se deduce, y no se puede: los dos
+ * libros no ordenan igual sus alternativas —el latino dice «Dóminus
+ * vobíscum» en tercer lugar y el castellano «El Señor esté con ustedes» en
+ * el primero—, el latino da una sola invitación al acto penitencial donde el
+ * castellano da cuatro, y en el Misterio de la fe la numeración de la fuente
+ * no coincide con las tres aclamaciones, porque las dos primeras fórmulas
+ * comparten la respuesta del pueblo.
+ *
+ * `com` son los bloques que van siempre —la rúbrica que introduce, la
+ * respuesta del pueblo, lo que sigue—; cada opción añade los suyos, y se
+ * imprimen en el orden del libro. Una rúbrica que no esté aquí se imprime
+ * entera, con sus alternativas seguidas, igual que el libro las imprime: no
+ * se pierde nada por no estar.
+ */
+const ELIGE = {
+  saludo: { rot: 'Saludo', n: '2',
+    com: { es: [0, 4, 5, 6, 7], la: [0, 4, 5, 6, 7] },
+    ops: [['I', [1], [3]], ['II', [2], [1]], ['III', [3], [2]]] },
+  penit_inv: { rot: 'Invitación', n: '4', com: { es: [0], la: [0] },
+    ops: [['I', [1], [1]], ['II', [2], [1]], ['III', [3], [1]],
+      ['IV', [4], [1]]] },
+  oren: { rot: 'Oren, hermanos', n: '29',
+    com: { es: [0, 4, 5], la: [0, 2, 3] },
+    ops: [['I', [1], [1]], ['II', [2], [1]], ['III', [3], [1]]] },
+  padrenuestro: { rot: 'Invitación', n: '124',
+    com: { es: [0, 5, 6], la: [0, 2, 3] },
+    ops: [['I', [1], [1]], ['II', [2], [1]], ['III', [3], [1]],
+      ['IV', [4], [1]]] },
+  paz: { rot: 'Invitación a la paz', n: '128',
+    com: { es: [0, 5], la: [0, 2] },
+    ops: [['I', [1], [1]], ['II', [2], [1]], ['III', [3], [1]],
+      ['IV', [4], [1]]] },
+  antes_com: { rot: 'Antes de comulgar', n: '131',
+    com: { es: [0], la: [0] }, ops: [['I', [1], [1]], ['II', [2], [2]]] },
+  despedida: { rot: 'Despedida', n: '144',
+    com: { es: [0, 7, 8], la: [0, 2, 3] },
+    ops: [['I', [1], [1]], ['II', [2], [1]], ['III', [3], [1]],
+      ['IV', [4], [1]], ['V', [5, 6], [1]]] },
+  // el Misterio de la fe vive dentro de cada plegaria, y cambia de rúbrica
+  // con ella (91, 104, 112 y 121): las cuatro traen los mismos bloques
+  misterio: { rot: 'Misterio de la fe', com: { es: [], la: [] },
+    ops: [['I', [0, 1, 2, 3, 4], [0, 1, 2, 3]],
+      ['II', [0, 5, 6, 7, 8], [0, 1, 2, 4]],
+      ['III', [0, 9, 10, 11], [0, 1, 2, 5]]] }
+};
+
+/** La elección que lleva cada rúbrica, para que `ordoUna()` la encuentre. */
+const ELIGE_DE_RUBRICA = { 2: 'saludo', 4: 'penit_inv', 29: 'oren',
+  124: 'padrenuestro', 128: 'paz', 131: 'antes_com', 144: 'despedida',
+  91: 'misterio', 104: 'misterio', 112: 'misterio', 121: 'misterio' };
+
+/* Las tres fórmulas del acto penitencial no son tres alternativas de una
+ * rúbrica: son tres rúbricas. La primera va pegada detrás de las cuatro
+ * invitaciones de la rúbrica 4, y las otras dos son las rúbricas 5 y 6
+ * enteras menos su encabezamiento, porque el latino repite la invitación en
+ * cada una y el castellano la dice una sola vez. */
+const PENITENCIAL = [['I', '4', 5, 2], ['II', '5', 0, 2], ['III', '6', 0, 2]];
+
+/* El símbolo tampoco: el niceno-constantinopolitano es la rúbrica 18 y el de
+ * los apóstoles la 19. */
+const SIMBOLO = [['Niceno', '18', 'Símbolo niceno-constantinopolitano'],
+  ['Apóstoles', '19', 'Símbolo de los apóstoles']];
+
+/** Lo elegido en cada sitio. Lo del Ordinario —el saludo, la despedida, la
+ *  plegaria— es de quien celebra y no del día, así que se recuerda con los
+ *  demás ajustes; el prefacio es del día y va con la sesión. */
+function elegido(id, cuantas) {
+  const v = (E.cfg.ordoOps || {})[id];
+  const i = typeof v === 'number' ? v : parseInt(v, 10);
+  return (i >= 0 && i < cuantas) ? i : 0;
+}
+
+function guardaElegido(id, v) {
+  if (!E.cfg.ordoOps) E.cfg.ordoOps = {};
+  E.cfg.ordoOps[id] = v;
+  guardaCfg();
+}
+
+/** Los bloques de una rúbrica que tocan, con la opción elegida. */
+function bloquesElegidos(r, lado, e, i) {
+  const bs = r[lado] || [];
+  if (!e) return bs;
+  const op = e.ops[i] || e.ops[0];
+  const quiero = new Set((e.com[lado] || []).concat(
+    lado === 'es' ? op[1] : op[2]));
+  return bs.filter((_, j) => quiero.has(j));
+}
+
+/** Una rúbrica del Ordo, en las lenguas que toquen. */
+function ordoUna(n) {
+  const r = E.rubrica.get(String(n));
+  if (!r || r.pref) return '';
+  const id = ELIGE_DE_RUBRICA[n];
+  const e = id ? ELIGE[id] : null;
+  const i = e ? elegido(id, e.ops.length) : 0;
+  return bilingue(
+    conLatin() ? ordoBloques(bloquesElegidos(r, 'la', e, i), 'la') : '',
+    conCastellano() ? ordoBloques(bloquesElegidos(r, 'es', e, i), 'es') : '');
+}
+
+/* El día que no tiene misa no tiene Ordinario, ni suelto ni pegado a un
+ * propio: lo pone `armaMisa` al empezar a armar el formulario. */
+let _sinOrdo = false;
+
+/** Varias rúbricas seguidas. */
+function ordo(ns) {
+  if (E.cfg.ordinario === 'no' || _sinOrdo) return '';
+  return ns.map(ordoUna).filter(Boolean).join('');
+}
+
+/* Las rúbricas del Ordo que caen dentro de una sección que no es suya —la
+ * de la colecta antes de la colecta, la de la comunión alrededor de la
+ * antífona— también se pliegan: si no, la rúbrica se lleva media pantalla y
+ * el texto que se busca queda debajo. Van bajo un rótulo menudo, para que se
+ * vea que están y no estorben. */
+function ordoPlegado(ns, id) {
+  const h = ordo(ns);
+  if (!h || E.cfg.ordinario === 'abierto') return h;
+  const abierta = !!E.pliegues[id];
+  return '<div class="plegable"><button type="button" class="pliega menuda" '
+    + 'data-pliega="' + esc(id) + '" aria-expanded="' + abierta + '">'
+    + 'Rúbricas</button><div class="cuerpo"' + (abierta ? '' : ' hidden')
+    + '>' + (abierta ? h : '') + '</div></div>';
+}
+
+/** Una rúbrica desde cierto bloque hasta el final, que es como se toman las
+ *  fórmulas del acto penitencial. */
+function ordoDesde(n, des, dla) {
+  const r = E.rubrica.get(String(n));
+  if (!r) return '';
+  return bilingue(
+    conLatin() ? ordoBloques((r.la || []).slice(dla), 'la') : '',
+    conCastellano() ? ordoBloques((r.es || []).slice(des), 'es') : '');
+}
+
+/** Las primeras palabras de un texto: con eso se reconoce una alternativa
+ *  sin leerla entera, y es lo que va en el título del botón. */
+function primeras(t, n) {
+  const p = String(t || '').replace(/\s+/g, ' ').trim().split(' ');
+  const c = n || 7;
+  return p.slice(0, c).join(' ') + (p.length > c ? '…' : '');
+}
+
+/** El primer texto —no rúbrica— de una alternativa, para nombrarla. */
+function incipitOpcion(n, id, i) {
+  const r = E.rubrica.get(String(n));
+  const e = ELIGE[id];
+  if (!r || !e) return '';
+  for (const lado of ['es', 'la']) {
+    if (!r[lado]) continue;
+    for (const b of bloquesElegidos(r, lado, e, i)) {
+      if (b.r || !b.t.length) continue;
+      return primeras(lado === 'es' ? textoLinea(b.t[0]) : b.t[0]);
+    }
+  }
+  return '';
+}
+
+/* -------------------------------------------------- los propios del día
+ *
+ * De dónde salió el texto castellano. La mayoría viene de la celebración o
+ * de otra del mismo formulario del Misal, y eso no hace falta decirlo; los
+ * caminos más flojos sí se dicen, que es la regla del proyecto: lo que no se
+ * pudo resolver del todo se escribe, no se disimula.
+ */
+const POR_DONDE = {
+  'día': ['del día', 'No se pudo atribuir a la celebración: es lo que el '
+    + 'misalito imprimió esos días, y todos los días de la celebración que '
+    + 'traen algo aquí traen lo mismo'],
+  'común': ['del común', 'Del común que el santoral ofrece a esta '
+    + 'celebración'],
+  'suelto': ['del común', 'De un texto de los comunes que cae entero en '
+    + 'este formulario del Misal']
+};
+
+/** Una pieza propia del formulario: la antífona de entrada, la colecta, la
+ *  oración sobre las ofrendas, la de comunión, la de después. */
+function pintaPieza(f, lat, ranura) {
+  const p = (f.p || {})[ranura];
+  const l = lat && lat.p ? lat.p[ranura] : null;
+  if (!p && !l) return '';
+  let hes = '';
+  if (conCastellano()) {
+    if (p) {
+      const d = POR_DONDE[p.via];
+      hes = '<p class="texto">' + esc(p.t) + '</p>' + (d
+        ? '<p class="testigo" title="' + esc(d[1] + '. ' + (p.n || 1)
+          + (p.n === 1 ? ' testigo' : ' testigos') + ' en los cien '
+          + 'misalitos') + '">' + esc(d[0]) + '</p>' : '');
+    } else {
+      hes = '<p class="omision">No disponible en castellano. '
+        + 'En latín, sí.</p>';
+    }
+  }
+  let hla = '';
+  if (conLatin()) {
+    if (l) {
+      hla = '<p class="texto" lang="la">' + esc(tx((l.t || []).join(' ')))
+        + '</p>' + (l.c ? '<p class="formula"><span class="cita">'
+          + esc(l.c) + '</span></p>' : '');
+    } else if (!conCastellano()) {
+      hla = '<p class="omision">El Misal latino no trae esta pieza en este '
+        + 'formulario.</p>';
+    }
+  }
+  return bilingue(hla, hes);
+}
+
+/* --------------------------------------------------------- los prefacios */
+
+/** Un prefacio, venga del juego castellano, de los propios cosechados del
+ *  misalito o de los que sólo existen en el Misal latino. */
+function pintaPrefacio(id) {
+  const P = E.prefacios;
+  const p = P.prefacios[id] || P.propios[id] || P.solo_latino[id];
+  if (!p) return '<p class="omision">No encuentro ese prefacio.</p>';
+  const soloLa = !!P.solo_latino[id];
+  const cosechado = !!P.propios[id];
+  let hes = '';
+  if (conCastellano()) {
+    hes = soloLa
+      ? '<p class="omision">No disponible en castellano: este prefacio sólo '
+        + 'está en el Misal latino.</p>'
+      : '<h3 class="rubrica">' + esc(p.t) + '</h3>'
+        + (p.ep ? '<p class="epigrafe">' + esc(p.ep) + '</p>' : '')
+        // el prefacio es un solo bloque de renglones, no un párrafo por
+        // renglón: lo que el Misal parte son unidades de sentido
+        + (cosechado ? ordoLlano(p.tx, 'es')
+          : ordoBloques([{ o: 0, r: false, t: p.tx || [] }], 'es'))
+        + (p.rub ? '<p class="ordo-p ordo-rub">' + esc(p.rub.join(' '))
+          + '</p>' : '');
+  }
+  let hla = '';
+  if (conLatin()) {
+    const tl = soloLa ? p.tx : p.tx_la;
+    hla = tl
+      ? '<h3 class="rubrica" lang="la">' + esc(tx(p.t_la || p.t)) + '</h3>'
+        + (p.ep_la ? '<p class="epigrafe" lang="la">' + esc(tx(p.ep_la))
+          + '</p>' : '') + ordoLlano(tl, 'la')
+      : (conCastellano() ? '' : '<p class="omision">Este prefacio no está en '
+        + 'el Misal latino.</p>');
+    if (!tl && conCastellano()) {
+      hla = '<p class="omision">Sin pareja en el Misal latino.</p>';
+    }
+  }
+  return bilingue(hla, hes);
+}
+
+/** Los prefacios que el día marca, con el propio cosechado primero. */
+function prefaciosDe(clave, f) {
+  const P = E.prefacios;
+  const ops = [];
+  const mete = (id) => {
+    if (!id || ops.some((o) => o.id === id)) return;
+    const p = P.prefacios[id] || P.propios[id] || P.solo_latino[id];
+    if (p) ops.push({ id: id, t: p.t });
+  };
+  mete(f.ppd);
+  for (const id of f.pr || []) mete(id);
+  for (const [id, p] of Object.entries(P.prefacios)) {
+    if ((p.cuando || []).includes(clave)) mete(id);
+  }
+  return ops;
+}
+
+/* Cuando el Misal no marca prefacio —y en los domingos del tiempo ordinario
+ * no lo marca, porque los ocho están a elección— no se inventa uno: se
+ * ofrece el juego del tiempo, que es lo que el libro manda tomar, y se dice
+ * que la elección es libre dentro de él. Lo que no cae en un tiempo va a los
+ * comunes, que es lo que su propia rúbrica dice: «se dice en las misas que
+ * carecen de prefacio propio y no deben tomar un prefacio del tiempo». */
+const GRUPO_DEL_TIEMPO = {
+  'TIEMPO DE ADVIENTO': 'adviento', 'TIEMPO DE NAVIDAD': 'navidad',
+  'TIEMPO DE CUARESMA': 'cuaresma',
+  'TRIDUO PASCUAL Y TIEMPO DE PASCUA': 'pascua',
+  'PROPIO DE LOS SANTOS': 'santos', 'COMÚN DE LOS SANTOS': 'santos',
+  'OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS': 'santos'
+};
+
+function grupoDelTiempo(f) {
+  if (f.s === 'TIEMPO ORDINARIO' && /^Ciclo/.test(f.e || '')) return 'domingos';
+  return GRUPO_DEL_TIEMPO[f.s] || 'comun';
+}
+
+function prefaciosDelTiempo(f) {
+  const g = grupoDelTiempo(f);
+  return Object.entries(E.prefacios.prefacios)
+    .filter(([, p]) => p.grupo === g).map(([id, p]) => ({ id: id, t: p.t }));
+}
+
+const GRUPO_PREF = [['adviento', 'Adviento'], ['navidad', 'Navidad'],
+  ['cuaresma', 'Cuaresma'], ['pascua', 'Pascua'],
+  ['domingos', 'Domingos del tiempo ordinario'],
+  ['maria', 'Santa María Virgen'], ['santos', 'Santos'],
+  ['sacramentos', 'Sacramentos'], ['difuntos', 'Difuntos'],
+  ['comun', 'Comunes']];
+
+const GRUPO_PREF_ROT = {};
+for (const [g, rot] of GRUPO_PREF) GRUPO_PREF_ROT[g] = rot.toLowerCase();
+
+/** El selector del prefacio. Son 67 castellanos, 28 propios cosechados y 39
+ *  que sólo existen en latín: eso no cabe en una burbuja de botones. */
+function selectorPrefacio(cual, arriba, rotArriba) {
+  const P = E.prefacios;
+  const op = (id, t) => '<option value="' + esc(id) + '"'
+    + (id === cual ? ' selected' : '') + '>' + esc(t) + '</option>';
+  const h = ['<select class="elige" data-elige="prefacio" '
+    + 'aria-label="Elegir el prefacio">'];
+  if ((arriba || []).length) {
+    h.push('<optgroup label="' + esc(rotArriba) + '">');
+    for (const o of arriba) h.push(op(o.id, o.t));
+    h.push('</optgroup>');
+  }
+  const por = {};
+  for (const [id, p] of Object.entries(P.prefacios)) {
+    (por[p.grupo] = por[p.grupo] || []).push([id, p.t]);
+  }
+  for (const [g, rot] of GRUPO_PREF) {
+    if (!por[g]) continue;
+    h.push('<optgroup label="' + esc(rot) + '">');
+    for (const [id, t] of por[g]) h.push(op(id, t));
+    h.push('</optgroup>');
+  }
+  h.push('<optgroup label="Propios, cosechados del misalito">');
+  for (const [id, p] of Object.entries(P.propios)) h.push(op(id, p.t));
+  h.push('</optgroup><optgroup label="Sólo en el Misal latino">');
+  for (const [id, p] of Object.entries(P.solo_latino)) h.push(op(id, p.t));
+  return h.join('') + '</optgroup></select>';
+}
+
+/* --------------------------------------------------------- las plegarias */
+
+/** Las que se ofrecen: las cuatro del Ordinario, en las dos lenguas y
+ *  numeradas rúbrica a rúbrica, y las seis que sólo trae el Misal latino
+ *  —las dos de la reconciliación y las cuatro de diversas necesidades—. */
+function plegariasDe() {
+  const O = E.ordinario;
+  const ops = Object.entries(O.plegarias).map(([id, p]) =>
+    ({ id: id, t: p.t }));
+  for (const [id, p] of Object.entries(O.plegarias_la)) {
+    if (/^prex-eucharistica-i{1,3}$|^prex-eucharistica-iv$/.test(id)) continue;
+    ops.push({ id: id, t: p.t, soloLa: true });
+  }
+  return ops;
+}
+
+function pintaPlegaria(id) {
+  const O = E.ordinario;
+  const p = O.plegarias[id];
+  if (p) {
+    const ns = [];
+    for (let n = p.desde; n <= p.hasta; n++) ns.push(String(n));
+    const propias = conCastellano()
+      ? Object.entries(p.propias || {}).map(([rot, bs]) =>
+        '<div class="sub"><h3 class="rubrica">' + esc(bonitoRotulo(rot))
+        + '</h3>' + ordoBloques(bs, 'es') + '</div>').join('') : '';
+    return ns.map(ordoUna).filter(Boolean).join('') + propias;
+  }
+  const l = O.plegarias_la[id];
+  if (!l) return '<p class="omision">No encuentro esa plegaria.</p>';
+  return (conLatin() ? '<h3 class="rubrica" lang="la">' + esc(tx(l.t))
+    + '</h3>' + (l.rub ? ordoBloques([{ o: 0, r: true, t: l.rub }], 'la') : '')
+    + ordoBloques(l.tx, 'la') : '')
+    + (conCastellano() ? '<p class="omision">No disponible en castellano: '
+      + 'el Ordinario de México sólo trae las cuatro plegarias del Misal; '
+      + 'ésta está en latín.</p>' : '');
+}
+
+/** «REUNIDOS EN COMUNIÓN PROPIOS» es como lo rotula la fuente. */
+function bonitoRotulo(t) {
+  const s = String(t).toLowerCase();
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/* ------------------------------ la bendición solemne y sobre el pueblo
+ * El Ordinario de México no las trae y el misalito sólo imprime la oración
+ * sobre el pueblo de la Cuaresma —ésa va en su sitio, como un propio más—.
+ * Las veinte bendiciones solemnes y las veintiocho oraciones sobre el pueblo
+ * del apéndice del Misal están en latín, y así se ofrecen. */
+function bendicionesDe() {
+  const L = E.latino;
+  const ops = [['', 'La bendición sencilla']];
+  for (const p of (L.bendiciones || {}).piezas || []) {
+    ops.push(['b' + p.n, 'Solemne ' + p.n + ' · ' + (p.t || '')]);
+  }
+  for (const p of (L.super_populum || {}).piezas || []) {
+    ops.push(['s' + p.n, 'Super populum ' + p.n + ' · '
+      + primeras((p.tx || [])[0], 5)]);
+  }
+  return ops;
+}
+
+function pintaBendicion(id) {
+  if (!id || !conLatin()) return '';
+  const L = E.latino;
+  const caja = id[0] === 'b' ? L.bendiciones : L.super_populum;
+  const p = (caja.piezas || []).find((x) => String(x.n) === id.slice(1));
+  if (!p) return '';
+  return '<div class="sub" lang="la">'
+    + (p.t ? '<h3 class="rubrica">' + esc(tx(p.t)) + '</h3>' : '')
+    + ordoBloques([{ o: 0, r: true, t: caja.rubrica || [] },
+      { o: 0, r: false, t: p.tx || [] }], 'la') + '</div>';
+}
+
+/* -------------------------------------------------- armar el formulario */
+
+/** Dónde van las rúbricas del Ordo entre las lecturas. */
+function ordoDeLectura(l, i) {
+  if (i === 0) return ['10'];
+  if (l.k === 'salmo') return ['11'];
+  if (l.k === 'aleluya') return ['13'];
+  if (l.k === 'lectura' && /evangeli/i.test(l.t || '')) return ['14', '15'];
+  return ['12'];
+}
+
+const ROTULO_SEC = {
+  resena: 'Reseña', entrada: 'Antífona de entrada',
+  inicio: 'Ritos iniciales', penitencial: 'Acto penitencial',
+  gloria: 'Gloria', colecta: 'Oración colecta',
+  tras_evangelio: 'Después del Evangelio', credo: 'Profesión de fe',
+  fieles: 'Oración de los fieles',
+  ofertorio: 'Preparación de las ofrendas',
+  ofrendas: 'Oración sobre las ofrendas', prefacio: 'Prefacio',
+  plegaria: 'Plegaria eucarística', comunion_rito: 'Rito de comunión',
+  comunion: 'Antífona de comunión',
+  poscomunion: 'Oración después de la comunión',
+  pueblo: 'Oración sobre el pueblo', conclusion: 'Rito de conclusión'
+};
+
+/** El rótulo de una lectura, para el carril. */
+function rotuloCorto(l) {
+  const t = (l.t || '').replace(/\s+/g, ' ').trim();
+  if (!t) return 'Lectura';
+  const c = t.charAt(0) + t.slice(1).toLowerCase();
+  return c.length > 22 ? c.slice(0, 21) + '…' : c;
+}
+
+/* Las otras misas del mismo día. El leccionario numera las que tienen
+ * lecturas propias —las tres de Navidad son tres formularios suyos, y salen
+ * en la tira de arriba—; las que no numera viven en `otros` colgando de la
+ * misma unidad del Misal con un sufijo: la vespertina de la vigilia de san
+ * Juan Bautista y de los Apóstoles, y la segunda y la tercera de Difuntos.
+ * Cambian los propios y no las lecturas, así que se eligen aquí dentro. */
+function otrasMisas(f) {
+  const ops = [{ id: '', rot: 'Del día', tit: 'La misa del día' }];
+  const pre = f.u + '#';
+  for (const [k, v] of Object.entries(E.misa.otros || {})) {
+    if (k.indexOf(pre) !== 0) continue;
+    const nombre = bonitoRotulo(String(v.cel || k).split('#')[1]
+      .replace(/-/g, ' '));
+    ops.push({ id: k, rot: bonitoRotulo(nombre.replace(/^Misa /i, '')),
+      tit: nombre });
+  }
+  return ops.length > 1 ? ops : null;
+}
+
+/* El Viernes Santo no se celebra la misa, y el Ordinario no pinta nada ahí:
+ * poner detrás de sus lecturas el acto penitencial y la plegaria eucarística
+ * sería decir que se reza lo que la Iglesia hoy no reza. Va por la unidad del
+ * Misal, que es el nombre estable que le dio la fase 5, y nombrado: lo demás
+ * del día —la poscomunión, la oración sobre el pueblo— es suyo y se queda.
+ * La razón la da el propio misalito en la reseña de ese día. */
+const SIN_MISA = {
+  'tri/pasion': 'Hoy no se celebra la misa: la Iglesia omite por completo '
+    + 'el sacrificio eucarístico, y el Ordinario no entra aquí. Lo que se '
+    + 'hace es la celebración de la Pasión del Señor.'
+};
+
+/** El formulario entero, sección por sección. */
+function armaMisa(clave, lects) {
+  let f = E.misa.formularios[clave] || (E.misa.otros || {})[clave];
+  if (!f) return null;
+  const lat = f.la ? (E.latino.formularios[f.la] || null) : null;
+  const otras = f.u ? otrasMisas(f) : null;
+  let iMisa = 0;
+  if (otras) {
+    const quiere = (E.misaOps[clave] || {}).misa;
+    iMisa = Math.max(0, otras.findIndex((o) => o.id === quiere));
+    if (iMisa > 0) {
+      // la otra misa cambia los propios; el latín, las lecturas y lo que el
+      // día manda siguen siendo los del formulario
+      f = Object.assign({}, f, { p: E.misa.otros[otras[iMisa].id].p || {} });
+    }
+  }
+  const sinMisa = SIN_MISA[f.u];
+  _sinOrdo = !!sinMisa;
+  const hayOrdo = E.cfg.ordinario !== 'no' && !sinMisa;
+  const S = [];
+  const sec = (cl, cuerpo, extra) => {
+    if (!cuerpo) return;
+    S.push(Object.assign({ cl: cl, rot: ROTULO_SEC[cl] || cl,
+      cuerpo: cuerpo }, extra || {}));
+  };
+  const ordoSec = (cl, cuerpo, extra) => {
+    if (hayOrdo) sec(cl, cuerpo, Object.assign({ ordo: true }, extra || {}));
+  };
+  const alterna = (id, n) => {
+    const e = ELIGE[id];
+    const i = elegido(id, e.ops.length);
+    return { elige: id, i: i, alts: e.ops.map((o, j) =>
+      ({ id: String(j), rot: o[0], tit: incipitOpcion(n, id, j) })) };
+  };
+
+  if (otras) {
+    sec('lamisa', '<p class="ordo-p ordo-rub"><span class="ln">'
+      + esc('Este día tiene más de una misa, y el Misal les da propios '
+        + 'distintos. Las lecturas son las mismas.') + '</span></p>',
+    { elige: 'misa_variante', i: iMisa, alts: otras, rot: 'La misa' });
+  }
+  if (sinMisa) {
+    sec('sinmisa', '<p class="ordo-p ordo-rub"><span class="ln">'
+      + esc(sinMisa) + '</span></p>', { rot: 'La celebración de hoy' });
+  }
+  if (f.r) sec('resena', '<p class="texto">' + esc(f.r) + '</p>');
+  sec('entrada', pintaPieza(f, lat, 'entrada'));
+  ordoSec('inicio', ordo(['1', '2', '3']), alterna('saludo', '2'));
+  if (hayOrdo) {
+    const iF = elegido('penit_form', PENITENCIAL.length);
+    const F = PENITENCIAL[iF];
+    sec('penitencial', ordoUna('4')
+      + subCab('penit_form', 'Fórmula', PENITENCIAL.map((x, j) =>
+        ({ id: String(j), rot: x[0], tit: '' })), iF)
+      + ordoDesde(F[1], F[2], F[3]) + ordo(['7']),
+    Object.assign({ ordo: true }, alterna('penit_inv', '4')));
+  }
+  if (f.gl) ordoSec('gloria', ordo(['8']));
+  sec('colecta', ordoPlegado(['9'], 'r-colecta')
+    + pintaPieza(f, lat, 'colecta'));
+
+  (lects || []).forEach((l, i) => {
+    const l2 = parejaEs(clave, i);
+    S.push({ cl: 'lect' + i, rot: null, lectura: true, nombre: rotuloCorto(l),
+      cuerpo: ordoPlegado(ordoDeLectura(l, i), 'r-lect' + i)
+        + pintaLectura(l, l2) });
+  });
+  if ((lects || []).length) ordoSec('tras_evangelio', ordo(['16', '17']));
+  if (f.cr) {
+    const i = elegido('simbolo', SIMBOLO.length);
+    ordoSec('credo', ordoUna(SIMBOLO[i][1]), { elige: 'simbolo', i: i,
+      alts: SIMBOLO.map((x, j) =>
+        ({ id: String(j), rot: x[0], tit: x[2] })) });
+  }
+  ordoSec('fieles', ordo(['20']));
+  ordoSec('ofertorio', ordo(['21', '22', '23', '24', '25', '26', '27', '28',
+    '29']), alterna('oren', '29'));
+  sec('ofrendas', pintaPieza(f, lat, 'ofrendas')
+    + ordoPlegado(['30'], 'r-ofrendas'));
+
+  // el prefacio es del día, así que se da aunque el Ordinario esté apagado;
+  // el día que no hay misa no tiene prefacio ni plegaria
+  if (!sinMisa) {
+    const marcados = prefaciosDe(clave, f);
+    const prefs = marcados.length ? marcados : prefaciosDelTiempo(f);
+    const guardado = (E.misaOps[clave] || {}).prefacio;
+    const idPref = guardado || (prefs[0] ? prefs[0].id : 'prefacio-comun-i');
+    sec('prefacio', ordoPlegado(['31'], 'r-prefacio')
+      + (marcados.length ? '' : '<p class="ordo-p ordo-rub"><span class="ln">'
+        + esc('El Misal no marca prefacio para esta misa: se toma uno de los '
+          + (grupoDelTiempo(f) === 'comun' ? 'comunes'
+            : 'de ' + GRUPO_PREF_ROT[grupoDelTiempo(f)]) + ', a elección.')
+        + '</span></p>')
+      + pintaPrefacio(idPref)
+      + (f.pp && !f.ppd ? '<p class="testigo" title="El misalito dice que '
+        + 'esta misa tiene prefacio propio, pero no llegó a imprimirlo en '
+        + 'los cien números">tiene prefacio propio, y no está</p>' : ''),
+    // los del tiempo no se repiten arriba: ya están en su grupo, y una
+    // opción repetida en un <select> deja el marcado en la última
+    { selPref: selectorPrefacio(idPref, marcados, 'El que marca el día') });
+  }
+
+  const plegs = plegariasDe();
+  const quiere = (E.cfg.ordoOps || {}).plegaria;
+  const idPleg = plegs.some((x) => x.id === quiere) ? quiere
+    : 'plegaria-eucaristica-ii';
+  ordoSec('plegaria', pintaPlegaria(idPleg),
+    { selPleg: plegs, idPleg: idPleg,
+      rot: (plegs.find((x) => x.id === idPleg) || {}).t
+        || ROTULO_SEC.plegaria });
+
+  ordoSec('comunion_rito', ordo(['124', '125', '126', '127', '128', '129',
+    '130', '131', '132', '133', '134', '135', '136']),
+  alterna('padrenuestro', '124'));
+  sec('comunion', pintaPieza(f, lat, 'comunion'));
+  sec('poscomunion', ordoPlegado(['137', '138', '139'], 'r-poscomunion')
+    + pintaPieza(f, lat, 'poscomunion')
+    + ordoPlegado(['139b'], 'r-poscomunion2'));
+  sec('pueblo', pintaPieza(f, lat, 'pueblo'));
+  const idBen = (E.cfg.ordoOps || {}).bendicion || '';
+  ordoSec('conclusion', ordo(['140', '141', '142', '143'])
+    + pintaBendicion(idBen) + ordoUna('144') + ordo(['145', '146']),
+  Object.assign({ selBen: bendicionesDe(), idBen: idBen },
+    alterna('despedida', '144')));
+  return { clave: clave, f: f, lat: lat, secciones: S };
+}
+
+/** La lectura castellana que hace pareja con la latina, en el bilingüe. */
+function parejaEs(clave, i) {
+  if (E.cfg.fuente !== 'bi' || !E.lecturasEs) return null;
+  return (E.lecturasEs.bloques[clave] || [])[i] || null;
+}
+
+/** Un selector de los pequeños, dentro del cuerpo de una sección. */
+function subCab(id, rot, alts, i) {
+  return '<div class="sub-cab"><span class="sub-rot">' + esc(rot) + '</span>'
+    + '<div class="alterna" data-elige="' + esc(id) + '" role="group" '
+    + 'aria-label="' + esc(rot) + '">'
+    + alts.map((a, j) => '<button type="button" aria-pressed="' + (j === i)
+      + '" data-op="' + esc(a.id) + '"'
+      + (a.tit ? ' title="' + esc(a.tit) + '"' : '') + '>' + esc(a.rot)
+      + '</button>').join('') + '</div></div>';
+}
+
+function selectorLargo(id, rot, ops, cual) {
+  return '<div class="sub-cab"><span class="sub-rot">' + esc(rot) + '</span>'
+    + '<select class="elige" data-elige="' + esc(id) + '" aria-label="'
+    + esc(rot) + '">' + ops.map(([v, t]) => '<option value="' + esc(v) + '"'
+      + (v === cual ? ' selected' : '') + '>' + esc(t) + '</option>').join('')
+    + '</select></div>';
+}
+
+function pintaMisaSec(s) {
+  const h = [];
+  const sel = s.elige
+    ? '<div class="alterna" data-elige="' + esc(s.elige) + '" role="group" '
+      + 'aria-label="' + esc((ELIGE[s.elige] || {}).rot || 'Elegir') + '">'
+      + s.alts.map((a, j) => '<button type="button" aria-pressed="'
+        + (j === s.i) + '" data-op="' + esc(a.id) + '"'
+        + (a.tit ? ' title="' + esc(a.tit) + '" aria-label="'
+          + esc(a.rot + ': ' + a.tit) + '"' : '') + '>' + esc(a.rot)
+        + '</button>').join('') + '</div>'
+    : '';
+  const plegable = !!s.ordo && E.cfg.ordinario !== 'abierto';
+  const abierta = !plegable || !!E.pliegues[s.cl];
+  if (s.rot) {
+    h.push('<div class="sec-cab"><h2 class="rotulo">'
+      + (plegable ? '<button type="button" class="pliega" data-pliega="'
+        + esc(s.cl) + '" aria-expanded="' + abierta + '">' : '')
+      + '<span class="vs">' + esc(s.rot) + '</span>'
+      + (plegable ? '</button>' : '') + '</h2>' + sel + '</div>');
+  } else if (sel) {
+    h.push('<div class="sec-cab"><h2 class="rotulo"></h2>' + sel + '</div>');
+  }
+  const cuerpo = [];
+  if (s.selPref) {
+    cuerpo.push('<div class="sub-cab"><span class="sub-rot">El prefacio'
+      + '</span>' + s.selPref + '</div>');
+  }
+  if (s.selPleg) {
+    cuerpo.push(selectorLargo('plegaria', 'La plegaria',
+      s.selPleg.map((p) => [p.id, p.t + (p.soloLa ? ' · sólo en latín' : '')]),
+      s.idPleg));
+  }
+  cuerpo.push(s.cuerpo);
+  if (s.selBen) {
+    cuerpo.push(selectorLargo('bendicion', 'Bendición final', s.selBen,
+      s.idBen));
+  }
+  // lo que está plegado no se mete en la página: el Ordinario entero son
+  // tres cuartas partes del formulario, y pasar de día pintándolo para
+  // tenerlo escondido cuesta más que pintarlo cuando se abra
+  h.push('<div class="cuerpo"' + (abierta ? '' : ' hidden') + '>'
+    + (abierta ? cuerpo.join('') : '') + '</div>');
+  return '<section class="hora-sec misa-sec' + (s.ordo ? ' es-ordo' : '')
+    + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
+}
+
+/** El formulario entero, pintado. Devuelve null si esa clave no está en
+ *  `misa.json`, y entonces se enseñan las lecturas solas. */
+function pintaMisaEntera(clave, lects) {
+  const o = armaMisa(clave, lects);
+  E.misaVista = o;
+  if (!o) return null;
+  return o.secciones.map(pintaMisaSec).join('');
+}
+
+/** Repintar una sección sola: cambiar el saludo no ha de mover el resto. */
+function repintaMisaSec(cl) {
+  const v = E.misaVista;
+  if (!v) return;
+  const lects = (E.lecturas.bloques || {})[v.clave] || [];
+  const nuevo = armaMisa(v.clave, lects);
+  if (!nuevo) return;
+  E.misaVista = nuevo;
+  const s = nuevo.secciones.find((x) => x.cl === cl);
+  const caja = document.querySelector('#vista .misa-sec[data-cl="' + cl
+    + '"]');
+  if (!s || !caja) return;
+  const t = document.createElement('template');
+  t.innerHTML = pintaMisaSec(s);
+  const nueva = t.content.firstElementChild;
+  nueva.classList.add('cambia');
+  caja.replaceWith(nueva);
+  const cab = nueva.querySelector('.sec-cab');
+  if (cab) aprietaCabecera(cab);
+}
+
+/** Tocar en la misa: plegar una sección del Ordinario, o elegir. */
+function alTocarMisa(ev) {
+  if (E.vista !== 'hoy' || !E.misaVista) return;
+  const pl = ev.target.closest('.pliega');
+  if (pl) {
+    const cl = pl.dataset.pliega;
+    E.pliegues[cl] = !E.pliegues[cl];
+    guardaPliegues();
+    const sec = pl.closest('.misa-sec');
+    const arriba = sec.getBoundingClientRect().top;
+    repintaMisaSec(sec.dataset.cl);
+    // la sección crece hacia abajo: el renglón donde está el dedo se queda
+    // donde estaba, que si no el texto da un salto al abrirse
+    const nueva = document.querySelector('#vista .misa-sec[data-cl="'
+      + sec.dataset.cl + '"]');
+    if (nueva) {
+      window.scrollBy(0, nueva.getBoundingClientRect().top - arriba);
+      const b2 = nueva.querySelector('[data-pliega="' + cl + '"]');
+      if (b2) b2.focus({ preventScroll: true });
+    }
+    return;
+  }
+  const b = ev.target.closest('.alterna button');
+  if (!b) return;
+  const grupo = b.closest('.alterna');
+  const id = grupo.dataset.elige;
+  const sec = b.closest('.misa-sec');
+  if (!id || !sec) return;
+  // la otra misa del día cambia todos los propios, no una sección: se
+  // repinta el formulario entero y se vuelve donde se estaba
+  if (id === 'misa_variante') {
+    const c = E.misaVista.clave;
+    E.misaOps[c] = Object.assign({}, E.misaOps[c], { misa: b.dataset.op });
+    guardaMisaOps();
+    const y = window.scrollY;
+    pintaCuerpoMisa(c, (E.lecturas.bloques || {})[c] || []);
+    window.scrollTo(0, y);
+    return;
+  }
+  guardaElegido(id, +b.dataset.op);
+  repintaMisaSec(sec.dataset.cl);
+}
+
+/** Los selectores largos: el prefacio, la plegaria, la bendición. */
+function alElegirEnMisa(ev) {
+  const s = ev.target.closest('select.elige');
+  if (!s || E.vista !== 'hoy' || !E.misaVista) return;
+  const id = s.dataset.elige;
+  if (id === 'prefacio') {
+    const c = E.misaVista.clave;
+    E.misaOps[c] = Object.assign({}, E.misaOps[c], { prefacio: s.value });
+    guardaMisaOps();
+  } else {
+    guardaElegido(id, s.value);
+  }
+  const sec = s.closest('.misa-sec');
+  if (sec) repintaMisaSec(sec.dataset.cl);
+}
+
+function cargaMisaOps() {
+  try {
+    E.misaOps = JSON.parse(sessionStorage.getItem('misaOps') || '{}');
+  } catch (_) { E.misaOps = {}; }
+  // y qué partes del Ordinario se dejaron abiertas: quien sigue la misa las
+  // abre una vez, no una por día
+  try {
+    E.pliegues = JSON.parse(sessionStorage.getItem('pliegues') || '{}');
+  } catch (_) { E.pliegues = {}; }
+}
+
+function guardaPliegues() {
+  try {
+    sessionStorage.setItem('pliegues', JSON.stringify(E.pliegues));
+  } catch (_) { /* sin almacenamiento: vale para esta vista */ }
+}
+
+function guardaMisaOps() {
+  try {
+    sessionStorage.setItem('misaOps', JSON.stringify(E.misaOps));
+  } catch (_) { /* sin almacenamiento: vale para esta vista */ }
 }
 
 /** El botón «Hoy» sale sólo cuando se está en otro día. */
@@ -1211,15 +2182,23 @@ function verAjustes() {
     + '<details class="ajustes-sec"' + (n++ === 1 ? ' open' : '')
     + '><summary>' + titulo + '</summary><div class="ajustes-cuerpo">';
   vista.innerHTML = [
-    ajuste('La lengua del leccionario'),
+    ajuste('La lengua de la misa'),
     sel('fuente', 'Versión',
       'La Nova Vulgata es el latín de los libros litúrgicos vigentes; la '
       + 'Clementina, la Vulgata de siempre. El castellano es la traducción '
       + 'litúrgica aprobada para México, cosechada del misalito mensual de '
       + '2018 a 2026: dos de cada tres lecturas la tienen, y lo que no se '
-      + 'imprimió nunca lo dice en su sitio.',
+      + 'imprimió nunca lo dice en su sitio. El bilingüe enfrenta las dos, '
+      + 'y el latín que pone es el último que se haya elegido aquí.',
       [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata'],
-        ['es', 'Castellano · misalito de México']]),
+        ['es', 'Castellano · misalito de México'],
+        ['bi', 'Bilingüe · latín y castellano']]),
+    sel('ordinario', 'El ordinario de la misa',
+      'El Ordo Missæ intercalado donde va, con sus 146 rúbricas en las dos '
+      + 'lenguas. No se lee cada día, pero cuando se busca se busca ahí: '
+      + 'viene plegado y se abre tocando su rótulo.',
+      [['plegado', 'Plegado'], ['abierto', 'Abierto'],
+        ['no', 'No: sólo los propios y las lecturas']]),
     sel('acentos', 'Acentuación litúrgica',
       'El acento tónico marcado, como en los libros de coro.',
       [[true, 'Sí'], [false, 'No']]),
@@ -1301,9 +2280,10 @@ function verAjustes() {
       'Las rúbricas dejan tomarlo del común o del día, y cada sección lleva '
       + 'su selector: esto sólo decide cuál viene marcado.',
       [['comun', 'Del común'], ['dia', 'Del día']]),
-    sel('carril', 'Índice de la hora',
+    sel('carril', 'Índice al borde',
       'Las cintas del breviario: una raya por sección al borde de la caja, '
-      + 'más larga la de donde vas. Tocar una lleva a su sección.',
+      + 'más larga la de donde vas. Tocar una lleva a su sección. Sirve '
+      + 'igual para la hora y para el formulario de la misa.',
       [['si', 'Sí'], ['no', 'No']]),
     sel('gestos', 'Deslizar para cambiar de hora',
       'Arrastrar sobre el texto pasa a la hora siguiente o a la anterior, y '
@@ -1313,7 +2293,10 @@ function verAjustes() {
       'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
       + 'nada: queda marcada aquella cuyo final has llegado a leer.',
       [['si', 'Sí'], ['no', 'No']]),
-    '<p class="pie">' + esc(E.lecturas.cabecera) + '<br><br>'
+    '<p class="pie">' + esc(E.lecturas.cabecera)
+    + (E.cfg.fuente === 'bi' && E.lecturasEs
+      ? '<br><br>' + esc(E.lecturasEs.cabecera) : '')
+    + (E.misa ? '<br><br>' + esc(E.misa.cabecera) : '') + '<br><br>'
     + 'Calendario general romano y latinoamericano, con el propio y el común '
     + 'de los santos (leccionario V), las misas por diversas necesidades y '
     + 'votivas (VI) y las rituales y de difuntos (VIII). La concurrencia de '
@@ -1345,6 +2328,10 @@ async function alCambiarAjuste(ev) {
     if (pct) pct.textContent = E.cfg.tam + '%';
   }
   if (id === 'fuente') {
+    // el latín elegido se recuerda, para que el bilingüe ponga el que se
+    // estaba leyendo y no uno a la fuerza
+    if (v === 'clementina' || v === 'nova') E.cfg.latinBi = v;
+    guardaCfg();
     vista.innerHTML = '<p class="aviso">Cambiando de versión…</p>';
     await cargaLecturas(v);
     verAjustes();
@@ -2715,7 +3702,15 @@ const NOMBRE_SEC = {
   conm_lectura: 'Lectura del santo', conm_resp: 'Responsorio del santo'
 };
 
+/** El carril sirve a las dos cosas largas que tiene la app: la hora y, desde
+ *  que la misa se enseña entera, el formulario. */
+function conCarril() {
+  return E.vista === 'horas' || (E.vista === 'hoy' && !!E.misaVista);
+}
+
 function nombreSeccion(s) {
+  // la misa trae su nombre puesto; la hora lo saca de su rótulo
+  if (s.nombre || s.rot) return s.nombre || s.rot;
   if (NOMBRE_SEC[s.cl]) return NOMBRE_SEC[s.cl];
   const r = (s.alts[s.i].c.r || '').split(':')[0].trim();
   return r ? r.charAt(0) + r.slice(1).toLowerCase() : 'Sección';
@@ -2782,7 +3777,7 @@ function vaASeccion(i, animado) {
  * pasan por los punteros, más abajo, que es donde se recoge el arrastre. */
 function alTocarCarril(ev) {
   const b = ev.target.closest('button');
-  if (!b || E.vista !== 'horas' || ev.detail) return;
+  if (!b || !conCarril() || ev.detail) return;
   vaASeccion(Array.prototype.indexOf.call($('#carril').children, b), true);
 }
 
@@ -2814,7 +3809,7 @@ function marcaRaya(n) {
 
 function alEmpezarCarril(ev) {
   const c = $('#carril');
-  if (c.hidden || E.vista !== 'horas' || ev.button > 0) return;
+  if (c.hidden || !conCarril() || ev.button > 0) return;
   _arrastra = { n: rayaDelCarril(ev.clientY), movido: false,
     id: ev.pointerId };
   c.classList.add('arrastrando');
@@ -2918,7 +3913,7 @@ function marcaRezada(hora) {
  * desplazamiento, que en un dedo largo son decenas. */
 let _enDesplazamiento = false;
 function alDesplazarHoras() {
-  if (E.vista !== 'horas' || _enDesplazamiento) return;
+  if (!conCarril() || _enDesplazamiento) return;
   _enDesplazamiento = true;
   requestAnimationFrame(() => {
     _enDesplazamiento = false;
@@ -2978,6 +3973,7 @@ function enruta() {
 async function arranca() {
   cargaCfg();
   cargaElecciones();
+  cargaMisaOps();
   cargaRezadas();
   aplicaCfg();
   try {
@@ -2999,7 +3995,9 @@ async function arranca() {
     enruta();
   });
   vista.addEventListener('change', alCambiarAjuste);
+  vista.addEventListener('change', alElegirEnMisa);
   vista.addEventListener('click', alElegirOpcion);
+  vista.addEventListener('click', alTocarMisa);
   vista.addEventListener('click', alTocarZoom);
   vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('input', (ev) => {
