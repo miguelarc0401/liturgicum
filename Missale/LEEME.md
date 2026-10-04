@@ -486,7 +486,7 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 | 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
 | 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 598 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 356 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
 | 5 ✓ | `Missale/src/5_resolver.py` | las piezas + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt`. **Hecha.** Los 1 051 formularios del leccionario resueltos pieza por pieza: 691 con las cinco en castellano, 243 con alguna, 84 sólo en latín y 33 sin nada —y los 33 están nombrados y explicados—. El puente con el Misal latino coloca 552 de sus 575 formularios; la construcción es byte a byte la misma en dos pasadas |
-| 6 | `Missale/src/6_app.py` | → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json` |
+| 6 ✓ | `Missale/src/6_app.py` | `misa.json` + las fuentes → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json`, y `datos/app_qa.txt`. **Hecha.** 7,8 MB, no 14: el latín va una vez, por su propio nombre, y los cincuenta prefacios del Ordo no se repiten. Los 1 051 formularios con sus 4 366 piezas castellanas, las 4 177 lecturas desarmadas en fórmula, sumario, cuerpo y cierre, el Ordinario bilingüe por número de rúbrica y las 175 otras misas que el leccionario no numera; la construcción es byte a byte la misma en dos pasadas |
 
 Las fases 1 y 2 no dependen de nada: ni del calendario de 2018, ni de los
 misalitos, ni una de otra salvo para el cotejo final de la 2. Son el sitio por
@@ -494,6 +494,12 @@ donde empezar.
 
 Después, `src/15_app_data.py` firma lo nuevo —como ya firma las horas— para que
 el *service worker* del teléfono tire su caché, y `publicar.ps1` gana un paso.
+La fase 6 refirma por su cuenta cuando se corre sola, igual que
+`Breviarium/src/4_app.py`; el paso de `publicar.ps1` va **antes** de
+`15_app_data.py`, que es el que firma todo lo que hay en `app/datos/`.
+
+Ese paso está ya puesto: `python Missale/src/6_app.py`, entre las horas y
+`15_app_data.py`.
 
 El orden de preferencia de las fuentes, estricto y en este orden, como el del
 *Breviarium* con sus PDF:
@@ -545,30 +551,59 @@ Missale/datos/libro/misa.json
                                sueltos:   { <nº>: <unidad | null> } }
 ```
 
-Y lo que de ahí sale para el teléfono:
+Y lo que de ahí sale para el teléfono, tal como la fase 6 lo escribió —7,8 MB
+en vez de los 14 que esta cuenta temía, porque el latín no se copia dos
+veces—:
 
 ```
-app/datos/misa.json          { formularios: { clave: {
-                                 entrada: {t, c}, colecta, ofrendas,
-                                 comunion: {t, c}, poscomunion, pueblo,
-                                 gloria: bool, credo: bool,
-                                 prefacio: [ref, …], f: 'misalito'|'latino',
-                                 testigos: n, variantes: [ … ] } } }
-app/datos/lecturas_es.json   como lecturas_clementina.json: bloques por clave
-app/datos/misal_latino.json  lo mismo, en latín, para los 600 formularios
-app/datos/prefacios.json     { id: {titulo_es, epigrafe_es, texto_es,
-                                   la: <id latino | null>, titulo_la, texto_la,
-                                   juego: 'tiempo'|'comun'|'propio',
-                                   cuando: [ … ] } }
-app/datos/ordinario.json     { rubricas: [ {n, es: [ … ], la: [ … ],
-                                   alternativas: [ … ] } ],
-                               plegarias: { … } }
+app/datos/misa.json          2 522 KB
+                             { formularios: { clave: {
+                                 t, e, s, g, c, r,        (título, etiqueta,
+                                      sección, grado, color, reseña)
+                                 u, la, alt,              (unidad del Misal,
+                                      formulario latino y sus alternativas)
+                                 gl, cr, pr: [id], pp,    (Gloria, Credo,
+                                      prefacios que marca, prefacio propio)
+                                 p: { ranura: {t: texto, via, de, n, v} },
+                                 v: 'completo'|'parcial'|'latino'|'nada' } },
+                               otros: { unidad: { … } } }
+app/datos/lecturas_es.json   4 028 KB
+                             como lecturas_clementina.json: bloques por clave,
+                             y cada lectura con {t, c, k, f, s, g, z, rz, n}
+                             —rótulo, cita, clase, fórmula, sumario, cuerpo,
+                             cierre, respuesta del pueblo y testigos—; la que
+                             el misalito no imprimió va con `sin`
+app/datos/misal_latino.json    775 KB
+                             { formularios: { <id latino>: {t, p, rub, pr,
+                                      gl, cr, com} },
+                               bendiciones: { … }, super_populum: { … } }
+app/datos/prefacios.json       240 KB
+                             { prefacios: { <id es>: {t, ep, n, grupo, juego,
+                                      rub, nota, tx,
+                                      la, t_la, ep_la, tx_la, rub_la,
+                                      cuando: [clave, …]} },
+                               propios: { <id>: … },      (los 28 cosechados)
+                               solo_latino: { <id la>: … } }
+app/datos/ordinario.json       228 KB
+                             { rubricas: [ {n, sec, pref,
+                                      es: [{o, r, t}], op_es,
+                                      la: [{o, r, t}], op_la} ],
+                               plegarias: { … }, plegarias_la: { … } }
 ```
+
+**El latín va por su propio nombre, no por clave del leccionario.** Son 451
+unidades del Misal para 1 051 claves: copiarlo por clave doblaría el fichero
+sin añadir una palabra, así que `misa.json` guarda el puntero (`la`) y la app
+lo sigue. Y las piezas que sólo tiene el latín **no se copian** en
+`misa.json`: la castellana dice «no disponible», que es lo que se decidió en
+la pregunta 6.
 
 El Ordinario va **por número de rúbrica**, que es lo que hace que el bilingüe
 no necesite costura: cada entrada lleva su número, el castellano, el latín y
 sus alternativas. Las rúbricas en que uno de los dos no tenga texto llevan la
-marca y la app lo dice.
+marca y la app lo dice. Del 33 al 82 lo que el Ordo numera **son los
+cincuenta prefacios**, así que esas entradas llevan el puntero (`pref`) a
+`prefacios.json` y no el texto.
 
 Las claves son **las del leccionario** (`I|1001AAVD01.html|0`), las mismas que
 ya usan `indice.json` y `calendario.json`. Así la app no aprende un segundo
@@ -680,6 +715,18 @@ dice en vez de disimularlo**.
   versículos: el leccionario mexicano elige otros del mismo salmo. Las que de
   verdad dicen que el editor rezó otra cosa son la primera lectura y el
   evangelio, y son 1 029.
+* `app_qa.txt` — **hecho**. Lo que se escribió y lo que pesa; los 1 051
+  formularios por veredicto y las 6 306 ranuras por el camino con que se
+  resolvieron; las lecturas por tipo, con el tanto por ciento de castellano de
+  cada uno; el desarme de la perícopa impresa, con las dieciséis que no dan
+  fórmula nombradas una por una —y la razón: son los cánticos que hacen de
+  salmo y la Pasión a tres voces—; el cotejo de la regla del acento contra el
+  color del castellano, con las cuatro discrepancias nombradas y explicadas;
+  el recorte del apéndice que la fase 1 pegó al Ordo, con los 515 renglones
+  medidos y la prueba de que no se pierde nada; las alternativas de las dos
+  lenguas, con las siete rúbricas en que no coinciden y por qué; y los
+  defectos de fases anteriores que esta fase topa, con el de la raya del
+  intervalo de versículos **medido**: cuesta 27 lecturas, no 182.
 
 ---
 
@@ -768,12 +815,16 @@ dice en vez de disimularlo**.
    más en la forma de apretar la cita: el misalito escribe «Mc 2,23–3.6» y el
    índice «Mc 2,23—3,6», el mismo pasaje con la coma donde el otro pone el
    punto, y sin plegar también la coma se perdían las dos.
-6. **Los derechos.** La traducción es la litúrgica aprobada para México, y es
-   obra protegida, igual que la de las horas que el proyecto ya publica en
-   GitHub Pages. Dejar fuera la parte de autoría del editor —moniciones,
-   reflexión, oración de los fieles— reduce la cuestión a los textos
-   litúrgicos, pero no la elimina. Es decisión tuya, y conviene tomarla antes
-   de la fase 6, que es la que publica.
+6. ~~**Los derechos.**~~ **Decidido: se publica, igual que las horas.** La
+   traducción es la litúrgica aprobada para México, y es obra protegida, igual
+   que la de la Liturgia de las Horas que el proyecto ya publica en GitHub
+   Pages; el criterio es el mismo para las dos. Dejar fuera la parte de
+   autoría del editor —moniciones, reflexión, oración de los fieles, que no
+   entran— reduce la cuestión a los textos litúrgicos.
+
+   En consecuencia, `publicar.ps1` tiene ya su paso —`python
+   Missale/src/6_app.py`, entre las horas y `15_app_data.py`— y los cinco
+   ficheros de `app/datos/` entran al repositorio.
 7. **Los 364 MB de esta carpeta, y `publicar.ps1`.** *Resuelto, y con una
    línea más: la fase 3 escribe 25 MB de días en bruto en
    `Missale/datos/misalitos/`, que también quedan fuera del repositorio. Son

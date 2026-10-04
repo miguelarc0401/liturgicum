@@ -1,0 +1,381 @@
+Fase 6 — la misa castellana, empaquetada para la app
+====================================================
+
+  La fase 5 dejó dicho de dónde sale cada pieza; esta fase va a
+  buscarla y la deja en app/datos/. No decide nada: dereferencia,
+  y lo que no encuentra lo dice.
+
+Los prefacios propios cosechados, atribuidos por sus días
+---------------------------------------------------------
+
+    Cristo, Rey del universo                             testigos en 2 celebraciones
+    El misterio de la Iglesia, esposa de Cristo y templo testigos en 2 celebraciones
+    El misterio de la Santísima Trinidad                 testigos en 3 celebraciones
+    El sacerdocio de Cristo y el ministerio de los sacer testigos en 5 celebraciones
+    El sacrificio y el sacramento de Cristo              testigos en 2 celebraciones
+    Inmenso amor de Cristo                               testigos en 2 celebraciones
+    La doble misión de san Pedro y san Pablo en la Igles testigos en 5 celebraciones
+    La gloria de Dios manifestada en los ángeles         testigos en 7 celebraciones
+    La misión del Precursor                              testigos en 4 celebraciones
+    La victoria de la Cruz gloriosa                      testigos en 5 celebraciones
+
+Las rúbricas del Ordinario que no están en las dos lenguas
+----------------------------------------------------------
+
+    rúbrica 93: sólo en latín
+    rúbrica 139b: sólo en castellano
+
+Lo que se escribió
+------------------
+
+  app/datos/misa.json                  2522 KB
+  app/datos/lecturas_es.json           4028 KB
+  app/datos/misal_latino.json           775 KB
+  app/datos/prefacios.json              240 KB
+  app/datos/ordinario.json              228 KB
+  TOTAL                                7793 KB
+
+  versión de datos: clementina+nova-4241240530
+
+Los formularios y sus piezas
+----------------------------
+
+  formularios del leccionario : 1051
+    completo                     691
+    parcial                      243
+    latino                        84
+    nada                          33
+
+  piezas (seis ranuras por formulario, 6306 en total):
+      por celebración                         1854
+      por común                                141
+      por día                                  460
+      por suelto                                49
+      por unidad                              1862
+    piezas en castellano                      4366
+    piezas que sólo tiene el latín             726
+
+  Las piezas que sólo tiene el latín no se copian en misa.json:
+  van en misal_latino.json y la app las alcanza por el puntero
+  `la` del formulario. La castellana dice «no disponible», que es
+  lo que se decidió en la pregunta 6 del plan.
+
+  otras misas sin clave del leccionario: 175
+    Son la vigilia de san Juan Bautista y la de san Pedro y san
+    Pablo, la vigilia de Pentecostés, la segunda y la tercera de
+    los Difuntos —que el Misal da aparte y el leccionario no
+    numera— y las celebraciones del propio de México y las
+    votivas que el misalito imprimió y el índice no alcanza.
+    Van en misa.json, en `otros`, por su unidad.
+
+Las lecturas en castellano
+--------------------------
+
+  formularios con alguna lectura castellana: 1035 de 1044
+  lecturas con castellano                       4177
+  lecturas sin castellano                       2265
+  formularios sin una sola lectura en castellano     9
+
+  por tipo de lectura:
+                                        total con es     %
+    evangelio                            1577   1244   79%
+    salmo responsorial                   1367    778   57%
+    aleluya                              1233    791   64%
+    primera lectura                      1201    872   73%
+    segunda lectura                       409    266   65%
+    lectura del Nuevo Testamento          355    134   38%
+    lectura del Antiguo Testamento        256     86   34%
+    tercera lectura                        10      0    0%
+    quinta lectura                         10      3   30%
+    septima lectura                        10      3   30%
+    cuarta lectura                          5      0    0%
+    sexta lectura                           5      0    0%
+    epistola                                4      0    0%
+
+Desarmar la perícopa impresa
+----------------------------
+
+  El misalito imprime la lectura en un bloque corrido que lleva
+  dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
+  que salió:
+
+    lecturas con fórmula                        2556
+    lecturas sin fórmula reconocida               52
+    lecturas con sumario                         582
+    lecturas con cierre                         2545
+    lecturas sin cierre reconocido                63
+    lecturas con respuesta del pueblo              2
+    salmo o aclamación sin respuesta               5
+    salmo sin estrofas                             0
+
+  El cierre se busca en el texto ya juntado y no en el último
+  renglón: la fuente parte «Palabra / de Dios.» entre dos
+  renglones, y mirando sólo el último se perdían.
+
+  La fórmula es el ancla, y el sumario es lo que va delante de
+  ella: la fuente lo imprime unas veces entre corchetes y otras a
+  pelo, y por sí mismo no se distingue del cuerpo. Las perícopas
+  que no dieron fórmula, una por una:
+    1 S 2,1.4-5.6-7.8abcd
+    2 Co 11,1-11
+    Dn 3,52.53.54.55.56
+    Dn 3,57.58.59.60.61
+    Dn 3,62.63.64.65.66.67
+    Dn 3,68.69.70.71.72.73.74
+    Dn 3,75.76.77.78.79.80.81
+    Dn 3,82.83.84.85.86.87
+    Dt 32,18-19.20.21
+    Is 12,2-3.4bcd.5-6
+    Is 38,10.11.12abcd.16
+    Jn 18,1—19.42
+    Jr 31,10.11-12ab.13
+    Lc 1,46-47.48-49.50-51.52-53.54-55
+    Lc 1,46-48.49-50.53-54
+    Lc 1,69-70.71-72.73-75
+
+  Y no es un fallo del reconocimiento: son los cánticos que
+  hacen de salmo responsorial —el Magníficat y el Benedictus de
+  Lucas 1, los tres cánticos de Daniel 3, el de Isaías 12, el de
+  Ana en 1 Samuel 2, el de Moisés en Deuteronomio 32— que el
+  leccionario trae como lectura y se cantan sin fórmula, más la
+  Pasión según san Juan, que se lee a tres voces y la fuente
+  rotula con la sigla y el reparto de papeles. Las tres restantes
+  sí son erratas de la fuente, y están nombradas: «11, l-11» con
+  ele en vez de uno, y la cita de Ester con «(Neovulgata)»
+  detrás.
+
+  Perícopas en que no se halló el cierre (22):
+    1 S 2,1.4-5.6-7.8abcd
+    Dn 3,52.53.54.55.56
+    Dn 3,57.58.59.60.61
+    Dn 3,62.63.64.65.66.67
+    Dn 3,68.69.70.71.72.73.74
+    Dn 3,75.76.77.78.79.80.81
+    Dn 3,82.83.84.85.86.87
+    Dt 32,18-19.20.21
+    Gn 14,18-20
+    Is 12,2-3.4bcd.5-6
+    Is 38,10.11.12abcd.16
+    Jn 13,1-15
+    Jn 18,1—19.42
+    Jr 31,10.11-12ab.13
+    Lc 1,46-47.48-49.50-51.52-53.54-55
+    Lc 1,46-48.49-50.53-54
+    Lc 1,69-70.71-72.73-75
+    Lc 19,28-40
+    Mc 11,1-10
+    Mt 2,1-12
+    Mt 21,1-11
+    Rm 8,8-17
+
+  Salmos o aclamaciones sin respuesta del pueblo:
+    Jn 14,18
+    Sal 93,12-13a.14-15.17-18
+
+El Misal latino
+---------------
+
+  formularios latinos                            575
+  formularios latinos que alguna clave usa       548
+  formularios latinos sin una pieza                0
+
+  bendiciones solemnes: 20
+  oraciones sobre el pueblo: 28
+
+  Van por su propio nombre y no por clave del leccionario: 451
+  unidades sirven a 1 051 claves, y copiarlo por clave doblaría
+  el fichero sin añadir una palabra.
+
+Los prefacios
+-------------
+
+  castellanos del Ordinario : 67
+  propios cosechados        : 28
+  latinos sin pareja        : 39
+  prefacios castellanos sin pareja latina             18
+  prefacios castellanos que ningún formulario cita    10
+  prefacios propios con celebración                   18
+  prefacios propios sin celebración                   10
+  formularios con prefacio propio cosechado           39
+
+  por grupo, leído del propio título:
+    adviento               4
+    comun                  9
+    cuaresma               7
+    difuntos               5
+    domingos              10
+    maria                  5
+    navidad                4
+    pascua                 8
+    sacramentos            7
+    santos                 8
+
+El Ordinario, bilingüe y por número de rúbrica
+----------------------------------------------
+
+  entradas: 147
+    de ellas, prefacios (33-82) que apuntan a prefacios.json: 50
+    con las dos lenguas: 95
+  rúbricas sin castellano                          1
+  rúbricas sin latín                               1
+  rúbricas castellanas repetidas                   0
+
+  alternativas que el Ordinario deja elegir (la primera se
+  muestra y las demás van detrás de un «O bien», que es lo que se
+  pidió en la pregunta 4):
+    rúbricas con alternativa en castellano: 12 (27 en total)
+    rúbricas con alternativa en latín     : 8 (13 en total)
+    rúbricas en que las dos lenguas no dan las mismas: 7
+      rúbrica 4     castellano 3, latín 1
+      rúbrica 5     castellano 0, latín 1
+      rúbrica 16    castellano 2, latín 0
+      rúbrica 29    castellano 2, latín 0
+      rúbrica 124   castellano 3, latín 0
+      rúbrica 128   castellano 3, latín 0
+      rúbrica 144   castellano 3, latín 0
+
+  Y no es que falte ninguna: **los dos libros marcan la elección
+  de otra manera.** El latino la numera y el castellano la mete
+  detrás de un «O bien». Las tres fórmulas del acto penitencial
+  son en castellano las tres opciones de la rúbrica 4 y en latín
+  las rúbricas 4, 5 y 6, cada una entera; de ahí que el
+  castellano cuente tres donde el latín cuenta una. Y en la
+  rúbrica 144 la diferencia es de edición: la editio typica
+  tertia de 2002 sólo trae «Ite, missa est», y las otras
+  despedidas que el castellano traduce se añadieron después. Así
+  que la opción se cuenta por el castellano y el latín se empareja
+  por número de rúbrica, que es lo que los dos comparten.
+
+La rúbrica latina se reconoce por el acento
+-------------------------------------------
+
+  El Ordinario de México marca sus rúbricas en rojo y la fase 2
+  lo guardó. El Misal latino se leyó con pdftotext, que no guarda
+  el color; pero el Misal tiene su propia marca, y es
+  tipográfica: imprime acentuado lo que se reza —para
+  recitarlo— y sin acentuar la rúbrica.
+
+    párrafos latinos rezados                             443
+    párrafos latinos rúbrica                             428
+    párrafos latinos rezados sin acento (de la tabla)     32
+
+  **Medida contra el color del castellano**, que es el testigo que
+  esta fase tiene a mano: donde las dos lenguas dan el mismo
+  número de párrafos en la misma opción se pueden comparar, y la
+  marca castellana la leyó la fase 2 del rojo del PDF. No se usa
+  para corregir el latín —sería meter la tipografía de un libro en
+  el otro— sino para saber cuánto se equivoca la regla:
+
+    rúbricas comparables                              52
+    rúbricas con distinto número de párrafos          43
+    párrafos comparados                              194
+    coinciden                                        190
+    discrepan                                          4
+    acuerdo                                        97.94%
+
+  Las que discrepan, una por una:
+    rúbrica 2     el castellano dice rúbrica y el acento rezado
+      Episcopus, loco Dóminus vobíscum, in hac prima salutatione dicit:
+    rúbrica 9     el castellano dice rezado y el acento rúbrica
+      Amen. Liturgia verbi
+    rúbrica 13    el castellano dice rúbrica y el acento rezado
+      Sequitur Allelúia, vel alter cantus a rubricis statutus, prouti tempus liturgicum postulat.
+    rúbrica 102   el castellano dice rúbrica y el acento rezado
+      hoc est enim Corpus meum,
+
+  Las tres primeras son rúbricas que citan dentro lo que se reza,
+  y lo citado va acentuado («in hac prima salutatione dicit:
+  Dóminus vobíscum», «Sequitur Allelúia»). La de la rúbrica 102 es
+  al revés y la razón es del castellano: «hoc est enim Corpus
+  meum» son las palabras de la consagración, que el Ordinario de
+  México imprime en rojo por solemnidad y no por ser rúbrica.
+
+  Y una medida de una vez, hecha contra el PDF latino, que esta
+  fase no lee porque no está en el repositorio: de las 2 614
+  líneas del Ordo, el color y el acento coinciden en 2 219; y de
+  las 395 que discrepan, 394 son por el color y no por el acento
+  —el PDF deja en negro la mitad de sus rúbricas, «1. Populo
+  congregato, sacerdos cum ministris ad altare accedit» entre
+  ellas—. La única rúbrica roja con acento es el epígrafe «De
+  salute per obœdientiam Christi». Por eso el acento es mejor
+  testigo que el color en este libro.
+
+El apéndice que la fase 1 le pegó al Ordo
+-----------------------------------------
+
+  Las veinte bendiciones solemnes y las veintiocho oraciones
+  sobre el pueblo del APPENDIX AD ORDINEM MISSÆ están pegadas al
+  final de las rúbricas del Ordo, cada una a la rúbrica de su
+  mismo número: la rúbrica 1 —«Populo congregato»— trae detrás la
+  bendición solemne de Adviento y la primera oración sobre el
+  pueblo. Sin quitarlo, la app enseñaría la bendición de Adviento
+  en medio del rito de entrada.
+
+    rúbricas con apéndice pegado : 29
+    renglones quitados           : 515
+
+  El recorte está probado por igualdad de texto contra las tablas
+  `bendiciones` y `super_populum` del propio misal_latino.json,
+  que es donde la fase 1 sí las guardó bien: no se pierde nada.
+
+  Del recorte no queda un renglón sin explicar.
+
+Lo que esta fase topa y no es suyo
+----------------------------------
+
+  Defectos de fases anteriores que aquí se ven. Quedan nombrados,
+  no tapados:
+
+  · el apéndice pegado al Ordo, de la sección anterior: son 29
+    rúbricas y 515 renglones, y lo limpio sería que la fase 1 no
+    los metiera, porque ya los guarda bien en sus propias tablas.
+  · el Misal latino se lee con pdftotext y se pierde el color,
+    **aunque el PDF lo trae**: 5 468 de sus 33 214 líneas van
+    enteras en rojo (0xff0000). No sirve para la rúbrica —el PDF
+    deja en negro la mitad de las suyas— pero sí marca el rótulo
+    de pieza y la capitular, que ahora se adivinan.
+  · nueve perícopas conservan el guión de final de renglón que la
+    fase 4 junta en las demás; esta fase repite la regla al
+    juntar el párrafo, pero el canónico de la fase 4 sigue
+    partido.
+  · **la raya del intervalo de versículos.** Palabra Viva escribe
+    «1 Co 6,13c–15a.17–20» donde La Santa Misa y el leccionario
+    escriben «1 Co 6,13c-15a.17-20», y el `squeeze` de la fase 5
+    pliega la raya al punto porque la raya es también como una de
+    las dos fuentes marca el salto de capítulo. De ahí que 225
+    citas del corpus tengan gemela que sólo difiere en la raya, y
+    que 182 perícopas con la respuesta del pueblo impresa no se
+    alcancen —por eso esta fase sólo halla 2 lecturas con
+    respuesta—. **Medido, cuesta poco:** plegando la raya al
+    guión se recuperarían 27 lecturas (14 perícopas distintas) de
+    las 2265 que hoy no tienen castellano, porque las demás ya están
+    alcanzadas por su gemela con guión. No se arregla aquí: el
+    puente de citas es de la fase 5, y `misa.json` es la decisión
+    auditada; si la app enseñara texto que esa decisión dice que
+    no hay, el fichero dejaría de servir para auditarla.
+  · siguen en pie los cinco que nombró la fase 5: los 49
+    formularios del santoral latino sin fecha, las ferias del
+    tiempo de Navidad en un grupo en vez de dos, el trozo del
+    Canon tomado por formulario, el Viernes Santo sin formulario
+    latino y la Cena del Señor sin oración sobre las ofrendas.
+
+Los derechos
+------------
+
+  Riesgo 6 del plan, y queda decidido: **se publica, igual que las
+  horas.** La traducción es la litúrgica aprobada para México y es
+  obra protegida, igual que la de la Liturgia de las Horas que el
+  proyecto ya publica en GitHub Pages, y el criterio es el mismo
+  para las dos. Lo que es de autoría del editor —moniciones,
+  reflexión, oración de los fieles— no entra, y de la parte
+  editorial sólo se conserva la reseña histórica del santo, que es
+  lo que se pidió en la pregunta 5.
+
+  De ahí que `publicar.ps1` tenga ya su paso: `python
+  Missale/src/6_app.py`, entre las horas y `15_app_data.py`, que
+  es el que firma todo lo que hay en app/datos/.
+
+Avisos
+------
+
+  Ninguna pieza que la decisión apunte falta de su tabla.

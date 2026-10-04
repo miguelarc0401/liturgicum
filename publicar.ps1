@@ -2,15 +2,16 @@
 #
 #   1. rehace el calendario con el santoral y la precedencia (18_santoral.py)
 #   2. rehace la liturgia de las horas para la app  (Breviarium/src/4_app.py)
-#   3. rehace los datos de la app                            (15_app_data.py)
-#   4. los sube a GitHub, que republica GitHub Pages
-#   5. el telefono se entera solo: la app pregunta si hay version nueva al
+#   3. rehace la misa castellana para la app          (Missale/src/6_app.py)
+#   4. rehace los datos de la app                            (15_app_data.py)
+#   5. los sube a GitHub, que republica GitHub Pages
+#   6. el telefono se entera solo: la app pregunta si hay version nueva al
 #      abrirse y al volver a primer plano, y se recarga cuando la hay
 #
-# El orden de 2 y 3 importa: 15_app_data.py firma TODO lo que hay en
+# El orden de 2, 3 y 4 importa: 15_app_data.py firma TODO lo que hay en
 # app/datos/, y esa firma es la que obliga al service worker del telefono a
-# tirar su cache. Si las horas se rehicieran despues, la firma se quedaria
-# vieja y el telefono seguiria rezando con los textos de antes.
+# tirar su cache. Si las horas o la misa se rehicieran despues, la firma se
+# quedaria vieja y el telefono seguiria rezando con los textos de antes.
 #
 # Uso:   .\publicar.ps1
 #        .\publicar.ps1 -Mensaje "corrijo el grado de santa Cecilia"
@@ -33,6 +34,10 @@ if ($LASTEXITCODE -ne 0) { throw "18_santoral.py fallo" }
 Paso "Liturgia de las horas"
 python Breviarium/src/4_app.py
 if ($LASTEXITCODE -ne 0) { throw "Breviarium/src/4_app.py fallo" }
+
+Paso "Misa castellana"
+python Missale/src/6_app.py
+if ($LASTEXITCODE -ne 0) { throw "Missale/src/6_app.py fallo" }
 
 Paso "Datos de la app"
 python src/15_app_data.py
