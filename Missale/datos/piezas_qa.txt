@@ -5,9 +5,9 @@ Los cien misalitos deshechos: cada pieza una vez, con sus
 testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
-formularios leídos            : 3286
+formularios leídos            : 3666
 celebraciones con propios     : 598
-perícopas distintas por cita  : 2642
+perícopas distintas por cita  : 2648
 prefacios propios cosechados  : 28
 textos propios atribuidos     : 2786
    por lo que nombra la fuente: 732
@@ -91,10 +91,10 @@ dice al lado de la cabecera. La fase 3 lo guardaba en `alterna`,
 en `resena` o en `subtitulo` según cayera la maqueta; aquí se
 vuelve a leer del campo `crudo` y se unifica.
 
+   alternativa que es una misa   :  572
    alternativa que es una santo  :  542
-   alternativa que es una misa   :  508
 
-   la fase 3 la tenía en alterna    :  508
+   la fase 3 la tenía en alterna    :  572
    la fase 3 la tenía en resena     :  484
    la fase 3 la tenía en subtitulo  :   58
 
@@ -102,20 +102,21 @@ Las citas
 ---------
 
 La pieza viene con su cita, y por eso el emparejamiento no se
-adivina. Leídas: 6927 del incipit, 8722 de su propio campo y 2924 del
+adivina. Leídas: 6949 del incipit, 9706 de su propio campo y 2929 del
 rótulo del salmo.
 
 Lecturas sin cita, por ranura (la fuente no siempre la da; en
 las antífonas es lo normal, en una lectura es que el incipit se
 partió o que remite a otro día):
-   primera        55
-   salmo          11
-   segunda        32
-   secuencia      38
-   aclamacion    300
-   evangelio       8
+   primera       385
+   salmo         339
+   segunda       102
+   secuencia      42
+   aclamacion    322
+   evangelio     345
 
-Nombres de libro que no se supieron leer: 11 formas, 22 casos.
+Nombres de libro que no se supieron leer: 15 formas, 31 casos.
+      4  'JI'
       3  'FORMA BREVE:'
       3  '9-'
       3  '13-'
@@ -123,10 +124,13 @@ Nombres de libro que no se supieron leer: 11 formas, 22 casos.
       2  '17-'
       2  '20–'
       2  '20-'
+      2  'salino'
+      2  'uteronomio'
       1  '1-'
       1  '12–'
       1  '3b-'
       1  '10-'
+      1  'No castigues a tu pueblo por sus maldades. Del l'
 
 Lo que se repara, y con qué prueba
 ----------------------------------
@@ -208,10 +212,10 @@ El cotejo con el índice del leccionario, que es el camino
 independiente del calendario: si el lector de citas leyera mal,
 saldría aquí.
 
-   citas distintas en el corpus                   : 2637
+   citas distintas en el corpus                   : 2643
    que el índice tiene igual                      : 1592
-   que el índice no tiene con esos versículos     : 1039
-   que el índice no tiene ni por el capítulo      : 6
+   que el índice no tiene con esos versículos     : 1044
+   que el índice no tiene ni por el capítulo      : 7
 
 La fila del medio no es un fallo y conviene no confundirla con
 uno: son las dos ediciones letreando distinto el mismo pasaje
@@ -224,6 +228,7 @@ leccionario no usa nunca sería una sigla mal resuelta:
    sal1101-2.7-8.9y10c
    sal119,36.29b
    sal1431-2,9-10
+   sal1sm3,9.jn6.68
    sal2tim
 
 Los testigos: lo que está decidido y lo que no
@@ -587,7 +592,7 @@ donde el día las toma—. Lo que falta, ranura por ranura:
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
 
-Los 273 avisos son todos de lo mismo, y es un hallazgo, no un
+Los 402 avisos son todos de lo mismo, y es un hallazgo, no un
 fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
@@ -765,4 +770,4 @@ Y los avisos, día por día:
    2022-02-06/0   la fuente ofrece «de SAN MATEO CORREA MAGALLANES» y el calendario no trae ese santo ese día
    2022-02-08/0   la fuente ofrece «SANTA JOSEFINA BAKHITA, Virgen» y el calendario no trae ese santo ese día
    2022-02-25/0   la fuente ofrece «SANTO TORIBIO ROMO GONZÁLEZ» y el calendario no trae ese santo ese día
-   … y 153 más
+   … y 282 más

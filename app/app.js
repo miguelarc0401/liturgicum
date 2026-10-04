@@ -24,9 +24,32 @@ const POR_OMISION = {
   // el formato del texto (Ajustes, «Formato del texto»)
   letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
   particion: 'si', cruces: 'si', despierto: false,
+  paleta: 'tinta', acento: 'dia',
   // al rezar (Ajustes, «Liturgia de las Horas»)
   carril: 'si', gestos: 'si', rezadas: 'si'
 };
+
+/* Los cuatro juegos de tono: las mismas cinco gamas, con distinta tinta.
+ * Aquí sólo se enseñan en Ajustes; el CSS es quien las aplica. */
+const ACLARA = {
+  verde: '#d5ead8', rojo: '#f3d6d6', morado: '#e8dcf0',
+  blanco: '#f3e6c4', azul: '#d6e6f4'
+};
+
+const PALETAS = [
+  ['tinta', 'Tinta',
+    { verde: '#0f3d0f', rojo: '#961717', morado: '#4c2a63',
+      blanco: '#7a5c17', azul: '#1f4e79' }],
+  ['libro', 'Libro',
+    { verde: '#23492f', rojo: '#7a1414', morado: '#4c2a63',
+      blanco: '#7a5c17', azul: '#1f4e79' }],
+  ['vivo', 'Vivo',
+    { verde: '#1b5c32', rojo: '#b31d1d', morado: '#6e2d8c',
+      blanco: '#846010', azul: '#1a5fa0' }],
+  ['suave', 'Suave',
+    { verde: '#3a5540', rojo: '#8a3d3d', morado: '#5c4768',
+      blanco: '#75633c', azul: '#3d5a73' }]
+];
 
 const E = {              // todo el estado de la app
   cfg: Object.assign({}, POR_OMISION),
@@ -263,6 +286,8 @@ function guardaCfg() {
 function aplicaCfg() {
   const b = document.body.dataset;
   b.tema = E.cfg.tema;
+  b.paleta = E.cfg.paleta || 'tinta';
+  b.acento = E.cfg.acento || 'dia';
   b.letra = E.cfg.letra;
   b.interlinea = E.cfg.interlinea;
   b.medida = E.cfg.medida;
@@ -2499,6 +2524,27 @@ function piezasDeLaMisa() {
     + '</div></div>';
 }
 
+function juegosDeTono() {
+  const actual = E.cfg.paleta || 'tinta';
+  const gama = ['verde', 'rojo', 'morado', 'blanco', 'azul'];
+  return '<div class="ajuste ancho"><label>Juego de tonos'
+    + '<span class="pista">Las cinco gamas litúrgicas: verde, rojo, morado, '
+    + 'dorado y azul. Tinta es la de fábrica. En papel oscuro o de noche '
+    + 'el mismo juego se aclara para que se lea.</span></label>'
+    + '<div class="paletas" role="radiogroup" aria-label="Juego de tonos">'
+    + PALETAS.map(([id, nom, c]) =>
+      '<label class="paleta"><input type="radio" name="aj-paleta" value="'
+      + id + '"' + (actual === id ? ' checked' : '') + '>'
+      + '<span class="paleta-muestra">'
+      + gama.map((g) => '<i style="--t:' + c[g] + ';--a:' + ACLARA[g]
+        + '"></i>').join('')
+      + '</span><span class="paleta-nom">' + nom + '</span></label>'
+    ).join('')
+    + '</div>'
+    + '<p class="muestra-rubrica" aria-hidden="true"><b class="rub">Ant. </b>'
+    + 'El Señor es mi pastor</p></div>';
+}
+
 /* Qué pestaña de Ajustes estaba abierta. La vista se rehace entera al
  * cambiar la versión o el modo de la misa, y una pestaña que se cierra sola
  * deja al dedo buscando dónde estaba. Se recuerda para ese repintado y se
@@ -2608,6 +2654,14 @@ function verAjustes() {
     sel('tema', 'Color del papel', '',
       [['auto', 'Según el teléfono'], ['claro', 'Claro'],
         ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']]),
+    sel('acento', 'Rúbrica y acento',
+      'Por omisión siguen el color litúrgico del día. Un color fijo deja '
+      + 'la cabecera y las rúbricas en el mismo tono todos los días; el '
+      + 'calendario sigue pintando cada uno con el suyo.',
+      [['dia', 'El del día'], ['neutro', 'Granate'],
+        ['rojo', 'Rojo litúrgico'], ['verde', 'Verde'],
+        ['morado', 'Morado'], ['blanco', 'Dorado'], ['azul', 'Azul']]),
+    juegosDeTono(),
     'wakeLock' in navigator
       ? sel('despierto', 'No apagar la pantalla',
         'Un oficio son diez o quince minutos de lectura sin tocar nada, y '
@@ -2697,7 +2751,9 @@ async function alCambiarAjuste(ev) {
     guardaCfg();
     return;
   }
-  const id = (ev.target.id || '').replace(/^aj-/, '');
+  const bruto = (ev.target.name && ev.target.name.indexOf('aj-') === 0)
+    ? ev.target.name : (ev.target.id || '');
+  const id = bruto.replace(/^aj-/, '');
   if (!(id in E.cfg)) return;
   let v = ev.target.value;
   if (v === 'true' || v === 'false') v = (v === 'true');

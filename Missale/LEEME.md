@@ -6,13 +6,14 @@ entera en castellano: **las lecturas y los propios** —antífonas, colecta,
 oración sobre las ofrendas, prefacio, oración después de la comunión—, con lo
 que el Misal deja a elegir.
 
-Tres fuentes, y cada una da lo que las otras no:
+Cuatro fuentes, y cada una da lo que las otras no:
 
 | fuente | qué da | lengua | cobertura |
 |---|---|---|---|
 | `latin_missal2002_organized.pdf` | el Misal Romano entero: propios, prefacios, Ordo Missæ, plegarias eucarísticas | latín | **completa** |
 | `Ordinario de la Misa México (1).pdf` | el Ordinario con sus rúbricas numeradas, los 67 prefacios y las plegarias eucarísticas I-IV | castellano de México | **completa**, de lo que es ordinario |
 | `Misalitos/` (100 PDF mensuales, 2018-2026) | lo que se celebró cada día: lecturas y propios | castellano de México | **lo celebrado**, no el libro |
+| <https://misalcatolico.com> (fases 3b y 3c) | lo mismo, día a día **de 2016 a 2026**, y con los **dos** formularios cuando el día da opción; más el Ordinario, los prefacios y el santoral | castellano de México | **lo celebrado**, once años |
 
 Con la tercera fuente —que llegó después de la primera versión de este
 documento— la mitad fija de la misa deja de ser una cosecha y pasa a ser una
@@ -149,6 +150,60 @@ Blanco»), grado, título, reseña histórica y una referencia doble —`MR p. 6
 [678] / Lecc. I p. 487`—. Las páginas del *MR* son de las ediciones
 castellanas (Buena Prensa y BAC), no del PDF latino: sirven para cotejar con el
 libro impreso, no para enlazar fases.
+
+### La cuarta fuente: lo que el sitio da y los misalitos no
+
+Medido sobre el sitio antes de escribir la fase 3c, no supuesto.
+
+**Once años, no ocho.** Su índice enumera 2016-2026 —3 984 días— contra los
+cien meses de los misalitos, que empiezan en junio de 2018. Son **2016 y 2017
+enteros y enero a mayo de 2018** que antes no había: no añaden ciclo dominical
+nuevo (2016 es C y 2017 es A, que ya estaban), pero sí testigos
+independientes, de otra mano, con los que el recuento por mayoría de la fase 4
+deja de depender de una sola redacción.
+
+**Los dos formularios de los días con opción.** Es lo que más vale. El
+misalito imprime *el que su editor eligió* —de ahí que la fase 4 tuviera que
+atribuir antes de contar—; el sitio imprime la feria **y** la memoria libre,
+una detrás de otra. Se cortan por la antífona de entrada, que es la primera
+ranura del Misal.
+
+**La fórmula y el sumario, en renglón propio.** La fase 6 tuvo que reconocer
+la fórmula de cada lectura («Del santo Evangelio según san Marcos: 1, 29-39»)
+por su forma, porque el misalito la lleva dentro del bloque corrido. Aquí va
+en su propio renglón, y el sumario en otro: dos anclas regaladas.
+
+**Diciembre no se baja: se recupera.** Todos los días de diciembre, de todos
+los años, contestan `301` hacia su propia dirección. No es maqueta ni freno,
+es un defecto del servidor, y se midió así: el índice del mes los enlaza con
+normalidad, y basta cambiarles una letra para que contesten `404` —o sea que
+la URL es la buena y la redirección es suya—. Son 341 días, y son Adviento y
+Navidad. El archivo de la web los conserva, y su índice se pide **una vez**
+para todo el sitio (3 718 URL en una petición) en vez de día por día. Lo que
+vuelve es la plantilla *anterior* del sitio, que la fase 3c también lee.
+
+**Cuatro maquetas, y ninguna decide.** Diez años de sitio son varias manos:
+2026 rotula con `<h3>` y la cita pegada; 2016 y la mayor parte de 2018-2024
+con un `<strong>` que abre el párrafo; 2025 pone la cabecera en un `<h3>` y
+rotula con `<p>` a secas; y 2017 no envuelve nada —el formulario entero en un
+solo párrafo, cortado por `<br>`—. Cuatro ramas de código envejecerían mal,
+así que la tarjeta se aplana a renglones y **el rótulo se reconoce por el
+vocabulario de la fase 3**; el marcado se guarda y se cuenta en el informe,
+pero no cambia la decisión. La maqueta de 2017 se descubrió porque el día
+salía *vacío*: de ahí que la fase mida lo recogido contra lo que la tarjeta
+dice y se vuelva a partir por `<br>` cuando falta la mitad. Un día en blanco
+es el peor defecto posible, porque no se queja.
+
+**Dos defectos que la medida pilló y que parecían cosméticos:**
+el rótulo partido entre dos renglones («ACLAMACIÓN ANTES DEL / EVANGELIO Jn
+10, 27») hacía que el día apareciera con dos evangelios y sin aclamación —el
+mismo defecto que a la fase 3 le partía los testigos por el guión—; y el
+Domingo de Ramos trae la bendición de las palmas, con su evangelio, delante
+de la misa, que contado como alternativa haría creer que ese día se elegía
+entre una misa entera y un evangelio suelto. Se rotula «antes de la misa». La
+condición tuvo que hacerse **relativa**, y lo dijo el Viernes Santo: su
+liturgia no tiene antífona de entrada ni colecta —empieza en silencio— y es
+la celebración del día, no un rito previo.
 
 ### Los salmos no hay que renumerar
 
@@ -484,6 +539,8 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 | 1 | `Missale/src/1_latino.py` | el PDF del Misal 2002 → `datos/misal_latino.json`: formularios con sus cinco o seis piezas, prefacios comunes y propios, Ordo Missæ numerado, plegarias eucarísticas (con las de la reconciliación y diversas necesidades), bendiciones solemnes |
 | 2 | `Missale/src/2_ordinario.py` | el PDF del Ordinario de México → `datos/ordinario_es.json` y `datos/prefacios_es.json`: las 146 rúbricas con sus alternativas («O bien:»), los dos símbolos, las plegarias I-IV con sus propios, y los 67 prefacios con título y epígrafe. **Alinea con el latino por número de rúbrica**, y lo que no cuadre va al informe |
 | 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
+| 3b | `Missale/src/3b_bajar.py` | el sitio <https://misalcatolico.com> → `misal.TRABAJO/web`: los 3 984 días que su índice enumera (2016-2026), el Ordinario, los prefacios, el santoral y el salterio. Enumera desde el índice —no adivina fechas—, es reanudable, y **los diciembres los trae del archivo de la web**, porque el sitio vivo redirige a sí mismo todos los días de diciembre de todos los años |
+| 3c | `Missale/src/3c_web.py` | el volcado del sitio → `datos/web/AAAA-MM.json` y `datos/web/secciones.json`, **en la misma forma que la fase 3**, para que la 4 deshaga los días de las dos fuentes con un solo código. Cuatro maquetas de sitio y dos plantillas, y ninguna decide: el rótulo se reconoce por el vocabulario de la fase 3 y el marcado sólo se cuenta en el informe |
 | 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 598 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 356 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
 | 5 ✓ | `Missale/src/5_resolver.py` | las piezas + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt`. **Hecha.** Los 1 051 formularios del leccionario resueltos pieza por pieza: 691 con las cinco en castellano, 243 con alguna, 84 sólo en latín y 33 sin nada —y los 33 están nombrados y explicados—. El puente con el Misal latino coloca 552 de sus 575 formularios. Las lecturas se emparejan por tres rutas, en este orden: la cita aplastada (4 177), los versículos que la cita abarca leída y no aplastada (655) y el día y la ranura del calendario (75); la construcción es byte a byte la misma en dos pasadas |
 | 6 ✓ | `Missale/src/6_app.py` | `misa.json` + las fuentes → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json`, y `datos/app_qa.txt`. **Hecha.** 7,8 MB, no 14: el latín va una vez, por su propio nombre, y los cincuenta prefacios del Ordo no se repiten. Los 1 051 formularios con sus 4 366 piezas castellanas, las 4 907 lecturas desarmadas en fórmula, sumario, cuerpo y cierre, el Ordinario bilingüe por número de rúbrica —con los 45 propios de la plegaria eucarística clasificados por el día al que son— y las 175 otras misas que el leccionario no numera; la construcción es byte a byte la misma en dos pasadas |

@@ -57,6 +57,8 @@ from misal import DATOS, LIBRO, RAIZ, Informe, clave
 
 DATA = os.path.join(RAIZ, 'data')
 MISALITOS = os.path.join(DATOS, 'misalitos')
+# La segunda fuente castellana, que la fase 3c deja en la misma forma.
+WEB = os.path.join(DATOS, 'web')
 QA = os.path.join(DATOS, 'piezas_qa.txt')
 
 
@@ -669,6 +671,7 @@ class Formulario:
         self.fichero = mes
         self.fecha = bruto['fecha']
         self.orden = orden      # el de ese día, no el del mes
+        self.origen = 'misalito'  # lo pone `carga`; aquí, el valor de siempre
         self.misa = bruto.get('misa')
         self.cab = bruto['cabecera']
         self.mr = paginas_mr(self.cab)
@@ -710,18 +713,56 @@ class Formulario:
 
 
 def carga(citas, reparos=None):
+    """Los formularios de las **dos** fuentes castellanas, en un solo montón.
+
+    Los cien misalitos (fase 3) y el sitio misalcatolico.com (fase 3c), que
+    deja su cosecha en la misma forma precisamente para poder entrar por
+    aquí. Cada formulario se queda con el nombre de su fuente en `origen`,
+    porque de eso depende leer bien el recuento de testigos: dos fuentes que
+    publican el mismo día no son dos testigos independientes de la
+    *elección* del editor, aunque sí de su *texto*.
+
+    El sitio imprime además lo que va **antes** de la misa —la bendición de
+    las palmas, con su propio evangelio—, y eso no es un formulario del
+    Misal: se deja fuera aquí, no en la fase 3c, que lo guarda rotulado.
+    """
+    # Primero se juntan en bruto, y luego se numeran: el número de testigo
+    # —`fecha/n`— tiene que ser el **mismo** que la posición que el
+    # formulario ocupa en la lista de su día en `dias_es.json`, porque la
+    # fase 5 cruza las dos cosas por esa cadena (`lo_impreso` contra
+    # `dias_por_cel`). Numerar por fuente los descuadraría en cuanto un día
+    # lo traigan las dos, y el paso «del día» de la cascada —el que salva lo
+    # que no se puede atribuir— empezaría a fallar en silencio.
+    crudos = []
+    for origen, carpeta in (('misalito', MISALITOS), ('sitio', WEB)):
+        if not os.path.isdir(carpeta):
+            continue
+        for ruta in sorted(glob.glob(os.path.join(carpeta, '*.json'))):
+            mes = os.path.basename(ruta)[:-5]
+            if mes == 'secciones':
+                continue
+            d = json.load(open(ruta, encoding='utf-8'))
+            brutos = [b for b in d['formularios']
+                      if b.get('parte', 'misa') == 'misa' and b.get('fecha')]
+            # `unico` sigue siendo **por fuente**: dice que ese editor
+            # imprimió un solo formulario ese día, o sea que no le dio
+            # opción, y de eso depende la atribución. Contarlo sobre las dos
+            # fuentes lo volvería falso casi siempre, porque casi todos los
+            # días los traen las dos.
+            cuantas = Counter(b['fecha'] for b in brutos)
+            for bruto in brutos:
+                crudos.append((origen, mes, bruto,
+                               cuantas[bruto['fecha']] == 1))
+
     formularios = []
-    for ruta in sorted(glob.glob(os.path.join(MISALITOS, '*.json'))):
-        mes = os.path.basename(ruta)[:-5]
-        d = json.load(open(ruta, encoding='utf-8'))
-        cuantas = Counter(b['fecha'] for b in d['formularios'])
-        deldia = Counter()
-        for bruto in d['formularios']:
-            n = deldia[bruto['fecha']]
-            deldia[bruto['fecha']] += 1
-            f = Formulario(mes, n, bruto, citas, reparos)
-            f.unico = cuantas[bruto['fecha']] == 1
-            formularios.append(f)
+    deldia = Counter()
+    for origen, mes, bruto, unico in crudos:
+        n = deldia[bruto['fecha']]
+        deldia[bruto['fecha']] += 1
+        f = Formulario(mes, n, bruto, citas, reparos)
+        f.unico = unico
+        f.origen = origen
+        formularios.append(f)
     return formularios
 
 
@@ -1241,7 +1282,10 @@ def main():
     citas = Citas()
     reparos_guion = Counter()
     formularios = carga(citas, reparos_guion)
-    print('  %d formularios de los cien misalitos' % len(formularios))
+    por_origen = Counter(f.origen for f in formularios)
+    print('  %d formularios de las dos fuentes castellanas (%s)'
+          % (len(formularios),
+             ', '.join('%s %d' % x for x in sorted(por_origen.items()))))
     print('  %d palabras partidas por el renglón, juntadas'
           % sum(reparos_guion.values()))
 
@@ -1252,8 +1296,9 @@ def main():
     for f in formularios:
         cands[f.testigo] = candidatos(f, cal_fechas, santoral_md,
                                       comunes_de, avisos)
-        for cid in cands[f.testigo]:
-            cuantos[cid] += 1
+        if f.origen == 'misalito':
+            for cid in cands[f.testigo]:
+                cuantos[cid] += 1
     con_alt = sum(1 for f in formularios if f.alt_clase)
     rescatadas = sum(1 for f in formularios
                      if f.alt_clase and not f.cab.get('alterna'))
@@ -1261,8 +1306,34 @@ def main():
           'fase 3 en otro campo)' % (con_alt, rescatadas))
 
     # --- la atribución ----------------------------------------------------
+    #
+    # **Atribuye sólo el misalito, y eso no es desconfianza de la otra
+    # fuente: es que atribuir y leer no son el mismo trabajo.**
+    #
+    # La atribución supone «un formulario por día», porque un formulario por
+    # día es lo que el editor del misalito eligió, y de esa elección se
+    # deduce a qué celebración pertenece cada texto: un texto que sale con
+    # dos santos distintos del mismo común es del común. El sitio imprime
+    # **los dos** formularios de los días con opción, que para leer es una
+    # ventaja y para deducir es ruido: al entrar los dos, el reparto cambia y
+    # la deducción se lleva textos de donde estaban.
+    #
+    # Medido con sólo enero de 2016 añadido —380 formularios—: 75 textos
+    # canónicos cambiaban, 109 piezas desaparecían, y en el común de los
+    # pastores una comunión con **41 testigos** quedaba sustituida por otra
+    # con 9, perdiendo 61 de los 77 testigos de esa pieza. Con los once años
+    # sería mucho peor.
+    #
+    # Y la medida dice además por dónde sí entra: cotejadas las dos fuentes
+    # día por día, **las lecturas coinciden el 93-96 % y los propios el
+    # 46-63 %**. No es casualidad ni calidad desigual: la lectura la fija el
+    # leccionario —manda el día, se celebre lo que se celebre— y el propio
+    # depende de qué celebración se eligió. Así que el sitio entra de pleno
+    # en la cosecha de perícopas, que se agrupa **por cita** y no mira la
+    # atribución, y se queda fuera de ésta.
+    para_atribuir = [f for f in formularios if f.origen == 'misalito']
     donde, textos, asignado, huerfanos, salvo = atribuye(
-        formularios, cands, cuantos)
+        para_atribuir, cands, cuantos)
 
     # --- los propios por celebración -------------------------------------
     porcel = defaultdict(lambda: defaultdict(dict))

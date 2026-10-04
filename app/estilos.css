@@ -13,7 +13,7 @@
   --papel-alto: #ffffff;
   --filete: #e7ddcc;
   --filete-fuerte: #d5c6ad;
-  --rubrica: #9a1b1b;
+  --rubrica: #961717;
   --acento: #6b1220;
   --realce: #f6e6a8;
   --sombra: 0 1px 2px rgb(60 40 20 / .05), 0 6px 20px rgb(60 40 20 / .06);
@@ -33,38 +33,58 @@
   --curva: cubic-bezier(.22, .61, .36, 1);
 }
 
-/* La paleta liturgica, una sola para toda la app. El verde y el rojo son el
-   del filete del calendario —era de alli de donde habia que copiarlos, que
-   es la vista donde se ven los cinco juntos—, y de ahi salen tambien la
-   cabecera del dia y las rubricas de la hora: el mismo dia se reconoce por
-   el mismo color en cualquier seccion. Sobre papel oscuro son esos mismos
-   colores con otra luz, aclarados lo justo para que se lean (4,5:1): un
-   verde de tinta sobre fondo negro no es un verde, es un borron. */
-:root {
-  --lit-verde: #23492f; --lit-rojo: #7a1414; --lit-morado: #4c2a63;
-  --lit-blanco: #7a5c17; --lit-azul: #1f4e79;
+/* Los juegos de tono: cinco gamas liturgicas, a elegir en Ajustes. El de
+   tinta es el de fabrica (rojo #961717, verde #0f3d0f). Cada juego vive en
+   --g-*, y de ahi salen --lit-* para la cabecera, las rubricas y el
+   calendario: el mismo dia se reconoce por el mismo color en cualquier
+   seccion. Sobre papel oscuro o de noche son esas mismas tintas con otra
+   luz, aclaradas lo justo para que se lean: un verde de tinta sobre fondo
+   negro no es un verde, es un borron. */
+body {
+  --g-verde: #0f3d0f; --g-rojo: #961717; --g-morado: #4c2a63;
+  --g-blanco: #7a5c17; --g-azul: #1f4e79; --g-neutro: #6b1220;
+}
+body[data-paleta="libro"] {
+  --g-verde: #23492f; --g-rojo: #7a1414; --g-morado: #4c2a63;
+  --g-blanco: #7a5c17; --g-azul: #1f4e79; --g-neutro: #6b1220;
+}
+body[data-paleta="vivo"] {
+  --g-verde: #1b5c32; --g-rojo: #b31d1d; --g-morado: #6e2d8c;
+  --g-blanco: #846010; --g-azul: #1a5fa0; --g-neutro: #8a1828;
+}
+body[data-paleta="suave"] {
+  --g-verde: #3a5540; --g-rojo: #8a3d3d; --g-morado: #5c4768;
+  --g-blanco: #75633c; --g-azul: #3d5a73; --g-neutro: #6b3a3a;
+}
+body {
+  --lit-verde: var(--g-verde); --lit-rojo: var(--g-rojo);
+  --lit-morado: var(--g-morado); --lit-blanco: var(--g-blanco);
+  --lit-azul: var(--g-azul); --lit-neutro: var(--g-neutro);
+  /* la rubrica de los dias sin color liturgico tambien es del juego */
+  --rubrica: var(--lit-rojo); --acento: var(--lit-neutro);
 }
 body[data-tema="oscuro"], body[data-tema="noche"] {
   --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
-  --lit-blanco: #d9b65e; --lit-azul: #93bcdf;
+  --lit-blanco: #d9b65e; --lit-azul: #93bcdf; --lit-neutro: #d9a0a0;
+  --lit-verde: color-mix(in srgb, var(--g-verde) 42%, #d5ead8);
+  --lit-rojo: color-mix(in srgb, var(--g-rojo) 42%, #f3d6d6);
+  --lit-morado: color-mix(in srgb, var(--g-morado) 42%, #e8dcf0);
+  --lit-blanco: color-mix(in srgb, var(--g-blanco) 42%, #f3e6c4);
+  --lit-azul: color-mix(in srgb, var(--g-azul) 42%, #d6e6f4);
+  --lit-neutro: color-mix(in srgb, var(--g-neutro) 42%, #f3d6d6);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
     --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
-    --lit-blanco: #d9b65e; --lit-azul: #93bcdf;
+    --lit-blanco: #d9b65e; --lit-azul: #93bcdf; --lit-neutro: #d9a0a0;
+    --lit-verde: color-mix(in srgb, var(--g-verde) 42%, #d5ead8);
+    --lit-rojo: color-mix(in srgb, var(--g-rojo) 42%, #f3d6d6);
+    --lit-morado: color-mix(in srgb, var(--g-morado) 42%, #e8dcf0);
+    --lit-blanco: color-mix(in srgb, var(--g-blanco) 42%, #f3e6c4);
+    --lit-azul: color-mix(in srgb, var(--g-azul) 42%, #d6e6f4);
+    --lit-neutro: color-mix(in srgb, var(--g-neutro) 42%, #f3d6d6);
   }
 }
-
-/* color liturgico del dia: tine la cabecera, las rubricas y los controles.
-   El morado, el dorado y el azul aclaran un punto la rubrica respecto del
-   acento, que sobre papel claro se leen justos (4,5:1); el verde y el rojo
-   van del mismo tono en los dos sitios. */
-body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: #74418f; }
-body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #7d6118; }
-body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
-body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #255c8a; }
-body[data-color="neutro"] { --acento: #6b1220; }
 
 body[data-tema="sepia"] {
   --papel: #f4e9d6; --papel-alto: #fbf3e4; --tinta: #3b2c19;
@@ -73,18 +93,13 @@ body[data-tema="sepia"] {
 body[data-tema="oscuro"] {
   --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
   --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
-  --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
+  --rubrica: var(--lit-neutro); --realce: #4a3f18; --acento: var(--lit-neutro);
   --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
-body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: #c0a3dc; }
-body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #e2bf66; }
-body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
-body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #9cc3e4; }
 
-/* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
-   liturgico del dia no tine nada —de noche, lo que importa es no despertar
-   del todo a quien va a dormirse—. */
+/* Completas a oscuras: ambar sobre negro, sin un gramo de azul. El color
+   liturgico del dia (o el fijo de Ajustes) tine igual que en los demas
+   temas; si no hay color, se queda el ambar. */
 body[data-tema="noche"] {
   --papel: #0b0806; --papel-alto: #120e0b; --tinta: #d8ae80;
   --tinta-suave: #96714f; --filete: #2a1d13; --filete-fuerte: #3e2c1d;
@@ -96,15 +111,27 @@ body[data-tema="noche"] {
   body[data-tema="auto"] {
     --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
     --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
-    --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
+    --rubrica: var(--lit-neutro); --realce: #4a3f18; --acento: var(--lit-neutro);
     --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
-  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: #c0a3dc; }
-  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #e2bf66; }
-  body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
-  body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #9cc3e4; }
 }
+
+/* El color: primero el del dia, despues el fijo si se eligio en Ajustes. */
+body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--lit-morado); }
+body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--lit-blanco); }
+body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
+body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
+body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--lit-azul); }
+body[data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--lit-neutro); }
+body[data-tema="noche"]:where([data-color="neutro"]) {
+  --acento: #c08d63; --rubrica: #c8795c;
+}
+body[data-acento="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
+body[data-acento="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
+body[data-acento="morado"] { --acento: var(--lit-morado); --rubrica: var(--lit-morado); }
+body[data-acento="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--lit-blanco); }
+body[data-acento="azul"]   { --acento: var(--lit-azul); --rubrica: var(--lit-azul); }
+body[data-acento="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--lit-neutro); }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -580,6 +607,55 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .ajuste.ancho .marcas {
   display: flex; justify-content: space-between;
   font-family: var(--sans); font-size: .68rem; color: var(--tinta-suave);
+}
+
+/* Los juegos de tono, en Ajustes: cada carta enseña las cinco gamas. */
+.paletas {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .55rem;
+  margin-top: .65rem;
+}
+.paleta {
+  position: relative; display: flex; flex-direction: column; gap: .4rem;
+  margin: 0; padding: .7rem .75rem .6rem; min-height: 2.75rem;
+  background: var(--papel-alto); border: 1px solid var(--filete-fuerte);
+  border-radius: 12px; cursor: pointer;
+}
+.paleta input {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+}
+.paleta:has(input:checked) {
+  border-color: var(--acento);
+  box-shadow: inset 0 0 0 1px var(--acento);
+}
+.paleta:has(input:focus-visible) {
+  outline: 2px solid var(--acento); outline-offset: 2px;
+}
+.paleta:active { background: var(--filete); }
+.paleta-muestra { display: flex; gap: .22rem; height: .85rem; }
+.paleta-muestra i {
+  flex: 1; border-radius: 99px; background: var(--t);
+}
+body[data-tema="oscuro"] .paleta-muestra i,
+body[data-tema="noche"] .paleta-muestra i {
+  background: color-mix(in srgb, var(--t) 42%, var(--a));
+}
+@media (prefers-color-scheme: dark) {
+  body[data-tema="auto"] .paleta-muestra i {
+    background: color-mix(in srgb, var(--t) 42%, var(--a));
+  }
+}
+.paleta-nom {
+  font-family: var(--sans); font-size: .78rem; font-weight: 600;
+  letter-spacing: .02em;
+}
+.muestra-rubrica {
+  margin: .7rem 0 0; padding: .55rem .75rem;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  border-radius: 10px; font-size: .95rem;
+}
+.muestra-rubrica .rub {
+  color: var(--rubrica); font-weight: inherit; font-style: normal;
 }
 
 /* El modo propio de la misa: las piezas en casillas, en el orden del

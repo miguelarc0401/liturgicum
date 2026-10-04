@@ -1,0 +1,66 @@
+Fase 3c — misalcatolico.com, la segunda fuente castellana
+=========================================================
+
+11 meses, 334 días con formulario, 381 formularios.
+43 días traen más de un formulario: la opción que el misalito no
+da, porque su editor ya había elegido.
+1 trozos van antes de la misa y no son alternativa suya: la
+bendición de las palmas y lo que la Vigilia pascual pone
+delante. Quedan rotulados «antes de la misa».
+
+
+Cómo venía rotulado cada renglón
+--------------------------------
+
+El marcado no decide nada —el rótulo se reconoce por el
+vocabulario de la fase 3—, pero conviene saber con qué se topa:
+
+  strong      6413
+  br          5585
+  p           4636
+  h3             5
+  h2             1
+
+
+Los rótulos que salieron, y cuántas veces
+-----------------------------------------
+
+  ORACIÓN COLECTA                       424
+  ORACIÓN SOBRE LAS OFRENDAS            390
+  ORACIÓN DESPUÉS DE LA COMUNIÓN        389
+  ANTÍFONA DE LA COMUNIÓN               380
+  ANTÍFONA DE ENTRADA                   374
+  SALMO RESPONSORIAL                    349
+  EVANGELIO                             342
+  PRIMERA LECTURA                       340
+  ACLAMACIÓN ANTES DEL EVANGELIO        340
+  SEGUNDA LECTURA                        70
+  ORACIÓN SOBRE EL PUEBLO                42
+  SECUENCIA                              12
+  REFLEXIÓN                               5
+  ORACIÓN UNIVERSAL                       2
+  ORACIÓN DE LOS FIELES                   1
+
+
+Ranuras que salen más de una vez en el mismo formulario
+-------------------------------------------------------
+
+No es un defecto del corte: es el Misal dando a elegir —dos
+colectas, dos antífonas— y la fuente imprimiendo las dos. Son
+alternativas, y la fase 4 las cuenta como tales.
+
+  ORACIÓN COLECTA                        40 formularios
+  ORACIÓN SOBRE LAS OFRENDAS             12 formularios
+  ORACIÓN DESPUÉS DE LA COMUNIÓN         11 formularios
+  ANTÍFONA DE LA COMUNIÓN                 6 formularios
+  SALMO RESPONSORIAL                      4 formularios
+  PRIMERA LECTURA                         3 formularios
+  ACLAMACIÓN ANTES DEL EVANGELIO          2 formularios
+  EVANGELIO                               2 formularios
+  SECUENCIA                               1 formularios
+
+
+Avisos (1)
+----------
+
+  2016-02-29: sólo las lecturas, sin los propios: la fuente encabeza con el nombre del libro y no con el rótulo de la ranura

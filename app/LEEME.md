@@ -110,7 +110,17 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   precedencia y la primera es la que se celebra. Las solemnidades impedidas se
   trasladan solas, y lo que se omite ese año se dice en vez de callarse.
 * El **color litúrgico** tiñe la cabecera: el del tiempo, y el del santo cuando
-  lo hay (rojo en los mártires, los apóstoles y la Santa Cruz).
+  lo hay (rojo en los mártires, los apóstoles y la Santa Cruz). Las rúbricas y
+  los filetes del calendario llevan el mismo color, de modo que el día se
+  reconozca por su tono en cualquier sección, y en los temas oscuros y de
+  noche son esas mismas tintas aclaradas lo justo para que se lean.
+* **El tono se elige, y el color se puede dejar fijo.** En Ajustes, «Juego de
+  tonos» ofrece cuatro juegos de las cinco gamas litúrgicas —*Tinta*, el de
+  fábrica, *Libro*, *Vivo* y *Suave*—, y «Rúbrica y acento» deja clavar un
+  color para todos los días (granate, rojo litúrgico, verde, morado, dorado o
+  azul) en vez de seguir el del día; el calendario sigue pintando cada día con
+  el suyo. Las 96 combinaciones de tono, gama y papel pasan de 4,5:1 de
+  contraste.
 * Epifanía, Ascensión y Corpus se pueden poner en su fecha o trasladados al
   domingo, según el uso del país; y en las memorias se puede preferir la
   lectura del santo o la continua de la feria.
