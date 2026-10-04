@@ -36,6 +36,17 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   cada día, pero cuando se busca se busca ahí: un toque en su rótulo lo
   abre, y lo que se deja abierto se queda abierto mientras dure la sesión.
   En Ajustes puede venir abierto, o no salir.
+* **Lo que se enseña del formulario, se dice en Ajustes.** «Qué se enseña de
+  la misa» da tres modos. *Todo*, que es el formulario entero. *Lo breve*,
+  que es lo que cambia cada día y se dice: antífona de entrada, el Gloria
+  los días que lo lleva, la colecta, las lecturas con su salmo y su
+  aclamación, la oración de los fieles, la oración sobre las ofrendas, la
+  antífona de comunión y la oración después de la comunión. Y *lo que yo
+  elija*, que es la misma lista de veintidós piezas con una casilla cada
+  una, en el orden de la misa; empieza por lo que se estuviera viendo. En
+  los dos últimos modos las piezas pedidas vienen abiertas, y el ajuste del
+  Ordinario —que sólo dice si viene plegado— no se ofrece, porque allí lo
+  que entra ya está decidido pieza por pieza.
 * **Lo que la misa deja elegir, se elige.** El saludo (tres fórmulas), la
   invitación al acto penitencial (cuatro) y su fórmula (I, II y III), el
   símbolo —niceno o de los apóstoles—, el «Oren, hermanos», el prefacio
@@ -47,7 +58,13 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   bendición final —las veinte solemnes y las veintiocho oraciones sobre el
   pueblo del apéndice del Misal— y la despedida. Lo que el día **manda** no
   se pregunta: el Gloria y el Credo los pone o los calla el formulario, y el
-  prefacio que el día marca viene elegido. Donde el Misal no marca ninguno
+  prefacio que el día marca viene elegido. Con una enmienda: el formulario
+  no siempre es del día —las ferias del tiempo ordinario toman el del
+  domingo de su semana, y con él se traían su Gloria y su Credo—, así que
+  una feria los calla. Qué es feria lo dice el calendario del proyecto con
+  su rango de la Tabla de los días litúrgicos, y se miran las del rango 13;
+  los días de la octava de Navidad, que son del 9 y sí los dicen, los
+  acierta el formulario porque es suyo. Donde el Misal no marca ninguno
   —los domingos del tiempo ordinario, por ejemplo— se dice que la elección
   es libre y se ofrece el juego del tiempo.
 * **Las otras misas del mismo día.** Las que el leccionario numera —las tres

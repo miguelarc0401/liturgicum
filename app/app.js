@@ -19,6 +19,8 @@ const POR_OMISION = {
   hAntFinal: '', calAbre: 'misa',
   // la misa: el Ordinario intercalado, y lo que se elige en él
   ordinario: 'plegado', latinBi: 'clementina', ordoOps: {},
+  // qué se enseña del formulario (Ajustes, «Qué se enseña de la misa»)
+  misaVer: 'todo', misaSecs: null,
   // el formato del texto (Ajustes, «Formato del texto»)
   letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
   particion: 'si', cruces: 'si', despierto: false,
@@ -544,12 +546,16 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   // desde el índice se abre un formulario sin día, y entonces no hay fecha
   // que mirar. La usan los propios de la plegaria para saber si es domingo.
   E.isoMisa = iso || null;
+  E.celMisa = null;
   const d = E.diaDe.get(slug);
   if (!d) { vista.innerHTML = '<p class="aviso">No encuentro ese día.</p>'; return; }
   if (bloque >= d.b.length || bloque < 0) bloque = 0;
   const b = d.b[bloque];
   const lects = b && E.lecturas.bloques[b.k];
   const cel = (cels || []).find((o) => o.slug === slug);
+  // y la celebración misma, con su rango de la Tabla de los días
+  // litúrgicos: el Gloria y el Credo lo necesitan (`feriaSinGloriaNiCredo`)
+  E.celMisa = (cel && cel.m) || null;
   document.body.dataset.color = (cel && cel.m.smv) || esDeLaVirgen(d.t)
     ? 'azul' : E.colorDe.get(slug) || 'neutro';
   // el común se titula a sí mismo «Leccionario V…»: cuando se abre como la
@@ -910,9 +916,20 @@ let _sinOrdo = false;
  * rúbrica por su número y la llaman desde doce sitios. */
 let _fMisa = null;
 
+/* Si las rúbricas del Ordinario se pintan. El día que no hay misa no las
+ * tiene. Y el ajuste del Ordinario decide en el modo entero, que es el que
+ * trae el Ordo completo se pida o no; en el modo breve y en el propio la
+ * decisión ya está tomada pieza por pieza —el Gloria y la oración de los
+ * fieles son rúbricas suyas, y se piden por su nombre—, así que allí no
+ * manda. */
+function hayOrdinario() {
+  if (_sinOrdo) return false;
+  return E.cfg.misaVer !== 'todo' || E.cfg.ordinario !== 'no';
+}
+
 /** Varias rúbricas seguidas. */
 function ordo(ns) {
-  if (E.cfg.ordinario === 'no' || _sinOrdo) return '';
+  if (!hayOrdinario()) return '';
   return ns.map(ordoUna).filter(Boolean).join('');
 }
 
@@ -922,6 +939,9 @@ function ordo(ns) {
  * el texto que se busca queda debajo. Van bajo un rótulo menudo, para que se
  * vea que están y no estorben. */
 function ordoPlegado(ns, id) {
+  // y sólo en el modo entero: una rúbrica suelta no es una de las piezas
+  // que se eligen, y quien pidió unas piezas pidió ésas y no sus bordes
+  if (E.cfg.misaVer !== 'todo') return '';
   const h = ordo(ns);
   if (!h || E.cfg.ordinario === 'abierto') return h;
   const abierta = !!E.pliegues[id];
@@ -1336,6 +1356,113 @@ const ROTULO_SEC = {
   pueblo: 'Oración sobre el pueblo', conclusion: 'Rito de conclusión'
 };
 
+/* ------------------------------------------------ qué se enseña del misal
+ *
+ * El formulario entero son veintidós piezas, y tres cuartas partes de lo
+ * que ocupan son el Ordinario. Quien se sabe la misa no necesita leerlo: le
+ * basta lo que cambia cada día. Así que hay tres modos, y los tres salen de
+ * esta misma lista —el entero, que la pasa toda; el breve, que pasa lo que
+ * cambia y se dice; y el propio, que pasa lo que se haya marcado en
+ * Ajustes— y `armaMisa` sólo decide aquí si una pieza entra, nunca en qué
+ * orden: el orden es el del formulario y lo pone el Misal.
+ *
+ * Las lecturas no son una pieza fija sino las que traiga el día, y por eso
+ * se eligen por su clase. El Evangelio se reconoce por el rótulo, igual que
+ * en `ordoDeLectura`, porque el leccionario lo marca ahí y no en `k`: para
+ * el fichero de lecturas un Evangelio es una lectura más.
+ *
+ * El tercer campo dice que la pieza es del Ordinario, y la lista de Ajustes
+ * lo advierte: son las que no cambian de un día para otro.
+ */
+const MISA_PIEZAS = [
+  ['resena', 'Reseña del día'],
+  ['entrada', 'Antífona de entrada'],
+  ['inicio', 'Ritos iniciales', 1],
+  ['penitencial', 'Acto penitencial', 1],
+  ['gloria', 'Gloria'],
+  ['colecta', 'Oración colecta'],
+  ['lect:lectura', 'Primera lectura, y segunda'],
+  ['lect:salmo', 'Salmo responsorial'],
+  ['lect:aleluya', 'Aclamación antes del Evangelio'],
+  ['lect:evangelio', 'Evangelio'],
+  ['tras_evangelio', 'Después del Evangelio', 1],
+  ['credo', 'Profesión de fe'],
+  ['fieles', 'Oración de los fieles'],
+  ['ofertorio', 'Preparación de las ofrendas', 1],
+  ['ofrendas', 'Oración sobre las ofrendas'],
+  ['prefacio', 'Prefacio'],
+  ['plegaria', 'Plegaria eucarística', 1],
+  ['comunion_rito', 'Rito de comunión', 1],
+  ['comunion', 'Antífona de comunión'],
+  ['poscomunion', 'Oración después de la comunión'],
+  ['pueblo', 'Oración sobre el pueblo'],
+  ['conclusion', 'Rito de conclusión', 1]
+];
+
+/* El modo breve. El Gloria está en la lista, pero que salga o no no lo
+ * decide esta lista: lo decide el nivel litúrgico del día, con la marca
+ * `gl` del formulario y la enmienda de `feriaSinGloriaNiCredo`. Estar aquí
+ * sólo quiere decir que el modo breve no lo tapa.
+ *
+ * La profesión de fe no entra: no se pidió. Y la oración sobre el pueblo
+ * tampoco: es una bendición del rito de conclusión, no la oración que
+ * cierra el formulario, que es la de después de la comunión. */
+const MISA_BREVE = ['entrada', 'gloria', 'colecta', 'lect:lectura',
+  'lect:salmo', 'lect:aleluya', 'lect:evangelio', 'fieles', 'ofrendas',
+  'comunion', 'poscomunion'];
+
+/* Lo que no se quita nunca, porque no es una pieza de la misa: el selector
+ * de cuál de las misas del día se lee, y el aviso del Viernes Santo de que
+ * hoy no hay misa. */
+const MISA_SIEMPRE = ['lamisa', 'sinmisa'];
+
+/** La clase con la que se elige una lectura. El Evangelio va aparte: es lo
+ *  que se busca cuando se busca una sola. */
+function claseLectura(l) {
+  return 'lect:' + (l.k === 'lectura' && /evangeli/i.test(l.t || '')
+    ? 'evangelio' : (l.k || 'lectura'));
+}
+
+/** Las piezas que toca enseñar, o `null` en el modo entero, que no mide. */
+function piezasPuestas() {
+  if (E.cfg.misaVer === 'breve') return MISA_BREVE;
+  if (E.cfg.misaVer === 'propio') {
+    return Array.isArray(E.cfg.misaSecs) ? E.cfg.misaSecs
+      : MISA_PIEZAS.map((x) => x[0]);
+  }
+  return null;
+}
+
+/* El Gloria y la profesión de fe los marca el formulario del Misal —`gl` y
+ * `cr`, cosechados del misalito—, pero el formulario no siempre es del día:
+ * las ferias del tiempo ordinario toman el del domingo de su semana, y con
+ * él se traían su Gloria y su Credo. Una feria no dice ninguno de los dos
+ * (IGMR 53 y 68: los domingos fuera de Adviento y Cuaresma, las
+ * solemnidades, las fiestas y las celebraciones peculiares más solemnes),
+ * así que la feria los quita.
+ *
+ * Qué es feria no lo cuenta la app: lo trae resuelto el calendario del
+ * proyecto —`f` en la celebración— con su rango de la Tabla de los días
+ * litúrgicos. Y se mira el rango 13, que son las ferias de Adviento hasta
+ * el 16 de diciembre, las de Navidad desde el 2 de enero, las de Pascua y
+ * las del tiempo ordinario, ninguna de las cuales los dice. Las del rango 9
+ * no se tocan: ahí están los días de la octava de Navidad, que sí los
+ * dicen, y ésos el formulario los acierta porque es suyo.
+ *
+ * Sin día —un formulario abierto desde el índice— no hay rango que mirar, y
+ * entonces se enseña como el Misal lo imprime. */
+function feriaSinGloriaNiCredo() {
+  const m = E.celMisa;
+  return !!(m && m.k === 't' && m.f && m.r === 13);
+}
+
+/** Si una pieza del formulario entra. */
+function quierePieza(id) {
+  if (MISA_SIEMPRE.indexOf(id) >= 0) return true;
+  const ps = piezasPuestas();
+  return !ps || ps.indexOf(id) >= 0;
+}
+
 /** El rótulo de una lectura, para el carril. */
 function rotuloCorto(l) {
   const t = (l.t || '').replace(/\s+/g, ' ').trim();
@@ -1394,10 +1521,12 @@ function armaMisa(clave, lects) {
   const sinMisa = SIN_MISA[f.u];
   _sinOrdo = !!sinMisa;
   _fMisa = f;
-  const hayOrdo = E.cfg.ordinario !== 'no' && !sinMisa;
+  const hayOrdo = hayOrdinario();
   const S = [];
+  // la pieza que el modo no quiere no se arma: aquí se decide si entra, y
+  // el orden sigue siendo el del formulario
   const sec = (cl, cuerpo, extra) => {
-    if (!cuerpo) return;
+    if (!cuerpo || !quierePieza(cl)) return;
     S.push(Object.assign({ cl: cl, rot: ROTULO_SEC[cl] || cl,
       cuerpo: cuerpo }, extra || {}));
   };
@@ -1433,18 +1562,19 @@ function armaMisa(clave, lects) {
       + ordoDesde(F[1], F[2], F[3]) + ordo(['7']),
     Object.assign({ ordo: true }, alterna('penit_inv', '4')));
   }
-  if (f.gl) ordoSec('gloria', ordo(['8']));
+  if (f.gl && !feriaSinGloriaNiCredo()) ordoSec('gloria', ordo(['8']));
   sec('colecta', ordoPlegado(['9'], 'r-colecta')
     + pintaPieza(f, lat, 'colecta'));
 
   (lects || []).forEach((l, i) => {
+    if (!quierePieza(claseLectura(l))) return;
     const l2 = parejaEs(clave, i);
     S.push({ cl: 'lect' + i, rot: null, lectura: true, nombre: rotuloCorto(l),
       cuerpo: ordoPlegado(ordoDeLectura(l, i), 'r-lect' + i)
         + pintaLectura(l, l2) });
   });
   if ((lects || []).length) ordoSec('tras_evangelio', ordo(['16', '17']));
-  if (f.cr) {
+  if (f.cr && !feriaSinGloriaNiCredo()) {
     const i = elegido('simbolo', SIMBOLO.length);
     ordoSec('credo', ordoUna(SIMBOLO[i][1]), { elige: 'simbolo', i: i,
       alts: SIMBOLO.map((x, j) =>
@@ -1539,7 +1669,11 @@ function pintaMisaSec(s) {
           + esc(a.rot + ': ' + a.tit) + '"' : '') + '>' + esc(a.rot)
         + '</button>').join('') + '</div>'
     : '';
-  const plegable = !!s.ordo && E.cfg.ordinario !== 'abierto';
+  // plegado sólo en el modo entero: el Ordinario entra ahí se pida o no, y
+  // si no se plegara taparía los propios. En los otros dos modos la pieza
+  // se pidió por su nombre, y una pieza plegada es sólo un rótulo
+  const plegable = !!s.ordo && E.cfg.misaVer === 'todo'
+    && E.cfg.ordinario !== 'abierto';
   const abierta = !plegable || !!E.pliegues[s.cl];
   if (s.rot) {
     h.push('<div class="sec-cab"><h2 class="rotulo">'
@@ -2346,6 +2480,39 @@ function muestraFormato() {
     + '</p></section></div>';
 }
 
+/* La lista de piezas del modo propio: casillas en el orden del formulario,
+ * las del Ordinario dichas, que son las que no cambian de un día para otro
+ * y casi todo el bulto. El rótulo es el mismo que llevará la sección al
+ * pintarse, para que se reconozca lo que se marca. */
+function piezasDeLaMisa() {
+  const puestas = piezasPuestas() || [];
+  return '<div class="ajuste ancho piezas"><label>Las piezas'
+    + '<span class="pista">En el orden de la misa. El Gloria y la profesión '
+    + 'de fe salen sólo los días que el Misal los manda, aunque aquí estén '
+    + 'marcados: eso lo dice el formulario del día y no se toca desde '
+    + 'aquí.</span></label><div class="casillas">'
+    + MISA_PIEZAS.map(([id, rot, deOrdo]) =>
+      '<label class="casilla"><input type="checkbox" data-pieza="' + esc(id)
+      + '"' + (puestas.indexOf(id) >= 0 ? ' checked' : '') + '><span>'
+      + esc(rot) + (deOrdo ? '<em> · del Ordinario</em>' : '')
+      + '</span></label>').join('')
+    + '</div></div>';
+}
+
+/* Qué pestaña de Ajustes estaba abierta. La vista se rehace entera al
+ * cambiar la versión o el modo de la misa, y una pestaña que se cierra sola
+ * deja al dedo buscando dónde estaba. Se recuerda para ese repintado y se
+ * gasta en él: al volver a Ajustes manda otra vez la de siempre. */
+let _ajustesAbiertas = null;
+
+function recuerdaAjustes() {
+  const t = {};
+  document.querySelectorAll('.ajustes-sec').forEach((d) => {
+    t[d.dataset.sec] = d.open;
+  });
+  _ajustesAbiertas = t;
+}
+
 function verAjustes() {
   E.vista = 'ajustes';
   marcaBarra('ajustes');
@@ -2359,9 +2526,10 @@ function verAjustes() {
   // Cada sección, una pestaña que se abre: la lista entera de un tirón son
   // cuatro pantallas de deslizar para cambiar una cosa. Viene abierta la
   // del formato, que es a lo que más se vuelve.
-  let n = 0;
   const ajuste = (titulo) => '</div></details>'
-    + '<details class="ajustes-sec"' + (n++ === 1 ? ' open' : '')
+    + '<details class="ajustes-sec" data-sec="' + esc(titulo) + '"'
+    + ((_ajustesAbiertas ? _ajustesAbiertas[titulo]
+      : titulo === 'Formato del texto') ? ' open' : '')
     + '><summary>' + titulo + '</summary><div class="ajustes-cuerpo">';
   vista.innerHTML = [
     ajuste('La lengua de la misa'),
@@ -2375,16 +2543,33 @@ function verAjustes() {
       [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata'],
         ['es', 'Castellano · misalito de México'],
         ['bi', 'Bilingüe · latín y castellano']]),
-    sel('ordinario', 'El ordinario de la misa',
-      'El Ordo Missæ intercalado donde va, con sus 146 rúbricas en las dos '
-      + 'lenguas. No se lee cada día, pero cuando se busca se busca ahí: '
-      + 'viene plegado y se abre tocando su rótulo.',
-      [['plegado', 'Plegado'], ['abierto', 'Abierto'],
-        ['no', 'No: sólo los propios y las lecturas']]),
     sel('acentos', 'Acentuación litúrgica',
       'El acento tónico marcado, como en los libros de coro.',
       [[true, 'Sí'], [false, 'No']]),
     sel('numeros', 'Números de versículo', '', [[true, 'Sí'], [false, 'No']]),
+    ajuste('Qué se enseña de la misa'),
+    sel('misaVer', 'Del formulario, enseñar',
+      'Tres cuartas partes del formulario son el Ordinario, que no cambia '
+      + 'de un día para otro. Lo breve deja lo que sí: antífona de entrada, '
+      + 'el Gloria los días que lo lleva, la colecta, las lecturas con su '
+      + 'salmo y su aclamación, la oración de los fieles, la de las '
+      + 'ofrendas, la antífona de comunión y la oración después de la '
+      + 'comunión.',
+      [['todo', 'Todo, en el orden de la misa'],
+        ['breve', 'Lo breve: lo que cambia y se dice'],
+        ['propio', 'Lo que yo elija']]),
+    E.cfg.misaVer === 'propio' ? piezasDeLaMisa() : '',
+    // el ajuste del Ordinario sólo manda en el modo entero: en los otros
+    // dos lo que entra se decide pieza por pieza, y ofrecerlo ahí sería
+    // ofrecer un mando que no mueve nada
+    E.cfg.misaVer === 'todo'
+      ? sel('ordinario', 'El ordinario de la misa',
+        'El Ordo Missæ intercalado donde va, con sus 146 rúbricas en las '
+        + 'dos lenguas. No se lee cada día, pero cuando se busca se busca '
+        + 'ahí: viene plegado y se abre tocando su rótulo.',
+        [['plegado', 'Plegado'], ['abierto', 'Abierto'],
+          ['no', 'No: sólo los propios y las lecturas']])
+      : '',
     ajuste('Formato del texto'),
     muestraFormato(),
     '<div class="ajuste ancho"><label for="aj-tam">Tamaño de letra'
@@ -2490,6 +2675,7 @@ function verAjustes() {
   // cerrar: se le quita a uno y se le pone al otro
   ].join('').replace('</div></details>', '') + '</div></details>';
 
+  _ajustesAbiertas = null;
   colocaPosicion();
 }
 
@@ -2498,10 +2684,36 @@ function verAjustes() {
  *  con el prefijo `aj-` para no chocar con los `id` de la página. */
 async function alCambiarAjuste(ev) {
   if (E.vista !== 'ajustes') return;
+  // las casillas del modo propio no son un ajuste con nombre sino una
+  // lista, y se guarda en el orden del formulario para que `armaMisa` no
+  // tenga que ordenarla después
+  const pieza = ev.target.dataset.pieza;
+  if (pieza) {
+    const puestas = piezasPuestas() || [];
+    const quedan = ev.target.checked ? puestas.concat([pieza])
+      : puestas.filter((x) => x !== pieza);
+    E.cfg.misaSecs = MISA_PIEZAS.map((x) => x[0])
+      .filter((x) => quedan.indexOf(x) >= 0);
+    guardaCfg();
+    return;
+  }
   const id = (ev.target.id || '').replace(/^aj-/, '');
   if (!(id in E.cfg)) return;
   let v = ev.target.value;
   if (v === 'true' || v === 'false') v = (v === 'true');
+  if (id === 'misaVer') {
+    // al pasar a elegir, la lista empieza por lo que se estaba viendo: no
+    // ha de quitar ni añadir nada, sólo dejar tocarlo
+    if (v === 'propio') {
+      E.cfg.misaSecs = (piezasPuestas()
+        || MISA_PIEZAS.map((x) => x[0])).slice();
+    }
+    E.cfg.misaVer = v;
+    guardaCfg();
+    recuerdaAjustes();
+    verAjustes();      // aparece la lista, y el Ordinario deja de mandar
+    return;
+  }
   E.cfg[id] = id === 'tam' ? +v : v;
   guardaCfg();
   aplicaCfg();
@@ -2514,6 +2726,7 @@ async function alCambiarAjuste(ev) {
     // estaba leyendo y no uno a la fuerza
     if (v === 'clementina' || v === 'nova') E.cfg.latinBi = v;
     guardaCfg();
+    recuerdaAjustes();
     vista.innerHTML = '<p class="aviso">Cambiando de versión…</p>';
     await cargaLecturas(v);
     verAjustes();

@@ -582,6 +582,24 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   font-family: var(--sans); font-size: .68rem; color: var(--tinta-suave);
 }
 
+/* El modo propio de la misa: las piezas en casillas, en el orden del
+   formulario. Una casilla por renglon: los rotulos son largos y en dos
+   columnas se parte el que no cabe. */
+.ajuste.piezas { padding-bottom: .55rem; }
+.casillas { margin-top: .65rem; }
+.casilla {
+  display: flex; align-items: flex-start; gap: .65rem;
+  padding: .4rem .1rem; font-family: var(--sans); font-size: .87rem;
+  cursor: pointer;
+}
+.casilla input[type="checkbox"] {
+  flex: none; width: 1.1rem; height: 1.1rem; margin: .06rem 0 0;
+  accent-color: var(--acento);
+}
+.casilla em {
+  font-style: normal; font-size: .78rem; color: var(--tinta-suave);
+}
+
 h2.seccion {
   margin: 2rem 0 .2rem; font-family: var(--sans); font-size: .72rem;
   font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
