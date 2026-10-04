@@ -240,9 +240,79 @@ antífona «El que quiera venir conmigo, que renuncie a sí mismo» se imprime e
 
 Porque la antífona está en varios comunes a la vez. Así que los 356 textos de
 este tipo van a `sueltos_es.json` con ese reparto ya medido, común por común,
-y los colocará la fase 5 contra los comunes del Misal latino, que los trae
-enteros. Los que sí son de un solo común —el que ofrecen todos sus días, sin
-una excepción— entran en `propios_es.json`.
+y los coloca la fase 5. Los que sí son de un solo común —el que ofrecen todos
+sus días, sin una excepción— entran en `propios_es.json`.
+
+*Lo que la fase 5 hizo con ellos, que no fue lo previsto.* Colocarlos contra
+los comunes del Misal latino sirve para 18; lo que los rescata de verdad es
+otra pregunta, y es la de abajo: no «¿de qué formulario es este texto?», sino
+«¿qué imprimió el misalito ese día en esa ranura?». Por ese camino entran 460
+piezas. Los 338 que siguen sueltos están bien donde están.
+
+### La unidad del Misal no es el día: es el formulario
+
+*Hallazgo de la fase 5, y es lo que la hace funcionar.* El Misal imprime **una**
+colecta para toda la primera semana del tiempo ordinario —`HEBDOMADA I PER
+ANNUM`—, y el misalito la imprime el lunes de un año y el martes de otro. La
+fase 4, que atribuye por celebración, no encontraba ninguna presente en todos
+sus días y el texto se iba a los sueltos. Agrupando las celebraciones por el
+formulario latino que comparten —los siete días de la semana son uno— el texto
+vuelve a su sitio con todos sus testigos: **1 862 piezas** entran por ese
+camino. Y el misalito lo dice además con su propio nombre, «Misa de la I Semana
+del Tiempo Ordinario», que es un segundo testigo independiente.
+
+La cascada con que se resuelve cada ranura, en este orden, y cada paso queda
+escrito en el informe:
+
+| paso | de dónde | piezas |
+|---|---|---|
+| 1 | el texto de la propia celebración | 1 854 |
+| 2 | el de otra celebración del mismo formulario del Misal | 1 862 |
+| 3 | un texto suelto cuyos días caen todos en ese formulario | 49 |
+| 4 | lo que el misalito imprimió esos días | 460 |
+| 5 | el común que la celebración ofrece | 141 |
+| 6 | el latín, marcado como latín | 726 |
+| 7 | nada, y se dice que nada | 1 214 |
+
+El paso 4 es más flojo que los tres primeros y hay que decirlo: el texto puede
+ser de otro formulario y el editor repetirlo —la oración sobre las ofrendas del
+Adviento sale en veintiún días de tres semanas distintas—, así que no prueba
+que la pieza **sea** de esa celebración. Prueba lo que ese día se rezó, que es
+lo que la app tiene que mostrar. Se exige que todos los días de la celebración
+que traen algo en esa ranura traigan lo mismo: con uno que discrepe, no entra.
+Sin él, el I domingo de Adviento se quedaba sin oración sobre las ofrendas y
+sin oración después de la comunión, teniéndolas la fuente impresas.
+
+De las 1 214 que se quedan sin nada, **982 son la oración sobre el pueblo**,
+que sólo tiene la Cuaresma: el agujero de verdad son las otras 232.
+
+### Las varias misas de un mismo día
+
+La fase 4 las separó con un sufijo detrás del identificador
+(`md_12-25#misa-de-la-aurora`, `st_1102_162#segunda-misa`,
+`d2_6_4#misa-vespertina-de-la-cena-del-senor`), y son los días mayores del año.
+El sufijo dice qué misa es y **el día dice de qué celebración**: las tres misas
+de Navidad, las tres de los Difuntos, la vespertina de la Cena del Señor y las
+vigilias de san Juan Bautista, de san Pedro y san Pablo y de Pentecostés. Son
+diecisiete identificadores y los diecisiete quedan situados. Con el sufijo sin
+resolver, la misa de medianoche, la de la aurora y la primera de los Difuntos
+—siete testigos cada una, las cinco piezas— se quedaban fuera.
+
+Las que el leccionario no numera —las vigilias, la segunda y la tercera de los
+Difuntos— no tienen clave y por tanto no son un formulario de la lista: van en
+la tabla de unidades con su `#vigilia`, `#2` o `#3`, que es de donde la fase 6
+las ofrecerá como lo que son, otra misa del mismo día.
+
+### Las votivas sí tienen castellano
+
+En las ferias el editor elige a menudo una votiva, y la fase 4 guardó 61 con el
+nombre que el misalito imprime. El leccionario las tiene todas, numeradas **en
+el orden del Misal y con sus títulos traducidos**, y cuando junta varias en un
+solo juego de lecturas las nombra todas separadas por raya. Por ahí se emparejan
+58 de las 61, y la consecuencia corrige lo que este documento daba por perdido:
+de los 67 formularios de misas por diversas necesidades y votivas del
+leccionario VI, **52 tienen castellano** —34 con las cinco piezas— y sólo 15 se
+quedan en latín. Los 35 de rituales y difuntos sí se quedan los 35.
 
 ### Una excepción, y nombrada: la fuente también traslada
 
@@ -300,6 +370,14 @@ celebran por calendario:
 
 De ésos el castellano **no va a salir de los misalitos**. Sus propios sí salen
 del Misal latino, completos. Es el hueco grande, y hay que decirlo, no taparlo.
+
+*Y la fase 5 lo midió, y es menos grande de lo que este párrafo decía.* De los
+67 del leccionario VI —las misas por diversas necesidades y votivas— **52
+tienen castellano**, 34 con las cinco piezas: porque en las ferias el editor
+elige una votiva y la imprime entera, 531 veces en los cien ficheros. Donde el
+párrafo acierta del todo es en los 35 de rituales y difuntos: ésos se quedan
+los 35 en latín, y los 7 apéndices y los 17 «otros formularios del propio de los
+santos» se quedan sin nada, ni latín, porque el Misal no los tiene tampoco.
 
 ### Los prefacios: los dos juegos no se corresponden
 
@@ -407,7 +485,7 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 | 2 | `Missale/src/2_ordinario.py` | el PDF del Ordinario de México → `datos/ordinario_es.json` y `datos/prefacios_es.json`: las 146 rúbricas con sus alternativas («O bien:»), los dos símbolos, las plegarias I-IV con sus propios, y los 67 prefacios con título y epígrafe. **Alinea con el latino por número de rúbrica**, y lo que no cuadre va al informe |
 | 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
 | 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 598 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 356 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
-| 5 | `Missale/src/5_resolver.py` | las piezas + el Ordinario + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt` con todo lo que no cuadró |
+| 5 ✓ | `Missale/src/5_resolver.py` | las piezas + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt`. **Hecha.** Los 1 051 formularios del leccionario resueltos pieza por pieza: 691 con las cinco en castellano, 243 con alguna, 84 sólo en latín y 33 sin nada —y los 33 están nombrados y explicados—. El puente con el Misal latino coloca 552 de sus 575 formularios; la construcción es byte a byte la misma en dos pasadas |
 | 6 | `Missale/src/6_app.py` | → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json` |
 
 Las fases 1 y 2 no dependen de nada: ni del calendario de 2018, ni de los
@@ -437,6 +515,37 @@ Nunca se traduce. Si el castellano no está, se dice que no está.
 ---
 
 ## El modelo de datos
+
+Entre la fase 5 y la 6 hay un fichero de más, y conviene saber por qué.
+`Missale/datos/libro/misa.json` **no lleva texto**: lleva la decisión. Por cada
+clave del leccionario dice, ranura por ranura, de dónde sale su texto —de qué
+celebración, de qué suelto, de qué común o de qué formulario latino—, por qué
+camino se decidió y con cuántos testigos; y las lecturas van por su cita, no
+copiadas. Así el fichero pesa 2,5 MB en vez de los catorce que pesaría con los
+textos dentro, se lee entero para auditarlo, y la fase 6 no tiene que decidir
+nada: dereferencia.
+
+```
+Missale/datos/libro/misa.json
+                             { unidades: { celebración: unidad },
+                               latino:   { unidad: {k, alt: [ … ]} },
+                               formularios: { clave: {
+                                 cel, titulo, seccion, etiqueta, grado, color,
+                                 u: unidad, la: <id latino>, alt: [ … ],
+                                 resena, gloria, credo,
+                                 prefacio: [ … ], prefacio_propio,
+                                 piezas: { ranura: {f: 'misalito'|'latino',
+                                   via: 'celebración'|'unidad'|'suelto'
+                                        |'día'|'común'|'latino',
+                                   de: <de dónde>, r: <ranura de origen>,
+                                   t: testigos, v: variantes} },
+                                 lecturas: [ {o, tipo, cita, es: <cita>, t} ],
+                                 v: 'completo'|'parcial'|'latino'|'nada' } },
+                               prefacios: { <id es>: <id la | null> },
+                               sueltos:   { <nº>: <unidad | null> } }
+```
+
+Y lo que de ahí sale para el teléfono:
 
 ```
 app/datos/misa.json          { formularios: { clave: {
@@ -543,11 +652,34 @@ dice en vez de disimularlo**.
   con el reparto medido; los 28 prefacios propios cosechados y
   los que ningún día cita; las oraciones sobre el pueblo; y las 48
   celebraciones del propio de México que el calendario del proyecto no trae.
-* `resolver_qa.txt` — el informe que importa: por cada uno de los 1 077
-  formularios, si tiene castellano, por qué camino se emparejó (fecha, cita, o
-  los dos), cuántos testigos, y, si no lo tiene, por qué. Más el cotejo de
-  citas entre el leccionario latino y el misalito, que es la prueba de que el
-  emparejamiento no es una coincidencia de calendario.
+* `resolver_qa.txt` — **hecho**, y es el informe que importa: los **1 051**
+  formularios uno por uno, con un mapa de seis letras que dice de dónde sale
+  cada pieza —`CUSDML` y un punto donde no hay nada— y los testigos del texto
+  canónico. Son 1 051 y no los 1 077 que esta cuenta decía: 1 077 son los
+  formularios del leccionario *con texto*, y de ellos 1 051 tienen sitio en
+  `indice.json`, que es lo que la app usa para llegar a ellos.
+
+  Además: el camino con que se emparejó cada formulario del santoral latino
+  —120 por la fecha, 38 por el orden del libro y el nombre, 15 por la fecha y
+  el nombre, 4 por la tabla y 2 por el orden sin que el nombre lo confirme, y
+  estos dos nombrados—; las cuatro de la tabla, con la razón de cada una; las
+  58 votivas emparejadas con su rótulo del leccionario y su parecido; el cotejo
+  de citas, que es la prueba de que el emparejamiento no es una coincidencia de
+  calendario; las 236 celebraciones de una misma unidad que no traen el mismo
+  texto; los días de una celebración que no imprimen lo mismo; los 338 sueltos
+  que siguen sueltos, por ranura; la tabla de prefacios con los 18 castellanos
+  sin pareja latina y los 15 que ningún formulario cita; y, aparte, los
+  defectos de fases anteriores que esta fase topa.
+
+  **El cotejo de citas**, que era lo que había que probar: de las 12 739 citas
+  que los cien misalitos imprimen, **3 822** son las que el leccionario da a la
+  celebración a la que la fase 4 atribuyó ese día, **4 979** son las de otra
+  celebración del mismo día —la feria, casi siempre, que es el caso conocido— y
+  **3 938** no están en ninguna de las de ese día. De esas 3 938, dos tercios
+  son el salmo y la aclamación, y ahí la diferencia no es de formulario sino de
+  versículos: el leccionario mexicano elige otros del mismo salmo. Las que de
+  verdad dicen que el editor rezó otra cosa son la primera lectura y el
+  evangelio, y son 1 029.
 
 ---
 
@@ -608,17 +740,34 @@ dice en vez de disimularlo**.
    Para esas 39 el castellano saldrá del común —la fase 4 cosechó 470 textos
    de los comunes— o del latín marcado, que es lo que decidiste en la
    pregunta 6.
-4. **Los dos juegos de prefacios.** 67 castellanos y 50 latinos, con la
-   numeración divergente que está en la tabla de arriba. Si la correspondencia
-   se hiciera por número —«Prefacio III de Adviento» con el tercero del juego
-   latino, que no existe— saldrían textos cruzados, y cruzados de una manera
-   difícil de notar, porque los dos serían prefacios de Adviento y los dos
-   sonarían bien. Por eso va en tabla explícita y por eso el informe la imprime
-   entera: es el error más fácil de cometer aquí y el más difícil de ver.
+4. ~~**Los dos juegos de prefacios.**~~ **Cerrado, y no se cruzó ninguno.** 67
+   castellanos y 50 latinos, con la numeración divergente que está en la tabla
+   de arriba. Si la correspondencia se hiciera por número —«Prefacio III de
+   Adviento» con el tercero del juego latino, que no existe— saldrían textos
+   cruzados, y cruzados de una manera difícil de notar, porque los dos serían
+   prefacios de Adviento y los dos sonarían bien. La fase 2 la hizo por el
+   **número de rúbrica**, que es lo único que los dos juegos comparten, y la
+   fase 5 la cerró: **49 castellanos tienen pareja latina y 18 no**, y los 18
+   van marcados y nombrados uno a uno —los III y IV de Adviento, el V de
+   Cuaresma, el de después de la Ascensión, los IX y X de los domingos del
+   tiempo ordinario, los del Bautismo, la Confirmación, la Penitencia y la
+   Unción, el III de la Eucaristía, los III, IV y V de santa María Virgen y los
+   comunes VII, VIII y IX—. Ni uno emparejado por posición.
+
+   Queda una cosa medida y pequeña: **15 de los 67 no los cita ningún
+   formulario**, entre ellos los cinco de Difuntos y los cuatro de los
+   sacramentos, que viven en las misas rituales. Están en el informe.
 5. **Las siglas de los libros.** La Clementina numera `1-4 Regum` lo que el
    castellano llama 1-2 Samuel y 1-2 Reyes; `Io`/`Jo` es Juan y 1 Jn a la vez
    según el contexto. Hace falta una tabla de puente, y ya existe media en
    `Siglas.docx` y en `data/books.json`.
+
+   *Lo que la fase 5 midió de esto:* ninguna de las siglas que los misalitos
+   imprimen falta del índice del leccionario, así que el puente no hace falta
+   para cotejar las citas de las dos fuentes castellanas. Sí hizo falta un paso
+   más en la forma de apretar la cita: el misalito escribe «Mc 2,23–3.6» y el
+   índice «Mc 2,23—3,6», el mismo pasaje con la coma donde el otro pone el
+   punto, y sin plegar también la coma se perdían las dos.
 6. **Los derechos.** La traducción es la litúrgica aprobada para México, y es
    obra protegida, igual que la de las horas que el proyecto ya publica en
    GitHub Pages. Dejar fuera la parte de autoría del editor —moniciones,

@@ -71,5 +71,7 @@ Missale/datos/misalitos/
 #
 # Lo que la fase 4 saca de ellos -Missale/datos/libro/, 6,8 MB- SI entra, y
 # a proposito: es el libro ya deshecho en piezas, y como los cien PDF no
-# estan en el repositorio, sin esa carpeta no habria de donde rehacerlo.
+# estan en el repositorio, sin esa carpeta no habria de donde rehacerlo. La
+# fase 5 deja ahi misa.json, otros 2,5 MB, que tampoco lleva texto: lleva de
+# donde sale cada pieza, y es lo que hay que poder auditar.
 
