@@ -1,0 +1,1445 @@
+{
+ "prefacios": [
+  {
+   "nombre": "Prefacio común I",
+   "familia": "comun",
+   "numero": 1,
+   "letra": null,
+   "titulo": "Restauración universal en Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre Santo, Dios todopoderoso y eterno, por Cristo nuestroSeñor, a quien hiciste fundamento de todo y de cuya plenitud quisiste que participáramos todos. El cual, siendo Dios, se anonadó a sí mismo y, por su sangre derramada en la cruz, puso en paz todas las cosas. Y así, constituido Señor del universo, es fuente de salvación eterna para cuantos creen en Él. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio común III",
+   "familia": "comun",
+   "numero": 3,
+   "letra": null,
+   "titulo": "Alabanza a Dios por la creación y la redención del hombre",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno.Pues por medio de tu amado Hijo, eres el creador del género humano y también el autor bondadoso de la nueva creación. Por eso, con razón te sirven todas las criaturas, con justicia te alaban todos los redimidos y unánimes te bendicen tus santos. Con ellos, también nosotros, a una con los ángeles, cantamos tu gloria gozosos diciendo:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio común IV",
+   "familia": "comun",
+   "numero": 4,
+   "letra": null,
+   "titulo": "La alabanza, don de Dios",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Pues, aunque no necesitas de nuestra alabanza, es don tuyo que seamos agradecidos; y aunque nuestras bendiciones no aumentan tu gloria, nos aprovechan para nuestra salvación. Por Cristo nuestro Señor. Por eso unidos a los ángeles, te aclamamos llenos de alegría.",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo"
+   ]
+  },
+  {
+   "nombre": "Prefacio común VI",
+   "familia": "comun",
+   "numero": 6,
+   "letra": null,
+   "titulo": "El misterio de nuestra salvación en Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias, Padre santo, siempre y en todo lugar, por Jesucristo, tu Hijo amado. Por Él que es tu Palabra, hiciste todas las cosas; tú nos lo enviaste para que, hecho hombre por obra del Espíritu Santo y nacido de María, la Virgen, fuera nuestro Salvador y Redentor.Él, en cumplimiento de tu voluntad, para destruir la muerte y manifestar la resurrección, extendió sus brazos en la cruz y así adquirió para ti un pueblo santo. Por eso, con los ángeles y los santos, proclamamos tu gloria, diciendo:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio común V",
+   "familia": "comun",
+   "numero": 5,
+   "letra": null,
+   "titulo": "Proclamación del misterio de Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo,Señor nuestro. Cuya muerte celebramos unidos en caridad, cuya resurrección proclamamos con viva fe, y cuyo advenimiento glorioso aguardamos con firmísima esperanza. Por eso, con todos los ángeles y santos, te alabamos, proclamando sin cesar:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Adviento I",
+   "familia": "adviento",
+   "numero": 1,
+   "letra": null,
+   "titulo": "Las dos venidas de Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo, nuestro Señor. El cual, al venir por vez primera en la humildad de nuestra carne, realizó el plan de redención trazado desde antiguo y nos abrió el camino de la salvación, para que cuando venga de nuevo, en la majestad de su gloria, revelando así la plenitud de su obra, podamos recibir los bienes prometidos que ahora, en vigilante espera, confiamos alcanzar. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de su gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio I/B de Adviento",
+   "familia": "adviento",
+   "numero": 1,
+   "letra": "B",
+   "titulo": "Cristo, Señor y Juez de la historia",
+   "texto": [
+    "En verdad es justo darte gracias, es nuestro deber cantar en tu honor himnos de bendición y de alabanza,Padre todopoderoso, principio y fin de todo lo creado. Tú nos has ocultado el día y la hora en que Cristo, tu Hijo. Señor y juez de la historia, aparecerá sobre las nubes del cielo, revestido de poder y de gloria. En aquel día terrible y glorioso pasará la figura de este mundo y nacerán los cielos nuevos y la tierra nueva. E] mismo Señor que entonces se nos mostrará lleno de gloria, viene ahora a nuestro encuentro en cada hombre y en cada acontecimiento, para que lo recibamos en la fe y por el amor demos testimonio de la espera dichosa de su Reino. Por eso, anhelando su venida gloriosa, unidos a los ángeles y a los santos, cantamos el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo. Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Cuaresma I",
+   "familia": "cuaresma",
+   "numero": 1,
+   "letra": null,
+   "titulo": "Significado espiritual de la Cuaresma",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo nuestro Señor. Por Él concedes a tus hijos anhelar, año tras año, con el gozo de habernos purificado, la solemnidad de la Pascua, para que dedicados con mayor entrega a la alabanza divina y al amor fraterno, por la celebración de los misterios que nos dieron nueva vida, lleguemos a ser con plenitud hijos de Dios. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio II de Cuaresma",
+   "familia": "cuaresma",
+   "numero": 2,
+   "letra": null,
+   "titulo": "El espíritu de penitencia cuaresmal",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte, siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque misteriosamente estableciste este tiempo especial de gracia para que tus hijos busquen de nuevo la pureza del corazón y así, libres de todo afecto desordenado, de tal manera se apliquen a las realidades transitorias, que más bien pongan su corazón en las que duran para siempre. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Cuaresma III",
+   "familia": "cuaresma",
+   "numero": 3,
+   "letra": null,
+   "titulo": "Los frutos de la penitencia",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque has querido que en nuestras privaciones voluntarias encontremos un motivo para bendecirte, ya que nos ayudan a refrenar nuestras pasiones desordenadas y, al damos ocasión de compartir nuestros bienes con los necesitados, nos hacen imitadores de tu generosidad. Por eso, con todos los ángeles, te glorificamos y te aclamamos diciendo:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "PrefacioIV de Cuaresma",
+   "familia": "cuaresma",
+   "numero": 4,
+   "letra": null,
+   "titulo": "Los frutos del ayuno",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y a alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque con el ayuno corporal, refrenas nuestras pasiones, elevas nuestro espíritu, nos fortaleces y recompensas, por Cristo Señor nuestro. Por El, los ángeles y los arcángeles, y todos los coros celestiales, celebran tu gloria, unidos en común alegría. Permítenos asociarnos a sus voces cantando humildemente tu alabanza:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio V de Cuaresma",
+   "familia": "cuaresma",
+   "numero": 5,
+   "letra": null,
+   "titulo": "El camino del éxodo en el desierto Cuaresmal",
+   "texto": [
+    "En verdad es justo bendecir tu nombre, Padre rico en misericordia, ahora que, en nuestro itinerario hacia la luz pascual, seguimos los pasos de Cristo, maestro y modelo de la humanidad reconciliada en el amor. Tú abres a la Iglesia el camino de un nuevo éxodo a través del desierto cuaresmal, para que, llegados a la montaña santa, con el corazón contrito y humillado, reavivemos nuestra vocación de pueblo de la alianza, convocado para bendecir tu nombre, escuchar tu palabra, y experimentar con gozo tus maravillas. Por estos signos de salvación, unidos a los ángeles, ministros de tu gloria, proclamamos el canto de tu alabanza:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de la Eucaristía II",
+   "familia": "eucaristia",
+   "numero": 2,
+   "letra": null,
+   "titulo": "Los frutos de la Eucaristía",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre Santo, Dios todopoderoso y eterno, por Cristo nuestro Señor. El cual, en la última cena con los Apóstoles, se ofreció a ti como cordero sin mancha, para perpetuar su pasión salvadora, y tú lo aceptaste como sacrificio de alabanza perfecta. Con este sacramento, alimentas y santificas a tus fieles para que a los hombres, que habitan un mismo mundo, una misma fe los ilumine y los una en un mismo amor. Así pues, nos acercamos a tu mesa para que, penetrados por la gracia de este admirable misterio, nos transformes en imagen de tu Hijo. Por eso, Señor, todas tus criaturas en el cielo y en la tierra te adoran cantando un cántico nuevo; y también nosotros, con los ángeles, te aclamamos por siempre, diciendo:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio I de los Santos",
+   "familia": "santos",
+   "numero": 1,
+   "letra": null,
+   "titulo": "La Gloria de los Santos",
+   "texto": [
+    "En verdad es justo darte gracias y deber nuestro glorificarte, Padre santo. Porque tú gloria resplandece en cada uno de los santos, ya que, al coronar sus méritos, coronas tus propios dones. Con su vida, nos proporcionas ejemplo: ayuda, con su intercesión, y por la comunión con ellos, nos haces participar de sus bienes, para que, alentados por testigos tan insignes, lleguemos victoriosos al fin de la carrera y alcancemos con ellos la corona inmortal de la gloria. Por Cristo, Señor nuestro. Por eso, con los ángeles y arcángeles, y con la multitud de los santos, te cantamos un himno de alabanza, diciendo sin cesar:",
+    "Santo, Santo, Santo es el Señor, Dios del universo. Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de los Santos II",
+   "familia": "santos",
+   "numero": 2,
+   "letra": null,
+   "titulo": "Acción de los santos en la Iglesia",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre Santo, Dios todopoderoso y eterno, por Cristo nuestro Señor. Porque con la vida de tus santos enriqueces a tu Iglesia, con formas siempre nuevas de admirable santidad, y nos das pruebas indudables de tu amor por nosotros; y también, porque su ejemplo nos impulsa y su intercesión nos ayuda a colaborar en el misterio de la salvación, Por eso, ahora nosotros, llenos de alegría, te aclamamos, con los ángeles y santos, diciendo:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio I de Santa María Virgen",
+   "familia": "santa maria virgen",
+   "numero": 1,
+   "letra": null,
+   "titulo": "Maternidad de la santísima Virgen María",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios Todopoderoso y eterno. Y alabar, bendecir y proclamar tu gloria en la (festividad, conmemoración) de Santa María, siempre virgen. (Maternidad, Visitación, Natividad, festividad, conmemoración). Porque ella concibió a tu Hijo único por obra del Espíritu Santo y sin perder la gloria de su virginidad, hizo brillar sobre el mundo la luz eterna, Jesucristo, Señor nuestro. Por Él, los ángeles y los arcángeles y todos los coros celestiales, celebran tu gloria, unidos en común alegría. Permítenos asociamos a sus voces, cantando humildemente tu alabanza:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio II de santa María Virgen",
+   "familia": "santa maria virgen",
+   "numero": 2,
+   "letra": null,
+   "titulo": "La Iglesia alaba a Dios con las palabras de María",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación proclamar que eres admirable en la perfección de todos tus santos, y de un modo singular en la perfección de la Virgen María. Por eso, al celebrarla hoy, queremos exaltar tu generosidad inspirados en su propio cántico, pues en verdad has hecho maravillas por toda la tierra, y prolongaste tu misericordia de generación en generación, cuando, complacido en la humildad de tu sierva, nos diste por su medio al autor de la vida, Jesucristo, Hijo tuyo y Señor nuestro. Por Él, los ángeles y los arcángeles te adoran eternamente, gozosos en tu presencia. Permítenos unimos a sus voces cantando humildemente tu alabanza:",
+    "Santo,Santo, Santo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Pascua I",
+   "familia": "pascua",
+   "numero": 1,
+   "letra": null,
+   "titulo": "El misterio pascual",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación glorificarte siempre, Señor, pero más que nunca (en esta noche) (en este día) (en este tiempo), en que Cristo, nuestra pascua, fue inmolado. Porque Él es el Cordero de Dios que quitó el pecado del mundo: muriendo, destruyó nuestra muerte, y resucitando, restauró la vida. Por eso, con esta efusión de gozo pascual, el mundo entero se desborda de alegría y también los coros celestiales, los ángeles y los arcángeles, cantan sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Pascua II",
+   "familia": "pascua",
+   "numero": 2,
+   "letra": null,
+   "titulo": "La nueva vida en Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación glorificarte siempre. Señor: pero mas que nunca en este tiempo en que Cristo, nuestra pascua, fue inmolado. Por Él, los hijos de la luz nacen a la vida eterna. Y las puertas de los cielos han vuelto a abrirse para los que creen en Él, ya que en su muerte murió nuestra muerte y en su gloriosa resurrección hemos resucitado todos. Por eso, con esta efusión de gozo pascual, el mundo entero se desborda de alegría y también los coros celestiales, los ángeles y los arcángeles, cantan sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Pascua III",
+   "familia": "pascua",
+   "numero": 3,
+   "letra": null,
+   "titulo": "Cristo vive por siempre e intercede por nosotros",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación glorificarte siempre,Señor, pero más que nunca en este tiempo en que Cristo, nuestra Pascua fue inmolado. Porque continuamente se ofrece por nosotros e intercede por todos ante ti el que, inmolado en la cruz, venció a la muerte y, una vez muerto, vive para siempre. Por eso, con esta efusión de gozo pascual, el mundo entero se desborda de alegría y también los coros celestiales, los ángeles y los arcángeles, cantan sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio IV de Pascua",
+   "familia": "pascua",
+   "numero": 4,
+   "letra": null,
+   "titulo": "Restauración universal por el Misterio Pascual",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque misericordiosamente estableciste este tiempo especial de gracia para que tus hijos busquen de nuevo la pureza del corazón y así, libres de todo afecto desordenado, de tal manera se apliquen a las realidades transitorias, que más bien pongan su corazón en las que duran para siempre. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio V de Pascua",
+   "familia": "pascua",
+   "numero": 5,
+   "letra": null,
+   "titulo": "Cristo, sacerdote y víctima",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación glorificarte siempre, Señor, pero más que nunca en este tiempo, en que Cristo nuestra Pascua, fue inmolado. Porque Él, con la oblación de su cuerpo en la cruz, llevó a plenitudes los sacrificios de la antigua alianza, y al ofrecerse a ti por nuestra salvación, quiso ser a un tiempo, víctima, sacerdote y altar. Por eso, con esta efusión de gozo pascual, el mundo entero se desborda de alegría y también los coros celestiales, los ángeles y los arcángeles, cantan sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo. Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio dominical III",
+   "familia": "dominical",
+   "numero": 3,
+   "letra": null,
+   "titulo": "Alabanza a Dios por la creación y la redención del hombre",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Pues por medio de tu amado Hijo, eres el creador del género humano, y también el autor bondadoso de la nueva creación. Por eso, con razón te sirven todas las criaturas, con justicia te alaban todos los redimidos, y unánimes te bendicen tus santos. Con ellos, también nosotros, a una con los ángeles, cantamos tu gloria gozosos diciendo:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio dominical VI",
+   "familia": "dominical",
+   "numero": 6,
+   "letra": null,
+   "titulo": "La historia de la salvación",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo nuestro Señor. Porque naciendo, restauró nuestra naturaleza caída; con su muerte destruyó nuestros pecados; al resucitar nos dio nueva vida; y ascendiendo hasta ti, Padre, nos abrió las puertas del Reino de los cielos. Por eso, unidos a los coros angélicos, te aclamamos, llenos de alegría:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio de Adviento II",
+   "familia": "adviento",
+   "numero": 2,
+   "letra": null,
+   "titulo": "La doble espera de Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo nuestro Señor. A quien todos los profetas anunciaron y la Virgen esperó con inefable amor de madre; Juan lo proclamó ya próximo y lo señaló después entre los hombres. Él es quien nos concede ahora preparamos con alegría al misterio de su nacimiento, para encontramos así cuando llegue, velando en oración y cantando su alabanza. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de la Navidad I",
+   "familia": "navidad",
+   "numero": 1,
+   "letra": null,
+   "titulo": "Cristo es luz",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque gracias al misterio de la Palabra hecha carne, la luz de tu gloria brilló ante nuestros ojos con nuevo resplandor, para que, conociendo a Dios visiblemente, Él nos lleve al amor de lo invisible. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de su gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio Común II",
+   "familia": "comun",
+   "numero": 2,
+   "letra": null,
+   "titulo": "La Salvación por Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar; Señor, Padre santo, Dios todopoderoso y eterno. Pues por amor creaste al hombre, y, aunque condenado justamente, lo redimiste por tu misericordia, por Cristo, Señor nuestro.Por El, los ángeles y los arcángeles y todos los coros celestiales celebran tu gloria, unidos en común alegría. Permítenos asociamos a sus voces, cantando humildemente tu alabanza:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "PrefacioI para los Domingos del Tiempo Ordinario",
+   "familia": "domingos tiempo ordinario",
+   "numero": 1,
+   "letra": null,
+   "titulo": "El Misterio Pascual y el Pueblo de Dios",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo Señor nuestro. Quien, por su Misterio Pascual, realizó la obra maravillosa de llamamos de la esclavitud del pecado y de la muerte al honor de ser estirpe elegida, sacerdocio real, nación consagrada, pueblo de tu propiedad, para que, trasladados por ti de las tinieblas a tu luz admirable, proclamemos ante el mundo tus maravillas. Por eso con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio II para los Domingos en Tiempo Ordinario",
+   "familia": "domingos tiempo ordinario",
+   "numero": 2,
+   "letra": null,
+   "titulo": "El Misterio de la salvación",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar,Señor, Padre santo, Dios todopoderoso y eterno, por Cristo Señor nuestro. Quien, compadecido del extravío de los hombres, quiso nacer de la Virgen María; muriendo en la cruz, nos libró de la muerte eterna y, resucitando, nos dio vida eterna.Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo,",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio I de los Mártires",
+   "familia": "martires",
+   "numero": 1,
+   "letra": null,
+   "titulo": "Testimonio y ejemplo de los mártires",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte, siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque la sangre de san (santa) N., mártir, derramada como la de Cristo para proclamar su fidelidad a ti, manifiesta tu admirable poder, que convierte a la fragilidad en fortaleza y al hombre débil robustece para que sea testigo tuyo, por Cristo, Señor nuestro. Por eso, como los ángeles te cantan en el cielo, así también nosotros en la tierra te aclamamos, diciendo sin cesar:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio de santas vírgenes y santos religiosos",
+   "familia": "santas virgenes santos religiosos",
+   "numero": null,
+   "letra": null,
+   "titulo": "La vida consagrada a Dios es un signo del Reino de los cielos",
+   "texto": [
+    "Prefacio de santas vírgenes y santos religiosos",
+    "La vida consagrada a Dios es un signo del Reino de los cielos",
+    "En verdad es justo y necesario que te alaben, Señor, tus criaturas del cielo y de la tierra. Porque al celebrar a los santos que por amor al Reino de los cielos se consagraron a Cristo, reconocemos tu providencia admirable, que no cesa de llamar al ser humano a la santidad de su primer origen, para hacerlo partícipe, ya desde ahora, de la vida nueva que gozará en el cielo, por Cristo, Señor nuestro.Por eso, con todos los ángeles y santos, te alabamos, proclamando sin cesar:",
+    "Santo, Santo, Santo es el Señor, Dios del universo. Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de los santos pastores",
+   "familia": "santos pastores",
+   "numero": null,
+   "letra": null,
+   "titulo": "La presencia de los santos pastores en la Iglesia",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo, Señor nuestro. Porque concedes a tu Iglesia la alegría de celebrar hoy la festividad de san N., para fortalecerla con el ejemplo de su vida, instruirla con la predicación de su palabra y protegerla con su intercesión. Por eso, con los ángeles y los santos, te cantamos el himno de alabanza, diciendo sin cesar:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio de la Epifanía",
+   "familia": "epifania",
+   "numero": null,
+   "letra": null,
+   "titulo": "Cristo, Luz de las Naciones",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque hoy has revelado en Cristo, el misterio de nuestra salvación, para iluminar con su luz a todos los pueblos; ya que, al manifestarse tu Hijo en nuestra carne mortal, nos has restaurado con la gloria de su inmortalidad. Por eso, con los ángeles y los arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio por la unidad de los Cristianos",
+   "familia": "unidad cristianos",
+   "numero": null,
+   "letra": null,
+   "titulo": "La unidad de la Iglesia, Cuerpo de Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo, nuestro Señor. Por Él, nos has conducido al conocimiento de la verdad, para hacernos miembros de su cuerpo mediante el vínculo de una misma fe y un mismo bautismo; por Él has enviado sobre todos los pueblos del mundo a tu Espíritu Santo, admirable constructor de la Iglesia por la abundancia de sus dones, y autor de la unidad, el cual habita en tus hijos de adopción, santifica a toda la Iglesia y la dirige con sabiduría. Por eso, unidos al coro de los ángeles, te alabamos con alegría, diciendo:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio I de laReconciliación",
+   "familia": "reconciliacion",
+   "numero": 1,
+   "letra": null,
+   "titulo": null,
+   "texto": [
+    "En verdad es justo y necesario, darte gracias siempre, Señor, Padre santo, Dios todopoderoso y eterno: Porque no dejas de alentarnos a tener una vida más plena y, como eres rico en misericordia, ofreces siempre tu perdón e invitas a los pecadores a confiar sólo en tu indulgencia. Nunca te has apartado de nosotros, que muchas veces hemos quebrantado tu alianza, y por Jesucristo tu Hijo, nuestro Redentor, tan estrechamente te has unido a la familia humana, con un nuevo vínculo de amor, que ya nada lo podrá romper. Y ahora, mientras le ofreces a tu pueblo un tiempo de gracia y reconciliación, alientas a esperar en Cristo Jesús a quien se convierte a ti y le concedes ponerse al servicio de todos los hombres, confiando más plenamente en el Espíritu Santo. Por eso, llenos de admiración, ensalzamos la fuerza de tu amor y proclamando la alegría de nuestra salvación, con todos los coros celestiales, cantamos sin cesar el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio I de la Eucaristía",
+   "familia": "eucaristia",
+   "numero": 1,
+   "letra": null,
+   "titulo": "El Sacrificio y el sacramento de Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo,Dios todopoderoso y eterno, por Cristo, Señor nuestro. El cual, verdadero y eterno Sacerdote, al instituir el sacramento del sacrificio perdurable, se ofreció a ti como víctima salvadora, y nos mandó que ofreciéramos como memorial suyo.Cuando comemos su carne, inmolada por nosotros, quedamos fortalecidos; y cuando bebemos su sangre, derramada por nosotros, quedamos limpios de nuestros pecados. Por eso, con los ángeles y arcángeles y con todos los coros celestiales, cantamos sin cesar el himno de tu gloria..."
+   ]
+  },
+  {
+   "nombre": "Prefacio II de los Santos Mártires",
+   "familia": "santos martires",
+   "numero": 2,
+   "letra": null,
+   "titulo": "Las maravillas de Dios en la victoria de los mártires",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque al alabar nosotros a los santos mártires, tú eres glorificado, ya que todo lo que concierne a su pasión es obra admirable de tu poder.En efecto, tú misericordiosamente les proporcionas el ardor de la fe, les otorgas la firmeza de la perseverancia y les concedes la victoria en la batalla, por Cristo, Señor nuestro. Por eso, tus criaturas del cielo y de la tierra te adoran cantando un cántico nuevo, y nosotros, con todos los coros de los ángeles, proclamamos tu gloria, diciendo sin cesar:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio I de la Pasión del Señor",
+   "familia": "pasion senor",
+   "numero": 1,
+   "letra": null,
+   "titulo": "La fuerza de la Cruz",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y fuente de salvación darte gracias y alabarte siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque mediante la pasión salvadora de tu Hijo diste a los hombres una nueva comprensión de tu majestad y una nueva manera de alabarla, al poner de manifiesto, por la eficacia inefable de la cruz, el poder del crucificado y el juicio que del mundo has hecho. Por eso, ahora nosotros llenos de alegría, te aclamamos con los ángeles y los santos diciendo:",
+    "Santo, Santo, Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio III de la Eucaristía",
+   "familia": "eucaristia",
+   "numero": 3,
+   "letra": null,
+   "titulo": null,
+   "texto": [
+    "En verdad es justo darte gracias, es bueno bendecir tu nombre, Padre santo, Dios de misericordia y de paz. Porque has querido que tu hijo obediente hasta la muerte de cruz, nos precediera en el camino del retomo a ti, término de toda esperanza humana. En la Eucaristía, testamento de su amor, El se hace comida y bebida espiritual, para alimentamos en nuestro viaje hacia la Pascua eterna. Con esta prenda de la resurrección futura, en la esperanza participamos ya de la mesa gloriosa de tu Reino y, unidos a los ángeles y a los santos, proclamamos el himno de tu gloria:",
+    "Santo,Santo, Santo es el Señor, Dios del universo. Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio Común VIII",
+   "familia": "comun",
+   "numero": 8,
+   "letra": null,
+   "titulo": "Jesús, buen samaritano",
+   "texto": [
+    "En verdad es justo darte gracias y deber nuestro alabarte, Padre santo, Dios todopoderoso y eterno, en todos los momentos y circunstancias de la vida, en la salud y en la enfermedad, en el sufrimiento y en el gozo, por tu siervo, Jesús, nuestro Redentor. Porque Él, en su vida terrena, pasó haciendo el bien y curando a los oprimidos por el mal. También hoy, como buen samaritano, se acerca a todo hombre que sufre en su cuerpo o en su espíritu, y cura sus heridas con el aceite del consuelo y él vino de la esperanza. Por este don de tu gracia, incluso cuando nos vemos sumergidos en la noche del dolor, vislumbramos la luz pascual en tu Hijo, muerto y resucitado. Por eso unidos a los ángeles y a los santos, cantamos a una voz, el himno de tu gloria:",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor.",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio II de la Pasión del Señor",
+   "familia": "pasion senor",
+   "numero": 2,
+   "letra": null,
+   "titulo": "La victoria de la Pasión",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar Señor, Padre santo, Dios todopoderoso y eterno por Cristo, Señor nuestro. Porque se acercan ya los días santos de su pasión salvadora y gloriosa resurrección, en los cuales celebramos su triunfo sobre la soberbia del antiguo enemigo y se renueva el misterio de nuestra redención. Por él glorifica tu majestad la multitud de ángeles que gozan eternamente de tu presencia. Permítenos asociarnos a sus voces, cantando humildemente su alabanza:",
+    "Santo, Santo,Santo..."
+   ]
+  },
+  {
+   "nombre": "Prefacio Común IX",
+   "familia": "comun",
+   "numero": 9,
+   "letra": null,
+   "titulo": "La gloria de Dios es que el hombre tenga vida",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo,Dios todo poderoso y eterno. Tú eres el Dios vivo y verdadero; el universo está lleno de tu presencia, pero sobre todo has dejado tu huella de tu gloria en el hombre, creado a tu imagen. Tú lo llamas a cooperar con el trabajo cotidiana en el proyecto de la creación y le das a t u Espíritu Santo para que se sea artífice de justicia y de paz, en Cristo, hombre nuevo. Por eso, unidos a los ángeles y a los santos, cantamos con alegría el himno de tu alabanza:",
+    "Santo,Santo, Santo."
+   ]
+  },
+  {
+   "nombre": "Prefacio V de Santa María Virgen",
+   "familia": "santa maria virgen",
+   "numero": 5,
+   "letra": null,
+   "titulo": "María, imagen de la humanidad nueva",
+   "texto": [
+    "En verdad es justo darte gracias, Padre santo, fuente de la vida y del gozo. Porque en esta etapa final dela historia has querido revelarnos el misterio escondido desde siglos, para que así el mundo entero retorne a la vida y recobre la esperanza. En Cristo, nuevo Adán, y en María, nueva Eva, se revela el misterio de tu Iglesia, como primicia de la humanidad redimida. Por este inefable don la creación entera, con la fuerza del Espíritu Santo, emprende de nuevo su camino hacia la Pascua eterna. Por eso nosotros, unidos a los ángeles y a los santos, cantamos a una voz el himno de tu gloria:",
+    "Santo, Santo, Santo.."
+   ]
+  },
+  {
+   "nombre": "Prefacio III para los Domingos del Tiempo Ordinario",
+   "familia": "domingos tiempo ordinario",
+   "numero": 3,
+   "letra": null,
+   "titulo": "Nuestra Humanidad salvada por la humanidad de Cristo",
+   "texto": [
+    "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios poderoso y eterno. Porque reconocemos como la obra de tu poder admirable no sólo haber socorrido nuestra débil naturaleza con la fuerza de tu divinidad, sino también el haber previsto el remedio de nuestra misma naturaleza mortal, y así con lo que fue la causa de nuestra ruina, con eso mismo nos diste la salvación, por Cristo, Señor nuestro. Por Él, los ángeles cantan con júbilo eterno y nosotros nos unimos a sus voces, cantando humildemente tu alabanza",
+    "Santo, Santo, Santo es el Señor, Dios del universo.",
+    "Llenos están el cielo y la tierra de tu gloria.",
+    "Hosanna en el cielo.",
+    "Bendito el que viene en nombre del Señor",
+    "Hosanna en el cielo."
+   ]
+  },
+  {
+   "nombre": "Prefacio común VII",
+   "familia": "comun",
+   "numero": 7,
+   "letra": null,
+   "titulo": "Cristo, huésped y peregrino en medio de nosotros",
+   "texto": [
+    "En verdad es justo darte gracias, Señor, Padre santo, Dios de la alianza y de la paz. Porque tú llámate a Abraham y le mandaste salir de su tierra, para que constituirlo padre de todas las naciones. Tú suscitaste a Moisés para liberar a tu pueblo y guiarlo a la tierra de promisión. Tú, en la etapa final de la historia, has enviado a tu Hijo, como huésped y peregrino en medio de nosotros, para redimirnos del pecado y de la muerte; y has derramado el Espíritu Santo, para hacer de todas las naciones un solo pueblo nuevo, que tiene como meta, tu Reino, como estado, la libertad de tus hijos, como ley, precepto del amor. Por estos dones de tu benevolencia, unidos a los ángeles y a los santos, cantamos con gozo el himno de tu gloria:",
+    "Santo, Santo, Santo..."
+   ]
+  }
+ ],
+ "ordinario": [
+  {
+   "papel": "rúbrica",
+   "texto": "RITOS INICIALES (de pie)"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Reunido el pueblo, el sacerdote se dirige al altar, con los ministros, mientras se entona el canto de entrada. Cuando llega al altar, habiendo hecho con los ministros una inclinación profunda, venera el altar con un beso y si es oportuno, inciensa la cruz y el altar. Después, se dirige con los ministros a la sede. Si no hay canto de entrada se recita la antífona de entrada."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Antífona de entrada."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Terminado el canto de entrada o la antífona, el sacerdote de pie, se santiguan con la señal de la cruz."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "En el nombre del Padre, y del Hijo y del Espíritu Santo."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Saludo"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "El sacerdote extiende las manos y saluda a la asamblea en nombre del Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "La gracia de nuestro Señor Jesucristo, el amor del Padre. y la comunión del Espíritu Santo estén con todos ustedes."
+  },
+  {
+   "papel": "opción",
+   "texto": "O bien:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "La gracia y la paz de parte de Dios, nuestro Padre y de Jesucristo, el Señor, esté con todos ustedes."
+  },
+  {
+   "papel": "opción",
+   "texto": "O bien:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Señor estén con todos ustedes."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Y con tu espíritu."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "ACTO PENITENCIA"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "En las misas dominicales especialmente durante el Tiempo pascual, en algunas ocasiones en lugar del acto penitencial, se puede tener la aspersión del agua bendita, en memoria del Bautismo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "El sacerdote invita a los fieles al arrepentimiento."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados."
+  },
+  {
+   "papel": "opción",
+   "texto": "O bien:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Señor Jesús, que nos invita a la mesa de la Palabra y de la Eucaristía, nos llama ahora a la conversión. Reconozcamos, pues, que somos pecadores e invoquemos con esperanza la misericordia de Dios."
+  },
+  {
+   "papel": "dicho",
+   "quien": "diácono",
+   "texto": "Yo confieso ante Dios todopoderoso y ante ustedes, hermanos, que he pecado mucho de pensamiento, palabra, obra y omisión. Por mi culpa, por mi culpa, por mi gran culpa. Por eso ruego a santa María, siempre Virgen, a los ángeles, a los santos y a ustedes, hermanos, que intercedan por mí ante Dios, nuestro Señor."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "El sacerdote concluye con la absolución."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Dios todopoderoso tenga misericordia de nosotros, perdone nuestros pecados y nos lleve a la vida eterna."
+  },
+  {
+   "papel": "dicho",
+   "quien": "diácono",
+   "texto": "Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "II"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Hermanos: para celebrar dignamente estos sagrados misterios, reconozcamos nuestros pecados."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Se hace una breve pausa en silencio."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Señor, ten misericordia de nosotros."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Porque hemos pecado contra ti."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Muéstranos, Señor, tu misericordia."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Y danos tu salvación."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Dios todopoderoso..."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "III"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Jesucristo, el justo, intercede por nosotros y nos reconcilia con el Padre. Abramos, pues, nuestro espíritu al arrepentimiento, para acercamos a la mesa del Señor."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Se hace una breve pausa en silencio."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Tu, que has sido enviado para sanar a los contritos de corazón: señor, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Señor, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Tú, que has venido a llamar a los pecadores: Cristo, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Cristo, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Tú, que estás sentado a la derecha del Padre para interceder por nosotros: Señor, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Señor, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Dios todopoderoso... Señor, ten piedad"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Siguen las invocaciones, si no se han dicho ya en alguna de las fórmulas del acto penitencial."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Señor; ten piedad. T. Señor, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Cristo, ten piedad. T. Cristo, ten piedad."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Señor, ten piedad. T. Señor, ten piedad."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Gloria"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Si es domingo o día festivo, todos proclaman o cantan el Gloria; si es Adviento o Cuaresma, se suprime."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Gloria a Dios en el cielo, y en la tierra paz a los hombres que ama el Señor. Por tu inmensa gloria te alabamos, te bendecimos, te adoramos, te glorificamos, te damos gracias Señor Dios, Rey celestial, Dios padre todopoderoso. Señor, Hijo único, Jesucristo, Señor Dios, Cordero de Dios, Hijo del Padre; tú que quitas el pecado del mundo, ten piedad de nosotros; tú que quitas el pecado del mundo, atiende nuestra súplica; tú que estás sentado a la derecha del Padre, ten piedad de nosotros; porque sólo tú eres Santo, solo tú Señor, sólo tú Altísimo, Jesucristo, con el Espíritu Santo en la gloria de Dios Padre."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Oración colecta 2"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "LITURGIA DE LA PALABRA 3 (sentados)"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Primera lectura"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Tomada del Antiguo Testamento. En tiempo pascual, se toma de los Hechos de los Apóstoles."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Salmo"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Lo canta o recita un (una) salmista desde el ambón. La asamblea responde (R.)."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Segunda lectura"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Tomada de las cartas apostólicas. Se lee en domingos y solemnidades."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Aclamación antes del Evangelio"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Cristo nos habla en el Evangelio. Nosotros lo aclamamos."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Evangelio"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Jesucristo está vivo y nos habla. Nosotros lo escuchamos en la cúspide de la liturgia de la Palabra."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Después del Evangelio sigue la homilía (sentados)."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Credo (profesión de fe) (de pie)"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Terminada la homilía, cuando está prescrito; se canta o se dice el Símbolo o Profesión de fe."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Niceno-constantinopolitano"
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Creo en un solo Dios todopoderoso, Creador del cielo y de la tierra, de todo lo visible y lo invisible. Creo en un solo Señor, Jesucristo, Hijo Único de Dios, nacido del Padre antes de todos los siglos: Dios de Dios, Luz de Luz Dios verdadero de Dios verdadero engendrado, no creado, de la misma naturaleza del Padre, por quien todo fue hecho; que por nosotros, los hombres, y Por ,nuestra salvación bajó del cielo (en las palabras que siguen, hasta se hizo hombre, todos se inclinan) y por obra del Espíritu Santo se encarnó de Maria, la Virgen, y se hizo hombre; y por nuestra causa fue crucificado en tiempos de Poncio Pilato; padeció y fue sepultado, y resucitó al tercer día, según las Escrituras, y subió al cielo, y está sentado a la derecha del Padre; y de nuevo vendrá con gloria para juzgar a vivos y muertos, y su reino no tendrá fin. Creo en el Espíritu Santo, Señor y dador de vida, que procede del Padre y del Hijo, que con el Padre y el Hijo recibe una misma adoración y gloria, y que habló por los profetas. Creo en la Iglesia, que es una, santa, católica y apostólica. Confieso que hay un solo bautismo para el perdón de los pecados. Espero la resurrección de los muertos y la vida del mundo futuro. Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "En lugar del Símbolo Niceno-constantinopolitano, sobre todo en Tiempo de Cuaresma y en el Tiempo de Pascua, se puede emplear el Símbolo bautismal de la Iglesia de Roma, también llamado \"de los Apóstoles”."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "De los apóstoles"
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Creo en Dios, Padre todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor (se inclina levemente la cabeza en señal de respeto, hasta María Virgen), que fue concebido por obra y gracia del Espíritu Santo, nació de santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna: Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Plegaria universal (oración de los fieles)"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Las peticiones son propuestas por un diácono, un lector o por otra persona idónea. El pueblo manifiesta su participación con una invocación u orando en silencio. La sucesión de intenciones ordinariamente debe ser la siguiente: por las necesidades de la iglesia; por los gobernantes y por la salvación del mundo entero; por aquellos que se encuentran en necesidades particulares; por la comunidad local."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "LITURGIA DE LA EUCARISTÍA"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Ofrenda del pan y el vino(sentados)"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Si no se hace el canto de ofertorio, el sacerdote puede decir estas palabras en voz alta."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Bendito seas, Señor, Dios del universo, por este pan, fruto de la tierra y del trabajo del hombre, que recibimos de tu generosidad y ahora te presentamos; él será para nosotros pan de vida."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Bendito seas por siempre, Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Bendito seas, Señor, Dios del universo, por este vino, fruto de la vid y del trabajo del hombre, que recibimos de tu generosidad y ahora te presentamos; él será para nosotros bebida de salvación."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Bendito seas por siempre, Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Oren, hermanos, para que este sacrificio, mío y de ustedes, sea agradable a Dios, Padre todopoderoso."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "El Señor reciba de tus manos este sacrificio, para alabanza y gloria de su nombre, para nuestro bien y el de toda su santa Iglesia."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Oración sobre las ofrendas 4 (de pie)"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Plegaria eucarística"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Señor esté con ustedes."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "y con tu espíritu."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Levantemos el corazón."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Lo tenemos levantado hacia el Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Demos gracias al Señor, nuestro Dios. T. Es justo y necesario."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Prefacio"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Plegaria eucarística II"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Señor esté con ustedes."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "y con tu espíritu."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Levantemos el corazón."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Lo tenemos levantado hacia el Señor. C. Demos gracias al Señor, nuestro Dios. T. Es justo y necesario."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "En verdad es justo y necesario, es nuestro deber y salvación darte gracias, Padre santo, siempre y en todo lugar, por Jesucristo, tu Hijo amado. Él es tu Palabra, por quien hiciste todas las cosas; Tú nos lo enviaste para que, hecho hombre por obra del Espíritu Santo y nacido de María, la Virgen, fuera nuestro Salvador y Redentor. Él, en cumplimiento de tu voluntad, para destruir la muerte y manifestar la resurrección, extendió sus brazos en la cruz y así adquirió para ti un pueblo santo. Por eso, con los ángeles y los santos, proclamamos tu gloria, diciendo:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Santo, Santo, Santo es el Señor, Dios del universo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Consagración (de rodillas)"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Santo eres en verdad, Señor, fuente de toda santidad; por eso te pedimos que santifiques estos dones con la efusión de tu Espíritu, de manera que se conviertan para nosotros en el Cuerpo y t la Sangre de Jesucristo, nuestro Señor. El cual, cuando iba a ser entregado a su Pasión, voluntariamente aceptada, tomó pan, dándote gracias, lo partió y lo dio a sus discípulos, diciendo:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "\"Tomen y coman todos de él, porque esto es mi Cuerpo, que será entregado por ustedes\"."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Del mismo modo, acabada la cena, tomó el cáliz, y, dándote gracias de nuevo, lo pasó a sus discípulos, diciendo:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "\"Tomen y beban todos de él, porque éste es el cáliz de mi Sangre, Sangre de la alianza nueva y eterna, que será derramada por ustedes y por muchos para el perdón de los pecados. Hagan esto en conmemoración mía\"."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "I"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Misterio de la fe. (De pie)"
+  },
+  {
+   "papel": "opción",
+   "texto": "O bien:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Sacramento de nuestra fe."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Anunciamos tu muerte, proclamamos tu resurrección. ¡Ven, Señor Jesús!"
+  },
+  {
+   "papel": "rótulo",
+   "texto": "II"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Misterio de la fe. Cristo nos redimió."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Cada vez que comemos de este pan y bebemos de este cáliz, anunciamos tu muerte, Señor, hasta que vuelvas."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "III"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Este es el Misterio de la fe. Cristo se entregó por nosotros."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Salvador del mundo, sálvanos, Tú que nos has liberado por tu cruz y resurrección."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Así pues, Padre, al celebrar ahora el memorial de la muerte y resurrección de tu Hijo, te ofrecemos el pan de vida y el cáliz de salvación, y te damos gracias porque nos haces dignos de servirte en tu presencia. Te pedimos, humildemente, que el Espíritu Santo congregue en la unidad a cuantos participamos del Cuerpo y la Sangre de Cristo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Acuérdate, Señor, de tu Iglesia extendida por toda la tierra;"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "En los domingos se puede decir:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Acuérdate, Señor, de tu Iglesia extendida por toda la tierra; y reunida aquí en el domingo, día en que Cristo ha vencido a la muerte y nos ha hecho partícipes de su vida inmortal. Y con el Papa N., con nuestro Obispo N. y todos los pastores que cuidan de tu pueblo, llévala a su perfección por la caridad."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Acuérdate también de nuestros hermanos que se durmieron en la esperanza de la resurrección, y de todos los que han muerto en tu misericordia; admítelos a contemplar la luz de tu rostro."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Ten misericordia de todos nosotros, y así, con María, la Virgen Madre de Dios, los apóstoles y cuantos vivieron en tu amistad a través de los tiempos, merezcamos, por tu Hijo Jesucristo, compartir la vida eterna y cantar tus alabanzas."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Por Cristo, con Él y en Él, a ti, Dios Padre omnipotente, en la unidad del Espíritu Santo, todo honor y toda gloria por los siglos de los siglos."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Plegaria eucarística III"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Señor esté con ustedes."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "R. y con tu espíritu."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Levantemos el corazón."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "R. Lo tenemos levantado hacia el Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Demos gracias al Señor, nuestro Dios."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "R. Es justo y necesario."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Sigue el prefacio que corresponda según las rúbricas, el cual concluye:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Santo, Santo, Santo es el Señor, Dios del universo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Llenos están el cielo y la tierra de tu gloria. Hosanna en el cielo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Bendito el que viene en nombre del Señor. Hosanna en el cielo."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Santo eres en verdad, Padre, y con razón te alaban todas tus criaturas, ya que por Jesucristo, tu Hijo, Señor nuestro, con la fuerza del Espíritu Santo, das vida y santificas todo, y congregas a tu pueblo sin cesar, para que ofrezca en tu honor un sacrificio sin mancha desde donde sale el sol hasta el ocaso. Por eso, Padre, te suplicamos que santifiques por el mismo Espíritu estos dones que hemos separado para ti, de manera que se conviertan en el Cuerpo y la Sangre de Jesucristo, Hijo tuyo y Señor nuestro, que nos mandó celebrar estos misterios. Porque Él mismo, la noche en que iba a ser entregado, tomó pan y dando gracias te bendijo, lo partió y lo dio a sus discípulos, diciendo:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "\"Tomen y coman todos de él, porque esto es mi Cuerpo, que será entregado por ustedes\"."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Del mismo modo, acabada la cena, tomó el cáliz, y, dando gracias te bendijo, y lo pasó a sus discípulos, diciendo:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "\"Tomen y beban todos de él, porque éste es el cáliz de mi Sangre, Sangre de la alianza nueva y eterna, que será derramada por ustedes y por muchos para el perdón de los pecados."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Hagan esto en conmemoración mía\"."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "I"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Misterio de la fe. (De pie) o bien:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Sacramento de nuestra fe."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Anunciamos tu muerte, proclamamos tu resurrección. ¡Ven, Señor Jesús!"
+  },
+  {
+   "papel": "rótulo",
+   "texto": "II"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Misterio de la fe. Cristo nos redimió."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Cada vez que comemos de este pan y bebemos de este cáliz, anunciamos tu muerte, Señor, hasta que vuelvas."
+  },
+  {
+   "papel": "rótulo",
+   "texto": "III"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Este es el Misterio de la fe. Cristo se entregó por nosotros."
+  },
+  {
+   "papel": "dicho",
+   "quien": "diácono",
+   "texto": "Salvador del mundo, sálvanos, Tú que nos has liberado por tu cruz. y resurrección."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Así, pues, Padre, al celebrar ahora el memorial de la pasión salvadora de tu Hijo, de su admirable resurrección y ascensión al cielo, mientras esperamos su venida gloriosa, te ofrecemos, en esta acción de gracias, el sacrificio vivo y santo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Dirige tu mirada sobre la ofrenda de tu Iglesia y reconoce en ella la Víctima por cuya inmolación quisiste devolvemos tu amistad, para que, fortalecidos con el Cuerpo y la Sangre de tu Hijo y llenos de su Espíritu Santo, formemos en Cristo un solo cuerpo y un solo espíritu."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Que Él nos transforme en ofrenda permanente, para que gocemos de tu heredad junto con tus elegidos: con María, la Virgen Madre de Dios, los apóstoles y los mártires, (san N.: santo del día o patrono) y todos los santos, por cuya intercesión confiamos obtener siempre tu ayuda."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Te pedimos, Padre, que esta Víctima de reconciliación traiga la paz y la salvación al mundo entero. Confirma en la fe y en la caridad a tu Iglesia, peregrina en la tierra: a tu servidor, el Papa N., a nuestro Obispo N., al orden episcopal, a los presbíteros y diáconos, y a todo el pueblo redimido por ti. Atiende los deseos y las súplicas de esta familia que has congregado en tu presencia."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "En los domingos se puede decir:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Atiende los deseos y súplicas de esta familia que has congregado en tu presencia, en el domingo, día en que Cristo ha vencido a la muerte y nos ha hecho partícipes de su vida inmortal."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Reúne en torno a ti, Padre misericordioso, a todos tus hijos dispersos por el mundo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "A nuestros hermanos difuntos y a cuantos murieron en tu amistad recíbelos en tu reino, donde esperamos gozar todos juntos de la plenitud eterna de tu gloria, por Cristo, Señor nuestro, por quien concedes al mundo todos los bienes."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Por Cristo, con Él y en Él, a ti, Dios Padre omnipotente, en la unidad del Espíritu Santo, todo honor y toda gloria por los siglos de los siglos."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Rito de la comunión"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Fieles a la recomendación del Salvador y siguiendo su divina enseñanza, nos atrevemos a decir:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Padre nuestro, que estás en el cielo, santificado sea tu nombre; venga a nosotros tu reino; hágase tu voluntad en la tierra como en el cielo. Danos hoy nuestro pan de cada día; perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden; no nos dejes caer en la tentación y líbranos del mal."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Líbranos de todos los males, Señor, y concédenos la paz en nuestros días, para que, ayudados por tu misericordia, vivamos siempre libres de pecado y protegidos de toda perturbación, mientras esperamos la gloriosa venida de nuestro Salvador, Jesucristo."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Tuyo es el reino, tuyo el poder y la gloria, por siempre, Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Señor Jesucristo, que dijiste a tus apóstoles: \"La paz les dejo, mi paz les doy\", no tengas en cuenta nuestros pecados, sino la fe de tu Iglesia y, conforme a tu palabra, concédele la paz y la unidad. Tú, que vives y reinas por los siglos de los siglos."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Amén."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "La paz del Señor esté siempre con ustedes."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Y con tu espíritu."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Dense fraternalmente la paz."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Y todos, según la costumbre del lugar, se intercambian un signo de paz, de comunión y de caridad. Durante la fracción del pan se canta o se dice:"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Cordero de Dios, que quitas el pecado del mundo."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Ten piedad de nosotros."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Cordero de Dios, que quitas el pecado del mundo."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Ten piedad de nosotros."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Cordero Dios, que quitas el pecado del mundo."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Danos la paz."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Éste es el Cordero de Dios, que quita el pecado del mundo. Dichosos los invitados a la cena del Señor."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Señor, no soy digno de que entres en mi casa, pero una Palabra tuya bastará para sanarme."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Antífona de la comunión 5"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Si no hay canto, se dice la antífona de la comunión."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Cuerpo de Cristo."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "El que va a comulgar responde:"
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Amén."
+  },
+  {
+   "papel": "rúbrica",
+   "texto": "Oración después de la comunión 6"
+  },
+  {
+   "papel": "rótulo",
+   "texto": "RITO DE CONCLUSIÓN"
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "El Señor esté con ustedes."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Y con tu espíritu."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "La bendición de Dios todopoderoso, Padre, Hijo y Espíritu Santo, descienda sobre ustedes."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Amén."
+  },
+  {
+   "papel": "dicho",
+   "quien": "celebrante",
+   "texto": "Pueden ir en paz."
+  },
+  {
+   "papel": "dicho",
+   "quien": "todos",
+   "texto": "Demos gracias a Dios."
+  }
+ ],
+ "santoral": {
+  "abril": [],
+  "agosto": [],
+  "diciembre": [],
+  "enero": [],
+  "febrero": [],
+  "julio": [],
+  "junio": [],
+  "marzo": [],
+  "mayo": [],
+  "noviembre": [],
+  "octubre": [],
+  "septiembre": []
+ },
+ "salmos": {
+  "libro-de-los-salmos-completo": [
+   "Salmo 1",
+   "1 ¡Dichoso el hombre que no sigue el consejo de los impíos, ni en la senda de los pecadores se detiene, ni en el banco de los burlones se sienta,",
+   "2 mas se complace en la ley de Yahveh, su ley susurra día y noche!",
+   "3 Es como un árbol plantado junto a corrientes de agua, que da a su tiempo el fruto, y jamás se amustia su follaje; todo lo que hace sale bien.",
+   "4 ¡No así los impíos, no así!Que ellos son como paja que se lleva el viento.",
+   "5 Por eso, no resistirán en el Juicio los impíos, ni los pecadores en la comunidad de los justos.",
+   "6 Porque Yahveh conoce el camino de los justos, pero el camino de los impíos se pierde."
+  ],
+  "libro-de-los-salmos": []
+ }
+}

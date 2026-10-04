@@ -1,0 +1,2450 @@
+{
+ "fuente": "misalcatolico.com",
+ "anio": 2016,
+ "mes": 12,
+ "dias": 15,
+ "formularios": [
+  {
+   "fecha": "2016-12-01",
+   "cabecera": {
+    "dia": 1,
+    "semana": "jueves",
+    "fuente": "web",
+    "color": "Morado",
+    "grado": "Feria",
+    "titulo": "Misa del día: Jueves 1 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Eloy o Eligio de Noyón, obispo; Nahum, profeta. Beata María Rosa de Jesús, religiosa.",
+    "mr": "MR p. 133 (149)",
+    "lecc": "Lecc. I, p. 365",
+    "lh": "LH, la. Semana",
+    "tema": "CONFÍEN SIEMPRE EN EL SEÑOR",
+    "citas": "Is 26,1-6; Mt 7,21.24-27",
+    "crudo": [
+     "Misa del día: Jueves 1 de Diciembre de 2016",
+     "Morado De Feria, Jueves de la semana I de Adviento MR p. 133 (149) / Lecc. I, p. 365 / LH, la. Semana.",
+     "Otros santos: Eloy o Eligio de Noyón, obispo; Nahum, profeta. Beata María Rosa de Jesús, religiosa.",
+     "CONFÍEN SIEMPRE EN EL SEÑOR",
+     "Is 26,1-6; Mt 7,21.24-27",
+     "La imagen de la roca aparece en ambos fragmentos. El profeta Isaías compara a Dios con una roca perpetua, un apoyo firme y seguro sobre el cual es posible consolidar los propios proyectos. El Evangelio de san Mateo habla de una casa construida sobre un cimiento rocoso. La fe y la confianza en Dios implican abandonarse en otro, sin tener conocimiento preciso de esa realidad misteriosa que llamamos Dios. Quienes afirmamos que Dios se manifiesta en la historia, aceptamos que su palabra nos es accesible a través de hombres y mujeres capaces de escucharlo. La confianza en Dios no se adquiere con base en razonamientos o lecturas, es una experiencia vital, que se afianza en la medida que se toman riesgos y se toman decisiones confiando en la amorosa asistencia de Dios. El campesino que siembra, el migrante que viaja o el enamorado que se une en matrimonio, están viviendo en carne viva la confianza. El creyente emprende todos esos esfuerzos apoyándose en Dios. ,"
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Sal 118, 151-152",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Tú estás cerca, Señor, y todos tus caminos son rectos. Desde el principio comprendí que tu alianza la estableciste para siempre."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Despierta, Señor, tu poder y ven con gran fuerza en nuestra ayuda, para que, lo que nuestros pecados habían impedido, lo apresure la gracia de tu benignidad. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 26, 1-6",
+     "texto": [
+      "El pueblo justo se mantiene fiel al Señor.",
+      "Del libro del profeta Isaías: 26, 1-6",
+      "Aquel día se cantará este canto en el país de Judá: \"Tenemos una ciudad fuerte; ha puesto el Señor, para salvarla, murallas y baluartes. Abran las puertas para que entre el pueblo justo, el que se mantiene fiel, el de ánimo firme para conservarla paz, porque en ti confió. Confíen siempre en el Señor, porque el Señor es nuestra fortaleza para siempre; porque él doblegó a los que habitaban en la altura; a la ciudad excelsa la humilló, la humilló hasta el suelo, la arrojó hasta el polvo donde la pisan los pies, los pies de los humildes, los pasos de los pobres\".",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 117, 1.9. 19-21. 25-27a",
+     "texto": [
+      "Del salmo 117, 1.9. 19-21. 25-27a",
+      "R/. Bendito el que viene en el nombre del Señor.",
+      "Te damos gracias, Señor, porque eres bueno, porque tu misericordia es eterna. Más vale refugiarse en el Señor, que poner en los hombres la confianza; más vale refugiarse en el Señor, que buscar con los fuertes una alianza. R/.",
+      "Ábranme las puertas del templo, que quiero entrar a dar gracias a Dios. Ésta es la puerta del Señor y por ella entrarán los que le viven fieles. Te doy gracias, Señor, pues me escuchaste y fuiste para mí la salvación. R/.",
+      "Libéranos, Señor, y danos tu victoria. Bendito el que viene en nombre del Señor. Que Dios desde su templo nos bendiga. Que el Señor, nuestro Dios, nos ilumine. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Is 55, 6",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Busquen al Señor mientras lo pueden encontrar, invóquenlo mientras está cerca. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 7, 21. 24-27",
+     "texto": [
+      "El que cumple la voluntad de mi Padre entrará en el Reino de los cielos.",
+      "Del santo Evangelio según san Mateo: 7, 21. 24-27",
+      "En aquel tiempo, Jesús dijo a sus discípulos: \"No todo el que me diga: '¡Señor, Señor!', entrará en el Reino de los cielos, sino el que cumpla la voluntad de mi Padre, que está en los cielos.",
+      "El que escucha estas palabras mías y las pone en práctica, se parece a un hombre prudente, que edificó su casa sobre roca. Vino la lluvia, bajaron las crecientes, se desataron los vientos y dieron contra aquella casa; pero no se cayó, porque estaba construida sobre roca.",
+      "El que escucha estas palabras mías y no las pone en práctica, se parece a un hombre imprudente, que edificó su casa sobre arena. Vino la lluvia, bajaron las crecientes, se desataron los vientos, dieron contra aquella casa y la arrasaron completamente\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Recibe, Señor, estos dones que te ofrecemos, tomados de los mismos bienes que nos has dado, y haz que lo que nos das en el tiempo presente para aumento de nuestra fe, se convierta para nosotros en prenda de tu redención eterna. Por Jesucristo, nuestro Señor.",
+      "Prefacio I o III de Adviento, MR, pp. 484-486 (485-487)."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Tt 2, 1 2-1 3",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Vivamos ya desde ahora de una manera sobria, justa y fiel, en espera de la gloriosa venida del gran Dios y Salvador."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Te pedimos, Señor, que nos aprovechen los misterios en que hemos participado, mediante los cuales, mientras caminamos en medio de las cosas pasajeras, nos inclinas ya desde ahora a anhelar las realidades celestiales y a poner nuestro corazón en las que han de durar para siempre. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-02",
+   "cabecera": {
+    "dia": 2,
+    "semana": "viernes",
+    "fuente": "web",
+    "color": "Morado",
+    "grado": "Feria",
+    "titulo": "Santa Misa del día: Viernes 2 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Bibiana de Roma, mártir; Roberto de Matallana, abad. Beato Juan (Iván) Slezyuk y compañeros, mártires.",
+    "mr": "MR p. 134 (150)",
+    "lecc": "Lecc. I, p. 367",
+    "lh": null,
+    "tema": "NO TENGAN MIEDO",
+    "citas": "Is 29,17-24; Mt 9,27-31",
+    "crudo": [
+     "Santa Misa del día: Viernes 2 de Diciembre de 2016",
+     "Morado De Feria, Viernes de la semana I de Adviento MR p. 134 (150)/ Lecc. I, p. 367",
+     "Otros santos: Bibiana de Roma, mártir; Roberto de Matallana, abad. Beato Juan (Iván) Slezyuk y compañeros, mártires.",
+     "NO TENGAN MIEDO",
+     "Is 29,17-24; Mt 9,27-31",
+     "La invitación inicial que el Señor Jesús ofrece en el Evangelio alienta a los discípulos a testimoniar y proclamar con plena libertad el mensaje del Maestro. Si a fin de cuentas todo mensaje termina haciéndose público, no vale la pena hablar a escondidas. Más aún, el mensaje cristiano tiene como destinatario no tanto al individuo aislado, sino a la comunidad. No se concibe un cristiano temeroso y callado. La fe es un bien tan preciado que se impone promover su difusión. El profeta Isaías proclama con gran confianza un mensaje cargado de esperanza: pobres, sordos, ciegos y oprimidos experimentarán un cambio benéfico en su vida. La desgracia dejará de lastimarlos y comenzarán a vivir una vida más digna y plena. El primer responsable de esa salvación será Dios y los hombres y mujeres de buena fe, que acojan con esperanza su mensaje de salvación."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "El Señor vendrá con esplendor a visitar a su pueblo, para traerle la paz y la vida eterna."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Extiende, Señor Jesucristo, tu poder y ven, para que merezcamos que con tu protección nos libres y nos salves de los peligros que nos amenazan a causa de nuestros pecados. Tú que vives y reinas con el Padre en la unidad del Espíritu Santo y eres Dios por los siglos de los siglos."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 29, 17-24",
+     "texto": [
+      "En aquel día los ojos de los ciegos se abrirán.",
+      "Del libro del profeta Isaías: 29, 17-24",
+      "Esto dice el Señor: \"¿Acaso no está el Líbano a punto de convertirse en un vergel y el vergel en un bosque? Aquel día los sordos oirán las palabras de un libro; los ojos de los ciegos verán sin tinieblas ni oscuridad; los oprimidos volverán a alegrarse en el Señor y los pobres se gozarán en el Santo de Israel; porque ya no habrá opresores y los altaneros habrán sido exterminados. Serán aniquilados los que traman iniquidades, los que con sus palabras echan la culpa a los demás, los que tratan de enredar a los jueces y sin razón alguna hunden al justo\".",
+      "Esto dice a la casa de Jacob el Señor que rescató a Abraham: \"Ya no se avergonzará Jacob, ya no se demudará su rostro, porque al ver mis acciones en medio de los suyos, santificará mi nombre, santificará al Santo de Jacob y temerá al Dios de Israel. Los extraviados de espíritu entrarán en razón y los inconformes aceptarán la enseñanza\".",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 26, 1. 4. 13-14",
+     "texto": [
+      "Del salmo 26, 1. 4. 13-14",
+      "R/. El Señor es mi luz y mi salvación.",
+      "El Señor es mi luz y mi salvación, ¿a quién voy a tenerle miedo? El Señor es la defensa de mi vida, ¿quién podrá hacerme temblar? R/.",
+      "Lo único que pido, lo único que busco, es vivir en la casa del Señor toda mi vida, para disfrutar las bondades del Señor y estar continuamente en su presencia. R/.",
+      "La bondad del Señor espero ver en esta misma vida. Ármate de valor y fortaleza y en el Señor confía. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Ya viene el Señor, nuestro Dios, con todo su poder para iluminar los ojos de sus hijos. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 9, 27-31",
+     "texto": [
+      "Quedaron curados dos ciegos que creyeron en Jesús.",
+      "Del santo Evangelio según san Mateo: 9, 27-31",
+      "Cuando Jesús salía de Cafarnaúm, lo siguieron dos ciegos, que gritaban: \"¡Hijo de David, compadécete de nosotros!\" Al entrar Jesús en la casa, se le acercaron los ciegos y Jesús les preguntó: \"¿Creen que puedo hacerlo?\" Ellos le contestaron: \"Sí, Señor\". Entonces les tocó los ojos, diciendo: \"Que se haga en ustedes conforme a su fe\". Y se les abrieron los ojos. Jesús les advirtió severamente: \"Que nadie lo sepa\". Pero ellos, al salir, divulgaron su fama por toda la región.",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que te sean agradables, Señor, nuestras humildes súplicas y ofrendas, y puesto que no tenemos méritos en qué apoyarnos, nos socorra el poderoso auxilio de tu benevolencia. Por Jesucristo, nuestro Señor.",
+      "Prefacio I o III de Adviento, MR, pp. 484-486 (485-487)."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Cfr. Flp 3, 20-21",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Esperamos como salvador a Jesucristo, el Señor; él transformará nuestro cuerpo frágil en cuerpo glorioso como el suyo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Saciados por el alimento que nutre nuestro espíritu, te rogamos, Señor, que, por nuestra participación en estos misterios, nos enseñes a valorar sabiamente las cosas de la tierra y a poner nuestro corazón en las del cielo. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-03",
+   "cabecera": {
+    "dia": 3,
+    "semana": "sábado",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "titulo": "Misa del día: Sabado 3 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Sofonías, profeta; Galgano de la Toscana, anacoreta.",
+    "mr": "MR p. 843 (878)",
+    "lecc": "Lecc. I, p. 370 Primeras Vísperas del Domingo, 2a semana del Salterio",
+    "lh": null,
+    "tema": "ESTE ES EL CAMINO",
+    "citas": "Is 30,19-21 23-26; Mt 9,35-10,1.6-8",
+    "crudo": [
+     "Misa del día: Sabado 3 de Diciembre de 2016",
+     "Blanco Memoria de San Francisco Javier, Presbítero MR p. 843 (878) / Lecc. I, p. 370 Primeras Vísperas del Domingo, 2a semana del Salterio.",
+     "Otros santos: Sofonías, profeta; Galgano de la Toscana, anacoreta.",
+     "Oriundo de Navarra, Francisco Javier es uno de los primeros compañeros de san Ignacio de Loyola en la Universidad de París. En 1541 lo designan para predicar el Evangelio en las Indias Orientales (portuguesas): evangeliza la India, Ceilán (Sri Lanka), las Islas Molucas y el Japón. Muere a la vista de China, totalmente consumido por la pasión de buscar la gloria de Dios y la salvación de todos los hombres. Él quería comunicar a la humanidad esta pasión soberana.",
+     "ESTE ES EL CAMINO",
+     "Is 30,19-21 23-26; Mt 9,35-10,1.6-8",
+     "El creyente vive una relación de amigable confianza con Dios, a quien confiesa como Padre. No hay lugar para la desconfianza ni el temor. Quien tiene fe está dispuesto a dejarse orientar y cuestionar por la palabra de Dios. Isaías invita a sus hermanos que viven una situación de escasez y adversidad a transitar por el camino del Señor. Quien pretenda conocer de manera aislada el camino que conduce a la paz social y la felicidad personal, está lejos de alcanzarlas. Dios y el ser humano forman una simbiosis benéfica. El Señor Jesús descubre que su pueblo vive en el desconcierto y la confusión. No sabe a quién escuchar ni a quién hacerle caso. El pueblo está desunido y dividido, sus líderes lo engañan y prevalece el desconsuelo. Quienes confíen en el amor benevolente de Dios podrán encontrar la ruta que conduce la paz."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Sal 17, 50; 21, 23",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Te alabaré entre las naciones, Señor, y anunciaré tu nombre a mis hermanos."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios nuestro, que por la predicación de san Francisco Javier adquiriste para ti muchos pueblos, concede que el corazón de tus fieles arda con ese mismo celo por la fe, para que así tu Iglesia santa se alegre al ver crecer, en todas partes, el número de tus hijos. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 30, 19-21. 23-26",
+     "texto": [
+      "El Señor se compadece de ti al oír el clamor de tu voz.",
+      "Del libro del profeta Isaías: 30, 19-21. 23-26",
+      "Esto dice el Señor Dios de Israel: \"Pueblo de Sión, que habitas en Jerusalén, ya no volverás a llorar. El Señor misericordioso, al oír tus gemidos, se apiadará de ti y te responderá, apenas te oiga. Aunque te dé el pan de las adversidades y el agua de la congoja, ya no se esconderá el que te instruye; tus ojos lo verán. Con tus oídos oirás detrás de ti una voz que te dirá: 'Éste es el camino. Síguelo sin desviarte, ni a la derecha, ni a la izquierda'.",
+      "El Señor mandará su lluvia para la semilla que siembres y el pan que producirá la tierra será abundante y sustancioso. Aquel día, tus ganados pastarán en dilatadas praderas. Los bueyes y los burros que trabajan el campo, comerán forraje sabroso, aventado con pala y bieldo.",
+      "En todo monte elevado y toda colina alta, habrá arroyos y corrientes de agua el día de la gran matanza, cuando se derrumben las torres. El día en que el Señor vende las heridas de su pueblo y le sane las llagas de sus golpes, la luz de la luna será como la luz del sol; será siete veces mayor, como si fueran siete días en uno\".Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 146, 1-2. 3-4. 5-6",
+     "texto": [
+      "Del salmo 146, 1-2. 3-4. 5-6",
+      "R/. Alabemos al Señor, nuestro Dios.",
+      "Alabemos al Señor, nuestro Dios, porque es hermoso y justo el alabarlo. El Señor ha reconstruido a Jerusalén y a los dispersos de Israel los ha reunido. R/.",
+      "El Señor sana los corazones quebrantados y venda las heridas. Tiende su mano a los humildes y humilla hasta el polvo a los malvados. R/.",
+      "Él puede contar el número de estrellas y llama a cada una por su nombre. Grande es nuestro Dios, todo lo puede; su sabiduría no tiene límites. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Is 33, 22",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "El Señor es nuestro juez, nuestro legislador y nuestro rey; él vendrá a salvarnos. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 9, 35-10, 1. 6-8",
+     "texto": [
+      "Al ver a la multitud se compadeció de ella.",
+      "Del santo Evangelio según san Mateo: 9, 35-10, 1. 6-8",
+      "En aquel tiempo, Jesús recorría todas las ciudades y los pueblos, enseñando en las sinagogas, predicando el Evangelio del Reino y curando toda enfermedad y dolencia. Al ver a las multitudes, se compadecía de ellas, porque estaban extenuadas y desamparadas, como ovejas sin pastor. Entonces dijo a sus discípulos: \"La cosecha es mucha y los trabajadores, pocos. Rueguen, por lo tanto, al dueño de la mies que envíe trabajadores a sus campos\".",
+      "Después, llamando a sus doce discípulos, les dio poder para expulsar a los espíritus impuros y curar toda clase de enfermedades y dolencias. Les dijo: \"Vayan en busca de las ovejas perdidas de la casa de Israel. Vayan y proclamen por el camino que ya se acerca el Reino de los cielos. Curen a los leprosos y demás enfermos; resuciten a los muertos y echen fuera a los demonios. Gratuitamente han recibido este poder; ejérzanlo, pues, gratuitamente\".Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Recibe, Señor, los dones que te presentamos en la conmemoración de san Francisco Javier, y concédenos que, así como él partió hacia lejanas tierras con el deseo de llevar la salvación a los hombres, así también nosotros, dando eficazmente testimonio del Evangelio, sintamos la urgencia de llegar a ti, en unión de todos los hermanos. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Mt 10, 27",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Lo que les digo de noche, repítanlo en pleno día, dice el Señor; y lo que les digo al oído, pregónenlo desde las azoteas."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que tus sacramentos, Dios nuestro, enciendan en nosotros aquella misma ardiente caridad que inflamó a san Francisco Javier por la salvación de las almas, para que, viviendo más dignamente nuestra vocación, consigamos con él el premio prometido a los buenos servidores. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-04",
+   "cabecera": {
+    "dia": 4,
+    "semana": "domingo",
+    "fuente": "web",
+    "color": "Morado",
+    "grado": "Memoria",
+    "titulo": "Santa Misa del día: Domingo 4 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Osmundo de Salisbury, obispo. Beato Juan Hara Mondo No Suke, laico mártir. La conversión, nota predominante de La Predicación de Juan Bautista.",
+    "mr": "MR p. 136 (152)",
+    "lecc": "Lecc. I, p. 6",
+    "lh": null,
+    "tema": "DEL SÍMBOLO A LA REALIDAD",
+    "citas": "Is 11, 1-10; Rm 15, 4-9; Mt 3, 1-12",
+    "crudo": [
+     "Santa Misa del día: Domingo 4 de Diciembre de 2016",
+     "Morado II Domingo de Adviento [Se omite la memoria de SAN JUAN DAMASCENO,",
+     "Presbítero y Doctor de la Iglesia] MR p. 136 (152) / Lecc. I, p. 6",
+     "Otros santos: Osmundo de Salisbury, obispo. Beato Juan Hara Mondo No Suke, laico mártir. La conversión, nota predominante de La Predicación de Juan Bautista.",
+     "DEL SÍMBOLO A LA REALIDAD",
+     "Is 11, 1-10; Rm 15, 4-9; Mt 3, 1-12",
+     "El mensaje profético del capítulo undécimo de Isaías describe por medio de imágenes del mundo animal y del mundo sapiencial, la llegada del tiempo decisivo de la salvación. Todo eso será realidad porque Israel rebosará del conocimiento del Señor. Desde dentro del corazón de las personas brotará la voluntad de tratar con justicia a los débiles. El oráculo de salvación combina la llegada de un gobernante ideal que reinará conforme a la justicia. Los efectos de esa renovación social se harán patentes en el inicio de unas relaciones exentas de violencia, entre las personas que disponen de la fuerza y el poder económico (lobo, oso, león, pantera) y los individuos carentes de poder (cordero, vaca, novillo, cabrito). Ese retorno de la paz paradisíaca no se verificará de forma milagrosa, por eso Juan Bautista exigía a quienes se bautizaban que, enmendaran su forma de vivir."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Is 30, 19. 30",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Pueblo de Sión, mira que el Señor va a venir para salvar a todas las naciones y dejará oír la majestad de su voz para alegría de tu corazón.",
+      "No se dice Gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios omnipotente y misericordioso, haz que ninguna ocupación terrena sirva de obstáculo a quienes van presurosos al encuentro de tu Hijo, antes bien, que el aprendizaje de la sabiduría celestial, nos lleve a gozar de su presencia. El, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 11, 1-10",
+     "texto": [
+      "Les hará justicia a los pobres.",
+      "Del libro del profeta Isaías: 11, 1-10",
+      "En aquel día, brotará un renuevo del tronco de Jesé, un vástago florecerá de su raíz. Sobre él se posará el espíritu del Señor, espíritu de sabiduría e inteligencia, espíritu de consejo y fortaleza, espíritu de piedad y temor de Dios.",
+      "No juzgará por apariencias, ni sentenciará de oídas; defenderá con justicia al desamparado y con equidad dará sentencia al pobre; herirá al violento con el látigo de su boca, con el soplo de sus labios matará al impío. Será la justicia su ceñidor, la fidelidad apretará su cintura.",
+      "Habitará el lobo con el cordero, la pantera se echará con el cabrito, el novillo y el león pacerán juntos y un muchachito los apacentará. La vaca pastará con la osa y sus crías vivirán juntas. El león comerá paja con el buey.",
+      "El niño jugará sobre el agujero de la víbora; la criatura meterá la mano en el escondrijo de la serpiente. No harán daño ni estrago por todo mi monte santo, porque así como las aguas colman el mar, así está lleno el país de la ciencia del Señor.",
+      "Aquel día la raíz de Jesé se alzará como bandera de los pueblos, la buscarán todas las naciones y será gloriosa su morada.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 71, 1-2. 7-8. 12-13.17",
+     "texto": [
+      "Del salmo 71, 1-2. 7-8. 12-13.17",
+      "R/. Ven, Señor, rey de justicia y de paz.",
+      "Comunica, Señor, al rey tu juicio, y tu justicia al que es hijo de reyes; así tu siervo saldrá en defensa de tus pobres y regirá a tu pueblo justamente. R/.",
+      "Florecerá en sus días la justicia y reinará la paz, era tras era. De mar a mar se extenderá su reino y de un extremo al otro de la tierra. R/.",
+      "Al débil librará del poderoso y ayudará al que se encuentra sin amparo; se apiadará del desvalido y pobre y salvará la vida al desdichado. R/.",
+      "Que bendigan al Señor eternamente, y tanto como el sol, viva su nombre. Que él sea la bendición del mundo entero y lo aclamen dichoso las naciones. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SEGUNDA LECTURA",
+     "crudo": "SEGUNDA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "De la carta del apóstol san Pablo a los romanos: 15, 4-9",
+     "texto": [
+      "Cristo salvó a todos los hombres.",
+      "De la carta del apóstol san Pablo a los romanos: 15, 4-9",
+      "Hermanos: Todo lo que en el pasado ha sido escrito en los libros santos, se escribió para instrucción nuestra, a fin de que, por la paciencia y el consuelo que dan las Escrituras, mantengamos la esperanza.",
+      "Que Dios, fuente de toda paciencia y consuelo, les conceda a ustedes vivir en perfecta armonía unos con otros, conforme al espíritu de Cristo Jesús, para que, con un solo corazón y una sola voz alaben a Dios, Padre de nuestro Señor Jesucristo.",
+      "Por lo tanto, acójanse los unos a los otros como Cristo los acogió a ustedes, para gloria de Dios. Quiero decir con esto, que Cristo se puso al servicio del pueblo judío, para demostrar la fidelidad de Dios, cumpliendo las promesas hechas a los patriarcas y que por su misericordia los paganos alaban a Dios, según aquello que dice la Escritura: Por eso te alabaré y cantaré himnos a tu nombre.Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Lc 3, 4. 6",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Preparen el camino del Señor, hagan rectos sus senderos, y todos los hombres verán al Salvador. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 3, 1-12",
+     "texto": [
+      "Conviértanse, porque ya está cerca el Reino de los cielos.",
+      "Del santo Evangelio según san Mateo: 3, 1-12",
+      "En aquel tiempo, comenzó Juan el Bautista a predicar en el desierto de Judea, diciendo: \"Conviértanse, porque ya está cerca el Reino de los cielos\". Juan es aquel de quien el profeta Isaías hablaba, cuando dijo: Una voz clama en el desierto: Preparen el camino del Señor, enderecen sus senderos.",
+      "Juan usaba una túnica de pelo de camello, ceñida con un cinturón de cuero, y se alimentaba de saltamontes y de miel silvestre. Acudían a oírlo los habitantes de Jerusalén, de toda Judea y de toda la región cercana al Jordán; confesaban sus pecados y él los bautizaba en el río.",
+      "Al ver que muchos fariseos y saduceos iban a que los bautizara, les dijo: \"Raza de víboras, ¿quién les ha dicho que podrán escapar al castigo que les aguarda? Hagan ver con obras su conversión y no se hagan ilusiones pensando que tienen por padre a Abraham, porque yo les aseguro que hasta de estas piedras puede Dios sacar hijos de Abraham. Ya el hacha está puesta a la raíz de los árboles, y todo árbol que no dé fruto, será cortado y arrojado al fuego.",
+      "Yo los bautizo con agua, en señal de que ustedes se han convertido; pero el que viene después de mí, es más fuerte que yo, y yo ni siquiera soy digno de quitarle las sandalias. El los bautizará en el Espíritu Santo y su fuego. Él tiene el bieldo en su mano para separar el trigo de la paja. Guardará el trigo en su granero y quemará la paja en un fuego que no se extingue\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús.",
+      "Credo",
+      "PLEGARIA UNIVERSAL",
+      "Salgamos al encuentro del Señor, que se acerca a nosotros con designios de paz, y presentémosle confiados nuestra plegaria. Digamos confiadamente: Ven Señor Jesús. (R/. Ven Señor Jesús.)",
+      "Para que la Iglesia viva alegre, sin inquietarse por nada, y, llena de esperanza, crea que el Señor está cerca de ella,roguemos al Señor.",
+      "Para que nuestro tiempo, con la ayuda de Dios, goce de seguridad, de alegría y de paz,roguemos al Señor.",
+      "Para que el Señor, con su venida, conforte los corazones abatidos y fortalezca las rodillas que se doblan,roguemos al Señor.",
+      "Para que nuestra fe crea firmemente en los dones que Dios nos promete y, ayudados por la gracia divina, nos dispongamos a recibir los auxilios que él nos envía,roguemos al Señor.",
+      "Escucha, Dios todopoderoso y eterno, nuestras oraciones y suscita en nosotros el deseo de una verdadera conversión, para que, renovados por el Espíritu Santo, hagamos presente en toda relación humana aquella justicia y aquella paz que la Encarnación de tu Hijo hizo florecer en nuestra tierra. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que te sean agradables, Señor, nuestras humildes súplicas y ofrendas, y puesto que no tenemos merecimientos en qué apoyarnos, socórranos el poderoso auxilio de tu benevolencia. Por Jesucristo, nuestro Señor.",
+      "Prefacio I o III de Adviento, MR, pp. 484-486 (485-487)."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Bar 5, 5; 4, 36",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Levántate, Jerusalén, sube a lo alto, para que contemples la alegría que te viene de Dios."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Saciados por el alimento que nutre nuestro espíritu, te rogamos, Señor, que, por nuestra participación en estos misterios, nos enseñes a valorar sabiamente las cosas de la tierra y a poner nuestro corazón en las del cielo. Por Jesucristo, nuestro Señor.",
+      "Puede utilizarse la fórmula de bendición solemne, MR, p. 591 (598).",
+      "UNA REFLEXIÓN PARA NUESTRO TIEMPO.-Los cristianos maduros en la fe no necesitan recibir demasiados sermones ni ser vigilados por cámaras para conducirse en sintonía con el Evangelio. Si se han dejado mover por el Espíritu de Jesús, disponen de la sabiduría y la sensatez necesarias para tratar con justicia y benevolencia a sus hermanos, en particular a los más débiles. Han comprendido que Dios cuida y protege con especial esmero a los pequeños y por eso mismo, se adecúan a sus preferencias. La construcción de unas relaciones exentas de violencia tendrá que ser uno de los rasgos distintivos de las genuinas comunidades cristianas. Demasiado rápido nos acostumbramos a la \"normalidad\" de las ejecuciones, los secuestros y tantas otras prácticas criminales. La violencia afrenta al Creador, porque atenta contra la dignidad de las creaturas. El mensaje de Isaías y Juan Bautista siguen teniendo vigencia en una sociedad seducida por el señuelo del dinero conseguido a manos llenas, a través de los negocios vinculados al crimen organizado."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-05",
+   "cabecera": {
+    "dia": 5,
+    "semana": "lunes",
+    "fuente": "web",
+    "color": "Morado",
+    "grado": "Feria",
+    "titulo": "Misa del día: Lunes 5 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Sabas de Capadocia, abad; Atala o Attalía de Alsacia, abadesa. Beato Felipe Rinaldi, presbítero.",
+    "mr": "MR p. 137 (153)",
+    "lecc": "Lecc. I, p. 372",
+    "lh": null,
+    "tema": null,
+    "citas": "Is 35,1-10; Lc 5,17-26",
+    "crudo": [
+     "Misa del día: Lunes 5 de Diciembre de 2016",
+     "Morado Feria, Lunes II de Adviento MR p. 137 (153) / Lecc. I, p. 372",
+     "Otros santos: Sabas de Capadocia, abad; Atala o Attalía de Alsacia, abadesa. Beato Felipe Rinaldi, presbítero.",
+     "El SEÑOR TRAERÁ EL DESQUITE",
+     "Is 35,1-10; Lc 5,17-26",
+     "El profeta Isaías, al igual que toda su generación, sufrió en carne propia las humillaciones y el pago forzado de tributos a los reyes asirios, resultado de las malas decisiones de los reyes de Judá. Las medidas y políticas injustas afectaban doblemente a los más pobres, que solían vivir apenas al margen de la subsistencia. Isaías no creía en la propaganda de los reyes incapaces, por eso anunciaba al pueblo, que Dios les traería el desquite y les devolvería la paz con justicia, poniendo fin \"al cubil donde se tumbaban los chacales\". En el Evangelio de san Lucas el Señor Jesús ejemplifica esta salvación, pasando por encima de las restricciones de la época, restituye la salud y la dignidad al leproso y acaba con el equívoco extendido en Israel, que afirmaba que los leprosos eran aborrecidos y castigados por Dios a causa de sus pecados. ¡Víctimas de la enfermedad y de la discriminación religiosa! El Señor Jesús no vacila un instante en desmontar aquel círculo macabro."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Jr 31, 10; Is 35, 4",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Escuchen, pueblos, la palabra del Señor y anúncienla en todos los rincones de la tierra: He aquí que vendrá nuestro Salvador, ya no tengan miedo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Vayan hasta tu presencia, Señor, nuestras humildes súplicas, para que te lleguen, del todo purificados, nuestros anhelos de servirte, honrando el gran misterio de la encarnación de tu Unigénito. Él que vive y reina contigo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 35, 1-10",
+     "texto": [
+      "Dios mismo viene a salvarnos.",
+      "Del libro del profeta Isaías: 35, 1-10",
+      "Esto dice el Señor: \"Regocíjate, yermo sediento. Que se alegre el desierto y se cubra de flores, que florezca como un campo de lirios, que se alegre y dé gritos de júbilo, porque le será dada la gloria del Líbano, el esplendor del Carmelo y del Sarón.",
+      "Ellos verán la gloria del Señor, el esplendor de nuestro Dios. Fortalezcan las manos cansadas, afiancen las rodillas vacilantes. Digan a los de corazón apocado:",
+      "`¡Ánimo! No teman. He aquí que su Dios, vengador y justiciero, viene ya para salvarlos'.",
+      "Se iluminarán entonces los ojos de los ciegos y los oídos de los sordos se abrirán. Saltará como un venado el cojo y la lengua del mudo cantará.",
+      "Brotarán aguas en el desierto y correrán torrentes en la estepa. El páramo se convertirá en estanque y la tierra sedienta, en manantial. En la guarida donde moran los chacales, verdearán la caña y el papiro. Habrá allí una calzada ancha, que se llamará 'Camino Santo'; los impuros no la transitarán, ni los necios vagarán por ella.",
+      "No habrá por ahí leones ni se acercarán las fieras. Por ella caminarán los redimidos. Volverán a casa los rescatados por el Señor, vendrán a Sión con cánticos de júbilo, coronados de perpetua alegría; serán su escolta el gozo y la dicha, porque la pena y la aflicción habrán terminado\".Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 84, 9ab-10. 11-12. 13-14",
+     "texto": [
+      "Del salmo 84, 9ab-10. 11-12. 13-14",
+      "R/. Nuestro Dios viene a salvarnos.",
+      "Escucharé las palabras del Señor, palabras de paz para su pueblo santo. Está ya cerca nuestra salvación y la gloria del Señor habitará en la tierra. R/.",
+      "La misericordia y la verdad se encontraron, la justicia y la paz se besaron, la fidelidad brotó en la tierra y la justicia vino del cielo. R/.",
+      "Cuando el Señor nos muestre su bondad, nuestra tierra producirá su fruto. La justicia le abrirá camino al Señor e irá siguiendo sus pisadas. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Ya viene el rey, el Señor de la tierra; Él nos librará de nuestra esclavitud. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Lucas: 5, 17-26",
+     "texto": [
+      "Hoy hemos visto maravillas.",
+      "Del santo Evangelio según san Lucas: 5, 17-26",
+      "Un día Jesús estaba enseñando y estaban también sentados ahí algunos fariseos y doctores de la ley, venidos de todas las aldeas de Galilea, de Judea y de Jerusalén. El poder del Señor estaba con El para que hiciera curaciones. Llegaron unos hombres que traían en una camilla a un paralítico y trataban de entrar, para colocarlo delante de Él; pero como no encontraban por dónde meterlo a causa de la muchedumbre, subieron al techo y por entre las tejas lo descolgaron en la camilla y se lo pusieron delante a Jesús. Cuando El vio la fe de aquellos hombres, dijo al paralítico: \"Amigo mío, se te perdonan tus pecados\".",
+      "Entonces los escribas y fariseos comenzaron a pensar: \"¿Quién es este individuo que así blasfema? ¿Quién, sino sólo Dios, puede perdonar los pecados?\". Jesús, conociendo sus pensamientos, les replicó: \"¿Qué están pensando? ¿Qué es más fácil decir: 'Se te perdonan tus pecados' o 'Levántate y anda'? Pues para que vean que el Hijo del hombre tiene poder en la tierra para perdonar los pecados —dijo entonces al paralítico: Yo te lo mando: levántate, toma tu camilla y vete a tu casa\". El paralítico se levantó inmediatamente, en presencia de todos, tomó la camilla donde había estado tendido y se fue a su casa glorificando a Dios. Todos quedaron atónitos y daban gloria a Dios, y llenos de temor, decían: \"Hoy hemos visto maravillas\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Recibe, Señor, estos dones que te ofrecemos, tomados de los mismos bienes que nos has dado, y haz que lo que nos das en el tiempo presente para aumento de nuestra fe, se convierta para nosotros en prenda de tu redención eterna. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Cfr. Sal 105, 4-5; Is 38, 3",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Ven, Señor, a visitarnos con tu paz, para que nos alegremos delante de ti, de todo corazón."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Te pedimos, Señor, que nos aprovechen los misterios en que hemos participado, mediante los cuales, mientras caminamos en medio de las cosas pasajeras, nos inclinas ya desde ahora a anhelar las realidades celestiales y a poner nuestro corazón en las que han de durar para siempre. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-07",
+   "cabecera": {
+    "dia": 7,
+    "semana": "miércoles",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "titulo": "Misa del día: Miercoles 7 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Carlos Garnier y compañeros, mártires. Beato Eutiquiano I, papa.",
+    "mr": "MR p. 845 (880)",
+    "lecc": "Lecc. I, p. 378",
+    "lh": null,
+    "tema": "CORREN SIN CANSARSE",
+    "citas": "Is 40,25-31; Mt 11,28-30",
+    "crudo": [
+     "Misa del día: Miercoles 7 de Diciembre de 2016",
+     "Blanco Memoria San Ambrosio, Obispo y Doctor de la Iglesia MR p. 845 (880) / Lecc. I, p. 378",
+     "Otros santos: Carlos Garnier y compañeros, mártires. Beato Eutiquiano I, papa.",
+     "Nació en Tréveris. Ambrosio era gobernador de Emilia y Liguria; vi-vía en Milán cuando fue elegido como obispo de esta ciudad (374). Es uno de los tipos más bien dibujados de pastor de almas. Resiste energéticamente las usurpaciones del poder imperial y al mismo tiempo se dedica a catequizar al pueblo, comentando las Sagradas Escrituras y difundiendo los cánticos religiosos.",
+     "CORREN SIN CANSARSE",
+     "Is 40,25-31; Mt 11,28-30",
+     "El mensaje de esperanza que proclama el profeta Isaías pretende desarraigar el desánimo generalizado que padeció la generación que envejeció en el destierro. Pasaban los años y no había señales que les anunciaran el regreso a la tierra de Israel. Circulaban rumores y acusaciones directas contra Dios, afirmando que Él \"ignoraba la causa de su pueblo\". Por toda respuesta, el profeta reafirmó que Dios no se cansa, antes bien, mantiene su voluntad de salvar y a la vez reaviva y da fortaleza a los que confían en él. Lo mismo nos enseña el Señor Jesús cuando invita a la gente abrumada por las penas y el sufrimiento a desahogarse en él. Jesús ama a los suyos, los asiste, los auxilia y les anima a enfrentar la adversidad, a luchar cuando el sufrimiento es evitable y a asumirlo serenamente, cuando es inevitable."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Si 15, 5",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "En medio de la Iglesia abrió su boca, y el Señor lo llenó del espíritu de sabiduría e inteligencia, lo revistió de gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios nuestro, tú que hiciste del obispo san Ambrosio un insigne maestro de la fe católica y un admirable ejemplo de fortaleza apostólica suscita en tu Iglesia pastores según tu corazón, la guíen con firmeza y sabiduría. Por nuestro Señor Jesucristo,..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 40, 25-31",
+     "texto": [
+      "El Señor da vigor al fatigado.",
+      "Del libro del profeta Isaías: 40, 25-31",
+      "\"¿Con quién me van a comparar, que pueda igualarse a mí?\", dice el Dios de Israel. Alcen los ojos a lo alto y díganme quién ha creado todos aquellos astros. Él es quien cuenta y despliega su ejército de estrellas y a cada una la llama por su nombre; tanta es su omnipotencia y tan grande su vigor, que ninguna de ellas desoye su llamado.",
+      "¿Por qué dices tú, Jacob, y lo repites tú, Israel: \"Mi suerte se le oculta al Señor y mi causa no le preocupa a mi Dios\"? ¿Es que no lo has oído? Desde siempre el Señor es Dios, creador aun de los últimos rincones de la tierra. Él no se cansa ni se fatiga y su inteligencia es insondable.",
+      "Él da vigor al fatigado y al que no tiene fuerzas, energía. Hasta los jóvenes se cansan y se rinden, los más valientes tropiezan y caen; pero aquellos que ponen su esperanza en el Señor, renuevan sus fuerzas; les nacen alas como de águila, corren y no se cansan, caminan y no se fatigan.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 102, 1-2. 3-4.8. 10",
+     "texto": [
+      "Del salmo 102, 1-2. 3-4.8. 10",
+      "R/. Bendice al Señor, alma mía.",
+      "Bendice al Señor, alma mía, que todo mi ser bendiga su santo nombre. Bendice al Señor, alma mía, y no te olvides de sus beneficios. R/.",
+      "Él perdona tus pecados y cura tus enfermedades; él rescata tu vida del sepulcro y te colma de amor y de ternura. R/.",
+      "El Señor es compasivo y misericordioso, lento para enojarse y generoso para perdonar. No nos trata como merecen nuestras culpas, ni nos paga según nuestros pecados. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Ya viene el Señor para salvar a su pueblo. Dichosos los que estén preparados para salir a su encuentro. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 11, 28-30",
+     "texto": [
+      "Vengan a mí, todos los que están fatigados.",
+      "Del santo Evangelio según san Mateo: 11, 28-30",
+      "En aquel tiempo, Jesús dijo: \"Vengan a mí, todos los que están fatigados y agobiados por la carga, y yo les daré alivio. Tomen mi yugo sobre ustedes y aprendan de mí, que soy manso y humilde de corazón, y encontrarán descanso, porque mi yugo es suave y mi carga, ligera\".Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Al celebrar estos divinos misterios, te suplicamos, Señor, que el Espíritu Santo derrame sobre nosotros la luz de la fe que iluminó a san Ambrosio para propagar tu gloria sin descanso. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Cfr. Sal 1, 2. 3",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "El que día y noche medita la ley del Señor, al debido tiempo dará su fruto."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Fortalecidos por la eficacia de este sacramento, te pedimos, Señor, aprovechar de tal manera las enseñanzas de san Ambrosio, que avanzamos con firmeza por tus sendas, nos dispongamos a disfrutar la suavidad del banquete eterno. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-08",
+   "cabecera": {
+    "dia": 8,
+    "semana": "jueves",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "titulo": "Santa Misa del día: Jueves 8 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Eucario de Tréveris, obispo; Narcisa de Jesús Martillo y Morán, laica.",
+    "mr": "MR p. 846 (881)",
+    "lecc": "Lecc. I, p. 974",
+    "lh": null,
+    "tema": "EL SEÑOR ESTÁ CONTIGO",
+    "citas": "Gn 3,9-15. 20; .Ef 1,3-6. 11-12; Lc 1, 26-38",
+    "crudo": [
+     "Santa Misa del día: Jueves 8 de Diciembre de 2016",
+     "La Inmaculada Concepción de la Virgen María",
+     "Blanco Solemnidad MR p. 846 (881) / Lecc. I, p. 974",
+     "Otros santos: Eucario de Tréveris, obispo; Narcisa de Jesús Martillo y Morán, laica.",
+     "Desde el primer instante de su vida, la santísima Virgen María, por una gracia derivada anticipadamente de la muerte de su Hijo, es preservada de todo pecado. Así pues, la concepción inmaculada de la Virgen María se funda en su maternidad divina. La asunción y la concepción inmaculada de María santísima son la imagen anticipada de la Iglesia, la cual \"no tiene mancha, ni arruga, sino que es santa e inmaculada\", por voluntad de Dios.",
+     "EL SEÑOR ESTÁ CONTIGO",
+     "Gn 3,9-15. 20; .Ef 1,3-6. 11-12; Lc 1, 26-38",
+     "La primera Eva escuchó la voz de la serpiente sin dudar un instante. Se dejó encandilar por sus promesas dulzonas, acatando en realidad la voz estruendosa de su propio instinto. El instinto dejado a sus anchas termina por cegarnos. Nos convierte en comedores voraces que no distinguimos el fruto que da vida del fruto emponzoñado por las toxinas y las hormonas. Los hijos de la primera Eva heredamos una seria distorsión: llamamos al bien, mal y al mal, bien. De esa deformación nos curamos en la medida que nos abrimos al diálogo confiado y amigable con Dios. La segunda Eva, María la madre de Jesús, escuchó la voz del ángel Gabriel, quien le ayudó a discernir el misterio de la voz de Dios. No se encerró en sus miedos ni en sus dudas razonables, se abandonó confiadamente en el Señor, comprendió que la tarea que desbordaba sus capacidades, no la realizaría a solas. Acogió la asistencia divina y con su sí obediente nos permitió participar de la vida plena, acogiendo al Verbo hecho carne."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Is 61, 10",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Me alegro en el Señor con toda el alma y me lleno de júbilo en mi Dios, porque me revistió con vestiduras de salvación y me cubrió con un manto de justicia, como la novia se adorna con sus joyas.",
+      "Se dice Gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios nuestro, que por la Inmaculada Concepción de la Virgen María preparaste una digna morada para tu Hijo y, en previsión de la muerte redentora de Cristo, la preservaste de toda mancha de pecado, concédenos que, por su intercesión, nosotros también, purificados de todas nuestras culpas, lleguemos hacia ti. Por nuestro Señor Jesucristo,..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del Génesis: 3, 9-15. 20",
+     "texto": [
+      "Pondré enemistad entre ti y la mujer, entre tu descendencia y la suya.",
+      "Del libro del Génesis: 3, 9-15. 20",
+      "Después de que el hombre y la mujer comieron del fruto del árbol prohibido, el Señor Dios llamó al hombre y le preguntó: \"¿Dónde estás?\" Éste le respondió: \"Oí tus pasos en el jardín y tuve miedo, porque estoy desnudo, y me escondí\". Entonces le dijo Dios: \"¿Y quién te ha dicho que estabas desnudo? ¿Has comido acaso del árbol del que te prohibí comer?\"",
+      "Respondió Adán: \"La mujer que me diste por compañera me ofreció del fruto del árbol y comí\". El Señor Dios dijo a la mujer: \"¿Por qué has hecho esto?\" Repuso la mujer: \"La serpiente me engañó y comí\".",
+      "Entonces dijo el Señor Dios a la serpiente: \"Porque has hecho esto, serás maldita entre todos los animales y entre todas las bestias salvajes. Te arrastrarás sobre tu vientre y comerás polvo todos los días de tu vida. Pondré enemistad entre ti y la mujer, entre tu descendencia y la suya; y su descendencia te aplastará la cabeza, mientras tú tratarás de morder su talón\".",
+      "El hombre le puso a su mujer el nombre de \"Eva\", porque ella fue la madre de todos los vivientes.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 97, 1.2-3 ab. 3 cd-4",
+     "texto": [
+      "Del salmo 97, 1.2-3 ab. 3 cd-4",
+      "R/. Cantemos al Señor un canto nuevo, pues ha hecho maravillas.",
+      "Cantemos al Señor un canto nuevo, pues ha hecho maravillas. Su diestra y su santo brazo le han dado la victoria. R/.",
+      "El Señor ha dado a conocer su victoria y ha revelado a las naciones su justicia. Una vez más ha demostrado Dios su amor y su lealtad hacia Israel. R/.",
+      "La tierra entera ha contemplado la victoria de nuestro Dios. Que todos los pueblos y naciones aclamen con júbilo al Señor. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SEGUNDA LECTURA",
+     "crudo": "SEGUNDA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "De la carta del apóstol san Pablo a los efesios: 1, 3-6.11-12",
+     "texto": [
+      "Dios nos eligió en Cristo, antes de crear el mundo.",
+      "De la carta del apóstol san Pablo a los efesios: 1, 3-6.11-12",
+      "Bendito sea Dios, Padre de nuestro Señor Jesucristo, que nos ha bendecido en Él con toda clase de bienes espirituales y celestiales. Él nos eligió en Cristo, antes de crear el mundo, para que fuéramos santos e irreprochables a sus ojos, por el amor, y determinó, porque así lo quiso, que, por medio de Jesucristo, fuéramos sus hijos, para que alabemos y glorifiquemos la gracia con que nos ha favorecido, por medio de su Hijo amado.",
+      "Con Cristo somos herederos también nosotros. Para esto estábamos destinados, por decisión del que lo hace todo según su voluntad: para que fuéramos una alabanza continua de su gloria, nosotros, los que ya antes esperábamos en Cristo.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Cfr. Lc 1, 28",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Dios te salve, María, llena de gracia, el Señor está contigo, bendita tú entre las mujeres. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Lucas: 1, 26-38",
+     "texto": [
+      "Alégrate, llena de gracia, el Señor está contigo.",
+      "Del santo Evangelio según san Lucas: 1, 26-38",
+      "En aquel tiempo, el ángel Gabriel fue enviado por Dios a una ciudad de Galilea, llamada Nazaret, a una virgen desposada con un varón de la estirpe de David, llamado José. La virgen se llamaba María. Entró el ángel a donde ella estaba y le dijo: \"Alégrate, llena de gracia, el Señor está contigo\". Al oír estas palabras, ella se preocupó mucho y se preguntaba qué querría decir semejante saludo. El ángel le dijo: \"No temas, María, porque has hallado gracia ante Dios. Vas a concebir y a dar a luz un hijo y le pondrás por nombre Jesús. Él será grande y será llamado Hijo del Altísimo; el Señor Dios le dará el trono de David, su padre, y Él reinará sobre la casa de Jacob por los siglos y su reinado no tendrá fin\". María le dijo entonces al ángel: \"¿Cómo podrá ser esto, puesto que yo permanezco virgen?\" El ángel le contestó: \"El Espíritu Santo descenderá sobre ti y el poder del Altísimo te cubrirá con su sombra. Por eso, el Santo, que va a nacer de ti, será llamado Hijo de Dios. Ahí tienes a tu parienta Isabel, que a pesar de su vejez, ha concebido un hijo y ya va en el sexto mes la que llamaban estéril, porque no hay nada imposible para Dios\". María contestó: \"Yo soy la esclava del Señor; cúmplase en mí lo que me has dicho\". Y el ángel se retiró de su presencia.",
+      "Palabra del Señor.Gloria a ti, Señor Jesús.",
+      "Se dice Credo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Recibe favorablemente, Señor, la ofrenda que te presentamos en la solemnidad de la Inmaculada Concepción de la santísima Virgen María, y concédenos que, así como profesamos que tu gracia la preservo de toda mancha de pecado, así también nosotros, por su intercesión, quedemos libres de toda culpa. Por Jesucristo, nuestro Señor.",
+      "PREFACIO",
+      "El misterio de María y la Iglesia",
+      "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno. Porque preservarte a la santísima Virgen María de toda mancha de pecado original, para preparar en ella, enriquecida con la plenitud de tu gracia, una digna madre para tu hijo y significar el nacimiento de su Esposa, la Iglesia, toda hermosa y sin mancha ni arruga. Pues purísima debía ser la Virgen que diera a luz a tu Hijo, el Cordero inocente que quita el pecado del mundo, y así a ella misma, para bien de todos, la preparabas como abogada para tu pueblo, modelo de gracia y de santidad. Por eso, unidos a los coros angélicos, te alabamos, proclamando con alegría. Santo, Santo, Santo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Grandes cosas cantan a ti, María porque de ti ha nacido el sol de justicia, Cristo nuestro Dios."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que el sacramento que acabamos de recibir, Señor Dios nuestro, repare en nosotros las consecuencias de aquella culpa de la cual preservaste singularmente a la Virgen María en su Inmaculada Concepción. Por Jesucristo, nuestro Señor.",
+      "Puede utilizarse la fórmula de bendición solemne, MR, p. 601 (609)."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-09",
+   "cabecera": {
+    "dia": 9,
+    "semana": "viernes",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "titulo": "Misa del día: Viernes 9 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Valeria de Limones, mártir; Pedro Fournier, fundador.",
+    "mr": "MR p. 848 (884)",
+    "lecc": "Lecc. I, p. 383",
+    "lh": null,
+    "tema": "SERÍA TU PAZ COMO UN RÍO",
+    "citas": "Is 48,17-19; Mt 11,16-19",
+    "crudo": [
+     "Misa del día: Viernes 9 de Diciembre de 2016",
+     "Blanco Memoria San Juan Diego MR p. 848 (884) / Lecc. I, p. 383",
+     "Otros santos: Valeria de Limones, mártir; Pedro Fournier, fundador.",
+     "Nació en Cuautitlán, hacia 1474. Se convirtió a la fe por la predicación de los primeros misioneros. \"Buen cristiano y temeroso de Dios\", fue escogido por él para ser el mensajero de \"la siempre Virgen Santa María, Madre del verdadero Dios por quien se vive\", misión que cumplió fielmente. Vivió junto a la ermita de nuestra Señora de Guadalupe unos 17 años, hasta su muerte, acaecida en 1548. El Papa Juan Pablo II lo canonizó el 31 de julio de 2002.",
+     "SERÍA TU PAZ COMO UN RÍO",
+     "Is 48,17-19; Mt 11,16-19",
+     "Un ligero tono de reproche y de lamentación encontramos en el pequeño trozo del profeta Isaías. El pueblo dejó pasar la oportunidad que lo conduciría a la paz. Se obsesionó siguiendo sus propios caprichos y se desentendió de acoger los mandatos de Dios. Invasiones, opresión, violencia fratricida y otros males sociales, brotaron del egoísmo y la necedad. El pasado doloroso podría ayudar a mejorar el futuro. El pueblo aprendería la lección: la palabra del Señor es palabra de vida. Por su parte, el Señor Jesús exhibe el desconcierto de sus contemporáneos que no supieron acoger la palabra exigente de Juan Bautista, pero tampoco supieron disponerse al mensaje consolador que él les ofrecía. Descalificaron a ambos y con su equívoco, desperdiciaron la oportunidad de salvación que Dios les ofrecía."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Is 52, 7",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Qué hermoso es ver correr sobre los montes al mensajero que anuncia la paz, trae buenas noticias, que anuncia la salvación."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios nuestro, que, por medio del bienaventurado Juan Diego, manifestaste a tu pueblo el amor de la santísima Virgen María, concédenos, por su intercesión, que, obedientes a las recomendaciones de nuestra Madre de Guadalupe, podamos cumplir siempre tu voluntad. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 48, 17-19",
+     "texto": [
+      "¡Ojalá hubieras obedecido mis mandatos!",
+      "Del libro del profeta Isaías: 48, 17-19",
+      "Esto dice el Señor, tu redentor, el Dios de Israel: \"Yo soy el Señor, tu Dios, el que te instruye en lo que es provechoso, el que te guía por el camino que debes seguir. ¡Ojalá hubieras obedecido mis mandatos! Sería tu paz como un río y tu justicia, como las olas del mar.",
+      "Tu descendencia sería como la arena y como granos de arena, los frutos de tus entrañas. Nunca tu nombre hubiera sido borrado ni arrancado de mi presencia\".Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 1, 1-2. 3. 4. 6",
+     "texto": [
+      "Del salmo 1, 1-2. 3. 4. 6",
+      "R/. Dichoso el hombre que confía en el Señor.",
+      "Dichoso aquel que no se guía por mundanos criterios, que no anda en malos pasos ni se burla del bueno, que ama la ley de Dios y se goza en cumplir sus mandamientos. R/.",
+      "Es como un árbol plantado junto al río, que da fruto a su tiempo y nunca se marchita. En todo tendrá éxito. R/.",
+      "En cambio los malvados serán como la paja barrida por el viento. Porque el Señor protege el camino del justo y al malo sus caminos acaban por perderlo. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Ya viene el Señor, salgamos a su encuentro; él es el príncipe de la paz. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 11, 16-19",
+     "texto": [
+      "No escuchan ni a Juan ni al Hijo del hombre.",
+      "Del santo Evangelio según san Mateo: 11, 16-19",
+      "En aquel tiempo, Jesús dijo: \"¿Con qué podré comparar a esta gente? Es semejante a los niños que se sientan en las plazas y se vuelven a sus compañeros para gritarles: 'Tocamos la flauta y no han bailado; cantamos canciones tristes y no han llorado'.",
+      "Porque vino Juan, que ni comía ni bebía, y dijeron: `Tiene un demonio'. Viene el Hijo del hombre, y dicen: `Ése es un glotón y un borracho, amigo de publicanos y gente de mal vivir'. Pero la sabiduría de Dios se justifica así misma por sus obras\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios y Padre nuestro, que el sacrificio que vamos a ofrecerte, en memoria de tu siervo san Juan Diego, sea agradable en tu presencia como la ofrenda de su humilde y sencilla fe, para alabanza y gloria de tu nombre y para la salvación del mundo entero. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Mt 25, 40",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Yo les aseguro que todo lo que hicieron con uno de estos mis hermanos más pequeños, conmigo lo hicieron, dice el Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Padre celestial, te damos gracias por este memorial de la muerte y resurrección de tu Hijo que hemos celebrado; concédenos, por intercesión de san Juan Diego, que, bajo la protección de la Virgen María, nos mantengamos siempre unidos en una fe sincera y en una ardiente caridad. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-10",
+   "cabecera": {
+    "dia": 10,
+    "semana": "sábado",
+    "fuente": "web",
+    "color": "Morado / Blanco",
+    "grado": "Feria",
+    "titulo": "Misa del día: Sabado 10 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": "Misa Votiva de Santa María de Guadalupe*",
+    "otros_santos": "Melquíades I, papa y mártir; Eulalia de Mérida, mártir. Beata Marco Antonio Durando, fundador.",
+    "mr": "MR p. 1133 (1180)",
+    "lecc": "Lecc. I, p. 385",
+    "lh": "LH, Vísperas I del domingo: 3a. Semana del Salterio Tomo I: pp. 770, 5-6 y 124 Para los fieles: pp. 642, 6-7 y 8 Edición popular: pp. 202 y 411",
+    "tema": "LO TRATARON A SU ANTOJO",
+    "citas": "Si 48,1-4. 9-11; Mt 17,10-13",
+    "crudo": [
+     "Misa del día: Sabado 10 de Diciembre de 2016",
+     "Morado / Blanco Feria de Adviento o Misa Votiva de Santa María de Guadalupe* MR p. 1133 (1180) / Lecc. I, p. 385 LH, Vísperas I del domingo: 3a. Semana del Salterio Tomo I: pp. 770, 5-6 y 124 Para los fieles: pp. 642, 6-7 y 8 Edición popular: pp. 202 y 411",
+     "Otros santos: Melquíades I, papa y mártir; Eulalia de Mérida, mártir. Beata Marco Antonio Durando, fundador.",
+     "LO TRATARON A SU ANTOJO",
+     "Si 48,1-4. 9-11; Mt 17,10-13",
+     "Pocas figuras proféticas impresionaron tanto a los israelitas del norte como el profeta Elías. Su herencia quedó marcada durante siglos, al punto que se asoció su regreso con la reconciliación duradera entre padres e hijos. Efectivamente, a principios del primer siglo de la era cristiana los israelitas padecían una aguda crisis interna. Las ambiciones por el poder habían desgarrado a la comunidad, acarreando la mayor opresión imaginada: la que herodianos y saduceos produjeron con el beneplácito del Imperio romano. Juan Bautista comprendió que el templo y todo lo que en su derredor se hacía, agudizaba las desgracias del pueblo; por eso, siendo hijo de un sacerdote, abandonó el oficio paterno, se marchó al Jordán y llamó a sus hermanos a cambiar profundamente su mentalidad, dejándose guiar por Dios y no por los usurpadores que merodeaban en los recintos del templo. A ese segundo Elías, dice Jesús, lo trataron a su antojo."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que se reúna, Señor, tu Iglesia, para consolidar tu Reino, porque tuyo es el poder y la gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios y Padre nuestro, que, por el anuncio del ángel, quisiste que tu Verbo se encarnara en el seno purísimo de la Virgen María, concede a tu pueblo que, al venerarla bajo la advocación de Guadalupe, espere, con sus misma ternura, la venida de tu Hijo. El que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del Sirácide (Eclesiástico): 48, 1-4. 9-11",
+     "texto": [
+      "Elías volverá.",
+      "Del libro del Sirácide (Eclesiástico): 48, 1-4. 9-11",
+      "En aquel tiempo, surgió Elías, un profeta de fuego; su palabra quemaba como una llama. Él hizo caer sobre los israelitas el hambre y con celo los diezmó. En el nombre del Señor cerró las compuertas del cielo e hizo que descendiera tres veces fuego de lo alto. ¡Qué glorioso eres, Elías, por tus prodigios! ¿Quién puede jactarse de ser igual a ti? En un torbellino de llamas fuiste arrebatado al cielo, sobre un carro tirado por caballos de fuego. Escrito está de ti que volverás, cargado de amenazas, en el tiempo señalado, para aplacar la cólera antes de que estalle, para hacer que el corazón de los padres se vuelva hacia los hijos y congregar a las tribus de Israel.",
+      "Dichosos los que te vieron y murieron gozando de tu amistad; pero más dichosos los que estén vivos cuando vuelvas.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 79, 2a.3bc. 15-16. 18-19",
+     "texto": [
+      "Del salmo 79, 2a.3bc. 15-16. 18-19",
+      "R/. Ven, Señor, a salvarnos.",
+      "Escúchanos, pastor de Israel; tú que estás rodeado de querubines, manifiéstate, despierta tu poder y ven a salvarnos. R/.",
+      "Señor, Dios de los ejércitos, vuelve tus ojos, mira tú viña y visítala; protege la cepa plantada por tu mano, el renuevo que tú mismo cultivaste. R/.",
+      "Que tu diestra defienda al que elegiste, al hombre que has fortalecido. Ya no nos alejaremos de ti; consérvanos la vida y alabaremos tu poder. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Lc 3, 4. 6",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Preparen el camino del Señor, hagan rectos sus senderos, y todos los hombres verán al Salvador. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 17, 10-13",
+     "texto": [
+      "Elías ha venido ya, pero no lo reconocieron.",
+      "Del santo Evangelio según san Mateo: 17, 10-13",
+      "En aquel tiempo, los discípulos le preguntaron a Jesús: \"¿Por qué dicen los escribas que primero tiene que venir Elías?\"",
+      "Él les respondió: \"Ciertamente Elías ha de venir y lo pondrá todo en orden. Es más, yo les aseguro a ustedes que Elías ha venido ya, pero no lo reconocieron e hicieron con él cuanto les vino en gana. Del mismo modo, el Hijo del hombre va a padecer a manos de ellos\".",
+      "Entonces entendieron los discípulos que les hablaba de Juan el Bautista.",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios y Padre nuestro, santifica estas ofrendas por el Espíritu que fecundó el seno de la Virgen María para que por su medio recibamos el fruto bendito de su vientre. Por Jesucristo, nuestro Señor.",
+      "Prefacio. Cantamos tu gloria unidos a santa María de Guadalupe. p. 1133 (1181)."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Sof 3, 14; Ag 2, 8",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Alégrate y gózate de todo corazón, Hija de Jerusalén; viene el deseado de todos los pueblos, y se llenará de gloria la casa del Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Padre celestial, que nos has revelado el designio de salvación al querer que la Virgen María fuera Madre de tu Unigénito, concédenos, por la encarnación de tu Hijo, a quien hemos recibido en alimento, aguardar anhelantes su segunda venida. Él que vive y reina por los siglos de los siglos."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-12",
+   "cabecera": {
+    "dia": 12,
+    "semana": "lunes",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Solemnidad",
+    "titulo": "Misa del día: Lunes 12 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": null,
+    "mr": "MR p. 850 (886)",
+    "lecc": "Lecc. 1, p. 9781",
+    "lh": "LH, todo propio. Misa de precepto en la República Mexicana Otros santos: Girolamo Ranuzzi, religioso",
+    "tema": "LO DICHO POR EL SEÑOR SE CUMPLIRÁ",
+    "citas": "Is 7,10-14; Si 24,23-31; Ga 4,4-7; Lc 1,39-48",
+    "crudo": [
+     "Misa del día: Lunes 12 de Diciembre de 2016",
+     "Nuestra Señora de Guadalupe, Patrona de América",
+     "Blanco Solemnidad, MR p. 850 (886) / Lecc. 1, p. 9781 LH, todo propio. Misa de precepto en la República Mexicana Otros santos: Girolamo Ranuzzi, religioso; Simón Hua de Vietnam, mártir.",
+     "Era el mes de diciembre de 1531, diez años solamente después de conquistada Tenochtitlan por los españoles, cuando la santísima Virgen se apareció al indígena Juan Diego en el cerro del Tepeyac. Lo nombró su embajador ante el obispo, fray Juan de Zumárraga, para que le construyeran un templo. La prueba de que las palabras de Juan Diego eran ciertas fueron las rosas que llevó en su tilma y la preciosa imagen que apareció dibujada en ella. La santísima Virgen es nuestra Madre. Toda la historia de Juan Diego y de las apariciones de la Virgen están fundadas en una constante y sólida tradición.",
+     "LO DICHO POR EL SEÑOR SE CUMPLIRÁ",
+     "Is 7,10-14; Si 24,23-31; Ga 4,4-7; Lc 1,39-48",
+     "Entre el fragmento de Isaías y el Evangelio de san Lucas encontramos un contraste tal como entre el día y la noche. De un lado tenemos al rey Ajaz, que se acobardó ante las amenazas de los reyes vecinos, menospreció la palabra que Isaías le comunicó de parte de Dios y en vez de confiar en el Señor, se abandonó en manos del rey de Asiria. No supo esperar y compró una protección muy cara que terminó acarreando una dura opresión para su pueblo por más de un siglo. Por el otro lado, tenemos a María, la Madre del Señor Jesús que, si bien no tiene que tomar decisiones de carácter político como el antedicho rey, sí tiene que aprender a optar por lo que traerá paz o desdicha a su vida y que favorecerá o afligirá a sus hermanos. La decisión de acoger el llamado del ángel fue una decisión exigente. Quienes veneramos a Santa María de Guadalupe, tenemos que tomar con frecuencia decisiones importantes, que conviene asumir desde una mirada confiada como la que mantuvo siempre la Madre del Señor."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Ap 12, 1",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Una gran señal apareció en el cielo: una mujer vestida de sol, con la luna bajo sus pies y una corona de doce estrellas sobre su cabeza.",
+      "Se dice Gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios, Padre de misericordia, que has puesto a este pueblo tuyo bajo la especial protección de la siempre Virgen María de Guadalupe, Madre de tu Hijo, concédenos, por su intercesión, profundizar en nuestra fe y buscar el progreso de nuestra patria por caminos de justicia y de paz. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": "(Lecc. I, p. 1006)",
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 7, 10-14",
+     "texto": [
+      "He aquí que la virgen concebirá y dará a luz un hijo.",
+      "Del libro del profeta Isaías: 7, 10-14",
+      "En aquellos tiempos, el Señor le habló a Ajaz diciendo: \"Pide al Señor, tu Dios, una señal de abajo, en lo profundo o de arriba, en lo alto\". Contestó Ajaz: \"No la pediré. No tentaré al Señor\".",
+      "Entonces dijo Isaías: \"Oye, pues, casa de David: ¿No satisfechos con cansar a los hombres, quieren cansar también a mi Dios? Pues bien, el Señor mismo les dará por eso una señal: He aquí que la virgen concebirá y dará a luz un hijo y le pondrán el nombre de Emmanuel, que quiere decir Dios-con-nosotros\".",
+      "Palabra de Dios.Te alabamos, Señor.",
+      "O bien: (Lecc. I. p. 978)",
+      "Yo soy la madre del amor. Vengan a mí los que me aman.",
+      "Del libro del Eclesiástico: 24, 23-31",
+      "Yo soy como una vid de fragantes hojas y mis flores son producto de gloria y de riqueza. Yo soy la madre del amor, del temor, del conocimiento y de la santa esperanza. En mí está toda la gracia del camino y de la verdad, toda esperanza de vida y de virtud. Vengan a mí, ustedes, los que me aman y aliméntense de mis frutos. Porque mis palabras son más dulces que la miel y mi heredad, mejor que los panales.",
+      "Los que me coman seguirán teniendo hambre de mí, los que me beban seguirán teniendo sed de mí; los que me escuchan no tendrán de qué avergonzarse y los que se dejan guiar por mí no pecarán. Los que me honran tendrán una vida eterna.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 66, 2-3. 5. 7-8.",
+     "texto": [
+      "Del salmo 66, 2-3. 5. 7-8.",
+      "R/. Que te alaben, Señor, todos los pueblos.",
+      "Ten piedad de nosotros y bendícenos; vuelve, Señor, tus ojos a nosotros. Que conozca la tierra tu bondad y los pueblos tu obra salvadora. R/.",
+      "Las naciones con júbilo te canten, porque juzgas al mundo con justicia; con equidad tú juzgas a los pueblos y riges en la tierra a las naciones. R/.",
+      "Que te alaben, Señor, todos los pueblos, que los pueblos te aclamen todos juntos. Que nos bendiga Dios y que le rinda honor el mundo entero. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SEGUNDA LECTURA",
+     "crudo": "SEGUNDA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "De la carta del apóstol san Pablo a los gálatas: 4, 4-7",
+     "texto": [
+      "Dios envió a su Hijo, nacido de una mujer.",
+      "De la carta del apóstol san Pablo a los gálatas: 4, 4-7",
+      "Hermanos: Al llegar la plenitud de los tiempos, envió Dios a su Hijo, nacido de una mujer, nacido bajo la ley, para rescatar a los que estábamos bajo la ley, a fin de hacernos hijos suyos.",
+      "Puesto que ya son ustedes hijos, Dios envió a sus corazones el Espíritu de su Hijo, que dama: \"¡Abbá!\", es decir, ¡Padre! Así que ya no eres siervo, sino hijo; y siendo hijo, eres también heredero por voluntad de Dios.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Lc 1, 47",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Mi alma glorifica al Señor y mi espíritu se llena de júbilo en Dios, mi salvador. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Lucas: 1, 39-48",
+     "texto": [
+      "Bendita tú entre las mujeres y bendito el fruto de tu vientre.",
+      "Del santo Evangelio según san Lucas: 1, 39-48",
+      "En aquellos días, María se encaminó presurosa a un pueblo de las montañas de Judea y, entrando en la casa de Zacarías, saludó a Isabel. En cuanto ésta oyó el saludo de María, la criatura saltó en su seno. Entonces Isabel quedó llena del Espíritu Santo y, levantando la voz, exclamó: \"¡Bendita tú entre las mujeres y bendito el fruto de tu vientre! ¿Quién soy yo, para que la madre de mi Señor venga a verme? Apenas llegó tu saludo a mis oídos, el niño saltó de gozo en mi seno. Dichosa tú, que has creído, porque se cumplirá cuanto te fue anunciado de parte del Señor\". Entonces dijo María: \"Mi alma glorifica al Señor y mi espíritu se llena de júbilo en Dios, mi salvador, porque puso sus ojos en la humildad de su esclava\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús.",
+      "Se dice Credo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Acepta, Señor, los dones que te presentamos en esta solemnidad de nuestra Señora de Guadalupe, y haz que este sacrificio nos dé fuerza para cumplir tus mandamientos, como verdaderos hijos de la Virgen María. Por Jesucristo, nuestro Señor.",
+      "PREFACIO",
+      "La Virgen María, signo materno del amor de Dios.",
+      "En verdad es justo y necesario, es nuestro deber y salvación darte gracias siempre y en todo lugar, Señor, Padre santo, Dios todopoderoso y eterno, por Cristo, Señor nuestro.",
+      "Porque en tu inmensa bondad has querido que la Madre de tu Hijo, bajo el título de Guadalupe, fuera especial Madre nuestra, refugio y Señora, presencia viva en la historia de este pueblo tuyo.",
+      "Ella, mensajera de tu verdad y signo materno de tu amor, nos brindó compasión, auxilio y defensa, y hoy nos invita a reconciliarnos contigo y entre nosotros, y a proclamar el Evangelio de tu Hijo, para hacer que florezcan en nuestras tierras la fraternidad y la paz.",
+      "Por eso, con todos los ángeles y los santos, te alabamos, proclamando sin cesar: Santo, Santo, Santo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Cfr. Sal 147, 20",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "No ha hecho nada semejante con ningún otro pueblo; a ninguno le ha manifestado tan claramente su amor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que el Cuerpo y la Sangre de tu Hijo, que acabamos de recibir en este sacramento, nos ayuden, Señor, por intercesión de santa María de Guadalupe, a reconocernos y amarnos todos como verdaderos hermanos. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-13",
+   "cabecera": {
+    "dia": 13,
+    "semana": "martes",
+    "fuente": "web",
+    "color": null,
+    "grado": "Feria",
+    "titulo": "Misa del día: Martes 13 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": "Santa Lucía, Virgen y Mártir",
+    "otros_santos": "Antíoco de Cerdeña, mártir. Beato Juan Marinoni, fundador; Otilia u Odila de Alsacia, abadesa.",
+    "mr": "MR p. 852 (889)",
+    "lecc": "Lecc. I, p. 390",
+    "lh": null,
+    "tema": "UN RESTO SANTO QUE NO COMETERÁ CRÍMENES",
+    "citas": "So 3,1-2.9-13; Mt 21,28-32",
+    "crudo": [
+     "Misa del día: Martes 13 de Diciembre de 2016",
+     "Feria, o Santa Lucía, Virgen y Mártir MR p. 852 (889) / Lecc. I, p. 390",
+     "Otros santos: Antíoco de Cerdeña, mártir. Beato Juan Marinoni, fundador; Otilia u Odila de Alsacia, abadesa.",
+     "Muere en Siracusa (Sicilia) en el tiempo de la sangrienta persecución desatada por el emperador Diocleciano (304). Imagen de la luz y patrona de los ciegos, Lucía es venerada en todo el mundo, gracias a los incansables sicilianos.",
+     "UN RESTO SANTO QUE NO COMETERÁ CRÍMENES",
+     "So 3,1-2.9-13; Mt 21,28-32",
+     "El profeta Sofonías asistió al desmoronamiento moral de Jerusalén; el pueblo y los dirigentes pisoteaban las leyes con tal de conseguir su propio provecho. Vivían aparentemente como personas religiosas, pero lo hacían de los dientes para afuera. El profeta no se desespera ante esa situación, sino que anima a sus hermanos a vivir humildemente delante de Dios, apartándose del camino del crimen. Nada que resulte muy extraño para los habitantes de un país marcado por la corrupción y la violencia. En la parábola evangélica, el Señor Jesús exhibe la incongruencia de quienes con los labios afirman querer cumplir la voluntad de Dios, pero no están dispuestos a mover un dedo para hacerlo. El hijo que finalmente realizó la voluntad de su padre, habiendo dicho al inicio que no, simboliza la esperanza. El ser humano puede volver sobre sus pasos y reorientar su camino, desmontando sus decisiones erróneas."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dichosa aquella virgen que, negándose a sí misma y tomando su cruz, sigue al Señor, esposo de las vírgenes y príncipe de los mártires."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Te rogamos, Señor, que nos ayude la gloriosa intercesión de santa Lucía, virgen y mártir, para que, quienes celebramos su fiesta en la tierra, podamos contemplar su gloria en el cielo. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Sofonías: 3, 1-2. 9-13",
+     "texto": [
+      "Se promete a todos los pobres la salvación por medio del Mesías.",
+      "Del libro del profeta Sofonías: 3, 1-2. 9-13",
+      "\"¡Ay de la ciudad rebelde y contaminada, de la ciudad potente y opresora! No ha escuchado la voz, ni ha aceptado la corrección. No ha confiado en el Señor, ni se ha vuelto hacia su Dios. Pero hacia el fin daré otra vez a los pueblos labios puros, para que todos invoquen el nombre del Señor y lo sirvan todos bajo el mismo yugo. Desde más allá de los ríos de Etiopía, hasta las últimas regiones del norte, los que me sirven me traerán ofrendas. Aquel día no sentirás ya vergüenza de haberme sido infiel, porque entonces yo quitaré de en medio de ti a los orgullosos y engreídos, y tú no volverás a ensoberbecerte en mi monte santo. Aquel día, dice el Señor, yo dejaré en medio de ti, pueblo mío, un puñado de gente pobre y humilde. Este resto de Israel confiará en el nombre del Señor.",
+      "No cometerá maldades ni dirá mentiras; no se hallará en su boca una lengua embustera. Permanecerán tranquilos y descansarán sin que nadie los moleste\".",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 33, 2-3.6-7. 17-18. 19.23",
+     "texto": [
+      "Del salmo 33, 2-3.6-7. 17-18. 19.23",
+      "R/. El Señor escucha el clamor de los pobres.",
+      "Bendeciré al Señor a todas horas, no cesará mi boca de alabarlo. Yo me siento orgulloso del Señor, que se alegre su pueblo al escucharlo. R/.",
+      "Confía en el Señor y saltarás de gusto, jamás te sentirás decepcionado, porque el Señor escucha el clamor de los pobres y los libra de todas sus angustias. R/.",
+      "En contra del malvado está el Señor, para borrar de la tierra su recuerdo. Escucha, en cambio, al hombre justo y lo libra de todas sus congojas. R/.",
+      "El Señor no está lejos de sus fieles y levanta a las almas abatidas. Salva el Señor la vida de sus siervos; no morirán quienes en Él esperan. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Ven, Señor, no te tardes; ven a perdonar los delitos de tu pueblo. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Mateo: 21, 28-32",
+     "texto": [
+      "Vino Juan y los pecadores sí le creyeron.",
+      "Del santo Evangelio según san Mateo: 21, 28-32",
+      "En aquel tiempo, Jesús dijo a los sumos sacerdotes y a los ancianos del pueblo: \"¿Qué opinan de esto? Un hombre que tenía dos hijos fue a ver al primero y le ordenó: 'Hijo, ve a trabajar hoy en la viña'. Él le contestó: 'Ya voy, señor', pero no fue. El padre se dirigió al segundo y le dijo lo mismo. Éste le respondió: 'No quiero ir', pero se arrepintió y fue. ¿Cuál de los dos hizo la voluntad del padre?\". Ellos le respondieron: \"El segundo\". Entonces Jesús les dijo: \"Yo les aseguro que los publicanos y las prostitutas se les han adelantado en el camino del Reino de Dios. Porque vino a ustedes Juan, predicó el camino de la justicia y no le creyeron; en cambio, los publicanos y las prostitutas sí le creyeron; ustedes, ni siquiera después de haber visto, se han arrepentido ni han creído en él\".Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Te pedimos, Señor, que los dones que te presentamos en la celebración de santa Lucía, por tu gracia, te sean agradables, así como te fue grato el combate de su martirio. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Ap 7, 17",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "El Cordero, que está en el trono, los conducirá a las fuentes del agua de la vida."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Señor Dios, que coronaste entre los santos a la bienaventurada Lucía por la doble victoria de su virginidad y de su martirio, concédenos, por la eficacia de este sacramento, que, venciendo valerosamente todo mal, consigamos la gloria del cielo. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-14",
+   "cabecera": {
+    "dia": 14,
+    "semana": "miércoles",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Memoria",
+    "titulo": "Misa del día: Miercoles 14 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Nimatullah Kassab Al Hardini, presbítero. Beato Bartolo de San Gimigniano, presbítero.",
+    "mr": "MR p. 852 (889)",
+    "lecc": "Lecc. I, p. 392",
+    "lh": null,
+    "tema": "¿ESPERAMOS A OTRO?",
+    "citas": "Is 45, 6-8; 18. 21-25; Lc 7, 19-23",
+    "crudo": [
+     "Misa del día: Miercoles 14 de Diciembre de 2016",
+     "Blanco Memoria, San Juan de La Cruz, Presbítero y Doctor de la Iglesia MR p. 852 (889) / Lecc. I, p. 392",
+     "Otros santos: Nimatullah Kassab Al Hardini, presbítero. Beato Bartolo de San Gimigniano, presbítero.",
+     "Nació en Fontiveros, cerca de Salamanca. Religioso carmelita, a los 25 años se encontró con santa Teresa de Jesús, que por entonces emprendía la reforma de la Orden Carmelita. Conquistado para la reforma, la inició con dos compañeros. Es el doctor clásico de la teología mística. Incomprendido y humillado, murió en Ubeda en 1591.",
+     "¿ESPERAMOS A OTRO?",
+     "Is 45, 6-8; 18. 21-25; Lc 7, 19-23",
+     "La comunidad de discípulos que interactuaban en torno del profeta del Jordán estaba intrigada por la función y la identidad del profeta de Nazaret. Esas personas no eran en manera alguna indiferentes, al contrario, les preocupaba en serio la renovación religiosa y moral de Israel. No estaban conformes con el proceder de los grandes sacerdotes ni con los pesados tributos que tenían que entregar a los dueños del poder. Dios detestaba esa situación de opresión y no tenía sentido esconder la cabeza como el avestruz. ¿En qué dirección había que caminar, cuál proyecto había que apoyar y defender para conseguir la anhelada Shalom? Cierta simpatía debían tener por Jesús, para descaminarse a entrevistarlo. Jesús no se impresiona, sigue curando y acogiendo a los necesitados, porque sabe que son los hechos y nos los discursos, los que muestran de qué están hechos los pastores genuinos que aman a sus ovejas."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Ga 6, 14",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "No permita Dios que yo me gloríe en algo que no sea la cruz de nuestro Señor Jesucristo, por la cual el mundo está crucificado para mí y yo para el mundo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios, nuestro, que hiciste de san Juan de la Cruz, presbítero, un modelo perfecto de negación de sí mismo y de amor a la cruz, concédenos que, imitándolo siempre, lleguemos a contemplar tu gloria en el cielo. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 45, 6-8. 18. 21-25",
+     "texto": [
+      "Dejen, cielos, caer su rocío.",
+      "Del libro del profeta Isaías: 45, 6-8. 18. 21-25",
+      "\"Yo soy el Señor y no hay otro. Yo soy el artífice de la luz y el creador de las tinieblas, el autor de la felicidad y el hacedor de la desgracia; yo, el Señor, hago todo esto. Dejen, cielos, caer su rocío y que las nubes lluevan al justo; que la tierra se abra y haga germinar la salvación y que brote juntamente la justicia. Yo, el Señor, he creado todo esto\".",
+      "Esto dice el Señor, el que creó los cielos, el mismo Dios que plasmó y consolidó la tierra; Él no la hizo para que quedara vacía, sino para que fuera habitada: \"Yo soy el Señor y no hay otro. ¿Quién fue el que anunció esto desde antiguo? ¿Quién lo predijo entonces? ¿No fui yo, el Señor? Fuera de mí no hay otro Dios. Soy un Dios justo y salvador y no hay otro fuera de mí.",
+      "Vuélvanse a mí y serán salvados, pueblos todos de la tierra, porque yo soy Dios y no hay otro. Lo juro por mí mismo, de mi boca sale la verdad, las palabras irrevocables: ante mí se doblará toda rodilla y por mí jurará toda lengua, diciendo: 'Sólo el Señor es justo y poderoso'. A Él se volverán avergonzados todos los que lo combatían con rabia. Gracias al Señor, triunfarán gloriosamente todos los descendientes de Israel\".",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 84, 9ab.10. 11-12. 13-14",
+     "texto": [
+      "Del salmo 84, 9ab.10. 11-12. 13-14",
+      "R/. ¡Dejen, cielos, caer su rocío y que las nubes lluevan al justo!",
+      "Escucharé las palabras del Señor, palabras de paz para su pueblo santo. Está ya cerca nuestra salvación y la gloria del Señor habitará en la tierra. R/.",
+      "La misericordia y la verdad se encontraron, la justicia y la paz se besaron, la fidelidad brotó en la tierra y la justicia vino del cielo. R/.",
+      "Cuando el Señor nos muestre su bondad, nuestra tierra producirá su fruto. La justicia le abrirá camino al Señor e irá siguiendo sus pisadas. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Cfr. Is 40, 9. 10",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Levanta tu voz para anunciar la buena nueva: ya viene el Señor, nuestro Dios, con todo su poder. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Lucas: 7, 19-23",
+     "texto": [
+      "Vayan a contarle a Juan lo que han visto y oído.",
+      "Del santo Evangelio según san Lucas: 7, 19-23",
+      "En aquel tiempo, Juan envió a dos de sus discípulos a preguntar a Jesús: \"¿Eres tú el que ha de venir o tenemos que esperar a otro?\" Cuando llegaron a donde estaba Jesús, le dijeron: `Juan el Bautista nos ha mandado a preguntarte si eres tú el que ha de venir o tenemos que esperar a otro\".",
+      "En aquel momento, Jesús curó a muchos de varias enfermedades y dolencias y de espíritus malignos, y a muchos ciegos les concedió la vista. Después contestó a los enviados: \"Vayan a contarle a Juan lo que han visto y oído: los ciegos ven, los cojos andan, los leprosos quedan limpios, los sordos oyen, los muertos resucitan y a los pobres se les anuncia el Evangelio. Dichoso el que no se escandalice de mí\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Mira, Dios todopoderoso, las ofrendas que te presentemos en la conmemoración de san Juan, y concédenos expresar en la vida los misterios de la pasión del Señor, que ahora celebramos. Por Jesucristo, nuestro Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Cfr. Mt 16, 24",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "El que quiera venir conmigo, que renuncie a sí mismo, que tome su cruz y que me siga, dice el Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Señor Dios, que en san Juan manifestaste de modo admirable el misterio de la cruz, concede, benigno, que, fortalecidos por este sacrificio, permanezcamos fielmente adheridos a Cristo y trabajemos en la Iglesia por la salvación de todos. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-16",
+   "cabecera": {
+    "dia": 16,
+    "semana": "viernes",
+    "fuente": "web",
+    "color": "Morado",
+    "grado": "Feria",
+    "titulo": "Misa del día: Viernes 16 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Alicia o Adelaida o Adelina de Alemania, emperatriz; Albina de Palestina, mártir. Beata María de los Ángeles Fontanella, religiosa.",
+    "mr": "MR p. 148 (164)",
+    "lecc": "Lecc. I, p. 398",
+    "lh": null,
+    "tema": "DICHOSO EL HOMBRE QUE OBRA ASÍ",
+    "citas": "Is 56,1-3.6-8; Jn 5,33-36",
+    "crudo": [
+     "Misa del día: Viernes 16 de Diciembre de 2016",
+     "Morado Feria III Semana de Adviento MR p. 148 (164) / Lecc. I, p. 398",
+     "Otros santos: Alicia o Adelaida o Adelina de Alemania, emperatriz; Albina de Palestina, mártir. Beata María de los Ángeles Fontanella, religiosa.",
+     "DICHOSO EL HOMBRE QUE OBRA ASÍ",
+     "Is 56,1-3.6-8; Jn 5,33-36",
+     "Nada más lejano de la fe genuina que la doble moral y el puro ritualismo. Dios prefiere que sus hijos lo honren practicando la justicia y cumpliendo el derecho que, por medio de ofrendas de animales. La salvación que Dios ofrece al pueblo que regresa del destierro es gratuita. Sin embargo, para que esa bendición perdure y beneficie a todo mundo, tiene que ser soportada en unas relaciones sociales y familiares justas y solidarias. Las obras que los creyentes realizamos en favor de los hermanos no son requisito para que Dios nos ame, antes bien, son la manifestación de gratitud de quien se sabe gratuitamente salvado por el Padre bueno. Por eso mismo el Señor Jesús realiza sus obras, porque ha experimentado la hondura del amor del Padre. Quien vea las obras de misericordia y compasión que hace Jesús, entenderá el tamaño del amor compasivo del Padre celestial."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "El Señor vendrá con esplendor a visitar a su pueblo, para traerle la paz y la vida eterna."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios todopoderoso, que tu gracia nos disponga y nos siga ayudando siempre, para que quienes aguardamos con anhelo en nuestro corazón la venida de tu Unigénito, consigamos tu auxilio para nuestra vida presente y futura. Él, que vive y reina contigo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del libro del profeta Isaías: 56, 1-3. 6-8",
+     "texto": [
+      "Mi templo será casa de oración para todos los pueblos.",
+      "Del libro del profeta Isaías: 56, 1-3. 6-8",
+      "Esto dice el Señor: \"Velen por los derechos de los demás, practiquen la justicia, porque mi salvación está a punto de llegar y mi justicia a punto de manifestarse. Dichoso el hombre que hace esto y en ello persevera, el que se abstiene de profanar el sábado, el que aparta su mano de todo mal. No diga el extranjero que ha dado su adhesión al Señor: 'Sin duda que el Señor me excluirá de su pueblo'. A los extranjeros que se han adherido al Señor para servirlo, amarlo y darle culto, a los que guardan el sábado sin profanarlo y se mantienen fieles a mi alianza, los conduciré a mi monte santo y los llenaré de alegría en mi casa de oración.",
+      "Sus holocaustos y sacrificios serán gratos a mi altar, porque mi casa será casa de oración para todos los pueblos\". Esto dice el Señor Dios, que reúne a los dispersos de Israel: \"A los ya reunidos, todavía añadiré otros\".Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 66, 2-3.5.7-8",
+     "texto": [
+      "Del salmo 66, 2-3.5.7-8",
+      "R/. Bendigamos a Dios, nuestro Señor.",
+      "Ten piedad de nosotros y bendícenos; vuelve, Señor, tus ojos a nosotros. Que conozca la tierra tu bondad y los pueblos tu obra salvadora. R/.",
+      "Las naciones con júbilo te canten, porque juzgas al mundo con justicia; con equidad tú juzgas a los pueblos y riges en la tierra a las naciones. R/.",
+      "La tierra ha producido ya sus frutos, Dios nos ha bendecido. Que nos bendiga Dios y que le rinda honor el mundo entero. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Ven, Señor, y concédenos tu paz para que nuestro corazón se alegre en ti con alegría perfecta. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Juan: 5, 33-36",
+     "texto": [
+      "Juan era la lámpara que ardía y brillaba.",
+      "Del santo Evangelio según san Juan: 5, 33-36",
+      "En aquel tiempo, Jesús dijo a los judíos: \"Ustedes enviaron mensajeros a Juan el Bautista y él dio testimonio de la verdad. No es que yo quiera apoyarme en el testimonio de un hombre. Si digo esto, es para que ustedes se salven. Juan era la lámpara que ardía y brillaba, y ustedes quisieron alegrarse un instante con su luz.",
+      "Pero yo tengo un testimonio mejor que el de Juan: las obras que el Padre me ha concedido realizar y que son las que yo hago, dan testimonio de mí y me acreditan como enviado del Padre\".",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Que te sean agradables, Señor, nuestras humildes súplicas y ofrendas, y puesto que no tenemos merecimientos en qué apoyarnos, socórranos el poderoso auxilio de tu benevolencia. Por Jesucristo, nuestro Señor.",
+      "Prefacio I o III de Adviento, pp. 484 o 846 (485 o 847)."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Flp 3, 20-21",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Esperamos como salvador a Jesucristo, el Señor; él transformará nuestro cuerpo frágil en cuerpo glorioso como el suyo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Saciados por el alimento que nutre nuestro espíritu, te rogamos, Señor, que por nuestra participación en estos misterios, nos enseñes a valorar sabiamente las cosas de la tierra y a poner en nuestro corazón las del cielo. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-27",
+   "cabecera": {
+    "dia": 27,
+    "semana": "martes",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Fiesta",
+    "titulo": "Misa del día: Martes 27 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Buenaventura Tolomei, religioso. Beato Francisco Spoto, mártir.",
+    "mr": "MR p. 855 (893)",
+    "lecc": "Lecc. I, p. 983",
+    "lh": null,
+    "tema": "EL OTRO DISCÍPULO",
+    "citas": "1 Jn 1, 1-4; Jn 20, 2-9",
+    "crudo": [
+     "Misa del día: Martes 27 de Diciembre de 2016",
+     "Blanco Día III de La Octava de Navidad, Fiesta San Juan, Apóstol y Evangelista MR p. 855 (893) / Lecc. I, p. 983",
+     "Otros santos: Buenaventura Tolomei, religioso. Beato Francisco Spoto, mártir.",
+     "Había encontrado al Señor, junto con Andrés, en las orillas del Jordán. Desde aquella tarde fue \"el amigo\" del Señor, amigo íntimo, testigo de su transfiguración y de su agonía; testigo presencial de su muerte y sepultura. En la mañana del domingo de Pascua, es el primero en creer en la resurrección de Cristo. Todo esto lo transmite, casi encandilado, en sus escritos: \"Lo que hemos visto y oído; lo que hemos tocado con nuestras propias manos...\".",
+     "EL OTRO DISCÍPULO",
+     "1 Jn 1, 1-4; Jn 20, 2-9",
+     "En la celebración litúrgica de san Juan Evangelista, la palabra de Dios nos recuerda el valor del testimonio. El prólogo de la Primera Carta de san Juan, da voz a una comunidad de discípulos que se presentan como portadores de una experiencia única de salvación. Ellos no aprendieron un manual con teorías religiosas, sino que compartieron su experiencia viva como oyentes y testigos de la Vida. Vieron, oyeron, palparon y contemplaron al Verbo de Dios y se dejaron llenar de su alegría. La misma alegría profunda que renació en sus corazones cuando Simón, Magdalena y Juan volvieron del sepulcro, animados por haber comprendido el anuncio de las Escrituras. El sudario enrollado y el sepulcro vacío fueron los símbolos de la victoria de Jesús sobre la muerte."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Si 15, 5",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "En medio de la Iglesia abrió su boca, y el Señor lo llenó del espíritu de sabiduría e inteligencia, y lo revistió de gloria.",
+      "Se dice Gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios nuestro, que por medio del apóstol san Juan nos revelaste los misterios de tu Palabra hecha carne, concédenos la gracia de comprender con claridad lo que él nos enseñó tan admirablemente. Por nuestro Señor Jesucristo..."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "De la primera carta del apóstol san Juan: 1, 1-4",
+     "texto": [
+      "Les anunciamos lo que hemos visto y oído.",
+      "De la primera carta del apóstol san Juan: 1, 1-4",
+      "Queridos hermanos: Les anunciamos lo que ya existía desde el principio, lo que hemos oído y hemos visto con nuestros propios ojos, lo que hemos contemplado y hemos tocado con nuestras propias manos. Nos referimos a aquel que es la Palabra de la vida.",
+      "Esta vida se ha hecho visible y nosotros la hemos visto y somos testigos de ella. Les anunciamos esta vida, que es eterna, y estaba con el Padre y se nos ha manifestado a nosotros.",
+      "Les anunciamos, pues, lo que hemos visto y oído, para que ustedes estén unidos con nosotros, y juntos estemos unidos con el Padre y su Hijo, Jesucristo. Les escribimos esto para que se alegren y su alegría sea completa.",
+      "Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 96, 1-2. 5-6. 11-12",
+     "texto": [
+      "Del salmo 96, 1-2. 5-6. 11-12",
+      "R/. Alégrense, justos, con el Señor.",
+      "Reina el Señor, alégrese la tierra; cante de regocijo el mundo entero. Tinieblas y nubes rodean el trono del Señor, que se asienta en la justicia y el derecho. R/.",
+      "Los montes se derriten como cera ante el Señor de toda la tierra. Los cielos pregonan su justicia, su inmensa gloria ven todos los pueblos. R/.",
+      "Amanece la luz para el justo y la alegría para los rectos de corazón. Alégrense, justos, con el Señor y bendigan su santo nombre. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Señor, Dios eterno, alegres te cantamos, a ti nuestra alabanza. A ti, Señor, te alaba el coro celestial de los apóstoles. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Juan: 20, 2-9",
+     "texto": [
+      "El otro discípulo corrió más aprisa que Pedro y llegó primero al sepulcro.",
+      "Del santo Evangelio según san Juan: 20, 2-9",
+      "El primer día después del sábado, María Magdalena vino corriendo a la casa donde estaban Simón Pedro y el otro discípulo, a quien Jesús amaba, y les dijo: \"Se han llevado del sepulcro al Señor y no sabemos dónde lo habrán puesto\".",
+      "Salieron Pedro y el otro discípulo camino del sepulcro. Los dos iban corriendo juntos, pero el otro discípulo corrió más aprisa que Pedro y llegó primero al sepulcro, e inclinándose, miró los lienzos puestos en el suelo, pero no entró.",
+      "En eso llegó también Simón Pedro, que lo venía siguiendo, y entró en el sepulcro. Contempló los lienzos puestos en el suelo y el sudario, que había estado sobre la cabeza de Jesús, puesto no con los lienzos en el suelo, sino doblado en sitio aparte. Entonces entró también el otro discípulo, el que había llegado primero al sepulcro, y vio y creyó, porque hasta entonces no habían entendido las Escrituras, según las cuales Jesús debía resucitar de entre los muertos.",
+      "Palabra del Señor.Gloria a ti, Señor Jesús."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Santifica, Señor, los dones que te presentamos y concédenos, por la participación en esta Eucaristía, ahondar en los misterios de tu Palabra eterna, que en la Última Cena revelaste al apóstol san Juan. Por jesucristo, nuestro Señor.",
+      "Prefacio I-III de Navidad"
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "Jn 1, 14. 16",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "La Palabra se hizo hombre y habitó entre nosotros, y de su plenitud hemos recibido todos, gracia sobre gracia."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Concédenos, Dios todopoderoso, que, por esta Eucaristía que hemos celebrado, la Palabra hecha carne, predicada por san Juan, habite siempre en nosotros. Por Jesucristo, nuestro Señor."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  },
+  {
+   "fecha": "2016-12-31",
+   "cabecera": {
+    "dia": 31,
+    "semana": "sábado",
+    "fuente": "web",
+    "color": "Blanco",
+    "grado": "Conmemoración",
+    "titulo": "Santa Misa del día: Sabado 31 de Diciembre de 2016",
+    "subtitulo": null,
+    "resena": null,
+    "alterna": null,
+    "otros_santos": "Melania \"la Joven\", viuda; Columba de Sens, mártir. Beata Josefina Nicoli, religiosa.",
+    "mr": "MR p. 169 (183).858",
+    "lecc": "Lecc. I, p. 441",
+    "lh": null,
+    "tema": "CONOCEN LA VERDAD",
+    "citas": "1 Jn 2,18-21; Jn 1,1-18",
+    "crudo": [
+     "Santa Misa del día: Sabado 31 de Diciembre de 2016",
+     "Blanco Día VII Dentro de La Octava de Navidad, o conmemoración de San Silvestre I, Papa* MR p. 169 (183).858 / Lecc. I, p. 441",
+     "Otros santos: Melania \"la Joven\", viuda; Columba de Sens, mártir. Beata Josefina Nicoli, religiosa.",
+     "Fue elegido Papa inmediatamente después de la paz constantiniana y gobernó la Iglesia romana durante 21 años (314-335). Le tocó presenciar la difusión del cristianismo en todas las clases sociales. Pero asistió también, sin poder hacer nada, a la crisis desencadenada por el sacerdote de Alejandría, Arrio, que negaba la divinidad de Cristo. Por medio de sus legados, estuvo presente en el Concilio de Nicea, primer concilio ecuménico (325).",
+     "CONOCEN LA VERDAD",
+     "1 Jn 2,18-21; Jn 1,1-18",
+     "La seguridad con que se expresa el autor de la Primera Carta de Juan es esperanzadora. Él está convencido que los lectores que recibirán su carta participan ya de la unción del Espíritu, y que gracias a esa unción, disfrutan del conocimiento y de la verdad que salva. No es un conocimiento teórico, de carácter académico; es algo más profundo, se trata de una experiencia de vida que se torna indeleble. El discípulo que se ha encontrado con Jesús, no puede olvidarse de ese acontecimiento culminante. Quien reconoce a Jesús como la luz que da vida, no está dispuesto a regresar a vivir a las tinieblas. Quien acoja a Jesús, la luz del mundo, vivirá como verdadero hijo de Dios. Vivir como hijo de Dios es una competencia, una habilidad que nos dispone a responder en las diversas circunstancias a los llamados que Jesús nos hace en los hermanos. Quien ama a su hermano, es el verdadero hijo de Dios que vive en la luz."
+    ],
+    "opcion": 0
+   },
+   "bloques": [
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE ENTRADA",
+     "crudo": "ANTÍFONA DE ENTRADA",
+     "cita": "Cfr. Is 9, 5",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Un niño nos ha nacido, un hijo se nos ha dado; lleva sobre sus hombros el imperio y su nombre será Ángel del gran consejo.",
+      "Se dice Gloria."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN COLECTA",
+     "crudo": "ORACIÓN COLECTA",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios todopoderoso y eterno, que aceptaste que en el nacimiento de tu Hijo halle su principio y perfección la virtud que nos une a ti, concédenos que seamos contados entre los escogidos de aquel en quien está la plenitud de toda salvación humana. El, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos.",
+      "O bien de la conmemoración del santo:",
+      "Ayuda, Señor, a tu pueblo, que confía en la intercesión del Papa san Silvestre, para que la vida presente transcurra bajo tu guía, y merezcamos alcanzar felizmente la eterna. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "PRIMERA LECTURA",
+     "crudo": "PRIMERA LECTURA",
+     "cita": null,
+     "marca": "br",
+     "sumario": null,
+     "formula": "De la primera carta del apóstol san Juan: 2, 18-21",
+     "texto": [
+      "Han recibido ustedes la unción del Espíritu Santo.",
+      "De la primera carta del apóstol san Juan: 2, 18-21",
+      "Hijos míos: Ésta es la última hora. Han oído ustedes que iba a venir el anticristo; pues bien, muchos anticristos han aparecido ya, por lo cual nos damos cuenta de que es la última hora.",
+      "De entre ustedes salieron, pero no eran de los nuestros; pues si hubieran sido de los nuestros, habrían permanecido con nosotros. Pero sucedió así para que se pusiera de manifiesto que ninguno de ellos es de los nuestros.",
+      "Por lo que a ustedes toca, han recibido la unción del Espíritu Santo y tienen así el verdadero conocimiento. Les he escrito, no porque ignoren la verdad, sino porque la conocen y porque ninguna mentira viene de la verdad.Palabra de Dios.Te alabamos, Señor."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "SALMO RESPONSORIAL",
+     "crudo": "SALMO RESPONSORIAL",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del salmo 95, 1-2.11-12a. 12b-13 R/. Alégrense los cielos y la tierra.",
+     "texto": [
+      "Del salmo 95, 1-2.11-12a. 12b-13 R/. Alégrense los cielos y la tierra.",
+      "Cantemos al Señor un nuevo canto, que le cante al Señor toda la tierra; cantemos al Señor y bendigámoslo, proclamemos su amor día tras día. R/.",
+      "Alégrense los cielos y la tierra, retumbe el mar y el mundo submarino. Salten de gozo el campo y cuanto encierra, manifiesten los bosques regocijo. R/.",
+      "Regocíjese todo ante el Señor, porque ya viene a gobernar el orbe. Justicia y rectitud serán las normas con las que rija a todas las naciones. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "crudo": "ACLAMACIÓN ANTES DEL EVANGELIO",
+     "cita": "Jn 1, 14. 12",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "R/. Aleluya, aleluya.",
+      "Aquel que es la Palabra se hizo hombre y habitó entre nosotros. A todos los que lo recibieron les concedió poder llegar a ser hijos de Dios. R/."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "EVANGELIO",
+     "crudo": "EVANGELIO",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": "Del santo Evangelio según san Juan: 1, 1-18",
+     "texto": [
+      "Aquel que es la Palabra se hizo hombre.",
+      "Del santo Evangelio según san Juan: 1, 1-18",
+      "En el principio ya existía aquel que es la Palabra, y aquel que es la Palabra estaba con Dios y era Dios. Ya en el principio él estaba con Dios. Todas las cosas vinieron a la existencia por él y sin él nada empezó de cuanto existe. Él era la vida, y la vida era la luz de los hombres. La luz brilla en las tinieblas y las tinieblas no la recibieron.",
+      "Hubo un hombre enviado por Dios, que se llamaba Juan. Éste vino como testigo, para dar testimonio de la luz, para que todos creyeran por medio de él. Él no era la luz, sino testigo de la luz.",
+      "Aquel que es la Palabra era la luz verdadera, que ilumina a todo hombre que viene a este mundo. En el mundo estaba; el mundo había sido hecho por él y, sin embargo, el mundo no lo conoció.",
+      "Vino a los suyos y los suyos no lo recibieron; pero a todos los que lo recibieron les concedió poder llegar a ser hijos de Dios, a los que creen en su nombre, los cuales no nacieron de la sangre, ni del deseo de la carne, ni por voluntad del hombre, sino que nacieron de Dios.",
+      "Y aquel que es la Palabra se hizo hombre y habitó entre nosotros. Hemos visto su gloria, gloria que le corresponde como a Unigénito del Padre, lleno de gracia y de verdad.",
+      "Juan el Bautista dio testimonio de él, clamando: \"A éste me refería cuando dije: 'El que viene después de mí, tiene precedencia sobre mí, porque ya existía antes que yo' \".",
+      "De su plenitud hemos recibido todos gracia sobre gracia. Porque la ley fue dada por medio de Moisés, mientras que la gracia y la verdad vinieron por Jesucristo.",
+      "A Dios nadie lo ha visto jamás. El Hijo unigénito, que está en el seno del Padre, es quien lo ha revelado.",
+      "Palabra del Señor.Gloria a ti, Señor Jesús.",
+      "No se dice Credo."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "crudo": "ORACIÓN SOBRE LAS OFRENDAS",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Señor Dios, fuente de toda devoción sincera y de la paz, concédenos honrar de tal manera tu majestad con estos dones, que, al participar en estos santos misterios, todos quedemos unidos en un mismo sentir. Por Jesucristo, nuestro Señor.",
+      "Prefacio I-III de Navidad, pp. 488-490 (489-491)."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ANTÍFONA DE LA COMUNIÓN",
+     "crudo": "ANTÍFONA DE LA COMUNIÓN",
+     "cita": "1 Jn 4, 9",
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Dios envió al mundo a su Hijo unigénito, para que vivamos por él."
+     ]
+    },
+    {
+     "clase": "pieza",
+     "rotulo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "crudo": "ORACIÓN DESPUÉS DE LA COMUNIÓN",
+     "cita": null,
+     "marca": "strong",
+     "sumario": null,
+     "formula": null,
+     "texto": [
+      "Señor, que tu pueblo, al que acompañas con variados auxilios, obtenga de tu misericordia la ayuda presente y la futura, para que, mientras se afana en procurar el necesario consuelo de las cosas pasajeras, más confiadamente aspire a las eternas. Por Jesucristo, nuestro Señor.",
+      "Puede utilizarse la fórmula de bendición solemne, MR, p. 592 (599).",
+      "Para reflexionar el último día del año: \"Un buen cristiano hace balance y reconoce qué tiene ante Dios, y qué está ganando y qué ha perdido\". Fray Nelson."
+     ]
+    }
+   ],
+   "orden": 0,
+   "parte": "misa",
+   "opciones": 1
+  }
+ ],
+ "avisos": []
+}

@@ -24,32 +24,83 @@ const POR_OMISION = {
   // el formato del texto (Ajustes, «Formato del texto»)
   letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
   particion: 'si', cruces: 'si', despierto: false,
-  paleta: 'tinta', acento: 'dia',
+  paleta: 'tinta', acento: 'dia', acentoPropio: '#6b1220',
   // al rezar (Ajustes, «Liturgia de las Horas»)
   carril: 'si', gestos: 'si', rezadas: 'si'
 };
 
 /* Los cuatro juegos de tono: las mismas cinco gamas, con distinta tinta.
  * Aquí sólo se enseñan en Ajustes; el CSS es quien las aplica. */
-const ACLARA = {
-  verde: '#d5ead8', rojo: '#f3d6d6', morado: '#e8dcf0',
-  blanco: '#f3e6c4', azul: '#d6e6f4'
-};
-
+/* Los cinco juegos de tono. Aquí sólo están el nombre y lo que los
+ * distingue: las tintas viven en el CSS, que es quien las aplica, y las
+ * cartas de Ajustes las sacan de allí mismo —`body[data-paleta="x"]` y
+ * `.paleta[data-p="x"]` comparten bloque—, para no tener dos listas de
+ * sesenta números que haya que mantener a la par. */
 const PALETAS = [
-  ['tinta', 'Tinta',
-    { verde: '#0f3d0f', rojo: '#961717', morado: '#4c2a63',
-      blanco: '#7a5c17', azul: '#1f4e79' }],
-  ['libro', 'Libro',
-    { verde: '#23492f', rojo: '#7a1414', morado: '#4c2a63',
-      blanco: '#7a5c17', azul: '#1f4e79' }],
-  ['vivo', 'Vivo',
-    { verde: '#1b5c32', rojo: '#b31d1d', morado: '#6e2d8c',
-      blanco: '#846010', azul: '#1a5fa0' }],
-  ['suave', 'Suave',
-    { verde: '#3a5540', rojo: '#8a3d3d', morado: '#5c4768',
-      blanco: '#75633c', azul: '#3d5a73' }]
+  ['tinta', 'Tinta', 'El de fábrica: la tinta de un libro de coro'],
+  ['oscuro', 'Oscuro', 'Granate, verde botella, azul marino'],
+  ['vivo', 'Vivo', 'Saturados, lo más claros que se dejan leer'],
+  ['pastel', 'Pastel', 'Apagados; sobre papel oscuro, pasteles de verdad'],
+  ['suave', 'Suave', 'Casi gris: el color apenas se insinúa']
 ];
+
+/* El color propio, puesto a leerse. Se le conserva el tono y la saturación
+ * y se le mueve la luz hasta que llega a 4,5:1 sobre el papel más duro de
+ * su lado —el sepia entre los claros, el oscuro alto entre los oscuros—:
+ * un azul cielo sobre papel blanco no es una rúbrica, es un renglón en
+ * blanco, y un azul marino sobre negro tampoco. Si el color ya se lee, se
+ * queda tal cual. */
+const PAPEL_DURO = { claro: '#f4e9d6', oscuro: '#1c1915' };
+
+function aRGB(hex) {
+  const h = hex.replace('#', '');
+  return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+}
+function aHSL(hex) {
+  const [r, g, b] = aRGB(hex).map((x) => x / 255);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  const l = (mx + mn) / 2;
+  if (!d) return [0, 0, l];
+  const sat = l > .5 ? d / (2 - mx - mn) : d / (mx + mn);
+  let t;
+  if (mx === r) t = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+  else if (mx === g) t = ((b - r) / d + 2) / 6;
+  else t = ((r - g) / d + 4) / 6;
+  return [t, sat, l];
+}
+/* El de CSS Color 4, tal cual: `t` en vueltas, y f(0), f(8), f(4) son el
+ * rojo, el verde y el azul. Escrito de otra manera sale el tono girado un
+ * tercio de vuelta, y un granate se vuelve azul marino. */
+function deHSL(t, sat, l) {
+  const a = sat * Math.min(l, 1 - l);
+  const f = (n) => {
+    const k = (n + t * 12) % 12;
+    const v = l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+    return Math.round(Math.max(0, Math.min(1, v)) * 255);
+  };
+  return '#' + [f(0), f(8), f(4)]
+    .map((x) => ('0' + x.toString(16)).slice(-2)).join('');
+}
+function luz(hex) {
+  const c = aRGB(hex).map((x) => {
+    const v = x / 255;
+    return v <= .04045 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4);
+  });
+  return .2126 * c[0] + .7152 * c[1] + .0722 * c[2];
+}
+function contraste(a, b) {
+  const la = luz(a), lb = luz(b);
+  return (Math.max(la, lb) + .05) / (Math.min(la, lb) + .05);
+}
+function paraLeer(hex, fondo, sube) {
+  const [t, sat, l0] = aHSL(hex);
+  for (let i = 0; i <= 100; i++) {
+    const l = Math.max(0, Math.min(1, l0 + (sube ? i : -i) / 100));
+    const c = deHSL(t, sat, l);
+    if (contraste(c, fondo) >= 4.5) return c;
+  }
+  return sube ? '#ffffff' : '#000000';
+}
 
 const E = {              // todo el estado de la app
   cfg: Object.assign({}, POR_OMISION),
@@ -279,6 +330,9 @@ function cargaCfg() {
   try {
     Object.assign(E.cfg, JSON.parse(localStorage.getItem('cfg') || '{}'));
   } catch (_) { /* almacenamiento bloqueado: se usan los valores de fábrica */ }
+  // un juego de tonos que ya no existe —«Libro», que coincidía con Tinta en
+  // cuatro de las seis gamas— dejaría la lista sin nada marcado
+  if (!PALETAS.some(([id]) => id === E.cfg.paleta)) E.cfg.paleta = 'tinta';
 }
 function guardaCfg() {
   try { localStorage.setItem('cfg', JSON.stringify(E.cfg)); } catch (_) {}
@@ -288,6 +342,18 @@ function aplicaCfg() {
   b.tema = E.cfg.tema;
   b.paleta = E.cfg.paleta || 'tinta';
   b.acento = E.cfg.acento || 'dia';
+  // el color propio, en sus dos versiones: la del papel claro y la del
+  // oscuro, que el tema «según el teléfono» cambia sin avisar
+  if (b.acento === 'propio') {
+    const c = E.cfg.acentoPropio || POR_OMISION.acentoPropio;
+    document.body.style.setProperty('--propio-claro',
+      paraLeer(c, PAPEL_DURO.claro, false));
+    document.body.style.setProperty('--propio-oscuro',
+      paraLeer(c, PAPEL_DURO.oscuro, true));
+  } else {
+    document.body.style.removeProperty('--propio-claro');
+    document.body.style.removeProperty('--propio-oscuro');
+  }
   b.letra = E.cfg.letra;
   b.interlinea = E.cfg.interlinea;
   b.medida = E.cfg.medida;
@@ -2526,21 +2592,52 @@ function piezasDeLaMisa() {
 
 function juegosDeTono() {
   const actual = E.cfg.paleta || 'tinta';
-  const gama = ['verde', 'rojo', 'morado', 'blanco', 'azul'];
+  const gama = ['verde', 'rojo', 'morado', 'blanco', 'azul', 'neutro'];
   return '<div class="ajuste ancho"><label>Juego de tonos'
-    + '<span class="pista">Las cinco gamas litúrgicas: verde, rojo, morado, '
-    + 'dorado y azul. Tinta es la de fábrica. En papel oscuro o de noche '
-    + 'el mismo juego se aclara para que se lea.</span></label>'
+    + '<span class="pista">Las seis gamas litúrgicas —verde, rojo, morado, '
+    + 'dorado, azul y granate— en cinco familias. Sobre papel oscuro y de '
+    + 'noche cada juego lleva su propia tinta, aclarada para que se lea: '
+    + 'por eso el pastel sólo es pastel de verdad en esos dos temas, y en '
+    + 'papel claro es lo más claro que la gama permite sin borrarse.'
+    + '</span></label>'
     + '<div class="paletas" role="radiogroup" aria-label="Juego de tonos">'
-    + PALETAS.map(([id, nom, c]) =>
-      '<label class="paleta"><input type="radio" name="aj-paleta" value="'
-      + id + '"' + (actual === id ? ' checked' : '') + '>'
-      + '<span class="paleta-muestra">'
-      + gama.map((g) => '<i style="--t:' + c[g] + ';--a:' + ACLARA[g]
-        + '"></i>').join('')
-      + '</span><span class="paleta-nom">' + nom + '</span></label>'
+    + PALETAS.map(([id, nom, pie]) =>
+      '<label class="paleta" data-p="' + id + '">'
+      + '<input type="radio" name="aj-paleta" value="' + id + '"'
+      + (actual === id ? ' checked' : '') + '>'
+      + '<span class="paleta-rot"><b class="paleta-nom">' + nom + '</b>'
+      + '<span class="paleta-pie">' + pie + '</span></span>'
+      + '<span class="paleta-muestra" aria-hidden="true">'
+      + gama.map((g) => '<i class="m-' + g + '"></i>').join('')
+      + '</span></label>'
     ).join('')
     + '</div>'
+    + '<p class="muestra-rubrica" aria-hidden="true"><b class="rub">Ant. </b>'
+    + 'El Señor es mi pastor</p></div>';
+}
+
+/* El color propio. Se enseña la pastilla del navegador y, al lado, el color
+ * que de verdad se va a usar: no siempre es el elegido, porque uno que no
+ * llegue a 4,5:1 sobre el papel se oscurece o se aclara hasta que llegue, y
+ * conviene que eso se vea antes de preguntárselo. */
+function colorCual() {
+  const c = E.cfg.acentoPropio || POR_OMISION.acentoPropio;
+  return 'Papel claro <b>' + paraLeer(c, PAPEL_DURO.claro, false)
+    + '</b> · papel oscuro <b>' + paraLeer(c, PAPEL_DURO.oscuro, true)
+    + '</b>';
+}
+
+function colorPropio() {
+  const c = E.cfg.acentoPropio || POR_OMISION.acentoPropio;
+  return '<div class="ajuste ancho"><label for="aj-acentoPropio">Mi color'
+    + '<span class="pista">El tono y la viveza son los que se elijan; la '
+    + 'luz se ajusta sola hasta que la rúbrica se lea sobre el papel, que '
+    + 'en papel claro pide un color oscuro y en los temas oscuros uno '
+    + 'claro.</span></label>'
+    + '<div class="color-propio">'
+    + '<input type="color" id="aj-acentoPropio" value="' + c + '">'
+    + '<span class="color-usado" aria-hidden="true"></span>'
+    + '<span class="color-cual">' + colorCual() + '</span></div>'
     + '<p class="muestra-rubrica" aria-hidden="true"><b class="rub">Ant. </b>'
     + 'El Señor es mi pastor</p></div>';
 }
@@ -2660,7 +2757,9 @@ function verAjustes() {
       + 'calendario sigue pintando cada uno con el suyo.',
       [['dia', 'El del día'], ['neutro', 'Granate'],
         ['rojo', 'Rojo litúrgico'], ['verde', 'Verde'],
-        ['morado', 'Morado'], ['blanco', 'Dorado'], ['azul', 'Azul']]),
+        ['morado', 'Morado'], ['blanco', 'Dorado'], ['azul', 'Azul'],
+        ['propio', 'El que yo elija']]),
+    E.cfg.acento === 'propio' ? colorPropio() : '',
     juegosDeTono(),
     'wakeLock' in navigator
       ? sel('despierto', 'No apagar la pantalla',
@@ -2773,6 +2872,18 @@ async function alCambiarAjuste(ev) {
   E.cfg[id] = id === 'tam' ? +v : v;
   guardaCfg();
   aplicaCfg();
+  if (id === 'acento') {
+    // la pastilla del color propio aparece y desaparece con la elección
+    recuerdaAjustes();
+    verAjustes();
+    return;
+  }
+  if (id === 'acentoPropio') {
+    // el código va detrás del dedo mientras se arrastra; la muestra y la
+    // rúbrica de prueba las tiñe `aplicaCfg` por su cuenta
+    const q = $('.color-cual');
+    if (q) q.innerHTML = colorCual();
+  }
   if (id === 'tam') {
     const pct = $('#aj-tam-pct');
     if (pct) pct.textContent = E.cfg.tam + '%';
@@ -4452,7 +4563,8 @@ async function arranca() {
   vista.addEventListener('click', alTocarZoom);
   vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('input', (ev) => {
-    if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);
+    if (ev.target.id === 'aj-tam'
+      || ev.target.id === 'aj-acentoPropio') alCambiarAjuste(ev);
   });
   document.querySelectorAll('#barra button').forEach((b) =>
     b.addEventListener('click', () => {

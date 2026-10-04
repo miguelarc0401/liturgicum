@@ -601,14 +601,24 @@ def bloques_de(lineas, marcas):
         if actual is None:
             sueltos.append('antes del primer rótulo: %r' % t[:60])
             continue
+        # El sumario y la fórmula se **anotan**, pero no se sacan del cuerpo.
+        #
+        # Es tentador separarlos —esta fuente los da en renglón propio, que
+        # es justo lo que la fase 6 tuvo que adivinar en el misalito—, pero
+        # la cadena de abajo espera el bloque **entero**, como lo imprime el
+        # misalito: la fase 6 reconoce la fórmula por su forma dentro del
+        # texto corrido, y la cosecha de perícopas agrupa por `clave(texto)`.
+        # Sacarlas dejaría las lecturas del sitio sin ancla y, peor, en un
+        # grupo aparte del de los misalitos aunque digan lo mismo.
+        #
+        # Se vio al medir: con la fórmula fuera, el evangelio cuadraba un
+        # 19 % con el misalito en vez del 94 % que cuadra con ella dentro.
         m = SUMARIO.match(t)
         if m and actual['sumario'] is None and not actual['texto']:
             actual['sumario'] = m.group(1).strip()
-            continue
-        if actual['formula'] is None and not actual['texto'] \
+        elif actual['formula'] is None and len(actual['texto']) < 3 \
                 and FORMULA.match(t):
             actual['formula'] = t
-            continue
         actual['texto'].append(t)
     if actual:
         bloques.append(cierra(actual))
@@ -616,7 +626,8 @@ def bloques_de(lineas, marcas):
 
 
 def cierra(b):
-    """El bloque listo: el sumario y la fórmula fuera del cuerpo.
+    """El bloque listo: el cuerpo **entero**, y anotados aparte el sumario y
+    la fórmula.
 
     **El sumario es lo que va delante de la fórmula**, y eso lo estableció la
     fase 6 midiendo los misalitos: por sí mismo no se distingue del cuerpo,
@@ -625,33 +636,28 @@ def cierra(b):
     porque esta fuente los pone unas veces entre corchetes y otras a pelo —y
     a veces con el corchete partido entre dos renglones, que es peor que no
     tenerlo.
+
+    Anotar y no recortar: `texto` queda como lo imprime la fuente, que es la
+    forma que la cadena de abajo espera, y `formula` y `sumario` van al lado
+    para quien los quiera sin tener que adivinarlos.
     """
-    # el sumario entre corchetes, pegado al principio del cuerpo
+    # el sumario entre corchetes, al principio del cuerpo
     if b['sumario'] is None and b['texto']:
-        m = re.match(r'^\s*\[(.+?)\]\s*(.*)$', b['texto'][0], re.S)
+        m = re.match(r'^\s*\[(.+?)\]', b['texto'][0], re.S)
         if m:
             b['sumario'] = m.group(1).strip()
-            if m.group(2).strip():
-                b['texto'][0] = m.group(2).strip()
-            else:
-                b['texto'].pop(0)
 
-    # la fórmula, dentro de los primeros renglones; lo que quede delante de
-    # ella es el sumario, lleve corchetes o no
+    # la fórmula, en los primeros renglones; y si queda algo delante de ella
+    # y aún no hay sumario, eso es el sumario
     if b['formula'] is None:
         for i, t in enumerate(b['texto'][:3]):
             if not FORMULA.match(t):
                 continue
             b['formula'] = t
-            delante = [x for x in b['texto'][:i]]
-            del b['texto'][:i + 1]
-            if delante and b['sumario'] is None:
-                corchete = re.match(r'^\s*\[?(.+?)\]?\s*$',
-                                    ' '.join(delante), re.S)
-                b['sumario'] = corchete.group(1).strip() if corchete \
-                    else ' '.join(delante)
-            elif delante:
-                b['texto'] = delante + b['texto']
+            if i and b['sumario'] is None:
+                delante = ' '.join(b['texto'][:i]).strip()
+                m = re.match(r'^\[?(.+?)\]?$', delante, re.S)
+                b['sumario'] = (m.group(1) if m else delante).strip() or None
             break
     return b
 

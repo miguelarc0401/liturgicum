@@ -33,29 +33,57 @@
   --curva: cubic-bezier(.22, .61, .36, 1);
 }
 
-/* Los juegos de tono: cinco gamas liturgicas, a elegir en Ajustes. El de
-   tinta es el de fabrica (rojo #961717, verde #0f3d0f). Cada juego vive en
-   --g-*, y de ahi salen --lit-* para la cabecera, las rubricas y el
-   calendario: el mismo dia se reconoce por el mismo color en cualquier
-   seccion. Sobre papel oscuro o de noche son esas mismas tintas con otra
-   luz, aclaradas lo justo para que se lean: un verde de tinta sobre fondo
-   negro no es un verde, es un borron. */
-body {
+/* Los juegos de tono: cinco familias de las seis gamas liturgicas, a
+   elegir en Ajustes. Cada juego da dos tintas por gama —una para el papel
+   claro (--g-*) y otra para el oscuro (--d-*)—, porque de un lado hay que
+   bajarle la luz al color y del otro subirsela: un verde de tinta sobre
+   fondo negro no es un verde, es un borron, y un verde pastel sobre papel
+   blanco no es un pastel, es un renglon en blanco. Las doce tintas de cada
+   juego llegan a 4,5:1 sobre los cuatro papeles de su lado —claro, claro
+   alto, sepia y sepia alto; oscuro, oscuro alto, noche y noche alto—, y lo
+   que separa a un juego de otro es cuanta luz y cuanta saturacion le queda
+   dentro de ese margen.
+
+   El dorado es la gama sin margen: un amarillo que se lea sobre papel
+   claro ya tiene que ser oscuro, asi que de un juego a otro no se separa
+   por luz sino por tono —ambar, oro viejo, ocre, caqui—.
+
+   Los mismos bloques visten las cartas de Ajustes (.paleta[data-p]), para
+   que cada carta ensene sus tintas y no haya que repetirlas en el guion. */
+body, body[data-paleta="tinta"], .paleta[data-p="tinta"] {
   --g-verde: #0f3d0f; --g-rojo: #961717; --g-morado: #4c2a63;
   --g-blanco: #7a5c17; --g-azul: #1f4e79; --g-neutro: #6b1220;
+  --d-verde: #82a184; --d-rojo: #cc8686; --d-morado: #a691b5;
+  --d-blanco: #c0ac7b; --d-azul: #89a6c0; --d-neutro: #ba848a;
 }
-body[data-paleta="libro"] {
-  --g-verde: #23492f; --g-rojo: #7a1414; --g-morado: #4c2a63;
-  --g-blanco: #7a5c17; --g-azul: #1f4e79; --g-neutro: #6b1220;
+body[data-paleta="oscuro"], .paleta[data-p="oscuro"] {
+  --g-verde: #043108; --g-rojo: #580707; --g-morado: #440861;
+  --g-blanco: #372604; --g-azul: #062b4a; --g-neutro: #570717;
+  --d-verde: #459b4d; --d-rojo: #c17474; --d-morado: #a876c1;
+  --d-blanco: #a38549; --d-azul: #5c8eb6; --d-neutro: #c07382;
 }
-body[data-paleta="vivo"] {
-  --g-verde: #1b5c32; --g-rojo: #b31d1d; --g-morado: #6e2d8c;
-  --g-blanco: #846010; --g-azul: #1a5fa0; --g-neutro: #8a1828;
+body[data-paleta="vivo"], .paleta[data-p="vivo"] {
+  --g-verde: #077310; --g-rojo: #c70d0d; --g-morado: #990edf;
+  --g-blanco: #994f0a; --g-azul: #0b65ae; --g-neutro: #c50d32;
+  --d-verde: #30bf3c; --d-rojo: #e39090; --d-morado: #c892e4;
+  --d-blanco: #d79a60; --d-azul: #71acdc; --d-neutro: #e38e9f;
 }
-body[data-paleta="suave"] {
-  --g-verde: #3a5540; --g-rojo: #8a3d3d; --g-morado: #5c4768;
-  --g-blanco: #75633c; --g-azul: #3d5a73; --g-neutro: #6b3a3a;
+body[data-paleta="pastel"], .paleta[data-p="pastel"] {
+  --g-verde: #307435; --g-rojo: #ab4646; --g-morado: #8e48b1;
+  --g-blanco: #73672f; --g-azul: #3c6b92; --g-neutro: #aa455a;
+  --d-verde: #92d997; --d-rojo: #e8bfbf; --d-morado: #dabfe8;
+  --d-blanco: #d6ca8b; --d-azul: #b0cce3; --d-neutro: #e8bec6;
 }
+body[data-paleta="suave"], .paleta[data-p="suave"] {
+  --g-verde: #3c4c3d; --g-rojo: #564343; --g-morado: #504356;
+  --g-blanco: #4c483b; --g-azul: #404951; --g-neutro: #564347;
+  --d-verde: #8aa78c; --d-rojo: #b29a9a; --d-morado: #aa9ab2;
+  --d-blanco: #a69f89; --d-azul: #92a1ad; --d-neutro: #b2999e;
+}
+
+/* De --g-* y --d-* salen los --lit-*, que son los que tinen la cabecera,
+   las rubricas y los filetes del calendario: el mismo dia se reconoce por
+   el mismo color en cualquier seccion. */
 body {
   --lit-verde: var(--g-verde); --lit-rojo: var(--g-rojo);
   --lit-morado: var(--g-morado); --lit-blanco: var(--g-blanco);
@@ -64,25 +92,15 @@ body {
   --rubrica: var(--lit-rojo); --acento: var(--lit-neutro);
 }
 body[data-tema="oscuro"], body[data-tema="noche"] {
-  --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
-  --lit-blanco: #d9b65e; --lit-azul: #93bcdf; --lit-neutro: #d9a0a0;
-  --lit-verde: color-mix(in srgb, var(--g-verde) 42%, #d5ead8);
-  --lit-rojo: color-mix(in srgb, var(--g-rojo) 42%, #f3d6d6);
-  --lit-morado: color-mix(in srgb, var(--g-morado) 42%, #e8dcf0);
-  --lit-blanco: color-mix(in srgb, var(--g-blanco) 42%, #f3e6c4);
-  --lit-azul: color-mix(in srgb, var(--g-azul) 42%, #d6e6f4);
-  --lit-neutro: color-mix(in srgb, var(--g-neutro) 42%, #f3d6d6);
+  --lit-verde: var(--d-verde); --lit-rojo: var(--d-rojo);
+  --lit-morado: var(--d-morado); --lit-blanco: var(--d-blanco);
+  --lit-azul: var(--d-azul); --lit-neutro: var(--d-neutro);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
-    --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
-    --lit-blanco: #d9b65e; --lit-azul: #93bcdf; --lit-neutro: #d9a0a0;
-    --lit-verde: color-mix(in srgb, var(--g-verde) 42%, #d5ead8);
-    --lit-rojo: color-mix(in srgb, var(--g-rojo) 42%, #f3d6d6);
-    --lit-morado: color-mix(in srgb, var(--g-morado) 42%, #e8dcf0);
-    --lit-blanco: color-mix(in srgb, var(--g-blanco) 42%, #f3e6c4);
-    --lit-azul: color-mix(in srgb, var(--g-azul) 42%, #d6e6f4);
-    --lit-neutro: color-mix(in srgb, var(--g-neutro) 42%, #f3d6d6);
+    --lit-verde: var(--d-verde); --lit-rojo: var(--d-rojo);
+    --lit-morado: var(--d-morado); --lit-blanco: var(--d-blanco);
+    --lit-azul: var(--d-azul); --lit-neutro: var(--d-neutro);
   }
 }
 
@@ -116,7 +134,9 @@ body[data-tema="noche"] {
   }
 }
 
-/* El color: primero el del dia, despues el fijo si se eligio en Ajustes. */
+/* El color: primero el del dia, despues el fijo si se eligio en Ajustes, y
+   por ultimo el propio, que lleva dos peldanos de peso porque ha de ganar
+   tambien al ambar de Completas. */
 body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--lit-morado); }
 body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--lit-blanco); }
 body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
@@ -132,6 +152,21 @@ body[data-acento="morado"] { --acento: var(--lit-morado); --rubrica: var(--lit-m
 body[data-acento="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--lit-blanco); }
 body[data-acento="azul"]   { --acento: var(--lit-azul); --rubrica: var(--lit-azul); }
 body[data-acento="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--lit-neutro); }
+
+/* El color propio. Las dos versiones —la del papel claro y la del oscuro—
+   las calcula el guion, que es quien sabe mover la luz hasta que se lea. */
+body[data-acento="propio"] {
+  --acento: var(--propio-claro); --rubrica: var(--propio-claro);
+}
+body[data-tema="oscuro"][data-acento="propio"],
+body[data-tema="noche"][data-acento="propio"] {
+  --acento: var(--propio-oscuro); --rubrica: var(--propio-oscuro);
+}
+@media (prefers-color-scheme: dark) {
+  body[data-tema="auto"][data-acento="propio"] {
+    --acento: var(--propio-oscuro); --rubrica: var(--propio-oscuro);
+  }
+}
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -609,14 +644,14 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   font-family: var(--sans); font-size: .68rem; color: var(--tinta-suave);
 }
 
-/* Los juegos de tono, en Ajustes: cada carta enseña las cinco gamas. */
-.paletas {
-  display: grid; grid-template-columns: 1fr 1fr; gap: .55rem;
-  margin-top: .65rem;
-}
+/* Los juegos de tono, en Ajustes. Una carta por renglon: el nombre a la
+   izquierda y la cinta de las seis gamas a la derecha, que es como se
+   comparan dos juegos —uno debajo del otro, gama contra gama—. En dos
+   columnas las cintas salen tan estrechas que los seis tonos se confunden. */
+.paletas { display: grid; gap: .45rem; margin-top: .65rem; }
 .paleta {
-  position: relative; display: flex; flex-direction: column; gap: .4rem;
-  margin: 0; padding: .7rem .75rem .6rem; min-height: 2.75rem;
+  position: relative; display: flex; align-items: center; gap: .75rem;
+  margin: 0; padding: .55rem .7rem; min-height: 2.75rem;
   background: var(--papel-alto); border: 1px solid var(--filete-fuerte);
   border-radius: 12px; cursor: pointer;
 }
@@ -632,23 +667,73 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   outline: 2px solid var(--acento); outline-offset: 2px;
 }
 .paleta:active { background: var(--filete); }
-.paleta-muestra { display: flex; gap: .22rem; height: .85rem; }
-.paleta-muestra i {
-  flex: 1; border-radius: 99px; background: var(--t);
-}
-body[data-tema="oscuro"] .paleta-muestra i,
-body[data-tema="noche"] .paleta-muestra i {
-  background: color-mix(in srgb, var(--t) 42%, var(--a));
-}
-@media (prefers-color-scheme: dark) {
-  body[data-tema="auto"] .paleta-muestra i {
-    background: color-mix(in srgb, var(--t) 42%, var(--a));
-  }
-}
+.paleta-rot { flex: 1 1 auto; min-width: 0; }
 .paleta-nom {
-  font-family: var(--sans); font-size: .78rem; font-weight: 600;
-  letter-spacing: .02em;
+  display: block; font-family: var(--sans); font-size: .85rem;
+  font-weight: 600; letter-spacing: .02em;
 }
+.paleta-pie {
+  display: block; font-family: var(--sans); font-size: .7rem;
+  color: var(--tinta-suave); line-height: 1.3;
+}
+.paleta-muestra {
+  flex: 0 0 auto; display: flex; gap: .2rem; width: 8.5rem; height: 1.15rem;
+}
+.paleta-muestra i { flex: 1; border-radius: 3px; }
+.paleta-muestra .m-verde  { background: var(--g-verde); }
+.paleta-muestra .m-rojo   { background: var(--g-rojo); }
+.paleta-muestra .m-morado { background: var(--g-morado); }
+.paleta-muestra .m-blanco { background: var(--g-blanco); }
+.paleta-muestra .m-azul   { background: var(--g-azul); }
+.paleta-muestra .m-neutro { background: var(--g-neutro); }
+/* Sobre papel oscuro la carta ha de ensenar la tinta de ese lado: una
+   carta que ensene tinta de papel claro sobre negro no ensena nada. */
+body[data-tema="oscuro"] .paleta-muestra .m-verde,
+body[data-tema="noche"] .paleta-muestra .m-verde { background: var(--d-verde); }
+body[data-tema="oscuro"] .paleta-muestra .m-rojo,
+body[data-tema="noche"] .paleta-muestra .m-rojo { background: var(--d-rojo); }
+body[data-tema="oscuro"] .paleta-muestra .m-morado,
+body[data-tema="noche"] .paleta-muestra .m-morado { background: var(--d-morado); }
+body[data-tema="oscuro"] .paleta-muestra .m-blanco,
+body[data-tema="noche"] .paleta-muestra .m-blanco { background: var(--d-blanco); }
+body[data-tema="oscuro"] .paleta-muestra .m-azul,
+body[data-tema="noche"] .paleta-muestra .m-azul { background: var(--d-azul); }
+body[data-tema="oscuro"] .paleta-muestra .m-neutro,
+body[data-tema="noche"] .paleta-muestra .m-neutro { background: var(--d-neutro); }
+@media (prefers-color-scheme: dark) {
+  body[data-tema="auto"] .paleta-muestra .m-verde  { background: var(--d-verde); }
+  body[data-tema="auto"] .paleta-muestra .m-rojo   { background: var(--d-rojo); }
+  body[data-tema="auto"] .paleta-muestra .m-morado { background: var(--d-morado); }
+  body[data-tema="auto"] .paleta-muestra .m-blanco { background: var(--d-blanco); }
+  body[data-tema="auto"] .paleta-muestra .m-azul   { background: var(--d-azul); }
+  body[data-tema="auto"] .paleta-muestra .m-neutro { background: var(--d-neutro); }
+}
+
+/* El color propio: la pastilla del navegador, el codigo y lo que se va a
+   usar de verdad —que no siempre es lo elegido, porque si no se lee se le
+   mueve la luz hasta que se lea—. */
+.color-propio {
+  display: flex; align-items: center; gap: .6rem; margin-top: .6rem;
+}
+.color-propio input[type="color"] {
+  flex: 0 0 auto; width: 3rem; height: 2.25rem; padding: 0;
+  background: none; border: 1px solid var(--filete-fuerte);
+  border-radius: 10px; cursor: pointer;
+}
+.color-propio input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+.color-propio input[type="color"]::-webkit-color-swatch {
+  border: 0; border-radius: 8px;
+}
+.color-cual {
+  font-family: var(--sans); font-size: .78rem; color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+.color-cual b { color: var(--tinta); font-weight: 600; }
+.color-usado {
+  flex: 0 0 auto; width: 1.15rem; height: 1.15rem; border-radius: 4px;
+  background: var(--rubrica);
+}
+
 .muestra-rubrica {
   margin: .7rem 0 0; padding: .55rem .75rem;
   background: var(--papel-alto); border: 1px solid var(--filete);
