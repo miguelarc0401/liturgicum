@@ -169,6 +169,91 @@ Consecuencia de diseño, no detalle: al emparejar hay que mirar **todas** las
 celebraciones de la fecha, no la primera. En enero de 2026, mirando sólo la
 primera, 16 días de 31 no cuadraban, y todos eran este caso.
 
+### En las ferias no reza la feria: reza lo que el editor eligió ese año
+
+*Hallazgo de la fase 4, y es lo que obliga a atribuir antes de contar.* Lo de
+arriba se queda corto. El mismo **miércoles de la 11ª semana del tiempo
+ordinario** trae, en los nueve años que el corpus lo alcanza, nueve cosas
+distintas:
+
+| año | lo que imprime | lo que dice la cabecera |
+|---|---|---|
+| 2018 | misa por la santificación del trabajo humano «B» | `o Misa por la santificación…` |
+| 2019 | san Romualdo, abad (memoria libre) | `o SAN ROMUALDO, Abad` |
+| 2020 | la misma del trabajo humano | `o Misa por la santificación…` |
+| 2021 | misa del Espíritu Santo «A» | `Feria o / Misa del Espíritu Santo` |
+| 2022 | misa por los laicos | `Feria o / Misa por los laicos` |
+| 2023 | san Luis Gonzaga (memoria) | el título del día |
+| 2024 | san Romualdo otra vez | `o SAN ROMUALDO, Abad` |
+| 2026 | misa por los laicos otra vez | `Feria o / Misa por los laicos` |
+
+Y sólo **un** año de los nueve imprimió la oración de la feria. De ahí dos
+cosas:
+
+1. **La mayoría de testigos no se puede tomar por fecha.** Agrupar por «el
+   miércoles de la 11ª semana» y votar daría una colecta elegida entre nueve
+   formularios que no son el mismo. Hay que atribuir cada texto a la
+   celebración que de verdad explica los días en que aparece —la que está
+   presente en **todos** ellos— y sólo entonces contar. Eso es lo que hace
+   `atribuye()`, y el informe dice por qué camino se decidió cada texto: por
+   lo que nombra la fuente (731), por lo que titula el día (984), por la
+   fecha del año (408), por el común que comparten (27) o por el calendario
+   (522).
+2. **No hay que inventar la lista de opciones: la fuente la nombra.** Pero la
+   nombra en tres campos distintos según cómo caiga la maqueta, y la fase 3
+   los separaba sin saber que eran lo mismo: `alterna` cuando parte «Feria o»
+   y el nombre en dos renglones (508 veces), `resena` cuando va en un solo
+   renglón empezando por «o » (484) y `subtitulo` cuando la alternativa es un
+   santo (58). Son 1 050 formularios, y de ellos **542 los tenía la fase 3
+   fuera de `alterna`**. La fase 4 vuelve a leerlos del campo `crudo` y los
+   unifica.
+
+### El propio de México: 48 celebraciones que el calendario no trae
+
+También de la fase 4. Los 245 avisos del informe son todos de lo mismo: el
+misalito ofrece santos que el calendario del proyecto no tiene, porque el
+calendario se armó con el general y éstos son los de México —san José María
+Robles Hurtado, el beato Miguel Agustín Pro, los mártires cristeros, la
+Virgen de Fátima, san Pascual Bailón, santa Rita—. Sus textos entran con
+identificador `san_…` y `md_…`, y están nombrados uno a uno.
+
+Para que entren hizo falta un candidato más, y conviene no volver a
+derivarlo: **la fecha del año**. Un texto que sólo aparece los 17 de mayo es
+de una celebración del 17 de mayo, se llame como se llame; sin ese candidato
+se quedaba sin ninguna celebración que lo explicara y se iba fuera.
+
+### Los comunes no se pueden atribuir a un común
+
+Lo primero que se intenta —atribuir cada texto suelto al común que más de sus
+días ofrezcan— **lo desmiente el propio reparto**, y por eso no se hace. La
+antífona «El que quiera venir conmigo, que renuncie a sí mismo» se imprime en
+**72 días**, y el común que más cubre, el de santos y santas, llega a 37:
+
+| común | días de los 72 |
+|---|---|
+| santos y santas | 37 |
+| mártires | 27 |
+| pastores | 22 |
+| doctores | 7 |
+| santa María Virgen | 5 |
+| vírgenes | 4 |
+
+Porque la antífona está en varios comunes a la vez. Así que los 470 textos de
+este tipo van a `sueltos_es.json` con ese reparto ya medido, común por común,
+y los colocará la fase 5 contra los comunes del Misal latino, que los trae
+enteros. Los que sí son de un solo común —el que ofrecen todos sus días, sin
+una excepción— son 27 y entran en `propios_es.json`.
+
+### El renglón partido, que parecía cosmético y decidía el texto
+
+El PDF corta la palabra al final del renglón y deja el guión: «…divino poder
+dispon-» / «gas nuestros corazones…». Son **7 233 palabras** en el corpus, y
+no es cosmético: sin juntarlas, los ocho testigos de una misma oración se
+parten en dos grupos, la mayoría decide sobre un reparto falso y el texto
+canónico sale con «dispon- gas» dentro. Al juntarlas, `pericopas_es.json`
+pasó de 6,1 MB a 4,2 MB —eran variantes falsas— y las piezas con variantes
+bajaron de 1 028 a 532.
+
 ### Cuánto del leccionario alcanzan ocho años de misalitos
 
 El leccionario tiene **1 077 formularios** con texto.
@@ -301,11 +386,11 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 
 | fase | fichero | de qué a qué |
 |---|---|---|
-| 0 ✓ | — | `python src/18_santoral.py --desde 2018` : el calendario desde 2018. **Hecha.** La Pascua, la Ceniza y los dos ciclos de 2018-2023 cuadran con las fechas conocidas en las 28 comprobaciones, el calendario va ahora del 3 de diciembre de 2017 al 27 de noviembre de 2060 sin un día vacío, y los tres traslados de esos seis años son los que de verdad ocurrieron: la Anunciación de 2018 al 9 de abril, la Inmaculada de 2019 al 9 de diciembre y san José de 2023 al 20 de marzo, los tres de domingo a lunes |
+| 0 ✓ | — | `python src/18_santoral.py` : el calendario desde 2018, que ya es **el valor por defecto** del guion —estaba en 2024, y como `publicar.ps1` lo llama sin argumentos, cada publicación deshacía esta fase sin que nadie lo notara—. **Hecha.** La Pascua, la Ceniza y los dos ciclos de 2018-2023 cuadran con las fechas conocidas en las 28 comprobaciones, el calendario va ahora del 3 de diciembre de 2017 al 27 de noviembre de 2060 sin un día vacío, y los tres traslados de esos seis años son los que de verdad ocurrieron: la Anunciación de 2018 al 9 de abril, la Inmaculada de 2019 al 9 de diciembre y san José de 2023 al 20 de marzo, los tres de domingo a lunes |
 | 1 | `Missale/src/1_latino.py` | el PDF del Misal 2002 → `datos/misal_latino.json`: formularios con sus cinco o seis piezas, prefacios comunes y propios, Ordo Missæ numerado, plegarias eucarísticas (con las de la reconciliación y diversas necesidades), bendiciones solemnes |
 | 2 | `Missale/src/2_ordinario.py` | el PDF del Ordinario de México → `datos/ordinario_es.json` y `datos/prefacios_es.json`: las 146 rúbricas con sus alternativas («O bien:»), los dos símbolos, las plegarias I-IV con sus propios, y los 67 prefacios con título y epígrafe. **Alinea con el latino por número de rúbrica**, y lo que no cuadre va al informe |
 | 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
-| 4 | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`: `propios_es.json` (por celebración), `pericopas_es.json` (por cita), los prefacios **propios** y las oraciones sobre el pueblo de la Cuaresma. Canónico por mayoría, variantes con sus años |
+| 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 591 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 470 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
 | 5 | `Missale/src/5_resolver.py` | las piezas + el Ordinario + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt` con todo lo que no cuadró |
 | 6 | `Missale/src/6_app.py` | → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json` |
 
@@ -431,9 +516,16 @@ dice en vez de disimularlo**.
   propia de un mismo día (la vespertina de la vigilia, la de Noche Buena, la
   de la aurora, la del día, las tres de los Difuntos) y las 116 misas votivas
   distintas que las ferias permiten, con sus 531 apariciones.
-* `piezas_qa.txt` — piezas con un solo testigo; piezas cuyos ocho testigos
-  discrepan; qué prefacios **propios** se cosecharon y cuáles siguen citados
-  por los días sin haberse impreso nunca.
+* `piezas_qa.txt` — **hecho**. El riesgo 3 medido y puesto primero; lo que la
+  fuente nombra al lado de la cabecera y que la fase 3 repartía en tres
+  campos; el cotejo de las 2 642 citas contra el índice del leccionario, con
+  las cinco que no cuadran ni por el capítulo nombradas; las reparaciones con
+  su prueba (7 233 palabras partidas por el renglón, los salmos partidos con
+  letra, las erratas); las piezas por número de testigos, las 532 con
+  variantes, los 85 empates y las 262 de un solo testigo; los 470 textos de
+  los comunes con el reparto medido; los 28 prefacios propios cosechados y
+  los que ningún día cita; las oraciones sobre el pueblo; y las 48
+  celebraciones del propio de México que el calendario del proyecto no trae.
 * `resolver_qa.txt` — el informe que importa: por cada uno de los 1 077
   formularios, si tiene castellano, por qué camino se emparejó (fecha, cita, o
   los dos), cuántos testigos, y, si no lo tiene, por qué. Más el cotejo de
@@ -479,12 +571,26 @@ dice en vez de disimularlo**.
      moniciones rotulan sus párrafos con el nombre de la pieza que comentan
      («EVANGELIO: [Mc 2, 23—3, 6] En franca oposición…»), que es como se
      cuelan 650 evangelios que no existen.
-3. **Las lecturas propias de las memorias libres.** El misalito reza la feria
-   en las memorias, así que las lecturas propias del leccionario V de muchos
-   santos puede que no se impriman **nunca** en ocho años. Cuánto es eso no se
-   sabe hasta la fase 4; el corpus por cita recupera parte, y lo que falte se
-   suple con las del común —que sí se cosechan— marcado como tal. Es la primera
-   cosa que la fase 4 debe medir.
+3. ~~**Las lecturas propias de las memorias libres.**~~ **Medido por la fase
+   4, y es la mitad de malo de lo que parecía.** De las 194 celebraciones del
+   santoral con formulario propio en el leccionario, con 443 lecturas propias
+   entre todas:
+
+   | | lecturas | |
+   |---|---|---|
+   | impresas en un día del propio santo | 83 | 19 % |
+   | impresas en otro día del corpus, y de ahí las recupera el corpus por cita | 171 | 39 % |
+   | no impresas ni una vez en los cien misalitos | 189 | 43 % |
+
+   El agujero existe, y está donde se esperaba: en las memorias (69 de 145) y
+   en las memorias libres (100 de 196); las solemnidades y las fiestas lo
+   tienen casi todo. Pero **sólo 39 celebraciones se quedan sin ni una**
+   lectura propia, y están nombradas una por una en `piezas_qa.txt`. El
+   corpus por cita era la mitigación prevista y funciona: recupera 171.
+
+   Para esas 39 el castellano saldrá del común —la fase 4 cosechó 470 textos
+   de los comunes— o del latín marcado, que es lo que decidiste en la
+   pregunta 6.
 4. **Los dos juegos de prefacios.** 67 castellanos y 50 latinos, con la
    numeración divergente que está en la tabla de arriba. Si la correspondencia
    se hiciera por número —«Prefacio III de Adviento» con el tercero del juego

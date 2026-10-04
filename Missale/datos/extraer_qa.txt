@@ -13,7 +13,7 @@ formularios                   : 3286  (1.08 por día)
 bloques                       : 29874 piezas, 2567 rúbricas del Misal, 3189 editoriales, 260 del santoral mexicano
 formularios con reseña        : 1773
    con misa votiva permitida  : 531  («Feria o / Misa de Santa María en Sábado»)
-párrafos recortados del día siguiente : 16858
+párrafos recortados del día siguiente : 16948
 bloques en dos columnas, deshechos    : 38  (las secuencias)
 
 Los días que faltan

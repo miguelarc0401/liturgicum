@@ -68,3 +68,8 @@ Missale/*.pdf
 # Missale/src/3_extraer.py`. Lo que de ellos hace falta para cotejar esta en
 # extraer_qa.txt, que entra. Si los quieres dentro, borra la linea.
 Missale/datos/misalitos/
+#
+# Lo que la fase 4 saca de ellos -Missale/datos/libro/, 6,8 MB- SI entra, y
+# a proposito: es el libro ya deshecho en piezas, y como los cien PDF no
+# estan en el repositorio, sin esa carpeta no habria de donde rehacerlo.
+

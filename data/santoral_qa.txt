@@ -53,13 +53,16 @@ formularios del leccionario V con fecha que el calendario no trae: 23
       12 de diciembre: Santa Juana Francisca de Chantal, religiosa
       5 de octubre: TÉMPORAS DE ACCIÓN DE GRACIAS Y DE PETICIÓN
 
-fechas con al menos una celebracion: 13510 (anos 2024-2060)
-parche epifania_6enero     : 188 fechas cambian
-parche ascension_jueves    : 74 fechas cambian
-parche corpus_jueves       : 74 fechas cambian
-dias sin ninguna celebracion en 2024-2026: 0
+fechas con al menos una celebracion: 15701 (anos 2018-2060)
+parche epifania_6enero     : 216 fechas cambian
+parche ascension_jueves    : 86 fechas cambian
+parche corpus_jueves       : 86 fechas cambian
+dias sin ninguna celebracion en 2018-2020: 0
 
-solemnidades trasladadas por concurrencia: 24
+solemnidades trasladadas por concurrencia: 27
+   2018-03-25 -> 2018-04-09  La Anunciación del Señor
+   2019-12-08 -> 2019-12-09  La Inmaculada Concepción de la Santísima Virgen María
+   2023-03-19 -> 2023-03-20  San José, esposo de santa María Virgen
    2024-03-25 -> 2024-04-08  La Anunciación del Señor
    2024-12-08 -> 2024-12-09  La Inmaculada Concepción de la Santísima Virgen María
    2027-03-25 -> 2027-04-05  La Anunciación del Señor
@@ -82,10 +85,9 @@ solemnidades trasladadas por concurrencia: 24
    2054-03-25 -> 2054-04-06  La Anunciación del Señor
    2056-03-19 -> 2056-03-20  San José, esposo de santa María Virgen
    2057-03-25 -> 2057-03-26  La Anunciación del Señor
-   2058-12-08 -> 2058-12-09  La Inmaculada Concepción de la Santísima Virgen María
-   2059-03-25 -> 2059-04-07  La Anunciación del Señor
+   ... y 2 mas
 
-celebraciones por dia: 7693 dia(s) con 1, 5268 dia(s) con 2, 516 dia(s) con 3, 33 dia(s) con 4
+celebraciones por dia: 8939 dia(s) con 1, 6121 dia(s) con 2, 602 dia(s) con 3, 39 dia(s) con 4
 
 Tabla de celebraciones movibles (2016-2027): 132 cotejos, 6 diferencias
    2024 ciclo              calculado B-C           impreso C-A
@@ -115,7 +117,7 @@ Tabla de celebraciones movibles (2016-2027): 132 cotejos, 6 diferencias
    febrero, y el ciclo dominical de 2024 fue el B y el de 2025 el
    C. Los 126 cotejos restantes cuadran.
 
-escrito data/calendario_completo.json  (2174 KB)
+escrito data/calendario_completo.json  (2514 KB)
 
 AVISOS:
    leccionario V: 5058TA0503.html (cel 1) dice «28 de octubre» y el fichero codifica el 3/5; se descarta por bloque repetido

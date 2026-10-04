@@ -36,7 +36,7 @@ Reglas aplicadas, todas de la propia Tabla:
 Salida:  data/calendario_completo.json   fecha -> celebraciones ordenadas
          data/santoral_qa.txt            el informe y las comprobaciones
 
-Uso:  python src/18_santoral.py [--desde 2024] [--hasta 2060]
+Uso:  python src/18_santoral.py [--desde 2018] [--hasta 2060]
       python src/18_santoral.py --verifica-tabla     (contra la Tabla de
                                                       celebraciones movibles)
 """
@@ -731,7 +731,14 @@ def verifica_tabla(m14, cfg_base):
 # --------------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--desde", type=int, default=2024)
+    # 2018 y no 2024: los cien misalitos del Missale van de junio de 2018
+    # a septiembre de 2026, y emparejarlos con su dia necesita el
+    # calendario de esos anos. La fase 0 del Missale lo comprobo contra
+    # las fechas conocidas -Pascua, Ceniza y los dos ciclos de 2018 a
+    # 2023- y sale bien. El valor va aqui, y no en publicar.ps1, porque
+    # publicar.ps1 llama al guion sin argumentos: con el defecto en 2024
+    # cada publicacion deshacia la fase 0 sin que nadie lo notara.
+    ap.add_argument("--desde", type=int, default=2018)
     ap.add_argument("--hasta", type=int, default=2060)
     ap.add_argument("--verifica-tabla", action="store_true",
                     help="solo el cotejo con la Tabla de celebraciones "

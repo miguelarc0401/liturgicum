@@ -301,6 +301,11 @@ RUBRICAS = [
                               re.I)),
 ]
 
+# Lo que distingue el prefacio impreso entero del que sólo se nombra, y lo
+# que lo cierra. Las dos fórmulas son invariables en el Misal.
+EN_VERDAD = re.compile(r'En\s+verdad\s+es\s+(justo|digno)', re.I)
+SANCTUS = re.compile(r'Santo,\s*Santo,\s*Santo', re.I)
+
 
 def limpia_cita(resto):
     """La cita del rótulo, o nada. La fuente deja a veces sólo el punto que
@@ -640,7 +645,19 @@ class Misalito:
                     # y acaba donde la fuente la corta
                     rubrica_en = i
                 elif actual is not None and actual['clase'] == 'rubrica':
-                    if i == rubrica_en + 1:
+                    # El prefacio que la fuente imprime entero —y no sólo
+                    # nombra— va en varios párrafos separados por renglones
+                    # en blanco, así que la regla del renglón de abajo lo
+                    # cortaba en el primero y de los 200 prefacios propios
+                    # sólo quedaba el título y una línea. Acaba siempre en el
+                    # Santo, que es lo que lo cierra en el Misal, y eso es un
+                    # final tan de fiar como el rótulo de la pieza siguiente.
+                    sigue = i == rubrica_en + 1
+                    if (not sigue and actual['rotulo'] == '@prefacio'
+                            and EN_VERDAD.search(' '.join(actual['texto']))
+                            and not SANCTUS.search(' '.join(actual['texto']))):
+                        sigue = True
+                    if sigue:
                         actual['texto'].append(c)
                         actual['_lin'].append(i)
                         actual['_col'].append((ci, len(cjs)))
