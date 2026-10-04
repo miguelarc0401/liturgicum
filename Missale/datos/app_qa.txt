@@ -35,7 +35,7 @@ Lo que se escribió
   app/datos/ordinario.json              228 KB
   TOTAL                                7796 KB
 
-  versión de datos: clementina+nova-633438381
+  versión de datos: clementina+nova-2528451745
 
 Los formularios y sus piezas
 ----------------------------
