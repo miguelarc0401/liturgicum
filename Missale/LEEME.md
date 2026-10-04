@@ -238,11 +238,27 @@ antífona «El que quiera venir conmigo, que renuncie a sí mismo» se imprime e
 | santa María Virgen | 5 |
 | vírgenes | 4 |
 
-Porque la antífona está en varios comunes a la vez. Así que los 470 textos de
+Porque la antífona está en varios comunes a la vez. Así que los 356 textos de
 este tipo van a `sueltos_es.json` con ese reparto ya medido, común por común,
 y los colocará la fase 5 contra los comunes del Misal latino, que los trae
 enteros. Los que sí son de un solo común —el que ofrecen todos sus días, sin
-una excepción— son 27 y entran en `propios_es.json`.
+una excepción— entran en `propios_es.json`.
+
+### Una excepción, y nombrada: la fuente también traslada
+
+La regla de «la celebración que está en **todos** los días» se rompe por un
+solo día, y hay que admitirlo con cuentagotas. El 24 de junio de 2022 fue el
+Sagrado Corazón, así que el misalito pasó la Natividad de san Juan Bautista
+al 23 y lo dijo en un corchete —«[Anticipada del día 24]»— **que no vuelve a
+usar en los cien ficheros**, de modo que no da para una regla. Con ese único
+día desviado, la intersección de las nueve se quedaba vacía y las cinco
+piezas de la solemnidad se iban con los textos sueltos.
+
+Por eso se admite **una** excepción, y sólo cuando el texto tiene cuatro días
+o más: son 108 textos, y cada excepción va nombrada con su día en el informe.
+La regla sigue siendo conservadora donde importa: «El que quiera venir
+conmigo» tiene 72 días y su mejor común cubre 37, muy lejos de 71, así que
+sigue suelta.
 
 ### El renglón partido, que parecía cosmético y decidía el texto
 
@@ -390,7 +406,7 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 | 1 | `Missale/src/1_latino.py` | el PDF del Misal 2002 → `datos/misal_latino.json`: formularios con sus cinco o seis piezas, prefacios comunes y propios, Ordo Missæ numerado, plegarias eucarísticas (con las de la reconciliación y diversas necesidades), bendiciones solemnes |
 | 2 | `Missale/src/2_ordinario.py` | el PDF del Ordinario de México → `datos/ordinario_es.json` y `datos/prefacios_es.json`: las 146 rúbricas con sus alternativas («O bien:»), los dos símbolos, las plegarias I-IV con sus propios, y los 67 prefacios con título y epígrafe. **Alinea con el latino por número de rúbrica**, y lo que no cuadre va al informe |
 | 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
-| 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 591 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 470 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
+| 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 598 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 356 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
 | 5 | `Missale/src/5_resolver.py` | las piezas + el Ordinario + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt` con todo lo que no cuadró |
 | 6 | `Missale/src/6_app.py` | → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json` |
 
@@ -522,8 +538,9 @@ dice en vez de disimularlo**.
   las cinco que no cuadran ni por el capítulo nombradas; las reparaciones con
   su prueba (7 233 palabras partidas por el renglón, los salmos partidos con
   letra, las erratas); las piezas por número de testigos, las 532 con
-  variantes, los 85 empates y las 262 de un solo testigo; los 470 textos de
-  los comunes con el reparto medido; los 28 prefacios propios cosechados y
+  variantes, los empates y las de un solo testigo; los 108 textos atribuidos
+  con una excepción, con el día de cada una; los 356 textos de los comunes
+  con el reparto medido; los 28 prefacios propios cosechados y
   los que ningún día cita; las oraciones sobre el pueblo; y las 48
   celebraciones del propio de México que el calendario del proyecto no trae.
 * `resolver_qa.txt` — el informe que importa: por cada uno de los 1 077

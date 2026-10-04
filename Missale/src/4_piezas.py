@@ -714,11 +714,14 @@ def carga(citas, reparos=None):
     for ruta in sorted(glob.glob(os.path.join(MISALITOS, '*.json'))):
         mes = os.path.basename(ruta)[:-5]
         d = json.load(open(ruta, encoding='utf-8'))
+        cuantas = Counter(b['fecha'] for b in d['formularios'])
         deldia = Counter()
         for bruto in d['formularios']:
             n = deldia[bruto['fecha']]
             deldia[bruto['fecha']] += 1
-            formularios.append(Formulario(mes, n, bruto, citas, reparos))
+            f = Formulario(mes, n, bruto, citas, reparos)
+            f.unico = cuantas[bruto['fecha']] == 1
+            formularios.append(f)
     return formularios
 
 
@@ -946,21 +949,34 @@ def candidatos(f, cal_fechas, santoral_md, comunes_de, avisos):
     sufijo de esa misa: lo que se reza en la vigilia no es testigo de lo que
     se reza en el día.
     """
-    sufijo = '#' + slug(f.misa) if f.misa else ''
+    # El sufijo de la misa sólo cuando el día de verdad trae más de una. La
+    # fuente rotula «MISA DEL DÍA» unos años y otros no —el 24 de junio lo
+    # rotula en 2020 y 2021 y lo calla en los otros siete—, así que
+    # sufijarlo siempre dejaba el mismo texto en dos juegos de candidatos que
+    # no se cortan, y las cinco piezas de san Juan Bautista se quedaban
+    # huérfanas. Si el día trae una sola misa, el formulario vale como
+    # testigo de las dos formas.
+    sufijos = ['']
+    if f.misa:
+        sufijos = ['#' + slug(f.misa)] + ([''] if f.unico else [])
+    sufijo = sufijos[0]
     ids = {}
     for cid, k, grado, titulo in cal_fechas.get(f.fecha, []):
-        ids[cid + sufijo] = ('calendario', titulo)
+        for s in sufijos:
+            ids[cid + s] = ('calendario', titulo)
     # La fecha del año, siempre. El misalito celebra santos que el calendario
     # del proyecto no trae —san Pascual Bailón, santa Rita, Nuestra Señora de
     # Fátima: el propio de México—, y sin esto sus textos no tienen ninguna
     # celebración que los explique y se quedan fuera. Un texto que sólo
     # aparece los 17 de mayo es de una celebración del 17 de mayo, se llame
     # como se llame, y eso no hay que suponerlo: se mide igual que lo demás.
-    ids['md_' + f.fecha[5:] + sufijo] = ('fecha', None)
+    for s in sufijos:
+        ids['md_' + f.fecha[5:] + s] = ('fecha', None)
     # Y los comunes de los santos que ese día se podían celebrar.
     for cid, k, grado, titulo in cal_fechas.get(f.fecha, []):
         for com, etiqueta in (comunes_de.get(cid) or {}).items():
-            ids[com + sufijo] = ('comun', etiqueta)
+            for s in sufijos:
+                ids[com + s] = ('comun', etiqueta)
     etiqueta = None
     if f.alt_clase == 'misa':
         etiqueta = 'vot_' + slug(f.alt)
@@ -992,6 +1008,31 @@ def candidatos(f, cal_fechas, santoral_md, comunes_de, avisos):
                 mejor, punt = cid + sufijo, p
         if punt >= 0.5:
             f.titulada = mejor
+        else:
+            # Y si lo que titula no está entre las celebraciones que el
+            # calendario pone ese día, se busca **en todo el santoral**,
+            # porque son los **traslados**: en 2022 el 24 de junio fue el
+            # Sagrado Corazón y el misalito pasó la Natividad de san Juan
+            # Bautista al 23, donde el calendario del proyecto sólo tiene la
+            # feria. Con un solo día así, la intersección de celebraciones se
+            # queda vacía y las cinco piezas de la solemnidad se van
+            # huérfanas. Manda lo que la fuente titula, que es la regla del
+            # módulo; el umbral es más alto porque aquí la fecha no acota, y
+            # el empate descarta.
+            cands_s = []
+            for lista in santoral_md.values():
+                for e in lista:
+                    p = parecido(f.titulo, e['titulo'])
+                    if p >= 0.7:
+                        cands_s.append((p, e['slug'], e['titulo']))
+            cands_s.sort(reverse=True)
+            if cands_s and (len(cands_s) == 1 or cands_s[0][0] > cands_s[1][0]):
+                f.titulada = cands_s[0][1] + sufijo
+                for s in sufijos:
+                    ids[cands_s[0][1] + s] = ('trasladada', cands_s[0][2])
+                avisos.append((f.testigo, 'la fuente titula «%s» y el '
+                               'calendario no lo pone ese día: se toma de su '
+                               'fecha propia' % f.titulo[:40]))
     return ids
 
 
@@ -1020,12 +1061,35 @@ def atribuye(formularios, cands, cuantos):
 
     asignado = {}       # (ranura, ck) → (id, motivo)
     huerfanos = []
+    salvo = []          # lo atribuido con una excepción, para el informe
     for ran, porclave in donde.items():
         for ck, fs in porclave.items():
             comunes = None
             for f in fs:
                 ids = set(cands[f.testigo])
                 comunes = ids if comunes is None else (comunes & ids)
+            excepcion = None
+            if not comunes:
+                # Todos los días menos uno. La fuente se desvía de vez en
+                # cuando del calendario del proyecto —en 2022 el 24 de junio
+                # fue el Sagrado Corazón y pasó la Natividad de san Juan
+                # Bautista al 23, diciéndolo en un corchete que no vuelve a
+                # usar—, y con un solo día así la intersección se queda
+                # vacía y las cinco piezas de una solemnidad se van
+                # huérfanas. Se admite **una** excepción, y sólo con cuatro
+                # días o más, y la excepción se nombra en el informe.
+                if len(fs) >= 4:
+                    cobertura = Counter()
+                    for f in fs:
+                        for cid in cands[f.testigo]:
+                            cobertura[cid] += 1
+                    tope = len(fs) - 1
+                    mejores = [c for c, n in cobertura.items() if n >= tope]
+                    if mejores:
+                        comunes = set(mejores)
+                        excepcion = [f.testigo for f in fs
+                                     if not (set(cands[f.testigo])
+                                             & comunes)]
             if not comunes:
                 huerfanos.append((ran, ck, fs))
                 continue
@@ -1057,8 +1121,11 @@ def atribuye(formularios, cands, cuantos):
                       'fecha' if elegida.startswith('md_') else
                       'común' if elegida.startswith('comun_') else
                       'calendario')
+            if excepcion:
+                motivo = 'casi todos'
+                salvo.append((ran, elegida, len(fs), excepcion))
             asignado[(ran, ck)] = (elegida, motivo)
-    return donde, textos, asignado, huerfanos
+    return donde, textos, asignado, huerfanos, salvo
 
 
 # --------------------------------------------------------------------------
@@ -1194,7 +1261,8 @@ def main():
           'fase 3 en otro campo)' % (con_alt, rescatadas))
 
     # --- la atribución ----------------------------------------------------
-    donde, textos, asignado, huerfanos = atribuye(formularios, cands, cuantos)
+    donde, textos, asignado, huerfanos, salvo = atribuye(
+        formularios, cands, cuantos)
 
     # --- los propios por celebración -------------------------------------
     porcel = defaultdict(lambda: defaultdict(dict))
@@ -1420,13 +1488,13 @@ def main():
     informe(cal, formularios, citas, propios, pericopas, prefacios_propios,
             pref, asignado, motivos, huerfanos, un_testigo, empates,
             sin_cita, filas, desconocidas, ni_el_capitulo, dondecita,
-            avisos, cuantos, reparos_guion, titulos_juntados)
+            avisos, cuantos, reparos_guion, titulos_juntados, salvo)
 
 
 def informe(cal, formularios, citas, propios, pericopas, prefacios_propios,
             pref, asignado, motivos, huerfanos, un_testigo, empates,
             sin_cita, filas, desconocidas, ni_el_capitulo, dondecita,
-            avisos, cuantos, reparos_guion, titulos_juntados):
+            avisos, cuantos, reparos_guion, titulos_juntados, salvo):
     inf = Informe(QA, 'FASE 4 — LAS PIEZAS, POR CELEBRACIÓN Y POR CITA')
     inf.di('Los cien misalitos deshechos: cada pieza una vez, con sus')
     inf.di('testigos y sus variantes. Lo que no se pudo atribuir está aquí,')
@@ -1442,6 +1510,7 @@ def informe(cal, formularios, citas, propios, pericopas, prefacios_propios,
     inf.di('   por la fecha del año       : %d' % motivos['fecha'])
     inf.di('   por el común que comparten : %d' % motivos['común'])
     inf.di('   por el calendario          : %d' % motivos['calendario'])
+    inf.di('   por todos sus días menos uno: %d' % motivos['casi todos'])
     inf.di('textos sin celebración que los explique: %d'
            % len(huerfanos))
     inf.di('   (van aparte, en sueltos_es.json, con sus días)')
@@ -1651,6 +1720,29 @@ def informe(cal, formularios, citas, propios, pericopas, prefacios_propios,
         inf.di('   … y %d más' % (len(un_testigo) - 40))
 
     # ---- los huérfanos --------------------------------------------------
+    inf.titulo('Lo atribuido con una excepción')
+    inf.di('%d textos se atribuyeron a una celebración que explica todos sus'
+           % len(salvo))
+    inf.di('días **menos uno**. Se admite una sola excepción, y sólo con')
+    inf.di('cuatro días o más, porque la fuente se desvía de vez en cuando')
+    inf.di('del calendario del proyecto: en 2022 el 24 de junio fue el')
+    inf.di('Sagrado Corazón y el misalito pasó la Natividad de san Juan')
+    inf.di('Bautista al 23, diciéndolo en un corchete —«[Anticipada del día')
+    inf.di('24]»— que no vuelve a usar en los cien ficheros. Con un solo día')
+    inf.di('así, la intersección se quedaba vacía y las cinco piezas de una')
+    inf.di('solemnidad se iban con los textos sueltos. Cada excepción, por')
+    inf.di('su nombre:')
+    inf.di()
+    cuenta_salvo = Counter()
+    for ran, cel, n_dias, exc in salvo:
+        for w in exc:
+            cuenta_salvo[(cel, w)] += 1
+    for (cel, w), n in sorted(cuenta_salvo.items(),
+                              key=lambda kv: (-kv[1], kv[0]))[:40]:
+        inf.di('   %-34s salvo %s  (%d piezas)' % (cel[:34], w, n))
+    if len(cuenta_salvo) > 40:
+        inf.di('   … y %d más' % (len(cuenta_salvo) - 40))
+
     inf.titulo('Los textos que ninguna celebración explica: los comunes')
     inf.di('%d textos aparecen en días que no comparten ninguna celebración,'
            % len(huerfanos))
