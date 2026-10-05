@@ -29,13 +29,13 @@ Lo que se escribió
 ------------------
 
   app/datos/misa.json                  2522 KB
-  app/datos/lecturas_es.json           4486 KB
+  app/datos/lecturas_es.json           4662 KB
   app/datos/misal_latino.json           775 KB
   app/datos/prefacios.json              240 KB
   app/datos/ordinario.json              234 KB
-  TOTAL                                8257 KB
+  TOTAL                                8433 KB
 
-  versión de datos: clementina+nova-1391933409
+  versión de datos: clementina+nova-2115146706
 
 Los formularios y sus piezas
 ----------------------------
@@ -71,20 +71,20 @@ Los formularios y sus piezas
 Las lecturas en castellano
 --------------------------
 
-  formularios con alguna lectura castellana: 1041 de 1044
-  lecturas con castellano                       4907
-  lecturas sin castellano                       1535
-  formularios sin una sola lectura en castellano     3
+  formularios con alguna lectura castellana: 1042 de 1044
+  lecturas con castellano                       5007
+  lecturas sin castellano                       1435
+  formularios sin una sola lectura en castellano     2
 
   por tipo de lectura:
                                         total con es     %
-    evangelio                            1577   1254   80%
-    salmo responsorial                   1367   1103   81%
-    aleluya                              1233   1053   85%
-    primera lectura                      1201    935   78%
-    segunda lectura                       409    303   74%
-    lectura del Nuevo Testamento          355    144   41%
-    lectura del Antiguo Testamento        256    100   39%
+    evangelio                            1577   1266   80%
+    salmo responsorial                   1367   1109   81%
+    aleluya                              1233   1062   86%
+    primera lectura                      1201    988   82%
+    segunda lectura                       409    313   77%
+    lectura del Nuevo Testamento          355    149   42%
+    lectura del Antiguo Testamento        256    105   41%
     tercera lectura                        10      0    0%
     quinta lectura                         10     10  100%
     septima lectura                        10      5   50%
@@ -93,16 +93,16 @@ Las lecturas en castellano
     epistola                                4      0    0%
 
   por la ruta con que la fase 5 la halló:
-    cita                                        4177
-    día                                           75
+    cita                                        4258
+    día                                           94
     versículos                                   655
 
   Las dos rutas que no son la cita —los versículos y el día— son
-  de esta pasada, y traen 730 lecturas que la primera versión daba
+  de esta pasada, y traen 749 lecturas que la primera versión daba
   por no impresas teniéndolas el misalito impreso. El informe de la
   fase 5 explica cada una.
 
-  lecturas que abarcan otros versículos, y se dice    75
+  lecturas que abarcan otros versículos, y se dice    94
   Son las de la ruta del día: las otras dos exigen la misma cita o
   el mismo conjunto de versículos, así que no pueden diferir. La
   app las enseña con las dos citas, la del leccionario y la que el
@@ -118,14 +118,14 @@ Desarmar la perícopa impresa
   dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
   que salió:
 
-    lecturas con fórmula                        2687
-    lecturas sin fórmula reconocida               64
-    lecturas con sumario                         635
-    lecturas con cierre                         2681
-    lecturas sin cierre reconocido                70
-    lecturas con respuesta del pueblo             20
-    salmo o aclamación sin respuesta              10
-    salmo sin estrofas                             0
+    lecturas con fórmula                        2740
+    lecturas sin fórmula reconocida               96
+    lecturas con sumario                        1203
+    lecturas con cierre                         1915
+    lecturas sin cierre reconocido               921
+    lecturas con respuesta del pueblo              6
+    salmo o aclamación sin respuesta              25
+    salmo sin estrofas                             1
 
   El cierre se busca en el texto ya juntado y no en el último
   renglón: la fuente parte «Palabra / de Dios.» entre dos
@@ -135,8 +135,10 @@ Desarmar la perícopa impresa
   ella: la fuente lo imprime unas veces entre corchetes y otras a
   pelo, y por sí mismo no se distingue del cuerpo. Las perícopas
   que no dieron fórmula, una por una:
+    1 Cro 29,10.11abc.11d-12a.12bcd
     1 S 2,1.4-5.6-7.8abcd
     2 Co 11,1-11
+    Ap 14,13
     Dn 3,52.53.54.55.56
     Dn 3,57.58.59.60.61
     Dn 3,62.63.64.65.66.67
@@ -145,15 +147,25 @@ Desarmar la perícopa impresa
     Dn 3,82.83.84.85.86.87
     Dt 32,18-19.20.21
     Dt 32,26-27ab.27cd-28.30.35cd-36ab
+    Eclo 27,33–28.9
+    Ef 3,14-19
     Est 4,17
+    Gn 1,26—2.3
+    Hb 4,14-16.5.7-9
+    Hch 12,24—13.5
     Is 12,2-3.4bcd.5-6
     Is 38,10.11.12abcd.16
+    Is 49,14-15
+    Is 61,1-3.6.8-9
     Jn 18,1—19.42
     Jr 31,10.11-12ab.13
     Lc 1,46-47.48-49.50-51.52-53.54-55
-    Lc 1,46-47.48-49.50y53.54-55
+    Lc 1,46-47.48-49.50.53.54-55
     Lc 1,46-48.49-50.53-54
     Lc 1,69-70.71-72.73-75
+    Lc 4,16-21
+    Mt 26,14—27.66
+    Tb 13,2.6.7.8
 
   Y no es un fallo del reconocimiento: son los cánticos que
   hacen de salmo responsorial —el Magníficat y el Benedictus de
@@ -166,37 +178,59 @@ Desarmar la perícopa impresa
   ele en vez de uno, y la cita de Ester con «(Neovulgata)»
   detrás.
 
-  Perícopas en que no se halló el cierre (25):
-    1 S 2,1.4-5.6-7.8abcd
-    Dn 3,52.53.54.55.56
-    Dn 3,57.58.59.60.61
-    Dn 3,62.63.64.65.66.67
-    Dn 3,68.69.70.71.72.73.74
-    Dn 3,75.76.77.78.79.80.81
-    Dn 3,82.83.84.85.86.87
-    Dt 32,18-19.20.21
-    Dt 32,26-27ab.27cd-28.30.35cd-36ab
-    Ex 14,21-15.1
-    Gn 14,18-20
-    Is 12,2-3.4bcd.5-6
-    Is 38,10.11.12abcd.16
-    Jn 13,1-15
-    Jn 18,1—19.42
-    Jr 31,10.11-12ab.13
-    Lc 1,46-47.48-49.50-51.52-53.54-55
-    Lc 1,46-47.48-49.50y53.54-55
-    Lc 1,46-48.49-50.53-54
-    Lc 1,69-70.71-72.73-75
-    Lc 19,28-40
-    Mc 11,1-10
-    Mt 2,1-12
-    Mt 21,1-11
-    Rm 8,8-17
+  Perícopas en que no se halló el cierre (460):
+    1 Co 1,1-9
+    1 Co 10,14-22
+    1 Co 10,16-17
+    1 Co 11,17-26
+    1 Co 11,23-26
+    1 Co 12,4-11
+    1 Co 15,12.16-20
+    1 Co 15,20-24.25-28
+    1 Co 15,20-26.28
+    1 Co 15,20-27
+    1 Co 15,45-49
+    1 Co 15,54-57
+    1 Co 2,1-5
+    1 Co 3,1-9
+    1 Co 3,16-23
+    1 Co 3,18-23
+    1 Co 4,1-5
+    1 Co 5,1-8
+    1 Co 5,6-8
+    1 Co 6,13-15.17-20
+    1 Co 7,25-31
+    1 Co 7,29-31
+    1 Co 7,32-35
+    1 Co 9,16-19.22-23
+    1 Cro 15,3-4.15-16.16.1-2
+    1 Cro 29,10.11abc.11d-12a.12bcd
+    1 M 1,10-15.41-43.54-57.62-64
+    1 M 2,15-29
+    1 M 4,36-37.52-59
+    1 P 1,17-21
+    1 P 1,3-9
+    1 P 1,8-12
+    1 P 2,20b-25
+    1 P 3,18-22
+    1 P 4,7-13
+    1 P 5,1-4
+    1 P 5,5b-14
+    1 R 17,17-24
+    1 R 19,4-8
+    1 R 2,1-4.10-12
+    … y 420 más
 
   Salmos o aclamaciones sin respuesta del pueblo:
+    1 Cro 29,10.11abc
+    1 Cro 29,10.11abc.11d-12a.12bcd
+    Dn 3,52.53.54.55.56
     Jn 14,18
+    Jn 4,12R/.Aleluya.aleluya
+    Jn 4,42.15
     Sal 131,1-23-5.11.12.13-14
     Sal 17,2-3a.3bc-4.47y51ab
+    Sal 83,3.4.5-6a.8a.11
     Sal 93,12-13a.14-15.17-18
     Sal 95,1-2a.3a.10ac
 
@@ -467,13 +501,13 @@ Lo que esta fase topa y no es suyo
     «1 Co 6,13c–15a.17–20» donde La Santa Misa y el leccionario
     escriben «1 Co 6,13c-15a.17-20», y el `squeeze` de la fase 5
     pliega la raya al punto porque la raya es también como una de
-    las dos fuentes marca el salto de capítulo. De ahí que 225
+    las dos fuentes marca el salto de capítulo. De ahí que 334
     citas del corpus tengan gemela que sólo difiere en la raya, y
     que 182 perícopas con la respuesta del pueblo impresa no se
     alcancen —por eso esta fase sólo halla 2 lecturas con
     respuesta—. **Medido, cuesta poco:** plegando la raya al
     guión se recuperarían 5 lecturas (5 perícopas distintas) de
-    las 1535 que hoy no tienen castellano, porque las demás ya están
+    las 1435 que hoy no tienen castellano, porque las demás ya están
     alcanzadas por su gemela con guión. No se arregla aquí: el
     puente de citas es de la fase 5, y `misa.json` es la decisión
     auditada; si la app enseñara texto que esa decisión dice que

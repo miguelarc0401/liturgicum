@@ -194,6 +194,22 @@ salía *vacío*: de ahí que la fase mida lo recogido contra lo que la tarjeta
 dice y se vuelva a partir por `<br>` cuando falta la mitad. Un día en blanco
 es el peor defecto posible, porque no se queja.
 
+**Por dónde entra en el libro, y por dónde no.** La fase 4 lee ahora las dos
+fuentes, pero **sólo el misalito atribuye**. No es desconfianza: atribuir y
+leer no son el mismo trabajo. La atribución supone «un formulario por día»,
+porque un formulario por día es lo que el editor eligió, y de esa elección se
+deduce a qué celebración pertenece cada texto; este sitio imprime **los dos**,
+que para leer es una ventaja y para deducir es ruido. Medido con sólo enero de
+2016 dentro: 75 textos canónicos cambiaban, 109 piezas desaparecían, y en el
+común de los pastores una comunión con **41 testigos** quedaba sustituida por
+otra con 9. La cosecha de perícopas, en cambio, agrupa **por cita** y no mira
+la atribución, y ahí el sitio es ganancia limpia —lo dice el cotejo: las
+lecturas coinciden el 93-95 % y los propios el 50-64 %, porque la lectura la
+fija el leccionario y el propio depende de la elección—. Resultado:
+`propios_es`, `sueltos_es` y `prefacios_propios_es` byte a byte iguales;
+`pericopas_es` de 2 642 a **3 206**, y en la app de 4 907 a **5 007** lecturas
+castellanas.
+
 **Dos defectos que la medida pilló y que parecían cosméticos:**
 el rótulo partido entre dos renglones («ACLAMACIÓN ANTES DEL / EVANGELIO Jn
 10, 27») hacía que el día apareciera con dos evangelios y sin aclamación —el

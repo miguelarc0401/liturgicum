@@ -13,7 +13,7 @@
   --papel-alto: #ffffff;
   --filete: #e7ddcc;
   --filete-fuerte: #d5c6ad;
-  --rubrica: #961717;
+  --rubrica: #9C2007;
   --acento: #6b1220;
   --realce: #f6e6a8;
   --sombra: 0 1px 2px rgb(60 40 20 / .05), 0 6px 20px rgb(60 40 20 / .06);
@@ -51,10 +51,10 @@
    Los mismos bloques visten las cartas de Ajustes (.paleta[data-p]), para
    que cada carta ensene sus tintas y no haya que repetirlas en el guion. */
 body, body[data-paleta="tinta"], .paleta[data-p="tinta"] {
-  --g-verde: #0f3d0f; --g-rojo: #961717; --g-morado: #4c2a63;
-  --g-blanco: #7a5c17; --g-azul: #1f4e79; --g-neutro: #6b1220;
-  --d-verde: #82a184; --d-rojo: #cc8686; --d-morado: #a691b5;
-  --d-blanco: #c0ac7b; --d-azul: #89a6c0; --d-neutro: #ba848a;
+  --g-verde: #004702; --g-rojo: #9C2007; --g-morado: #4E00CC;
+  --g-blanco: #7a5c17; --g-azul: #00A3CC; --g-neutro: #FFD000;
+  --d-verde: #004702; --d-rojo: #9C2007; --d-morado: #a691b5;
+  --d-blanco: #c0ac7b; --d-azul: #00A3CC; --d-neutro: #FFD000;
 }
 body[data-paleta="oscuro"], .paleta[data-p="oscuro"] {
   --g-verde: #043108; --g-rojo: #580707; --g-morado: #440861;

@@ -1249,13 +1249,13 @@ Las lecturas: por qué ruta se halla la castellana
     3. el día y la ranura: el calendario dice que el misalito
        imprimió esa lectura ahí, y la cita confirma el pasaje.
 
-      por la cita                                4177
+      por la cita                                4258
       por los versículos                          655
-      por el día y la ranura                       75
-        y la cita lo confirma por versículos       56
-        y la cita lo confirma por libro y capítulo     19
-        y abarca otros versículos, y se dice       75
-      sin castellano                             1535
+      por el día y la ranura                       94
+        y la cita lo confirma por versículos       71
+        y la cita lo confirma por libro y capítulo     23
+        y abarca otros versículos, y se dice       94
+      sin castellano                             1435
 
   **La segunda ruta es la cita leída y no aplastada.** Aplastada,
   tres maneras de escribir el mismo pasaje son tres citas
@@ -1301,23 +1301,23 @@ Las lecturas: el cotejo de citas
   día y se comparan las citas que uno imprime con las que el otro
   manda:
 
-    la cita es la de otra celebración del mismo día —la feria, casi siempre   4979
-    la cita no está en ninguna celebración de ese día      3938
-    la cita es la que el leccionario da a esa celebración   3822
-    el misalito no imprime lecturas                         155
+    la cita no está en ninguna celebración de ese día      9302
+    la cita es la que el leccionario da a esa celebración   7937
+    la cita es la de otra celebración del mismo día —la feria, casi siempre   7475
+    el misalito no imprime lecturas                         593
 
   lecturas que los formularios mandan   : 6442
-  con texto castellano, por las tres rutas: 4907  (76 %)
-  sin texto castellano                  : 1535
+  con texto castellano, por las tres rutas: 5007  (78 %)
+  sin texto castellano                  : 1435
 
     tipo                                  con    sin
-    evangelio                            1254    323
-    salmo responsorial                   1103    264
-    aleluya                              1053    180
-    primera lectura                       935    266
-    segunda lectura                       303    106
-    lectura del Nuevo Testamento          144    211
-    lectura del Antiguo Testamento        100    156
+    evangelio                            1266    311
+    salmo responsorial                   1109    258
+    aleluya                              1062    171
+    primera lectura                       988    213
+    segunda lectura                       313     96
+    lectura del Nuevo Testamento          149    206
+    lectura del Antiguo Testamento        105    151
     tercera lectura                         0     10
     quinta lectura                         10      0
     septima lectura                         5      5
@@ -1325,42 +1325,42 @@ Las lecturas: el cotejo de citas
     sexta lectura                           0      5
     epistola                                0      4
 
-  Las citas que no están en ninguna celebración de su día son 3938,
+  Las citas que no están en ninguna celebración de su día son 9302,
   y no se reparten al azar:
 
-    salmo           1767
-    aclamacion       979
-    primera          718
-    evangelio        311
-    segunda          163
+    aclamacion      3192
+    primera         2173
+    salmo           2143
+    evangelio       1289
+    segunda          505
 
   Dos tercios son el salmo y la aclamación, y ahí la diferencia no
   es de formulario sino de versículos: el leccionario mexicano
   elige otros del mismo salmo, y el verso del aleluya lo cambia
   más todavía. Lo que de verdad dice que el editor rezó otra cosa
-  son la primera lectura y el evangelio, y son 1029 de las 3938.
+  son la primera lectura y el evangelio, y son 3462 de las 9302.
 
   Las veinte primeras, para que se vea:
-    2018-06-01/0  st_0601_65                   salmo        Sal 95,10.11-12a.1 V|5076TA0601.html|0
-    2018-06-02/0  st_0602_66                   aclamacion   Col 3,16.17        V|5077TA0602.html|0
-    2018-06-02/0  st_0602_66                   primera      Judas 1,17.20-25   V|5077TA0602.html|0
-    2018-06-02/0  st_0602_66                   salmo        Sal 62,1.3-4.5-6   V|5077TA0602.html|0
-    2018-06-03/0  d5_8_0                       aclamacion   Jn 17,17           II|2042BTOD09.html|0
-    2018-06-03/0  d5_8_0                       salmo        Sal 80,3-8.10-11   II|2042BTOD09.html|0
-    2018-06-04/0  vot_misa-para-pedir-la-lluvi aclamacion   Ap 1,5             —
-    2018-06-05/0  st_0605_68                   primera      2 P 3,12-15.17-18  V|5079TA0605.html|0
-    2018-06-06/0  st_0606_69                   aclamacion   Jn 11,25.26        V|5080TA0606.html|0
-    2018-06-07/0  vot_misa-por-las-vocaciones- salmo        Sal 24,4-5ab.8-9.1 —
-    2018-06-08/0  d4_0_2                       aclamacion   Mt 11,29           II|2034BFSCDJ.html|0
-    2018-06-08/0  d4_0_2                       primera      Os 11,1.3-4.8-9    II|2034BFSCDJ.html|0
-    2018-06-09/0  comun_5224COMSVI             evangelio    Lc 2,41-51         —
-    2018-06-10/0  d5_9_0                       aclamacion   Jn 12,31-32        II|2043BTOD10.html|0
-    2018-06-10/0  d5_9_0                       salmo        Sal 129,1-2.3-4ab. II|2043BTOD10.html|0
-    2018-06-10/0  d5_9_0                       segunda      2 Co 4,13-5.1      II|2043BTOD10.html|0
-    2018-06-11/0  st_0611_71                   aclamacion   Mt 5,12            V|5082TA0611.html|0
-    2018-06-11/0  st_0611_71                   primera      Hch 11,21-26.13.1- V|5082TA0611.html|0
-    2018-06-13/0  st_0613_72                   aclamacion   Sal 24,4.5         V|5083TA0613.html|0
-    2018-06-13/0  st_0613_72                   salmo        Sal 15,1-2a.4.5.y8 V|5083TA0613.html|0
+    2016-01-01/0  md_01-01                     aclamacion   Hb 1,1-2R/.Aleluya —
+    2016-01-01/0  md_01-01                     evangelio    Lc 2,16-21         —
+    2016-01-01/0  md_01-01                     primera      Nm 6,22-27         —
+    2016-01-01/0  md_01-01                     segunda      Ga 4,4-7           —
+    2016-01-02/0  st_0903_126                  aclamacion   Hb 1,1-2           V|5142TA0903.html|0
+    2016-01-02/0  st_0903_126                  evangelio    Jn 1,19-28         V|5142TA0903.html|0
+    2016-01-02/0  st_0903_126                  primera      Jn 2,22-28         V|5142TA0903.html|0
+    2016-01-02/1  st_0903_126                  aclamacion   Mt 2,2             V|5142TA0903.html|0
+    2016-01-02/1  st_0903_126                  evangelio    Mt 2,1-12          V|5142TA0903.html|0
+    2016-01-02/1  st_0903_126                  primera      Is 60,1-6          V|5142TA0903.html|0
+    2016-01-02/1  st_0903_126                  segunda      Ef 3,2-3.5-6       V|5142TA0903.html|0
+    2016-01-03/0  md_01-03                     aclamacion   Mt 2,2             —
+    2016-01-03/0  md_01-03                     evangelio    Mt 2,1-12          —
+    2016-01-03/0  md_01-03                     primera      Is 60,1-6          —
+    2016-01-03/0  md_01-03                     segunda      Ef 3,2-3.5-6       —
+    2016-01-04/0  vot_misa-al-comienzo-del-ano aclamacion   Mt 4,23            —
+    2016-01-04/0  vot_misa-al-comienzo-del-ano evangelio    Mt 4,12-17.23-25   —
+    2016-01-04/0  vot_misa-al-comienzo-del-ano primera      Jn 3,22-4.6        —
+    2016-01-05/0  md_01-05                     aclamacion   Lc 4,18            —
+    2016-01-05/0  md_01-05                     evangelio    Mc 6,34-44         —
 
 Las celebraciones de una misma unidad que no dicen lo mismo
 -----------------------------------------------------------

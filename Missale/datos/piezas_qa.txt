@@ -5,9 +5,9 @@ Los cien misalitos deshechos: cada pieza una vez, con sus
 testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
-formularios leídos            : 3666
+formularios leídos            : 7518
 celebraciones con propios     : 598
-perícopas distintas por cita  : 2648
+perícopas distintas por cita  : 3209
 prefacios propios cosechados  : 28
 textos propios atribuidos     : 2786
    por lo que nombra la fuente: 732
@@ -28,12 +28,12 @@ una vez en ocho años. Esto es cuánto, medido, y es la primera
 cosa que el plan pedía de esta fase.
 
 grado            celebr lecturas   su día otro día    nunca   sin una
-Solemnidad            7       31       17        8        6         0
-Fiesta               24       64       45        9       10         0
-Memoria              68      145       16       58       71        16
-Memoria libre        94      196        4       94       98        22
+Solemnidad            7       31       25        1        5         0
+Fiesta               24       64       47        9        8         0
+Memoria              68      145       17       58       70        15
+Memoria libre        94      196        5       97       94        22
 Conmemoración         1        7        1        1        5         0
-TOTAL               194      443       83      170      190        38
+TOTAL               194      443       95      166      182        37
 
 «su día»   : la perícopa está impresa en un día del santo;
 «otro día» : no, pero sí en otro día del corpus, y de ahí la
@@ -41,7 +41,7 @@ TOTAL               194      443       83      170      190        38
 «nunca»    : no está en los cien misalitos, de ninguna manera;
 «sin una»  : celebraciones de las que no se imprimió ni una.
 
-Las 38 celebraciones de las que no hay ni una lectura propia:
+Las 37 celebraciones de las que no hay ni una lectura propia:
    01-07  Memoria libre  San Raimundo de Peñafort, presbítero           2 Co 5,14-20, Lc 12,35-40
    01-13  Memoria libre  San Hilario, obispo y doctor de la Iglesia     1 Jn 2,18-25, Mt 5,13-19
    01-17  Memoria        San Antonio, abad                              Ef 6,10-13.18, Mt 19,16-26
@@ -62,7 +62,6 @@ Las 38 celebraciones de las que no hay ni una lectura propia:
    06-30  Memoria libre  Primeros mártires de la Iglesia de Roma        Rm 8,31b-39, Mt 24,4-13
    07-11  Memoria        San Benito, abad                               Pr 2,1-9, Mt 19,27-29
    07-13  Memoria libre  San Enrique                                    Mi 6,6-8, Mt 7,21-27
-   07-15  Memoria        San Buenaventura, obispo y doctor de la Iglesi Ef 3,14-19, Mt 23,8-12
    07-21  Memoria libre  San Lorenzo de Brindis, presbítero y doctor de 2 Co 4,1-2.5-7, Mc 4,1-10.13-20
    07-26  Memoria        Santos Joaquín y Ana, padres de la Santísima V Eclo 44,1.10-15, Mt 13,16-17
    07-30  Memoria libre  San Pedro Crisólogo, obispo y doctor de la Igl Lc 6,43-45
@@ -91,46 +90,204 @@ dice al lado de la cabecera. La fase 3 lo guardaba en `alterna`,
 en `resena` o en `subtitulo` según cayera la maqueta; aquí se
 vuelve a leer del campo `crudo` y se unifica.
 
-   alternativa que es una misa   :  572
-   alternativa que es una santo  :  542
+   alternativa que es una misa   :  981
+   alternativa que es una santo  :  551
 
-   la fase 3 la tenía en alterna    :  572
+   la fase 3 la tenía en alterna    :  987
    la fase 3 la tenía en resena     :  484
    la fase 3 la tenía en subtitulo  :   58
+   la fase 3 la tenía en crudo      :    3
 
 Las citas
 ---------
 
 La pieza viene con su cita, y por eso el emparejamiento no se
-adivina. Leídas: 6949 del incipit, 9706 de su propio campo y 2929 del
+adivina. Leídas: 15384 del incipit, 18940 de su propio campo y 3317 del
 rótulo del salmo.
 
 Lecturas sin cita, por ranura (la fuente no siempre la da; en
 las antífonas es lo normal, en una lectura es que el incipit se
 partió o que remite a otro día):
-   primera       385
-   salmo         339
-   segunda       102
-   secuencia      42
-   aclamacion    322
-   evangelio     345
+   primera       111
+   salmo        3268
+   segunda        44
+   secuencia     103
+   aclamacion    681
+   evangelio     108
 
-Nombres de libro que no se supieron leer: 15 formas, 31 casos.
-      4  'JI'
+Nombres de libro que no se supieron leer: 172 formas, 316 casos.
+     21  'sanLucas:'
+     15  'uteronomio'
+     14  'Le'
+     11  'JI'
+     10  'Me'
+      7  'El Señor me ha ungido y me ha enviado para anunc'
+      6  'Vean: qué dulzura, qué delicia convivir los herm'
+      6  'N Sal'
+      5  'A Cfr. Sal'
+      4  'salino'
+      4  '113B, 3-'
+      4  '113 B, 1-'
+      4  '113 B 1-'
+      4  '86 (87), 1-'
       3  'FORMA BREVE:'
       3  '9-'
       3  '13-'
-      3  'Le'
+      3  '115 122-'
+      3  '113a, 1-'
+      3  'Crf. Sal'
+      3  'Lo'
+      3  ','
+      3  '86 (87) 1-'
+      3  'Maleo:'
+      3  'sanMateo:'
+      3  'sanMarcos:'
       2  '17-'
       2  '20–'
       2  '20-'
-      2  'salino'
-      2  'uteronomio'
+      2  '71'
+      2  '49 8-'
+      2  '946-'
+      2  'Mareos:'
+      2  'PASIÓN DE NUESTRO SEÑOR JESUCRISTO SEGÚN SAN MAT'
+      2  'segunda cana del apóstol san Pablo a los corinti'
+      2  'Ebro del Génesis:'
+      2  'sarao Evangelio según san Mateo:'
+      2  'Cal'
+      2  'Sa'
+      2  'Pasión de Nuestro Señor Jesucristo según san Luc'
+      2  'sanJuan:'
+      2  'N Cfr. Sal'
+      2  'N Mt'
+      2  'N 1 Jn'
+      2  'N Lc'
       1  '1-'
       1  '12–'
       1  '3b-'
       1  '10-'
       1  'No castigues a tu pueblo por sus maldades. Del l'
+      1  '144 17-'
+      1  'Tenemos sed: danos agua para beber. Del libro de'
+      1  'Danie'
+      1  '1 Samue1'
+      1  'primer libro de Sainad:'
+      1  'primor libro de Samuel:'
+      1  'Ebro de los Hechos de los Apóstoles:'
+      1  'segunda cana del apóstol san Pablo a Timoteo:'
+      1  'n Hch'
+      1  'E7'
+      1  'n Lc'
+      1  'segund+o libro de los Macabeos:'
+      1  '15'
+      1  'n Jn'
+      1  'libro de1profeta Isaías:'
+      1  '. almo'
+      1  'hale'
+      1  'Cir.'
+      1  'Vio una escalera por la que subían y bajaban los'
+      1  'primera cana del apóstol san Pablo a los tesalon'
+      1  'sumo Evangelio según san Lucas:'
+      1  'primera cana del apóstol san Pablo a Timoteo:'
+      1  'santo Evangelio legan san Lucas:'
+      1  'son Lucas:'
+      1  'MG'
+      1  'E,'
+      1  'l'
+      1  'Pm'
+      1  'Les he anunciado a Cristo crucificado. De la pri'
+      1  'Sa1'
+      1  'primera carta del apóstol san rabio a los tesalo'
+      1  'J'
+      1  'santo Evanelio según san Mateo:'
+      1  'lihro del Génesis:'
+      1  'en, Sal'
+      1  'Yo soy me envía a ustedes. Del libro del Éxodo:'
+      1  ''
+      1  'salnw'
+      1  'Mareo:'
+      1  'COI'
+      1  'corta del apóstol san Pablo a los filipenses:'
+      1  'Apoe'
+      1  'Que permanezca en ustedes lo que han oído desde '
+      1  'primera carta del apóstol san rabio a los corint'
+      1  'Madre de todos los vivientes. Del libro del Géne'
+      1  'Además de éstas y otras cosas, pesa sobre mí dia'
+      1  'En adelante te llamarás Israel porque has luchad'
+      1  'ACLAMACIÓN ANTES DEL EVANGEUO Cfr: Hechos'
+      1  'ACLAMACIÓN ANTES DEL EVANGEUO Cfr. Mt'
+      1  '14410-'
+      1  'Pongan en práctica la palabra. De la carta del a'
+      1  'ICor'
+      1  'N Cfr. Lc'
+      1  'A Cfr. Prov'
+      1  'N Cfr. Mt'
+      1  'A Cfr. Sab'
+      1  'N Sal,'
+      1  'N Cfr. Mc'
+      1  'A Cfr. Is'
+      1  'N Ez'
+      1  'Recíbelo, no como esclavo, sino como hermano ama'
+      1  'El que les envió los desgracias les enviará tamb'
+      1  'Alégrense de que sus nombres estén escritos en e'
+      1  'El justo vivirá por su fe. Del libro del profeta'
+      1  'No te avergüences de dar testimonio de nuestro S'
+      1  'Se levantó Jonás para huir del Señor. Del libro '
+      1  'Quién es mi prójimo? Del santo Evangelio según s'
+      1  'Los habitantes de Nínive se arrepintieron de su '
+      1  'Marta lo recibió en su casa – María escogió la m'
+      1  'Tú estás triste por una hiedra, ¿y yo no voy a t'
+      1  'Señor, enséñanos a orar. Del santo Evangelio seg'
+      1  'Ya viene el día, ardiente como un horno. Del lib'
+      1  'Pidan y se les dará. Del santo Evangelio según s'
+      1  'Ya viene el día del Señor, día de oscuridad y de'
+      1  'Empuñen las hoces, porque ya la mies está madura'
+      1  'Dichosa la mujer que te llevó en su seno. - Dich'
+      1  'Volvió Naamán a donde estaba el hombre de Dios y'
+      1  'No ha habido nadie, fuera de este extranjero, qu'
+      1  'Por medio de Jesucristo, Dios me concedió la gra'
+      1  'A la gente de este tiempo no se le dará otra señ'
+      1  'Los hombres conocieron a Dios, pero no lo glorif'
+      1  'n limosna, y todo lo de ustedes quedará limpio. '
+      1  'Dios pagará a cada cual según sus obras, al judí'
+      1  'Ay de ustedes, fariseos! ¡Ay de ustedes también,'
+      1  'El hombre es justificado por la fe y no por cump'
+      1  'Les pedirán cuentas de la sangre de los profetas'
+      1  'Abraham le creyó a Dios y eso le valió la justif'
+      1  'Todos los cabellos de su cabeza están contados. '
+      1  'El único que me acompaña es Lucas. De la segunda'
+      1  'La cosecha es mucha y los trabajadores pocos. De'
+      1  'Mientras Moisés tenía las manos en alto, dominab'
+      1  'El hombre de Dios será perfecto y enteramente pr'
+      1  'Dios hará justicia a sus elegidos que claman a é'
+      1  'Está escrito también por nosotros, a quienes se '
+      1  'Para quién serán todos tus bienes? Del santo Eva'
+      1  'Dichosos aquellos a quienes su señor, al llegar,'
+      1  'Pónganse al servicio de Dios, que les ha dado la'
+      1  'Al que mucho se le da, se le exigirá mucho. Del '
+      1  'No he venido a traer la paz, sino la división. D'
+      1  'Vi una muchedumbre tan grande, que nadie podía c'
+      1  'Veremos a Dios tal cual es.De la primera carta d'
+      1  'Alégrense y salten de contento, porque su premio'
+      1  'Los aceptó como un holocausto agradable. Del lib'
+      1  'Estamos seguros de haber pasado de la muerte a l'
+      1  'Vengan, benditos de mi Padre. Del santo Evangeli'
+      1  'El Señor destruirá la muerte para siempre. Del l'
+      1  'Estaremos con el Señor para siempre. De la prime'
+      1  'El que coma de este pan vivirá para siempre y yo'
+      1  'Obró con gran rectitud y nobleza, pensando en la'
+      1  'En Cristo, todos volverán a la vida. De la prime'
+      1  'Padre, en tus manos encomiendo mi espíritu. Del '
+      1  'Dios ha permitido que todos cayéramos en la rebe'
+      1  'No invites a tus amigos, sino a los pobres. Del '
+      1  'Todos y cada uno somos miembros los unos de los '
+      1  'El cumplimiento pleno de la ley consiste en amar'
+      1  'El que no renuncia a todos sus bienes no puede s'
+      1  'Ya sea que estemos vivos o que hayamos muerto, s'
+      1  'Habrá alegría en el cielo por un solo pecador qu'
+      1  'Yo predico el Evangelio de Dios a fin de que los'
+      1  'Los que pertenecen a este mundo son más hábiles '
+      1  'Salúdense mutuamente con el saludo de paz.De la '
+      1  'Pasión de nuestro Señor Jesucristo, según San Ju'
 
 Lo que se repara, y con qué prueba
 ----------------------------------
@@ -144,7 +301,7 @@ oración se parten en dos grupos, la mayoría decide sobre un
 reparto falso y el texto canónico sale con «dispon- gas» dentro.
 Se junta cuando el renglón acaba en guión y el siguiente empieza
 en minúscula, que es el único caso en que el guión no es del
-texto: **7233 palabras**.
+texto: **7234 palabras**.
 
      80  Jesu- / cristo,   →   Jesucristo,
      42  por- / que   →   porque
@@ -163,13 +320,14 @@ texto: **7233 palabras**.
 **Los salmos partidos con letra.** El misalito escribe «Sal
 113A», «Sal 18B» y «Sal 87(86)»; el índice del leccionario no
 hace ni lo uno ni lo otro, y los versículos bastan para
-distinguir las dos mitades: 19 casos en 6 formas.
+distinguir las dos mitades: 20 casos en 7 formas.
       6  113B
       5  113b
       3  18B
       3  113A
       1  87(86)
       1  18b
+      1  104R
 
 **Las erratas de la fuente**, con su prueba:
       4  Is 149,1-2.3-4.5-6a.9      →   Sal 149,1-2.3-4.5-6a.9
@@ -183,11 +341,11 @@ distinguir las dos mitades: 19 casos en 6 formas.
 **Dos títulos para un mismo prefacio**, juntados por el texto:
    «María Magdalena: «‘Apóstol’ de los Apóstoles» → «María Magdalena: «´Apóstola’ de los Apóstole»
 
-**La ele por el uno**: 154 casos en 45 formas. En un
+**La ele por el uno**: 163 casos en 52 formas. En un
 número de versículo una ele suelta no puede ser otra cosa, pero
 se nombra igual:
+     17  '125, l-2ab. 2cd-3. 4-5. 6'
      16  '22, l-3a. 3b-4. 5. 6'
-     16  '125, l-2ab. 2cd-3. 4-5. 6'
      14  '15, l-2a y 5. 7-8. 9-10. 11'
       7  '44, l0bc. 11. 12ab. 16'
       7  'l44, 10-11. 12-13ab. 17-18'
@@ -206,16 +364,16 @@ se nombra igual:
       3  '103, l-2a.5-6.10 y 12.13-14.24 y 35c'
       3  '65, l-3a. 5 y 16-17'
       3  '100, l-2ab. 2cd-3ab. 5. 6'
-   … y 25 formas más
+   … y 32 formas más
 
 El cotejo con el índice del leccionario, que es el camino
 independiente del calendario: si el lector de citas leyera mal,
 saldría aquí.
 
-   citas distintas en el corpus                   : 2643
-   que el índice tiene igual                      : 1592
-   que el índice no tiene con esos versículos     : 1044
-   que el índice no tiene ni por el capítulo      : 7
+   citas distintas en el corpus                   : 3140
+   que el índice tiene igual                      : 1623
+   que el índice no tiene con esos versículos     : 1436
+   que el índice no tiene ni por el capítulo      : 81
 
 La fila del medio no es un fallo y conviene no confundirla con
 uno: son las dos ediciones letreando distinto el mismo pasaje
@@ -223,13 +381,77 @@ uno: son las dos ediciones letreando distinto el mismo pasaje
 eligiendo un versículo más o uno menos. La que delataría un error
 de lectura es la última, porque un libro y un capítulo que el
 leccionario no usa nunca sería una sigla mal resuelta:
+   1co71,23-26
+   1m15,3
+   1m16,18
+   1p12,9-16
+   1s5,6-7.8abcd
+   2co71,18.21-30
+   2cro7.16r.aleluya,aleluya
+   2m2,9-14
+   2r14,8-17
+   2tm1-10
+   2tm1.10r.aleluya,aleluya
    ap28,11-16.30-31
+   dt32r.bendice,senor.atupueblo
+   eclo11,15-26
+   eclo16,9-15
+   ef1.17-18r.aleluya,aleluya
+   ef117-18
+   ef117-18r.aleluya,aleluya
+   ez15,31
+   ez18.31r.honorygloriaati,senorjesus
+   ez6,1-15.60.63
+   ga4.22-24.26-27.31-5,1
+   gn5,15-29
+   hb1.1-2r.aleluya,aleluya
+   jn1.14.12r.aleluya,aleluya
+   jn1.14r.honorygloriaati,senor.jesus
+   jn1.49r.aleluya,aleluya
+   jn1.7.lo1,17
+   jn10.27r.aleluya,aleluya
+   jn11.25.26r.aleluya,aleluya
+   jn14.18r.aleluya,aleluya
+   jn14.6r.aleluya,aleluya
+   jn15.16r.aleluya,aleluya
+   jn15.4.5r.aleluya,aleluya
+   jn16.7.13r.aleluya,aleluya
    jn26,27
+   jn8.12r.aleluya,aleluya
+   jr10,27
+   jr50,12-13.14-15.18-19
+   jr6,63.68
+   jr8,12
+   lc1.45r.aleluya,aleluya
+   lc1.76r.aleluya,aleluya
+   lc11-28r.aleluya,aleluya
+   lc19.39.42,14r.aleluya.aleluya
+   lc2128r.aleluya,aleluya
+   lc2136
+   lc7.16r.aleluya,aleluya
+   mc1.15r.aleluya,aleluya
+   mc11.9.10r.aleluya,aleluya
+   mt11.25r.aleluya,aleluya
+   mt11.28r.aleluya,aleluya
+   mt1125
+   mt1128
+   mt1128r.aleluya,aleluya
+   mt1129r.aleluya,aleluya
+   mt1618
+   mt17.5r.aleluya,aleluya
+   os1,14
+   os129,5.7
+   os15,18
+   os2cor8,9
+   os3,16
+   os33,11
+   os4,17
+   os5,14
+   os94,8
+   sal1055,7-8
    sal1101-2.7-8.9y10c
-   sal119,36.29b
-   sal1431-2,9-10
-   sal1sm3,9.jn6.68
-   sal2tim
+   sal117.24r.aleluya,aleluya
+   … y 11 más
 
 Los testigos: lo que está decidido y lo que no
 ----------------------------------------------
@@ -592,7 +814,7 @@ donde el día las toma—. Lo que falta, ranura por ranura:
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
 
-Los 402 avisos son todos de lo mismo, y es un hallazgo, no un
+Los 653 avisos son todos de lo mismo, y es un hallazgo, no un
 fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
@@ -770,4 +992,4 @@ Y los avisos, día por día:
    2022-02-06/0   la fuente ofrece «de SAN MATEO CORREA MAGALLANES» y el calendario no trae ese santo ese día
    2022-02-08/0   la fuente ofrece «SANTA JOSEFINA BAKHITA, Virgen» y el calendario no trae ese santo ese día
    2022-02-25/0   la fuente ofrece «SANTO TORIBIO ROMO GONZÁLEZ» y el calendario no trae ese santo ese día
-   … y 282 más
+   … y 533 más
