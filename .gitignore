@@ -69,6 +69,13 @@ Missale/*.pdf
 # extraer_qa.txt, que entra. Si los quieres dentro, borra la linea.
 Missale/datos/misalitos/
 #
+# Lo mismo con el volcado de la fase 3c -la cosecha de misalcatolico.com,
+# 38 MB en 123 ficheros, once anos dia a dia-. Se rehace con `python
+# Missale/src/3b_bajar.py` y `3c_web.py`, y lo que de ella hace falta para
+# cotejar esta en web_qa.txt, que entra. Las paginas bajadas tampoco estan
+# aqui: viven en misal.TRABAJO, como las del Breviarium.
+Missale/datos/web/
+#
 # Lo que la fase 4 saca de ellos -Missale/datos/libro/, 6,8 MB- SI entra, y
 # a proposito: es el libro ya deshecho en piezas, y como los cien PDF no
 # estan en el repositorio, sin esa carpeta no habria de donde rehacerlo. La
