@@ -136,9 +136,20 @@ FORMULA_CITA = re.compile(
     r'(?=\s+[«“"‘“¿¡\[A-ZÁÉÍÓÚÑ]|$)')
 
 # El cierre y, detrás, la respuesta del pueblo.
+#
+# La respuesta viene de dos maneras: con su letra —«R/. Te alabamos,
+# Señor.»—, que es como la imprime el misalito, y **con su texto a secas y
+# sin espacio delante**, que es como la imprime el sitio: «Palabra de
+# Dios.Te alabamos, Señor.». Son 969 lecturas, y sin reconocerla el cuerpo
+# acaba con la respuesta dentro y el cierre no se ve; se notó al limpiar las
+# piezas, porque entonces el texto del sitio ganó la mayoría en muchas
+# perícopas y el recuento de cierres bajó en vez de subir.
+RESPUESTA_PUEBLO = (r'(?:R/?\.\s*)?(?:T\.\s*)?'
+                    r'(?:Te alabamos,?\s*Señor|Gloria a ti,?\s*Señor Jesús)'
+                    r'\s*\.?')
 CIERRE = re.compile(
     r'\s*(Palabra de Dios|Palabra del Señor)\s*\.?'
-    r'(?:\s*(R/?\.[^.]*\.))?\s*$')
+    r'(?:\s*(' + RESPUESTA_PUEBLO + r'|R/?\.[^.]*\.))?\s*$')
 
 # El sumario entre corchetes, que la fuente pone antes de la fórmula.
 CORCHETE = re.compile(r'^\s*\[([^\]]*)\]\s*')

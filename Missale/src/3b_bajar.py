@@ -156,18 +156,38 @@ CDX = ('http://web.archive.org/cdx/search/cdx?url=misalcatolico.com/misa/*'
        '&output=json&filter=statuscode:200&fl=timestamp,original'
        '&collapse=urlkey')
 ARCHIVO = 'https://web.archive.org/web/%sid_/%s'
+CACHE_CDX = os.path.join(DESTINO, 'cdx.json')
 
 
 def indice_del_archivo(cl):
-    """`{ruta del sitio: sello de tiempo}` de lo que el archivo guarda."""
-    try:
-        r = cl.s.get(CDX, timeout=180)
-        r.raise_for_status()
-        filas = r.json()
-    except (requests.RequestException, ValueError) as e:
-        print('  el índice del archivo no vino (%s)' % type(e).__name__,
-              flush=True)
-        return {}
+    """`{ruta del sitio: sello de tiempo}` de lo que el archivo guarda.
+
+    Se pide una vez y **se guarda en disco**: es el mismo índice para todo el
+    sitio, no cambia de una pasada a otra y pedirlo es lo que el archivo
+    limita con más mano. Y se reintenta, como las páginas: pedido justo
+    después de una tanda de peticiones contesta que no, y a los dos minutos
+    contesta las 3 718 URL sin pestañear. Sin reintento, una pasada entera se
+    quedaba sin diciembres por un `429` de un segundo.
+    """
+    if os.path.exists(CACHE_CDX):
+        try:
+            return json.load(open(CACHE_CDX, encoding='utf-8'))
+        except (ValueError, OSError):
+            pass
+    filas, espera = None, 15.0
+    for intento in range(1, 6):
+        try:
+            r = cl.s.get(CDX, timeout=180)
+            r.raise_for_status()
+            filas = r.json()
+            break
+        except (requests.RequestException, ValueError) as e:
+            print('  el índice del archivo no vino (%s), intento %d de 5'
+                  % (type(e).__name__, intento), flush=True)
+            if intento == 5:
+                return {}
+            time.sleep(espera)
+            espera *= 1.6
     out = {}
     for fila in filas[1:]:
         if len(fila) < 2:
@@ -176,6 +196,11 @@ def indice_del_archivo(cl):
         ruta = url.split('misalcatolico.com', 1)[-1].split('?')[0].rstrip('/')
         if DIA.match(ruta):
             out[ruta] = sello
+    try:
+        json.dump(out, open(CACHE_CDX, 'w', encoding='utf-8'),
+                  ensure_ascii=False, indent=1, sort_keys=True)
+    except OSError:
+        pass
     return out
 
 

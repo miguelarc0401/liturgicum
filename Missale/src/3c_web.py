@@ -90,6 +90,8 @@ def modulo(nombre):
 F3 = modulo('3_extraer')
 PIEZAS, EDITORIAL = F3.PIEZAS, F3.EDITORIAL
 sinac = F3.sinac
+parece_rotulo = F3.parece_rotulo
+rubrica_de = F3.rubrica_de
 
 
 # --------------------------------------------------------------------------
@@ -262,7 +264,16 @@ def renglones_de(html):
 # B. qué es cada renglón
 # --------------------------------------------------------------------------
 
-_LARGOS = sorted(PIEZAS + EDITORIAL, key=len, reverse=True)
+# El rótulo que sólo usa este sitio: desde 2025 rotula la aclamación antes
+# del Evangelio con una palabra, y la cita entre paréntesis en el renglón de
+# debajo. No está en el vocabulario de la fase 3 a propósito —allí una llave
+# tan corta le gana al arreglo por parecido de «ACLAMACIÓN ATES DEL
+# EVANGELIO», que son veinte erratas del misalito—, así que se añade aquí,
+# donde el misalito no llega. Va a la ranura de siempre: la fase 4 la
+# empareja por `OTRO_ROTULO`.
+SOLO_SITIO = ['ACLAMACIÓN']
+
+_LARGOS = sorted(PIEZAS + EDITORIAL + SOLO_SITIO, key=len, reverse=True)
 
 # Rótulos que sólo este sitio usa, y que no son ranura del formulario sino
 # divisores de la misa. Se reconocen para que no se tomen por cuerpo.
@@ -279,6 +290,16 @@ FORMULA = re.compile(
     r'el\s)|lectura\s+(?:del|de)\s|comienzo\s+del?\s|'
     r'de\s+la\s+(?:carta|profecía|primera|segunda))', re.I)
 
+# Las rúbricas que este sitio imprime **a pelo**, sin la frase del Misal: un
+# renglón que dice «Credo» y nada más, u «Oremos» a solas. Son 137 evangelios
+# que acababan con «Credo» pegado y 32 salmos de la Vigilia con el «Oremos»
+# de la oración que sigue a la lectura. No se añaden al vocabulario de la
+# fase 3: allí el misalito las imprime con su frase entera —«Se dice el
+# Credo»—, y una llave tan corta se llevaría por delante el «Oremos» con que
+# de verdad empieza una colecta. El renglón ha de ser **sólo** eso; «Oremos:
+# Dios todopoderoso…», que es como el sitio abre la colecta, no cuenta.
+RUBRICA_SOLA = re.compile(r'^\s*(?:credo|oremos)\s*[.:;]?\s*$', re.I)
+
 # «R/. …» o «R. …»: la respuesta del pueblo.
 RESPUESTA = re.compile(r'^\s*R\s*/?\s*\.', re.I)
 
@@ -289,6 +310,15 @@ SUMARIO = re.compile(r'^\s*\[(.+?)\]\s*$', re.S)
 CITA_LIMPIA = re.compile(r'^[\s:.–—-]+|[\s:.]+$')
 
 
+# El rótulo mal escrito, que este sitio también tiene: «ORACIÓN DESPUÉS DE LA
+# COMUNÓN» treinta y una veces, y con ella la oración del día pegada a la
+# antífona de la comunión. La fase 3 lo arregla por parecido y aquí no se
+# hacía; se usa el mismo umbral alto y cada arreglo se cuenta en el informe.
+_LLAVES = {sinac(r): r for r in PIEZAS + EDITORIAL + SOLO_SITIO}
+PARECIDO = 0.9
+MINUSCULA = re.compile(r'[a-záéíóúüñ]')
+
+
 def rotulo_de(linea):
     """`(canónico, crudo, resto)` si el renglón abre con un rótulo conocido.
 
@@ -296,6 +326,9 @@ def rotulo_de(linea):
     que «ACLAMACIÓN ANTES DEL EVANGELIO» gane a «EVANGELIO». El sitio lo
     escribe unas veces en mayúsculas y otras no, y en 2026 lo da con la cita
     pegada y todo en mayúsculas, así que se compara sin tildes ni caja.
+
+    Lo que no cuadre entero se prueba por **parecido** con las palabras del
+    principio, como en la fase 3: es lo que recupera el rótulo mal impreso.
     """
     k = sinac(linea)
     for canon in _LARGOS:
@@ -308,6 +341,28 @@ def rotulo_de(linea):
     for d in _DIVISORES:
         if k.startswith(d):
             return 'DIVISOR', linea, ''
+    # Por parecido, y **sólo con los renglones que parecen un rótulo**: en
+    # versales y cortos, que es como esta fuente los escribe, bien o mal.
+    # La guarda no es cosmética: `difflib` contra las treinta llaves y los
+    # siete prefijos de cada renglón del sitio multiplicaba por cuatro lo que
+    # tarda la fase, y el 99 % de esos renglones son cuerpo de una pieza.
+    cabeza = re.sub(r'\s+', ' ', linea.strip())
+    if len(cabeza) > 56 or MINUSCULA.search(cabeza[:34]):
+        return None, None, None
+    palabras = cabeza.split(' ')
+    mejor = None
+    for n in range(min(len(palabras), 7), 0, -1):
+        trozo = ' '.join(palabras[:n])
+        if len(trozo) < 6:
+            continue
+        for llave, canon in _LLAVES.items():
+            r = difflib.SequenceMatcher(None, sinac(trozo), llave).ratio()
+            if r >= PARECIDO and (mejor is None or r > mejor[0]):
+                mejor = (r, n, canon, trozo)
+    if mejor is not None:
+        _, n, canon, trozo = mejor
+        resto = CITA_LIMPIA.sub('', ' '.join(palabras[n:]))
+        return canon, trozo, resto
     return None, None, None
 
 
@@ -585,6 +640,50 @@ def bloques_de(lineas, marcas):
     actual = None
     for (marca, t), (canon, crudo, resto) in zip(lineas, marcas):
         if canon == 'DIVISOR':
+            # **El divisor cierra la pieza.** Antes sólo se saltaba el
+            # renglón, y entonces lo que venía detrás —«TERCERA PARTE» y la
+            # rúbrica siguiente, «SAGRADA COMUNIÓN»— seguía cayendo dentro de
+            # la pieza anterior. Un divisor dice justamente que lo que sigue
+            # no es de ella.
+            if actual:
+                bloques.append(cierra(actual))
+                actual = None
+            continue
+        rub = rubrica_de(t) if canon is None else None
+        if not rub and canon is None and RUBRICA_SOLA.match(t):
+            rub = '@credo' if t.strip().lower().startswith('c') else '@oremos'
+        if rub and actual is not None and actual['texto']:
+            # **La rúbrica del Misal también cierra la pieza.** El sitio
+            # imprime «Se dice Credo» detrás del evangelio, el nombre del
+            # prefacio detrás de la oración sobre las ofrendas y el «O bien»
+            # de la colecta alternativa, y los tres se quedaban dentro de la
+            # pieza: 676 evangelios con «Se dice Credo» pegado y 2 021
+            # oraciones sobre las ofrendas con el prefacio dentro. Es el
+            # mismo defecto que el del rótulo desconocido, y se cierra igual.
+            #
+            # Va como **editorial y no como rúbrica**, a diferencia de la
+            # fase 3: la fase 4 lee las rúbricas para decidir el Gloria, el
+            # Credo y el prefacio de cada celebración, y este sitio no vota
+            # en nada de eso —imprime los dos formularios de los días con
+            # opción, que es lo que desarma la atribución—. Limpia la pieza
+            # sin cambiar una decisión.
+            bloques.append(cierra(actual))
+            actual = {'clase': 'editorial', 'rotulo': rub,
+                      'crudo': t.strip()[:60], 'cita': None, 'marca': marca,
+                      'sumario': None, 'formula': None, 'texto': [t]}
+            continue
+        if (canon is None and actual is not None and actual['texto']
+                and parece_rotulo(t)):
+            # Un rótulo en versales que no conocemos: cierra la pieza y se
+            # lleva detrás lo que no es de ella. Es el defecto que dejaba la
+            # Plegaria Universal entera pegada al evangelio del domingo —500
+            # veces—, y el que haría lo mismo con el siguiente rótulo que
+            # este sitio estrene. Va a un bloque editorial, que no entra en
+            # el libro, y el informe lo nombra.
+            bloques.append(cierra(actual))
+            actual = {'clase': 'editorial', 'rotulo': '@desconocido',
+                      'crudo': t.strip(), 'cita': None, 'marca': marca,
+                      'sumario': None, 'formula': None, 'texto': []}
             continue
         if canon:
             if actual:
@@ -593,7 +692,8 @@ def bloques_de(lineas, marcas):
             # en el libro: sólo lee los de clase «pieza» y «rubrica», y se
             # salta lo demás. Sin ella se saltaría **todos**, y el día
             # entraría vacío sin que nadie se quejara.
-            actual = {'clase': 'pieza' if canon in PIEZAS else 'editorial',
+            actual = {'clase': ('pieza' if canon in PIEZAS or canon in SOLO_SITIO
+                                else 'editorial'),
                       'rotulo': canon, 'crudo': crudo, 'cita': resto or None,
                       'marca': marca, 'sumario': None, 'formula': None,
                       'texto': []}
@@ -717,6 +817,9 @@ def main():
     marcas_tot = Counter()
     avisos_tot = []
     rotulos_tot = Counter()
+    desconocidos = Counter()
+    reparados = Counter()
+    rubricas_web = Counter()
     con_opcion = 0
     previos = 0
     repetidas = Counter()
@@ -749,6 +852,15 @@ def main():
                 for r, n in Counter(rs).items():
                     if n > 1:
                         repetidas[r] += 1
+                for b in f['bloques']:
+                    if b['rotulo'] == '@desconocido':
+                        desconocidos[b.get('crudo') or ''] += 1
+                    elif b['rotulo'].startswith('@'):
+                        rubricas_web[b['rotulo']] += 1
+                    elif b.get('crudo') and sinac(b['crudo']) != sinac(
+                            b['rotulo']):
+                        reparados[(b['crudo'].strip()[:40],
+                                   b['rotulo'])] += 1
             forms += fs
             avisos += avs
         formas_tot += len(forms)
@@ -787,12 +899,56 @@ def main():
     if repetidas:
         inf.sub('Ranuras que salen más de una vez en el mismo formulario')
         inf.di('No es un defecto del corte: es el Misal dando a elegir —dos')
-        inf.di('colectas, dos antífonas— y la fuente imprimiendo las dos. Son')
-        inf.di('alternativas, y la fase 4 las cuenta como tales.')
+        inf.di('colectas, dos antífonas— y la fuente imprimiendo las dos; o la')
+        inf.di('Vigilia Pascual, que canta nueve lecturas y ocho salmos; o la')
+        inf.di('memoria que el sitio pone detrás de la feria sin repetir la')
+        inf.di('antífona de entrada, de modo que las dos misas caen en un')
+        inf.di('formulario. La fase 4 se queda con la primera para la ranura')
+        inf.di('—de ella depende la atribución— y lleva las lecturas de más a')
+        inf.di('la cosecha de perícopas, que se guarda por cita.')
         inf.blanco()
         for r, n in repetidas.most_common():
             inf.di('  %-34s %6d formularios' % (r, n))
         inf.blanco()
+
+    if reparados:
+        inf.sub('Los rótulos que el sitio escribe mal')
+        inf.di('Se leen por parecido con el bueno, igual que en la fase 3, y')
+        inf.di('cada uno se nombra. El que más pesa es «ORACIÓN DESPUÉS DE LA')
+        inf.di('COMUNÓN»: sin el arreglo, la oración del día se quedaba')
+        inf.di('pegada a la antífona de la comunión y no entraba en el libro.')
+        inf.blanco()
+        for (crudo, canon), n in reparados.most_common(40):
+            inf.di('  %-42s → %-32s %d' % (crudo, canon, n))
+        inf.blanco()
+
+    if rubricas_web:
+        inf.sub('Las rúbricas del Misal que el sitio imprime')
+        inf.di('Cierran la pieza, como el rótulo desconocido: «Se dice')
+        inf.di('Credo» iba dentro del evangelio y el nombre del prefacio')
+        inf.di('dentro de la oración sobre las ofrendas. Van como editorial y')
+        inf.di('no como rúbrica —a diferencia de la fase 3—, porque la fase 4')
+        inf.di('lee las rúbricas para decidir el Gloria, el Credo y el')
+        inf.di('prefacio de cada celebración, y este sitio no vota en eso.')
+        inf.blanco()
+        for r, n in rubricas_web.most_common():
+            inf.di('  %-16s %6d' % (r, n))
+        inf.blanco()
+
+    inf.sub('Los rótulos en versales que no conocemos')
+    inf.di('Un renglón en versales que no está en el vocabulario **cierra la')
+    inf.di('pieza**: lo que viene detrás no es de ella. Antes pasaba por')
+    inf.di('cuerpo, y por eso el evangelio del domingo salía con la Plegaria')
+    inf.di('Universal entera detrás. Aquí van nombrados y contados, para que')
+    inf.di('el rótulo que falte se vea en vez de esconderse dentro de una')
+    inf.di('lectura.')
+    inf.blanco()
+    inf.di('  %d formas, %d casos.' % (len(desconocidos),
+                                       sum(desconocidos.values())))
+    inf.blanco()
+    for r, n in desconocidos.most_common(60):
+        inf.di('  %5d  %s' % (n, r[:60]))
+    inf.blanco()
 
     faltan = [r for r in PIEZAS if r not in rotulos_tot]
     if faltan:

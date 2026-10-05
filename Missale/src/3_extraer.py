@@ -213,10 +213,35 @@ def cajas(linea):
 # --------------------------------------------------------------------------
 
 PIEZAS = ['ANTÍFONA DE ENTRADA', 'ORACIÓN COLECTA', 'PRIMERA LECTURA',
-          'SALMO RESPONSORIAL', 'SEGUNDA LECTURA', 'SECUENCIA',
+          'SALMO RESPONSORIAL', 'SEGUNDA LECTURA', 'TERCERA LECTURA',
+          'CUARTA LECTURA', 'QUINTA LECTURA', 'SEXTA LECTURA',
+          'SÉPTIMA LECTURA', 'EPÍSTOLA', 'SECUENCIA',
           'ACLAMACIÓN ANTES DEL EVANGELIO', 'EVANGELIO',
+          'PASIÓN DE NUESTRO SEÑOR JESUCRISTO',
           'ORACIÓN SOBRE LAS OFRENDAS', 'ANTÍFONA DE LA COMUNIÓN',
           'ORACIÓN DESPUÉS DE LA COMUNIÓN', 'ORACIÓN SOBRE EL PUEBLO']
+
+# Los seis rótulos de la segunda fila —de la tercera lectura a la epístola—
+# son **los de la Vigilia Pascual**, que lee nueve: siete del Antiguo
+# Testamento, la epístola y el evangelio. Sin ellos en esta lista, el rótulo
+# no se reconoce y el renglón pasa por cuerpo, así que la lectura entera se
+# pegaba al salmo de delante: la Vigilia entraba con dos lecturas de nueve y
+# con los salmos llevando dentro la lectura siguiente. Son 19 veces cada uno
+# —una Vigilia por año en cada fuente—, y no salen en ningún otro día.
+#
+# «PASIÓN DE NUESTRO SEÑOR JESUCRISTO» es el evangelio del Domingo de Ramos y
+# del Viernes Santo con otro nombre; la fase 4 lo lleva a la ranura del
+# evangelio por `OTRO_ROTULO`, y aquí sólo hace falta que se reconozca. Son
+# 16 veces en los misalitos y 25 en el sitio, y sin el rótulo la Pasión se
+# pegaba a la aclamación de delante.
+#
+# **«ACLAMACIÓN» a secas no entra aquí, y sí en la fase 3c.** El sitio rotula
+# así, pero el misalito no: lo que tiene son veinte erratas del rótulo largo
+# —«ACLAMACIÓN ATES DEL EVANGELIO», «ACLAMACIÓN ANTES DEL EVANGELI»— que el
+# arreglo por parecido lee bien, y una llave corta se las queda antes, con su
+# cita dentro de lo que sobra. Se midió: metiéndola, las veinte perdían la
+# cita; es el único sitio donde el vocabulario de las dos fuentes difiere, y
+# por eso está dicho en las dos.
 
 EDITORIAL = ['MONICIONES', 'MONICIÓN DE ENTRADA', 'MONICIÓN',
              'REFLEXIÓN', 'ORACIÓN DE LOS FIELES', 'ORACIÓN UNIVERSAL',
@@ -281,6 +306,40 @@ def rotulo_de(caja):
         sobra = ' '.join(palabras[n:])
         return canon, trozo, (sobra + ' ' + resto).strip()
     return None, None, None
+
+
+# **Un renglón en versales que no está en el vocabulario cierra la pieza.**
+#
+# Es la regla que faltaba, y el defecto que tapaba era de los peores: lo que
+# no se reconoce como rótulo pasa por cuerpo, así que la sección siguiente se
+# **pega al final de la pieza anterior**. En el sitio, el evangelio del
+# domingo salía con la Plegaria Universal entera detrás —500 veces—; en el
+# misalito, el salmo con el anuncio del banco del editor, y la oración
+# después de la comunión con la cabecera del día siguiente. Medido en las dos
+# fuentes: 1 545 renglones en versales dentro de una pieza, 764 de ellos
+# dentro de una lectura.
+#
+# No hace falta saber qué es cada uno para no estropear la pieza: basta con
+# que un rótulo que no se conoce **la cierre**. Lo que venga detrás va a un
+# bloque editorial —que no entra en el libro— y el informe lo nombra y lo
+# cuenta, de modo que el rótulo que falte se vea en vez de esconderse dentro
+# de una lectura.
+#
+# Dos renglones en versales **no** cierran, y son los que marcan un tramo
+# *dentro* de la lectura: la forma breve del evangelio y su continuación.
+ROTULO_SUELTO = re.compile(r"^[A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ'ª .,:;()0-9/\-–—]{4,45}$")
+DENTRO_DE_LA_PIEZA = {'forma breve', 'forma larga', 'continua la forma larga',
+                      'sigue la forma larga'}
+
+
+def parece_rotulo(caja):
+    """Si la caja parece el rótulo de una sección que no conocemos."""
+    t = caja.strip()
+    if not ROTULO_SUELTO.match(t) or re.search(r'[a-záéíóúñü]', t):
+        return False
+    limpio = sinac(re.sub(r'[^A-Za-zÁ-ÿ ]', ' ', t)).strip()
+    limpio = re.sub(r'\s+', ' ', limpio)
+    return limpio not in DENTRO_DE_LA_PIEZA
 
 
 # Las rúbricas que el propio Misal imprime, y que no son rótulo de pieza.
@@ -664,6 +723,15 @@ class Misalito:
                         rubrica_en = i
                     else:
                         actual = None
+                elif (actual is not None and actual['texto']
+                      and parece_rotulo(c)):
+                    # un rótulo que no conocemos: cierra la pieza y se lleva
+                    # lo que venga detrás, que no es de ella
+                    actual = {'clase': 'editorial', 'rotulo': '@desconocido',
+                              'crudo': c, 'cita': None, 'sumario': None,
+                              'texto': [], '_lin': [], '_col': [],
+                              'p': self.pag_de.get(i), 'l': i}
+                    bloques.append(actual)
                 elif actual is not None:
                     # Si la caja va en el mismo renglón del rótulo, es su
                     # cita: la fuente la alinea a la derecha —«ANTÍFONA DE
@@ -765,6 +833,7 @@ def main():
     por_fich, avisos = [], []
     rot_vistos, rot_malos = Counter(), Counter()
     votivas, misas, sin_lecturas = Counter(), Counter(), []
+    desconocidos = Counter()
     for f in fich:
         m = Misalito(os.path.join(carpeta, f))
         d = m.extrae()
@@ -786,7 +855,9 @@ def main():
                 tot[b['clase']] += 1
                 if b['clase'] == 'pieza':
                     rot_vistos[b['rotulo']] += 1
-                if b.get('crudo'):
+                if b['rotulo'] == '@desconocido':
+                    desconocidos[b.get('crudo') or ''] += 1
+                elif b.get('crudo'):
                     rot_malos[(b['crudo'], b['rotulo'])] += 1
             if fo['cabecera']['fuente'] == 'mr':
                 tot['cabeceras_suplidas'] += 1
@@ -868,6 +939,21 @@ def main():
         inf.di('   ninguno')
     for (crudo, canon), n in rot_malos.most_common():
         inf.di('   %-38s → %-32s %d vez(ces)' % (crudo, canon, n))
+
+    inf.titulo('Los rótulos en versales que no conocemos')
+    inf.di('Un renglón en versales que no está en el vocabulario **cierra la')
+    inf.di('pieza**: lo que venga detrás no es de ella. Antes pasaba por')
+    inf.di('cuerpo, y la sección siguiente se quedaba pegada al final de la')
+    inf.di('pieza anterior —el anuncio del banco dentro del salmo, la')
+    inf.di('cabecera del día siguiente dentro de la oración después de la')
+    inf.di('comunión—. Aquí van nombrados y contados, que es lo que permite')
+    inf.di('decidir si alguno merece entrar en el vocabulario.')
+    inf.di()
+    inf.di('   %d formas, %d casos.' % (len(desconocidos),
+                                        sum(desconocidos.values())))
+    inf.di()
+    for r, n in desconocidos.most_common(60):
+        inf.di('   %5d  %s' % (n, r[:60]))
 
     inf.titulo('Lo que el día deja elegir')
     inf.di('No es una lista que haya que inventar: el misalito la imprime.')

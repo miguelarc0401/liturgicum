@@ -1733,19 +1733,29 @@ def pericopas_por_dia(dias, cal, porclave_lect, bloques, anio_de):
 
 
 # El misalito rotula sus lecturas por su sitio en la misa y el leccionario por
-# lo que son; es la misma ranura con dos nombres. Las lecturas numeradas de la
-# Vigilia Pascual, la epístola y los dos testamentos caen todas en la primera,
-# que es donde el misalito las imprime.
+# lo que son; es la misma ranura con dos nombres.
+#
+# Las lecturas numeradas de la Vigilia Pascual y la epístola **tienen ahora
+# ranura propia**: la fuente las rotula («TERCERA LECTURA», «EPÍSTOLA») y la
+# fase 3 ya reconoce esos rótulos, así que no hay que meterlas todas en la
+# primera. Importa para la ruta del día, que sólo se atreve cuando el
+# formulario tiene una sola lectura de ese tipo: con las nueve en la primera
+# no se atrevía nunca, y la Vigilia se quedaba sin esa ruta.
+#
+# Los dos testamentos sí siguen en la primera: son el nombre que el
+# leccionario da a la lectura de las misas rituales —«lectura del Antiguo
+# Testamento»— y la fuente las imprime en la primera ranura, sin rotularlas
+# así.
 RANURA_DE_TIPO = {
     'primera lectura': 'primera', 'segunda lectura': 'segunda',
     'salmo responsorial': 'salmo', 'aleluya': 'aclamacion',
     'evangelio': 'evangelio', 'secuencia': 'secuencia',
-    'epistola': 'primera',
+    'epistola': 'epistola',
     'lectura del Antiguo Testamento': 'primera',
     'lectura del Nuevo Testamento': 'primera',
-    'tercera lectura': 'primera', 'cuarta lectura': 'primera',
-    'quinta lectura': 'primera', 'sexta lectura': 'primera',
-    'septima lectura': 'primera',
+    'tercera lectura': 'tercera', 'cuarta lectura': 'cuarta',
+    'quinta lectura': 'quinta', 'sexta lectura': 'sexta',
+    'septima lectura': 'septima',
 }
 
 

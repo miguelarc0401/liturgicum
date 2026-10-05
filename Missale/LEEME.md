@@ -208,7 +208,8 @@ lecturas coinciden el 93-95 % y los propios el 50-64 %, porque la lectura la
 fija el leccionario y el propio depende de la elección—. Resultado:
 `propios_es`, `sueltos_es` y `prefacios_propios_es` byte a byte iguales;
 `pericopas_es` de 2 642 a **3 206**, y en la app de 4 907 a **5 007** lecturas
-castellanas.
+castellanas. (Las cifras de esta tanda, que son otras, van más abajo: lo que
+faltaba de esta fuente y lo que lo tapaba.)
 
 **Dos defectos que la medida pilló y que parecían cosméticos:**
 el rótulo partido entre dos renglones («ACLAMACIÓN ANTES DEL / EVANGELIO Jn
@@ -220,6 +221,100 @@ entre una misa entera y un evangelio suelto. Se rotula «antes de la misa». La
 condición tuvo que hacerse **relativa**, y lo dijo el Viernes Santo: su
 liturgia no tiene antífona de entrada ni colecta —empieza en silencio— y es
 la celebración del día, no un rito previo.
+
+### Lo que faltaba de la cuarta fuente, y lo que la tapaba
+
+De las 1 435 lecturas que la app daba por no impresas, 903 son de misas
+rituales y votivas y 394 de propios y comunes de santos: celebraciones que
+**ningún día del calendario reza**, o que el día reza por la feria —el
+misalito y el sitio imprimen en san Juan Bosco la lectura de la feria, no Flp
+4, 4-9—. Un sitio que publica *la misa del día* no puede darlas, y su santoral
+son hagiografías, no formularios. Y 1 041 de las 1 435 son *otra opción* de
+una ranura que ya enseña algo: las ranuras que no enseñaban nada eran 347. Lo
+demás señalaba a defectos nuestros, y se arreglaron midiendo.
+
+**Los rótulos de la Vigilia Pascual.** La Vigilia lee nueve lecturas y canta
+ocho salmos, y la fase 3 sólo conocía el rótulo de dos: «TERCERA LECTURA»,
+«CUARTA», «QUINTA», «SEXTA», «SÉPTIMA LECTURA» y «EPÍSTOLA» no estaban en el
+vocabulario, así que el renglón pasaba por cuerpo y la lectura entera se
+pegaba **al salmo de delante**. La Vigilia entraba con dos lecturas de nueve y
+con los salmos llevando dentro la lectura siguiente. Con ellos entran también
+«PASIÓN DE NUESTRO SEÑOR JESUCRISTO» —que es como rotulan su evangelio los dos
+días que leen la Pasión— y «ACLAMACIÓN» a secas, que es como el sitio rotula
+desde 2025.
+
+**«ACLAMACIÓN» es el único rótulo en que las dos fuentes difieren a
+propósito**, y la medida obligó: metida en la fase 3, una llave tan corta le
+gana al arreglo por parecido de «ACLAMACIÓN ATES DEL EVANGELIO» —veinte
+erratas del misalito— y las veinte perdían su cita. Va en la 3c, donde el
+misalito no llega.
+
+**Un rótulo en versales que no conocemos cierra la pieza.** Es la regla de
+fondo, y el defecto que tapaba era de los peores, porque no se quejaba: lo que
+no se reconoce pasa por cuerpo, y la sección siguiente se queda pegada al
+final de la pieza anterior. El evangelio del domingo XXVII salía con la
+**Plegaria Universal entera detrás**; el salmo del misalito, con el anuncio
+del banco del editor; la oración después de la comunión, con la cabecera del
+día siguiente. Medido en las dos fuentes: 1 545 renglones en versales dentro
+de una pieza, 764 de ellos dentro de una lectura. No se arregla rótulo a
+rótulo —mañana la fuente estrena otro—: se arregla cerrando la pieza, mandando
+lo de detrás a un bloque editorial que no entra en el libro, y **nombrándolo
+en el informe**, que es lo que permite decidir si alguno merece entrar en el
+vocabulario. Dos renglones en versales no cierran, y son los que marcan un
+tramo *dentro* de la lectura: la forma breve del evangelio y su continuación.
+
+Del mismo tipo son otras tres. **El divisor** —«LITURGIA DE LA PALABRA»,
+«TERCERA PARTE»— se saltaba sin cerrar el bloque, así que lo de detrás seguía
+cayendo en la pieza anterior. **Las rúbricas que el Misal imprime** se
+quedaban dentro de la pieza en el sitio: 4 640 en total, y entre ellas 2 021
+nombres de prefacio dentro de la oración sobre las ofrendas y 676 «Se dice
+Credo» dentro del evangelio, más 137 evangelios que acababan con un «Credo» a
+secas y los salmos de la Vigilia con el «Oremos» de la oración que sigue. Van
+como **editorial y no como rúbrica**, a diferencia de la fase 3: la fase 4 lee
+las rúbricas para decidir el Gloria, el Credo y el prefacio de cada
+celebración, y este sitio no vota en nada de eso. Y la 3c no tenía el
+**arreglo por parecido** que la fase 3 sí tiene: 40 formas mal escritas
+—«ORACIÓN DESPUÉS DE LA COMUNÓN», «ANTÍFONA DE ENTRAD», «ORACIÓN COLECT»—, 205
+casos, y con cada una la pieza de aquel día se quedaba pegada a la anterior y
+no entraba en el libro.
+
+**Una ranura repetida no es un bloque de sobra.** El formulario tiene una
+ranura de cada cosa y la primera manda —de ella depende la atribución—, pero
+la Vigilia canta ocho salmos, y el sitio, en los días con opción, imprime la
+memoria detrás de la feria sin repetir la antífona de entrada, así que las dos
+misas entran como un solo formulario. Tirar la repetición perdía 279 lecturas
+impresas. Ahora van a la cosecha de perícopas —que se guarda **por cita** y no
+por ranura— y no tocan ni la atribución ni el día.
+
+**La cita del salmo está en su propio renglón, y no la leía nadie.** El salmo
+responsorial trae su cita pegada al rótulo la mitad de las veces; la otra
+mitad va en el renglón de debajo, con la respuesta del pueblo detrás —«Del
+salmo 71, 2. 7-8. 10-11. 12-13 R/. Que te adoren, Señor, todos los pueblos»—.
+Eran 3 268 salmos sin cita, y **una lectura sin cita no llega a perícopa**,
+porque la perícopa se guarda por cita: de ahí que el salmo del lunes de la 27ª
+semana dijera «no disponible» teniéndolo el sitio impreso. Se lee ese renglón,
+cortado por la respuesta, y sólo cuando lo que queda no es más que el nombre
+de un libro y números: es lo que lo distingue del cuerpo del salmo, que
+empieza por palabras. El nombre del libro es obligatorio —un renglón que abre
+con cifra no vale—, porque `del_campo` da por salmo lo que empieza por número
+y el «11, 25» de una aclamación entraba como salmo 11.
+
+**Y la respuesta del pueblo, que la limpieza dejó a la vista.** Con las piezas
+limpias, el texto del sitio ganó la mayoría en muchas perícopas, y entonces
+los cierres reconocidos **bajaron** en vez de subir: el sitio imprime la
+respuesta sin la letra y sin espacio delante —«Palabra de Dios.Te alabamos,
+Señor.»— y la fase 6 sólo la conocía con «R/.». Son 969 lecturas que acababan
+con la respuesta metida en el cuerpo. Reconocerla es lo que convierte una
+medida que empeora en el hallazgo: de 921 lecturas sin cierre a **96**, que
+son justo las que no tienen fórmula —los cánticos que hacen de salmo y la
+Pasión—, y de 6 a **977** con su respuesta aparte.
+
+Resultado medido: `pericopas_es` de 3 209 a **3 558**; en la app, de 5 007 a
+**5 094** lecturas castellanas, 347 → **300** ranuras que no enseñaban ninguna
+opción, y de 27 a **1** las perícopas cuyo texto canónico llevaba dentro un
+rótulo en versales —la que queda es la forma breve del evangelio del hijo
+pródigo, que es la excepción a propósito—. Ninguna lectura se pierde, y las
+piezas castellanas siguen siendo las mismas 4 366.
 
 ### Los salmos no hay que renumerar
 
@@ -554,12 +649,12 @@ Módulo aparte, con su proceso y su carpeta, como `Breviarium/`.
 | 0 ✓ | — | `python src/18_santoral.py` : el calendario desde 2018, que ya es **el valor por defecto** del guion —estaba en 2024, y como `publicar.ps1` lo llama sin argumentos, cada publicación deshacía esta fase sin que nadie lo notara—. **Hecha.** La Pascua, la Ceniza y los dos ciclos de 2018-2023 cuadran con las fechas conocidas en las 28 comprobaciones, el calendario va ahora del 3 de diciembre de 2017 al 27 de noviembre de 2060 sin un día vacío, y los tres traslados de esos seis años son los que de verdad ocurrieron: la Anunciación de 2018 al 9 de abril, la Inmaculada de 2019 al 9 de diciembre y san José de 2023 al 20 de marzo, los tres de domingo a lunes |
 | 1 | `Missale/src/1_latino.py` | el PDF del Misal 2002 → `datos/misal_latino.json`: formularios con sus cinco o seis piezas, prefacios comunes y propios, Ordo Missæ numerado, plegarias eucarísticas (con las de la reconciliación y diversas necesidades), bendiciones solemnes |
 | 2 | `Missale/src/2_ordinario.py` | el PDF del Ordinario de México → `datos/ordinario_es.json` y `datos/prefacios_es.json`: las 146 rúbricas con sus alternativas («O bien:»), los dos símbolos, las plegarias I-IV con sus propios, y los 67 prefacios con título y epígrafe. **Alinea con el latino por número de rúbrica**, y lo que no cuadre va al informe |
-| 3 ✓ | `Missale/src/3_extraer.py` | los 100 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 290 formularios en los 3 044 días de los cien meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial |
+| 3 ✓ | `Missale/src/3_extraer.py` | los 101 misalitos → `datos/misalitos/AAAA-MM.json`. **Hecha.** 3 323 formularios en los 3 075 días de los ciento un meses, sin un hueco: cada uno con su cabecera (día, color, grado, título, reseña y la referencia doble al Misal), sus piezas rotuladas con su cita, las rúbricas que el propio Misal imprime (Gloria, Credo, prefacio, plegaria, bendición solemne) y, marcado aparte, lo editorial. Un renglón en versales que el vocabulario no conoce **cierra la pieza** —247 casos, nombrados en el informe—, porque lo que no se reconoce pasaba por cuerpo y la sección siguiente se quedaba pegada al final de la pieza anterior |
 | 3b | `Missale/src/3b_bajar.py` | el sitio <https://misalcatolico.com> → `misal.TRABAJO/web`: los 3 984 días que su índice enumera (2016-2026), el Ordinario, los prefacios, el santoral y el salterio. Enumera desde el índice —no adivina fechas—, es reanudable, y **los diciembres los trae del archivo de la web**, porque el sitio vivo redirige a sí mismo todos los días de diciembre de todos los años |
-| 3c | `Missale/src/3c_web.py` | el volcado del sitio → `datos/web/AAAA-MM.json` y `datos/web/secciones.json`, **en la misma forma que la fase 3**, para que la 4 deshaga los días de las dos fuentes con un solo código. Cuatro maquetas de sitio y dos plantillas, y ninguna decide: el rótulo se reconoce por el vocabulario de la fase 3 y el marcado sólo se cuenta en el informe |
-| 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 598 celebraciones con propios, 2 642 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 356 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
+| 3c | `Missale/src/3c_web.py` | el volcado del sitio → `datos/web/AAAA-MM.json` y `datos/web/secciones.json`, **en la misma forma que la fase 3**, para que la 4 deshaga los días de las dos fuentes con un solo código. Cuatro maquetas de sitio y dos plantillas, y ninguna decide: el rótulo se reconoce por el vocabulario de la fase 3 —con el arreglo por parecido de allí, que recupera 205 rótulos mal impresos— y el marcado sólo se cuenta en el informe. Lo que no es rótulo conocido **cierra la pieza**: el divisor, las 4 640 rúbricas del Misal que el sitio imprime (que van como editorial, porque este sitio no vota el Gloria ni el Credo ni el prefacio) y los 777 renglones en versales que no conocemos, nombrados en el informe |
+| 4 ✓ | `Missale/src/4_piezas.py` | los días en bruto → `datos/libro/`. **Hecha.** 588 celebraciones con propios, 3 558 perícopas por cita, 28 prefacios propios cosechados enteros, 54 celebraciones con oración sobre el pueblo y 356 textos de los comunes que ninguna celebración explica, aparte y con su reparto medido. Canónico por mayoría de testigos, variantes con los días que las respaldan, y la construcción es byte a byte la misma en dos pasadas |
 | 5 ✓ | `Missale/src/5_resolver.py` | las piezas + el calendario + el índice del leccionario → `datos/libro/misa.json`, y `datos/resolver_qa.txt`. **Hecha.** Los 1 051 formularios del leccionario resueltos pieza por pieza: 691 con las cinco en castellano, 243 con alguna, 84 sólo en latín y 33 sin nada —y los 33 están nombrados y explicados—. El puente con el Misal latino coloca 552 de sus 575 formularios. Las lecturas se emparejan por tres rutas, en este orden: la cita aplastada (4 177), los versículos que la cita abarca leída y no aplastada (655) y el día y la ranura del calendario (75); la construcción es byte a byte la misma en dos pasadas |
-| 6 ✓ | `Missale/src/6_app.py` | `misa.json` + las fuentes → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json`, y `datos/app_qa.txt`. **Hecha.** 7,8 MB, no 14: el latín va una vez, por su propio nombre, y los cincuenta prefacios del Ordo no se repiten. Los 1 051 formularios con sus 4 366 piezas castellanas, las 4 907 lecturas desarmadas en fórmula, sumario, cuerpo y cierre, el Ordinario bilingüe por número de rúbrica —con los 45 propios de la plegaria eucarística clasificados por el día al que son— y las 175 otras misas que el leccionario no numera; la construcción es byte a byte la misma en dos pasadas |
+| 6 ✓ | `Missale/src/6_app.py` | `misa.json` + las fuentes → `app/datos/misa.json`, `lecturas_es.json`, `misal_latino.json`, `prefacios.json`, `ordinario.json`, y `datos/app_qa.txt`. **Hecha.** 7,8 MB, no 14: el latín va una vez, por su propio nombre, y los cincuenta prefacios del Ordo no se repiten. Los 1 051 formularios con sus 4 366 piezas castellanas, las 5 094 lecturas desarmadas en fórmula, sumario, cuerpo, cierre y respuesta del pueblo, el Ordinario bilingüe por número de rúbrica —con los 45 propios de la plegaria eucarística clasificados por el día al que son— y las 175 otras misas que el leccionario no numera; la construcción es byte a byte la misma en dos pasadas |
 
 Las fases 1 y 2 no dependen de nada: ni del calendario de 2018, ni de los
 misalitos, ni una de otra salvo para el cotejo final de la 2. Son el sitio por
@@ -775,7 +870,7 @@ dice en vez de disimularlo**.
   prefacios castellanos con los 50 latinos, con los diecisiete sin pareja
   nombrados uno a uno; y las alternativas detectadas en cada rúbrica, contadas,
   para que se vea si falta alguna.
-* `extraer_qa.txt` — **hecho**. Días no hallados: **0 de 3 044**. Además: las
+* `extraer_qa.txt` — **hecho**. Días no hallados: **0 de 3 075**. Además: las
   dos publicaciones con sus ficheros; las 31 formas en que la fuente escribe
   mal un rótulo («ORACIÓN COLETA», «ACLAMACIÓN ATES DEL EVANGELIO»,
   «SALMORESPONSORIA», «ORACIÓN SOBRE EL PUELO»), una por una, con las veces
@@ -788,7 +883,7 @@ dice en vez de disimularlo**.
   distintas que las ferias permiten, con sus 531 apariciones.
 * `piezas_qa.txt` — **hecho**. El riesgo 3 medido y puesto primero; lo que la
   fuente nombra al lado de la cabecera y que la fase 3 repartía en tres
-  campos; el cotejo de las 2 642 citas contra el índice del leccionario, con
+  campos; el cotejo de las 3 558 citas contra el índice del leccionario, con
   las cinco que no cuadran ni por el capítulo nombradas; las reparaciones con
   su prueba (7 233 palabras partidas por el renglón, los salmos partidos con
   letra, las erratas); las piezas por número de testigos, las 532 con

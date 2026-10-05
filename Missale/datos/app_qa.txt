@@ -28,14 +28,14 @@ Las rúbricas del Ordinario que no están en las dos lenguas
 Lo que se escribió
 ------------------
 
-  app/datos/misa.json                  2522 KB
-  app/datos/lecturas_es.json           4662 KB
+  app/datos/misa.json                  2410 KB
+  app/datos/lecturas_es.json           4741 KB
   app/datos/misal_latino.json           775 KB
-  app/datos/prefacios.json              240 KB
+  app/datos/prefacios.json              241 KB
   app/datos/ordinario.json              234 KB
-  TOTAL                                8433 KB
+  TOTAL                                8401 KB
 
-  versión de datos: clementina+nova-299455129
+  versión de datos: clementina+nova-1555265049
 
 Los formularios y sus piezas
 ----------------------------
@@ -47,11 +47,11 @@ Los formularios y sus piezas
     nada                          33
 
   piezas (seis ranuras por formulario, 6306 en total):
-      por celebración                         1854
-      por común                                141
-      por día                                  460
-      por suelto                                49
-      por unidad                              1862
+      por celebración                         1847
+      por común                                142
+      por día                                  462
+      por suelto                                46
+      por unidad                              1869
     piezas en castellano                      4366
     piezas que sólo tiene el latín             726
 
@@ -60,7 +60,7 @@ Los formularios y sus piezas
   `la` del formulario. La castellana dice «no disponible», que es
   lo que se decidió en la pregunta 6 del plan.
 
-  otras misas sin clave del leccionario: 175
+  otras misas sin clave del leccionario: 170
     Son la vigilia de san Juan Bautista y la de san Pedro y san
     Pablo, la vigilia de Pentecostés, la segunda y la tercera de
     los Difuntos —que el Misal da aparte y el leccionario no
@@ -72,37 +72,37 @@ Las lecturas en castellano
 --------------------------
 
   formularios con alguna lectura castellana: 1042 de 1044
-  lecturas con castellano                       5007
-  lecturas sin castellano                       1435
+  lecturas con castellano                       5094
+  lecturas sin castellano                       1348
   formularios sin una sola lectura en castellano     2
 
   por tipo de lectura:
                                         total con es     %
-    evangelio                            1577   1266   80%
-    salmo responsorial                   1367   1109   81%
+    evangelio                            1577   1268   80%
+    salmo responsorial                   1367   1161   85%
     aleluya                              1233   1062   86%
     primera lectura                      1201    988   82%
     segunda lectura                       409    313   77%
-    lectura del Nuevo Testamento          355    149   42%
+    lectura del Nuevo Testamento          355    153   43%
     lectura del Antiguo Testamento        256    105   41%
-    tercera lectura                        10      0    0%
+    tercera lectura                        10     10  100%
     quinta lectura                         10     10  100%
-    septima lectura                        10      5   50%
-    cuarta lectura                          5      0    0%
-    sexta lectura                           5      0    0%
-    epistola                                4      0    0%
+    septima lectura                        10     10  100%
+    cuarta lectura                          5      5  100%
+    sexta lectura                           5      5  100%
+    epistola                                4      4  100%
 
   por la ruta con que la fase 5 la halló:
-    cita                                        4258
-    día                                           94
-    versículos                                   655
+    cita                                        4426
+    día                                           90
+    versículos                                   578
 
   Las dos rutas que no son la cita —los versículos y el día— son
-  de esta pasada, y traen 749 lecturas que la primera versión daba
+  de esta pasada, y traen 668 lecturas que la primera versión daba
   por no impresas teniéndolas el misalito impreso. El informe de la
   fase 5 explica cada una.
 
-  lecturas que abarcan otros versículos, y se dice    94
+  lecturas que abarcan otros versículos, y se dice    90
   Son las de la ruta del día: las otras dos exigen la misma cita o
   el mismo conjunto de versículos, así que no pueden diferir. La
   app las enseña con las dos citas, la del leccionario y la que el
@@ -118,14 +118,14 @@ Desarmar la perícopa impresa
   dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
   que salió:
 
-    lecturas con fórmula                        2740
-    lecturas sin fórmula reconocida               96
-    lecturas con sumario                        1203
-    lecturas con cierre                         1915
-    lecturas sin cierre reconocido               921
-    lecturas con respuesta del pueblo              6
-    salmo o aclamación sin respuesta              25
-    salmo sin estrofas                             1
+    lecturas con fórmula                        2768
+    lecturas sin fórmula reconocida              103
+    lecturas con sumario                        1291
+    lecturas con cierre                         2775
+    lecturas sin cierre reconocido                96
+    lecturas con respuesta del pueblo            977
+    salmo o aclamación sin respuesta             925
+    salmo sin estrofas                             0
 
   El cierre se busca en el texto ya juntado y no en el último
   renglón: la fuente parte «Palabra / de Dios.» entre dos
@@ -150,6 +150,7 @@ Desarmar la perícopa impresa
     Eclo 27,33–28.9
     Ef 3,14-19
     Est 4,17
+    Ex 15,1b-2.3-4.5-6.17-18
     Gn 1,26—2.3
     Hb 4,14-16.5.7-9
     Hch 12,24—13.5
@@ -163,7 +164,9 @@ Desarmar la perícopa impresa
     Lc 1,46-47.48-49.50.53.54-55
     Lc 1,46-48.49-50.53-54
     Lc 1,69-70.71-72.73-75
+    Lc 22,14–23.56
     Lc 4,16-21
+    Mc 14,1—15.47
     Mt 26,14—27.66
     Tb 13,2.6.7.8
 
@@ -178,61 +181,414 @@ Desarmar la perícopa impresa
   ele en vez de uno, y la cita de Ester con «(Neovulgata)»
   detrás.
 
-  Perícopas en que no se halló el cierre (460):
-    1 Co 1,1-9
-    1 Co 10,14-22
-    1 Co 10,16-17
-    1 Co 11,17-26
-    1 Co 11,23-26
-    1 Co 12,4-11
-    1 Co 15,12.16-20
-    1 Co 15,20-24.25-28
-    1 Co 15,20-26.28
-    1 Co 15,20-27
-    1 Co 15,45-49
-    1 Co 15,54-57
-    1 Co 2,1-5
-    1 Co 3,1-9
-    1 Co 3,16-23
-    1 Co 3,18-23
-    1 Co 4,1-5
-    1 Co 5,1-8
-    1 Co 5,6-8
-    1 Co 6,13-15.17-20
-    1 Co 7,25-31
-    1 Co 7,29-31
-    1 Co 7,32-35
-    1 Co 9,16-19.22-23
-    1 Cro 15,3-4.15-16.16.1-2
+  Perícopas en que no se halló el cierre (34):
     1 Cro 29,10.11abc.11d-12a.12bcd
-    1 M 1,10-15.41-43.54-57.62-64
-    1 M 2,15-29
-    1 M 4,36-37.52-59
-    1 P 1,17-21
-    1 P 1,3-9
-    1 P 1,8-12
-    1 P 2,20b-25
-    1 P 3,18-22
-    1 P 4,7-13
-    1 P 5,1-4
-    1 P 5,5b-14
-    1 R 17,17-24
-    1 R 19,4-8
-    1 R 2,1-4.10-12
-    … y 420 más
+    1 S 2,1.4-5.6-7.8abcd
+    Ap 14,13
+    Dn 3,52.53.54.55.56
+    Dn 3,57.58.59.60.61
+    Dn 3,62.63.64.65.66.67
+    Dn 3,68.69.70.71.72.73.74
+    Dn 3,75.76.77.78.79.80.81
+    Dn 3,82.83.84.85.86.87
+    Dt 32,18-19.20.21
+    Dt 32,26-27ab.27cd-28.30.35cd-36ab
+    Dt 4,1-2.6-8
+    Ex 14,15—15.1
+    Ex 14,21-15.1
+    Ex 15,1b-2.3-4.5-6.17-18
+    Is 12,2-3.4bcd.5-6
+    Is 38,10.11.12abcd.16
+    Jn 18,1—19.42
+    Jr 31,10.11-12ab.13
+    Lc 1,46-47.48-49.50-51.52-53.54-55
+    Lc 1,46-47.48-49.50.53.54-55
+    Lc 1,46-48.49-50.53-54
+    Lc 1,69-70.71-72.73-75
+    Lc 19,28-40
+    Lc 22,14–23.56
+    Lc 4,16-21
+    Mc 11,1-10
+    Mc 14,1—15.47
+    Mt 2,1-12
+    Mt 21,1-11
+    Mt 26,14—27.66
+    Rm 6,3-11
+    Rm 8,8-17
+    Tb 13,2.6.7.8
 
   Salmos o aclamaciones sin respuesta del pueblo:
     1 Cro 29,10.11abc
     1 Cro 29,10.11abc.11d-12a.12bcd
     Dn 3,52.53.54.55.56
+    Is 12,2-3.4bcd.5-6
     Jn 14,18
     Jn 4,12R/.Aleluya.aleluya
     Jn 4,42.15
+    Sal 1,1-2.3.4y6
+    Sal 10,4.5.7
+    Sal 101,13-14ab.15.16-18.19-21
+    Sal 101,16-18.19-21.29y22-23
+    Sal 101,2-3.16-18.19-21
+    Sal 102,1-2.11-12.19-20ab
+    Sal 102,1-2.13-14.17-18a
+    Sal 102,1-2.3-4.6-7
+    Sal 102,1-2.3-4.6-7.8y10
+    Sal 102,1-2.3-4.8-9.10-11
+    Sal 102,1-2.3-4.8-9.11-12
+    Sal 102,1-2.3-4.9-10.11-12
+    Sal 102,13-14.15-16.17-18a
+    Sal 102,6-7.8-9.10-11.12-13
+    Sal 102,8y10.13-14.15-16.17-18
+    Sal 103,1-2a.24.35c.27-28.29bc-30
+    Sal 103,1-2a.27-28.29bc-30
+    Sal 103,1-2a.5-6.10.12.24.35c
+    Sal 103,1-2a.5-6.10y12.13-14.24y35c
+    Sal 103,1ab.24ac.29bc-30.31.34
+    Sal 103,1b-2.3-4.24-25.27-28.29-30
+    Sal 104,1-2.3-4.6-7.8-9
+    Sal 104,16-17.18-19.20-21
+    Sal 104,2-3.36-37.42-43
+    Sal 104,2-3.4-5.6-7
+    Sal 104,4-5.6-7.8-9
+    Sal 104,6-7.8-9.42-43
+    Sal 105,1-2.3-4a.4b-5
+    Sal 105,19-20.21-22.23
+    Sal 105,3-4.35-36.37y40
+    Sal 105,34-35.36-37.39-40.43ab.44
+    Sal 105,6-7a.13-14.21-22.23
+    Sal 105,6-7a.19-20.21-22
+    Sal 106,2-3.4-5.6-7.8-9
+    Sal 106,23-24.25-26.28-29.30-31
+    Sal 11,2-3.4-5.7-8
+    Sal 110,1-2.3-4.5-6
+    Sal 110,1-2.3-4.7-8
+    Sal 110,1-2.4-5.9y10c
+    Sal 110,1-2.7-8.9.10c
+    Sal 110,7-8.9.10
+    Sal 111,1-2.3-4.5-6
+    Sal 111,1-2.3-4.9
+    Sal 111,1-2.4-5.9
+    Sal 111,1-2.5-6.7-8.9
+    Sal 111,1-2.5-6.8a.9
+    Sal 111,1-2.7bc-8.9
+    Sal 111,1-9
+    Sal 112,1-2.3-4.5-6
+    Sal 112,1-2.3-4.5-6.7-8
+    Sal 112,1-2.3-4.5a.6-7
+    Sal 112,1-2.4-6.7-8
+    Sal 113,1-2.3-4.5-6
+    Sal 114,1-2.3-4.5-6.8-9
+    Sal 115,10-11.15-16.17-18
+    Sal 115,10.15.16-17.18-19
+    Sal 115,12-13.14-15.16-17
+    Sal 115,12-13.14-15.18-19
+    Sal 115,12-13.14-17.18-19
+    Sal 115,12-13.15-16bc.17-18
+    Sal 115,12-13.15.16bc.17-18
+    Sal 115,12-13.17-18
+    Sal 116,1.2
+    Sal 117,1-2.16ab-17.22-23
+    Sal 117,1-2.16ab-17.28
+    Sal 117,1-2y4.22-24.25-27a
+    Sal 117,1y14-15.16ab-18.19-21
+    Sal 117,1y8-9.21-23.26y28cdy29
+    Sal 117,2-4.13-15.22-24
+    Sal 117,2-4.16ab-18.22-24
+    Sal 117,2-4.22-24.25-27a
+    Sal 118,1-2.4-5.17-18.33-34
+    Sal 118,1-2.4-5.7-8
+    Sal 118,1.2.10.11.17.18
+    Sal 118,1.27.30.34.35.44
+    Sal 118,12.16.18.27.34.35
+    Sal 118,129.130.131.132.133.135
+    Sal 118,14.24.72.103.111.131
+    Sal 118,157.160.161.165.166.168
+    Sal 118,165.168.171.172.174.175
+    Sal 118,2.10.20.30.40.131
+    Sal 118,23-24.26-27.29-30
+    Sal 118,29.43.79.80.95.102
+    Sal 118,29.72.89.101.104.163
+    Sal 118,33.34.35.36.37.40
+    Sal 118,53.61.134.150.155.158
+    Sal 118,57y72.76-77.127-128.129-130
+    Sal 118,66.68.76.77.93.94
+    Sal 118,67.68.71.72.75.76
+    Sal 118,89.90.91.130.135.175
+    Sal 118,9.10.11.12.13.14
+    Sal 118,97.98.99.100.101.102
+    Sal 12,4-5.6
+    Sal 120,1-2.3-4.5-6.7-8
+    Sal 121,1-2.3-4a.4b-5
+    Sal 121,1-2.4-5
+    Sal 121,1-2.4-5.6-7.8-9
+    Sal 122,1-2a.2bcd
+    Sal 123,1-3.4-6.7-8
+    Sal 125,1-2ab.2cd-3.4-5.6
+    Sal 127,1-2.3.4-5
+    Sal 127,1-2.3.4.5
+    Sal 127,1-2.4-5
+    Sal 129,1-2.3-4.5-6.7.8
+    Sal 129,1-2.3-4.7bc-8
+    Sal 129,1-2.3-4ab.4c-6.7-8
+    Sal 130,1.2.3
     Sal 131,1-23-5.11.12.13-14
-    Sal 17,2-3a.3bc-4.47y51ab
+    Sal 131,11.12.13-14.17-18
+    Sal 131,6-7.9-10.13-14
+    Sal 134,1-2.3-4.5-6
+    Sal 135,1.2.3.16.17.18.21.22.24
+    Sal 135,1.23.24.10.11.12.13.14.15
+    Sal 136,1-2.3.4-5.6
+    Sal 137,1-2a.2bc-3.6.8bc
+    Sal 137,1-2a.2bcd-3.7c-8
+    Sal 138,1-3.13-14.15
+    Sal 138,1-3.13-14ab.14c-15
+    Sal 138,1-3.13-14ab.23-24
+    Sal 138,1-3.4-6.7-8.9-10
+    Sal 138,7-8.9-10.11-12ab
+    Sal 14,2-3ab.3cd-4ab.5
+    Sal 140,1-2.3.8
+    Sal 143,1.2.9-10
+    Sal 143,1a.2abc.3-4
+    Sal 144,1-2.8-9.10-11
+    Sal 144,1-2.8-9.10-11.13cd-14
+    Sal 144,10-11.12-13ab.17-18
+    Sal 144,10-11.12-13ab.21
+    Sal 144,10-11.15-16.17-18
+    Sal 144,17-18.19-20.21
+    Sal 144,2-3.10-11.12-13ab
+    Sal 144,2-3.4-5.10-11
+    Sal 144,2-3.4-5.6-7
+    Sal 144,2-3.4-5.6-7.8-9
+    Sal 144,2-3.8-9.17-18
+    Sal 144,8-9.10-11.12-13ab
+    Sal 144,8-9.10-11.12-13ab.13cd-14
+    Sal 144,8-9.15-16.17-18
+    Sal 145,1-2.3-4.5-6ab
+    Sal 145,5-6ab.6c-7.8-9a.9bc-10
+    Sal 146,1-2.3-4.5-6
+    Sal 147,12-13.14-15.19-20
+    Sal 147,12-13.15-16.19-20
+    Sal 148,1-2.11-12.13.14
+    Sal 149,1-2.3-4.5-6a.9b
+    Sal 15,1-2a.5.7-8.11
+    Sal 15,1-2a.5.7-8.9-10.11
+    Sal 15,5y8.9-10.11
+    Sal 150,1-2.3-4.5-6
+    Sal 16,1.2-3.6-7
+    Sal 16,1.2-3.6-7.8.15
+    Sal 16,1.5-6.8by15
+    Sal 16,1.6-7.8b.15
+    Sal 17,2-3a.3bc-4.47.51ab
+    Sal 17,2-3a.3bc-4.5-6.7
+    Sal 17,31.47y50.51
+    Sal 18,2-3.4-5
+    Sal 18,8.10.12-13.14
+    Sal 18,8.9.10.15
+    Sal 2,1-3.4-6.7-9
+    Sal 2,6-7.8-9.10-11
+    Sal 2,7-8.10-11
+    Sal 21,26b-27.28.30.31-32
+    Sal 21,8-9.17-18a.19-20.23-24
+    Sal 22,1-2a.2b-3.5-6
+    Sal 22,1-3a.3b-4.5.6
+    Sal 23,1-2.3-4ab.5-6
+    Sal 23,7.8.9.10
+    Sal 24,2-4a.4b-5ab.6-7bc.8-9
+    Sal 24,4bc-5.6-7.8-9
+    Sal 25,2-3.9-10.11-12
+    Sal 26,1.4.13-14
+    Sal 26,7-8a.8b-9abc.13-14
+    Sal 27,2.7.8-9
+    Sal 28,1a.2.3ac-4.3b.9b-10
+    Sal 29,2.4.5-6.11-12a.13b
+    Sal 3,2-3.4-5.6-7
+    Sal 30,20.21.24
+    Sal 30,3cd-4.6.8ab.16bc.17
+    Sal 30,3cd-4.6ab.7b.8a.17.21ab
+    Sal 30,5-6.14.15-16
+    Sal 31,1-2.5.11
+    Sal 31,1-2.5.6.7
+    Sal 31,1-2.5.7.11
+    Sal 32,1-2.4-5.10-11
+    Sal 32,1-2.4-5.11-12.18-19
+    Sal 32,1-2.4-5.12-13
+    Sal 32,1.12.18-19.20.22
+    Sal 32,10-11.12-13.14-15
+    Sal 32,12-13.14-15.20-21
+    Sal 32,12-13.18-19.20-21
+    Sal 32,12-13.18-19.20.22
+    Sal 32,2-3.10-11.18-19
+    Sal 32,2-3.4-5.12y22
+    Sal 32,4-5.18-19.20.22
+    Sal 32,4-5.6.9.18-19.20.22
+    Sal 33,17-18.19-20.21.23
+    Sal 33,2-3.10-11.12-13.14-15
+    Sal 33,2-3.16-17.18-19
+    Sal 33,2-3.16-17.18-19.20-21.22-23
+    Sal 33,2-3.4-5.6-7.8-9
+    Sal 33,2-3.6-7.17-18.19.23
+    Sal 33,2.9.17-18.19-20
+    Sal 33,4-5.6-7.16-17.18-19
+    Sal 33,7-8.10-11.12-13
+    Sal 33,8-9.10-11.12-13
+    Sal 35,6-7ab.8-9.10-11
+    Sal 36,2.18.23.27.29
+    Sal 36,3-4.18-19.27-28.39-40
+    Sal 36,3-4.5-6.23-24.39-40
+    Sal 36,3-4.5-6.27-28.39-40
+    Sal 36,5-6.30-31.39-40
+    Sal 39,2.3.4.18
+    Sal 39,2y4ab.7-8a.10.11
+    Sal 39,2y4ab.7-8a.8b-9.10
+    Sal 39,2y5.7-8a.8b-9.10
+    Sal 39,5.7-8a.8b-9.10
+    Sal 39,7-8a.8b-9.10.11
+    Sal 39,7-8a.8b-9.10.17
+    Sal 4,2-3.4-5.7-8
+    Sal 4,2.4.7.9
+    Sal 41,3.5bcd.42.3.4
+    Sal 42,1.2.3.4
+    Sal 43,10-11.14-15.24-25
+    Sal 44,11-12.14-15.16-17
+    Sal 46,2-3.6-7.8-9
+    Sal 46,2-3.8-9.10
+    Sal 47,2-3a.3b-4.9.10-11
+    Sal 48,14-15ab.15cd-16.17-18.19-20
+    Sal 48,2-3.6-7.8-10.11
+    Sal 48,6-7.8-10.17-18.19-20
+    Sal 49,1-2.5-6.14-15
+    Sal 49,16bc-17.18-19.20-21.22-23
+    Sal 49,1y8.12-13.14-15
+    Sal 49,5-6.7-8.14.23
+    Sal 49,5-6.8-9.16bc-17.21.23
+    Sal 49,7.8-9.10-11.12-13.16bc-17
+    Sal 49,8-9.16bc-17.21.23
+    Sal 5,2-3.5-6.7
+    Sal 5,5-6.7.12
+    Sal 5,5-6.7.8
+    Sal 50,12-13.14-15.16-17
+    Sal 50,12-13.14-15.18-19
+    Sal 50,3-4.12-13.14-15
+    Sal 50,3-4.12-13.17.19
+    Sal 50,3-4.12-13.18-19
+    Sal 50,3-4.18-19.20-21ab
+    Sal 50,3-4.5-6a.12-13.14y17
+    Sal 50,3-4.5-6a.6bc-7.10-11
+    Sal 50,3-4.5-6bc-7.12-13
+    Sal 50,3-4.8-9.12-13.14.17
+    Sal 51,10.11
+    Sal 53,3-4.5.6.8
+    Sal 53,3-4.6.8
+    Sal 54,7.8.9-10a.10b-11.23
+    Sal 55,10.11-12.13-14
+    Sal 55,2-3.9-10ab.10c-11.12-13
+    Sal 56,2.3-4.6.y11
+    Sal 56,8-9.10-12
+    Sal 58,2-3.4-5a.10-11.17.18
+    Sal 59,3.4-5.12-13
+    Sal 61,2-3.6-7.8-9ab
+    Sal 61,2-3.6-7.9
+    Sal 61,6-7.9
+    Sal 62,2.3-4.5-6.7-8
+    Sal 64,10abcd.10e-11.12-13.14
+    Sal 65,1-3a.4-5.6-7a
+    Sal 65,1-3a.4-5.6-7a.16.20
+    Sal 65,8-9.16-17.20
+    Sal 66,2-3.5.6.8
+    Sal 67,10-11.20-21
+    Sal 67,2-3.4-5ac.6-7ab
+    Sal 67,2.4.6-7ab.20-21
+    Sal 67,29-30.33-35a.35bc.36c
+    Sal 67,4-5ac.6-7ab.10-11
+    Sal 68,14.17.30-31.33-34.36ab.37
+    Sal 68,15-16.30-31.33-34
+    Sal 68,3.14.30-31.33-34
+    Sal 68,30-31.33-34.36-37
+    Sal 68,33-35.36-37
+    Sal 68,5.8-10.14
+    Sal 68,8-10.14y17.33-35
+    Sal 68,8-10.21bcd-22.31y33-34
+    Sal 7,2-3.9bc-10.11-12
+    Sal 70,1-2.3-4a.5-6ab.15ab.17
+    Sal 70,1-2.3-4a.5-6ab.15aby17
+    Sal 70,3-4a.5-6ab.16-17
+    Sal 70,8-9.14-15ab.16-17.22
+    Sal 71,1-2.14.15bc.17
+    Sal 71,1-2.3-4ab.7-8.17
+    Sal 71,1-2.7-8.12-13.17
+    Sal 71,2.10-11.12-13
+    Sal 76,12-13.14-15.16.21
+    Sal 77,1-2.34-35.36-37.38
+    Sal 77,18-19.23-24.25-26.27-28
+    Sal 77,3.4bc.23-24.25.54
+    Sal 77,3y4bc.6c.7-8
+    Sal 78,1-2.3-5.8.9
+    Sal 78,8.9.11.13
+    Sal 79,2-3.5-7
+    Sal 79,2ac.3bc.15-16
+    Sal 79,9y12.13-14.15-16.19-20
+    Sal 8,2ay5.6-7.8-9
+    Sal 8,4-5.6-7.8-9
+    Sal 80,12-13.14-15.16-17
+    Sal 80,3-4.5-6ab.10-11ab
+    Sal 80,3-4.5-6ab.6c-8a.10-11b
+    Sal 80,6c-8a.8bc-9.10-11ab.14.17
+    Sal 81,3-4.6-7
+    Sal 83,3.4.5-6.12
+    Sal 83,3.4.5-6a.8a
     Sal 83,3.4.5-6a.8a.11
+    Sal 84,9.11-12.13-14
+    Sal 84,9ab-10.11-12.13-14
+    Sal 85,1-2.3-4.5-6
+    Sal 85,3-4.5-6.9-10
+    Sal 85,5-6.9-10.15-16a
+    Sal 86,1-3.4-5.6-7
+    Sal 87,1abc-11.12-13.14-15
+    Sal 87,2-3.4-5.6.7-8
+    Sal 88,16-17.18-19
+    Sal 88,2-3.16-17.18-19
+    Sal 88,2-3.21-22.25.27
+    Sal 88,20.21-22.25-26
+    Sal 88,20.21-22.27-28
+    Sal 88,4-5.16-17.27.29
+    Sal 88,4-5.29-30.31-32.33-34
+    Sal 89,2.3-4.5-6.12-13
+    Sal 89,3-4.12-13.14.17
+    Sal 89,3-4.5-6.12-13.14.17
+    Sal 9,2-3.4y6.16by19
+    Sal 9,2-3.6.16.8-9
+    Sal 9,22-23.24-25.28-29.35
+    Sal 9,8-9.10-11.12-13
+    Sal 90,1-2.10-11.12-13.14-15
+    Sal 90,1-2.14-15ab.15c-16
+    Sal 90,1-2.3-4.14-15ab
+    Sal 91,2-3.13-14.15-16
+    Sal 92,1ab.1c-2.5
     Sal 93,12-13a.14-15.17-18
-    Sal 95,1-2a.3a.10ac
+    Sal 93,12-13a.14-15.18-19
+    Sal 93,5-6.7-8.9-10.14-15
+    Sal 94,1-2.3-5.6-7
+    Sal 94,1-2.6-7.8-9
+    Sal 95,1-2.2b-3.7-8a.9-10ac
+    Sal 95,1-2a.2b-3.10
+    Sal 95,1-2a.2b-3.11-12.13
+    Sal 95,1-2a.2b-3.4-5
+    Sal 95,1.3.4-5.11-12a.12b-13
+    Sal 95,10.11-12a.12b-13
+    Sal 95,1y3.4-5.7-8.9-10ayc
+    Sal 96,1-2.5-6.11-12
+    Sal 96,1-2.5-6.9
+    Sal 96,1.2b.5-6.10.11-12
+    Sal 96,1y2b.6y7c.9
+    Sal 97,1.2-3ab.3c-4.5-6
+    Sal 97,1.2-3ab.3cd-4
+    Sal 97,1.7-8.9
+    Sal 97,2-3ab.3cd-4.5-6
+    Sal 97,5-6.7-8.9
+    Sal 98,5.6.7.9
+    Sal 99,2.3.4.5
+    Sal 99,2.3.5
 
 El Misal latino
 ---------------
@@ -501,13 +857,13 @@ Lo que esta fase topa y no es suyo
     «1 Co 6,13c–15a.17–20» donde La Santa Misa y el leccionario
     escriben «1 Co 6,13c-15a.17-20», y el `squeeze` de la fase 5
     pliega la raya al punto porque la raya es también como una de
-    las dos fuentes marca el salto de capítulo. De ahí que 334
+    las dos fuentes marca el salto de capítulo. De ahí que 344
     citas del corpus tengan gemela que sólo difiere en la raya, y
     que 182 perícopas con la respuesta del pueblo impresa no se
     alcancen —por eso esta fase sólo halla 2 lecturas con
     respuesta—. **Medido, cuesta poco:** plegando la raya al
-    guión se recuperarían 5 lecturas (5 perícopas distintas) de
-    las 1435 que hoy no tienen castellano, porque las demás ya están
+    guión se recuperarían 3 lecturas (3 perícopas distintas) de
+    las 1348 que hoy no tienen castellano, porque las demás ya están
     alcanzadas por su gemela con guión. No se arregla aquí: el
     puente de citas es de la fase 5, y `misa.json` es la decisión
     auditada; si la app enseñara texto que esa decisión dice que

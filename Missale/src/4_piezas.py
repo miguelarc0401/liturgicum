@@ -80,6 +80,12 @@ RANURAS = [
     ('PRIMERA LECTURA',                'primera',     'lectura'),
     ('SALMO RESPONSORIAL',             'salmo',       'lectura'),
     ('SEGUNDA LECTURA',                'segunda',     'lectura'),
+    ('TERCERA LECTURA',                'tercera',     'lectura'),
+    ('CUARTA LECTURA',                 'cuarta',      'lectura'),
+    ('QUINTA LECTURA',                 'quinta',      'lectura'),
+    ('SEXTA LECTURA',                  'sexta',       'lectura'),
+    ('SÉPTIMA LECTURA',                'septima',     'lectura'),
+    ('EPÍSTOLA',                       'epistola',    'lectura'),
     ('SECUENCIA',                      'secuencia',   'lectura'),
     ('ACLAMACIÓN ANTES DEL EVANGELIO', 'aclamacion',  'lectura'),
     ('EVANGELIO',                      'evangelio',   'lectura'),
@@ -88,7 +94,18 @@ RANURAS = [
     ('ORACIÓN DESPUÉS DE LA COMUNIÓN', 'poscomunion', 'propio'),
     ('ORACIÓN SOBRE EL PUEBLO',        'pueblo',      'propio'),
 ]
+
+# Dos rótulos más que no son ranura nueva, sino otro nombre de una que ya
+# está: el sitio rotula «ACLAMACIÓN» a secas, y los dos días que leen la
+# Pasión —el Domingo de Ramos y el Viernes Santo— rotulan su evangelio con
+# ella. El leccionario los llama por la ranura, no por el rótulo, así que
+# aquí se les da la de siempre.
+OTRO_ROTULO = {
+    'ACLAMACIÓN': 'aclamacion',
+    'PASIÓN DE NUESTRO SEÑOR JESUCRISTO': 'evangelio',
+}
 DE_ROTULO = {r: s for r, s, _ in RANURAS}
+DE_ROTULO.update(OTRO_ROTULO)
 CLASE_DE = {s: c for _, s, c in RANURAS}
 PROPIOS = [s for _, s, c in RANURAS if c == 'propio']
 LECTURAS = [s for _, s, c in RANURAS if c == 'lectura']
@@ -207,6 +224,25 @@ DELANTE = re.compile(
 NUMERO = re.compile(r'(\d{1,3}\s*[,.]\s*[\dl][\d\s.,;:a-e–—-]*)')
 SIGLA_SUELTA = re.compile(
     r'^((?:[123]\s*)?[A-ZÁ-Ú][A-Za-zÁ-ÿ]{0,5}\.?)\s*([\dl].*)$')
+
+# **El renglón que es la cita y nada más.** El salmo responsorial no siempre
+# trae su cita pegada al rótulo: la mitad de las veces la fuente la imprime en
+# el renglón de debajo —«Del salmo 71, 2. 7-8. 10-11. 12-13 R/. Que te adoren,
+# Señor…»—, y ahí no la leía nadie: 3 268 salmos entraban sin cita, y una
+# lectura sin cita no llega a ser perícopa, porque la perícopa se guarda **por
+# cita**. Se lee ese renglón, cortado por la respuesta del pueblo, y sólo
+# cuando una vez cortado no queda más que el nombre de un libro y números: es
+# lo que distingue la cita del cuerpo del salmo, que empieza por palabras. El
+# nombre del libro es **obligatorio** —un renglón que abre con un número a
+# secas no vale—, porque `del_campo` da por salmo lo que empieza por cifra y
+# el «11, 25» de una aclamación entraba como salmo 11.
+CITA_SOLA = re.compile(
+    r'^\s*(?:del?\s+(?:los\s+)?salmos?\b[\s:.]*'
+    r'|(?:[123]\s*)?[A-ZÁ-Ú][A-Za-zÁ-ÿ]{0,12}\.?\s+)'
+    r'[\dl][\dl\s.,;:a-e–—()y-]*$', re.I)
+
+# «R/.», «R.», «R/»: donde empieza la respuesta del pueblo y acaba la cita.
+RESPUESTA_DEL_PUEBLO = re.compile(r'\s*R\s*/?\s*\.')
 
 # Las siglas con que la fuente cita, que no son las del leccionario. No se
 # adivinan: son las 74 formas que el corpus usa y `books.json` no reconoce,
@@ -534,6 +570,34 @@ class Citas:
             return self.remata('Sal', normaliza_numero(t, self.reparos))
         return self._una(t)
 
+    def del_renglon(self, lineas):
+        """La cita del salmo, del renglón que no es más que ella.
+
+        `del_campo` lee la cita de su propio campo y `del_incipit` la del
+        incipit de la lectura; esto lee la tercera manera en que la fuente la
+        imprime, y es la del salmo responsorial: un renglón propio, con la
+        respuesta del pueblo detrás. Se corta por la respuesta y se exige que
+        lo que queda sea **sólo** un libro y números, que es lo que lo
+        distingue del cuerpo. Lo laxo aquí sale caro: sin esa exigencia, un
+        «De la segunda carta del apóstol san Pablo a los tesalonicenses» se
+        leía como el salmo 1 y una aclamación entera como el salmo 11.
+        """
+        for ln in (lineas or [])[:1]:
+            m = RESPUESTA_DEL_PUEBLO.search(ln)
+            t = (ln[:m.start()] if m else ln).strip()
+            if not t or len(t) > 80 or not CITA_SOLA.match(t):
+                return None
+            antes = self.leidas.copy()
+            c = self.del_campo(t)
+            if c:
+                # la cuenta es de **dónde** salió la cita, no de qué camino la
+                # leyó: se deshace lo que `del_campo` apuntó al pasar
+                self.leidas.clear()
+                self.leidas.update(antes)
+                self.leidas['renglón'] += 1
+            return c
+        return None
+
     def _una(self, linea):
         t = re.sub(r'\s+', ' ', (linea or '').strip())
         if not t:
@@ -679,6 +743,7 @@ class Formulario:
         self.titulo = self.cab.get('titulo')
         self.resena = self.cab.get('resena')
         self.piezas = {}          # ranura → {texto, cita, sumario}
+        self.otras = []           # las lecturas de una ranura repetida
         self.rubricas = []
         self.cel = None           # la celebración a la que se atribuye
         for b in bruto['bloques']:
@@ -690,18 +755,36 @@ class Formulario:
             if b['clase'] != 'pieza':
                 continue
             ran = DE_ROTULO.get(b.get('rotulo'))
-            if not ran or ran in self.piezas:
+            if not ran:
+                continue
+            # **Una ranura repetida no es un bloque de sobra.** El formulario
+            # tiene una ranura de cada cosa, y la primera manda: es lo que
+            # decide qué se atribuye a la celebración y qué cita lleva el día.
+            # Pero la Vigilia Pascual canta **ocho** salmos y la fuente
+            # imprime, en los días que dan opción, la memoria detrás de la
+            # feria sin repetir la antífona de entrada, así que la segunda
+            # misa entera entra como repetición. Tirarlas perdía 279 lecturas
+            # impresas —los salmos de la Vigilia entre ellas—, y son perícopas
+            # buenas: la perícopa se guarda por cita y no por ranura, así que
+            # van aparte, a la cosecha, sin tocar ni la atribución ni el día.
+            repetida = ran in self.piezas
+            if repetida and CLASE_DE[ran] != 'lectura':
                 continue
             texto = junta([ln for ln in b['texto'] if ln.strip()], reparos)
             if not texto:
                 continue
             if CLASE_DE[ran] == 'lectura':
                 cita = (citas.del_campo(b.get('cita'))
-                        or citas.del_incipit(texto))
+                        or citas.del_incipit(texto)
+                        or citas.del_renglon(texto))
             else:
                 cita = citas.del_campo(b.get('cita'))
-            self.piezas[ran] = {'texto': texto, 'cita': cita,
-                                'sumario': b.get('sumario')}
+            pieza = {'texto': texto, 'cita': cita,
+                     'sumario': b.get('sumario')}
+            if repetida:
+                self.otras.append(dict(pieza, ranura=ran))
+            else:
+                self.piezas[ran] = pieza
 
     @property
     def testigo(self):
@@ -1219,7 +1302,10 @@ def mide_riesgo_tres(cal, formularios, por_clave):
     # las citas del corpus, y en qué días
     dondecita = defaultdict(set)
     for f in formularios:
-        for ran, p in f.piezas.items():
+        # las de sus ranuras y las de más, porque la pregunta de aquí es si la
+        # perícopa está impresa en algún sitio, y las de más lo están
+        for ran, p in ([(r, q) for r, q in f.piezas.items()]
+                       + [(q['ranura'], q) for q in f.otras]):
             if CLASE_DE[ran] == 'lectura' and p['cita']:
                 dondecita[squeeze(p['cita'])].add(f.fecha)
 
@@ -1452,7 +1538,12 @@ def main():
     sumarios = defaultdict(Counter)
     sin_cita = Counter()
     for f in formularios:
-        for ran, p in f.piezas.items():
+        # las de sus ranuras y las de más, que son lecturas igual: la Vigilia
+        # con sus ocho salmos y la memoria que la fuente imprime detrás de la
+        # feria. El testigo es el mismo formulario, y por eso no se apunta dos
+        # veces en la misma perícopa.
+        for ran, p in ([(r, q) for r, q in f.piezas.items()]
+                       + [(q['ranura'], q) for q in f.otras]):
             if CLASE_DE[ran] != 'lectura':
                 continue
             if not p['cita']:
@@ -1462,7 +1553,8 @@ def main():
             ck = clave(' '.join(p['texto']))
             d = porcita[cita][ck]
             if d:
-                d[1].append(f.testigo)
+                if f.testigo not in d[1]:
+                    d[1].append(f.testigo)
             else:
                 porcita[cita][ck] = (p['texto'], [f.testigo])
             tipos[cita][ran] += 1
@@ -1662,13 +1754,51 @@ def informe(cal, formularios, citas, propios, pericopas, prefacios_propios,
     for k, n in campo.most_common():
         inf.di('   la fase 3 la tenía en %-10s : %4d' % (k, n))
 
+    # ---- las lecturas de más --------------------------------------------
+    inf.titulo('Las lecturas de más: la misma ranura, otra vez')
+    inf.di('El formulario tiene una ranura de cada cosa y la primera manda,')
+    inf.di('pero la fuente imprime en un mismo formulario más de una lectura')
+    inf.di('de la misma ranura en dos casos: la Vigilia Pascual, que canta')
+    inf.di('nueve lecturas y ocho salmos, y los días que dan opción, donde el')
+    inf.di('sitio pone la memoria detrás de la feria sin repetir la antífona')
+    inf.di('de entrada, así que las dos misas entran como un formulario. Antes')
+    inf.di('se tiraban; ahora van a la cosecha de perícopas, que se guarda por')
+    inf.di('cita y no por ranura, sin tocar la atribución ni el día.')
+    inf.di()
+    demas = Counter()
+    por_anio = Counter()
+    for f in formularios:
+        for q in f.otras:
+            demas[(f.origen, q['ranura'])] += 1
+            por_anio[(f.origen, f.anio)] += 1
+    inf.di('  %-12s %8s %8s' % ('ranura', 'misalito', 'sitio'))
+    for ran in LECTURAS:
+        a, b = demas[('misalito', ran)], demas[('sitio', ran)]
+        if a or b:
+            inf.di('  %-12s %8d %8d' % (ran, a, b))
+    inf.di('  %-12s %8d %8d' % ('TOTAL',
+                                sum(n for (o, _), n in demas.items()
+                                    if o == 'misalito'),
+                                sum(n for (o, _), n in demas.items()
+                                    if o == 'sitio')))
+    inf.di()
+    inf.di('Y por años, que dice de dónde salen: el sitio imprime los dos')
+    inf.di('formularios en los años viejos y uno solo en los nuevos.')
+    inf.di()
+    for (origen, anio), n in sorted(por_anio.items()):
+        inf.di('   %-9s %d  %4d' % (origen, anio, n))
+
     # ---- las citas ------------------------------------------------------
     inf.titulo('Las citas')
     inf.di('La pieza viene con su cita, y por eso el emparejamiento no se')
-    inf.di('adivina. Leídas: %d del incipit, %d de su propio campo y %d del'
+    inf.di('adivina. Leídas: %d del incipit, %d de su propio campo, %d del'
            % (citas.leidas['incipit'], citas.leidas['sigla'],
               citas.leidas['salmo']))
-    inf.di('rótulo del salmo.')
+    inf.di('rótulo del salmo y %d del renglón que no es más que la cita, que'
+           % citas.leidas['renglón'])
+    inf.di('es como la fuente imprime la del salmo responsorial la mitad de')
+    inf.di('las veces. Ese renglón no lo leía nadie, y una lectura sin cita no')
+    inf.di('llega a perícopa.')
     inf.di()
     inf.di('Lecturas sin cita, por ranura (la fuente no siempre la da; en')
     inf.di('las antífonas es lo normal, en una lectura es que el incipit se')

@@ -5,43 +5,50 @@ Los cien misalitos, partidos en días y en formularios. Un fichero
 por mes en datos/misalitos/AAAA-MM.json, con cada formulario, su
 cabecera y sus bloques rotulados, en bruto.
 
-ficheros                      : 100
-días del mes alcanzados       : 3044 de 3044
-formularios                   : 3286  (1.08 por día)
+ficheros                      : 101
+días del mes alcanzados       : 3075 de 3075
+formularios                   : 3323  (1.08 por día)
    con la cabecera suplida    : 1  (el día no la lleva y se abre en su «MR p.»)
    de un día con más de una misa : 67  (la vigilia, la aurora, el día, las tres de los Difuntos)
-bloques                       : 29874 piezas, 2567 rúbricas del Misal, 3189 editoriales, 260 del santoral mexicano
-formularios con reseña        : 1773
+bloques                       : 30264 piezas, 2586 rúbricas del Misal, 3465 editoriales, 267 del santoral mexicano
+formularios con reseña        : 1794
    con misa votiva permitida  : 531  («Feria o / Misa de Santa María en Sábado»)
-párrafos recortados del día siguiente : 16948
-bloques en dos columnas, deshechos    : 38  (las secuencias)
+párrafos recortados del día siguiente : 4366
+bloques en dos columnas, deshechos    : 43  (las secuencias)
 
 Los días que faltan
 -------------------
 
-Ninguno: los 3044 días de los cien meses tienen formulario.
+Ninguno: los 3075 días de los cien meses tienen formulario.
 
 Las piezas, contadas
 --------------------
 
-   ANTÍFONA DE ENTRADA               3237
-   ORACIÓN COLECTA                   3279
-   PRIMERA LECTURA                   3132
-   SALMO RESPONSORIAL                3186
-   SEGUNDA LECTURA                    632
+   ANTÍFONA DE ENTRADA               3274
+   ORACIÓN COLECTA                   3316
+   PRIMERA LECTURA                   3166
+   SALMO RESPONSORIAL                3220
+   SEGUNDA LECTURA                    638
+   TERCERA LECTURA                      8
+   CUARTA LECTURA                       8
+   QUINTA LECTURA                       8
+   SEXTA LECTURA                        8
+   SÉPTIMA LECTURA                      8
+   EPÍSTOLA                             8
    SECUENCIA                           46
-   ACLAMACIÓN ANTES DEL EVANGELIO    3122
-   EVANGELIO                         3154
-   ORACIÓN SOBRE LAS OFRENDAS        3251
-   ANTÍFONA DE LA COMUNIÓN           3251
-   ORACIÓN DESPUÉS DE LA COMUNIÓN    3252
+   ACLAMACIÓN ANTES DEL EVANGELIO    3156
+   EVANGELIO                         3188
+   PASIÓN DE NUESTRO SEÑOR JESUCRISTO    16
+   ORACIÓN SOBRE LAS OFRENDAS        3288
+   ANTÍFONA DE LA COMUNIÓN           3288
+   ORACIÓN DESPUÉS DE LA COMUNIÓN    3288
    ORACIÓN SOBRE EL PUEBLO            332
 
 De los campos de la cabecera, los que la fuente no da:
-   sin color        168 de 3286
-   sin grado        692 de 3286
-   sin titulo      2145 de 3286
-   sin mr           245 de 3286
+   sin color        171 de 3323
+   sin grado        699 de 3323
+   sin titulo      2172 de 3323
+   sin mr           253 de 3323
 
 Los rótulos que la fuente escribe mal
 -------------------------------------
@@ -55,12 +62,12 @@ silencio.
    ORACION COLECTA                        → ORACIÓN COLECTA                  50 vez(ces)
    ANTIFONA DE ENTRADA                    → ANTÍFONA DE ENTRADA              46 vez(ces)
    ACLAMACIÓN ATES DEL EVANGELIO          → ACLAMACIÓN ANTES DEL EVANGELIO   20 vez(ces)
-   ORACIÓN COLETA                         → ORACIÓN COLECTA                  18 vez(ces)
+   ORACIÓN COLETA                         → ORACIÓN COLECTA                  19 vez(ces)
    ANTIFONA DE LA COMUNIÓN                → ANTÍFONA DE LA COMUNIÓN          17 vez(ces)
    ORACIÓN DESPUÉS DE LAS COMUNIÓN        → ORACIÓN DESPUÉS DE LA COMUNIÓN   10 vez(ces)
    SALMO RESPONSORIA                      → SALMO RESPONSORIAL               9 vez(ces)
+   ORACION DE LOS FIELES                  → ORACIÓN DE LOS FIELES            9 vez(ces)
    ORACIÓN DESPUÉS DE'LA COMUNIÓN         → ORACIÓN DESPUÉS DE LA COMUNIÓN   8 vez(ces)
-   ORACION DE LOS FIELES                  → ORACIÓN DE LOS FIELES            8 vez(ces)
    ORACIÓN DE LO FIELES                   → ORACIÓN DE LOS FIELES            6 vez(ces)
    SALMO RESPONSÓRIAL                     → SALMO RESPONSORIAL               4 vez(ces)
    SALMO RESPONSORIALD                    → SALMO RESPONSORIAL               4 vez(ces)
@@ -76,6 +83,67 @@ silencio.
    SALMO RESPONSORI                       → SALMO RESPONSORIAL               1 vez(ces)
    RIMERA LECTURA                         → PRIMERA LECTURA                  1 vez(ces)
    ANTÍFONA DE COMUNIÓN                   → ANTÍFONA DE LA COMUNIÓN          1 vez(ces)
+
+Los rótulos en versales que no conocemos
+----------------------------------------
+
+Un renglón en versales que no está en el vocabulario **cierra la
+pieza**: lo que venga detrás no es de ella. Antes pasaba por
+cuerpo, y la sección siguiente se quedaba pegada al final de la
+pieza anterior —el anuncio del banco dentro del salmo, la
+cabecera del día siguiente dentro de la oración después de la
+comunión—. Aquí van nombrados y contados, que es lo que permite
+decidir si alguno merece entrar en el vocabulario.
+
+   47 formas, 247 casos.
+
+      16  TERCERA PARTE:
+      14  BANCOMER
+      14  PERIODICO SEMANARIO
+      14  INTERBANCARIA (TRANSFERENCIAS)
+       8  LAVATORIO DE LOS PIES
+       8  ANTÍFONA SEGUNDA
+       8  ANTÍFONA TERCERA
+       8  ANTÍFONA CUARTA
+       8  ANTÍFONA QUINTA
+       8  ANTÍFONA SEXTA
+       8  ANTÍFONA SÉPTIMA
+       8  SEGUNDA PARTE:
+       8  ANTÍFONA:
+       8  CUARTA PARTE:
+       7  ANTÍFONA 1
+       7  ANTÍFONA 2
+       7  RESPONSORIO
+       7  LA MISA
+       7  ANTÍFONA PRIMERA
+       7  BENDICIÓN DE LA CENIZA
+       7  IMPOSICIÓN DE LA CENIZA
+       6  HIMNO A CRISTO REY
+       6  LA SANTA MISA
+       5  CENTRO CATÓLICO
+       5  TRAE PARA TI
+       3  CENTRO
+       3  DE COMUNICACIONES
+       3  DIGITALES
+       3  BANORTE
+       3  CUENTA CLAVE: 072 320 006 413 050 18 4
+       3  CONFIRMA
+       3  TU DEPÓSITO
+       3  SÍGUENOS
+       1  TRASLACIÓN DEL SANTÍSIMO SACRAMENTO
+       1  DURANTE LA OCTAVA DE PASCUA:
+       1  OCTAVA DE NAVIDAD
+       1  ANUNCIO DE LAS CELEBRACIONES MOVIBLES
+       1  RITOS INICIALES Y LITURGIA DE LA PALABRA
+       1  BENDICIÓN E IMPOSICIÓN DE LA CENIZA
+       1  LITURGIA EUCARÍSTICA
+       1  I. SÚPLICAS A DIOS
+       1  II. INVOCACIÓN DE LOS SANTOS
+       1  III. INVOCACIONES A CRISTO
+       1  IV. SÚPLICAS POR DIVERSAS NECESIDADES
+       1  V, CONCLUSIÓN
+       1  SOLEMNIDAD DE LA SANTÍSIMA TRINIDAD
+       1  XXIX DOMINGO DEL TIEMPO ORDINARIO
 
 Lo que el día deja elegir
 -------------------------
@@ -127,7 +195,7 @@ Las misas votivas que el día permite en lugar de la feria (531 en total,
 Los formularios sin lecturas
 ----------------------------
 
-155 de 3286. No es un fallo del parseo: son las misas que remiten sus
+158 de 3323. No es un fallo del parseo: son las misas que remiten sus
 lecturas a otro sitio —«Las lecturas son las mismas de la misa del día»—,
 y la fase 4 las resuelve por ahí. Se nombran todas:
 
@@ -286,6 +354,9 @@ y la fase 4 las resuelve por ahí. Se nombran todas:
    misalOctubre2024       2024-10-19 o1  —
    misalOctubre2024       2024-10-28 o1  —
    misalOctubre2025       2025-10-28 o1  SAN RODRIGO AGUILAR ALEMÁN
+   misalOctubre2026       2026-10-05 o1  —
+   misalOctubre2026       2026-10-19 o1  —
+   misalOctubre2026       2026-10-28 o1  —
 
 Las dos publicaciones
 ---------------------
@@ -293,14 +364,14 @@ Las dos publicaciones
 No son tres familias de maqueta por años, como suponía el plan,
 sino dos publicaciones distintas:
 
-   santamisa       97 ficheros
+   santamisa       98 ficheros
    palabraviva      3 ficheros
    los de Palabra Viva: misalDiciembre2021, misalEnero2021, misalFebrero2021
 
 Lo que no cuadró, fichero por fichero
 -------------------------------------
 
-369 avisos en total.
+371 avisos en total.
 
    misalAbril2020
       p. 126: la fuente rotula «ANTIFONA DE LA COMUNIÓN»; se lee «ANTÍFONA DE LA COMUNIÓN»
@@ -689,6 +760,9 @@ Lo que no cuadró, fichero por fichero
    misalOctubre2025
       p. 73: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
       p. 79: la fuente rotula «ORACIÓN DESPUÉS DE LAS COMUNIÓN»; se lee «ORACIÓN DESPUÉS DE LA COMUNIÓN»
+   misalOctubre2026
+      p. 70: la fuente rotula «ORACION DE LOS FIELES»; se lee «ORACIÓN DE LOS FIELES»
+      p. 157: la fuente rotula «ORACIÓN COLETA»; se lee «ORACIÓN COLECTA»
    misalSeptiembre2018
       p. 66: la fuente rotula «ORACIÓN DE LO FIELES»; se lee «ORACIÓN DE LOS FIELES»
    misalSeptiembre2019
@@ -832,6 +906,7 @@ misalOctubre2022       santamisa    31/31    36     4
 misalOctubre2023       santamisa    31/31    34     8
 misalOctubre2024       santamisa    31/31    37     7
 misalOctubre2025       santamisa    31/31    35     2
+misalOctubre2026       santamisa    31/31    37     2
 misalSeptiembre2018    santamisa    30/30    30     1
 misalSeptiembre2019    santamisa    30/30    30     2
 misalSeptiembre2020    santamisa    30/30    30     1

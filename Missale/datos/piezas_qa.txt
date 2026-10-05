@@ -5,18 +5,18 @@ Los cien misalitos deshechos: cada pieza una vez, con sus
 testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
-formularios leídos            : 7518
-celebraciones con propios     : 598
-perícopas distintas por cita  : 3209
+formularios leídos            : 7564
+celebraciones con propios     : 588
+perícopas distintas por cita  : 3558
 prefacios propios cosechados  : 28
-textos propios atribuidos     : 2786
-   por lo que nombra la fuente: 732
-   por lo que titula el día   : 1010
-   por la fecha del año       : 383
+textos propios atribuidos     : 2750
+   por lo que nombra la fuente: 721
+   por lo que titula el día   : 994
+   por la fecha del año       : 374
    por el común que comparten : 27
    por el calendario          : 526
    por todos sus días menos uno: 108
-textos sin celebración que los explique: 356
+textos sin celebración que los explique: 358
    (van aparte, en sueltos_es.json, con sus días)
 
 El riesgo 3: las lecturas propias que nunca se imprimen
@@ -90,34 +90,80 @@ dice al lado de la cabecera. La fase 3 lo guardaba en `alterna`,
 en `resena` o en `subtitulo` según cayera la maqueta; aquí se
 vuelve a leer del campo `crudo` y se unifica.
 
-   alternativa que es una misa   :  981
-   alternativa que es una santo  :  551
+   alternativa que es una misa   :  994
+   alternativa que es una santo  :  552
 
-   la fase 3 la tenía en alterna    :  987
-   la fase 3 la tenía en resena     :  484
-   la fase 3 la tenía en subtitulo  :   58
+   la fase 3 la tenía en alterna    :  988
+   la fase 3 la tenía en resena     :  485
+   la fase 3 la tenía en subtitulo  :   70
    la fase 3 la tenía en crudo      :    3
+
+Las lecturas de más: la misma ranura, otra vez
+----------------------------------------------
+
+El formulario tiene una ranura de cada cosa y la primera manda,
+pero la fuente imprime en un mismo formulario más de una lectura
+de la misma ranura en dos casos: la Vigilia Pascual, que canta
+nueve lecturas y ocho salmos, y los días que dan opción, donde el
+sitio pone la memoria detrás de la feria sin repetir la antífona
+de entrada, así que las dos misas entran como un formulario. Antes
+se tiraban; ahora van a la cosecha de perícopas, que se guarda por
+cita y no por ranura, sin tocar la atribución ni el día.
+
+  ranura       misalito    sitio
+  primera             2       19
+  salmo              56       99
+  segunda             0        9
+  aclamacion          0       18
+  evangelio          37       39
+  TOTAL              95      184
+
+Y por años, que dice de dónde salen: el sitio imprime los dos
+formularios en los años viejos y uno solo en los nuevos.
+
+   misalito  2019    11
+   misalito  2020    13
+   misalito  2021    11
+   misalito  2022    13
+   misalito  2023    12
+   misalito  2024    10
+   misalito  2025    12
+   misalito  2026    13
+   sitio     2016    18
+   sitio     2017    12
+   sitio     2018    15
+   sitio     2019    18
+   sitio     2020    16
+   sitio     2021     8
+   sitio     2022    15
+   sitio     2023    19
+   sitio     2024    35
+   sitio     2025    14
+   sitio     2026    14
 
 Las citas
 ---------
 
 La pieza viene con su cita, y por eso el emparejamiento no se
-adivina. Leídas: 15384 del incipit, 18940 de su propio campo y 3317 del
-rótulo del salmo.
+adivina. Leídas: 15767 del incipit, 19078 de su propio campo, 3382 del
+rótulo del salmo y 3194 del renglón que no es más que la cita, que
+es como la fuente imprime la del salmo responsorial la mitad de
+las veces. Ese renglón no lo leía nadie, y una lectura sin cita no
+llega a perícopa.
 
 Lecturas sin cita, por ranura (la fuente no siempre la da; en
 las antífonas es lo normal, en una lectura es que el incipit se
 partió o que remite a otro día):
-   primera       111
-   salmo        3268
-   segunda        44
+   primera       115
+   salmo         151
+   segunda        46
    secuencia     103
-   aclamacion    681
-   evangelio     108
+   aclamacion    707
+   evangelio     128
 
-Nombres de libro que no se supieron leer: 172 formas, 316 casos.
-     21  'sanLucas:'
-     15  'uteronomio'
+Nombres de libro que no se supieron leer: 185 formas, 346 casos.
+     29  'uteronomio'
+     22  'sanLucas:'
      14  'Le'
      11  'JI'
      10  'Me'
@@ -129,6 +175,8 @@ Nombres de libro que no se supieron leer: 172 formas, 316 casos.
       4  '113B, 3-'
       4  '113 B, 1-'
       4  '113 B 1-'
+      4  'ANTES DEL EVANGEUO Cfr. Mt'
+      4  'Maleo:'
       4  '86 (87), 1-'
       3  'FORMA BREVE:'
       3  '9-'
@@ -139,7 +187,6 @@ Nombres de libro que no se supieron leer: 172 formas, 316 casos.
       3  'Lo'
       3  ','
       3  '86 (87) 1-'
-      3  'Maleo:'
       3  'sanMateo:'
       3  'sanMarcos:'
       2  '17-'
@@ -149,13 +196,11 @@ Nombres de libro que no se supieron leer: 172 formas, 316 casos.
       2  '49 8-'
       2  '946-'
       2  'Mareos:'
-      2  'PASIÓN DE NUESTRO SEÑOR JESUCRISTO SEGÚN SAN MAT'
       2  'segunda cana del apóstol san Pablo a los corinti'
       2  'Ebro del Génesis:'
       2  'sarao Evangelio según san Mateo:'
       2  'Cal'
       2  'Sa'
-      2  'Pasión de Nuestro Señor Jesucristo según san Luc'
       2  'sanJuan:'
       2  'N Cfr. Sal'
       2  'N Mt'
@@ -173,9 +218,11 @@ Nombres de libro que no se supieron leer: 172 formas, 316 casos.
       1  'primer libro de Sainad:'
       1  'primor libro de Samuel:'
       1  'Ebro de los Hechos de los Apóstoles:'
+      1  'ANTES DEL EVANGELGIO cfr. Jn'
       1  'segunda cana del apóstol san Pablo a Timoteo:'
       1  'n Hch'
       1  'E7'
+      1  'ANTES OEL EVANGELIO Cfr. Mt'
       1  'n Lc'
       1  'segund+o libro de los Macabeos:'
       1  '15'
@@ -194,12 +241,23 @@ Nombres de libro que no se supieron leer: 172 formas, 316 casos.
       1  'E,'
       1  'l'
       1  'Pm'
+      1  'ANTES DEL EVANGEUO cfr. 1 Tm'
       1  'Les he anunciado a Cristo crucificado. De la pri'
+      1  'ANTES DEL EVANGELJO Cfr: Hech'
+      1  'ANTES DEL EVANGEUO Cfr. Apoc'
+      1  'ANTES DEL EVANGEUO Cfr. Hch'
       1  'Sa1'
+      1  'ANTES DEL EVANGEUO Cfr. 210m'
+      1  'ANTES DE EVANGELIO 2 Cor'
+      1  'NTES DEL EVANGELIO Lc'
+      1  'ANTES DEL EVANGEUO Cfr. Ef'
+      1  'ANTES DEL EVANGEUO Cfr: Mt'
+      1  'ANTES DEL EVANGEUO Cfr. Me'
       1  'primera carta del apóstol san rabio a los tesalo'
       1  'J'
       1  'santo Evanelio según san Mateo:'
       1  'lihro del Génesis:'
+      1  'ANTES CEL EVANGELIO cfr. Sal'
       1  'en, Sal'
       1  'Yo soy me envía a ustedes. Del libro del Éxodo:'
       1  ''
@@ -210,15 +268,16 @@ Nombres de libro que no se supieron leer: 172 formas, 316 casos.
       1  'Apoe'
       1  'Que permanezca en ustedes lo que han oído desde '
       1  'primera carta del apóstol san rabio a los corint'
+      1  'ANTES DEL EVANGEUO Cfr. Sal'
       1  'Madre de todos los vivientes. Del libro del Géne'
       1  'Además de éstas y otras cosas, pesa sobre mí dia'
       1  'En adelante te llamarás Israel porque has luchad'
-      1  'ACLAMACIÓN ANTES DEL EVANGEUO Cfr: Hechos'
-      1  'ACLAMACIÓN ANTES DEL EVANGEUO Cfr. Mt'
+      1  'ANTES DEL EVANGEUO Cfr: Hechos'
       1  '14410-'
       1  'Pongan en práctica la palabra. De la carta del a'
       1  'ICor'
       1  'N Cfr. Lc'
+      1  'NANTESDELEVANGELIO Cfr. Flp'
       1  'A Cfr. Prov'
       1  'N Cfr. Mt'
       1  'A Cfr. Sab'
@@ -301,13 +360,13 @@ oración se parten en dos grupos, la mayoría decide sobre un
 reparto falso y el texto canónico sale con «dispon- gas» dentro.
 Se junta cuando el renglón acaba en guión y el siguiente empieza
 en minúscula, que es el único caso en que el guión no es del
-texto: **7234 palabras**.
+texto: **7342 palabras**.
 
-     80  Jesu- / cristo,   →   Jesucristo,
-     42  por- / que   →   porque
+     81  Jesu- / cristo,   →   Jesucristo,
+     44  por- / que   →   porque
      34  Se- / ñor,   →   Señor,
-     32  tam- / bién   →   también
-     32  Jesucris- / to,   →   Jesucristo,
+     34  Jesucris- / to,   →   Jesucristo,
+     33  tam- / bién   →   también
      30  Je- / sucristo,   →   Jesucristo,
      28  Se- / ñor   →   Señor
      26  nues- / tro   →   nuestro
@@ -315,16 +374,18 @@ texto: **7234 palabras**.
      19  con- / tigo   →   contigo
      18  nues- / tros   →   nuestros
      18  noso- / tros   →   nosotros
-   … y 4364 formas más
+   … y 4414 formas más
 
 **Los salmos partidos con letra.** El misalito escribe «Sal
 113A», «Sal 18B» y «Sal 87(86)»; el índice del leccionario no
 hace ni lo uno ni lo otro, y los versículos bastan para
-distinguir las dos mitades: 20 casos en 7 formas.
-      6  113B
+distinguir las dos mitades: 36 casos en 9 formas.
+     14  113B
       5  113b
+      4  113A
+      4  86(87)
       3  18B
-      3  113A
+      3  113a
       1  87(86)
       1  18b
       1  104R
@@ -341,39 +402,39 @@ distinguir las dos mitades: 20 casos en 7 formas.
 **Dos títulos para un mismo prefacio**, juntados por el texto:
    «María Magdalena: «‘Apóstol’ de los Apóstoles» → «María Magdalena: «´Apóstola’ de los Apóstole»
 
-**La ele por el uno**: 163 casos en 52 formas. En un
+**La ele por el uno**: 216 casos en 88 formas. En un
 número de versículo una ele suelta no puede ser otra cosa, pero
 se nombra igual:
-     17  '125, l-2ab. 2cd-3. 4-5. 6'
+     18  '125, l-2ab. 2cd-3. 4-5. 6'
+     17  '15, l-2a y 5. 7-8. 9-10. 11'
      16  '22, l-3a. 3b-4. 5. 6'
-     14  '15, l-2a y 5. 7-8. 9-10. 11'
       7  '44, l0bc. 11. 12ab. 16'
       7  'l44, 10-11. 12-13ab. 17-18'
       6  '137, l-2a. 2bc-3. 7c-8'
       5  '95, l-2a. 2b-3. 11-12a. 13bc'
+      5  '95, l-2a. 2b-3. 7-8a. 10'
       5  '29, 2 y 4. 5-6. 1 l-12a y 13b'
+      5  '117, l-2.16ab-17.22-23'
       5  '15, l-2a y 5. 7-8. 11'
       4  '137, l-2a.2bc-3. 4-5'
       4  '95, l-2a. 2b-3. 5b-6'
-      4  '95, l-2a. 2b-3. 7-8a. 10'
       4  '137, l-2a. 2bc-3. 7c.8'
+      4  '103, l-2a.5-6.10 y 12.13-14.24 y 35c'
       3  '122, l-2a. 2bcd. 3-4'
       3  '58, 2-3. 4-5a. 10-11 17 l8'
       3  '95, l-2a: 2b-3. 4-5'
       3  '22, l-2ab. 2c-3. 4. 5. 6'
-      3  '103, l-2a.5-6.10 y 12.13-14.24 y 35c'
       3  '65, l-3a. 5 y 16-17'
-      3  '100, l-2ab. 2cd-3ab. 5. 6'
-   … y 32 formas más
+   … y 68 formas más
 
 El cotejo con el índice del leccionario, que es el camino
 independiente del calendario: si el lector de citas leyera mal,
 saldría aquí.
 
-   citas distintas en el corpus                   : 3140
-   que el índice tiene igual                      : 1623
-   que el índice no tiene con esos versículos     : 1436
-   que el índice no tiene ni por el capítulo      : 81
+   citas distintas en el corpus                   : 3487
+   que el índice tiene igual                      : 1692
+   que el índice no tiene con esos versículos     : 1697
+   que el índice no tiene ni por el capítulo      : 98
 
 La fila del medio no es un fallo y conviene no confundirla con
 uno: son las dos ediciones letreando distinto el mismo pasaje
@@ -405,6 +466,7 @@ leccionario no usa nunca sería una sigla mal resuelta:
    ga4.22-24.26-27.31-5,1
    gn5,15-29
    hb1.1-2r.aleluya,aleluya
+   is18,8.9.10.11
    jn1.14.12r.aleluya,aleluya
    jn1.14r.honorygloriaati,senor.jesus
    jn1.49r.aleluya,aleluya
@@ -425,6 +487,8 @@ leccionario no usa nunca sería una sigla mal resuelta:
    lc1.45r.aleluya,aleluya
    lc1.76r.aleluya,aleluya
    lc11-28r.aleluya,aleluya
+   lc11.28r.aleluya,aleluya
+   lc1128r.aleluya,aleluya
    lc19.39.42,14r.aleluya.aleluya
    lc2128r.aleluya,aleluya
    lc2136
@@ -448,50 +512,45 @@ leccionario no usa nunca sería una sigla mal resuelta:
    os4,17
    os5,14
    os94,8
-   sal1055,7-8
-   sal1101-2.7-8.9y10c
-   sal117.24r.aleluya,aleluya
-   … y 11 más
+   … y 28 más
 
 Los testigos: lo que está decidido y lo que no
 ----------------------------------------------
 
 Piezas propias por número de testigos del texto canónico:
-    1 testigo(s) :   298 piezas
+    1 testigo(s) :   280 piezas
     2 testigo(s) :    89 piezas
-    3 testigo(s) :   155 piezas
-    4 testigo(s) :   194 piezas
-    5 testigo(s) :   133 piezas
-    6 testigo(s) :   206 piezas
-    7 testigo(s) :   440 piezas
-    8 testigo(s) :   307 piezas
-    9 testigo(s) :    55 piezas
-   10 testigo(s) :     7 piezas
-   11 testigo(s) :     8 piezas
+    3 testigo(s) :   141 piezas
+    4 testigo(s) :   193 piezas
+    5 testigo(s) :   137 piezas
+    6 testigo(s) :   202 piezas
+    7 testigo(s) :   416 piezas
+    8 testigo(s) :   341 piezas
+    9 testigo(s) :    61 piezas
+   10 testigo(s) :     5 piezas
+   11 testigo(s) :     7 piezas
    12 testigo(s) :     8 piezas
-   13 testigo(s) :    12 piezas
+   13 testigo(s) :    11 piezas
    14 testigo(s) :     7 piezas
-   15 testigo(s) :     3 piezas
+   15 testigo(s) :     6 piezas
    16 testigo(s) :     1 piezas
-   17 testigo(s) :     1 piezas
-   20 testigo(s) :     1 piezas
-   21 testigo(s) :     1 piezas
+   17 testigo(s) :     2 piezas
+   21 testigo(s) :     2 piezas
    22 testigo(s) :     1 piezas
-   41 testigo(s) :     1 piezas
+   42 testigo(s) :     1 piezas
 
 Piezas con variantes (la fuente no imprimió lo mismo todos los
 años): 578. La variante se guarda con los días que la respaldan,
 que es lo que impide que una errata de un año se imponga a los
 otros siete.
 
-Piezas decididas a la fuerza por empate de testigos: 93. Es el
+Piezas decididas a la fuerza por empate de testigos: 86. Es el
 único sitio donde la mayoría no decide, y conviene mirarlas:
    d3_0_3                             entrada      4 testigos, 1 variantes
    d3_2_0                             entrada      4 testigos, 1 variantes
    d3_8_6                             colecta      4 testigos, 1 variantes
    d5_10_0                            poscomunion  1 testigos, 1 variantes
    d5_25_0                            comunion     4 testigos, 1 variantes
-   d5_29_0                            comunion     3 testigos, 2 variantes
    d5_3_0                             poscomunion  1 testigos, 1 variantes
    md_02-04                           ofrendas     3 testigos, 1 variantes
    md_02-25                           colecta      6 testigos, 2 variantes
@@ -526,12 +585,12 @@ Piezas decididas a la fuerza por empate de testigos: 93. Es el
    san_san-david-galvan-bermudez      poscomunion  1 testigos, 1 variantes
    san_san-david-uribe-velasco        ofrendas     1 testigos, 1 variantes
    san_san-jenaro-sanchez-delgadillo  poscomunion  1 testigos, 1 variantes
-   … y 53 más
+   san_santa-juana-francisca-de-chant ofrendas     1 testigos, 1 variantes
+   … y 46 más
 
-Piezas con un solo testigo y sin variante: 255. Entran, pero el
+Piezas con un solo testigo y sin variante: 241. Entran, pero el
 texto no está confirmado por nadie más:
    d0_0_3                             poscomunion  2021-12-01/0
-   d0_0_6                             poscomunion  2021-12-04/0
    d0_1_0                             ofrendas     2021-12-05/0
    d0_1_5                             ofrendas     2021-12-10/0
    d0_2_4                             ofrendas     2021-12-16/0
@@ -539,22 +598,20 @@ texto no está confirmado por nadie más:
    d1_1_1                             poscomunion  2021-12-29/0
    d1_1_2                             poscomunion  2021-12-30/0
    d1_1_3                             colecta      2021-12-31/0
+   d1_1_3                             poscomunion  2021-12-31/0
    d2_3_0                             comunion     2020-03-15/0
-   d2_6_4#misa-vespertina-de-la-cena- poscomunion  2021-04-01/0
    d3_3_0                             ofrendas     2026-04-19/0
    d3_4_0                             ofrendas     2022-05-08/0
    d3_5_0                             ofrendas     2021-05-02/0
    d3_5_0                             poscomunion  2026-05-03/0
    d3_6_0                             ofrendas     2023-05-14/0
    d3_9_0                             entrada      2019-06-09/0
-   d5_0_0                             poscomunion  2021-01-11/0
    d5_0_4                             poscomunion  2021-01-15/0
    d5_0_5                             colecta      2021-01-16/0
    d5_0_5                             poscomunion  2021-01-16/0
    d5_13_0                            comunion     2019-07-07/0
    d5_19_0                            ofrendas     2025-08-17/0
    d5_1_0                             ofrendas     2022-01-16/0
-   d5_1_1                             poscomunion  2021-01-18/0
    d5_1_2                             colecta      2021-01-19/0
    d5_1_2                             poscomunion  2021-01-19/0
    d5_1_3                             entrada      2021-01-20/0
@@ -570,7 +627,10 @@ texto no está confirmado por nadie más:
    d5_2_3                             entrada      2021-01-27/0
    d5_2_3                             colecta      2021-01-27/0
    d5_2_3                             ofrendas     2021-01-27/0
-   … y 215 más
+   d5_2_3                             poscomunion  2021-01-27/0
+   d5_2_5                             colecta      2021-01-29/0
+   d5_2_5                             ofrendas     2021-01-29/0
+   … y 201 más
 
 Lo atribuido con una excepción
 ------------------------------
@@ -622,16 +682,16 @@ su nombre:
    d2_2_2                             salvo 2026-02-27/0  (1 piezas)
    d2_3_7                             salvo 2026-03-09/0  (1 piezas)
    d2_5_7                             salvo 2026-03-23/0  (1 piezas)
-   d5_0_1                             salvo 2026-01-12/0  (1 piezas)
    d5_10_0                            salvo 2025-06-17/0  (1 piezas)
    d5_9_0                             salvo 2025-06-10/0  (1 piezas)
    md_10-12                           salvo 2019-06-30/1  (1 piezas)
+   md_11-09                           salvo 2021-01-14/0  (1 piezas)
    … y 16 más
 
 Los textos que ninguna celebración explica: los comunes
 -------------------------------------------------------
 
-356 textos aparecen en días que no comparten ninguna celebración,
+358 textos aparecen en días que no comparten ninguna celebración,
 y no es un fallo: son los **comunes**. La antífona «En medio de la
 Iglesia abrió su boca» se imprime en los días de cuarenta santos
 distintos, así que no es de ninguno de ellos.
@@ -653,18 +713,18 @@ ranura        días  texto
    comunion       55  este es el siervo fiel y prudente a quien el senor puso 
    entrada        52  este santo lucho hasta la muerte por la ley de dios y no
    entrada        48  en medio de la iglesia abrio su boca y el senor lo lleno
+   entrada        48  buscare a mis ovejas dice el senor y les dare un pastor 
    entrada        47  que tus sacerdotes senor se revistan de justicia y tus f
-   entrada        47  buscare a mis ovejas dice el senor y les dare un pastor 
-   comunion       44  dichosos los pobres de espiritu porque de ellos es el re
+   comunion       45  dichosos los pobres de espiritu porque de ellos es el re
    comunion       40  no son ustedes los que me han elegido dice el senor soy 
    comunion       39  dichoso el servidor a quien su amo al volver lo encuentr
+   comunion       36  el que me sigue no caminara en la oscuridad y tendra la 
+   entrada        35  alegrese el corazon de los que buscan al senor busquen a
    poscomunion    35  senor muestrate benigno con tu pueblo y ya que te dignas
-   comunion       34  el que me sigue no caminara en la oscuridad y tendra la 
    comunion       34  dichoso el vientre de la virgen maria que llevo al hijo 
-   entrada        34  alegrese el corazon de los que buscan al senor busquen a
+   entrada        34  todo lo considero basura con tal de conocer a cristo y c
    ofrendas       33  concedenos senor vivir siempre llenos de gratitud por es
    comunion       32  el cordero que esta en el trono los conducira a las fuen
-   entrada        32  todo lo considero basura con tal de conocer a cristo y c
    comunion       31  ustedes han perseverado conmigo en mis pruebas dice el s
    entrada        31  te aclamamos santa madre de dios porque has dado a luz a
    entrada        31  ahora gozan en el cielo las almas de los santos que sigu
@@ -674,6 +734,7 @@ ranura        días  texto
    entrada        26  este es el siervo fiel y prudente a quien el senor puso 
    entrada        26  ya sigue al cordero crucificado por nosotros la virgen l
    ofrendas       26  santifica senor por tu piedad estos dones y al recibir e
+   poscomunion    26  ya que nos has concedido participar de la redencion eter
    poscomunion    26  senor y dios nuestro escucha nuestras oraciones para que
    comunion       25  ha hecho en mi grandes cosas el que todo lo puede santo 
    comunion       25  alegrate siervo bueno y fiel entra a compartir el gozo d
@@ -682,14 +743,13 @@ ranura        días  texto
    ofrendas       25  al venerar la memoria de la madre de tu hijo te rogamos 
    ofrendas       25  recibe senor nuestros dones con los que se realiza tan g
    ofrendas       25  dios nuestro que por el santo valor de este sacrificio n
-   poscomunion    25  ya que nos has concedido participar de la redencion eter
    comunion       24  el que dia y noche medita la ley del senor al debido tie
+   comunion       24  el buen pastor da la vida por sus ovejas
    poscomunion    24  al recibir el sacramento celestial en la conmemoracion d
    comunion       23  estos son los milagros que acompanaran a los que hayan c
-   comunion       23  el buen pastor da la vida por sus ovejas
    comunion       23  el buen pastor da la vida por sus ovejas aleluya
    entrada        23  el siervo fiel y prudente fue constituido como padre de 
-   … y 316 más
+   … y 318 más
 
 Los prefacios
 -------------
@@ -698,14 +758,14 @@ La rúbrica del prefacio hace dos cosas: nombra uno de los 67 del
 Ordinario, o imprime entero uno **propio**, de los que no están
 en ningún juego común porque viven dentro de su formulario.
 
-referencias del día resueltas             : 1339
+referencias del día resueltas             : 1343
    prefacios del Ordinario que algún día cita : 58 de 67
    días que remiten al prefacio propio del formulario : 3
-referencias que no se supieron resolver   : 8, en 2 formas
+referencias que no se supieron resolver   : 9, en 2 formas
 prefacios propios cosechados              : 28
 
 Los prefacios propios, con sus testigos:
-    12 testigos  La gloria de Dios manifestada en los ángeles         variantes: 2
+    12 testigos  La gloria de Dios manifestada en los ángeles         variantes: 3
     11 testigos  La misión del Precursor                              variantes: 3
      9 testigos  El misterio de la Transfiguración                    
      9 testigos  La gloriosa Asunción de la Virgen                    
@@ -755,7 +815,7 @@ Las oraciones sobre el pueblo
 
 El Ordinario de México no las trae: sólo las menciona en los
 números 142 y 143. Los misalitos sí las imprimen, y aquí están:
-55 celebraciones con oración sobre el pueblo.
+52 celebraciones con oración sobre el pueblo.
 
     9 testigos  d2_2_5                             Viernes de la 2ª semana de Cuaresma
     8 testigos  d2_2_1                             Lunes de la 2ª semana de Cuaresma
@@ -767,6 +827,7 @@ números 142 y 143. Los misalitos sí las imprimen, y aquí están:
     8 testigos  d2_5_2                             Lunes de la 5ª semana de Cuaresma
     8 testigos  d2_6_0                             Domingo de Ramos en la Pasión del Señor
     8 testigos  d2_6_1                             Lunes santo
+    8 testigos  d2_6_2                             Martes santo
     8 testigos  d2_6_3                             Miércoles santo
     7 testigos  d2_0_0                             Miércoles de Ceniza
     7 testigos  d2_0_1                             Jueves después de Cenizas
@@ -783,43 +844,42 @@ números 142 y 143. Los misalitos sí las imprimen, y aquí están:
     7 testigos  d2_3_5                             Jueves de la 3ª semana de Cuaresma
     7 testigos  d2_3_6                             Viernes de la 3ª semana de Cuaresma
     7 testigos  d2_4_0                             Domingo IV de Cuaresma
+    7 testigos  d2_4_2                             Lunes de la 4ª semana de Cuaresma
     7 testigos  d2_4_6                             Viernes de la 4ª semana de Cuaresma
     7 testigos  d2_5_0                             Domingo V de Cuaresma
-    7 testigos  d2_5_4                             Miércoles de la 5ª semana de Cuaresma
-    7 testigos  d2_5_7                             Sábado de la 5ª semana de Cuaresma
-   … y 25 más
+   … y 22 más
 
 Las celebraciones y lo que tienen
 ---------------------------------
 
-   santoral     240
-   tiempo       169
-   fecha        123
+   santoral     238
+   tiempo       166
+   fecha        118
    votiva        61
    común          5
 
-Con las cinco piezas del formulario completas: 158 de 598. Que la
+Con las cinco piezas del formulario completas: 159 de 588. Que la
 mayoría no las tenga todas no es un hueco del parseo: es lo que
 el misalito imprime. En una memoria pone la colecta del santo y
 deja las antífonas de la feria, así que el santo se queda con su
 colecta y nada más, y es correcto —la app tomará las demás de
 donde el día las toma—. Lo que falta, ranura por ranura:
 
-   sin comunion       352 celebraciones
-   sin entrada        334 celebraciones
-   sin ofrendas       204 celebraciones
-   sin poscomunion    152 celebraciones
-   sin colecta         75 celebraciones
+   sin comunion       343 celebraciones
+   sin entrada        324 celebraciones
+   sin ofrendas       194 celebraciones
+   sin poscomunion    153 celebraciones
+   sin colecta         67 celebraciones
 
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
 
-Los 653 avisos son todos de lo mismo, y es un hallazgo, no un
+Los 655 avisos son todos de lo mismo, y es un hallazgo, no un
 fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
 calendario se armó con el general. Sus textos entran, con
-identificador `san_…`: son 48 celebraciones.
+identificador `san_…`: son 46 celebraciones.
 
    san_beata-maria-de-la-concepcion               colecta, comunion, ofrendas, poscomunion
    san_beato-bartolome-gutierrez                  colecta, comunion, ofrendas, poscomunion
@@ -829,7 +889,7 @@ identificador `san_…`: son 48 celebraciones.
    san_beato-miguel-agustin-pro-martir            colecta, ofrendas, poscomunion
    san_beato-sebastian-de-aparicio                poscomunion
    san_beatos-jose-ezequiel-y                     colecta, pueblo
-   san_beatos-jose-luis-padilla-gomez             colecta, pueblo
+   san_beatos-jose-luis-padilla-gomez             colecta
    san_beatos-juan-bautista-y                     colecta, poscomunion
    san_beatos-pedro-zuniga-y-luis-flores          ofrendas, poscomunion
    san_de-la-divina-misericordia                  colecta, poscomunion
@@ -838,9 +898,8 @@ identificador `san_…`: son 48 celebraciones.
    san_memoria-de-santa-teresa-de-calcuta         colecta, entrada, ofrendas
    san_nuestra-senora-de-fatima                   colecta, comunion, entrada, ofrendas, po
    san_nuestra-senora-de-la-merced                colecta, comunion, entrada, ofrendas, po
-   san_nuestra-senora-de-los-dolores              poscomunion
    san_nuestra-senora-del-perpetuo-socorro        poscomunion
-   san_por-la-santificacion-del-trabajo-humano    colecta, poscomunion
+   san_por-la-santificacion-del-trabajo-humano    colecta
    san_san-antonio-m-claret-obispo                ofrendas, poscomunion
    san_san-atilano-cruz-alvarado-y                colecta
    san_san-david-galvan-bermudez                  poscomunion
@@ -852,7 +911,6 @@ identificador `san_…`: son 48 celebraciones.
    san_san-jose-maria-de-yermo-y-parres-presbiter ofrendas, poscomunion
    san_san-jose-maria-robles-hurtado              ofrendas, poscomunion
    san_san-juan-nepomuceno-martir                 colecta
-   san_san-pedro-esqueda-ramirez                  poscomunion
    san_san-sabas-reyes-salazar                    comunion, ofrendas, poscomunion
    san_san-tranquilino-ubiarco-robles             colecta, ofrendas, poscomunion
    san_santa-josefina-bakhita-virgen              colecta, ofrendas, poscomunion
@@ -992,4 +1050,4 @@ Y los avisos, día por día:
    2022-02-06/0   la fuente ofrece «de SAN MATEO CORREA MAGALLANES» y el calendario no trae ese santo ese día
    2022-02-08/0   la fuente ofrece «SANTA JOSEFINA BAKHITA, Virgen» y el calendario no trae ese santo ese día
    2022-02-25/0   la fuente ofrece «SANTO TORIBIO ROMO GONZÁLEZ» y el calendario no trae ese santo ese día
-   … y 533 más
+   … y 535 más

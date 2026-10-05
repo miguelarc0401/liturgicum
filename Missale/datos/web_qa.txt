@@ -1,8 +1,8 @@
 Fase 3c — misalcatolico.com, la segunda fuente castellana
 =========================================================
 
-122 meses, 3683 días con formulario, 4263 formularios.
-518 días traen más de un formulario: la opción que el misalito no
+122 meses, 3691 días con formulario, 4272 formularios.
+519 días traen más de un formulario: la opción que el misalito no
 da, porque su editor ya había elegido.
 31 trozos van antes de la misa y no son alternativa suya: la
 bendición de las palmas y lo que la Vigilia pascual pone
@@ -15,34 +15,50 @@ Cómo venía rotulado cada renglón
 El marcado no decide nada —el rótulo se reconoce por el
 vocabulario de la fase 3—, pero conviene saber con qué se topa:
 
-  strong     64323
-  p          51521
-  br         49119
+  strong     64487
+  p          51619
+  br         49256
   h3          4700
   h2           184
-  h1            41
+  h1            49
 
 
 Los rótulos que salieron, y cuántas veces
 -----------------------------------------
 
-  ORACIÓN COLECTA                      4679
-  ORACIÓN SOBRE LAS OFRENDAS           4302
-  ORACIÓN DESPUÉS DE LA COMUNIÓN       4273
-  ANTÍFONA DE LA COMUNIÓN              4207
-  ANTÍFONA DE ENTRADA                  4188
-  SALMO RESPONSORIAL                   3853
-  EVANGELIO                            3822
-  PRIMERA LECTURA                      3771
-  ACLAMACIÓN ANTES DEL EVANGELIO       3761
-  SEGUNDA LECTURA                       767
+  ORACIÓN COLECTA                      4691
+  ORACIÓN DESPUÉS DE LA COMUNIÓN       4325
+  ORACIÓN SOBRE LAS OFRENDAS           4318
+  ANTÍFONA DE LA COMUNIÓN              4216
+  ANTÍFONA DE ENTRADA                  4197
+  SALMO RESPONSORIAL                   3873
+  EVANGELIO                            3830
+  PRIMERA LECTURA                      3785
+  ACLAMACIÓN ANTES DEL EVANGELIO       3769
+  @prefacio                            2021
+  @obien                                812
+  @gloria                               809
+  @desconocido                          777
+  SEGUNDA LECTURA                       770
+  @credo                                676
   ORACIÓN SOBRE EL PUEBLO               455
+  @bendicion                            254
   REFLEXIÓN                             172
   SECUENCIA                             122
   ORACIÓN DE LOS FIELES                  70
+  @oremos                                67
   MONICIÓN                               43
+  ACLAMACIÓN                             31
+  PASIÓN DE NUESTRO SEÑOR JESUCRISTO     25
   ORACIÓN UNIVERSAL                      13
+  TERCERA LECTURA                        12
+  CUARTA LECTURA                         12
+  QUINTA LECTURA                         12
+  SEXTA LECTURA                          12
+  SÉPTIMA LECTURA                        12
+  EPÍSTOLA                               12
   MONICIONES                              3
+  @plegaria                               1
   ORACIONES DE LOS FIELES                 1
   MONICIÓN DE ENTRADA                     1
 
@@ -51,31 +67,242 @@ Ranuras que salen más de una vez en el mismo formulario
 -------------------------------------------------------
 
 No es un defecto del corte: es el Misal dando a elegir —dos
-colectas, dos antífonas— y la fuente imprimiendo las dos. Son
-alternativas, y la fase 4 las cuenta como tales.
+colectas, dos antífonas— y la fuente imprimiendo las dos; o la
+Vigilia Pascual, que canta nueve lecturas y ocho salmos; o la
+memoria que el sitio pone detrás de la feria sin repetir la
+antífona de entrada, de modo que las dos misas caen en un
+formulario. La fase 4 se queda con la primera para la ranura
+—de ella depende la atribución— y lleva las lecturas de más a
+la cosecha de perícopas, que se guarda por cita.
 
-  ORACIÓN COLECTA                       375 formularios
-  ORACIÓN SOBRE LAS OFRENDAS             88 formularios
-  ORACIÓN DESPUÉS DE LA COMUNIÓN         85 formularios
+  ORACIÓN COLECTA                       376 formularios
+  @obien                                122 formularios
+  ORACIÓN SOBRE LAS OFRENDAS             89 formularios
+  ORACIÓN DESPUÉS DE LA COMUNIÓN         87 formularios
+  @desconocido                           57 formularios
   EVANGELIO                              31 formularios
   SALMO RESPONSORIAL                     28 formularios
   ANTÍFONA DE LA COMUNIÓN                21 formularios
+  @prefacio                              20 formularios
   ACLAMACIÓN ANTES DEL EVANGELIO         18 formularios
   PRIMERA LECTURA                        18 formularios
   MONICIÓN                               14 formularios
+  @credo                                 11 formularios
+  @oremos                                 9 formularios
   SEGUNDA LECTURA                         8 formularios
+  PASIÓN DE NUESTRO SEÑOR JESUCRISTO      4 formularios
   REFLEXIÓN                               4 formularios
+  @gloria                                 2 formularios
   SECUENCIA                               1 formularios
 
 
-Avisos (5)
-----------
+Los rótulos que el sitio escribe mal
+------------------------------------
 
+Se leen por parecido con el bueno, igual que en la fase 3, y
+cada uno se nombra. El que más pesa es «ORACIÓN DESPUÉS DE LA
+COMUNÓN»: sin el arreglo, la oración del día se quedaba
+pegada a la antífona de la comunión y no entraba en el libro.
+
+  ORACIÓN DESPUÉS DE LA COMUNÓN              → ORACIÓN DESPUÉS DE LA COMUNIÓN   31
+  ANTÍFONA DE ENTRAD                        → ANTÍFONA DE ENTRADA              20
+  ORACIÓN COLECT                            → ORACIÓN COLECTA                  20
+  ORACIÓN SOBRE LAS OFRENDA                 → ORACIÓN SOBRE LAS OFRENDAS       20
+  ORACIÓN DESPUÉS DE LA COMUNI             → ORACIÓN DESPUÉS DE LA COMUNIÓN   20
+  ACLAMACIÓN ANTES DEL EVANGELI             → ACLAMACIÓN ANTES DEL EVANGELIO   19
+  ANTÍFONA DE LA COMUNIO                    → ANTÍFONA DE LA COMUNIÓN          19
+  ORACIÓN SOBRE EL PUEBL                    → ORACIÓN SOBRE EL PUEBLO          4
+  RIMERA LECTURA                             → PRIMERA LECTURA                  3
+  ORACIÓN DE LOS FIELE                      → ORACIÓN DE LOS FIELES            3
+  Antífona de Entrad                        → ANTÍFONA DE ENTRADA              3
+  Oración Colect                            → ORACIÓN COLECTA                  3
+  Aclamación antes del Evangeli             → ACLAMACIÓN ANTES DEL EVANGELIO   3
+  Oración sobre las Ofrenda                 → ORACIÓN SOBRE LAS OFRENDAS       3
+  Antífona de la Comunio                    → ANTÍFONA DE LA COMUNIÓN          3
+  Oración después de la Comuni             → ORACIÓN DESPUÉS DE LA COMUNIÓN   3
+  ALMO RESPONSORIAL                          → SALMO RESPONSORIAL               2
+  SALMO RESPONSOR1AL                         → SALMO RESPONSORIAL               2
+  ORACIÓN DESPUÉS DE LA. COMUNIÓN            → ORACIÓN DESPUÉS DE LA COMUNIÓN   2
+  REFLEXIÓ                                  → REFLEXIÓN                        2
+  2. ORACIÓN COLECTA                         → ORACIÓN COLECTA                  1
+  SALMO FIESPONSORIAL                        → SALMO RESPONSORIAL               1
+  ORACIÓN SOBRE LAS OFRENS                   → ORACIÓN SOBRE LAS OFRENDAS       1
+  ORACIÓN DESPUÉS D E LA COMUNIÓN            → ORACIÓN DESPUÉS DE LA COMUNIÓN   1
+  SALMO RESPONSONIAL                         → SALMO RESPONSORIAL               1
+  SALMO RESPONSAL                            → SALMO RESPONSORIAL               1
+  ORASION SOBRE LAS OFRENDAS                 → ORACIÓN SOBRE LAS OFRENDAS       1
+  ORACIÓN SOBRE LAS OFRENDA                  → ORACIÓN SOBRE LAS OFRENDAS       1
+  PRIMERA LETURA                             → PRIMERA LECTURA                  1
+  ORACIÓN DESPUÉSDE LA COMUNIÓN              → ORACIÓN DESPUÉS DE LA COMUNIÓN   1
+  RACIÓN SOBRE LAS OFRENDAS                  → ORACIÓN SOBRE LAS OFRENDAS       1
+  PRACIÓN DESPUÉS DE LA COMUNIÓN             → ORACIÓN DESPUÉS DE LA COMUNIÓN   1
+  PRIMERA LEC'IURA                           → PRIMERA LECTURA                  1
+  ORACIÓN DESPUES DE LA COMUNÓN              → ORACIÓN DESPUÉS DE LA COMUNIÓN   1
+  ORACÓN DESPUÉS DE LA COMUNIÓN              → ORACIÓN DESPUÉS DE LA COMUNIÓN   1
+  SALMO RE PONSORIAL                         → SALMO RESPONSORIAL               1
+  ORACIÓN DESPUÉS. DE LA COMUNIÓN            → ORACIÓN DESPUÉS DE LA COMUNIÓN   1
+  SALMO RESPONSOR                            → SALMO RESPONSORIAL               1
+  SALMO AESPONSORIAL                         → SALMO RESPONSORIAL               1
+  SALMO RICSPONSORIAL                        → SALMO RESPONSORIAL               1
+
+
+Las rúbricas del Misal que el sitio imprime
+-------------------------------------------
+
+Cierran la pieza, como el rótulo desconocido: «Se dice
+Credo» iba dentro del evangelio y el nombre del prefacio
+dentro de la oración sobre las ofrendas. Van como editorial y
+no como rúbrica —a diferencia de la fase 3—, porque la fase 4
+lee las rúbricas para decidir el Gloria, el Credo y el
+prefacio de cada celebración, y este sitio no vota en eso.
+
+  @prefacio          2021
+  @obien              812
+  @gloria             809
+  @credo              676
+  @bendicion          254
+  @oremos              67
+  @plegaria             1
+
+
+Los rótulos en versales que no conocemos
+----------------------------------------
+
+Un renglón en versales que no está en el vocabulario **cierra la
+pieza**: lo que viene detrás no es de ella. Antes pasaba por
+cuerpo, y por eso el evangelio del domingo salía con la Plegaria
+Universal entera detrás. Aquí van nombrados y contados, para que
+el rótulo que falte se vea en vez de esconderse dentro de una
+lectura.
+
+  111 formas, 777 casos.
+
+    485  PLEGARIA UNIVERSAL
+     25  PARA MEDITAR
+     16  HIMNO A CRISTO REY
+     16  DESPEDIDA
+     10  SALMO 23
+     10  RESPONSORIO
+      9  SALMO 46
+      9  SEGUNDA PARTE
+      9  PLEGARIA UNIVERSAL:
+      9  UNA REFLEXIÓN PARA NUESTRO TIEMPO
+      7  ANTÍFONA II
+      7  ANTÍFONA I
+      6  ORACIÓN
+      6  TERCERA PARTE
+      6  PLEGARIA UNIVERSAL (DOMUND)
+      5  ANTÍFONA 1
+      5  LA MISA
+      5  BENDICIÓN DEL AGUA BAUTISMAL
+      5  CUARTA PARTE
+      4  II. SEGUNDA FORMA: ENTRADA SOLEMNE
+      4  III. TERCERA FORMA: ENTRADA SENCILLA
+      4  MISA DEL DÍA
+      4  DESPUÉS DE LA COMUNIÓN
+      4  LITURGIA DE LAS HORAS
+      3  LITURGIA BAUTISMAL
+      3  TRASLADO DEL SANTÍSIMO SACRAMENTO
+      3  INVITATORIO AL PRESENTAR LA CRUZ
+      3  BENDICIÓN DEL AGUA
+      3  DOMINGO 31
+      3  SALMO 109
+      2  BENDICIÓN DEL AGUA BENDITA
+      2  PRIMERA PARTE DEL TIEMPO ORDINARIO
+      2  PRIMERA PARTE
+      2  ANTÍFONA 2
+      2  ANTIFONA II
+      2  BENDICIÓN SOLEMNE
+      2  SALMO 18
+      2  SALMO 39
+      1  MISA VESPERTINA DE LA VIGILIA
+      1  MISA POR LA NUEVA EVANGELIZACIÓN
+      1  MISA POR LA RECONCILIACIÓN
+      1  GIA DE LA PALABRA
+      1  ANTÍFONA DESPUÉS DE LA COMUNIÓN
+      1  TRASLACIÓN DEL SANTÍSIMO SACRAMENTO
+      1  PALABRA
+      1  MISA VOTIVA DEL ESPÍRITU SANTO B.
+      1  MR. 1083 (1128).
+      1  MR. 1119 (1164)
+      1  EL HERALDO QUE ANUNCIA LA PAZ
+      1  SEGUNDA FORMA: ENTRADA SOLEMNE
+      1  TERCERA FORMA: ENTRADA SENCILLA
+      1  PRESENTACIÓN DE LA SANTA CRUZ
+      1  PAZ CON USTEDES
+      1  UNA REFLEXIÓN PARA NUESTRO TIEMPO.
+      1  MR 1140 (1189)
+      1  DEL DESCONCIERTO AL TESTIMONIO
+      1  EL ESPÍRITU DE LA VERDAD
+      1  TOMEN MI YUGO SOBRE USTEDES
+      1  SEGUNDA MISA
+      1  TERCERA MISA
+
+
+Avisos (181)
+------------
+
+  2016-01-26: antes del primer rótulo: 'Querido Tito, mi verdadero hijo en la fe que compartimos.'
+  2016-01-26: antes del primer rótulo: 'De la carta del apóstol san Pablo a Tito: 1, 1-5'
+  2016-01-26: antes del primer rótulo: 'Yo Pablo, soy servidor de Dios y apóstol de Jesucristo, para'
+  2016-01-26: antes del primer rótulo: 'Querido Tito, mi verdadero hijo en la fe que compartimos: te'
+  2016-01-26: antes del primer rótulo: 'Palabra de Dios.Te alabamos, Señor.'
+  2016-02-16: antes del primer rótulo: 'Mi palabra hará mi voluntad.'
+  2016-02-16: antes del primer rótulo: 'el libro del profeta Isaías: 55, 10-11'
+  2016-02-16: antes del primer rótulo: 'Esto dice el Señor: "Como bajan del cielo la lluvia y la nie'
+  2016-02-16: antes del primer rótulo: 'Palabra de Dios.Te alabamos, Señor.'
+  2016-02-21: antes del primer rótulo: 'Dios hace una alianza con Abram.'
+  2016-02-21: antes del primer rótulo: 'Del libro del Génesis: 15, 5-12. 17-18'
+  2016-02-21: antes del primer rótulo: 'En aquellos días, Dios sacó a Abram de su casa y le dijo: "M'
+  2016-02-21: antes del primer rótulo: 'Abram creyó lo que el Señor le decía y, por esa fe, el Señor'
+  2016-02-21: antes del primer rótulo: 'Tomó Abram aquellos animales, los partió por la mitad y puso'
+  2016-02-21: antes del primer rótulo: 'Estando ya para ponerse el sol, Abram cayó en un profundo le'
+  2016-02-23: antes del primer rótulo: 'Aprendan a hacer el bien; busquen la justicia.'
+  2016-02-23: antes del primer rótulo: 'Del libro del profeta Isaías: 1, 10. 16-20'
+  2016-02-23: antes del primer rótulo: 'Oigan la palabra del Señor, príncipes de Sodoma; escucha la '
+  2016-02-23: antes del primer rótulo: 'Vengan, pues, y discutamos, dice el Señor. Aunque sus pecado'
+  2016-02-25: antes del primer rótulo: 'Maldito el que confía en el hombre; bendito el que confía en'
+  2016-02-25: antes del primer rótulo: 'Del libro del profeta Jeremías: 17, 5-10'
+  2016-02-25: antes del primer rótulo: 'Esto dice el Señor: "Maldito el hombre que confía en el homb'
+  2016-02-25: antes del primer rótulo: 'Bendito el hombre que confía en el Señor y en él pone su esp'
+  2016-02-25: antes del primer rótulo: 'El corazón del hombre es la cosa más traicionera y difícil d'
+  2016-02-25: antes del primer rótulo: 'Palabra de Dios.Te alabamos, Señor.'
   2016-02-29: sólo las lecturas, sin los propios: la fuente encabeza con el nombre del libro y no con el rótulo de la ranura
+  2016-03-26: antes del primer rótulo: 'Concluida la liturgia bautismal la celebración sigue como si'
+  2016-08-15: antes del primer rótulo: 'Introdujeron el arca de la alianza y la instalaron en el cen'
+  2016-08-15: antes del primer rótulo: 'Del primer libro de las Crónicas: 15, 3-4. 15-16; 16, 1-2'
+  2016-08-15: antes del primer rótulo: 'En aquellos días, David congregó en Jerusalén a todos los is'
+  2016-08-15: antes del primer rótulo: 'David ordenó a los jefes de los levitas que entre los de su '
+  2017-01-07: antes del primer rótulo: 'PRIMERA PALABRA'
+  2017-01-07: antes del primer rótulo: 'Las lecturas son las mismas que las de la Misa del día, (dom'
+  2017-01-07: antes del primer rótulo: 'Credo'
+  2017-04-15: antes del primer rótulo: 'Concluida la liturgia bautismal la celebración sigue como si'
+  2017-05-18: antes del primer rótulo: 'Juzgo que no se debe importunar a los paganos que se convier'
+  2017-05-18: antes del primer rótulo: 'Del libro de los Hechos de los Apóstoles: 15, 7-21'
+  2017-05-18: antes del primer rótulo: 'Por aquellos días, después de una larga discusión sobre el a'
+  2017-05-18: antes del primer rótulo: '¿Por qué quieren irritar a Dios imponiendo sobre los discípu'
+  2017-05-18: antes del primer rótulo: 'Toda la asamblea guardó silencio y se pusieron a oír a Berna'
+  2017-05-18: antes del primer rótulo: "'Hermanos, escúchenme. Pedro nos ha referido cómo, por prime"
+  2017-05-18: antes del primer rótulo: 'Por lo cual, yo juzgo que no se debe molestar a los paganos '
+  2017-08-30: antes del primer rótulo: 'Los he desposado con un solo marido y los he entregado a Cri'
+  2017-08-30: antes del primer rótulo: 'De la segunda carta del apóstol san Pablo a los corintios: 1'
+  2017-08-30: antes del primer rótulo: 'Hermanos: Si alguno quiere enorgullecerse, que se enorgullez'
+  2017-12-27: antes del primer rótulo: 'Les anunciamos lo que hemos visto y oído.'
+  2017-12-27: antes del primer rótulo: 'De la primera carta del apóstol san Juan: 1, 1-4'
+  2017-12-27: antes del primer rótulo: 'Queridos hermanos: Les anunciamos lo que ya existía desde el'
+  2017-12-27: antes del primer rótulo: 'Esta vida se ha hecho visible y nosotros la hemos visto y so'
+  2017-12-27: antes del primer rótulo: 'Les anunciamos, pues, lo que hemos visto y oído, para que us'
+  2018-03-17: antes del primer rótulo: 'Yo era como un manso cordero, que es llevado a degollar.'
+  2018-03-17: antes del primer rótulo: 'Del libro del profeta Jeremías: 11, 18-20'
+  2018-03-17: antes del primer rótulo: 'En aquel tiempo, dijo Jeremías: "El Señor me instruyó y yo c'
+  2018-03-17: antes del primer rótulo: 'Ahora tú, Señor de los ejércitos, justo juez, que sondeas lo'
   2018-03-31: sin misa: es Sábado Santo, y la fuente lo explica en prosa
-  2020-04-11: sin misa: es Sábado Santo, y la fuente lo explica en prosa
-  2021-04-03: sin misa: es Sábado Santo, y la fuente lo explica en prosa
-  2023-04-08: sin misa: es Sábado Santo, y la fuente lo explica en prosa
+  2018-04-01: antes del primer rótulo: 'Concluida la liturgia bautismal la celebración sigue como si'
+  2018-06-03: antes del primer rótulo: 'Recuerda que fuiste esclavo en Egipto.'
+  2018-06-03: antes del primer rótulo: 'Del libro del Deuteronomio: 5,12-15'
+  2018-06-03: antes del primer rótulo: 'Esto dice el Señor: "Santifica el día sábado, como el Señor,'
+  2018-06-03: antes del primer rótulo: 'Recuerda que fuiste esclavo en Egipto y que te sacó de allá '
+  … y 121 más, en los AAAA-MM.json
 
 
 Las secciones que no son de un día
@@ -99,10 +326,10 @@ segundo testigo: sirven para cotejar un renglón dudoso.
 El cotejo con los cien misalitos
 --------------------------------
 
-misalitos: 3044 días    sitio: 3683 días
-sólo en el sitio: 890    sólo en los misalitos: 251    en los dos: 2793
-  del sitio, el primero 2016-01-01 y el último 2026-10-31
-  por año: 2016: 357, 2017: 352, 2018: 150, 2026: 31
+misalitos: 3075 días    sitio: 3691 días
+sólo en el sitio: 867    sólo en los misalitos: 251    en los dos: 2824
+  del sitio, el primero 2016-01-01 y el último 2018-05-31
+  por año: 2016: 362, 2017: 355, 2018: 150
   de los misalitos, 251 días que el sitio no da:
     2018-12-01
     2018-12-02
@@ -126,32 +353,45 @@ sólo en el sitio: 890    sólo en los misalitos: 251    en los dos: 2793
     2018-12-20
     … y 231 más
 
-Las ranuras de los 2793 días que están en las dos fuentes, cada una
+Las ranuras de los 2824 días que están en las dos fuentes, cada una
 medida contra todos los bloques de su rótulo que el sitio da:
 
-  palabra por palabra        6067   23.3%
-  casi igual                 4124   15.9%
-  parecido                   8738   33.6%
-  flojo                      2083    8.0%
-  distinto                   4986   19.2%
-  no está en el sitio        5001
+  palabra por palabra        8547   30.5%
+  casi igual                 4376   15.6%
+  parecido                   7985   28.5%
+  flojo                      1796    6.4%
+  distinto                   5318   19.0%
+  no está en el sitio        3575
 
 Y por ranura, lo que cuadra al 0,80 o mejor:
 
-  EVANGELIO                           2805   94.3%
-  SALMO RESPONSORIAL                  2799   93.5%
-  ORACIÓN COLECTA                     2782   64.3%
-  ORACIÓN SOBRE LAS OFRENDAS          2774   54.6%
-  ANTÍFONA DE LA COMUNIÓN             2769   56.2%
-  PRIMERA LECTURA                     2764   93.7%
-  ANTÍFONA DE ENTRADA                 2762   62.3%
-  ACLAMACIÓN ANTES DEL EVANGELIO      2758   85.0%
-  ORACIÓN DESPUÉS DE LA COMUNIÓN      2745   50.4%
-  SEGUNDA LECTURA                      501   95.0%
-  ORACIÓN SOBRE EL PUEBLO              317   61.8%
+  SALMO RESPONSORIAL                  2837   93.5%
+  EVANGELIO                           2836   94.4%
+  ORACIÓN COLECTA                     2814   65.7%
+  ORACIÓN SOBRE LAS OFRENDAS          2809   64.9%
+  ORACIÓN DESPUÉS DE LA COMUNIÓN      2809   53.6%
+  PRIMERA LECTURA                     2801   93.8%
+  ANTÍFONA DE LA COMUNIÓN             2800   56.7%
+  ANTÍFONA DE ENTRADA                 2793   62.4%
+  ACLAMACIÓN ANTES DEL EVANGELIO      2789   85.1%
+  SEGUNDA LECTURA                      505   94.9%
+  @gloria                              485   98.6%
+  @prefacio                            433   67.2%
+  @credo                               431   85.2%
+  ORACIÓN SOBRE EL PUEBLO              317   75.1%
   REFLEXIÓN                            131   48.1%
-  ORACIÓN DE LOS FIELES                 53   49.1%
+  @desconocido                         128    2.3%
+  @bendicion                           110   64.5%
+  ORACIÓN DE LOS FIELES                 57   45.6%
+  @obien                                55   21.8%
   SECUENCIA                             37   27.0%
+  PASIÓN DE NUESTRO SEÑOR JESUCRISTO    14   28.6%
+  TERCERA LECTURA                        5  100.0%
+  CUARTA LECTURA                         5  100.0%
+  QUINTA LECTURA                         5  100.0%
+  SEXTA LECTURA                          5  100.0%
+  SÉPTIMA LECTURA                        5  100.0%
+  EPÍSTOLA                               5   80.0%
   ORACIONES DE LOS FIELES                1  100.0%
 
 Las lecturas cuadran y los propios no, y eso **no es un defecto de
@@ -173,20 +413,27 @@ los cien misalitos, en ningún día. Es la cosecha neta, y la razón
 de todo esto.
 
   ranura                                sitio   misal.   nuevos
-  ANTÍFONA DE ENTRADA                     617      400      346
-  ORACIÓN COLECTA                        1349      821      949
-  PRIMERA LECTURA                        1735     1188     1666
-  SALMO RESPONSORIAL                     1596     1029     1390
-  SEGUNDA LECTURA                         380      276      366
+  ANTÍFONA DE ENTRADA                     589      400      257
+  ORACIÓN COLECTA                        1250      844      824
+  PRIMERA LECTURA                        1721     1193     1633
+  SALMO RESPONSORIAL                     1580     1028     1374
+  SEGUNDA LECTURA                         369      277      355
+  TERCERA LECTURA                           5        2        5
+  CUARTA LECTURA                            4        1        4
+  QUINTA LECTURA                            4        2        4
+  SEXTA LECTURA                             4        1        4
+  SÉPTIMA LECTURA                           4        2        4
+  EPÍSTOLA                                  4        3        4
   SECUENCIA                                20       36       18
-  ACLAMACIÓN ANTES DEL EVANGELIO          864      387      677
-  EVANGELIO                              1786      839     1697
-  ORACIÓN SOBRE LAS OFRENDAS             1417      609     1110
-  ANTÍFONA DE LA COMUNIÓN                 667      407      332
-  ORACIÓN DESPUÉS DE LA COMUNIÓN         1910      827     1580
-  ORACIÓN SOBRE EL PUEBLO                 248       73      204
+  ACLAMACIÓN ANTES DEL EVANGELIO          859      390      670
+  EVANGELIO                              1574      835     1479
+  PASIÓN DE NUESTRO SEÑOR JESUCRISTO       17        9       17
+  ORACIÓN SOBRE LAS OFRENDAS              775      609      384
+  ANTÍFONA DE LA COMUNIÓN                 619      405      280
+  ORACIÓN DESPUÉS DE LA COMUNIÓN         1429      776     1064
+  ORACIÓN SOBRE EL PUEBLO                 209       69      163
 
-10335 textos que los misalitos no tienen. Cuidado al leer esta cifra:
+8543 textos que los misalitos no tienen. Cuidado al leer esta cifra:
 va aplastada y entera, así que una pieza que los dos traen con una
 palabra de diferencia cuenta como nueva. Es un techo, no un
 recuento; lo que de verdad entre en el libro lo dirá la fase 4
@@ -196,23 +443,23 @@ cuando lea las dos fuentes y cuente testigos.
 El orden y la disposición
 -------------------------
 
-El sitio imprime 124 secuencias distintas de rótulos; los
-misalitos, 187. Las cinco más frecuentes de cada uno:
+El sitio imprime 383 secuencias distintas de rótulos; los
+misalitos, 212. Las cinco más frecuentes de cada uno:
 
   sitio:
-    2061  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
-     426  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · SEGUNDA LECTURA · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
-     265  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN · ORACIÓN SOBRE EL PUEBLO
-     133  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN · ORACIÓN COLECTA
-      70  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · SECUENCIA · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
+    1097  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
+     474  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · @prefacio · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
+     209  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · @prefacio · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN · ORACIÓN SOBRE EL PUEBLO
+     129  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN · @obien
+     110  ANTÍFONA DE ENTRADA · @gloria · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · SEGUNDA LECTURA · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · @credo · @desconocido · ORACIÓN SOBRE LAS OFRENDAS · @prefacio · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
 
   misalitos:
     1746  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · REFLEXIÓN · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
-     211  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · REFLEXIÓN · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN · ORACIÓN SOBRE EL PUEBLO
-     187  ANTÍFONA DE ENTRADA · @gloria · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · SEGUNDA LECTURA · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · @credo · ORACIÓN DE LOS FIELES · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
+     210  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · REFLEXIÓN · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN · ORACIÓN SOBRE EL PUEBLO
+     189  ANTÍFONA DE ENTRADA · @gloria · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · SEGUNDA LECTURA · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · @credo · ORACIÓN DE LOS FIELES · ORACIÓN SOBRE LAS OFRENDAS · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
       76  ANTÍFONA DE ENTRADA · @gloria · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · REFLEXIÓN · ORACIÓN SOBRE LAS OFRENDAS · @prefacio · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
-      67  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · REFLEXIÓN · ORACIÓN SOBRE LAS OFRENDAS · @prefacio · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
+      68  ANTÍFONA DE ENTRADA · ORACIÓN COLECTA · PRIMERA LECTURA · SALMO RESPONSORIAL · ACLAMACIÓN ANTES DEL EVANGELIO · EVANGELIO · REFLEXIÓN · ORACIÓN SOBRE LAS OFRENDAS · @prefacio · ANTÍFONA DE LA COMUNIÓN · ORACIÓN DESPUÉS DE LA COMUNIÓN
 
-Del sitio salen 11180 fórmulas y 308 sumarios en renglón propio, que
+Del sitio salen 11381 fórmulas y 308 sumarios en renglón propio, que
 en el misalito van dentro del bloque corrido y la fase 6 tuvo que
 reconocer por su forma.
