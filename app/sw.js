@@ -23,8 +23,6 @@ const FICHEROS = [
   'icono-32.png',
   'icono-180.png',
   'icono-192.png',
-  'icono-512.png',
-  'icono-maskable-512.png',
   'datos/version.js',
   'datos/indice.json',
   'datos/calendario.json',
@@ -37,6 +35,11 @@ const FICHEROS = [
  * liturgia de las horas, con sus ocho años de testigos destilados, unos 25.
  * Mientras tanto la app funciona, y las horas se cargan cuando se piden. */
 const DESPUES = [
+  // los dos iconos grandes pesan 850 kB entre los dos -son una foto de la
+  // tapa, con su grano, y eso no comprime-; Android se los baja el solo al
+  // instalar, y aqui estan nada mas que para cuando no haya red
+  'icono-512.png',
+  'icono-maskable-512.png',
   'datos/lecturas_nova.json',
   'datos/lecturas_es.json',
   'datos/horas_dias.json',

@@ -78,6 +78,22 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   en su sitio.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
+* **El formato del texto, una vez para todo o sección por sección.** La
+  alineación, el interlineado y la partición de palabras se dicen una vez y
+  valen para toda la app, que es lo que basta casi siempre; y quien quiera
+  más apaga «un solo formato para todo» y entonces cada clase de texto
+  —lecturas, salmos y cánticos, himnos, antífonas, oraciones, preces y
+  responsorios, y el Ordinario de la misa— lleva el suyo, con una muestra
+  al lado que no es un dibujo sino el mismo texto con las mismas reglas. Lo
+  que una sección no diga lo sigue diciendo el general. Las secciones se
+  agrupan por lo que son y no por el libro en que salen: la primera lectura
+  de la misa y la lectura breve de Vísperas son la misma clase de texto.
+* **Siete tipos de letra**, de libro y de pantalla, y **el color de la app**
+  fijo si se quiere: en vez del litúrgico del día, el que se elija. En el
+  calendario el color sigue siendo el de cada día, porque allí el color es
+  lo que se lee y no un adorno. Ninguna letra se descarga —la app abre sin
+  conexión desde el primer día—, así que lo que se elige es un aire y lo
+  sirve la fuente que el teléfono ya tenga.
 * **Calendario litúrgico** de cada año (2024–2060): qué se celebra cada día
   y con qué grado —solemnidad, fiesta, memoria, memoria libre, domingo,
   feria de Cuaresma, de Adviento…—, con su color, lo que se puede elegir y
@@ -134,6 +150,16 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   memoria libre se puede celebrar o dejar, y en Cuaresma y las ferias
   privilegiadas sólo cabe como conmemoración: eso se elige arriba, con los
   chips de la cabecera. En Ajustes se dice qué opción sale marcada.
+* **Primeras o segundas vísperas.** Un domingo y una solemnidad tienen dos
+  vísperas, y la app dice cuáles enseña: la tarde del sábado, «Primeras
+  vísperas», con el nombre y el color del domingo que entra —también si ese
+  domingo lo gana una solemnidad: se ha medido que el sábado de la semana
+  VII de Pascua trae el himno y la antífona de las primeras vísperas de
+  Pentecostés—; y el día mismo, «Segundas vísperas». De las solemnidades
+  que caen en día de semana no se anuncian las primeras: la fuente no las
+  dio —en la víspera imprime las del día que acaba, y el 24 de diciembre
+  trae las de Adviento y no las de Navidad—, y poner el rótulo sobre un
+  texto que no es el suyo sería mentir.
 * **La Hora intermedia**: la salmodia del día sale en Sexta y la
   complementaria (salmos graduales) en Tercia y Nona, y las tres dejan
   cambiar a la otra. En Adviento, Navidad, Cuaresma y Pascua la antífona de
@@ -148,7 +174,8 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   final de la Virgen, un selector numerado deja escoger.
 * **Cómo se lee.** Himnos, salmos y cánticos van por renglones con sangría
   francesa, de modo que al agrandar la letra se ve dónde empieza cada uno;
-  lecturas, responsorios, preces y oraciones, justificados. Cuando el salmo
+  lecturas, responsorios, preces y oraciones, justificados —y todo eso se
+  puede cambiar en Ajustes, junto o sección por sección—. Cuando el salmo
   empieza con las mismas palabras que su antífona (con o sin «aleluya»), una
   † roja al final de la antífona y otra donde se sigue. Lo que no está en la fuente y se tomó
   de los tomos impresos lleva la marca «ed. española» (ver
@@ -206,12 +233,23 @@ python src/12_calendario.py        # el esqueleto del año (si cambió algo ante
 python src/16_parse_anexos.py      # los apéndices
 python src/5_resolve.py --anexos   # y con --fuente nova
 python src/18_santoral.py          # santoral + precedencia -> calendario completo
-python src/15_app_data.py          # -> app/datos/*.json + los iconos
+python src/15_app_data.py          # -> app/datos/*.json
 python Breviarium/src/4_app.py     # -> app/datos/horas*.json (la liturgia de las horas)
 ```
 
 Las dos últimas son las que hay que repetir cuando se toca `data/santoral.csv`
 o cualquiera de las tablas editables, y es justo lo que hace `.\publicar.ps1`.
+
+El icono va aparte, porque no depende de los datos y casi nunca cambia:
+
+```bash
+python src/19_iconos.py            # src/icono-fuente.webp -> app/icono-*.png
+```
+
+Sale todo de una sola imagen, la tapa del breviario. Para cambiarlo se
+sustituye `src/icono-fuente.webp` y se vuelve a pasar el guion; de ahí salen
+el del navegador, el de iOS y los dos de Android —el normal y el `maskable`,
+que es el que el sistema recorta con la forma que tenga el teléfono—.
 
 `15_app_data.py` deja en `app/datos/version.js` una firma de los datos. El
 service worker la usa como nombre de su caché, así que al cambiar los datos
@@ -236,7 +274,7 @@ estilos.css             la hoja de estilo (colores litúrgicos, temas)
 app.js                  toda la app: rutas, calendario, maquetación, buscador
 sw.js                   el service worker: lo que la hace funcionar sin conexión
 manifest.webmanifest    nombre, iconos y modo pantalla completa
-icono-*.png             los dibuja src/15_app_data.py
+icono-*.png             los saca src/19_iconos.py de src/icono-fuente.webp
 datos/                  lo generado; no se edita a mano
 datos/horas*.json       la liturgia de las horas (la hace Breviarium/src/4_app.py)
 datos/misa.json         el formulario de cada misa, con sus propios

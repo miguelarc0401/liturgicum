@@ -1462,7 +1462,8 @@ lo declara en pantalla en vez de callarlo.
 
 ```
 src/14_calendario_civil.py   fecha civil -> dia liturgico, con sus tres parches
-src/15_app_data.py           data/ -> app/datos/*.json + los iconos (sin PIL)
+src/15_app_data.py           data/ -> app/datos/*.json
+src/19_iconos.py             src/icono-fuente.webp -> app/icono-*.png
 
 data/celebracion_overrides.csv  nombres de celebracion corregidos, editables
 data/calendario_civil.json      13 415 fechas (391 KB)

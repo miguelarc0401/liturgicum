@@ -20,8 +20,23 @@
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
            "Noto Serif", Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Las demas que se ofrecen en Ajustes. Ninguna se descarga: cada lista es
+     una fila de nombres y el telefono se queda con el primero que tenga, asi
+     que lo que se elige no es una fuente sino un aire —de libro, de
+     periodico, de pantalla— y el que lo sirve cambia de un aparato a otro. */
+  --antigua: "Hoefler Text", Constantia, Cambria, "Noto Serif",
+             "Times New Roman", serif;
+  --gruesa: Georgia, Charter, "Droid Serif", "Noto Serif", serif;
+  --periodico: "Times New Roman", Tinos, "Liberation Serif", "Noto Serif",
+               serif;
+  --humanista: Optima, Candara, "Gill Sans", "Gill Sans MT", "Noto Sans",
+               system-ui, sans-serif;
+  --ancha: Verdana, "DejaVu Sans", Tahoma, "Noto Sans", system-ui, sans-serif;
   --cuerpo: 1.0625rem;
   --interlinea: 1.62;
+  /* Los versos van mas apretados que la prosa: un renglon de salmo es corto
+     y el aire lo pone el renglon siguiente, no el espacio entre lineas. */
+  --interlinea-verso: 1.5;
   --familia: var(--serif);
   --medida: 38rem;
   --alto-cabecera: 0px;
@@ -466,8 +481,21 @@ body.cab-fija .fila-fecha .icono {
 .estrofa { margin: 0 0 .15rem; text-wrap: pretty; }
 .estrofa + .resp { margin: 0 0 .9rem; }
 
+.texto, .estrofa {
+  text-align: var(--alinea, left);
+  -webkit-hyphens: var(--parte, manual); hyphens: var(--parte, manual);
+}
 @media (min-width: 34rem) {
-  .texto, .estrofa { text-align: justify; hyphens: auto; }
+  .texto, .estrofa {
+    text-align: var(--alinea, justify);
+    -webkit-hyphens: var(--parte, auto); hyphens: var(--parte, auto);
+  }
+}
+/* La antifona del salmo no se justifica a ningun ancho —es un renglon o dos
+   dentro de su caja—, pero obedece a quien se lo diga. */
+.antifona {
+  text-align: var(--alinea, left);
+  -webkit-hyphens: var(--parte, manual); hyphens: var(--parte, manual);
 }
 
 /* ------------------------------------------------- formato, en Ajustes
@@ -475,16 +503,30 @@ body.cab-fija .fila-fecha .icono {
    modo que la muestra de Ajustes ensena exactamente lo que se vera: es el
    mismo texto con las mismas reglas, no una imitacion. */
 body[data-letra="sans"] { --familia: var(--sans); }
-body[data-interlinea="compacto"] { --interlinea: 1.42; }
-body[data-interlinea="holgado"] { --interlinea: 1.88; }
+body[data-letra="antigua"] { --familia: var(--antigua); }
+body[data-letra="gruesa"] { --familia: var(--gruesa); }
+body[data-letra="periodico"] { --familia: var(--periodico); }
+body[data-letra="humanista"] { --familia: var(--humanista); }
+body[data-letra="ancha"] { --familia: var(--ancha); }
+body[data-interlinea="compacto"] { --interlinea: 1.42; --interlinea-verso: 1.36; }
+body[data-interlinea="holgado"] { --interlinea: 1.88; --interlinea-verso: 1.74; }
+body[data-interlinea="suelto"] { --interlinea: 2.15; --interlinea-verso: 1.98; }
 body[data-medida="ancha"] { --medida: 50rem; }
-body[data-justifica="no"] .prosa .ln,
-body[data-justifica="no"] .texto,
-body[data-justifica="no"] .estrofa { text-align: left; }
-body[data-particion="no"] .prosa .ln,
-body[data-particion="no"] .texto,
-body[data-particion="no"] .estrofa { -webkit-hyphens: manual; hyphens: manual; }
+/* La alineacion y la particion ya no se escriben sobre cada texto, sino en
+   dos variables —`--alinea` y `--parte`— que cada texto lee con su propio
+   valor por omision. Asi la misma regla sirve para lo que se diga una vez
+   para todo —aqui, en el <body>— y para lo que una seccion diga por su
+   cuenta: `.fmt-salmos`, `.fmt-lecturas`… las redefinen, y el texto de
+   dentro las hereda sin que haya que nombrarlo otra vez. Decir «si» no es
+   ponerlas: es dejarlas sin decir, y entonces manda el valor por omision de
+   cada texto, que es el que la app traia. */
+body[data-justifica="no"] { --alinea: left; }
+body[data-particion="no"] { --parte: manual; }
 body[data-cruces="no"] .cruz { display: none; }
+/* El interlineado se resuelve en la seccion y no solo en el <body>, porque
+   `line-height` se hereda ya resuelto: heredar la variable no basta para que
+   una seccion con interlineado propio se despegue del general. */
+.hora-sec, .lect { line-height: var(--interlinea); }
 
 /* --------------------------------------------------------------- indice */
 .enlace-buscar {
@@ -629,6 +671,44 @@ h2.seccion {
 .ajustes-cuerpo { padding-bottom: .9rem; animation: entra-vista .2s var(--curva); }
 .ajustes-cuerpo > .ajuste:last-child { border-bottom: 0; }
 .ajustes-cuerpo > .pie { margin-top: .6rem; }
+/* El formato de una seccion sola: una pestana por seccion dentro de la
+   pestana del formato. Va un paso adentro —filete a la izquierda y rotulo en
+   caja baja— para que se vea que es lo de dentro de algo y no otra lista al
+   mismo nivel. */
+.fmt-grupo {
+  border-left: 2px solid var(--filete); margin: .15rem 0 .15rem .1rem;
+  padding-left: .8rem;
+}
+.fmt-grupo > summary {
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--sans); font-size: .85rem; color: var(--tinta);
+  padding: .7rem .1rem;
+}
+.fmt-grupo > summary::-webkit-details-marker { display: none; }
+.fmt-grupo > summary::after {
+  content: ""; width: .42rem; height: .42rem; margin-right: .3rem;
+  border-right: 2px solid var(--tinta-suave);
+  border-bottom: 2px solid var(--tinta-suave);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--medio) var(--curva);
+}
+.fmt-grupo[open] > summary { color: var(--acento); font-weight: 600; }
+.fmt-grupo[open] > summary::after {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+.fmt-grupo .ajuste { padding: .6rem 0; }
+.fmt-grupo .ajuste:last-child { border-bottom: 0; }
+.fmt-cuerpo { animation: entra-vista .2s var(--curva); }
+/* la muestra de cada seccion: la misma caja, mas chica, que de lo que se
+   trata es de ver el renglon */
+.muestra.chica { margin: .2rem 0 .5rem; padding: .7rem .8rem .6rem; }
+.muestra.chica .texto:last-child, .muestra.chica .antifona:last-child,
+.muestra.chica .ordo-p:last-child { margin-bottom: 0; }
+.pista-g {
+  margin: 0 0 .1rem; font-family: var(--sans); font-size: .76rem;
+  line-height: 1.45; color: var(--tinta-suave); max-width: 24rem;
+}
 .pie {
   margin-top: 2rem; font-family: var(--sans); font-size: .74rem;
   color: var(--tinta-suave); line-height: 1.5;
@@ -793,10 +873,15 @@ h2.seccion {
    justificado y con particion de palabras (el castellano si la tiene). */
 .estrofa-h { margin: 0 0 .95rem; }
 .hora-sec .ln { display: block; }
-.en-verso .estrofa-h { line-height: 1.5; }
-.en-verso .ln { padding-left: 1.3em; text-indent: -1.3em; }
+.en-verso .estrofa-h { line-height: var(--interlinea-verso); }
+.en-verso .ln {
+  padding-left: 1.3em; text-indent: -1.3em;
+  text-align: var(--alinea, left);
+  -webkit-hyphens: var(--parte, manual); hyphens: var(--parte, manual);
+}
 .prosa .ln {
-  text-align: justify; -webkit-hyphens: auto; hyphens: auto;
+  text-align: var(--alinea, justify);
+  -webkit-hyphens: var(--parte, auto); hyphens: var(--parte, auto);
   text-wrap: pretty;
 }
 /* Dentro de un bloque los renglones son del mismo texto: lo que separa un
@@ -1337,7 +1422,11 @@ body.con-carril #vista { padding-right: 2.1rem; }
    lo compone el Misal, con sangria francesa para que la continuacion de un
    renglon largo no se confunda con el siguiente. La rubrica es prosa. */
 .ordo-p { margin: 0 0 .75rem; }
-.ordo-p .ln { display: block; padding-left: 1.3em; text-indent: -1.3em; }
+.ordo-p .ln {
+  display: block; padding-left: 1.3em; text-indent: -1.3em;
+  text-align: var(--alinea, left);
+  -webkit-hyphens: var(--parte, manual); hyphens: var(--parte, manual);
+}
 .ordo-rub { color: var(--rubrica); font-style: italic; }
 .ordo-rub .ln { padding-left: 0; text-indent: 0; text-wrap: pretty; }
 .misa-sec .ordo-p .rub { color: var(--rubrica); font-style: italic; }

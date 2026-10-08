@@ -24,6 +24,12 @@ const POR_OMISION = {
   // el formato del texto (Ajustes, «Formato del texto»)
   letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
   particion: 'si', cruces: 'si', despierto: false,
+  // y el de cada sección por su cuenta, cuando uno para todas no basta:
+  // `fmt` es grupo -> {justifica, interlinea, particion}, y lo que un grupo
+  // no diga lo sigue diciendo el general
+  fmtUno: 'si', fmt: {},
+  // el color de la app: el litúrgico del día, o uno fijo
+  color: 'dia',
   // al rezar (Ajustes, «Liturgia de las Horas»)
   carril: 'si', gestos: 'si', rezadas: 'si'
 };
@@ -271,7 +277,143 @@ function aplicaCfg() {
   b.cruces = E.cfg.cruces;
   document.documentElement.style.setProperty(
     '--cuerpo', (E.cfg.tam / 100 * 1.0625).toFixed(3) + 'rem');
+  aplicaFormatoSecs();
+  ponColor(null);
   velaPantalla();
+}
+
+/* -------------------------------------------- el color, y el de cada día
+ *
+ * El color litúrgico tiñe la cabecera, las rúbricas y los controles, y
+ * cambia al pasar de un día a otro. Quien no lo quiera cambiando puede
+ * fijar uno en Ajustes, y entonces manda ése en toda la app; el del día se
+ * sigue guardando, porque es el que vuelve en cuanto se deja de fijar. El
+ * calendario no entra en el trato: allí el color de cada día es lo que se
+ * está leyendo, no un adorno.
+ */
+function ponColor(c) {
+  if (c) E.colorDia = c;
+  document.body.dataset.color = E.cfg.color === 'dia'
+    ? (E.colorDia || 'neutro') : E.cfg.color;
+}
+
+/* --------------------------------------------- el formato, sección a sección
+ *
+ * La alineación, el interlineado y la partición de palabras se pueden decir
+ * una vez para todo —que es lo que la app traía— o sección por sección: un
+ * salmo y una lectura no se leen igual, y quien justifica la lectura no
+ * tiene por qué justificar el salmo.
+ *
+ * Las secciones se agrupan por lo que son y no por el libro en que salen:
+ * la primera lectura de la misa y la lectura breve de Vísperas son la misma
+ * clase de texto, y quien las quiere a la izquierda las quiere las dos. Lo
+ * que no cae en ningún grupo —la reseña del día, la invocación, la
+ * conclusión, el examen de conciencia— sigue el formato general, y eso es
+ * deliberado: son renglones sueltos, no secciones que se lean seguidas.
+ *
+ * Cada grupo es una clase en su `<section>` (`fmt-salmos`, `fmt-lecturas`…)
+ * y lo que se haya dicho de él vive en una hoja de estilo que se rehace al
+ * cambiarlo: un grupo que no dice nada no sale de ella, y entonces hereda
+ * del <body> lo que diga el general.
+ *
+ * El cuarto campo es la forma de su muestra en Ajustes, que no es un dibujo
+ * sino el mismo texto con las mismas clases.
+ */
+const GRUPO_FMT = [
+  ['lecturas', 'Lecturas',
+    'Las de la misa —la primera, la segunda y el Evangelio— y las del '
+    + 'Oficio: la bíblica, la patrística y la lectura breve de las demás '
+    + 'horas.', 'prosa'],
+  ['salmos', 'Salmos y cánticos',
+    'El salmo responsorial de la misa y la aclamación antes del Evangelio; '
+    + 'la salmodia de cada hora, el invitatorio y el cántico evangélico.',
+    'verso'],
+  ['himnos', 'Himnos',
+    'El de cada hora, los que se pueden escoger y el Te Deum del Oficio de '
+    + 'lectura.', 'verso'],
+  ['antifonas', 'Antífonas',
+    'Las de entrada y de comunión de la misa, y la antífona final de la '
+    + 'Virgen en Completas.', 'ant'],
+  ['oraciones', 'Oraciones',
+    'La colecta, la oración sobre las ofrendas, la de después de la '
+    + 'comunión, la oración sobre el pueblo y la oración de cada hora.',
+    'prosa'],
+  ['preces', 'Preces y responsorios',
+    'La oración de los fieles de la misa, las preces de Laudes y Vísperas y '
+    + 'los responsorios del Oficio y de las horas menores.', 'preces'],
+  ['ordinario', 'El Ordinario de la misa',
+    'Las 146 rúbricas del Ordo intercaladas donde van, con el prefacio y la '
+    + 'plegaria eucarística.', 'ordo']
+];
+
+/* De qué grupo es cada sección. Las claves son las de la hora
+ * (`horas.json`, el orden de cada hora) y las de la misa (`ROTULO_SEC`). */
+const FMT_DE_SEC = {
+  lectura1: 'lecturas', lectura2: 'lecturas', lectura12: 'lecturas',
+  lectura_breve: 'lecturas', conm_lectura: 'lecturas',
+  salmodia: 'salmos', salmodia2: 'salmos', cantico_evangelico: 'salmos',
+  invitatorio: 'salmos',
+  himno: 'himnos', himno2: 'himnos',
+  antifona_final: 'antifonas', entrada: 'antifonas', comunion: 'antifonas',
+  oracion: 'oraciones', oracion2: 'oraciones', oracion3: 'oraciones',
+  colecta: 'oraciones', ofrendas: 'oraciones', poscomunion: 'oraciones',
+  pueblo: 'oraciones',
+  preces: 'preces', responsorio: 'preces', responsorio2: 'preces',
+  responsorio_breve: 'preces', conm_resp: 'preces', fieles: 'preces',
+  // el prefacio es del día, pero se lee como el Ordinario en que va metido
+  prefacio: 'ordinario'
+};
+
+/* Las lecturas de la misa no son una sección fija sino las que traiga el
+ * día, así que su grupo sale de su clase (`claseLectura`). */
+const FMT_DE_LECTURA = {
+  'lect:lectura': 'lecturas', 'lect:evangelio': 'lecturas',
+  'lect:salmo': 'salmos', 'lect:aleluya': 'salmos'
+};
+
+/* La tabla manda sobre el Ordinario, y no al revés: la oración de los fieles
+ * va en el Ordo —el Misal pone ahí su rúbrica y no las intenciones—, pero
+ * quien ajusta las preces espera que ésa vaya con ellas. */
+function grupoFmt(s) {
+  if (s.k) return FMT_DE_LECTURA[s.k] || 'lecturas';
+  return FMT_DE_SEC[s.cl] || (s.ordo ? 'ordinario' : '');
+}
+
+/** La clase que lleva la sección, o nada si no es de ningún grupo. */
+function claseFmt(g) { return g ? ' fmt-' + g : ''; }
+
+/* El interlineado, en números: el de la prosa y el de los versos, que van
+ * más apretados. Los mismos valores que la hoja de estilo da al <body>. */
+const RENGLON = { compacto: ['1.42', '1.36'], normal: ['1.62', '1.5'],
+  holgado: ['1.88', '1.74'], suelto: ['2.15', '1.98'] };
+
+/** Lo que se haya dicho de cada grupo, en una hoja de estilo que se rehace
+ *  entera al cambiarlo. Con un solo formato para todas no se escribe nada:
+ *  manda el <body> y no hay nada que pisar. */
+function aplicaFormatoSecs() {
+  let css = '';
+  if (E.cfg.fmtUno !== 'si') {
+    for (const g of GRUPO_FMT) {
+      const f = (E.cfg.fmt || {})[g[0]] || {};
+      const d = [];
+      const r = RENGLON[f.interlinea];
+      if (r) d.push('--interlinea:' + r[0], '--interlinea-verso:' + r[1]);
+      if (f.justifica) {
+        d.push('--alinea:' + (f.justifica === 'no' ? 'left' : 'justify'));
+      }
+      if (f.particion) {
+        d.push('--parte:' + (f.particion === 'no' ? 'manual' : 'auto'));
+      }
+      if (d.length) css += '.fmt-' + g[0] + '{' + d.join(';') + '}\n';
+    }
+  }
+  let h = document.getElementById('fmt-secs');
+  if (!h) {
+    h = document.createElement('style');
+    h.id = 'fmt-secs';
+    document.head.appendChild(h);
+  }
+  h.textContent = css;
 }
 
 /* La pantalla, despierta mientras se reza: un oficio son diez o quince
@@ -373,8 +515,13 @@ function versos(tramos, sep, castellano) {
  *  dan los mismos bloques en el mismo orden, así que la pareja es la que
  *  ocupa su mismo sitio: no hay que casar nada. */
 function pintaLectura(l, l2) {
-  if (!l2) return '<section class="lect">' + cuerpoLectura(l) + '</section>';
-  return '<section class="lect"><div class="bi">'
+  // el grupo del formato: un salmo y una lectura no se leen igual, y en
+  // Ajustes se puede decir de cada uno
+  const g = claseFmt(FMT_DE_LECTURA[claseLectura(l)] || 'lecturas');
+  if (!l2) {
+    return '<section class="lect' + g + '">' + cuerpoLectura(l) + '</section>';
+  }
+  return '<section class="lect' + g + '"><div class="bi">'
     + '<div class="bi-la" lang="la">' + cuerpoLectura(l) + '</div>'
     + '<div class="bi-es">' + cuerpoLectura(l2) + '</div></div></section>';
 }
@@ -556,8 +703,8 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   // y la celebración misma, con su rango de la Tabla de los días
   // litúrgicos: el Gloria y el Credo lo necesitan (`feriaSinGloriaNiCredo`)
   E.celMisa = (cel && cel.m) || null;
-  document.body.dataset.color = (cel && cel.m.smv) || esDeLaVirgen(d.t)
-    ? 'azul' : E.colorDe.get(slug) || 'neutro';
+  ponColor(((cel && cel.m.smv) || esDeLaVirgen(d.t))
+    ? 'azul' : E.colorDe.get(slug) || 'neutro');
   // el común se titula a sí mismo «Leccionario V…»: cuando se abre como la
   // misa de Santa María en sábado, el título es el de la celebración
   $('#titulo-dia').textContent = (cel && cel.m.smv) ? cel.m.t : d.t;
@@ -1570,6 +1717,7 @@ function armaMisa(clave, lects) {
     if (!quierePieza(claseLectura(l))) return;
     const l2 = parejaEs(clave, i);
     S.push({ cl: 'lect' + i, rot: null, lectura: true, nombre: rotuloCorto(l),
+      k: claseLectura(l),
       cuerpo: ordoPlegado(ordoDeLectura(l, i), 'r-lect' + i)
         + pintaLectura(l, l2) });
   });
@@ -1705,6 +1853,7 @@ function pintaMisaSec(s) {
   h.push('<div class="cuerpo"' + (abierta ? '' : ' hidden') + '>'
     + (abierta ? cuerpo.join('') : '') + '</div>');
   return '<section class="hora-sec misa-sec' + (s.ordo ? ' es-ordo' : '')
+    + claseFmt(grupoFmt(s))
     + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
 }
 
@@ -1836,7 +1985,7 @@ function verDia(iso, slug, bloque) {
   marcaHoy(iso);
   const val = entradasDe(iso);
   if (!val) {
-    document.body.dataset.color = 'neutro';
+    ponColor('neutro');
     $('#titulo-dia').textContent = 'Sin formulario';
     $('#subtitulo-dia').textContent = '';
     $('#celebraciones').innerHTML = '';
@@ -1958,7 +2107,7 @@ function modoPanel(titulo) {
   $('#celebraciones').innerHTML = '';
   $('#formularios').innerHTML = '';
   $('#nota-dia').style.display = 'none';
-  document.body.dataset.color = 'neutro';
+  ponColor('neutro');
 }
 
 function verIndice() {
@@ -1971,9 +2120,11 @@ function verIndice() {
   // leyendo, que es la que el lector tiene en la cabeza
   const h = ['<a class="enlace-buscar" href="#/buscar">' + ICONO.buscar
     + 'Buscar en ' + lengua() + ' del leccionario</a>'];
-  E.indice.secciones.forEach((sec, i) => {
-    h.push('<details class="sec"' + (i === 0 ? ' open' : '')
-      + '><summary>' + esc(sec.t) + '</summary>');
+  // todas las secciones plegadas: así lo primero que se ve es el índice de
+  // los índices —los ocho leccionarios y los apéndices—, y no la lista
+  // entera del primero
+  E.indice.secciones.forEach((sec) => {
+    h.push('<details class="sec"><summary>' + esc(sec.t) + '</summary>');
     for (const g of sec.g) {
       h.push('<div class="grupo">');
       if (g.t) h.push('<h3>' + esc(g.t) + '</h3>');
@@ -2453,31 +2604,106 @@ function pintaResultados(q) {
  * `prosa` justificada y partida— de modo que lo que se ve es exactamente lo
  * que se verá rezando, y no una imitación que podría mentir. La lectura es
  * de las más largas que hay en una lectura breve, para que el justificado
- * tenga renglones de sobra donde lucirse. */
-function muestraFormato() {
-  const ln = (t, cl) => '<span class="ln' + (cl ? ' ' + cl : '') + '">'
-    + t + '</span>';
-  const rub = (t) => '<b class="rub">' + esc(t) + '</b>';
-  return '<div class="muestra" aria-hidden="true">'
-    + '<section class="hora-sec en-verso">'
+ * tenga renglones de sobra donde lucirse.
+ *
+ * Y como el formato se puede decir sección por sección, cada trozo lleva
+ * además la clase de su grupo: el salmo, la del salmo; la lectura, la de la
+ * lectura. Así la muestra de cada pestaña enseña su propio formato. */
+const LN_M = (t, cl) => '<span class="ln' + (cl ? ' ' + cl : '') + '">'
+  + t + '</span>';
+const RUB_M = (t) => '<b class="rub">' + esc(t) + '</b>';
+
+const PROSA_M = 'Hermanos: Estad siempre alegres en el Señor; os lo repito, '
+  + 'estad alegres. Que vuestra mesura la conozcan todos los hombres. El '
+  + 'Señor está cerca. Nada os preocupe; sino que, en toda ocasión, en la '
+  + 'oración y en la súplica, con acción de gracias, vuestras peticiones '
+  + 'sean presentadas a Dios.';
+
+function muestraVerso(cl) {
+  return '<section class="hora-sec en-verso' + cl + '">'
     + '<p class="estrofa-h">'
-    + ln(rub('Ant.') + ' ' + esc('El Señor es mi pastor') + ' ' + CRUZ, 'sigla')
+    + LN_M(RUB_M('Ant.') + ' ' + esc('El Señor es mi pastor') + ' ' + CRUZ,
+      'sigla')
     + '</p><p class="estrofa-h">'
-    + ln(rub('SALMO 22') + esc('   El buen pastor'), 'tit')
-    + ln(esc('El Señor es mi pastor, nada me falta:'))
-    + ln(CRUZ + ' ' + esc('en verdes praderas me hace recostar;'))
-    + ln(esc('me conduce hacia fuentes tranquilas'))
-    + ln(esc('y repara mis fuerzas.'))
-    + '</p></section>'
-    + '<section class="hora-sec prosa">'
-    + '<div class="sec-cab"><h2 class="rotulo">Lectura breve</h2></div>'
-    + '<p class="estrofa-h">'
-    + ln(esc('Hermanos: Estad siempre alegres en el Señor; os lo repito, '
-      + 'estad alegres. Que vuestra mesura la conozcan todos los hombres. '
-      + 'El Señor está cerca. Nada os preocupe; sino que, en toda ocasión, '
-      + 'en la oración y en la súplica, con acción de gracias, vuestras '
-      + 'peticiones sean presentadas a Dios.'))
-    + '</p></section></div>';
+    + LN_M(RUB_M('SALMO 22') + esc('   El buen pastor'), 'tit')
+    + LN_M(esc('El Señor es mi pastor, nada me falta:'))
+    + LN_M(CRUZ + ' ' + esc('en verdes praderas me hace recostar;'))
+    + LN_M(esc('me conduce hacia fuentes tranquilas'))
+    + LN_M(esc('y repara mis fuerzas.'))
+    + '</p></section>';
+}
+
+function muestraProsa(cl, rot) {
+  return '<section class="hora-sec prosa' + cl + '">'
+    + (rot ? '<div class="sec-cab"><h2 class="rotulo">' + esc(rot)
+      + '</h2></div>' : '')
+    + '<p class="estrofa-h">' + LN_M(esc(PROSA_M)) + '</p></section>';
+}
+
+function muestraFormato() {
+  return '<div class="muestra" aria-hidden="true">'
+    + muestraVerso(claseFmt('salmos'))
+    + muestraProsa(claseFmt('lecturas'), 'Lectura breve')
+    + '</div>';
+}
+
+/** La muestra de un grupo, con su clase puesta: cada pestaña enseña su
+ *  propio formato y no una imitación del general. */
+function muestraGrupo(g, forma) {
+  const cl = claseFmt(g);
+  const caja = (h) => '<div class="muestra chica" aria-hidden="true">' + h
+    + '</div>';
+  if (forma === 'verso') return caja(muestraVerso(cl));
+  if (forma === 'prosa') return caja(muestraProsa(cl, ''));
+  if (forma === 'ant') {
+    return caja('<section class="lect' + cl + '">'
+      + '<p class="antifona">℟. '
+      + esc('El Señor es mi pastor, nada me falta.') + '</p>'
+      + '<p class="texto">' + esc('Cantad al Señor un cántico nuevo, '
+        + 'porque ha hecho maravillas.') + '</p></section>');
+  }
+  if (forma === 'preces') {
+    return caja('<section class="hora-sec prosa' + cl + '">'
+      + '<p class="estrofa-h">'
+      + LN_M(RUB_M('—') + ' ' + esc('Para que tu Iglesia dé testimonio de '
+        + 'tu amor delante de todos los hombres, te rogamos, Señor.'))
+      + LN_M(RUB_M('R.') + ' ' + esc('Escúchanos, Señor.'), 'prez-r')
+      + '</p></section>');
+  }
+  // el Ordinario: su rúbrica y lo que se reza, con la sangría del Misal
+  return caja('<section class="hora-sec misa-sec' + cl + '">'
+    + '<p class="ordo-p ordo-rub">'
+    + LN_M(esc('El sacerdote, con las manos juntas, prosigue:')) + '</p>'
+    + '<p class="ordo-p">'
+    + LN_M(esc('Santo, Santo, Santo es el Señor, Dios del universo.'))
+    + LN_M(esc('Llenos están el cielo y la tierra de tu gloria.'))
+    + '</p></section>');
+}
+
+/* Una pestaña por sección, con su muestra y sus tres mandos. «Igual que
+ * todas» no guarda nada: es la ausencia de valor, y entonces manda el
+ * formato general. */
+function bloqueFmt(g) {
+  const selFmt = (campo, etiqueta, ops) => {
+    const v = (((E.cfg.fmt || {})[g[0]] || {})[campo]) || '';
+    return '<div class="ajuste"><label for="aj-f-' + g[0] + '-' + campo
+      + '">' + etiqueta + '</label><select id="aj-f-' + g[0] + '-' + campo
+      + '" data-fmt="' + g[0] + '" data-campo="' + campo + '">'
+      + ops.map(([x, t]) => '<option value="' + x + '"'
+        + (v === x ? ' selected' : '') + '>' + t + '</option>').join('')
+      + '</select></div>';
+  };
+  return '<details class="fmt-grupo"><summary>' + esc(g[1]) + '</summary>'
+    + '<div class="fmt-cuerpo"><p class="pista-g">' + esc(g[2]) + '</p>'
+    + muestraGrupo(g[0], g[3])
+    + selFmt('justifica', 'Alineación', [['', 'Igual que todas'],
+      ['si', 'Justificado'], ['no', 'A la izquierda']])
+    + selFmt('interlinea', 'Interlineado', [['', 'Igual que todas'],
+      ['compacto', 'Compacto'], ['normal', 'Normal'], ['holgado', 'Holgado'],
+      ['suelto', 'Muy holgado']])
+    + selFmt('particion', 'Partir las palabras', [['', 'Igual que todas'],
+      ['si', 'Sí'], ['no', 'No']])
+    + '</div></details>';
 }
 
 /* La lista de piezas del modo propio: casillas en el orden del formulario,
@@ -2524,12 +2750,13 @@ function verAjustes() {
       '<option value="' + v + '"' + (E.cfg[id] === v ? ' selected' : '')
       + '>' + t + '</option>').join('') + '</select></div>';
   // Cada sección, una pestaña que se abre: la lista entera de un tirón son
-  // cuatro pantallas de deslizar para cambiar una cosa. Viene abierta la
-  // del formato, que es a lo que más se vuelve.
+  // cuatro pantallas de deslizar para cambiar una cosa. Todas vienen
+  // plegadas, de modo que lo primero que se ve es de qué se puede hablar;
+  // sólo se queda abierta la que lo estuviera cuando la vista se rehace
+  // sola (al cambiar de versión, o el modo de la misa).
   const ajuste = (titulo) => '</div></details>'
     + '<details class="ajustes-sec" data-sec="' + esc(titulo) + '"'
-    + ((_ajustesAbiertas ? _ajustesAbiertas[titulo]
-      : titulo === 'Formato del texto') ? ' open' : '')
+    + ((_ajustesAbiertas && _ajustesAbiertas[titulo]) ? ' open' : '')
     + '><summary>' + titulo + '</summary><div class="ajustes-cuerpo">';
   vista.innerHTML = [
     ajuste('La lengua de la misa'),
@@ -2580,13 +2807,18 @@ function verAjustes() {
     + E.cfg.tam + '">'
     + '<span class="marcas"><span>Menor</span><span id="aj-tam-pct">'
     + E.cfg.tam + '%</span><span>Mayor</span></span></div>',
+    sel('fmtUno', 'Un solo formato para todo',
+      'La alineación, el interlineado y la partición de palabras, los '
+      + 'mismos en toda la app. Diciendo «no», cada sección puede llevar el '
+      + 'suyo —los salmos de una manera y las lecturas de otra—, y lo que '
+      + 'una sección no diga lo sigue diciendo el general.',
+      [['si', 'Sí'], ['no', 'No: cada sección']]),
+    E.cfg.fmtUno === 'si' ? ''
+      : '<p class="pista-g">Lo que sigue vale para toda la app; cada '
+        + 'sección, más abajo, puede decir otra cosa.</p>',
     sel('interlinea', 'Interlineado', '',
-      [['compacto', 'Compacto'], ['normal', 'Normal'], ['holgado', 'Holgado']]),
-    sel('letra', 'Tipo de letra',
-      'La de libro es la de los libros de coro, con remates; la de pantalla '
-      + 'es de palo seco, y se lee mejor con la letra muy pequeña o muy '
-      + 'grande.',
-      [['serif', 'De libro'], ['sans', 'De pantalla']]),
+      [['compacto', 'Compacto'], ['normal', 'Normal'],
+        ['holgado', 'Holgado'], ['suelto', 'Muy holgado']]),
     sel('justifica', 'Lecturas justificadas',
       'Las lecturas, los responsorios, las preces y la oración, a caja, '
       + 'como en el libro. Los himnos, los salmos y los cánticos van '
@@ -2604,10 +2836,33 @@ function verAjustes() {
       'En una tableta o en el ordenador, un renglón corto se lee mejor que '
       + 'uno que cruza la pantalla.',
       [['normal', 'Estrecha, como un libro'], ['ancha', 'Toda la pantalla']]),
+    E.cfg.fmtUno === 'si' ? ''
+      : '<h2 class="seccion">El formato de cada sección</h2>'
+        + GRUPO_FMT.map((g) => bloqueFmt(g)).join(''),
     ajuste('Aspecto'),
+    sel('letra', 'Tipo de letra',
+      'Ninguna se descarga: la app tiene que abrir sin conexión, así que lo '
+      + 'que se elige no es una fuente sino un aire, y lo sirve la que el '
+      + 'teléfono ya tenga. Las de remates se leen como un libro —la de '
+      + 'periódico es la que más cabe en el renglón—; las de palo seco, '
+      + 'mejor con la letra muy pequeña o muy grande, y la ancha con poca '
+      + 'luz.',
+      [['serif', 'De libro'], ['antigua', 'De misal'],
+        ['gruesa', 'De libro, gruesa'], ['periodico', 'De periódico'],
+        ['sans', 'De pantalla'], ['humanista', 'De pantalla, suave'],
+        ['ancha', 'De pantalla, ancha']]),
     sel('tema', 'Color del papel', '',
       [['auto', 'Según el teléfono'], ['claro', 'Claro'],
         ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']]),
+    sel('color', 'El color de la app',
+      'El litúrgico tiñe la cabecera, las rúbricas y los controles, y '
+      + 'cambia de un día a otro: verde en el tiempo ordinario, morado en '
+      + 'Adviento y Cuaresma, rojo en los mártires. Quien prefiera uno '
+      + 'quieto lo dice aquí; el calendario sigue enseñando el de cada día, '
+      + 'porque allí el color es lo que se lee.',
+      [['dia', 'El del día'], ['verde', 'Verde'], ['rojo', 'Rojo'],
+        ['morado', 'Morado'], ['blanco', 'Dorado'], ['azul', 'Azul'],
+        ['neutro', 'Granate']]),
     'wakeLock' in navigator
       ? sel('despierto', 'No apagar la pantalla',
         'Un oficio son diez o quince minutos de lectura sin tocar nada, y '
@@ -2697,6 +2952,21 @@ async function alCambiarAjuste(ev) {
     guardaCfg();
     return;
   }
+  // el formato de una sección tampoco es un ajuste con nombre, sino una
+  // casilla de la tabla `fmt`: sin valor, se borra, y entonces esa sección
+  // vuelve a seguir al general
+  const grupo = ev.target.dataset.fmt;
+  if (grupo) {
+    const f = Object.assign({}, (E.cfg.fmt || {})[grupo]);
+    if (ev.target.value) f[ev.target.dataset.campo] = ev.target.value;
+    else delete f[ev.target.dataset.campo];
+    const fmt = Object.assign({}, E.cfg.fmt);
+    fmt[grupo] = f;
+    E.cfg.fmt = fmt;
+    guardaCfg();
+    aplicaFormatoSecs();
+    return;
+  }
   const id = (ev.target.id || '').replace(/^aj-/, '');
   if (!(id in E.cfg)) return;
   let v = ev.target.value;
@@ -2717,6 +2987,11 @@ async function alCambiarAjuste(ev) {
   E.cfg[id] = id === 'tam' ? +v : v;
   guardaCfg();
   aplicaCfg();
+  if (id === 'fmtUno') {
+    recuerdaAjustes();
+    verAjustes();      // aparecen, o se van, las pestañas de cada sección
+    return;
+  }
   if (id === 'tam') {
     const pct = $('#aj-tam-pct');
     if (pct) pct.textContent = E.cfg.tam + '%';
@@ -2773,8 +3048,8 @@ function verPortada() {
   const h = horaDeLaPortada();
   // la portada toma el color del día, como las dos vistas a las que lleva
   if (cels.length) {
-    document.body.dataset.color = esDeLaVirgen(dia && dia.t) ? 'azul'
-      : E.colorDe.get(cels[0].slug) || 'neutro';
+    ponColor(esDeLaVirgen(dia && dia.t) ? 'azul'
+      : E.colorDe.get(cels[0].slug) || 'neutro');
   }
 
   const tira = HORAS.map(([cl, , nombre, breve], i) => {
@@ -3620,7 +3895,7 @@ function pintaSeccionHora(s) {
   }
   h.push(pintaLineas(o.c.l, PROSA.test(s.cl), s.cl));
   return '<section class="hora-sec' + (/^conm/.test(s.cl) ? ' conm' : '')
-    + (PROSA.test(s.cl) ? ' prosa' : ' en-verso')
+    + (PROSA.test(s.cl) ? ' prosa' : ' en-verso') + claseFmt(grupoFmt(s))
     + '" data-cl="' + esc(s.cl) + '">' + h.join('') + '</section>';
 }
 
@@ -3909,16 +4184,78 @@ function pintaChipsCelebracionesHoras(o) {
     + '</small></button>').join('');
 }
 
+/** La entrada del calendario que corresponde al oficio que se reza: la de
+ *  su mismo título y, si no la hay, la del tiempo. De ella salen el color
+ *  del día y su grado. */
+function entradaDelOficio(iso, titulo) {
+  const val = entradasDe(iso);
+  if (!val) return null;
+  return val.c.find((x) => x[2] && x[2].t === titulo)
+    || val.c.find((x) => x[2] && x[2].k === 't') || val.c[0];
+}
+
 /** El color del día, del calendario de la misa: el del santo si se reza
  *  su oficio, el del tiempo si no. */
 function colorHoras(iso, titulo, op) {
   if (op && op.smv) return 'azul';
   if (esDeLaVirgen(titulo)) return 'azul';
-  const val = entradasDe(iso);
-  if (!val) return 'neutro';
-  const e = val.c.find((x) => x[2] && x[2].t === titulo)
-    || val.c.find((x) => x[2] && x[2].k === 't') || val.c[0];
+  const e = entradaDelOficio(iso, titulo);
+  if (!e) return 'neutro';
   return E.colorDe.get(e[0]) || 'neutro';
+}
+
+/* ------------------------------------------ primeras y segundas vísperas
+ *
+ * Un domingo y una solemnidad tienen dos vísperas: las primeras, la tarde
+ * de antes, y las segundas, la suya (Principios y normas, n. 61). La app
+ * puede decir cuáles son las que enseña porque la fuente las guarda donde
+ * el libro las imprime: las primeras del domingo, en la casilla del
+ * sábado —de ahí que ese día las vísperas sean «del día»—, y con ellas las
+ * de la solemnidad que caiga en domingo, que es la que manda esa tarde. Se
+ * ha medido: el sábado de la semana VII de Pascua trae el himno «Ven,
+ * Creador» y la antífona «Ven, Espíritu Santo», que son las primeras
+ * vísperas de Pentecostés, no las de un sábado de Pascua.
+ *
+ * Primeras vísperas, entonces, son las de la tarde del sábado, y suyo es el
+ * color: el del domingo que entra, no el del día que acaba. Salvo que un
+ * santo gane el sábado con las suyas propias, que es lo que dice `v` del
+ * calendario —puesto por `4_app.py` comparando los dos rangos de la Tabla
+ * de los días litúrgicos—.
+ *
+ * De las primeras vísperas de una solemnidad que cae en día de semana no se
+ * dice nada, y es a propósito: la fuente no las dio —en la víspera imprime
+ * las del día que acaba, y se ha comprobado en el 24 de diciembre, que trae
+ * las de Adviento y no las de Navidad—, así que anunciarlas sería poner el
+ * rótulo sobre un texto que no es el suyo. Y porque la noche del 24 el
+ * calendario del leccionario pone la misa de la vigilia, que es una misa y
+ * no una celebración con vísperas propias, las vigilias no cuentan aquí.
+ */
+const VIGILIA = /^(misa de la vigilia|vigilia)\b/i;
+
+function cualVisperas(iso, hora, d, op) {
+  if (hora !== 'visperas') return null;
+  // Las tiene todo domingo, y lo que gana un domingo está por encima de él
+  // —una fiesta del Señor, el Domingo de Pascua— y también las tiene; y
+  // fuera del domingo, las solemnidades. Una misa de vigilia, no: lo que esa
+  // tarde se reza son las primeras vísperas del día que entra.
+  const dos = (e, domingo) => !!(e && e[2]) && !VIGILIA.test(e[2].t || '')
+    && (domingo || gradoCal(e[2]) === 'Solemnidad');
+  const cuales = (e, num, cuando) => ({
+    n: num, rot: num === 1 ? 'Primeras vísperas' : 'Segundas vísperas',
+    iso: cuando, m: e[2], t: tituloCal(e[0], e[2]), g: gradoCal(e[2])
+  });
+  // el sábado de una semana numerada: el oficio de la tarde es el del
+  // domingo que entra, salvo que el santo del día no ceda sus vísperas
+  const cede = !!d.v || !!(op && op.smv) || !!(op && op.modo === 'feria');
+  if (d.d === 6 && /\/\d+\//.test(d.k) && cede) {
+    const man = suma(iso, 1);
+    const e = (entradasDe(man) || { c: [] }).c[0];
+    return dos(e, true) ? cuales(e, 1, man) : null;
+  }
+  // la conmemoración no cambia el oficio, que sigue siendo de la feria
+  const conm = !!(op && op.modo === 'conmemoracion');
+  const e = entradaDelOficio(iso, conm ? d.tt : (op && op.t));
+  return dos(e, d.d === 0) ? cuales(e, 2, iso) : null;
 }
 
 function notaHoras(o) {
@@ -3996,7 +4333,7 @@ async function verHoras(iso, hora, idCel) {
   pintaChipsHoras(iso, hora);
   if (!o) {
     E.horasCel = null;
-    document.body.dataset.color = 'neutro';
+    ponColor('neutro');
     $('#titulo-dia').textContent = 'Sin oficio';
     $('#subtitulo-dia').textContent = '';
     vista.innerHTML = '<p class="aviso">Esta fecha cae fuera del calendario '
@@ -4016,10 +4353,20 @@ async function verHoras(iso, hora, idCel) {
   // la conmemoración no cambia el oficio, que sigue siendo de la feria: ni
   // su título ni su color
   const conm = o.op.modo === 'conmemoracion';
-  document.body.dataset.color = colorHoras(iso, conm ? d.tt : o.op.t, o.op);
-  $('#titulo-dia').textContent = HORAS.find((x) => x[0] === hora)[1];
-  const partes = [conm ? d.tt : o.op.t];
-  if (o.op.g && !conm) partes.push(bonito(o.op.g));
+  // Vísperas no es siempre sólo «Vísperas»: cuando son las primeras o las
+  // segundas de un domingo o de una solemnidad, se dice, y las primeras son
+  // ya del día siguiente —suyo el color, y suyo el nombre de debajo—.
+  const vis = cualVisperas(iso, hora, d, o.op);
+  const primeras = !!vis && vis.n === 1;
+  ponColor(primeras ? colorHoras(vis.iso, vis.m.t, null)
+    : colorHoras(iso, conm ? d.tt : o.op.t, o.op));
+  $('#titulo-dia').textContent = vis ? vis.rot
+    : HORAS.find((x) => x[0] === hora)[1];
+  const partes = [primeras ? vis.t : (conm ? d.tt : o.op.t)];
+  if (primeras) {
+    // «Domingo XXXI · Domingo» no dice nada: el grado sólo cuando añade
+    if (vis.g !== 'Domingo') partes.push(vis.g);
+  } else if (o.op.g && !conm) partes.push(bonito(o.op.g));
   if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
   $('#subtitulo-dia').textContent = partes.join(' · ');
   // el tamaño de la letra, en la cabecera: es la que se queda arriba al

@@ -25,8 +25,10 @@ El texto va acentuado. Quitar el acento es facil (es un agudo que se le puede
 retirar a la vocal) y lo hace la propia app cuando se apaga la acentuacion;
 ponerlo no lo es. Asi que se empaqueta una sola version, la acentuada.
 
-Tambien escribe los iconos de la app, dibujados aqui mismo con zlib: no hace
-falta ninguna biblioteca de imagenes.
+Los iconos no se tocan aqui. Los hace src/19_iconos.py a partir de la imagen
+de la tapa, y se dejaron de dibujar en este guion porque se pisaban: cada
+publicacion rehacia la cruz de trazo y borraba la tapa buena. Lo que si entra
+aqui es su firma, para que al cambiarlos el telefono se entere.
 
 Uso:  python src/15_app_data.py [--fuente clementina|nova|ambas]
 """
@@ -34,10 +36,8 @@ Uso:  python src/15_app_data.py [--fuente clementina|nova|ambas]
 import argparse
 import importlib.util
 import json
-import math
 import os
 import re
-import struct
 import unicodedata
 import zlib
 from collections import OrderedDict
@@ -46,8 +46,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 APP = os.path.join(ROOT, "app")
 DATOS = os.path.join(APP, "datos")
-# el codigo de la app, que tambien firma version.js (y Breviarium/src/4_app.py)
-CODIGO_APP = ["index.html", "app.js", "estilos.css", "manifest.webmanifest"]
+# el codigo de la app, que tambien firma version.js (y Breviarium/src/4_app.py).
+# Los iconos entran en la firma aunque no los escriba este guion: si no, se
+# cambia la tapa y el telefono sigue ensenando la de antes, porque el service
+# worker los tiene cacheados y nada le dice que ha cambiado nada.
+CODIGO_APP = ["index.html", "app.js", "estilos.css", "manifest.webmanifest",
+              "icono.svg", "icono-32.png", "icono-180.png", "icono-192.png",
+              "icono-512.png", "icono-maskable-512.png"]
 
 COLOR_SECCION = [
     (r"adviento|cuaresma", "morado"),
@@ -395,67 +400,10 @@ def secciones_extra(santoral, avisos):
 
 
 # --------------------------------------------------------------------------
-# los iconos, dibujados sin dependencias
-# --------------------------------------------------------------------------
-def _sdf_caja(px, py, cx, cy, hx, hy, r):
-    """Distancia con signo a un rectangulo de esquinas redondeadas."""
-    qx, qy = abs(px - cx) - (hx - r), abs(py - cy) - (hy - r)
-    return (math.hypot(max(qx, 0.0), max(qy, 0.0))
-            + min(max(qx, qy), 0.0) - r)
-
-
-def _chunk(tipo, datos):
-    return (struct.pack(">I", len(datos)) + tipo + datos
-            + struct.pack(">I", zlib.crc32(tipo + datos) & 0xffffffff))
-
-
-def escribe_png(ruta, n, filas):
-    raw = b"".join(b"\x00" + bytes(f) for f in filas)
-    with open(ruta, "wb") as fh:
-        fh.write(b"\x89PNG\r\n\x1a\n"
-                 + _chunk(b"IHDR", struct.pack(">IIBBBBB", n, n, 8, 6, 0, 0, 0))
-                 + _chunk(b"IDAT", zlib.compress(raw, 9))
-                 + _chunk(b"IEND", b""))
-
-
-def dibuja_icono(ruta, n, maskable=False):
-    """Cruz latina crema sobre fondo granate. Antialias analitico, sin PIL.
-
-    En la version `maskable` el fondo llega al borde y la cruz se encoge, para
-    que Android pueda recortarla en circulo sin comersela.
-    """
-    fondo = (0x6B, 0x12, 0x20)
-    tinta = (0xF0, 0xE0, 0xB0)
-    radio = 0.0 if maskable else 0.22          # esquinas del fondo
-    escala = 0.70 if maskable else 1.0         # zona segura
-    # cruz latina: el travesano por encima del centro
-    vx, vy, vhx, vhy = 0.5, 0.500, 0.0575 * escala, 0.320 * escala
-    hx, hy, hhx, hhy = 0.5, 0.403, 0.240 * escala, 0.0575 * escala
-    filas = []
-    for j in range(n):
-        py = (j + 0.5) / n
-        fila = bytearray()
-        for i in range(n):
-            px = (i + 0.5) / n
-            d_f = _sdf_caja(px, py, 0.5, 0.5, 0.5, 0.5, radio)
-            a_f = min(max(0.5 - d_f * n, 0.0), 1.0)
-            d_c = min(_sdf_caja(px, py, vx, vy, vhx, vhy, 0.012 * escala),
-                      _sdf_caja(px, py, hx, hy, hhx, hhy, 0.012 * escala))
-            a_c = min(max(0.5 - d_c * n, 0.0), 1.0) * a_f
-            for canal in range(3):
-                fila.append(int(round(fondo[canal] * (1 - a_c)
-                                      + tinta[canal] * a_c)))
-            fila.append(int(round(a_f * 255)))
-        filas.append(fila)
-    escribe_png(ruta, n, filas)
-
-
-# --------------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fuente", default="ambas",
                     choices=["clementina", "nova", "ambas"])
-    ap.add_argument("--sin-iconos", action="store_true")
     args = ap.parse_args()
     os.makedirs(DATOS, exist_ok=True)
     avisos, inf = [], []
@@ -526,14 +474,6 @@ def main():
     if sueltos:
         avisos.append("el calendario apunta a %d dias que el indice no tiene: "
                       "%s" % (len(sueltos), ", ".join(sueltos[:5])))
-
-    if not args.sin_iconos:
-        dibuja_icono(os.path.join(APP, "icono-192.png"), 192)
-        dibuja_icono(os.path.join(APP, "icono-512.png"), 512)
-        dibuja_icono(os.path.join(APP, "icono-maskable-512.png"), 512,
-                     maskable=True)
-        inf.append("iconos: icono-192.png, icono-512.png, "
-                   "icono-maskable-512.png")
 
     # La firma cubre los datos y tambien el codigo de la app: si solo cambia
     # app.js (una vista nueva, un arreglo), el telefono tiene que enterarse

@@ -1,186 +1,188 @@
 # -*- coding: utf-8 -*-
-"""Los iconos de la app instalada.
+"""Los iconos de la app instalada, sacados de la imagen de la tapa.
 
 La tapa de un breviario de toda la vida: tafilete rojo y, gofrada en oro,
-una cruz florenzada con su ráfaga de rayos y el medallón del IHS en el
-crucero. No es un dibujo nuevo —es lo que lleva un siglo en la cubierta de
-estos libros—, y por eso se reconoce sin explicarlo.
+una cruz florenzada con su rafaga de rayos y el medallon del IHS en el
+crucero. Antes se dibujaba aqui con geometria; ahora la imagen viene hecha,
+en `src/icono-fuente.webp`, y este guion solo la prepara. Si algun dia se
+cambia la tapa, se sustituye ese fichero y se vuelve a pasar el guion.
 
-Un icono de pantalla de inicio se ve a 48 píxeles, así que el detalle se
-gradúa: a tamaño grande van el IHS, la orla de puntos y las crucecitas de
-los remates; a tamaño de favicon queda lo que aguanta, que es la cruz, los
-rayos y el medallón. Se dibuja en grande y se reduce, que es lo que le da
-el filo.
+Lo que hay que preparar es poco, pero no es del todo trivial:
+
+  * La imagen no es cuadrada (1188x1324) y los iconos si lo son, asi que la
+    piel tiene que seguir hasta el borde del cuadrado. No se estira la
+    imagen -deformaria la cruz- ni se pone una banda de color plano -se
+    notaria la costura-: se prolonga el borde con su propio grano.
+  * La tapa de la imagen va redondeada y biselada sobre un fondo claro, asi
+    que trae un marco y cuatro esquinas en blanco que sobran: se recortan el
+    bisel y se tapan las esquinas, y el redondeo se vuelve a dar al final
+    sobre el cuadrado entero. Asi el icono tiene SUS esquinas, no las de la
+    imagen encogida dentro de otro marco.
+  * La version `maskable` es la que Android usa de verdad en el cajon de
+    aplicaciones: ahi el sistema recorta el icono con la forma que le de la
+    gana -circulo en los Pixel- asi que la piel llega al borde y la cruz se
+    encoge a la zona segura.
 
     python src/19_iconos.py
 """
 
-import math
 import os
 import random
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP = os.path.join(RAIZ, 'app')
+FUENTE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                      'icono-fuente.webp')
 
-GRANDE = 1024
-TAFILETE = (124, 22, 32)           # el rojo de la piel, a la luz
-TAFILETE_HONDO = (70, 10, 19)      # y en la sombra
-ORO = (212, 175, 100)
-ORO_ALTO = (243, 222, 165)
-ORO_BAJO = (150, 113, 50)
-SERIFAS = ['C:/Windows/Fonts/BOOKOSB.TTF', 'C:/Windows/Fonts/constanb.ttf',
-           'C:/Windows/Fonts/georgiab.ttf', 'C:/Windows/Fonts/timesbd.ttf']
+GRANDE = 1024          # se compone en grande y se reduce: eso da el filo
+# lo que se recorta de cada borde -izquierda, arriba, derecha, abajo-: el
+# bisel de la tapa, que no es igual de ancho por los cuatro lados
+MARGEN = 0.047, 0.035, 0.047, 0.047
+REDONDEO = 0.22        # el radio de las esquinas, como en iOS
+ESQUINA = 0.17         # el trozo de esquina que hay que tapar, del alto
+BORDE = 10             # cuantas filas se promedian para prolongar la piel
+GRANO = 7              # el ruido de la piel, para que la prolongacion no
+                       # salga lisa al lado de lo que si tiene grano
+SUAVE = 0.05           # cuanto se difumina la linea que se prolonga
+HONDO = 0.30           # cuanto sigue oscureciendo la piel hacia el borde
+LLENO = 0.96           # lo que ocupa la tapa en el icono normal
+ZONA = 0.78            # y en el `maskable`, que es la zona segura
 
 
-def tipo(tam):
-    for ruta in SERIFAS:
-        if os.path.exists(ruta):
-            return ImageFont.truetype(ruta, tam)
-    return None
+def destapa():
+    """La tapa sola: un rectangulo entero de piel, sin marco ni esquinas.
+
+    Primero se recorta el bisel -la tapa de la imagen lleva un reborde mas
+    claro con su acanaladura, y si se deja, al prolongar la piel queda un
+    marco dentro de otro marco, el del bisel y el del propio icono, que se
+    ve enseguida-. Se recorta menos por arriba, porque la cruz sube casi
+    hasta el borde y es la poca piel que queda para prolongar, y mas por
+    abajo, donde el bisel de la imagen es mas ancho.
+
+    El recorte no llega a las esquinas: el redondeo tiene mucho mas radio
+    que el bisel, y en las cuatro esquinas quedan el arco claro y el fondo
+    blanco de fuera. Cada una se tapa con el cuadrado de piel que tiene
+    justo debajo (o encima), dado la vuelta: a esa altura la piel ya esta
+    limpia y el reflejo no deja costura, porque el corte cae donde las dos
+    mitades coinciden. A los lados no se puede ir a buscar, que es por
+    donde asoman las puntas de la cruz.
+    """
+    img = Image.open(FUENTE).convert('RGB')
+    w, h = img.size
+    a, b, c, d = MARGEN
+    img = img.crop((round(w * a), round(h * b),
+                    w - round(w * c), h - round(h * d)))
+    w, h = img.size
+    r = round(h * ESQUINA)
+    for x in (0, w - r):
+        for y, vuelta in ((0, r), (h - r, h - 2 * r)):
+            trozo = img.crop((x, vuelta, x + r, vuelta + r))
+            img.paste(trozo.transpose(Image.FLIP_TOP_BOTTOM), (x, y))
+    return img
 
 
-def piel(lado):
-    """El tafilete: un rojo que no es plano —se ahonda hacia los bordes— y
-    con el grano menudo de la piel, que es lo que le quita el aire de
-    plástico."""
-    img = Image.new('RGB', (lado, lado), TAFILETE)
-    px = img.load()
+def prolonga(img, lado):
+    """Centra la tapa en un cuadrado y sigue la piel hasta el borde.
+
+    El relleno sale de promediar las filas (o las columnas) del borde y
+    difuminar lo que queda, que deja el degradado de la piel y se lleva el
+    relieve; si no se difumina, cada altura se prolonga con su color y el
+    borde de la tapa se repite hacia fuera como un eco, que es justo lo que
+    delata el apano. El grano se devuelve despues como ruido: una banda
+    lisa al lado de una piel con grano se ve, y una banda con grano no.
+    """
+    w, h = img.size
+    izq, arr = (lado - w) // 2, (lado - h) // 2
+    lienzo = Image.new('RGB', (lado, lado))
+    lienzo.paste(img, (izq, arr))
+    for ancho, alto, caja, donde in (
+            (izq, h, (0, 0, BORDE, h), (0, arr)),
+            (lado - izq - w, h, (w - BORDE, 0, w, h), (izq + w, arr))):
+        if ancho > 0:
+            linea = img.crop(caja).resize((1, alto), Image.BOX).filter(
+                ImageFilter.GaussianBlur(lado * SUAVE))
+            lienzo.paste(linea.resize((ancho, alto), Image.NEAREST), donde)
+    for ancho, alto, caja, donde in (
+            (lado, arr, (0, arr, lado, arr + BORDE), (0, 0)),
+            (lado, lado - arr - h,
+             (0, arr + h - BORDE, lado, arr + h), (0, arr + h))):
+        if alto > 0:
+            linea = lienzo.crop(caja).resize((ancho, 1), Image.BOX).filter(
+                ImageFilter.GaussianBlur(lado * SUAVE))
+            lienzo.paste(linea.resize((ancho, alto), Image.NEAREST), donde)
+    lienzo = ImageChops.multiply(lienzo, sombra(lado, izq, w, arr, h))
+    grano = ImageChops.add(lienzo, ruido(lado), 1.0, -128)
+    mascara = Image.new('L', (lado, lado), 255)      # grano solo en el relleno
+    ImageDraw.Draw(mascara).rectangle(
+        [izq, arr, izq + w - 1, arr + h - 1], fill=0)
+    lienzo.paste(grano, (0, 0), mascara)
+    return lienzo
+
+
+def ruido(lado):
+    """El grano, y siempre el mismo. Va sembrado a proposito: si cambiara en
+    cada pasada, volver a pasar el guion metería 850 kB nuevos en el
+    repositorio sin que el icono se viera distinto."""
     rnd = random.Random(7)
-    for y in range(lado):
-        t = y / (lado - 1)
-        base = tuple(round(a + (b - a) * t)
-                     for a, b in zip(TAFILETE, TAFILETE_HONDO))
-        for x in range(lado):
-            d = math.hypot(x - lado / 2, y - lado / 2) / (lado * 0.72)
-            v = max(0.0, 1 - d * d * 0.55)
-            g = rnd.randint(-9, 9)
-            px[x, y] = tuple(max(0, min(255, round(c * v) + g)) for c in base)
-    return img.convert('RGBA')
+    return Image.frombytes('L', (lado, lado), bytes(
+        min(255, max(0, round(rnd.gauss(128, GRANO))))
+        for _ in range(lado * lado))).convert('RGB')
 
 
-def rayos(d, cx, cy, dentro, fuera, cuantos, color, ancho):
-    """La ráfaga del crucero: rayos rectos, uno sí y otro más corto."""
-    for i in range(cuantos):
-        a = i * 2 * math.pi / cuantos
-        largo = fuera if i % 2 == 0 else fuera * 0.76
-        d.line([cx + dentro * math.cos(a), cy + dentro * math.sin(a),
-                cx + largo * math.cos(a), cy + largo * math.sin(a)],
-               fill=color, width=ancho)
+def sombra(lado, izq, w, arr, h):
+    """Lo que hace que no se vea el recuadro de la tapa dentro del icono.
+
+    La piel de la imagen se va oscureciendo hacia sus bordes, y una banda
+    que repita el borde se queda clavada en ese ultimo valor: dentro sigue
+    aclarando y fuera no, y el ojo lee ahi un rectangulo aunque no haya
+    ningun salto de color. Asi que fuera de la tapa se sigue oscureciendo,
+    como si la penumbra continuara, y el recuadro desaparece.
+    """
+    def eje(largo, desde, cuanto):
+        v = bytearray(largo)
+        for i in range(largo):
+            fuera = max(desde - i, i - (desde + cuanto - 1), 0)
+            t = fuera / max(desde, largo - desde - cuanto, 1)
+            v[i] = round(255 * (1 - HONDO * t))
+        return Image.frombytes('L', (largo, 1), bytes(v))
+    x = eje(lado, izq, w).resize((lado, lado), Image.NEAREST)
+    y = eje(lado, arr, h).rotate(90, expand=True).resize(
+        (lado, lado), Image.NEAREST)
+    return ImageChops.multiply(x, y).convert('RGB')
 
 
-def brazo(d, cx, cy, hacia, largo, g, gf, color):
-    """Un brazo de la cruz, que se abre hacia la punta."""
-    dx, dy = hacia
-    px, py = -dy, dx
-    def p(t, a):
-        return (cx + dx * t + px * a, cy + dy * t + py * a)
-    d.polygon([p(0, -g), p(largo, -gf), p(largo, gf), p(0, g)], fill=color)
-
-
-def remate(d, cx, cy, r, color, detalle):
-    """El remate de cada brazo: un disco con su crucecita dentro."""
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color)
-    if not detalle:
-        return
-    g, b = r * 0.17, r * 0.55
-    d.polygon([(cx - g, cy - b), (cx + g, cy - b), (cx + g, cy - g),
-               (cx + b, cy - g), (cx + b, cy + g), (cx + g, cy + g),
-               (cx + g, cy + b), (cx - g, cy + b), (cx - g, cy + g),
-               (cx - b, cy + g), (cx - b, cy - g), (cx - g, cy - g)],
-              fill=TAFILETE_HONDO)
-
-
-def cruz_chica(d, cx, cy, g, b, color):
-    d.polygon([(cx - g, cy - b), (cx + g, cy - b), (cx + g, cy - g),
-               (cx + b * 0.72, cy - g), (cx + b * 0.72, cy + g),
-               (cx + g, cy + g), (cx + g, cy + b), (cx - g, cy + b),
-               (cx - g, cy + g), (cx - b * 0.72, cy + g),
-               (cx - b * 0.72, cy - g), (cx - g, cy - g)], fill=color)
-
-
-def medallon(d, cx, cy, rx, ry, detalle):
-    """El medallón del crucero, con el IHS."""
-    d.ellipse([cx - rx, cy - ry, cx + rx, cy + ry], fill=ORO)
-    d.ellipse([cx - rx * 0.90, cy - ry * 0.90, cx + rx * 0.90, cy + ry * 0.90],
-              fill=TAFILETE_HONDO)
-    if not detalle:
-        # a tamaño de favicon el IHS se vuelve una mancha: una cruz dentro
-        cruz_chica(d, cx, cy, rx * 0.14, ry * 0.52, ORO)
-        return
-    for i in range(28):                     # la orla de puntos del gofrado
-        a = i * 2 * math.pi / 28
-        px = cx + rx * 0.945 * math.cos(a)
-        py = cy + ry * 0.945 * math.sin(a)
-        o = rx * 0.038
-        d.ellipse([px - o, py - o, px + o, py + o], fill=ORO_ALTO)
-    f = tipo(int(ry * 0.70))
-    caja = d.textbbox((0, 0), 'IHS', font=f)
-    d.text((cx - (caja[2] - caja[0]) / 2 - caja[0],
-            cy + ry * 0.10 - (caja[3] - caja[1]) / 2 - caja[1]),
-           'IHS', font=f, fill=ORO)
-    cruz_chica(d, cx, cy - ry * 0.46, rx * 0.05, ry * 0.19, ORO)
-
-
-def gofrado(lado, detalle):
-    """El oro: la cruz entera en su capa, para poder darle el relieve."""
-    capa = Image.new('RGBA', (lado, lado), (0, 0, 0, 0))
-    d = ImageDraw.Draw(capa)
-    cx = cy = lado / 2
-    L, A = lado * 0.370, lado * 0.290       # medio largo y medio ancho
-    g, gf = lado * 0.026, lado * 0.038      # grueso al centro y a la punta
-    r = lado * 0.062                        # el disco del remate
-
-    rayos(d, cx, cy, lado * 0.098, lado * 0.300, 36, ORO,
-          max(1, round(lado * 0.0062)))
-    brazos = (((0, -1), L * 0.92), ((0, 1), L * 1.14),
-              ((-1, 0), A), ((1, 0), A))
-    for hacia, largo in brazos:
-        brazo(d, cx, cy, hacia, largo, g, gf, ORO)
-    for hacia, largo in brazos:
-        remate(d, cx + hacia[0] * largo, cy + hacia[1] * largo, r, ORO, detalle)
-    medallon(d, cx, cy, lado * 0.122, lado * 0.150, detalle)
-    return capa
-
-
-def dibuja(tam, sangre):
-    """El icono. `sangre` lo lleva a los bordes, para el recorte de Android;
-    si no, se le redondean las esquinas."""
-    detalle = tam >= 128
-    img = piel(GRANDE)
-    lado = round(GRANDE * (0.78 if sangre else 0.94))   # zona segura
-    oro = gofrado(lado, detalle)
-    m = round((GRANDE - lado) / 2)
-    if detalle:
-        # el gofrado hunde el oro en la piel: una sombra debajo y una luz
-        # arriba, un pelo desplazadas
-        alfa = oro.split()[3]
-        sombra = Image.new('RGBA', (lado, lado), (0, 0, 0, 0))
-        sombra.paste(ORO_BAJO + (190,), (0, 0), alfa)
-        luz = Image.new('RGBA', (lado, lado), (0, 0, 0, 0))
-        luz.paste(ORO_ALTO + (140,), (0, 0), alfa)
-        off = max(1, round(lado * 0.004))
-        img.alpha_composite(sombra, (m + off, m + off))
-        img.alpha_composite(luz, (m - off, m - off))
-    img.alpha_composite(oro, (m, m))
-
+def compone(tapa, tam, sangre):
+    """El icono. `sangre` lleva la piel a los bordes y encoge la cruz, para
+    que Android pueda recortarla en circulo sin comersela; si no, se le
+    redondean las esquinas y la cruz va a su tamano."""
+    alto = round(GRANDE * (ZONA if sangre else LLENO))
+    ancho = round(tapa.size[0] * alto / tapa.size[1])
+    img = prolonga(tapa.resize((ancho, alto), Image.LANCZOS), GRANDE)
+    img = img.convert('RGBA')
     if not sangre:
         mascara = Image.new('L', (GRANDE, GRANDE), 0)
         ImageDraw.Draw(mascara).rounded_rectangle(
-            [0, 0, GRANDE, GRANDE], radius=GRANDE * 0.22, fill=255)
+            [0, 0, GRANDE - 1, GRANDE - 1], radius=GRANDE * REDONDEO, fill=255)
         img.putalpha(mascara)
-    return img.resize((tam, tam), Image.LANCZOS)
+    img = img.resize((tam, tam), Image.LANCZOS)
+    if tam <= 256:                      # lo que se reduce mucho pierde filo
+        alfa = img.getchannel('A')      # el filo, al canal de color: darselo
+        img = img.filter(ImageFilter.UnsharpMask(1.2, 70))   # al alfa haria
+        img.putalpha(alfa)                                   # cerco
+    return img
 
 
 def main():
+    tapa = destapa()
     for nombre, tam, sangre in [('icono-32.png', 32, False),
                                 ('icono-180.png', 180, False),
                                 ('icono-192.png', 192, False),
                                 ('icono-512.png', 512, False),
                                 ('icono-maskable-512.png', 512, True)]:
         ruta = os.path.join(APP, nombre)
-        dibuja(tam, sangre).save(ruta)
+        compone(tapa, tam, sangre).save(ruta, optimize=True)
         print(f'{nombre:26s} {tam}x{tam}  {os.path.getsize(ruta) / 1024:.0f} kB')
 
 
