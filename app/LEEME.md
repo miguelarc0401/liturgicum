@@ -126,7 +126,13 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   precedencia y la primera es la que se celebra. Las solemnidades impedidas se
   trasladan solas, y lo que se omite ese año se dice en vez de callarse.
 * El **color litúrgico** tiñe la cabecera: el del tiempo, y el del santo cuando
-  lo hay (rojo en los mártires, los apóstoles y la Santa Cruz).
+  lo hay (rojo en los mártires, los apóstoles y la Santa Cruz). Cuatro días
+  del temporal se salen del color de su tiempo y lo llevan dicho aparte:
+  Pentecostés y el Viernes santo, rojos; el domingo de Ramos, rojo dentro de
+  la Cuaresma; y la Misa crismal, blanca. (El rosa de Gaudete y Laetare no
+  está: es optativo, el libro deja el morado.) Y nombrar a la Virgen no es
+  ser de la Virgen: san José, los padres de la Virgen y los Siervos de santa
+  María van de blanco, no del azul de las fiestas marianas.
 * Epifanía, Ascensión y Corpus se pueden poner en su fecha o trasladados al
   domingo, según el uso del país; y en las memorias se puede preferir la
   lectura del santo o la continua de la feria.
@@ -151,21 +157,49 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   privilegiadas sólo cabe como conmemoración: eso se elige arriba, con los
   chips de la cabecera. En Ajustes se dice qué opción sale marcada.
 * **Primeras o segundas vísperas.** Un domingo y una solemnidad tienen dos
-  vísperas, y la app dice cuáles enseña: la tarde del sábado, «Primeras
-  vísperas», con el nombre y el color del domingo que entra —también si ese
-  domingo lo gana una solemnidad: se ha medido que el sábado de la semana
-  VII de Pascua trae el himno y la antífona de las primeras vísperas de
-  Pentecostés—; y el día mismo, «Segundas vísperas». De las solemnidades
-  que caen en día de semana no se anuncian las primeras: la fuente no las
-  dio —en la víspera imprime las del día que acaba, y el 24 de diciembre
-  trae las de Adviento y no las de Navidad—, y poner el rótulo sobre un
-  texto que no es el suyo sería mentir.
+  vísperas, y la app dice cuáles son las de esa tarde, con el nombre y el
+  color de la celebración a la que pertenecen. Cuál de las dos gana no se
+  decide a ojo: se comparan los dos rangos de la Tabla de los días
+  litúrgicos, como manda el n. 61 de los Principios y normas, y el empate es
+  para el día que acaba. Así, la tarde del 14 de agosto —san Maximiliano
+  María Kolbe, de rojo— son ya las **primeras vísperas de la Asunción**, y
+  la cabecera se pone azul; y el 15, las segundas. Lo mismo el 24 de
+  diciembre con Navidad, el 31 con Santa María Madre de Dios, la víspera del
+  Sagrado Corazón, y el sábado con el domingo que entra. El Sábado santo no:
+  su día es de rango 1 por sí mismo, y la Vigilia no son vísperas.
+  **Y el texto, cuando no acompaña al rótulo, se dice.** La fuente publica
+  por fechas, así que en la víspera de una solemnidad publica sus primeras
+  vísperas, y al cosecharla fueron a la casilla de ese día: las del domingo,
+  a la del sábado —medido: el sábado de la semana VII de Pascua trae el
+  himno «Ven, Creador» y la antífona «Ven, Espíritu Santo», que son las de
+  Pentecostés—, y las de una solemnidad de entre semana, al santo de la
+  víspera: el 14 de agosto, san Maximiliano María Kolbe guarda las primeras
+  vísperas de la Asunción, y así todos los años, porque el santoral va por
+  fecha. Pero no siempre: la víspera de la Inmaculada trae las vísperas de
+  san Ambrosio, y de la solemnidad sólo la oración. **Cuál de las dos cosas
+  pasa no se supone, se mide**: si la oración de la tarde no es la de las
+  Laudes de esa mañana, el día ya ha cambiado de celebración y los textos
+  son los suyos. Cuando no, el rótulo y el color se ponen igual —son los de
+  la hora que se reza— y la nota del día advierte de que el oficio que sigue
+  es el del día que acaba.
 * **La Hora intermedia**: la salmodia del día sale en Sexta y la
   complementaria (salmos graduales) en Tercia y Nona, y las tres dejan
   cambiar a la otra. En Adviento, Navidad, Cuaresma y Pascua la antífona de
   cada hora se queda aunque cambien los salmos. Los himnos que se ofrecen
   son los del tiempo: en el ordinario, los de las semanas I a XVII o los de
-  la XVIII a la XXXIV.
+  la XVIII a la XXXIV. Los domingos, en Sexta sale primero «Cuando la luz
+  del día está en su cumbre», que es el que el libro les señala —los otros
+  del juego cantan al trabajo de la semana—; la fuente lo pone unas veces y
+  otras no, según lo que aquel año imprimiera la web, y aquí se endereza.
+  Los demás siguen ofreciéndose detrás, con su número.
+* **Lo que la cosecha dejó de más, fuera.** La fuente publica por fechas y
+  una página no siempre trae una sola hora: detrás de las Vísperas imprime
+  a veces la cabecera y la oración de las primeras vísperas de la solemnidad
+  que entra, y detrás del Oficio de lectura, la oración de la feria los días
+  de memoria —o la misma otra vez—. Eso quedaba como una segunda oración
+  después de la conclusión: en la memoria de Nuestra Señora del Rosario
+  salían la de la Virgen y detrás la del tiempo ordinario. Son veinte piezas
+  en todo el año, y ninguna se reza donde salía.
 * **La lectura bíblica del Oficio sigue el ciclo de dos años** (año I los
   impares, año II los pares), como la fuente.
 * **Reseña, himnos y antífona final.** El Oficio de lectura abre con la

@@ -628,13 +628,19 @@ function cabeSantaMariaMisa(iso, cs) {
  * Santa Sede lo concede a España y a sus antiguos reinos. Se reconoce por
  * el nombre, con una lista cerrada: «santa María Magdalena» empieza igual
  * que «santa María Virgen» y no es de la Virgen. */
-const DE_LA_VIRGEN = new RegExp([
+/* El título ha de **empezar** por el nombre de la celebración mariana, con
+ * su artículo o sin él. Nombrar a la Virgen no es ser de la Virgen: «San
+ * José, esposo de santa María Virgen» es de san José y va de blanco, y lo
+ * mismo «Santos Joaquín y Ana, padres de la Santísima Virgen María» y los
+ * Siervos de santa María. Son los cuatro títulos del índice que decían azul
+ * sin serlo; los quince que sí lo son siguen diciéndolo. */
+const DE_LA_VIRGEN = new RegExp('^(?:(?:el|la|los|las) )?(?:' + [
   'santisima virgen maria', 'nuestra senora', 'santa maria virgen',
   'santa maria madre', 'inmaculada concepcion', 'inmaculado corazon',
   'la asuncion de la', 'la natividad de la santisima',
   'la visitacion de la santisima', 'la presentacion de la santisima',
   'maria madre de la iglesia', 'la virgen maria', 'santa maria en sabado'
-].join('|'));
+].join('|') + ')');
 
 function esDeLaVirgen(titulo) {
   return DE_LA_VIRGEN.test(plano(titulo || ''));
@@ -3396,9 +3402,36 @@ function opcionesSeccion(d, op, hora, cl) {
       alts.splice(i + 1, 0, ...otros.map((c, j) => ({
         id: 'dia' + (j + 2), rot: ROMANOS[j + 1], tit: incipit(c), c: c
       })));
+      if (solo && d.d === 0) ponDelante(alts, i, HIMNO_DOMINGO[hora]);
     }
   }
   return alts;
+}
+
+/* El himno de la Hora intermedia, los domingos.
+ *
+ * La fuente da primero el himno del día y detrás el juego del tiempo, y lo
+ * que da por «del día» es lo que aquel año imprimió la web: de los treinta
+ * y un domingos del tiempo ordinario, en dieciséis puso en Sexta «Cuando la
+ * luz del día está en su cumbre» y en quince «Este mundo del hombre, en que
+ * él se afana», que es de los de entre semana —los otros dos de ese juego
+ * cantan al trabajo, y éste al Señor—. El libro lo señala para el domingo,
+ * así que el domingo sale el primero y los demás detrás, en su orden.
+ *
+ * No se quita nada: el himno del día sigue estando, con su número, y quien
+ * lo quiera lo toca. Y donde ese himno no se ofrece —la Cuaresma tiene los
+ * suyos y no lo trae—, esto no mueve nada.
+ */
+const HIMNO_DOMINGO = { sexta: 'cuando la luz del dia esta en su cumbre' };
+
+/** Pone delante del grupo de himnos el que empieza así, y renumera. */
+function ponDelante(alts, i, incipitLlano) {
+  if (!incipitLlano) return;
+  const k = alts.findIndex((a, j) => j > i
+    && plano(incipit(a.c)).startsWith(incipitLlano));
+  if (k < 0) return;
+  alts.splice(i, 0, alts.splice(k, 1)[0]);
+  for (let j = i; j < alts.length; j++) alts[j].rot = ROMANOS[j - i];
 }
 
 function opcionesSeccionBase(d, op, hora, cl) {
@@ -3601,7 +3634,11 @@ function eleccionDe(iso, idCel, hora, cl, alts, d) {
   }
   // lo propio del santo, si lo tiene, va siempre delante de lo del día
   if (i < 0) i = alts.findIndex((o) => o.id === 'propio');
-  if (i < 0) {
+  // Del común o del día: sólo donde hay las dos cosas. Los himnos
+  // numerados de la Hora intermedia son todos «del día», y ahí este ajuste
+  // no tiene nada que escoger: manda el orden en que se ofrecen, que el
+  // domingo pone delante el himno del domingo.
+  if (i < 0 && alts.some((o) => !o.id.startsWith('dia'))) {
     i = alts.findIndex((o) => E.cfg.hComun === 'dia'
       ? o.id === 'dia' : !o.id.startsWith('dia'));
   }
@@ -3611,9 +3648,33 @@ function eleccionDe(iso, idCel, hora, cl, alts, d) {
 /** El orden de las secciones. La invocación inicial va delante (el orden
  *  recuperado del volcado la dejaba al final de Laudes), y el preámbulo
  *  del Oficio es el invitatorio con otra forma, que ya ocupa su sitio. */
+/* Lo que la cosecha dejó de más y la hora no lleva.
+ *
+ * La fuente publica por fechas, y una página no siempre trae una sola hora.
+ * Detrás de las Vísperas del día imprime a veces la cabecera y la oración
+ * de las primeras vísperas de la solemnidad que entra —«LA EPIFANÍA DEL
+ * SEÑOR», «de la Asunción de la Santísima Virgen María»—; y detrás del
+ * Oficio de lectura, la oración de la feria los días que llevan memoria, o
+ * la misma otra vez. Al cosechar, aquello quedó como `preambulo`,
+ * `oracion2` y `oracion3` de ese día, y pintarlo es poner una segunda
+ * oración después de la conclusión: en la memoria de Nuestra Señora del
+ * Rosario salían la de la Virgen y detrás la del tiempo ordinario. Son
+ * veinte piezas en todo el año y ninguna se reza donde sale.
+ *
+ * En el Oficio, `preambulo` es además otra cosa —la segunda forma del
+ * invitatorio—, y por eso `pieza()` lo busca por su clave: aquí sólo se
+ * quita de la fila, no del libro.
+ */
+const DE_MAS = ['preambulo', 'oracion2', 'oracion3'];
+
 function ordenDe(hora) {
-  let o = (E.horas.orden[hora] || []).slice();
-  if (hora === 'oficio') o = o.filter((cl) => cl !== 'preambulo');
+  let o = (E.horas.orden[hora] || []).slice()
+    .filter((cl) => !DE_MAS.includes(cl));
+  // el invitatorio abre el día, y el día lo abren el Oficio o Laudes: en
+  // Vísperas es otro resto de la misma clase
+  if (hora !== 'oficio' && hora !== 'laudes') {
+    o = o.filter((cl) => cl !== 'invitatorio');
+  }
   // El Te Deum: la fuente lo rotula «Himno: Señor, Dios eterno» y el libro
   // lo guarda como un segundo himno, que el orden recuperado dejaba detrás
   // de la conclusión. Va después del segundo responsorio (Ordinario).
@@ -3621,6 +3682,14 @@ function ordenDe(hora) {
     o = o.filter((cl) => cl !== 'himno2');
     const r = o.indexOf('responsorio2');
     o.splice(r < 0 ? o.length : r + 1, 0, 'himno2');
+  }
+  // Un sábado del año la fuente dejó la primera lectura bíblica en una
+  // casilla de más, `lectura12`, con la suya vacía; el orden la mandaba
+  // detrás de la conclusión. Va donde va: delante de su responsorio.
+  if (hora === 'oficio' && o.includes('lectura12')) {
+    o = o.filter((cl) => cl !== 'lectura12');
+    const r = o.indexOf('responsorio');
+    o.splice(r < 0 ? o.length : r, 0, 'lectura12');
   }
   if (o.includes('invocacion')) {
     o = ['invocacion'].concat(o.filter((cl) => cl !== 'invocacion'));
@@ -4207,59 +4276,123 @@ function colorHoras(iso, titulo, op) {
 /* ------------------------------------------ primeras y segundas vísperas
  *
  * Un domingo y una solemnidad tienen dos vísperas: las primeras, la tarde
- * de antes, y las segundas, la suya (Principios y normas, n. 61). La app
- * puede decir cuáles son las que enseña porque la fuente las guarda donde
- * el libro las imprime: las primeras del domingo, en la casilla del
- * sábado —de ahí que ese día las vísperas sean «del día»—, y con ellas las
- * de la solemnidad que caiga en domingo, que es la que manda esa tarde. Se
- * ha medido: el sábado de la semana VII de Pascua trae el himno «Ven,
- * Creador» y la antífona «Ven, Espíritu Santo», que son las primeras
- * vísperas de Pentecostés, no las de un sábado de Pascua.
+ * de antes, y las segundas, la suya. Cuál de las dos se canta esa tarde no
+ * se decide aquí: lo decide la Tabla de los días litúrgicos, y el n. 61 de
+ * los Principios y normas lo dice con todas las letras — «si coinciden las
+ * II Vísperas del oficio del día corriente y las I Vísperas del día
+ * siguiente, prevalecen las vísperas de la celebración que ocupa el lugar
+ * superior en la tabla; en caso de igualdad, las del día corriente»—. Así
+ * que se comparan los dos rangos, que es lo que el calendario del proyecto
+ * guarda en `r`, y gana el menor; el empate, para hoy.
  *
- * Primeras vísperas, entonces, son las de la tarde del sábado, y suyo es el
- * color: el del domingo que entra, no el del día que acaba. Salvo que un
- * santo gane el sábado con las suyas propias, que es lo que dice `v` del
- * calendario —puesto por `4_app.py` comparando los dos rangos de la Tabla
- * de los días litúrgicos—.
+ * Una misa de vigilia no es una celebración con vísperas: el 24 de
+ * diciembre el calendario del leccionario pone ahí la misa de la vigilia de
+ * Navidad, con su rango 2, y si contara, las primeras vísperas de Navidad
+ * —que son justamente las de esa tarde— empatarían consigo mismas y se
+ * perderían. Se pasa de largo, y el rango del día lo pone la celebración
+ * que viene detrás: el 24 de diciembre, feria mayor de Adviento. Salvo que
+ * no haya otra: el Sábado santo, cuya única entrada es la Vigilia pascual,
+ * es un día de rango 1 por sí mismo y así se queda —y entonces el empate
+ * con la Pascua deja sus vísperas, que es lo que manda el libro—.
  *
- * De las primeras vísperas de una solemnidad que cae en día de semana no se
- * dice nada, y es a propósito: la fuente no las dio —en la víspera imprime
- * las del día que acaba, y se ha comprobado en el 24 de diciembre, que trae
- * las de Adviento y no las de Navidad—, así que anunciarlas sería poner el
- * rótulo sobre un texto que no es el suyo. Y porque la noche del 24 el
- * calendario del leccionario pone la misa de la vigilia, que es una misa y
- * no una celebración con vísperas propias, las vigilias no cuentan aquí.
+ * El rótulo y el color son una cosa, y los textos, otra, y la segunda se
+ * mide (ver `conTextosDeManana`). La fuente publica por fechas, así que en
+ * la víspera de una solemnidad publica sus primeras vísperas y al
+ * cosecharla fueron a parar a la casilla de ese día: las del domingo, a la
+ * del sábado —medido: el sábado de la semana VII de Pascua trae el himno
+ * «Ven, Creador» y la antífona «Ven, Espíritu Santo», que son las de
+ * Pentecostés—, y las de una solemnidad de entre semana, al santo de la
+ * víspera —el 14 de agosto, san Maximiliano María Kolbe guarda las primeras
+ * vísperas de la Asunción, y así todos los años, porque el santoral va por
+ * fecha—. Pero no siempre: la víspera de la Inmaculada, del 8 de diciembre,
+ * trae las vísperas de san Ambrosio y de las de la solemnidad sólo la
+ * oración, y lo mismo la de san José. Cuando eso pasa, el rótulo y el color
+ * se ponen igual, porque son los que corresponden a la hora que se reza, y
+ * la nota del día lo advierte.
  */
 const VIGILIA = /^(misa de la vigilia|vigilia)\b/i;
 
-function cualVisperas(iso, hora, d, op) {
-  if (hora !== 'visperas') return null;
-  // Las tiene todo domingo, y lo que gana un domingo está por encima de él
-  // —una fiesta del Señor, el Domingo de Pascua— y también las tiene; y
-  // fuera del domingo, las solemnidades. Una misa de vigilia, no: lo que esa
-  // tarde se reza son las primeras vísperas del día que entra.
-  const dos = (e, domingo) => !!(e && e[2]) && !VIGILIA.test(e[2].t || '')
-    && (domingo || gradoCal(e[2]) === 'Solemnidad');
-  const cuales = (e, num, cuando) => ({
-    n: num, rot: num === 1 ? 'Primeras vísperas' : 'Segundas vísperas',
-    iso: cuando, m: e[2], t: tituloCal(e[0], e[2]), g: gradoCal(e[2])
-  });
-  // el sábado de una semana numerada: el oficio de la tarde es el del
-  // domingo que entra, salvo que el santo del día no ceda sus vísperas
-  const cede = !!d.v || !!(op && op.smv) || !!(op && op.modo === 'feria');
-  if (d.d === 6 && /\/\d+\//.test(d.k) && cede) {
-    const man = suma(iso, 1);
-    const e = (entradasDe(man) || { c: [] }).c[0];
-    return dos(e, true) ? cuales(e, 1, man) : null;
-  }
-  // la conmemoración no cambia el oficio, que sigue siendo de la feria
-  const conm = !!(op && op.modo === 'conmemoracion');
-  const e = entradaDelOficio(iso, conm ? d.tt : (op && op.t));
-  return dos(e, d.d === 0) ? cuales(e, 2, iso) : null;
+/** La celebración que gana un día, saltándose la misa de vigilia —que es de
+ *  la solemnidad del día siguiente, no del día en que se imprime— mientras
+ *  quede otra detrás. */
+function celebracionDelDia(iso) {
+  const val = entradasDe(iso);
+  if (!val) return null;
+  return val.c.find((x) => x[2] && !VIGILIA.test(x[2].t || '')) || val.c[0];
 }
 
-function notaHoras(o) {
+/** El lugar que ocupa en la Tabla: cuanto menor, más manda. */
+function rangoDeLaTabla(e) { return (e && e[2] && e[2].r) || 99; }
+
+/** ¿Tiene ese día primeras vísperas? Las tienen los domingos y las
+ *  solemnidades (PNLH 61); y lo que gana un domingo está por encima de él
+ *  —una fiesta del Señor, el Domingo de Pascua—, así que también. */
+function conPrimerasVisperas(iso, e) {
+  if (!e || !e[2] || VIGILIA.test(e[2].t || '')) return false;
+  return new Date(iso + 'T12:00:00').getDay() === 0
+    || gradoCal(e[2]) === 'Solemnidad';
+}
+
+function cualVisperas(iso, hora, d, op) {
+  if (hora !== 'visperas') return null;
+  const cuales = (e, num, cuando, textos) => ({
+    n: num, rot: num === 1 ? 'Primeras vísperas' : 'Segundas vísperas',
+    iso: cuando, m: e[2], t: tituloCal(e[0], e[2]), g: gradoCal(e[2]),
+    textos: textos
+  });
+  // ¿gana el día que entra?
+  const man = suma(iso, 1);
+  const e1 = celebracionDelDia(man);
+  if (conPrimerasVisperas(man, e1)
+      && rangoDeLaTabla(e1) < rangoDeLaTabla(celebracionDelDia(iso))) {
+    // en la casilla del sábado están de verdad las vísperas del domingo;
+    // las de una solemnidad de entre semana, no, y eso se dice debajo
+    return cuales(e1, 1, man, d.d === 6 && /\/\d+\//.test(d.k));
+  }
+  // si no, son las segundas de hoy, cuando hoy las tiene. La conmemoración
+  // no cambia el oficio, que sigue siendo de la feria.
+  const conm = !!(op && op.modo === 'conmemoracion');
+  const e2 = entradaDelOficio(iso, conm ? d.tt : (op && op.t));
+  if (!e2 || !e2[2] || VIGILIA.test(e2[2].t || '')) return null;
+  return (d.d === 0 || gradoCal(e2[2]) === 'Solemnidad')
+    ? cuales(e2, 2, iso, true) : null;
+}
+
+/** La oración de una hora, en bruto: el testigo de a qué celebración
+ *  pertenece, porque la oración es la de la celebración y de nadie más. */
+function oracionDe(o) {
+  const s = o && o.secciones.find((x) => x.cl === 'oracion');
+  return s ? JSON.stringify(s.alts[s.i].c.l) : '';
+}
+
+/* ¿Lo que se enseña esta tarde es ya el oficio del día siguiente? No se
+ * supone: se mide, y el testigo es la oración de las Laudes de hoy. Si la
+ * de Vísperas es la misma, las vísperas son del día que acaba; si es otra,
+ * el día ya ha cambiado de celebración y lo que hay delante son las
+ * primeras vísperas de mañana.
+ *
+ * Se descartó comparar con la oración de mañana, que parecía lo obvio: no
+ * vale, porque una solemnidad con vigilia tiene **dos** oraciones, la de la
+ * vigilia y la del día —la Asunción, sin ir más lejos—, y el testigo daba
+ * negativo justo donde los textos sí eran los suyos. */
+function conTextosDeManana(o, vis) {
+  if (!vis || vis.n !== 1 || vis.textos) return;
+  const tarde = oracionDe(o);
+  const manana = oracionDe(armaHora(o.iso, 'laudes', o.op.id));
+  vis.textos = !!tarde && !!manana && tarde !== manana;
+}
+
+function notaHoras(o, vis) {
   const n = [], d = o.dia;
+  // el rótulo dice «Primeras vísperas» y el color es el del día que entra,
+  // pero el texto de debajo no siempre es el suyo: cuando la fuente no dio
+  // las primeras vísperas de esa solemnidad, se enseña lo del día que
+  // acaba, y más vale decirlo que dejar que se note rezando
+  if (vis && vis.n === 1 && !vis.textos) {
+    n.push('Esta tarde son ya las primeras vísperas de ' + vis.t + ', y así '
+      + 'se titulan; pero la fuente no guarda aquí sus textos, así que el '
+      + 'oficio que sigue es el del día que acaba.');
+  }
   if (d.x) {
     const g = bonito(d.x[1]).toLowerCase();
     n.push(d.x[0] + (d.x[0].toLowerCase().includes(g) ? '' : ' (' + g + ')')
@@ -4348,15 +4481,18 @@ async function verHoras(iso, hora, idCel) {
   E.horasCel = idCel && !o.cels.ops.some((x) => x.id === idCel) ? idCel
     : (o.cels.ops.length > 1 ? o.op.id : null);
   pintaChipsCelebracionesHoras(o);
-  notaHoras(o);
   const d = o.dia;
+  // Vísperas no es siempre sólo «Vísperas»: cuando son las primeras o las
+  // segundas de un domingo o de una solemnidad, se dice, y las primeras son
+  // ya del día siguiente —suyo el color, y suyo el nombre de debajo—. Se
+  // calcula antes que la nota, que es la que avisa cuando el texto no
+  // acompaña al rótulo.
+  const vis = cualVisperas(iso, hora, d, o.op);
+  conTextosDeManana(o, vis);
+  notaHoras(o, vis);
   // la conmemoración no cambia el oficio, que sigue siendo de la feria: ni
   // su título ni su color
   const conm = o.op.modo === 'conmemoracion';
-  // Vísperas no es siempre sólo «Vísperas»: cuando son las primeras o las
-  // segundas de un domingo o de una solemnidad, se dice, y las primeras son
-  // ya del día siguiente —suyo el color, y suyo el nombre de debajo—.
-  const vis = cualVisperas(iso, hora, d, o.op);
   const primeras = !!vis && vis.n === 1;
   ponColor(primeras ? colorHoras(vis.iso, vis.m.t, null)
     : colorHoras(iso, conm ? d.tt : o.op.t, o.op));

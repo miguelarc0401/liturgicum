@@ -60,6 +60,20 @@ COLOR_SECCION = [
     (r"ordinario", "verde"),
 ]
 
+# El color del tiempo no es el de todos sus dias, y cuatro del temporal se
+# salen: Pentecostes es rojo dentro del tiempo pascual, el Viernes santo
+# tambien, el domingo de Ramos es rojo dentro de la Cuaresma y la Misa
+# crismal es blanca dentro de ella. Son estos cuatro y no mas: se miraron
+# uno a uno los dias del temporal cuyo nombre delata otro color. (El rosa de
+# Gaudete y Laetare no esta: es optativo, el libro deja el morado, y la app
+# no tiene ese color.)
+COLOR_DIA = [
+    (r"\bpentecostes\b", "rojo"),
+    (r"\bdomingo de ramos\b", "rojo"),
+    (r"\bviernes santo\b", "rojo"),
+    (r"\bmisa crismal\b", "blanco"),
+]
+
 # Los leccionarios que entran en la app. El IX (misas con ninos) queda fuera.
 LECCIONARIOS = ("I", "II", "III", "IV", "V", "VI", "VII", "VIII")
 
@@ -89,6 +103,15 @@ def color_de(seccion):
         if re.search(patron, n):
             return color
     return "neutro"
+
+
+def color_del_dia(titulo):
+    """El color propio de un dia del temporal, cuando no es el de su tiempo."""
+    n = norm(titulo)
+    for patron, color in COLOR_DIA:
+        if re.search(patron, n):
+            return color
+    return None
 
 
 # --------------------------------------------------------------------------
@@ -254,12 +277,17 @@ def construye_indice():
         for g in sec["grupos"]:
             dias = []
             for d in g["dias"]:
-                dias.append({
-                    "s": d["slug"], "t": d["titulo"],
-                    "i": d.get("titulo_indice") or d["titulo"],
-                    "b": [{"e": b["etiqueta"],
-                           "k": "%s|%s|%d" % tuple(b["clave"])}
-                          for b in d["bloques"]]})
+                # `c` solo cuando el dia se sale del color de su tiempo: sin
+                # el, la app toma el de la seccion
+                color = color_del_dia(d["titulo"])
+                dia = {"s": d["slug"], "t": d["titulo"],
+                       "i": d.get("titulo_indice") or d["titulo"],
+                       "b": [{"e": b["etiqueta"],
+                              "k": "%s|%s|%d" % tuple(b["clave"])}
+                             for b in d["bloques"]]}
+                if color:
+                    dia["c"] = color
+                dias.append(dia)
                 n_dias += 1
             if dias:
                 grupos.append({"t": g.get("titulo") or "", "d": dias})
