@@ -237,51 +237,93 @@ def desarma(texto, sumario=None):
     return s, formula, cita, t, cierre, resp
 
 
+# La marca de respuesta, **dondequiera que caiga**. La fuente la pone al
+# final del renglón —«… y se goza en cumplir sus mandamientos. R/.»—, pero
+# cuando junta los renglones la deja dentro del párrafo y pegada a la
+# palabra anterior: «… ponme a salvo.R/. Sé para mí un refugio…». Cortando
+# sólo al final del renglón, esas cuatro estrofas salían como una sola.
+#
+# La R tiene que abrir palabra —precedida de espacio, de signo o del
+# principio—, porque si no «SEÑOR.» se partiría por su propia R.
+MARCA = re.compile(r'(?:^|(?<=[\s.,;:!?…«»“”")]))R/?\.\s*')
+# Y la que el renglón cierra, pegada a la palabra y sin signo delante: «no
+# los soportaréR/.». Ahí dentro no se distingue de la R de «SEÑOR.», pero al
+# final del renglón sí, así que se le pone el espacio que le falta.
+MARCA_FIN = re.compile(r'R/?\.\s*$')
+
+
 def estrofas(texto, resp=None):
     """El salmo en estrofas: la respuesta del pueblo es lo que las corta.
 
     La fuente imprime «… y se goza en cumplir sus mandamientos. R/.» al final
-    de cada estrofa. Se corta ahí y la marca no se guarda: la pone la app.
+    de cada estrofa. Se corta en la marca y la marca no se guarda: la pone la
+    app.
 
-    Con la letra sola no hay duda. Cuando detrás viene texto, sólo se tira si
-    es el principio de la respuesta de ese salmo —«R. Aleluya.» cuando la
-    respuesta es «Aleluya, aleluya.»—; cualquier otra cosa se queda, porque
-    entonces no es la repetición, es verso.
+    Entre dos marcas viene a veces la respuesta repetida, entera o sólo su
+    principio —«R. Aleluya.» cuando la respuesta es «Aleluya, aleluya.»—, y
+    ese trozo se tira. Cualquier otro se queda, porque entonces no es la
+    repetición: es verso. Y el verso que *empieza* como la respuesta —el
+    salmo 88 abre la estrofa con «Proclamaré sin cesar la misericordia del
+    Señor y daré a conocer…», que es su respuesta y sigue— se queda, porque
+    lo que se tira es lo que la respuesta abarca y no lo que la abarca a
+    ella.
     """
     clave = misal.clave(resp or '')
-
-    def corta(t):
-        m = RESPUESTA.search(t)
-        if not m:
-            return None
-        cola_ = misal.clave(m.group(1))
-        if not cola_ or (clave and clave.startswith(cola_)):
-            return t[:m.start()].rstrip()
-        return None
-
-    fuera, cur = [], []
-    for l in texto:
-        if not l.strip():
+    fuera = []
+    lineas = [MARCA_FIN.sub(' R/. ', l) for l in texto if l.strip()]
+    for trozo in MARCA.split(junta(lineas)):
+        t = (trozo or '').strip()
+        if not t:
             continue
-        cur.append(l)
-        t = junta(cur)
-        corte = corta(t)
-        if corte is not None:
-            fuera.append(corte)
-            cur = []
-    if cur:
-        fuera.append(junta(cur).strip())
-    return [e for e in fuera if e]
+        c = misal.clave(t)
+        if clave and c and clave.startswith(c):
+            continue
+        fuera.append(t)
+    return fuera
 
 
 def respuesta_de(texto):
-    """La respuesta del salmo o de la aclamación: el primer renglón, que la
-    fuente abre con «R.» o «R/.»."""
-    for l in texto:
+    """La respuesta del salmo o de la aclamación, y cuántos renglones ocupa
+    con lo que la precede.
+
+    La fuente la abre con «R.» o «R/.», pero no siempre en el primer
+    renglón: delante va a veces **su propia cita** —«Del salmo 104, 2-3.
+    4-5. 6-7» y debajo «R/. El Señor nunca olvida sus promesas»—, y
+    mirando sólo el primero la respuesta se perdía y la cita se quedaba
+    dentro de la primera estrofa, que empezaba «Del salmo 104, 2-3. 4-5.
+    6-7 R/. …».
+
+    Medido sobre `pericopas_es.json`: de las 1 028 perícopas de salmo o
+    aclamación cuyo primer renglón no es la respuesta, **672 la traen en el
+    segundo** y 356 no la traen en ninguno —son las aclamaciones que
+    imprimen sólo el versículo, y las que la fase 3 dejó pegada a la cita—.
+    En ninguna va más abajo del segundo, así que se mira ahí y no más
+    lejos: buscarla en todo el texto cogería por respuesta la repetición
+    que cierra cada estrofa.
+
+    La cita que se salta no se pierde: la app enseña la del leccionario en
+    el rótulo, y la de la fuente cuando abarca otros versículos.
+    """
+    vistos = 0
+    for i, l in enumerate(texto):
         if not l.strip():
             continue
         m = re.match(r'^\s*R/?\.\s*(.+)$', l)
-        return (m.group(1).strip() if m else None), (1 if m else 0)
+        if m:
+            r = m.group(1).strip()
+            # El renglón tiene que traer la respuesta **y nada más**. Cuando
+            # la fuente junta los renglones, el mismo trae detrás la primera
+            # estrofa entera y acaba en «R/.»: tomarlo por respuesta la
+            # convertía en un párrafo de doscientos caracteres y perdía la
+            # estrofa. Si trae la marca de cierre, no es la respuesta sola y
+            # se deja todo como estaba —sin respuesta, y el texto entero en
+            # las estrofas—, que es no ganar pero no perder.
+            if RESPUESTA.search(r):
+                return None, 0
+            return r, i + 1
+        vistos += 1
+        if vistos >= 2:
+            break
     return None, 0
 
 
@@ -304,6 +346,15 @@ def una_lectura(l, peri, cuenta, raro):
         return item
     v = peri[l['es']]
     cuenta['lecturas con castellano'] += 1
+    # La impresión que la fase 5 eligió, que no siempre es la canónica: la
+    # cita no identifica el salmo —tres días del leccionario cantan «Sal 104,
+    # 2-3. 4-5. 6-7» con tres respuestas distintas— y es el calendario, no el
+    # recuento de testigos, el que dice cuál de las impresiones de esta
+    # perícopa es la de este formulario. Aquí sólo se obedece la decisión.
+    otras = len(v.get('variantes') or [])
+    if l.get('vi'):
+        v = dict(v, **v['variantes'][l['vi'] - 1])
+        cuenta['lecturas en la impresión que el día respalda'] += 1
     item['n'] = len(v['testigos'])
     # Por qué ruta la halló la fase 5, y la cita con que el misalito la
     # imprime cuando no abarca los mismos versículos que la del índice. Las dos
@@ -318,8 +369,8 @@ def una_lectura(l, peri, cuenta, raro):
     if l.get('otros_vers') and l['es'] != l['cita']:
         item['ces'] = l['es']
         cuenta['lecturas que abarcan otros versículos, y se dice'] += 1
-    if v.get('variantes'):
-        item['vn'] = len(v['variantes'])
+    if otras:
+        item['vn'] = otras
     extra = []
     if item['k'] == 'salmo' or item['k'] == 'aleluya':
         r, hay = respuesta_de(v['texto'])

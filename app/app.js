@@ -22,7 +22,9 @@ const POR_OMISION = {
   // qué se enseña del formulario (Ajustes, «Qué se enseña de la misa»)
   misaVer: 'todo', misaSecs: null,
   // el formato del texto (Ajustes, «Formato del texto»)
-  letra: 'serif', interlinea: 'normal', medida: 'normal', justifica: 'si',
+  // el interlineado es un numero: el alto del renglon en centesimas del
+  // cuerpo de la letra (162 son 1,62), y se mueve de cinco en cinco
+  letra: 'serif', interlinea: 162, medida: 'normal', justifica: 'si',
   particion: 'si', cruces: 'si', despierto: false,
   // y el de cada sección por su cuenta, cuando uno para todas no basta:
   // `fmt` es grupo -> {justifica, interlinea, particion}, y lo que un grupo
@@ -265,21 +267,50 @@ function cargaCfg() {
   try {
     Object.assign(E.cfg, JSON.parse(localStorage.getItem('cfg') || '{}'));
   } catch (_) { /* almacenamiento bloqueado: se usan los valores de fábrica */ }
+  numeraInterlineado();
 }
 function guardaCfg() {
   try { localStorage.setItem('cfg', JSON.stringify(E.cfg)); } catch (_) {}
+}
+
+/* El interlineado fueron cuatro nombres y ahora es un numero. Lo que quedo
+ * guardado con un nombre se convierte al abrir, y con los numeros que la
+ * hoja de estilo le daba entonces: quien tenia «holgado» sigue viendo
+ * exactamente el renglon que tenia, y a partir de ahi lo mueve. Vale igual
+ * para el general y para lo que diga cada seccion por su cuenta. */
+const RENGLON_NOMBRE = { compacto: 142, normal: 162, holgado: 188,
+  suelto: 215 };
+const RENGLON_MIN = 120, RENGLON_MAX = 260, RENGLON_PASO = 5;
+
+function numeraInterlineado() {
+  const n = (v) => (typeof v === 'number' ? v : RENGLON_NOMBRE[v]);
+  E.cfg.interlinea = n(E.cfg.interlinea) || POR_OMISION.interlinea;
+  const fmt = {};
+  for (const g of Object.keys(E.cfg.fmt || {})) {
+    const f = Object.assign({}, E.cfg.fmt[g]);
+    if ('interlinea' in f) {
+      const v = n(f.interlinea);
+      if (v) f.interlinea = v; else delete f.interlinea;
+    }
+    fmt[g] = f;
+  }
+  E.cfg.fmt = fmt;
 }
 function aplicaCfg() {
   const b = document.body.dataset;
   b.tema = E.cfg.tema;
   b.letra = E.cfg.letra;
-  b.interlinea = E.cfg.interlinea;
   b.medida = E.cfg.medida;
   b.justifica = E.cfg.justifica;
   b.particion = E.cfg.particion;
   b.cruces = E.cfg.cruces;
-  document.documentElement.style.setProperty(
-    '--cuerpo', (E.cfg.tam / 100 * 1.0625).toFixed(3) + 'rem');
+  // el interlineado es un numero y no uno de cuatro nombres, asi que no
+  // cuelga de un atributo del <body> sino de la variable misma
+  const est = document.documentElement.style;
+  const [r, rv] = renglones(E.cfg.interlinea);
+  est.setProperty('--interlinea', r);
+  est.setProperty('--interlinea-verso', rv);
+  est.setProperty('--cuerpo', (E.cfg.tam / 100 * 1.0625).toFixed(3) + 'rem');
   aplicaFormatoSecs();
   ponColor(null);
   velaPantalla();
@@ -385,10 +416,26 @@ function grupoFmt(s) {
 /** La clase que lleva la sección, o nada si no es de ningún grupo. */
 function claseFmt(g) { return g ? ' fmt-' + g : ''; }
 
-/* El interlineado, en números: el de la prosa y el de los versos, que van
- * más apretados. Los mismos valores que la hoja de estilo da al <body>. */
-const RENGLON = { compacto: ['1.42', '1.36'], normal: ['1.62', '1.5'],
-  holgado: ['1.88', '1.74'], suelto: ['2.15', '1.98'] };
+/* El interlineado, en los dos números que la hoja necesita: el de la prosa
+ * y el de los versos, que van más apretados —un renglón de salmo es corto y
+ * el aire lo pone el renglón siguiente, no el espacio entre líneas—.
+ *
+ * El segundo sale del primero y no de una tabla, porque el primero ya no es
+ * uno de cuatro escalones sino cualquier número: lo que se guarda es la
+ * proporción que tenían esos cuatro (1,62 de prosa iban con 1,50 de verso),
+ * de modo que quien no toque nada siga viendo lo mismo y quien lo mueva se
+ * lleve los dos renglones a la vez. */
+function renglones(n) {
+  const p = n / 100;
+  return [p.toFixed(2), (1 + (p - 1) * 0.806).toFixed(2)];
+}
+
+/** El interlineado en cifras de leer: «1,62», y entre paréntesis cuando es
+ *  prestado del general y no de la sección. */
+function cifraRenglon(v, heredada) {
+  const t = (v / 100).toFixed(2).replace('.', ',');
+  return heredada ? '(' + t + ')' : t;
+}
 
 /** Lo que se haya dicho de cada grupo, en una hoja de estilo que se rehace
  *  entera al cambiarlo. Con un solo formato para todas no se escribe nada:
@@ -399,8 +446,10 @@ function aplicaFormatoSecs() {
     for (const g of GRUPO_FMT) {
       const f = (E.cfg.fmt || {})[g[0]] || {};
       const d = [];
-      const r = RENGLON[f.interlinea];
-      if (r) d.push('--interlinea:' + r[0], '--interlinea-verso:' + r[1]);
+      if (f.interlinea) {
+        const r = renglones(f.interlinea);
+        d.push('--interlinea:' + r[0], '--interlinea-verso:' + r[1]);
+      }
       if (f.justifica) {
         d.push('--alinea:' + (f.justifica === 'no' ? 'left' : 'justify'));
       }
@@ -2430,6 +2479,14 @@ function cabeceraFija(si) {
  *  que se mueve el dedo. Nunca más plegada de lo que da lo bajado, para que
  *  al principio de la página no se abra un hueco entre ella y el texto. */
 function alDesplazarCabecera() {
+  // Y de paso, los marcos escondidos: si ya no cabe esconderlos —se ha
+  // puesto de pie, o se ha salido a una vista que no se lee— vuelven. El
+  // giro avisa por su cuenta, pero no todos los teléfonos lo cuentan igual,
+  // y esto cuesta una comparación por desplazamiento.
+  if (document.body.classList.contains('pantalla-limpia')
+      && !cabeSinMarcos()) {
+    document.body.classList.remove('pantalla-limpia');
+  }
   if (!document.body.classList.contains('cab-fija') || _midiendoCab) return;
   _midiendoCab = true;
   requestAnimationFrame(() => {
@@ -2441,6 +2498,66 @@ function alDesplazarCabecera() {
     if (Date.now() < _saltoHasta) return;
     const p = Math.max(0, Math.min(1, _plegado + d / PLIEGUE, y / PLIEGUE));
     if (Math.abs(p - _plegado) > 0.002) ponPliegue(p);
+  });
+}
+
+/* ---------------------------------------------- la pantalla, sin marcos
+ * Con el teléfono de lado caben diez renglones, y de ellos la cabecera y la
+ * barra se llevan tres. Un toque en el texto las esconde del todo —fuera de
+ * la pantalla, no atenuadas— y otro las devuelve: mientras se lee no se
+ * necesita ninguna de las dos, y el alto que sobra es justo el que falta.
+ *
+ * Sólo tumbado, que es donde el alto falta —de pie la cabecera ya se pliega
+ * al bajar—, y sólo en las vistas que se leen, que son las que la pliegan:
+ * en el calendario y en los paneles la barra es la única manera de salir, y
+ * esconderla sería dejar a quien toca sin puerta.
+ *
+ * El relleno del <body> que guardaba el sitio de la cabecera se va con ella,
+ * de modo que el texto subiría de golpe. No sube: se repone el renglón que
+ * se estaba leyendo, igual que al cambiar el cuerpo de la letra, y lo que se
+ * gana sale por arriba —los renglones que la cabecera tapaba— sin que nada
+ * se mueva debajo del ojo.
+ */
+const ACOSTADO = window.matchMedia
+  ? window.matchMedia('(orientation: landscape)') : null;
+
+/** Si esconderlas tiene sentido aquí y ahora. */
+function cabeSinMarcos() {
+  return !!(ACOSTADO && ACOSTADO.matches)
+    && document.body.classList.contains('cab-fija');
+}
+
+function ponPantallaLimpia(si) {
+  const b = document.body;
+  if (si && !cabeSinMarcos()) return;
+  if (si === b.classList.contains('pantalla-limpia')) return;
+  const ancla = anclaDeLectura();
+  b.classList.toggle('pantalla-limpia', si);
+  if (ancla) reponeAncla(ancla);
+  else if (_altoCab) {
+    // sin un bloque de texto donde anclarse, el relleno a mano
+    window.scrollTo(0, Math.max(0,
+      window.scrollY + (si ? -_altoCab : _altoCab)));
+  }
+  _ultimoY = Math.max(0, window.scrollY);
+  _saltoHasta = Date.now() + 400;
+}
+
+function alternaPantallaLimpia() {
+  if (!cabeSinMarcos()) return;
+  ponPantallaLimpia(!document.body.classList.contains('pantalla-limpia'));
+}
+
+/* Al ponerse de pie los marcos vuelven, y vuelven de verdad: no basta con
+ * que la hoja de estilo deje de aplicarlos: la clase se quita, que si no al
+ * acostarse otra vez la cabecera se iría sin que nadie la hubiera tocado.
+ * El aviso lo da la consulta misma, que es quien sabe cuándo deja de valer;
+ * el `resize` no siempre llega al girar. */
+if (ACOSTADO && ACOSTADO.addEventListener) {
+  ACOSTADO.addEventListener('change', () => {
+    if (!ACOSTADO.matches) {
+      document.body.classList.remove('pantalla-limpia');
+    }
   });
 }
 
@@ -3027,6 +3144,100 @@ function muestraGrupo(g, forma) {
     + '</p></section>');
 }
 
+/* ------------------------------------------- el interlineado, al paso
+ * El renglón no tiene cuatro medidas: tiene todas las de en medio, y la que
+ * se busca no se sabe de antemano —depende del cuerpo de la letra, de la
+ * fuente que el teléfono sirva y de la vista de quien lee—. Así que no es
+ * una lista de nombres sino un número: menos, la cifra y más, y la muestra
+ * justo encima para ver el renglón mientras se aprieta.
+ *
+ * `grupo` es la sección cuando el mando es de una sección, y entonces el
+ * número puede estar sin decir: se enseña el del general entre paréntesis y
+ * en gris —es prestado— y el primer toque parte de ahí.
+ */
+function pasoInterlinea(grupo) {
+  const propio = grupo
+    ? (((E.cfg.fmt || {})[grupo] || {}).interlinea || 0) : 0;
+  const v = propio || E.cfg.interlinea;
+  const boton = (d, rot) => '<button type="button" data-paso="' + d + '"'
+    + (grupo ? ' data-grupo="' + grupo + '"' : '')
+    + ' aria-label="' + rot + ' interlineado"'
+    + ((d < 0 ? v <= RENGLON_MIN : v >= RENGLON_MAX) ? ' disabled' : '')
+    + '>' + (d < 0 ? '−' : '+') + '</button>';
+  return '<div class="paso" role="group" aria-label="Interlineado"'
+    + (grupo ? ' data-grupo="' + grupo + '"' : '') + '>'
+    + boton(-RENGLON_PASO, 'Menos')
+    + '<span class="cifra' + (grupo && !propio ? ' heredada' : '')
+    + '" aria-live="polite">' + cifraRenglon(v, !!grupo && !propio)
+    + '</span>'
+    + boton(RENGLON_PASO, 'Más') + '</div>';
+}
+
+/** El mando, al día: la cifra, los dos topes y el botón que devuelve la
+ *  sección al general. Se toca lo que cambia y no se repinta Ajustes, que
+ *  cerraría la pestaña y dejaría al dedo buscando el botón. */
+function refrescaPaso(grupo) {
+  const caja = document.querySelector(grupo
+    ? '.paso[data-grupo="' + grupo + '"]' : '.paso:not([data-grupo])');
+  if (!caja) return;
+  const propio = grupo
+    ? (((E.cfg.fmt || {})[grupo] || {}).interlinea || 0) : 0;
+  const v = propio || E.cfg.interlinea;
+  const prestado = !!grupo && !propio;
+  const c = caja.querySelector('.cifra');
+  c.textContent = cifraRenglon(v, prestado);
+  c.classList.toggle('heredada', prestado);
+  caja.querySelectorAll('[data-paso]').forEach((b) => {
+    b.disabled = Number(b.dataset.paso) < 0 ? v <= RENGLON_MIN
+      : v >= RENGLON_MAX;
+  });
+  const vg = document.querySelector('.vuelve-general[data-grupo="'
+    + grupo + '"]');
+  if (vg) vg.disabled = !propio;
+}
+
+/** Todos los mandos a la vez: al mover el general se mueve también la cifra
+ *  prestada de las secciones que no dicen nada. */
+function refrescaPasos() {
+  refrescaPaso('');
+  for (const g of GRUPO_FMT) refrescaPaso(g[0]);
+}
+
+/* Un toque en «menos» o en «más» mueve el número cinco centésimas; «Igual
+ * que todas» borra lo que la sección decía, y entonces vuelve a seguir al
+ * general. Lo que se ve cambia en el sitio —la muestra está encima— y
+ * Ajustes no se repinta. */
+function alTocarPaso(ev) {
+  const b = ev.target.closest('[data-paso], .vuelve-general');
+  if (!b || E.vista !== 'ajustes') return;
+  const grupo = b.dataset.grupo || '';
+  const propio = grupo
+    ? (((E.cfg.fmt || {})[grupo] || {}).interlinea || 0) : 0;
+  const base = propio || E.cfg.interlinea;
+  let v = 0;
+  if (b.dataset.paso) {
+    v = Math.max(RENGLON_MIN,
+      Math.min(RENGLON_MAX, base + Number(b.dataset.paso)));
+    if (v === base && (propio || !grupo)) return;   // ya estaba en el tope
+  } else if (!propio) {
+    return;                            // no decía nada: nada que deshacer
+  }
+  if (grupo) {
+    const f = Object.assign({}, (E.cfg.fmt || {})[grupo]);
+    if (v) f.interlinea = v; else delete f.interlinea;
+    const fmt = Object.assign({}, E.cfg.fmt);
+    fmt[grupo] = f;
+    E.cfg.fmt = fmt;
+    guardaCfg();
+    aplicaFormatoSecs();
+  } else {
+    E.cfg.interlinea = v;
+    guardaCfg();
+    aplicaCfg();
+  }
+  refrescaPasos();
+}
+
 /* Una pestaña por sección, con su muestra y sus tres mandos. «Igual que
  * todas» no guarda nada: es la ausencia de valor, y entonces manda el
  * formato general. */
@@ -3045,9 +3256,11 @@ function bloqueFmt(g) {
     + muestraGrupo(g[0], g[3])
     + selFmt('justifica', 'Alineación', [['', 'Igual que todas'],
       ['si', 'Justificado'], ['no', 'A la izquierda']])
-    + selFmt('interlinea', 'Interlineado', [['', 'Igual que todas'],
-      ['compacto', 'Compacto'], ['normal', 'Normal'], ['holgado', 'Holgado'],
-      ['suelto', 'Muy holgado']])
+    + '<div class="ajuste ancho"><span class="eti">Interlineado</span>'
+    + '<div class="mandos-paso">' + pasoInterlinea(g[0])
+    + '<button type="button" class="vuelve-general" data-grupo="' + g[0]
+    + '"' + ((((E.cfg.fmt || {})[g[0]] || {}).interlinea) ? '' : ' disabled')
+    + '>Igual que todas</button></div></div>'
     + selFmt('particion', 'Partir las palabras', [['', 'Igual que todas'],
       ['si', 'Sí'], ['no', 'No']])
     + '</div></details>';
@@ -3163,9 +3376,11 @@ function verAjustes() {
     E.cfg.fmtUno === 'si' ? ''
       : '<p class="pista-g">Lo que sigue vale para toda la app; cada '
         + 'sección, más abajo, puede decir otra cosa.</p>',
-    sel('interlinea', 'Interlineado', '',
-      [['compacto', 'Compacto'], ['normal', 'Normal'],
-        ['holgado', 'Holgado'], ['suelto', 'Muy holgado']]),
+    '<div class="ajuste"><span class="eti">Interlineado'
+    + '<span class="pista">El alto del renglón, en veces el cuerpo de la '
+    + 'letra. No hay cuatro medidas sino todas: se mueve de cinco en cinco '
+    + 'centésimas, y la muestra de arriba es el renglón de verdad.</span>'
+    + '</span>' + pasoInterlinea('') + '</div>',
     sel('justifica', 'Lecturas justificadas',
       'Las lecturas, los responsorios, las preces y la oración, a caja, '
       + 'como en el libro. Los himnos, los salmos y los cánticos van '
@@ -4880,6 +5095,40 @@ function controlZoom() {
     + 'A</button></div>';
 }
 
+/* ------------------------------------------- el renglón, donde estaba
+ * Cambiar el cuerpo de la letra cambia el alto de todo lo que va por encima
+ * del renglón que se está leyendo, y entonces ese renglón se va de la
+ * pantalla: con la letra más grande, hacia abajo; con la más chica, hacia
+ * arriba. Y se va justo cuando más estorba, que es a media oración.
+ *
+ * Así que antes de tocar nada se toma nota de dónde está el primer bloque de
+ * texto que asoma por debajo de la cabecera y de cuánto le falta para llegar
+ * a ella; después se repone ahí. No es el alto de la página lo que se
+ * conserva —ése cambia a propósito— sino el sitio de ese bloque, que es lo
+ * que el ojo está mirando.
+ */
+const ANCLAS = '.estrofa-h, .ordo-p, .texto, .antifona, .cita, .cierre, '
+  + '.sec-cab';
+
+function anclaDeLectura() {
+  const cab = $('#cabecera');
+  const arriba = document.body.classList.contains('cab-fija')
+    ? Math.max(0, cab.getBoundingClientRect().bottom) : 0;
+  const els = vista.querySelectorAll(ANCLAS);
+  for (const el of els) {
+    const r = el.getBoundingClientRect();
+    if (r.bottom > arriba + 4) return { el: el, y: r.top };
+  }
+  return null;
+}
+
+function reponeAncla(a) {
+  if (!a || !a.el.isConnected) return;
+  const d = a.el.getBoundingClientRect().top - a.y;
+  if (Math.abs(d) < 1) return;
+  window.scrollTo(0, Math.max(0, Math.round(window.scrollY + d)));
+}
+
 function alTocarZoom(ev) {
   const b = ev.target.closest('[data-zoom]');
   if (!b) return;
@@ -4888,16 +5137,21 @@ function alTocarZoom(ev) {
   E.cfg.tam = v;
   guardaCfg();
   const plegado = _plegado;
+  const ancla = anclaDeLectura();
   aplicaCfg();
   aprietaCabeceras();
-  if (!document.body.classList.contains('cab-fija')) return;
-  mideCabecera();
-  // La letra cambia de cuerpo y la página de alto, y al acortarse le mueve
-  // el desplazamiento a quien está leyendo. Eso no es un dedo subiendo: la
-  // cabecera se queda como estaba —plegada, si lo estaba— y vuelve a
-  // desplegarse cuando de verdad se suba. Sin esto, achicar la letra a
-  // media hora abría la cabecera entera y tapaba el renglón.
-  ponPliegue(plegado);
+  if (document.body.classList.contains('cab-fija')) {
+    mideCabecera();
+    // La letra cambia de cuerpo y la página de alto, y al acortarse le mueve
+    // el desplazamiento a quien está leyendo. Eso no es un dedo subiendo: la
+    // cabecera se queda como estaba —plegada, si lo estaba— y vuelve a
+    // desplegarse cuando de verdad se suba. Sin esto, achicar la letra a
+    // media hora abría la cabecera entera y tapaba el renglón.
+    ponPliegue(plegado);
+  }
+  // y el renglón que se estaba leyendo vuelve a donde estaba: medir la
+  // cabecera le ha cambiado el relleno al <body>, así que esto va al final
+  reponeAncla(ancla);
   _ultimoY = Math.max(0, window.scrollY);
   _saltoHasta = Date.now() + 400;
 }
@@ -5072,23 +5326,40 @@ function alSoltarCarril() {
  * dedo —las tiras de la cabecera, los selectores, el carril—. */
 let _dedo = null;
 
+/* El dedo se apunta siempre, no sólo cuando los gestos están puestos: de un
+ * mismo apunte salen dos cosas distintas —el arrastre que cambia de hora y
+ * el toque que esconde la cabecera y la barra—, y cada una pone sus
+ * condiciones al soltar. Lo que no se apunta es lo que se toca para algo:
+ * un botón, un enlace, una tira de la cabecera. */
 function alEmpezarGesto(ev) {
   _dedo = null;
-  if (E.cfg.gestos === 'no' || E.vista !== 'horas'
-      || ev.touches.length !== 1) return;
+  if (ev.touches.length !== 1) return;
   if (ev.target.closest('.chips, .alterna, .carril, #cabecera, #barra, '
-    + 'input, select, a')) return;
+    + 'input, select, a, button, summary, label')) return;
   const t = ev.touches[0];
-  _dedo = { x: t.clientX, y: t.clientY, t: Date.now() };
+  _dedo = { x: t.clientX, y: t.clientY, t: Date.now(),
+    sy: Math.max(0, window.scrollY) };
 }
 
 function alAcabarGesto(ev) {
   const d = _dedo;
   _dedo = null;
-  if (!d || E.vista !== 'horas' || !E.oficio) return;
+  if (!d) return;
   const t = ev.changedTouches[0];
   const dx = t.clientX - d.x;
   const dy = t.clientY - d.y;
+  const sel = window.getSelection();
+  // Un toque: el dedo no se ha movido, la página tampoco —no era un
+  // arrastre corto que la deslizó—, no se ha quedado quieto encima (eso es
+  // alguien eligiendo texto) y no hay nada elegido. Tumbado, esconde la
+  // cabecera y la barra; de pie no hace nada, que ahí no sobra ni falta.
+  if (Math.abs(dx) < 12 && Math.abs(dy) < 12 && Date.now() - d.t < 350
+      && Math.abs(Math.max(0, window.scrollY) - d.sy) < 4
+      && !(sel && sel.toString())) {
+    alternaPantallaLimpia();
+    return;
+  }
+  if (E.cfg.gestos === 'no' || E.vista !== 'horas' || !E.oficio) return;
   // ancho de sobra, más ancho que alto, y de una vez: un arrastre lento
   // es alguien buscando dónde poner el dedo, no un gesto
   if (Math.abs(dx) < 65 || Math.abs(dx) < Math.abs(dy) * 1.8) return;
@@ -5215,6 +5486,7 @@ async function arranca() {
   });
   vista.addEventListener('change', alCambiarAjuste);
   vista.addEventListener('change', alElegirEnMisa);
+  vista.addEventListener('click', alTocarPaso);
   vista.addEventListener('click', alElegirOpcion);
   vista.addEventListener('click', alTocarMisa);
   vista.addEventListener('click', alTocarZoom);
@@ -5303,6 +5575,11 @@ async function arranca() {
     if (!document.hidden) velaPantalla();
   });
   window.addEventListener('resize', () => {
+    // al ponerse de pie los marcos vuelven: esconderlos es cosa del
+    // teléfono tumbado, y en vertical la cabecera ya se pliega al bajar
+    if (!cabeSinMarcos()) {
+      document.body.classList.remove('pantalla-limpia');
+    }
     if (document.body.classList.contains('cab-fija')) mideCabecera();
     if (E.vista !== 'calendario') return;
     document.documentElement.style.setProperty('--alto-cabecera',

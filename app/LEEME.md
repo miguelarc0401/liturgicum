@@ -80,13 +80,21 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **El tamaño de la letra, a mano mientras se reza.** Dos aes en la cabecera
   —en la hora y en la misa— lo suben y lo bajan sin ir a Ajustes: que la
-  letra se ve chica se nota rezando, no al abrir la app.
+  letra se ve chica se nota rezando, no al abrir la app. Al cambiarlo, el
+  renglón que se está leyendo se queda donde estaba: lo que crece o encoge
+  es todo lo que va por encima, y el desplazamiento lo compensa.
 * **Con el teléfono de lado, la cabecera en un solo renglón.** Tumbado sobra
   ancho y falta alto, así que lo que en vertical son tres filas —la fecha,
   la hora, lo que se celebra— se vuelve una: el nombre de la hora o del
   formulario, a continuación el día, las dos aes del tamaño y, al final, la
   fecha abreviada con sus flechas, que siguen cambiando de día y siguen
   abriendo el calendario. Lo que no cabe se abrevia; el renglón no se parte.
+* **Y, de lado, un toque esconde la cabecera y la barra.** Tumbado caben
+  diez renglones y de ellos los dos marcos se llevan tres: un toque en el
+  texto los manda fuera de la pantalla —del todo, no atenuados— y otro los
+  devuelve. El renglón que se está leyendo no se mueve ni al esconderlos ni
+  al traerlos; el índice al borde se queda, que es una cinta y no un mando.
+  De pie no hace nada: ahí la cabecera ya se pliega al bajar.
 * **El formato del texto, una vez para todo o sección por sección.** La
   alineación, el interlineado y la partición de palabras se dicen una vez y
   valen para toda la app, que es lo que basta casi siempre; y quien quiera
@@ -97,6 +105,10 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   que una sección no diga lo sigue diciendo el general. Las secciones se
   agrupan por lo que son y no por el libro en que salen: la primera lectura
   de la misa y la lectura breve de Vísperas son la misma clase de texto.
+  El interlineado no es una lista de cuatro medidas sino un número: menos,
+  la cifra y más, de cinco en cinco centésimas, y la muestra de encima es el
+  renglón de verdad mientras se aprieta. En una sección vale además «igual
+  que todas», que es volver a seguir al general.
 * **Siete tipos de letra**, de libro y de pantalla, y **el color de la app**
   fijo si se quiere: en vez del litúrgico del día, el que se elija. En el
   calendario el color sigue siendo el de cada día, porque allí el color es

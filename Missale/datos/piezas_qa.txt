@@ -6,17 +6,17 @@ testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
 formularios leídos            : 7572
-celebraciones con propios     : 588
+celebraciones con propios     : 599
 perícopas distintas por cita  : 3560
 prefacios propios cosechados  : 28
-textos propios atribuidos     : 2750
-   por lo que nombra la fuente: 721
-   por lo que titula el día   : 994
-   por la fecha del año       : 374
+textos propios atribuidos     : 2762
+   por lo que nombra la fuente: 887
+   por lo que titula el día   : 978
+   por la fecha del año       : 361
    por el común que comparten : 27
-   por el calendario          : 526
-   por todos sus días menos uno: 108
-textos sin celebración que los explique: 358
+   por el calendario          : 404
+   por todos sus días menos uno: 105
+textos sin celebración que los explique: 346
    (van aparte, en sueltos_es.json, con sus días)
 
 El riesgo 3: las lecturas propias que nunca se imprimen
@@ -90,13 +90,13 @@ dice al lado de la cabecera. La fase 3 lo guardaba en `alterna`,
 en `resena` o en `subtitulo` según cayera la maqueta; aquí se
 vuelve a leer del campo `crudo` y se unifica.
 
-   alternativa que es una misa   :  995
-   alternativa que es una santo  :  552
+   alternativa que es una misa   : 1018
+   alternativa que es una santo  :  767
 
-   la fase 3 la tenía en alterna    :  989
-   la fase 3 la tenía en resena     :  485
-   la fase 3 la tenía en subtitulo  :   70
-   la fase 3 la tenía en crudo      :    3
+   la fase 3 la tenía en alterna    : 1027
+   la fase 3 la tenía en resena     :  661
+   la fase 3 la tenía en subtitulo  :   74
+   la fase 3 la tenía en crudo      :   23
 
 Las lecturas de más: la misma ranura, otra vez
 ----------------------------------------------
@@ -519,19 +519,19 @@ Los testigos: lo que está decidido y lo que no
 ----------------------------------------------
 
 Piezas propias por número de testigos del texto canónico:
-    1 testigo(s) :   280 piezas
-    2 testigo(s) :    89 piezas
-    3 testigo(s) :   141 piezas
+    1 testigo(s) :   286 piezas
+    2 testigo(s) :    98 piezas
+    3 testigo(s) :   145 piezas
     4 testigo(s) :   193 piezas
-    5 testigo(s) :   137 piezas
-    6 testigo(s) :   202 piezas
-    7 testigo(s) :   416 piezas
+    5 testigo(s) :   140 piezas
+    6 testigo(s) :   203 piezas
+    7 testigo(s) :   418 piezas
     8 testigo(s) :   341 piezas
-    9 testigo(s) :    61 piezas
+    9 testigo(s) :    63 piezas
    10 testigo(s) :     5 piezas
    11 testigo(s) :     7 piezas
    12 testigo(s) :     8 piezas
-   13 testigo(s) :    11 piezas
+   13 testigo(s) :    14 piezas
    14 testigo(s) :     7 piezas
    15 testigo(s) :     6 piezas
    16 testigo(s) :     1 piezas
@@ -541,17 +541,18 @@ Piezas propias por número de testigos del texto canónico:
    42 testigo(s) :     1 piezas
 
 Piezas con variantes (la fuente no imprimió lo mismo todos los
-años): 578. La variante se guarda con los días que la respaldan,
+años): 572. La variante se guarda con los días que la respaldan,
 que es lo que impide que una errata de un año se imponga a los
 otros siete.
 
-Piezas decididas a la fuerza por empate de testigos: 86. Es el
+Piezas decididas a la fuerza por empate de testigos: 89. Es el
 único sitio donde la mayoría no decide, y conviene mirarlas:
    d3_0_3                             entrada      4 testigos, 1 variantes
    d3_2_0                             entrada      4 testigos, 1 variantes
    d3_8_6                             colecta      4 testigos, 1 variantes
    d5_10_0                            poscomunion  1 testigos, 1 variantes
    d5_25_0                            comunion     4 testigos, 1 variantes
+   d5_28_0                            comunion     1 testigos, 1 variantes
    d5_3_0                             poscomunion  1 testigos, 1 variantes
    md_02-04                           ofrendas     3 testigos, 1 variantes
    md_02-25                           colecta      6 testigos, 2 variantes
@@ -572,7 +573,6 @@ Piezas decididas a la fuerza por empate de testigos: 86. Es el
    md_05-23                           colecta      1 testigos, 1 variantes
    md_05-28                           colecta      1 testigos, 1 variantes
    md_08-12                           poscomunion  4 testigos, 1 variantes
-   md_08-26                           poscomunion  4 testigos, 1 variantes
    md_09-18                           ofrendas     4 testigos, 1 variantes
    md_09-23                           ofrendas     4 testigos, 1 variantes
    md_09-23                           poscomunion  4 testigos, 1 variantes
@@ -586,16 +586,17 @@ Piezas decididas a la fuerza por empate de testigos: 86. Es el
    san_san-david-galvan-bermudez      poscomunion  1 testigos, 1 variantes
    san_san-david-uribe-velasco        ofrendas     1 testigos, 1 variantes
    san_san-jenaro-sanchez-delgadillo  poscomunion  1 testigos, 1 variantes
-   san_santa-juana-francisca-de-chant ofrendas     1 testigos, 1 variantes
-   … y 46 más
+   san_santa-eduwiges-religiosa       ofrendas     1 testigos, 2 variantes
+   … y 49 más
 
-Piezas con un solo testigo y sin variante: 241. Entran, pero el
+Piezas con un solo testigo y sin variante: 243. Entran, pero el
 texto no está confirmado por nadie más:
    d0_0_3                             poscomunion  2021-12-01/0
    d0_1_0                             ofrendas     2021-12-05/0
    d0_1_5                             ofrendas     2021-12-10/0
    d0_2_4                             ofrendas     2021-12-16/0
    d0_2_4                             poscomunion  2021-12-16/0
+   d1_1_1                             colecta      2021-12-29/0
    d1_1_1                             poscomunion  2021-12-29/0
    d1_1_2                             poscomunion  2021-12-30/0
    d1_1_3                             colecta      2021-12-31/0
@@ -606,37 +607,36 @@ texto no está confirmado por nadie más:
    d3_5_0                             ofrendas     2021-05-02/0
    d3_5_0                             poscomunion  2026-05-03/0
    d3_6_0                             ofrendas     2023-05-14/0
+   d3_6_0                             poscomunion  2025-05-25/0
    d3_9_0                             entrada      2019-06-09/0
-   d5_0_4                             poscomunion  2021-01-15/0
-   d5_0_5                             colecta      2021-01-16/0
-   d5_0_5                             poscomunion  2021-01-16/0
    d5_13_0                            comunion     2019-07-07/0
    d5_19_0                            ofrendas     2025-08-17/0
    d5_1_0                             ofrendas     2022-01-16/0
-   d5_1_2                             colecta      2021-01-19/0
-   d5_1_2                             poscomunion  2021-01-19/0
-   d5_1_3                             entrada      2021-01-20/0
-   d5_1_3                             colecta      2021-01-20/0
-   d5_1_3                             ofrendas     2021-01-20/0
-   d5_1_3                             comunion     2021-01-20/0
-   d5_1_3                             poscomunion  2021-01-20/0
-   d5_1_5                             poscomunion  2021-01-22/0
-   d5_1_6                             colecta      2021-01-23/0
-   d5_1_6                             poscomunion  2021-01-23/0
    d5_24_0                            ofrendas     2026-09-20/0
    d5_27_0                            poscomunion  2025-10-12/0
-   d5_2_3                             entrada      2021-01-27/0
-   d5_2_3                             colecta      2021-01-27/0
-   d5_2_3                             ofrendas     2021-01-27/0
-   d5_2_3                             poscomunion  2021-01-27/0
    d5_2_5                             colecta      2021-01-29/0
    d5_2_5                             ofrendas     2021-01-29/0
-   … y 201 más
+   d5_2_5                             poscomunion  2021-01-29/0
+   d5_2_6                             colecta      2021-01-30/0
+   d5_2_6                             poscomunion  2021-01-30/0
+   d5_3_1                             poscomunion  2021-02-01/0
+   d5_4_5                             colecta      2021-02-12/0
+   d5_4_5                             comunion     2021-02-12/0
+   d5_4_5                             poscomunion  2021-02-12/0
+   d5_5_1                             entrada      2021-02-15/0
+   d5_5_1                             colecta      2021-02-15/0
+   d5_5_1                             ofrendas     2021-02-15/0
+   md_01-04                           poscomunion  2021-01-04/0
+   md_01-05                           poscomunion  2021-01-05/0
+   md_01-08                           poscomunion  2021-01-08/0
+   md_01-09                           comunion     2025-01-09/0
+   md_01-09                           poscomunion  2021-01-09/0
+   … y 203 más
 
 Lo atribuido con una excepción
 ------------------------------
 
-108 textos se atribuyeron a una celebración que explica todos sus
+105 textos se atribuyeron a una celebración que explica todos sus
 días **menos uno**. Se admite una sola excepción, y sólo con
 cuatro días o más, porque la fuente se desvía de vez en cuando
 del calendario del proyecto: en 2022 el 24 de junio fue el
@@ -648,12 +648,12 @@ solemnidad se iban con los textos sueltos. Cada excepción, por
 su nombre:
 
    md_12-24                           salvo 2021-12-25/0  (5 piezas)
-   vot_misa-del-santisimo-nombre-de-j salvo 2021-10-21/0  (5 piezas)
    vot_misa-por-los-sacerdotes        salvo 2019-10-10/0  (5 piezas)
    d2_2_5                             salvo 2025-03-22/0  (4 piezas)
    d5_2_0                             salvo 2021-02-01/0  (4 piezas)
    st_0624_77                         salvo 2022-06-23/0  (4 piezas)
    vot_misa-de-la-sagrada-eucaristia  salvo 2020-01-23/0  (4 piezas)
+   vot_misa-por-la-evangelizacion-de- salvo 2019-10-20/0  (4 piezas)
    d1_1_4                             salvo 2021-12-31/1  (3 piezas)
    d1_5_0                             salvo 2022-01-10/0  (3 piezas)
    d5_11_0                            salvo 2023-07-16/0  (3 piezas)
@@ -661,9 +661,9 @@ su nombre:
    st_0621_74                         salvo 2020-06-18/0  (3 piezas)
    vot_misa-de-la-divina-misericordia salvo 2019-07-19/0  (3 piezas)
    vot_misa-del-sagrado-corazon-de-je salvo 2018-09-07/0  (3 piezas)
+   vot_misa-por-la-evangelizacion-de- salvo 2018-10-21/0  (3 piezas)
    d3_8_6                             salvo 2022-06-04/1  (2 piezas)
    d5_17_0                            salvo 2025-08-07/0  (2 piezas)
-   d5_28_0                            salvo 2022-10-23/0  (2 piezas)
    st_0107_1                          salvo 2025-01-09/0  (2 piezas)
    st_0430_50                         salvo 2022-05-05/0  (2 piezas)
    st_0503_53                         salvo 2021-01-15/0  (2 piezas)
@@ -673,7 +673,6 @@ su nombre:
    vot_misa-para-pedir-la-gracia-de-u salvo 2022-11-11/0  (2 piezas)
    vot_misa-por-la-iglesia-universal- salvo 2018-10-30/0  (2 piezas)
    vot_misa-por-la-paz-y-la-justicia  salvo 2018-09-11/0  (2 piezas)
-   vot_misa-por-los-cristianos-perseg salvo 2021-02-16/0  (2 piezas)
    vot_misa-por-los-familiares-y-amig salvo 2021-02-09/0  (2 piezas)
    comun_5226COMPAS                   salvo 2024-05-28/0  (1 piezas)
    comun_5226COMPAS                   salvo 2025-02-27/0  (1 piezas)
@@ -687,12 +686,13 @@ su nombre:
    d5_9_0                             salvo 2025-06-10/0  (1 piezas)
    md_10-12                           salvo 2019-06-30/1  (1 piezas)
    md_11-09                           salvo 2021-01-14/0  (1 piezas)
-   … y 16 más
+   san_san-isidro-labrador            salvo 2021-04-12/0  (1 piezas)
+   … y 14 más
 
 Los textos que ninguna celebración explica: los comunes
 -------------------------------------------------------
 
-358 textos aparecen en días que no comparten ninguna celebración,
+346 textos aparecen en días que no comparten ninguna celebración,
 y no es un fallo: son los **comunes**. La antífona «En medio de la
 Iglesia abrió su boca» se imprime en los días de cuarenta santos
 distintos, así que no es de ninguno de ellos.
@@ -750,7 +750,7 @@ ranura        días  texto
    comunion       23  estos son los milagros que acompanaran a los que hayan c
    comunion       23  el buen pastor da la vida por sus ovejas aleluya
    entrada        23  el siervo fiel y prudente fue constituido como padre de 
-   … y 318 más
+   … y 306 más
 
 Los prefacios
 -------------
@@ -853,39 +853,40 @@ números 142 y 143. Los misalitos sí las imprimen, y aquí están:
 Las celebraciones y lo que tienen
 ---------------------------------
 
-   santoral     238
-   tiempo       166
+   santoral     252
+   tiempo       158
    fecha        118
-   votiva        61
+   votiva        66
    común          5
 
-Con las cinco piezas del formulario completas: 159 de 588. Que la
+Con las cinco piezas del formulario completas: 162 de 599. Que la
 mayoría no las tenga todas no es un hueco del parseo: es lo que
 el misalito imprime. En una memoria pone la colecta del santo y
 deja las antífonas de la feria, así que el santo se queda con su
 colecta y nada más, y es correcto —la app tomará las demás de
 donde el día las toma—. Lo que falta, ranura por ranura:
 
-   sin comunion       343 celebraciones
-   sin entrada        324 celebraciones
-   sin ofrendas       194 celebraciones
-   sin poscomunion    153 celebraciones
-   sin colecta         67 celebraciones
+   sin comunion       350 celebraciones
+   sin entrada        331 celebraciones
+   sin ofrendas       198 celebraciones
+   sin poscomunion    158 celebraciones
+   sin colecta         69 celebraciones
 
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
 
-Los 656 avisos son todos de lo mismo, y es un hallazgo, no un
+Los 710 avisos son todos de lo mismo, y es un hallazgo, no un
 fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
 calendario se armó con el general. Sus textos entran, con
-identificador `san_…`: son 46 celebraciones.
+identificador `san_…`: son 55 celebraciones.
 
    san_beata-maria-de-la-concepcion               colecta, comunion, ofrendas, poscomunion
    san_beato-bartolome-gutierrez                  colecta, comunion, ofrendas, poscomunion
    san_beato-elias-del-socorro-nieves             ofrendas, poscomunion
    san_beato-luis-magana-servin                   ofrendas
+   san_beato-luis-magana-servin-martir-mexicano   ofrendas
    san_beato-mateo-elias-del-socorro              colecta
    san_beato-miguel-agustin-pro-martir            colecta, ofrendas, poscomunion
    san_beato-sebastian-de-aparicio                poscomunion
@@ -894,15 +895,16 @@ identificador `san_…`: son 46 celebraciones.
    san_beatos-juan-bautista-y                     colecta, poscomunion
    san_beatos-pedro-zuniga-y-luis-flores          ofrendas, poscomunion
    san_de-la-divina-misericordia                  colecta, poscomunion
-   san_de-san-jose-isabel-flores-varela           colecta
-   san_del-beato-bartolome-laurel-martir          colecta
    san_memoria-de-santa-teresa-de-calcuta         colecta, entrada, ofrendas
    san_nuestra-senora-de-fatima                   colecta, comunion, entrada, ofrendas, po
    san_nuestra-senora-de-la-merced                colecta, comunion, entrada, ofrendas, po
    san_nuestra-senora-del-perpetuo-socorro        poscomunion
    san_por-la-santificacion-del-trabajo-humano    colecta
    san_san-antonio-m-claret-obispo                ofrendas, poscomunion
+   san_san-apolinar-obispo-y-martir               colecta
    san_san-atilano-cruz-alvarado-y                colecta
+   san_san-charbel-makhluf-presbitero             colecta
+   san_san-david-galvan-bermudes-martir-mexicano  poscomunion
    san_san-david-galvan-bermudez                  poscomunion
    san_san-david-uribe-velasco                    colecta, entrada, ofrendas, poscomunion
    san_san-gregorio-de-narek                      colecta, ofrendas, poscomunion, pueblo
@@ -912,8 +914,14 @@ identificador `san_…`: son 46 celebraciones.
    san_san-jose-maria-de-yermo-y-parres-presbiter ofrendas, poscomunion
    san_san-jose-maria-robles-hurtado              ofrendas, poscomunion
    san_san-juan-nepomuceno-martir                 colecta
+   san_san-junipero-serra-presbitero              colecta, comunion, poscomunion
+   san_san-miguel-de-la-mora-martir-mexicano      colecta
+   san_san-pascual-bailon-religioso               colecta, ofrendas, poscomunion
+   san_san-pedro-esqueda-ramirez-martir-mexicano  poscomunion
    san_san-sabas-reyes-salazar                    comunion, ofrendas, poscomunion
+   san_san-sabas-reyes-salazar-martir-mexicano    colecta
    san_san-tranquilino-ubiarco-robles             colecta, ofrendas, poscomunion
+   san_santa-eduwiges-religiosa                   colecta, ofrendas, poscomunion
    san_santa-josefina-bakhita-virgen              colecta, ofrendas, poscomunion
    san_santa-juana-francisca                      colecta
    san_santa-juana-francisca-de-chantal           ofrendas
@@ -922,6 +930,7 @@ identificador `san_…`: son 46 celebraciones.
    san_santa-maria-en-sabado                      poscomunion
    san_santa-maria-guadalupe-garcia-zavala        colecta
    san_santa-rita-de-casia                        ofrendas
+   san_santa-rita-de-casia-religiosa              ofrendas
    san_santa-teresa-benedicta-de-la-cruz          ofrendas, poscomunion
    san_santa-teresa-de-calcuta                    colecta, entrada, ofrendas
    san_santisimo-nombre-de-jesus                  colecta, comunion, ofrendas, poscomunion
@@ -937,7 +946,7 @@ Y los avisos, día por día:
    2018-07-19/0   la fuente ofrece «BEATA MARÍA VICENTA DE SANTA DOROTEA» y el calendario no trae ese santo ese día
    2018-07-20/0   la fuente ofrece «SAN APOLINAR» y el calendario no trae ese santo ese día
    2018-07-24/0   la fuente ofrece «SAN CHÁRBEL MAKHLUF» y el calendario no trae ese santo ese día
-   2018-07-29/0   la fuente ofrece «del BEATO GABRIEL ESCOTO RUIZ, O.C.D» y el calendario no trae ese santo ese día
+   2018-08-07/0   la fuente ofrece «SAN MIGUEL DE LA MORA, Mártir Mexicano *» y el calendario no trae ese santo ese día
    2018-08-09/0   la fuente ofrece «SANTA TERESA BENEDICTA DE LA CRUZ» y el calendario no trae ese santo ese día
    2018-08-16/0   la fuente ofrece «BEATO BARTOLOMÉ LAUREL, Mártir» y el calendario no trae ese santo ese día
    2018-08-30/0   la fuente titula «SANTA ROSA DE LIMA» y el calendario no lo pone ese día: se toma de su fecha propia
@@ -950,6 +959,7 @@ Y los avisos, día por día:
    2018-10-11/0   la fuente titula «SAN JUAN XXIII» y el calendario no lo pone ese día: se toma de su fecha propia
    2018-10-22/0   la fuente titula «SAN JUAN PABLO II» y el calendario no lo pone ese día: se toma de su fecha propia
    2018-10-25/0   la fuente ofrece «SAN ANTONIO M. CLARET» y el calendario no trae ese santo ese día
+   2018-11-12/0   la fuente ofrece «SAN MARGARITO FLORES GARCÍA, Mártir Mexicano» y el calendario no trae ese santo ese día
    2018-11-20/0   la fuente ofrece «BEATOS ANACLETO GONZÁLEZ FLORES» y el calendario no trae ese santo ese día
    2018-11-23/0   la fuente ofrece «BEATO MIGUEL AGUSTÍN PRO, Mártir» y el calendario no trae ese santo ese día
    2019-01-03/0   la fuente ofrece «SANTÍSIMO NOMBRE DE JESÚS» y el calendario no trae ese santo ese día
@@ -961,7 +971,6 @@ Y los avisos, día por día:
    2019-04-01/0   la fuente ofrece «BEATOS JOSÉ LUIS PADILLA GÓMEZ» y el calendario no trae ese santo ese día
    2019-04-03/0   la fuente ofrece «BEATOS JOSÉ EZEQUIEL y» y el calendario no trae ese santo ese día
    2019-04-12/0   la fuente ofrece «NUESTRA SEÑORA DE LOS DOLORES» y el calendario no trae ese santo ese día
-   2019-04-21/0   la fuente ofrece «de SANROMÁN ADAME ROSALES» y el calendario no trae ese santo ese día
    2019-05-13/0   la fuente ofrece «NUESTRA SEÑORA DE FÁTIMA» y el calendario no trae ese santo ese día
    2019-05-15/0   la fuente ofrece «SAN ISIDRO LABRADOR» y el calendario no trae ese santo ese día
    2019-05-16/0   la fuente ofrece «SAN JUAN NEPOMUCENO» y el calendario no trae ese santo ese día
@@ -986,27 +995,37 @@ Y los avisos, día por día:
    2019-09-24/0   la fuente ofrece «NUESTRA SEÑORA DE LA MERCED» y el calendario no trae ese santo ese día
    2019-10-05/0   la fuente ofrece «SAN TRANQUILINO UBIARCO ROBLES» y el calendario no trae ese santo ese día
    2019-10-11/0   la fuente titula «SAN JUAN XXIII» y el calendario no lo pone ese día: se toma de su fecha propia
+   2019-10-16/0   la fuente ofrece «SANTA EDUWIGES, Religiosa» y el calendario no trae ese santo ese día
    2019-10-25/0   la fuente ofrece «SAN ANTONIO M. CLARET, Obispo» y el calendario no trae ese santo ese día
+   2019-10-28/0   la fuente ofrece «SAN RODRIGO AGUILAR ALEMÁN, Mártir Mexicano » y el calendario no trae ese santo ese día
+   2019-11-12/0   la fuente ofrece «SAN MARGARITO FLORES GARCÍA, Mártir Mexicano» y el calendario no trae ese santo ese día
+   2019-11-22/0   la fuente ofrece «SAN PEDRO ESQUEDA RAMÍREZ, Mártir Mexicano *» y el calendario no trae ese santo ese día
    2019-11-23/0   la fuente ofrece «BEATO MIGUEL AGUSTÍN PRO, Mártir» y el calendario no trae ese santo ese día
    2019-11-25/0   la fuente ofrece «SANTA CATALINA DE ALEJANDRÍA, Virgen y Márti» y el calendario no trae ese santo ese día
    2020-01-03/0   la fuente ofrece «SANTÍSIMO NOMBRE DE JESÚS» y el calendario no trae ese santo ese día
    2020-01-17/0   la fuente ofrece «+ SAN JENARO SÁNCHEZ DELGADILLO» y el calendario no trae ese santo ese día
    2020-01-23/0   la fuente ofrece «DE LA SAGRADA EUCARISTÍA» y el calendario no trae ese santo ese día
+   2020-01-30/0   la fuente ofrece «SAN DAVID GALVÁN BERMUDES, Mártir Mexicano *» y el calendario no trae ese santo ese día
    2020-02-05/0   la fuente ofrece «SAN JESÚS MÉNDEZ MONTOYA *» y el calendario no trae ese santo ese día
    2020-02-08/0   la fuente ofrece «SANTA JOSEFINA BAKHITA, Virgen» y el calendario no trae ese santo ese día
    2020-02-25/0   la fuente ofrece «SANTO TORIBIO ROMO GONZÁLEZ» y el calendario no trae ese santo ese día
    2020-04-01/1   la fuente titula «BEATOS JOSÉ LUIS PADILLA GÓMEZ» y el calendario no lo pone ese día: se toma de su fecha propia
    2020-04-03/0   la fuente ofrece «NUESTRA SEÑORA DE LOS DOLORES» y el calendario no trae ese santo ese día
-   2020-04-13/0   la fuente ofrece «la de SAN SABÁS REYES SALAZAR» y el calendario no trae ese santo ese día
    2020-05-13/0   la fuente ofrece «NUESTRA SEÑORA DE FÁTIMA» y el calendario no trae ese santo ese día
    2020-05-15/0   la fuente ofrece «SAN ISIDRO LABRADOR» y el calendario no trae ese santo ese día
    2020-05-16/0   la fuente ofrece «SAN JUAN NEPOMUCENO, Mártir» y el calendario no trae ese santo ese día
+   2020-05-22/0   la fuente ofrece «SANTA RITA DE CASIA, Religiosa» y el calendario no trae ese santo ese día
    2020-06-20/0   la fuente titula «SÁBADO SIGUIENTE AL SEGUNDO DOMINGO DESP» y el calendario no lo pone ese día: se toma de su fecha propia
    2020-06-23/1   la fuente titula «NATIVIDAD DE SAN JUAN BAUTISTA» y el calendario no lo pone ese día: se toma de su fecha propia
+   2020-06-26/0   la fuente ofrece «SAN JOSÉ MARÍA ROBLES HURTADO, Mártir Mexica» y el calendario no trae ese santo ese día
    2020-07-09/0   la fuente ofrece «SANTOS AGUSTÍN ZHAO RONG, Presbítero» y el calendario no trae ese santo ese día
    2020-07-20/0   la fuente ofrece «SAN APOLINAR» y el calendario no trae ese santo ese día
+   2020-07-24/0   la fuente ofrece «SAN CHÁRBEL MAKHLUF, Presbítero» y el calendario no trae ese santo ese día
+   2020-07-29/0   la fuente ofrece «BEATO GABRIEL ESCOTO RUIZ, O.C.D, Mártir Mex» y el calendario no trae ese santo ese día
+   2020-08-07/0   la fuente ofrece «SAN MIGUEL DE LA MORA, Mártir Mexicano*» y el calendario no trae ese santo ese día
    2020-08-12/0   la fuente ofrece «SANTA JUANA FRANCISCA DE CHANTAL, Religiosa» y el calendario no trae ese santo ese día
-   2020-08-16/0   la fuente ofrece «del BEATO BARTOLOMÉ LAUREL, Mártir ]» y el calendario no trae ese santo ese día
+   2020-08-19/0   la fuente ofrece «BEATOS PEDRO ZÚÑIGA Y LUIS FLORES, Presbíter» y el calendario no trae ese santo ese día
+   2020-08-26/0   la fuente ofrece «SAN JUNÍPERO SERRA, Presbítero» y el calendario no trae ese santo ese día
    2020-09-02/0   la fuente ofrece «BEATO BARTOLOMÉ GUTIÉRREZ» y el calendario no trae ese santo ese día
    2020-09-05/0   la fuente ofrece «SANTA TERESA DE CALCUTA» y el calendario no trae ese santo ese día
    2020-09-12/0   la fuente ofrece «SANTÍSIMO NOMBRE DE MARÍA» y el calendario no trae ese santo ese día
@@ -1015,6 +1034,7 @@ Y los avisos, día por día:
    2020-09-22/0   la fuente ofrece «SANTOS CRISTÓBAL, ANTONIO Y JUAN» y el calendario no trae ese santo ese día
    2020-09-24/0   la fuente ofrece «NUESTRA SEÑORA DE LA MERCED» y el calendario no trae ese santo ese día
    2020-10-05/0   la fuente ofrece «SAN TRANQUILINO UBIARCO ROBLES, Mártir Mexic» y el calendario no trae ese santo ese día
+   2020-11-12/0   la fuente ofrece «SAN MARGARITO FLORES GARCÍA, Mártir Mexicano» y el calendario no trae ese santo ese día
    2020-11-23/0   la fuente ofrece «BEATO MIGUEL AGUSTÍN PRO, Mártir» y el calendario no trae ese santo ese día
    2020-11-25/0   la fuente ofrece «SANTA CATALINA DE ALEJANDRÍA, Virgen y Márti» y el calendario no trae ese santo ese día
    2020-12-09/0   la fuente titula «SAN JUAN DIEGO» y el calendario no lo pone ese día: se toma de su fecha propia
@@ -1028,27 +1048,16 @@ Y los avisos, día por día:
    2021-05-10/0   la fuente titula «SAN JUAN DE ÁVILA» y el calendario no lo pone ese día: se toma de su fecha propia
    2021-05-13/0   la fuente ofrece «NUESTRA SEÑORA DE FÁTIMA» y el calendario no trae ese santo ese día
    2021-05-15/0   la fuente ofrece «SAN ISIDRO LABRADOR» y el calendario no trae ese santo ese día
+   2021-05-17/0   la fuente ofrece «SAN PASCUAL BAILÓN, Religioso» y el calendario no trae ese santo ese día
+   2021-05-22/0   la fuente ofrece «SANTA RITA DE CASIA, Religiosa» y el calendario no trae ese santo ese día
    2021-06-23/1   la fuente titula «NATIVIDAD DE SAN JUAN BAUTISTA» y el calendario no lo pone ese día: se toma de su fecha propia
    2021-06-26/0   la fuente ofrece «SAN JOSÉ MARÍA ROBLES HURTADO» y el calendario no trae ese santo ese día
    2021-07-01/0   la fuente ofrece «SAN ATILANO CRUZ ALVARADO y» y el calendario no trae ese santo ese día
    2021-07-09/0   la fuente ofrece «SANTOS AGUSTÍN ZHAO RONG» y el calendario no trae ese santo ese día
    2021-07-19/0   la fuente ofrece «BEATA MARÍA VICENTA» y el calendario no trae ese santo ese día
+   2021-07-20/0   la fuente ofrece «SAN APOLINAR, Obispo y Mártir» y el calendario no trae ese santo ese día
+   2021-07-24/0   la fuente ofrece «SAN CHÁRBEL MAKHLUF, Presbítero» y el calendario no trae ese santo ese día
+   2021-07-29/0   la fuente ofrece «BEATO GABRIEL ESCOTO RUÍZ, O.C.D, Mártir Mex» y el calendario no trae ese santo ese día
    2021-08-12/0   la fuente ofrece «SANTA JUANA FRANCISCA DE CHANTAL, Religiosa» y el calendario no trae ese santo ese día
-   2021-08-30/0   la fuente titula «SANTA ROSA DE LIMA» y el calendario no lo pone ese día: se toma de su fecha propia
-   2021-09-02/0   la fuente ofrece «BEATO BARTOLOMÉ GUTIÉRREZ» y el calendario no trae ese santo ese día
-   2021-09-18/0   la fuente ofrece «BEATOS JUAN BAUTISTA y JACINTO DE LOS ÁNGELE» y el calendario no trae ese santo ese día
-   2021-09-22/0   la fuente ofrece «BEATOS CRISTÓBAL, ANTONIO Y JUAN» y el calendario no trae ese santo ese día
-   2021-09-24/0   la fuente ofrece «NUESTRA SEÑORA DE LA MERCED» y el calendario no trae ese santo ese día
-   2021-10-05/0   la fuente ofrece «SAN TRANQUILINO UBIARCO ROBLES» y el calendario no trae ese santo ese día
-   2021-10-25/0   la fuente ofrece «SAN ANTONIO M. CLARET, Obispo» y el calendario no trae ese santo ese día
-   2021-11-22/0   la fuente ofrece «SAN PEDRO ESQUEDA RAMÍREZ» y el calendario no trae ese santo ese día
-   2021-11-23/0   la fuente ofrece «BEATO MIGUEL AGUSTÍN PRO, Mártir» y el calendario no trae ese santo ese día
-   2021-11-25/0   la fuente ofrece «SANTA CATALINA DE ALEJANDRÍA, Virgen y Márti» y el calendario no trae ese santo ese día
-   2021-12-09/0   la fuente titula «SAN JUAN DIEGO» y el calendario no lo pone ese día: se toma de su fecha propia
-   2021-12-12/0   la fuente titula «NUESTRA SEÑORA DE GUADALUPE, PATRONA DE » y el calendario no lo pone ese día: se toma de su fecha propia
-   2022-01-03/0   la fuente ofrece «SANTÍSIMO NOMBRE DE JESÚS» y el calendario no trae ese santo ese día
-   2022-01-17/0   la fuente ofrece «SAN JENARO SÁNCHEZ DELGADILLO» y el calendario no trae ese santo ese día
-   2022-02-06/0   la fuente ofrece «de SAN MATEO CORREA MAGALLANES» y el calendario no trae ese santo ese día
-   2022-02-08/0   la fuente ofrece «SANTA JOSEFINA BAKHITA, Virgen» y el calendario no trae ese santo ese día
-   2022-02-25/0   la fuente ofrece «SANTO TORIBIO ROMO GONZÁLEZ» y el calendario no trae ese santo ese día
-   … y 536 más
+   2021-08-26/0   la fuente ofrece «SAN JUNÍPERO SERRA, Presbítero» y el calendario no trae ese santo ese día
+   … y 590 más

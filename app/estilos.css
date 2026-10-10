@@ -134,6 +134,16 @@ body, #cabecera, #barra, .aviso, .tarjeta, .muestra, .cal-dia, .campo {
               border-color var(--lento) var(--curva),
               color var(--lento) var(--curva);
 }
+/* Y, tumbadas, el irse y el volver: la cabecera y la barra se esconden al
+   toque (ver «la pantalla, sin marcos»), y eso es un movimiento, no un
+   corte. Van en su propia regla para no quedarse sin el desvanecido del
+   color, que es la de arriba. */
+#cabecera, #barra {
+  transition: background-color var(--lento) var(--curva),
+              border-color var(--lento) var(--curva),
+              color var(--lento) var(--curva),
+              transform var(--medio) var(--curva);
+}
 .rubrica, .cita, .cierre, .antifona, .hora-sec .rotulo, .hora-sec .rub,
 .cruz, .ed-pdf, h2.seccion, #barra button, .sec > summary, .cal-g, .mini-anio span {
   transition: color var(--lento) var(--curva),
@@ -508,9 +518,11 @@ body[data-letra="gruesa"] { --familia: var(--gruesa); }
 body[data-letra="periodico"] { --familia: var(--periodico); }
 body[data-letra="humanista"] { --familia: var(--humanista); }
 body[data-letra="ancha"] { --familia: var(--ancha); }
-body[data-interlinea="compacto"] { --interlinea: 1.42; --interlinea-verso: 1.36; }
-body[data-interlinea="holgado"] { --interlinea: 1.88; --interlinea-verso: 1.74; }
-body[data-interlinea="suelto"] { --interlinea: 2.15; --interlinea-verso: 1.98; }
+/* El interlineado no es una lista de nombres sino un numero, y lo pone el
+   <html> con `--interlinea` cada vez que se toca en Ajustes (`aplicaCfg`):
+   no hay cuatro escalones a los que ajustarse, sino un renglon que se abre y
+   se cierra de cinco en cinco centesimas. Lo que la hoja trae en `:root` es
+   el valor de fabrica, que es el que manda mientras no se diga otro. */
 body[data-medida="ancha"] { --medida: 50rem; }
 /* La alineacion y la particion ya no se escriben sobre cada texto, sino en
    dos variables —`--alinea` y `--parte`— que cada texto lee con su propio
@@ -592,7 +604,10 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--filete);
 }
-.ajuste label { font-family: var(--sans); font-size: .9rem; }
+/* `.eti` es la etiqueta de los mandos que no son un control al que un
+   <label> pueda apuntar —el paso del interlineado son dos botones y una
+   cifra—: misma letra, mismo sitio, y el nombre lo lleva el grupo. */
+.ajuste label, .ajuste .eti { font-family: var(--sans); font-size: .9rem; }
 .ajuste .pista {
   display: block; font-size: .76rem; line-height: 1.45;
   color: var(--tinta-suave); margin-top: .2rem; max-width: 22rem;
@@ -604,6 +619,54 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   border: 1px solid var(--filete-fuerte); border-radius: 10px; padding: .35rem .5rem;
 }
 .ajuste input[type="range"] { width: 8rem; padding: 0; border: 0; accent-color: var(--acento); }
+
+/* ------------------------------------------------ el interlineado, al paso
+   El interlineado no es una lista de cuatro nombres sino un numero, y se
+   mueve de cinco en cinco centesimas: menos, el numero, mas. La cifra lleva
+   ancho fijo y cifras de ancho fijo, de modo que al cambiar no se mueven los
+   botones debajo del dedo —que es lo que pasa cuando el 1,60 se queda en
+   1,6— y se puede apretar varias veces sin mirar. */
+.paso {
+  flex: none; display: flex; align-items: center; gap: .1rem; padding: .1rem;
+  background: var(--papel-alto);
+  border: 1px solid var(--filete-fuerte); border-radius: 10px;
+}
+.paso button {
+  width: 2.2rem; height: 2.3rem; display: grid; place-items: center;
+  border: 0; border-radius: 8px; background: none; cursor: pointer;
+  color: var(--acento); font-family: var(--sans); font-size: 1.2rem;
+  line-height: 1;
+  transition: background-color var(--rapido), transform var(--rapido) var(--curva);
+}
+.paso button:active { background: var(--filete); transform: scale(.92); }
+.paso button:disabled {
+  color: var(--tinta-suave); opacity: .38; cursor: default; transform: none;
+}
+.paso .cifra {
+  min-width: 2.9rem; text-align: center; color: var(--tinta);
+  font-family: var(--sans); font-size: .9rem;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+/* Lo que una seccion no dice lo dice el general: su numero se ensena, pero
+   en gris y entre parentesis, para que se vea que es prestado. */
+.paso .cifra.heredada { color: var(--tinta-suave); }
+.mandos-paso {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
+  margin-top: .5rem;
+}
+/* «Igual que todas» no es una opcion de la lista —ya no hay lista— sino el
+   boton que devuelve la seccion al formato general. Solo esta vivo cuando la
+   seccion dice algo propio: mientras no diga nada no hay nada que deshacer. */
+.vuelve-general {
+  padding: .35rem .7rem; cursor: pointer;
+  font-family: var(--sans); font-size: .74rem; color: var(--acento);
+  background: none; border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--acento) 30%, transparent);
+}
+.vuelve-general:disabled {
+  color: var(--tinta-suave); border-color: var(--filete);
+  opacity: .55; cursor: default;
+}
 /* La muestra: un trozo de salmo y otro de lectura, con las mismas clases
    que el oficio de verdad, para que el ajuste se vea antes de volver a el. */
 .muestra {
@@ -874,6 +937,12 @@ h2.seccion {
 .estrofa-h { margin: 0 0 .95rem; }
 .hora-sec .ln { display: block; }
 .en-verso .estrofa-h { line-height: var(--interlinea-verso); }
+/* En la salmodia el parrafo es la estrofa, y la estrofa es la unidad con que
+   se reza: se alterna de coro en coro y se para al final de cada una. Lo que
+   las separa tiene que verse de un vistazo, mas que el respiro que basta
+   entre los parrafos de una lectura seguida. Solo en el Oficio: el salmo
+   responsorial de la misa no se reza por estrofas. */
+.hora-sec.en-verso.fmt-salmos .estrofa-h { margin-bottom: 1.45rem; }
 .en-verso .ln {
   padding-left: 1.3em; text-indent: -1.3em;
   text-align: var(--alinea, left);
@@ -1471,6 +1540,36 @@ body.con-carril #vista { padding-right: 2.1rem; }
   body.cab-fija .chips { margin-top: calc(.3rem * (1 - var(--pliegue, 0))); }
   body.cab-fija .chips.finos { margin-top: calc(.25rem * (1 - var(--pliegue, 0))); }
   body.cab-fija #nota-dia { margin-top: calc(.3rem * (1 - var(--pliegue, 0))); }
+}
+
+/* ---------------------------------------------- la pantalla, sin marcos
+   Tumbado caben diez renglones, y de ellos la cabecera y la barra se llevan
+   tres. Un toque en el texto las esconde del todo —fuera de la pantalla, no
+   atenuadas— y otro las devuelve: mientras se lee no se necesita ninguna de
+   las dos, y el alto que sobra es justo el que falta.
+
+   Solo en las vistas que se leen, que son las que pliegan la cabecera: en el
+   calendario y en los paneles la barra es la unica manera de salir, y
+   esconderla seria dejar a quien toca sin puerta.
+
+   El relleno del <body> que guardaba el sitio de la cabecera se va con ella,
+   y entonces el texto subiria de golpe: lo compensa el guion al encender y
+   al apagar (`ponPantallaLimpia`), de modo que el renglon que se esta
+   leyendo se queda donde estaba. */
+@media (orientation: landscape) {
+  body.cab-fija.pantalla-limpia { padding-top: 0; }
+  body.cab-fija.pantalla-limpia #cabecera {
+    transform: translateY(-100%); pointer-events: none;
+  }
+  body.cab-fija.pantalla-limpia #barra {
+    transform: translateY(100%); pointer-events: none;
+  }
+  /* el carril se queda: es una cinta al borde de la caja, no un mando */
+  body.cab-fija.pantalla-limpia .ir-hoy { display: none; }
+  body.cab-fija.pantalla-limpia #vista {
+    padding-bottom: calc(1.2rem + env(safe-area-inset-bottom));
+  }
+  body.cab-fija.pantalla-limpia .hora-sec { scroll-margin-top: .7rem; }
 }
 
 /* ----------------------------------------------------- la misa entera

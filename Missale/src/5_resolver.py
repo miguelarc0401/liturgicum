@@ -1153,7 +1153,39 @@ def fechas_por_cel(dias_de, propios):
     return {c: sorted(fs) for c, fs in por.items()}
 
 
-def del_dia(cel, ranura, dias_de, impreso):
+def otra_misa_entera(t, cel, dias):
+    """Si ese día el editor imprimió, entera, otra misa que no es ésta.
+
+    **El día que imprime otra misa no es testigo de la del calendario.** El
+    domingo XXIX del tiempo ordinario es en México el DOMUND, y el misalito
+    imprime la misa por la evangelización de los pueblos en siete de los
+    nueve años del corpus; ocho de esos nueve lo dicen en el subtítulo y la
+    fase 4 ya los atribuye a la votiva, pero el 20 de octubre de 2019 no lo
+    dice —lo lleva en el título, «JORNADA MUNDIAL DE LAS MISIONES»— y
+    seguía votando como si fuera el domingo. Con él, la ranura de la
+    antífona de entrada tenía tres textos distintos y no entraba ninguno,
+    teniendo la fuente impresa la del domingo —«Te invoco, Dios mío, porque
+    tú me respondes»— dos años, el 17 de octubre de 2021 y el 16 de octubre
+    de 2022, y letra por letra la misma.
+
+    No se adivina: se mira lo que la fase 4 atribuyó pieza por pieza ese
+    día. Si **todas** las ranuras que traen algo apuntan a una sola
+    celebración, y es una votiva o una misa ritual y no ésta, ese día rezó
+    aquella misa. Se exige que sean todas y que sean tres o más, porque dos
+    ranuras coincidentes las repite el editor sin querer.
+    """
+    forms = dias.get(t.split('/')[0]) or []
+    i = int(t.split('/')[1])
+    if i >= len(forms):
+        return False
+    de = [c for c in (forms[i].get('propios') or {}).values() if c]
+    if len(de) < 3 or len(set(de)) != 1:
+        return False
+    otra = de[0]
+    return otra != cel and otra.split('#')[0].startswith(('vot_', 'rit_'))
+
+
+def del_dia(cel, ranura, dias_de, impreso, dias):
     """Lo que el misalito imprimió en esa ranura los días de esa celebración.
 
     Es un testigo más flojo que los tres anteriores y hay que decirlo: el
@@ -1164,9 +1196,13 @@ def del_dia(cel, ranura, dias_de, impreso):
     tiene que mostrar, y por eso entra marcado como «del día».
 
     Se exige que todos los días de la celebración que traen algo en esa ranura
-    traigan lo mismo. Con uno que discrepe, no entra.
+    traigan lo mismo. Con uno que discrepe, no entra. Y no cuentan los días
+    en que el editor imprimió **otra misa entera**, que es lo que dice
+    `otra_misa_entera`: ésos no hablan de esta celebración.
     """
-    vistos = {impreso.get(t, {}).get(ranura) for t in dias_de.get(cel, [])}
+    vistos = {impreso.get(t, {}).get(ranura)
+              for t in dias_de.get(cel, [])
+              if not otra_misa_entera(t, cel, dias)}
     vistos.discard(None)
     if len(vistos) != 1:
         return None, len(vistos)
@@ -1211,7 +1247,7 @@ def flojo(cel, unidad, ranura, p, propios, por_unidad):
 
 
 def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
-             latino, lat, dias_de, impreso, sueltos):
+             latino, lat, dias_de, impreso, sueltos, dias):
     """Las seis ranuras de un formulario, cada una con el camino por el que se
     resolvió. El orden de la cascada es el del plan: la propia celebración, el
     mismo formulario del Misal, un texto suelto que cae en él, lo que el
@@ -1245,7 +1281,7 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
             piezas[r] = {'f': 'misalito', 'via': 'suelto', 'de': i, 'r': r,
                          't': len(sueltos[i]['testigos']), 'v': None}
             continue
-        cual, cuantos = del_dia(cel, r, dias_de, impreso)
+        cual, cuantos = del_dia(cel, r, dias_de, impreso, dias)
         if cual:
             clase, quien = cual
             if clase == 'suelto':
@@ -1562,9 +1598,28 @@ def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
               '    y la cita lo confirma por versículos',
               '    y la cita lo confirma por libro y capítulo',
               '    y abarca otros versículos, y se dice',
-              '  sin castellano'):
+              '  sin castellano',
+              '  la impresión que el día respalda',
+              '    y no era la canónica, y se cambia',
+              '  la que el día respalda pierde estrofas, y no se toca',
+              '  el día no respalda ninguna impresión'):
         if cuenta_rutas.get(k):
             inf.di('    %-42s %6d' % (k, cuenta_rutas[k]))
+    inf.di()
+    inf.di('  **Y hallada la perícopa, cuál de sus impresiones.** La cita no')
+    inf.di('  identifica el salmo: «Sal 104, 2-3. 4-5. 6-7» son tres salmos')
+    inf.di('  del leccionario de México con los mismos versículos y tres')
+    inf.di('  respuestas distintas —el miércoles de la 14ª semana responde')
+    inf.di('  «Recurramos al Señor y a su poder», el sábado de la 27ª «El')
+    inf.di('  Señor nunca olvida sus promesas» y el jueves de la 31ª «El que')
+    inf.di('  busca al Señor será dichoso»—. Agrupados por la cita caen en')
+    inf.di('  una sola perícopa, y el canónico de la fase 4 —el que más')
+    inf.di('  testigos trae— se imprimía en los tres días: la respuesta era')
+    inf.di('  de otro día. No es una cuarta ruta, porque no busca perícopa:')
+    inf.di('  hallada por cualquiera de las tres, los días que el calendario')
+    inf.di('  da a este formulario dicen cuál de sus impresiones es la suya,')
+    inf.di('  y entre varias manda el sitio, que es la fuente principal del')
+    inf.di('  texto de las lecturas. Si ninguno la respalda, no se toca nada.')
     inf.di()
     inf.di('  **La segunda ruta es la cita leída y no aplastada.** Aplastada,')
     inf.di('  tres maneras de escribir el mismo pasaje son tres citas')
@@ -1984,6 +2039,121 @@ def empareja_lectura(clave, x, pericopas, idx_cita, idx_vers, cand, cuenta):
     return None, None, False
 
 
+def dias_por_clave(dias, cal, bloques, anio_de):
+    """clave del leccionario → los testigos (`fecha/n`) que el calendario le da.
+
+    Es el mismo cálculo que `pericopas_por_dia` —la celebración del día y el
+    ciclo que le toca dan la clave del formulario—, pero guardando el testigo
+    en vez de la cita, y sin exigir que la ranura sea única: aquí no se
+    adivina ninguna ranura, sólo se pregunta **qué días son de este
+    formulario**. Con eso se desempata, más abajo, cuál de las impresiones de
+    una perícopa es la de este formulario y no la de otro día que la cita
+    comparte.
+    """
+    por = defaultdict(set)
+    for fecha, forms in dias.items():
+        anio = anio_de(fecha) or ('A', 'I')
+        # Las del calendario **y** la que el día eligió, que no son la misma
+        # cosa: el sábado de la 27ª semana el editor imprime a menudo la misa
+        # de Santa María en sábado, y entonces el `cel` del día es la votiva
+        # —con los formularios del leccionario de la votiva— mientras que las
+        # lecturas que imprime son **las de la feria**, porque el leccionario
+        # lo fija el día y no la misa que se elija. Tomando sólo el `cel` del
+        # día, el sábado de la 27ª semana se quedaba con dos testigos de once
+        # años, los dos del sitio, y ninguno de los cinco misalitos que sí lo
+        # imprimieron.
+        cels = {f.get('cel') for f in forms}
+        cels |= {c[0] for c in
+                 (cal['fechas'].get(fecha, {}).get('c') or [])}
+        cels.discard(None)
+        ks = {clave_del_ciclo(bloques.get(c) or [], *anio) for c in cels}
+        ks.discard(None)
+        for k in ks:
+            por[k] |= {'%s/%d' % (fecha, i) for i in range(len(forms))}
+    return por
+
+
+def del_sitio(dias):
+    """Los testigos que vienen del sitio y no del misalito."""
+    return {'%s/%d' % (fecha, i)
+            for fecha, forms in dias.items()
+            for i, f in enumerate(forms)
+            if f.get('origen') == 'sitio'}
+
+
+# La marca de respuesta del pueblo, para contar estrofas sin desarmar el
+# salmo: la fase 6 corta en ella y aquí sólo se cuenta. Vale de medida de
+# si un volcado está completo, porque la cita es la misma en todas las
+# impresiones de una perícopa y por tanto las estrofas también.
+MARCA = re.compile(r'(?:^|(?<=[\s.,;:!?…«»“”")]))R/?\.')
+
+
+def cuantas_marcas(texto):
+    return len(MARCA.findall(' '.join(texto)))
+
+
+def variante_del_dia(peri, suyos, sitio, cuenta):
+    """Cuál de las impresiones de una perícopa es la de *este* formulario.
+
+    **La cita no identifica el salmo.** La fase 4 agrupa las lecturas por la
+    cita, y «Sal 104, 2-3. 4-5. 6-7» son tres salmos del leccionario de
+    México con los mismos versículos y tres respuestas distintas: el miércoles
+    de la 14ª semana responde «Recurramos al Señor y a su poder», el sábado de
+    la 27ª «El Señor nunca olvida sus promesas» y el jueves de la 31ª «El que
+    busca al Señor será dichoso». Agrupados por la cita caen en una sola
+    perícopa, y el canónico —el que más testigos trae— se imprimía en los
+    tres días. La respuesta era de otro día.
+
+    Lo que los distingue está medido y es el calendario: `suyos` son los días
+    que el calendario da a **este** formulario. Gana el grupo —el canónico o
+    una de sus variantes— que esos días respaldan; entre varios, el que tenga
+    algún testigo del sitio, que es la fuente principal del texto de las
+    lecturas, y después el de más días suyos. Si ninguno los tiene, no se
+    toca nada: manda el canónico de la fase 4.
+
+    **Y no se cambia a costa de perder texto.** Se exige que la impresión
+    elegida marque al menos tantas respuestas del pueblo como la canónica:
+    la cita es la misma en todas las impresiones de una perícopa, de modo
+    que las estrofas también lo son, y un volcado que marque menos es un
+    volcado incompleto. Medido: con esta guarda el salmo 121 del sábado de
+    la 29ª semana se queda con la respuesta de Pascua —«Vayamos con alegría
+    al encuentro del Señor. **Aleluya**», que en octubre no se dice— antes
+    que perder su tercera estrofa, y se dice en el informe. Sin ella se
+    perdían 21 estrofas de tres salmos.
+
+    Devuelve el índice del grupo —0 el canónico, n la variante n-1— y no el
+    texto, porque `misa.json` es la decisión y no el libro: el texto lo sigue
+    sacando la fase 6 de `pericopas_es.json`.
+    """
+    grupos = [(peri['testigos'], peri['texto'])] + [
+        (v['testigos'], v['texto']) for v in peri.get('variantes') or []]
+    if len(grupos) == 1:
+        return 0
+    minimo = cuantas_marcas(grupos[0][1])
+    elegido, punt, cortas = 0, None, False
+    for i, (ts, tx) in enumerate(grupos):
+        mios = [t for t in ts if t in suyos]
+        if not mios:
+            continue
+        if cuantas_marcas(tx) < minimo:
+            cortas = True
+            continue
+        p = (0 if any(t in sitio for t in mios) else 1,
+             -len(mios), -len(ts), i)
+        if punt is None or p < punt:
+            elegido, punt = i, p
+    if punt is None:
+        if cortas:
+            cuenta['  la que el día respalda pierde estrofas, y no se toca']                 += 1
+        else:
+            cuenta['  el día no respalda ninguna impresión'] += 1
+        return 0
+    cuenta['  la impresión que el día respalda'] += 1
+    if elegido:
+        cuenta['    y no era la canónica, y se cambia'] += 1
+    return elegido
+
+
 def anio_liturgico(cal):
     """fecha → el ciclo dominical y el año ferial que le toca.
 
@@ -2120,6 +2290,12 @@ def main():
     idx_vers = pericopas_por_versiculos(d['pericopas'])
     cand_dia = pericopas_por_dia(dias, cal, porclave_lect,
                                  bloques_de_cel(indice), anio_liturgico(cal))
+    # y el desempate de la impresión, que no es una cuarta ruta: hallada la
+    # perícopa por cualquiera de las tres, dice cuál de sus impresiones es la
+    # de este formulario
+    dias_clave = dias_por_clave(dias, cal, bloques_de_cel(indice),
+                                anio_liturgico(cal))
+    sitio = del_sitio(dias)
     cuenta_rutas = Counter()
 
     # --- el puente latino ------------------------------------------------
@@ -2223,7 +2399,7 @@ def main():
         la = latino.get(u, {})
         piezas, disc = resuelve(cel, u, propios, por_unidad, sueltos_de,
                                 comunes_de, latino, lat, dias_de, impreso,
-                                sueltos)
+                                sueltos, dias)
         discrepancias += [(clave, cel) + x for x in disc]
         pr, prop = [], None
         for c in [cel] + [x for x in por_unidad.get(u, []) if x != cel]:
@@ -2248,11 +2424,18 @@ def main():
             cita_es, via, otros = empareja_lectura(
                 clave, x, d['pericopas'], idx_peri, idx_vers, cand_dia,
                 cuenta_rutas)
-            lecturas.append({
-                'o': x['o'], 'tipo': x['tipo'], 'cita': x['cita'],
-                'es': cita_es, 'via_es': via, 'otros_vers': otros,
-                't': (len(d['pericopas'][cita_es]['testigos'])
-                      if cita_es else None)})
+            vi = (variante_del_dia(d['pericopas'][cita_es],
+                                   dias_clave.get(clave) or set(), sitio,
+                                   cuenta_rutas) if cita_es else 0)
+            e = {'o': x['o'], 'tipo': x['tipo'], 'cita': x['cita'],
+                 'es': cita_es, 'via_es': via, 'otros_vers': otros,
+                 't': (len(d['pericopas'][cita_es]['testigos'])
+                       if cita_es else None)}
+            if vi:
+                p = d['pericopas'][cita_es]['variantes'][vi - 1]
+                e['vi'] = vi
+                e['t'] = len(p['testigos'])
+            lecturas.append(e)
         formularios[clave] = {
             'cel': cel, 'titulo': titulo, 'seccion': seccion,
             'etiqueta': etiqueta, 'u': u, 'la': la.get('k'),

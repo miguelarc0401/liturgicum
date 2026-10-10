@@ -126,6 +126,55 @@ LECTURAS = [s for _, s, c in RANURAS if c == 'lectura']
 ALTERNATIVA = re.compile(r'^\s*(?:feria\s+)?o\s+(.{3,})$', re.I)
 SOLO_O = re.compile(r'^\s*(?:feria\s*)?o\s*$', re.I)
 
+# Y la misa que el subtítulo **afirma**, sin «o» delante. El misalito la
+# escribe así cuando no la ofrece sino que la imprime: «Misa por la
+# evangelización de los pueblos «A»» el domingo XXIX del tiempo ordinario,
+# que es el DOMUND, y lo dice ocho de los nueve años. No es lo mismo que
+# nombrar cuál de las misas del día se imprime —«Misa del día», «Misa
+# matutina», «Misa vespertina de la Vigilia»—, que lleva la fase 3 en
+# `misa`, ni que nombrar el formulario propio —«Misa de la I Semana del
+# Tiempo Ordinario»—, que es un segundo testigo de lo mismo y no otra misa.
+# Medido sobre los ciento un ficheros: **nueve días**, los ocho del DOMUND y
+# el 21 de octubre de 2021 con la misa del Santísimo Nombre de Jesús.
+CORCHETE_CAB = re.compile(r'\[[^\]]*\]')
+OTRA_MISA = re.compile(r'^\s*misa\b', re.I)
+MISA_DEL_DIA = re.compile(
+    r'^\s*misa\s+(?:del\s+d[ií]a|matutina|vespertina|de\s+la\s+vigil|'
+    r'y\s+lecturas|de\s+la\s+[ivx]+\s+semana)', re.I)
+
+
+EN_EL_TITULO = re.compile(r'\bMISA\b.*$')
+
+
+def fuera_de_corchetes(crudo):
+    """Los renglones de la cabecera, con los corchetes vaciados.
+
+    El corchete es la aclaración editorial —«[Se omite la Memoria de los
+    SANTOS JUAN BRÉBEUF e ISAAC JOGUES, Presbíteros y Compañeros Mártires, o
+    de SAN PABLO DE LA CRUZ, Presbítero]»— y **no es la alternativa del
+    día**: dice lo que se omite, no lo que se ofrece. Su «o de SAN PABLO DE
+    LA CRUZ» entraba por el patrón de la alternativa y daba a aquel domingo
+    de octubre un santo por formulario. El corchete cruza de renglón, así
+    que se cuenta abierto y cerrado a lo largo de la cabecera y se vacía lo
+    que caiga dentro; el renglón que queda vacío se tira, para que «Feria o»
+    siga encontrando debajo el nombre que le toca.
+    """
+    salida, hondo = [], 0
+    for ln in crudo:
+        fuera, cur = [], hondo
+        for c in ln:
+            if c == '[':
+                cur += 1
+            elif c == ']':
+                cur = max(0, cur - 1)
+            elif cur == 0:
+                fuera.append(c)
+        hondo = cur
+        t = re.sub(r'\s+', ' ', ''.join(fuera)).strip()
+        if t:
+            salida.append(t)
+    return salida
+
 
 def alternativa_de(cab):
     """Lo que la fuente ofrece *en lugar de* lo que titula el día.
@@ -134,7 +183,7 @@ def alternativa_de(cab):
     común, 'santo' si es una celebración, o `(None, None)` si el día no
     ofrece nada.
     """
-    crudo = cab.get('crudo') or []
+    crudo = fuera_de_corchetes(cab.get('crudo') or [])
     for i, ln in enumerate(crudo):
         if SOLO_O.match(ln) and i + 1 < len(crudo):
             return _clasifica(crudo[i + 1])
@@ -144,6 +193,27 @@ def alternativa_de(cab):
     # la fase 3 ya lo había separado: vale igual
     if cab.get('alterna'):
         return _clasifica(cab['alterna'])
+    # y la que el subtítulo afirma, que no se ofrece: se imprime
+    sub = re.sub(r'\s+', ' ',
+                 CORCHETE_CAB.sub(' ', cab.get('subtitulo') or '')).strip(
+                     ' .,;')
+    if OTRA_MISA.match(sub) and not MISA_DEL_DIA.match(sub):
+        return sub, 'misa'
+    # y la que el título lleva pegada detrás del nombre del día, que es como
+    # el misalito de enero y febrero de 2021 nombra la votiva que imprime:
+    # «MARTES I DEL TIEMPO ORDINARIO MISA POR LA EVANGELIZACIÓN DE LOS
+    # PUEBLOS A». Son once días, los once de aquellos dos meses, y son los
+    # que la fase 5 tenía que descontar a mano con la regla de que en el
+    # tiempo ordinario manda el domingo: dicho por la fuente, ya no hay que
+    # suponerlo. En versales, así que no pasa por `_clasifica`, que las
+    # tomaría por un santo.
+    tit = re.sub(r'\s+', ' ', cab.get('titulo') or '')
+    m = EN_EL_TITULO.search(tit)
+    if m and m.start() > 0:
+        nombre = m.group(0).strip(' .,;')
+        nombre = nombre[:1] + nombre[1:].lower()
+        if not MISA_DEL_DIA.match(nombre):
+            return nombre, 'misa'
     return None, None
 
 
@@ -155,7 +225,21 @@ def _clasifica(nombre):
         return nombre, 'misa'
     # Un santo viene en versales. Un renglón en minúsculas no es un nombre de
     # celebración: es prosa que la maqueta dejó al lado, y no se atribuye.
-    letras = [c for c in nombre if c.isalpha()]
+    #
+    # **Las versales se miran hasta la coma**, que es donde acaba el nombre y
+    # empieza el oficio en caja baja: «SAN PEDRO JULIÁN EYMARD, Presbítero»
+    # da 0,70 entero —y se quedaba fuera por una centésima, porque la
+    # condición es «más de 0,7»— y 1,00 hasta la coma. Medido sobre los
+    # ciento un ficheros: de las 297 alternativas que no se clasificaban,
+    # **198 son santos** así, y las 99 que siguen sin clase no son nombres
+    # de celebración —«Feria», «en familia o en la comunidad religiosa»,
+    # «Por la Iglesia Universal “B”»—. Sin esto, la poscomunión de san Pedro
+    # Julián Eymard —que lo nombra— se atribuía al otro santo del 2 de
+    # agosto, y acertaba o no según qué celebración tuviera menos días.
+    cabeza = re.split(r'\s*,', nombre, 1)[0]
+    cabeza = re.sub(r'^(?:memoria|fiesta|solemnidad)\s+de\s+', '', cabeza,
+                    flags=re.I)
+    letras = [c for c in cabeza if c.isalpha()]
     if letras and sum(1 for c in letras if c.isupper()) / len(letras) > 0.7:
         return nombre, 'santo'
     return nombre, None
@@ -1615,7 +1699,12 @@ def main():
     # --- el puente para la fase 5 ----------------------------------------
     dias = {}
     for f in formularios:
-        e = {'cel': f.cel, 'fichero': f.fichero,
+        # `origen` va aquí porque la fase 5 lo necesita para elegir, entre
+        # dos impresiones de la misma perícopa, la del sitio: el recuento de
+        # testigos de la pieza no dice de qué fuente es cada uno, y sin esto
+        # la regla «el sitio manda en el texto de las lecturas» no se puede
+        # volver a aplicar cuando el día desempata una variante.
+        e = {'cel': f.cel, 'fichero': f.fichero, 'origen': f.origen,
              'lecturas': {ran: f.piezas[ran]['cita']
                           for ran in LECTURAS if ran in f.piezas},
              'propios': {ran: asignado.get(
