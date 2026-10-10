@@ -28,39 +28,40 @@ Las rúbricas del Ordinario que no están en las dos lenguas
 Lo que se escribió
 ------------------
 
-  app/datos/misa.json                  2410 KB
-  app/datos/lecturas_es.json           4741 KB
+  app/datos/misa.json                  2435 KB
+  app/datos/lecturas_es.json           4795 KB
   app/datos/misal_latino.json           775 KB
   app/datos/prefacios.json              241 KB
   app/datos/ordinario.json              234 KB
-  TOTAL                                8401 KB
+  TOTAL                                8480 KB
 
-  versión de datos: clementina+nova-2984950810
+  versión de datos: clementina+nova-3683561562
 
 Los formularios y sus piezas
 ----------------------------
 
   formularios del leccionario : 1051
-    completo                     691
+    completo                     723
     parcial                      243
-    latino                        84
-    nada                          33
+    latino                        53
+    nada                          32
 
   piezas (seis ranuras por formulario, 6306 en total):
-      por celebración                         1847
+      por celebración                         1773
       por común                                142
-      por día                                  462
-      por suelto                                46
-      por unidad                              1869
-    piezas en castellano                      4366
-    piezas que sólo tiene el latín             726
+      por día                                  465
+      por gemela                               104
+      por suelto                                70
+      por unidad                              1921
+    piezas en castellano                      4475
+    piezas que sólo tiene el latín             622
 
   Las piezas que sólo tiene el latín no se copian en misa.json:
   van en misal_latino.json y la app las alcanza por el puntero
   `la` del formulario. La castellana dice «no disponible», que es
   lo que se decidió en la pregunta 6 del plan.
 
-  otras misas sin clave del leccionario: 170
+  otras misas sin clave del leccionario: 169
     Son la vigilia de san Juan Bautista y la de san Pedro y san
     Pablo, la vigilia de Pentecostés, la segunda y la tercera de
     los Difuntos —que el Misal da aparte y el leccionario no
@@ -93,12 +94,12 @@ Las lecturas en castellano
     epistola                                4      4  100%
 
   por la ruta con que la fase 5 la halló:
-    cita                                        4426
+    cita                                        4428
     día                                           90
-    versículos                                   578
+    versículos                                   576
 
   Las dos rutas que no son la cita —los versículos y el día— son
-  de esta pasada, y traen 668 lecturas que la primera versión daba
+  de esta pasada, y traen 666 lecturas que la primera versión daba
   por no impresas teniéndolas el misalito impreso. El informe de la
   fase 5 explica cada una.
 
@@ -118,13 +119,13 @@ Desarmar la perícopa impresa
   dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
   que salió:
 
-    lecturas con fórmula                        2768
-    lecturas sin fórmula reconocida              103
-    lecturas con sumario                        1291
-    lecturas con cierre                         2775
-    lecturas sin cierre reconocido                96
-    lecturas con respuesta del pueblo            977
-    salmo o aclamación sin respuesta             925
+    lecturas con fórmula                        2786
+    lecturas sin fórmula reconocida               85
+    lecturas con sumario                        2498
+    lecturas con cierre                         2762
+    lecturas sin cierre reconocido               109
+    lecturas con respuesta del pueblo           2317
+    salmo o aclamación sin respuesta            1087
     salmo sin estrofas                             0
 
   El cierre se busca en el texto ya juntado y no en el último
@@ -137,7 +138,6 @@ Desarmar la perícopa impresa
   que no dieron fórmula, una por una:
     1 Cro 29,10.11abc.11d-12a.12bcd
     1 S 2,1.4-5.6-7.8abcd
-    2 Co 11,1-11
     Ap 14,13
     Dn 3,52.53.54.55.56
     Dn 3,57.58.59.60.61
@@ -147,26 +147,23 @@ Desarmar la perícopa impresa
     Dn 3,82.83.84.85.86.87
     Dt 32,18-19.20.21
     Dt 32,26-27ab.27cd-28.30.35cd-36ab
+    Ecl 11,9–12.8
     Eclo 27,33–28.9
-    Ef 3,14-19
     Est 4,17
     Ex 15,1b-2.3-4.5-6.17-18
-    Gn 1,26—2.3
-    Hb 4,14-16.5.7-9
-    Hch 12,24—13.5
     Is 12,2-3.4bcd.5-6
     Is 38,10.11.12abcd.16
     Is 49,14-15
-    Is 61,1-3.6.8-9
     Jn 18,1—19.42
     Jr 31,10.11-12ab.13
     Lc 1,46-47.48-49.50-51.52-53.54-55
     Lc 1,46-47.48-49.50.53.54-55
     Lc 1,46-48.49-50.53-54
+    Lc 1,5-25
     Lc 1,69-70.71-72.73-75
     Lc 22,14–23.56
-    Lc 4,16-21
     Mc 14,1—15.47
+    Mt 10,34–11.1
     Mt 26,14—27.66
     Tb 13,2.6.7.8
 
@@ -181,7 +178,7 @@ Desarmar la perícopa impresa
   ele en vez de uno, y la cita de Ester con «(Neovulgata)»
   detrás.
 
-  Perícopas en que no se halló el cierre (34):
+  Perícopas en que no se halló el cierre (38):
     1 Cro 29,10.11abc.11d-12a.12bcd
     1 S 2,1.4-5.6-7.8abcd
     Ap 14,13
@@ -194,39 +191,46 @@ Desarmar la perícopa impresa
     Dt 32,18-19.20.21
     Dt 32,26-27ab.27cd-28.30.35cd-36ab
     Dt 4,1-2.6-8
-    Ex 14,15—15.1
     Ex 14,21-15.1
     Ex 15,1b-2.3-4.5-6.17-18
     Is 12,2-3.4bcd.5-6
     Is 38,10.11.12abcd.16
     Jn 18,1—19.42
+    Jn 2,13-25
+    Jn 6,51-58
     Jr 31,10.11-12ab.13
     Lc 1,46-47.48-49.50-51.52-53.54-55
     Lc 1,46-47.48-49.50.53.54-55
     Lc 1,46-48.49-50.53-54
     Lc 1,69-70.71-72.73-75
     Lc 19,28-40
+    Lc 2,41-51a
     Lc 22,14–23.56
     Lc 4,16-21
+    Lc 9,23-26
     Mc 11,1-10
+    Mc 12,28b-34
     Mc 14,1—15.47
-    Mt 2,1-12
+    Mt 16,13-20
     Mt 21,1-11
     Mt 26,14—27.66
+    Mt 9,36–10.8
     Rm 6,3-11
-    Rm 8,8-17
     Tb 13,2.6.7.8
 
   Salmos o aclamaciones sin respuesta del pueblo:
     1 Cro 29,10.11abc
     1 Cro 29,10.11abc.11d-12a.12bcd
+    1 P 2,9
     Dn 3,52.53.54.55.56
     Is 12,2-3.4bcd.5-6
-    Jn 14,18
+    Is 38,10.11.12abcd.16
     Jn 4,12R/.Aleluya.aleluya
     Jn 4,42.15
+    Sal 1,1-2.3.4.6
     Sal 1,1-2.3.4y6
     Sal 10,4.5.7
+    Sal 100,1-2ab.2cd-3ab.5.6
     Sal 101,13-14ab.15.16-18.19-21
     Sal 101,16-18.19-21.29y22-23
     Sal 101,2-3.16-18.19-21
@@ -236,6 +240,7 @@ Desarmar la perícopa impresa
     Sal 102,1-2.3-4.6-7.8y10
     Sal 102,1-2.3-4.8-9.10-11
     Sal 102,1-2.3-4.8-9.11-12
+    Sal 102,1-2.3-4.8.10
     Sal 102,1-2.3-4.9-10.11-12
     Sal 102,13-14.15-16.17-18a
     Sal 102,6-7.8-9.10-11.12-13
@@ -246,8 +251,10 @@ Desarmar la perícopa impresa
     Sal 103,1-2a.5-6.10y12.13-14.24y35c
     Sal 103,1ab.24ac.29bc-30.31.34
     Sal 103,1b-2.3-4.24-25.27-28.29-30
+    Sal 104,1-2.3-4.6-7
     Sal 104,1-2.3-4.6-7.8-9
     Sal 104,16-17.18-19.20-21
+    Sal 104,1b-2.3-4.5-6.8-9
     Sal 104,2-3.36-37.42-43
     Sal 104,2-3.4-5.6-7
     Sal 104,4-5.6-7.8-9
@@ -260,6 +267,7 @@ Desarmar la perícopa impresa
     Sal 105,6-7a.19-20.21-22
     Sal 106,2-3.4-5.6-7.8-9
     Sal 106,23-24.25-26.28-29.30-31
+    Sal 109,1.2.3.4
     Sal 11,2-3.4-5.7-8
     Sal 110,1-2.3-4.5-6
     Sal 110,1-2.3-4.7-8
@@ -273,6 +281,7 @@ Desarmar la perícopa impresa
     Sal 111,1-2.5-6.8a.9
     Sal 111,1-2.7bc-8.9
     Sal 111,1-9
+    Sal 111,4-5.6-7.8ay9
     Sal 112,1-2.3-4.5-6
     Sal 112,1-2.3-4.5-6.7-8
     Sal 112,1-2.3-4.5a.6-7
@@ -318,11 +327,13 @@ Desarmar la perícopa impresa
     Sal 118,9.10.11.12.13.14
     Sal 118,97.98.99.100.101.102
     Sal 12,4-5.6
+    Sal 12,6ab.6cd
     Sal 120,1-2.3-4.5-6.7-8
     Sal 121,1-2.3-4a.4b-5
     Sal 121,1-2.4-5
     Sal 121,1-2.4-5.6-7.8-9
     Sal 122,1-2a.2bcd
+    Sal 122,1-2a.2bcd.3-4
     Sal 123,1-3.4-6.7-8
     Sal 125,1-2ab.2cd-3.4-5.6
     Sal 127,1-2.3.4-5
@@ -334,11 +345,14 @@ Desarmar la perícopa impresa
     Sal 130,1.2.3
     Sal 131,1-23-5.11.12.13-14
     Sal 131,11.12.13-14.17-18
+    Sal 131,6-7.8-10
     Sal 131,6-7.9-10.13-14
     Sal 134,1-2.3-4.5-6
     Sal 135,1.2.3.16.17.18.21.22.24
     Sal 135,1.23.24.10.11.12.13.14.15
     Sal 136,1-2.3.4-5.6
+    Sal 137,1-2a.2bc-3.4-5
+    Sal 137,1-2a.2bc-3.4-5.7c-8
     Sal 137,1-2a.2bc-3.6.8bc
     Sal 137,1-2a.2bcd-3.7c-8
     Sal 138,1-3.13-14.15
@@ -366,6 +380,7 @@ Desarmar la perícopa impresa
     Sal 144,8-9.15-16.17-18
     Sal 145,1-2.3-4.5-6ab
     Sal 145,5-6ab.6c-7.8-9a.9bc-10
+    Sal 145,7.8-9a.9bc-10
     Sal 146,1-2.3-4.5-6
     Sal 147,12-13.14-15.19-20
     Sal 147,12-13.15-16.19-20
@@ -384,10 +399,13 @@ Desarmar la perícopa impresa
     Sal 17,31.47y50.51
     Sal 18,2-3.4-5
     Sal 18,8.10.12-13.14
+    Sal 18,8.9.10.11
     Sal 18,8.9.10.15
     Sal 2,1-3.4-6.7-9
     Sal 2,6-7.8-9.10-11
     Sal 2,7-8.10-11
+    Sal 20,2-3.4-5.6-7
+    Sal 21,26b-27.28-30a.31-32
     Sal 21,26b-27.28.30.31-32
     Sal 21,8-9.17-18a.19-20.23-24
     Sal 22,1-2a.2b-3.5-6
@@ -395,14 +413,20 @@ Desarmar la perícopa impresa
     Sal 23,1-2.3-4ab.5-6
     Sal 23,7.8.9.10
     Sal 24,2-4a.4b-5ab.6-7bc.8-9
+    Sal 24,4-5ab.6-7bc.8-9
+    Sal 24,4-5ab.8-9.10.14
     Sal 24,4bc-5.6-7.8-9
+    Sal 24,4bc-5ab.6-7bc.8-9
     Sal 25,2-3.9-10.11-12
+    Sal 26,1.2.3.13-14
     Sal 26,1.4.13-14
+    Sal 26,1.4.7y8by9a.13-14
     Sal 26,7-8a.8b-9abc.13-14
     Sal 27,2.7.8-9
     Sal 28,1a.2.3ac-4.3b.9b-10
     Sal 29,2.4.5-6.11-12a.13b
     Sal 3,2-3.4-5.6-7
+    Sal 30,2-3a.3b-4.5-6.15-16.20
     Sal 30,20.21.24
     Sal 30,3cd-4.6.8ab.16bc.17
     Sal 30,3cd-4.6ab.7b.8a.17.21ab
@@ -413,12 +437,14 @@ Desarmar la perícopa impresa
     Sal 32,1-2.4-5.10-11
     Sal 32,1-2.4-5.11-12.18-19
     Sal 32,1-2.4-5.12-13
+    Sal 32,1-2.4-5.18-19
     Sal 32,1.12.18-19.20.22
     Sal 32,10-11.12-13.14-15
     Sal 32,12-13.14-15.20-21
     Sal 32,12-13.18-19.20-21
     Sal 32,12-13.18-19.20.22
     Sal 32,2-3.10-11.18-19
+    Sal 32,2-3.11-12.20-21
     Sal 32,2-3.4-5.12y22
     Sal 32,4-5.18-19.20.22
     Sal 32,4-5.6.9.18-19.20.22
@@ -426,6 +452,7 @@ Desarmar la perícopa impresa
     Sal 33,2-3.10-11.12-13.14-15
     Sal 33,2-3.16-17.18-19
     Sal 33,2-3.16-17.18-19.20-21.22-23
+    Sal 33,2-3.4-5.6-7
     Sal 33,2-3.4-5.6-7.8-9
     Sal 33,2-3.6-7.17-18.19.23
     Sal 33,2.9.17-18.19-20
@@ -447,10 +474,14 @@ Desarmar la perícopa impresa
     Sal 39,7-8a.8b-9.10.17
     Sal 4,2-3.4-5.7-8
     Sal 4,2.4.7.9
+    Sal 41,2-3.42.3.4
     Sal 41,3.5bcd.42.3.4
     Sal 42,1.2.3.4
     Sal 43,10-11.14-15.24-25
+    Sal 44,10.11.12.16
     Sal 44,11-12.14-15.16-17
+    Sal 45,2-3.5-6.8-9
+    Sal 46,2-3.4-5.6-7
     Sal 46,2-3.6-7.8-9
     Sal 46,2-3.8-9.10
     Sal 47,2-3a.3b-4.9.10-11
@@ -491,11 +522,13 @@ Desarmar la perícopa impresa
     Sal 61,2-3.6-7.9
     Sal 61,6-7.9
     Sal 62,2.3-4.5-6.7-8
+    Sal 62,2.3-4.5-6.8-9
     Sal 64,10abcd.10e-11.12-13.14
     Sal 65,1-3a.4-5.6-7a
     Sal 65,1-3a.4-5.6-7a.16.20
     Sal 65,8-9.16-17.20
     Sal 66,2-3.5.6.8
+    Sal 66,2-3.5.7-8
     Sal 67,10-11.20-21
     Sal 67,2-3.4-5ac.6-7ab
     Sal 67,2.4.6-7ab.20-21
@@ -518,14 +551,17 @@ Desarmar la perícopa impresa
     Sal 71,1-2.3-4ab.7-8.17
     Sal 71,1-2.7-8.12-13.17
     Sal 71,2.10-11.12-13
+    Sal 71,2.3-4ab.7-8
     Sal 76,12-13.14-15.16.21
     Sal 77,1-2.34-35.36-37.38
     Sal 77,18-19.23-24.25-26.27-28
     Sal 77,3.4bc.23-24.25.54
     Sal 77,3y4bc.6c.7-8
+    Sal 77,56-57.58-59.61-62
     Sal 78,1-2.3-5.8.9
     Sal 78,8.9.11.13
     Sal 79,2-3.5-7
+    Sal 79,2a.3bc.15-16.18-19
     Sal 79,2ac.3bc.15-16
     Sal 79,9y12.13-14.15-16.19-20
     Sal 8,2ay5.6-7.8-9
@@ -538,6 +574,7 @@ Desarmar la perícopa impresa
     Sal 83,3.4.5-6.12
     Sal 83,3.4.5-6a.8a
     Sal 83,3.4.5-6a.8a.11
+    Sal 84,2-4.5-6.7-8
     Sal 84,9.11-12.13-14
     Sal 84,9ab-10.11-12.13-14
     Sal 85,1-2.3-4.5-6
@@ -549,6 +586,8 @@ Desarmar la perícopa impresa
     Sal 88,16-17.18-19
     Sal 88,2-3.16-17.18-19
     Sal 88,2-3.21-22.25.27
+    Sal 88,2-3.4-5.27.29
+    Sal 88,2-3.6-7.16-17
     Sal 88,20.21-22.25-26
     Sal 88,20.21-22.27-28
     Sal 88,4-5.16-17.27.29
@@ -570,16 +609,21 @@ Desarmar la perícopa impresa
     Sal 93,5-6.7-8.9-10.14-15
     Sal 94,1-2.3-5.6-7
     Sal 94,1-2.6-7.8-9
+    Sal 94,6-7.8-9.10-11
     Sal 95,1-2.2b-3.7-8a.9-10ac
     Sal 95,1-2a.2b-3.10
     Sal 95,1-2a.2b-3.11-12.13
     Sal 95,1-2a.2b-3.4-5
+    Sal 95,1-2a.2b-3.5b-6
+    Sal 95,1-2a.2b-3.7-8a.10
     Sal 95,1.3.4-5.11-12a.12b-13
     Sal 95,10.11-12a.12b-13
     Sal 95,1y3.4-5.7-8.9-10ayc
+    Sal 95,7-8a.8b-9.10
     Sal 96,1-2.5-6.11-12
     Sal 96,1-2.5-6.9
     Sal 96,1.2b.5-6.10.11-12
+    Sal 96,1.6.11-12
     Sal 96,1y2b.6y7c.9
     Sal 97,1.2-3ab.3c-4.5-6
     Sal 97,1.2-3ab.3cd-4

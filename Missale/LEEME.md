@@ -173,6 +173,41 @@ la fórmula de cada lectura («Del santo Evangelio según san Marcos: 1, 29-39»
 por su forma, porque el misalito la lleva dentro del bloque corrido. Aquí va
 en su propio renglón, y el sumario en otro: dos anclas regaladas.
 
+### El sitio manda en el texto de las lecturas; el misalito corrobora
+
+*Decidido el 9 de octubre de 2026, y medido.* Hasta entonces el texto canónico
+de cada perícopa lo elegía la **mayoría de testigos**, y como los misalitos son
+cien meses contra los once años del sitio, ganaba casi siempre el volcado del
+PDF. Ahora, **sólo para las lecturas**, gana el grupo que tenga algún testigo
+del sitio; entre ellos, el de más testigos (`canoniza_lectura` en la fase 4).
+
+**Sólo para las lecturas, y esto importa.** Las perícopas se agrupan por cita
+y no miran la atribución, así que ahí el sitio es ganancia limpia. En la
+*atribución* de los propios sigue votando sólo el misalito, porque este sitio
+imprime los dos formularios cuando el día da opción: dejarle votar está medido
+y corrompe el libro —75 textos canónicos cambiaban y 109 piezas desaparecían—.
+`propios_es.json` y `sueltos_es.json` salen byte a byte iguales.
+
+Lo que cambia, de 3 558 perícopas comunes: **873 cambian de texto canónico**.
+En la app, comparando lectura a lectura contra la versión anterior:
+
+| | antes → ahora |
+|---|---|
+| lecturas con sumario | **+1 223**, −16 |
+| lecturas con fórmula | **+22**, −4 |
+| lecturas con cuerpo | 5 094, igual |
+
+El sumario es la ganancia grande: el sitio lo imprime delante de la fórmula y
+`desarma()` lo separa solo. Y el misalito no se pierde: su texto queda como
+variante, con sus testigos, igual que antes.
+
+Las fórmulas se ganaron arreglando una cosa del sitio: escribe la cita **entre
+paréntesis** cuando cruza de capítulo —«Lectura del libro del Éxodo (14,
+15—15, 1)»— y el paréntesis de cierre rompía el anclaje. Va en una segunda
+expresión (`FORMULA_PAREN`) que **sólo se prueba cuando la primera falla**:
+ensanchar la primera se midió y salía perdiendo (ganaba 25 y perdía 28);
+como segunda vuelta gana 22 y no pierde ninguna.
+
 **Diciembre no se baja: se recupera.** Todos los días de diciembre, de todos
 los años, contestan `301` hacia su propia dirección. No es maqueta ni freno,
 es un defecto del servidor, y se midió así: el índice del mes los enlaza con
@@ -335,6 +370,85 @@ Consecuencia de diseño, no detalle: al emparejar hay que mirar **todas** las
 celebraciones de la fecha, no la primera. En enero de 2026, mirando sólo la
 primera, 16 días de 31 no cuadraban, y todos eran este caso.
 
+### No es una opción del lector: es la regla, y el libro dice cuándo no
+
+*Medido el 9 de octubre de 2026, al rehacer la sección Misa.* Lo de arriba se
+quedaba en «el misalito suele hacerlo así», y la app lo ofrecía como una
+preferencia (`memorias: 'santo' | 'feria'`) con las dos puertas abiertas. No
+es una preferencia. El **Ordo lectionum Missae n. 83** y la **Instrucción
+general del Misal n. 357** dicen lo mismo:
+
+> In memoriis Sanctorum, nisi habeantur propriae, leguntur de more lectiones
+> feriae assignatae. (IGMR 357)
+
+Y lo que la página del santo imprime, cuando ella misma remite al Común, lo
+nombra el n. 83: «Agitur tamen de suggestionibus». **Son sugerencias, no el
+formulario del día.** De las 163 memorias del santoral, **149 remiten al
+Común**, 5 traen lecturas apropiadas suyas y **10 declaran una lectura
+propia**.
+
+**Las diez están declaradas, y en los dos libros.** El n. 83 lo promete —
+«Quoties de huiusmodi lectionibus agitur in memoria, id in hoc Ordine
+expresse suo loco indicatur»— y lo cumple. El leccionario castellano lo
+imprime en un `<p class="obien">` entre el grado y el primer rótulo:
+
+| celebración | lo que declara |
+|---|---|
+| Santos Timoteo y Tito (26-I) | la primera lectura |
+| San José obrero (1-V) | el evangelio |
+| San Bernabé (11-VI) | la primera lectura |
+| El Inmaculado Corazón de María | el evangelio |
+| Santa María Magdalena (22-VII) | el evangelio |
+| Santa Marta (29-VII) | el evangelio |
+| El Martirio de san Juan Bautista (29-VIII) | el evangelio |
+| Nuestra Señora de los Dolores (15-IX) | el evangelio |
+| Santos Ángeles Custodios (2-X) | el evangelio |
+| Dedicación de las basílicas de san Pedro y san Pablo (18-XI) | las lecturas |
+
+**Y son las mismas diez en el *Ordo lectionum* latino de 1981**
+(`cache/olm1981_ocr.txt`): «Lectio prior huius memoriae est propria»,
+«Evangelium huius memoriae est proprium», «Lectiones huius memoriae sunt
+propriae». Dos libros independientes que coinciden en las diez es lo que
+convierte esto en dato y no en interpretación.
+
+### La pieza que acompaña se va con la que manda
+
+Esto no está en los libros: está en las fuentes, y se midió. El **salmo va
+con la primera lectura** y la **aclamación con el Evangelio**, porque así los
+compone el leccionario. El 29 de julio de 2023, santa Marta, el misalito
+imprimió `Ex 24,3-8` y `Sal 49` —la feria— y `Jn 8,12` y `Jn 11,19-27` —la
+santa—.
+
+Cotejados los 3 942 días de `dias_es.json` contra el formulario de la feria y
+el del santo, ranura por ranura:
+
+| grupo | primera | salmo | aclamación | evangelio |
+|---|---|---|---|---|
+| memorias que remiten al Común | feria 306/352 | feria 297/350 | feria 283/346 | feria 326/362 |
+| memorias con lecturas apropiadas (5) | feria 70/70 | feria 68/70 | feria 62/66 | feria 58/73 |
+| las diez | el santo en la ranura declarada, y la acompañante con ella | | | |
+
+Tres medidas que fallaron antes de acertar, y conviene no repetirlas: el
+leccionario del caché está en **cp1252** y el detector de «Del Común» no
+casaba ni una; los rótulos de `lecturas_clementina.json` están **en latín**
+(`LECTIO PRIMA`, `EVANGELIUM`); y las citas hay que compararlas en castellano,
+porque el leccionario latino escribe `1 Rg` donde el castellano escribe `1 S`
+(*Regum* = Samuel) y `Hebr` por `Hb`.
+
+### Dónde vive ahora el dato
+
+`src/2_parse_readings.py` recoge la rúbrica (`PROPIAS_RE`, vocabulario
+cerrado), `src/18_santoral.py` la pasa con `lecturas_de`
+(`propias`/`apropiadas`/`del_comun`/`sin`), y `src/15_app_data.py` la deja en
+`indice.json` como `lp` (`l1`, `l2`, `ev`, `*`) y `ld`.
+
+Dos defectos que esto destapó y van arreglados: la Natividad del Bautista
+traía el **grado** dentro de `p.comunenlace` —único del leccionario sin
+enlace— y salía con un «Común» llamado «Solemnidad»; y **el Inmaculado
+Corazón es móvil**, así que el emparejamiento por fecha nunca le daba su
+formulario y el día perdía el evangelio que el libro le manda. Va a mano en
+`data/santoral_enlaces.csv`, que ahora admite mes y día en blanco.
+
 ### En las ferias no reza la feria: reza lo que el editor eligió ese año
 
 *Hallazgo de la fase 4, y es lo que obliga a atribuir antes de contar.* Lo de
@@ -432,13 +546,59 @@ escrito en el informe:
 
 | paso | de dónde | piezas |
 |---|---|---|
-| 1 | el texto de la propia celebración | 1 854 |
-| 2 | el de otra celebración del mismo formulario del Misal | 1 862 |
-| 3 | un texto suelto cuyos días caen todos en ese formulario | 49 |
-| 4 | lo que el misalito imprimió esos días | 460 |
-| 5 | el común que la celebración ofrece | 141 |
-| 6 | el latín, marcado como latín | 726 |
-| 7 | nada, y se dice que nada | 1 214 |
+| 1 | el texto de la propia celebración | 1 773 |
+| 2 | el de otra celebración del mismo formulario del Misal | 1 921 |
+| 3 | un texto suelto cuyos días caen todos en ese formulario | 70 |
+| 4 | lo que el misalito imprimió esos días | 465 |
+| 5 | el común que la celebración ofrece | 142 |
+| 6 | **la misma oración latina, traducida en otro formulario** | **104** |
+| 7 | el latín, marcado como latín | 622 |
+| 8 | nada, y se dice que nada | 1 209 |
+
+*(Las cifras son las del 10 de octubre de 2026. La columna decía 1 854 / 1 862
+/ 49 / 460 / 141 / — / 726 / 1 214 antes de los dos pasos nuevos que se
+describen abajo.)*
+
+El **paso 6 es nuevo** y es lo que pedía el encargo de octubre: «comparar las
+oraciones en latín y español para armar el misal en español con los elementos
+que tenemos». El Misal no estrena una oración por formulario, así que cuando
+una ranura se queda sin castellano se mira si **ese mismo texto latino** está
+traducido en otro sitio. Dos cautelas, las dos medidas:
+
+* **sólo se mira lo bien atribuido** (los pasos 1 y 2), que es donde el
+  castellano y el latín son del mismo formulario. Tomando todas las vías
+  salían 302 casos, y entre ellos «Ego clamávi, quóniam exaudísti me»
+  emparejado con «El Señor puso sus ojos en la humildad de su esclava», que es
+  el Magníficat. Acotado salen **104**, y los casados son los suyos;
+* **se exige unanimidad**: si el mismo latín tiene dos castellanos, se deja en
+  latín. No hizo falta ni una vez.
+
+Con él, los formularios **completos pasan de 691 a 723** y los que sólo tenían
+latín bajan de 84 a 53.
+
+### Un testigo no basta en una feria del tiempo ordinario
+
+*El otro paso nuevo, y éste quita en vez de poner.* El sábado de la 1ª semana
+del tiempo ordinario tenía por colecta «Padre celestial, que nos has dado a
+santa María de Guadalupe como madre…», con **un solo testigo** —el 16 de enero
+de 2021—, y el paso 2 la repartía a los seis días de la semana.
+
+La regla que faltaba es la del propio Misal: **en el tiempo ordinario da un
+formulario por semana, y ese formulario es el del domingo.** La feria no tiene
+oraciones suyas, de modo que lo que el misalito imprime una feria de enero es
+lo que el editor eligió ese año. Así:
+
+* si el domingo de esa semana trae la ranura, **manda el domingo**, tenga la
+  feria los testigos que tenga;
+* si no la trae —la 1ª semana no tiene domingo, se lo lleva el Bautismo del
+  Señor—, hacen falta **dos testigos**.
+
+Son **76 piezas** de quince ferias, casi todas de enero y febrero de 2021, y
+ninguna era la feria: la misa por la unidad de los cristianos (la semana del
+18 al 25 de enero: «Que todos sean uno, como tú, Padre, en mí y yo en ti»), la
+de difuntos («Ninguno de nosotros vive para sí mismo»), la de Santa María en
+sábado y la de Guadalupe. Trece de las quince toman ahora la del domingo, que
+es la que el Misal les da; las dos de la 1ª semana bajan a su gemela latina.
 
 El paso 4 es más flojo que los tres primeros y hay que decirlo: el texto puede
 ser de otro formulario y el editor repetirlo —la oración sobre las ofrendas del
@@ -449,8 +609,12 @@ que traen algo en esa ranura traigan lo mismo: con uno que discrepe, no entra.
 Sin él, el I domingo de Adviento se quedaba sin oración sobre las ofrendas y
 sin oración después de la comunión, teniéndolas la fuente impresas.
 
-De las 1 214 que se quedan sin nada, **982 son la oración sobre el pueblo**,
-que sólo tiene la Cuaresma: el agujero de verdad son las otras 232.
+De las 1 209 que se quedan sin nada, **982 son la oración sobre el pueblo**,
+que sólo tiene la Cuaresma: el agujero de verdad son las otras 227. Y de las
+622 que sólo tienen latín, 448 están en formularios que el calendario alcanza
+—el grueso son el VII domingo de Pascua y el IX del tiempo ordinario, que casi
+nunca se celebran porque los ocupan la Ascensión y la Trinidad, y por eso
+ninguna fuente diaria los imprimió nunca—.
 
 ### Las varias misas de un mismo día
 
@@ -710,7 +874,7 @@ Missale/datos/libro/misa.json
                                  prefacio: [ … ], prefacio_propio,
                                  piezas: { ranura: {f: 'misalito'|'latino',
                                    via: 'celebración'|'unidad'|'suelto'
-                                        |'día'|'común'|'latino',
+                                        |'día'|'común'|'gemela'|'latino',
                                    de: <de dónde>, r: <ranura de origen>,
                                    t: testigos, v: variantes} },
                                  lecturas: [ {o, tipo, cita, es: <cita>, t} ],
@@ -807,13 +971,45 @@ tres lenguas.
 * **El bilingüe se da rúbrica a rúbrica**, que es lo que los dos libros
   comparten. Lo demás no se puede emparejar y no se intenta: ver abajo.
 
+### Lo que la app enseña cada día, y cuándo ofrece elegir
+
+*Rehecho el 10 de octubre de 2026, con las rúbricas en la mano.*
+
+**En una memoria la misa es del santo y las lecturas son de la feria.** La
+app lo dice y lo hace: los propios son los del santo —la colecta siempre
+suya, que es lo que manda IGMR 363— y las lecturas, las del día. La opción
+«de la feria / de la memoria» sale **sólo donde el libro la da**: en las 149
+memorias que remiten al Común no hay nada que elegir, y la app lo explica en
+vez de ofrecer dos puertas iguales. En las diez con lectura propia declarada,
+la ranura que el libro nombra viene del santo —y con ella la que la acompaña—
+y el resto de la feria (`composicionLecturas`).
+
+**Y las oraciones, igual** (`composicionOraciones`):
+
+* en una memoria, la oración sobre las ofrendas y la de después de la
+  comunión, **cuando no son propias**, pueden tomarse del común o de la
+  feria (IGMR 363): son 23 y 13, y llevan su selector. Si la memoria no trae
+  nada en esa ranura, la feria viene marcada por omisión, que dejar el hueco
+  sería enseñar menos de lo que hay;
+* en una **feria privilegiada** —Adviento del 17 al 24, la octava de Navidad
+  y las ferias de Cuaresma, que son exactamente el rango 9 de la Tabla de los
+  días litúrgicos— la misa es del día y del santo sólo se puede tomar **la
+  colecta** (IGMR 355 a). Son **522 días** del calendario, y hasta ahora la
+  app no decía ni que el santo estuviera ahí.
+
+Y una que no es de rúbricas sino de no rendirse antes de tiempo: el 31 de
+enero la fuente castellana no imprime las lecturas propias de san Juan Bosco
+—ese día reza por la feria—, y la app decía «este formulario no está en
+castellano» teniendo delante las de la feria, que son las que hoy se leen. Se
+componen **antes** de decidir que no hay nada.
+
 Lo que queda a elegir, que es la otra mitad de lo pedido:
 
 | se elige | de dónde | estado |
 |---|---|---|
 | la celebración del día, cuando concurren | calendario, ya resuelto por precedencia | **existe** |
 | el formulario (ciclo A/B/C, o varios propios) | `indice.json` | **existe** |
-| lecturas de la feria o del santo, en las memorias | ajuste `memorias` | **existe** |
+| lecturas de la feria o del santo, en las memorias | **la regla, no un ajuste**: ver abajo | **rehecho** |
 | **misa vespertina de la vigilia**, de la aurora, del día | las que el leccionario numera, en la tira de la cabecera; las que no —la vigilia de san Juan Bautista y de los Apóstoles, la 2ª y la 3ª de Difuntos—, en «La misa», dentro | **hecho** |
 | **el prefacio**: el que marca el día, y los que el Misal permite | los 67 castellanos, los 28 propios cosechados y los 39 que sólo existen en latín, en un selector agrupado | **hecho** |
 | **la plegaria eucarística**: I-IV con sus partes propias y sus embolismos; en latín además las de la reconciliación y de diversas necesidades | `ordinario.json`; las cuatro por número de rúbrica, las otras seis sólo en latín y marcadas | **hecho** |

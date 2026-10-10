@@ -42,6 +42,14 @@ const DESPUES = [
   'icono-maskable-512.png',
   'datos/lecturas_nova.json',
   'datos/lecturas_es.json',
+  // el Misal entero: el formulario del dia (misa.json, 2,4 MB), su gemelo
+  // latino, los prefacios y el Ordinario. Son 3,6 MB entre los cuatro, y la
+  // misa no se arma sin los cuatro: app.js los pide juntos la primera vez
+  // que se abre la vista, asi que o estan todos cacheados o no sirve ninguno
+  'datos/misa.json',
+  'datos/misal_latino.json',
+  'datos/prefacios.json',
+  'datos/ordinario.json',
   'datos/horas_dias.json',
   'datos/horas.json'
 ];

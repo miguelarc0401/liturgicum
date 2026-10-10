@@ -7,18 +7,19 @@ castellano, por qué camino, con cuántos testigos, y si no lo
 tiene, por qué no.
 
 formularios del leccionario     : 1051
-   con las cinco piezas en castellano :  691  (66 %)
+   con las cinco piezas en castellano :  723  (69 %)
    con alguna pieza en castellano :  243  (23 %)
-   sólo en latín                :   84  (8 %)
-   sin nada, ni latín           :   33  (3 %)
+   sólo en latín                :   53  (5 %)
+   sin nada, ni latín           :   32  (3 %)
 piezas resueltas                : 6306
-   de la propia celebración     : 1847
-   de otra celebración del mismo formulario del Misal : 1869
-   de un texto suelto que cae en ese formulario :   46
-   de lo que el misalito imprimió esos días :  462
+   de la propia celebración     : 1773
+   de otra celebración del mismo formulario del Misal : 1921
+   de un texto suelto que cae en ese formulario :   70
+   de lo que el misalito imprimió esos días :  465
    del común que la celebración ofrece :  142
-   del Misal latino, en latín   :  726
-   sin nada                     : 1214
+   de otro formulario con la misma oración latina :  104
+   del Misal latino, en latín   :  622
+   sin nada                     : 1209
 
 La unidad del Misal no es el día: es el formulario
 --------------------------------------------------
@@ -31,8 +32,8 @@ La unidad del Misal no es el día: es el formulario
   sitio. Esto es cuánto recupera, medido:
 
     piezas que vienen de otra celebración del mismo
-    formulario del Misal                        : 1869
-    piezas que vienen de un texto suelto colocado: 46
+    formulario del Misal                        : 1921
+    piezas que vienen de un texto suelto colocado: 70
     textos sueltos de la fase 4                 : 358
        colocados en un formulario               : 19
        que siguen sin formulario                : 339
@@ -163,18 +164,18 @@ Los formularios, uno por uno
   Por sección, y dentro de cada una por veredicto:
 
     sección                                        completo  parcial  latino   nada
-    TIEMPO ORDINARIO                                    339      156      12      0
-    PROPIO DE LOS SANTOS                                175       18       1      0
-    TRIDUO PASCUAL Y TIEMPO DE PASCUA                    39       26      10      0
-    MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · lec       34       18      15      0
+    TIEMPO ORDINARIO                                    361      146       0      0
+    PROPIO DE LOS SANTOS                                176       18       1      0
+    TRIDUO PASCUAL Y TIEMPO DE PASCUA                    41       30       4      0
+    MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · lec       35       24       8      0
     TIEMPO DE CUARESMA                                   58        4       0      3
-    TIEMPO DE ADVIENTO                                   24       11       2      0
-    MISAS RITUALES Y DE DIFUNTOS · leccionario VII        0        0      35      0
-    TIEMPO DE NAVIDAD                                    16        5       2      5
-    OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS            0        0       2     17
+    TIEMPO DE ADVIENTO                                   27        8       2      0
+    MISAS RITUALES Y DE DIFUNTOS · leccionario VII        0        4      31      0
+    TIEMPO DE NAVIDAD                                    19        3       1      5
+    OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS            0        0       2     16
     SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO         6        0       3      0
     APÉNDICES                                             0        0       0      7
-    COMÚN DE LOS SANTOS                                   0        5       2      0
+    COMÚN DE LOS SANTOS                                   0        6       1      0
     FORMULARIOS SUELTOS                                   0        0       0      1
 
   Y la lista entera, con la vía de cada pieza y los testigos del
@@ -192,7 +193,7 @@ Los formularios, uno por uno
     ANEXO|salmos_comunes_ferias|0 ......  Textos comunes para el canto del salmo respo —
     ANEXO|salmos_comunes|0     ......  Textos comunes para el canto del salmo respo —
     V|5223COMDBA.htm|0         LLLLL.  Leccionario V. Propio y común de los santos  —
-    V|5224COMSVI.html|0        LLLLL.  Leccionario V. Propio y común de los santos  —
+    V|5224COMSVI.html|0        GLLGL.  Leccionario V. Propio y común de los santos  —
     V|5225COMMAR.html|0        ULUUU.  Leccionario V. Propio y común de los santos  12
     V|5226COMPAS.html|0        UUUUL.  Leccionario V. Propio y común de los santos  2
     V|5227COMDOC.html|0        ULLLL.  Leccionario V. Propio y común de los santos  21
@@ -201,7 +202,7 @@ Los formularios, uno por uno
     VII|7124Textos_comunes.html|0 ......  TEXTOS COMUNES PARA EL CANTO DEL SALMO RESPO —
     VI|6001PLIG.html|0         UUUUU.  POR LA IGLESIA                               3
     VI|6002PEPA.html|0         UUULU.  POR EL PAPA O POR EL OBISPO sobre todo en su 5
-    VI|6003PEUP.html|0         LLLLL.  PARA ELEGIR UN PAPA O UN OBISPO              —
+    VI|6003PEUP.html|0         LLLGL.  PARA ELEGIR UN PAPA O UN OBISPO              —
     VI|6004PELC.html|0         LLLLL.  POR EL CONCILIO O EL SÍNODO EN UNA REUNIÓN E —
     VI|6005PLSA.html|0         UUUUU.  POR LOS SACERDOTES                           11
     VI|6006PLMI.html|0         UUUUU.  POR LOS MINISTROS DE LA IGLESIA              3
@@ -212,8 +213,8 @@ Los formularios, uno por uno
     VI|6011PLEP.html|0         UUUUU.  POR LA EVANGELIZACIÓN DE LOS PUEBLOS         4
     VI|6012PLCP.html|0         UUULU.  POR LOS CRISTIANOS PERSEGUIDOS               10
     VI|6013PLPA.html|0         UUUUU.  POR LA PATRIA O POR LA CIUDAD — POR LOS QUE  6
-    VI|6014PLPJ.html|0         LUUUL.  POR LA PAZ Y LA JUSTICIA                     1
-    VI|6015PLRE.html|0         LLLLL.  PARA LA RECONCILIACIÓN                       —
+    VI|6014PLPJ.html|0         LUUUG.  POR LA PAZ Y LA JUSTICIA                     1
+    VI|6015PLRE.html|0         GLLLL.  PARA LA RECONCILIACIÓN                       —
     VI|6016TGU.html|0          LUUUU.  EN TIEMPO DE GUERRA O DESORDEN               5
     VI|6016TGU.html|1          LUUUU.  EN TIEMPO DE GUERRA O DESORDEN               5
     VI|6017ACAN.html|0         UUUUU.  AL COMIENZO DEL AÑO CIVIL                    4
@@ -222,7 +223,7 @@ Los formularios, uno por uno
     VI|6019ETSI.html|1         .U....  EN TIEMPO DE SIEMBRA                         1
     VI|6020PDCO.html|0         UUUUU.  PARA DESPUÉS DE LA COSECHA                   4
     VI|6020PDCO.html|1         UUUUU.  PARA DESPUÉS DE LA COSECHA                   4
-    VI|6021ETHA.html|0         UUULU.  EN TIEMPO DE HAMBRE, O POR LOS QUE PADECEN H 6
+    VI|6021ETHA.html|0         UUUGU.  EN TIEMPO DE HAMBRE, O POR LOS QUE PADECEN H 6
     VI|6022PLPR.html|0         UUUUU.  POR LOS PRÓFUGOS Y EXILIADOS                 4
     VI|6023PLCA.html|0         UUUUU.  POR LOS CAUTIVOS POR LOS ENCARCELADOS        3
     VI|6023PLCA.html|1         UUUUU.  POR LOS CAUTIVOS POR LOS ENCARCELADOS        3
@@ -245,7 +246,7 @@ Los formularios, uno por uno
     VI|6033DLMD.html|2         UUUUU.  DE LA MISERICORDIA DE DIOS                   4
     VI|6034DMSC.html|0         UL....  DEL MISTERIO DE LA SANTA CRUZ                8
     VI|6035DSEU.html|0         UUUUU.  DE LA SANTÍSIMA EUCARISTÍA                   1
-    VI|6036JSES.html|0         LLLLL.  JESUCRISTO, SUMO Y ETERNO SACERDOTE          —
+    VI|6036JSES.html|0         LLLGL.  JESUCRISTO, SUMO Y ETERNO SACERDOTE          —
     VI|6037DSNJ.html|0         UUUUU.  DEL SANTÍSIMO NOMBRE DE JESÚS                12
     VI|6038DPSC.html|0         LUULU.  DE LA PRECIOSÍSIMA SANGRE DE NUESTRO SEÑOR J 1
     VI|6039SDSCJ.html|0        LUUUU.  DEL SAGRADO CORAZÓN DE JESÚS                 4
@@ -261,20 +262,20 @@ Los formularios, uno por uno
     VI|6045DSJO.html|0         LLUUL.  DE SAN JOSÉ — SAN JOSÉ, ESPOSO DE LA VIRGEN  1
     VI|6045DSJO.html|1         LLUUL.  DE SAN JOSÉ — SAN JOSÉ, ESPOSO DE LA VIRGEN  1
     VI|6046DTSA.html|0         LLLLL.  DE TODOS LOS SANTOS APÓSTOLES — SAN SIMÓN Y  —
-    VI|6047DSPP.html|0         LLLLL.  DE SAN PEDRO Y SAN PABLO, APÓSTOLES — La Ded —
+    VI|6047DSPP.html|0         GGLLG.  DE SAN PEDRO Y SAN PABLO, APÓSTOLES — La Ded —
     VI|6048DSPA.html|0         LLLLL.  DE SAN PEDRO, APÓSTOL — LA CATEDRA DEL APÓST —
-    VI|6049DSPA.html|0         LLLLL.  DE SAN PABLO, APÓSTOL — LA CONVERSIÓN DEL AP —
-    VI|6050DUSA.html|0         LLLLL.  DE UN SANTO APÓSTOL — SAN SIMÓN Y SAN JUDAS, —
-    VI|6051DTLS.html|0         LLLLL.  DE TODOS LOS SANTOS — TODOS LOS SANTOS       —
-    VIII|8001EC.html|0         LLLLL.  PARA LA ENTRADA EN EL CATECUMENADO           —
+    VI|6049DSPA.html|0         GGLLL.  DE SAN PABLO, APÓSTOL — LA CONVERSIÓN DEL AP —
+    VI|6050DUSA.html|0         GLLGL.  DE UN SANTO APÓSTOL — SAN SIMÓN Y SAN JUDAS, —
+    VI|6051DTLS.html|0         LLGGL.  DE TODOS LOS SANTOS — TODOS LOS SANTOS       —
+    VIII|8001EC.html|0         LLLGG.  PARA LA ENTRADA EN EL CATECUMENADO           —
     VIII|8002IN.html|0         LLLLL.  EN LA ELECCIÓN O INSCRIPCIÓN DEL NOMBRE — Pr —
     VIII|8002IN.html|1         LLLLL.  EN LA ELECCIÓN O INSCRIPCIÓN DEL NOMBRE — Pr —
     VIII|8002IN.html|2         LLLLL.  EN LA ELECCIÓN O INSCRIPCIÓN DEL NOMBRE — Pr —
     VIII|8003PE.html|0         LLLLL.  EN EL PRIMER ESCRUTINIO — Primer domingo de  —
-    VIII|8004SE.html|0         LLLLLL  EN EL SEGUNDO ESCRUTINIO — IV DOMINGO DE CUA —
+    VIII|8004SE.html|0         LGLLLL  EN EL SEGUNDO ESCRUTINIO — IV DOMINGO DE CUA —
     VIII|8005TE.html|0         LLLLL.  EN EL TERCER ESCRUTINIO — V DOMINGO DE CUARE —
-    VIII|8006SF.html|0         LLLLL.  EN LA ENTREGA DEL SÍMBOLO DE LA FE           —
-    VIII|8007OS.html|0         LLLLL.  EN LA ENTREGA DE LA ORACIÓN DEL SEÑOR        —
+    VIII|8006SF.html|0         LLGLG.  EN LA ENTREGA DEL SÍMBOLO DE LA FE           —
+    VIII|8007OS.html|0         LLGLG.  EN LA ENTREGA DE LA ORACIÓN DEL SEÑOR        —
     VIII|8008BP.html|0         LLLLL.  EN EL BAUTISMO CELEBRADO DENTRO DE LA VIGILI —
     VIII|8009IC.html|0         LLLLL.  EN LA INICIACIÓN CRISTIANA CELEBRADA FUERA D —
     VIII|8009IC.html|1         LLLLL.  EN LA INICIACIÓN CRISTIANA CELEBRADA FUERA D —
@@ -307,7 +308,6 @@ Los formularios, uno por uno
     V|5067TA0522.html|0        .L....  Santa Joaquina Vedruna, religiosa            —
     V|5073TA0530.html|0        ......  San Fernando                                 —
     V|5075TA0532.html|0        ......  JESUCRISTO, SUMO Y ETERNO SACERDOTE          —
-    V|5095TA0632.html|0        ......  El Inmaculado Corazón de la Virgen María     —
     V|5122TA0809.html|0        .L....  SANTA TERESA BENEDICTA DE LA CRUZ (EDITH STE —
     V|5130TA0819_2.html|0      ......  San Ezequiel Moreno, obispo                  —
     V|5138TA0826.html|0        ......  Santa Teresa de Jesús Jornet e Ibars, virgen —
@@ -402,6 +402,7 @@ Los formularios, uno por uno
     V|5092TA0628.html|0        CCCCC.  San Ireneo, obispo y mártir                  3
     V|5093TA0629.html|0        CCCLC.  Santos Pedro y Pablo, apóstoles              6
     V|5094TA0630.html|0        MCDMC.  Primeros mártires de la Iglesia de Roma      2
+    V|5095TA0632.html|0        CCDDD.  El Inmaculado Corazón de la Santísima Virgen 7
     V|5096TA0703.html|0        CCCCC.  Santo Tomás, apóstol                         7
     V|5097TA0704.html|0        .CC.C.  Santa Isabel de Portugal                     7
     V|5098TA0705.html|0        MCCMC.  San Antonio María Zaccarías, presbítero      4
@@ -538,18 +539,18 @@ Los formularios, uno por uno
     VII|7001TAVL01.html|0      DCDDD.  Lunes de la 1ª semana de Adviento            5
     VII|7002TAVM01.html|0      DCDDD.  Martes de la 1ª semana de Adviento           4
     VII|7003TAVX01.html|0      DCLDC.  Miércoles de la 1ª semana de Adviento        1
-    VII|7004TAVJ01.html|0      DCLDL.  Jueves de la 1ª semana de Adviento           4
+    VII|7004TAVJ01.html|0      DCGDG.  Jueves de la 1ª semana de Adviento           4
     VII|7005TAVV01.html|0      DCDDD.  Viernes de la 1ª semana de Adviento          2
     VII|7006TAVS01.html|0      DCLDD.  Sábado de la 1ª semana de Adviento           3
-    VII|7007TAVL02.html|0      DCLDL.  Lunes de la 2ª semana de Adviento            2
+    VII|7007TAVL02.html|0      DCGDG.  Lunes de la 2ª semana de Adviento            2
     VII|7008TAVM02.html|0      DDDDD.  Martes de la 2ª semana de Adviento           5
     VII|7009TAVX02.html|0      DDDDD.  Miércoles de la 2ª semana de Adviento        4
     VII|7010TAVJ02.html|0      DDDDD.  Jueves de la 2ª semana de Adviento           4
     VII|7011TAVV02.html|0      DCCDD.  Viernes de la 2ª semana de Adviento          1
-    VII|7012TAVS02.html|0      LCLLL.  Sábado de la 2ª semana de Adviento           3
-    VII|7013TAVL03.html|0      DCDDL.  Lunes de la 3ª semana de Adviento            3
+    VII|7012TAVS02.html|0      LCLLG.  Sábado de la 2ª semana de Adviento           3
+    VII|7013TAVL03.html|0      DCDDG.  Lunes de la 3ª semana de Adviento            3
     VII|7014TAVM03.html|0      DCDDD.  Martes de la 3ª semana de Adviento           2
-    VII|7015TAVX03.html|0      DCLDL.  Miércoles de la 3ª semana de Adviento        2
+    VII|7015TAVX03.html|0      DCLDG.  Miércoles de la 3ª semana de Adviento        2
     VII|7016TAVJ03.html|0      DCCDC.  Jueves de la 3ª semana de Adviento           1
     VII|7017TAVV03.html|0      DDDDD.  Viernes de la 3ª semana de Adviento          1
     VII|7018TFPD17.html|0      DDDDD.  17 de diciembre                              5
@@ -635,7 +636,7 @@ Los formularios, uno por uno
     I|1008TNSMDD.html|0        LUUUU.  Misa del día                                 6
     I|1009AFSAFA.html|0        CCCCC.  La Sagrada Familia: Jesús, María y José      7
     I|1010SMMDD.html|0         CDCCC.  Solemnidad de Santa María, Madre de Dios     7
-    I|1011NAD02.html|0         LLLLL.  Segundo domingo después de Navidad           —
+    I|1011NAD02.html|0         GLLLL.  Segundo domingo después de Navidad           —
     I|1012TEPIFA.html|0        CCCCC.  La Epifanía del Señor                        8
     I|1013AFBASE.html|0        CCCCC.  El Bautismo del Señor                        5
     VII|7026TON529.html|0      CCDDC.  29 de diciembre: 5º día de la octava de Navi 1
@@ -647,11 +648,11 @@ Los formularios, uno por uno
     VII|7032TF05EN.html|0      ......  5 de enero                                   —
     VII|7033TF06EN.html|0      DDDDD.  6 de enero                                   4
     VII|7034TF07EN.html|0      ......  7 de enero                                   —
-    VII|7035TFLDEP.html|0      CCDCL.  7 de enero — Lunes después de Epifanía       5
-    VII|7036TFMDEP.html|0      CDDCL.  8 de enero — Martes después de Epifanía      4
+    VII|7035TFLDEP.html|0      CCDCG.  7 de enero — Lunes después de Epifanía       5
+    VII|7036TFMDEP.html|0      CDDCG.  8 de enero — Martes después de Epifanía      4
     VII|7037TFXDEP.html|0      CCDCC.  9 de enero — Miércoles después de Epifanía   5
-    VII|7038TFJDEP.html|0      DCLLL.  10 de enero — Jueves después de Epifanía     6
-    VII|7039TFVDEP.html|0      DCDDL.  11 de enero — Viernes después de Epifanía    5
+    VII|7038TFJDEP.html|0      DCGLG.  10 de enero — Jueves después de Epifanía     6
+    VII|7039TFVDEP.html|0      DCDDG.  11 de enero — Viernes después de Epifanía    5
     VII|7040TFSDEP.html|0      DDDDD.  12 de enero — Sábado después de Epifanía     1
     III|3035CTOD02.html|0      CCCCC.  Domingo II del Tiempo Ordinario              1
     III|3036CTOD03.html|0      CCCCC.  Domingo III del Tiempo Ordinario             5
@@ -719,25 +720,25 @@ Los formularios, uno por uno
     II|2065BTOD32.html|0       CCCCC.  Domingo XXXII del Tiempo Ordinario           5
     II|2066BTOD33.html|0       CCCCD.  Domingo XXXIII del Tiempo Ordinario          2
     II|2067BTOD34.html|0       CCCCC.  Domingo XXXIV del Tiempo Ordinario: Jesucris 7
-    IV|4001ITOL01.html|0       SUSSU.  Lunes de la 1ª semana de Tiempo Ordinario    1
-    IV|4002ITOM01.html|0       SUSSU.  Martes de la 1ª semana de Tiempo Ordinario   1
-    IV|4003ITOX01.html|0       SUSSU.  Miércoles de la 1ª semana de Tiempo Ordinari 1
-    IV|4004ITOJ01.html|0       SUSSU.  Jueves de la 1ª semana de Tiempo Ordinario   1
-    IV|4005ITOV01.html|0       SUSSC.  Viernes de la 1ª semana de Tiempo Ordinario  1
-    IV|4006ITOS01.html|0       SCSSC.  Sábado de la 1ª semana de Tiempo Ordinario   1
+    IV|4001ITOL01.html|0       SSSSS.  Lunes de la 1ª semana de Tiempo Ordinario    8
+    IV|4002ITOM01.html|0       SSSSS.  Martes de la 1ª semana de Tiempo Ordinario   8
+    IV|4003ITOX01.html|0       SSSSS.  Miércoles de la 1ª semana de Tiempo Ordinari 8
+    IV|4004ITOJ01.html|0       SSSSS.  Jueves de la 1ª semana de Tiempo Ordinario   8
+    IV|4005ITOV01.html|0       SSSSS.  Viernes de la 1ª semana de Tiempo Ordinario  8
+    IV|4006ITOS01.html|0       SSSSS.  Sábado de la 1ª semana de Tiempo Ordinario   8
     IV|4007ITOL02.html|0       UUUUU.  Lunes de la 2ª semana de Tiempo Ordinario    1
-    IV|4008ITOM02.html|0       UCUUC.  Martes de la 2ª semana de Tiempo Ordinario   1
-    IV|4009ITOX02.html|0       CCCCC.  Miércoles de la 2ª semana de Tiempo Ordinari 1
+    IV|4008ITOM02.html|0       UUUUU.  Martes de la 2ª semana de Tiempo Ordinario   1
+    IV|4009ITOX02.html|0       UUUUU.  Miércoles de la 2ª semana de Tiempo Ordinari 1
     IV|4010ITOJ02.html|0       UUUUU.  Jueves de la 2ª semana de Tiempo Ordinario   1
-    IV|4011ITOV02.html|0       UUUUC.  Viernes de la 2ª semana de Tiempo Ordinario  1
-    IV|4012ITOS02.html|0       UCUUC.  Sábado de la 2ª semana de Tiempo Ordinario   1
+    IV|4011ITOV02.html|0       UUUUU.  Viernes de la 2ª semana de Tiempo Ordinario  1
+    IV|4012ITOS02.html|0       UUUUU.  Sábado de la 2ª semana de Tiempo Ordinario   1
     IV|4013ITOL03.html|0       UUUUU.  Lunes de la 3ª semana de Tiempo Ordinario    5
     IV|4014ITOM03.html|0       UUUUU.  Martes de la 3ª semana de Tiempo Ordinario   5
-    IV|4015ITOX03.html|0       CCCUC.  Miércoles de la 3ª semana de Tiempo Ordinari 1
+    IV|4015ITOX03.html|0       UUUUU.  Miércoles de la 3ª semana de Tiempo Ordinari 5
     IV|4016ITOJ03.html|0       UUUUU.  Jueves de la 3ª semana de Tiempo Ordinario   5
-    IV|4017ITOV03.html|0       UCCUC.  Viernes de la 3ª semana de Tiempo Ordinario  1
-    IV|4018ITOS03.html|0       UCUUC.  Sábado de la 3ª semana de Tiempo Ordinario   1
-    IV|4019ITOL04.html|0       UUUUC.  Lunes de la 4ª semana de Tiempo Ordinario    1
+    IV|4017ITOV03.html|0       UUUUU.  Viernes de la 3ª semana de Tiempo Ordinario  5
+    IV|4018ITOS03.html|0       UUUUU.  Sábado de la 3ª semana de Tiempo Ordinario   5
+    IV|4019ITOL04.html|0       UUUUU.  Lunes de la 4ª semana de Tiempo Ordinario    1
     IV|4020ITOM04.html|0       UUUUU.  Martes de la 4ª semana de Tiempo Ordinario   1
     IV|4021ITOX04.html|0       UUUUU.  Miércoles de la 4ª semana de Tiempo Ordinari 1
     IV|4022ITOJ04.html|0       UUUUU.  Jueves de la 4ª semana de Tiempo Ordinario   1
@@ -747,10 +748,10 @@ Los formularios, uno por uno
     IV|4026ITOM05.html|0       UUUUU.  Martes de la 5ª semana de Tiempo Ordinario   3
     IV|4027ITOX05.html|0       UUUUU.  Miércoles de la 5ª semana de Tiempo Ordinari 3
     IV|4028ITOJ05.html|0       UUUUU.  Jueves de la 5ª semana de Tiempo Ordinario   3
-    IV|4029ITOV05.html|0       UCUCC.  Viernes de la 5ª semana de Tiempo Ordinario  1
-    IV|4030ITOS05.html|0       CCCCC.  Sábado de la 5ª semana de Tiempo Ordinario   2
-    IV|4031ITOL06.html|0       CCCUU.  Lunes de la 6ª semana de Tiempo Ordinario    1
-    IV|4032ITOM06.html|0       CUUUC.  Martes de la 6ª semana de Tiempo Ordinario   1
+    IV|4029ITOV05.html|0       UUUUU.  Viernes de la 5ª semana de Tiempo Ordinario  3
+    IV|4030ITOS05.html|0       UUUUU.  Sábado de la 5ª semana de Tiempo Ordinario   3
+    IV|4031ITOL06.html|0       UUUUU.  Lunes de la 6ª semana de Tiempo Ordinario    7
+    IV|4032ITOM06.html|0       UUUUU.  Martes de la 6ª semana de Tiempo Ordinario   7
     IV|4033ITOX06.html|0       UUUUU.  Miércoles de la 6ª semana de Tiempo Ordinari 7
     IV|4034ITOJ06.html|0       UUUUU.  Jueves de la 6ª semana de Tiempo Ordinario   7
     IV|4035ITOV06.html|0       UUUUU.  Viernes de la 6ª semana de Tiempo Ordinario  7
@@ -778,7 +779,7 @@ Los formularios, uno por uno
     IV|4057ITOX10.html|0       UUUUU.  Miércoles de la 10ª semana de Tiempo Ordinar 3
     IV|4058ITOJ10.html|0       UUUUU.  Jueves de la 10ª semana de Tiempo Ordinario  3
     IV|4059ITOV10.html|0       UUUUU.  Viernes de la 10ª semana de Tiempo Ordinario 3
-    IV|4060ITOS10.html|0       CUCUU.  Sábado de la 10ª semana de Tiempo Ordinario  2
+    IV|4060ITOS10.html|0       UUUUU.  Sábado de la 10ª semana de Tiempo Ordinario  3
     IV|4061ITOL11.html|0       UULUU.  Lunes de la 11ª semana de Tiempo Ordinario   1
     IV|4062ITOM11.html|0       UULUU.  Martes de la 11ª semana de Tiempo Ordinario  1
     IV|4063ITOX11.html|0       UULUU.  Miércoles de la 11ª semana de Tiempo Ordinar 1
@@ -809,12 +810,12 @@ Los formularios, uno por uno
     IV|4088ITOJ15.html|0       UUUDU.  Jueves de la 15ª semana de Tiempo Ordinario  7
     IV|4089ITOV15.html|0       UUUDU.  Viernes de la 15ª semana de Tiempo Ordinario 7
     IV|4090ITOS15.html|0       UUUDU.  Sábado de la 15ª semana de Tiempo Ordinario  7
-    IV|4091ITOL16.html|0       UUUUL.  Lunes de la 16ª semana de Tiempo Ordinario   7
+    IV|4091ITOL16.html|0       UUUUG.  Lunes de la 16ª semana de Tiempo Ordinario   7
     IV|4092ITOM16.html|0       UUUUD.  Martes de la 16ª semana de Tiempo Ordinario  3
-    IV|4093ITOX16.html|0       UUUUL.  Miércoles de la 16ª semana de Tiempo Ordinar 7
-    IV|4094ITOJ16.html|0       UUUUL.  Jueves de la 16ª semana de Tiempo Ordinario  7
-    IV|4095ITOV16.html|0       UUUUL.  Viernes de la 16ª semana de Tiempo Ordinario 7
-    IV|4096ITOS16.html|0       UUUUL.  Sábado de la 16ª semana de Tiempo Ordinario  7
+    IV|4093ITOX16.html|0       UUUUG.  Miércoles de la 16ª semana de Tiempo Ordinar 7
+    IV|4094ITOJ16.html|0       UUUUG.  Jueves de la 16ª semana de Tiempo Ordinario  7
+    IV|4095ITOV16.html|0       UUUUG.  Viernes de la 16ª semana de Tiempo Ordinario 7
+    IV|4096ITOS16.html|0       UUUUG.  Sábado de la 16ª semana de Tiempo Ordinario  7
     IV|4097ITOL17.html|0       UUUUU.  Lunes de la 17ª semana de Tiempo Ordinario   8
     IV|4098ITOM17.html|0       UUUUU.  Martes de la 17ª semana de Tiempo Ordinario  8
     IV|4099ITOX17.html|0       UUUUU.  Miércoles de la 17ª semana de Tiempo Ordinar 8
@@ -822,10 +823,10 @@ Los formularios, uno por uno
     IV|4101ITOV17.html|0       UUUUU.  Viernes de la 17ª semana de Tiempo Ordinario 8
     IV|4102ITOS17.html|0       UUUUU.  Sábado de la 17ª semana de Tiempo Ordinario  8
     IV|4103ITOL18.html|0       UUDUU.  Lunes de la 18ª semana de Tiempo Ordinario   1
-    IV|4104ITOM18.html|0       UULUU.  Martes de la 18ª semana de Tiempo Ordinario  5
-    IV|4105ITOX18.html|0       UULUU.  Miércoles de la 18ª semana de Tiempo Ordinar 5
+    IV|4104ITOM18.html|0       UUGUU.  Martes de la 18ª semana de Tiempo Ordinario  5
+    IV|4105ITOX18.html|0       UUGUU.  Miércoles de la 18ª semana de Tiempo Ordinar 5
     IV|4106ITOJ18.html|0       UUDUU.  Jueves de la 18ª semana de Tiempo Ordinario  5
-    IV|4107ITOV18.html|0       UULUU.  Viernes de la 18ª semana de Tiempo Ordinario 5
+    IV|4107ITOV18.html|0       UUGUU.  Viernes de la 18ª semana de Tiempo Ordinario 5
     IV|4108ITOS18.html|0       UUDUU.  Sábado de la 18ª semana de Tiempo Ordinario  5
     IV|4109ITOL19.html|0       UULUU.  Lunes de la 19ª semana de Tiempo Ordinario   7
     IV|4110ITOM19.html|0       UUDUU.  Martes de la 19ª semana de Tiempo Ordinario  7
@@ -911,37 +912,37 @@ Los formularios, uno por uno
     IV|4190ITOJ32.html|0       UUUUU.  Jueves de la 32ª semana de Tiempo Ordinario  5
     IV|4191ITOV32.html|0       UUUUU.  Viernes de la 32ª semana de Tiempo Ordinario 5
     IV|4192ITOS32.html|0       UUUUU.  Sábado de la 32ª semana de Tiempo Ordinario  5
-    IV|4193ITOL33.html|0       UUUUL.  Lunes de la 33ª semana de Tiempo Ordinario   2
-    IV|4194ITOM33.html|0       UUUUL.  Martes de la 33ª semana de Tiempo Ordinario  2
-    IV|4195ITOX33.html|0       UUUUL.  Miércoles de la 33ª semana de Tiempo Ordinar 2
+    IV|4193ITOL33.html|0       UUUUG.  Lunes de la 33ª semana de Tiempo Ordinario   2
+    IV|4194ITOM33.html|0       UUUUG.  Martes de la 33ª semana de Tiempo Ordinario  2
+    IV|4195ITOX33.html|0       UUUUG.  Miércoles de la 33ª semana de Tiempo Ordinar 2
     IV|4196ITOJ33.html|0       UUUUD.  Jueves de la 33ª semana de Tiempo Ordinario  2
     IV|4197ITOV33.html|0       UUUUD.  Viernes de la 33ª semana de Tiempo Ordinario 2
     IV|4198ITOS33.html|0       UUUUD.  Sábado de la 33ª semana de Tiempo Ordinario  2
-    IV|4199ITOL34.html|0       LLLLL.  Lunes de la 34ª semana de Tiempo Ordinario   —
-    IV|4200ITOM34.html|0       LLLLL.  Martes de la 34ª semana de Tiempo Ordinario  —
-    IV|4201ITOX34.html|0       LLLLL.  Miércoles de la 34ª semana de Tiempo Ordinar —
-    IV|4202ITOJ34.html|0       LLLLL.  Jueves de la 34ª semana de Tiempo Ordinario  —
-    IV|4203ITOV34.html|0       LLLLL.  Viernes de la 34ª semana de Tiempo Ordinario —
-    IV|4204ITOS34.html|0       LLLLL.  Sábado de la 34ª semana de Tiempo Ordinario  —
-    IV|4205PTOL01.html|0       SUSSU.  Lunes de la 1ª semana de Tiempo Ordinario    1
-    IV|4206PTOM01.html|0       SUSSU.  Martes de la 1ª semana de Tiempo Ordinario   1
-    IV|4207PTOX01.html|0       SUSSU.  Miércoles de la 1ª semana de Tiempo Ordinari 1
-    IV|4208PTOJ01.html|0       SUSSU.  Jueves de la 1ª semana de Tiempo Ordinario   1
-    IV|4209PTOV01.html|0       SUSSC.  Viernes de la 1ª semana de Tiempo Ordinario  1
-    IV|4210PTOS01.html|0       SCSSC.  Sábado de la 1ª semana de Tiempo Ordinario   1
+    IV|4199ITOL34.html|0       LLLGL.  Lunes de la 34ª semana de Tiempo Ordinario   —
+    IV|4200ITOM34.html|0       LLLGL.  Martes de la 34ª semana de Tiempo Ordinario  —
+    IV|4201ITOX34.html|0       LLLGL.  Miércoles de la 34ª semana de Tiempo Ordinar —
+    IV|4202ITOJ34.html|0       LLLGL.  Jueves de la 34ª semana de Tiempo Ordinario  —
+    IV|4203ITOV34.html|0       LLLGL.  Viernes de la 34ª semana de Tiempo Ordinario —
+    IV|4204ITOS34.html|0       LLLGL.  Sábado de la 34ª semana de Tiempo Ordinario  —
+    IV|4205PTOL01.html|0       SSSSS.  Lunes de la 1ª semana de Tiempo Ordinario    8
+    IV|4206PTOM01.html|0       SSSSS.  Martes de la 1ª semana de Tiempo Ordinario   8
+    IV|4207PTOX01.html|0       SSSSS.  Miércoles de la 1ª semana de Tiempo Ordinari 8
+    IV|4208PTOJ01.html|0       SSSSS.  Jueves de la 1ª semana de Tiempo Ordinario   8
+    IV|4209PTOV01.html|0       SSSSS.  Viernes de la 1ª semana de Tiempo Ordinario  8
+    IV|4210PTOS01.html|0       SSSSS.  Sábado de la 1ª semana de Tiempo Ordinario   8
     IV|4211PTOL02.html|0       UUUUU.  Lunes de la 2ª semana de Tiempo Ordinario    1
-    IV|4212PTOM02.html|0       UCUUC.  Martes de la 2ª semana de Tiempo Ordinario   1
-    IV|4213PTOX02.html|0       CCCCC.  Miércoles de la 2ª semana de Tiempo Ordinari 1
+    IV|4212PTOM02.html|0       UUUUU.  Martes de la 2ª semana de Tiempo Ordinario   1
+    IV|4213PTOX02.html|0       UUUUU.  Miércoles de la 2ª semana de Tiempo Ordinari 1
     IV|4214PTOJ02.html|0       UUUUU.  Jueves de la 2ª semana de Tiempo Ordinario   1
-    IV|4215PTOV02.html|0       UUUUC.  Viernes de la 2ª semana de Tiempo Ordinario  1
-    IV|4216PTOS02.html|0       UCUUC.  Sábado de la 2ª semana de Tiempo Ordinario   1
+    IV|4215PTOV02.html|0       UUUUU.  Viernes de la 2ª semana de Tiempo Ordinario  1
+    IV|4216PTOS02.html|0       UUUUU.  Sábado de la 2ª semana de Tiempo Ordinario   1
     IV|4217PTOL03.html|0       UUUUU.  Lunes de la 3ª semana de Tiempo Ordinario    5
     IV|4218PTOM03.html|0       UUUUU.  Martes de la 3ª semana de Tiempo Ordinario   5
-    IV|4219PTOX03.html|0       CCCUC.  Miércoles de la 3ª semana de Tiempo Ordinari 1
+    IV|4219PTOX03.html|0       UUUUU.  Miércoles de la 3ª semana de Tiempo Ordinari 5
     IV|4220PTOJ03.html|0       UUUUU.  Jueves de la 3ª semana de Tiempo Ordinario   5
-    IV|4221PTOV03.html|0       UCCUC.  Viernes de la 3ª semana de Tiempo Ordinario  1
-    IV|4222PTOS03.html|0       UCUUC.  Sábado de la 3ª semana de Tiempo Ordinario   1
-    IV|4223PTOL04.html|0       UUUUC.  Lunes de la 4ª semana de Tiempo Ordinario    1
+    IV|4221PTOV03.html|0       UUUUU.  Viernes de la 3ª semana de Tiempo Ordinario  5
+    IV|4222PTOS03.html|0       UUUUU.  Sábado de la 3ª semana de Tiempo Ordinario   5
+    IV|4223PTOL04.html|0       UUUUU.  Lunes de la 4ª semana de Tiempo Ordinario    1
     IV|4224PTOM04.html|0       UUUUU.  Martes de la 4ª semana de Tiempo Ordinario   1
     IV|4225PTOX04.html|0       UUUUU.  Miércoles de la 4ª semana de Tiempo Ordinari 1
     IV|4226PTOJ04.html|0       UUUUU.  Jueves de la 4ª semana de Tiempo Ordinario   1
@@ -951,10 +952,10 @@ Los formularios, uno por uno
     IV|4230PTOM05.html|0       UUUUU.  Martes de la 5ª semana de Tiempo Ordinario   3
     IV|4231PTOX05.html|0       UUUUU.  Miércoles de la 5ª semana de Tiempo Ordinari 3
     IV|4232PTOJ05.html|0       UUUUU.  Jueves de la 5ª semana de Tiempo Ordinario   3
-    IV|4233PTOV05.html|0       UCUCC.  Viernes de la 5ª semana de Tiempo Ordinario  1
-    IV|4234PTOS05.html|0       CCCCC.  Sábado de la 5ª semana de Tiempo Ordinario   2
-    IV|4235PTOL06.html|0       CCCUU.  Lunes de la 6ª semana de Tiempo Ordinario    1
-    IV|4236PTOM06.html|0       CUUUC.  Martes de la 6ª semana de Tiempo Ordinario   1
+    IV|4233PTOV05.html|0       UUUUU.  Viernes de la 5ª semana de Tiempo Ordinario  3
+    IV|4234PTOS05.html|0       UUUUU.  Sábado de la 5ª semana de Tiempo Ordinario   3
+    IV|4235PTOL06.html|0       UUUUU.  Lunes de la 6ª semana de Tiempo Ordinario    7
+    IV|4236PTOM06.html|0       UUUUU.  Martes de la 6ª semana de Tiempo Ordinario   7
     IV|4237PTOX06.html|0       UUUUU.  Miércoles de la 6ª semana de Tiempo Ordinari 7
     IV|4238PTOJ06.html|0       UUUUU.  Jueves de la 6ª semana de Tiempo Ordinario   7
     IV|4239PTOV06.html|0       UUUUU.  Viernes de la 6ª semana de Tiempo Ordinario  7
@@ -982,7 +983,7 @@ Los formularios, uno por uno
     IV|4261PTOX10.html|0       UUUUU.  Miércoles de la 10ª semana de Tiempo Ordinar 3
     IV|4262PTOJ10.html|0       UUUUU.  Jueves de la 10ª semana de Tiempo Ordinario  3
     IV|4263PTOV10.html|0       UUUUU.  Viernes de la 10ª semana de Tiempo Ordinario 3
-    IV|4264PTOS10.html|0       CUCUU.  Sábado de la 10ª semana de Tiempo Ordinario  2
+    IV|4264PTOS10.html|0       UUUUU.  Sábado de la 10ª semana de Tiempo Ordinario  3
     IV|4265PTOL11.html|0       UULUU.  Lunes de la 11ª semana de Tiempo Ordinario   1
     IV|4266PTOM11.html|0       UULUU.  Martes de la 11ª semana de Tiempo Ordinario  1
     IV|4267PTOX11.html|0       UULUU.  Miércoles de la 11ª semana de Tiempo Ordinar 1
@@ -1013,12 +1014,12 @@ Los formularios, uno por uno
     IV|4292PTOJ15.html|0       UUUDU.  Jueves de la 15ª semana de Tiempo Ordinario  7
     IV|4293PTOV15.html|0       UUUDU.  Viernes de la 15ª semana de Tiempo Ordinario 7
     IV|4294PTOS15.html|0       UUUDU.  Sábado de la 15ª semana de Tiempo Ordinario  7
-    IV|4295PTOL16.html|0       UUUUL.  Lunes de la 16ª semana de Tiempo Ordinario   7
+    IV|4295PTOL16.html|0       UUUUG.  Lunes de la 16ª semana de Tiempo Ordinario   7
     IV|4296PTOM16.html|0       UUUUD.  Martes de la 16ª semana de Tiempo Ordinario  3
-    IV|4297PTOX16.html|0       UUUUL.  Miércoles de la 16ª semana de Tiempo Ordinar 7
-    IV|4298PTOJ16.html|0       UUUUL.  Jueves de la 16ª semana de Tiempo Ordinario  7
-    IV|4299PTOV16.html|0       UUUUL.  Viernes de la 16ª semana de Tiempo Ordinario 7
-    IV|4300PTOS16.html|0       UUUUL.  Sábado de la 16ª semana de Tiempo Ordinario  7
+    IV|4297PTOX16.html|0       UUUUG.  Miércoles de la 16ª semana de Tiempo Ordinar 7
+    IV|4298PTOJ16.html|0       UUUUG.  Jueves de la 16ª semana de Tiempo Ordinario  7
+    IV|4299PTOV16.html|0       UUUUG.  Viernes de la 16ª semana de Tiempo Ordinario 7
+    IV|4300PTOS16.html|0       UUUUG.  Sábado de la 16ª semana de Tiempo Ordinario  7
     IV|4301PTOL17.html|0       UUUUU.  Lunes de la 17ª semana de Tiempo Ordinario   8
     IV|4302PTOM17.html|0       UUUUU.  Martes de la 17ª semana de Tiempo Ordinario  8
     IV|4303PTOX17.html|0       UUUUU.  Miércoles de la 17ª semana de Tiempo Ordinar 8
@@ -1026,10 +1027,10 @@ Los formularios, uno por uno
     IV|4305PTOV17.html|0       UUUUU.  Viernes de la 17ª semana de Tiempo Ordinario 8
     IV|4306PTOS17.html|0       UUUUU.  Sábado de la 17ª semana de Tiempo Ordinario  8
     IV|4307PTOL18.html|0       UUDUU.  Lunes de la 18ª semana de Tiempo Ordinario   1
-    IV|4308PTOM18.html|0       UULUU.  Martes de la 18ª semana de Tiempo Ordinario  5
-    IV|4309PTOX18.html|0       UULUU.  Miércoles de la 18ª semana de Tiempo Ordinar 5
+    IV|4308PTOM18.html|0       UUGUU.  Martes de la 18ª semana de Tiempo Ordinario  5
+    IV|4309PTOX18.html|0       UUGUU.  Miércoles de la 18ª semana de Tiempo Ordinar 5
     IV|4310PTOJ18.html|0       UUDUU.  Jueves de la 18ª semana de Tiempo Ordinario  5
-    IV|4311PTOV18.html|0       UULUU.  Viernes de la 18ª semana de Tiempo Ordinario 5
+    IV|4311PTOV18.html|0       UUGUU.  Viernes de la 18ª semana de Tiempo Ordinario 5
     IV|4312PTOS18.html|0       UUDUU.  Sábado de la 18ª semana de Tiempo Ordinario  5
     IV|4313PTOL19.html|0       UULUU.  Lunes de la 19ª semana de Tiempo Ordinario   7
     IV|4314PTOM19.html|0       UUDUU.  Martes de la 19ª semana de Tiempo Ordinario  7
@@ -1115,18 +1116,18 @@ Los formularios, uno por uno
     IV|4394PTOJ32.html|0       UUUUU.  Jueves de la 32ª semana de Tiempo Ordinario  5
     IV|4395PTOV32.html|0       UUUUU.  Viernes de la 32ª semana de Tiempo Ordinario 5
     IV|4396PTOS32.html|0       UUUUU.  Sábado de la 32ª semana de Tiempo Ordinario  5
-    IV|4397PTOL33.html|0       UUUUL.  Lunes de la 33ª semana de Tiempo Ordinario   2
-    IV|4398PTOM33.html|0       UUUUL.  Martes de la 33ª semana de Tiempo Ordinario  2
-    IV|4399PTOX33.html|0       UUUUL.  Miércoles de la 33ª semana de Tiempo Ordinar 2
+    IV|4397PTOL33.html|0       UUUUG.  Lunes de la 33ª semana de Tiempo Ordinario   2
+    IV|4398PTOM33.html|0       UUUUG.  Martes de la 33ª semana de Tiempo Ordinario  2
+    IV|4399PTOX33.html|0       UUUUG.  Miércoles de la 33ª semana de Tiempo Ordinar 2
     IV|4400PTOJ33.html|0       UUUUD.  Jueves de la 33ª semana de Tiempo Ordinario  2
     IV|4401PTOV33.html|0       UUUUD.  Viernes de la 33ª semana de Tiempo Ordinario 2
     IV|4402PTOS33.html|0       UUUUD.  Sábado de la 33ª semana de Tiempo Ordinario  2
-    IV|4403PTOL34.html|0       LLLLL.  Lunes de la 34ª semana de Tiempo Ordinario   —
-    IV|4404PTOM34.html|0       LLLLL.  Martes de la 34ª semana de Tiempo Ordinario  —
-    IV|4405PTOX34.html|0       LLLLL.  Miércoles de la 34ª semana de Tiempo Ordinar —
-    IV|4406PTOJ34.html|0       LLLLL.  Jueves de la 34ª semana de Tiempo Ordinario  —
-    IV|4407PTOV34.html|0       LLLLL.  Viernes de la 34ª semana de Tiempo Ordinario —
-    IV|4408PTOS34.html|0       LLLLL.  Sábado de la 34ª semana de Tiempo Ordinario  —
+    IV|4403PTOL34.html|0       LLLGL.  Lunes de la 34ª semana de Tiempo Ordinario   —
+    IV|4404PTOM34.html|0       LLLGL.  Martes de la 34ª semana de Tiempo Ordinario  —
+    IV|4405PTOX34.html|0       LLLGL.  Miércoles de la 34ª semana de Tiempo Ordinar —
+    IV|4406PTOJ34.html|0       LLLGL.  Jueves de la 34ª semana de Tiempo Ordinario  —
+    IV|4407PTOV34.html|0       LLLGL.  Viernes de la 34ª semana de Tiempo Ordinario —
+    IV|4408PTOS34.html|0       LLLGL.  Sábado de la 34ª semana de Tiempo Ordinario  —
     I|1035ATOD02.html|0        CCCCC.  Domingo II del Tiempo Ordinario              1
     I|1036ATOD03.html|0        CCCCC.  Domingo III del Tiempo Ordinario             5
     I|1037ATOD04.html|0        CCCCC.  Domingo IV del Tiempo Ordinario              1
@@ -1203,36 +1204,36 @@ Los formularios, uno por uno
     VII|7089TPAM02.html|0      CCDDD.  Martes de la segunda semana de Pascua        2
     VII|7090TPAX02.html|0      DCDDD.  Miércoles de la segunda semana de Pascua     4
     VII|7091TPAJ02.html|0      DCDDD.  Jueves de la segunda semana de Pascua        2
-    VII|7092TPAV02.html|0      LLLLL.  Viernes de la segunda semana de Pascua       —
-    VII|7093TPAS02.html|0      LCLLL.  Sábado de la segunda semana de Pascua        3
-    VII|7094TPAL03.html|0      LCLLL.  Lunes de la tercera semana de Pascua         4
-    VII|7095TPAM03.html|0      LCLLL.  Martes de la tercera semana de Pascua        4
-    VII|7096TPAX03.html|0      LCLLL.  Miércoles de la tercera semana de Pascua     5
-    VII|7097TPAJ03.html|0      LCLLL.  Jueves de la tercera semana de Pascua        4
+    VII|7092TPAV02.html|0      LLGLL.  Viernes de la segunda semana de Pascua       —
+    VII|7093TPAS02.html|0      GCGGG.  Sábado de la segunda semana de Pascua        3
+    VII|7094TPAL03.html|0      LCGLL.  Lunes de la tercera semana de Pascua         4
+    VII|7095TPAM03.html|0      LCGLL.  Martes de la tercera semana de Pascua        4
+    VII|7096TPAX03.html|0      LCGLL.  Miércoles de la tercera semana de Pascua     5
+    VII|7097TPAJ03.html|0      LCGLG.  Jueves de la tercera semana de Pascua        4
     VII|7098TPAV03.html|0      DCDDD.  Viernes de la tercera semana de Pascua       4
-    VII|7099TPAS03.html|0      LCLLL.  Sábado de la tercera semana de Pascua        3
-    VII|7100TPAL04.html|0      LCLLL.  Lunes de la cuarta semana de Pascua          3
+    VII|7099TPAS03.html|0      LCGLL.  Sábado de la tercera semana de Pascua        3
+    VII|7100TPAL04.html|0      LCGLL.  Lunes de la cuarta semana de Pascua          3
     VII|7101TPAM04.html|0      DDDDD.  Martes de la cuarta semana de Pascua         1
-    VII|7102TPAX04.html|0      LCLLL.  Miércoles de la cuarta semana de Pascua      2
-    VII|7103TPAJ04.html|0      LLLLL.  Jueves de la cuarta semana de Pascua         —
+    VII|7102TPAX04.html|0      LCGLG.  Miércoles de la cuarta semana de Pascua      2
+    VII|7103TPAJ04.html|0      LLGLL.  Jueves de la cuarta semana de Pascua         —
     VII|7104TPAV04.html|0      DCDDL.  Viernes de la cuarta semana de Pascua        3
-    VII|7105TPAS04.html|0      LCLLL.  Sábado de la cuarta semana de Pascua         2
-    VII|7106TPAL05.html|0      LCLLL.  Lunes de la quinta semana de Pascua          3
-    VII|7107TPAM05.html|0      LLLLL.  Martes de la quinta semana de Pascua         —
-    VII|7108TPAX05.html|0      LLLLL.  Miércoles de la quinta semana de Pascua      —
-    VII|7109TPAJ05.html|0      LCLLL.  Jueves de la quinta semana de Pascua         4
-    VII|7110TPAV05.html|0      LCLLL.  Viernes de la quinta semana de Pascua        3
-    VII|7111TPAS05.html|0      LCLLL.  Sábado de la quinta semana de Pascua         2
+    VII|7105TPAS04.html|0      GCGGG.  Sábado de la cuarta semana de Pascua         2
+    VII|7106TPAL05.html|0      LCGLL.  Lunes de la quinta semana de Pascua          3
+    VII|7107TPAM05.html|0      LLGLL.  Martes de la quinta semana de Pascua         —
+    VII|7108TPAX05.html|0      LLGLL.  Miércoles de la quinta semana de Pascua      —
+    VII|7109TPAJ05.html|0      LCGLG.  Jueves de la quinta semana de Pascua         4
+    VII|7110TPAV05.html|0      LCGLG.  Viernes de la quinta semana de Pascua        3
+    VII|7111TPAS05.html|0      LCGLL.  Sábado de la quinta semana de Pascua         2
     VII|7112TPAL06.html|0      DCDDD.  Lunes de la sexta semana de Pascua           2
     VII|7113TPAM06.html|0      DCDDD.  Martes de la sexta semana de Pascua          5
-    VII|7114TPAX06.html|0      LCLLL.  Miércoles de la sexta semana de Pascua       2
-    VII|7115TPAJ06.html|0      LCLLL.  Jueves de la sexta semana de Pascua          2
-    VII|7116TPAV06.html|0      LCLLL.  Viernes de la sexta semana de Pascua         3
+    VII|7114TPAX06.html|0      LCGLG.  Miércoles de la sexta semana de Pascua       2
+    VII|7115TPAJ06.html|0      LCGLL.  Jueves de la sexta semana de Pascua          2
+    VII|7116TPAV06.html|0      LCGLL.  Viernes de la sexta semana de Pascua         3
     VII|7117TPAS06.html|0      CCCCC.  Sábado de la sexta semana de Pascua          6
-    VII|7118TPAL07.html|0      LLLLL.  Lunes de la séptima semana de Pascua         —
-    VII|7119TPAM07.html|0      CCLCL.  Martes de la séptima semana de Pascua        2
+    VII|7118TPAL07.html|0      LLLLG.  Lunes de la séptima semana de Pascua         —
+    VII|7119TPAM07.html|0      CCLCG.  Martes de la séptima semana de Pascua        2
     VII|7120TPAX07.html|0      CCDCC.  Miércoles de la séptima semana de Pascua     3
-    VII|7121TPAJ07.html|0      LLLLL.  Jueves de la séptima semana de Pascua        —
+    VII|7121TPAJ07.html|0      LLGLL.  Jueves de la séptima semana de Pascua        —
     VII|7122TPAV07.html|0      LLLLL.  Viernes de la séptima semana de Pascua       —
     VII|7123TPAS07.html|0      CCCCC.  Sábado de la séptima semana de Pascua        4
 
@@ -1249,8 +1250,8 @@ Las lecturas: por qué ruta se halla la castellana
     3. el día y la ranura: el calendario dice que el misalito
        imprimió esa lectura ahí, y la cita confirma el pasaje.
 
-      por la cita                                4426
-      por los versículos                          578
+      por la cita                                4428
+      por los versículos                          576
       por el día y la ranura                       90
         y la cita lo confirma por versículos       70
         y la cita lo confirma por libro y capítulo     20
@@ -1301,10 +1302,10 @@ Las lecturas: el cotejo de citas
   día y se comparan las citas que uno imprime con las que el otro
   manda:
 
-    la cita no está en ninguna celebración de ese día     11147
-    la cita es la que el leccionario da a esa celebración   8860
-    la cita es la de otra celebración del mismo día —la feria, casi siempre   8158
-    el misalito no imprime lecturas                         597
+    la cita no está en ninguna celebración de ese día     11143
+    la cita es la que el leccionario da a esa celebración   8871
+    la cita es la de otra celebración del mismo día —la feria, casi siempre   8174
+    el misalito no imprime lecturas                         598
 
   lecturas que los formularios mandan   : 6442
   con texto castellano, por las tres rutas: 5094  (79 %)
@@ -1325,13 +1326,13 @@ Las lecturas: el cotejo de citas
     sexta lectura                           5      0
     epistola                                4      0
 
-  Las citas que no están en ninguna celebración de su día son 11147,
+  Las citas que no están en ninguna celebración de su día son 11143,
   y no se reparten al azar:
 
-    salmo           3873
+    salmo           3877
     aclamacion      3218
-    primera         2184
-    evangelio       1311
+    primera         2188
+    evangelio       1299
     segunda          509
     sexta             12
     tercera           11
@@ -1344,7 +1345,7 @@ Las lecturas: el cotejo de citas
   es de formulario sino de versículos: el leccionario mexicano
   elige otros del mismo salmo, y el verso del aleluya lo cambia
   más todavía. Lo que de verdad dice que el editor rezó otra cosa
-  son la primera lectura y el evangelio, y son 3495 de las 11147.
+  son la primera lectura y el evangelio, y son 3487 de las 11143.
 
   Las veinte primeras, para que se vea:
     2016-01-01/0  md_01-01                     aclamacion   Hb 1,1-2R/.Aleluya —
@@ -1376,47 +1377,47 @@ Las celebraciones de una misma unidad que no dicen lo mismo
   tiene, y la otra queda aquí escrita, que es donde se ve si el
   agrupamiento se pasó de listo:
 
-  casos: 242
-    IV|4001ITOL01.html|0       poscomunion  manda d5_0_4         y no d5_0_5
-    IV|4002ITOM01.html|0       poscomunion  manda d5_0_4         y no d5_0_5
-    IV|4003ITOX01.html|0       poscomunion  manda d5_0_4         y no d5_0_5
-    IV|4004ITOJ01.html|0       poscomunion  manda d5_0_4         y no d5_0_5
-    IV|4007ITOL02.html|0       entrada      manda d5_1_0         y no d5_1_3
-    IV|4007ITOL02.html|0       colecta      manda d5_1_0         y no d5_1_2, d5_1_3, d5_1_6
-    IV|4007ITOL02.html|0       ofrendas     manda d5_1_0         y no d5_1_3
-    IV|4007ITOL02.html|0       comunion     manda d5_1_0         y no d5_1_3
-    IV|4007ITOL02.html|0       poscomunion  manda d5_1_0         y no d5_1_2, d5_1_3, d5_1_5, d5_1_6
-    IV|4008ITOM02.html|0       entrada      manda d5_1_0         y no d5_1_3
-    IV|4008ITOM02.html|0       ofrendas     manda d5_1_0         y no d5_1_3
-    IV|4008ITOM02.html|0       comunion     manda d5_1_0         y no d5_1_3
-    IV|4010ITOJ02.html|0       entrada      manda d5_1_0         y no d5_1_3
-    IV|4010ITOJ02.html|0       colecta      manda d5_1_0         y no d5_1_2, d5_1_3, d5_1_6
-    IV|4010ITOJ02.html|0       ofrendas     manda d5_1_0         y no d5_1_3
-    IV|4010ITOJ02.html|0       comunion     manda d5_1_0         y no d5_1_3
-    IV|4010ITOJ02.html|0       poscomunion  manda d5_1_0         y no d5_1_2, d5_1_3, d5_1_5, d5_1_6
-    IV|4011ITOV02.html|0       entrada      manda d5_1_0         y no d5_1_3
-    IV|4011ITOV02.html|0       colecta      manda d5_1_0         y no d5_1_2, d5_1_3, d5_1_6
-    IV|4011ITOV02.html|0       ofrendas     manda d5_1_0         y no d5_1_3
-    IV|4011ITOV02.html|0       comunion     manda d5_1_0         y no d5_1_3
-    IV|4012ITOS02.html|0       entrada      manda d5_1_0         y no d5_1_3
-    IV|4012ITOS02.html|0       ofrendas     manda d5_1_0         y no d5_1_3
-    IV|4012ITOS02.html|0       comunion     manda d5_1_0         y no d5_1_3
-    IV|4013ITOL03.html|0       entrada      manda d5_2_0         y no d5_2_3
-    IV|4013ITOL03.html|0       colecta      manda d5_2_0         y no d5_2_3, d5_2_5, d5_2_6
-    IV|4013ITOL03.html|0       ofrendas     manda d5_2_0         y no d5_2_3, d5_2_5
-    IV|4013ITOL03.html|0       poscomunion  manda d5_2_0         y no d5_2_3, d5_2_5, d5_2_6
-    IV|4014ITOM03.html|0       entrada      manda d5_2_0         y no d5_2_3
-    IV|4014ITOM03.html|0       colecta      manda d5_2_0         y no d5_2_3, d5_2_5, d5_2_6
-    IV|4014ITOM03.html|0       ofrendas     manda d5_2_0         y no d5_2_3, d5_2_5
-    IV|4014ITOM03.html|0       poscomunion  manda d5_2_0         y no d5_2_3, d5_2_5, d5_2_6
-    IV|4016ITOJ03.html|0       entrada      manda d5_2_0         y no d5_2_3
-    IV|4016ITOJ03.html|0       colecta      manda d5_2_0         y no d5_2_3, d5_2_5, d5_2_6
-    IV|4016ITOJ03.html|0       ofrendas     manda d5_2_0         y no d5_2_3, d5_2_5
-    IV|4016ITOJ03.html|0       poscomunion  manda d5_2_0         y no d5_2_3, d5_2_5, d5_2_6
-    IV|4017ITOV03.html|0       entrada      manda d5_2_0         y no d5_2_3
-    IV|4018ITOS03.html|0       entrada      manda d5_2_0         y no d5_2_3
-    IV|4018ITOS03.html|0       ofrendas     manda d5_2_0         y no d5_2_3, d5_2_5
-    IV|4020ITOM04.html|0       poscomunion  manda d5_3_0         y no d5_3_1
+  casos: 52
+    I|1020TFJUSA.html|0        colecta      manda d2_6_4#misa-vespertina-de-la-cena-del-senor y no md_04-02#misa-vespertina-de-la-cena-del-senor
+    I|1020TFJUSA.html|0        poscomunion  manda d2_6_4#misa-vespertina-de-la-cena-del-senor y no md_04-02#misa-vespertina-de-la-cena-del-senor,
+    VI|6001PLIG.html|0         entrada      manda vot_misa-por-la-iglesia-universal-a y no vot_misa-por-la-iglesia-universal-b, vot_misa-
+    VI|6001PLIG.html|0         colecta      manda vot_misa-por-la-iglesia-universal-a y no vot_misa-por-la-iglesia-universal-b, vot_misa-
+    VI|6001PLIG.html|0         ofrendas     manda vot_misa-por-la-iglesia-universal-a y no vot_misa-por-la-iglesia-universal-c, vot_misa-
+    VI|6001PLIG.html|0         comunion     manda vot_misa-por-la-iglesia-universal-c y no vot_misa-por-la-iglesia-universal-d
+    VI|6001PLIG.html|0         poscomunion  manda vot_misa-por-la-iglesia-universal-a y no vot_misa-por-la-iglesia-particular, vot_misa-p
+    VI|6008PLVO.html|0         entrada      manda vot_misa-por-las-vocaciones-a-las-ordenes-sagradas y no vot_misa-por-las-vocaciones-religiosas
+    VI|6008PLVO.html|0         colecta      manda vot_misa-por-las-vocaciones-a-las-ordenes-sagradas y no vot_misa-por-las-vocaciones-religiosas
+    VI|6008PLVO.html|0         ofrendas     manda vot_misa-por-las-vocaciones-a-las-ordenes-sagradas y no vot_misa-por-las-vocaciones-religiosas
+    VI|6008PLVO.html|0         comunion     manda vot_misa-por-las-vocaciones-a-las-ordenes-sagradas y no vot_misa-por-las-vocaciones-religiosas
+    VI|6008PLVO.html|0         poscomunion  manda vot_misa-por-las-vocaciones-a-las-ordenes-sagradas y no vot_misa-por-las-vocaciones-religiosas
+    VI|6011PLEP.html|0         colecta      manda vot_misa-por-la-evangelizacion-de-los-pueblos-a y no vot_misa-por-la-nueva-evangelizacion
+    VI|6018PSDT.html|0         colecta      manda vot_misa-por-la-santificacion-del-trabajo-a y no vot_misa-por-la-santificacion-del-trabajo-huma
+    VI|6018PSDT.html|0         poscomunion  manda vot_misa-por-la-santificacion-del-trabajo-humano-b y no vot_misa-por-la-santificacion-del-trabajo-a
+    VI|6025ETTE.html|0         colecta      manda vot_misa-para-alejar-las-tempestades y no vot_misa-para-pedir-la-lluvia, vot_misa-para-p
+    VI|6025ETTE.html|0         poscomunion  manda vot_misa-para-alejar-las-tempestades y no vot_misa-para-pedir-buen-tiempo, vot_misa-para
+    VI|6026PGGR.html|0         colecta      manda vot_misa-por-la-patria-y-para-dar-gracias-a-dios y no vot_misa-para-dar-gracias-a-dios
+    VI|6027PEPP.html|0         colecta      manda vot_misa-por-la-remision-de-los-pecados-a y no vot_misa-por-la-remision-de-los-pecados
+    VI|6027PEPP.html|0         poscomunion  manda vot_misa-por-la-remision-de-los-pecados y no vot_misa-por-la-remision-de-los-pecados-a
+    VI|6028PPCA.html|0         entrada      manda vot_misa-para-fomentar-la-concordia y no vot_misa-por-los-familiares-y-amigos
+    VI|6028PPCA.html|0         colecta      manda vot_misa-por-los-familiares-y-amigos y no vot_misa-para-fomentar-la-concordia, vot_misa-
+    VI|6028PPCA.html|0         ofrendas     manda vot_misa-para-fomentar-la-concordia y no vot_misa-por-los-familiares-y-amigos
+    VI|6028PPCA.html|0         poscomunion  manda vot_misa-para-fomentar-la-concordia y no vot_misa-para-pedir-caridad, vot_misa-por-los-
+    VI|6029PLFA.html|0         poscomunion  manda vot_misa-por-la-por-la-familia y no vot_misa-por-la-familia
+    VI|6029PLFA.html|1         poscomunion  manda vot_misa-por-la-por-la-familia y no vot_misa-por-la-familia
+    VI|6029PLFA.html|2         poscomunion  manda vot_misa-por-la-por-la-familia y no vot_misa-por-la-familia
+    VI|6040DESA.html|0         entrada      manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|0         colecta      manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|0         ofrendas     manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|0         comunion     manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|0         poscomunion  manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-b
+    VI|6040DESA.html|1         entrada      manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|1         colecta      manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|1         ofrendas     manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|1         comunion     manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|1         poscomunion  manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-b
+    VI|6040DESA.html|2         entrada      manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|2         colecta      manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
+    VI|6040DESA.html|2         ofrendas     manda vot_misa-del-espiritu-santo-a y no vot_misa-del-espiritu-santo-c, vot_misa-del-es
 
 Los días de una celebración que no imprimen lo mismo
 ----------------------------------------------------
@@ -1469,6 +1470,68 @@ Los días de una celebración que no imprimen lo mismo
     IV|4122ITOM21.html|0       ofrendas     d5_20_2        celebración md_08-26, celebración st_0824_120
     IV|4123ITOX21.html|0       ofrendas     d5_20_3        celebración st_0824_120, suelto 254
     IV|4124ITOJ21.html|0       ofrendas     d5_20_4        celebración md_08-26, celebración md_08-31
+
+Las piezas que se cayeron por tener un solo testigo
+---------------------------------------------------
+
+  El Misal da un formulario por semana en el tiempo ordinario, y
+  ese formulario es el del domingo: la feria no tiene oraciones
+  suyas. Lo que el misalito imprime una feria de enero es lo que
+  el editor eligió ese año. Así que si el domingo de la semana
+  trae la ranura, manda el domingo; y si no la trae, hace falta
+  más de un testigo. Casi todas son de enero y febrero de 2021:
+
+  casos: 76
+    IV|4005ITOV01.html|0       d5_0_4       poscomunion  1 testigo, el primero 2021-01-15/0
+    IV|4006ITOS01.html|0       d5_0_5       colecta      1 testigo, el primero 2021-01-16/0
+    IV|4006ITOS01.html|0       d5_0_5       poscomunion  1 testigo, el primero 2021-01-16/0
+    IV|4008ITOM02.html|0       d5_1_2       colecta      1 testigo, el primero 2021-01-19/0
+    IV|4008ITOM02.html|0       d5_1_2       poscomunion  1 testigo, el primero 2021-01-19/0
+    IV|4009ITOX02.html|0       d5_1_3       entrada      1 testigo, el primero 2021-01-20/0
+    IV|4009ITOX02.html|0       d5_1_3       colecta      1 testigo, el primero 2021-01-20/0
+    IV|4009ITOX02.html|0       d5_1_3       ofrendas     1 testigo, el primero 2021-01-20/0
+    IV|4009ITOX02.html|0       d5_1_3       comunion     1 testigo, el primero 2021-01-20/0
+    IV|4009ITOX02.html|0       d5_1_3       poscomunion  1 testigo, el primero 2021-01-20/0
+    IV|4011ITOV02.html|0       d5_1_5       poscomunion  1 testigo, el primero 2021-01-22/0
+    IV|4012ITOS02.html|0       d5_1_6       colecta      1 testigo, el primero 2021-01-23/0
+    IV|4012ITOS02.html|0       d5_1_6       poscomunion  1 testigo, el primero 2021-01-23/0
+    IV|4015ITOX03.html|0       d5_2_3       entrada      1 testigo, el primero 2021-01-27/0
+    IV|4015ITOX03.html|0       d5_2_3       colecta      1 testigo, el primero 2021-01-27/0
+    IV|4015ITOX03.html|0       d5_2_3       ofrendas     1 testigo, el primero 2021-01-27/0
+    IV|4015ITOX03.html|0       d5_2_3       poscomunion  1 testigo, el primero 2021-01-27/0
+    IV|4017ITOV03.html|0       d5_2_5       colecta      1 testigo, el primero 2021-01-29/0
+    IV|4017ITOV03.html|0       d5_2_5       ofrendas     1 testigo, el primero 2021-01-29/0
+    IV|4017ITOV03.html|0       d5_2_5       poscomunion  1 testigo, el primero 2021-01-29/0
+    IV|4018ITOS03.html|0       d5_2_6       colecta      1 testigo, el primero 2021-01-30/0
+    IV|4018ITOS03.html|0       d5_2_6       poscomunion  1 testigo, el primero 2021-01-30/0
+    IV|4019ITOL04.html|0       d5_3_1       poscomunion  1 testigo, el primero 2021-02-01/0
+    IV|4029ITOV05.html|0       d5_4_5       colecta      1 testigo, el primero 2021-02-12/0
+    IV|4029ITOV05.html|0       d5_4_5       comunion     1 testigo, el primero 2021-02-12/0
+    IV|4029ITOV05.html|0       d5_4_5       poscomunion  1 testigo, el primero 2021-02-12/0
+    IV|4030ITOS05.html|0       d5_4_6       entrada      2 testigos, el primero 2020-02-15/0
+    IV|4030ITOS05.html|0       d5_4_6       colecta      2 testigos, el primero 2020-02-15/0
+    IV|4030ITOS05.html|0       d5_4_6       ofrendas     2 testigos, el primero 2020-02-15/0
+    IV|4030ITOS05.html|0       d5_4_6       comunion     2 testigos, el primero 2020-02-15/0
+    IV|4030ITOS05.html|0       d5_4_6       poscomunion  2 testigos, el primero 2020-02-15/0
+    IV|4031ITOL06.html|0       d5_5_1       entrada      1 testigo, el primero 2021-02-15/0
+    IV|4031ITOL06.html|0       d5_5_1       colecta      1 testigo, el primero 2021-02-15/0
+    IV|4031ITOL06.html|0       d5_5_1       ofrendas     1 testigo, el primero 2021-02-15/0
+    IV|4032ITOM06.html|0       d5_5_2       entrada      1 testigo, el primero 2021-02-16/0
+    IV|4032ITOM06.html|0       d5_5_2       poscomunion  1 testigo, el primero 2021-02-16/0
+    IV|4060ITOS10.html|0       d5_9_6       entrada      2 testigos, el primero 2019-06-15/0
+    IV|4060ITOS10.html|0       d5_9_6       ofrendas     2 testigos, el primero 2019-06-15/0
+    IV|4209PTOV01.html|0       d5_0_4       poscomunion  1 testigo, el primero 2021-01-15/0
+    IV|4210PTOS01.html|0       d5_0_5       colecta      1 testigo, el primero 2021-01-16/0
+
+Las ranuras rescatadas por su gemela latina
+-------------------------------------------
+
+  La misma oración latina, traducida en otro formulario. Sólo se
+  toma de las ranuras bien atribuidas (celebración o unidad) y
+  sólo si el castellano es uno: con dos no se elige.
+
+  rescatadas: 104
+  dejadas en latín por tener dos castellanos: 0
 
 Los textos sueltos que siguen sueltos
 -------------------------------------

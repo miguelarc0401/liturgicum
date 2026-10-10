@@ -41,7 +41,10 @@ const E = {              // todo el estado de la app
   misa: null, latino: null, prefacios: null, ordinario: null,
   rubrica: null,         // nº de rúbrica -> la rúbrica del Ordo
   misaVista: null,       // el formulario que se está leyendo, ya armado
-  misaOps: {},           // lo elegido en cada misa (el prefacio)
+  lects: null,           // las lecturas compuestas del día: {pares, ops, …}
+  slugMisa: null,        // la celebración cuyo formulario se está viendo
+  celsMisa: null,        // todas las celebraciones de esa fecha
+  misaOps: {},           // lo elegido en cada misa (el prefacio, las lecturas)
   pliegues: {},          // qué secciones del Ordinario están abiertas
   horas: null, horasDias: null, hora: null,
   oficio: null,          // la hora que se está rezando, con sus opciones
@@ -664,6 +667,238 @@ function pintaChipsCelebraciones(cels, slug) {
     + '</button>').join('');
 }
 
+/* ------------------------------------------- las lecturas que hoy se leen
+ *
+ * **En una memoria no se leen las lecturas del santo: se lee la feria.** Lo
+ * manda el Ordo lectionum Missae (n. 83) y lo repite la Instrucción general
+ * del Misal (n. 357): «In memoriis Sanctorum, nisi habeantur propriae,
+ * leguntur de more lectiones feriae assignatae». Lo que la página del santo
+ * imprime son, en 149 de las 162 memorias, las sugerencias del Común a las
+ * que ella misma remite —«Del Común de pastores»—, y el mismo n. 83 dice
+ * qué son: «Agitur tamen de suggestionibus».
+ *
+ * Cuándo sí manda el santo lo dice la fuente **expresamente**, y el n. 83
+ * promete que lo dirá: «Quoties de huiusmodi lectionibus agitur in memoria,
+ * id in hoc Ordine expresse suo loco indicatur». Son diez celebraciones, y
+ * son **las mismas diez** en el leccionario castellano («el evangelio de
+ * esta memoria es propio») y en el Ordo latino de 1981 («Evangelium huius
+ * memoriae est proprium»). Dos libros que dicen lo mismo es lo que
+ * convierte esto en dato; viene resuelto en el índice (`ld` y `lp`).
+ *
+ * Y una cosa que no está en los libros y sí en las fuentes diarias, medida
+ * sobre los cien misalitos y los once años del sitio: **la pieza que
+ * acompaña se va con la que manda.** El salmo va con la primera lectura y
+ * la aclamación con el Evangelio, porque así los compone el leccionario. El
+ * 29 de julio de 2023, Santa Marta, el misalito imprimió la primera lectura
+ * y el salmo de la feria y la aclamación y el evangelio de la santa.
+ *
+ * Las cifras, de 3 942 días cotejados contra lo que la fuente imprimió:
+ *
+ *   memorias que remiten al Común   feria 306/352 · 297/350 · 283/346 · 326/362
+ *   memorias con lecturas apropiadas feria  70/70 ·  68/70 ·  62/66 ·  58/73
+ *   las diez, en la ranura declarada santo, y la acompañante con ella
+ */
+const ACOMPANA = { l1: 'lect:salmo', ev: 'lect:aleluya' };
+const RANURA_CLASE = { l1: 'lect:lectura', l2: 'lect:lectura',
+  ev: 'lect:evangelio' };
+
+/** El bloque que el calendario eligió para una celebración de la fecha. */
+function bloqueDe(cel) {
+  const d = cel && cel.dia;
+  if (!d || !d.b || !d.b.length) return null;
+  const i = (cel.bloque >= 0 && cel.bloque < d.b.length) ? cel.bloque : 0;
+  return d.b[i];
+}
+
+/** Los pares [clave, índice] de un bloque entero, en su orden. */
+function paresDe(k) {
+  return ((E.lecturas.bloques || {})[k] || []).map((_, i) => [k, i]);
+}
+
+/** Las lecturas de un par, en la fuente que esté puesta. */
+function lecturaDePar(p) {
+  return ((E.lecturas.bloques || {})[p[0]] || [])[p[1]] || null;
+}
+
+/** Compone las lecturas del día: cuáles se leen y qué se puede elegir.
+ *
+ *  Devuelve `{pares, ops, i, nota}`. `ops` son las opciones que de verdad
+ *  hay —y sólo las hay cuando la celebración tiene algo suyo, que es lo que
+ *  pedía el encargo: no ofrecer «otra lectura» donde el libro no la da—.
+ */
+function composicionLecturas(slug, cels, clave) {
+  const cel = (cels || []).find((o) => o.slug === slug);
+  const d = E.diaDe.get(slug);
+  const propias = paresDe(clave);
+  if (!cel || !d) return { pares: propias, ops: null, i: 0, nota: '' };
+  const esMemoria = /^memoria/i.test((cel.m && cel.m.g) || d.g || '');
+  const feria = (cels || []).find((o) => o.m && o.m.f && o.slug !== slug);
+  const kFeria = feria && (bloqueDe(feria) || {}).k;
+  // `ld` sólo lo lleva el santoral, y sin él no se sabe de dónde son las
+  // lecturas de esa celebración: entonces no se toca nada. Es lo que deja
+  // fuera a la misa de **Santa María en sábado**, que no es una entrada del
+  // santoral sino el Común de la Virgen abierto a propósito, y cuyas
+  // lecturas son las de ese Común —así lo dice su propia rúbrica—.
+  if (!esMemoria || !d.ld || !kFeria
+      || !(E.lecturas.bloques || {})[kFeria]) {
+    return { pares: propias, ops: null, i: 0, nota: '' };
+  }
+
+  // la feria, que es lo que se lee, con lo que el libro declara propio
+  // puesto en su sitio
+  const deFeria = paresDe(kFeria);
+  const lp = d.lp || [];
+  let pares = deFeria;
+  if (lp.indexOf('*') >= 0) {
+    pares = propias;
+  } else if (lp.length) {
+    const quita = new Set();
+    for (const r of lp) {
+      if (RANURA_CLASE[r]) quita.add(RANURA_CLASE[r]);
+      if (ACOMPANA[r]) quita.add(ACOMPANA[r]);
+    }
+    const mete = propias.filter((p) => {
+      const l = lecturaDePar(p);
+      return l && quita.has(claseLectura(l));
+    });
+    // Si la celebración no trae nada de esa clase, no se quita nada: antes
+    // que dejar al día sin Evangelio, se deja el de la feria.
+    if (!mete.length) {
+      pares = deFeria;
+    } else {
+      // en el sitio de la primera que sustituye, y en el orden del libro
+      pares = [];
+      let puesto = false;
+      for (const p of deFeria) {
+        const l = lecturaDePar(p);
+        if (l && quita.has(claseLectura(l))) {
+          if (!puesto) { pares = pares.concat(mete); puesto = true; }
+          continue;
+        }
+        pares.push(p);
+      }
+      if (!puesto) pares = pares.concat(mete);
+    }
+  }
+
+  // el rótulo del botón no lleva el nombre de la celebración: cortado por
+  // la primera coma deja «De Santos Cirilo» y «De Dedicación de las
+  // basílicas de Sa…». El nombre entero va en el título, que es donde cabe.
+  const ops = [];
+  ops.push({ id: 'dia', rot: 'De la feria', tit: feria.m.t });
+  if (d.ld === 'propias' || d.ld === 'apropiadas') {
+    ops.push({ id: 'santo', rot: 'De la memoria', tit: d.t });
+  }
+  let nota = '';
+  if (lp.indexOf('*') >= 0) {
+    nota = 'Las lecturas de esta memoria son propias: se leen en lugar de '
+      + 'las de la feria.';
+  } else if (lp.length) {
+    const q = lp.indexOf('l1') >= 0 ? 'la primera lectura, y con ella el '
+      + 'salmo,' : 'el Evangelio, y con él la aclamación,';
+    nota = 'En esta memoria ' + q + ' es propio: se lee en lugar del de la '
+      + 'feria. Lo demás es de la feria.';
+  } else if (d.ld === 'apropiadas') {
+    nota = 'Las lecturas del día son las de la feria. Esta memoria tiene '
+      + 'además lecturas apropiadas, que pueden tomarse si una razón '
+      + 'pastoral lo aconseja (OLM 83).';
+  } else {
+    nota = 'Las lecturas del día son las de la feria: esta memoria no '
+      + 'tiene lecturas propias, y las que su formulario ofrece son las '
+      + 'del ' + (d.b[1] ? (d.b[1].e || '').toLowerCase() : 'Común')
+      + ', a las que el leccionario remite (IGMR 357).';
+  }
+
+  let i = 0;
+  if (ops.length > 1) {
+    const q = (E.misaOps[clave] || {}).lecturas;
+    i = Math.max(0, ops.findIndex((o) => o.id === q));
+    if (i > 0) pares = propias;
+  }
+  return { pares: pares, ops: ops.length > 1 ? ops : null, i: i, nota: nota };
+}
+
+/* ------------------------------------------- las oraciones que hoy se dicen
+ *
+ * Dos reglas de la Instrucción general del Misal, las dos sobre lo mismo:
+ * qué se puede tomar de otro sitio y qué no.
+ *
+ * **n. 363**, en las memorias: «dicitur collecta propria vel, si deest, de
+ * Communi congruenti; orationes vero super oblata et post Communionem, nisi
+ * sint propriae, sumi possunt aut e Communi aut e feriis temporis
+ * currentis». La colecta es siempre del santo —y así sale ya, en 152 de las
+ * 163 memorias es la suya—; las otras dos, cuando **no** son propias, se
+ * pueden tomar de la feria. Son 23 ofrendas y 13 poscomuniones.
+ *
+ * **n. 355 a)**, en las ferias privilegiadas: en el Adviento del 17 al 24,
+ * en la octava de Navidad y en las ferias de Cuaresma, «dicitur Missa de
+ * die liturgico occurrente; de memoria autem in calendario generali eo die
+ * forte inscripta sumi potest collecta». La misa es del día y del santo
+ * sólo se puede tomar **la colecta**. Son 522 días del calendario, y hasta
+ * ahora la app no decía ni que el santo estuviera ahí.
+ *
+ * El rango 9 de la Tabla de los días litúrgicos es exactamente ese
+ * conjunto: el Miércoles de Ceniza y las ferias de la Semana Santa, que el
+ * n. 355 exceptúa, son de rango 2 y no entran.
+ */
+function composicionOraciones(slug, cels, clave) {
+  const vacio = { ops: null, nota: '', claveOtra: null };
+  const cel = (cels || []).find((o) => o.slug === slug);
+  const d = E.diaDe.get(slug);
+  if (!cel || !d || !E.misa) return vacio;
+  const f = E.misa.formularios[clave];
+  const m = cel.m || {};
+
+  // la conmemoración: la misa es de la feria y del santo sólo la colecta
+  if (m.k === 't' && m.r === 9) {
+    const san = (cels || []).find((o) => o.m && o.m.k === 's' && !o.m.z);
+    const k = san && (bloqueDe(san) || {}).k;
+    if (!san || !k || !E.misa.formularios[k]) return vacio;
+    return { claveOtra: k, otra: san, porOmision: { colecta: 'dia' },
+      ops: { colecta: [{ id: 'dia', rot: 'De la feria', tit: d.t },
+        { id: 'otra', rot: 'De la memoria', tit: san.m.t }] },
+      nota: 'Hoy la misa es del día. De ' + corto(san.m.t) + ' ('
+        + (san.m.g || 'memoria').toLowerCase() + ') puede tomarse la '
+        + 'colecta, y sólo ella (IGMR 355 a).' };
+  }
+
+  // la memoria: lo que no es propio puede venir de la feria
+  if (!f || !/^memoria/i.test(m.g || d.g || '')) return vacio;
+  const feria = (cels || []).find((o) => o.m && o.m.f && o.slug !== slug);
+  const k = feria && (bloqueDe(feria) || {}).k;
+  if (!k || !E.misa.formularios[k]) return vacio;
+  const ops = {};
+  const porOmision = {};
+  for (const ran of ['ofrendas', 'poscomunion']) {
+    const p = (f.p || {})[ran];
+    const q = (E.misa.formularios[k].p || {})[ran];
+    if (!q || (p && p.via === 'celebración')) continue;
+    ops[ran] = [{ id: 'dia', rot: p ? 'Del común' : 'No la trae',
+      tit: 'Como la trae el formulario de la memoria' },
+    { id: 'otra', rot: 'De la feria', tit: feria.m.t }];
+    // si la memoria no trae nada en esa ranura, lo que se dice es la feria:
+    // dejar la ranura en blanco sería enseñar un hueco donde hay texto
+    porOmision[ran] = p ? 'dia' : 'otra';
+  }
+  if (!Object.keys(ops).length) return vacio;
+  return { claveOtra: k, otra: feria, ops: ops, porOmision: porOmision,
+    nota: 'La oración sobre las ofrendas y la de después de la comunión, '
+      + 'cuando no son propias de la memoria, pueden tomarse del común o de '
+      + 'la feria (IGMR 363).' };
+}
+
+/** El formulario del que sale una ranura, con la opción elegida. */
+function formularioDe(ranura, f, lat, clave) {
+  const O = E.oraciones;
+  if (!O || !O.ops || !O.ops[ranura]) return { f: f, lat: lat };
+  const q = (E.misaOps[clave] || {})['or_' + ranura]
+    || (O.porOmision || {})[ranura] || 'dia';
+  if (q !== 'otra') return { f: f, lat: lat };
+  const g = E.misa.formularios[O.claveOtra];
+  return { f: g || f, lat: (g && g.la) ? (E.latino.formularios[g.la] || null)
+    : null };
+}
+
 function pintaChipsFormularios(d, bloque) {
   const c = $('#formularios');
   c.className = 'chips finos';
@@ -700,11 +935,15 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   // que mirar. La usan los propios de la plegaria para saber si es domingo.
   E.isoMisa = iso || null;
   E.celMisa = null;
+  // se borra aquí y no al componerla: si el formulario no llega a pintarse,
+  // lo que quede de la misa anterior pintaría sus lecturas en ésta
+  E.lects = null;
+  E.slugMisa = null;
+  E.celsMisa = null;
   const d = E.diaDe.get(slug);
   if (!d) { vista.innerHTML = '<p class="aviso">No encuentro ese día.</p>'; return; }
   if (bloque >= d.b.length || bloque < 0) bloque = 0;
   const b = d.b[bloque];
-  const lects = b && E.lecturas.bloques[b.k];
   const cel = (cels || []).find((o) => o.slug === slug);
   // y la celebración misma, con su rango de la Tabla de los días
   // litúrgicos: el Gloria y el Credo lo necesitan (`feriaSinGloriaNiCredo`)
@@ -726,15 +965,29 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
     partes.push(d.b[0].e);
   }
   $('#subtitulo-dia').textContent = partes.join(' · ');
+  // el tamaño de la letra, también en la misa: el formulario se lee igual
+  // que la hora, y la cabecera es la que se queda arriba al bajar
+  $('#cab-zoom').innerHTML = controlZoom();
   pintaChipsCelebraciones(cels || [], slug);
   pintaChipsFormularios(d, bloque);
   pintaNota(cel, val);
-  if (!lects) {
+  // Qué lecturas se leen hoy, que en una memoria no son las del santo.
+  //
+  // Se compone **antes** de rendirse: el 31 de enero la fuente castellana
+  // no imprime las lecturas propias de san Juan Bosco —ni las de él ni las
+  // de otros ocho santos, porque ese día reza por la feria—, y la app decía
+  // «este formulario no está en castellano» teniendo delante las de la
+  // feria, que son justo las que hoy se leen.
+  E.slugMisa = slug;
+  E.celsMisa = cels || [];
+  E.lects = composicionLecturas(slug, E.celsMisa, b.k);
+  const hoy = E.lects.pares.map(lecturaDePar).filter(Boolean);
+  if (!hoy.length) {
     vista.innerHTML = '<p class="aviso">Este formulario no está en '
       + esc(nombreFuente()) + '.</p>';
     return;
   }
-  pintaCuerpoMisa(b.k, lects);
+  pintaCuerpoMisa(b.k, hoy);
   if (iso) { E.ultimaMisa = location.hash; cabeceraFija(true); }
   colocaPosicion();
 }
@@ -1152,7 +1405,10 @@ const POR_DONDE = {
   'común': ['del común', 'Del común que el santoral ofrece a esta '
     + 'celebración'],
   'suelto': ['del común', 'De un texto de los comunes que cae entero en '
-    + 'este formulario del Misal']
+    + 'este formulario del Misal'],
+  'gemela': ['otra misa', 'El misalito no imprimió esta oración aquí, pero '
+    + 'el Misal latino da en esta misa la misma oración que en otra que sí '
+    + 'está en castellano, y es la que se enseña']
 };
 
 /** Una pieza propia del formulario: la antífona de entrada, la colecta, la
@@ -1496,7 +1752,9 @@ function ordoDeLectura(l, i) {
 }
 
 const ROTULO_SEC = {
-  resena: 'Reseña', entrada: 'Antífona de entrada',
+  resena: 'Reseña', laslecturas: 'Las lecturas',
+  lasoraciones: 'Las oraciones',
+  entrada: 'Antífona de entrada',
   inicio: 'Ritos iniciales', penitencial: 'Acto penitencial',
   gloria: 'Gloria', colecta: 'Oración colecta',
   tras_evangelio: 'Después del Evangelio', credo: 'Profesión de fe',
@@ -1565,9 +1823,10 @@ const MISA_BREVE = ['entrada', 'gloria', 'colecta', 'lect:lectura',
   'comunion', 'poscomunion'];
 
 /* Lo que no se quita nunca, porque no es una pieza de la misa: el selector
- * de cuál de las misas del día se lee, y el aviso del Viernes Santo de que
- * hoy no hay misa. */
-const MISA_SIEMPRE = ['lamisa', 'sinmisa'];
+ * de cuál de las misas del día se lee, el de dónde son las lecturas de hoy
+ * —que en una memoria son las de la feria, y conviene decirlo esté puesto
+ * el modo que esté— y el aviso del Viernes Santo de que hoy no hay misa. */
+const MISA_SIEMPRE = ['lamisa', 'laslecturas', 'lasoraciones', 'sinmisa'];
 
 /** La clase con la que se elige una lectura. El Evangelio va aparte: es lo
  *  que se busca cuando se busca una sola. */
@@ -1674,6 +1933,37 @@ function armaMisa(clave, lects) {
   const sinMisa = SIN_MISA[f.u];
   _sinOrdo = !!sinMisa;
   _fMisa = f;
+  // qué oraciones se pueden tomar de otro sitio. Se calcula aquí y no al
+  // pintar el formulario porque necesita `misa.json`, que llega aparte.
+  E.oraciones = (E.slugMisa && !iMisa)
+    ? composicionOraciones(E.slugMisa, E.celsMisa || [], clave)
+    : { ops: null, nota: '', claveOtra: null };
+  const ORA = E.oraciones;
+  /** Una pieza propia, con la opción elegida y su selector. */
+  /* Una pieza propia, con la opción elegida.
+   *
+   * Cuando no está en ninguna de las dos lenguas, `pintaPieza` devuelve
+   * vacío y la sección salía con su rótulo y la rúbrica del Ordo debajo,
+   * sin una palabra: parecía rota. Se dice lo que pasa, que es lo que se
+   * hace en todo lo demás. Son 74 ranuras de formularios que el calendario
+   * alcanza —las ferias del 2 al 7 de enero, sobre todo, que la fase 1 dejó
+   * sin latín—, y la oración sobre el pueblo, que no entra aquí porque sólo
+   * la tiene la Cuaresma y su sección no se pinta si no hay nada. */
+  const pieza = (ran) => {
+    const o = formularioDe(ran, f, lat, clave);
+    const h = pintaPieza(o.f, o.lat, ran);
+    if (h || ran === 'pueblo') return h;
+    return '<p class="omision">El Misal no trae esta oración en este '
+      + 'formulario, ni en castellano ni en latín.</p>';
+  };
+  const eligeOra = (ran) => {
+    if (!ORA.ops || !ORA.ops[ran]) return {};
+    const alts = ORA.ops[ran];
+    const q = (E.misaOps[clave] || {})['or_' + ran]
+      || (ORA.porOmision || {})[ran] || 'dia';
+    return { elige: 'or_' + ran, alts: alts,
+      i: Math.max(0, alts.findIndex((x) => x.id === q)) };
+  };
   const hayOrdo = hayOrdinario();
   const S = [];
   // la pieza que el modo no quiere no se arma: aquí se decide si entra, y
@@ -1703,8 +1993,24 @@ function armaMisa(clave, lects) {
     sec('sinmisa', '<p class="ordo-p ordo-rub"><span class="ln">'
       + esc(sinMisa) + '</span></p>', { rot: 'La celebración de hoy' });
   }
+  // de dónde son las lecturas de hoy, y lo que se puede elegir. Sale sólo
+  // cuando hay algo que decir: en un domingo o una fiesta las lecturas son
+  // las del formulario y no hay nada que advertir.
+  const L = E.lects || {};
+  if (L.nota && (lects || []).length) {
+    sec('laslecturas', '<p class="ordo-p ordo-rub"><span class="ln">'
+      + esc(L.nota) + '</span></p>',
+    Object.assign({ rot: 'Las lecturas' },
+      L.ops ? { elige: 'lecturas', i: L.i, alts: L.ops } : {}));
+  }
   if (f.r) sec('resena', '<p class="texto">' + esc(f.r) + '</p>');
-  sec('entrada', pintaPieza(f, lat, 'entrada'));
+  // lo que las rúbricas dejan tomar de otro formulario: la colecta del
+  // santo en una feria privilegiada, y en una memoria lo que no es propio
+  if (ORA.nota) {
+    sec('lasoraciones', '<p class="ordo-p ordo-rub"><span class="ln">'
+      + esc(ORA.nota) + '</span></p>', { rot: 'Las oraciones' });
+  }
+  sec('entrada', pieza('entrada'));
   ordoSec('inicio', ordo(['1', '2', '3']), alterna('saludo', '2'));
   if (hayOrdo) {
     const iF = elegido('penit_form', PENITENCIAL.length);
@@ -1716,8 +2022,8 @@ function armaMisa(clave, lects) {
     Object.assign({ ordo: true }, alterna('penit_inv', '4')));
   }
   if (f.gl && !feriaSinGloriaNiCredo()) ordoSec('gloria', ordo(['8']));
-  sec('colecta', ordoPlegado(['9'], 'r-colecta')
-    + pintaPieza(f, lat, 'colecta'));
+  sec('colecta', ordoPlegado(['9'], 'r-colecta') + pieza('colecta'),
+    eligeOra('colecta'));
 
   (lects || []).forEach((l, i) => {
     if (!quierePieza(claseLectura(l))) return;
@@ -1737,8 +2043,8 @@ function armaMisa(clave, lects) {
   ordoSec('fieles', ordo(['20']));
   ordoSec('ofertorio', ordo(['21', '22', '23', '24', '25', '26', '27', '28',
     '29']), alterna('oren', '29'));
-  sec('ofrendas', pintaPieza(f, lat, 'ofrendas')
-    + ordoPlegado(['30'], 'r-ofrendas'));
+  sec('ofrendas', pieza('ofrendas')
+    + ordoPlegado(['30'], 'r-ofrendas'), eligeOra('ofrendas'));
 
   // el prefacio es del día, así que se da aunque el Ordinario esté apagado;
   // el día que no hay misa no tiene prefacio ni plegaria
@@ -1774,11 +2080,11 @@ function armaMisa(clave, lects) {
   ordoSec('comunion_rito', ordo(['124', '125', '126', '127', '128', '129',
     '130', '131', '132', '133', '134', '135', '136']),
   alterna('padrenuestro', '124'));
-  sec('comunion', pintaPieza(f, lat, 'comunion'));
+  sec('comunion', pieza('comunion'));
   sec('poscomunion', ordoPlegado(['137', '138', '139'], 'r-poscomunion')
-    + pintaPieza(f, lat, 'poscomunion')
-    + ordoPlegado(['139b'], 'r-poscomunion2'));
-  sec('pueblo', pintaPieza(f, lat, 'pueblo'));
+    + pieza('poscomunion')
+    + ordoPlegado(['139b'], 'r-poscomunion2'), eligeOra('poscomunion'));
+  sec('pueblo', pieza('pueblo'));
   const idBen = (E.cfg.ordoOps || {}).bendicion || '';
   ordoSec('conclusion', ordo(['140', '141', '142', '143'])
     + pintaBendicion(idBen) + ordoUna('144') + ordo(['145', '146']),
@@ -1787,10 +2093,19 @@ function armaMisa(clave, lects) {
   return { clave: clave, f: f, lat: lat, secciones: S };
 }
 
-/** La lectura castellana que hace pareja con la latina, en el bilingüe. */
+/** La lectura castellana que hace pareja con la latina, en el bilingüe.
+ *
+ *  Los dos leccionarios dan los mismos bloques en el mismo orden, así que
+ *  la pareja es la que ocupa su mismo sitio. Lo que ya no vale es contar
+ *  desde el principio del formulario: en una memoria las lecturas vienen de
+ *  dos bloques distintos —el de la feria y el del santo—, y la pareja hay
+ *  que buscarla en el bloque de donde salió cada una. Eso es `E.lects.pares`. */
 function parejaEs(clave, i) {
   if (E.cfg.fuente !== 'bi' || !E.lecturasEs) return null;
-  return (E.lecturasEs.bloques[clave] || [])[i] || null;
+  const p = (E.lects && E.lects.pares) ? E.lects.pares[i] : null;
+  const k = p ? p[0] : clave;
+  const j = p ? p[1] : i;
+  return (E.lecturasEs.bloques[k] || [])[j] || null;
 }
 
 /** Un selector de los pequeños, dentro del cuerpo de una sección. */
@@ -1816,7 +2131,8 @@ function pintaMisaSec(s) {
   const h = [];
   const sel = s.elige
     ? '<div class="alterna" data-elige="' + esc(s.elige) + '" role="group" '
-      + 'aria-label="' + esc((ELIGE[s.elige] || {}).rot || 'Elegir') + '">'
+      + 'aria-label="' + esc((ELIGE[s.elige] || {}).rot || s.rot || 'Elegir')
+      + '">'
       + s.alts.map((a, j) => '<button type="button" aria-pressed="'
         + (j === s.i) + '" data-op="' + esc(a.id) + '"'
         + (a.tit ? ' title="' + esc(a.tit) + '" aria-label="'
@@ -1872,12 +2188,20 @@ function pintaMisaEntera(clave, lects) {
   return o.secciones.map(pintaMisaSec).join('');
 }
 
+/** Las lecturas que hoy se leen de una clave, ya compuestas: en una memoria
+ *  no son las del bloque del santo sino las de la feria. */
+function lecturasPuestas(clave) {
+  if (E.lects && E.lects.pares) {
+    return E.lects.pares.map(lecturaDePar).filter(Boolean);
+  }
+  return (E.lecturas.bloques || {})[clave] || [];
+}
+
 /** Repintar una sección sola: cambiar el saludo no ha de mover el resto. */
 function repintaMisaSec(cl) {
   const v = E.misaVista;
   if (!v) return;
-  const lects = (E.lecturas.bloques || {})[v.clave] || [];
-  const nuevo = armaMisa(v.clave, lects);
+  const nuevo = armaMisa(v.clave, lecturasPuestas(v.clave));
   if (!nuevo) return;
   E.misaVista = nuevo;
   const s = nuevo.secciones.find((x) => x.cl === cl);
@@ -1923,13 +2247,30 @@ function alTocarMisa(ev) {
   if (!id || !sec) return;
   // la otra misa del día cambia todos los propios, no una sección: se
   // repinta el formulario entero y se vuelve donde se estaba
-  if (id === 'misa_variante') {
+  if (id === 'misa_variante' || id === 'lecturas') {
     const c = E.misaVista.clave;
-    E.misaOps[c] = Object.assign({}, E.misaOps[c], { misa: b.dataset.op });
+    E.misaOps[c] = Object.assign({}, E.misaOps[c],
+      id === 'lecturas' ? { lecturas: b.dataset.op }
+        : { misa: b.dataset.op });
     guardaMisaOps();
     const y = window.scrollY;
-    pintaCuerpoMisa(c, (E.lecturas.bloques || {})[c] || []);
+    // de dónde son las lecturas cambia las lecturas y nada más, pero son
+    // varias secciones: se repinta el formulario entero
+    if (id === 'lecturas' && E.celsMisa) {
+      E.lects = composicionLecturas(E.slugMisa, E.celsMisa, c);
+    }
+    pintaCuerpoMisa(c, lecturasPuestas(c));
     window.scrollTo(0, y);
+    return;
+  }
+  // de dónde sale una oración es del día, no de quien celebra: va con la
+  // sesión, como el prefacio, y no con los ajustes
+  if (id.indexOf('or_') === 0) {
+    const c = E.misaVista.clave;
+    const x = {}; x[id] = b.dataset.op;
+    E.misaOps[c] = Object.assign({}, E.misaOps[c], x);
+    guardaMisaOps();
+    repintaMisaSec(sec.dataset.cl);
     return;
   }
   guardaElegido(id, +b.dataset.op);

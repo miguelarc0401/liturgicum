@@ -950,7 +950,7 @@ h2.seccion {
 }
 .fila-sub #subtitulo-dia { flex: 1 1 auto; min-width: 0; }
 .fila-sub #cab-zoom { flex: 0 0 auto; }
-#cab-zoom:empty { display: none; }
+#cab-zoom:empty, #cab-extra:empty { display: none; }
 .zoom {
   flex: none; display: flex; align-items: center; justify-content: flex-end;
   gap: .1rem; margin: -.32rem -.45rem -.32rem 0;
@@ -1374,6 +1374,103 @@ body.con-carril #vista { padding-right: 2.1rem; }
   .chips { margin-top: .35rem; }
   #vista { padding-bottom: calc(4.4rem + env(safe-area-inset-bottom)); }
   .ir-hoy { bottom: calc(3.3rem + env(safe-area-inset-bottom)); }
+
+  /* ------------------------------------------- la cabecera, en un renglon
+     Tumbado sobran dos palmos de ancho y falta medio de alto, asi que lo
+     que en vertical son tres filas -la fecha, la hora, lo que se celebra-
+     aqui es una sola: el nombre de la hora, a continuacion en que dia cae,
+     las dos aes del tamano, y al final la fecha con sus flechas. Las dos
+     filas de texto se deshacen con `display: contents` y la rejilla las
+     recoge, de modo que el marcado sigue siendo el mismo en las dos
+     orientaciones y no hay dos cabeceras que mantener.
+
+     Rejilla y no caja flexible: una caja flexible, cuando no cabe todo,
+     primero parte el renglon y solo despues encoge lo que lleva dentro,
+     que es justo lo contrario de lo que aqui se quiere. La rejilla coloca
+     por celdas -nombre, dia, aes, fecha- y no parte nunca; lo que no cabe
+     se abrevia.
+
+     Solo en las vistas que se leen -`cab-fija` son la hora y la misa-: en
+     el calendario y en los paneles la cabecera es otra cosa. */
+  body.cab-fija #cabecera {
+    display: grid; align-items: baseline;
+    grid-template-columns: minmax(0, auto) minmax(4.5rem, 1fr) auto auto;
+    column-gap: .3rem;
+    padding-top: calc(env(safe-area-inset-top) + .15rem - .05rem * var(--pliegue, 0));
+    padding-bottom: calc(.3rem - .12rem * var(--pliegue, 0));
+  }
+  body.cab-fija .fila-titulo,
+  body.cab-fija .fila-sub { display: contents; }
+
+  /* La fecha no se deshace: las dos flechas y el rotulo son una sola cosa
+     -lo que sirve para cambiar de dia- y van juntas al final del renglon.
+     El dia tiene cuatro picas y media garantizadas; pasadas esas, lo que
+     se abrevia es el nombre de la celebracion, que es largo. */
+  body.cab-fija #titulo-dia {
+    grid-area: 1 / 1; overflow: hidden; text-overflow: ellipsis;
+  }
+  body.cab-fija #subtitulo-dia { grid-area: 1 / 2; }
+  body.cab-fija #cab-zoom { grid-area: 1 / 3; align-self: center; }
+  body.cab-fija .fila-fecha {
+    grid-area: 1 / 4; align-self: center; margin-left: .15rem;
+  }
+  /* El rotulo abreviado mide dos renglones de nada, y debajo esta el
+     <input type="date"> que abre el calendario: se le da el alto de
+     las flechas para que el dedo lo encuentre. */
+  body.cab-fija .envoltorio-fecha {
+    flex: 0 0 auto; display: flex; align-items: center;
+    min-height: calc(2.05rem - .45rem * var(--pliegue, 0));
+  }
+  /* lo que se celebra, los formularios y la nota se llevan el renglon
+     siguiente entero -sangrando los 16 px de cada lado, que es lo que deja
+     la tira deslizarse de borde a borde- y siguen plegandose al bajar. */
+  body.cab-fija #celebraciones,
+  body.cab-fija #formularios,
+  body.cab-fija #nota-dia { grid-column: 1 / -1; }
+
+  /* el nombre de la hora y el dia comparten renglon: ni uno se parte ni el
+     otro lo empuja fuera -se abrevia con puntos suspensivos- y entre los
+     dos va el mismo punto volado con que se separa lo demas */
+  body.cab-fija #cabecera h1 {
+    margin: 0; font-size: calc(1.06rem - .16rem * var(--pliegue, 0));
+    white-space: nowrap; text-wrap: nowrap;
+  }
+  body.cab-fija #subtitulo-dia {
+    margin: 0; font-size: calc(.74rem - .04rem * var(--pliegue, 0));
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  body.cab-fija #subtitulo-dia::before {
+    content: "\0000b7"; margin-right: .28rem;
+  }
+
+  /* La fecha no se va: se abrevia. Lleva su forma corta a cuestas desde que
+     se pinta -«sab, 10 oct»-, y es la que cabe al final del renglon; el
+     rotulo largo sigue ahi para quien lo lea con el oido. Las flechas van
+     con ella, que es a lo que sirven. */
+  body.cab-fija #rotulo-fecha {
+    padding: 0; font-size: 0; letter-spacing: 0; text-align: right;
+  }
+  body.cab-fija #rotulo-fecha::after {
+    content: attr(data-corta);
+    font-size: calc(.7rem - .04rem * var(--pliegue, 0)); letter-spacing: .05em;
+  }
+  body.cab-fija .fila-fecha .icono {
+    height: calc(2.05rem - .45rem * var(--pliegue, 0));
+    width: calc(2rem - .3rem * var(--pliegue, 0));
+    align-self: center;
+  }
+  body.cab-fija .fila-fecha .icono svg {
+    width: calc(1.15rem - .22rem * var(--pliegue, 0));
+    height: calc(1.15rem - .22rem * var(--pliegue, 0));
+  }
+  body.cab-fija .zoom { margin: 0 -.3rem 0 0; }
+  body.cab-fija .zoom button {
+    height: calc(1.65rem - .3rem * var(--pliegue, 0));
+    width: calc(1.55rem - .2rem * var(--pliegue, 0));
+  }
+  body.cab-fija .chips { margin-top: calc(.3rem * (1 - var(--pliegue, 0))); }
+  body.cab-fija .chips.finos { margin-top: calc(.25rem * (1 - var(--pliegue, 0))); }
+  body.cab-fija #nota-dia { margin-top: calc(.3rem * (1 - var(--pliegue, 0))); }
 }
 
 /* ----------------------------------------------------- la misa entera

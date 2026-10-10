@@ -1,0 +1,18 @@
+Para la sección de la Misa vamos a reorganizarnos de nuevo, porque creo que no está muy bien la lógica, ya que faltan algunos textos que realmente sí están en las fuentes que tenemos.
+
+Tenemos lo siguiente para las rúbricas: 
+	-Calendario de celebraciones
+	-Tabla de celebraciones
+	-Tabla días litúrgicos
+	-Ordinario de la Misa México
+	-Latin missal2002
+
+Primero quiero que leas todas las rúbricas(reglas) que allí vienen para que tengas claro las lecturas y las oraciones que se mostrarán en qué momento, según sea el caso, conforme al día.
+
+Luego, las lecturas en latín, ya tenemos listo ese punto.
+Mas bien, respecto a las lecturas en español castellano, quiero que tomes como fuente principal los datos de https://misalcatolico.com/misal-catolico-anual que según creo ya habíamos descargado todos los días disponibles desde 2026 hasta 2016, cierto? De ahí es que vas a tomar los textos en español, principalmente.
+	-Solo de manera secundaria y para corroborar tomas de los misalitos en pdf que teníamos.
+
+Puedes comparar las oraciones en latín y español para "armar" el misal en español con los elementos que tenemos, de acuerdo a su categoría.
+
+Luego, quiero que ahora sí muestres cada día las lecturas y oraciones correspondientes, incluyendo las opciones para cuando son un santo (oraciones propias, o del común, según sea el caso, y según las rúbricas. porque por ejemplo, en las memorias, no se ponen las lecturas del común, sino del día. Solo deberían aparecer las opciones de otra lectura cuando realmente tiene lectura propia esa festividad)

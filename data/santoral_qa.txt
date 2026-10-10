@@ -4,12 +4,12 @@ celebraciones del calendario : 196 (195 en fecha fija, 1 moviles)
    por grado                 : Solemnidad 7, Conmemoración 1, Fiesta 25, Memoria 68, Memoria libre 95
    leidas del PDF            : 153; reconstruidas del calco del reverso (agosto y septiembre, que faltan en el escaneo): 43
 formularios del leccionario V: 229 (217 con fecha, 7 comunes)
-emparejadas con su propio    : 194 de 195
+emparejadas con su propio    : 195 de 196
    con un dia de diferencia entre el calendario y el leccionario: 2
       San Isidoro, obispo y doctor de la Iglesia: calendario 4/4, leccionario 26 de abril
       San Pedro Claver, presbítero: calendario 9/9, leccionario 8 de septiembre
 
-grados: el calendario y el leccionario V discrepan en 15 de 194 celebraciones emparejadas
+grados: el calendario y el leccionario V discrepan en 16 de 195 celebraciones emparejadas
    (manda el calendario que aportaste; el leccionario V de Koinonia es el de Espana y sube o baja algunos grados)
       Santa Inés, virgen y mártir                                calendario: Memoria        leccionario: Memoria libre
       San Vicente, diácono y mártir                              calendario: Memoria libre  leccionario: Memoria
@@ -18,6 +18,7 @@ grados: el calendario y el leccionario V discrepan en 15 de 194 celebraciones em
       San Isidoro, obispo y doctor de la Iglesia                 calendario: Memoria libre  leccionario: Fiesta
       Santa Catalina de Siena, virgen y doctora de la Iglesia    calendario: Memoria        leccionario: Fiesta
       San José Obrero                                            calendario: Memoria libre  leccionario: Memoria
+      El Inmaculado Corazón de la Santísima Virgen María         calendario: Memoria libre  leccionario: Memoria
       San Benito, abad                                           calendario: Memoria        leccionario: Fiesta
       Nuestra Señora del Carmen                                  calendario: Memoria libre  leccionario: Memoria
       Santa Brígida, religiosa                                   calendario: Memoria libre  leccionario: Fiesta
@@ -117,7 +118,7 @@ Tabla de celebraciones movibles (2016-2027): 132 cotejos, 6 diferencias
    febrero, y el ciclo dominical de 2024 fue el B y el de 2025 el
    C. Los 126 cotejos restantes cuadran.
 
-escrito data/calendario_completo.json  (2514 KB)
+escrito data/calendario_completo.json  (2522 KB)
 
 AVISOS:
    leccionario V: 5058TA0503.html (cel 1) dice «28 de octubre» y el fichero codifica el 3/5; se descarta por bloque repetido

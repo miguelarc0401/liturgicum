@@ -135,6 +135,19 @@ FORMULA_CITA = re.compile(
     r'[\s.:]+(?P<c>(?:cf\.\s*)?\d[\d\s,.;:–—abcdefghi\-]*?)'
     r'(?=\s+[«“"‘“¿¡\[A-ZÁÉÍÓÚÑ]|$)')
 
+# La misma fórmula con la cita **entre paréntesis**, que es como la escribe
+# el sitio cuando la cita cruza de capítulo: «Lectura del libro del Éxodo
+# (14, 15—15, 1)». La de arriba exige que detrás de la cita venga una
+# mayúscula o el final, y el paréntesis de cierre se lo come.
+#
+# Va aparte y **sólo se prueba cuando la primera falla**. Ensancharla para
+# que admitiera el paréntesis se midió y sale perdiendo: ganaba 25 y perdía
+# 28, porque al relajar el separador la fórmula se corta antes de tiempo.
+# Como segunda vuelta gana 22 y no pierde ninguna.
+FORMULA_PAREN = re.compile(
+    r'(?P<f>(?:Del?(?:\s+la)?|Comienza|Lectura|Inicio)\s[^0-9\[\]()]{3,110}?)'
+    r'\s*\(\s*(?P<c>(?:cf\.\s*)?\d[\d\s,.;:–—abcdefghi\-]*?)\s*\)')
+
 # El cierre y, detrás, la respuesta del pueblo.
 #
 # La respuesta viene de dos maneras: con su letra —«R/. Te alabamos,
@@ -198,7 +211,7 @@ def desarma(texto, sumario=None):
     """
     t = junta(texto)
     s = formula = cita = None
-    m = FORMULA_CITA.search(t[:360])
+    m = FORMULA_CITA.search(t[:360]) or FORMULA_PAREN.search(t[:360])
     if m:
         antes = t[:m.start()].strip()
         formula = re.sub(r'\s+', ' ', m.group('f')).strip(' .:')

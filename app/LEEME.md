@@ -78,6 +78,15 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   en su sitio.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
+* **El tamaño de la letra, a mano mientras se reza.** Dos aes en la cabecera
+  —en la hora y en la misa— lo suben y lo bajan sin ir a Ajustes: que la
+  letra se ve chica se nota rezando, no al abrir la app.
+* **Con el teléfono de lado, la cabecera en un solo renglón.** Tumbado sobra
+  ancho y falta alto, así que lo que en vertical son tres filas —la fecha,
+  la hora, lo que se celebra— se vuelve una: el nombre de la hora o del
+  formulario, a continuación el día, las dos aes del tamaño y, al final, la
+  fecha abreviada con sus flechas, que siguen cambiando de día y siguen
+  abriendo el calendario. Lo que no cabe se abrevia; el renglón no se parte.
 * **El formato del texto, una vez para todo o sección por sección.** La
   alineación, el interlineado y la partición de palabras se dicen una vez y
   valen para toda la app, que es lo que basta casi siempre; y quien quiera
@@ -254,8 +263,10 @@ Abre esa dirección en **Chrome**, toca los tres puntos y elige **«Añadir a la
 pantalla de inicio»** o **«Instalar aplicación»**. Aparece el icono, y al
 abrirla va a pantalla completa, sin barra del navegador. La primera vez
 descarga unos 8 MB; por detrás y sin estorbar se guardan la segunda versión
-latina (6 MB) y la liturgia de las horas (unos 25). A partir de ahí abre sin
-conexión.
+latina (6 MB), las lecturas en castellano (5), el Misal entero (4) y la
+liturgia de las horas (unos 25). A partir de ahí abre sin conexión, y sin
+conexión están todas las vistas: no hay ninguna que pida la red la primera
+vez que se abre.
 
 > Si el navegador no ofrece instalarla, casi siempre es que la dirección es
 > `http` y no `https`. Es el único requisito.
@@ -318,7 +329,11 @@ datos/ordinario.json    el Ordo Missæ bilingüe, por número de rúbrica
                         (los cuatro los hace Missale/src/6_app.py)
 ```
 
-Los cuatro ficheros de la misa son 3,8 MB y **no** se guardan al instalar la
-app: serían 3,8 MB inútiles en el teléfono de quien sólo lee las lecturas. Se
-piden la primera vez que se abre una misa —ahí hace falta conexión— y de ahí
-en adelante quedan guardados como todo lo demás.
+Los cuatro ficheros de la misa son 3,8 MB y no se guardan *al instalar* la
+app, sino justo después, en la segunda tanda del service worker: así instalar
+no depende de bajarse 12 MB de golpe con mala cobertura. Pero se guardan los
+cuatro, y sin que nadie abra una misa: la regla de la app es que una vez
+instalada no hace falta internet para nada, y una vista que pidiera la red la
+primera vez que se abre la rompería justo el día que se reza sin cobertura.
+Van juntos porque `app.js` los pide juntos —sin los cuatro no se arma la
+misa—, así que o están todos o no sirve ninguno.

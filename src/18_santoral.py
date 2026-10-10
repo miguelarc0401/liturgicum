@@ -274,6 +274,7 @@ def carga_leccionario_v(readings, avisos):
             "fecha_txt": r.get("fecha"), "fecha": fecha_lecc(r.get("fecha")),
             "grado": GRADO_LECC.get(norm(r.get("grado") or ""), None),
             "comunes": [c["archivo"] for c in (r.get("comunes") or [])],
+            "propias": list(r.get("propias") or []),
             "n_lecturas": len(r.get("readings") or []),
             "comun": archivo in COMUNES,
         })
@@ -281,12 +282,16 @@ def carga_leccionario_v(readings, avisos):
 
 
 def carga_enlaces():
-    """Los emparejamientos que el nombre no resuelve, puestos a mano."""
+    """Los emparejamientos que el nombre no resuelve, puestos a mano.
+
+    Mes y dia en blanco son una celebracion movil: el emparejamiento normal
+    va por fecha y una celebracion que no tiene fecha no entra por ahi.
+    """
     ruta = os.path.join(DATA, "santoral_enlaces.csv")
     if not os.path.exists(ruta):
         return {}
     with open(ruta, encoding="utf-8") as fh:
-        return {(int(r["mes"]), int(r["dia"]), norm(r["nombre"])):
+        return {(int(r["mes"] or 0), int(r["dia"] or 0), norm(r["nombre"])):
                 r["archivo"] for r in csv.DictReader(fh) if r.get("archivo")}
 
 
@@ -306,18 +311,22 @@ def empareja(santoral, lecc_v, enlaces, avisos):
     usados, sin_usar_enlace = set(), set(enlaces)
     for s in santoral:
         s["lecc"] = None
-        if not s["mes"]:
+        manual = enlaces.get((s["mes"] or 0, s["dia"] or 0,
+                              norm(s["nombre"])))
+        if not s["mes"] and not manual:
             continue
-        manual = enlaces.get((s["mes"], s["dia"], norm(s["nombre"])))
         if manual:
-            sin_usar_enlace.discard((s["mes"], s["dia"], norm(s["nombre"])))
+            sin_usar_enlace.discard((s["mes"] or 0, s["dia"] or 0,
+                                     norm(s["nombre"])))
             e = por_archivo.get(manual)
             if e is None:
                 avisos.append("santoral_enlaces.csv: no existe el formulario "
                               "%s (%s)" % (manual, s["nombre"]))
             else:
                 s["lecc"] = e
-                s["desfase"] = e["fecha"] != (s["mes"], s["dia"])
+                # una celebracion movil no tiene fecha con la que desfasarse
+                s["desfase"] = bool(s["mes"]) and \
+                    e["fecha"] != (s["mes"], s["dia"])
                 s["enlace_manual"] = True
                 usados.add((e["archivo"], e["cel_n"]))
                 continue
@@ -416,8 +425,26 @@ def construye_dias(santoral):
                 bloques.append({"etiqueta": COMUNES[c],
                                 "clave": ["V", c, 0]})
         s["bloques"] = bloques
+        # De donde son las lecturas de esta celebracion, que es lo que decide
+        # si el dia ofrece o no otra lectura:
+        #
+        #   propias    la fuente lo declara expresamente («el evangelio de
+        #              esta memoria es propio»): esa lectura **sustituye** a
+        #              la de la feria, aunque sea memoria (OLM 83).
+        #   del_comun  el propio remite al Comun: lo que la pagina imprime
+        #              son las sugerencias del Comun, no lecturas del dia. En
+        #              una memoria se lee la feria (IGMR 357).
+        #   apropiadas la pagina da lecturas suyas sin remitir a ningun
+        #              Comun: son las «lectiones appropiatae» del n. 83, que
+        #              se pueden tomar pero no se imponen.
+        s["propias"] = list(lec["propias"]) if lec else []
+        s["lecturas_de"] = (
+            "sin" if not (lec and lec["n_lecturas"])
+            else "del_comun" if (lec["comunes"] and not lec["propias"])
+            else "propias" if lec["propias"] else "apropiadas")
         dias[slug] = {
             "slug": slug, "titulo": s["nombre"],
+            "propias": s["propias"], "lecturas_de": s["lecturas_de"],
             "titulo_indice": ("%d: %s" % (s["dia"], s["nombre"])
                               if s["mes"] else s["nombre"]),
             "mes": s["mes"], "dia": s["dia"], "grado": s["grado"],
@@ -784,7 +811,7 @@ def main():
               sum(1 for e in lecc_v if e["comun"])),
            "emparejadas con su propio    : %d de %d"
            % (sum(1 for s in santoral if s.get("lecc")),
-              sum(1 for s in santoral if s["mes"]))]
+              sum(1 for s in santoral if s["mes"] or s.get("lecc")))]
 
     desfasadas = [s for s in santoral if s.get("desfase")]
     if desfasadas:

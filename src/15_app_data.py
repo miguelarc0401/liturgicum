@@ -301,13 +301,28 @@ def construye_indice():
 # el indice de los leccionarios V, VI y VIII
 # --------------------------------------------------------------------------
 def dia_santoral(d):
-    """Un dia del propio de los santos, tal como lo emite 18_santoral.py."""
-    return {"s": d["slug"], "t": d["titulo"],
-            "i": d.get("titulo_indice") or d["titulo"],
-            "g": d.get("rotulo_grado") or "",
-            "c": d.get("color") or "blanco",
-            "b": [{"e": b["etiqueta"], "k": "%s|%s|%d" % tuple(b["clave"])}
-                  for b in d["bloques"]]}
+    """Un dia del propio de los santos, tal como lo emite 18_santoral.py.
+
+    `ld` y `lp` son lo que la app necesita para no ofrecer de mas: de donde
+    son las lecturas de esta celebracion y que ranura declara propia la
+    fuente. Sin ellos, la seccion Misa ofrecia en toda memoria «las del
+    santo» al lado de «las de la feria» como si fueran dos caminos iguales,
+    y en 149 de las 162 memorias lo que la pagina del santo imprime son las
+    sugerencias del Comun, que no es lo que ese dia se lee.
+    """
+    o = {"s": d["slug"], "t": d["titulo"],
+         "i": d.get("titulo_indice") or d["titulo"],
+         "g": d.get("rotulo_grado") or "",
+         "c": d.get("color") or "blanco",
+         "b": [{"e": b["etiqueta"], "k": "%s|%s|%d" % tuple(b["clave"])}
+               for b in d["bloques"]]}
+    if d.get("lecturas_de") and d["lecturas_de"] != "sin":
+        o["ld"] = d["lecturas_de"]
+    if d.get("propias"):
+        o["lp"] = ["l1" if r == "lectura_1" else "l2" if r == "lectura_2"
+                   else "ev" if r == "evangelio" else "*"
+                   for r in d["propias"]]
+    return o
 
 
 def seccion_santoral(santoral):
@@ -502,6 +517,23 @@ def main():
     if sueltos:
         avisos.append("el calendario apunta a %d dias que el indice no tiene: "
                       "%s" % (len(sueltos), ", ".join(sueltos[:5])))
+
+    # Lo que el service worker no nombra, el telefono no lo tiene sin
+    # conexion: la app abre igual, pero la vista que pida ese fichero se
+    # queda en blanco justo cuando no hay cobertura. Y es un fallo callado,
+    # porque con red todo va bien. Asi que cada vez que una fase nueva
+    # escribe un fichero en app/datos/ hay que anadirlo a una de las dos
+    # listas de app/sw.js, y esto avisa si se olvida.
+    ruta_sw = os.path.join(APP, "sw.js")
+    if os.path.exists(ruta_sw):
+        texto_sw = open(ruta_sw, encoding="utf-8").read()
+        sin_cachear = sorted(f for f in os.listdir(DATOS)
+                             if f != "version.js"
+                             and "'datos/%s'" % f not in texto_sw)
+        if sin_cachear:
+            avisos.append("sw.js no cachea %d fichero(s) de datos, y sin "
+                          "conexion no estaran: %s"
+                          % (len(sin_cachear), ", ".join(sin_cachear)))
 
     # La firma cubre los datos y tambien el codigo de la app: si solo cambia
     # app.js (una vista nueva, un arreglo), el telefono tiene que enterarse

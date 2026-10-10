@@ -1080,11 +1080,17 @@ def puente_votivas(propios, misas, indice, inf_filas, avisos):
 # la cascada
 # --------------------------------------------------------------------------
 
-def mejor_de(cands, propios, ranura):
+def mejor_de(cands, propios, ranura, vale=None):
     """De varias celebraciones que ofrecen la misma ranura, la que más
-    testigos trae. Y si dos traen texto distinto, se dice."""
+    testigos trae. Y si dos traen texto distinto, se dice.
+
+    `vale` deja fuera a las que no son testigo bastante (ver `flojo`): sin
+    él, la feria que se acaba de descartar por tener un solo testigo volvía
+    a entrar por la puerta de al lado, como hermana de la misma unidad.
+    """
     con = [(len(propios[c]['piezas'][ranura]['testigos']), c) for c in cands
-           if ranura in propios[c]['piezas']]
+           if ranura in propios[c]['piezas']
+           and (vale is None or vale(c, propios[c]['piezas'][ranura]))]
     if not con:
         return None, []
     con.sort(key=lambda x: (-x[0], x[1]))
@@ -1167,6 +1173,43 @@ def del_dia(cel, ranura, dias_de, impreso):
     return vistos.pop(), 1
 
 
+def flojo(cel, unidad, ranura, p, propios, por_unidad):
+    """Si una feria del tiempo ordinario basta como testigo de esa ranura.
+
+    **En el tiempo ordinario el Misal da un formulario por semana**
+    (`HEBDOMADA XI PER ANNUM`), y ese formulario es el del domingo: la feria
+    no tiene oraciones suyas. Lo que el misalito imprime una feria de enero
+    no es, por tanto, la feria, sino lo que el editor eligió ese año —que es
+    el hallazgo que gobierna la fase 4—. Así que:
+
+      · **si el domingo de esa semana trae la ranura, manda el domingo** y
+        la feria no cuenta, tenga los testigos que tenga;
+      · si no lo trae —la 1ª semana no tiene domingo, se lo lleva el Bautismo
+        del Señor—, hace falta más de un testigo, porque uno solo puede ser
+        una votiva.
+
+    Medido sobre el fichero: **35 piezas** de trece ferias de enero y febrero
+    se colaban así, y ninguna era la feria. Eran la misa por la unidad de los
+    cristianos (la semana del 18 al 25 de enero: «Que todos sean uno, como
+    tú, Padre, en mí y yo en ti»), la de difuntos («Ninguno de nosotros vive
+    para sí mismo»), la de Santa María en sábado («Bendita eres Tú, Virgen
+    María») y la de Guadalupe, que de ahí se repartía por el paso de la
+    unidad a los seis días de su semana.
+
+    El domingo nunca es flojo: ése sí lo imprime el misalito como lo que es.
+    """
+    # sólo el temporal: `_0` es el domingo en los identificadores del tiempo
+    # (`d5_10_0`), y en el santoral ese mismo sufijo es otra cosa
+    if not unidad.startswith('to/') or not cel.startswith('d') \
+            or cel.endswith('_0'):
+        return False
+    for otro in por_unidad.get(unidad, []):
+        if otro.startswith('d') and otro.endswith('_0') \
+                and ranura in propios.get(otro, {}).get('piezas', {}):
+            return True
+    return not p or len(p['testigos']) < 2
+
+
 def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
              latino, lat, dias_de, impreso, sueltos):
     """Las seis ranuras de un formulario, cada una con el camino por el que se
@@ -1176,14 +1219,20 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
     y nada."""
     piezas, discrepan = {}, []
     hermanos = [c for c in por_unidad.get(unidad, []) if c != cel]
+    flojas = []
     for r in RANURAS:
         p = propios.get(cel, {}).get('piezas', {}).get(r)
+        if p and flojo(cel, unidad, r, p, propios, por_unidad):
+            flojas.append((r, p['testigos'][0], len(p['testigos'])))
+            p = None
         if p:
             piezas[r] = {'f': 'misalito', 'via': 'celebración', 'de': cel,
                          'r': r, 't': len(p['testigos']),
                          'v': len(p['variantes'])}
             continue
-        jefe, otros = mejor_de(hermanos, propios, r)
+        jefe, otros = mejor_de(
+            hermanos, propios, r,
+            lambda c, q: not flojo(c, unidad, r, q, propios, por_unidad))
         if jefe:
             p = propios[jefe]['piezas'][r]
             piezas[r] = {'f': 'misalito', 'via': 'unidad', 'de': jefe, 'r': r,
@@ -1232,6 +1281,8 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
                          't': None, 'v': None}
             continue
         piezas[r] = None
+    for r, quien, n in flojas:
+        discrepan.append(('flojo', r, quien, n))
     return piezas, discrepan
 
 
@@ -1266,7 +1317,79 @@ VIAS = [('celebración', 'de la propia celebración'),
         ('suelto', 'de un texto suelto que cae en ese formulario'),
         ('día', 'de lo que el misalito imprimió esos días'),
         ('común', 'del común que la celebración ofrece'),
+        ('gemela', 'de otro formulario con la misma oración latina'),
         ('latino', 'del Misal latino, en latín')]
+
+
+# --------------------------------------------------------------------------
+# el último paso: la misma oración latina, que en otro sitio sí tiene
+# castellano
+# --------------------------------------------------------------------------
+#
+# El Misal no estrena una oración por formulario: la misma colecta sirve a
+# varios días, y la misma poscomunión recorre media Cuaresma. Cuando una
+# ranura se queda sin castellano, antes de rendirla al latín conviene mirar
+# si **ese mismo texto latino** está traducido en otro formulario. Es lo que
+# pide el encargo: «comparar las oraciones en latín y español para armar el
+# misal en español con los elementos que tenemos».
+#
+# Dos cautelas, y las dos importan:
+#
+#  · **Sólo se mira lo bien atribuido.** El índice se arma únicamente con
+#    las ranuras resueltas `celebración` o `unidad`, que son aquellas en que
+#    el castellano y el latín son del mismo formulario. Con las demás el
+#    emparejamiento se corrompe: medido sobre el fichero, tomando todas las
+#    vías salían 302 casos y entre ellos «Ego clamávi, quóniam exaudísti me»
+#    emparejado con «El Señor puso sus ojos en la humildad de su esclava»,
+#    que es el Magníficat. Acotado, salen 103 y los casados son los suyos.
+#
+#  · **Se exige unanimidad.** Si el mismo texto latino tiene dos castellanos
+#    distintos, no se elige: se deja en latín y el informe lo nombra. Elegir
+#    el más repetido sería inventar una traducción.
+def gemelas(formularios, lat, cuenta):
+    """Rellena con su gemela las ranuras que sólo tienen latín."""
+    idx = {}
+    for f in formularios.values():
+        kla = f.get('la')
+        if not kla or kla not in lat:
+            continue
+        for r, p in (f.get('piezas') or {}).items():
+            if not p or p.get('via') not in ('celebración', 'unidad'):
+                continue
+            q = lat[kla]['piezas'].get(r)
+            if not q or not q.get('texto'):
+                continue
+            k = (r, misal.clave(' '.join(q['texto'])))
+            if not k[1]:
+                continue
+            idx.setdefault(k, set()).add((p['de'], p['r']))
+
+    puestas, ambiguas = 0, []
+    for clave_f, f in sorted(formularios.items()):
+        kla = f.get('la')
+        if not kla or kla not in lat:
+            continue
+        for r, p in list((f.get('piezas') or {}).items()):
+            if p and p.get('via') != 'latino':
+                continue
+            q = lat[kla]['piezas'].get(r)
+            if not q or not q.get('texto'):
+                continue
+            k = (r, misal.clave(' '.join(q['texto'])))
+            cands = idx.get(k)
+            if not cands:
+                continue
+            if len(cands) > 1:
+                ambiguas.append((clave_f, r, len(cands)))
+                continue
+            de, rr = next(iter(cands))
+            f['piezas'][r] = {'f': 'misalito', 'via': 'gemela', 'de': de,
+                              'r': rr, 't': None, 'v': None, 'la': kla}
+            puestas += 1
+        f['v'] = veredicto(f['piezas'], bool(kla))
+    cuenta['gemelas'] = puestas
+    cuenta['gemelas_ambiguas'] = ambiguas
+    return puestas, ambiguas
 
 
 def tabla(inf, filas, cab=None):
@@ -1278,7 +1401,8 @@ def tabla(inf, filas, cab=None):
 
 def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
             sueltos_de, pref, pref_sueltos, cuenta_citas, difieren,
-            discrepancias, fsant, fmisas, fvot, avisos, cuenta_rutas):
+            discrepancias, fsant, fmisas, fvot, avisos, cuenta_rutas,
+            cuenta_gem):
     lat = d['lat']['formularios']
     inf = Informe(QA, 'FASE 5 — EL RESOLVEDOR: EL FORMULARIO DEL DÍA')
     inf.di('Las piezas de las cuatro fases anteriores puestas en su')
@@ -1408,7 +1532,7 @@ def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
     inf.di('  latín, y un punto que no hay nada.')
     inf.di()
     letra = {'celebración': 'C', 'unidad': 'U', 'suelto': 'S', 'día': 'D',
-             'común': 'M', 'latino': 'L'}
+             'común': 'M', 'gemela': 'G', 'latino': 'L'}
     inf.di('    %-26s %-7s %-44s %s' % ('clave', 'piezas', 'celebración',
                                         'testigos'))
     for clave, f in sorted(formularios.items(),
@@ -1548,6 +1672,31 @@ def informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
     for x in dd_[:40]:
         inf.di('    %-26s %-12s %-14s %s'
                % (x[0], x[3], x[1], ', '.join(x[5])[:52]))
+
+    inf.titulo('Las piezas que se cayeron por tener un solo testigo')
+    inf.di('  El Misal da un formulario por semana en el tiempo ordinario, y')
+    inf.di('  ese formulario es el del domingo: la feria no tiene oraciones')
+    inf.di('  suyas. Lo que el misalito imprime una feria de enero es lo que')
+    inf.di('  el editor eligió ese año. Así que si el domingo de la semana')
+    inf.di('  trae la ranura, manda el domingo; y si no la trae, hace falta')
+    inf.di('  más de un testigo. Casi todas son de enero y febrero de 2021:')
+    inf.di()
+    fl = [x for x in discrepancias if x[2] == 'flojo']
+    inf.di('  casos: %d' % len(fl))
+    for x in fl[:40]:
+        inf.di('    %-26s %-12s %-12s %d testigo%s, el primero %s'
+               % (x[0], x[1], x[3], x[5], '' if x[5] == 1 else 's', x[4]))
+
+    inf.titulo('Las ranuras rescatadas por su gemela latina')
+    inf.di('  La misma oración latina, traducida en otro formulario. Sólo se')
+    inf.di('  toma de las ranuras bien atribuidas (celebración o unidad) y')
+    inf.di('  sólo si el castellano es uno: con dos no se elige.')
+    inf.di()
+    inf.di('  rescatadas: %d' % cuenta_gem.get('gemelas', 0))
+    amb = cuenta_gem.get('gemelas_ambiguas') or []
+    inf.di('  dejadas en latín por tener dos castellanos: %d' % len(amb))
+    for x in amb[:25]:
+        inf.di('    %-30s %-12s %d castellanos' % x)
 
     inf.titulo('Los textos sueltos que siguen sueltos')
     inf.di('  Un texto suelto se coloca cuando todos sus días caen en el')
@@ -2115,6 +2264,14 @@ def main():
             'piezas': piezas, 'lecturas': lecturas,
             'v': veredicto(piezas, bool(la.get('k')))}
 
+    # el último paso de la cascada, que necesita todos los formularios ya
+    # resueltos para poder preguntar «¿esta oración latina está traducida en
+    # otro sitio?»
+    cuenta_gem = {}
+    n_gem, gem_amb = gemelas(formularios, lat, cuenta_gem)
+    print('  gemelas: %d ranuras rescatadas del latín, %d ambiguas'
+          % (n_gem, len(gem_amb)))
+
     pref, pref_sueltos = puente_prefacios(d['pref_es'], d['lat']['prefacios'],
                                           avisos)
     cuenta_citas, difieren = coteja_citas(
@@ -2137,7 +2294,8 @@ def main():
 
     informe(d, formularios, unidades, latino, por_unidad, sueltos_u,
             sueltos_de, pref, pref_sueltos, cuenta_citas, difieren,
-            discrepancias, fsant, fmisas, fvot, avisos, cuenta_rutas)
+            discrepancias, fsant, fmisas, fvot, avisos, cuenta_rutas,
+            cuenta_gem)
 
 
 if __name__ == '__main__':

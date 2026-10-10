@@ -77,6 +77,36 @@ STRUCT = ("Santo", "fecha", "tiempo", "centrorojo", "centrorojonum",
 # recogerla, esas celebraciones saldrian vacias y sin decir por que.
 A_RE = re.compile(r'(?is)<a\s+[^>]*href="([^"]+)"[^>]*>(.*?)</a>')
 
+# La indicacion expresa de lectura propia, que el Ordo lectionum Missae
+# promete en su n. 83: «Hae lectiones, quamvis agatur de memoria, dici debent
+# loco lectionum pro feriis occurrentium. Quoties de huiusmodi lectionibus
+# agitur in memoria, id in hoc Ordine expresse suo loco indicatur.»
+#
+# La fuente la imprime en un p.obien, entre el grado y el primer rotulo. Son
+# diez celebraciones, y son **las mismas diez** que marca el Ordo latino de
+# 1981 (cotejado contra cache/olm1981_ocr.txt: «Lectio prior huius memoriae
+# est propria», «Evangelium huius memoriae est proprium», «Lectiones huius
+# memoriae sunt propriae»). Dos libros distintos que dicen lo mismo es lo que
+# convierte esto en dato y no en interpretacion.
+#
+# Importa porque manda sobre la feria: en una memoria con lectura propia esa
+# lectura **sustituye** a la del dia; en una memoria sin ella, lo que se lee
+# es la feria y lo que la pagina del santo imprime son sugerencias del Comun
+# (IGMR 357: «In memoriis Sanctorum, nisi habeantur propriae, leguntur de
+# more lectiones feriae assignatae»).
+PROPIAS_RE = re.compile(
+    r"^(?:el|la|las|los)\s+"
+    r"(primera lectura|segunda lectura|lecturas|lectura|evangelio)"
+    r"\s+de\s+est[ae]\s+(?:memoria|fiesta|solemnidad|celebracion)"
+    r"\s+(?:es|son)\s+propi[ao]s?\b")
+
+# Que ranura declara propia cada una. "lecturas" en plural son todas.
+PROPIAS_RANURA = {"primera lectura": "lectura_1",
+                  "segunda lectura": "lectura_2",
+                  "lectura": "lectura_1",
+                  "evangelio": "evangelio",
+                  "lecturas": "*"}
+
 # algunas paginas vienen de Word con el atributo sin comillas (class=Santo):
 # si se exige la comilla, la pagina entera pasa inadvertida (4371PTOV28.html)
 P_RE = re.compile(r'<p\s+class=(?:"([^"]+)"|([A-Za-z][\w-]*))[^>]*>(.*?)</p>',
@@ -130,7 +160,7 @@ def parse_page(fname, raw):
              "lectionary": lect,
              "celebration": name, "cycle": None, "source_file": fname,
              "title": title, "readings": [], "fecha": None, "grado": None,
-             "comunes": []}
+             "comunes": [], "propias": [], "propias_txt": None}
         if pending_fecha:
             c["fecha"] = " · ".join(pending_fecha)
             del pending_fecha[:]
@@ -188,7 +218,16 @@ def parse_page(fname, raw):
                         "texto": rot,
                         "archivo": href.split("/")[-1].split("#")[0]})
             if not A_RE.search(inner) and val:
-                cur["comunes"].append({"texto": val, "archivo": ""})
+                # La Natividad de san Juan Bautista trae el grado en este
+                # parrafo y no en el centrorojo de los demas, y sin esto la
+                # solemnidad se quedaba sin grado y con un «Comun» llamado
+                # «Solemnidad». Es el unico comunenlace del leccionario que
+                # no es un enlace, asi que se arregla por lo que dice.
+                if n in GRADOS:
+                    if cur["grado"] is None:
+                        cur["grado"] = val
+                else:
+                    cur["comunes"].append({"texto": val, "archivo": ""})
             continue
 
         if cls == "tiempo":
@@ -222,6 +261,13 @@ def parse_page(fname, raw):
         if cls in ("obien", "obien2"):
             if n.startswith("o bien"):
                 pending_alt = "forma_breve" if "breve" in n else "alternativa"
+            else:
+                m = PROPIAS_RE.match(n)
+                if m:
+                    r = PROPIAS_RANURA[m.group(1)]
+                    if r not in cur["propias"]:
+                        cur["propias"].append(r)
+                    cur["propias_txt"] = val
             continue
 
         if cls == "salmo":
@@ -323,6 +369,15 @@ def main():
         print("  %-14s %d" % (t, n))
     print("avisos: %d (data/parse_warnings.txt)" % len(warnings))
     print("remisiones al Comun sin lecturas propias: %d" % len(remisiones))
+    # La indicacion expresa del n. 83 del Ordo lectionum. Se nombran una a una
+    # porque son diez y porque han de seguir siendo las mismas diez: si la
+    # fuente cambia de redaccion, aqui se ve en el acto.
+    prop = [c for c in out if c["propias"]]
+    print("lectura propia declarada por la fuente: %d" % len(prop))
+    for c in prop:
+        print("  %-11s %-44s %s -> %s"
+              % (c["source_file"].replace(".html", ""), c["celebration"][:44],
+                 (c["grado"] or "")[:13], ",".join(c["propias"])))
 
 
 if __name__ == "__main__":

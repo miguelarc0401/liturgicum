@@ -5,9 +5,9 @@ Los cien misalitos deshechos: cada pieza una vez, con sus
 testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
-formularios leídos            : 7564
+formularios leídos            : 7572
 celebraciones con propios     : 588
-perícopas distintas por cita  : 3558
+perícopas distintas por cita  : 3560
 prefacios propios cosechados  : 28
 textos propios atribuidos     : 2750
    por lo que nombra la fuente: 721
@@ -31,9 +31,9 @@ grado            celebr lecturas   su día otro día    nunca   sin una
 Solemnidad            7       31       25        1        5         0
 Fiesta               24       64       47        9        8         0
 Memoria              68      145       17       58       70        15
-Memoria libre        94      196        5       97       94        22
+Memoria libre        95      199        5      100       94        22
 Conmemoración         1        7        1        1        5         0
-TOTAL               194      443       95      166      182        37
+TOTAL               195      446       95      169      182        37
 
 «su día»   : la perícopa está impresa en un día del santo;
 «otro día» : no, pero sí en otro día del corpus, y de ahí la
@@ -90,10 +90,10 @@ dice al lado de la cabecera. La fase 3 lo guardaba en `alterna`,
 en `resena` o en `subtitulo` según cayera la maqueta; aquí se
 vuelve a leer del campo `crudo` y se unifica.
 
-   alternativa que es una misa   :  994
+   alternativa que es una misa   :  995
    alternativa que es una santo  :  552
 
-   la fase 3 la tenía en alterna    :  988
+   la fase 3 la tenía en alterna    :  989
    la fase 3 la tenía en resena     :  485
    la fase 3 la tenía en subtitulo  :   70
    la fase 3 la tenía en crudo      :    3
@@ -145,8 +145,8 @@ Las citas
 ---------
 
 La pieza viene con su cita, y por eso el emparejamiento no se
-adivina. Leídas: 15767 del incipit, 19078 de su propio campo, 3382 del
-rótulo del salmo y 3194 del renglón que no es más que la cita, que
+adivina. Leídas: 15782 del incipit, 19094 de su propio campo, 3382 del
+rótulo del salmo y 3200 del renglón que no es más que la cita, que
 es como la fuente imprime la del salmo responsorial la mitad de
 las veces. Ese renglón no lo leía nadie, y una lectura sin cita no
 llega a perícopa.
@@ -158,10 +158,10 @@ partió o que remite a otro día):
    salmo         151
    segunda        46
    secuencia     103
-   aclamacion    707
+   aclamacion    711
    evangelio     128
 
-Nombres de libro que no se supieron leer: 185 formas, 346 casos.
+Nombres de libro que no se supieron leer: 186 formas, 348 casos.
      29  'uteronomio'
      22  'sanLucas:'
      14  'Le'
@@ -174,6 +174,7 @@ Nombres de libro que no se supieron leer: 185 formas, 346 casos.
       4  'salino'
       4  '113B, 3-'
       4  '113 B, 1-'
+      4  'Lo'
       4  '113 B 1-'
       4  'ANTES DEL EVANGEUO Cfr. Mt'
       4  'Maleo:'
@@ -184,7 +185,6 @@ Nombres de libro que no se supieron leer: 185 formas, 346 casos.
       3  '115 122-'
       3  '113a, 1-'
       3  'Crf. Sal'
-      3  'Lo'
       3  ','
       3  '86 (87) 1-'
       3  'sanMateo:'
@@ -214,6 +214,7 @@ Nombres de libro que no se supieron leer: 185 formas, 346 casos.
       1  '144 17-'
       1  'Tenemos sed: danos agua para beber. Del libro de'
       1  'Danie'
+      1  'Chi Is'
       1  '1 Samue1'
       1  'primer libro de Sainad:'
       1  'primor libro de Samuel:'
@@ -431,9 +432,9 @@ El cotejo con el índice del leccionario, que es el camino
 independiente del calendario: si el lector de citas leyera mal,
 saldría aquí.
 
-   citas distintas en el corpus                   : 3487
-   que el índice tiene igual                      : 1692
-   que el índice no tiene con esos versículos     : 1697
+   citas distintas en el corpus                   : 3489
+   que el índice tiene igual                      : 1693
+   que el índice no tiene con esos versículos     : 1698
    que el índice no tiene ni por el capítulo      : 98
 
 La fila del medio no es un fallo y conviene no confundirla con
@@ -874,7 +875,7 @@ donde el día las toma—. Lo que falta, ranura por ranura:
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
 
-Los 655 avisos son todos de lo mismo, y es un hallazgo, no un
+Los 656 avisos son todos de lo mismo, y es un hallazgo, no un
 fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
@@ -1050,4 +1051,4 @@ Y los avisos, día por día:
    2022-02-06/0   la fuente ofrece «de SAN MATEO CORREA MAGALLANES» y el calendario no trae ese santo ese día
    2022-02-08/0   la fuente ofrece «SANTA JOSEFINA BAKHITA, Virgen» y el calendario no trae ese santo ese día
    2022-02-25/0   la fuente ofrece «SANTO TORIBIO ROMO GONZÁLEZ» y el calendario no trae ese santo ese día
-   … y 535 más
+   … y 536 más

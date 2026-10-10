@@ -1273,6 +1273,42 @@ def canoniza(grupos):
     return texto, sorted(testigos), variantes, empate
 
 
+# La fuente principal del **texto** castellano de las lecturas.
+#
+# No es lo mismo que la fuente de la *elección*: para atribuir un formulario
+# a su celebración sigue votando sólo el misalito, porque este sitio imprime
+# los dos formularios cuando el día da opción y contarlo descuadraba la
+# atribución (está medido: 75 textos canónicos cambiaban y 109 piezas
+# desaparecían). Las perícopas, en cambio, se agrupan **por cita** y no
+# miran la atribución, así que aquí el sitio puede mandar sin tocar nada de
+# lo demás.
+#
+# Y manda, que es lo pedido: el sitio publica los once años de 2016 a 2026 y
+# en HTML, mientras que los misalitos son un volcado de PDF de junio de 2018
+# en adelante. El misalito queda de segundo: corrobora —su texto se guarda
+# como variante, con sus testigos— y rellena lo que el sitio no tiene.
+PRINCIPAL = 'sitio'
+
+
+def canoniza_lectura(grupos):
+    """Como `canoniza`, pero manda la fuente principal y no la mayoría.
+
+    `grupos` es {clave: (texto, [testigos], [origenes])}. Gana el grupo que
+    tenga algún testigo de la fuente principal; entre ellos, el de más
+    testigos; y a igualdad, la clave, que es lo que hace la pasada
+    repetible. Donde el sitio no llega, el orden es el de siempre.
+    """
+    def peso(kv):
+        ck, (_, w, orig) = kv
+        return (0 if PRINCIPAL in orig else 1, -len(w), ck)
+
+    orden = sorted(grupos.items(), key=peso)
+    (_, (texto, testigos, _)) = orden[0]
+    variantes = [{'texto': t, 'testigos': sorted(w)}
+                 for _, (t, w, _) in orden[1:]]
+    return texto, sorted(testigos), variantes
+
+
 # --------------------------------------------------------------------------
 # el riesgo 3: las lecturas propias que nunca se imprimen
 # --------------------------------------------------------------------------
@@ -1322,12 +1358,15 @@ def mide_riesgo_tres(cal, formularios, por_clave):
                          'lectura del Nuevo Testamento')]
         if not lect:
             continue
-        mmdd = '%02d-%02d' % (e['mes'], e['dia'])
+        # el Inmaculado Corazón es móvil y no tiene fecha: no se le puede
+        # preguntar si su lectura sale «en su día», así que se cuenta por
+        # las otras dos casillas
+        mmdd = ('%02d-%02d' % (e['mes'], e['dia'])) if e['mes'] else None
         en_su_dia = otro_dia = nunca = 0
         detalle = []
         for tipo, cita in lect:
             dias = dondecita.get(squeeze(cita), set())
-            if any(d[5:] == mmdd for d in dias):
+            if mmdd and any(d[5:] == mmdd for d in dias):
                 en_su_dia += 1
                 donde = 'su día'
             elif dias:
@@ -1555,15 +1594,16 @@ def main():
             if d:
                 if f.testigo not in d[1]:
                     d[1].append(f.testigo)
+                    d[2].append(f.origen)
             else:
-                porcita[cita][ck] = (p['texto'], [f.testigo])
+                porcita[cita][ck] = (p['texto'], [f.testigo], [f.origen])
             tipos[cita][ran] += 1
             if p['sumario']:
                 sumarios[cita][re.sub(r'\s+', ' ', p['sumario']).strip()] += 1
 
     pericopas = {}
     for cita in sorted(porcita):
-        texto, testigos, variantes, _ = canoniza(porcita[cita])
+        texto, testigos, variantes = canoniza_lectura(porcita[cita])
         ent = {'texto': texto, 'testigos': testigos,
                'tipos': dict(sorted(tipos[cita].items())),
                'variantes': variantes}
