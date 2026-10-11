@@ -47,7 +47,7 @@ const E = {              // todo el estado de la app
   slugMisa: null,        // la celebración cuyo formulario se está viendo
   celsMisa: null,        // todas las celebraciones de esa fecha
   misaOps: {},           // lo elegido en cada misa (el prefacio, las lecturas)
-  pliegues: {},          // qué secciones del Ordinario están abiertas
+  pliegues: {},          // lo que está plegado: el Ordinario, la reseña
   horas: null, horasDias: null, hora: null,
   oficio: null,          // la hora que se está rezando, con sus opciones
   horasCel: null,        // la celebración elegida, cuando hay donde elegir
@@ -63,7 +63,8 @@ const E = {              // todo el estado de la app
   pos: {},               // vista -> {k, y}: dónde se dejó cada una
   claveVista: null,      // qué se está leyendo, para saber si es lo mismo
   ultimaMisa: null,      // la ruta de la misa que se leía
-  calQ: ''               // lo que se busca en el calendario
+  calQ: '',              // lo que se busca en el calendario
+  calAHoy: false         // el calendario que se abre, a centrar en hoy
 };
 
 const $ = (s) => document.querySelector(s);
@@ -410,6 +411,9 @@ const FMT_DE_LECTURA = {
  * quien ajusta las preces espera que ésa vaya con ellas. */
 function grupoFmt(s) {
   if (s.k) return FMT_DE_LECTURA[s.k] || 'lecturas';
+  // el comienzo de la hora es de los salmos cuando se dice el invitatorio,
+  // y de ningún grupo cuando es la invocación: dos renglones y la doxología
+  if (s.formas) return s.modo === 'invitatorio' ? 'salmos' : '';
   return FMT_DE_SEC[s.cl] || (s.ordo ? 'ordinario' : '');
 }
 
@@ -2370,6 +2374,50 @@ function marcaHoy(iso) {
   $('#ir-hoy').hidden = !iso || iso === hoyISO();
 }
 
+/* En el calendario el mismo botón hace lo mismo con otra medida: ahí no se
+ * está en un día, se está en un año entero, así que sale cuando el renglón
+ * de hoy no se ve —otro año, otro mes, o un filtro que lo esconde— y lo
+ * trae a la pantalla. */
+function marcaHoyCalendario() {
+  const b = $('#ir-hoy');
+  const a = +hoyISO().slice(0, 4);
+  if (a < E.cal.rango[0] || a > E.cal.rango[1]) { b.hidden = true; return; }
+  const el = document.getElementById('cal-hoy');
+  const mes = el && el.closest('.cal-mes');
+  if (!el || el.hidden || (mes && mes.hidden)) { b.hidden = false; return; }
+  const r = el.getBoundingClientRect();
+  b.hidden = r.bottom > $('#cabecera').offsetHeight
+    && r.top < window.innerHeight;
+}
+
+/** Del año que se esté hojeando, de vuelta al renglón de hoy. */
+function vaAHoyCalendario() {
+  const hoy = hoyISO();
+  // un filtro puesto esconde casi todo el año, hoy incluido: estorba
+  if (E.calQ) {
+    const q = $('#cal-q');
+    if (q) q.value = '';
+    filtraCalendario('');
+  }
+  const anio = +(location.hash.split('/')[2] || 0);
+  if (anio !== +hoy.slice(0, 4)) {
+    // el año nuevo se pinta entero y se centra en hoy, no donde se dejó
+    E.calAHoy = true;
+    location.hash = '#/calendario/' + hoy.slice(0, 4);
+    return;
+  }
+  const el = document.getElementById('cal-hoy');
+  if (!el) return;
+  // De un mes al de al lado, moviéndose, que así se ve de dónde se viene;
+  // de enero a octubre, de un salto: media hoja de calendario pasando a
+  // toda prisa no enseña nada, y hoy va marcado en su renglón.
+  const lejos = Math.abs(el.getBoundingClientRect().top)
+    > window.innerHeight * 4;
+  el.scrollIntoView({ block: 'center',
+    behavior: lejos ? 'auto' : suave() });
+  marcaHoyCalendario();
+}
+
 /* ------------------------------------------------------------ las vistas */
 function verDia(iso, slug, bloque) {
   E.vista = 'hoy';
@@ -2807,6 +2855,8 @@ function verCalendario(anio) {
   document.documentElement.style.setProperty('--alto-cabecera',
     $('#cabecera').offsetHeight + 'px');
   if (E.calQ) filtraCalendario(E.calQ);
+  // quien ha tocado «Hoy» quiere hoy, no el renglón en que dejó este año
+  if (E.calAHoy) { E.calAHoy = false; E.pos.calendario = null; }
   colocaPosicion(() => {
     const marcado = !E.calQ && document.getElementById('cal-hoy');
     if (!marcado) return false;
@@ -2846,6 +2896,7 @@ function alDesplazarCalendario() {
   requestAnimationFrame(() => {
     _desplazando = false;
     if (E.vista !== 'calendario') return;
+    marcaHoyCalendario();
     const cab = document.querySelector('.cal-cab');
     const alto = $('#cabecera').offsetHeight;
     if (!cab) return;
@@ -4158,6 +4209,155 @@ function salmodiaIntermedia(d, hora, dia) {
   ];
 }
 
+/* --------------------------------------------- el comienzo de la hora
+ * Las dos horas que pueden abrir el día empiezan de dos maneras, y cuál
+ * toca lo sabe quien reza, no el calendario: si ésta es la primera oración
+ * del día, con el invitatorio —«Señor, abre mis labios», la antífona del
+ * día y el salmo 94, con la antífona repetida después de cada estrofa—; y
+ * si antes se ha rezado ya alguna otra Hora, con la invocación inicial,
+ * «Dios mío, ven en mi auxilio». El libro imprime las dos, cada una bajo su
+ * rúbrica; la app las separa y las pone a elegir al comienzo de la hora,
+ * con la invocación marcada: el invitatorio se dice una vez al día, y la
+ * otra de las dos horas empieza ya por la invocación.
+ *
+ * Ninguna de las dos formas está entera en su sitio. De las 1.097 piezas de
+ * invitatorio que trae el libro —567 del Oficio y 530 de Laudes—:
+ *  · el salmo está en las 530 de Laudes y en ninguna del Oficio, que lo
+ *    deja dicho en una rúbrica («Se añade el Salmo del Invitatorio con la
+ *    siguiente antífona»);
+ *  · la invocación está en las 567 del Oficio y en ninguna de Laudes;
+ *  · la apertura está en 1.022, y las 75 que le faltan son todas de Laudes,
+ *    las mismas a las que les falta la antífona repetida del final.
+ * Y lo que se repite es palabra por palabra lo mismo: el cuerpo del salmo
+ * en las 530 que lo traen, el «Señor, abre mis labios» en las 1.022 y la
+ * rúbrica de la invocación en las 469 que la escriben sin nombrar al
+ * Oficio. Así que esas tres piezas se toman del libro una vez y se reponen
+ * donde falten; el «Aleluya» con que acaba la invocación lo pone el tiempo
+ * —en Cuaresma no se dice—, y la antífona es siempre la del día, de su
+ * propia pieza.
+ */
+const RX_PRIMERA = /^\s*Si\s+[ée]sta\s+es\s+la\s+primera\s+oraci[óo]n/i;
+const RX_OTRA_HORA = /^\s*Si\s+antes\s+se\s+ha\s+rezado/i;
+const RX_LABIOS = /abre\s+mis\s+labios/i;
+const RX_SALMO_INV = /^\s*Salmo\s+94\b/;
+
+const crudoLn = (ln) => ln.map((tr) => tr[1]).join('');
+const vaciaLn = (ln) => !crudoLn(ln).trim();
+
+/** La apertura de un invitatorio: su rúbrica y «Señor, abre mis labios»,
+ *  que el libro imprime siempre en dos renglones seguidos. */
+function aperturaDe(l) {
+  const i = l.findIndex((ln) => RX_LABIOS.test(crudoLn(ln)));
+  const r = l.findIndex((ln) => RX_PRIMERA.test(crudoLn(ln)));
+  if (i < 0 || r < 0 || r > i) return null;
+  return [l[r], []].concat(l.slice(i, i + 2));
+}
+
+/** El salmo del invitatorio, por estrofas: su título y los bloques que el
+ *  libro separa con un renglón en blanco, el «Gloria al Padre» el último.
+ *  La antífona que va detrás no entra aquí: la repone `armaInvitatorio()`
+ *  después de cada estrofa, que es como se reza. */
+function salmoInvitatorio(l) {
+  const i = l.findIndex((ln) => RX_SALMO_INV.test(crudoLn(ln)));
+  if (i < 0) return null;
+  const estrofas = [];
+  let b = [];
+  for (const ln of l.slice(i + 1)) {
+    if (esAntifona(ln)) break;
+    if (vaciaLn(ln)) {
+      if (b.length) { estrofas.push(b); b = []; }
+      continue;
+    }
+    b.push(ln);
+  }
+  if (b.length) estrofas.push(b);
+  return estrofas.length ? { tit: l[i], estrofas: estrofas } : null;
+}
+
+/* Las tres piezas que el libro repite igual todos los días se toman de él
+ * una vez, la primera que hagan falta, y se guardan. */
+let _partesInv = null;
+
+function partesInvitatorio() {
+  if (_partesInv) return _partesInv;
+  const p = { abre: null, salmo: null, rub: null };
+  for (const k of Object.keys(E.horas.tiempo)) {
+    if (!/\/(invitatorio|preambulo)$/.test(k)) continue;
+    const l = (E.horas.tiempo[k] || {}).l;
+    if (!l) continue;
+    if (!p.abre) p.abre = aperturaDe(l);
+    if (!p.salmo) p.salmo = salmoInvitatorio(l);
+    if (!p.rub) p.rub = l.find((ln) => RX_OTRA_HORA.test(crudoLn(ln))) || null;
+    if (p.abre && p.salmo && p.rub) break;
+  }
+  _partesInv = p;
+  return p;
+}
+
+/** El invitatorio de un día, armado: la apertura, la antífona del día y el
+ *  salmo con la antífona repetida después de cada estrofa.
+ *
+ *  La antífona es la primera de la pieza: un jueves de la semana VIII del
+ *  tiempo ordinario la fuente dejó al final del salmo otra distinta, de un
+ *  santo, y la del día es la de arriba. */
+function armaInvitatorio(c) {
+  const ant = (c.l || []).find(esAntifona);
+  if (!ant) return c;
+  const P = partesInvitatorio();
+  const abre = aperturaDe(c.l) || P.abre;
+  const salmo = salmoInvitatorio(c.l) || P.salmo;
+  if (!abre || !salmo) return c;
+  const l = abre.concat([[], ant, [], salmo.tit]);
+  for (const e of salmo.estrofas) l.push([], ...e, [], ant);
+  return Object.assign({}, c, { r: c.r || 'INVITATORIO', l: l });
+}
+
+/** La invocación inicial. El cuerpo es el del tiempo, que es quien dice si
+ *  se acaba en «Aleluya» —en Cuaresma no—, y la rúbrica, la que el libro
+ *  imprime al pie del invitatorio del Oficio. */
+function invocacionInicial(d) {
+  const L = E.horas.ordinario;
+  const c = L[d.t + '/visperas/invocacion'] || L[d.t + '/tercia/invocacion'];
+  if (!c) return null;
+  const rub = partesInvitatorio().rub;
+  return { r: c.r || 'INVOCACIÓN INICIAL',
+    l: (rub ? [rub, []] : []).concat(c.l.filter((ln) => !vaciaLn(ln))) };
+}
+
+/** El comienzo de la hora: una sección con las dos formas dentro, y la
+ *  invocación marcada. Devuelve la fila de secciones con las dos piezas
+ *  sueltas —el invitatorio y la invocación— cambiadas por ella. */
+function comienzoDeHora(secs, iso, d, op, hora) {
+  const inv = secs.find((s) => s.cl === 'invitatorio');
+  // El domingo de Pascua, en el sitio del invitatorio del Oficio la fuente
+  // pone la nota de la Vigilia pascual —«este Oficio empieza directamente
+  // con las lecturas»—, que no es una pieza que se rece ni que se elija:
+  // ese día la hora empieza como viene.
+  const esInv = !!inv && inv.alts.some((a) => (a.c.l || []).some(esAntifona));
+  if (inv && !esInv) return secs;
+  const voc = invocacionInicial(d);
+  if (!voc) return secs;
+  const formas = {
+    invocacion: { alts: [{ id: 'voc', rot: '', c: voc }], i: 0 }
+  };
+  if (esInv) {
+    inv.alts = inv.alts.map((a) => Object.assign({}, a,
+      { c: armaInvitatorio(a.c) }));
+    // de dónde se toma el invitatorio se recuerda con la sección nueva, que
+    // es donde se elige
+    const g = E.elecciones[claveEleccion(iso, op.id, hora, 'apertura')];
+    const j = inv.alts.findIndex((a) => a.id === g);
+    formas.invitatorio = { alts: inv.alts, i: j < 0 ? inv.i : j };
+  }
+  const guardado = E.elecciones[claveEleccion(iso, op.id, hora, 'comienzo')];
+  const modo = guardado === 'invitatorio' && formas.invitatorio
+    ? 'invitatorio' : 'invocacion';
+  return [{ cl: 'apertura', formas: formas, modo: modo,
+    alts: formas[modo].alts, i: formas[modo].i }]
+    .concat(secs.filter((s) => s.cl !== 'invitatorio'
+      && s.cl !== 'invocacion'));
+}
+
 /* Lo que se elige en cada sección se recuerda mientras dura la sesión,
  * para que pasar de Laudes a Vísperas y volver no lo deshaga. */
 function claveEleccion(iso, idCel, hora, cl) {
@@ -4316,16 +4516,24 @@ function armaHora(iso, hora, idCel) {
         i: eleccionDe(iso, op.id, hora, cl, alts, d) });
     }
   }
-  // La reseña del santo o de la fiesta, al comienzo del Oficio de lectura,
-  // como la trae el libro antes del oficio de cada celebración
+  // La reseña del santo o de la fiesta: el libro la trae delante de todo el
+  // oficio, y aquí va pegada a la segunda lectura, que es la que cuenta su
+  // vida —de él, si es hagiográfica; del misterio que se celebra, si es
+  // patrística—. Se pliega: se lee una vez, y después está de más.
   if (hora === 'oficio' && op.cel) {
     const r = delSanto(op, 'oficio', 'resena');
-    if (r) secciones.unshift(fija('resena', null, r.l));
-    if (r && r.f) secciones[0].alts[0].c.f = r.f;
+    if (r) {
+      const s = fija('resena', null, r.l);
+      if (r.f) s.alts[0].c.f = r.f;
+      const i = secciones.findIndex((x) => x.cl === 'lectura2');
+      secciones.splice(i < 0 ? 0 : i, 0, s);
+    }
   }
-  // Laudes empiezan con el invitatorio, que ya trae «Señor, abre mis
-  // labios»; la invocación sola, sólo cuando no lo hay
-  if (secciones.some((s) => s.cl === 'invitatorio')) {
+  // El comienzo del Oficio y de Laudes: el invitatorio o la invocación
+  // inicial, que son la misma cosa dicha de dos maneras y se eligen
+  if (hora === 'oficio' || hora === 'laudes') {
+    secciones = comienzoDeHora(secciones, iso, d, op, hora);
+  } else if (secciones.some((s) => s.cl === 'invitatorio')) {
     secciones = secciones.filter((s) => s.cl !== 'invocacion');
   }
   if (op.modo === 'conmemoracion') conmemora(secciones, op, hora);
@@ -4476,6 +4684,10 @@ function enVersalitas(t, tabla) {
   return '<span class="llano">' + esc(cajaNormal(s)) + '</span>';
 }
 
+/* Las dos formas de empezar, en el orden en que el libro las imprime. */
+const COMIENZOS = [['invitatorio', 'Invitatorio'],
+  ['invocacion', 'Invocación inicial']];
+
 /* El texto va tal cual: la acentuación que se puede apagar en Ajustes es la
  * del latín, y quitarle las tildes al castellano sería estropearlo. */
 function pintaSeccionHora(s) {
@@ -4487,11 +4699,28 @@ function pintaSeccionHora(s) {
     ? '<span class="ed-pdf" title="No está en la fuente de la app: se toma '
       + 'de la Liturgia de las Horas de la Conferencia Episcopal Española">'
       + 'ed. española</span>' : '';
+  // La reseña se pliega, que se lee una vez: el rótulo menudo queda puesto
+  // y el cuerpo se guarda debajo. Viene abierta, que es como estaba.
   if (s.cl === 'resena') {
+    const abierta = !E.pliegues.resenaCerrada;
     return '<section class="hora-sec resena prosa" data-cl="resena">'
-      + o.c.l.filter((ln) => ln.length).map((ln) => '<p>'
-        + esc(ln.map((tr) => tr[1]).join('')) + '</p>').join('')
-      + ed + '</section>';
+      + '<div class="sec-cab"><h2 class="rotulo"><button type="button" '
+      + 'class="pliega menuda" data-pliega="resena" aria-expanded="'
+      + abierta + '">Reseña</button></h2></div>'
+      + '<div class="cuerpo"' + (abierta ? '' : ' hidden') + '>'
+      + (abierta ? o.c.l.filter((ln) => ln.length).map((ln) => '<p>'
+        + esc(ln.map((tr) => tr[1]).join('')) + '</p>').join('') + ed : '')
+      + '</div></section>';
+  }
+  // El comienzo de la hora, con sus dos formas delante del rótulo: dos
+  // botones como los de las secciones, pero en su renglón, que no eligen de
+  // dónde se toma una pieza sino cuál de las dos se dice.
+  if (s.formas && s.formas.invitatorio) {
+    h.push('<div class="alterna comienzo" role="group" aria-label="C\u00f3mo '
+      + 'empieza la hora">'
+      + COMIENZOS.map(([m, rot]) => '<button type="button" data-modo="' + m
+        + '" aria-pressed="' + (m === s.modo) + '">' + rot + '</button>')
+        .join('') + '</div>');
   }
   // el responsorio breve no lleva selector: va con el de su lectura breve
   const selector = s.alts.length < 2 || s.ligada ? ''
@@ -4698,8 +4927,13 @@ function sigueALaLectura(lectura, resp) {
 /** Al tocar una opción se repinta sólo esa sección: repintar la hora
  *  entera devolvería la página arriba, a media oración. */
 function alElegirOpcion(ev) {
+  if (E.vista !== 'horas' || !E.oficio) return;
+  const pl = ev.target.closest('.pliega');
+  if (pl) { pliegaResena(pl); return; }
+  const m = ev.target.closest('.comienzo button');
+  if (m) { cambiaComienzo(m.dataset.modo); return; }
   const b = ev.target.closest('.alterna button');
-  if (!b || E.vista !== 'horas' || !E.oficio) return;
+  if (!b) return;
   const sec = b.closest('.hora-sec');
   const s = E.oficio.secciones.find((x) => x.cl === sec.dataset.cl);
   const i = s ? s.alts.findIndex((a) => a.id === b.dataset.op) : -1;
@@ -4713,13 +4947,54 @@ function alElegirOpcion(ev) {
     E.cfg.hAntFinal = claveIncipit(s.alts[i].c);
     guardaCfg();
   }
-  repintaSeccion(sec, s).querySelector('[aria-pressed="true"]')
-    .focus({ preventScroll: true });
+  // el que se acaba de tocar, no el de arriba: en el comienzo de la hora
+  // hay dos burbujas, y la de las formas va antes que la del rótulo
+  const nueva = repintaSeccion(sec, s);
+  const foco = nueva.querySelector('.sec-cab [aria-pressed="true"]')
+    || nueva.querySelector('[aria-pressed="true"]');
+  if (foco) foco.focus({ preventScroll: true });
   // y con la lectura se mueve su responsorio
   const rb = E.oficio.secciones.find((x) => x.ligada === s.cl);
   const caja = rb && document.querySelector('.hora-sec[data-cl="'
     + rb.cl + '"]');
   if (caja) { sigueALaLectura(s, rb); repintaSeccion(caja, rb); }
+}
+
+/** La otra forma de empezar. La que se deja se queda como estaba —si el
+ *  invitatorio se tomaba del común, sigue tomándose de allí—, y lo elegido
+ *  dura lo que la sesión, como lo demás que se elige. */
+function cambiaComienzo(modo) {
+  const s = E.oficio.secciones.find((x) => x.formas);
+  if (!s || !s.formas[modo] || modo === s.modo) return;
+  s.formas[s.modo].i = s.i;
+  s.modo = modo;
+  s.alts = s.formas[modo].alts;
+  s.i = s.formas[modo].i;
+  const o = E.oficio;
+  E.elecciones[claveEleccion(o.iso, o.op.id, o.hora, 'comienzo')] = modo;
+  guardaElecciones();
+  const caja = document.querySelector('#vista .hora-sec[data-cl="apertura"]');
+  if (!caja) return;
+  const nueva = repintaSeccion(caja, s);
+  const b = nueva.querySelector('.comienzo [aria-pressed="true"]');
+  if (b) b.focus({ preventScroll: true });
+  // la cinta nombra la sección por la forma que se dice
+  pintaCarril(o);
+}
+
+/** Plegar o abrir la reseña. La sección crece hacia abajo, así que el
+ *  renglón donde está el dedo se queda donde estaba. */
+function pliegaResena(b) {
+  const s = E.oficio.secciones.find((x) => x.cl === 'resena');
+  const sec = b.closest('.hora-sec');
+  if (!s || !sec) return;
+  E.pliegues.resenaCerrada = !E.pliegues.resenaCerrada;
+  guardaPliegues();
+  const arriba = sec.getBoundingClientRect().top;
+  const nueva = repintaSeccion(sec, s);
+  window.scrollBy(0, nueva.getBoundingClientRect().top - arriba);
+  const b2 = nueva.querySelector('[data-pliega]');
+  if (b2) b2.focus({ preventScroll: true });
 }
 
 /* Las opciones de una sección se ven todas o no sirven: antes se metían en
@@ -5184,6 +5459,10 @@ function conCarril() {
 function nombreSeccion(s) {
   // la misa trae su nombre puesto; la hora lo saca de su rótulo
   if (s.nombre || s.rot) return s.nombre || s.rot;
+  // y el comienzo, de la forma que se haya elegido
+  if (s.formas) {
+    return s.modo === 'invitatorio' ? 'Invitatorio' : 'Invocación inicial';
+  }
   if (NOMBRE_SEC[s.cl]) return NOMBRE_SEC[s.cl];
   const r = (s.alts[s.i].c.r || '').split(':')[0].trim();
   return r ? r.charAt(0) + r.slice(1).toLowerCase() : 'Sección';
@@ -5551,6 +5830,7 @@ async function arranca() {
   $('#celebraciones').addEventListener('click', alPulsarChip);
   $('#formularios').addEventListener('click', alPulsarChip);
   $('#ir-hoy').addEventListener('click', () => {
+    if (E.vista === 'calendario') return vaAHoyCalendario();
     const hoy = hoyISO();
     location.hash = E.vista === 'horas'
       ? '#/h/' + hoy + '/' + (E.hora || '') : '#/d/' + hoy;

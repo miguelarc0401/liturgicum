@@ -10,10 +10,10 @@ días del mes alcanzados       : 3075 de 3075
 formularios                   : 3323  (1.08 por día)
    con la cabecera suplida    : 1  (el día no la lleva y se abre en su «MR p.»)
    de un día con más de una misa : 67  (la vigilia, la aurora, el día, las tres de los Difuntos)
-bloques                       : 30264 piezas, 2586 rúbricas del Misal, 3465 editoriales, 267 del santoral mexicano
+bloques                       : 30264 piezas, 2610 rúbricas del Misal, 3468 editoriales, 267 del santoral mexicano
 formularios con reseña        : 1794
    con misa votiva permitida  : 531  («Feria o / Misa de Santa María en Sábado»)
-párrafos recortados del día siguiente : 4366
+párrafos recortados del día siguiente : 4045
 bloques en dos columnas, deshechos    : 43  (las secuencias)
 
 Los días que faltan
@@ -95,7 +95,7 @@ cabecera del día siguiente dentro de la oración después de la
 comunión—. Aquí van nombrados y contados, que es lo que permite
 decidir si alguno merece entrar en el vocabulario.
 
-   47 formas, 247 casos.
+   50 formas, 250 casos.
 
       16  TERCERA PARTE:
       14  BANCOMER
@@ -131,7 +131,9 @@ decidir si alguno merece entrar en el vocabulario.
        3  TU DEPÓSITO
        3  SÍGUENOS
        1  TRASLACIÓN DEL SANTÍSIMO SACRAMENTO
-       1  DURANTE LA OCTAVA DE PASCUA:
+       1  R. ACLAMACIÓN ANTES DEL EVANGELIO  Cfr. 1Cor 5, 7-8
+       1  ANTÍFONA PRIMERA  Cfr. Jn 13, 4. 5. 15
+       1  + BEATOS PEDRO ZÚÑIGA Y LUIS FLORES,
        1  OCTAVA DE NAVIDAD
        1  ANUNCIO DE LAS CELEBRACIONES MOVIBLES
        1  RITOS INICIALES Y LITURGIA DE LA PALABRA
@@ -144,6 +146,7 @@ decidir si alguno merece entrar en el vocabulario.
        1  V, CONCLUSIÓN
        1  SOLEMNIDAD DE LA SANTÍSIMA TRINIDAD
        1  XXIX DOMINGO DEL TIEMPO ORDINARIO
+       1  SALMO RESPONSΩRIAL
 
 Lo que el día deja elegir
 -------------------------

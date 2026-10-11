@@ -1,0 +1,26 @@
+El leccionario latino de 1977 - cosecha de los cuatro tomos
+
+   tomo 1: 1116 pericopas  (cerradas 1110, con cita 1030, con incipit  539)
+   tomo 2: 1120 pericopas  (cerradas 1106, con cita 1026, con incipit  529)
+   tomo 3: 1237 pericopas  (cerradas 1228, con cita 1121, con incipit  618)
+   tomo 4: 1112 pericopas  (cerradas 1103, con cita 1035, con incipit  547)
+
+   4585 pericopas en total -> 1620 distintas (quitadas 2965 repeticiones entre tomos)
+   70 libros biblicos representados
+   sin ninguna pericopa: Abdias, Ecclesiastes, Psalmi
+
+   con incipit canonico: 657 de 1620  (40.6 %)
+        276  In illo témpore:
+        145  Fratres:
+         82  In illo témpore: Dixit Iesus discípulis suis:
+         43  In diébus illis:
+         26  Caríssimi:
+         22  Caríssime:
+         17  Locútus est Móyses pópulo dicens:
+         15  Haec dicit Dóminus:
+         11  Dixit Iesus discípulis suis:
+          7  Locútus est Dóminus ad Móysen dicens:
+          4  Ait Deus:
+          4  In diébus illis: Locútus est Móyses pópulo dicens:
+
+escrito data/lect1977_pericopas.json  (280 KB)

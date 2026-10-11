@@ -6,17 +6,17 @@ testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
 formularios leídos            : 7572
-celebraciones con propios     : 599
-perícopas distintas por cita  : 3560
+celebraciones con propios     : 573
+perícopas distintas por cita  : 3559
 prefacios propios cosechados  : 28
-textos propios atribuidos     : 2762
-   por lo que nombra la fuente: 887
-   por lo que titula el día   : 978
-   por la fecha del año       : 361
+textos propios atribuidos     : 2524
+   por lo que nombra la fuente: 794
+   por lo que titula el día   : 932
+   por la fecha del año       : 322
    por el común que comparten : 27
-   por el calendario          : 404
+   por el calendario          : 344
    por todos sus días menos uno: 105
-textos sin celebración que los explique: 346
+textos sin celebración que los explique: 350
    (van aparte, en sueltos_es.json, con sus días)
 
 El riesgo 3: las lecturas propias que nunca se imprimen
@@ -115,8 +115,8 @@ cita y no por ranura, sin tocar la atribución ni el día.
   salmo              56       99
   segunda             0        9
   aclamacion          0       18
-  evangelio          37       39
-  TOTAL              95      184
+  evangelio          37       37
+  TOTAL              95      182
 
 Y por años, que dice de dónde salen: el sitio imprime los dos
 formularios en los años viejos y uno solo en los nuevos.
@@ -136,8 +136,8 @@ formularios en los años viejos y uno solo en los nuevos.
    sitio     2020    16
    sitio     2021     8
    sitio     2022    15
-   sitio     2023    19
-   sitio     2024    35
+   sitio     2023    18
+   sitio     2024    34
    sitio     2025    14
    sitio     2026    14
 
@@ -145,7 +145,7 @@ Las citas
 ---------
 
 La pieza viene con su cita, y por eso el emparejamiento no se
-adivina. Leídas: 15782 del incipit, 19094 de su propio campo, 3382 del
+adivina. Leídas: 15780 del incipit, 19128 de su propio campo, 3382 del
 rótulo del salmo y 3200 del renglón que no es más que la cita, que
 es como la fuente imprime la del salmo responsorial la mitad de
 las veces. Ese renglón no lo leía nadie, y una lectura sin cita no
@@ -349,6 +349,78 @@ Nombres de libro que no se supieron leer: 186 formas, 348 casos.
       1  'Salúdense mutuamente con el saludo de paz.De la '
       1  'Pasión de nuestro Señor Jesucristo, según San Ju'
 
+Lo que iba detrás del cierre de la oración
+------------------------------------------
+
+**La oración acaba en su conclusión: lo que va detrás no es de
+ella.** «Por nuestro Señor Jesucristo, tu Hijo, que vive y reina
+contigo… por los siglos de los siglos», «Por Jesucristo, nuestro
+Señor», «Por Cristo, nuestro Señor»: donde acaba, acaba la
+oración. Es el mismo hallazgo que la fórmula del incipit para las
+lecturas, por el otro extremo, y hacía falta porque la cola tiene
+muchas más formas que un rótulo en versales —el cumpleaños del
+presbítero, el Jubileo Circular, el esquema de la Liturgia de las
+Horas, el pie con la fecha, la hagiografía del santo mexicano, la
+reflexión del sitio— y casi ninguna se reconoce sola.
+
+   oraciones con cola, que se corta : 1715
+   caracteres que se quitan         : 708019
+
+Donde no hay conclusión reconocible no se corta: el misalito la
+abrevia a veces —«Por nuestro Señor Jesucristo…»— y cortar sin
+ancla sería adivinar. Manda la **última** conclusión del texto,
+porque el cuerpo de una oración puede nombrar a Cristo nuestro
+Señor sin estar acabando; y el «Amén» del pueblo se va con la
+cola, porque la conclusión es del sacerdote y ninguna de las
+otras veintidós mil oraciones lo trae.
+
+   poscomunion     1173
+   ofrendas         284
+   pueblo           167
+   colecta           91
+
+Las colas, por lo que empiezan diciendo:
+
+    332  UNA REFLEXIÓN PARA NUESTRO
+    330  Amén.
+     77  Fuente: misalcatolico.com Categoria: Misa
+     59  La despedida se hace
+     49  R. Amén.
+     48  Puede utilizarse la fórmula
+     21  ..
+     20  Pueden utilizarse las fórmulas
+     17  La bendición e imposición
+     16  Liturgia de las Horas
+     11  Y todos, haciendo genuflexión
+     11  En la celebración de
+     11  Prefacio para los domingos
+      9  Nació en San Juan
+      9  O bien, si es
+      8  Nació en Taxco de
+      8  R. Amén. Como despedida
+      8  Por decreto de la
+      7  Nació en Santa María
+      7  Y todos se retiran
+      7  La costumbre de cubrir
+      7  ,
+      6  En la República Mexicana,
+      6  Durante estos días: Prefacio
+   … y 470 formas más
+
+Las diez más largas, con su día:
+
+     3296  2018-07-31/0  poscomunion    95 Jubileo Circular Lunes 2, martes 3 y miércole
+     3277  2019-05-31/0  poscomunion    87 Jubileo Circular Lunes 29 y martes 30 de abri
+     3198  2018-09-30/0  poscomunion    86 miércoles 29 de agosto de 2018 Jubileo Circul
+     3098  2019-02-28/0  poscomunion    Jubileo Circular Jueves 31 de enero; viernes 1° 
+     3088  2018-08-31/0  poscomunion    94 Jubileo Circular Lunes 30 y martes 31 de juli
+     3055  2019-08-31/0  poscomunion    Jubileo Circular Jubileo Circular: jueves 1°, vi
+     3049  2018-06-30/0  poscomunion    95 Jubileo Circular Jueves 31 de mayo; viernes 1
+     3042  2018-12-31/0  poscomunion    103 Jubileo Circular Jubileo Circular: jueves 29
+     2867  2019-07-31/0  poscomunion    95 Jubileo Circular Lunes 1°, martes 2 y miércol
+     2765  2019-03-31/0  pueblo         95 Jubileo Circular Jueves 28 de febrero; vierne
+
+
 Lo que se repara, y con qué prueba
 ----------------------------------
 
@@ -361,7 +433,7 @@ oración se parten en dos grupos, la mayoría decide sobre un
 reparto falso y el texto canónico sale con «dispon- gas» dentro.
 Se junta cuando el renglón acaba en guión y el siguiente empieza
 en minúscula, que es el único caso en que el guión no es del
-texto: **7342 palabras**.
+texto: **7317 palabras**.
 
      81  Jesu- / cristo,   →   Jesucristo,
      44  por- / que   →   porque
@@ -375,7 +447,7 @@ texto: **7342 palabras**.
      19  con- / tigo   →   contigo
      18  nues- / tros   →   nuestros
      18  noso- / tros   →   nosotros
-   … y 4414 formas más
+   … y 4391 formas más
 
 **Los salmos partidos con letra.** El misalito escribe «Sal
 113A», «Sal 18B» y «Sal 87(86)»; el índice del leccionario no
@@ -432,9 +504,9 @@ El cotejo con el índice del leccionario, que es el camino
 independiente del calendario: si el lector de citas leyera mal,
 saldría aquí.
 
-   citas distintas en el corpus                   : 3489
+   citas distintas en el corpus                   : 3488
    que el índice tiene igual                      : 1693
-   que el índice no tiene con esos versículos     : 1698
+   que el índice no tiene con esos versículos     : 1697
    que el índice no tiene ni por el capítulo      : 98
 
 La fila del medio no es un fallo y conviene no confundirla con
@@ -519,21 +591,21 @@ Los testigos: lo que está decidido y lo que no
 ----------------------------------------------
 
 Piezas propias por número de testigos del texto canónico:
-    1 testigo(s) :   286 piezas
-    2 testigo(s) :    98 piezas
-    3 testigo(s) :   145 piezas
-    4 testigo(s) :   193 piezas
-    5 testigo(s) :   140 piezas
-    6 testigo(s) :   203 piezas
-    7 testigo(s) :   418 piezas
-    8 testigo(s) :   341 piezas
-    9 testigo(s) :    63 piezas
+    1 testigo(s) :   229 piezas
+    2 testigo(s) :    97 piezas
+    3 testigo(s) :   136 piezas
+    4 testigo(s) :   194 piezas
+    5 testigo(s) :   127 piezas
+    6 testigo(s) :   187 piezas
+    7 testigo(s) :   431 piezas
+    8 testigo(s) :   366 piezas
+    9 testigo(s) :    64 piezas
    10 testigo(s) :     5 piezas
    11 testigo(s) :     7 piezas
-   12 testigo(s) :     8 piezas
-   13 testigo(s) :    14 piezas
-   14 testigo(s) :     7 piezas
-   15 testigo(s) :     6 piezas
+   12 testigo(s) :     7 piezas
+   13 testigo(s) :    13 piezas
+   14 testigo(s) :     9 piezas
+   15 testigo(s) :     7 piezas
    16 testigo(s) :     1 piezas
    17 testigo(s) :     2 piezas
    21 testigo(s) :     2 piezas
@@ -541,27 +613,23 @@ Piezas propias por número de testigos del texto canónico:
    42 testigo(s) :     1 piezas
 
 Piezas con variantes (la fuente no imprimió lo mismo todos los
-años): 572. La variante se guarda con los días que la respaldan,
+años): 497. La variante se guarda con los días que la respaldan,
 que es lo que impide que una errata de un año se imponga a los
 otros siete.
 
-Piezas decididas a la fuerza por empate de testigos: 89. Es el
+Piezas decididas a la fuerza por empate de testigos: 73. Es el
 único sitio donde la mayoría no decide, y conviene mirarlas:
    d3_0_3                             entrada      4 testigos, 1 variantes
    d3_2_0                             entrada      4 testigos, 1 variantes
    d3_8_6                             colecta      4 testigos, 1 variantes
-   d5_10_0                            poscomunion  1 testigos, 1 variantes
    d5_25_0                            comunion     4 testigos, 1 variantes
    d5_28_0                            comunion     1 testigos, 1 variantes
-   d5_3_0                             poscomunion  1 testigos, 1 variantes
    md_02-04                           ofrendas     3 testigos, 1 variantes
-   md_02-25                           colecta      6 testigos, 2 variantes
    md_02-25                           ofrendas     4 testigos, 1 variantes
+   md_02-25                           poscomunion  4 testigos, 1 variantes
    md_03-02                           colecta      1 testigos, 1 variantes
-   md_03-11                           poscomunion  1 testigos, 1 variantes
    md_03-15                           colecta      1 testigos, 1 variantes
    md_03-24                           colecta      1 testigos, 1 variantes
-   md_03-31                           pueblo       1 testigos, 1 variantes
    md_04-16                           colecta      1 testigos, 1 variantes
    md_04-17                           colecta      1 testigos, 1 variantes
    md_04-26                           poscomunion  1 testigos, 1 variantes
@@ -578,60 +646,64 @@ Piezas decididas a la fuerza por empate de testigos: 89. Es el
    md_09-23                           poscomunion  4 testigos, 1 variantes
    md_11-25                           ofrendas     3 testigos, 1 variantes
    md_11-25                           poscomunion  3 testigos, 1 variantes
-   md_12-16                           poscomunion  1 testigos, 2 variantes
-   md_12-24                           poscomunion  6 testigos, 2 variantes
    san_beato-miguel-agustin-pro-marti ofrendas     3 testigos, 2 variantes
-   san_beatos-pedro-zuniga-y-luis-flo poscomunion  1 testigos, 1 variantes
-   san_nuestra-senora-del-perpetuo-so poscomunion  1 testigos, 1 variantes
-   san_san-david-galvan-bermudez      poscomunion  1 testigos, 1 variantes
    san_san-david-uribe-velasco        ofrendas     1 testigos, 1 variantes
-   san_san-jenaro-sanchez-delgadillo  poscomunion  1 testigos, 1 variantes
    san_santa-eduwiges-religiosa       ofrendas     1 testigos, 2 variantes
-   … y 49 más
+   san_santa-juana-francisca-de-chant ofrendas     1 testigos, 1 variantes
+   san_santa-teresa-benedicta-de-la-c ofrendas     1 testigos, 2 variantes
+   san_santa-teresa-benedicta-de-la-c poscomunion  1 testigos, 2 variantes
+   st_0117_3                          ofrendas     7 testigos, 1 variantes
+   st_0117_3                          poscomunion  7 testigos, 1 variantes
+   st_0122_7                          poscomunion  2 testigos, 2 variantes
+   st_0206_18                         ofrendas     3 testigos, 1 variantes
+   st_0206_18                         poscomunion  3 testigos, 1 variantes
+   st_0208_19                         poscomunion  1 testigos, 2 variantes
+   st_0308_29                         colecta      3 testigos, 1 variantes
+   … y 33 más
 
-Piezas con un solo testigo y sin variante: 243. Entran, pero el
+Piezas con un solo testigo y sin variante: 204. Entran, pero el
 texto no está confirmado por nadie más:
-   d0_0_3                             poscomunion  2021-12-01/0
    d0_1_0                             ofrendas     2021-12-05/0
    d0_1_5                             ofrendas     2021-12-10/0
    d0_2_4                             ofrendas     2021-12-16/0
-   d0_2_4                             poscomunion  2021-12-16/0
    d1_1_1                             colecta      2021-12-29/0
-   d1_1_1                             poscomunion  2021-12-29/0
-   d1_1_2                             poscomunion  2021-12-30/0
    d1_1_3                             colecta      2021-12-31/0
-   d1_1_3                             poscomunion  2021-12-31/0
    d2_3_0                             comunion     2020-03-15/0
    d3_3_0                             ofrendas     2026-04-19/0
    d3_4_0                             ofrendas     2022-05-08/0
    d3_5_0                             ofrendas     2021-05-02/0
-   d3_5_0                             poscomunion  2026-05-03/0
    d3_6_0                             ofrendas     2023-05-14/0
    d3_6_0                             poscomunion  2025-05-25/0
    d3_9_0                             entrada      2019-06-09/0
+   d5_10_0                            poscomunion  2021-06-13/0
    d5_13_0                            comunion     2019-07-07/0
    d5_19_0                            ofrendas     2025-08-17/0
    d5_1_0                             ofrendas     2022-01-16/0
    d5_24_0                            ofrendas     2026-09-20/0
-   d5_27_0                            poscomunion  2025-10-12/0
    d5_2_5                             colecta      2021-01-29/0
    d5_2_5                             ofrendas     2021-01-29/0
    d5_2_5                             poscomunion  2021-01-29/0
    d5_2_6                             colecta      2021-01-30/0
-   d5_2_6                             poscomunion  2021-01-30/0
-   d5_3_1                             poscomunion  2021-02-01/0
    d5_4_5                             colecta      2021-02-12/0
    d5_4_5                             comunion     2021-02-12/0
-   d5_4_5                             poscomunion  2021-02-12/0
    d5_5_1                             entrada      2021-02-15/0
    d5_5_1                             colecta      2021-02-15/0
    d5_5_1                             ofrendas     2021-02-15/0
-   md_01-04                           poscomunion  2021-01-04/0
-   md_01-05                           poscomunion  2021-01-05/0
-   md_01-08                           poscomunion  2021-01-08/0
    md_01-09                           comunion     2025-01-09/0
-   md_01-09                           poscomunion  2021-01-09/0
-   … y 203 más
+   md_02-07                           entrada      2023-02-07/0
+   md_02-07                           colecta      2023-02-07/0
+   md_02-07                           ofrendas     2023-02-07/0
+   md_02-07                           poscomunion  2023-02-07/0
+   md_03-05                           colecta      2026-03-05/0
+   md_03-06                           colecta      2026-03-06/0
+   md_03-11                           poscomunion  2024-03-11/0
+   md_03-13                           colecta      2026-03-13/0
+   md_03-13                           poscomunion  2024-03-13/0
+   md_03-14                           colecta      2026-03-14/0
+   md_03-16                           colecta      2026-03-16/0
+   md_03-20                           colecta      2026-03-20/0
+   md_03-20                           poscomunion  2025-03-20/0
+   … y 164 más
 
 Lo atribuido con una excepción
 ------------------------------
@@ -647,11 +719,12 @@ así, la intersección se quedaba vacía y las cinco piezas de una
 solemnidad se iban con los textos sueltos. Cada excepción, por
 su nombre:
 
+   d5_2_0                             salvo 2021-02-01/0  (5 piezas)
    md_12-24                           salvo 2021-12-25/0  (5 piezas)
    vot_misa-por-los-sacerdotes        salvo 2019-10-10/0  (5 piezas)
    d2_2_5                             salvo 2025-03-22/0  (4 piezas)
-   d5_2_0                             salvo 2021-02-01/0  (4 piezas)
    st_0624_77                         salvo 2022-06-23/0  (4 piezas)
+   vot_misa-de-la-divina-misericordia salvo 2019-07-19/0  (4 piezas)
    vot_misa-de-la-sagrada-eucaristia  salvo 2020-01-23/0  (4 piezas)
    vot_misa-por-la-evangelizacion-de- salvo 2019-10-20/0  (4 piezas)
    d1_1_4                             salvo 2021-12-31/1  (3 piezas)
@@ -659,9 +732,9 @@ su nombre:
    d5_11_0                            salvo 2023-07-16/0  (3 piezas)
    st_0518_57#misa-vespertina-de-la-v salvo 2018-06-23/1  (3 piezas)
    st_0621_74                         salvo 2020-06-18/0  (3 piezas)
-   vot_misa-de-la-divina-misericordia salvo 2019-07-19/0  (3 piezas)
    vot_misa-del-sagrado-corazon-de-je salvo 2018-09-07/0  (3 piezas)
    vot_misa-por-la-evangelizacion-de- salvo 2018-10-21/0  (3 piezas)
+   vot_misa-por-la-iglesia-universal- salvo 2018-10-30/0  (3 piezas)
    d3_8_6                             salvo 2022-06-04/1  (2 piezas)
    d5_17_0                            salvo 2025-08-07/0  (2 piezas)
    st_0107_1                          salvo 2025-01-09/0  (2 piezas)
@@ -671,13 +744,11 @@ su nombre:
    st_1006_146                        salvo 2023-07-24/0  (2 piezas)
    vot_misa-de-santa-maria-en-sabado  salvo 2018-09-01/0  (2 piezas)
    vot_misa-para-pedir-la-gracia-de-u salvo 2022-11-11/0  (2 piezas)
-   vot_misa-por-la-iglesia-universal- salvo 2018-10-30/0  (2 piezas)
    vot_misa-por-la-paz-y-la-justicia  salvo 2018-09-11/0  (2 piezas)
    vot_misa-por-los-familiares-y-amig salvo 2021-02-09/0  (2 piezas)
    comun_5226COMPAS                   salvo 2024-05-28/0  (1 piezas)
    comun_5226COMPAS                   salvo 2025-02-27/0  (1 piezas)
    comun_5229COMSAN                   salvo 2025-03-03/0  (1 piezas)
-   d1_5_2                             salvo 2020-01-04/0  (1 piezas)
    d2_1_5                             salvo 2026-02-23/0  (1 piezas)
    d2_2_2                             salvo 2026-02-27/0  (1 piezas)
    d2_3_7                             salvo 2026-03-09/0  (1 piezas)
@@ -687,12 +758,13 @@ su nombre:
    md_10-12                           salvo 2019-06-30/1  (1 piezas)
    md_11-09                           salvo 2021-01-14/0  (1 piezas)
    san_san-isidro-labrador            salvo 2021-04-12/0  (1 piezas)
-   … y 14 más
+   st_0913_129                        salvo 2025-02-27/0  (1 piezas)
+   … y 11 más
 
 Los textos que ninguna celebración explica: los comunes
 -------------------------------------------------------
 
-346 textos aparecen en días que no comparten ninguna celebración,
+350 textos aparecen en días que no comparten ninguna celebración,
 y no es un fallo: son los **comunes**. La antífona «En medio de la
 Iglesia abrió su boca» se imprime en los días de cuarenta santos
 distintos, así que no es de ninguno de ellos.
@@ -720,22 +792,24 @@ ranura        días  texto
    comunion       40  no son ustedes los que me han elegido dice el senor soy 
    comunion       39  dichoso el servidor a quien su amo al volver lo encuentr
    comunion       36  el que me sigue no caminara en la oscuridad y tendra la 
+   poscomunion    36  senor muestrate benigno con tu pueblo y ya que te dignas
    entrada        35  alegrese el corazon de los que buscan al senor busquen a
-   poscomunion    35  senor muestrate benigno con tu pueblo y ya que te dignas
    comunion       34  dichoso el vientre de la virgen maria que llevo al hijo 
    entrada        34  todo lo considero basura con tal de conocer a cristo y c
    ofrendas       33  concedenos senor vivir siempre llenos de gratitud por es
+   poscomunion    33  ya que nos has concedido participar de la redencion eter
    comunion       32  el cordero que esta en el trono los conducira a las fuen
    comunion       31  ustedes han perseverado conmigo en mis pruebas dice el s
    entrada        31  te aclamamos santa madre de dios porque has dado a luz a
    entrada        31  ahora gozan en el cielo las almas de los santos que sigu
+   poscomunion    31  al recibir el sacramento celestial en la conmemoracion d
    poscomunion    31  dirige senor tu mirada compasiva sobre tu pueblo al que 
    ofrendas       27  acepta benignamente senor los dones de tu pueblo para qu
    poscomunion    27  al recibir senor el don de estos sagrados misterios te s
+   poscomunion    27  al celebrar con alegria esta festividad y habiendo recib
    entrada        26  este es el siervo fiel y prudente a quien el senor puso 
    entrada        26  ya sigue al cordero crucificado por nosotros la virgen l
    ofrendas       26  santifica senor por tu piedad estos dones y al recibir e
-   poscomunion    26  ya que nos has concedido participar de la redencion eter
    poscomunion    26  senor y dios nuestro escucha nuestras oraciones para que
    comunion       25  ha hecho en mi grandes cosas el que todo lo puede santo 
    comunion       25  alegrate siervo bueno y fiel entra a compartir el gozo d
@@ -746,11 +820,9 @@ ranura        días  texto
    ofrendas       25  dios nuestro que por el santo valor de este sacrificio n
    comunion       24  el que dia y noche medita la ley del senor al debido tie
    comunion       24  el buen pastor da la vida por sus ovejas
-   poscomunion    24  al recibir el sacramento celestial en la conmemoracion d
    comunion       23  estos son los milagros que acompanaran a los que hayan c
    comunion       23  el buen pastor da la vida por sus ovejas aleluya
-   entrada        23  el siervo fiel y prudente fue constituido como padre de 
-   … y 306 más
+   … y 310 más
 
 Los prefacios
 -------------
@@ -816,61 +888,61 @@ Las oraciones sobre el pueblo
 
 El Ordinario de México no las trae: sólo las menciona en los
 números 142 y 143. Los misalitos sí las imprimen, y aquí están:
-52 celebraciones con oración sobre el pueblo.
+47 celebraciones con oración sobre el pueblo.
 
     9 testigos  d2_2_5                             Viernes de la 2ª semana de Cuaresma
+    8 testigos  d2_1_0                             Domingo I de Cuaresma
     8 testigos  d2_2_1                             Lunes de la 2ª semana de Cuaresma
     8 testigos  d2_2_4                             Jueves de la 2ª semana de Cuaresma
     8 testigos  d2_3_0                             Domingo III de Cuaresma
     8 testigos  d2_3_4                             Miércoles de la 3ª semana de Cuaresma
     8 testigos  d2_3_7                             Sábado de la 3ª semana de Cuaresma
+    8 testigos  d2_4_0                             Domingo IV de Cuaresma
     8 testigos  d2_4_3                             Martes de la 4ª semana de Cuaresma
     8 testigos  d2_5_2                             Lunes de la 5ª semana de Cuaresma
+    8 testigos  d2_5_7                             Sábado de la 5ª semana de Cuaresma
     8 testigos  d2_6_0                             Domingo de Ramos en la Pasión del Señor
     8 testigos  d2_6_1                             Lunes santo
     8 testigos  d2_6_2                             Martes santo
     8 testigos  d2_6_3                             Miércoles santo
+    8 testigos  d3_0_1                             Viernes santo. Celebración de la Pasión 
     7 testigos  d2_0_0                             Miércoles de Ceniza
     7 testigos  d2_0_1                             Jueves después de Cenizas
     7 testigos  d2_0_2                             Viernes después de Cenizas
-    7 testigos  d2_1_0                             Domingo I de Cuaresma
+    7 testigos  d2_0_3                             Sábado después de Cenizas
     7 testigos  d2_1_1                             Lunes de la 1ª semana de Cuaresma
     7 testigos  d2_1_2                             Martes de la 1ª semana de Cuaresma
     7 testigos  d2_1_3                             Miércoles de la 1ª semana de Cuaresma
     7 testigos  d2_1_5                             Viernes de la 1ª semana de Cuaresma
     7 testigos  d2_1_6                             Sábado de la 1ª semana de Cuaresma
+    7 testigos  d2_2_0                             Domingo II de Cuaresma
     7 testigos  d2_2_3                             Miércoles de la 2ª semana de Cuaresma
     7 testigos  d2_3_2                             Lunes de la 3ª semana de Cuaresma
     7 testigos  d2_3_3                             Martes de la 3ª semana de Cuaresma
     7 testigos  d2_3_5                             Jueves de la 3ª semana de Cuaresma
-    7 testigos  d2_3_6                             Viernes de la 3ª semana de Cuaresma
-    7 testigos  d2_4_0                             Domingo IV de Cuaresma
-    7 testigos  d2_4_2                             Lunes de la 4ª semana de Cuaresma
-    7 testigos  d2_4_6                             Viernes de la 4ª semana de Cuaresma
-    7 testigos  d2_5_0                             Domingo V de Cuaresma
-   … y 22 más
+   … y 17 más
 
 Las celebraciones y lo que tienen
 ---------------------------------
 
-   santoral     252
-   tiempo       158
-   fecha        118
-   votiva        66
+   santoral     243
+   tiempo       157
+   fecha        105
+   votiva        63
    común          5
 
-Con las cinco piezas del formulario completas: 162 de 599. Que la
+Con las cinco piezas del formulario completas: 159 de 573. Que la
 mayoría no las tenga todas no es un hueco del parseo: es lo que
 el misalito imprime. En una memoria pone la colecta del santo y
 deja las antífonas de la feria, así que el santo se queda con su
 colecta y nada más, y es correcto —la app tomará las demás de
 donde el día las toma—. Lo que falta, ranura por ranura:
 
-   sin comunion       350 celebraciones
-   sin entrada        331 celebraciones
-   sin ofrendas       198 celebraciones
-   sin poscomunion    158 celebraciones
-   sin colecta         69 celebraciones
+   sin comunion       324 celebraciones
+   sin entrada        305 celebraciones
+   sin poscomunion    177 celebraciones
+   sin ofrendas       175 celebraciones
+   sin colecta         45 celebraciones
 
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
@@ -880,36 +952,31 @@ fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
 calendario se armó con el general. Sus textos entran, con
-identificador `san_…`: son 55 celebraciones.
+identificador `san_…`: son 49 celebraciones.
 
    san_beata-maria-de-la-concepcion               colecta, comunion, ofrendas, poscomunion
    san_beato-bartolome-gutierrez                  colecta, comunion, ofrendas, poscomunion
-   san_beato-elias-del-socorro-nieves             ofrendas, poscomunion
+   san_beato-elias-del-socorro-nieves             poscomunion
    san_beato-luis-magana-servin                   ofrendas
    san_beato-luis-magana-servin-martir-mexicano   ofrendas
    san_beato-mateo-elias-del-socorro              colecta
    san_beato-miguel-agustin-pro-martir            colecta, ofrendas, poscomunion
-   san_beato-sebastian-de-aparicio                poscomunion
-   san_beatos-jose-ezequiel-y                     colecta, pueblo
+   san_beatos-jose-ezequiel-y                     colecta
    san_beatos-jose-luis-padilla-gomez             colecta
    san_beatos-juan-bautista-y                     colecta, poscomunion
    san_beatos-pedro-zuniga-y-luis-flores          ofrendas, poscomunion
-   san_de-la-divina-misericordia                  colecta, poscomunion
+   san_de-la-divina-misericordia                  colecta
    san_memoria-de-santa-teresa-de-calcuta         colecta, entrada, ofrendas
    san_nuestra-senora-de-fatima                   colecta, comunion, entrada, ofrendas, po
    san_nuestra-senora-de-la-merced                colecta, comunion, entrada, ofrendas, po
-   san_nuestra-senora-del-perpetuo-socorro        poscomunion
    san_por-la-santificacion-del-trabajo-humano    colecta
    san_san-antonio-m-claret-obispo                ofrendas, poscomunion
    san_san-apolinar-obispo-y-martir               colecta
    san_san-atilano-cruz-alvarado-y                colecta
    san_san-charbel-makhluf-presbitero             colecta
-   san_san-david-galvan-bermudes-martir-mexicano  poscomunion
-   san_san-david-galvan-bermudez                  poscomunion
    san_san-david-uribe-velasco                    colecta, entrada, ofrendas, poscomunion
    san_san-gregorio-de-narek                      colecta, ofrendas, poscomunion, pueblo
    san_san-isidro-labrador                        colecta, comunion, entrada, ofrendas, po
-   san_san-jenaro-sanchez-delgadillo              poscomunion
    san_san-jose-maria-de-yermo-y                  colecta
    san_san-jose-maria-de-yermo-y-parres-presbiter ofrendas, poscomunion
    san_san-jose-maria-robles-hurtado              ofrendas, poscomunion
@@ -917,7 +984,6 @@ identificador `san_…`: son 55 celebraciones.
    san_san-junipero-serra-presbitero              colecta, comunion, poscomunion
    san_san-miguel-de-la-mora-martir-mexicano      colecta
    san_san-pascual-bailon-religioso               colecta, ofrendas, poscomunion
-   san_san-pedro-esqueda-ramirez-martir-mexicano  poscomunion
    san_san-sabas-reyes-salazar                    comunion, ofrendas, poscomunion
    san_san-sabas-reyes-salazar-martir-mexicano    colecta
    san_san-tranquilino-ubiarco-robles             colecta, ofrendas, poscomunion

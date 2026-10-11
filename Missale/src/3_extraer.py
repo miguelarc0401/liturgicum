@@ -327,15 +327,43 @@ def rotulo_de(caja):
 #
 # Dos renglones en versales **no** cierran, y son los que marcan un tramo
 # *dentro* de la lectura: la forma breve del evangelio y su continuación.
-ROTULO_SUELTO = re.compile(r"^[A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ'ª .,:;()0-9/\-–—]{4,45}$")
+#
+# **Y el adorno no es parte del nombre.** La fuente lo adorna con el
+# asterisco, la cruz, el bolo, la comilla o el número de la página, y la
+# primera versión de esta regla exigía que el renglón empezara por versal, de
+# modo que «* EN LA ARQUIDIÓCESIS DE GUADALAJARA*» no era rótulo y pegó a la
+# oración después de la comunión del domingo XXVIII del tiempo ordinario la
+# reseña entera de Nuestra Señora de Zapopan: cuarenta y ocho renglones, que
+# es lo que la app enseñaba detrás de la oración. Así que el adorno se quita
+# delante y detrás —y el número de página o de rúbrica con él—, se admite una
+# minúscula suelta (la conjunción de «+ SANTOS JUAN BRÉBEUF e ISAAC JOGUES» y
+# la p de «BENDICIÓN SOLEMNE p. 338 [343]») y el largo se mide generoso,
+# porque el titular de una homilía también cierra la pieza aunque no quepa en
+# cuarenta y cinco caracteres. Medido en las dos fuentes: **112 renglones**
+# en versales seguían dentro de una pieza, y los 112 son rótulo o editorial.
+ROTULO_SUELTO = re.compile(
+    r"^[A-ZÁÉÍÓÚÑÜ][-A-Za-zÀ-ÿΩ\'’ª .,:;()\[\]«»“”\"!¿?&0-9/–—]{4,95}$")
+ADORNO = ' \t*+•●·◆■□▪-–—.,:;¡!¿?"\'«»“”()[]<>|/'
+NUMERO = re.compile(r'^\d+\s*[.ºª)°]?\s+')
+CONJUNCION = re.compile(r'^[oy]\s+', re.I)
+MINUSCULAS = re.compile(r'[a-záéíóúñüàèìòùâêîôûäëïöç]')
+MAYUSCULAS = re.compile(r'[A-ZÁÉÍÓÚÑÜ]')
 DENTRO_DE_LA_PIEZA = {'forma breve', 'forma larga', 'continua la forma larga',
                       'sigue la forma larga'}
 
 
 def parece_rotulo(caja):
     """Si la caja parece el rótulo de una sección que no conocemos."""
-    t = caja.strip()
-    if not ROTULO_SUELTO.match(t) or re.search(r'[a-záéíóúñü]', t):
+    t = caja.strip().strip(ADORNO)
+    t = NUMERO.sub('', t)
+    t = CONJUNCION.sub('', t).strip()
+    if not t or not ROTULO_SUELTO.match(t):
+        return False
+    # en versales, admitiendo una minúscula suelta: la conjunción que une dos
+    # santos y la abreviatura de página son minúsculas y el rótulo lo es
+    may = len(MAYUSCULAS.findall(t))
+    mins = len(MINUSCULAS.findall(t))
+    if may < 4 or may / (may + mins) < 0.85:
         return False
     limpio = sinac(re.sub(r'[^A-Za-zÁ-ÿ ]', ' ', t)).strip()
     limpio = re.sub(r'\s+', ' ', limpio)
@@ -350,10 +378,18 @@ RUBRICAS = [
     ('@plegaria', re.compile(r'^(Si\s+se\s+utiliza\s+el\s+Canon|'
                              r'En\s+las\s+otras\s+Plegarias|'
                              r'Plegaria\s+[Ee]ucar[ií]stica)', re.I)),
+    # No se exige la palabra «bendición» en el mismo renglón: el misalito
+    # parte la rúbrica en dos —«Puede utilizarse la fórmula de / bendición
+    # solemne, p. 601 [609]»— y entonces se quedaba dentro de la oración. El
+    # comienzo basta: en las dos fuentes abre 541 rúbricas de la bendición y
+    # ninguna otra cosa.
     ('@bendicion', re.compile(r'^(Puede\s+(utilizarse|darse)|'
-                              r'Se\s+puede\s+dar)\b.*'
-                              r'(bendici[oó]n|oraci[oó]n\s+sobre\s+el\s+pueblo)',
-                              re.I)),
+                              r'Se\s+puede\s+dar)\b', re.I)),
+    # Y el nombre a secas, que es como el misalito la anuncia detrás de la
+    # oración después de la comunión en el Triduo: «BENDICIÓN SOLEMNE p. 338
+    # [343].» Son catorce días, y sin esto el renglón se quedaba dentro de la
+    # oración y la app lo enseñaba detrás de ella.
+    ('@bendicion', re.compile(r'^\s*bendici[oó]n\s+solemne\b', re.I)),
     ('@lecturas', re.compile(r'^Las\s+lecturas\b', re.I)),
     ('@obien', re.compile(r'^O\s+bien\s*:?\s*$', re.I)),
     ('@secuencia', re.compile(r'^(La\s+)?[Ss]ecuencia\b.*(opcional|obligat)',

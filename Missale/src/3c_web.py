@@ -346,8 +346,16 @@ def rotulo_de(linea):
     # La guarda no es cosmética: `difflib` contra las treinta llaves y los
     # siete prefijos de cada renglón del sitio multiplicaba por cuatro lo que
     # tarda la fase, y el 99 % de esos renglones son cuerpo de una pieza.
+    # La guarda mira **el principio**, no los primeros treinta y cuatro
+    # caracteres: el rótulo arranca en versales y la cita que lleva pegada
+    # detrás no —«CLAMACIÓN ANTES DEL EVANGELIO Jn 8, 12»—, de modo que con
+    # treinta y cuatro la minúscula de la cita caía dentro y el rótulo mal
+    # impreso no llegaba al parecido. Son once rótulos del sitio, y con ellos
+    # la pieza siguiente se quedaba pegada a la anterior: la aclamación
+    # dentro de la primera lectura, la antífona de la comunión dentro de la
+    # oración sobre las ofrendas.
     cabeza = re.sub(r'\s+', ' ', linea.strip())
-    if len(cabeza) > 56 or MINUSCULA.search(cabeza[:34]):
+    if len(cabeza) > 56 or MINUSCULA.search(cabeza[:10]):
         return None, None, None
     palabras = cabeza.split(' ')
     mejor = None

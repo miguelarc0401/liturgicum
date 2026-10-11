@@ -274,7 +274,7 @@
     },
     "poscomunion": {
      "d": 12,
-     "de": 339,
+     "de": 343,
      "f": "misalito",
      "r": "poscomunion",
      "t": 20,
@@ -387,10 +387,10 @@
     },
     "poscomunion": {
      "d": 9,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -499,10 +499,10 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 315,
+     "de": 317,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 15,
+     "t": 18,
      "v": null,
      "via": "día"
     },
@@ -914,8 +914,8 @@
      "de": "d1_6_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 2,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -1029,8 +1029,8 @@
      "de": "d2_1_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -1143,8 +1143,8 @@
      "de": "d2_2_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     }
    },
@@ -1219,8 +1219,8 @@
      "de": "d2_3_0",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -1342,8 +1342,8 @@
      "de": "d2_3_0",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -1498,8 +1498,8 @@
      "de": "d2_4_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -1621,8 +1621,8 @@
      "de": "d2_4_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -2120,9 +2120,8 @@
      "es": "Is 12,2-3.4bcd.5-6",
      "o": 13,
      "otros_vers": false,
-     "t": 3,
+     "t": 6,
      "tipo": "quinta lectura",
-     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -2140,9 +2139,9 @@
      "es": "Sal 18,8.9.10.11",
      "o": 15,
      "otros_vers": false,
-     "t": 3,
+     "t": 1,
      "tipo": "salmo responsorial",
-     "vi": 4,
+     "vi": 9,
      "via_es": "cita"
     },
     {
@@ -2168,9 +2167,8 @@
      "es": "Is 12,2-3.4bcd.5-6",
      "o": 18,
      "otros_vers": false,
-     "t": 3,
+     "t": 6,
      "tipo": "septima lectura",
-     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -2531,7 +2529,7 @@
     },
     "poscomunion": {
      "d": 16,
-     "de": 311,
+     "de": 313,
      "f": "misalito",
      "r": "poscomunion",
      "t": 31,
@@ -2758,12 +2756,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 17,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 36,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -3390,7 +3389,7 @@
      "de": "d4_0_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -3656,8 +3655,9 @@
      "es": "Sal 95,1-2.2b-3.7-8a.9-10ac",
      "o": 2,
      "otros_vers": false,
-     "t": 2,
+     "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "versículos"
     },
     {
@@ -3725,8 +3725,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -3853,8 +3853,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -3916,6 +3916,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "segunda lectura",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -3981,12 +3982,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "celebración"
+     "t": 19,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -4000,16 +4002,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": "[Se suprime la Memoria de SAN DAVID GALVÁN BERMÚDEZ, Mártir Mexicano *]",
@@ -4577,7 +4570,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -4803,7 +4796,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -5018,8 +5011,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -5360,10 +5353,10 @@
     },
     "poscomunion": {
      "d": 18,
-     "de": 330,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 35,
+     "t": 36,
      "v": null,
      "via": "día"
     },
@@ -6486,8 +6479,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -6632,9 +6625,9 @@
      "es": "Sal 97,1.2-3ab.3cd-4",
      "o": 2,
      "otros_vers": false,
-     "t": 2,
+     "t": 1,
      "tipo": "salmo responsorial",
-     "vi": 6,
+     "vi": 9,
      "via_es": "cita"
     },
     {
@@ -6691,20 +6684,22 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 17,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -6714,7 +6709,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Domingo XXVIII del Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "III|3062CTOD29.html|0": {
    "alt": [],
@@ -6852,6 +6847,7 @@
      "otros_vers": true,
      "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "día"
     },
     {
@@ -6859,7 +6855,7 @@
      "es": "2 Tm 4,6-8.16-18",
      "o": 3,
      "otros_vers": false,
-     "t": 2,
+     "t": 3,
      "tipo": "segunda lectura",
      "via_es": "cita"
     },
@@ -6951,7 +6947,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
-     "vi": 2,
+     "vi": 4,
      "via_es": "cita"
     },
     {
@@ -7195,7 +7191,7 @@
      "es": "Lc 21,28",
      "o": 4,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -7354,7 +7350,7 @@
      "de": "d5_33_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -7460,7 +7456,7 @@
     },
     "poscomunion": {
      "d": 12,
-     "de": 339,
+     "de": 343,
      "f": "misalito",
      "r": "poscomunion",
      "t": 20,
@@ -7574,10 +7570,10 @@
     },
     "poscomunion": {
      "d": 9,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -7685,10 +7681,10 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 315,
+     "de": 317,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 15,
+     "t": 18,
      "v": null,
      "via": "día"
     },
@@ -8219,8 +8215,8 @@
      "de": "d1_6_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 2,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -8335,8 +8331,8 @@
      "de": "d2_1_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -8440,8 +8436,8 @@
      "de": "d2_2_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     }
    },
@@ -8525,8 +8521,8 @@
      "de": "d2_3_0",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -8648,8 +8644,8 @@
      "de": "d2_3_0",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -8804,8 +8800,8 @@
      "de": "d2_4_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -8927,8 +8923,8 @@
      "de": "d2_4_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -9432,9 +9428,9 @@
      "es": "Is 12,2-3.4bcd.5-6",
      "o": 13,
      "otros_vers": false,
-     "t": 2,
+     "t": 5,
      "tipo": "quinta lectura",
-     "vi": 6,
+     "vi": 14,
      "via_es": "cita"
     },
     {
@@ -9481,9 +9477,9 @@
      "es": "Is 12,2-3.4bcd.5-6",
      "o": 18,
      "otros_vers": false,
-     "t": 2,
+     "t": 5,
      "tipo": "septima lectura",
-     "vi": 6,
+     "vi": 14,
      "via_es": "cita"
     },
     {
@@ -9855,7 +9851,7 @@
     },
     "poscomunion": {
      "d": 16,
-     "de": 311,
+     "de": 313,
      "f": "misalito",
      "r": "poscomunion",
      "t": 31,
@@ -10081,12 +10077,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 17,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 36,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -10734,7 +10731,7 @@
      "de": "d4_0_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -11069,8 +11066,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -11188,8 +11185,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -11307,12 +11304,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "celebración"
+     "t": 19,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -11326,16 +11324,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": "[Se suprime la Memoria de SAN DAVID GALVÁN BERMÚDEZ, Mártir Mexicano *]",
@@ -11903,7 +11892,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -12112,7 +12101,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -12337,8 +12326,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -12671,10 +12660,10 @@
     },
     "poscomunion": {
      "d": 18,
-     "de": 330,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 35,
+     "t": 36,
      "v": null,
      "via": "día"
     },
@@ -13276,9 +13265,9 @@
      "es": "St 1,18",
      "o": 4,
      "otros_vers": false,
-     "t": 4,
+     "t": 6,
      "tipo": "aleluya",
-     "vi": 2,
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -13760,8 +13749,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -13984,20 +13973,22 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 17,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -14007,7 +13998,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Domingo XXVIII del Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "II|2062BTOD29.html|0": {
    "alt": [],
@@ -14658,7 +14649,7 @@
      "de": "d5_33_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -14754,7 +14745,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -14853,7 +14844,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -14953,7 +14944,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -15053,7 +15044,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -15151,7 +15142,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -15250,7 +15241,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -15352,8 +15343,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -15463,8 +15454,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -15574,8 +15565,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -15685,8 +15676,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -15795,8 +15786,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -15905,8 +15896,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16015,8 +16006,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16127,8 +16118,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16230,8 +16221,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16344,8 +16335,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16456,8 +16447,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16570,8 +16561,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -16680,25 +16671,18 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
    "prefacio": [
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii",
     "prefacio-i-para-los-domingos-del-tiempo-ordinario",
     "prefacio-ii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-iii-para-los-domingos-del-tiempo-ordinario",
@@ -16711,7 +16695,7 @@
     "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
-   "resena": "Joven siciliana que dio la vida por Cristo en Catania, durante la persecución del empe- rador Decio (251). Sus conciudadanos la invocan con mucha confianza, especialmente en las erupciones del volcán Etna. Su culto se extendió pronto por el Oriente y el Oc- cidente. antífona de entrada Ya sigue al Cordero crucificado por nosotros, la virgen llena de valor, ofrenda de pu- dor y víctima de castidad.",
+   "resena": null,
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 4ª semana de Tiempo Ordinario",
    "u": "to/4",
@@ -16799,12 +16783,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 7,
+     "de": "md_02-04",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
+     "t": 4,
      "v": 1,
-     "via": "unidad"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -16818,16 +16803,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -16918,12 +16894,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -16937,16 +16915,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -17037,12 +17006,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -17056,16 +17027,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -17156,12 +17118,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 2,
+     "de": "md_02-04",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
+     "t": 4,
      "v": 1,
-     "via": "unidad"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -17175,16 +17138,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -17275,12 +17229,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -17294,16 +17250,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -18548,7 +18495,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
-     "vi": 1,
+     "vi": 2,
      "via_es": "cita"
     },
     {
@@ -18657,8 +18604,9 @@
      "es": "Sal 92,1ab.1c-2.5",
      "o": 2,
      "otros_vers": false,
-     "t": 3,
+     "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 2,
      "via_es": "cita"
     },
     {
@@ -18791,12 +18739,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-vii-per-annum",
-     "f": "latino",
+     "d": 10,
+     "de": 110,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 12,
+     "u": "d5_6_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "d5_6_0",
@@ -18830,7 +18780,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 7ª semana de Tiempo Ordinario",
    "u": "to/7",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4039ITOX07.html|0": {
    "alt": [],
@@ -18890,12 +18840,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-vii-per-annum",
-     "f": "latino",
+     "d": 10,
+     "de": 110,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 12,
+     "u": "d5_6_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "d5_6_0",
@@ -18929,7 +18881,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 7ª semana de Tiempo Ordinario",
    "u": "to/7",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4040ITOJ07.html|0": {
    "alt": [],
@@ -19059,6 +19011,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -19191,12 +19144,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-vii-per-annum",
-     "f": "latino",
+     "d": 10,
+     "de": 110,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 12,
+     "u": "d5_6_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "d5_6_0",
@@ -19230,7 +19185,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 7ª semana de Tiempo Ordinario",
    "u": "to/7",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4043ITOL08.html|0": {
    "alt": [],
@@ -19315,10 +19270,10 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": 313,
+     "de": 315,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
+     "t": 8,
      "v": null,
      "via": "día"
     },
@@ -19414,12 +19369,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-viii-per-annum",
-     "f": "latino",
+     "d": 5,
+     "de": 304,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
+     "u": "d5_7_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -19429,7 +19386,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 8ª semana de Tiempo Ordinario",
    "u": "to/8",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4045ITOX08.html|0": {
    "alt": [],
@@ -19614,12 +19571,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-viii-per-annum",
-     "f": "latino",
+     "d": 5,
+     "de": 304,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
+     "u": "d5_7_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -19629,7 +19588,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 8ª semana de Tiempo Ordinario",
    "u": "to/8",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4047TOV08.html|0": {
    "alt": [],
@@ -19921,7 +19880,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -20019,7 +19978,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -20118,7 +20077,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -20216,7 +20175,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -20315,7 +20274,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -20416,7 +20375,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -21129,7 +21088,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -21228,7 +21187,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -21327,7 +21286,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -21427,7 +21386,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -21527,7 +21486,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -21626,7 +21585,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -22320,8 +22279,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -22418,8 +22377,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -22465,8 +22424,9 @@
      "es": "St 1,18",
      "o": 3,
      "otros_vers": false,
-     "t": 16,
+     "t": 6,
      "tipo": "aleluya",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -22516,8 +22476,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -22616,8 +22576,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -22714,8 +22674,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -22814,8 +22774,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -23094,12 +23054,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xiv-per-annum",
-     "f": "latino",
+     "d": 17,
+     "de": 206,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 17,
+     "u": "d5_13_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_13_0",
@@ -23125,7 +23087,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 14ª semana de Tiempo Ordinario",
    "u": "to/14",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4082ITOJ14.html|0": {
    "alt": [],
@@ -23768,8 +23730,9 @@
      "es": "Mt 11,28-30",
      "o": 4,
      "otros_vers": false,
-     "t": 11,
+     "t": 1,
      "tipo": "evangelio",
+     "vi": 6,
      "via_es": "cita"
     }
    ],
@@ -24106,13 +24069,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 18,
+     "de": 333,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xvi-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 36,
+     "u": "d5_15_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -24206,13 +24170,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 18,
+     "de": 333,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xvi-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 36,
+     "u": "d5_15_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -24297,13 +24262,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 18,
+     "de": 333,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xvi-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 36,
+     "u": "d5_15_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -25531,7 +25497,7 @@
      "es": "Mt 16,18",
      "o": 3,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -25871,12 +25837,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xix-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 264,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 15,
+     "u": "d5_18_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_18_0",
@@ -25894,7 +25862,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 19ª semana de Tiempo Ordinario",
    "u": "to/19",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4110ITOM19.html|0": {
    "alt": [],
@@ -26138,8 +26106,9 @@
      "es": "Mt 18,21–19.1",
      "o": 4,
      "otros_vers": false,
-     "t": 1,
+     "t": 2,
      "tipo": "evangelio",
+     "vi": 1,
      "via_es": "cita"
     }
    ],
@@ -26169,12 +26138,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xix-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 264,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 15,
+     "u": "d5_18_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_18_0",
@@ -26192,7 +26163,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 19ª semana de Tiempo Ordinario",
    "u": "to/19",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4113ITOV19.html|0": {
    "alt": [],
@@ -26268,12 +26239,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xix-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 264,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 15,
+     "u": "d5_18_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_18_0",
@@ -26291,7 +26264,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 19ª semana de Tiempo Ordinario",
    "u": "to/19",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4114ITOS19.html|0": {
    "alt": [],
@@ -29426,12 +29399,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -29457,7 +29432,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4146ITOM25.html|0": {
    "alt": [],
@@ -29524,12 +29499,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -29555,7 +29532,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4147ITOX25.html|0": {
    "alt": [],
@@ -29622,12 +29599,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -29653,7 +29632,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4148ITOJ25.html|0": {
    "alt": [],
@@ -29819,12 +29798,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -29850,7 +29831,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4150ITOS25.html|0": {
    "alt": [],
@@ -30039,8 +30020,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -30138,8 +30119,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -30237,8 +30218,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -30337,8 +30318,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -30384,9 +30365,8 @@
      "es": "Sal 94,8",
      "o": 3,
      "otros_vers": false,
-     "t": 3,
+     "t": 43,
      "tipo": "aleluya",
-     "vi": 5,
      "via_es": "versículos"
     },
     {
@@ -30436,8 +30416,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -30535,8 +30515,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -30823,12 +30803,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxvii-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 243,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_26_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_26_0",
@@ -30846,7 +30828,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 27ª semana de Tiempo Ordinario",
    "u": "to/27",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4160ITOJ27.html|0": {
    "alt": [],
@@ -31023,12 +31005,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxvii-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 243,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_26_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_26_0",
@@ -31046,7 +31030,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 27ª semana de Tiempo Ordinario",
    "u": "to/27",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4162ITOS27.html|0": {
    "alt": [],
@@ -31122,12 +31106,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxvii-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 243,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_26_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_26_0",
@@ -31145,7 +31131,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 27ª semana de Tiempo Ordinario",
    "u": "to/27",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4163ITOL28.html|0": {
    "alt": [],
@@ -31221,20 +31207,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -31244,7 +31234,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4164ITOM28.html|0": {
    "alt": [],
@@ -31330,12 +31320,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 5,
+     "de": 310,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 10,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -31430,12 +31421,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 5,
+     "de": 310,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 10,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -31522,20 +31514,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -31545,7 +31541,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4167ITOV28.html|0": {
    "alt": [],
@@ -31620,20 +31616,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -31643,7 +31643,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4168ITOS28.html|0": {
    "alt": [],
@@ -31719,20 +31719,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -31742,7 +31746,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4169ITOL29.html|0": {
    "alt": [],
@@ -31913,12 +31917,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 12,
+     "de": 224,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 9,
+     "u": "d5_28_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -31944,7 +31950,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4171ITOX29.html|0": {
    "alt": [],
@@ -32012,12 +32018,13 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 5,
+     "de": 173,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -32043,7 +32050,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4172ITOJ29.html|0": {
    "alt": [],
@@ -32110,12 +32117,13 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 8,
+     "de": 188,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 10,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -32141,7 +32149,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4173ITOV29.html|0": {
    "alt": [],
@@ -32210,12 +32218,13 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 7,
+     "de": 173,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -32241,7 +32250,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4174ITOS29.html|0": {
    "alt": [],
@@ -32309,12 +32318,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 12,
+     "de": 224,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 9,
+     "u": "d5_28_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -32340,7 +32351,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4175ITOL30.html|0": {
    "alt": [],
@@ -32408,12 +32419,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -32439,7 +32452,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4176ITOM30.html|0": {
    "alt": [],
@@ -32507,12 +32520,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -32538,7 +32553,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4177ITOX30.html|0": {
    "alt": [],
@@ -32607,12 +32622,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -32638,7 +32655,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4178ITOJ30.html|0": {
    "alt": [],
@@ -32705,12 +32722,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -32736,7 +32755,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4179ITOV30.html|0": {
    "alt": [],
@@ -32805,12 +32824,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -32836,7 +32857,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4180ITOS30.html|0": {
    "alt": [],
@@ -33956,7 +33977,7 @@
      "es": "Lc 21,28",
      "o": 3,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -34202,13 +34223,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_6_6",
+     "d": 16,
+     "de": 301,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xxxiii-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 27,
+     "u": "d5_32_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -34253,7 +34275,7 @@
      "es": "Jn 4,10",
      "o": 3,
      "otros_vers": true,
-     "t": 7,
+     "t": 8,
      "tipo": "aleluya",
      "via_es": "día"
     },
@@ -34301,13 +34323,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_6_6",
+     "d": 16,
+     "de": 301,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xxxiii-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 27,
+     "u": "d5_32_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -34401,13 +34424,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_6_6",
+     "d": 16,
+     "de": 301,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xxxiii-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 27,
+     "u": "d5_32_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -35052,7 +35076,7 @@
      "es": "Lc 21,28",
      "o": 3,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -35151,7 +35175,7 @@
      "es": "Lc 21,28",
      "o": 3,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -35398,7 +35422,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -35496,7 +35520,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -35537,8 +35561,9 @@
      "es": "Sal 39,2y5.7-8a.8b-9.10",
      "o": 2,
      "otros_vers": false,
-     "t": 4,
+     "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "versículos"
     },
     {
@@ -35594,7 +35619,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -35694,7 +35719,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -35793,7 +35818,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -35892,7 +35917,7 @@
      "via": "suelto"
     },
     "poscomunion": {
-     "de": 322,
+     "de": 325,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -35994,8 +36019,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36103,8 +36128,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36214,8 +36239,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36323,8 +36348,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36372,8 +36397,9 @@
      "es": "Sal 56,2.3-4.6.y11",
      "o": 2,
      "otros_vers": true,
-     "t": 3,
+     "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "día"
     },
     {
@@ -36433,8 +36459,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36542,8 +36568,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36652,8 +36678,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36764,8 +36790,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36868,8 +36894,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -36980,8 +37006,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -37093,8 +37119,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -37205,8 +37231,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -37316,25 +37342,18 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
    "prefacio": [
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii",
     "prefacio-i-para-los-domingos-del-tiempo-ordinario",
     "prefacio-ii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-iii-para-los-domingos-del-tiempo-ordinario",
@@ -37347,7 +37366,7 @@
     "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
-   "resena": "Joven siciliana que dio la vida por Cristo en Catania, durante la persecución del empe- rador Decio (251). Sus conciudadanos la invocan con mucha confianza, especialmente en las erupciones del volcán Etna. Su culto se extendió pronto por el Oriente y el Oc- cidente. antífona de entrada Ya sigue al Cordero crucificado por nosotros, la virgen llena de valor, ofrenda de pu- dor y víctima de castidad.",
+   "resena": null,
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 4ª semana de Tiempo Ordinario",
    "u": "to/4",
@@ -37436,12 +37455,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 7,
+     "de": "md_02-04",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
+     "t": 4,
      "v": 1,
-     "via": "unidad"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -37455,16 +37475,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -37555,12 +37566,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -37574,16 +37587,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -37674,12 +37678,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -37693,16 +37699,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -37793,12 +37790,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 2,
+     "de": "md_02-04",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
+     "t": 4,
      "v": 1,
-     "via": "unidad"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -37812,16 +37810,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -37912,12 +37901,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "unidad"
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -37931,16 +37922,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": null,
@@ -37975,6 +37957,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -38634,8 +38617,9 @@
      "es": "Sal 118,67.68.71.72.75.76",
      "o": 2,
      "otros_vers": false,
-     "t": 4,
+     "t": 2,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -39187,6 +39171,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -39430,12 +39415,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-vii-per-annum",
-     "f": "latino",
+     "d": 10,
+     "de": 110,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 12,
+     "u": "d5_6_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "d5_6_0",
@@ -39469,7 +39456,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 7ª semana de Tiempo Ordinario",
    "u": "to/7",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4243PTOX07.html|0": {
    "alt": [],
@@ -39529,12 +39516,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-vii-per-annum",
-     "f": "latino",
+     "d": 10,
+     "de": 110,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 12,
+     "u": "d5_6_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "d5_6_0",
@@ -39568,7 +39557,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 7ª semana de Tiempo Ordinario",
    "u": "to/7",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4244PTOJ07.html|0": {
    "alt": [],
@@ -39597,6 +39586,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -39828,12 +39818,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-vii-per-annum",
-     "f": "latino",
+     "d": 10,
+     "de": 110,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 12,
+     "u": "d5_6_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "d5_6_0",
@@ -39867,7 +39859,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 7ª semana de Tiempo Ordinario",
    "u": "to/7",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4247PTOL08.html|0": {
    "alt": [],
@@ -39953,10 +39945,10 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": 313,
+     "de": 315,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
+     "t": 8,
      "v": null,
      "via": "día"
     },
@@ -40053,12 +40045,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-viii-per-annum",
-     "f": "latino",
+     "d": 5,
+     "de": 304,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
+     "u": "d5_7_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -40068,7 +40062,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 8ª semana de Tiempo Ordinario",
    "u": "to/8",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4249PTOX08.html|0": {
    "alt": [],
@@ -40252,12 +40246,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-viii-per-annum",
-     "f": "latino",
+     "d": 5,
+     "de": 304,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
+     "u": "d5_7_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -40267,7 +40263,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 8ª semana de Tiempo Ordinario",
    "u": "to/8",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4251PTOV08.html|0": {
    "alt": [],
@@ -40553,7 +40549,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -40653,7 +40649,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -40752,7 +40748,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -40852,7 +40848,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -40951,7 +40947,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -41052,7 +41048,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -41764,7 +41760,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -41863,7 +41859,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -41962,7 +41958,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -42062,7 +42058,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -42161,7 +42157,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -42261,7 +42257,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -42956,8 +42952,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -43003,9 +42999,9 @@
      "es": "Sal 129,5",
      "o": 3,
      "otros_vers": false,
-     "t": 10,
+     "t": 1,
      "tipo": "aleluya",
-     "vi": 2,
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -43056,8 +43052,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -43103,9 +43099,9 @@
      "es": "St 1,18",
      "o": 3,
      "otros_vers": false,
-     "t": 4,
+     "t": 6,
      "tipo": "aleluya",
-     "vi": 2,
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -43156,8 +43152,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -43256,8 +43252,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -43354,8 +43350,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -43454,8 +43450,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -43733,12 +43729,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xiv-per-annum",
-     "f": "latino",
+     "d": 17,
+     "de": 206,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 17,
+     "u": "d5_13_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_13_0",
@@ -43764,7 +43762,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 14ª semana de Tiempo Ordinario",
    "u": "to/14",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4286PTOJ14.html|0": {
    "alt": [],
@@ -44396,9 +44394,9 @@
      "es": "Mt 11,28",
      "o": 3,
      "otros_vers": false,
-     "t": 43,
+     "t": 2,
      "tipo": "aleluya",
-     "vi": 8,
+     "vi": 2,
      "via_es": "cita"
     },
     {
@@ -44743,13 +44741,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 18,
+     "de": 333,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xvi-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 36,
+     "u": "d5_15_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -44843,13 +44842,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 18,
+     "de": 333,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xvi-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 36,
+     "u": "d5_15_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -44934,13 +44934,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 18,
+     "de": 333,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xvi-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 36,
+     "u": "d5_15_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -45287,8 +45288,9 @@
      "es": "St 1,18",
      "o": 3,
      "otros_vers": false,
-     "t": 16,
+     "t": 6,
      "tipo": "aleluya",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -46528,12 +46530,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xix-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 264,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 15,
+     "u": "d5_18_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_18_0",
@@ -46551,7 +46555,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 19ª semana de Tiempo Ordinario",
    "u": "to/19",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4314PTOM19.html|0": {
    "alt": [],
@@ -46827,12 +46831,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xix-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 264,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 15,
+     "u": "d5_18_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_18_0",
@@ -46850,7 +46856,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 19ª semana de Tiempo Ordinario",
    "u": "to/19",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4317PTOV19.html|0": {
    "alt": [],
@@ -46936,12 +46942,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xix-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 264,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 15,
+     "u": "d5_18_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_18_0",
@@ -46959,7 +46967,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 19ª semana de Tiempo Ordinario",
    "u": "to/19",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4318PTOS19.html|0": {
    "alt": [],
@@ -48676,8 +48684,9 @@
      "es": "Sal 36,3-4.5-6.27-28.39-40",
      "o": 2,
      "otros_vers": false,
-     "t": 5,
+     "t": 4,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -50110,12 +50119,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -50141,7 +50152,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4350PTOM25.html|0": {
    "alt": [],
@@ -50210,12 +50221,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -50241,7 +50254,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4351PTOX25.html|0": {
    "alt": [],
@@ -50309,12 +50322,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -50340,7 +50355,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4352PTOJ25.html|0": {
    "alt": [],
@@ -50476,8 +50491,9 @@
      "es": "Mc 10,45",
      "o": 3,
      "otros_vers": false,
-     "t": 19,
+     "t": 1,
      "tipo": "aleluya",
+     "vi": 7,
      "via_es": "cita"
     },
     {
@@ -50509,12 +50525,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxv-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 241,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
+     "u": "d5_24_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_24_0",
@@ -50540,7 +50558,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 25ª semana de Tiempo Ordinario",
    "u": "to/25",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4354PTOS25.html|0": {
    "alt": [],
@@ -50727,8 +50745,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -50826,8 +50844,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -50924,8 +50942,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -51022,8 +51040,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -51120,8 +51138,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -51218,8 +51236,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -51505,12 +51523,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxvii-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 243,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_26_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_26_0",
@@ -51528,7 +51548,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 27ª semana de Tiempo Ordinario",
    "u": "to/27",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4364PTOJ27.html|0": {
    "alt": [],
@@ -51703,12 +51723,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxvii-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 243,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_26_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_26_0",
@@ -51726,7 +51748,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 27ª semana de Tiempo Ordinario",
    "u": "to/27",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4366PTOS27.html|0": {
    "alt": [],
@@ -51802,12 +51824,14 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxvii-per-annum",
-     "f": "latino",
+     "d": 18,
+     "de": 243,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_26_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
      "de": "d5_26_0",
@@ -51825,7 +51849,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 27ª semana de Tiempo Ordinario",
    "u": "to/27",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4367PTOL28.html|0": {
    "alt": [],
@@ -51900,20 +51924,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -51923,7 +51951,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4368PTOM28.html|0": {
    "alt": [],
@@ -52007,12 +52035,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 5,
+     "de": 310,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 10,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -52107,12 +52136,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 5,
+     "de": 310,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 10,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -52197,20 +52227,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -52220,7 +52254,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4371PTOV28.html|0": {
    "alt": [],
@@ -52295,20 +52329,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -52318,7 +52356,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4372PTOS28.html|0": {
    "alt": [],
@@ -52393,20 +52431,24 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
+     "u": "d5_27_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 17,
+     "u": "d5_27_0",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -52416,7 +52458,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 28ª semana de Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4373PTOL29.html|0": {
    "alt": [],
@@ -52584,12 +52626,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 12,
+     "de": 224,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 9,
+     "u": "d5_28_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -52615,7 +52659,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4375PTOX29.html|0": {
    "alt": [],
@@ -52683,12 +52727,13 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 5,
+     "de": 173,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -52714,7 +52759,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4376PTOJ29.html|0": {
    "alt": [],
@@ -52781,12 +52826,13 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 8,
+     "de": 188,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 10,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -52812,7 +52858,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4377PTOV29.html|0": {
    "alt": [],
@@ -52879,12 +52925,13 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 7,
+     "de": 173,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -52910,7 +52957,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4378PTOS29.html|0": {
    "alt": [],
@@ -52979,12 +53026,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxix-per-annum",
-     "f": "latino",
+     "d": 12,
+     "de": 224,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 9,
+     "u": "d5_28_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_28_0",
@@ -53010,7 +53059,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Sábado de la 29ª semana de Tiempo Ordinario",
    "u": "to/29",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4379PTOL30.html|0": {
    "alt": [],
@@ -53078,12 +53127,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -53109,7 +53160,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Lunes de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4380PTOM30.html|0": {
    "alt": [],
@@ -53176,12 +53227,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -53207,7 +53260,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Martes de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4381PTOX30.html|0": {
    "alt": [],
@@ -53274,12 +53327,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -53305,7 +53360,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Miércoles de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4382PTOJ30.html|0": {
    "alt": [],
@@ -53372,12 +53427,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -53403,7 +53460,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4383PTOV30.html|0": {
    "alt": [],
@@ -53472,12 +53529,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxx-per-annum",
-     "f": "latino",
+     "d": 16,
+     "de": 148,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "d5_29_0",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "d5_29_0",
@@ -53503,7 +53562,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Viernes de la 30ª semana de Tiempo Ordinario",
    "u": "to/30",
-   "v": "parcial"
+   "v": "completo"
   },
   "IV|4384PTOS30.html|0": {
    "alt": [],
@@ -54623,7 +54682,7 @@
      "es": "Lc 21,28",
      "o": 3,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -54871,13 +54930,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_6_6",
+     "d": 16,
+     "de": 301,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xxxiii-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 27,
+     "u": "d5_32_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -54922,7 +54982,7 @@
      "es": "Jn 4,10",
      "o": 3,
      "otros_vers": true,
-     "t": 7,
+     "t": 8,
      "tipo": "aleluya",
      "via_es": "día"
     },
@@ -54970,13 +55030,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_6_6",
+     "d": 16,
+     "de": 301,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xxxiii-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 27,
+     "u": "d5_32_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -55070,13 +55131,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d3_6_6",
+     "d": 16,
+     "de": 301,
      "f": "misalito",
-     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xxxiii-per-annum",
      "r": "poscomunion",
-     "t": null,
+     "t": 27,
+     "u": "d5_32_0",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -55722,7 +55784,7 @@
      "es": "Lc 21,28",
      "o": 3,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -55821,7 +55883,7 @@
      "es": "Lc 21,28",
      "o": 3,
      "otros_vers": false,
-     "t": 20,
+     "t": 21,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -56080,7 +56142,7 @@
     },
     "poscomunion": {
      "d": 12,
-     "de": 339,
+     "de": 343,
      "f": "misalito",
      "r": "poscomunion",
      "t": 20,
@@ -56195,10 +56257,10 @@
     },
     "poscomunion": {
      "d": 9,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -56308,10 +56370,10 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 315,
+     "de": 317,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 15,
+     "t": 18,
      "v": null,
      "via": "día"
     },
@@ -57309,8 +57371,8 @@
      "de": "d1_6_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 2,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -57425,8 +57487,8 @@
      "de": "d2_1_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -57531,8 +57593,8 @@
      "de": "d2_2_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     }
    },
@@ -57614,8 +57676,8 @@
      "de": "d2_3_0",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -57778,8 +57840,8 @@
      "de": "d2_4_0",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -57931,7 +57993,7 @@
      "es": "Mt 21,1-11",
      "o": 1,
      "otros_vers": false,
-     "t": 1,
+     "t": 3,
      "tipo": "evangelio",
      "via_es": "cita"
     },
@@ -58131,7 +58193,16 @@
      "v": 0,
      "via": "unidad"
     },
-    "ofrendas": null,
+    "ofrendas": {
+     "d": 1,
+     "de": 253,
+     "f": "misalito",
+     "r": "ofrendas",
+     "t": 17,
+     "u": "d2_6_4#misa-vespertina-de-la-cena-del-senor",
+     "v": null,
+     "via": "día"
+    },
     "poscomunion": {
      "de": "d2_6_4#misa-vespertina-de-la-cena-del-senor",
      "f": "misalito",
@@ -58148,7 +58219,7 @@
    "seccion": "TRIDUO PASCUAL Y TIEMPO DE PASCUA",
    "titulo": "Jueves santo de la Cena del Señor",
    "u": "tri/cena",
-   "v": "parcial"
+   "v": "completo"
   },
   "I|1021TFVISA.html|0": {
    "alt": [],
@@ -58224,8 +58295,8 @@
      "de": "d3_0_1",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
-     "v": 2,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -58906,7 +58977,7 @@
     },
     "poscomunion": {
      "d": 16,
-     "de": 311,
+     "de": 313,
      "f": "misalito",
      "r": "poscomunion",
      "t": 31,
@@ -59134,12 +59205,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d3_5_0",
+     "d": 17,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 36,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -59746,7 +59818,7 @@
      "de": "d4_0_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -60070,8 +60142,8 @@
      "de": "d5_1_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -60137,9 +60209,9 @@
      "es": "Mt 4,23",
      "o": 4,
      "otros_vers": false,
-     "t": 1,
+     "t": 3,
      "tipo": "aleluya",
-     "vi": 9,
+     "vi": 11,
      "via_es": "cita"
     },
     {
@@ -60198,8 +60270,8 @@
      "de": "d5_2_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 9,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -60319,12 +60391,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 13,
+     "de": 345,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
-     "via": "celebración"
+     "t": 19,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -60338,16 +60411,7 @@
     "prefacio-vi-para-los-domingos-del-tiempo-ordinario",
     "prefacio-vii-para-los-domingos-del-tiempo-ordinario",
     "prefacio-viii-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-x-para-los-domingos-del-tiempo-ordinario",
-    "prefacio-comun-i",
-    "prefacio-comun-ii",
-    "prefacio-comun-iii",
-    "prefacio-comun-iv",
-    "prefacio-comun-ix",
-    "prefacio-comun-v",
-    "prefacio-comun-vi",
-    "prefacio-comun-vii",
-    "prefacio-comun-viii"
+    "prefacio-x-para-los-domingos-del-tiempo-ordinario"
    ],
    "prefacio_propio": null,
    "resena": "[Se suprime la Memoria de SAN DAVID GALVÁN BERMÚDEZ, Mártir Mexicano *]",
@@ -60916,7 +60980,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -60955,6 +61019,7 @@
      "otros_vers": false,
      "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "versículos"
     },
     {
@@ -61136,7 +61201,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -61351,8 +61416,8 @@
      "de": "d5_12_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -61684,10 +61749,10 @@
     },
     "poscomunion": {
      "d": 18,
-     "de": 330,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 35,
+     "t": 36,
      "v": null,
      "via": "día"
     },
@@ -62185,7 +62250,7 @@
      "es": "Mt 16,18",
      "o": 4,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -62789,8 +62854,8 @@
      "de": "d5_25_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -63005,20 +63070,22 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xxviii-per-annum",
-     "f": "latino",
+     "d": 19,
+     "de": 272,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 12,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "d5_27_0",
+     "d": 19,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 17,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -63028,7 +63095,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Domingo XXVIII del Tiempo Ordinario",
    "u": "to/28",
-   "v": "parcial"
+   "v": "completo"
   },
   "I|1062ATOD29.html|0": {
    "alt": [],
@@ -63676,7 +63743,7 @@
      "de": "d5_33_0",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -72277,7 +72344,7 @@
      "es": "Mt 16,18",
      "o": 13,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -73917,7 +73984,7 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 339,
+     "de": 343,
      "f": "misalito",
      "r": "poscomunion",
      "t": 20,
@@ -74011,10 +74078,10 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -74103,12 +74170,13 @@
      "via": "latino"
     },
     "poscomunion": {
-     "de": "d0_0_3",
+     "d": 4,
+     "de": 317,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 18,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -74191,13 +74259,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d0_2_4",
-     "f": "misalito",
-     "la": "tempore/dominica-i-adventus-feria-quinta",
+     "de": "tempore/dominica-i-adventus-feria-quinta",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -74210,7 +74277,7 @@
    "seccion": "TIEMPO DE ADVIENTO",
    "titulo": "Jueves de la 1ª semana de Adviento",
    "u": "adv/1/4",
-   "v": "completo"
+   "v": "parcial"
   },
   "VII|7005TAVV01.html|0": {
    "alt": [],
@@ -74291,10 +74358,10 @@
     },
     "poscomunion": {
      "d": 3,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -74392,10 +74459,10 @@
     },
     "poscomunion": {
      "d": 3,
-     "de": 315,
+     "de": 317,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 15,
+     "t": 18,
      "v": null,
      "via": "día"
     },
@@ -74490,13 +74557,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d0_2_4",
-     "f": "misalito",
-     "la": "tempore/dominica-ii-adventus-feria-secunda",
+     "de": "tempore/dominica-ii-adventus-feria-secunda",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -74509,7 +74575,7 @@
    "seccion": "TIEMPO DE ADVIENTO",
    "titulo": "Lunes de la 2ª semana de Adviento",
    "u": "adv/2/1",
-   "v": "completo"
+   "v": "parcial"
   },
   "VII|7008TAVM02.html|0": {
    "alt": [],
@@ -74590,10 +74656,10 @@
     },
     "poscomunion": {
      "d": 1,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -74883,10 +74949,10 @@
     },
     "poscomunion": {
      "d": 4,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -74985,13 +75051,12 @@
      "via": "latino"
     },
     "poscomunion": {
-     "de": "d0_0_3",
-     "f": "misalito",
-     "la": "tempore/dominica-ii-adventus-sabbato",
+     "de": "tempore/dominica-ii-adventus-sabbato",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -75092,13 +75157,12 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d0_2_4",
-     "f": "misalito",
-     "la": "tempore/dominica-iii-adventus-feria-secunda",
+     "de": "tempore/dominica-iii-adventus-feria-secunda",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -75108,7 +75172,7 @@
    "seccion": "TIEMPO DE ADVIENTO",
    "titulo": "Lunes de la 3ª semana de Adviento",
    "u": "adv/3/1",
-   "v": "completo"
+   "v": "parcial"
   },
   "VII|7014TAVM03.html|0": {
    "alt": [],
@@ -75188,10 +75252,10 @@
     },
     "poscomunion": {
      "d": 2,
-     "de": 325,
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 19,
+     "t": 20,
      "v": null,
      "via": "día"
     },
@@ -75292,13 +75356,13 @@
      "via": "latino"
     },
     "poscomunion": {
-     "de": "d0_0_3",
+     "d": 2,
+     "de": 317,
      "f": "misalito",
-     "la": "tempore/dominica-iii-adventus-feria-quarta",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -75399,12 +75463,12 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "d0_2_4",
-     "f": "misalito",
+     "de": "tempore/dominica-iii-adventus-feria-quinta",
+     "f": "latino",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -75417,7 +75481,7 @@
    "seccion": "TIEMPO DE ADVIENTO",
    "titulo": "Jueves de la 3ª semana de Adviento",
    "u": "adv/3/4",
-   "v": "completo"
+   "v": "parcial"
   },
   "VII|7017TAVV03.html|0": {
    "alt": [],
@@ -75499,11 +75563,11 @@
     },
     "poscomunion": {
      "d": 1,
-     "de": "md_12-16",
+     "de": 328,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 2,
+     "t": 20,
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -75589,8 +75653,8 @@
      "de": "md_12-17",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "día"
     },
     "poscomunion": {
@@ -75598,8 +75662,8 @@
      "de": "md_12-17",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 2,
+     "t": 6,
+     "v": 1,
      "via": "día"
     },
     "pueblo": null
@@ -75683,8 +75747,8 @@
      "de": "md_12-18",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "día"
     },
     "pueblo": null
@@ -76058,8 +76122,8 @@
      "de": "md_12-22",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "día"
     },
     "pueblo": null
@@ -76215,12 +76279,13 @@
      "via": "día"
     },
     "comunion": {
-     "de": "tempore/die-24-decembris-ad-missam-matutinam",
-     "f": "latino",
+     "d": 13,
+     "de": 40,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 11,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "d": 13,
@@ -76245,8 +76310,8 @@
      "de": "md_12-24",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "día"
     },
     "pueblo": null
@@ -76257,7 +76322,7 @@
    "seccion": "TIEMPO DE ADVIENTO",
    "titulo": "24 de diciembre",
    "u": "adv/dic/24",
-   "v": "parcial"
+   "v": "completo"
   },
   "VII|7026TON529.html|0": {
    "alt": [],
@@ -76344,12 +76409,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_1_1",
+     "d": 4,
+     "de": 306,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 18,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -76439,12 +76505,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_1_2",
+     "d": 7,
+     "de": 332,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 19,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -76538,12 +76605,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_1_3",
+     "d": 3,
+     "de": "st_1231_195",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
+     "t": 7,
      "v": 0,
-     "via": "celebración"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -76882,10 +76950,10 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": 329,
+     "de": 332,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 16,
+     "t": 19,
      "v": null,
      "via": "día"
     },
@@ -76986,8 +77054,9 @@
      "es": "Sal 2,7-8.10-11",
      "o": 2,
      "otros_vers": true,
-     "t": 5,
+     "t": 3,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "día"
     },
     {
@@ -77045,13 +77114,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_1_1",
+     "d": 9,
+     "de": 306,
      "f": "misalito",
-     "la": "tempore/in-feriis-temporis-nativitatis-feria-secunda",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -77150,13 +77219,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_1_2",
+     "d": 8,
+     "de": 332,
      "f": "misalito",
-     "la": "tempore/in-feriis-temporis-nativitatis-feria-tertia",
      "r": "poscomunion",
-     "t": null,
+     "t": 19,
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -77254,12 +77323,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_5_2",
+     "d": 10,
+     "de": 338,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 0,
-     "via": "celebración"
+     "t": 7,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -77358,13 +77428,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d1_1_1",
-     "f": "misalito",
-     "la": "tempore/in-feriis-temporis-nativitatis-feria-quinta",
+     "de": "tempore/in-feriis-temporis-nativitatis-feria-quinta",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -77400,8 +77469,9 @@
      "es": "Sal 147,12-13.14-15.19-20",
      "o": 2,
      "otros_vers": false,
-     "t": 5,
+     "t": 3,
      "tipo": "salmo responsorial",
+     "vi": 6,
      "via_es": "cita"
     },
     {
@@ -77461,13 +77531,13 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "d1_1_2",
+     "d": 11,
+     "de": 332,
      "f": "misalito",
-     "la": "tempore/in-feriis-temporis-nativitatis-feria-sexta",
      "r": "poscomunion",
-     "t": null,
+     "t": 19,
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -77570,11 +77640,11 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": "md_01-09",
+     "de": 338,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
+     "t": 7,
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -77887,7 +77957,7 @@
      "de": "d2_0_2",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -78014,7 +78084,7 @@
      "de": "d2_0_3",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
+     "t": 7,
      "v": 1,
      "via": "celebración"
     }
@@ -78190,7 +78260,7 @@
      "de": "d2_1_2",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
+     "t": 7,
      "v": 0,
      "via": "celebración"
     },
@@ -78556,7 +78626,7 @@
      "de": "d2_1_5",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     },
@@ -80404,7 +80474,7 @@
      "de": "d2_4_4",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
+     "t": 7,
      "v": 0,
      "via": "celebración"
     }
@@ -80722,8 +80792,8 @@
      "de": "d2_4_7",
      "f": "misalito",
      "r": "pueblo",
-     "t": 4,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     }
    },
@@ -80948,8 +81018,9 @@
      "es": "Sal 101,2-3.16-18.19-21",
      "o": 2,
      "otros_vers": false,
-     "t": 9,
+     "t": 4,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -81008,7 +81079,7 @@
      "de": "d2_5_3",
      "f": "misalito",
      "r": "pueblo",
-     "t": 6,
+     "t": 7,
      "v": 0,
      "via": "celebración"
     }
@@ -81327,7 +81398,7 @@
      "de": "d2_5_6",
      "f": "misalito",
      "r": "pueblo",
-     "t": 4,
+     "t": 6,
      "v": 0,
      "via": "celebración"
     }
@@ -81422,10 +81493,10 @@
     },
     "poscomunion": {
      "d": 11,
-     "de": 335,
+     "de": 339,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 16,
+     "t": 17,
      "v": null,
      "via": "día"
     },
@@ -81433,7 +81504,7 @@
      "de": "d2_5_7",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "celebración"
     }
@@ -81687,8 +81758,8 @@
      "de": "d2_6_3",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -82216,7 +82287,7 @@
     },
     "poscomunion": {
      "d": 17,
-     "de": 337,
+     "de": 341,
      "f": "misalito",
      "r": "poscomunion",
      "t": 26,
@@ -82416,7 +82487,7 @@
     },
     "poscomunion": {
      "d": 17,
-     "de": 311,
+     "de": 313,
      "f": "misalito",
      "r": "poscomunion",
      "t": 31,
@@ -82518,7 +82589,7 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": 311,
+     "de": 313,
      "f": "misalito",
      "r": "poscomunion",
      "t": 31,
@@ -82559,8 +82630,9 @@
      "es": "Sal 92,1ab.1c-2.5",
      "o": 2,
      "otros_vers": false,
-     "t": 3,
+     "t": 2,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -82619,7 +82691,7 @@
     },
     "poscomunion": {
      "d": 12,
-     "de": 337,
+     "de": 341,
      "f": "misalito",
      "r": "poscomunion",
      "t": 26,
@@ -82722,10 +82794,10 @@
     },
     "poscomunion": {
      "d": 12,
-     "de": 330,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 35,
+     "t": 36,
      "v": null,
      "via": "día"
     },
@@ -82824,7 +82896,7 @@
     },
     "poscomunion": {
      "d": 8,
-     "de": 310,
+     "de": 311,
      "f": "misalito",
      "r": "poscomunion",
      "t": 21,
@@ -83094,37 +83166,40 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "tempore/dominica-iii-paschae-feria-secunda",
-     "f": "latino",
+     "d": 13,
+     "de": 93,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 9,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
-     "de": "tempore/dominica-iii-paschae-feria-secunda",
-     "f": "latino",
+     "d": 13,
+     "de": 195,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 9,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
-     "de": "d3_6_0",
+     "d": 13,
+     "de": 288,
      "f": "misalito",
-     "la": "tempore/dominica-iii-paschae-feria-secunda",
      "r": "ofrendas",
-     "t": null,
+     "t": 22,
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "tempore/dominica-iii-paschae-feria-secunda",
-     "f": "latino",
+     "d": 13,
+     "de": 311,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 21,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -83140,7 +83215,7 @@
    "seccion": "TRIDUO PASCUAL Y TIEMPO DE PASCUA",
    "titulo": "Lunes de la tercera semana de Pascua",
    "u": "pas/3/1",
-   "v": "parcial"
+   "v": "completo"
   },
   "VII|7095TPAM03.html|0": {
    "alt": [],
@@ -83427,13 +83502,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d3_5_0",
-     "f": "misalito",
-     "la": "tempore/dominica-iii-paschae-feria-quinta",
+     "de": "tempore/dominica-iii-paschae-feria-quinta",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -83848,7 +83922,7 @@
     },
     "poscomunion": {
      "d": 6,
-     "de": 337,
+     "de": 341,
      "f": "misalito",
      "r": "poscomunion",
      "t": 26,
@@ -83947,13 +84021,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d3_5_0",
-     "f": "misalito",
-     "la": "tempore/dominica-iv-paschae-feria-quarta",
+     "de": "tempore/dominica-iv-paschae-feria-quarta",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -84658,13 +84731,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d3_5_0",
-     "f": "misalito",
-     "la": "tempore/dominica-v-paschae-feria-quinta",
+     "de": "tempore/dominica-v-paschae-feria-quinta",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -84971,7 +85043,7 @@
     },
     "poscomunion": {
      "d": 10,
-     "de": 311,
+     "de": 313,
      "f": "misalito",
      "r": "poscomunion",
      "t": 31,
@@ -85074,7 +85146,7 @@
     },
     "poscomunion": {
      "d": 14,
-     "de": 337,
+     "de": 341,
      "f": "misalito",
      "r": "poscomunion",
      "t": 26,
@@ -85173,13 +85245,12 @@
      "via": "gemela"
     },
     "poscomunion": {
-     "de": "d3_5_0",
-     "f": "misalito",
-     "la": "tempore/feria-quarta-ad-missam-matutinam",
+     "de": "tempore/feria-quarta-ad-missam-matutinam",
+     "f": "latino",
      "r": "poscomunion",
      "t": null,
      "v": null,
-     "via": "gemela"
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -85215,8 +85286,9 @@
      "es": "Sal 97,1.2-3ab.3cd-4",
      "o": 2,
      "otros_vers": false,
-     "t": 6,
+     "t": 5,
      "tipo": "salmo responsorial",
+     "vi": 18,
      "via_es": "versículos"
     },
     {
@@ -85381,7 +85453,7 @@
     },
     "poscomunion": {
      "d": 9,
-     "de": 316,
+     "de": 319,
      "f": "misalito",
      "r": "poscomunion",
      "t": 21,
@@ -85586,10 +85658,10 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 330,
+     "de": 333,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 35,
+     "t": 36,
      "v": null,
      "via": "día"
     },
@@ -86454,7 +86526,7 @@
      "es": "Mt 16,18",
      "o": 26,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -87170,12 +87242,14 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "necessitatibus/vel-ad-diversa-i-pro-sancta-ecclesia-2-pro-papa",
-     "f": "latino",
+     "d": 6,
+     "de": 66,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 15,
+     "u": "vot_misa-por-el-obispo",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
      "de": "vot_misa-por-el-obispo",
@@ -87209,7 +87283,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "POR EL PAPA O POR EL OBISPO sobre todo en sus aniversarios",
    "u": "misa/lvi_6002pepa",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6003PEUP.html|0": {
    "alt": [],
@@ -87744,8 +87818,8 @@
      "de": "vot_misa-por-los-sacerdotes",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 13,
-     "v": 2,
+     "t": 14,
+     "v": 1,
      "via": "unidad"
     },
     "pueblo": null
@@ -87932,8 +88006,8 @@
      "de": "vot_misa-por-los-ministros-de-la-iglesia",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 3,
-     "v": 2,
+     "t": 4,
+     "v": 1,
      "via": "unidad"
     },
     "pueblo": null
@@ -88520,8 +88594,8 @@
      "de": "vot_misa-por-las-vocaciones-a-las-ordenes-sagradas",
      "f": "misalito",
      "r": "comunion",
-     "t": 14,
-     "v": 2,
+     "t": 15,
+     "v": 1,
      "via": "unidad"
     },
     "entrada": {
@@ -89151,10 +89225,10 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "vot_misa-por-la-unidad-de-la-cristianos-c",
+     "de": "vot_misa-por-la-unidad-de-los-cristianos-b",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
+     "t": 2,
      "v": 0,
      "via": "unidad"
     },
@@ -89710,8 +89784,8 @@
      "de": "vot_misa-por-los-cristianos-perseguidos",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 11,
-     "v": 2,
+     "t": 12,
+     "v": 1,
      "via": "unidad"
     },
     "pueblo": null
@@ -90411,12 +90485,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "necessitatibus/vel-ad-diversa-i-pro-sancta-ecclesia-18-pro-evangelizatione-populorum-a",
-     "f": "latino",
+     "d": 11,
+     "de": 156,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 16,
+     "u": "vot_misa-por-la-paz-y-la-justicia",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-por-la-paz-y-la-justicia",
@@ -90427,13 +90503,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "d5_3_0",
+     "d": 11,
+     "de": 308,
      "f": "misalito",
-     "la": "necessitatibus/vel-ad-diversa-i-pro-sancta-ecclesia-18-pro-evangelizatione-populorum-a",
      "r": "poscomunion",
-     "t": null,
+     "t": 15,
+     "u": "vot_misa-por-la-paz-y-la-justicia",
      "v": null,
-     "via": "gemela"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -90443,7 +90520,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "POR LA PAZ Y LA JUSTICIA",
    "u": "misa/lvi_6014plpj",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6015PLRE.html|0": {
    "alt": [],
@@ -90780,12 +90857,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "necessitatibus/vel-ad-diversa-i-pro-sancta-ecclesia-20-in-conventu-spirituali-vel-pastorali",
-     "f": "latino",
+     "d": 7,
+     "de": 162,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 15,
+     "u": "vot_misa-en-tiempo-de-guerra-o-de-desorden",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-en-tiempo-de-guerra-o-de-desorden",
@@ -90811,7 +90890,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "EN TIEMPO DE GUERRA O DESORDEN",
    "u": "misa/lvi_6016tgu",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6016TGU.html|1": {
    "alt": [],
@@ -90977,12 +91056,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "necessitatibus/vel-ad-diversa-i-pro-sancta-ecclesia-20-in-conventu-spirituali-vel-pastorali",
-     "f": "latino",
+     "d": 7,
+     "de": 162,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 15,
+     "u": "vot_misa-en-tiempo-de-guerra-o-de-desorden",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-en-tiempo-de-guerra-o-de-desorden",
@@ -91008,7 +91089,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "EN TIEMPO DE GUERRA O DESORDEN",
    "u": "misa/lvi_6016tgu",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6017ACAN.html|0": {
    "alt": [],
@@ -91272,7 +91353,16 @@
      "v": 1,
      "via": "unidad"
     },
-    "comunion": null,
+    "comunion": {
+     "d": 7,
+     "de": 127,
+     "f": "misalito",
+     "r": "comunion",
+     "t": 13,
+     "u": "vot_misa-por-la-santificacion-del-trabajo-a",
+     "v": null,
+     "via": "día"
+    },
     "entrada": null,
     "ofrendas": {
      "de": "vot_misa-por-la-santificacion-del-trabajo-humano-b",
@@ -91419,10 +91509,37 @@
      "v": 0,
      "via": "unidad"
     },
-    "comunion": null,
+    "comunion": {
+     "d": 5,
+     "de": 74,
+     "f": "misalito",
+     "r": "comunion",
+     "t": 16,
+     "u": "vot_misa-en-el-tiempo-de-la-siembra",
+     "v": null,
+     "via": "día"
+    },
     "entrada": null,
-    "ofrendas": null,
-    "poscomunion": null,
+    "ofrendas": {
+     "d": 5,
+     "de": 286,
+     "f": "misalito",
+     "r": "ofrendas",
+     "t": 16,
+     "u": "vot_misa-en-el-tiempo-de-la-siembra",
+     "v": null,
+     "via": "día"
+    },
+    "poscomunion": {
+     "d": 5,
+     "de": 340,
+     "f": "misalito",
+     "r": "poscomunion",
+     "t": 14,
+     "u": "vot_misa-en-el-tiempo-de-la-siembra",
+     "v": null,
+     "via": "día"
+    },
     "pueblo": null
    },
    "prefacio": [],
@@ -91543,10 +91660,37 @@
      "v": 0,
      "via": "unidad"
     },
-    "comunion": null,
+    "comunion": {
+     "d": 5,
+     "de": 74,
+     "f": "misalito",
+     "r": "comunion",
+     "t": 16,
+     "u": "vot_misa-en-el-tiempo-de-la-siembra",
+     "v": null,
+     "via": "día"
+    },
     "entrada": null,
-    "ofrendas": null,
-    "poscomunion": null,
+    "ofrendas": {
+     "d": 5,
+     "de": 286,
+     "f": "misalito",
+     "r": "ofrendas",
+     "t": 16,
+     "u": "vot_misa-en-el-tiempo-de-la-siembra",
+     "v": null,
+     "via": "día"
+    },
+    "poscomunion": {
+     "d": 5,
+     "de": 340,
+     "f": "misalito",
+     "r": "poscomunion",
+     "t": 14,
+     "u": "vot_misa-en-el-tiempo-de-la-siembra",
+     "v": null,
+     "via": "día"
+    },
     "pueblo": null
    },
    "prefacio": [],
@@ -92327,8 +92471,8 @@
      "de": "vot_misa-por-los-profugos-y-exiliados",
      "f": "misalito",
      "r": "colecta",
-     "t": 10,
-     "v": 2,
+     "t": 11,
+     "v": 1,
      "via": "unidad"
     },
     "comunion": {
@@ -92351,16 +92495,16 @@
      "de": "vot_misa-por-los-profugos-y-exiliados",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 12,
-     "v": 1,
+     "t": 13,
+     "v": 0,
      "via": "unidad"
     },
     "poscomunion": {
      "de": "vot_misa-por-los-profugos-y-exiliados",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 12,
-     "v": 1,
+     "t": 13,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -92833,8 +92977,8 @@
      "de": "vot_misa-por-los-enfermos",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 2,
+     "t": 8,
+     "v": 1,
      "via": "unidad"
     },
     "pueblo": null
@@ -93534,8 +93678,8 @@
      "de": "vot_misa-por-los-enfermos",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 2,
+     "t": 8,
+     "v": 1,
      "via": "unidad"
     },
     "pueblo": null
@@ -93746,7 +93890,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -94013,15 +94157,42 @@
      "v": 1,
      "via": "unidad"
     },
-    "comunion": null,
-    "entrada": null,
-    "ofrendas": null,
+    "comunion": {
+     "d": 10,
+     "de": 41,
+     "f": "misalito",
+     "r": "comunion",
+     "t": 13,
+     "u": "vot_misa-por-la-patria-y-para-dar-gracias-a-dios",
+     "v": null,
+     "via": "día"
+    },
+    "entrada": {
+     "d": 4,
+     "de": 154,
+     "f": "misalito",
+     "r": "entrada",
+     "t": 14,
+     "u": "vot_misa-para-dar-gracias-a-dios",
+     "v": null,
+     "via": "día"
+    },
+    "ofrendas": {
+     "d": 4,
+     "de": 290,
+     "f": "misalito",
+     "r": "ofrendas",
+     "t": 14,
+     "u": "vot_misa-para-dar-gracias-a-dios",
+     "v": null,
+     "via": "día"
+    },
     "poscomunion": {
      "de": "vot_misa-para-dar-gracias-a-dios",
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -94032,7 +94203,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "PARA DAR GRACIAS A DIOS",
    "u": "misa/lvi_6026pggr",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6027PEPP.html|0": {
    "alt": [],
@@ -94204,7 +94375,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 3,
-     "v": 2,
+     "v": 1,
      "via": "unidad"
     },
     "comunion": {
@@ -94232,12 +94403,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "vot_misa-por-la-remision-de-los-pecados",
+     "d": 8,
+     "de": 305,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 2,
-     "via": "unidad"
+     "t": 20,
+     "u": "vot_misa-por-la-remision-de-los-pecados",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -94349,8 +94522,8 @@
      "de": "vot_misa-por-los-familiares-y-amigos",
      "f": "misalito",
      "r": "colecta",
-     "t": 9,
-     "v": 1,
+     "t": 10,
+     "v": 0,
      "via": "unidad"
     },
     "comunion": {
@@ -94452,36 +94625,44 @@
      "via": "unidad"
     },
     "comunion": {
+     "d": 7,
      "de": 112,
      "f": "misalito",
      "r": "comunion",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "entrada": {
+     "d": 7,
      "de": 196,
      "f": "misalito",
      "r": "entrada",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "ofrendas": {
+     "d": 7,
      "de": 247,
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "vot_misa-por-la-por-la-familia",
+     "d": 7,
+     "de": 318,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
-     "via": "unidad"
+     "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -94595,36 +94776,44 @@
      "via": "unidad"
     },
     "comunion": {
+     "d": 7,
      "de": 112,
      "f": "misalito",
      "r": "comunion",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "entrada": {
+     "d": 7,
      "de": 196,
      "f": "misalito",
      "r": "entrada",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "ofrendas": {
+     "d": 7,
      "de": 247,
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "vot_misa-por-la-por-la-familia",
+     "d": 7,
+     "de": 318,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
-     "via": "unidad"
+     "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -94738,36 +94927,44 @@
      "via": "unidad"
     },
     "comunion": {
+     "d": 7,
      "de": 112,
      "f": "misalito",
      "r": "comunion",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "entrada": {
+     "d": 7,
      "de": 196,
      "f": "misalito",
      "r": "entrada",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "ofrendas": {
+     "d": 7,
      "de": 247,
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
      "v": null,
-     "via": "suelto"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "vot_misa-por-la-por-la-familia",
+     "d": 7,
+     "de": 318,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
-     "via": "unidad"
+     "t": 8,
+     "u": "vot_misa-por-la-por-la-familia",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -95506,7 +95703,7 @@
      "de": "vot_misa-de-la-divina-misericordia",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
+     "t": 7,
      "v": 0,
      "via": "unidad"
     },
@@ -95712,7 +95909,7 @@
      "de": "vot_misa-de-la-divina-misericordia",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
+     "t": 7,
      "v": 0,
      "via": "unidad"
     },
@@ -96089,7 +96286,7 @@
      "de": "vot_misa-de-la-divina-misericordia",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
+     "t": 7,
      "v": 0,
      "via": "unidad"
     },
@@ -96422,14 +96619,25 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "necessitatibus/vel-ad-diversa-iii-ad-diversa-44-pro-detentis-in-carcere",
-     "f": "latino",
+     "d": 14,
+     "de": 23,
+     "f": "misalito",
      "r": "colecta",
-     "t": null,
+     "t": 16,
+     "u": "vot_misa-del-misterio-de-la-santa-cruz",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
-    "comunion": null,
+    "comunion": {
+     "d": 14,
+     "de": 46,
+     "f": "misalito",
+     "r": "comunion",
+     "t": 16,
+     "u": "vot_misa-del-misterio-de-la-santa-cruz",
+     "v": null,
+     "via": "día"
+    },
     "entrada": {
      "de": "vot_misa-del-misterio-de-la-santa-cruz",
      "f": "misalito",
@@ -96438,24 +96646,35 @@
      "v": 0,
      "via": "unidad"
     },
-    "ofrendas": null,
+    "ofrendas": {
+     "d": 14,
+     "de": 295,
+     "f": "misalito",
+     "r": "ofrendas",
+     "t": 16,
+     "u": "vot_misa-del-misterio-de-la-santa-cruz",
+     "v": null,
+     "via": "día"
+    },
     "poscomunion": {
-     "de": "vot_misa-votiva-del-misterio-de-la-santa-cruz",
+     "d": 14,
+     "de": 334,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": 16,
+     "u": "vot_misa-del-misterio-de-la-santa-cruz",
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
    "prefacio": [],
-   "prefacio_propio": "@propio",
+   "prefacio_propio": null,
    "resena": null,
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DEL MISTERIO DE LA SANTA CRUZ",
    "u": "misa/lvi_6034dmsc",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6035DSEU.html|0": {
    "alt": [],
@@ -97180,16 +97399,16 @@
      "de": "vot_misa-del-santisimo-nombre-de-jesus",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 13,
-     "v": 1,
+     "t": 14,
+     "v": 0,
      "via": "unidad"
     },
     "poscomunion": {
      "de": "vot_misa-del-santisimo-nombre-de-jesus",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 13,
-     "v": 1,
+     "t": 14,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -97369,20 +97588,24 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "necessitatibus/vel-ad-diversa-iii-ad-diversa-48-in-quacumque-necessitate-a",
-     "f": "latino",
+     "d": 13,
+     "de": 61,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 14,
+     "u": "vot_misa-de-la-preciosisima-sangre-de-n-s-jesucristo",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
-     "de": "necessitatibus/vel-ad-diversa-iii-ad-diversa-48-in-quacumque-necessitate-a",
-     "f": "latino",
+     "d": 13,
+     "de": 155,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 14,
+     "u": "vot_misa-de-la-preciosisima-sangre-de-n-s-jesucristo",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-de-la-preciosisima-sangre-de-n-s-jesucristo",
@@ -97408,7 +97631,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DE LA PRECIOSÍSIMA SANGRE DE NUESTRO SEÑOR JESUCRISTO",
    "u": "misa/lvi_6038dpsc",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6039SDSCJ.html|0": {
    "alt": [],
@@ -97754,12 +97977,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "necessitatibus/vel-ad-diversa-iii-ad-diversa-49-pro-gratiis-deo-reddendis-a",
-     "f": "latino",
+     "d": 9,
+     "de": 202,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 17,
+     "u": "vot_misa-del-sagrado-corazon-de-jesus",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-del-sagrado-corazon-de-jesus",
@@ -97785,7 +98010,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DEL SAGRADO CORAZÓN DE JESÚS",
    "u": "misa/lvi_6039sdscj",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6040DESA.html|0": {
    "alt": [],
@@ -97934,8 +98159,8 @@
      "de": "vot_misa-del-espiritu-santo-a",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -98113,8 +98338,8 @@
      "de": "vot_misa-del-espiritu-santo-a",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -98292,8 +98517,8 @@
      "de": "vot_misa-del-espiritu-santo-a",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -98705,8 +98930,8 @@
      "de": "vot_misa-del-espiritu-santo-a",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "unidad"
     },
     "pueblo": null
@@ -99345,7 +99570,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 15,
-     "v": 8,
+     "v": 4,
      "via": "unidad"
     },
     "pueblo": null
@@ -99548,12 +99773,12 @@
      "via": "latino"
     },
     "poscomunion": {
-     "de": "vot_misa-de-los-santos-angeles",
-     "f": "misalito",
+     "de": "votivae/6-de-sanctissimo-nomine-iesu",
+     "f": "latino",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -99563,7 +99788,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DE LOS SANTOS ÁNGELES — SANTOS ARCÁNGELES MIGUEL, GABRIEL Y RAFAEL",
    "u": "misa/lvi_6044dsan",
-   "v": "parcial"
+   "v": "latino"
   },
   "VI|6044DSAN.html|1": {
    "alt": [
@@ -99648,12 +99873,12 @@
      "via": "latino"
     },
     "poscomunion": {
-     "de": "vot_misa-de-los-santos-angeles",
-     "f": "misalito",
+     "de": "votivae/6-de-sanctissimo-nomine-iesu",
+     "f": "latino",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "unidad"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "pueblo": null
    },
@@ -99663,7 +99888,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DE LOS SANTOS ÁNGELES — SANTOS ARCÁNGELES MIGUEL, GABRIEL Y RAFAEL",
    "u": "misa/lvi_6044dsan",
-   "v": "parcial"
+   "v": "latino"
   },
   "VI|6045DSJO.html|0": {
    "alt": [
@@ -99736,12 +99961,14 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "votivae/8-de-sacratissimo-corde-iesu",
-     "f": "latino",
+     "d": 13,
+     "de": 21,
+     "f": "misalito",
      "r": "colecta",
-     "t": null,
+     "t": 18,
+     "u": "vot_misa-de-san-jose",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "comunion": {
      "de": "vot_misa-de-san-jose",
@@ -99752,12 +99979,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "votivae/8-de-sacratissimo-corde-iesu",
-     "f": "latino",
+     "d": 13,
+     "de": 189,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 26,
+     "u": "vot_misa-de-san-jose",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-de-san-jose",
@@ -99768,12 +99997,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "votivae/8-de-sacratissimo-corde-iesu",
-     "f": "latino",
+     "d": 13,
+     "de": 324,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
+     "u": "vot_misa-de-san-jose",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -99783,7 +100014,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DE SAN JOSÉ — SAN JOSÉ, ESPOSO DE LA VIRGEN MARÍA",
    "u": "misa/lvi_6045dsjo",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6045DSJO.html|1": {
    "alt": [
@@ -99847,12 +100078,14 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "votivae/8-de-sacratissimo-corde-iesu",
-     "f": "latino",
+     "d": 13,
+     "de": 21,
+     "f": "misalito",
      "r": "colecta",
-     "t": null,
+     "t": 18,
+     "u": "vot_misa-de-san-jose",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "comunion": {
      "de": "vot_misa-de-san-jose",
@@ -99863,12 +100096,14 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "votivae/8-de-sacratissimo-corde-iesu",
-     "f": "latino",
+     "d": 13,
+     "de": 189,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 26,
+     "u": "vot_misa-de-san-jose",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
      "de": "vot_misa-de-san-jose",
@@ -99879,12 +100114,14 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "votivae/8-de-sacratissimo-corde-iesu",
-     "f": "latino",
+     "d": 13,
+     "de": 324,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 18,
+     "u": "vot_misa-de-san-jose",
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -99894,7 +100131,7 @@
    "seccion": "MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · leccionario VI",
    "titulo": "DE SAN JOSÉ — SAN JOSÉ, ESPOSO DE LA VIRGEN MARÍA",
    "u": "misa/lvi_6045dsjo",
-   "v": "parcial"
+   "v": "completo"
   },
   "VI|6046DTSA.html|0": {
    "alt": [
@@ -100114,7 +100351,7 @@
      "es": "Mt 16,18",
      "o": 3,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -100645,8 +100882,8 @@
      "de": "st_0107_1",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -100781,8 +101018,8 @@
      "de": "st_0113_2",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -100914,7 +101151,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 5,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -100979,8 +101216,8 @@
      "de": "st_0120_4",
      "f": "misalito",
      "r": "colecta",
-     "t": 2,
-     "v": 1,
+     "t": 3,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -101281,8 +101518,8 @@
      "de": "st_0122_7",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -101629,8 +101866,8 @@
      "de": "st_0126_10",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -101827,8 +102064,8 @@
      "de": "st_0128_12",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 3,
-     "v": 2,
+     "t": 4,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -101929,8 +102166,8 @@
      "de": "st_0131_13",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 3,
-     "v": 3,
+     "t": 4,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -102226,7 +102463,7 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 326,
+     "de": 329,
      "f": "misalito",
      "r": "poscomunion",
      "t": 22,
@@ -102328,8 +102565,8 @@
      "de": "st_0205_17",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 3,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -102439,7 +102676,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
-     "v": 2,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -102636,7 +102873,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
-     "v": 4,
+     "v": 3,
      "via": "celebración"
     },
     "poscomunion": {
@@ -102644,7 +102881,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
-     "v": 3,
+     "v": 2,
      "via": "celebración"
     },
     "pueblo": null
@@ -102729,8 +102966,8 @@
      "de": "st_0211_21",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 4,
-     "v": 1,
+     "t": 5,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -103028,8 +103265,8 @@
      "de": "st_0221_24",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 3,
-     "v": 2,
+     "t": 4,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -103075,7 +103312,7 @@
      "es": "Mt 16,18",
      "o": 3,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -103316,8 +103553,8 @@
      "de": "st_0304_27",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 1,
+     "t": 2,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -103515,14 +103752,7 @@
      "v": 4,
      "via": "común"
     },
-    "ofrendas": {
-     "de": "st_0308_29",
-     "f": "misalito",
-     "r": "ofrendas",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
-    },
+    "ofrendas": null,
     "poscomunion": null,
     "pueblo": null
    },
@@ -103761,8 +103991,8 @@
      "de": "st_0318_32",
      "f": "misalito",
      "r": "colecta",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -104102,8 +104332,8 @@
      "de": "st_0325_35",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -104491,12 +104721,13 @@
      "via": "día"
     },
     "pueblo": {
-     "de": "st_0411_40",
+     "d": 5,
+     "de": "d2_5_5",
      "f": "misalito",
      "r": "pueblo",
-     "t": 1,
+     "t": 6,
      "v": 0,
-     "via": "celebración"
+     "via": "día"
     }
    },
    "prefacio": [],
@@ -104583,7 +104814,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": {
@@ -104591,7 +104822,7 @@
      "de": "d2_5_7",
      "f": "misalito",
      "r": "pueblo",
-     "t": 7,
+     "t": 8,
      "v": 0,
      "via": "día"
     }
@@ -104689,7 +104920,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
-     "v": 4,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -104789,7 +105020,7 @@
      "de": 298,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 22,
+     "t": 27,
      "v": null,
      "via": "día"
     },
@@ -104864,7 +105095,7 @@
      "de": 33,
      "f": "misalito",
      "r": "comunion",
-     "t": 12,
+     "t": 13,
      "v": null,
      "via": "día"
     },
@@ -104890,7 +105121,7 @@
      "de": 298,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 22,
+     "t": 27,
      "v": null,
      "via": "día"
     },
@@ -104987,12 +105218,13 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0424_45",
+     "d": 8,
+     "de": 298,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 27,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -105028,8 +105260,9 @@
      "es": "Sal 88,2-3.6-7.16-17",
      "o": 2,
      "otros_vers": false,
-     "t": 2,
+     "t": 1,
      "tipo": "salmo responsorial",
+     "vi": 2,
      "via_es": "cita"
     },
     {
@@ -105165,8 +105398,8 @@
      "de": "st_0404_37",
      "f": "misalito",
      "r": "colecta",
-     "t": 3,
-     "v": 1,
+     "t": 4,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": null,
@@ -105473,8 +105706,8 @@
      "de": "st_0429_49",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -105572,8 +105805,8 @@
      "de": "st_0430_50",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 3,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -106069,7 +106302,7 @@
      "de": 33,
      "f": "misalito",
      "r": "comunion",
-     "t": 12,
+     "t": 13,
      "v": null,
      "via": "día"
     },
@@ -106096,7 +106329,7 @@
      "de": 298,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 22,
+     "t": 27,
      "v": null,
      "via": "día"
     },
@@ -106432,7 +106665,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 4,
+     "v": 2,
      "via": "celebración"
     },
     "pueblo": null
@@ -107289,8 +107522,8 @@
      "de": "st_0531_64",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -107633,7 +107866,7 @@
      "f": "misalito",
      "r": "comunion",
      "t": 5,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "entrada": {
@@ -108320,7 +108553,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 3,
+     "v": 2,
      "via": "celebración"
     },
     "comunion": {
@@ -108352,7 +108585,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
-     "v": 5,
+     "v": 2,
      "via": "celebración"
     },
     "pueblo": null
@@ -108452,8 +108685,8 @@
      "de": "st_0622_75",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 2,
-     "v": 4,
+     "t": 3,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -108552,8 +108785,8 @@
      "de": "st_0622_76",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 4,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -108667,8 +108900,8 @@
      "de": "st_0624_77",
      "f": "misalito",
      "r": "colecta",
-     "t": 7,
-     "v": 2,
+     "t": 8,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -108800,8 +109033,8 @@
      "de": "st_0627_78",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 2,
-     "v": 5,
+     "t": 5,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -108995,7 +109228,7 @@
      "es": "2 Tm 4,6-8.17-18",
      "o": 8,
      "otros_vers": false,
-     "t": 8,
+     "t": 9,
      "tipo": "segunda lectura",
      "via_es": "cita"
     },
@@ -109024,7 +109257,7 @@
      "de": "st_0629_80",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
+     "t": 7,
      "v": 2,
      "via": "celebración"
     },
@@ -109056,8 +109289,8 @@
      "de": "st_0629_80",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 2,
+     "t": 9,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -109155,8 +109388,8 @@
      "de": "st_0630_81",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 2,
-     "v": 2,
+     "t": 4,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -109254,10 +109487,10 @@
     },
     "poscomunion": {
      "d": 7,
-     "de": 345,
+     "de": 349,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 26,
+     "t": 33,
      "v": null,
      "via": "día"
     },
@@ -109453,7 +109686,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 8,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -109848,8 +110081,8 @@
      "de": "st_0713_88",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -110903,8 +111136,8 @@
      "de": "st_0731_99",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 3,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -111001,8 +111234,8 @@
      "de": "st_0801_100",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -111101,8 +111334,8 @@
      "de": "st_0802_101",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 3,
-     "v": 1,
+     "t": 4,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -111378,20 +111611,22 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_0805_104",
+     "d": 11,
+     "de": 271,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 18,
+     "v": null,
+     "via": "día"
     },
     "poscomunion": {
-     "de": "st_0805_104",
+     "d": 11,
+     "de": 299,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 31,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
@@ -111631,7 +111866,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 1,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -112293,8 +112528,8 @@
      "de": "st_0814_112",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -112548,7 +112783,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 4,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -112647,7 +112882,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
-     "v": 6,
+     "v": 4,
      "via": "celebración"
     },
     "pueblo": null
@@ -112898,8 +113133,8 @@
      "de": "st_0821_117",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "poscomunion": {
@@ -112988,8 +113223,8 @@
      "de": "st_0822_118",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "poscomunion": {
@@ -113827,8 +114062,8 @@
      "de": "st_0903_126",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
-     "v": 2,
+     "t": 7,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -113926,8 +114161,9 @@
      "es": "Mt 1,18-23",
      "o": 6,
      "otros_vers": false,
-     "t": 4,
+     "t": 1,
      "tipo": "evangelio",
+     "vi": 1,
      "via_es": "cita"
     }
    ],
@@ -113968,8 +114204,8 @@
      "de": "st_0908_127",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -114167,8 +114403,8 @@
      "de": "st_0913_129",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 3,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -114852,8 +115088,8 @@
      "de": "st_0921_136",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -115343,10 +115579,10 @@
     },
     "poscomunion": {
      "d": 8,
-     "de": 319,
+     "de": 322,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 12,
+     "t": 13,
      "v": null,
      "via": "día"
     },
@@ -115444,8 +115680,8 @@
      "de": "st_0930_142",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 1,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -117076,8 +117312,8 @@
      "de": "st_1019_156",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 3,
+     "t": 8,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -117175,8 +117411,8 @@
      "de": "st_1019_157",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 2,
-     "v": 3,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -117462,7 +117698,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
-     "v": 2,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -117619,8 +117855,9 @@
      "es": "Sal 129,1-2.3-4.5-6.7.8",
      "o": 3,
      "otros_vers": false,
-     "t": 8,
+     "t": 6,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -118038,10 +118275,10 @@
     },
     "poscomunion": {
      "d": 13,
-     "de": 327,
+     "de": 330,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 15,
+     "t": 16,
      "v": null,
      "via": "día"
     },
@@ -118088,7 +118325,7 @@
      "es": "Mt 16,18",
      "o": 3,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -118139,7 +118376,7 @@
     },
     "poscomunion": {
      "d": 12,
-     "de": 338,
+     "de": 342,
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -118348,7 +118585,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 7,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -118926,18 +119163,19 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "st_1121_174",
+     "d": 15,
+     "de": 299,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
+     "t": 31,
+     "v": null,
+     "via": "día"
     },
     "pueblo": null
    },
    "prefacio": [],
    "prefacio_propio": null,
-   "resena": "Lecc. III: 1ª. Lect p. 442 [N° 182]; Sal p. 961 [N° 927]; Aclam 977 [N°969]; Ev 473 [N° 222] Más importante que los relatos antiguos de la Presentación de la Virgen María en el Templo, la memoria viva de las Iglesias del Oriente y del Occidente celebran hoy la entrega que de sí misma hizo la santísima Virgen al Señor, en el umbral de su vida consciente. Todos los cristianos podemos encontrar en María santísima, \"la llena de gracia\", el modelo de una vida consagrada a hacer la voluntad de Dios.",
+   "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "La Presentación de la Santísima Virgen María",
    "u": "st/st_1121_174",
@@ -119020,8 +119258,8 @@
      "de": "st_1122_175",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 4,
-     "v": 7,
+     "t": 7,
+     "v": 2,
      "via": "celebración"
     },
     "pueblo": null
@@ -119067,7 +119305,7 @@
      "es": "Mt 16,18",
      "o": 3,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -119414,8 +119652,8 @@
      "de": "st_1130_179",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -119694,8 +119932,8 @@
      "de": "st_1206_182",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -119828,8 +120066,8 @@
      "de": "st_1207_183",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -120007,8 +120245,8 @@
      "de": "st_1211_185",
      "f": "misalito",
      "r": "colecta",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -120297,8 +120535,8 @@
      "de": "st_1214_188",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 2,
+     "t": 6,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -120363,8 +120601,8 @@
      "de": "st_1221_189",
      "f": "misalito",
      "r": "colecta",
-     "t": 4,
-     "v": 4,
+     "t": 5,
+     "v": 3,
      "via": "celebración"
     },
     "comunion": {
@@ -120396,8 +120634,8 @@
      "de": "st_1221_189",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -120494,8 +120732,8 @@
      "de": "st_1223_190",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 6,
-     "v": 1,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -120851,8 +121089,8 @@
      "de": "st_1229_194",
      "f": "misalito",
      "r": "colecta",
-     "t": 5,
-     "v": 1,
+     "t": 6,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -120886,7 +121124,7 @@
      "de": 306,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 16,
+     "t": 18,
      "v": null,
      "via": "día"
     },
@@ -120937,7 +121175,7 @@
      "es": "Mt 16,18",
      "o": 3,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -120990,8 +121228,8 @@
      "de": "st_1231_195",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 4,
-     "v": 2,
+     "t": 7,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -121583,7 +121821,7 @@
      "es": "Mt 16,18",
      "o": 20,
      "otros_vers": false,
-     "t": 14,
+     "t": 15,
      "tipo": "aleluya",
      "via_es": "cita"
     },
@@ -127072,7 +127310,7 @@
   "11": null,
   "110": null,
   "111": null,
-  "112": "misa/lvi_6029plfa",
+  "112": null,
   "113": null,
   "114": null,
   "115": "to/1",
@@ -127164,7 +127402,7 @@
   "193": null,
   "194": null,
   "195": null,
-  "196": "misa/lvi_6029plfa",
+  "196": null,
   "197": "misa/lvi_6001plig",
   "198": null,
   "199": null,
@@ -127221,7 +127459,7 @@
   "244": null,
   "245": null,
   "246": "misa/lvi_6001plig",
-  "247": "misa/lvi_6029plfa",
+  "247": null,
   "248": null,
   "249": null,
   "25": null,
@@ -127257,7 +127495,7 @@
   "277": null,
   "278": null,
   "279": null,
-  "28": "misa/lvi_6029plfa",
+  "28": null,
   "280": null,
   "281": null,
   "282": null,
@@ -127286,7 +127524,7 @@
   "302": null,
   "303": null,
   "304": null,
-  "305": "misa/lvi_6027pepp",
+  "305": null,
   "306": null,
   "307": null,
   "308": null,
@@ -127305,10 +127543,10 @@
   "32": null,
   "320": null,
   "321": null,
-  "322": "to/1",
+  "322": null,
   "323": null,
   "324": null,
-  "325": null,
+  "325": "to/1",
   "326": null,
   "327": null,
   "328": null,
@@ -127331,6 +127569,10 @@
   "343": null,
   "344": null,
   "345": null,
+  "346": null,
+  "347": null,
+  "348": null,
+  "349": null,
   "35": null,
   "36": null,
   "37": null,
@@ -127920,18 +128162,13 @@
   "lviii_8026md": "misa/lviii_8026md",
   "lviii_8027nb": "misa/lviii_8027nb",
   "lviii_8028nb": "misa/lviii_8028nb",
-  "md_01-04": "fecha/01-04",
-  "md_01-05": "fecha/01-05",
-  "md_01-08": "fecha/01-08",
   "md_01-09": "fecha/01-09",
-  "md_01-14": "fecha/01-14",
   "md_01-23": "fecha/01-23",
   "md_01-30": "fecha/01-30",
   "md_02-04": "fecha/02-04",
   "md_02-07": "fecha/02-07",
   "md_02-09": "fecha/02-09",
   "md_02-25": "fecha/02-25",
-  "md_02-29": "fecha/02-29",
   "md_03-02": "fecha/03-02",
   "md_03-03": "fecha/03-03",
   "md_03-05": "fecha/03-05",
@@ -127948,7 +128185,6 @@
   "md_03-26": "fecha/03-26",
   "md_03-27": "fecha/03-27",
   "md_03-28": "fecha/03-28",
-  "md_03-31": "fecha/03-31",
   "md_04-01": "fecha/04-01",
   "md_04-02": "fecha/04-02",
   "md_04-02#misa-vespertina-de-la-cena-del-senor": "tri/cena",
@@ -127988,15 +128224,9 @@
   "md_05-28": "fecha/05-28",
   "md_05-29": "fecha/05-29",
   "md_05-30": "fecha/05-30",
-  "md_05-31": "fecha/05-31",
   "md_06-07": "fecha/06-07",
-  "md_06-10": "fecha/06-10",
-  "md_06-14": "fecha/06-14",
-  "md_06-15": "fecha/06-15",
-  "md_06-16": "fecha/06-16",
   "md_06-20": "fecha/06-20",
   "md_06-26": "fecha/06-26",
-  "md_06-30": "fecha/06-30",
   "md_07-01": "fecha/07-01",
   "md_07-09": "fecha/07-09",
   "md_07-19": "fecha/07-19",
@@ -128021,7 +128251,6 @@
   "md_10-30": "fecha/10-30",
   "md_11-09": "fecha/11-09",
   "md_11-20": "fecha/11-20",
-  "md_11-22": "fecha/11-22",
   "md_11-25": "fecha/11-25",
   "md_12-01": "fecha/12-01",
   "md_12-05": "fecha/12-05",
@@ -128085,7 +128314,6 @@
   "san_san-david-uribe-velasco": "st/san_san-david-uribe-velasco",
   "san_san-gregorio-de-narek": "st/san_san-gregorio-de-narek",
   "san_san-isidro-labrador": "st/san_san-isidro-labrador",
-  "san_san-jenaro-sanchez-delgadillo": "st/san_san-jenaro-sanchez-delgadillo",
   "san_san-jesus-mendez-montoya": "st/san_san-jesus-mendez-montoya",
   "san_san-jesus-mendez-montoya-martir-mexicano": "st/san_san-jesus-mendez-montoya-martir-mexicano",
   "san_san-jose-maria-de-yermo-y": "st/san_san-jose-maria-de-yermo-y",
@@ -128210,9 +128438,7 @@
   "st_0624_77": "st/st_0624_77",
   "st_0627_78": "st/st_0627_78",
   "st_0628_79": "st/st_0628_79",
-  "st_0628_79#misa-vespertina-de-la-vigilia": "st/st_0629_80#vigilia",
   "st_0629_80": "st/st_0629_80",
-  "st_0629_80#misa-del-dia": "st/st_0629_80",
   "st_0630_81": "st/st_0630_81",
   "st_0703_83": "st/st_0703_83",
   "st_0704_84": "st/st_0704_84",
@@ -128338,7 +128564,7 @@
   "vot_misa-de-la-preciosisima-sangre-de-n-s-jesucristo": "misa/lvi_6038dpsc",
   "vot_misa-de-la-sagrada-eucaristia": "misa/lvi_6035dseu",
   "vot_misa-de-la-santisima-virgen-maria": "misa/lvi_6042dsmv",
-  "vot_misa-de-los-santos-angeles": "misa/lvi_6044dsan",
+  "vot_misa-de-los-santos-angeles": "cel/vot_misa-de-los-santos-angeles",
   "vot_misa-de-nuestro-senor-jesucristo": "cel/vot_misa-de-nuestro-senor-jesucristo",
   "vot_misa-de-san-jose": "misa/lvi_6045dsjo",
   "vot_misa-de-santa-maria-en-sabado": "misa/lvi_6042dsmv",
@@ -128366,7 +128592,7 @@
   "vot_misa-por-el-progreso-de-los-pueblos": "misa/lvi_6013plpa",
   "vot_misa-por-la-evangelizacion-de-los-pueblos-a": "misa/lvi_6011plep",
   "vot_misa-por-la-evangelizacion-de-los-pueblos-b": "misa/lvi_6011plep",
-  "vot_misa-por-la-familia": "misa/lvi_6029plfa",
+  "vot_misa-por-la-familia": "cel/vot_misa-por-la-familia",
   "vot_misa-por-la-iglesia-particular": "misa/lvi_6001plig",
   "vot_misa-por-la-iglesia-particular-e": "misa/lvi_6001plig",
   "vot_misa-por-la-iglesia-universal-a": "misa/lvi_6001plig",
@@ -128408,6 +128634,6 @@
   "vot_misa-votiva-de-san-jose": "cel/vot_misa-votiva-de-san-jose",
   "vot_misa-votiva-de-santa-maria-de-guadalupe": "misa/lvi_6042dsmv",
   "vot_misa-votiva-de-santa-maria-madre-de-la-iglesia": "cel/vot_misa-votiva-de-santa-maria-madre-de-la-iglesia",
-  "vot_misa-votiva-del-misterio-de-la-santa-cruz": "misa/lvi_6034dmsc"
+  "vot_misa-votiva-del-misterio-de-la-santa-cruz": "cel/vot_misa-votiva-del-misterio-de-la-santa-cruz"
  }
 }

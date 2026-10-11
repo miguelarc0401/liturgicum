@@ -1,0 +1,12 @@
+El leccionario de 1977 para la app
+
+   1077 bloques, 6692 piezas
+       1096  clementina
+       5596  nova
+       3848  enganchada con el libro de 1977
+       1678  con incipit
+        568  formula al modo de 1977
+       3848  piezas enganchadas, de 6692  (57.5 %)
+   siglas sin libro (se quedan con la Nova): ? x26
+
+escrito app/datos/lecturas_lect1977.json  (5733 KB)

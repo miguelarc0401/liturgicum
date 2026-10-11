@@ -251,6 +251,9 @@ MARCA = re.compile(r'(?:^|(?<=[\s.,;:!?…«»“”")]))R/?\.\s*')
 # final del renglón sí, así que se le pone el espacio que le falta.
 MARCA_FIN = re.compile(r'R/?\.\s*$')
 
+# La cita que la fuente pone delante del salmo, en su propio renglón.
+CITA_FUENTE = re.compile(r'^\s*(?:de\s+)?(?:los?\s+)?(?:del?\s+)?(?:salmo|c[aá]ntico)\b', re.I)
+
 
 def estrofas(texto, resp=None):
     """El salmo en estrofas: la respuesta del pueblo es lo que las corta.
@@ -308,6 +311,16 @@ def respuesta_de(texto):
     for i, l in enumerate(texto):
         if not l.strip():
             continue
+        # La marca **cierra** a veces el renglón de la cita y la respuesta va
+        # debajo: «del salmo 121, 1-2. 3-4a. 4b-5 R/.» y luego «Vayamos con
+        # alegría al encuentro del Señor». Son cuatro perícopas, y en ellas la
+        # app no enseñaba respuesta ninguna y la metía en la primera estrofa.
+        # Sólo cuando el renglón es la cita de la fuente: hay otras dos que
+        # acaban en marca y debajo llevan «O Bien: 1 Jn 4,10», que no es la
+        # respuesta de nadie.
+        if (vistos == 0 and CITA_FUENTE.match(l) and MARCA_FIN.search(l)
+                and i + 1 < len(texto) and texto[i + 1].strip()):
+            return texto[i + 1].strip().rstrip(' .') + '.', i + 2
         m = re.match(r'^\s*R/?\.\s*(.+)$', l)
         if m:
             r = m.group(1).strip()

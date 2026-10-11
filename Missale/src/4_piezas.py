@@ -829,6 +829,7 @@ class Formulario:
         self.piezas = {}          # ranura → {texto, cita, sumario}
         self.otras = []           # las lecturas de una ranura repetida
         self.rubricas = []
+        self.colas = []           # lo que iba detrás del cierre de una oración
         self.cel = None           # la celebración a la que se atribuye
         for b in bruto['bloques']:
             if b['clase'] == 'rubrica':
@@ -863,6 +864,10 @@ class Formulario:
                         or citas.del_renglon(texto))
             else:
                 cita = citas.del_campo(b.get('cita'))
+            if ran in ORACIONES:
+                texto, cola = corta_en_el_cierre(texto)
+                if cola:
+                    self.colas.append((ran, cola))
             pieza = {'texto': texto, 'cita': cita,
                      'sumario': b.get('sumario')}
             if repetida:
@@ -1141,6 +1146,72 @@ class Prefacios:
         p['textos'][ck] += 1
         p['por_clave'].setdefault(ck, cuerpo)
         p['testigos'][ck].append(f.testigo)
+
+
+# --------------------------------------------------------------------------
+# la oración acaba en su fórmula de cierre
+# --------------------------------------------------------------------------
+#
+# **Lo que va detrás de la conclusión no es de la oración.** Es el defecto que
+# la app enseñaba el 11 de octubre de 2026: la oración después de la comunión
+# del domingo XXVIII del tiempo ordinario salía seguida de la reseña entera de
+# Nuestra Señora de Zapopan, cuarenta y ocho renglones, porque el misalito la
+# imprime debajo y el rótulo que la abre —«* EN LA ARQUIDIÓCESIS DE
+# GUADALAJARA*»— no se reconocía. Eso se arregla en la fase 3, que es donde
+# está el rótulo; pero la cola tiene muchas más formas que un rótulo en
+# versales, y casi ninguna se reconoce: el cumpleaños del presbítero, el
+# Jubileo Circular, el esquema de la Liturgia de las Horas, el pie de página
+# con la fecha, la hagiografía del santo mexicano, la reflexión del sitio y su
+# «Fuente: misalcatolico.com».
+#
+# La oración, en cambio, **tiene ancla**, y es la misma para todas: la
+# conclusión. «Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo
+# en la unidad del Espíritu Santo y es Dios por los siglos de los siglos», «Por
+# Jesucristo, nuestro Señor», «Por Cristo, nuestro Señor». Donde acaba, acaba
+# la oración. Es el mismo hallazgo que la fórmula del incipit para las
+# lecturas, sólo que por el otro extremo.
+#
+# Medido sobre las dos fuentes: de 24 034 oraciones impresas, **1 356 llevan
+# cola** y son 732 915 caracteres. De las 22 678 restantes, 4 808 no traen
+# conclusión reconocible —el misalito la abrevia: «Por nuestro Señor
+# Jesucristo…»— y ésas no se tocan: cortar sin ancla sería adivinar.
+#
+# Manda la **última** conclusión del texto, no la primera, porque el cuerpo de
+# una oración puede nombrar a Cristo nuestro Señor sin estar acabando. Y el
+# «Amén» del pueblo se va con la cola: la conclusión es del sacerdote, y
+# ninguna de las otras veintidós mil lo trae.
+CIERRE_ORACION = re.compile(
+    r'(?:por\s+los\s+siglos\s+de\s+los\s+siglos'
+    r'|por\s+(?:nuestro\s+Se\u00f1or\s+)?Jesucristo,?\s+nuestro\s+Se\u00f1or'
+    r'|por\s+Cristo,?\s+nuestro\s+Se\u00f1or)'
+    r'\s*\.?', re.I)
+
+ORACIONES = {'colecta', 'ofrendas', 'poscomunion', 'pueblo'}
+
+
+def corta_en_el_cierre(texto):
+    """El texto de la oración hasta su conclusión, y lo que se quitó.
+
+    Devuelve `(renglones, cola)`. Si no hay conclusión reconocible, el texto
+    entero y una cola vacía: sin ancla no se corta.
+    """
+    for i in range(len(texto)):
+        trozo = ' '.join(texto[:i + 1])
+        ms = list(CIERRE_ORACION.finditer(trozo))
+        if not ms:
+            continue
+        fin = ms[-1].end()
+        antes = len(' '.join(texto[:i])) + (1 if i else 0)
+        corte = fin - antes
+        if corte <= 0:
+            cortado, resto = texto[:i], texto[i:]
+        else:
+            cortado = texto[:i] + [texto[i][:corte].rstrip()]
+            resto = ([texto[i][corte:].strip()] if texto[i][corte:].strip()
+                     else []) + texto[i + 1:]
+        cola = ' '.join(x for x in resto if x.strip()).strip()
+        return [x for x in cortado if x.strip()], cola
+    return texto, ''
 
 
 # --------------------------------------------------------------------------
@@ -1940,6 +2011,49 @@ def informe(cal, formularios, citas, propios, pericopas, prefacios_propios,
            % (len(citas.fallos), sum(citas.fallos.values())))
     for k, n in citas.fallos.most_common():
         inf.di('   %4d  %r' % (n, k))
+    inf.titulo('Lo que iba detrás del cierre de la oración')
+    colas = [(f.testigo, ran, cola) for f in formularios
+             for ran, cola in f.colas]
+    inf.di('**La oración acaba en su conclusión: lo que va detrás no es de')
+    inf.di('ella.** «Por nuestro Señor Jesucristo, tu Hijo, que vive y reina')
+    inf.di('contigo… por los siglos de los siglos», «Por Jesucristo, nuestro')
+    inf.di('Señor», «Por Cristo, nuestro Señor»: donde acaba, acaba la')
+    inf.di('oración. Es el mismo hallazgo que la fórmula del incipit para las')
+    inf.di('lecturas, por el otro extremo, y hacía falta porque la cola tiene')
+    inf.di('muchas más formas que un rótulo en versales —el cumpleaños del')
+    inf.di('presbítero, el Jubileo Circular, el esquema de la Liturgia de las')
+    inf.di('Horas, el pie con la fecha, la hagiografía del santo mexicano, la')
+    inf.di('reflexión del sitio— y casi ninguna se reconoce sola.')
+    inf.di()
+    inf.di('   oraciones con cola, que se corta : %d' % len(colas))
+    inf.di('   caracteres que se quitan         : %d'
+           % sum(len(c) for _, _, c in colas))
+    inf.di()
+    inf.di('Donde no hay conclusión reconocible no se corta: el misalito la')
+    inf.di('abrevia a veces —«Por nuestro Señor Jesucristo…»— y cortar sin')
+    inf.di('ancla sería adivinar. Manda la **última** conclusión del texto,')
+    inf.di('porque el cuerpo de una oración puede nombrar a Cristo nuestro')
+    inf.di('Señor sin estar acabando; y el «Amén» del pueblo se va con la')
+    inf.di('cola, porque la conclusión es del sacerdote y ninguna de las')
+    inf.di('otras veintidós mil oraciones lo trae.')
+    inf.di()
+    porran = Counter(ran for _, ran, _ in colas)
+    for ran, nn in porran.most_common():
+        inf.di('   %-14s %5d' % (ran, nn))
+    inf.di()
+    inf.di('Las colas, por lo que empiezan diciendo:')
+    inf.di()
+    cab = Counter(' '.join(c.split()[:4])[:56] for _, _, c in colas)
+    for k, nn in cab.most_common(24):
+        inf.di('   %4d  %s' % (nn, k))
+    if len(cab) > 24:
+        inf.di('   … y %d formas más' % (len(cab) - 24))
+    inf.di()
+    inf.di('Las diez más largas, con su día:')
+    inf.di()
+    for t, ran, c in sorted(colas, key=lambda x: -len(x[2]))[:10]:
+        inf.di('   %6d  %s  %-14s %s' % (len(c), t, ran, c[:48]))
+    inf.di()
     inf.titulo('Lo que se repara, y con qué prueba')
     inf.di('Nada de esto se corrige en silencio.')
     inf.di()

@@ -177,6 +177,15 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   memoria libre se puede celebrar o dejar, y en Cuaresma y las ferias
   privilegiadas sólo cabe como conmemoración: eso se elige arriba, con los
   chips de la cabecera. En Ajustes se dice qué opción sale marcada.
+* **Cómo empieza la hora, lo elige quien reza.** El Oficio de lectura y
+  Laudes empiezan de dos maneras: si ésta es la primera oración del día,
+  con el *invitatorio* —«Señor, abre mis labios», la antífona del día y el
+  salmo 94 con la antífona repetida después de cada estrofa—; y si antes se
+  ha rezado ya alguna otra Hora, con la *invocación inicial*, «Dios mío,
+  ven en mi auxilio». Eso no lo sabe el calendario, así que las dos van a
+  elegir en lo alto de la hora, con la invocación marcada. Si el día deja
+  escoger de dónde se toma el invitatorio (del común del santo o de la
+  feria), ese selector sigue en su rótulo, debajo.
 * **Primeras o segundas vísperas.** Un domingo y una solemnidad tienen dos
   vísperas, y la app dice cuáles son las de esa tarde, con el nombre y el
   color de la celebración a la que pertenecen. Cuál de las dos gana no se
@@ -223,8 +232,9 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   en todo el año, y ninguna se reza donde salía.
 * **La lectura bíblica del Oficio sigue el ciclo de dos años** (año I los
   impares, año II los pares), como la fuente.
-* **Reseña, himnos y antífona final.** El Oficio de lectura abre con la
-  reseña del santo; donde hay varios himnos posibles (Completas, la Hora
+* **Reseña, himnos y antífona final.** La reseña del santo o de la fiesta va
+  pegada a la segunda lectura, que es la que cuenta su vida, y se pliega:
+  se lee una vez. Donde hay varios himnos posibles (Completas, la Hora
   intermedia, y los días en que el libro da más de uno) y en la antífona
   final de la Virgen, un selector numerado deja escoger.
 * **Cómo se lee.** Himnos, salmos y cánticos van por renglones con sangría

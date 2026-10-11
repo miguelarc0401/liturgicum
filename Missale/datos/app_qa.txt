@@ -26,40 +26,40 @@ Las rúbricas del Ordinario que no están en las dos lenguas
 Lo que se escribió
 ------------------
 
-  app/datos/misa.json                  2445 KB
-  app/datos/lecturas_es.json           4770 KB
+  app/datos/misa.json                  2092 KB
+  app/datos/lecturas_es.json           4768 KB
   app/datos/misal_latino.json           775 KB
-  app/datos/prefacios.json              240 KB
+  app/datos/prefacios.json              237 KB
   app/datos/ordinario.json              234 KB
-  TOTAL                                8464 KB
+  TOTAL                                8106 KB
 
-  versión de datos: clementina+nova-1772915725
+  versión de datos: clementina+nova-2224271276
 
 Los formularios y sus piezas
 ----------------------------
 
   formularios del leccionario : 1051
-    completo                     738
-    parcial                      228
-    latino                        53
+    completo                     810
+    parcial                      154
+    latino                        55
     nada                          32
 
   piezas (seis ranuras por formulario, 6306 en total):
-      por celebración                         1786
+      por celebración                         1765
       por común                                109
-      por día                                  498
-      por gemela                               101
-      por suelto                                85
-      por unidad                              1927
-    piezas en castellano                      4506
-    piezas que sólo tiene el latín             589
+      por día                                  667
+      por gemela                                74
+      por suelto                                76
+      por unidad                              1896
+    piezas en castellano                      4587
+    piezas que sólo tiene el latín             520
 
   Las piezas que sólo tiene el latín no se copian en misa.json:
   van en misal_latino.json y la app las alcanza por el puntero
   `la` del formulario. La castellana dice «no disponible», que es
   lo que se decidió en la pregunta 6 del plan.
 
-  otras misas sin clave del leccionario: 178
+  otras misas sin clave del leccionario: 158
     Son la vigilia de san Juan Bautista y la de san Pedro y san
     Pablo, la vigilia de Pentecostés, la segunda y la tercera de
     los Difuntos —que el Misal da aparte y el leccionario no
@@ -117,13 +117,13 @@ Desarmar la perícopa impresa
   dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
   que salió:
 
-    lecturas con fórmula                        2784
-    lecturas sin fórmula reconocida               86
-    lecturas con sumario                        2446
-    lecturas con cierre                         2759
-    lecturas sin cierre reconocido               111
-    lecturas con respuesta del pueblo           2282
-    salmo o aclamación sin respuesta              57
+    lecturas con fórmula                        2783
+    lecturas sin fórmula reconocida               87
+    lecturas con sumario                        2443
+    lecturas con cierre                         2758
+    lecturas sin cierre reconocido               112
+    lecturas con respuesta del pueblo           2279
+    salmo o aclamación sin respuesta              35
     salmo sin estrofas                             0
 
   El cierre se busca en el texto ya juntado y no en el último
@@ -164,6 +164,7 @@ Desarmar la perícopa impresa
     Mc 14,1—15.47
     Mt 10,34–11.1
     Mt 11,16-19
+    Mt 11,28-30
     Mt 26,14—27.66
     Tb 13,2.6.7.8
 
@@ -178,7 +179,7 @@ Desarmar la perícopa impresa
   ele en vez de uno, y la cita de Ester con «(Neovulgata)»
   detrás.
 
-  Perícopas en que no se halló el cierre (42):
+  Perícopas en que no se halló el cierre (43):
     1 Cro 29,10.11abc.11d-12a.12bcd
     1 S 2,1.4-5.6-7.8abcd
     Ap 14,13
@@ -213,47 +214,29 @@ Desarmar la perícopa impresa
     Mc 11,1-10
     Mc 12,28b-34
     Mc 14,1—15.47
+    Mt 11,28-30
     Mt 16,13-20
     Mt 18,21-35
     Mt 21,1-11
     Mt 26,14—27.66
     Mt 28,1-10
-    Mt 9,36–10.8
-    … y 2 más
+    … y 3 más
 
   Salmos o aclamaciones sin respuesta del pueblo:
     Jn 4,12R/.Aleluya.aleluya
-    Mt 4,23
     Sal 101,13-14ab.15.16-18.19-21
-    Sal 101,2-3.16-18.19-21
     Sal 103,1b-2.3-4.24-25.27-28.29-30
-    Sal 11,2-3.4-5.7-8
-    Sal 112,1-2.4-6.7-8
-    Sal 118,67.68.71.72.75.76
-    Sal 121,1-2.3-4a.4b-5
     Sal 121,1-2.4-5.6-7.8-9
     Sal 129,1-2.3-4.5-6.7.8
-    Sal 131,6-7.8-10
     Sal 138,1-3.13-14.15
-    Sal 144,1-2.8-9.10-11.13cd-14
-    Sal 144,2-3.4-5.10-11
     Sal 147,12-13.14-15.19-20
     Sal 15,1-2a.5.7-8.9-10.11
-    Sal 18,8.9.10.11
-    Sal 2,7-8.10-11
     Sal 24,4-5ab.6-7bc.8-9
-    Sal 33,2-3.17-18.19.23
-    Sal 36,3-4.5-6.27-28.39-40
-    Sal 39,2y5.7-8a.8b-9.10
-    Sal 48,14-15ab.15cd-16.17-18.19-20
-    Sal 49,1y8.12-13.14-15
-    Sal 56,2.3-4.6.y11
     Sal 71,1-2.14.15bc.17
     Sal 87,1abc-11.12-13.14-15
     Sal 88,2-3.4-5.27.29
-    Sal 88,2-3.6-7.16-17
     Sal 89,3-4.12-13.14.17
-    Sal 94,8
+    Sal 92,1ab.1c-2.5
     Sal 95,1-2.2b-3.7-8a.9-10ac
     Sal 95,10.11-12a.12b-13
     Sal 97,1.2-3ab.3cd-4

@@ -1,0 +1,91 @@
+tomo,pagina,libro,cita,clementina,nova,parecido_clem,parecido_nova
+2,577,Actus Apostolorum,"25, 13-21",ad salutandum,et salutauerunt,0.526,0.667
+2,1643,Ad Colossenses,"3, 12- 17",modestiam patientiam,mansuetudinem longanimitatem,0.636,0.692
+2,1437,Ad Colossenses,"3, 12-15",modestiam patientiam,mansuetudinem longanimitatem,0.636,0.692
+2,1380,Ad Colossenses,"3, 9 b-17",expoliantes,qui exuistis,0.609,0.696
+2,1380,Ad Colossenses,"3, 9 b-17",modestiam patientiam,mansuetudinem longanimitatem,0.588,0.604
+1,1236,Ad Galatas,"5, 16-1 7. 22-23 a . 24-25",non perficietis,ne perfeceritis,0.636,0.688
+4,405,Ad Hebraeos,"7, 23-28",alii,illi,0.667,0.444
+4,171,Ad Philippenses,"1 , 20 c-24. 27 a",collaborantes fidei,concertantes fide,0.5,0.483
+2,79,Ad Philippenses,"3, 17 - 4, 1",configuratum,ut illud conforme faciat,0.615,0.517
+3,1902,Ad Philippenses,"3, 20-21",configuratum,ut illud conforme faciat,0.615,0.517
+3,137,Ad Romanos,"3, 21-25 a. 28",propter remissionem praecedentium delictorum,cum praetermisisset praecedentia delicta,0.444,0.471
+2,106,Ad Romanos,"5, 1-2. 5-8",ergo,igitur,0.571,0.615
+1,1234,Ad Romanos,"5, 1-2. 5-9 a",ergo,igitur,0.571,0.667
+4,363,Ad Romanos,"8, 1-1 1",iustificatio,iustitia,0.5,0.5
+4,363,Ad Romanos,"8, 1-1 1",prudentia,sapientia,0.571,0.667
+4,363,Ad Romanos,"8, 1-1 1",est prudentia,sapientia,0.571,0.667
+4,363,Ad Romanos,"8, 1-1 1",est subiecta,subicitur,0.6,0.588
+4,363,Ad Romanos,"8, 1-1 1",iustificationem,iustitiam,0.522,0.588
+4,216,Amos,"6, 1 a. 4-7",optimates capita,designati primitiae,0.56,0.5
+4,216,Amos,"6, 1 a. 4-7",ingredientes pompatice domum,ad quos uenit domus,0.444,0.488
+3,954,Apocalypsis,"1 1 ,  19 a; 12, 1 .  3-6 a. 10 ab",eam,illam,0.667,0.571
+1,1598,Apocalypsis,"2 1, 1-5 a. 6 b-7",fidelissima,fidelia,0.5,0.6
+2,1814,Apocalypsis,"21, 1 a. 3-5 a",fidelissima,fidelia,0.455,0.6
+1,202,Baruch,"5, 1-9",circumdabit,in aeternum circumda,0.636,0.571
+4,371,Ecclesiasticus,"35, 15 b-1 7 .  20-22 a",inspicere sacrificum iniustum,confidere in sacrificio iniusto,0.522,0.5
+1,624,Ecclesiasticus,"6, 5-17",tempus suum,opportunitatem suam,0.522,0.529
+4,185,Esdrae,"6, 7-8. 12 b. 14-20",repugnet,contemnat,0.667,0.636
+3,417,Exodus,"1 1 , 10 - 12, 14",quae scripta sunt,haec,0.632,0.667
+3,488,Exodus,"33, 7-11 ;  34, 5 h-9. 28",inuocans nomen,uocans in nomine,0.667,0.562
+3,592,Ezechiel,"16, 1-15. 60. 63",profecisti in,apta ad,0.696,0.615
+3,592,Ezechiel,"16, 1-15. 60. 63",et eius fieres,quisquis fuerit,0.621,0.56
+3,641,Ezechiel,"4 3, 1-7 a",ruinis,cadaueribus,0.615,0.588
+3,641,Ezechiel,"4 3, 1-7 a",excelsis,morte eorum,0.5,0.609
+1,932,Ezechiel,"43, 1-2. 4-7 a",ruinis,cadaueribus,0.667,0.588
+1,932,Ezechiel,"43, 1-2. 4-7 a",excelsis,morte eorum,0.615,0.609
+3,283,Genesis,"16, 6 b-12. 15-16",manu illius,manibus ipsius,0.545,0.562
+4,1385,Genesis,"4, 3-10",multos,aliquot,0.667,0.6
+1,256,Genesis,"49, 2. 8-12",pulchriores,nigriores,0.471,0.533
+2,1211,I Ad Corinthios,"12, 31 - 13, 8 a",ardeam,glorier,0.667,0.6
+1,1875,I Ad Corinthios,"15, 20-23",ii,hi,0.5,0.5
+1,340,I Ioannis,"2, 29 - 3, 6",sanctificat,purificat,0.522,0.571
+1,340,I Ioannis,"2, 29 - 3, 6",sanctus,purus,0.667,0.6
+4,757,I Ioannis,"3, 1-3",sanctus,purus,0.615,0.6
+3,227,I Regum,"21 , 1-16",post uerba,postea,0.636,0.615
+1,401,I Samuelis,"3, 3 b-10. 19",antequam extingueretur,nondum exstincta erat et,0.486,0.553
+3,660,II Ad Thessalonicenses,"2, 1-3 a . 14-1 7",peccati,iniquitatis,0.533,0.533
+3,660,II Ad Thessalonicenses,"2, 1-3 a . 14-1 7",in qua,ad quod,0.667,0.444
+3,889,II Ad Timotheum,"2, 22 b-26",docibilem,aptum ad docendum,0.588,0.578
+3,268,II Regum,"17, 5-8. 13-15 a. 18",uane egerunt,uani facti sunt,0.64,0.516
+1,468,II Samuelis,"1 1 , 1-4 a. 5-10 a. 13-17",statimque sanctificata est,quae se sanctificauerat,0.522,0.55
+4,719,Ioannes,"1 , 47-51",maius,maiora,0.667,0.615
+2,1153,Ioannes,"1 5, 1 -21. 26-27",mittetur,missus est,0.571,0.632
+2,1153,Ioannes,"1 5, 1 -21. 26-27",colligent eum,colligunt eos,0.609,0.571
+2,1153,Ioannes,"1 5, 1 -21. 26-27",plurimum,multum,0.625,0.615
+2,810,Ioannes,"10, 22-30",autem,tunc,0.6,0.667
+4,1539,Ioannes,"19, 28-37",postea,post hoc,0.615,0.571
+2,206,Ioannes,"8, 2 1-30",principium qui,in principio id quod,0.571,0.474
+3,1291,Ioel,"2, 23 a. 26-30 a",doctorem,pluuiam,0.571,0.571
+3,732,Iosue,"1 1 , 1 b. 3-4. 8 c-9",regem,regern,0.5,0.5
+3,732,Iosue,"1 1 , 1 b. 3-4. 8 c-9",fecitque,fecit,0.471,0.6
+2,1823,Isaias,"25, 6 a. 7-8 a",uindemiae,uini meri,0.5,0.588
+2,1823,Isaias,"25, 6 a. 7-8 a",uindemiae defaecatae,uini deliquati,0.467,0.516
+1,1872,Isaias,"25, 6 a. 7-9",uindemiae,uini meri,0.5,0.588
+1,1872,Isaias,"25, 6 a. 7-9",uindemiae defaecatae,uini deliquati,0.467,0.516
+4,293,Isaias,"25, 6-10 a",sub eo,in loco suo,0.556,0.583
+4,293,Isaias,"25, 6-10 a",plaustro,sterquilinio,0.5,0.444
+3,413,Isaias,"26, 7-9. 12. 16-19",sustinuimus,sperauimus in,0.625,0.696
+4,90,Isaias,"3 5, 4-7 a",orietur uiror,erit locus,0.552,0.667
+1,223,Isaias,"35, 1-6 a. 10",scissae sunt,erumpent,0.609,0.615
+4,1519,Isaias,"50, 4-9 3",timens,timet,0.6,0.6
+4,1519,Isaias,"50, 4-9 3",accendentes,qui accenditis,0.667,0.615
+4,1519,Isaias,"50, 4-9 3",flammis,sagittis,0.545,0.625
+4,1519,Isaias,"50, 4-9 3",flammis,sagittis,0.545,0.625
+4,1519,Isaias,"50, 4-9 3",dormietis,recumbetis,0.667,0.571
+2,35,Isaias,"58, 1-9 a",catenam,iugum,0.615,0.667
+2,35,Isaias,"58, 1-9 a",quod non prodest,iniquitatem,0.562,0.6
+4,1269,Isaias,"61, 1-3 a",in ea fortes,terebinthi,0.538,0.571
+3,1288,Isaias,"61, 1-3 a. 6 a. 8 b-9",in ea fortes,terebinthi,0.519,0.556
+3,1288,Isaias,"61, 1-3 a. 6 a. 8 b-9",in holocausto,et iniquitatem,0.5,0.583
+1,172,Isaias,"63, 16 b-17; 64, 1 .  3 b-8",nesciuit,enim nescit,0.571,0.6
+3,629,Iudicum,"11, 29-39 a",ignorabat,non cognouerat,0.571,0.583
+3,617,Iudicum,"6, 1 1-24 a",quae est familiae ezri,filiorum abiezer,0.681,0.621
+4,72,Lucas,"4, 38-44",galilaeae,iudaeae,0.476,0.571
+1,1147,Lucas,"9, 57-62",factum est autem ambulantibus,et euntibus,0.632,0.581
+1,503,Marcus,"6, 1-6",abiit,et uenit,0.6,0.667
+4,236,Nehemiae,"8, 1-4 a. 5-6. 7 b-12",iosue,iesua,0.667,0.667
+3,524,Numeri,"1 1, 4 b-15",ascenderat cum eis,erat in medio eius,0.595,0.622
+3,524,Numeri,"1 1, 4 b-15",flens iunctis sibi,sedentes fleuerunt,0.552,0.562
+1,636,Osee,"2, 14 b. 15 b. 19-20",dabo ei uinitores,ficum,0.556,0.615
+2,1202,Thobis,"7, 9 c-10. 11 c-17",timere coepit ne forte,nunc fili manduca,0.488,0.606

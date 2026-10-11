@@ -126,6 +126,19 @@ body[data-tema="noche"] {
 
 html { -webkit-text-size-adjust: 100%; }
 
+/* La hora nueva entra corrida hacia un lado (ver «entra-izq»). Hacia la
+   derecha, eso saca la pagina del ancho de la pantalla mientras dura: el
+   navegador le abre desplazamiento horizontal, la cabecera fija se estira al
+   ancho nuevo —los rotulos se reparten de otro modo— y al acabar la
+   animacion vuelve. Eso es el parpadeo que se veia al pasar de hora. Hacia
+   la izquierda no pasaba, porque lo que se sale por ese lado el navegador no
+   lo cuenta; con esto tampoco pasa hacia la derecha. `clip` y no `hidden`:
+   `hidden` haria de la pagina una caja que se desplaza y la cabecera pegada
+   dejaria de pegarse. Y en los dos, <html> y <body>: lo que se le pone al
+   <body> solo se lo queda el <body> si el <html> ya no dice «visible»; si no,
+   el navegador se lo lleva a la ventana y el <body> no recorta nada. */
+html, body { overflow-x: clip; }
+
 /* El color liturgico cambia al pasar de un dia a otro, y el tema al caer la
    tarde si el telefono lo dice: ninguno de los dos tiene por que dar un
    corte. Lo que lleva color del dia se desvanece de uno a otro. */
@@ -918,6 +931,14 @@ h2.seccion {
 .alterna button:focus-visible {
   outline: 2px solid var(--rubrica); outline-offset: 1px;
 }
+/* El comienzo de la hora: el invitatorio o la invocacion inicial. No elige
+   de donde se toma una pieza —eso va junto a su rotulo, en su mitad del
+   renglon— sino cual de las dos formas se dice, que es cosa de la hora
+   entera: asi que se lleva su propio renglon, al borde de la caja y encima
+   del rotulo, y se toca una vez al empezar. La misma pildora fina de
+   siempre, para que se reconozca de que sirve. */
+.comienzo { max-width: 100%; margin: 0 0 .9rem; }
+.hora-sec .cuerpo[hidden] { display: none; }
 /* al cambiar de opcion el texto nuevo entra sin sobresalto */
 .hora-sec.cambia { animation: cambia-texto var(--medio) var(--curva); }
 @keyframes cambia-texto {

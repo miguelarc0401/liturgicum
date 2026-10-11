@@ -1200,10 +1200,23 @@ def del_dia(cel, ranura, dias_de, impreso, dias):
     en que el editor imprimió **otra misa entera**, que es lo que dice
     `otra_misa_entera`: ésos no hablan de esta celebración.
     """
-    vistos = {impreso.get(t, {}).get(ranura)
-              for t in dias_de.get(cel, [])
-              if not otra_misa_entera(t, cel, dias)}
-    vistos.discard(None)
+    # **Un testigo por día, y es el primero.** Un día puede traer dos
+    # formularios y no ser los dos de esta celebración: el 12 de octubre de
+    # 2025 el misalito imprime el domingo XXVIII y, detrás, Nuestra Señora de
+    # Zapopan —que el calendario del proyecto no trae, de modo que los dos
+    # quedan bajo el domingo—, y la oración de Zapopan discrepaba de la del
+    # domingo y tiraba el paso entero: el domingo se quedaba sin oración
+    # después de la comunión teniéndola la fuente impresa los nueve años. La
+    # fuente imprime primero la misa del día y detrás lo añadido, así que
+    # manda el primero que diga algo.
+    porfecha = {}
+    for t in sorted(dias_de.get(cel, [])):
+        if otra_misa_entera(t, cel, dias):
+            continue
+        v = impreso.get(t, {}).get(ranura)
+        if v is not None:
+            porfecha.setdefault(t.split('/')[0], v)
+    vistos = set(porfecha.values())
     if len(vistos) != 1:
         return None, len(vistos)
     return vistos.pop(), 1
@@ -1300,6 +1313,36 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
                 '%s %s' % x for x in {impreso.get(t, {}).get(r)
                                       for t in dias_de.get(cel, [])}
                 - {None})))
+        # **Y si el domingo lo tiene por el día, la feria lo tiene con él.**
+        # El paso 2 sólo mira lo *atribuido*, de modo que una oración que el
+        # domingo recibe por el día —porque su texto sirve además a otro
+        # formulario del Misal y por eso no se puede atribuir— no llegaba a
+        # las ferias de su semana: el domingo XXVIII del tiempo ordinario
+        # tenía su oración después de la comunión y los seis días de su
+        # semana no, teniéndola el Misal en el mismo formulario. Se repite el
+        # paso con las celebraciones hermanas, y manda el domingo, que es de
+        # quien el Misal da el formulario.
+        hecho = False
+        for otro in sorted(hermanos, key=lambda c: (not c.endswith('_0'), c)):
+            cual, _ = del_dia(otro, r, dias_de, impreso, dias)
+            if not cual:
+                continue
+            clase, quien = cual
+            if clase == 'suelto':
+                piezas[r] = {'f': 'misalito', 'via': 'día', 'de': quien,
+                             'r': r, 't': len(sueltos[quien]['testigos']),
+                             'v': None, 'd': len(dias_de.get(otro, [])),
+                             'u': otro}
+            else:
+                q = propios[quien]['piezas'][r]
+                piezas[r] = {'f': 'misalito', 'via': 'día', 'de': quien,
+                             'r': r, 't': len(q['testigos']),
+                             'v': len(q['variantes']),
+                             'd': len(dias_de.get(otro, [])), 'u': otro}
+            hecho = True
+            break
+        if hecho:
+            continue
         hecho = False
         for cm in comunes_de.get(cel, []):
             p = propios.get(cm, {}).get('piezas', {}).get(r)
@@ -2092,6 +2135,43 @@ def cuantas_marcas(texto):
     return len(MARCA.findall(' '.join(texto)))
 
 
+# La respuesta del pueblo, sólo para saber si **se deja leer**: no se guarda
+# aquí, que es cosa de la fase 6; se usa para preferir, entre dos impresiones
+# que el día respalda igual, la que la enseña en su renglón. La otra la deja
+# dentro de la primera estrofa, y entonces la app no da respuesta ninguna
+# —eran 61 ranuras— aunque sus propios días la imprimieran.
+RESP_INI = re.compile(r'^\s*R/?\.\s*(.+)$')
+RESP_FIN = re.compile(r'R/?\.\s*$')
+CITA_FUENTE = re.compile(r'^\s*(?:de\s+)?(?:los?\s+)?(?:del?\s+)?'
+                         r'(?:salmo|c[a\u00e1]ntico)\b', re.I)
+
+
+def respuesta_legible(texto):
+    """Si la respuesta del pueblo está en su renglón y se puede leer.
+
+    La misma regla que la fase 6, repetida aquí a propósito: allí decide qué
+    se enseña y aquí sólo cuál de dos impresiones se prefiere.
+    """
+    vistos = 0
+    for i, l in enumerate(texto):
+        if not l.strip():
+            continue
+        if (vistos == 0 and CITA_FUENTE.match(l) and RESP_FIN.search(l)
+                and i + 1 < len(texto) and texto[i + 1].strip()):
+            return True
+        m = RESP_INI.match(l)
+        if m:
+            return not MARCA.search(m.group(1).strip())
+        vistos += 1
+        if vistos >= 2:
+            break
+    return False
+
+
+def cuantas_palabras(texto):
+    return len(re.findall(r'\w+', MARCA.sub(' ', ' '.join(texto))))
+
+
 def variante_del_dia(peri, suyos, sitio, cuenta):
     """Cuál de las impresiones de una perícopa es la de *este* formulario.
 
@@ -2129,16 +2209,35 @@ def variante_del_dia(peri, suyos, sitio, cuenta):
         (v['testigos'], v['texto']) for v in peri.get('variantes') or []]
     if len(grupos) == 1:
         return 0
+    # La guarda es de los salmos y de las aclamaciones, que es donde la cita
+    # fija las estrofas; en una lectura el número de marcas no mide nada —no
+    # tiene más que el cierre— y lo que el día imprime es lo que su editor
+    # compuso.
+    salmo = bool({'salmo', 'aclamacion'} & set(peri.get('tipos') or {}))
     minimo = cuantas_marcas(grupos[0][1])
+    base = cuantas_palabras(grupos[0][1]) or 1
     elegido, punt, cortas = 0, None, False
     for i, (ts, tx) in enumerate(grupos):
         mios = [t for t in ts if t in suyos]
         if not mios:
             continue
-        if cuantas_marcas(tx) < minimo:
-            cortas = True
-            continue
-        p = (0 if any(t in sitio for t in mios) else 1,
+        # Y una impresión que marca menos respuestas no está por eso
+        # incompleta: el sitio corta las estrofas con el renglón y no con la
+        # marca, y entonces dice lo mismo con menos marcas. Si pesa lo mismo
+        # —el 90-110 % de las palabras de la canónica— no se le descuenta.
+        marcas = cuantas_marcas(tx)
+        if salmo and marcas < minimo:
+            # y el indulto por peso pide que **marque alguna**: la impresión
+            # que no marca ninguna no se puede partir en estrofas, y pesa lo
+            # mismo porque repite la respuesta entera entre ellas. Es el
+            # salmo 62 del sábado de la 8ª semana, que así salía en un solo
+            # párrafo y sin respuesta.
+            peso = cuantas_palabras(tx) / base
+            if not (marcas and 0.9 <= peso <= 1.1):
+                cortas = True
+                continue
+        p = (0 if respuesta_legible(tx) else 1,
+             0 if any(t in sitio for t in mios) else 1,
              -len(mios), -len(ts), i)
         if punt is None or p < punt:
             elegido, punt = i, p
