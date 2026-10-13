@@ -31,7 +31,7 @@ const FICHEROS = [
 
 /* Lo que pesa se guarda igual —el objetivo es poder rezar sin cobertura—
  * pero después, para que instalar la app no dependa de bajarlo todo de
- * golpe con mala conexión: la segunda versión latina son casi 6 MB, y la
+ * golpe con mala conexión: cada versión latina de más son casi 6 MB, y la
  * liturgia de las horas, con sus ocho años de testigos destilados, unos 25.
  * Mientras tanto la app funciona, y las horas se cargan cuando se piden. */
 const DESPUES = [
@@ -41,6 +41,7 @@ const DESPUES = [
   'icono-512.png',
   'icono-maskable-512.png',
   'datos/lecturas_nova.json',
+  'datos/lecturas_lect1977.json',
   'datos/lecturas_es.json',
   // el Misal entero: el formulario del dia (misa.json, 2,4 MB), su gemelo
   // latino, los prefacios y el Ordinario. Son 3,6 MB entre los cuatro, y la

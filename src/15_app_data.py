@@ -518,6 +518,27 @@ def main():
         avisos.append("el calendario apunta a %d dias que el indice no tiene: "
                       "%s" % (len(sueltos), ", ".join(sueltos[:5])))
 
+    # El leccionario de 1977 no es un corpus: sale de los dos ficheros
+    # latinos que acaban de reescribirse, eligiendo para cada pericopa el que
+    # el Misal de 1977 sigue (src/21_lect1977_app.py). Por eso se rehace aqui
+    # dentro y no en una orden aparte: si se dejara para despues, la firma de
+    # abajo no lo cubriria; y si se olvidara, el telefono seguiria sirviendo
+    # un 1977 armado con un corpus viejo sin que nada lo dijera.
+    if os.path.exists(os.path.join(DATA, "lect1977_pericopas.json")):
+        ruta21 = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                              "21_lect1977_app.py")
+        spec = importlib.util.spec_from_file_location("fase21", ruta21)
+        fase21 = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(fase21)
+        print()
+        fase21.main([])
+        print()
+    else:
+        avisos.append("sin data/lect1977_pericopas.json: no se rehace "
+                      "lecturas_lect1977.json, y el que haya en app/datos/ "
+                      "puede ser de un corpus anterior (lo cosecha "
+                      "src/20_lect1977.py de los cuatro tomos)")
+
     # Lo que el service worker no nombra, el telefono no lo tiene sin
     # conexion: la app abre igual, pero la vista que pida ese fichero se
     # queda en blanco justo cuando no hay cobertura. Y es un fallo callado,
@@ -538,8 +559,15 @@ def main():
     # La firma cubre los datos y tambien el codigo de la app: si solo cambia
     # app.js (una vista nueva, un arreglo), el telefono tiene que enterarse
     # igual, y lo que le obliga a tirar la cache es que cambie esta firma.
+    # El rotulo de la version nombra las versiones latinas que la app sirve,
+    # no solo las que escribe esta fase: el leccionario de 1977 lo escribe la
+    # fase 21, y nombrando aqui nada mas que `fuentes` el rotulo mentiria.
+    latinas = sorted(f[len("lecturas_"):-len(".json")]
+                     for f in os.listdir(DATOS)
+                     if f.startswith("lecturas_") and f.endswith(".json")
+                     and f != "lecturas_es.json")
     version = "%s-%d" % (
-        "+".join(fuentes),
+        "+".join(latinas or fuentes),
         zlib.crc32(b"".join(open(os.path.join(DATOS, f), "rb").read()
                             for f in sorted(os.listdir(DATOS))
                             if f != "version.js")

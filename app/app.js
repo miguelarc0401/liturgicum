@@ -128,6 +128,7 @@ function lengua() {
 /** El nombre de la versión que se está leyendo, para decirlo en un aviso. */
 function nombreFuente() {
   return { clementina: 'la Vulgata Clementina', nova: 'la Nova Vulgata',
+    lect1977: 'el Misal con lecturas de 1977',
     es: 'el castellano', bi: 'el bilingüe' }[E.cfg.fuente] || E.cfg.fuente;
 }
 
@@ -555,16 +556,30 @@ function anioDe(iso) {
 }
 
 /* ------------------------------------------------- maquetar un formulario */
-function versos(tramos, sep, castellano) {
-  return tramos.map((tr) => {
-    // los apéndices traen algún texto sin número de versículo (las antífonas
-    // «O», las aclamaciones) y alguno en castellano (las respuestas
-    // salmódicas, que el leccionario da sin cita y no hay de dónde traducir)
-    const t = tr.map(([n, s]) => ((E.cfg.numeros && n)
-      ? '<sup>' + esc(n) + '</sup>' : '')
-      + esc(castellano ? s : tx(s))).join(' ');
-    return '<p class="' + (sep ? 'estrofa' : 'texto') + '">' + t + '</p>';
-  }).join(sep || '<p class="omision">[…]</p>');
+/* Los tramos son los trozos que el leccionario escoge de un capítulo: `Mt
+ * 5,1-12a.17-19` son dos. En el salmo cada tramo es una estrofa, va en su
+ * párrafo y entre medias se canta la respuesta, que es `sep`. En la lectura
+ * no: el texto va **de corrido**, en un solo párrafo. Lo que se salta ya lo
+ * dice la cita de arriba, y lo dicen los números de versículo cuando están
+ * puestos; un aviso de omisión entre párrafos partía en pedazos lo que en la
+ * misa se lee de una sola vez. */
+function versos(tramos, sep, castellano, incipit) {
+  // los apéndices traen algún texto sin número de versículo (las antífonas
+  // «O», las aclamaciones) y alguno en castellano (las respuestas
+  // salmódicas, que el leccionario da sin cita y no hay de dónde traducir)
+  const trozos = tramos.map((tr) => tr.map(([n, s]) => ((E.cfg.numeros && n)
+    ? '<sup>' + esc(n) + '</sup>' : '')
+    + esc(castellano ? s : tx(s))).join(' '));
+  // El íncipit litúrgico va pegado al primer versículo y en el mismo tipo,
+  // que es como lo imprime el leccionario: no es una rúbrica sino texto que
+  // se lee en voz alta, y lo que hace es que la perícopa se entienda suelta
+  // («In illo témpore», «Fratres»).
+  const abre = incipit ? incipit + ' ' : '';
+  if (!sep) {
+    return '<p class="texto">' + abre + trozos.join(' ') + '</p>';
+  }
+  return trozos.map((t, i) => '<p class="estrofa">' + (i ? '' : abre) + t
+    + '</p>').join(sep);
 }
 
 /** Una lectura, y en el bilingüe su pareja al lado. Los dos leccionarios
@@ -616,10 +631,15 @@ function cuerpoLectura(l) {
     else if (l.rr) h.push('<p class="antifona">℟. (' + esc(l.rr) + ')</p>');
   }
   if (l.k === 'salmo') {
-    h.push(versos(l.g, '<p class="resp">℟.</p>', l.es));
-    h.push('<p class="resp">℟.</p>');
+    // la respuesta entera después de cada estrofa, no sólo su signo: es lo
+    // que se canta, y así no hay que subir a buscarla al acabar cada una.
+    // Donde el leccionario no la da con letra —239 salmos latinos traen
+    // nada más la cita— se queda el signo solo, que es lo que hay.
+    const resp = '<p class="resp">℟.' + (l.r ? ' ' + t(l.r) : '') + '</p>';
+    h.push(versos(l.g, resp, l.es));
+    h.push(resp);
   } else {
-    h.push(versos(l.g, null, l.es));
+    h.push(versos(l.g, null, l.es, l.i ? t(l.i) : ''));
     // el cierre: el castellano lo trae por lectura, porque cambia («Palabra
     // de Dios» en la lectura y «Palabra del Señor» en el evangelio); el
     // latino es uno para todo el libro y vive en la cabecera del fichero
@@ -3373,12 +3393,20 @@ function verAjustes() {
     ajuste('La lengua de la misa'),
     sel('fuente', 'Versión',
       'La Nova Vulgata es el latín de los libros litúrgicos vigentes; la '
-      + 'Clementina, la Vulgata de siempre. El castellano es la traducción '
+      + 'Clementina, la Vulgata de siempre. El Misal con lecturas de 1977 es '
+      + 'el leccionario como lo imprimió aquel libro, pero sin copiarle ni '
+      + 'una letra: de él se toma la decisión —qué latín se lee en cada '
+      + 'perícopa: la Nova en el Nuevo Testamento y en los salmos, la '
+      + 'Clementina en el Antiguo, que es de donde el propio Misal los '
+      + 'tomaba— y lo que es suyo y de nadie más, el íncipit («In illo '
+      + 'témpore», «Fratres») y la fórmula con que presenta la lectura. '
+      + 'El castellano es la traducción '
       + 'litúrgica aprobada para México, cosechada del misalito mensual de '
       + '2018 a 2026: dos de cada tres lecturas la tienen, y lo que no se '
       + 'imprimió nunca lo dice en su sitio. El bilingüe enfrenta las dos, '
       + 'y el latín que pone es el último que se haya elegido aquí.',
       [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata'],
+        ['lect1977', 'Misal con lecturas · Roma, 1977'],
         ['es', 'Castellano · misalito de México'],
         ['bi', 'Bilingüe · latín y castellano']]),
     sel('acentos', 'Acentuación litúrgica',
@@ -3612,7 +3640,7 @@ async function alCambiarAjuste(ev) {
   if (id === 'fuente') {
     // el latín elegido se recuerda, para que el bilingüe ponga el que se
     // estaba leyendo y no uno a la fuerza
-    if (v === 'clementina' || v === 'nova') E.cfg.latinBi = v;
+    if (v !== 'es' && v !== 'bi') E.cfg.latinBi = v;
     guardaCfg();
     recuerdaAjustes();
     vista.innerHTML = '<p class="aviso">Cambiando de versión…</p>';

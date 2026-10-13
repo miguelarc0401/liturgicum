@@ -221,3 +221,58 @@ De modo que el camino no es volcar el OCR, sino usar el libro como **árbitro**:
 que decida qué corpus y qué versículos, y que las letras salgan de los corpus
 limpios que el proyecto ya tiene. Así no se publica ni una letra de OCR, y el
 residuo queda señalado en vez de disimulado.
+
+---
+
+## 7. Lo que la app hace ya
+
+Hecho. `src/21_lect1977_app.py` arma `app/datos/lecturas_lect1977.json` y en
+Ajustes hay una versión más, **Misal con lecturas · Roma, 1977**, al lado de
+la Clementina y la Nova. Sirve también de lado latino del bilingüe, y el
+service worker se lo lleva al teléfono como a las otras.
+
+Quien lo arma no se ejecuta aparte: lo llama `src/15_app_data.py` justo
+después de escribir los dos ficheros latinos y antes de firmar los datos.
+Este fichero no es un corpus —es la elección entre esos dos—, así que
+rehacerlo por separado lo dejaría atrasado en cuanto se corrigiera un
+versículo, y además fuera de la firma que obliga al teléfono a tirar su
+caché.
+
+Del libro sale la decisión y nada más: 1 077 formularios y 6 692 piezas, de
+las cuales **5 596 se leen por la Nova y 1 096 por la Clementina**, según el
+reparto medido arriba. De ellas, 3 848 enganchan con una perícopa del libro
+por la cita (57,5 %), y de ahí vienen **1 645 íncipits** y **568 fórmulas**
+redactadas al modo de 1977: `Léctio libri Ezechiélis prophétae` donde el
+proyecto dice `Léctio Prophetíae Ezechiélis` (y a todos los profetas por
+igual, 204 veces a Isaías), y `Léctio libri Siracídae` donde dice `Léctio
+libri Ecclesiástici`. Las piezas que no enganchan se quedan con
+el corpus que les toca por la regla, sin íncipit: no se inventa ninguno.
+
+Las que salen de la Clementina se pasan a la ortografía de la Nova —`i` por
+`j`, la ligadura desarmada— porque cinco de cada seis piezas de la página
+vienen de la Nova y no pueden convivir dos ortografías en la misma lectura.
+El rótulo y la cita los pone siempre el mismo lado, por lo mismo.
+
+**El íncipit se recorta cuando el texto ya lo dice.** El libro no siempre lo
+*añade*: a veces reescribe con él el arranque de la perícopa, para que se
+entienda suelta. Num 6, 22 es `Locutúsque est Dóminus ad Móysen, dicens` en
+la Clementina y el libro imprime `Locútus est Dóminus ad Móysen dicens`;
+Mt 16, 24 es `Tunc Iesus dixit discípulis suis` y el libro `Dixit Iesus
+discípulis suis`. Pegar el íncipit delante de ese texto lo diría dos veces.
+Así que se le quita al íncipit, por el final, el tramo que el texto ya dice
+—por el final, porque el íncipit viene en tramos (`In diébus illis: Dixit
+Dóminus ad Abram:`) y el que se repite es el último: el marco genérico se
+queda—. Son **54 tramos**, y 33 perícopas que se quedan sin íncipit entero.
+
+El umbral está medido y no elegido: los tramos que de verdad se repiten
+llegan a 0,70 o más —39 pasan de 0,85, uno queda en 0,81 y catorce en 0,70—,
+y el primero que **no** se repite está en 0,62 (`In illo témpore` contra `Ab
+inítio autem creatúrae másculum et féminam fecit eos`). Entre 0,62 y 0,70 no
+cae ningún caso, y ahí se pone el corte. Se recorta el íncipit y nunca el
+texto: cortarle el versículo sería editar la Escritura. Donde el libro
+reescribe **sin** repetir —`Dixit Iesus discípulis suis` por `Respóndit Iesus
+et dixit ei`— se quedan los dos, porque ninguno de los dos es falso.
+
+Lo que sigue sin estar: la **respuesta del salmo**, el **título temático** y
+la **selección fina de versículos**, que son las otras tres cosas que sólo da
+este libro (§3). Las tres viven en la capa de texto, y ésa no se publica.

@@ -4,7 +4,9 @@ La fase 20 cosecho de los cuatro tomos lo que el libro **decide**; esta lo
 arma para la app. No trae ni una letra del OCR: cada pieza se copia entera de
 `lecturas_clementina.json` o de `lecturas_nova.json` -que el proyecto ya tiene
 limpias y acentuadas-, y lo unico que se le anade de la cosecha es el incipit
-liturgico y la redaccion de la formula, que no son texto biblico.
+liturgico y la redaccion de la formula, que no son texto biblico. Del incipit
+se recorta lo que el texto ya diga, porque el libro a veces no lo anade sino
+que reescribe con el el arranque de la pericopa (ver `recorta_incipit`).
 
 **La regla, que es el hallazgo.** Medidos 5 484 puntos donde la Clementina y
 la Nova difieren entre si en una palabra entera, el Misal de 1977 sigue:
@@ -39,6 +41,7 @@ Uso:  python src/21_lect1977_app.py
 import argparse
 import collections
 import csv
+import difflib
 import importlib.util
 import io
 import json
@@ -74,16 +77,18 @@ NUEVO_TESTAMENTO = {
 
 TITULO = "Lectionarium Latinum · Missale cum lectionibus, 1977"
 CABECERA = (
-    "Texto: reconstruido del *Missale Romanum cum lectionibus* "
+    "Texto: reconstruido del Missale Romanum cum lectionibus "
     "(Libreria Editrice Vaticana, 1977).\n"
-    "El libro de 1977 no se copia: se usa como arbitro. El decide, pericopa "
-    "por pericopa, que texto latino se lee y como empieza; las letras las "
-    "ponen la Vulgata Clementina y la Nova Vulgata, que es de donde el propio "
-    "Misal las tomaba —la Nova en el Nuevo Testamento y en los salmos, la "
-    "Clementina en el Antiguo—. Medido sobre 5 484 puntos de divergencia "
-    "entre las dos versiones.\n"
-    "Incipits liturgicos y formulas: del propio Misal de 1977.\n"
-    "Estructura: *Leccionario* de Servicios Koinonia."
+    "El libro de 1977 no se copia: se usa como árbitro. Él decide, "
+    "perícopa por perícopa, qué texto latino se lee y cómo empieza; "
+    "las letras las ponen la Vulgata Clementina y la Nova Vulgata, que es "
+    "de donde el propio Misal las tomaba —la Nova en el Nuevo Testamento "
+    "y en los salmos, la Clementina en el Antiguo—. Medido sobre 5 484 "
+    "puntos de divergencia entre las dos versiones.\n"
+    "Íncipits litúrgicos y fórmulas: del propio Misal de 1977. Donde "
+    "el libro no añade el íncipit sino que reescribe con él el arranque "
+    "de la perícopa, se recorta lo que el texto ya dice.\n"
+    "Estructura: Leccionario de Servicios Koinonía."
 )
 
 
@@ -139,6 +144,59 @@ def a_la_nova(x):
     return x
 
 
+# --------------------------------------------------------------------------
+# el incipit que el texto ya dice
+# --------------------------------------------------------------------------
+# El Misal de 1977 no siempre *anade* el incipit: a veces **reescribe** con el
+# el arranque de la pericopa, para que se entienda suelta. Num 6, 22 dice en
+# la Clementina `Locutusque est Dominus ad Moysen, dicens` y el libro lo
+# imprime `Locutus est Dominus ad Moysen dicens`; Mt 16, 24 dice `Tunc Iesus
+# dixit discipulis suis` y el libro `Dixit Iesus discipulis suis`. Pegar el
+# incipit delante de ese texto lo dice dos veces seguidas.
+#
+# Asi que se le quita al incipit, por el final, el tramo que el texto ya dice.
+# Por el final porque el incipit viene en tramos -`In diebus illis: Dixit
+# Dominus ad Abram:`- y el que se repite es el ultimo: el marco generico se
+# queda.
+#
+# El umbral esta medido, no elegido. Los tramos que de verdad se repiten
+# llegan a 0,70 o mas -39 pasan de 0,85, uno queda en 0,81 y catorce en 0,70:
+# `Dixit Iesus discipulis suis` contra `Tunc Iesus dixit discipulis suis`-; el
+# primero que *no* se repite esta en 0,62 (`In illo tempore` contra `Ab initio
+# autem creaturae masculum et feminam fecit eos`). Entre 0,62 y 0,70 no cae
+# ningun caso, y el umbral se pone en ese hueco.
+#
+# Se recorta el incipit y nunca el texto: cortarle el versiculo seria editar
+# la Escritura, que es lo unico que aqui no se toca. Donde el libro reescribe
+# sin repetir -`Dixit Iesus discipulis suis` por `Respondit Iesus et dixit
+# ei`- se quedan los dos, porque ninguno de los dos es falso.
+PARECIDO = 0.68
+
+
+def recorta_incipit(inc, tramos):
+    """El incipit sin los tramos del final que el texto ya dice.
+
+    Devuelve (incipit, cuantos tramos se han ido).
+    """
+    if not tramos or not tramos[0]:
+        return inc, 0
+    segs = [x for x in inc.rstrip(":").split(": ") if x]
+    texto = FASE20.plano(" ".join(t for _, t in tramos[0]))
+    fuera = 0
+    while segs:
+        p = FASE20.plano(segs[-1])
+        if not p:
+            segs.pop()
+            continue
+        hueco = max(3, len(p) // 4)
+        r = difflib.SequenceMatcher(None, p, texto[:len(p) + hueco]).ratio()
+        if r < PARECIDO:
+            break
+        segs.pop()
+        fuera += 1
+    return (": ".join(segs) + ":" if segs else ""), fuera
+
+
 def formula_1977(libro, base):
     """La formula al modo del libro de 1977, sobre la ya acentuada del proyecto.
 
@@ -159,9 +217,10 @@ def formula_1977(libro, base):
     return "Léctio libri %s prophétae" % gen
 
 
-def main():
+def main(argv=None):
+    # `argv` para que la fase 15 pueda llamarla sin que le lleguen los suyos
     ap = argparse.ArgumentParser()
-    ap.parse_args()
+    ap.parse_args(argv)
     inf = ["El leccionario de 1977 para la app", ""]
 
     clem = json.load(io.open(os.path.join(DATOS, "lecturas_clementina.json"),
@@ -221,15 +280,19 @@ def main():
             if p77 is not None:
                 cuenta["enganchada con el libro de 1977"] += 1
                 if p77["incipit"] and pz.get("k") == "lectura":
-                    pz["i"] = p77["incipit"]
-                    cuenta["con incipit"] += 1
+                    inc, fuera = recorta_incipit(p77["incipit"], pz.get("g"))
+                    if inc:
+                        pz["i"] = inc
+                        cuenta["con incipit"] += 1
+                    cuenta["tramos de incipit que el texto ya decia"] += fuera
             piezas.append(pz)
         salida[clave] = piezas
 
     total = sum(len(v) for v in salida.values())
     inf.append("   %d bloques, %d piezas" % (len(salida), total))
     for k in ("clementina", "nova", "enganchada con el libro de 1977",
-              "con incipit", "formula al modo de 1977"):
+              "con incipit", "tramos de incipit que el texto ya decia",
+              "formula al modo de 1977"):
         inf.append("      %5d  %s" % (cuenta[k], k))
     inf.append("      %5d  piezas enganchadas, de %d  (%.1f %%)"
                % (cuenta["enganchada con el libro de 1977"], total,

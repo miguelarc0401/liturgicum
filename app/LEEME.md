@@ -14,8 +14,27 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Las lecturas de hoy** al abrir, con la fecha litúrgica calculada (Pascua,
   Adviento, ciclo A/B/C y año ferial I/II). Flechas para pasar de día y un
   toque en la fecha para saltar a cualquier otra.
-* **Clementina, Nova Vulgata, castellano y bilingüe**, con un interruptor en
-  Ajustes. El castellano es la traducción litúrgica aprobada para México,
+* **Y como se leen.** La lectura va **de corrido**, aunque el leccionario
+  salte versículos: lo que se salta lo dicen la cita de arriba y los números
+  del margen, y no hace falta un aviso de omisión que parta en pedazos lo
+  que en la misa se lee de una sola vez. En el salmo, al revés: cada estrofa
+  va en su párrafo y detrás se repite la respuesta **entera**, en las dos
+  lenguas, que es lo que se canta. Los salmos que el leccionario da sin
+  letra —239 en latín, con nada más la cita de dónde sale la respuesta— se
+  quedan con el signo ℟. solo.
+* **Clementina, Nova Vulgata, el Misal con lecturas de 1977, castellano y
+  bilingüe**, con un interruptor en Ajustes. El de 1977 es el leccionario
+  como lo imprimió el *Missale Romanum cum lectionibus* (Roma, 1977), pero
+  sin copiarle ni una letra: de aquel libro se toma la **decisión** —qué
+  latín se lee en cada perícopa: la Nova en el Nuevo Testamento y en los
+  salmos, la Clementina en el Antiguo, que es de donde él mismo los tomaba—
+  y lo que es suyo y de nadie más, el **íncipit** litúrgico («In illo
+  témpore», «Fratres») y la fórmula con que presenta la lectura. Donde el
+  libro no añade el íncipit sino que reescribe con él el arranque de la
+  perícopa, se recorta lo que el texto ya dice: se toca el íncipit y nunca
+  el texto. Por qué no se publica el suyo —su capa de texto es un OCR malo—
+  está medido en [`Missale/Leccionario-1977.md`](../Missale/Leccionario-1977.md).
+  El castellano es la traducción litúrgica aprobada para México,
   cosechada por [`Missale/`](../Missale/LEEME.md) del misalito mensual de
   2018 a 2026: tres de cada cuatro lecturas la tienen, y la que no se
   imprimió ni una vez en los nueve años lo dice en su sitio en vez de
@@ -318,6 +337,14 @@ sustituye `src/icono-fuente.webp` y se vuelve a pasar el guion; de ahí salen
 el del navegador, el de iOS y los dos de Android —el normal y el `maskable`,
 que es el que el sistema recorta con la forma que tenga el teléfono—.
 
+`15_app_data.py` rehace de paso el leccionario de 1977 llamando a
+`21_lect1977_app.py`, y no al reves: aquel fichero no es un corpus, sino la
+elección entre los dos latinos que esta fase acaba de escribir, de modo que
+hacerlo aparte lo dejaría atrasado en cuanto se corrigiera un versículo. Lo
+único que va suelto es `20_lect1977.py`, que es el que lee los cuatro tomos
+del Misal de 1977 y deja medido `data/lect1977_pericopas.json`; ése sólo hace
+falta repetirlo si cambian los tomos.
+
 `15_app_data.py` deja en `app/datos/version.js` una firma de los datos. El
 service worker la usa como nombre de su caché, así que al cambiar los datos
 tira la caché vieja sola: no hay que desinstalar nada en el teléfono. Y
@@ -343,6 +370,9 @@ sw.js                   el service worker: lo que la hace funcionar sin conexió
 manifest.webmanifest    nombre, iconos y modo pantalla completa
 icono-*.png             los saca src/19_iconos.py de src/icono-fuente.webp
 datos/                  lo generado; no se edita a mano
+datos/lecturas_*.json   las tres versiones latinas y la castellana
+                        (clementina, nova y lect1977 las hacen
+                        src/15_app_data.py y src/21_lect1977_app.py)
 datos/horas*.json       la liturgia de las horas (la hace Breviarium/src/4_app.py)
 datos/misa.json         el formulario de cada misa, con sus propios
 datos/misal_latino.json el Misal de 2002, una vez y por su propio nombre
