@@ -21,7 +21,9 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   va en su párrafo y detrás se repite la respuesta **entera**, en las dos
   lenguas, que es lo que se canta. Los salmos que el leccionario da sin
   letra —239 en latín, con nada más la cita de dónde sale la respuesta— se
-  quedan con el signo ℟. solo.
+  quedan con el signo ℟. solo. Con el Misal de 1977 el salmo va además en
+  **renglones**, con sangría francesa, que es como lo imprime aquel libro y
+  como se canta.
 * **Clementina, Nova Vulgata, el Misal con lecturas de 1977, castellano y
   bilingüe**, con un interruptor en Ajustes. El de 1977 es el leccionario
   como lo imprimió el *Missale Romanum cum lectionibus* (Roma, 1977), pero
@@ -32,8 +34,15 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   témpore», «Fratres») y la fórmula con que presenta la lectura. Donde el
   libro no añade el íncipit sino que reescribe con él el arranque de la
   perícopa, se recorta lo que el texto ya dice: se toca el íncipit y nunca
-  el texto. Por qué no se publica el suyo —su capa de texto es un OCR malo—
-  está medido en [`Missale/Leccionario-1977.md`](../Missale/Leccionario-1977.md).
+  el texto. Suyos son también el **salmo en estrofas y renglones**, como lo
+  canta, y la **aclamación antes del Evangelio**, que en Cuaresma no es el
+  Allelúia sino el versículo solo bajo el rótulo «Versus ante Evangelium».
+  Los renglones no salen del OCR: son los del salterio de la Nova Vulgata,
+  que es el que ese Misal compone, y cotejados con los suyos coinciden en
+  el 96,9 % de los cortes (los que el libro hace de más son los que no le
+  caben en su columna de 250 puntos, y en un teléfono los vuelve a hacer la
+  pantalla). Por qué no se publica su texto —su capa es un OCR malo— está
+  medido en [`Missale/Leccionario-1977.md`](../Missale/Leccionario-1977.md).
   El castellano es la traducción litúrgica aprobada para México,
   cosechada por [`Missale/`](../Missale/LEEME.md) del misalito mensual de
   2018 a 2026: tres de cada cuatro lecturas la tienen, y la que no se
@@ -91,10 +100,28 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   numera —la vespertina de la vigilia de san Juan Bautista y de los
   Apóstoles, la segunda y la tercera de Difuntos— se eligen dentro, en «La
   misa»: cambian los propios y no las lecturas.
+* **El año ferial no se ofrece a elegir.** Las ferias del tiempo ordinario
+  tienen dos formularios en el leccionario —el del año I, de los impares, y
+  el del año II, de los pares—, y el día ya dice cuál es el suyo: con fecha
+  delante la tira no los enseña, que sería dar a elegir lo que no se elige
+  (el año va dicho en el subtítulo, junto al ciclo). Desde el índice, que se
+  hojea sin fecha, los dos siguen estando: allí no hay año que mande.
 * **De dónde sale cada texto castellano**, cuando no salió del sitio obvio:
   bajo la pieza, en pequeño, «del día» o «del común», con el porqué y los
   testigos en el título. Lo que el misalito no imprimió en nueve años lo dice
   en su sitio.
+* **El devocionario**, en Inicio: 461 oraciones latinas —el Padre nuestro y
+  el Ave María, los himnos de santo Tomás, las letanías, los oficios parvos,
+  los salmos penitenciales, las oraciones antes y después de la misa— en la
+  ortografía de los libros litúrgicos, con su jota, su ligadura y su acento,
+  y con el castellano de cada una donde se ha podido verificar de dónde
+  sale. No va por fechas: se hojea por grupos o se busca por el título, en
+  cualquiera de las dos lenguas. Cada oración lleva al pie, plegada, su
+  procedencia: la del latín y la del castellano, con la autoridad, el
+  territorio y si es traducción aprobada o sólo publicada. Las que todavía
+  no tienen castellano lo dicen; «no hay» significa que aquí no se ha
+  verificado cuál es, no que no exista. Lo hace
+  [`Enchiridion/`](../Enchiridion/LEEME.md).
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **El tamaño de la letra, a mano mientras se reza.** Dos aes en la cabecera
@@ -108,12 +135,15 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   formulario, a continuación el día, las dos aes del tamaño y, al final, la
   fecha abreviada con sus flechas, que siguen cambiando de día y siguen
   abriendo el calendario. Lo que no cabe se abrevia; el renglón no se parte.
-* **Y, de lado, un toque esconde la cabecera y la barra.** Tumbado caben
-  diez renglones y de ellos los dos marcos se llevan tres: un toque en el
-  texto los manda fuera de la pantalla —del todo, no atenuados— y otro los
-  devuelve. El renglón que se está leyendo no se mueve ni al esconderlos ni
-  al traerlos; el índice al borde se queda, que es una cinta y no un mando.
-  De pie no hace nada: ahí la cabecera ya se pliega al bajar.
+* **Un toque esconde la cabecera y la barra.** Tumbado caben diez renglones
+  y de ellos los dos marcos se llevan tres: un toque en el texto los manda
+  fuera de la pantalla —del todo, no atenuados— y otro los devuelve. De lado
+  y de pie, y en las dos vistas que se leen, la hora y la misa; en el
+  calendario y en los paneles no, que allí la barra es la única puerta. El
+  renglón que se está leyendo no se mueve ni al esconderlos ni al traerlos;
+  el índice al borde se queda, que es una cinta y no un mando. En las horas,
+  pasar de hora deslizando el dedo los devuelve: la hora que entra se
+  presenta en la cabecera, y es ahí donde se ve a cuál se ha pasado.
 * **El formato del texto, una vez para todo o sección por sección.** La
   alineación, el interlineado y la partición de palabras se dicen una vez y
   valen para toda la app, que es lo que basta casi siempre; y quien quiera
@@ -379,6 +409,8 @@ datos/misal_latino.json el Misal de 2002, una vez y por su propio nombre
 datos/prefacios.json    los dos juegos de prefacios, emparejados
 datos/ordinario.json    el Ordo Missæ bilingüe, por número de rúbrica
                         (los cuatro los hace Missale/src/6_app.py)
+datos/devocionario.json el devocionario latino, con su castellano y la
+                        procedencia de cada pieza (Enchiridion/src/5_app.py)
 ```
 
 Los cuatro ficheros de la misa son 3,8 MB y no se guardan *al instalar* la

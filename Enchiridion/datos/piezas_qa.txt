@@ -1,0 +1,184 @@
+páginas por clase
+    504  oración
+     61  sin oración
+      3  redirección
+
+piezas:          532
+duplicadas:      65
+únicas:          467
+  con latín:     461
+  sólo inglés:   6
+  sólo latín:    26
+
+piezas por categoría
+     52  BVM
+     51  Filius
+     32  Angeli
+     32  Hymni/TempusPerAnnum
+     28  Varia
+     26  Sancti/SBenedictusAb
+     19  Numeri
+     18  AnteMissam
+     16  Basics
+     16  PostMissam
+     14  Trinitas
+     13  Ioseph
+     13  Psalmi/NovaVulgata
+     13  Psalmi/SixtoClementine
+     12  Euch
+      9  Confessio
+      9  Pater
+      8  Cotidiana
+      8  Hymni/Adventus
+      7  Hymni/Nativitatis
+      6  Hymni/Quadragesimae
+      6  SanctaFamilia
+      6  Sancti/SAnna
+      6  Sancti/SAntoniusDePadova
+      6  Spiritus
+      5  Hymni/OmnesSancti
+      4  Hymni/CorpusChristi
+      4  Hymni/Paschale
+      4  Hymni/Triduum
+      4  Sancti/SFranciscusAssisiensis
+      3  Cantici
+      3  Hymni/Epiphania
+      3  Symbola
+      2  Hymni/Pentecoste
+      2  InTemporibus/Quadragesimae
+      2  Sancti/SScholastica
+      1  Hymni/Alii
+      1  InTemporibus/Adventus
+      1  Sancti
+      1  Sancti/SAugustinus
+      1  Sancti/SPatricius
+
+páginas con más de una pieza
+     9  thesaurus/Sancti/SBenedictusAb/NovenaLit.html
+     8  thesaurus/Sancti/SBenedictusAb/LitanHaeften.html
+     6  thesaurus/Basics/Virtutes.html
+     5  thesaurus/Sancti/SBenedictusAb/LitanDouai.html
+     2  thesaurus/AnteMissam/Acts.html
+     2  thesaurus/BVM/Memorare.html
+     2  thesaurus/Basics/Mensae.html
+     2  thesaurus/Trinitas/TeDeum.html
+
+versalitas de más de una palabra (108)
+  O SANCTE                           O sancte
+  O SANCTE                           O sancte
+  O ANGELICE                         O angelice
+  O CAELESTIS                        O caelestis
+  O FORTITUDO                        O fortitudo
+  O PRINCEPS                         O princeps
+  O MATER                            O mater
+  O SANCTE/SANCTA                    O sancte/sancta
+  O FELICEM                          O felicem
+  AD MENSAM                          Ad mensam
+  EGO VOLO                           Ego volo
+  TU ENIM                            Tu enim
+  ANGELE DEI                         Angele Dei
+  AVE MARIA                          Ave Maria
+  PATER NOSTER                       Pater noster
+  AD SANCTITATIS TUAE PEDES          Ad sanctitatis tuae pedes
+  O BEATA                            O beata
+  O BEATISSIMA                       O beatissima
+  O DOMINA                           O domina
+  O DOMINA                           O domina
+  O EXCELLENTISSIMA                  O excellentissima
+  O GLORIOSA                         O gloriosa
+  O INTEMERATA                       O intemerata
+  O PURA                             O pura
+  O VIRGO                            O virgo
+  PER TE                             Per te
+  SANCTA MARIA                       Sancta Maria
+  O QUAM                             O quam
+  O SALUTARIS                        O salutaris
+  O SACRUM                           O sacrum
+  CHRISTI CORPUS                     Christi corpus
+  O BONA CRUX                        O bona crux
+  O BONE                             O bone
+  O DIVINUM                          O divinum
+  O INEFFABILIS                      O ineffabilis
+  O COR                              O cor
+  O COR                              O cor
+  O COR                              O cor
+  O PATER                            O Pater
+  O SACRATISSIMUM                    O sacratissimum
+  COR IESU                           Cor Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU                      O Domine Iesu
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  O IESU CHRISTE                     O Iesu Christe
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O REX                              O rex
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O IESU                             O Iesu
+  O DOMINE IESU CHRISTE              O Domine Iesu Christe
+  A SOLIS                            A solis
+  CLARO PASCHALI                     Claro paschali
+  O LUX                              O lux
+  O MEMORIALE                        O memoriale
+  O SOLA                             O sola
+  A SOLIS                            A solis
+  CLARO PASCHALI                     Claro paschali
+  O LUX                              O lux
+  O MEMORIALE                        O memoriale
+  O IOSEPH                           O Ioseph
+  O S. IOSEPH                        O s. Ioseph
+  O BEATISSIME IOSEPH                O beatissime Ioseph
+  O S. IOSEPH                        O s. Ioseph
+  O S. IOSEPH                        O s. Ioseph
+  O S. IOSEPH                        O s. Ioseph
+  O OMNIUM                           O omnium
+  UT SPEREMUS                        Ut speremus
+  EN EGO                             En ego
+  O MARIA                            O Maria
+  LAUDATE DOMINUM                    Laudate Dominum
+  DOMINE, EXAUDI ORATIONEM MEAM      Domine, exaudi orationem meam
+  DE PROFUNDIS                       De profundis
+  MISERERE MEI                       Miserere mei
+  LAUDATE DOMINUM                    Laudate Dominum
+  DOMINE, EXAUDI ORATIONEM MEAM      Domine, exaudi orationem meam
+  DE PROFUNDIS                       De profundis
+  MISERERE MEI                       Miserere mei
+  O GENTE                            O gente
+  O LUX                              O lux
+  O GRATIOSA DOMINA                  O gratiosa domina
+  O SANCTE IOACHIM                   O sancte ioachim
+  O CREATOR                          O creator
+  O SANCTE SPIRITUS                  O sancte Spiritus
+  TE DEUM                            Te Deum
+  O SANCTISSIMA                      O sanctissima
+  O DEITAS                           O deitas
+  TE DEUM                            Te Deum
+  O MARIA                            O Maria
+
+sólo inglés (revisar)
+  thesaurus/AnteMissam/Acts.html  Acts of Spiritual Communion
+  thesaurus/AnteMissam/Acts.html  Acts of Spiritual Communion
+  thesaurus/Cotidiana/IntoThy.html  Into Thy hands
+  thesaurus/Cotidiana/JesusCMG.html  Jesus Christ, My God
+  thesaurus/Filius/PsalterIesu.html  Psalter of Jesus
+  thesaurus/Trinitas/TeDeum.html  Te Deum
+
+sin título (revisar)

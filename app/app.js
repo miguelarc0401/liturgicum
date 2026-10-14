@@ -78,8 +78,10 @@ const ICONO = {
   cerrar: svg('<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'),
   izq: svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>'),
   der: svg('<path d="M9.5 5.5 16 12l-6.5 6.5"/>'),
-  // la cruz del altar y el breviario abierto con su cinta
+  // la cruz del altar, el breviario abierto con su cinta y el rosario
   misa: svg('<path d="M12 3v18M6.5 8.2h11"/>'),
+  devocionario: svg('<circle cx="12" cy="9.2" r="5.4"/>'
+    + '<path d="M12 14.6v6.2M9.6 17.1h4.8"/>'),
   horas: svg('<path d="M12 7.3C10.2 5.9 7.4 5.5 4 5.9v12.4c3.4-.4 6.2.1 8 '
     + '1.5 1.8-1.4 4.6-1.9 8-1.5V5.9c-3.4-.4-6.2 0-8 1.4Z"/>'
     + '<path d="M12 7.3v12.5"/><path d="M15.2 5.6v5l1.6-1.3 1.6 1.3v-5"/>')
@@ -564,22 +566,36 @@ function anioDe(iso) {
  * puestos; un aviso de omisión entre párrafos partía en pedazos lo que en la
  * misa se lee de una sola vez. */
 function versos(tramos, sep, castellano, incipit) {
+  const t = (s) => esc(castellano ? s : tx(s));
   // los apéndices traen algún texto sin número de versículo (las antífonas
   // «O», las aclamaciones) y alguno en castellano (las respuestas
   // salmódicas, que el leccionario da sin cita y no hay de dónde traducir)
-  const trozos = tramos.map((tr) => tr.map(([n, s]) => ((E.cfg.numeros && n)
-    ? '<sup>' + esc(n) + '</sup>' : '')
-    + esc(castellano ? s : tx(s))).join(' '));
+  const num = (n) => ((E.cfg.numeros && n) ? '<sup>' + esc(n) + '</sup>' : '');
+  /* El salmo del Misal de 1977 viene partido en renglones, y los cortes van
+   * dentro del texto de cada versículo. Donde los hay, la estrofa se compone
+   * en renglones y no de corrido: cada uno en su `span` de bloque, con
+   * sangría francesa, como la salmodia del Oficio y como el Ordo, para que
+   * la continuación de un renglón largo no se confunda con el siguiente. Un
+   * versículo de un solo renglón dentro de una estrofa en verso es un
+   * renglón más, y no un párrafo aparte. */
+  const trozos = tramos.map((tr) => {
+    const verso = tr.some((v) => v[1].indexOf('\n') >= 0);
+    return { verso: verso, h: tr.map(([n, s]) => (verso
+      ? s.split('\n').map((x, i) => '<span class="ln">' + (i ? '' : num(n))
+        + t(x) + '</span>').join('')
+      : num(n) + t(s))).join(verso ? '' : ' ') };
+  });
   // El íncipit litúrgico va pegado al primer versículo y en el mismo tipo,
   // que es como lo imprime el leccionario: no es una rúbrica sino texto que
   // se lee en voz alta, y lo que hace es que la perícopa se entienda suelta
   // («In illo témpore», «Fratres»).
   const abre = incipit ? incipit + ' ' : '';
   if (!sep) {
-    return '<p class="texto">' + abre + trozos.join(' ') + '</p>';
+    return '<p class="texto' + (trozos.some((x) => x.verso) ? ' verso' : '')
+      + '">' + abre + trozos.map((x) => x.h).join(' ') + '</p>';
   }
-  return trozos.map((t, i) => '<p class="estrofa">' + (i ? '' : abre) + t
-    + '</p>').join(sep);
+  return trozos.map((x, i) => '<p class="estrofa' + (x.verso ? ' verso' : '')
+    + '">' + (i ? '' : abre) + x.h + '</p>').join(sep);
 }
 
 /** Una lectura, y en el bilingüe su pareja al lado. Los dos leccionarios
@@ -972,11 +988,27 @@ function formularioDe(ranura, f, lat, clave) {
     : null };
 }
 
-function pintaChipsFormularios(d, bloque) {
+/* El ciclo ferial no se elige: lo pone el calendario. Las ferias del tiempo
+ * ordinario tienen dos formularios en el leccionario —el del año I, de los
+ * impares, y el del año II, de los pares—, y el día ya dice cuál es el
+ * suyo: ofrecer los dos en la tira era dar a elegir lo que no se elige, y
+ * dejar a mano las lecturas que este año no se leen. Con fecha se esconden;
+ * desde el índice, que se hojea sin fecha y sin año que mande, siguen
+ * estando, porque allí son la única manera de llegar al otro.
+ *
+ * Se mira que **todos** los rótulos sean de año: la tira sirve también para
+ * lo que de verdad se elige —las tres misas de Navidad, el Común de un
+ * santo—, y eso no se toca. */
+const ROT_ANIO_FERIAL = /^Año\s+I{1,2}\b/i;
+
+function pintaChipsFormularios(d, bloque, conDia) {
   const c = $('#formularios');
   c.className = 'chips finos';
-  if (!d || d.b.length < 2) { c.innerHTML = ''; return; }
-  c.innerHTML = d.b.map((b, i) =>
+  const bs = d ? d.b : [];
+  const porElAnio = conDia && bs.length > 1
+    && bs.every((b) => ROT_ANIO_FERIAL.test(b.e || ''));
+  if (bs.length < 2 || porElAnio) { c.innerHTML = ''; return; }
+  c.innerHTML = bs.map((b, i) =>
     '<button aria-pressed="' + (i === bloque) + '" data-slug="' + esc(d.s)
     + '" data-bloque="' + i + '">' + esc(b.e || ('Formulario ' + (i + 1)))
     + '</button>').join('');
@@ -1042,7 +1074,7 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   // que la hora, y la cabecera es la que se queda arriba al bajar
   $('#cab-zoom').innerHTML = controlZoom();
   pintaChipsCelebraciones(cels || [], slug);
-  pintaChipsFormularios(d, bloque);
+  pintaChipsFormularios(d, bloque, !!iso);
   pintaNota(cel, val);
   // Qué lecturas se leen hoy, que en una memoria no son las del santo.
   //
@@ -2575,9 +2607,11 @@ function alDesplazarCabecera() {
  * la pantalla, no atenuadas— y otro las devuelve: mientras se lee no se
  * necesita ninguna de las dos, y el alto que sobra es justo el que falta.
  *
- * Sólo tumbado, que es donde el alto falta —de pie la cabecera ya se pliega
- * al bajar—, y sólo en las vistas que se leen, que son las que la pliegan:
- * en el calendario y en los paneles la barra es la única manera de salir, y
+ * De lado o de pie, en las dos: el alto falta más tumbado, pero el que lee
+ * de pie tampoco necesita los marcos, y de pie es como se lee casi siempre.
+ * Lo que sigue mandando es la vista: sólo las que se leen —la hora y el
+ * formulario de la misa, que son las que pliegan la cabecera—, porque en el
+ * calendario y en los paneles la barra es la única manera de salir, y
  * esconderla sería dejar a quien toca sin puerta.
  *
  * El relleno del <body> que guardaba el sitio de la cabecera se va con ella,
@@ -2586,13 +2620,10 @@ function alDesplazarCabecera() {
  * gana sale por arriba —los renglones que la cabecera tapaba— sin que nada
  * se mueva debajo del ojo.
  */
-const ACOSTADO = window.matchMedia
-  ? window.matchMedia('(orientation: landscape)') : null;
 
 /** Si esconderlas tiene sentido aquí y ahora. */
 function cabeSinMarcos() {
-  return !!(ACOSTADO && ACOSTADO.matches)
-    && document.body.classList.contains('cab-fija');
+  return document.body.classList.contains('cab-fija');
 }
 
 function ponPantallaLimpia(si) {
@@ -2614,19 +2645,6 @@ function ponPantallaLimpia(si) {
 function alternaPantallaLimpia() {
   if (!cabeSinMarcos()) return;
   ponPantallaLimpia(!document.body.classList.contains('pantalla-limpia'));
-}
-
-/* Al ponerse de pie los marcos vuelven, y vuelven de verdad: no basta con
- * que la hoja de estilo deje de aplicarlos: la clase se quita, que si no al
- * acostarse otra vez la cabecera se iría sin que nadie la hubiera tocado.
- * El aviso lo da la consulta misma, que es quien sabe cuándo deja de valer;
- * el `resize` no siempre llega al girar. */
-if (ACOSTADO && ACOSTADO.addEventListener) {
-  ACOSTADO.addEventListener('change', () => {
-    if (!ACOSTADO.matches) {
-      document.body.classList.remove('pantalla-limpia');
-    }
-  });
 }
 
 function modoPanel(titulo) {
@@ -3040,8 +3058,10 @@ function construyeBusqueda() {
     for (const l of lects) {
       // en castellano hay lecturas sin texto —las que el misalito no imprimió
       // en nueve años—, y van sin tramos: no se indexan, pero su cita sí
+      // los renglones del salmo se deshacen para buscar: lo que se teclea
+      // es una frase seguida, y el corte de renglón cae en mitad de ella
       const t = (l.g || []).map((tr) => tr.map((v) => v[1]).join(' '))
-        .join(' ');
+        .join(' ').replace(/\n/g, ' ');
       filas.push({ dia: dia, bloque: bloque, cita: l.c, texto: t,
         plano: plano(t), planoCita: plano(l.c + ' ' + (l.q || '')) });
     }
@@ -3370,6 +3390,33 @@ function recuerdaAjustes() {
   _ajustesAbiertas = t;
 }
 
+/* Las tres latinas, para el mando del bilingüe: las mismas de «Versión»,
+ * sin el castellano ni el bilingüe mismo. */
+const LATINES = [['clementina', 'Vulgata Clementina'],
+  ['nova', 'Nova Vulgata'],
+  ['lect1977', 'Misal con lecturas · Roma, 1977']];
+
+/** Qué se enseña de cada fuente latina. Son tres textos latinos distintos y
+ *  no tres maneras de imprimir el mismo, y lo que cada uno trae de suyo no
+ *  se ve con sólo cambiar de versión: hace falta decirlo. */
+function notaFuentes() {
+  return '<div class="ajuste ancho"><dl class="nota-fuentes">'
+    + '<dt>Vulgata Clementina</dt><dd>La Vulgata de siempre, con su '
+    + '<i>j</i> y sus ligaduras, y la fórmula con que el leccionario '
+    + 'presenta cada lectura.</dd>'
+    + '<dt>Nova Vulgata</dt><dd>El latín de los libros litúrgicos '
+    + 'vigentes. Numera los salmos a la hebrea, y la cita dice entre '
+    + 'corchetes dónde queda el salmo en ella.</dd>'
+    + '<dt>Misal con lecturas · Roma, 1977</dt><dd>La Nova en el Nuevo '
+    + 'Testamento y en los salmos, y la Clementina en el Antiguo: es lo '
+    + 'que aquel libro lee, y de él se toma la decisión, no la letra. '
+    + 'Suyos son el íncipit («In illo témpore», «Fratres») y la fórmula; '
+    + 'el salmo en estrofas y renglones, como él lo imprime; y la '
+    + 'aclamación antes del Evangelio, que en Cuaresma no es el Allelúia '
+    + 'sino el «Versus ante Evangelium».</dd>'
+    + '</dl></div>';
+}
+
 function verAjustes() {
   E.vista = 'ajustes';
   marcaBarra('ajustes');
@@ -3392,23 +3439,25 @@ function verAjustes() {
   vista.innerHTML = [
     ajuste('La lengua de la misa'),
     sel('fuente', 'Versión',
-      'La Nova Vulgata es el latín de los libros litúrgicos vigentes; la '
-      + 'Clementina, la Vulgata de siempre. El Misal con lecturas de 1977 es '
-      + 'el leccionario como lo imprimió aquel libro, pero sin copiarle ni '
-      + 'una letra: de él se toma la decisión —qué latín se lee en cada '
-      + 'perícopa: la Nova en el Nuevo Testamento y en los salmos, la '
-      + 'Clementina en el Antiguo, que es de donde el propio Misal los '
-      + 'tomaba— y lo que es suyo y de nadie más, el íncipit («In illo '
-      + 'témpore», «Fratres») y la fórmula con que presenta la lectura. '
-      + 'El castellano es la traducción '
-      + 'litúrgica aprobada para México, cosechada del misalito mensual de '
-      + '2018 a 2026: dos de cada tres lecturas la tienen, y lo que no se '
-      + 'imprimió nunca lo dice en su sitio. El bilingüe enfrenta las dos, '
-      + 'y el latín que pone es el último que se haya elegido aquí.',
+      'Tres latines y un castellano, y debajo qué trae cada uno. El '
+      + 'castellano es la traducción litúrgica aprobada para México, '
+      + 'cosechada del misalito mensual de 2018 a 2026: dos de cada tres '
+      + 'lecturas la tienen, y lo que no se imprimió nunca lo dice en su '
+      + 'sitio. El bilingüe enfrenta el castellano con uno de los tres '
+      + 'latines, el que se diga aquí mismo.',
       [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata'],
         ['lect1977', 'Misal con lecturas · Roma, 1977'],
         ['es', 'Castellano · misalito de México'],
         ['bi', 'Bilingüe · latín y castellano']]),
+    // el mando del latín del bilingüe sólo sale con el bilingüe puesto: con
+    // una versión latina a solas, el latín es ésa y no hay nada que elegir
+    E.cfg.fuente === 'bi'
+      ? sel('latinBi', 'El latín de la doble columna',
+        'Cuál de los tres va enfrentado al castellano. Cambia también al '
+        + 'leer una versión latina a solas: el bilingüe se queda con la '
+        + 'última que se haya leído.', LATINES)
+      : '',
+    notaFuentes(),
     sel('acentos', 'Acentuación litúrgica',
       'El acento tónico marcado, como en los libros de coro.',
       [[true, 'Sí'], [false, 'No']]),
@@ -3647,6 +3696,12 @@ async function alCambiarAjuste(ev) {
     await cargaLecturas(v);
     verAjustes();
   }
+  if (id === 'latinBi') {
+    recuerdaAjustes();
+    vista.innerHTML = '<p class="aviso">Cambiando de versión…</p>';
+    await cargaLecturas('bi');
+    verAjustes();
+  }
 }
 
 function marcaBarra(cual) {
@@ -3725,6 +3780,14 @@ function verPortada() {
       : h.rotulo + ', ' + esc(HORAS[h.i][1])) + '</span>',
     '</a>',
     '<nav class="portada-horas" aria-label="Las horas de hoy">' + tira + '</nav>',
+    // el devocionario no es del día: es el libro de las oraciones que se
+    // rezan cuando se quiere, y por eso va sin fecha y sin tira
+    '<a class="tarjeta" href="#/oraciones">',
+    '<span class="tarjeta-icono">' + ICONO.devocionario + '</span>',
+    '<span class="tarjeta-t">Devocionario</span>',
+    '<span class="tarjeta-p">Las oraciones de la Iglesia en latín, '
+    + 'con su castellano donde lo hay</span>',
+    '</a>',
     '</div>',
     '<nav class="portada-menudo">',
     '<a href="#/calendario">Calendario</a>',
@@ -3733,6 +3796,179 @@ function verPortada() {
     '</nav>'
   ].join('');
   colocaPosicion();
+}
+
+/* ------------------------------------------------------------ devocionario
+ * El tercer libro de la app, y el único que no va por fechas: el tesoro de
+ * oraciones latinas de Michael Martin (preces-latinae.org), 461 piezas
+ * puestas en ortografía eclesiástica —con su jota, su ligadura y su acento,
+ * como las imprimen los libros litúrgicos— y con la traducción castellana
+ * donde se ha podido verificar de dónde sale. Cada oración dice su
+ * procedencia, y las que aún no tienen castellano se rezan en latín.
+ *
+ * Pesa 1 MB y no hace falta para nada más, así que no se carga hasta que se
+ * abre, como las horas. */
+async function cargaDevocionario() {
+  if (E.devo) return;
+  const d = await json('devocionario.json');
+  E.devo = d;
+  E.devoDe = new Map(d.piezas.map((p) => [p.id, p]));
+  E.devoGrupo = new Map(d.grupos.map((g) => [g.g, g]));
+}
+
+/** Una línea de tiradas: 1 es rúbrica —roja y en cursiva, como en el
+ *  libro— y 2 es la cursiva del original, que marca lo que sólo se dice en
+ *  ciertos casos. El latín pasa por `tx()`, que es lo que apaga los acentos
+ *  de quien los tiene apagados en Ajustes. */
+function devoLinea(ln, enLatin) {
+  return '<span class="ln">' + ln.map((tr) => {
+    const t = esc(enLatin ? tx(tr[1]) : tr[1]);
+    if (tr[0] === 1) return '<i class="rub">' + t + '</i>';
+    if (tr[0] === 2) return '<i>' + t + '</i>';
+    return t;
+  }).join('') + '</span>';
+}
+
+function devoLatin(p) {
+  return p.b.map((b) => {
+    const dentro = b.t.map((ln) => devoLinea(ln, true)).join('');
+    if (b.h === 1) return '<h3 class="devo-tit">' + dentro + '</h3>';
+    if (b.h === 2) return '<p class="devo-epi">' + dentro + '</p>';
+    return '<p class="ordo-p' + (b.r ? ' ordo-rub' : '') + '">'
+      + dentro + '</p>';
+  }).join('');
+}
+
+function devoCastellano(p) {
+  return (p.es || []).map((parr) => '<p class="ordo-p">'
+    + parr.map((ln) => devoLinea(ln, false)).join('') + '</p>').join('');
+}
+
+/** De dónde sale lo que se está leyendo. El latín, del sitio; el
+ *  castellano, de donde diga su ficha, que para eso se guarda. */
+function devoProcedencia(p) {
+  const f = p.fes || null;
+  const h = ['<p><b>Latín:</b> texto tradicional, transcrito del '
+    + '<i>Thesaurus Precum Latinarum</i> de Michael Martin'
+    + (p.anio ? ' (la fuente fecha esta versión en ' + esc(p.anio) + ')' : '')
+    + '. Ortografía eclesiástica y acentuación puestas aquí'
+    + (p.orto ? ', salvo la ortografía, que es la de la ' + esc(p.orto) : '')
+    + '.</p>'];
+  if (f) {
+    h.push('<p><b>Castellano:</b> ' + esc(f.obra || '')
+      + (f.autoridad ? ' · ' + esc(f.autoridad) : '')
+      + (f.oficial ? ' · traducción aprobada' : ' · versión no oficial')
+      + (f.territorio ? ' (' + esc(f.territorio) + ')' : '')
+      + (f.que_es ? ' · ' + esc(f.que_es) : '') + '.</p>');
+    if (f.aviso) h.push('<p>' + esc(f.aviso) + '</p>');
+    if (f.url) {
+      h.push('<p><a href="' + esc(f.url) + '" target="_blank" '
+        + 'rel="noreferrer">' + esc(f.url) + '</a></p>');
+    }
+  } else {
+    h.push('<p><b>Castellano:</b> todavía no. No significa que no exista '
+      + 'traducción: significa que aquí no se ha verificado cuál es ni de '
+      + 'dónde sale.</p>');
+  }
+  return '<details class="devo-fuente"><summary>De dónde sale esto'
+    + '</summary>' + h.join('') + '</details>';
+}
+
+function pintaOracion(id) {
+  const p = E.devoDe.get(id);
+  if (!p) {
+    vista.innerHTML = '<p class="aviso">No encuentro esa oración.</p>';
+    return;
+  }
+  const g = E.devoGrupo.get(p.g);
+  // manda el título latino, que es el nombre de la oración; el castellano
+  // va debajo, y cuando no hay más que el primer renglón, ése
+  modoPanel(tx(p.tla));
+  $('#subtitulo-dia').textContent = p.tes || '';
+  const atras = '<a class="devo-atras" href="#/oraciones/g/'
+    + encodeURIComponent(p.g) + '">' + ICONO.izq
+    + esc(g ? g.t : 'Devocionario') + '</a>';
+  vista.innerHTML = atras
+    + '<div class="devo">'
+    + bilingue('<div lang="la">' + devoLatin(p) + '</div>',
+      devoCastellano(p))
+    + '</div>' + devoProcedencia(p);
+  colocaPosicion();
+}
+
+function devoFila(p) {
+  return '<a class="devo-fila" href="#/oraciones/o/' + esc(p.id) + '">'
+    + '<span lang="la">' + esc(tx(p.tla)) + '</span>'
+    + (p.dist ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
+    + (p.es ? '<small>' + esc(p.tes || '') + '</small>'
+      : '<small class="devo-solo-la">sólo en latín</small>') + '</a>';
+}
+
+function pintaGrupo(clave) {
+  const g = E.devoGrupo.get(clave);
+  if (!g) return pintaDevocionario();
+  modoPanel(g.t);
+  const piezas = E.devo.piezas.filter((p) => p.g === clave);
+  const h = ['<a class="devo-atras" href="#/oraciones">' + ICONO.izq
+    + 'Devocionario</a>'];
+  let sub = null;
+  for (const p of piezas) {
+    if ((p.sub || null) !== sub) {
+      sub = p.sub || null;
+      if (sub) h.push('<h3 class="devo-sub">' + esc(sub) + '</h3>');
+    }
+    h.push(devoFila(p));
+  }
+  vista.innerHTML = h.join('');
+  colocaPosicion();
+}
+
+function pintaDevocionario() {
+  modoPanel('Devocionario');
+  $('#subtitulo-dia').textContent = E.devo.piezas.length
+    + ' oraciones en latín';
+  vista.innerHTML = '<input class="campo" id="devo-q" type="search" '
+    + 'placeholder="Buscar una oración por su título" autocomplete="off">'
+    + '<div id="devo-res">' + E.devo.grupos.map((g) =>
+      '<a class="devo-fila devo-grupo" href="#/oraciones/g/'
+      + encodeURIComponent(g.g) + '">' + esc(g.t)
+      + '<small>' + g.n + '</small></a>').join('') + '</div>';
+  const campo = $('#devo-q');
+  campo.addEventListener('input', () => {
+    const q = plano(campo.value.trim());
+    const caja = $('#devo-res');
+    if (q.length < 2) {
+      caja.innerHTML = E.devo.grupos.map((g) =>
+        '<a class="devo-fila devo-grupo" href="#/oraciones/g/'
+        + encodeURIComponent(g.g) + '">' + esc(g.t)
+        + '<small>' + g.n + '</small></a>').join('');
+      return;
+    }
+    const hay = E.devo.piezas.filter((p) => p.k.includes(q)).slice(0, 60);
+    caja.innerHTML = hay.length ? hay.map(devoFila).join('')
+      : '<p class="aviso">Ninguna oración se llama así. La búsqueda '
+      + 'ignora acentos y desata æ/œ, así que «quaesumus» encuentra '
+      + '«quǽsumus».</p>';
+  });
+  colocaPosicion();
+}
+
+async function verDevocionario(que, cual) {
+  E.vista = 'devocionario';
+  // se llega desde Inicio, y es allí donde se vuelve
+  marcaBarra('portada');
+  modoPanel('Devocionario');
+  if (!E.devo) vista.innerHTML = '<p class="aviso">Abriendo…</p>';
+  try {
+    await cargaDevocionario();
+  } catch (err) {
+    vista.innerHTML = '<p class="aviso">No he podido abrir el devocionario ('
+      + esc(err.message) + ').</p>';
+    return;
+  }
+  if (que === 'o' && cual) return pintaOracion(cual);
+  if (que === 'g' && cual) return pintaGrupo(cual);
+  pintaDevocionario();
 }
 
 /* ----------------------------------------------- la liturgia de las horas
@@ -5658,8 +5894,8 @@ function alAcabarGesto(ev) {
   const sel = window.getSelection();
   // Un toque: el dedo no se ha movido, la página tampoco —no era un
   // arrastre corto que la deslizó—, no se ha quedado quieto encima (eso es
-  // alguien eligiendo texto) y no hay nada elegido. Tumbado, esconde la
-  // cabecera y la barra; de pie no hace nada, que ahí no sobra ni falta.
+  // alguien eligiendo texto) y no hay nada elegido. Esconde la cabecera y
+  // la barra, de lado o de pie, en la hora y en la misa.
   if (Math.abs(dx) < 12 && Math.abs(dy) < 12 && Date.now() - d.t < 350
       && Math.abs(Math.max(0, window.scrollY) - d.sy) < 4
       && !(sel && sel.toString())) {
@@ -5677,6 +5913,11 @@ function alAcabarGesto(ev) {
 function otraHora(n) {
   const i = HORAS.findIndex((x) => x[0] === E.hora) + n;
   if (i < 0 || i >= HORAS.length) return;
+  // los marcos vuelven al cambiar de hora: la hora que entra se presenta en
+  // la cabecera, y es ahí donde se ve a cuál se ha pasado. Se quita la clase
+  // y nada más —sin reponer el renglón—, que la hora nueva se pinta de
+  // arriba y coloca ella su sitio.
+  document.body.classList.remove('pantalla-limpia');
   E.entraDesde = n > 0 ? 'izq' : 'der';
   location.hash = '#/h/' + (E.fecha || hoyISO()) + '/' + HORAS[i][0]
     + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '');
@@ -5745,6 +5986,7 @@ function enruta() {
   const h = location.hash.slice(2);
   const p = h.split('/').map(decodeURIComponent);
   if (p[0] === 'indice') return verIndice();
+  if (p[0] === 'oraciones') return verDevocionario(p[1], p[2]);
   if (p[0] === 'calendario') return verCalendario(p[1]);
   if (p[0] === 'buscar') return verBusqueda(p[1] || '');
   if (p[0] === 'ajustes') return verAjustes();
@@ -5883,8 +6125,9 @@ async function arranca() {
     if (!document.hidden) velaPantalla();
   });
   window.addEventListener('resize', () => {
-    // al ponerse de pie los marcos vuelven: esconderlos es cosa del
-    // teléfono tumbado, y en vertical la cabecera ya se pliega al bajar
+    // girando no se pierde lo escondido —se esconde en las dos
+    // orientaciones—, pero saliendo a una vista que no se lee sí: ahí los
+    // marcos vuelven, que la barra es la puerta
     if (!cabeSinMarcos()) {
       document.body.classList.remove('pantalla-limpia');
     }

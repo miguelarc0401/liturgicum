@@ -7,7 +7,26 @@ El leccionario de 1977 para la app
        1645  con incipit
          54  tramos de incipit que el texto ya decia
         568  formula al modo de 1977
+       1404  salmos en renglones
+       8333  versiculos del salmo en renglones
+          1  salmos que se quedan de corrido
+       1089  aclamaciones con el Alleluia
+         67  aclamaciones con el Versus ante Evangelium
+        196  aclamaciones sin forma (nadie la dice)
+        919  aclamaciones que el libro dice
+        913  y el tiempo dice lo mismo
        3848  piezas enganchadas, de 6692  (57.5 %)
+
+   los renglones del salmo, cotejados con el libro de 1977:
+        859  no esta en el libro de 1977
+        184  los mismos renglones
+        128  el libro corta en otro sitio
+        118  el libro escoge otros versiculos
+        115  los mismos, con alguno partido por la medida
+      el reparto del libro en el 54.9 % de los salmos que el libro trae (299 de 545)
+       5089  cortes del salterio cotejados, y el libro hace 4932: el 96.9 %
+        157  cortes que el libro no hace
+        315  cortes que el libro hace de mas, por la medida
    siglas sin libro (se quedan con la Nova): ? x26
 
-escrito app/datos/lecturas_lect1977.json  (5732 KB)
+escrito app/datos/lecturas_lect1977.json  (5762 KB)

@@ -1,0 +1,4 @@
+Quiero agregar una nueva sección a inicio que sea "devocionario". 
+Mira, hay una pagina de internet llamada Preces Latinae https://www.preces-latinae.org/preces.html. Tene muchas oraciones en latín e inlges, quiero descargar todas las oraciones que tiene en latín, pero quiero que busques en internet la traducción oficial a cada una en español (si es que la tiene, y de preferencia de México). Pero también descarga el ingles que aparece en Preces Latinae, por si en el futuro quiero mostrar la traducción en Ingles.
+Quiero agregar esas oraciones a la app en su propia sección. 
+Pero quiero que arregles la escritura en latín clásico, y la vuelvas eclesiástica (incluyendo acentuación).

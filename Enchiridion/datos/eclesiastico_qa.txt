@@ -1,0 +1,481 @@
+de dónde sale cada decisión
+     8107  acento uso
+     6124  jota sin i
+     5241  jota sin regla
+     4421  jota uso (sin jota)
+     4040  acento corta
+     2878  acento posicion
+     1056  ligadura
+      840  acento cantidad
+      317  acento hiato
+      290  jota uso
+      245  acento terminacion
+      210  acento analogía
+      203  acento versal
+      169  acento omision
+       61  acento prefijo
+       29  acento a mano
+       23  jota regla: inicial
+       21  acento cantidad ambigua
+       18  hiato
+       16  jota regla: prefijo
+        7  acento cantidad (uso debil)
+        6  acento manual
+        6  acento sin marca (uso)
+        5  acento uso (variante ae/oe)
+        4  jota regla: entre vocales
+        3  jota regla: entre vocales+prefijo
+        2  jota regla: entre vocales+inicial
+
+jotas puestas por regla y no por testigo (46)
+  abiiciendum            abjiciendum            regla: prefijo
+  adiicit                adjicit                regla: prefijo
+  adiudicatur            adjudicatur            regla: prefijo
+  adiuncte               adjuncte               regla: prefijo
+  adiuvasti              adjuvasti              regla: prefijo
+  baiulanda              bajulanda              regla: entre vocales
+  baiulandam             bajulandam             regla: entre vocales
+  baiulatione            bajulatione            regla: entre vocales
+  baiulavit              bajulavit              regla: entre vocales
+  coniugatorum           conjugatorum           regla: prefijo
+  coniunctim             conjunctim             regla: prefijo
+  deiectione             dejectione             regla: entre vocales+prefijo
+  disiunctus             disjunctus             regla: prefijo
+  eiiciuntur             ejiciuntur             regla: prefijo
+  Iac                    Jac                    regla: inicial
+  iactata                jactata                regla: inicial
+  ieiunantem             jejunantem             regla: entre vocales+inicial
+  ieiunanti              jejunanti              regla: entre vocales+inicial
+  Iesulino               Jesulino               regla: inicial
+  Iesulum                Jesulum                regla: inicial
+  iniuriasque            injuriasque            regla: prefijo
+  Ioan                   Joan                   regla: inicial
+  Ioannemque             Joannemque             regla: inicial
+  Ios                    Jos                    regla: inicial
+  iubilantium            jubilantium            regla: inicial
+  iubilusque             jubilusque             regla: inicial
+  iucundissime           jucundissime           regla: inicial
+  iudicabaris            judicabaris            regla: inicial
+  iudicature             judicature             regla: inicial
+  iudiciaria             judiciaria             regla: inicial
+  iunctam                junctam                regla: inicial
+  iuncte                 juncte                 regla: inicial
+  iunctos                junctos                regla: inicial
+  iungo                  jungo                  regla: inicial
+  iustificatione         justificatione         regla: inicial
+  Iustine                Justine                regla: inicial
+  iustissime             justissime             regla: inicial
+  iuvari                 juvari                 regla: inicial
+  iuves                  juves                  regla: inicial
+  proiicio               projicio               regla: prefijo
+  reieci                 rejeci                 regla: entre vocales+prefijo
+  reiectas               rejectas               regla: entre vocales+prefijo
+  subiectionis           subjectionis           regla: prefijo
+  subiiciemus            subjiciemus            regla: prefijo
+  subiicio               subjicio               regla: prefijo
+  subiicis               subjicis               regla: prefijo
+
+i ante vocal que nadie resuelve y se queda en i (13)
+  iero                     1
+  quies                    1
+  quiescere                1
+  inquietat                1
+  quiescit                 1
+  io                       1
+  quietos                  1
+  quiete                   1
+  quieto                   1
+  quietas                  1
+  quiescentem              1
+  quietatio                1
+  quiescens                1
+
+acentos puestos por analogía de tema (199 formas, y en 72 de ellas
+la analogía corrige la penúltima que el acentuador pondría por omisión)
+  Abbatus                  Abbátus                  igual
+  absume                   absúme                   igual
+  accusate                 accusáte                 igual
+  actore                   actóre                   corrige
+  adamantine               adamántine               corrige
+  Admonitor                Admónitor                corrige
+  adsciscere               adscíscere               igual
+  affeci                   afféci                   igual
+  affige                   affíge                   igual
+  affigunt                 affígunt                 igual
+  alloquere                allóquere                corrige
+  Angele                   Ángele                   corrige
+  angelice                 angélice                 corrige
+  annuntiatus              annuntiátus              igual
+  Antiochene               Antiochéne               igual
+  Antiphona                Antíphona                corrige
+  anxiata                  anxiáta                  igual
+  Appenditur               Appénditur               corrige
+  appretiate               appretiáte               igual
+  approbatos               approbátos               igual
+  ardebas                  ardébas                  igual
+  aromate                  arómate                  corrige
+  aspiro                   aspíro                   igual
+  Assecla                  Ássecla                  corrige
+  Assides                  Ássides                  igual
+  assignaris               assignáris               igual
+  assistite                assístite                corrige
+  attrite                  attríte                  igual
+  Aurelianam               Aureliánam               igual
+  blasphemate              blasphemáte              igual
+  Carbuncule               Carbúncule               corrige
+  Carole                   Cárole                   corrige
+  castiga                  castíga                  igual
+  celebravi                celebrávi                igual
+  charismatis              charísmatis              corrige
+  clarificent              claríficent              corrige
+  Clementine               Clementíne               igual
+  commutavi                commutávi                igual
+  compagines               compágines               corrige
+  complaces                cómplaces                corrige
+  condebas                 condébas                 igual
+  Conditur                 Cónditur                 igual
+  conversate               conversáte               igual
+  conversurum              conversúrum              igual
+  coronaris                coronáris                igual
+  coronate                 coronáte                 igual
+  corroboras               corróboras               corrige
+  Cypriane                 Cypriáne                 igual
+  Dæmona                   Dǽmona                   corrige
+  deauratum                deaurátum                igual
+  decadum                  décadum                  corrige
+  Decalogi                 Decálogi                 corrige
+  delate                   deláte                   igual
+  deposite                 depósite                 corrige
+  deprecate                deprecáte                igual
+  deprimar                 déprimar                 corrige
+  derise                   deríse                   igual
+  desiderem                desíderem                igual
+  dignares                 dignáres                 igual
+  dilaceratis              dilacerátis              igual
+  dilaniatæ                dilaniátæ                igual
+  dispertitas              dispertítas              igual
+  divine                   divíne                   igual
+  dramatum                 drámatum                 corrige
+  edomem                   édomem                   corrige
+  elargite                 elargíte                 igual
+  elevas                   élevas                   corrige
+  emigrem                  émigrem                  corrige
+  eremitici                eremítici                corrige
+  excludere                exclúdere                igual
+  excolam                  éxcolam                  corrige
+  exemplarem               exemplárem               igual
+  exercitos                exércitos                igual
+  existere                 exístere                 igual
+  exosculor                exósculor                corrige
+  exstimuler               exstímuler               corrige
+  exute                    exúte                    igual
+  fervide                  férvide                  corrige
+  Gedeona                  Gedeóna                  igual
+  glorificem               gloríficem               corrige
+  Golgotham                Gólgotham                corrige
+  gravabor                 gravábor                 igual
+  idiomata                 idiómata                 corrige
+  illuminate               illumináte               igual
+  illuse                   illúse                   igual
+  immori                   ímmori                   corrige
+  impetite                 impetíte                 igual
+  impresseris              imprésseris              corrige
+  imprimere                imprímere                igual
+  infringerem              infríngerem              corrige
+  introducas               introdúcas               igual
+  invitam                  invítam                  igual
+  invitas                  invítas                  igual
+  involute                 involúte                 igual
+  judicature               judicatúre               igual
+  laborers                 labórers                 igual
+  lacessite                lacessíte                igual
+  lacrimate                lacrimáte                igual
+  lascive                  lascíve                  igual
+  lavabam                  lavábam                  igual
+  lavares                  laváres                  igual
+  levatum                  levátum                  igual
+  ligate                   ligáte                   igual
+  livoris                  livóris                  igual
+  Methodi                  Méthodi                  corrige
+  missure                  missúre                  igual
+  moreris                  móreris                  igual
+  morituris                moritúris                corrige
+  mortificem               mortíficem               corrige
+  multimodo                multímodo                corrige
+  multiplicarem            multiplicárem            igual
+  Nazarena                 Nazaréna                 igual
+  Nazianzene               Nazianzéne               igual
+  Ninivitas                Ninivítas                igual
+  Noëmi                    Noémi                    igual
+  novere                   nóvere                   corrige
+  Nursinæ                  Nursínæ                  igual
+  obires                   obíres                   igual
+  obliquet                 oblíquet                 igual
+  Oblivisceris             Oblivísceris             igual
+  obvolute                 obvolúte                 igual
+  œconome                  œcónome                  corrige
+  œcumenicis               œcuménicis               corrige
+  œcumenico                œcuménico                corrige
+  opitulate                opituláte                igual
+  osculant                 ósculant                 corrige
+  Paraclite                Paráclite                corrige
+  parcitum                 párcitum                 corrige
+  parere                   párere                   igual
+  passuro                  passúro                  igual
+  patrini                  patríni                  igual
+  pauperrime               paupérrime               corrige
+  percutimur               percútimur               corrige
+  perfuse                  perfúse                  igual
+  perseverem               persevérem               igual
+  pollicite                pollícite                corrige
+  possides                 póssides                 igual
+  postposite               postpósite               corrige
+  prædicet                 prǽdicet                 igual
+  præparem                 prǽparem                 corrige
+  præveni                  prævéni                  igual
+  Procido                  Prócido                  corrige
+  propitiatum              propitiátum              igual
+  protectioni              protectióni              igual
+  provolutos               provolútos               igual
+  purifices                purífices                corrige
+  putative                 putatíve                 igual
+  quæsite                  quæsíte                  igual
+  radicet                  radícet                  igual
+  reclinate                reclináte                igual
+  recusavi                 recusávi                 igual
+  redimere                 redímere                 igual
+  refrigera                refrígera                corrige
+  relevas                  rélevas                  corrige
+  reliqui                  réliqui                  igual
+  renovavi                 renovávi                 igual
+  Reparatrice              Reparatríce              igual
+  residet                  résidet                  igual
+  revocabas                revocábas                igual
+  rigabam                  rigábam                  igual
+  rugitas                  rugítas                  igual
+  Sacramentalem            Sacramentálem            igual
+  salvares                 salváres                 igual
+  Samsonis                 Samsónis                 igual
+  sanctificatam            sanctificátam            igual
+  sanctifices              sanctífices              corrige
+  sequeris                 séqueris                 igual
+  Seraphice                Seráphice                corrige
+  Seraphine                Seraphíne                igual
+  servarum                 servárum                 igual
+  sideram                  síderam                  corrige
+  sidere                   sídere                   igual
+  sociate                  sociáte                  igual
+  Sodomitas                Sodomítas                igual
+  speciminis               specíminis               corrige
+  subjicis                 súbjicis                 corrige
+  sublimate                sublimáte                igual
+  succurrere               succúrrere               igual
+  tenerrime                tenérrime                corrige
+  Totilæ                   Tótilæ                   corrige
+  Transfige                Transfíge                igual
+  Tridentina               Tridentína               igual
+  tumulate                 tumuláte                 igual
+  unigenitas               unigénitas               corrige
+  vaferrimi                vaférrimi                corrige
+  valedico                 valedíco                 igual
+  velate                   veláte                   igual
+  veracem                  verácem                  igual
+  verberatum               verberátum               igual
+  vexate                   vexáte                   igual
+  violatos                 violátos                 igual
+  viscere                  víscere                  corrige
+  visites                  vísites                  corrige
+  vitiosas                 vitiósas                 igual
+  vividos                  vívidos                  corrige
+  vivificas                vivíficas                corrige
+  vocabas                  vocábas                  igual
+  votivis                  votívis                  igual
+  Zabulo                   Zábulo                   corrige
+
+acentos que no resuelve nadie, y van a la penúltima por omisión (186 formas)
+  foederis                 2
+  consolatrix              2
+  irasceris                2
+  anachoretarum            2
+  vitaque                  1
+  votaque                  1
+  cherubine                1
+  redivivum                1
+  congregaturi             1
+  colligetis               1
+  mihique                  1
+  summaque                 1
+  confove                  1
+  satagas                  1
+  gravique                 1
+  adsistere                1
+  delecteris               1
+  sanctificamur            1
+  ceteraque                1
+  porrigere                1
+  salvatrix                1
+  debellatrix              1
+  carmelitis               1
+  escaque                  1
+  maculabant               1
+  recludere                1
+  novena                   1
+  venimus                  1
+  effugate                 1
+  obtinetis                1
+  mensaque                 1
+  vaticino                 1
+  impunitas                1
+  laetificari              1
+  algori                   1
+  iesulino                 1
+  puerino                  1
+  peccandique              1
+  sublevamus               1
+  suspenderis              1
+  insolescimus             1
+  hodiedum                 1
+  ergone                   1
+  supersubstantialis       1
+  praeservamur             1
+  indeque                  1
+  magisterioque            1
+  potuerimus               1
+  servito                  1
+  evitem                   1
+  recidivam                1
+  condona                  1
+  vagitus                  1
+  comiteris                1
+  mutuique                 1
+  invasurae                1
+  cordintime               1
+  defoedatam               1
+  relabar                  1
+  allisus                  1
+  merebar                  1
+  excidam                  1
+  conclavatus              1
+  dignaque                 1
+  conspute                 1
+  praedate                 1
+  collature                1
+  tradebaris               1
+  capiebaris               1
+  accusabaris              1
+  iudicabaris              1
+  damnabaris               1
+  exuebaris                1
+  induebaris               1
+  colaphizabaris           1
+  velabaris                1
+  caedebaris               1
+  ligabaris                1
+  flagellabaris            1
+  coronabaris              1
+  feriebaris               1
+  lacerabaris              1
+  metitur                  1
+  durissimaque             1
+  salvandorum              1
+  damnandorum              1
+  mentalis                 1
+  parvoque                 1
+  psallamus                1
+  variatis                 1
+  pervicacis               1
+  conlaudaverant           1
+  concentuque              1
+  grassatis                1
+  sonoque                  1
+  kaduca                   1
+  iduma                    1
+  flammaticus              1
+  praesagmina              1
+  perstrepere              1
+  saxaque                  1
+  frigola                  1
+  climactere               1
+  vesperugo                1
+  utraque                  1
+  irrogans                 1
+  unaque                   1
+  praenuntiatrix           1
+  mergere                  1
+  rubescere                1
+  piatos                   1
+  concupite                1
+  vellere                  1
+  reseratrix               1
+  procuratrix              1
+  administratrix           1
+  servatrix                1
+  profligatrix             1
+  expugnatrix              1
+  triumphatrix             1
+  fulcimen                 1
+  degeres                  1
+  derelicturum             1
+  prompteque               1
+  exspirem                 1
+  christiadum              1
+  foedere                  1
+  daily                    1
+  sodomitarum              1
+  philistini               1
+  tempestive               1
+  transmutas               1
+  serenaque                1
+  supersubstantialem       1
+  maranatha                1
+  procumbere               1
+  diligereris              1
+  remisistine              1
+  amareris                 1
+  replebaris               1
+  inveniaris               1
+  rugirem                  1
+  clemetine                1
+  bonifati                 1
+  lodovice                 1
+  constantique             1
+  paduano                  1
+  complecteris             1
+  successive               1
+  divulgare                1
+  paduanae                 1
+  paduani                  1
+  lachrimarum              1
+  mundoque                 1
+  cacodaemonum             1
+  pertingamus              1
+  explosor                 1
+  propriique               1
+  anhelavere               1
+  associari                1
+  praesbitero              1
+  foelicem                 1
+  cyprida                  1
+  cacodemona               1
+  thesbytae                1
+  operaque                 1
+  almifice                 1
+  adunate                  1
+  psalmicen                1
+  pervadis                 1
+  palpitant                1
+  ferendaque               1
+  libentique               1
+  absumamur                1
+  illaque                  1
+  fierique                 1
+  anathematizatas          1
+  assumamus                1
+  illabi                   1
+  linquebas                1
+  proficiscere             1
+  liliata                  1
+  recitandarum             1
+  removens                 1
+  famulabus                1
+  conveni                  1

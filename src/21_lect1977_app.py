@@ -75,6 +75,14 @@ NUEVO_TESTAMENTO = {
     "Apocalypsis",
 }
 
+# La aclamacion, y el rotulo que el libro le pone en Cuaresma. Son dos
+# palabras del libro de 1977 y no del OCR: se escriben aqui, como los
+# incipits, porque lo que el OCR dice es **cual** de las dos es, no como se
+# escribe. El `Alleluia` sin acento del libro se acentua a la manera de la
+# app, que es la del resto de la pagina.
+ACLAMACION = "Allelúia."
+ROTULO_VERSUS = "VERSUS ANTE EVANGELIUM"
+
 TITULO = "Lectionarium Latinum · Missale cum lectionibus, 1977"
 CABECERA = (
     "Texto: reconstruido del Missale Romanum cum lectionibus "
@@ -88,6 +96,15 @@ CABECERA = (
     "Íncipits litúrgicos y fórmulas: del propio Misal de 1977. Donde "
     "el libro no añade el íncipit sino que reescribe con él el arranque "
     "de la perícopa, se recorta lo que el texto ya dice.\n"
+    "Salmo responsorial: en renglones y estrofas, como lo imprime el "
+    "libro. Los renglones son los del salterio de la Nova Vulgata, que es "
+    "el que el Misal compone; cotejados con los suyos perícopa por "
+    "perícopa.\n"
+    "Aclamación antes del Evangelio: la del propio Misal. En Cuaresma este "
+    "libro no imprime ningún Allelúia, sino el versículo solo bajo el "
+    "rótulo «Versus ante Evangelium»; fuera de ella, el Allelúia que lo "
+    "enmarca. El versículo que se lee es el del leccionario de México, que "
+    "es el que tiene al lado su castellano.\n"
     "Estructura: Leccionario de Servicios Koinonía."
 )
 
@@ -142,6 +159,260 @@ def a_la_nova(x):
     if isinstance(x, dict):
         return {k: a_la_nova(v) for k, v in x.items()}
     return x
+
+
+# --------------------------------------------------------------------------
+# los renglones del salmo
+# --------------------------------------------------------------------------
+# El Misal de 1977 no imprime el salmo responsorial de corrido sino en
+# **renglones**, repartidos en estrofas, como se canta. Las estrofas ya las
+# tiene la app, que son los tramos de la cita; los renglones no los tenia.
+#
+# Y no hacen falta las letras del OCR para ponerlos, porque el renglon del
+# salmo no es cosa de este libro: es la esticometria del **salterio de la
+# Nova Vulgata**, que es el que este Misal compone (de ahi que los salmos
+# vayan con la Nova y no con la Clementina, ver la regla de arriba). El
+# proyecto lo tiene ya en `data/nova_vulgata_stichos.json`, con sus
+# renglones, de modo que el corte se copia de ahi, letra por letra, y el
+# libro de 1977 dice si son los suyos: eso es lo que coteja `main`.
+def stichos():
+    """El corpus de la Nova Vulgata con sus renglones."""
+    return json.load(io.open(os.path.join(DATA, "nova_vulgata_stichos.json"),
+                             encoding="utf-8"))
+
+
+def cap_corpus(c, segs):
+    """El capitulo con que el corpus guarda esta pieza.
+
+    El leccionario cita los salmos por el griego y la Nova los imprime por el
+    hebreo, asi que el `Ps 121` de la cita es el 122 del corpus; la cita de
+    la app ya lo dice entre corchetes, que para eso se puso. Donde el salmo
+    griego se parte en dos hebreos -`[Ps 9/10]`- no hay un capitulo solo y no
+    se toca nada.
+    """
+    m = re.search(r"\[([^\]]*)\]", c or "")
+    if m:
+        nums = re.findall(r"\d+", m.group(1))
+        return int(nums[0]) if len(nums) == 1 else None
+    return segs[0][0] if segs else None
+
+
+def en_renglones(sti, libro, cap, vers, texto):
+    """El versiculo con los renglones del salterio, o None si no cuadran.
+
+    No se calcula donde cortar: se copia. El texto de la pieza y el del
+    salterio son **el mismo** -los dos salen de la Nova Vulgata, uno en un
+    parrafo y el otro en sus renglones-, de modo que basta contar letras:
+    donde el salterio parte, se parte aqui. Si la cuenta no cuadra no se
+    parte nada, que es lo que pasa cuando el versiculo no es el mismo.
+
+    Del versiculo 1 la fase 15 ya ha quitado el epigrafe (`Canticum
+    ascensionum.`), que en el salterio es el primer renglon; por eso se le
+    quitan renglones por delante hasta que las dos letras coinciden.
+    """
+    s = (sti.get(libro, {}).get(str(cap), {}) or {}).get(str(vers))
+    if not s or "\n" not in s:
+        return None
+    pa = FASE20.plano(texto)
+    trozos = s.split("\n")
+    while trozos and FASE20.plano("".join(trozos)) != pa:
+        trozos.pop(0)
+    if len(trozos) < 2:
+        return None
+    cortes, n = [], 0
+    for t in trozos[:-1]:
+        n += len(FASE20.plano(t))
+        cortes.append(n)
+    lineas, actual, cuenta, i = [], [], 0, 0
+    for w in texto.split():
+        actual.append(w)
+        cuenta += len(FASE20.plano(w))
+        if i < len(cortes) and cuenta >= cortes[i]:
+            if cuenta > cortes[i]:
+                return None        # el corte caeria dentro de una palabra
+            lineas.append(" ".join(actual))
+            actual, i = [], i + 1
+    if actual:
+        lineas.append(" ".join(actual))
+    return "\n".join(lineas) if len(lineas) == len(trozos) else None
+
+
+def parecido(a, b):
+    """Lo que se parecen dos tiradas de letras, de 0 a 1.
+
+    `autojunk` apagado a proposito: pasadas las 200 letras, difflib da por
+    basura las que se repiten mucho -y en latin eso son la e, la i y la t- y
+    entonces dos parrafos iguales salen distintos. Aqui se cotejan parrafos
+    enteros de salmo, que pasan de las 400 letras.
+    """
+    return difflib.SequenceMatcher(None, FASE20.plano(a), FASE20.plano(b),
+                                   autojunk=False).ratio()
+
+
+def pela(t):
+    """El renglon del libro sin el numero de versiculo ni el signo.
+
+    Los dos van dentro del renglon -el numero volado al empezar, el ℟ de la
+    respuesta al acabar la estrofa- y no son texto del salmo: dejarlos
+    cotejando hace que un renglon igual parezca distinto.
+
+    El signo se quita con la regla entera de la fase 20, la de las dos
+    mitades, y no solo por la pinta: `manus ems.` -que es como el OCR deja
+    `manus eius`- tiene toda la pinta de acabar en signo, y lo que acaba es
+    el versiculo.
+    """
+    partes = t.split()
+    if len(partes) > 1 and FASE20.signo_al_final(t):
+        partes.pop()
+    while partes and (not FASE20.plano(partes[0])
+                      or re.search(r"\d", partes[0])):
+        partes.pop(0)
+    return " ".join(partes)
+
+
+def cortes_de(lineas):
+    """Donde corta cada renglon, en letras contadas desde el principio."""
+    out, n = [], 0
+    for x in lineas[:-1]:
+        n += len(x)
+        out.append(n)
+    return out
+
+
+def coteja(lineas, salmo77):
+    """Que dice el libro de 1977 de los renglones que vamos a publicar.
+
+    No decide nada: los renglones que se publican son los del salterio en
+    todo caso, porque son los unicos que estan bien escritos. Lo que aqui se
+    mide es si son los que el libro imprime, y la medida es **el corte**: se
+    pegan los renglones de los dos lados en una tirada de letras, se casan
+    las dos tiradas con lo que se parecen (que no es poco: el OCR cambia
+    letras, pero no las quita a puñados), y se mira si donde el salterio
+    corta corta tambien el libro.
+
+    De esa cuenta salen tres cosas distintas, que conviene no confundir:
+
+    * **cortes que el libro no hace**: ahi los dos reparten de otro modo, y
+      es la unica discrepancia de verdad.
+    * **cortes que hace el libro de mas**: su columna tiene 250 puntos de
+      medida y el renglon que no le cabe lo pasa abajo, de modo que un verso
+      largo le sale en dos. Eso no es otro reparto; en la app, que se lee en
+      un telefono, lo vuelve a partir la pantalla.
+    * **otros versiculos**: un hueco de mas de doce letras seguidas no lo
+      hace el OCR, lo hace el libro al leer medio versiculo donde el
+      leccionario de Mexico lee el versiculo entero (`17-18 a`).
+    """
+    a = [x for x in (FASE20.plano(y) for y in lineas) if x]
+    b = [x for x in (FASE20.plano(pela(r)) for e in salmo77["estrofas"]
+                     for r in e) if x]
+    if not a or not b:
+        return "sin renglones que cotejar", 0, 0, 0
+    sm = difflib.SequenceMatcher(None, "".join(a), "".join(b), autojunk=False)
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag != "equal" and max(i2 - i1, j2 - j1) > 12:
+            return "el libro escoge otros versiculos", 0, 0, 0
+    mapa = {}
+    for i, j, n in sm.get_matching_blocks():
+        for k in range(n + 1):
+            mapa[i + k] = j + k
+    ca, cb = cortes_de(a), set(cortes_de(b))
+    faltan = 0
+    for p in ca:
+        q = mapa.get(p)
+        if q is None or not any(abs(q - x) <= 2 for x in cb):
+            faltan += 1
+    sobran = max(0, len(cb) - (len(ca) - faltan))
+    if faltan:
+        return "el libro corta en otro sitio", len(ca), faltan, sobran
+    return (("los mismos renglones" if not sobran
+             else "los mismos, con alguno partido por la medida"),
+            len(ca), 0, sobran)
+
+
+# --------------------------------------------------------------------------
+# la aclamacion: cual de las dos formas
+# --------------------------------------------------------------------------
+# El Misal de 1977 imprime la aclamacion de dos maneras, y no son dos modos de
+# decir lo mismo: fuera de Cuaresma, el versiculo enmarcado en `Alleluia`; y
+# **en Cuaresma ningun Alleluia**, sino el versiculo solo bajo el rotulo
+# `Versus ante Evangelium`. La cosecha lo confirma -31 versus, todos en
+# formularios de Cuaresma, contra 386 alleluias- y es ademas la regla del
+# rito: el Alleluia calla desde el miercoles de Ceniza hasta la Vigilia.
+#
+# Cual toca lo dice **el tiempo**, no la pericopa, y por eso no basta con lo
+# que traiga enganchado el evangelio: el mismo evangelio se lee en dos dias
+# de distinto tiempo -Mt 6, 1-6. 16-18 es el miercoles de Ceniza en el libro
+# de 1977 y el miercoles de la 11.ª semana del tiempo ordinario en el
+# leccionario de Mexico-, y la aclamacion que lo acompaña alli no es la que
+# toca aqui. Asi que manda la seccion del indice, que es la del proyecto, y
+# el libro queda de testigo donde el indice no decide: los apendices, que no
+# son el formulario de un dia sino el repertorio de versiculos del año, y los
+# leccionarios VI y VIII, que no son de ningun tiempo -y ahi si acierta el
+# libro, que trae el Versus de los escrutinios y de las entregas-.
+CUARESMAL = re.compile(r"cuaresma|escrutinio|jueves santo|viernes santo",
+                       re.I)
+
+# Los tiempos en que el Alleluia es seguro. El santoral entra: el libro
+# imprime `Alleluia` en el propio de los santos aunque la fiesta caiga en
+# Cuaresma, porque el santoral es otra seccion y la rubrica de Cuaresma no se
+# repite alli.
+SIN_CUARESMA = ("TIEMPO DE ADVIENTO", "TIEMPO DE NAVIDAD", "TIEMPO ORDINARIO",
+                "SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO",
+                "PROPIO DE LOS SANTOS", "COMÚN DE LOS SANTOS",
+                "OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS",
+                "FORMULARIOS SUELTOS",
+                "TRIDUO PASCUAL Y TIEMPO DE PASCUA")
+
+
+def tiempos():
+    """{clave del bloque: "cuaresma" | "alleluia" | None}, segun el indice.
+
+    `None` es «el indice no lo dice», y entonces decide el libro. El indice
+    lo acaba de escribir la fase 15, que es quien llama a esta: lo que se lee
+    aqui es el mismo que va a ir en la app.
+    """
+    ruta = os.path.join(DATOS, "indice.json")
+    if not os.path.exists(ruta):
+        return {}
+    ind = json.load(io.open(ruta, encoding="utf-8"))
+    out = {}
+    for sec in ind["secciones"]:
+        for g in sec["g"]:
+            for dia in g["d"]:
+                rotulo = " · ".join([sec["t"], g.get("t") or "",
+                                     dia.get("t") or ""])
+                cual = ("cuaresma" if CUARESMAL.search(rotulo)
+                        else ("alleluia" if sec["t"] in SIN_CUARESMA
+                              else None))
+                for b in dia["b"]:
+                    out[b["k"]] = cual
+    return out
+
+
+def forma_aclamacion(tiempo, acl):
+    """"alleluia", "versus" o None: que aclamacion lleva esta pieza."""
+    if tiempo == "cuaresma":
+        return "versus"
+    if acl:
+        # el libro dice Versus en un tiempo que no lo tiene: la pericopa se
+        # le ha enganchado por el dia de Cuaresma en que el tambien la lee
+        if acl["forma"] == "versus" and tiempo == "alleluia":
+            return "alleluia"
+        return acl["forma"]
+    return "alleluia" if tiempo else None
+
+
+def rotulo_versus(t):
+    """El rotulo de la aclamacion al modo de 1977: en Cuaresma no es Alleluia.
+
+    El rotulo del proyecto trae a veces el numero con que el leccionario
+    ordena las opciones (`ALLELUIA 2`) y la marca de la alternativa
+    (`ALLELUIA · Vel:`): eso es suyo y se queda, que es lo que distingue una
+    opcion de otra. Lo que cambia es la palabra.
+    """
+    if not t or not re.search(r"alleluia", t, flags=re.I):
+        return ROTULO_VERSUS
+    return re.sub(r"ALLELUIA", ROTULO_VERSUS, t, flags=re.I)
 
 
 # --------------------------------------------------------------------------
@@ -231,21 +502,32 @@ def main(argv=None):
     if set(bc) != set(bn):
         inf.append("   AVISO: los dos leccionarios no traen las mismas claves")
 
-    peri = json.load(io.open(os.path.join(DATA, "lect1977_pericopas.json"),
-                             encoding="utf-8"))
+    cos = json.load(io.open(os.path.join(DATA, "lect1977_pericopas.json"),
+                            encoding="utf-8"))
     exacta, floja = {}, {}
-    for p in peri:
+    for p in cos["pericopas"]:
         segs = [tuple(s) for s in p["segs"]]
         exacta[FASE20.clave_de(p["libro"], segs)] = p
         s0 = sorted(segs)[0]
         floja.setdefault((p["libro"], s0[0], s0[1]), p)
+    # el salmo se engancha por su propia cita, que es la misma en los dos
+    # libros -los dos citan por el griego-, y no por el dia: los renglones
+    # son de la seleccion de versiculos, no de la fiesta
+    s77 = {FASE20.clave_de(p["libro"], [tuple(s) for s in p["segs"]]): p
+           for p in cos["salmos"]}
+    sti = stichos()
+    tiempo_de = tiempos()
+    if not tiempo_de:
+        inf.append("   AVISO: sin app/datos/indice.json, la aclamacion se"
+                   " queda con lo que diga el libro y nada mas")
 
     s2l = siglas_a_libro()
     salida = collections.OrderedDict()
     cuenta = collections.Counter()
+    veredicto = collections.Counter()
     sin_libro = collections.Counter()
     for clave in bn:
-        piezas = []
+        piezas, p77s = [], []
         for i, pz_n in enumerate(bn[clave]):
             lista_c = bc.get(clave, [])
             pz_c = lista_c[i] if i < len(lista_c) else pz_n
@@ -285,18 +567,104 @@ def main(argv=None):
                         pz["i"] = inc
                         cuenta["con incipit"] += 1
                     cuenta["tramos de incipit que el texto ya decia"] += fuera
+            # --- el salmo, en renglones
+            if pz.get("k") == "salmo" and libro:
+                pz["g"] = [[list(v) for v in tr] for tr in pz["g"]]
+                cap = cap_corpus(pz.get("c"), segs)
+                puestos = 0
+                for tr in (pz["g"] if cap else []):
+                    for v in tr:
+                        r = en_renglones(sti, libro, cap, v[0], v[1])
+                        if r:
+                            v[1] = r
+                            puestos += 1
+                if puestos:
+                    cuenta["versiculos del salmo en renglones"] += puestos
+                    cuenta["salmos en renglones"] += 1
+                    s = s77.get(FASE20.clave_de(libro, segs))
+                    if s:
+                        v77, todos, faltan, sobran = coteja(
+                            [x for tr in pz["g"] for v in tr
+                             for x in v[1].split("\n")], s)
+                        veredicto[v77] += 1
+                        cuenta["cortes del salterio cotejados"] += todos
+                        cuenta["cortes que el libro no hace"] += faltan
+                        cuenta["cortes que el libro hace de mas"] += sobran
+                    else:
+                        veredicto["no esta en el libro de 1977"] += 1
+                elif cap:
+                    cuenta["salmos que se quedan de corrido"] += 1
             piezas.append(pz)
+            p77s.append(p77)
+        # --- la aclamacion antes del evangelio
+        #
+        # La aclamacion no se engancha por su cita -muchas no la llevan, y el
+        # Alleluia de este libro y el del leccionario de Mexico no siempre
+        # cantan el mismo versiculo- sino **por el evangelio que viene
+        # detras**, que es lo que la identifica: la forma de la aclamacion es
+        # del dia, y el dia lo dice el evangelio. Por eso se recorre otra vez
+        # el formulario, ya armado: hace falta mirar hacia delante.
+        for i, pz in enumerate(piezas):
+            if pz.get("k") != "aleluya":
+                continue
+            acl = None
+            for j in range(i + 1, len(piezas)):
+                if piezas[j].get("k") == "lectura":
+                    acl = (p77s[j] or {}).get("acl")
+                    break
+            forma = forma_aclamacion(tiempo_de.get(clave), acl)
+            if acl:
+                cuenta["aclamaciones que el libro dice"] += 1
+                if acl["forma"] == forma:
+                    cuenta["y el tiempo dice lo mismo"] += 1
+            if forma == "alleluia":
+                pz["r"] = ACLAMACION
+                cuenta["aclamaciones con el Alleluia"] += 1
+            elif forma == "versus":
+                pz["t"] = rotulo_versus(pz.get("t"))
+                pz.pop("r", None)
+                cuenta["aclamaciones con el Versus ante Evangelium"] += 1
+            else:
+                cuenta["aclamaciones sin forma (nadie la dice)"] += 1
         salida[clave] = piezas
 
     total = sum(len(v) for v in salida.values())
     inf.append("   %d bloques, %d piezas" % (len(salida), total))
     for k in ("clementina", "nova", "enganchada con el libro de 1977",
               "con incipit", "tramos de incipit que el texto ya decia",
-              "formula al modo de 1977"):
+              "formula al modo de 1977", "salmos en renglones",
+              "versiculos del salmo en renglones",
+              "salmos que se quedan de corrido",
+              "aclamaciones con el Alleluia",
+              "aclamaciones con el Versus ante Evangelium",
+              "aclamaciones sin forma (nadie la dice)",
+              "aclamaciones que el libro dice",
+              "y el tiempo dice lo mismo"):
         inf.append("      %5d  %s" % (cuenta[k], k))
     inf.append("      %5d  piezas enganchadas, de %d  (%.1f %%)"
                % (cuenta["enganchada con el libro de 1977"], total,
                   cuenta["enganchada con el libro de 1977"] * 100.0 / total))
+    inf.append("")
+    inf.append("   los renglones del salmo, cotejados con el libro de 1977:")
+    for k, n in veredicto.most_common():
+        inf.append("      %5d  %s" % (n, k))
+    enel = sum(n for k, n in veredicto.items()
+               if k != "no esta en el libro de 1977")
+    igual = (veredicto["los mismos renglones"]
+             + veredicto["los mismos, con alguno partido por la medida"])
+    if enel:
+        inf.append("      el reparto del libro en el %.1f %% de los salmos"
+                   " que el libro trae (%d de %d)"
+                   % (igual * 100.0 / enel, igual, enel))
+    tot, nhace = (cuenta["cortes del salterio cotejados"],
+                  cuenta["cortes que el libro no hace"])
+    inf.append("      %5d  cortes del salterio cotejados, y el libro hace"
+               " %d: el %.1f %%"
+               % (tot, tot - nhace, (tot - nhace) * 100.0 / max(1, tot)))
+    inf.append("      %5d  cortes que el libro no hace"
+               % cuenta["cortes que el libro no hace"])
+    inf.append("      %5d  cortes que el libro hace de mas, por la medida"
+               % cuenta["cortes que el libro hace de mas"])
     if sin_libro:
         inf.append("   siglas sin libro (se quedan con la Nova): %s"
                    % ", ".join("%s x%d" % kv for kv in sin_libro.most_common(8)))

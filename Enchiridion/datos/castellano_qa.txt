@@ -1,0 +1,480 @@
+piezas con latín ..........  467
+piezas con castellano .....   64
+  a mano, paso 3                        1
+  a mano, paso 4                        6
+  de la Liturgia de las Horas           9
+  del Compendio del Catecismo          15
+  del Misal                             1
+  del Ordinario                         6
+  del salterio                         26
+
+con castellano
+  Angeli/SancteMichael.html#0                    paso 4  Biblioteca de devociones de EWTN en español
+  AnteMissam/OraAnte.html#0                      paso 2  Misal Romano, traducción litúrgica aprobada pa
+  BVM/AlmaRed.html#0                             paso 2  Liturgia de las Horas, edición en uso en Méxic
+  BVM/AveRegina.html#0                           paso 2  Liturgia de las Horas, edición en uso en Méxic
+  BVM/Laurentanae.html#0                         paso 3  El Santo Rosario — Letanías de la Virgen, en e
+  BVM/Memorare.html#0                            paso 3  Compendio del Catecismo de la Iglesia Católica
+  BVM/ReginaCaeli.html#0                         paso 2  Liturgia de las Horas, edición en uso en Méxic
+  BVM/SalveRegina.html#0                         paso 2  Liturgia de las Horas, edición en uso en Méxic
+  BVM/SubTuum.html#0                             paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Basics/AngeleDei.html#0                        paso 3  Compendio del Catecismo de la Iglesia Católica
+  Basics/Apostolorum.html#0                      paso 2  Misal Romano, traducción litúrgica aprobada pa
+  Basics/AveMaria.html#0                         paso 3  Compendio del Catecismo de la Iglesia Católica
+  Basics/GloriaPatri.html#0                      paso 3  Compendio del Catecismo de la Iglesia Católica
+  Basics/OraDom.html#0                           paso 3  Compendio del Catecismo de la Iglesia Católica
+  Basics/SignumC.html#0                          paso 2  Misal Romano, traducción litúrgica aprobada pa
+  Basics/Virtutes.html#1                         paso 3  Compendio del Catecismo de la Iglesia Católica
+  Basics/Virtutes.html#3                         paso 3  Compendio del Catecismo de la Iglesia Católica
+  Basics/Virtutes.html#5                         paso 3  Compendio del Catecismo de la Iglesia Católica
+  Cantici/Benedictus.html#0                      paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Cantici/Magnificat.html#0                      paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Cantici/Nunc.html#0                            paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Confessio/ActusCont.html#0                     paso 3  Compendio del Catecismo de la Iglesia Católica
+  Cotidiana/Angelus.html#0                       paso 3  Compendio del Catecismo de la Iglesia Católica
+  Cotidiana/Visita.html#0                        paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Euch/Tantum.html#0                             paso 4  Biblioteca de devociones de EWTN en español
+  Filius/LitSCI.html#0                           paso 4  Biblioteca de devociones de EWTN en español
+  Filius/SanctiNominis.html#0                    paso 2  Misal Romano, traducción litúrgica aprobada pa
+  Hymni/CorpusChristi/AdoroTe.html#0             paso 4  Biblioteca de devociones de EWTN en español
+  Hymni/Pentecoste/VSS-2.html#0                  paso 3  Compendio del Catecismo de la Iglesia Católica
+  Hymni/Pentecoste/VeniCreator.html#0            paso 3  Compendio del Catecismo de la Iglesia Católica
+  Ioseph/AdTe.html#0                             paso 4  Biblioteca de devociones de EWTN en español
+  PostMissam/AnimaChristi.html#0                 paso 3  Compendio del Catecismo de la Iglesia Católica
+  PostMissam/Thomae.html#0                       paso 4  Biblioteca de devociones de EWTN en español
+  Psalmi/NovaVulgata/PsalmCI.html#0              paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmCL.html#0              paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmCXLII.html#0           paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmCXV.html#0             paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmCXXIX.html#0           paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmI.html#0               paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmL.html#0               paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmLXXXIII.html#0         paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmLXXXIV.html#0          paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmLXXXV.html#0           paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmVI.html#0              paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmXXXI.html#0            paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/NovaVulgata/PsalmXXXVII.html#0          paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmCI.html#0          paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmCL.html#0          paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmCXLII.html#0       paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmCXV.html#0         paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmCXXIX.html#0       paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmI.html#0           paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmL.html#0           paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmLXXXIII.html#0     paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmLXXXIV.html#0      paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmLXXXV.html#0       paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmVI.html#0          paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmXXXI.html#0        paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Psalmi/SixtoClementine/PsalmXXXVII.html#0      paso 2  Liturgia de las Horas, edición en uso en Méxic
+  Symbola/Nicaenum.html#0                        paso 2  Misal Romano, traducción litúrgica aprobada pa
+  Trinitas/Gloria.html#0                         paso 2  Misal Romano, traducción litúrgica aprobada pa
+  Trinitas/Sanctus.html#0                        paso 2  Misal Romano, traducción litúrgica aprobada pa
+  Trinitas/TeDeum.html#0                         paso 3  Compendio del Catecismo de la Iglesia Católica
+  Varia/Requiem.html#0                           paso 3  Compendio del Catecismo de la Iglesia Católica
+
+pendientes de castellano (403)
+  Angeli/AliaOratioDeAngeleProprio.html#0        Ália Orátio de Ángelo Próprio
+  Angeli/AngeleQuiMeusEsCustos.html#0            Ángele, qui meus es custos pietáte supér
+  Angeli/ChristeSDA.html#0                       Christe, sanctórum decus Angelórum
+  Angeli/CommAngeli.html#0                       Commemorátio Angelórum
+  Angeli/CommGabriel.html#0                      Commemorátio Sancti Gabriélis Archángeli
+  Angeli/CommMichael.html#0                      Commemorátio Sancti Michaélis Archángeli
+  Angeli/CommRaphael.html#0                      Commemorátio Sancti Raphaélis Archángeli
+  Angeli/CredoAngel.html#0                       Orátio ad ángelum custódem
+  Angeli/CustodesHominum.html#0                  Custódes hóminum psállimus Ángelos
+  Angeli/ExaudiNos.html#0                        Exáudi nos
+  Angeli/LitAngCust.html#0                       Litaníæ de sancto Ángelo Custóde
+  Angeli/LitAngelorum.html#0                     Litaníæ de Sanctis Ángelis ex Sacra Scri
+  Angeli/LitSMichael.html#0                      Litaníæ Sancti Michaélis
+  Angeli/LitSMichaelII.html#0                    Litaníæ De Sancto Michǽle Archángelo
+  Angeli/LitSanctorumAngelorum.html#0            Litaníæ Sanctórum Angelórum
+  Angeli/OASMichael.html#0                       Orátio ad S. Michǽlem Archángelum
+  Angeli/OAngeliceSpiritus.html#0                O Angélice Spíritus
+  Angeli/OCaelestis.html#0                       O cæléstis médice
+  Angeli/OFortitudo.html#0                       O fortitúdo Dei
+  Angeli/OPAngelorum.html#0                      Offícium Parvum Sanctórum Angelórum
+  Angeli/OPSAngeli.html#0                        Parvum Offícium Sancti Ángeli Custódis
+  Angeli/OPrinceps.html#0                        O Princeps cæléstis milítiæ
+  Angeli/ObsecroTeAngeliceSpiritus.html#0        Óbsecro te, angélice spíritus
+  Angeli/OratioAdSAC.html#0                      Orátio ad S. Ángelum Custódem
+  Angeli/OratioDeAngeloProprio.html#0            Orátio de Ángelo Próprio
+  Angeli/OrbisPatrator.html#0                    Orbis patrátor óptime
+  Angeli/Princeps.html#0                         Princeps gloriosíssime
+  Angeli/SancteRaphael.html#0                    Ad Sanctum Raphǽlem Archángelum
+  Angeli/StMLeoXIII.html#0                       Ália Orátio ad Sanctum Míchaël
+  Angeli/TeSplendor.html#0                       Te splendor et virtus Patris
+  Angeli/TibiChriste.html#0                      Tibi Christe splendor Patris
+  AnteMissam/Acts.html#0                         Acts of Spirítual Commúnion
+  AnteMissam/Acts.html#1                         Acts of Spirítual Commúnion
+  AnteMissam/AdBVM.html#0                        Orátio ad Beátam Maríam Vírginem Ante Mi
+  AnteMissam/AdSanctum.html#0                    Orátio ad Sanctum in cujus Honórem Missa
+  AnteMissam/AdStIoseph.html#0                   Preces Ad Sanctum Joseph Ante Missam
+  AnteMissam/Ambrose.html#0                      Orátio Sancti Ambrósii Ante Missam
+  AnteMissam/Aquinas.html#0                      Orátio Sancti Thomæ Aquinátis Ante Missa
+  AnteMissam/Euch.html#0                         Orátio ante perceptiónem Eucharístiæ
+  AnteMissam/Formula.html#0                      Fórmula Intensiónis Ante Missam
+  AnteMissam/OmnAngSanc.html#0                   Orátio Ad Omnes Ángelos et Sanctos Ante 
+  AnteMissam/OratioAnteMissam.html#0             Orátio Ante Missam
+  AnteMissam/OrationesPrivatae.html#0            Oratiónes Ante et Post Communiónem
+  AnteMissam/OrationesSAmb.html#0                Oratiónes Sancti Ambrósii Ante Missam sí
+  AnteMissam/PaterCaelestis.html#0               Pater Cæléstis
+  AnteMissam/Perceptio.html#0                    Percéptio Córporis tui
+  AnteMissam/Quinque.html#0                      Quinque Puncta
+  AnteMissam/SanctiVenite.html#0                 Sancti, veníte
+  BVM/AdSancPedes.html#0                         Ad Sanctitátis Tuæ Pedes
+  BVM/Adiuvet.html#0                             Ádjuvet nos
+  BVM/AngelusAdVirg.html#0                       Ángelus ad Vírginem
+  BVM/AveAugustissima.html#0                     Ave, augustíssima Regína pacis
+  BVM/AveMarisStella.html#0                      Ave Maris Stella
+  BVM/CaelestisAulae.html#0                      Cæléstis aulæ Núntius
+  BVM/CommemBVM.html#0                           Commemorátio Beátæ Vírginis Maríæ
+  BVM/DaNobis.html#0                             Da nobis fámulis tuis
+  BVM/DeusQuiPer.html#0                          Deus, qui per immaculátam conceptiónem
+  BVM/Dolorum.html#0                             Litaníæ Dóminæ nostræ Dolórum
+  BVM/FlosCarmeli.html#0                         Flos Carméli
+  BVM/HortulusRosarium.html#0                    Rosárium ex Horis ad usum Sarum
+  BVM/IamMorte.html#0                            Jam morte, victor, óbruta
+  BVM/Immaculata.html#0                          Immaculáta Mater Dei
+  BVM/InMonteOlivis.html#0                       In monte olívis cónsito
+  BVM/Inviolata.html#0                           Invioláta
+  BVM/LitConImmaculatae.html#0                   Litaníæ Conceptiónis Immaculátæ B. V. Ma
+  BVM/MariaGratia.html#0                         María, Mater Grátiæ
+  BVM/MemODNS.html#0                             Memoráre, o Dómina Nostra a Sacro Corde
+  BVM/MementoSA.html#0                           Meménto, salútis Auctor
+  BVM/Memorare.html#1                            Memoráre, O piíssima Virgo María
+  BVM/Novena.html#0                              Novéna ad Beátam Maríam Vírginem
+  BVM/OBeataVM.html#0                            O Beáta Virgo María
+  BVM/OBeatissima.html#0                         O Beatíssima
+  BVM/ODomMeaMater.html#0                        O Dómina Mea
+  BVM/ODominaMea.html#0                          O Dómina mea, Sancta María
+  BVM/OExcellentissima.html#0                    O Excellentíssima
+  BVM/OGloriosa.html#0                           O Gloriósa Dómina
+  BVM/OIntemerata.html#0                         O Intemeráta
+  BVM/OPConImm.html#0                            Offícium parvum Conceptiónis Immaculátæ
+  BVM/OPSDMariae.html#0                          Offícium parvum de septem Dolóribus B. V
+  BVM/OPura.html#0                               O Pura et Immaculáta
+  BVM/OVirgoEtMater.html#0                       O Virgo et Mater Sanctíssima
+  BVM/ObsecroTe.html#0                           Óbsecro te
+  BVM/OraSSophronii.html#0                       Orátio Sancti Sophrónii ad Benedíctam
+  BVM/OratioSBern.html#0                         Orátio Sancti Bernárdi ad Deíparam Vírgi
+  BVM/QuemTerra.html#0                           Quem terra, pontus, ǽthera
+  BVM/Rosarium.html#0                            Rosárium
+  BVM/SMDolorosa.html#0                          Stabat Mater dolorósa
+  BVM/SMSpeciosa.html#0                          Stabat Mater speciósa
+  BVM/SMSuccurre.html#0                          Sancta María, Succúrre Míseris
+  BVM/SalveANobis.html#0                         Salve a nobis, Deípara María
+  BVM/SanctissimaVirgo.html#0                    Sanctíssima Virgo de Cenáculo
+  BVM/TeGestientem.html#0                        Te gestiéntem gáudiis
+  BVM/TotaPulchra.html#0                         Tota pulchra es, María
+  Basics/Confiteor.html#0                        Confíteor
+  Basics/Mensae.html#0                           Benedíctio Ante Mensam
+  Basics/Mensae.html#1                           Benedíctio Post Mensam
+  Basics/VSS.html#0                              Veni, Sancte Spíritus
+  Basics/Virtutes.html#0                         Actus Fídei
+  Basics/Virtutes.html#2                         Actus Spei
+  Basics/Virtutes.html#4                         Actus Caritátis
+  Confessio/Attende.html#0                       Atténde Dómine
+  Confessio/LiberaMe.html#0                      Líbera me
+  Confessio/Manasse.html#0                       Prex Manásse
+  Confessio/OACS.html#0                          Orátio Ante Confessiónem Sacramentálem
+  Confessio/OPACS.html#0                         Orátio Præparatória ad Confessiónem Sacr
+  Confessio/PsalterJerome.html#0                 Psaltérium Sancti Hierónymi
+  Confessio/Septem.html#0                        Septem Psalmi Pænitentiáles
+  Confessio/SitTibi.html#0                       Orátio Post Confessiónem
+  Cotidiana/ActionesNostras.html#0               Actiónes Nostras
+  Cotidiana/DDO.html#0                           Dómine Deus omnípotens
+  Cotidiana/DeusO.html#0                         Deus omnípotens
+  Cotidiana/Dirigere.html#0                      Dirígere et sanctificáre
+  Cotidiana/IntoThy.html#0                       Into Thy hands
+  Cotidiana/JesusCMG.html#0                      Jesus Christ, My God
+  Euch/AveVerum.html#0                           Ave Verum Corpus natum
+  Euch/BonePastor.html#0                         Bone pastor, panis vere
+  Euch/Caietani.html#0                           Orátio Sancti Cajetáni
+  Euch/Laudes.html#0                             Laudes Divínæ
+  Euch/LitDeSS.html#0                            Litaníæ de Sanctíssimo Sacraménto
+  Euch/OPSSSac.html#0                            Parvum Offícium Sanctíssimi Sacraménti
+  Euch/OSalutaris.html#0                         O Salutáris Hóstia
+  Euch/SacrumConv.html#0                         O Sacrum Convívium
+  Euch/Salutatio.html#0                          Salutátio ad Dóminum Jesum Christum
+  Euch/SalveSV.html#0                            Salve, salutáris Víctima
+  Euch/TeIesum.html#0                            Te, Jesu, verum Deum et Hóminem
+  Filius/ActusRep.html#0                         Actus reparatiónis
+  Filius/Adesto.html#0                           Adésto nobis
+  Filius/AdiutorLaborantium.html#0               Adjútor Laborántium
+  Filius/Adoramus.html#0                         Adorámus te
+  Filius/AliaVC.html#0                           Fórmula peragéndi viam crucis
+  Filius/Aufer.html#0                            Aufer a me cor lapídeum
+  Filius/AveCrux.html#0                          Ave, crux sancta, virtus nostra
+  Filius/CommCrucis.html#0                       Commemorátio Crucis
+  Filius/CommPSI.html#0                          Commemorátio Pretiosíssimi Sánguinis
+  Filius/CommSCI.html#0                          Commemorátio Sacratíssimi Cordis Jesu
+  Filius/CommSNI.html#0                          Commemorátio Sanctíssimi Nóminis Jesu
+  Filius/DIC.html#0                              Dómine Jesu Christe
+  Filius/DeusQPN.html#0                          Deus, qui pro nobis
+  Filius/DeusQUF.html#0                          Deus, qui unigéniti Fílii
+  Filius/DeusQUFTP.html#0                        Deus, qui Unigéniti Fílii tui passióne
+  Filius/DivinaMiser.html#0                      Coróna Divínæ Misericórdiæ
+  Filius/DomineIesu.html#0                       Dómine Jesu
+  Filius/ExercitumVC.html#0                      Exercítium Viæ Crucis de Sancto Alphónso
+  Filius/ExercitumVCSF.html#0                    Exercítium Sanctæ Viæ Crucis
+  Filius/FormulaOblat.html#0                     Fórmula Oblatiónis Cotidiánæ ad SS. Cor 
+  Filius/HoraeCrucis.html#0                      Horæ Sanctæ Crucis
+  Filius/IesuDRedempt.html#0                     Jesu dulcíssime, Redémptor
+  Filius/IesuInfans.html#0                       Jesu Infans Dulcíssime
+  Filius/LitDNIC.html#0                          Litaníæ Jesu Christi Salvatóris Nostri
+  Filius/LitICDM.html#0                          Litaníæ Jesu Christi Divíni Magístri
+  Filius/LitPSDNIC.html#0                        Litaníæ pretiosíssimi Sánguinis Dómini N
+  Filius/LitSNI.html#0                           Litaníæ Sanctíssimi Nóminis Jesu
+  Filius/LitVitaePass.html#0                     Litaníæ vitæ et passiónis Dómini nostri 
+  Filius/NovenaSCI.html#0                        Novéna ad Sacratíssimum Cor Jesu
+  Filius/NoverimMe.html#0                        Dómine Jesu, nóverim me
+  Filius/OBona.html#0                            O Bona Crux
+  Filius/OBoneIesu.html#0                        O bone Jesu
+  Filius/ODivinumCor.html#0                      O divínum Cor Jesu
+  Filius/OIneffabilis.html#0                     O ineffábilis decor Dei excélsi
+  Filius/OPSCI.html#0                            Offícium Parvum Sacratíssimi Cordis Jesu
+  Filius/OPaterMiser.html#0                      O Pater misericordiárum
+  Filius/OSacratissimum.html#0                   O Sacratíssimum Cor Jesu
+  Filius/Oratio.html#0                           Orátio ante crucifíxum
+  Filius/OratioAdSCI.html#0                      Orátio ad Sacratíssimum Cor Jesu
+  Filius/OratioSGenesii.html#0                   Orátio Sancti Genésii
+  Filius/PerSignum.html#0                        Per signum Crucis
+  Filius/PrecesStationum.html#0                  Preces Statiónum
+  Filius/PsalterIesu.html#0                      Psalter of Jesus
+  Filius/SalvaMe.html#0                          Salva me, sancta crux
+  Filius/SeptemSG.html#0                         Septem Precatiónes Sancti Gregórii de Pa
+  Filius/SeptemSGAlia.html#0                     S Gregórii oratiónes de Passióne Dómini.
+  Filius/StBrigid.html#0                         Práyers of St. Bridget
+  Filius/TibiOfferimus.html#0                    Tibi offérimus
+  Filius/TuEsDeus.html#0                         Tu es, Deus, ómnia nostra
+  Hymni/Adventus/Conditor.html#0                 Cónditor alme síderum
+  Hymni/Adventus/CreatorAlme.html#0              Creátor alme síderum
+  Hymni/Adventus/MagnisProphetae.html#0          Magnis prophétæ vócibus
+  Hymni/Adventus/VeniEmm.html#0                  Veni, Veni Emmánuel
+  Hymni/Adventus/VeniRedemptorG.html#0           Veni, redémptor géntium
+  Hymni/Adventus/VerbumProdiens.html#0           Verbum supérnum pródiens
+  Hymni/Adventus/VerbumSalutis.html#0            Verbum salútis ómnium
+  Hymni/Adventus/VoxClara.html#0                 Vox clara ecce íntonat
+  Hymni/Alii/AltusProsator.html#0                Altus Prosátor
+  Hymni/CorpusChristi/LaudaSion.html#0           Lauda Sion
+  Hymni/CorpusChristi/SacrisSol.html#0           Sacris Solémniis
+  Hymni/CorpusChristi/VerbumSup.html#0           Verbum Supérnum
+  Hymni/Epiphania/HostisHerodes.html#0           Hostis Heródes ímpie
+  Hymni/Epiphania/IesuRefulsit.html#0            Jesus Refúlsit Ómnium
+  Hymni/Epiphania/OSolaMagnarum.html#0           O sola magnárum úrbium
+  Hymni/Nativitatis/ASolisOrtus.html#0           A solis ortus cárdine
+  Hymni/Nativitatis/Adeste.html#0                Adéste, fidéles
+  Hymni/Nativitatis/Audittyranus.html#0          Audit tyránnus ánxius
+  Hymni/Nativitatis/ChristeRedOmn.html#0         Christe, Redémptor ómnium
+  Hymni/Nativitatis/IesuDecus.html#0             Jesu, decus angélicum
+  Hymni/Nativitatis/IesuDulcis.html#0            Jesu, Dulcis Memória
+  Hymni/Nativitatis/IesuRex.html#0               Jesu Rex admirábilis
+  Hymni/OmnesSancti/ChristeRO.html#0             Christe, Redémptor ómnium
+  Hymni/OmnesSancti/DiesIrae.html#0              Dies Iræ
+  Hymni/OmnesSancti/IesuSalvator.html#0          Jesu, salvátor sǽculi
+  Hymni/OmnesSancti/Placare.html#0               Placáre, Christe, sérvulis
+  Hymni/OmnesSancti/Salutis.html#0               Salútis ætérnæ dator
+  Hymni/Paschale/AdCenamAgni.html#0              Ad cenam Agni provídi
+  Hymni/Paschale/AuroraLucis.html#0              Auróra lucis rútilat
+  Hymni/Paschale/OFilii.html#0                   O fílii et fíliæ
+  Hymni/Paschale/VictimaePaschali.html#0         Víctimæ Pascháli
+  Hymni/Quadragesimae/AudiBC.html#0              Audi, benígne Cónditor
+  Hymni/Quadragesimae/Exmore.html#0              Ex more docti mýstico
+  Hymni/Quadragesimae/GloriaLaus.html#0          Glória, laus et honor
+  Hymni/Quadragesimae/IamChriste.html#0          Jam, Christe, sol justítiæ
+  Hymni/Quadragesimae/PangeF.html#0              Pange Lingua (Fortunátus)
+  Hymni/Quadragesimae/Vexilla.html#0             Vexílla Regis
+  Hymni/TempusPerAnnum/AeternaCaeli.html#0       Ætérna cæli glória
+  Hymni/TempusPerAnnum/AeternaLux.html#0         Ætérna Lux, divínitas
+  Hymni/TempusPerAnnum/AeterneRerum.html#0       Ætérne rerum cónditor
+  Hymni/TempusPerAnnum/AlesDiei.html#0           Ales diéi núntius
+  Hymni/TempusPerAnnum/AuroraIam.html#0          Auróra jam spargit polum
+  Hymni/TempusPerAnnum/CaeliDeus.html#0          Cæli Deus sanctíssime
+  Hymni/TempusPerAnnum/ChristeQui.html#0         Christe, qui, splendor et dies
+  Hymni/TempusPerAnnum/Consors.html#0            Consors patérni lúminis
+  Hymni/TempusPerAnnum/DeusCreator.html#0        Deus creátor ómnium
+  Hymni/TempusPerAnnum/EcceIam.html#0            Ecce jam noctis
+  Hymni/TempusPerAnnum/IamLucisOrto.html#0       Jam Lucis Orto Sídere
+  Hymni/TempusPerAnnum/IamSol.html#0             Jam sol recédit ígneus
+  Hymni/TempusPerAnnum/Immense.html#0            Imménse cæli Cónditor
+  Hymni/TempusPerAnnum/LucisCreator.html#0       Lucis Creátor óptime
+  Hymni/TempusPerAnnum/LuxEcce.html#0            Lux ecce surgit áurea
+  Hymni/TempusPerAnnum/MagnaeDeus.html#0         Magnæ Deus poténtiæ
+  Hymni/TempusPerAnnum/NocteSurgentes.html#0     Nocte surgéntes
+  Hymni/TempusPerAnnum/NoxAtra.html#0            Nox atra rerum cóntegit
+  Hymni/TempusPerAnnum/NoxEtTenebrae.html#0      Nox et ténebræ et núbila
+  Hymni/TempusPerAnnum/NuncSancte.html#0         Nunc, Sancte, nobis Spíritus
+  Hymni/TempusPerAnnum/OLuxBeata.html#0          O lux beáta Trínitas
+  Hymni/TempusPerAnnum/Plasmator.html#0          Plasmátor hóminis, Deus
+  Hymni/TempusPerAnnum/PrimoDierum.html#0        Primo diérum ómnium
+  Hymni/TempusPerAnnum/RectorPotens.html#0       Rector potens, verax Deus
+  Hymni/TempusPerAnnum/RerumCreator.html#0       Rerum Creátor óptime
+  Hymni/TempusPerAnnum/RerumDeus.html#0          Rerum, Deus, tenax vigor
+  Hymni/TempusPerAnnum/Somno.html#0              Somno reféctis ártubus
+  Hymni/TempusPerAnnum/Splendor.html#0           Splendor patérnæ glóriæ
+  Hymni/TempusPerAnnum/SummaeDeus.html#0         Summæ Deus cleméntiæ
+  Hymni/TempusPerAnnum/TeLucis.html#0            Te lucis ante términum
+  Hymni/TempusPerAnnum/Telluris.html#0           Tellúris ingens Cónditor
+  Hymni/TempusPerAnnum/TuTrinitas.html#0         Tu, Trinitátis Únitas
+  Hymni/Triduum/Exsultet.html#0                  Exsúltet
+  Hymni/Triduum/OMemoriale.html#0                O memoriále mortis Dómini
+  Hymni/Triduum/Pange.html#0                     Pange Lingua
+  Hymni/Triduum/UbiCaritas.html#0                Ubi cáritas
+  InTemporibus/Adventus/LitaniaeAdventu.html#0   Litaníæ ad Christum ex Scriptúra Sacra i
+  InTemporibus/Quadragesimae/LitaniaeCruce.html#0 Litaníæ de Sancta Cruce, ex Sanctis Pátr
+  InTemporibus/Quadragesimae/LitaniaeQuad.html#0 Litaníæ in Quadragésima
+  Ioseph/Caelitum.html#0                         Cǽlitum, Joseph, decus
+  Ioseph/Chord.html#0                            The Chord of St. Joseph
+  Ioseph/CommemIos.html#0                        Commemorátio Sancti Joseph
+  Ioseph/IsteQuem.html#0                         Iste, quem læti
+  Ioseph/LitStIoeseph.html#0                     Litaníæ Sancti Joseph
+  Ioseph/Memento.html#0                          Meménto nostri, beáte Joseph
+  Ioseph/MemoraeStJ.html#0                       Memoráre, o puríssime Sponse Vírginis Ma
+  Ioseph/OIoseph.html#0                          O Joseph, Virgo Pater Jesu
+  Ioseph/OPSI.html#0                             Offícium Parvum de Sancto Joseph
+  Ioseph/Patrocinio.html#0                       Patrocínio Joseph Suffúlti
+  Ioseph/QuinqueOra.html#0                       Exercítium Singuláris Devotiónis Erga S.
+  Ioseph/TeIoseph.html#0                         Te Joseph célebrent ágmina cǽlitum
+  Numeri/Apostoli.html#0                         Duódecim Apóstoli
+  Numeri/Beatitudes.html#0                       Octo Beatitúdines
+  Numeri/Duodecim.html#0                         Duódecim Fructus Spíritus Sancti
+  Numeri/Evan.html#0                             Consília Evangélica
+  Numeri/Meditatio.html#0                        Subjects for Daíly Meditátion.
+  Numeri/Nonem.html#0                            Novem viæ cónscius in peccáto álii esse
+  Numeri/Novissimis.html#0                       De Quáttuor Novíssimis Memorándis
+  Numeri/PraeDeca.html#0                         Præcépta Decálogi
+  Numeri/Quattuor.html#0                         Quáttuor Peccáta Quæ ad Cælum Clamant
+  Numeri/SeptemDona.html#0                       Septem Dona Spíritus Sancti
+  Numeri/SeptemOMC.html#0                        Septem Ópera Misericórdiæ Corporália
+  Numeri/SeptemOMS.html#0                        Septem Ópera Misericórdiæ Spirituália
+  Numeri/SeptemPec.html#0                        Septem peccáta capitália et virtútes opp
+  Numeri/SeptemSac.html#0                        Septem Sacraménta
+  Numeri/SexPecInSS.html#0                       Sex Peccáta in Spíritum Sanctum
+  Numeri/SexPrae.html#0                          Sex Præcépta Ecclésiæ
+  Numeri/TresVir.html#0                          Tres Virtútes Theologáles
+  Numeri/Tria.html#0                             Tria Præcípua bonórum óperum génera
+  Numeri/VirCard.html#0                          Quáttuor Virtútes Cardináles
+  Pater/CadDD.html#0                             Convérsi ad Dóminum Deum
+  Pater/DeusMeus.html#0                          Deus meus, credo in te
+  Pater/DeusQuis.html#0                          Deus, qui fídei sacraménta
+  Pater/DomineDeus.html#0                        Dómine Deus Omnípotens Rex Regum
+  Pater/DomineS.html#0                           Dómine sancte, Pater omnípotens
+  Pater/LitaniaePatris.html#0                    Litaníæ ad Deum Patrem
+  Pater/OODomine.html#0                          O Ómnium Dómine
+  Pater/OratioSClementis.html#0                  Orátio Sancti Cleméntis I
+  Pater/Perenne.html#0                           Perénne Lumen in Templo Ætérni
+  PostMissam/Bonaventurae.html#0                 Orátio Sancti Bonaventúræ
+  PostMissam/Chrysostomi.html#0                  Orátio Sancti Joánnis Chrysóstomi
+  PostMissam/DNIC.html#0                         Dómine Jesu Christe
+  PostMissam/Didache.html#0                      E Doctrína Duódecim Apostolórum
+  PostMissam/EnEgo.html#0                        En ego, o bone et dulcíssime Jesu
+  PostMissam/Ligouri.html#0                      ORATIONES S. ALFONSI MARIÆ DE LIGORIO sí
+  PostMissam/OMaria.html#0                       Orátio ad Maríam Vírginem Post Missam
+  PostMissam/Oblatio.html#0                      Oblátio Sui
+  PostMissam/Obsecro.html#0                      Óbsecro te, dulcíssime Dómine Jesu Chris
+  PostMissam/OratioPostMissam.html#0             Orátio Post Missam
+  PostMissam/Placeat.html#0                      Pláceat
+  PostMissam/Sancti.html#0                       Orátio ad Sanctum Post Missam
+  PostMissam/Universalis.html#0                  Orátio Universális
+  PostMissam/VirCustos.html#0                    Orátio ad Sanctum Joseph
+  SanctaFamilia/AliaOratioPM.html#0              Ália Orátio post Missam ad Sanctam Famíl
+  SanctaFamilia/OGente.html#0                    O gente felix hóspita
+  SanctaFamilia/OLux.html#0                      O Lux beáta cǽlitum
+  SanctaFamilia/Oratio.html#0                    Orátio in honórem Sanctæ Famíliæ
+  SanctaFamilia/OratioPM.html#0                  Orátio post Missam ad Sanctam Famíliam
+  SanctaFamilia/Sacra.html#0                     Sacra jam splendent
+  Sancti/LitSanctorum.html#0                     Litaníæ Sanctórum
+  Sancti/SAnna/AdSSIoachimAnna.html#0            Ad SS. Jóachim et Annam
+  Sancti/SAnna/LitaniaDeSAnna.html#0             Litaníæ de S. Anna. Matre B. V. Maríæ
+  Sancti/SAnna/OPSAnna.html#0                    Offícium parvum de S. Anna, Matre B. V. 
+  Sancti/SAnna/PrecesAdAnn.html#0                Preces ad Sanctam Matrem Annam
+  Sancti/SAnna/PrecesAdIoc.html#0                Preces ad Ad S. Jóachim
+  Sancti/SAnna/Salutatio.html#0                  Devóta Salutátio ad eósdem SS. Patrónos
+  Sancti/SAntoniusDePadova/AliaeLitaniae.html#0  Litaníæ de S. António Paduáno
+  Sancti/SAntoniusDePadova/CommSAntonius.html#0  Commemorátio Sancti Antónii
+  Sancti/SAntoniusDePadova/EcceCrucem.html#0     Ecce Crucem Dómini
+  Sancti/SAntoniusDePadova/Litaniae.html#0       Litaníæ de Sancto António
+  Sancti/SAntoniusDePadova/OPSAntoniiPaduae.html#0 Offícium Parvum de S. António Paduáno
+  Sancti/SAntoniusDePadova/SiQuaeris.html#0      Si quæris mirácula
+  Sancti/SAugustinus/Litaniae.html#0             Litaníæ de S. Augustíno
+  Sancti/SBenedictusAb/CommSBenedictus.html#0    Commemorátio Sancti Benedícti
+  Sancti/SBenedictusAb/Gemma.html#0              Gemma Cæléstis
+  Sancti/SBenedictusAb/LitanDouai.html#0         I. LITANIÆ
+  Sancti/SBenedictusAb/LitanDouai.html#1         II. ALIÆ DE EODEM
+  Sancti/SBenedictusAb/LitanDouai.html#2         III. ALIÆ DE EODEM
+  Sancti/SBenedictusAb/LitanDouai.html#3         Orátio Ad S. Patrem Benedíctum
+  Sancti/SBenedictusAb/LitanDouai.html#4         Orátio per mérita S. Benedícti ad Jesum 
+  Sancti/SBenedictusAb/LitanGangelt.html#0       Litaníæ de Sancto Patre Nostro Benedícto
+  Sancti/SBenedictusAb/LitanHaeften.html#0       Septem Litaníæ de Sancto Benedícto
+  Sancti/SBenedictusAb/LitanHaeften.html#1       DOMINICA
+  Sancti/SBenedictusAb/LitanHaeften.html#2       FERIA SECUNDA
+  Sancti/SBenedictusAb/LitanHaeften.html#3       FERIA TERTIA
+  Sancti/SBenedictusAb/LitanHaeften.html#4       FERIA QUARTA
+  Sancti/SBenedictusAb/LitanHaeften.html#5       FERIA QUINTA
+  Sancti/SBenedictusAb/LitanHaeften.html#6       FERIA SEXTA
+  Sancti/SBenedictusAb/LitanHaeften.html#7       SABBATO
+  Sancti/SBenedictusAb/NovenaLit.html#0          Novéna Litaniárum ad Sanctum Benedíctum
+  Sancti/SBenedictusAb/NovenaLit.html#1          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#2          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#3          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#4          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#5          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#6          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#7          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/NovenaLit.html#8          Novéna Litaniárum ad Sanctum Benedíctum,
+  Sancti/SBenedictusAb/OratioSB.html#0           Orátio Sancti Benedícti
+  Sancti/SFranciscusAssisiensis/CommSFranciscus.html#0 Commemorátio Sancti Francísci Assisiénsi
+  Sancti/SFranciscusAssisiensis/Litaniae.html#0  Litaníæ de S. P. N. Francísco
+  Sancti/SFranciscusAssisiensis/ODivi.html#0     O divi amóris víctima
+  Sancti/SFranciscusAssisiensis/PrayerofSF.html#0 Orátio Sancti Francísci
+  Sancti/SPatricius/Lorica.html#0                Sancti Patrícii Hymnus ad Temóriam
+  Sancti/SScholastica/CommSScholastica.html#0    Commemorátio Sanctæ Scholásticæ
+  Sancti/SScholastica/LitaniaeSS.html#0          Litaníæ de Sancta Scholástica
+  Spiritus/ConcedeQ.html#0                       Concéde, quǽsumus
+  Spiritus/HoraeSS.html#0                        Horæ Spíritus Sancti
+  Spiritus/LitDeSanctoSpiritu.html#0             Litaníæ de Sancto Spíritu
+  Spiritus/OCreatorSS.html#0                     O Creátor Sancte Spíritus
+  Spiritus/OSS.html#0                            O Sancte Spíritus
+  Spiritus/VSS-3.html#0                          Veni, Sancte Spíritus
+  Symbola/Quicumque.html#0                       Quicúmque
+  Symbola/Tridentinae.html#0                     Proféssio fídei Tridentína
+  Trinitas/Benedicite.html#0                     Benedícite Dóminum
+  Trinitas/CommemoratioST.html#0                 Commemorátio Sanctæ Trinitátis
+  Trinitas/Gratiarum.html#0                      Gratiárum áctio pro suscépto Baptísmi Sa
+  Trinitas/GratiarumActio.html#0                 Gratiárum áctio ad Trinitátem
+  Trinitas/InTeCredo.html#0                      In te credo
+  Trinitas/LitaniaeDeST.html#0                   Litaníæ De Sanctíssima Trinitáte
+  Trinitas/Omnipotentia.html#0                   Omnipoténtia Patris
+  Trinitas/Pietate.html#0                        Pietáte tua
+  Trinitas/ProMorte.html#0                       Orátio ad ss. Trinitátem pro felíci mort
+  Trinitas/TeDeum.html#1                         Te Deum
+  Trinitas/Trisagion.html#0                      Triságium Angélicum
+  Varia/Adsumus.html#0                           Ádsumus
+  Varia/AveMaterDolorosa.html#0                  Ave Mater Dolorósa
+  Varia/CommendatioAnimae.html#0                 Ordo Commendatiónis Ánimæ
+  Varia/Concede.html#0                           Concéde mihi, miséricors Deus
+  Varia/ConcedeMihi.html#0                       Concéde mihi
+  Varia/CreatorIneff.html#0                      Orátio S. Thomæ Aquinátis ante stúdium
+  Varia/DICRex.html#0                            Dómine Jesu Christe, Rex glóriæ
+  Varia/DIClemenSalvator.html#0                  Dómine Jesu, clementíssime Salvátor
+  Varia/DICqui.html#0                            Dómine Jesu Christe
+  Varia/DaDomine.html#0                          Da, Dómine, propítius pacem
+  Varia/Defuncta.html#0                          Pro defúncta nominátim
+  Varia/Defuncto.html#0                          Pro defúncto nominátim
+  Varia/DeusOmnium.html#0                        Deus ómnium fidélium pastor
+  Varia/DeusQuiAd.html#0                         Deus, qui ad majestátis tuæ glóriam
+  Varia/Deusmp.html#0                            Deus, qui nos patrem et matrem honoráre
+  Varia/DomineIesuChriste.html#0                 Dómine Jesu Christe
+  Varia/FacNosDomine.html#0                      Fac nos, Dómine Jesu
+  Varia/InnocentiiTres.html#0                    Innocéntii Tértii Oratiónes Tres
+  Varia/Itinerarium.html#0                       Itinerárium
+  Varia/OMariaSineLab.html#0                     O María sine labe concépta
+  Varia/OmnipotensSD.html#0                      Omnípotens sempitérne Deus
+  Varia/OratioProPace.html#0                     Orátio pro pace
+  Varia/ProPapa.html#0                           Orátio pro summo Pontífice
+  Varia/PsalmiGrad.html#0                        Psalmi Graduáles
+  Varia/RecordareVirMatDei.html#0                Recordáre, Virgo Mater Dei
+  Varia/SIsidore.html#0                          Orátio ante colligatiónem
+  Varia/XaveriiProConv.html#0                    Orátio S Francísci Xavérii

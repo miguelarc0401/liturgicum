@@ -11,8 +11,9 @@ Cuatro tomos, 7 793 páginas, el leccionario entero en latín dentro del Misal:
 
 Cada tomo lleva, además de su parte del temporal, **el santoral y los comunes
 enteros**, para que sirva solo. Eso significa que lo que no es del tiempo
-aparece hasta cuatro veces, y hay que deduplicarlo: de 4 575 perícopas
-localizadas quedan **1 618 distintas**, más **1 296 salmos responsoriales**.
+aparece hasta cuatro veces, y hay que deduplicarlo: de 4 585 perícopas
+localizadas quedan **1 620 distintas**, y de 1 543 salmos responsoriales,
+**255 citas distintas** (§8).
 
 ---
 
@@ -276,3 +277,110 @@ et dixit ei`— se quedan los dos, porque ninguno de los dos es falso.
 Lo que sigue sin estar: la **respuesta del salmo**, el **título temático** y
 la **selección fina de versículos**, que son las otras tres cosas que sólo da
 este libro (§3). Las tres viven en la capa de texto, y ésa no se publica.
+
+
+## 8. El salmo en renglones, y la aclamación
+
+Hecho el 13 de octubre de 2026. Son las dos piezas del formulario que este
+libro **no** imprime como el proyecto las tenía, y las dos se pueden tomar de
+él sin copiarle una letra, porque lo que se toma no es letra: es formato y es
+decisión.
+
+### 8.1 El salmo: estrofas y renglones
+
+El libro no imprime el salmo de corrido sino en **renglones**, repartidos en
+**estrofas**, como se canta. Las estrofas la app ya las tenía —son los tramos
+de la cita, y en eso los dos libros coinciden—; los renglones no.
+
+Y los renglones no hacen falta sacarlos del OCR, porque no son de este libro:
+son la esticometría del **salterio de la Nova Vulgata**, que es el que este
+Misal compone (de ahí que los salmos vayan con la Nova y no con la
+Clementina, §2). El proyecto la tiene ya en `data/nova_vulgata_stichos.json`,
+escrita y limpia, así que el corte se copia de ahí contando letras: donde el
+salterio parte, se parte. Si la cuenta no cuadra —si el versículo de la app y
+el del salterio no son el mismo— no se parte nada. **1 404 salmos de 1 421
+quedan en renglones, 8 333 versículos.**
+
+**Y el libro dice si son los suyos.** La fase 20 cosecha sus salmos de los
+cuatro tomos: 1 543 salmos, 255 citas distintas después de quitar las copias.
+No hace falta leerle las letras, sólo mirar dónde corta, y para eso se
+reconocen dos cosas que el PDF compone en cuerpo menor y el OCR deja hechas
+puré: el **número de versículo**, volado en el margen, y el **signo ℟** de la
+respuesta, que cierra cada estrofa. Por la letra no se distinguen (`11'` es
+el signo y `11` es el número); por el cuerpo sí, y entre los dos los separa
+el dígito. Lo que se publica no depende de esto: depende de la esticometría.
+Esto es el testigo.
+
+Un salmo se da por bien leído cuando **la cita y las estrofas dicen lo
+mismo**: `Ps 84, 9 ab-10. 11-12. 13-14` son tres estrofas, y si no han salido
+tres es que algo se coló o se quedó fuera. De 1 543, pasan la prueba 123 de
+cada tomo largo; las 838 que no, se caen enteras en vez de pasar con una
+estrofa de más.
+
+El cotejo, pieza por pieza, sobre las 545 piezas de salmo que el libro
+también trae:
+
+| | |
+|---|---|
+| cortes del salterio cotejados | **5 089** |
+| cortes que el libro hace igual | **4 932 — el 96,9 %** |
+| cortes que el libro no hace | 157 |
+| cortes que el libro hace de más, por la medida | 315 |
+
+Los 315 de más no son otro reparto: la columna del libro mide 250 puntos y el
+renglón que no le cabe lo pasa abajo, de modo que un verso largo le sale en
+dos (`et aedificábo in generatiónem et generatiónem sedem tuam ”.`). En un
+teléfono eso lo vuelve a hacer la pantalla, y por eso no se copian. Los 157
+que faltan son los salmos en que el leccionario parte más fino que el
+salterio —`Ps 18, 8`, que el *Liber Psalmorum* da en dos versos largos y el
+leccionario en tres cortos—: 128 piezas de 545.
+
+### 8.2 La aclamación antes del Evangelio
+
+El libro la imprime de dos maneras, y no son dos modos de decir lo mismo:
+
+* fuera de Cuaresma, el versículo **enmarcado en `℟. Allelúia.`**, antes y
+  después;
+* en Cuaresma, **ningún Allelúia**: el versículo solo, bajo el rótulo
+  `Versus ante Evangelium`.
+
+Las dos palabras se escriben en `src/21_lect1977_app.py`, como los íncipits:
+del OCR se toma **cuál** de las dos es, no cómo se escribe.
+
+**Cuál toca lo dice el tiempo, no la perícopa**, y eso costó una vuelta. Lo
+primero fue engancharla al evangelio que viene detrás, que es lo que la
+identifica en la página —se busca hacia arriba desde la fórmula del
+evangelio, y se para en su rótulo; si el rótulo no aparece, no se inventa
+nada, que por encima viene el salmo—. Así salieron 417 evangelios con su
+aclamación, 386 con Allelúia y 31 con el Versus. Pero el mismo evangelio se
+lee en dos días de distinto tiempo: Mt 6, 1-6. 16-18 es el miércoles de
+Ceniza en este libro y el miércoles de la 11.ª semana del tiempo ordinario en
+el leccionario de México, y la Transfiguración se lee el 6 de agosto y el
+segundo domingo de Cuaresma. Enganchada así, la Transfiguración salía sin
+Allelúia.
+
+De modo que la forma la decide la **sección del índice** —que es la del
+proyecto, y sabe de qué tiempo es cada formulario— y el libro se queda de
+testigo. El acuerdo es el que hacía falta para fiarse de la regla:
+
+| | |
+|---|---|
+| aclamaciones en que el libro dice la forma | **919** |
+| y el tiempo dice lo mismo | **913 — el 99,3 %** |
+
+Las seis que discrepan son todas del mismo tipo: una perícopa que el libro
+sólo imprime en Cuaresma y el leccionario de México lee fuera de ella.
+
+Puesto así, la cuenta final son **1 089 aclamaciones con el Allelúia y 67 con
+el Versus ante Evangelium**, de 1 352. El Jueves y el Viernes santo entran en
+el Versus, como en el libro —el Allelúia calla desde el miércoles de Ceniza
+hasta la Vigilia—, y el santoral no: el libro imprime `Alleluia` en el propio
+de los santos aunque la fiesta caiga en Cuaresma, porque es otra sección y
+allí no se repite la rúbrica. Las 196 que se quedan sin forma son los
+apéndices —que no son el formulario de un día sino el repertorio de
+versículos del año— y los leccionarios VI y VIII donde el libro no dice nada:
+antes que ponerles un Allelúia de oficio, no se les pone ninguno.
+
+El **versículo** que se canta sigue siendo el del leccionario de México, que
+es el que tiene al lado su castellano en el bilingüe. Del libro de 1977 es la
+aclamación que lo enmarca, no la elección del verso.

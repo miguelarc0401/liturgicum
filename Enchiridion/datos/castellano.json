@@ -1,0 +1,10433 @@
+{
+ "fuente": "fase 4 — el castellano del devocionario",
+ "piezas": {
+  "Angeli/SancteMichael.html#0": {
+   "fuente": {
+    "autoridad": "EWTN (Eternal Word Television Network)",
+    "aviso": "Es la oración que mandó rezar León XIII después de la misa; el castellano es el tradicional, publicado por una institución católica, no una traducción litúrgica aprobada.",
+    "obra": "Biblioteca de devociones de EWTN en español",
+    "oficial": false,
+    "territorio": null,
+    "url": "https://www.ewtn.com/es/catolicismo/devociones/san-miguel-arcangel-15155"
+   },
+   "incipit_la": "Sancte Míchaël Archángele, defénde nos in prǿlio, contra nequítiam et ",
+   "paso": 4,
+   "t": [
+    [
+     [
+      [
+       0,
+       "San Miguel Arcángel,"
+      ]
+     ],
+     [
+      [
+       0,
+       "defiéndenos en la batalla."
+      ]
+     ],
+     [
+      [
+       0,
+       "Sé nuestro amparo"
+      ]
+     ],
+     [
+      [
+       0,
+       "contra las perversidad y asechanzas"
+      ]
+     ],
+     [
+      [
+       0,
+       "del demonio."
+      ]
+     ],
+     [
+      [
+       0,
+       "Reprímale Dios, pedimos suplicantes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tu príncipe de la milicia celestial"
+      ]
+     ],
+     [
+      [
+       0,
+       "arroja al infierno con el divino poder"
+      ]
+     ],
+     [
+      [
+       0,
+       "a Satanás y a los otros espíritus malignos"
+      ]
+     ],
+     [
+      [
+       0,
+       "que andan dispersos por el mundo"
+      ]
+     ],
+     [
+      [
+       0,
+       "para la perdición de las almas."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Oración a san Miguel Arcángel"
+  },
+  "AnteMissam/OraAnte.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/ordinario.json, rúbrica 131",
+    "latin_del_libro": "Dómine Iesu Christe, Fili Dei vivi, qui ex voluntáte Patris, cooperánte Spíritu Sancto, per mortem tuam mundum vivificás",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "territorio": "MX"
+   },
+   "incipit_la": "Dómine Jesu Christe, Fili Dei vivi, qui ex voluntáte Patris cooperánte",
+   "parecido": 0.992,
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor Jesucristo, Hijo de Dios vivo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que por voluntad del Padre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cooperando el Espíritu Santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "diste con tu muerte la vida al mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "líbrame, por la recepción de tu Cuerpo y de tu Sangre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "de todas mis culpas y de todo mal."
+      ]
+     ],
+     [
+      [
+       0,
+       "Concédeme cumplir siempre tus mandamientos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y jamás permitas que me separe de ti."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "BVM/AlmaRed.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, antifonas_finales/Ordinario/1",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "antífona final de la Santísima Virgen",
+    "territorio": "MX"
+   },
+   "incipit_la": "Alma Redemptóris Mater, quæ pérvia cæli Porta manes, et stella maris, ",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Madre del Redentor, Virgen fecunda,"
+      ]
+     ],
+     [
+      [
+       0,
+       "puerta del cielo siempre abierta,"
+      ]
+     ],
+     [
+      [
+       0,
+       "estrella del mar,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "ven a librar al pueblo que tropieza"
+      ]
+     ],
+     [
+      [
+       0,
+       "y se quiere levantar."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ante la admiración de cielo y tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "engendraste a tu santo Creador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y permaneces siempre virgen."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Recibe el saludo del ángel Gabriel,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y ten piedad de nosotros, pecadores."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "BVM/AveRegina.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, ordinario/Ordinario/completas/antifona_final",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "antífona final de la Santísima Virgen",
+    "territorio": "MX"
+   },
+   "incipit_la": "Ave, Regína cælórum, Ave, Dómina Angelórum: Salve, radix, salve, porta",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Salve, Reina de los cielos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y Señora de los ángeles;"
+      ]
+     ],
+     [
+      [
+       0,
+       "salve raíz, salve puerta,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que dio paso a nuestra luz."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alégrate, virgen gloriosa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "entre todas la más bella;"
+      ]
+     ],
+     [
+      [
+       0,
+       "salve, agraciada doncella,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ruega a Cristo por nosotros."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "BVM/Laurentanae.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "aviso": "La Santa Sede publica estas letanías con las tres invocaciones que añadió el papa Francisco en 2020 —Madre de la misericordia, Madre de la esperanza y Consuelo de los migrantes—, que son las mismas que trae el latín de al lado. El latín añade además las oraciones propias de Adviento, Navidad y Pascua, que esta página no tiene.",
+    "obra": "El Santo Rosario — Letanías de la Virgen, en el sitio de la Santa Sede",
+    "oficial": true,
+    "territorio": "universal",
+    "url": "https://www.vatican.va/special/rosary/documents/litanie-lauretane_sp.html"
+   },
+   "incipit_la": "Kýrie, eléison. R. Christe, eléison. Kýrie, eléison. Christe, audi nos",
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, ten piedad"
+      ]
+     ],
+     [
+      [
+       0,
+       "Cristo, ten piedad"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, ten piedad."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cristo, óyenos."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cristo, escúchanos."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios, Padre celestial,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ten piedad de nosotros."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios, Hijo, Redentor del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios, Espíritu Santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Santísima Trinidad, un solo Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Santa María,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ruega por nosotros."
+      ]
+     ],
+     [
+      [
+       0,
+       "Santa Madre de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Santa Virgen de las Vírgenes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre de Cristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre de la Iglesia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre de la misericordia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre de la divina gracia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre de la esperanza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre purísima,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre castísima,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre siempre virgen,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre inmaculada,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre amable,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre admirable,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre del buen consejo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre del Creador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Madre del Salvador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen prudentísima,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen digna de veneración,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen digna de alabanza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen poderosa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen clemente,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen fiel,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Espejo de justicia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Trono de la sabiduría,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Causa de nuestra alegría,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Vaso espiritual,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Vaso digno de honor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Vaso de insigne devoción,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Rosa mística,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Torre de David,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Torre de marfil,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Casa de oro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Arca de la Alianza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Puerta del cielo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Estrella de la mañana,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Salud de los enfermos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Refugio de los pecadores,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Consuelo de los migrantes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Consoladora de los afligidos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Auxilio de los cristianos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de los Ángeles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de los Patriarcas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de los Profetas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de los Apóstoles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de los Mártires,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de los Confesores,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de las Vírgenes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de todos los Santos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina concebida sin pecado original,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina asunta a los Cielos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina del Santísimo Rosario,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de la familia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Reina de la paz."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cordero de Dios, que quitas el pecado del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "perdónanos, Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cordero de Dios, que quitas el pecado del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "escúchanos, Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cordero de Dios, que quitas el pecado del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ten misericordia de nosotros."
+      ]
+     ],
+     [
+      [
+       0,
+       "Ruega por nosotros, Santa Madre de Dios."
+      ]
+     ],
+     [
+      [
+       0,
+       "Para que seamos dignos de las promesas de Cristo."
+      ]
+     ],
+     [
+      [
+       0,
+       "ORACIÓN."
+      ]
+     ],
+     [
+      [
+       0,
+       "Te rogamos nos concedas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor Dios nuestro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "gozar de continua salud de alma y cuerpo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y por la gloriosa intercesión"
+      ]
+     ],
+     [
+      [
+       0,
+       "de la bienaventurada siempre Virgen María,"
+      ]
+     ],
+     [
+      [
+       0,
+       "vernos libres de las tristezas de la vida presente"
+      ]
+     ],
+     [
+      [
+       0,
+       "y disfrutar de las alegrías eternas."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por Cristo nuestro Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Letanías de la Virgen"
+  },
+  "BVM/Memorare.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Memoráre, o piíssima Virgo María, non esse audítum a sæculo, quemquam ad tua curréntem præsídia, tua implorántem auxilia",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Memoráre, O piíssima Virgo María, non esse audítum a sǽculo, quemquam ",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Acordaos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "oh piadosísima Virgen María,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que jamás se ha oído decir"
+      ]
+     ],
+     [
+      [
+       0,
+       "que ninguno de los que han acudido"
+      ]
+     ],
+     [
+      [
+       0,
+       "a tu protección,"
+      ]
+     ],
+     [
+      [
+       0,
+       "implorando tu asistencia"
+      ]
+     ],
+     [
+      [
+       0,
+       "y reclamando tu socorro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "haya sido abandonado de ti."
+      ]
+     ],
+     [
+      [
+       0,
+       "Animado con esta confianza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a ti también acudo, oh Madre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Virgen de las vírgenes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y aunque gimiendo"
+      ]
+     ],
+     [
+      [
+       0,
+       "bajo el peso de mis pecados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me atrevo a comparecer"
+      ]
+     ],
+     [
+      [
+       0,
+       "ante tu presencia soberana."
+      ]
+     ],
+     [
+      [
+       0,
+       "No deseches mis humildes súplicas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "oh Madre del Verbo divino,"
+      ]
+     ],
+     [
+      [
+       0,
+       "antes bien, escúchalas"
+      ]
+     ],
+     [
+      [
+       0,
+       "y acógelas benignamente. Amén"
+      ]
+     ]
+    ]
+   ],
+   "tes": "Acordaos"
+  },
+  "BVM/ReginaCaeli.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, ordinario/Pascua/completas/antifona_final",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "antífona final de la Santísima Virgen, en Pascua",
+    "territorio": "MX"
+   },
+   "incipit_la": "Regína, cæli, lætáre, allelúja: Quia quem meruísti portáre, allelúja, ",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Reina del cielo, alégrate, aleluya,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque Cristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a quien llevaste en tu seno, aleluya,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ha resucitado, según su palabra, aleluya."
+      ]
+     ],
+     [
+      [
+       0,
+       "Ruega al Señor por nosotros, aleluya."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "BVM/SalveRegina.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, ordinario/Navidad/completas/antifona_final",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "antífona final de la Santísima Virgen",
+    "territorio": "MX"
+   },
+   "incipit_la": "Salve, Regína, mater misericórdiæ, vita, dulcédo, et spes nostra, salv",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dios te salve, Reina y Madre de misericordia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "vida, dulzura y esperanza nuestra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios te salve."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "A ti llamamos los desterrados hijos de Eva,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a ti suspiramos , gimiendo y llorando"
+      ]
+     ],
+     [
+      [
+       0,
+       "en este valle de lágrimas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ea, pues, Señora, abogada nuestra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "vuelve a nosotros tus ojos misericordiosos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y después de este destierro muéstranos a Jesús,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fruto bendito de tu vientre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¡Oh clemente, oh piadosa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "oh dulce Virgen María!"
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "BVM/SubTuum.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, ordinario/Adviento/completas/antifona_final",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "antífona final de la Santísima Virgen",
+    "territorio": "MX"
+   },
+   "incipit_la": "Sub tuum præsídium confúgimus, Sancta Dei Génetrix. Nostras deprecatió",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Bajo tu amparo nos acogemos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "santa Madre de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no desprecies las oraciones"
+      ]
+     ],
+     [
+      [
+       0,
+       "que te dirigimos en nuestras necesidades,"
+      ]
+     ],
+     [
+      [
+       0,
+       "antes bien líbranos de todo peligro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "oh Virgen gloriosa y bendita."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Basics/AngeleDei.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "aviso": "El latín de esta versión añade «hódie, hac nocte» —hoy, esta noche—, que el castellano del Compendio no trae.",
+    "latin_del_libro": "Ángele Dei, qui custos es mei, me, tibi commíssum pietáte supérna, illúmina, custódi, rege et gubérna. Amen.",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Ángele Dei, qui custos es mei, Me tibi commíssum pietáte supérna; (Hód",
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Ángel de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que eres mi custodio,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues la bondad divina"
+      ]
+     ],
+     [
+      [
+       0,
+       "me ha encomendado a ti,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ilumíname, guárdame, defiéndeme"
+      ]
+     ],
+     [
+      [
+       0,
+       "y gobiérname."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Ángel de Dios"
+  },
+  "Basics/Apostolorum.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/ordinario.json, rúbrica 19",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "que_es": "el Credo de los Apóstoles",
+    "territorio": "MX"
+   },
+   "incipit_la": "Credo in Deum Patrem omnipoténtem, Creatórem cæli et terræ. Et in Jesu",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Creo en Dios, Padre todopoderoso,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Creador del cielo y de la tierra."
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en Jesucristo, su único Hijo, nuestro Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que fue concebido por obra y gracia del Espíritu Santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "nació de santa María Virgen,"
+      ]
+     ],
+     [
+      [
+       0,
+       "padeció bajo el poder de Poncio Pilato,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fue crucificado, muerto y sepultado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "descendió a los infiernos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "al tercer día resucitó de entre los muertos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "subió a los cielos y está sentado a la derecha de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Padre todopoderoso."
+      ]
+     ],
+     [
+      [
+       0,
+       "Desde allí ha de venir a juzgar a vivos y muertos."
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en el Espíritu Santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la santa Iglesia católica,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la comunión de los santos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el perdón de los pecados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la resurrección de la carne"
+      ]
+     ],
+     [
+      [
+       0,
+       "y la vida eterna."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Basics/AveMaria.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Ave, María, grátia plena, Dóminus tecum. Benedícta tu in muliéribus, et benedíctus fructus ventris tui, Iesus. Sancta Ma",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Ave María, grátia plena, Dóminus tecum. Benedícta tu in muliéribus, et",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dios te salve, María,"
+      ]
+     ],
+     [
+      [
+       0,
+       "llena eres de gracia;"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor es contigo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Bendita Tú eres"
+      ]
+     ],
+     [
+      [
+       0,
+       "entre todas las mujeres,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y bendito es el fruto de tu vientre, Jesús."
+      ]
+     ],
+     [
+      [
+       0,
+       "Santa María, Madre de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ruega por nosotros, pecadores,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ahora y en la hora de nuestra muerte. Amén"
+      ]
+     ]
+    ]
+   ],
+   "tes": "Ave María"
+  },
+  "Basics/GloriaPatri.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Glória Patri, et Fílio, et Spirítui Sancto. Sicut erat in princípio, et nunc et semper et in saecula saeculórum. Amen",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Glória Patri, et Fílio, et Spirítui Sancto. Sicut erat in princípio, e",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Gloria al Padre"
+      ]
+     ],
+     [
+      [
+       0,
+       "y al Hijo"
+      ]
+     ],
+     [
+      [
+       0,
+       "y al Espíritu Santo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Como era en el principio,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ahora y siempre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por los siglos de los siglos. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Gloria al Padre"
+  },
+  "Basics/OraDom.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Pater noster qui es in caelis: sanctificetur Nomen Tuum; adveniat Regnum Tuum; fiat voluntas Tua, sicut in caelo et in t",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Pater noster, qui es in cælis, sanctificétur nomen tuum. Advéniat regn",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Padre nuestro que estás en el cielo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "santificado sea tu Nombre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "venga a nosotros tu Reino;"
+      ]
+     ],
+     [
+      [
+       0,
+       "hágase tu voluntad"
+      ]
+     ],
+     [
+      [
+       0,
+       "en la tierra como en el cielo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Danos hoy"
+      ]
+     ],
+     [
+      [
+       0,
+       "nuestro pan de cada día;"
+      ]
+     ],
+     [
+      [
+       0,
+       "perdona nuestras ofensas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como también nosotros perdonamos"
+      ]
+     ],
+     [
+      [
+       0,
+       "a los que nos ofenden;"
+      ]
+     ],
+     [
+      [
+       0,
+       "no nos dejes caer en la tentación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y líbranos del mal. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Padre nuestro"
+  },
+  "Basics/SignumC.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/ordinario.json, rúbrica 1 (entera)",
+    "latin_del_libro": "In nómine Patris, et Fílii, et Spíritus Sancti. Amen.",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "territorio": "MX"
+   },
+   "incipit_la": "In nómine Patris, et Fílii, et Spíritus Sancti. Amen.",
+   "parecido": 1.0,
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "En el nombre del Padre, y del Hijo, y del Espíritu Santo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Basics/Virtutes.html#1": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Dómine Deus, firma fide credo et confíteor ómnia et síngula quae sancta Ecclésia Cathólica propónit quia tu, Deus, ea óm",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Dómine Deus, firma fide credo et confíteor ómnia et síngula quæ sancta",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor Dios, creo firmemente"
+      ]
+     ],
+     [
+      [
+       0,
+       "y confieso todas y cada una de las verdades"
+      ]
+     ],
+     [
+      [
+       0,
+       "que la Santa Iglesia Católica propone,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque tú las revelaste,"
+      ]
+     ],
+     [
+      [
+       0,
+       "oh Dios, que eres la eterna Verdad y Sabiduría, que ni se engaña"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni nos puede engañar."
+      ]
+     ],
+     [
+      [
+       0,
+       "Quiero vivir y morir en esta fe."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "(tradición española)"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Creo en Dios Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en Dios Hijo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en Dios Espíritu Santo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en la Santísima Trinidad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en mi Señor Jesucristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios y hombre verdadero."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Acto de Fe"
+  },
+  "Basics/Virtutes.html#3": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Dómine Deus, spero per grátiam tuam remissiónem ómnium peccatórum, et post hanc vitam ætérnam felicitátem me esse consec",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Dómine Deus, spero per grátiam tuam remissiónem ómnium peccatórum, et ",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor Dios mío, espero por tu gracia"
+      ]
+     ],
+     [
+      [
+       0,
+       "la remisión de todos mis pecados;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y después de esta vida,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alcanzar la eterna felicidad,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque tú lo prometiste que eres"
+      ]
+     ],
+     [
+      [
+       0,
+       "infinitamente poderoso,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fiel, benigno y lleno de misericordia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Quiero vivir y morir en esta esperanza. Amén."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "(tradición española)"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Espero en Dios Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Espero en Dios Hijo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Espero en Dios Espíritu Santo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Espero en la Santísima Trinidad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Espero en mi Señor Jesucristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios y hombre verdadero."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Acto de Esperanza"
+  },
+  "Basics/Virtutes.html#5": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Dómine Deus, amo te super ómnia et próximum meum propter te, quia tu es summum, infinítum, et perfectíssimum bonum, omni",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Dómine Deus, amo te super ómnia et próximum meum propter te, quia tu e",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dios mío, te amo sobre todas las cosas"
+      ]
+     ],
+     [
+      [
+       0,
+       "y al prójimo por ti,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque Tú eres el infinito,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sumo y perfecto Bien,"
+      ]
+     ],
+     [
+      [
+       0,
+       "digno de todo amor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Quiero vivir y morir en este amor. Amén"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "(tradición española)"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Amo a Dios Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Amo a Dios Hijo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Amo a Dios Espíritu Santo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Amo a la Santísima Trinidad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Amo a mi Señor Jesucristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios y hombre verdadero."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amo a María santísima, madre de Dios"
+      ]
+     ],
+     [
+      [
+       0,
+       "y madre nuestra y amo a mi prójimo"
+      ]
+     ],
+     [
+      [
+       0,
+       "como a mí mismo."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Acto de caridad"
+  },
+  "Cantici/Benedictus.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, tiempo/Ordinario/7/5/laudes/cantico_evangelico",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "cántico evangélico de Laudes",
+    "territorio": "MX"
+   },
+   "incipit_la": "Benedíctus Dóminus Deus Israël, * quia visitávit, et fecit redemptióne",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Bendito sea el Señor, Dios de Israel,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque ha visitado y redimido a su pueblo."
+      ]
+     ],
+     [
+      [
+       0,
+       "suscitándonos una fuerza de salvación"
+      ]
+     ],
+     [
+      [
+       0,
+       "en la casa de David, su siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "según lo había predicho desde antiguo"
+      ]
+     ],
+     [
+      [
+       0,
+       "por boca de sus santos profetas:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Es la salvación que nos libra de nuestros enemigos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y de la mano de todos los que nos odian;"
+      ]
+     ],
+     [
+      [
+       0,
+       "ha realizado así la misericordia que tuvo con nuestros padres,"
+      ]
+     ],
+     [
+      [
+       0,
+       "recordando su santa alianza"
+      ]
+     ],
+     [
+      [
+       0,
+       "y el juramento que juró a nuestro padre Abraham."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Para concedernos que, libres de temor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "arrancados de la mano de los enemigos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "le sirvamos con santidad y justicia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en su presencia, todos nuestros días."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Y a ti, niño, te llamarán Profeta del Altísimo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque irás delante del Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "a preparar sus caminos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "anunciando a su pueblo la salvación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el perdón de sus pecados."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Por la entrañable misericordia de nuestro Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "nos visitará el sol que nace de lo alto,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para iluminar a los que viven en tiniebla"
+      ]
+     ],
+     [
+      [
+       0,
+       "y en sombra de muerte,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para guiar nuestros pasos"
+      ]
+     ],
+     [
+      [
+       0,
+       "por el camino de la paz."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Cantici/Magnificat.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, tiempo/Ordinario/7/5/visperas/cantico_evangelico",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "cántico evangélico de Vísperas",
+    "territorio": "MX"
+   },
+   "incipit_la": "Magníficat * ánima mea Dóminum, et exultávit spíritus meus * in Deo sa",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Proclama mi alma la grandeza del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se alegra mi espíritu en Dios, mi salvador;"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque ha mirado la humillación de su esclava."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Desde ahora me felicitarán todas las generaciones,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque el Poderoso ha hecho obras grandes por mí:"
+      ]
+     ],
+     [
+      [
+       0,
+       "su nombre es santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y su misericordia llega a sus fieles"
+      ]
+     ],
+     [
+      [
+       0,
+       "de generación en generación."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "El hace proezas con su brazo:"
+      ]
+     ],
+     [
+      [
+       0,
+       "dispersa a los soberbios de corazón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "derriba del trono a los poderosos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y enaltece a los humildes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a los hambrientos los colma de bienes"
+      ]
+     ],
+     [
+      [
+       0,
+       "y a los ricos los despide vacíos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Auxilia a Israel, su siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "acordándose de su misericordia"
+      ]
+     ],
+     [
+      [
+       0,
+       "—como lo había prometido a nuestros padres—"
+      ]
+     ],
+     [
+      [
+       0,
+       "en favor de Abraham y su descendencia por siempre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Cantici/Nunc.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, tiempo/Ordinario/7/5/completas/cantico_evangelico",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "cántico evangélico de Completas",
+    "territorio": "MX"
+   },
+   "incipit_la": "Nunc dimíttis servum tuum, Dómine * Secúndum verbum tuum in pace: Quia",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Ahora, Señor, según tu promesa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "puedes dejar a tu siervo irse en paz,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "porque mis ojos han visto a tu Salvador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a quien has presentado ante todos los pueblos"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "luz para alumbrar a las naciones"
+      ]
+     ],
+     [
+      [
+       0,
+       "y gloria de tu pueblo Israel."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Gloria al Padre, y al Hijo, y al Espíritu Santo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Confessio/ActusCont.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Deus meus, ex toto corde pænitet me ómnium meórum peccatórum, éaque detéstor, quia peccándo, non solum poenas a te iuste",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Deus meus, ex toto corde pǽnitet me ómnium meórum peccatórum, eáque de",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dios mío,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me arrepiento de todo corazón"
+      ]
+     ],
+     [
+      [
+       0,
+       "de todos mis pecados"
+      ]
+     ],
+     [
+      [
+       0,
+       "y los aborrezco,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque al pecar, no sólo merezco"
+      ]
+     ],
+     [
+      [
+       0,
+       "las penas establecidas por ti"
+      ]
+     ],
+     [
+      [
+       0,
+       "justamente,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sino principalmente porque te ofendí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a ti sumo Bien y digno de amor"
+      ]
+     ],
+     [
+      [
+       0,
+       "por encima de todas las cosas."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por eso propongo firmemente,"
+      ]
+     ],
+     [
+      [
+       0,
+       "con ayuda de tu gracia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no pecar más en adelante"
+      ]
+     ],
+     [
+      [
+       0,
+       "y huir de toda ocasión de pecado."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "(tradición española)"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor mío Jesucristo, Dios y hombre verdadero, Creador, Padre y Redentor mío."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por ser tú quien eres, Bondad infinita,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y porque te amo sobre todas las cosas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me pesa de todo corazón haberte ofendido. También me pesa que puedas castigarme"
+      ]
+     ],
+     [
+      [
+       0,
+       "con las penas del infierno."
+      ]
+     ],
+     [
+      [
+       0,
+       "Ayudado de tu divina gracia propongo firmemente nunca más pecar, confesarme y cumplir la penitencia que me fuera impuesta. Amén"
+      ]
+     ]
+    ]
+   ],
+   "tes": "Acto de Contrición"
+  },
+  "Cotidiana/Angelus.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "aviso": "El Compendio abrevia las avemarías («Dios te salve, María…») que el latín de al lado imprime enteras.",
+    "latin_del_libro": "Ángelus Dómini nuntiávit María.  Et concépit de Spíritu Sancto.  Ave, María...  Ecce ancílla Dómini. Fiat mihi secúndum ",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Per annum V. Ángelus Dómini nuntiávit Maríæ; R. Et concépit de Spíritu",
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "El ángel del Señor anunció a María."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Y concibió"
+      ]
+     ],
+     [
+      [
+       0,
+       "por obra y gracia del Espíritu Santo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dios te salve, María..."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "He aquí la esclava del Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Hágase en mí según tu palabra."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dios te salve, María..."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Y el Verbo de Dios se hizo carne."
+      ]
+     ],
+     [
+      [
+       0,
+       "Y habitó entre nosotros."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dios te salve, María..."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ruega por nosotros,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Santa Madre de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que seamos dignos de alcanzar"
+      ]
+     ],
+     [
+      [
+       0,
+       "las promesas de Jesucristo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Oremos"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Infunde, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tu gracia en nuestras almas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que, los que hemos conocido,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por el anuncio del Ángel,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la Encarnación de tu Hijo Jesucristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "lleguemos por los Méritos de su Pasión y su Cruz, a la gloria de la Resurrección."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por Jesucristo Nuestro Señor. Amén."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Gloria al Padre..."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Ángelus"
+  },
+  "Cotidiana/Visita.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, tiempo/Cuaresma/@/jueves santo/completas/oracion",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "la oración de Completas",
+    "territorio": "MX"
+   },
+   "incipit_la": "Vísita, quǽsumus, Dómine, habitatiónem istam, et omnes insídias inimíc",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten en ella y nos guarden en paz y que tu bendición permanezca siempre con nosotros. Por Cristo nuestro Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Euch/Tantum.html#0": {
+   "fuente": {
+    "autoridad": "EWTN (Eternal Word Television Network)",
+    "aviso": "El Tantum ergo son las dos últimas estrofas del Pange lingua, y de ahí salen: la página las imprime dentro del himno.",
+    "obra": "Biblioteca de devociones de EWTN en español",
+    "oficial": false,
+    "territorio": null,
+    "url": "https://www.ewtn.com/es/catolicismo/devociones/himno-pange-lingua-15208"
+   },
+   "incipit_la": "Tantum ergo Sacraméntum Venerémur cérnui: Et antíquum documéntum Novo ",
+   "paso": 4,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Veneremos, pues postrados"
+      ]
+     ],
+     [
+      [
+       0,
+       "Tan augusto sacramento;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Y el oscuro rito antiguo"
+      ]
+     ],
+     [
+      [
+       0,
+       "Ceda a la luz de este nuevo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Supliendo la fe sencilla"
+      ]
+     ],
+     [
+      [
+       0,
+       "Al débil sentido nuestro."
+      ]
+     ],
+     [
+      [
+       0,
+       "Al Padre, al Hijo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Salud, honor y poder,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Bendición y gozo eterno:"
+      ]
+     ],
+     [
+      [
+       0,
+       "Y al que procede de ambos"
+      ]
+     ],
+     [
+      [
+       0,
+       "Demos igual alabanza."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Veneremos, pues, postrados"
+  },
+  "Filius/LitSCI.html#0": {
+   "fuente": {
+    "autoridad": "EWTN (Eternal Word Television Network)",
+    "obra": "Biblioteca de devociones de EWTN en español",
+    "oficial": false,
+    "territorio": null,
+    "url": "https://www.ewtn.com/es/catolicismo/devociones/letanias-del-sagrado-corazon-de-jesus-15239"
+   },
+   "incipit_la": "Kýrie, eléison R. Kýrie, eléison. Christe, eléison R. Christe, eléison",
+   "paso": 4,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, misericordia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Jesucristo, misericordia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, misericordia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Jesucristo, óyenos."
+      ]
+     ],
+     [
+      [
+       0,
+       "Jesucristo, escúchanos."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios Padre celestial,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Ten piedad de nosotros"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios Hijo, Redentor del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios Espíritu Santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Santísima Trinidad un solo Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, Hijo del Eterno Padre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, Formado por el Espíritu Santo en el Seno de María"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, unido sustancialmente al Verbo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, de Majestad infinita"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, santo Templo de Dios"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, Tabernáculo del Altísimo"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, casa de Dios y puerta del Cielo"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, horno de encendido amor"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, receptáculo de la justicia y amor"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, lleno de bondad y amor"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, abismo de todas las virtudes"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, dignísimo de toda alabanza"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, Rey y centro de toda alabanza"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, en quien están todos los tesoros de sabiduría y ciencia"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, en quien habita la plenitud de la Divinidad"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, en quien el Padre se ha complacido"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, de cuya plenitud todos hemos recibido"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús deseo de los collados eternos"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, paciente y de mucha misericordia"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, rico para todos los que lo invocan"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, fuente de vida y santidad"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, propiciación de nuestros pecados"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, saturado de oprobios"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, oprimido por nuestras maldades"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, hecho obediente hasta la muerte"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, traspasado por la lanza"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, fuente de todo consuelo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, vida y resurrección nuestra"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, paz y reconciliación nuestra"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, víctima de los pecadores"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, salvación de los que esperan en Ti"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, esperanza de los que en Ti mueren"
+      ]
+     ],
+     [
+      [
+       0,
+       "Corazón de Jesús, delicia de todos los santos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Cordero de Dios, que quitas los pecados del mundo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Perdónanos, Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cordero de Dios que quitas los pecados del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Escúchanos, Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cordero de Dios que quitas los pecados del mundo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Ten misericordia de nosotros."
+      ]
+     ],
+     [
+      [
+       0,
+       "Jesús Manso y humilde de corazón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Haz nuestro corazón semejante al tuyo"
+      ]
+     ],
+     [
+      [
+       0,
+       "Oración: Omnipotente y sempiterno Dios, mira al Corazón de tu muy amado Hijo y a las alabanzas y satisfacciones que te tributa en nombre de los pecadores; concede benigno el perdón a los que invocamos tu misericordia, en el nombre del mismo Jesucristo, tu Hijo, que contigo vive y reina en unión del Espíritu Santo Dios, por todos los siglos de los siglos. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Letanías del Sagrado Corazón de Jesús"
+  },
+  "Filius/SanctiNominis.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/misa.json y misal_latino.json, tempore/missae-dominicales-et-cotidianae-dominica-xii-per-annum · colecta",
+    "latin_del_libro": "Sancti nóminis tui, Dómine, timórem páriter et amórem fac nos habére perpétuum, quia numquam tua gubernatióne destítuis,",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "territorio": "MX"
+   },
+   "incipit_la": "Sancti nóminis tui, Dómine, timórem páriter et amórem fac nos habére p",
+   "parecido": 0.986,
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, concédenos vivir siempre en el amor y respeto a tu santo nombre, ya que jamás dejas de proteger a quienes estableces en el sólido fundamento de tu amor. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios por los siglos de los siglos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Hymni/CorpusChristi/AdoroTe.html#0": {
+   "fuente": {
+    "autoridad": "EWTN (Eternal Word Television Network)",
+    "aviso": "Es traducción en prosa: el himno de santo Tomás va en verso, y aquí cada estrofa es un párrafo.",
+    "obra": "Biblioteca de devociones de EWTN en español",
+    "oficial": false,
+    "territorio": null,
+    "url": "https://www.ewtn.com/es/catolicismo/devociones/adoro-te-devote-15773"
+   },
+   "incipit_la": "Adóro te devóte, latens Déitas, quæ sub his figúris vere látitas: tibi",
+   "paso": 4,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Te adoro con devoción, Dios escondido, oculto verdaderamente bajo estas"
+      ]
+     ],
+     [
+      [
+       0,
+       "apariencias. A Ti se somete mi corazón por completo, y se rinde totalmente"
+      ]
+     ],
+     [
+      [
+       0,
+       "al contemplarte."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Al juzgar de Ti, se equivocan la vista, el tacto, el gusto; pero basta el oído"
+      ]
+     ],
+     [
+      [
+       0,
+       "para creer con firmeza; creo todo lo que ha dicho el Hijo de Dios: nada es"
+      ]
+     ],
+     [
+      [
+       0,
+       "más verdadero que esta Palabra de verdad."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En la Cruz se escondía sólo la Divinidad, pero aquí se esconde también la"
+      ]
+     ],
+     [
+      [
+       0,
+       "Humanidad; sin embargo, creo y confieso ambas cosas, y pido lo que pidió"
+      ]
+     ],
+     [
+      [
+       0,
+       "aquel ladrón arrepentido."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No veo las llagas como las vió Tomás pero confieso que eres mi Dios: haz que"
+      ]
+     ],
+     [
+      [
+       0,
+       "yo crea más y más en Ti, que en Ti espere y que te ame."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¡Memorial de la muerte del Señor! Pan vivo que das vida al hombre: concede"
+      ]
+     ],
+     [
+      [
+       0,
+       "a mi alma que de Ti viva y que siempre saboree tu dulzura."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor Jesús, Pelícano bueno, límpiame a mí, inmundo, con tu Sangre, de la que"
+      ]
+     ],
+     [
+      [
+       0,
+       "una sola gota puede liberar de todos los crímenes al mundo entero."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Jesús, a quien ahora veo oculto, te ruego, que se cumpla lo que tanto ansío:"
+      ]
+     ],
+     [
+      [
+       0,
+       "que al mirar tu rostro cara a cara, sea yo feliz viendo tu gloria."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Te adoro con devoción"
+  },
+  "Hymni/Pentecoste/VSS-2.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Veni, Sancte Spíritus, et emítte cælitus lucis tuæ rádium. Veni, pater páuperum, veni, dator múnerum, veni, lumen córdiu",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Veni, Sancte Spíritus, et emítte cǽlitus lucis tuæ rádium. Veni, pater",
+   "parecido": 0.991,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Ven, Espíritu divino,"
+      ]
+     ],
+     [
+      [
+       0,
+       "manda tu luz desde el cielo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Padre amoroso del pobre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "don, en tus dones espléndido;"
+      ]
+     ],
+     [
+      [
+       0,
+       "luz que penetra las almas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "fuente del mayor consuelo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ven, dulce huésped del alma,"
+      ]
+     ],
+     [
+      [
+       0,
+       "descanso de nuestro esfuerzo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tregua en el duro trabajo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "brisa en las horas de fuego,"
+      ]
+     ],
+     [
+      [
+       0,
+       "gozo que enjuga las lágrimas"
+      ]
+     ],
+     [
+      [
+       0,
+       "y reconforta en los duelos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Entra hasta el fondo del alma,"
+      ]
+     ],
+     [
+      [
+       0,
+       "divina luz, y enriquécenos."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mira el vacío del hombre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "si tú le faltas por dentro;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mira el poder del pecado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuando no envías tu aliento."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Riega la tierra en sequía,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sana el corazón enfermo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "lava las manchas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "infunde calor de vida en el hielo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "doma el espíritu indómito,"
+      ]
+     ],
+     [
+      [
+       0,
+       "guía al que tuerce el sendero."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Reparte tus siete dones,"
+      ]
+     ],
+     [
+      [
+       0,
+       "según la fe de tus siervos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu bondad y tu gracia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "dale al esfuerzo su mérito;"
+      ]
+     ],
+     [
+      [
+       0,
+       "salva al que busca salvarse"
+      ]
+     ],
+     [
+      [
+       0,
+       "y danos tu gozo eterno. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Ven Santo Espíritu"
+  },
+  "Hymni/Pentecoste/VeniCreator.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Veni, Creátor Spíritus, mentes tuórum vísita, imple supérna grátia, quæ tu creásti péctora.  Qui díceris Paráclitus, alt",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Veni, Creátor Spíritus, mentes tuórum vísita, imple supérna grátia quæ",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Ven, Espíritu Creador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "visita las almas de tus fieles"
+      ]
+     ],
+     [
+      [
+       0,
+       "llena con tu divina gracia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los corazones que creaste."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú, a quien llamamos Paráclito,"
+      ]
+     ],
+     [
+      [
+       0,
+       "don de Dios Altísimo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fuente viva, fuego,"
+      ]
+     ],
+     [
+      [
+       0,
+       "caridad y espiritual unción."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú derramas sobre nosotros los siete dones;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Tú, dedo de la diestra del Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Tú, fiel promesa del Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "que inspiras nuestras palabras."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ilumina nuestros sentidos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "infunde tu amor en nuestros corazones;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y, con tu perpetuo auxilio,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fortalece la debilidad de nuestro cuerpo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Aleja de nosotros al enemigo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "danos pronto la paz,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sé nuestro director y nuestro guía,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que evitemos todo mal."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Por ti conozcamos al Padre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "al Hijo revélanos también;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Creamos en ti, su Espíritu,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por los siglos de los siglos"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Gloria a Dios Padre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y al Hijo que resucitó,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y al Espíritu Consolador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por los siglos de los siglos. Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Veni Creator"
+  },
+  "Ioseph/AdTe.html#0": {
+   "fuente": {
+    "autoridad": "EWTN (Eternal Word Television Network)",
+    "aviso": "La oración que León XIII mandó añadir al rosario de octubre.",
+    "obra": "Biblioteca de devociones de EWTN en español",
+    "oficial": false,
+    "territorio": null,
+    "url": "https://www.ewtn.com/es/catolicismo/devociones/san-jose-oracion-del-papa-leon-xiii-15189"
+   },
+   "incipit_la": "Ad te beáte Joseph, in tribulatióne nostra confúgimus, atque, implorát",
+   "paso": 4,
+   "t": [
+    [
+     [
+      [
+       0,
+       "A vos, bienaventurado San José, acudimos en nuestra tribulación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y después de invocar el auxilio de vuestra Santísima Esposa, solicitamos también confiadamente vuestro patrocinio. Por aquella caridad que con la Inmaculada Virgen María,Madre de Dios, os tuvo unido y, por el paterno amorconque abrazasteis al Niño Jesús, humildemente os suplicamos volváis benigno los ojos a la herencia que con su Sangre adquirió Jesucristo, y con vuestro poder y auxilio socorráis nuestras necesidades."
+      ]
+     ],
+     [
+      [
+       0,
+       "Proteged, oh providentísimo Custodio de la Sagrada Familia la"
+      ]
+     ],
+     [
+      [
+       0,
+       "escogida descendencia de Jesucristo; apartad de nosotros toda mancha de error y corrupción; asistidnos propicio, desde el Cielo, fortísimo libertador nuestro en esta lucha con el poder de las tinieblas y, como en otro tiempo librasteis al Niño Jesús del inminente peligro de su vida, así, ahora, defended la Iglesia Santa de Dios de las asechanzas de sus enemigos y de toda adversidad, y a cada uno de nosotros protegednos con perpetuo patrocinio, para que, a ejemplo vuestro y sostenidos por vuestro auxilio, podamos santamente vivir y piadosamente morir y alcanzaren el Cielo la eterna felicidad."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "A vos, bienaventurado san José"
+  },
+  "PostMissam/AnimaChristi.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Ánima Christi, sanctífica me. Corpus Christi, salva me. Sanguis Christi, inébria me. Aqua láteris Christi, lava me. Páss",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Ánima Christi, sanctífica me. Corpus Christi, salva me. Sanguis Christ",
+   "parecido": 1.0,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Alma de Cristo, santifícame."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cuerpo de Cristo, sálvame."
+      ]
+     ],
+     [
+      [
+       0,
+       "Sangre de Cristo, embriágame."
+      ]
+     ],
+     [
+      [
+       0,
+       "Agua del costado de Cristo, lávame."
+      ]
+     ],
+     [
+      [
+       0,
+       "Pasión de Cristo, confórtame."
+      ]
+     ],
+     [
+      [
+       0,
+       "¡Oh, buen Jesús!, óyeme."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dentro de tus llagas, escóndeme."
+      ]
+     ],
+     [
+      [
+       0,
+       "No permitas que me aparte de Ti."
+      ]
+     ],
+     [
+      [
+       0,
+       "Del maligno enemigo, defiéndeme"
+      ]
+     ],
+     [
+      [
+       0,
+       "En la hora de mi muerte, llámame."
+      ]
+     ],
+     [
+      [
+       0,
+       "Y mándame ir a Ti."
+      ]
+     ],
+     [
+      [
+       0,
+       "Para que con tus santos te alabe."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por los siglos de los siglos. Amén"
+      ]
+     ]
+    ]
+   ],
+   "tes": "Alma de Cristo"
+  },
+  "PostMissam/Thomae.html#0": {
+   "fuente": {
+    "autoridad": "EWTN (Eternal Word Television Network)",
+    "obra": "Biblioteca de devociones de EWTN en español",
+    "oficial": false,
+    "territorio": null,
+    "url": "https://www.ewtn.com/es/catolicismo/devociones/oracion-de-accion-de-gracias-de-sto-tomas-de-aquino-15775"
+   },
+   "incipit_la": "Grátias tibi ago, Dómine, sancte Pater, omnípotens ætérne Deus, qui me",
+   "paso": 4,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Gracias te doy Señor Padre Omnipotente, eterno Dios, que a mí pecador,"
+      ]
+     ],
+     [
+      [
+       0,
+       "indigno siervo tuyo, sin mérito alguno y sólo por tu misericordia te has dignado"
+      ]
+     ],
+     [
+      [
+       0,
+       "alimentarme con el Cuerpo y la Sangre de tu Hijo, nuestro Señor Jesucristo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Te suplico que esta Sagrada Comunión no sea para mi alma ocasión de castigo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sino intercesión saludable de perdón."
+      ]
+     ],
+     [
+      [
+       0,
+       "Que esta Sagrada Comunión sea para mía armadura de fe, escudo de buena"
+      ]
+     ],
+     [
+      [
+       0,
+       "voluntad, muerte de mis vicios, destierro de todos mis carnales apetitos y"
+      ]
+     ],
+     [
+      [
+       0,
+       "aumento de caridad, de paciencia y de todas las virtudes. Sea digna defensa"
+      ]
+     ],
+     [
+      [
+       0,
+       "contra todos los enemigos de mi alma. Que sea perfecto remedio para mí espíritu;"
+      ]
+     ],
+     [
+      [
+       0,
+       "perpetua amistad contigo; verdadero Dios y Señor mío; y sello de mi muerte."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dichoso, ruégote tengas por bien llevar a este pecador a aquel convite inefable"
+      ]
+     ],
+     [
+      [
+       0,
+       "donde Tú, con tu Hijo y el espíritu Santo, eres para todos los santos, Luz"
+      ]
+     ],
+     [
+      [
+       0,
+       "verdadera, satisfacción cumplida, gozo perdurable, dicha consumada y felicidad"
+      ]
+     ],
+     [
+      [
+       0,
+       "perfecta."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por el mismo Cristo nuestro Señor."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Acción de gracias de santo Tomás de Aquino"
+  },
+  "Psalmi/NovaVulgata/PsalmCI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "aviso": "El oficio reza este salmo en 3 partes, y aquí van seguidas.",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/2/oficio; salterio/Ordinario/4/2/oficio; salterio/Ordinario/4/2/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 101 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Éxsulis vota et preces Consolátur nos Deus in omni tribulatióne nostra",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, escucha mi oración,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que mi grito llegue hasta ti;"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me escondas tu rostro"
+      ]
+     ],
+     [
+      [
+       0,
+       "el día de la desgracia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Inclina tu oído hacia mí;"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuando te invoco, escúchame enseguida."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que mis días se desvanecen como humo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mis huesos queman como brasas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi corazón está agostado como hierba,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me olvido de comer mi pan;"
+      ]
+     ],
+     [
+      [
+       0,
+       "con la violencia de mis quejidos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se me pega la piel a los huesos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Estoy como lechuza en la estepa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como búho entre ruinas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "estoy desvelado, gimiendo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como pájaro sin pareja en el tejado."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mis enemigos me insultan sin descanso;"
+      ]
+     ],
+     [
+      [
+       0,
+       "furiosos contra mí, me maldicen."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En vez de pan, como ceniza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mezclo mi bebida con llanto,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu cólera y tu indignación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque me alzaste en vilo y me tiraste;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mis días son una sombra que se alarga,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me voy secando como la hierba."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú, en cambio, permaneces para siempre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tu nombre de generación en generación."
+      ]
+     ],
+     [
+      [
+       0,
+       "Levántate y ten misericordia de Sión,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que ya es hora y tiempo de misericordia."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tus siervos aman sus piedras,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se compadecen de sus ruinas:"
+      ]
+     ],
+     [
+      [
+       0,
+       "los gentiles temerán tu nombre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los reyes del mundo, tu gloria."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Cuando el Señor reconstruya Sión,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y aparezca en su gloria,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y se vuelva a las súplicas de los indefensos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y no desprecie sus peticiones,"
+      ]
+     ],
+     [
+      [
+       0,
+       "quede esto escrito para la generación futura,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y el pueblo que será creado alabará al Señor:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que el Señor ha mirado desde su excelso santuario,"
+      ]
+     ],
+     [
+      [
+       0,
+       "desde el cielo se ha fijado en la tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para escuchar los gemidos de los cautivos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y librar a los condenados a muerte,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "para anunciar en Sión el nombre del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y su alabanza en Jerusalén,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuando se reúnan unánimes los pueblos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y los reyes para dar culto al Señor."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "El agotó mis fuerzas en el camino,"
+      ]
+     ],
+     [
+      [
+       0,
+       "acortó mis días;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "y yo dije: «Dios mío, no me arrebates"
+      ]
+     ],
+     [
+      [
+       0,
+       "en la mitad de mis días.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tus años duran por todas las generaciones:"
+      ]
+     ],
+     [
+      [
+       0,
+       "al principio cimentaste la tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y el cielo es obra de tus manos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ellos perecerán, tú permaneces,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se gastarán como la ropa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "serán como un vestido que se muda."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tú, en cambio, eres siempre el mismo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tus años no se acabarán."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los hijos de tus siervos vivirán seguros,"
+      ]
+     ],
+     [
+      [
+       0,
+       "su linaje durará en tu presencia."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmCL.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/0/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 150 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Laudáte Dóminum Psállite spíritu, psállite et mente, hoc est: glorific",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Alabad al Señor en su templo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo en su augusto firmamento."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alabadlo por sus obras magníficas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo por su inmensa grandeza."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alabadlo tocando trompetas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo con arpas y cítaras,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alabadlo con tambores y danzas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo con trompas y flautas,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "alabadlo con platillos sonoros,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo con platillos vibrantes."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Todo ser que alienta, alabe al Señor."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmCXLII.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "aviso": "La Liturgia de las Horas imprime de este salmo los versículos 1-11; el latín de al lado va entero.",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/2/completas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 142 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "In angústiis orátio Non iustificátur homo ex opéribus legis nisi per f",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, escucha mi oración;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que eres fiel, atiende a mi súplica;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que eres justo, escúchame."
+      ]
+     ],
+     [
+      [
+       0,
+       "No llames a juicio a tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues ningún hombre vivo es inocente frente a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "El enemigo me persigue a muerte,"
+      ]
+     ],
+     [
+      [
+       0,
+       "empuja mi vida al sepulcro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me confina a las tinieblas"
+      ]
+     ],
+     [
+      [
+       0,
+       "como a los muertos ya olvidados."
+      ]
+     ],
+     [
+      [
+       0,
+       "mi aliento desfallece,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi corazón dentro de mí está yerto."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Recuerdo los tiempos antiguos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "medito todas tus acciones,"
+      ]
+     ],
+     [
+      [
+       0,
+       "considero las obras de tus manos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y extiendo mis brazos hacia ti:"
+      ]
+     ],
+     [
+      [
+       0,
+       "tengo sed de ti como tierra reseca."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Escúchame en seguida, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que me falta el aliento."
+      ]
+     ],
+     [
+      [
+       0,
+       "No me escondas tu rostro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "igual que a los que bajan a la fosa."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En la mañana hazme escuchar tu gracia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ya que confío en ti;"
+      ]
+     ],
+     [
+      [
+       0,
+       "indícame el camino que he de seguir,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues levanto mi alma a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Líbrame del enemigo, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que me refugio en ti."
+      ]
+     ],
+     [
+      [
+       0,
+       "Enséñame a cumplir tu voluntad,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ya que tú eres mi Dios."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tu espíritu, que es bueno,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me guíe por tierra llana."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Por tu nombre, Señor, consérvame vivo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu clemencia, sácame de la angustia."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmCXV.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/2/6/visperas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 115 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Gratiárum áctio Per multas tribulatiónes opórtet nos intráre in regnum",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Tenía fe, aun cuando dije:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«¡Qué desgraciado soy!»"
+      ]
+     ],
+     [
+      [
+       0,
+       "Yo decía en mi apuro:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«Los hombres son unos mentirosos.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¿Cómo pagaré al Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "todo el bien que me ha hecho?"
+      ]
+     ],
+     [
+      [
+       0,
+       "Alzaré la copa de la salvación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "invocando su nombre."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cumpliré al Señor mis votos"
+      ]
+     ],
+     [
+      [
+       0,
+       "en presencia de todo el pueblo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Vale mucho a los ojos del Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "la vida de sus fieles."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, yo soy tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "siervo tuyo, hijo de tu esclava:"
+      ]
+     ],
+     [
+      [
+       0,
+       "rompiste mis cadenas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te ofreceré un sacrificio de alabanza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "invocando tu nombre, Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cumpliré al Señor mis votos"
+      ]
+     ],
+     [
+      [
+       0,
+       "en presencia de todo el pueblo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el atrio de la casa del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en medio de ti, Jerusalén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmCXXIX.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/3/6/visperas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 129 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "De profúndis clamávi Ipse salvum fáciet pópulum suum a peccátis eórum ",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Desde lo hondo a ti grito, Señor;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, escucha mi voz;"
+      ]
+     ],
+     [
+      [
+       0,
+       "estén tus oídos atentos"
+      ]
+     ],
+     [
+      [
+       0,
+       "a la voz de mi súplica."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Si llevas cuenta de los delitos, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "¿quién podrá resistir?"
+      ]
+     ],
+     [
+      [
+       0,
+       "Pero de ti procede el perdón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y así infundes respeto."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mi alma espera en el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "espera en su palabra;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi alma aguarda al Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "más que el centinela la aurora."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Aguarde Israel al Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como el centinela la aurora;"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque del Señor viene la misericordia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la redención copiosa;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y él redimirá a Israel"
+      ]
+     ],
+     [
+      [
+       0,
+       "de todos sus delitos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/1/0/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 1 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "De duábus hóminum viis Beáti qui, sperántes in crucem, in aquam descen",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dichoso el hombre"
+      ]
+     ],
+     [
+      [
+       0,
+       "que no sigue el consejo de los impíos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni entra por la senda de los pecadores,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni se sienta en la reunión de los cínicos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "sino que su gozo es la ley del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y medita su ley día y noche."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Será como un árbol"
+      ]
+     ],
+     [
+      [
+       0,
+       "plantado al borde de la acequia:"
+      ]
+     ],
+     [
+      [
+       0,
+       "da fruto a su tiempo"
+      ]
+     ],
+     [
+      [
+       0,
+       "y no se marchitan sus hojas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y cuanto emprende tiene buen fin."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No así los impíos, no así;"
+      ]
+     ],
+     [
+      [
+       0,
+       "serán paja que arrebata el viento."
+      ]
+     ],
+     [
+      [
+       0,
+       "En el juicio los impíos no se levantarán,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni los pecadores en la asamblea de los justos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque el Señor protege el camino de los justos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pero el camino de los impíos acaba mal."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmL.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/3/5/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 50 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Miserére mei, Deus Renovári spíritu mentis vestrae et indúere novum hó",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Misericordia, Dios mío, por tu bondad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu inmensa compasión borra mi culpa;"
+      ]
+     ],
+     [
+      [
+       0,
+       "lava del todo mi delito,"
+      ]
+     ],
+     [
+      [
+       0,
+       "limpia mi pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Pues yo reconozco mi culpa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tengo siempre presente mi pecado:"
+      ]
+     ],
+     [
+      [
+       0,
+       "contra ti, contra ti solo pequé,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cometí la maldad que aborreces."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En la sentencia tendrás razón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el juicio brillará tu rectitud."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mira, que en la culpa nací,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pecador me concibió mi madre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te gusta un corazón sincero,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y en mi interior me inculcas sabiduría."
+      ]
+     ],
+     [
+      [
+       0,
+       "Rocíame con el hisopo: quedaré limpio;"
+      ]
+     ],
+     [
+      [
+       0,
+       "lávame: quedaré más blanco que la nieve."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Hazme oír el gozo y la alegría,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que se alegren los huesos quebrantados."
+      ]
+     ],
+     [
+      [
+       0,
+       "Aparta de mi pecado tu vista,"
+      ]
+     ],
+     [
+      [
+       0,
+       "borra en mí toda culpa."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¡Oh Dios!, crea en mí un corazón puro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "renuévame por dentro con espíritu firme;"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me arrojes lejos de tu rostro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me quites tu santo espíritu."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Devuélveme la alegría de tu salvación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "afiánzame con espíritu generoso:"
+      ]
+     ],
+     [
+      [
+       0,
+       "enseñaré a los malvados tus caminos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los pecadores volverán a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Líbrame de la sangre, ¡oh Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios, Salvador mío!,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y cantará mi lengua tu justicia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, me abrirás los labios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y mi boca proclamará tu alabanza."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los sacrificios no te satisfacen;"
+      ]
+     ],
+     [
+      [
+       0,
+       "si te ofreciera un holocausto, no lo querrías."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mi sacrificio es un espíritu quebrantado:"
+      ]
+     ],
+     [
+      [
+       0,
+       "un corazón quebrantado y humillado"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú no lo desprecias."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor, por tu bondad, favorece a Sión,"
+      ]
+     ],
+     [
+      [
+       0,
+       "reconstruye las murallas de Jerusalén:"
+      ]
+     ],
+     [
+      [
+       0,
+       "entonces aceptarás los sacrificios rituales,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ofrendas y holocaustos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sobre tu altar se inmolarán novillos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmLXXXIII.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Pascua/3/1/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 83 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Desidérium templi Dómini Non habémus hic manéntem civitátem, sed futúr",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "¡Qué deseables son tus moradas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor de los ejércitos!"
+      ]
+     ],
+     [
+      [
+       0,
+       "Mi alma se consume y anhela"
+      ]
+     ],
+     [
+      [
+       0,
+       "los atrios del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi corazón y mi carne"
+      ]
+     ],
+     [
+      [
+       0,
+       "se alegran por el Dios vivo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Hasta el gorrión ha encontrado una casa;"
+      ]
+     ],
+     [
+      [
+       0,
+       "la golondrina, un nido"
+      ]
+     ],
+     [
+      [
+       0,
+       "donde colocar sus polluelos:"
+      ]
+     ],
+     [
+      [
+       0,
+       "tus altares, Señor de los ejércitos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Rey mío y Dios mío."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dichosos los que viven en tu casa"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabándote siempre."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dichosos los que encuentran en ti su fuerza"
+      ]
+     ],
+     [
+      [
+       0,
+       "al preparar su peregrinación:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "cuando atraviesan áridos valles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los convierten en oasis,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como si la lluvia temprana"
+      ]
+     ],
+     [
+      [
+       0,
+       "los cubriera de bendiciones;"
+      ]
+     ],
+     [
+      [
+       0,
+       "caminan de altura en altura"
+      ]
+     ],
+     [
+      [
+       0,
+       "hasta ver a Dios en Sión."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor de los ejércitos, escucha mi súplica;"
+      ]
+     ],
+     [
+      [
+       0,
+       "atiéndeme, Dios de Jacob."
+      ]
+     ],
+     [
+      [
+       0,
+       "Fíjate, ¡oh Dios!, en nuestro Escudo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mira el rostro de tu Ungido."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Un solo día en tu casa"
+      ]
+     ],
+     [
+      [
+       0,
+       "vale más que otros mil,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y prefiero el umbral de la casa de Dios"
+      ]
+     ],
+     [
+      [
+       0,
+       "a vivir con los malvados."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Porque el Señor es sol y escudo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "él da la gracia y la gloria,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor no niega sus bienes"
+      ]
+     ],
+     [
+      [
+       0,
+       "a los de conducta intachable."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¡Señor de los ejércitos, dichoso el hombre"
+      ]
+     ],
+     [
+      [
+       0,
+       "que confía en ti!"
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmLXXXIV.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/3/2/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 84 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Propínqua est salus nostra In terram delápso Salvatóre nostro, benedíx",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, has sido bueno con tu tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has restaurado la suerte de Jacob,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has perdonado la culpa de tu pueblo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has sepultado todos sus pecados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has reprimido tu cólera,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has frenado el incendio de tu ira."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Restáuranos, Dios salvador nuestro;"
+      ]
+     ],
+     [
+      [
+       0,
+       "cesa en tu rencor contra nosotros."
+      ]
+     ],
+     [
+      [
+       0,
+       "¿Vas a estar siempre enojado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "o a prolongar tu ira de edad en edad?"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¿No vas a devolvernos la vida,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que tu pueblo se alegre contigo?"
+      ]
+     ],
+     [
+      [
+       0,
+       "Muéstranos, Señor, tu misericordia"
+      ]
+     ],
+     [
+      [
+       0,
+       "y danos tu salvación."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Voy a escuchar lo que dice el Señor:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«Dios anuncia la paz"
+      ]
+     ],
+     [
+      [
+       0,
+       "a su pueblo y a sus amigos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y a los que se convierten de corazón.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "La salvación está ya cerca de sus fieles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y la gloria habitará en nuestra tierra;"
+      ]
+     ],
+     [
+      [
+       0,
+       "la misericordia y la fidelidad se encuentran,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la justicia y la paz se besan;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "la fidelidad brota de la tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y la justicia mira desde el cielo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor dará la lluvia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y nuestra tierra dará su fruto."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "La justicia marchará ante él,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la salvación seguirá sus pasos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmLXXXV.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/1/completas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 85 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Páuperis in rebus advérsis orátio Benedíctus Deus qui consolátur nos i",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Inclina tu oído, Señor; escúchame,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que soy un pobre desamparado;"
+      ]
+     ],
+     [
+      [
+       0,
+       "protege mi vida, que soy un fiel tuyo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "salva a tu siervo, que confía en ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú eres mi Dios, piedad de mí, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que a ti te estoy llamando todo el día;"
+      ]
+     ],
+     [
+      [
+       0,
+       "alegra el alma de tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues levanto mi alma hacia ti;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "porque tú, Señor, eres bueno y clemente,"
+      ]
+     ],
+     [
+      [
+       0,
+       "rico en misericordia con los que te invocan."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, escucha mi oración,"
+      ]
+     ],
+     [
+      [
+       0,
+       "atiende a la voz de mi súplica."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En el día del peligro te llamo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú me escuchas."
+      ]
+     ],
+     [
+      [
+       0,
+       "No tienes igual entre los dioses, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni hay obras como las tuyas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Todos los pueblos vendrán"
+      ]
+     ],
+     [
+      [
+       0,
+       "a postrarse en tu presencia, Señor;"
+      ]
+     ],
+     [
+      [
+       0,
+       "bendecirán tu nombre:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«Grande eres tú, y haces maravillas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú eres el único Dios.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Enséñame, Señor, tu camino,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que siga tu verdad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mantén mi corazón entero"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el temor de tu nombre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te alabaré de todo corazón, Dios mío;"
+      ]
+     ],
+     [
+      [
+       0,
+       "daré gloria a tu nombre por siempre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu grande piedad para conmigo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque me salvaste del abismo profundo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dios mío, unos soberbios se levantan contra mí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "una banda de insolentes atenta contra mi vida,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sin tenerte en cuenta a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Pero tú, Señor, Dios clemente y misericordioso,"
+      ]
+     ],
+     [
+      [
+       0,
+       "lento a la cólera, rico en piedad y leal,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mírame, ten compasión de mí."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Da fuerza a tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "salva al hijo de tu esclava;"
+      ]
+     ],
+     [
+      [
+       0,
+       "dame una señal propicia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que la vean mis adversarios y se avergüencen,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque tú, Señor, me ayudas y consuelas."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmVI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/1/1/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 6 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Homo afflíctus Dómini cleméntiam implórat Nunc ánima mea turbáta est..",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, no me corrijas con ira,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me castigues con cólera."
+      ]
+     ],
+     [
+      [
+       0,
+       "Misericordia, Señor, que desfallezco;"
+      ]
+     ],
+     [
+      [
+       0,
+       "cura, Señor, mis huesos dislocados."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tengo el alma en delirio,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú, Señor, ¿hasta cuándo?"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Vuélvete, Señor, liberta mi alma,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sálvame por tu misericordia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Porque en el reino de la muerte nadie te invoca,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y en el abismo, ¿quién te alabará?"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Estoy agotado de gemir:"
+      ]
+     ],
+     [
+      [
+       0,
+       "de noche lloro sobre el lecho,"
+      ]
+     ],
+     [
+      [
+       0,
+       "riego mi cama con lágrimas."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mis ojos se consumen irritados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "envejecen por tantas contradicciones."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Apartaos de mí los malvados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque el Señor ha escuchado mis sollozos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor ha escuchado mi súplica,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor ha aceptado mi oración."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que la vergüenza abrume a mis enemigos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que avergonzados huyan al momento."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmXXXI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/1/4/visperas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 31 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Beátus, cui remíssa est iníquitas David dicit beatitúdinem hóminis, cu",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dichoso el que está absuelto de su culpa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a quien le han sepultado su pecado;"
+      ]
+     ],
+     [
+      [
+       0,
+       "dichoso el hombre a quien el Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "no le apunta el delito."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mientras callé se consumían mis huesos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "rugiendo todo el día,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque día y noche tu mano"
+      ]
+     ],
+     [
+      [
+       0,
+       "pesaba sobre mí;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi savia se me había vuelto"
+      ]
+     ],
+     [
+      [
+       0,
+       "un fruto seco."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Había pecado, lo reconocí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no te encubrí mi delito;"
+      ]
+     ],
+     [
+      [
+       0,
+       "propuse: «Confesaré al Señor mi culpa»,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú perdonaste mi culpa y mi pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Por eso, que todo fiel te suplique"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el momento de la desgracia:"
+      ]
+     ],
+     [
+      [
+       0,
+       "la crecida de las aguas caudalosas"
+      ]
+     ],
+     [
+      [
+       0,
+       "no lo alcanzará."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú eres mi refugio, me libras del peligro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me rodeas de cantos de liberación."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te instruiré y te enseñaré el camino que has de seguir,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fijaré en ti mis ojos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No seáis irracionales como caballos y mulos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuyo brío hay que domar con freno y brida;"
+      ]
+     ],
+     [
+      [
+       0,
+       "si no, no puedes acercarte."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los malvados sufren muchas penas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "al que confía en el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la misericordia lo rodea."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alegraos, justos, y gozad con el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "aclamadlo, los de corazón sincero."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/NovaVulgata/PsalmXXXVII.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "aviso": "El oficio reza este salmo en 3 partes, y aquí van seguidas.",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/2/5/oficio; salterio/Cuaresma/2/5/oficio; salterio/Cuaresma/2/5/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 37 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Obsecrátio peccatóris in extrémo perículo constitúti Stabant omnes not",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, no me corrijas con ira,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me castigues con cólera;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tus flechas se me han clavado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tu mano pesa sobre mí;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "no hay parte ilesa en mi carne"
+      ]
+     ],
+     [
+      [
+       0,
+       "a causa de tu furor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no tienen descanso mis huesos"
+      ]
+     ],
+     [
+      [
+       0,
+       "a causa de mis pecados;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "mis culpas sobrepasan mi cabeza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "son un peso superior a mis fuerzas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mis llagas están podridas y supuran"
+      ]
+     ],
+     [
+      [
+       0,
+       "por causa de mi insensatez;"
+      ]
+     ],
+     [
+      [
+       0,
+       "voy encorvado y encogido,"
+      ]
+     ],
+     [
+      [
+       0,
+       "todo el día camino sombrío;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "tengo las espaldas ardiendo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no hay parte ilesa en mi carne;"
+      ]
+     ],
+     [
+      [
+       0,
+       "estoy agotado, deshecho del todo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "rujo con más fuerza que un león."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor mío, todas mis ansias están en tu presencia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no se te ocultan mis gemidos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "siento palpitar mi corazón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me abandonan las fuerzas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y me falta hasta la luz de los ojos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mis amigos y compañeros se alejan de mí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mis parientes se quedan a distancia;"
+      ]
+     ],
+     [
+      [
+       0,
+       "me tienden lazos los que atentan contra mí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los que desean mi daño me amenazan de muerte,"
+      ]
+     ],
+     [
+      [
+       0,
+       "todo el día murmuran traiciones."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Pero yo, como un sordo, no oigo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "como un mudo, no abro la boca;"
+      ]
+     ],
+     [
+      [
+       0,
+       "soy como uno que no oye"
+      ]
+     ],
+     [
+      [
+       0,
+       "y no puede replicar."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En ti, Señor, espero,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú me escucharás, Señor, Dios mío;"
+      ]
+     ],
+     [
+      [
+       0,
+       "esto pido: que no se alegren por mi causa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que, cuando resbale mi pie, no canten triunfo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Porque yo estoy a punto de caer,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y mi pena no se aparta de mí:"
+      ]
+     ],
+     [
+      [
+       0,
+       "yo confieso mi culpa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me aflige mi pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mis enemigos mortales son poderosos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "son muchos los que me aborrecen sin razón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los que me pagan males por bienes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los que me atacan cuando procuro el bien."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No me abandones, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios mío, no te quedes lejos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "ven aprisa a socorrerme,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor mío, mi salvación."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmCI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "aviso": "El oficio reza este salmo en 3 partes, y aquí van seguidas.",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/2/oficio; salterio/Ordinario/4/2/oficio; salterio/Ordinario/4/2/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 101 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Éxsulis vota et preces Consolátur nos Deus in omni tribulatióne nostra",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, escucha mi oración,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que mi grito llegue hasta ti;"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me escondas tu rostro"
+      ]
+     ],
+     [
+      [
+       0,
+       "el día de la desgracia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Inclina tu oído hacia mí;"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuando te invoco, escúchame enseguida."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que mis días se desvanecen como humo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mis huesos queman como brasas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi corazón está agostado como hierba,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me olvido de comer mi pan;"
+      ]
+     ],
+     [
+      [
+       0,
+       "con la violencia de mis quejidos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se me pega la piel a los huesos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Estoy como lechuza en la estepa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como búho entre ruinas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "estoy desvelado, gimiendo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como pájaro sin pareja en el tejado."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mis enemigos me insultan sin descanso;"
+      ]
+     ],
+     [
+      [
+       0,
+       "furiosos contra mí, me maldicen."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En vez de pan, como ceniza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mezclo mi bebida con llanto,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu cólera y tu indignación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque me alzaste en vilo y me tiraste;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mis días son una sombra que se alarga,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me voy secando como la hierba."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú, en cambio, permaneces para siempre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tu nombre de generación en generación."
+      ]
+     ],
+     [
+      [
+       0,
+       "Levántate y ten misericordia de Sión,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que ya es hora y tiempo de misericordia."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tus siervos aman sus piedras,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se compadecen de sus ruinas:"
+      ]
+     ],
+     [
+      [
+       0,
+       "los gentiles temerán tu nombre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los reyes del mundo, tu gloria."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Cuando el Señor reconstruya Sión,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y aparezca en su gloria,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y se vuelva a las súplicas de los indefensos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y no desprecie sus peticiones,"
+      ]
+     ],
+     [
+      [
+       0,
+       "quede esto escrito para la generación futura,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y el pueblo que será creado alabará al Señor:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que el Señor ha mirado desde su excelso santuario,"
+      ]
+     ],
+     [
+      [
+       0,
+       "desde el cielo se ha fijado en la tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para escuchar los gemidos de los cautivos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y librar a los condenados a muerte,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "para anunciar en Sión el nombre del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y su alabanza en Jerusalén,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuando se reúnan unánimes los pueblos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y los reyes para dar culto al Señor."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "El agotó mis fuerzas en el camino,"
+      ]
+     ],
+     [
+      [
+       0,
+       "acortó mis días;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "y yo dije: «Dios mío, no me arrebates"
+      ]
+     ],
+     [
+      [
+       0,
+       "en la mitad de mis días.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tus años duran por todas las generaciones:"
+      ]
+     ],
+     [
+      [
+       0,
+       "al principio cimentaste la tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y el cielo es obra de tus manos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ellos perecerán, tú permaneces,"
+      ]
+     ],
+     [
+      [
+       0,
+       "se gastarán como la ropa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "serán como un vestido que se muda."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tú, en cambio, eres siempre el mismo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tus años no se acabarán."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los hijos de tus siervos vivirán seguros,"
+      ]
+     ],
+     [
+      [
+       0,
+       "su linaje durará en tu presencia."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmCL.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/0/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 150 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Sollémnis laudis Dei concéntus Psállite spíritu, psállite et mente, ho",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Alabad al Señor en su templo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo en su augusto firmamento."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alabadlo por sus obras magníficas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo por su inmensa grandeza."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alabadlo tocando trompetas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo con arpas y cítaras,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alabadlo con tambores y danzas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo con trompas y flautas,"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "alabadlo con platillos sonoros,"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabadlo con platillos vibrantes."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Todo ser que alienta, alabe al Señor."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmCXLII.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "aviso": "La Liturgia de las Horas imprime de este salmo los versículos 1-11; el latín de al lado va entero.",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/2/completas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 142 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "In angústiis orátio Non justificátur homo ex opéribus legis nisi per f",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, escucha mi oración;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que eres fiel, atiende a mi súplica;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que eres justo, escúchame."
+      ]
+     ],
+     [
+      [
+       0,
+       "No llames a juicio a tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues ningún hombre vivo es inocente frente a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "El enemigo me persigue a muerte,"
+      ]
+     ],
+     [
+      [
+       0,
+       "empuja mi vida al sepulcro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me confina a las tinieblas"
+      ]
+     ],
+     [
+      [
+       0,
+       "como a los muertos ya olvidados."
+      ]
+     ],
+     [
+      [
+       0,
+       "mi aliento desfallece,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi corazón dentro de mí está yerto."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Recuerdo los tiempos antiguos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "medito todas tus acciones,"
+      ]
+     ],
+     [
+      [
+       0,
+       "considero las obras de tus manos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y extiendo mis brazos hacia ti:"
+      ]
+     ],
+     [
+      [
+       0,
+       "tengo sed de ti como tierra reseca."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Escúchame en seguida, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que me falta el aliento."
+      ]
+     ],
+     [
+      [
+       0,
+       "No me escondas tu rostro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "igual que a los que bajan a la fosa."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En la mañana hazme escuchar tu gracia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ya que confío en ti;"
+      ]
+     ],
+     [
+      [
+       0,
+       "indícame el camino que he de seguir,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues levanto mi alma a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Líbrame del enemigo, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que me refugio en ti."
+      ]
+     ],
+     [
+      [
+       0,
+       "Enséñame a cumplir tu voluntad,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ya que tú eres mi Dios."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tu espíritu, que es bueno,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me guíe por tierra llana."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Por tu nombre, Señor, consérvame vivo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu clemencia, sácame de la angustia."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmCXV.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/2/6/visperas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 115 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Hóminis e morte serváti gratiárum actiónes Per multas tribulatiónes op",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Tenía fe, aun cuando dije:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«¡Qué desgraciado soy!»"
+      ]
+     ],
+     [
+      [
+       0,
+       "Yo decía en mi apuro:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«Los hombres son unos mentirosos.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¿Cómo pagaré al Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "todo el bien que me ha hecho?"
+      ]
+     ],
+     [
+      [
+       0,
+       "Alzaré la copa de la salvación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "invocando su nombre."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cumpliré al Señor mis votos"
+      ]
+     ],
+     [
+      [
+       0,
+       "en presencia de todo el pueblo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Vale mucho a los ojos del Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "la vida de sus fieles."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, yo soy tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "siervo tuyo, hijo de tu esclava:"
+      ]
+     ],
+     [
+      [
+       0,
+       "rompiste mis cadenas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te ofreceré un sacrificio de alabanza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "invocando tu nombre, Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Cumpliré al Señor mis votos"
+      ]
+     ],
+     [
+      [
+       0,
+       "en presencia de todo el pueblo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el atrio de la casa del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en medio de ti, Jerusalén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmCXXIX.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/3/6/visperas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 129 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "De profúndis clamávi Ipse salvum fáciet pópulum suum a peccátis eórum ",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Desde lo hondo a ti grito, Señor;"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, escucha mi voz;"
+      ]
+     ],
+     [
+      [
+       0,
+       "estén tus oídos atentos"
+      ]
+     ],
+     [
+      [
+       0,
+       "a la voz de mi súplica."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Si llevas cuenta de los delitos, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "¿quién podrá resistir?"
+      ]
+     ],
+     [
+      [
+       0,
+       "Pero de ti procede el perdón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y así infundes respeto."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mi alma espera en el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "espera en su palabra;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi alma aguarda al Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "más que el centinela la aurora."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Aguarde Israel al Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como el centinela la aurora;"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque del Señor viene la misericordia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la redención copiosa;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y él redimirá a Israel"
+      ]
+     ],
+     [
+      [
+       0,
+       "de todos sus delitos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/1/0/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 1 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Justórum sors bona, impiórum mala. Beáti qui, sperántes in crucem, in ",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dichoso el hombre"
+      ]
+     ],
+     [
+      [
+       0,
+       "que no sigue el consejo de los impíos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni entra por la senda de los pecadores,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni se sienta en la reunión de los cínicos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "sino que su gozo es la ley del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y medita su ley día y noche."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Será como un árbol"
+      ]
+     ],
+     [
+      [
+       0,
+       "plantado al borde de la acequia:"
+      ]
+     ],
+     [
+      [
+       0,
+       "da fruto a su tiempo"
+      ]
+     ],
+     [
+      [
+       0,
+       "y no se marchitan sus hojas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y cuanto emprende tiene buen fin."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No así los impíos, no así;"
+      ]
+     ],
+     [
+      [
+       0,
+       "serán paja que arrebata el viento."
+      ]
+     ],
+     [
+      [
+       0,
+       "En el juicio los impíos no se levantarán,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni los pecadores en la asamblea de los justos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque el Señor protege el camino de los justos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pero el camino de los impíos acaba mal."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmL.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/3/5/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 50 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Peccatóris pæniténtis conféssio, promíssio, preces Renovári spíritu me",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Misericordia, Dios mío, por tu bondad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu inmensa compasión borra mi culpa;"
+      ]
+     ],
+     [
+      [
+       0,
+       "lava del todo mi delito,"
+      ]
+     ],
+     [
+      [
+       0,
+       "limpia mi pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Pues yo reconozco mi culpa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tengo siempre presente mi pecado:"
+      ]
+     ],
+     [
+      [
+       0,
+       "contra ti, contra ti solo pequé,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cometí la maldad que aborreces."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En la sentencia tendrás razón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el juicio brillará tu rectitud."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mira, que en la culpa nací,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pecador me concibió mi madre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te gusta un corazón sincero,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y en mi interior me inculcas sabiduría."
+      ]
+     ],
+     [
+      [
+       0,
+       "Rocíame con el hisopo: quedaré limpio;"
+      ]
+     ],
+     [
+      [
+       0,
+       "lávame: quedaré más blanco que la nieve."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Hazme oír el gozo y la alegría,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que se alegren los huesos quebrantados."
+      ]
+     ],
+     [
+      [
+       0,
+       "Aparta de mi pecado tu vista,"
+      ]
+     ],
+     [
+      [
+       0,
+       "borra en mí toda culpa."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¡Oh Dios!, crea en mí un corazón puro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "renuévame por dentro con espíritu firme;"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me arrojes lejos de tu rostro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me quites tu santo espíritu."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Devuélveme la alegría de tu salvación,"
+      ]
+     ],
+     [
+      [
+       0,
+       "afiánzame con espíritu generoso:"
+      ]
+     ],
+     [
+      [
+       0,
+       "enseñaré a los malvados tus caminos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los pecadores volverán a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Líbrame de la sangre, ¡oh Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios, Salvador mío!,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y cantará mi lengua tu justicia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, me abrirás los labios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y mi boca proclamará tu alabanza."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los sacrificios no te satisfacen;"
+      ]
+     ],
+     [
+      [
+       0,
+       "si te ofreciera un holocausto, no lo querrías."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mi sacrificio es un espíritu quebrantado:"
+      ]
+     ],
+     [
+      [
+       0,
+       "un corazón quebrantado y humillado"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú no lo desprecias."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor, por tu bondad, favorece a Sión,"
+      ]
+     ],
+     [
+      [
+       0,
+       "reconstruye las murallas de Jerusalén:"
+      ]
+     ],
+     [
+      [
+       0,
+       "entonces aceptarás los sacrificios rituales,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ofrendas y holocaustos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sobre tu altar se inmolarán novillos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmLXXXIII.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Pascua/3/1/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 83 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Desidérium templi Dómini Non habémus hic manéntem civitátem, sed futúr",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "¡Qué deseables son tus moradas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor de los ejércitos!"
+      ]
+     ],
+     [
+      [
+       0,
+       "Mi alma se consume y anhela"
+      ]
+     ],
+     [
+      [
+       0,
+       "los atrios del Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi corazón y mi carne"
+      ]
+     ],
+     [
+      [
+       0,
+       "se alegran por el Dios vivo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Hasta el gorrión ha encontrado una casa;"
+      ]
+     ],
+     [
+      [
+       0,
+       "la golondrina, un nido"
+      ]
+     ],
+     [
+      [
+       0,
+       "donde colocar sus polluelos:"
+      ]
+     ],
+     [
+      [
+       0,
+       "tus altares, Señor de los ejércitos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Rey mío y Dios mío."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dichosos los que viven en tu casa"
+      ]
+     ],
+     [
+      [
+       0,
+       "alabándote siempre."
+      ]
+     ],
+     [
+      [
+       0,
+       "Dichosos los que encuentran en ti su fuerza"
+      ]
+     ],
+     [
+      [
+       0,
+       "al preparar su peregrinación:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "cuando atraviesan áridos valles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los convierten en oasis,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como si la lluvia temprana"
+      ]
+     ],
+     [
+      [
+       0,
+       "los cubriera de bendiciones;"
+      ]
+     ],
+     [
+      [
+       0,
+       "caminan de altura en altura"
+      ]
+     ],
+     [
+      [
+       0,
+       "hasta ver a Dios en Sión."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor de los ejércitos, escucha mi súplica;"
+      ]
+     ],
+     [
+      [
+       0,
+       "atiéndeme, Dios de Jacob."
+      ]
+     ],
+     [
+      [
+       0,
+       "Fíjate, ¡oh Dios!, en nuestro Escudo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mira el rostro de tu Ungido."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Un solo día en tu casa"
+      ]
+     ],
+     [
+      [
+       0,
+       "vale más que otros mil,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y prefiero el umbral de la casa de Dios"
+      ]
+     ],
+     [
+      [
+       0,
+       "a vivir con los malvados."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Porque el Señor es sol y escudo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "él da la gracia y la gloria,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor no niega sus bienes"
+      ]
+     ],
+     [
+      [
+       0,
+       "a los de conducta intachable."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¡Señor de los ejércitos, dichoso el hombre"
+      ]
+     ],
+     [
+      [
+       0,
+       "que confía en ti!"
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmLXXXIV.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/3/2/laudes",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 84 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Propínqua est salus nostra In terram delápso Salvatóre nostro, benedíx",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, has sido bueno con tu tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has restaurado la suerte de Jacob,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has perdonado la culpa de tu pueblo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has sepultado todos sus pecados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has reprimido tu cólera,"
+      ]
+     ],
+     [
+      [
+       0,
+       "has frenado el incendio de tu ira."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Restáuranos, Dios salvador nuestro;"
+      ]
+     ],
+     [
+      [
+       0,
+       "cesa en tu rencor contra nosotros."
+      ]
+     ],
+     [
+      [
+       0,
+       "¿Vas a estar siempre enojado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "o a prolongar tu ira de edad en edad?"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "¿No vas a devolvernos la vida,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que tu pueblo se alegre contigo?"
+      ]
+     ],
+     [
+      [
+       0,
+       "Muéstranos, Señor, tu misericordia"
+      ]
+     ],
+     [
+      [
+       0,
+       "y danos tu salvación."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Voy a escuchar lo que dice el Señor:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«Dios anuncia la paz"
+      ]
+     ],
+     [
+      [
+       0,
+       "a su pueblo y a sus amigos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y a los que se convierten de corazón.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "La salvación está ya cerca de sus fieles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y la gloria habitará en nuestra tierra;"
+      ]
+     ],
+     [
+      [
+       0,
+       "la misericordia y la fidelidad se encuentran,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la justicia y la paz se besan;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "la fidelidad brota de la tierra,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y la justicia mira desde el cielo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor dará la lluvia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y nuestra tierra dará su fruto."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "La justicia marchará ante él,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la salvación seguirá sus pasos."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmLXXXV.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Ordinario/4/1/completas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 85 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Pii servi Dei in rebus advérsis obsecrátio Benedíctus Deus qui consolá",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Inclina tu oído, Señor; escúchame,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que soy un pobre desamparado;"
+      ]
+     ],
+     [
+      [
+       0,
+       "protege mi vida, que soy un fiel tuyo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "salva a tu siervo, que confía en ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú eres mi Dios, piedad de mí, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que a ti te estoy llamando todo el día;"
+      ]
+     ],
+     [
+      [
+       0,
+       "alegra el alma de tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "pues levanto mi alma hacia ti;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "porque tú, Señor, eres bueno y clemente,"
+      ]
+     ],
+     [
+      [
+       0,
+       "rico en misericordia con los que te invocan."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, escucha mi oración,"
+      ]
+     ],
+     [
+      [
+       0,
+       "atiende a la voz de mi súplica."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En el día del peligro te llamo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú me escuchas."
+      ]
+     ],
+     [
+      [
+       0,
+       "No tienes igual entre los dioses, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ni hay obras como las tuyas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Todos los pueblos vendrán"
+      ]
+     ],
+     [
+      [
+       0,
+       "a postrarse en tu presencia, Señor;"
+      ]
+     ],
+     [
+      [
+       0,
+       "bendecirán tu nombre:"
+      ]
+     ],
+     [
+      [
+       0,
+       "«Grande eres tú, y haces maravillas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú eres el único Dios.»"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Enséñame, Señor, tu camino,"
+      ]
+     ],
+     [
+      [
+       0,
+       "para que siga tu verdad;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mantén mi corazón entero"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el temor de tu nombre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te alabaré de todo corazón, Dios mío;"
+      ]
+     ],
+     [
+      [
+       0,
+       "daré gloria a tu nombre por siempre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por tu grande piedad para conmigo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque me salvaste del abismo profundo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dios mío, unos soberbios se levantan contra mí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "una banda de insolentes atenta contra mi vida,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sin tenerte en cuenta a ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Pero tú, Señor, Dios clemente y misericordioso,"
+      ]
+     ],
+     [
+      [
+       0,
+       "lento a la cólera, rico en piedad y leal,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mírame, ten compasión de mí."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Da fuerza a tu siervo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "salva al hijo de tu esclava;"
+      ]
+     ],
+     [
+      [
+       0,
+       "dame una señal propicia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que la vean mis adversarios y se avergüencen,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque tú, Señor, me ayudas y consuelas."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmVI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/1/1/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 6 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Hóminis a Deo castigáti precátio Nunc ánima mea turbáta est... Pater, ",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, no me corrijas con ira,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me castigues con cólera."
+      ]
+     ],
+     [
+      [
+       0,
+       "Misericordia, Señor, que desfallezco;"
+      ]
+     ],
+     [
+      [
+       0,
+       "cura, Señor, mis huesos dislocados."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tengo el alma en delirio,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú, Señor, ¿hasta cuándo?"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Vuélvete, Señor, liberta mi alma,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sálvame por tu misericordia."
+      ]
+     ],
+     [
+      [
+       0,
+       "Porque en el reino de la muerte nadie te invoca,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y en el abismo, ¿quién te alabará?"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Estoy agotado de gemir:"
+      ]
+     ],
+     [
+      [
+       0,
+       "de noche lloro sobre el lecho,"
+      ]
+     ],
+     [
+      [
+       0,
+       "riego mi cama con lágrimas."
+      ]
+     ],
+     [
+      [
+       0,
+       "Mis ojos se consumen irritados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "envejecen por tantas contradicciones."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Apartaos de mí los malvados,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque el Señor ha escuchado mis sollozos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor ha escuchado mi súplica,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el Señor ha aceptado mi oración."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que la vergüenza abrume a mis enemigos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que avergonzados huyan al momento."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmXXXI.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/1/4/visperas",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 31 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Felícitas viri cui remíssum est peccátum David dicit beatitúdinem hómi",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dichoso el que está absuelto de su culpa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a quien le han sepultado su pecado;"
+      ]
+     ],
+     [
+      [
+       0,
+       "dichoso el hombre a quien el Señor"
+      ]
+     ],
+     [
+      [
+       0,
+       "no le apunta el delito."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mientras callé se consumían mis huesos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "rugiendo todo el día,"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque día y noche tu mano"
+      ]
+     ],
+     [
+      [
+       0,
+       "pesaba sobre mí;"
+      ]
+     ],
+     [
+      [
+       0,
+       "mi savia se me había vuelto"
+      ]
+     ],
+     [
+      [
+       0,
+       "un fruto seco."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Había pecado, lo reconocí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no te encubrí mi delito;"
+      ]
+     ],
+     [
+      [
+       0,
+       "propuse: «Confesaré al Señor mi culpa»,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú perdonaste mi culpa y mi pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Por eso, que todo fiel te suplique"
+      ]
+     ],
+     [
+      [
+       0,
+       "en el momento de la desgracia:"
+      ]
+     ],
+     [
+      [
+       0,
+       "la crecida de las aguas caudalosas"
+      ]
+     ],
+     [
+      [
+       0,
+       "no lo alcanzará."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú eres mi refugio, me libras del peligro,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me rodeas de cantos de liberación."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te instruiré y te enseñaré el camino que has de seguir,"
+      ]
+     ],
+     [
+      [
+       0,
+       "fijaré en ti mis ojos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No seáis irracionales como caballos y mulos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "cuyo brío hay que domar con freno y brida;"
+      ]
+     ],
+     [
+      [
+       0,
+       "si no, no puedes acercarte."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los malvados sufren muchas penas;"
+      ]
+     ],
+     [
+      [
+       0,
+       "al que confía en el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la misericordia lo rodea."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Alegraos, justos, y gozad con el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "aclamadlo, los de corazón sincero."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Psalmi/SixtoClementine/PsalmXXXVII.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "aviso": "El oficio reza este salmo en 3 partes, y aquí van seguidas.",
+    "donde": "app/datos/horas.json, salterio/Cuaresma/2/5/oficio; salterio/Cuaresma/2/5/oficio; salterio/Cuaresma/2/5/oficio",
+    "obra": "Liturgia de las Horas, edición en uso en México",
+    "oficial": true,
+    "que_es": "el salmo 37 del salterio",
+    "territorio": "MX"
+   },
+   "incipit_la": "Peccatóris a Deo afflícti obsecrátio Stabant omnes noti ejus a longe (",
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Señor, no me corrijas con ira,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me castigues con cólera;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tus flechas se me han clavado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "tu mano pesa sobre mí;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "no hay parte ilesa en mi carne"
+      ]
+     ],
+     [
+      [
+       0,
+       "a causa de tu furor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no tienen descanso mis huesos"
+      ]
+     ],
+     [
+      [
+       0,
+       "a causa de mis pecados;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "mis culpas sobrepasan mi cabeza,"
+      ]
+     ],
+     [
+      [
+       0,
+       "son un peso superior a mis fuerzas."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mis llagas están podridas y supuran"
+      ]
+     ],
+     [
+      [
+       0,
+       "por causa de mi insensatez;"
+      ]
+     ],
+     [
+      [
+       0,
+       "voy encorvado y encogido,"
+      ]
+     ],
+     [
+      [
+       0,
+       "todo el día camino sombrío;"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "tengo las espaldas ardiendo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no hay parte ilesa en mi carne;"
+      ]
+     ],
+     [
+      [
+       0,
+       "estoy agotado, deshecho del todo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "rujo con más fuerza que un león."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Señor mío, todas mis ansias están en tu presencia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no se te ocultan mis gemidos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "siento palpitar mi corazón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me abandonan las fuerzas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y me falta hasta la luz de los ojos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mis amigos y compañeros se alejan de mí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "mis parientes se quedan a distancia;"
+      ]
+     ],
+     [
+      [
+       0,
+       "me tienden lazos los que atentan contra mí,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los que desean mi daño me amenazan de muerte,"
+      ]
+     ],
+     [
+      [
+       0,
+       "todo el día murmuran traiciones."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Pero yo, como un sordo, no oigo;"
+      ]
+     ],
+     [
+      [
+       0,
+       "como un mudo, no abro la boca;"
+      ]
+     ],
+     [
+      [
+       0,
+       "soy como uno que no oye"
+      ]
+     ],
+     [
+      [
+       0,
+       "y no puede replicar."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En ti, Señor, espero,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y tú me escucharás, Señor, Dios mío;"
+      ]
+     ],
+     [
+      [
+       0,
+       "esto pido: que no se alegren por mi causa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que, cuando resbale mi pie, no canten triunfo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Porque yo estoy a punto de caer,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y mi pena no se aparta de mí:"
+      ]
+     ],
+     [
+      [
+       0,
+       "yo confieso mi culpa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "me aflige mi pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Mis enemigos mortales son poderosos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "son muchos los que me aborrecen sin razón,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los que me pagan males por bienes,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los que me atacan cuando procuro el bien."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "No me abandones, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios mío, no te quedes lejos;"
+      ]
+     ],
+     [
+      [
+       0,
+       "ven aprisa a socorrerme,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor mío, mi salvación."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Symbola/Nicaenum.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/ordinario.json, rúbrica 18 (entera)",
+    "latin_del_libro": "Credo in unum Deum, Patrem omnipoténtem, factórem cæli et terræ, visibílium ómnium et invisibílium. Et in unum Dóminum I",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "territorio": "MX"
+   },
+   "incipit_la": "Credo in unum Deum, Patrem omnipoténtem, factórem cæli et terræ, visib",
+   "parecido": 0.941,
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Creo en un solo Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Padre Todopoderoso, Creador del cielo y de la tierra."
+      ]
+     ],
+     [
+      [
+       0,
+       "de todo lo visible y lo invisible."
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en un solo Señor, Jesucristo, Hijo único de Dios,"
+      ]
+     ],
+     [
+      [
+       0,
+       "nacido del Padre antes de todos los siglos:"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios de Dios, Luz de Luz,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios verdadero de Dios verdadero,"
+      ]
+     ],
+     [
+      [
+       0,
+       "engendrado, no creado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "de la misma naturaleza del Padre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por quien todo fue hecho;"
+      ]
+     ],
+     [
+      [
+       0,
+       "que por nosotros, los hombres,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y por nuestra salvación bajó del cielo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y por obra del Espíritu Santo"
+      ]
+     ],
+     [
+      [
+       0,
+       "se encarnó de María, la Virgen,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y se hizo hombre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y por nuestra causa fue crucificado"
+      ]
+     ],
+     [
+      [
+       0,
+       "en tiempos de Poncio Pilato;"
+      ]
+     ],
+     [
+      [
+       0,
+       "padeció y fue sepultado,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y resucitó al tercer día, según las Escrituras,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y subió al cielo, y está sentado a la derecha del Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "y de nuevo vendrá con gloria"
+      ]
+     ],
+     [
+      [
+       0,
+       "para juzgar a vivos y muertos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y su reino no tendrá fin."
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en el Espíritu Santo, Señor y dador de vida,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que procede del Padre y del Hijo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que con el Padre y el Hijo"
+      ]
+     ],
+     [
+      [
+       0,
+       "recibe una misma adoración y gloria,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y que habló por los profetas."
+      ]
+     ],
+     [
+      [
+       0,
+       "Creo en la Iglesia,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que es una, santa, católica y apostólica."
+      ]
+     ],
+     [
+      [
+       0,
+       "Confieso que hay un solo Bautismo"
+      ]
+     ],
+     [
+      [
+       0,
+       "para el perdón de los pecados."
+      ]
+     ],
+     [
+      [
+       0,
+       "Espero la resurrección de los muertos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y la vida del mundo futuro."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Trinitas/Gloria.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/ordinario.json, rúbrica 8",
+    "latin_del_libro": "Glória in excélsis Deo et in terra pax homínibus bonæ voluntátis. Laudámus te, benedícimus te, adorámus te, glorificámus",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "territorio": "MX"
+   },
+   "incipit_la": "Glória in excélsis Deo et in terra pax homínibus bonæ voluntátis. LAUD",
+   "parecido": 1.0,
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Gloria a Dios en el cielo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y en la tierra paz a los hombres"
+      ]
+     ],
+     [
+      [
+       0,
+       "que ama el Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Por tu inmensa gloria"
+      ]
+     ],
+     [
+      [
+       0,
+       "te alabamos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "te bendecimos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "te adoramos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "te glorificamos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "te damos gracias,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor Dios, Rey celestial,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios Padre todopoderoso."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor, Hijo único, Jesucristo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Señor Dios, Cordero de Dios, Hijo del Padre;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que quitas el pecado del mundo, ten piedad de nosotros;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que quitas el pecado del mundo, atiende nuestra súplica;"
+      ]
+     ],
+     [
+      [
+       0,
+       "tú que estás sentado a la derecha del Padre, ten piedad de nosotros;"
+      ]
+     ],
+     [
+      [
+       0,
+       "porque sólo tú eres Santo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sólo tú Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "sólo tú Altísimo, Jesucristo,"
+      ]
+     ],
+     [
+      [
+       0,
+       "con el Espíritu Santo, en la Gloria de Dios Padre."
+      ]
+     ],
+     [
+      [
+       0,
+       "Amén."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Trinitas/Sanctus.html#0": {
+   "fuente": {
+    "autoridad": "Conferencia del Episcopado Mexicano",
+    "donde": "app/datos/ordinario.json, rúbrica 31",
+    "latin_del_libro": "Sanctus, Sanctus, Sanctus Dóminus Deus Sábaoth. Pleni sunt cæli et terra glória tua. Hosánna in excélsis. Benedíctus qui",
+    "obra": "Misal Romano, traducción litúrgica aprobada para México",
+    "oficial": true,
+    "territorio": "MX"
+   },
+   "incipit_la": "Sanctus, Sanctus, Sanctus, Dóminus Deus Sábaoth. Pleni sunt cæli et te",
+   "parecido": 1.0,
+   "paso": 2,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Santo, Santo, Santo es el Señor, Dios del universo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Llenos están el cielo y la tierra de tu gloria."
+      ]
+     ],
+     [
+      [
+       0,
+       "Hosanna en el cielo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Bendito el que viene en nombre del Señor."
+      ]
+     ],
+     [
+      [
+       0,
+       "Hosanna en el cielo."
+      ]
+     ]
+    ]
+   ],
+   "tes": null
+  },
+  "Trinitas/TeDeum.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "aviso": "El Compendio escribe «universæ» donde el sitio escribe «univérsæ», y alguna palabra suelta cambia; el texto es el mismo himno.",
+    "latin_del_libro": "Te Deum laudámus: te Dóminum confitémur.  Te aetérnum Patrem, omnis terra venerátur.  tibi omnes ángeli, tibi caeli et u",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Te Deum laudámus: te Dóminum confitémur. Te ætérnum Patrem omnis terra",
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "A ti, oh Dios, te alabamos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a ti, Señor, te reconocemos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "A ti, eterno Padre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "te venera toda la creación."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los ángeles todos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "los cielos y todas las potestades te honran."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los querubines y serafines"
+      ]
+     ],
+     [
+      [
+       0,
+       "te cantan sin cesar:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Santo, Santo, Santo es el Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Dios del universo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Los cielos y la tierra"
+      ]
+     ],
+     [
+      [
+       0,
+       "están llenos de la majestad de tu gloria."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "A ti te ensalza"
+      ]
+     ],
+     [
+      [
+       0,
+       "el glorioso coro de los Apóstoles,"
+      ]
+     ],
+     [
+      [
+       0,
+       "la multitud admirable de los Profetas,"
+      ]
+     ],
+     [
+      [
+       0,
+       "el blanco ejército de los mártires."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "A ti la Iglesia santa,"
+      ]
+     ],
+     [
+      [
+       0,
+       "extendida por toda la tierra, te proclama:"
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Padre de inmensa majestad,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Hijo único y verdadero, digno de adoración,"
+      ]
+     ],
+     [
+      [
+       0,
+       "Espíritu Santo, Defensor."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú eres el Rey de la gloria, Cristo."
+      ]
+     ],
+     [
+      [
+       0,
+       "Tú eres el Hijo único del Padre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú, para liberar al hombre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "aceptaste la condición humana"
+      ]
+     ],
+     [
+      [
+       0,
+       "sin desdeñar el seno de la Virgen."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú, rotas las cadenas de la muerte,"
+      ]
+     ],
+     [
+      [
+       0,
+       "abriste a los creyentes el reino del cielo."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Tú te sientas a la derecha de Dios"
+      ]
+     ],
+     [
+      [
+       0,
+       "en la gloria del Padre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Creemos que un día"
+      ]
+     ],
+     [
+      [
+       0,
+       "has de venir como juez."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Te rogamos, pues,"
+      ]
+     ],
+     [
+      [
+       0,
+       "que vengas en ayuda de tus siervos,"
+      ]
+     ],
+     [
+      [
+       0,
+       "a quienes redimiste con tu preciosa sangre."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Haz que en la gloria eterna"
+      ]
+     ],
+     [
+      [
+       0,
+       "nos asociemos a tus santos."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Salva a tu pueblo, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "y bendice tu heredad."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Sé su pastor"
+      ]
+     ],
+     [
+      [
+       0,
+       "y ensálzalo eternamente."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Día tras día te bendecimos"
+      ]
+     ],
+     [
+      [
+       0,
+       "y alabamos tu nombre para siempre,"
+      ]
+     ],
+     [
+      [
+       0,
+       "por eternidad de eternidades."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Dígnate, Señor, en este día"
+      ]
+     ],
+     [
+      [
+       0,
+       "guardarnos del pecado."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Ten piedad de nosotros, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "ten piedad de nosotros."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "Que tu misericordia, Señor,"
+      ]
+     ],
+     [
+      [
+       0,
+       "venga sobre nosotros,"
+      ]
+     ],
+     [
+      [
+       0,
+       "como lo esperamos de ti."
+      ]
+     ]
+    ],
+    [
+     [
+      [
+       0,
+       "En ti, Señor, confié,"
+      ]
+     ],
+     [
+      [
+       0,
+       "no me veré defraudado para siempre."
+      ]
+     ]
+    ]
+   ],
+   "tes": "Te Deum"
+  },
+  "Varia/Requiem.html#0": {
+   "fuente": {
+    "autoridad": "Santa Sede",
+    "latin_del_libro": "Réquiem aetérnam dona eis, Dómine, et lux perpétua lúceat eis. Requiéscant in pace. Amen",
+    "obra": "Compendio del Catecismo de la Iglesia Católica (2005), apéndice «Oraciones comunes»",
+    "oficial": true,
+    "que_es": "publicación de la Santa Sede; fórmula tradicional, no traducción litúrgica aprobada para México",
+    "territorio": "universal",
+    "url": "https://www.vatican.va/archive/compendium_ccc/documents/archive_2005_compendium-ccc_sp.html"
+   },
+   "incipit_la": "Réquiem ætérnam dona ei (eis), Dómine, et lux perpétua lúceat ei (eis)",
+   "parecido": 0.949,
+   "paso": 3,
+   "t": [
+    [
+     [
+      [
+       0,
+       "Dale Señor el descanso eterno."
+      ]
+     ],
+     [
+      [
+       0,
+       "Brille para él la luz perpetua."
+      ]
+     ],
+     [
+      [
+       0,
+       "Descanse en paz. Amén"
+      ]
+     ]
+    ]
+   ],
+   "tes": "El eterno reposo"
+  }
+ }
+}

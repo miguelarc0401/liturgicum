@@ -504,6 +504,19 @@ body.cab-fija .fila-fecha .icono {
 .estrofa { margin: 0 0 .15rem; text-wrap: pretty; }
 .estrofa + .resp { margin: 0 0 .9rem; }
 
+/* El salmo en renglones, como lo imprime el Misal con lecturas de 1977: cada
+   renglon es un bloque con sangria francesa, de modo que lo que no cabe a lo
+   ancho se recoge debajo y no se confunde con el renglon siguiente. Es la
+   misma composicion que la salmodia del Oficio y que el Ordo, y el mismo
+   interlineado: el del verso, mas apretado que el de la prosa, porque el
+   aire lo pone el renglon corto y no el espacio entre lineas. */
+.lect .verso { line-height: var(--interlinea-verso); }
+.verso .ln {
+  display: block; padding-left: 1.3em; text-indent: -1.3em;
+  text-align: var(--alinea, left);
+  -webkit-hyphens: var(--parte, manual); hyphens: var(--parte, manual);
+}
+
 .texto, .estrofa {
   text-align: var(--alinea, left);
   -webkit-hyphens: var(--parte, manual); hyphens: var(--parte, manual);
@@ -784,6 +797,15 @@ h2.seccion {
 .pista-g {
   margin: 0 0 .1rem; font-family: var(--sans); font-size: .76rem;
   line-height: 1.45; color: var(--tinta-suave); max-width: 24rem;
+}
+/* La nota de las fuentes latinas: que trae cada una de suyo, que no se ve
+   con solo cambiar de version. Va debajo del mando, en la misma casilla. */
+.nota-fuentes { margin: 0; max-width: 24rem; font-family: var(--sans); }
+.nota-fuentes dt { font-size: .8rem; margin-top: .55rem; }
+.nota-fuentes dt:first-child { margin-top: 0; }
+.nota-fuentes dd {
+  margin: .12rem 0 0; font-size: .76rem; line-height: 1.45;
+  color: var(--tinta-suave);
 }
 .pie {
   margin-top: 2rem; font-family: var(--sans); font-size: .74rem;
@@ -1569,29 +1591,30 @@ body.con-carril #vista { padding-right: 2.1rem; }
    atenuadas— y otro las devuelve: mientras se lee no se necesita ninguna de
    las dos, y el alto que sobra es justo el que falta.
 
-   Solo en las vistas que se leen, que son las que pliegan la cabecera: en el
-   calendario y en los paneles la barra es la unica manera de salir, y
-   esconderla seria dejar a quien toca sin puerta.
+   En las dos orientaciones, no solo tumbado: de pie el alto no aprieta
+   tanto, pero el que lee tampoco necesita los marcos, y de pie es como se
+   lee casi siempre. Lo que sigue mandando es la vista: solo en las que se
+   leen, que son las que pliegan la cabecera —la hora y el formulario de la
+   misa—, porque en el calendario y en los paneles la barra es la unica
+   manera de salir, y esconderla seria dejar a quien toca sin puerta.
 
    El relleno del <body> que guardaba el sitio de la cabecera se va con ella,
    y entonces el texto subiria de golpe: lo compensa el guion al encender y
    al apagar (`ponPantallaLimpia`), de modo que el renglon que se esta
    leyendo se queda donde estaba. */
-@media (orientation: landscape) {
-  body.cab-fija.pantalla-limpia { padding-top: 0; }
-  body.cab-fija.pantalla-limpia #cabecera {
-    transform: translateY(-100%); pointer-events: none;
-  }
-  body.cab-fija.pantalla-limpia #barra {
-    transform: translateY(100%); pointer-events: none;
-  }
-  /* el carril se queda: es una cinta al borde de la caja, no un mando */
-  body.cab-fija.pantalla-limpia .ir-hoy { display: none; }
-  body.cab-fija.pantalla-limpia #vista {
-    padding-bottom: calc(1.2rem + env(safe-area-inset-bottom));
-  }
-  body.cab-fija.pantalla-limpia .hora-sec { scroll-margin-top: .7rem; }
+body.cab-fija.pantalla-limpia { padding-top: 0; }
+body.cab-fija.pantalla-limpia #cabecera {
+  transform: translateY(-100%); pointer-events: none;
 }
+body.cab-fija.pantalla-limpia #barra {
+  transform: translateY(100%); pointer-events: none;
+}
+/* el carril se queda: es una cinta al borde de la caja, no un mando */
+body.cab-fija.pantalla-limpia .ir-hoy { display: none; }
+body.cab-fija.pantalla-limpia #vista {
+  padding-bottom: calc(1.2rem + env(safe-area-inset-bottom));
+}
+body.cab-fija.pantalla-limpia .hora-sec { scroll-margin-top: .7rem; }
 
 /* ----------------------------------------------------- la misa entera
    El formulario se maqueta con las mismas piezas que la hora —.hora-sec,
@@ -1696,6 +1719,68 @@ select.elige {
   letter-spacing: .03em; color: var(--tinta-suave);
 }
 .testigo::before { content: "— "; }
+
+/* ------------------------------------------------------------ devocionario
+   Un libro de oraciones se hojea, así que lo que manda es la lista: una
+   fila por oración, el título latino grande y el castellano debajo en
+   pequeño, y nada más. La oración abierta se compone como el Ordinario de
+   la misa, con las dos lenguas enfrentadas (.bi) y la rúbrica en rojo. */
+.devo-fila {
+  display: block; text-decoration: none; color: inherit;
+  padding: .7rem .2rem .75rem; border-bottom: 1px solid var(--filete);
+  transition: background-color var(--medio) var(--curva);
+}
+.devo-fila:active { background: var(--filete); }
+.devo-fila small {
+  display: block; margin-top: .12rem;
+  font-family: var(--sans); font-size: .74rem; color: var(--tinta-suave);
+}
+.devo-fila .devo-solo-la { font-style: italic; opacity: .75; }
+/* lo que distingue dos versiones de la misma oración: el año que da la
+   fuente, y donde no lo da, el número de orden */
+.devo-dist {
+  margin-left: .45rem; font-family: var(--sans); font-size: .68rem;
+  letter-spacing: .04em; color: var(--tinta-suave);
+}
+.devo-grupo {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: .8rem; font-size: 1.05rem;
+}
+.devo-grupo small { margin-top: 0; font-variant-numeric: tabular-nums; }
+.devo-atras {
+  display: inline-flex; align-items: center; gap: .15rem;
+  margin: 0 0 .7rem; padding: .35rem .5rem .35rem .2rem;
+  font-family: var(--sans); font-size: .8rem; color: var(--tinta-suave);
+  text-decoration: none;
+}
+.devo-atras svg { width: 1.05rem; height: 1.05rem; }
+.devo-sub {
+  margin: 1.4rem 0 .3rem; font-family: var(--sans); font-size: .72rem;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.devo { margin-top: .4rem; }
+/* el título y el epígrafe que la fuente imprime dentro de la oración: el
+   nombre del salmo, «Ad Matutinum», la cita con que el Oficio lo encabeza */
+.devo-tit {
+  margin: 1.1rem 0 .5rem; font-size: 1rem; text-align: center;
+}
+.devo-epi {
+  margin: -.3rem 0 .7rem; font-style: italic; text-align: center;
+  font-size: .9em; color: var(--tinta-suave);
+}
+.devo-fuente {
+  margin: 1.8rem 0 .5rem; font-family: var(--sans); font-size: .76rem;
+  color: var(--tinta-suave);
+}
+.devo-fuente > summary {
+  cursor: pointer; padding: .4rem 0; letter-spacing: .02em;
+  border-bottom: 1px solid var(--filete); list-style: none;
+}
+.devo-fuente > summary::-webkit-details-marker { display: none; }
+.devo-fuente > summary::before { content: "▸ "; }
+.devo-fuente[open] > summary::before { content: "▾ "; }
+.devo-fuente p { margin: .55rem 0; line-height: 1.5; }
 
 /* ------------------------------------------------------- menos movimiento */
 @media (prefers-reduced-motion: reduce) {

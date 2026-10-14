@@ -1,9 +1,9 @@
 El leccionario latino de 1977 - cosecha de los cuatro tomos
 
-   tomo 1: 1116 pericopas  (cerradas 1110, con cita 1030, con incipit  539)
-   tomo 2: 1120 pericopas  (cerradas 1106, con cita 1026, con incipit  529)
-   tomo 3: 1237 pericopas  (cerradas 1228, con cita 1121, con incipit  618)
-   tomo 4: 1112 pericopas  (cerradas 1103, con cita 1035, con incipit  547)
+   tomo 1: 1116 pericopas  (cerradas 1110, con cita 1030, con incipit  539);   371 salmos,   365 aclamaciones
+   tomo 2: 1120 pericopas  (cerradas 1106, con cita 1026, con incipit  529);   369 salmos,   230 aclamaciones
+   tomo 3: 1237 pericopas  (cerradas 1228, con cita 1121, con incipit  618);   436 salmos,   401 aclamaciones
+   tomo 4: 1112 pericopas  (cerradas 1103, con cita 1035, con incipit  547);   367 salmos,   366 aclamaciones
 
    4585 pericopas en total -> 1620 distintas (quitadas 2965 repeticiones entre tomos)
    70 libros biblicos representados
@@ -23,4 +23,18 @@ El leccionario latino de 1977 - cosecha de los cuatro tomos
           4  Ait Deus:
           4  In diébus illis: Locútus est Móyses pópulo dicens:
 
-escrito data/lect1977_pericopas.json  (280 KB)
+   aclamaciones antes del evangelio: 417 pericopas, 11 descartadas porque sus copias no traen la misma forma
+        386  alleluia
+         31  versus
+        219  con cita del versiculo
+
+   1543 salmos en total -> 255 citas distintas (42 con mas de una forma entre copias; se queda la de la mayoria)
+        254  con la respuesta apartada por su signo
+       3445  renglones en total, 3.82 por estrofa
+      estrofas por salmo: 2 x12, 3 x135, 4 x81, 5 x13, 6 x14
+      renglones por estrofa: 1 x20, 2 x105, 3 x124, 4 x499, 5 x98, 6 x43, 7 x8, 8 x2, 9 x3
+        838  descartados: las estrofas no cuadran con la cita
+        251  descartados: sin cita que se pueda leer
+         11  descartados: la respuesta se metio en la primera estrofa
+
+escrito data/lect1977_pericopas.json  (519 KB)

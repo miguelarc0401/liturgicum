@@ -52,7 +52,10 @@ const DESPUES = [
   'datos/prefacios.json',
   'datos/ordinario.json',
   'datos/horas_dias.json',
-  'datos/horas.json'
+  'datos/horas.json',
+  // el devocionario: 1 MB de oraciones que no hacen falta para abrir la app
+  // ni para rezar la misa ni las horas, y que la vista pide cuando se entra
+  'datos/devocionario.json'
 ];
 
 async function guarda(c, ficheros) {

@@ -12,7 +12,11 @@ Dos libros litúrgicos, hechos con el mismo método y servidos por la misma app:
 * la **Liturgia de las Horas** en la traducción litúrgica que se usa en
   México, con sus siete horas, extraída y ordenada por
   [`Breviarium/`](Breviarium/LEEME.md), que es un módulo aparte con su propia
-  fuente y su propio proceso.
+  fuente y su propio proceso;
+* el **devocionario**: 461 oraciones latinas del *Thesaurus Precum
+  Latinarum*, puestas en la ortografía de los libros litúrgicos —con su
+  jota, su ligadura y su acento— por [`Enchiridion/`](Enchiridion/LEEME.md),
+  con el castellano de cada una donde se ha podido verificar de dónde sale.
 
 Cómo está hecho y por qué, paso a paso, en [Vision.md](Vision.md); lo del
 oficio divino, en [Breviarium/LEEME.md](Breviarium/LEEME.md).
@@ -131,6 +135,7 @@ vieja y la vuelve a llenar. Al terminar, la página se recarga una sola vez.
 | `data/` | las tablas editables a mano y los informes de control de calidad |
 | `app/` | la PWA: lo único que se publica |
 | `Breviarium/` | la Liturgia de las Horas: su proceso y el libro ya ordenado |
+| `Enchiridion/` | el devocionario latino: su proceso, sus tablas y su castellano |
 | `out/` | los documentos compuestos (no va al repositorio: son 500 MB) |
 | `cache/` | las páginas descargadas (tampoco va: se vuelven a bajar) |
 
