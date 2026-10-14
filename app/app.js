@@ -33,7 +33,11 @@ const POR_OMISION = {
   // el color de la app: el litúrgico del día, o uno fijo
   color: 'dia',
   // al rezar (Ajustes, «Liturgia de las Horas»)
-  carril: 'si', gestos: 'si', rezadas: 'si'
+  carril: 'si', gestos: 'si', rezadas: 'si',
+  // y al rezar en alta voz: la voz del sistema (vacío: la que haya),
+  // la velocidad en centésimas, y lo que se dice de más
+  voz: '', vozVel: 100, vozRotulos: 'si', vozPausa: 'normal',
+  vozSigue: 'no', vozMotor: 'sistema', vozLinea: {}
 };
 
 const E = {              // todo el estado de la app
@@ -3427,6 +3431,17 @@ function verAjustes() {
     + '</label><select id="aj-' + id + '">' + ops.map(([v, t]) =>
       '<option value="' + v + '"' + (E.cfg[id] === v ? ' selected' : '')
       + '>' + t + '</option>').join('') + '</select></div>';
+  // Los campos de la voz en línea no son una lista de opciones sino lo que
+  // haya que escribir —la región, la clave, el nombre de la voz—, y no
+  // cuelgan de un ajuste con nombre sino de la tabla `vozLinea`.
+  const campoVoz = (campo, etiqueta, pista, tipo) => {
+    const c = E.cfg.vozLinea || {};
+    return '<div class="ajuste ancho"><label for="aj-vl-' + campo + '">'
+      + etiqueta + (pista ? '<span class="pista">' + pista + '</span>' : '')
+      + '</label><input id="aj-vl-' + campo + '" type="' + (tipo || 'text')
+      + '" data-vozlinea="' + campo + '" value="' + esc(c[campo] || '')
+      + '" autocomplete="off" spellcheck="false"></div>';
+  };
   // Cada sección, una pestaña que se abre: la lista entera de un tirón son
   // cuatro pantallas de deslizar para cambiar una cosa. Todas vienen
   // plegadas, de modo que lo primero que se ve es de qué se puede hablar;
@@ -3605,6 +3620,35 @@ function verAjustes() {
       'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
       + 'nada: queda marcada aquella cuyo final has llegado a leer.',
       [['si', 'Sí'], ['no', 'No']]),
+    ajuste('Rezar en alta voz'),
+    bloqueVoz(),
+    sel('vozMotor', 'Qué voz',
+      'La del teléfono viene con el sistema y habla sin conexión: lee bien, '
+      + 'pero es voz de máquina. La otra suena a persona, y pide conexión y '
+      + 'una cuenta en el servicio que la da.',
+      [['sistema', 'La del teléfono · sin conexión'],
+        ['linea', 'Una voz neuronal · pide conexión']]),
+    E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
+      : sel('voz', 'La voz del teléfono', vocesQueHay(),
+        [['', 'La que haya']].concat(vocesDeLaVoz()
+          .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
+    sel('vozVel', 'Velocidad',
+      'Rezada, no leída: despacio se entiende, y de camino se agradece.',
+      [[85, 'Despacio'], [100, 'Normal'], [115, 'Deprisa'],
+        [130, 'Muy deprisa']]),
+    sel('vozRotulos', 'Nombrar cada sección',
+      'Dice «Himno», «Salmodia», «Lectura breve» antes de cada una: con la '
+      + 'pantalla apagada es lo único que sitúa.',
+      [['si', 'Sí'], ['no', 'No']]),
+    sel('vozPausa', 'Silencio entre secciones',
+      'Dentro de una sección el silencio lo pone la puntuación del texto, '
+      + 'que la dice el motor de corrido: por eso no se corta con la '
+      + 'pantalla apagada.',
+      [['corta', 'Poco'], ['normal', 'Normal'], ['larga', 'Mucho']]),
+    sel('vozSigue', 'Al acabar, la hora siguiente',
+      'Empieza la siguiente sin tocar nada, hasta Completas. Para un viaje '
+      + 'largo.',
+      [['no', 'No'], ['si', 'Sí']]),
     '<p class="pie">' + esc(E.lecturas.cabecera)
     + (E.cfg.fuente === 'bi' && E.lecturasEs
       ? '<br><br>' + esc(E.lecturasEs.cabecera) : '')
@@ -3657,6 +3701,17 @@ async function alCambiarAjuste(ev) {
     aplicaFormatoSecs();
     return;
   }
+  // la voz en línea tampoco es un ajuste con nombre, sino un campo de su
+  // tabla: vacío, se borra, y el servicio vuelve a estar sin configurar
+  const vl = ev.target.dataset.vozlinea;
+  if (vl) {
+    const l = Object.assign({}, E.cfg.vozLinea);
+    const t = (ev.target.value || '').trim();
+    if (t) l[vl] = t; else delete l[vl];
+    E.cfg.vozLinea = l;
+    guardaCfg();
+    return;
+  }
   const id = (ev.target.id || '').replace(/^aj-/, '');
   if (!(id in E.cfg)) return;
   let v = ev.target.value;
@@ -3674,9 +3729,15 @@ async function alCambiarAjuste(ev) {
     verAjustes();      // aparece la lista, y el Ordinario deja de mandar
     return;
   }
-  E.cfg[id] = id === 'tam' ? +v : v;
+  E.cfg[id] = (id === 'tam' || id === 'vozVel') ? +v : v;
   guardaCfg();
   aplicaCfg();
+  // elegir la otra voz hace aparecer, o irse, los campos del servicio
+  if (id === 'vozMotor') {
+    recuerdaAjustes();
+    verAjustes();
+    return;
+  }
   if (id === 'fmtUno') {
     recuerdaAjustes();
     verAjustes();      // aparecen, o se van, las pestañas de cada sección
@@ -5222,6 +5283,7 @@ function alElegirOpcion(ev) {
   const caja = rb && document.querySelector('.hora-sec[data-cl="'
     + rb.cl + '"]');
   if (caja) { sigueALaLectura(s, rb); repintaSeccion(caja, rb); }
+  rearmaVoz();
 }
 
 /** La otra forma de empezar. La que se deja se queda como estaba —si el
@@ -5244,6 +5306,7 @@ function cambiaComienzo(modo) {
   if (b) b.focus({ preventScroll: true });
   // la cinta nombra la sección por la forma que se dice
   pintaCarril(o);
+  rearmaVoz();
 }
 
 /** Plegar o abrir la reseña. La sección crece hacia abajo, así que el
@@ -5259,6 +5322,7 @@ function pliegaResena(b) {
   window.scrollBy(0, nueva.getBoundingClientRect().top - arriba);
   const b2 = nueva.querySelector('[data-pliega]');
   if (b2) b2.focus({ preventScroll: true });
+  rearmaVoz();
 }
 
 /* Las opciones de una sección se ven todas o no sirven: antes se metían en
@@ -5603,7 +5667,7 @@ async function verHoras(iso, hora, idCel) {
   // el tamaño de la letra, en la cabecera: es la que se queda arriba al
   // bajar, así que las dos aes están a mano a media hora y no sólo al
   // empezar, y no le quitan sitio al selector de la sección
-  $('#cab-zoom').innerHTML = controlZoom();
+  $('#cab-zoom').innerHTML = botonVoz() + controlZoom();
   vista.innerHTML = o.secciones.length
     ? o.secciones.map((x) => pintaSeccionHora(x)).join('')
     : '<p class="aviso">No tengo los textos de esta hora para este día.</p>';
@@ -5615,6 +5679,8 @@ async function verHoras(iso, hora, idCel) {
   // el mismo oficio en otra forma —del santo, de la feria— se sigue donde
   // se iba; otra hora, donde se dejó aquélla
   colocaPosicion(() => vuelveADonde(E.donde) || vuelveAlSitioHora(iso, hora));
+  // y la voz, si venía diciendo: contra la página nueva
+  vozTrasPintar();
 }
 
 /* ---------------------------------------------- el tamaño, a la mano
@@ -5878,7 +5944,7 @@ function alEmpezarGesto(ev) {
   _dedo = null;
   if (ev.touches.length !== 1) return;
   if (ev.target.closest('.chips, .alterna, .carril, #cabecera, #barra, '
-    + 'input, select, a, button, summary, label')) return;
+    + '#voz, input, select, a, button, summary, label')) return;
   const t = ev.touches[0];
   _dedo = { x: t.clientX, y: t.clientY, t: Date.now(),
     sy: Math.max(0, window.scrollY) };
@@ -5951,6 +6017,7 @@ function marcaRezada(hora) {
  * desplazamiento, que en un dedo largo son decenas. */
 let _enDesplazamiento = false;
 function alDesplazarHoras() {
+  manoEnLaVoz();
   if (!conCarril() || _enDesplazamiento) return;
   _enDesplazamiento = true;
   requestAnimationFrame(() => {
@@ -5977,6 +6044,863 @@ function horaSugerida() {
   if (h < 17) return 'nona';
   if (h < 21) return 'visperas';
   return 'completas';
+}
+
+/* ======================================================= rezar en alta voz
+ *
+ * Se reza de viaje: al volante, andando, con el teléfono en el bolsillo y
+ * la pantalla apagada. Eso manda sobre todo lo demás en esta parte, y lo
+ * que manda no es la voz —ésa la pone el sistema— sino que no se calle.
+ *
+ *  · La pantalla se apaga al medio minuto, y con ella el navegador le quita
+ *    la cuerda a los temporizadores de una página escondida: la hora se
+ *    cortaría en el primer salmo. Lo que la mantiene despierta es que esté
+ *    sonando algo, así que suena: un audio en bucle de un solo bit de
+ *    amplitud, que ningún oído alcanza y que al navegador le basta para
+ *    tratar la página como lo que es, un reproductor.
+ *  · Al volante no se toca la pantalla. Los mandos van al volante y a los
+ *    auriculares por el MediaSession: siguiente pasa de sección, anterior
+ *    vuelve a la suya, y el del medio para y sigue.
+ *  · Dentro de una sección no hay ni un temporizador: los trozos se meten
+ *    todos de golpe en el motor y es él quien los va diciendo, sin que la
+ *    página tenga que despertarse a empujarlos. Sólo al pasar de sección
+ *    hay que contar un silencio, y son siete u ocho en toda la hora.
+ *  · Y lo que no se dice en voz alta no se dice: la rúbrica se calla, que
+ *    es una indicación y no una oración. Las siglas de los versículos
+ *    («V.», «R.»), los rótulos de las antífonas y los títulos de los
+ *    salmos van marcados como rúbrica en la fuente —se midió: 20 242 veces
+ *    la sigla, ni una suelta—, así que callar la rúbrica los calla todos.
+ *
+ * Lo que se dice no se saca de los datos sino de la página ya pintada, y
+ * es a propósito: así se dice exactamente lo que se está viendo —la opción
+ * elegida en cada sección, la forma del comienzo, la reseña sólo si está
+ * abierta— y cada trozo sabe qué renglón tiene que ir resaltando.
+ */
+
+const V = {
+  guion: null,          // los trozos que hay que decir, en orden
+  i: 0,                 // el trozo que suena
+  estado: 'parada',     // parada | diciendo | pausada
+  iso: null, hora: null,   // de qué hora es el guión que está armado
+  silencio: null,       // el audio mudo que mantiene viva la página
+  audio: null,          // el <audio> del motor en línea
+  url: null,            // su blob, para soltarlo al acabar
+  pasa: null,           // el temporizador del silencio entre secciones
+  hasta: 0,             // hasta qué trozo va metido en el motor
+  saltando: false,      // pasando sola a la hora siguiente: no se para
+  manos: 0,             // hasta cuándo manda la mano que ha desplazado
+  aviso: '',            // lo que la barra tiene que decir, si algo
+  motor: 'sistema',     // el que se está usando de verdad, no el elegido
+  fallos: 0,            // seguidos, del motor en línea
+  gen: 0,               // de qué tanda es lo que suena (ver callaElMotor)
+  voces: null, vocesPedidas: false
+};
+
+/* Los trozos no pasan de esta medida, y la medida la pone un defecto
+ * conocido: hay versiones de Chrome que cortan por su cuenta una locución
+ * que pase de unos quince segundos. En castellano eso son unos doscientos
+ * caracteres, así que doscientos veinte y nunca más. Partir de más no
+ * cuesta nada —van todos encolados de una vez, no hay un temporizador por
+ * trozo—, y de menos costaría quedarse a media estrofa sin saber por qué. */
+const LARGO_TROZO = 220;
+
+const PAUSA = { corta: 0.55, normal: 1, larga: 1.7 };
+
+const ICONO_VOZ = {
+  voz: svg('<path d="M4 9.3h3L11.5 5.6v12.8L7 14.7H4z"/>'
+    + '<path d="M15.2 9.2a3.9 3.9 0 0 1 0 5.6"/>'
+    + '<path d="M17.9 6.6a7.6 7.6 0 0 1 0 10.8"/>'),
+  dale: svg('<path d="M8.5 5.6 18 12l-9.5 6.4z"/>'),
+  pausa: svg('<path d="M9.5 6v12M14.5 6v12"/>'),
+  atras: svg('<path d="M6.5 6v12M16.5 6.6 8.8 12l7.7 5.4z"/>'),
+  luego: svg('<path d="M17.5 6v12M7.5 6.6 15.2 12l-7.7 5.4z"/>')
+};
+
+/* ------------------------------------------------- qué se dice y qué no
+ * El texto que llega a la voz es el de la página menos lo que allí no se
+ * lee en alta voz: la rúbrica, la cruz del flexo —que es una marca, no una
+ * palabra— y el rotulito de la edición española. */
+function textoDicho(el) {
+  let t = '';
+  el.childNodes.forEach((n) => {
+    if (n.nodeType === 3) { t += n.nodeValue; return; }
+    if (n.nodeType !== 1) return;
+    if (n.classList.contains('rub') || n.classList.contains('cruz')
+      || n.classList.contains('ed-pdf')) return;
+    t += textoDicho(n);
+  });
+  return t;
+}
+
+/* Y lo que queda se allana. Nada de esto es cosmética: cada regla tapa una
+ * manera que tiene el motor de decir en alto algo que en la página no se
+ * lee. Las comillas angulares las nombra; los corchetes son del editor y no
+ * del salmo; la raya con que los tomos abren la respuesta de las preces
+ * saldría «guión»; y la «N.» del hueco del nombre —«Protege al papa N.»—
+ * saldría «ene», que es la única que no se puede dejar pasar: ahí no hay
+ * una palabra, hay un sitio donde se dice un nombre. Se quita, y la frase
+ * cierra entera. */
+function diLlano(t) {
+  return t
+    .replace(/[«»“”„]/g, '')
+    .replace(/\[[^\]]*\]/g, ' ')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/(^|[^\p{L}])N\.(?=$|[^\p{L}])/gu, '$1')
+    .replace(/\s*\*\s*/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** Los cortes de un texto en trozos que no pasen de la medida, siempre en
+ *  final de frase mientras haya uno donde cortar. Devuelve pares [de, a). */
+function cortaPorFrases(t, max) {
+  const cortes = [];
+  let a = 0;
+  while (a < t.length) {
+    if (t.length - a <= max) { cortes.push([a, t.length]); break; }
+    let b = -1;
+    const rx = /[.;:?!][»”')\]]*(?:\s|$)/g;
+    rx.lastIndex = a;
+    let m;
+    while ((m = rx.exec(t))) {
+      const fin = m.index + m[0].length;
+      if (fin - a > max) break;
+      b = fin;
+    }
+    if (b <= a) {                     // una frase más larga que la medida
+      b = t.lastIndexOf(' ', a + max);
+      if (b <= a) b = a + max;
+    }
+    cortes.push([a, b]);
+    a = b;
+    while (a < t.length && /\s/.test(t[a])) a++;
+  }
+  return cortes;
+}
+
+/* Una estrofa —o un párrafo de prosa— se junta en un texto seguido y se
+ * parte después por frases. Juntarla primero es lo que hace que la voz no
+ * se pare donde se paró la columna del libro: el renglón de la prosa acaba
+ * donde se acabó el papel, y decirlo renglón a renglón suena a telegrama.
+ * En verso, en cambio, el renglón es la unidad de sentido y se conserva:
+ * van separados por un salto, que el motor respeta como una coma larga.
+ *
+ * La tabla de renglones viaja con todos los trozos de la estrofa: de ella
+ * sale, en cada aviso de palabra del motor, cuál es el renglón que se está
+ * diciendo. */
+function trozosDeEstrofa(j, cl, lineas, prosa, pausa) {
+  const sep = prosa ? ' ' : '\n';
+  let texto = '';
+  const tabla = [];
+  for (const l of lineas) {
+    tabla.push({ off: texto ? texto.length + sep.length : 0, nodo: l.nodo });
+    texto += (texto ? sep : '') + l.t;
+  }
+  const cortes = cortaPorFrases(texto, LARGO_TROZO);
+  return cortes.map(([a, b], k) => ({
+    sec: j, cl: cl, texto: texto.slice(a, b), base: a, tabla: tabla,
+    pausa: k === cortes.length - 1 ? pausa : 0
+  }));
+}
+
+/** El renglón que le toca a una posición del trozo: el último que empieza
+ *  antes de ella. */
+function renglonEn(tz, idx) {
+  const abs = tz.base + (idx || 0);
+  let n = null;
+  for (const r of tz.tabla) {
+    if (r.off > abs) break;
+    n = r.nodo;
+  }
+  return n || (tz.tabla[0] && tz.tabla[0].nodo) || null;
+}
+
+/** Los renglones de un párrafo: los `span.ln` si los trae —el verso y la
+ *  prosa de la hora—, y si no, el párrafo entero, que es como va la reseña. */
+function renglonesDe(p) {
+  const lineas = [];
+  const lns = p.querySelectorAll('span.ln');
+  if (lns.length) {
+    lns.forEach((ln) => {
+      const t = diLlano(textoDicho(ln));
+      if (t) lineas.push({ nodo: ln, t: t });
+    });
+    return lineas;
+  }
+  const t = diLlano(textoDicho(p));
+  if (t) lineas.push({ nodo: p, t: t });
+  return lineas;
+}
+
+/** El guión de la hora que está en la pantalla. */
+function guionDeLaHora() {
+  const guion = [];
+  const secs = document.querySelectorAll('#vista .hora-sec');
+  const pausa = PAUSA[E.cfg.vozPausa] || 1;
+  secs.forEach((sec, j) => {
+    // lo plegado no se ve, y lo que no se ve no se dice
+    if (sec.querySelector('.cuerpo[hidden]')) return;
+    const s = E.oficio && E.oficio.secciones[j];
+    const prosa = sec.classList.contains('prosa');
+    const parrafos = sec.querySelectorAll('p.estrofa-h');
+    const suyos = [];
+    (parrafos.length ? parrafos : sec.querySelectorAll('.cuerpo p'))
+      .forEach((p) => {
+        const lineas = renglonesDe(p);
+        if (!lineas.length) return;
+        for (const tz of trozosDeEstrofa(j, s ? s.cl : '', lineas, prosa,
+          Math.round(320 * pausa))) suyos.push(tz);
+      });
+    if (!suyos.length) return;      // una sección sin nada que decir se salta
+    // el rótulo, delante: con la pantalla apagada es lo único que dice por
+    // dónde va la hora
+    if (E.cfg.vozRotulos !== 'no' && s) {
+      const n = nombreSeccion(s);
+      if (n) {
+        guion.push({ sec: j, cl: '@rotulo', texto: n + '.', base: 0,
+          tabla: [{ off: 0, nodo: sec.querySelector('.sec-cab') || sec }],
+          pausa: Math.round(420 * pausa) });
+      }
+    }
+    for (const tz of suyos) guion.push(tz);
+    // el silencio de verdad va al cambiar de sección, no entre estrofas
+    guion[guion.length - 1].pausa = Math.round(1100 * pausa);
+  });
+  if (guion.length) guion[guion.length - 1].pausa = 0;
+  return guion;
+}
+
+/* ------------------------------------------------------ la voz del sistema
+ * Las voces no están puestas en cuanto se pregunta: el navegador las carga
+ * cuando le parece y avisa. Se piden al entrar en la hora, para que Ajustes
+ * tenga la lista hecha. */
+function pideVoces() {
+  if (!('speechSynthesis' in window)) return [];
+  const v = speechSynthesis.getVoices();
+  if (v.length) V.voces = v;
+  if (!V.voces && !V.vocesPedidas) {
+    V.vocesPedidas = true;
+    speechSynthesis.addEventListener('voiceschanged', () => {
+      V.voces = speechSynthesis.getVoices();
+      if (E.vista === 'ajustes') { recuerdaAjustes(); verAjustes(); }
+    });
+  }
+  return V.voces || [];
+}
+
+/** Las que sirven para el castellano, y si no hay ninguna, todas: en un
+ *  teléfono recién puesto puede no haber voz española, y entonces vale más
+ *  una italiana leyendo castellano que el silencio. */
+function vocesDeLaVoz() {
+  const v = pideVoces().slice();
+  const es = v.filter((x) => /^es/i.test(x.lang));
+  return es.length ? es : v;
+}
+
+function vozElegida() {
+  const v = pideVoces();
+  if (!v.length) return null;
+  return v.find((x) => x.voiceURI === E.cfg.voz)
+    || v.find((x) => /^es-ES/i.test(x.lang))
+    || v.find((x) => /^es/i.test(x.lang))
+    || null;
+}
+
+/* ---------------------------------------------- el audio que no se oye
+ * Un WAV de medio segundo a 8 kHz con la onda más pequeña que cabe: un bit
+ * de los dieciséis, treinta mil veces por debajo de lo que da un altavoz de
+ * teléfono. No es silencio exacto a propósito —un silencio exacto hay
+ * navegadores que lo descartan, y entonces no cuenta como estar
+ * reproduciendo nada—, y no se oye en ningún caso. */
+function wavMudo() {
+  const hz = 8000, n = hz / 2;
+  const b = new ArrayBuffer(44 + n * 2);
+  const d = new DataView(b);
+  const pon = (p, s) => {
+    for (let i = 0; i < s.length; i++) d.setUint8(p + i, s.charCodeAt(i));
+  };
+  pon(0, 'RIFF'); d.setUint32(4, 36 + n * 2, true); pon(8, 'WAVEfmt ');
+  d.setUint32(16, 16, true); d.setUint16(20, 1, true); d.setUint16(22, 1, true);
+  d.setUint32(24, hz, true); d.setUint32(28, hz * 2, true);
+  d.setUint16(32, 2, true); d.setUint16(34, 16, true);
+  pon(36, 'data'); d.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++) d.setInt16(44 + i * 2, i % 2 ? 1 : -1, true);
+  return URL.createObjectURL(new Blob([b], { type: 'audio/wav' }));
+}
+
+function arrancaSilencio() {
+  if (!V.silencio) {
+    V.silencio = new Audio(wavMudo());
+    V.silencio.loop = true;
+  }
+  // tiene que salir del toque que arranca la voz: un audio que empieza solo
+  // no lo deja ningún navegador
+  V.silencio.play().catch(() => { /* sin él se corta al apagar la pantalla */ });
+}
+
+/* ------------------------------------------------ los mandos de fuera
+ * Lo que hace que esto sirva de verdad al volante: el botón del volante y
+ * el de los auriculares. El navegador los entrega por aquí mientras haya
+ * algo sonando —y lo hay, el audio mudo—, así que funcionan con la pantalla
+ * apagada y sin tocar el teléfono. */
+function ponMandos() {
+  const ms = navigator.mediaSession;
+  if (!ms) return;
+  const pon = (n, f) => {
+    try { ms.setActionHandler(n, f); } catch (_) { /* ése no lo tiene */ }
+  };
+  pon('play', () => sigueVoz());
+  pon('pause', () => pausaVoz());
+  pon('stop', () => paraVoz());
+  pon('nexttrack', () => otraSeccionVoz(1));
+  pon('previoustrack', () => otraSeccionVoz(-1));
+  pon('seekforward', () => vaATrozo(V.i + 1));
+  pon('seekbackward', () => vaATrozo(V.i - 1));
+}
+
+function nombraEnLosMandos() {
+  const ms = navigator.mediaSession;
+  if (!ms) return;
+  const tz = V.guion && V.guion[V.i];
+  const s = tz && E.oficio && E.oficio.secciones[tz.sec];
+  if (window.MediaMetadata) {
+    try {
+      ms.metadata = new MediaMetadata({
+        title: s ? nombreSeccion(s) : ($('#titulo-dia').textContent || 'Oficio'),
+        artist: $('#titulo-dia').textContent || '',
+        album: $('#subtitulo-dia').textContent || '',
+        artwork: [{ src: 'icono-192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icono-512.png', sizes: '512x512', type: 'image/png' }]
+      });
+    } catch (_) { /* sin rótulo en la pantalla de bloqueo: se oye igual */ }
+  }
+  ms.playbackState = V.estado === 'diciendo' ? 'playing'
+    : V.estado === 'pausada' ? 'paused' : 'none';
+}
+
+/* ------------------------------------------------------- el reproductor */
+
+let _vozDesplaza = 0;
+
+/** Resalta el renglón que suena y lo trae a la vista, salvo que la mano
+ *  acabe de desplazar: entonces manda la mano, y se le deja un rato. */
+function resalta(nodo) {
+  document.querySelectorAll('#vista .diciendo').forEach((x) =>
+    x.classList.remove('diciendo'));
+  if (!nodo || !nodo.classList || !nodo.isConnected) return;
+  nodo.classList.add('diciendo');
+  if (Date.now() < V.manos) return;
+  _vozDesplaza = Date.now();
+  try {
+    nodo.scrollIntoView({ block: 'center', behavior: suave() });
+  } catch (_) { nodo.scrollIntoView(); }
+}
+
+/* Volver a mirar el teléfono. Con la pantalla apagada hay sistemas que le
+ * quitan la voz a una página escondida —Android lo hace según la versión y
+ * según el motor de voz que esté puesto—, y entonces la hora se queda a
+ * medias sin avisar. Al volver a primer plano se mira si el motor sigue
+ * hablando, y si se ha callado se le vuelve a dar lo que le quedaba desde
+ * el trozo donde iba. Peor que no cortarse es cortarse y no seguir. */
+function miraSiLaHanCallado() {
+  if (document.hidden || V.estado !== 'diciendo' || !V.guion) return;
+  if (!hablaElSistema()) {
+    // con audio no hace falta: el navegador lo reanuda él, y si no, el
+    // propio elemento avisa de que acabó
+    if (V.audio && V.audio.paused && V.audio.currentTime < V.audio.duration) {
+      V.audio.play().catch(() => {});
+    }
+    return;
+  }
+  if (speechSynthesis.speaking || speechSynthesis.pending) return;
+  // callada del todo y nadie lo ha pedido: se repone donde iba
+  arrancaSilencio();
+  vaATrozo(V.i);
+}
+
+/** La mano que desplaza a media hora dicha para el seguimiento unos
+ *  segundos: alguien está mirando otra cosa, y no hay que pelearle la
+ *  página. Lo que la voz desplaza sola no cuenta. */
+function manoEnLaVoz() {
+  if (V.estado === 'parada') return;
+  if (Date.now() - _vozDesplaza > 700) V.manos = Date.now() + 9000;
+}
+
+function hablaElSistema() {
+  return V.motor !== 'linea' || !E.cfg.vozLinea || !E.cfg.vozLinea.clave;
+}
+
+/* Dentro de una sección los trozos se meten todos de golpe: el motor los
+ * dice uno detrás de otro sin que la página tenga que despertarse a
+ * empujarlos, y eso es lo que aguanta con la pantalla apagada. La cola se
+ * para en el final de la sección, que es donde hay que contar el silencio.
+ * El precio es que entre estrofas manda el punto del texto y no el ajuste
+ * de la pausa, que gobierna los cambios de sección. */
+function encolaHastaElFinDeLaSeccion() {
+  const gui = V.guion;
+  while (V.hasta < gui.length
+    && !(V.hasta > V.i && gui[V.hasta - 1].pausa > 600)) {
+    encolaEnElSistema(V.hasta++);
+  }
+}
+
+function encolaEnElSistema(k) {
+  const tz = V.guion[k];
+  const g = V.gen;
+  const u = new SpeechSynthesisUtterance(tz.texto);
+  const voz = vozElegida();
+  if (voz) { u.voice = voz; u.lang = voz.lang; } else u.lang = 'es-ES';
+  u.rate = Math.max(0.5, Math.min(2, (E.cfg.vozVel || 100) / 100));
+  u.onstart = () => { if (g === V.gen) suena(k, 0); };
+  u.onboundary = (ev) => {
+    if (g === V.gen && V.i === k) resalta(renglonEn(tz, ev.charIndex));
+  };
+  u.onend = () => { if (g === V.gen) acabo(k); };
+  u.onerror = (ev) => {
+    // «interrupted» y «canceled» son lo que pasa al callarla a propósito
+    if (g !== V.gen || ev.error === 'interrupted'
+      || ev.error === 'canceled') return;
+    acabo(k);
+  };
+  speechSynthesis.speak(u);
+}
+
+function suena(k, idx) {
+  V.i = k;
+  V.estado = 'diciendo';
+  resalta(renglonEn(V.guion[k], idx));
+  nombraEnLosMandos();
+  pintaBarraVoz();
+}
+
+/** Acabado un trozo: o le sigue el siguiente, o se cuenta el silencio de la
+ *  sección, o se acabó la hora. */
+function acabo(k) {
+  if (V.estado !== 'diciendo' || k !== V.i || !V.guion) return;
+  const tz = V.guion[k];
+  if (k + 1 >= V.guion.length) { seAcaboLaHora(); return; }
+  // el motor del sistema trae por delante toda la sección: si queda cola,
+  // sigue él solo y aquí no hay nada que hacer
+  if (hablaElSistema() && k + 1 < V.hasta) { V.i = k + 1; return; }
+  esperaY(tz.pausa, () => {
+    V.i = k + 1;
+    V.hasta = V.i;
+    if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
+    else diceEnLinea(V.i);
+  });
+}
+
+function esperaY(ms, f) {
+  clearTimeout(V.pasa);
+  V.pasa = setTimeout(f, Math.max(60, ms || 60));
+}
+
+function seAcaboLaHora() {
+  resalta(null);
+  marcaRezada(E.hora);
+  // de viaje se encadena: acabada una hora empieza la siguiente sin tocar
+  // nada. De Completas no se pasa, que ahí se acaba el día.
+  const i = HORAS.findIndex((x) => x[0] === E.hora);
+  if (E.cfg.vozSigue === 'si' && i >= 0 && i < HORAS.length - 1) {
+    V.saltando = true;
+    V.estado = 'parada';
+    pintaBarraVoz();
+    otraHora(1);
+    return;
+  }
+  paraVoz();
+}
+
+/* --------------------------------------------------------- los mandos */
+
+/** El trozo por donde va la vista: quien ha leído hasta media hora y se
+ *  pone en marcha quiere seguir desde ahí, no empezar de nuevo. */
+function trozoALaVista() {
+  if (!V.guion || !V.guion.length) return 0;
+  const corte = $('#cabecera').getBoundingClientRect().bottom + 24;
+  const secs = document.querySelectorAll('#vista .hora-sec');
+  let n = 0;
+  secs.forEach((s, i) => {
+    if (s.getBoundingClientRect().top <= corte) n = i;
+  });
+  const k = V.guion.findIndex((tz) => tz.sec >= n);
+  return k < 0 ? 0 : k;
+}
+
+function arrancaVoz(desde) {
+  if (!('speechSynthesis' in window)) {
+    V.aviso = 'Este navegador no sabe leer en alta voz.';
+    pintaBarraVoz();
+    return;
+  }
+  V.guion = guionDeLaHora();
+  V.iso = E.fecha; V.hora = E.hora;
+  V.motor = E.cfg.vozMotor === 'linea' ? 'linea' : 'sistema';
+  V.fallos = 0;
+  V.aviso = '';
+  V.manos = 0;
+  if (!V.guion.length) {
+    V.aviso = 'No hay nada que decir en esta hora.';
+    pintaBarraVoz();
+    return;
+  }
+  arrancaSilencio();
+  ponMandos();
+  vaATrozo(typeof desde === 'number' ? desde : trozoALaVista());
+}
+
+/** Ir a un trozo y decirlo. Es el único camino: callar lo que suena y
+ *  empezar de ahí. Callar y volver a encolar en vez de usar pause() y
+ *  resume() es a propósito —hay motores donde resume() no vuelve nunca—, y
+ *  cuesta lo que cuesta: que al seguir se repite el trozo desde su
+ *  principio. Rezando, repetir medio versículo no estorba. */
+function vaATrozo(k) {
+  if (!V.guion || !V.guion.length) return;
+  clearTimeout(V.pasa);
+  callaElMotor();
+  V.i = Math.max(0, Math.min(V.guion.length - 1, k));
+  V.estado = 'diciendo';
+  V.hasta = V.i;
+  if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
+  else diceEnLinea(V.i);
+  nombraEnLosMandos();
+  pintaBarraVoz();
+}
+
+/* Callar no es instantáneo: el motor avisa de que ha acabado lo que estaba
+ * diciendo, y ese aviso llega cuando ya se le ha dado otra cosa. Si llegara
+ * a tiempo de pasar por `acabo`, adelantaría un trozo por su cuenta y se
+ * oirían dos a la vez. Cada vez que se calla se cambia de tanda, y lo que
+ * avise de una tanda vieja no se atiende. */
+function callaElMotor() {
+  V.gen++;
+  if ('speechSynthesis' in window) {
+    try { speechSynthesis.cancel(); } catch (_) { /* nada que callar */ }
+  }
+  if (V.audio) {
+    V.audio.pause();
+    V.audio.removeAttribute('src');
+    V.audio = null;
+  }
+  if (V.url) { URL.revokeObjectURL(V.url); V.url = null; }
+}
+
+function pausaVoz() {
+  if (V.estado !== 'diciendo') return;
+  clearTimeout(V.pasa);
+  callaElMotor();
+  V.estado = 'pausada';
+  nombraEnLosMandos();
+  pintaBarraVoz();
+}
+
+function sigueVoz() {
+  if (V.estado === 'pausada') { arrancaSilencio(); vaATrozo(V.i); return; }
+  if (V.estado === 'parada') arrancaVoz();
+}
+
+function paraVoz() {
+  clearTimeout(V.pasa);
+  callaElMotor();
+  if (V.silencio) V.silencio.pause();
+  V.estado = 'parada';
+  V.guion = null;
+  V.hasta = 0;
+  V.aviso = '';
+  resalta(null);
+  if (navigator.mediaSession) navigator.mediaSession.playbackState = 'none';
+  pintaBarraVoz();
+}
+
+/** Al volante, el botón de siguiente del volante: la sección de al lado, no
+ *  el versículo. */
+function otraSeccionVoz(n) {
+  if (!V.guion || !V.guion.length) return;
+  const hoy = V.guion[V.i].sec;
+  if (n > 0) {
+    const k = V.guion.findIndex((tz, j) => j > V.i && tz.sec > hoy);
+    if (k < 0) { seAcaboLaHora(); return; }
+    vaATrozo(k);
+    return;
+  }
+  // atrás: al principio de ésta si ya se ha empezado, y si no, a la anterior
+  const ini = V.guion.findIndex((tz) => tz.sec === hoy);
+  if (V.i > ini + 1) { vaATrozo(ini); return; }
+  const ant = V.guion.filter((tz) => tz.sec < hoy).pop();
+  vaATrozo(ant ? V.guion.findIndex((tz) => tz.sec === ant.sec) : 0);
+}
+
+/* ------------------------------------------------------- el motor en línea
+ * La voz del sistema no reza: lee. Para quien quiera una voz de verdad, la
+ * app sabe pedírsela a un servicio de síntesis con la clave de quien la
+ * tenga, y eso —sólo eso— pide conexión. Lo que se trae queda guardado en
+ * la caché del navegador, así que una hora pedida una vez se vuelve a decir
+ * sin red; y si no hay red y no estaba guardada, no se calla: ese trozo lo
+ * dice la voz del sistema y la hora sigue. Tres fallos seguidos y se deja
+ * de pedir hasta la hora siguiente, que con mala cobertura pedir por pedir
+ * es ir callando a trompicones.
+ *
+ * La clave se guarda en este teléfono y no sale de él más que hacia el
+ * servicio que se elija; el texto de lo que se reza, en cambio, va a ese
+ * servicio, que es lo que hace falta para que lo diga. */
+const PROVEEDOR = {
+  azure: {
+    rot: 'Azure · Microsoft',
+    voces: ['es-ES-ElviraNeural', 'es-ES-AlvaroNeural', 'es-ES-TrianaNeural',
+      'es-MX-DaliaNeural', 'es-MX-JorgeNeural', 'it-IT-DiegoNeural'],
+    url: (c) => 'https://' + encodeURIComponent(c.region || 'westeurope')
+      + '.tts.speech.microsoft.com/cognitiveservices/v1',
+    cabeceras: (c) => ({
+      'Ocp-Apim-Subscription-Key': c.clave,
+      'Content-Type': 'application/ssml+xml',
+      'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3'
+    }),
+    cuerpo: (c, texto, vel) => {
+      const v = c.voz || 'es-ES-ElviraNeural';
+      return '<speak version="1.0"'
+        + ' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="'
+        + esc(v.slice(0, 5)) + '"><voice name="' + esc(v) + '">'
+        + '<prosody rate="' + (vel >= 1 ? '+' : '')
+        + Math.round((vel - 1) * 100) + '%">' + esc(texto)
+        + '</prosody></voice></speak>';
+    }
+  }
+};
+
+/** Una firma corta del trozo, para nombrarlo en la caché. FNV de 32 bits,
+ *  que para esto basta. */
+function firmaVoz(s) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = (h + (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24)) >>> 0;
+  }
+  return h.toString(16) + '-' + s.length;
+}
+
+async function audioEnLinea(texto) {
+  const c = E.cfg.vozLinea || {};
+  const p = PROVEEDOR[c.prov || 'azure'];
+  if (!p || !c.clave) throw new Error('sin clave');
+  const vel = Math.max(0.5, Math.min(2, (E.cfg.vozVel || 100) / 100));
+  const llave = 'https://voz.guardada/' + (c.prov || 'azure') + '/'
+    + encodeURIComponent(c.voz || '') + '/' + vel + '/' + firmaVoz(texto);
+  let cache = null;
+  try { cache = await caches.open('voz-en-linea'); } catch (_) { cache = null; }
+  if (cache) {
+    const guardada = await cache.match(llave);
+    if (guardada) return guardada.blob();
+  }
+  const r = await fetch(p.url(c), { method: 'POST', headers: p.cabeceras(c),
+    body: p.cuerpo(c, texto, vel) });
+  if (!r.ok) throw new Error('el servicio responde ' + r.status);
+  if (cache) {
+    try { await cache.put(llave, r.clone()); } catch (_) { /* sin sitio */ }
+  }
+  return r.blob();
+}
+
+/* Con audio no hay avisos de palabra: el renglón se sigue por la regla de
+ * tres entre lo que va sonando y lo que mide el texto. No es exacto al
+ * carácter, pero para ir señalando el renglón sobra. */
+async function diceEnLinea(k) {
+  const tz = V.guion && V.guion[k];
+  if (!tz) return;
+  const g = V.gen;
+  let blob;
+  try {
+    blob = await audioEnLinea(tz.texto);
+    V.fallos = 0;
+    if (V.aviso) { V.aviso = ''; pintaBarraVoz(); }
+  } catch (err) {
+    V.fallos++;
+    if (V.fallos >= 3) {
+      V.motor = 'sistema';
+      V.aviso = 'Sin la voz en línea: sigue la del sistema.';
+    }
+    if (g === V.gen && V.estado === 'diciendo' && V.i === k) {
+      V.hasta = k;
+      // uno solo mientras se siga pidiendo en línea: si se encolara la
+      // sección entera, al acabar el primero volvería a pedirse el
+      // siguiente y se oiría dos veces
+      if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
+      else encolaEnElSistema(k);
+      pintaBarraVoz();
+    }
+    return;
+  }
+  if (g !== V.gen || V.estado !== 'diciendo' || V.i !== k) return;
+  if (V.url) URL.revokeObjectURL(V.url);
+  V.url = URL.createObjectURL(blob);
+  const a = new Audio(V.url);
+  V.audio = a;
+  a.addEventListener('timeupdate', () => {
+    if (g !== V.gen || V.i !== k || !a.duration) return;
+    resalta(renglonEn(tz, Math.floor(tz.texto.length * a.currentTime
+      / a.duration)));
+  });
+  a.addEventListener('ended', () => { if (g === V.gen) acabo(k); });
+  a.addEventListener('error', () => { if (g === V.gen) acabo(k); });
+  suena(k, 0);
+  a.play().catch(() => acabo(k));
+  // y el siguiente se va pidiendo mientras éste suena, que así no se nota
+  const sig = V.guion[k + 1];
+  if (sig) audioEnLinea(sig.texto).catch(() => { /* ya se verá al llegar */ });
+}
+
+/* --------------------------------------------------------- la barra
+ * Mandos de coche: pocos, grandes y en el mismo sitio siempre. Se queda
+ * puesta aunque se escondan la cabecera y la barra de abajo —de viaje es lo
+ * único que hay que poder tocar— y dice en qué sección va, que es lo que
+ * contesta «¿por dónde vamos?» sin tener que leer. */
+function pintaBarraVoz() {
+  const c = $('#voz');
+  if (!c) return;
+  const b = $('#dale-voz');
+  if (b) b.setAttribute('aria-pressed', V.estado !== 'parada');
+  if (V.estado === 'parada' && !V.aviso) {
+    c.hidden = true;
+    c.innerHTML = '';
+    document.body.classList.remove('con-voz');
+    return;
+  }
+  const tz = V.guion && V.guion[V.i];
+  const s = tz && E.oficio && E.oficio.secciones[tz.sec];
+  const dice = V.estado === 'diciendo';
+  c.hidden = false;
+  c.innerHTML = '<button type="button" data-voz="atras" '
+    + 'aria-label="Sección anterior">' + ICONO_VOZ.atras + '</button>'
+    + '<button type="button" class="grande" data-voz="'
+    + (dice ? 'pausa' : 'sigue') + '" aria-label="'
+    + (dice ? 'Pausa' : 'Seguir') + '">'
+    + (dice ? ICONO_VOZ.pausa : ICONO_VOZ.dale) + '</button>'
+    + '<button type="button" data-voz="luego" '
+    + 'aria-label="Sección siguiente">' + ICONO_VOZ.luego + '</button>'
+    + '<span class="voz-que">'
+    + esc(V.aviso || (s ? nombreSeccion(s) : 'Oficio'))
+    + (V.estado === 'pausada' && !V.aviso ? ' · en pausa' : '') + '</span>'
+    + '<button type="button" data-voz="para" aria-label="Dejar de leer">'
+    + ICONO.cerrar + '</button>';
+  document.body.classList.add('con-voz');
+}
+
+function alTocarVoz(ev) {
+  const b = ev.target.closest('button[data-voz]');
+  if (!b) return;
+  const q = b.dataset.voz;
+  if (q === 'dale') {
+    if (V.estado === 'parada') arrancaVoz();
+    else paraVoz();
+    return;
+  }
+  if (q === 'pausa') return pausaVoz();
+  if (q === 'sigue') return sigueVoz();
+  if (q === 'atras') return otraSeccionVoz(-1);
+  if (q === 'luego') return otraSeccionVoz(1);
+  if (q === 'para') return paraVoz();
+}
+
+/** El botón que la pone en marcha, en la cabecera: al lado de las dos aes,
+ *  que es lo que se queda a la vista al bajar. */
+function botonVoz() {
+  if (!('speechSynthesis' in window)) return '';
+  pideVoces();
+  return '<button type="button" id="dale-voz" class="dale-voz" data-voz="dale"'
+    + ' aria-pressed="' + (V.estado !== 'parada') + '"'
+    + ' aria-label="Leer la hora en alta voz">' + ICONO_VOZ.voz + '</button>';
+}
+
+/* ------------------------------------------------------- en Ajustes
+ * Lo que hay que advertir antes de nada, porque no depende de la app: qué
+ * voces trae el teléfono. Donde no hay ninguna española la lista sale vacía
+ * y conviene decir dónde se ponen, que se ponen en el sistema y no aquí. */
+function bloqueVoz() {
+  const hay = vocesDeLaVoz().length;
+  const es = pideVoces().filter((v) => /^es/i.test(v.lang)).length;
+  return '<div class="ajuste ancho"><p class="pista-g">'
+    + 'La hora se dice en alta voz desde el botón del altavoz, arriba a la '
+    + 'derecha, y se gobierna con los mandos de abajo. Está hecha para '
+    + 'rezarla de camino: el botón del volante o el de los auriculares pasa '
+    + 'de sección y la para, sin tocar la pantalla. Con la pantalla apagada '
+    + 'sigue mientras el teléfono la deje —eso lo decide él, no la app—, y '
+    + 'si la corta, al volver a mirarlo sigue por donde iba.'
+    + (hay && !es
+      ? '<br><br>Este teléfono no trae ninguna voz española. Con la que haya '
+        + 'se entiende, pero el castellano suena a extranjero: las voces se '
+        + 'añaden en los ajustes del sistema, no aquí.'
+      : !hay
+        ? '<br><br>Este navegador no da ninguna voz. En Windows se añaden en '
+          + 'Configuración · Hora e idioma · Voz; en Android y en iPhone '
+          + 'vienen puestas.'
+        : '')
+    + '</p></div>';
+}
+
+/** La pista de la lista de voces: cuántas hay y de dónde salen. */
+function vocesQueHay() {
+  const n = vocesDeLaVoz().length;
+  if (!n) return 'No hay ninguna todavía.';
+  return n + (n === 1 ? ' voz' : ' voces') + ' en este aparato. Las que '
+    + 'dicen «red» en su nombre hablan sólo con conexión; las demás, '
+    + 'siempre.';
+}
+
+/** Los campos del servicio, cuando se quiere la voz neuronal. La clave se
+ *  escribe aquí y se queda aquí: en este teléfono, en el mismo sitio donde
+ *  la app guarda lo demás que se elige. Lo que sale de él es el texto de lo
+ *  que se está rezando, que es lo que el servicio necesita para decirlo. */
+function camposDeLaVozEnLinea(campoVoz) {
+  const c = E.cfg.vozLinea || {};
+  const p = PROVEEDOR[c.prov || 'azure'];
+  return '<div class="ajuste ancho"><p class="pista-g">'
+    + 'Hace falta una cuenta en el servicio y su clave. Ahora mismo la app '
+    + 'sabe hablar con ' + esc(p.rot) + ', que da medio millón de '
+    + 'caracteres al mes sin coste —una hora entera son unos siete mil— y '
+    + 'tiene voces de España. La clave se guarda en este teléfono y no va a '
+    + 'ningún otro sitio; el texto de lo que se reza, en cambio, va al '
+    + 'servicio, que para decirlo tiene que leerlo. Sin conexión, o si '
+    + 'falla, habla la voz del teléfono y la hora sigue.'
+    + '</p></div>'
+    + campoVoz('region', 'Región', 'La de la clave: westeurope, eastus…')
+    + campoVoz('clave', 'Clave', 'No se enseña ni se comparte.', 'password')
+    + '<div class="ajuste"><label for="aj-vl-voz">La voz</label>'
+    + '<select id="aj-vl-voz" data-vozlinea="voz">'
+    + p.voces.map((v) => '<option value="' + esc(v) + '"'
+      + (c.voz === v ? ' selected' : '') + '>' + esc(v) + '</option>').join('')
+    + '</select></div>';
+}
+
+/** La hora se ha vuelto a pintar. Pasando sola de hora, empieza la nueva
+ *  por el principio; repintada la misma, se rehace el guión contra la
+ *  página nueva y se sigue; y si lo que se ve ya no es lo que suena, se
+ *  calla. */
+function vozTrasPintar() {
+  if (V.saltando) {
+    V.saltando = false;
+    arrancaVoz(0);
+    return;
+  }
+  if (V.estado === 'parada') return;
+  if (V.iso === E.fecha && V.hora === E.hora) { rearmaVoz(); return; }
+  paraVoz();
+}
+
+/** Repintada una sección —se ha elegido otra opción—, el guión apunta a
+ *  renglones que ya no están en la página. Se rehace, y se sigue por la
+ *  sección donde iba. */
+function rearmaVoz() {
+  if (V.estado === 'parada' || !V.guion) return;
+  const sec = V.guion[V.i] ? V.guion[V.i].sec : 0;
+  const diciendo = V.estado === 'diciendo';
+  clearTimeout(V.pasa);
+  callaElMotor();
+  V.guion = guionDeLaHora();
+  if (!V.guion.length) { paraVoz(); return; }
+  const k = V.guion.findIndex((tz) => tz.sec >= sec);
+  V.i = Math.max(0, k);
+  V.hasta = V.i;
+  if (diciendo) vaATrozo(V.i);
+  else { V.estado = 'pausada'; pintaBarraVoz(); }
 }
 
 /* ------------------------------------------------------------------ rutas */
@@ -6108,6 +7032,13 @@ async function arranca() {
   // el calendario: su barra resumida vive en la cabecera
   $('#cab-extra').addEventListener('click', alTocarCalendario);
   $('#cab-zoom').addEventListener('click', alTocarZoom);
+  // la voz: el botón que la arranca vive con las dos aes, y sus mandos
+  // abajo. Lo que la esconde no la calla —de viaje la pantalla se apaga y
+  // sigue diciendo—, pero cerrar la pestaña sí: si no, el motor del sistema
+  // se queda hablando solo después de que la página se haya ido.
+  $('#cab-zoom').addEventListener('click', alTocarVoz);
+  $('#voz').addEventListener('click', alTocarVoz);
+  window.addEventListener('pagehide', () => paraVoz());
   vista.addEventListener('input', alEscribirCalendario);
   window.addEventListener('scroll', () => {
     alDesplazarCalendario();
@@ -6122,7 +7053,9 @@ async function arranca() {
   document.addEventListener('touchstart', alEmpezarGesto, { passive: true });
   document.addEventListener('touchend', alAcabarGesto, { passive: true });
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) velaPantalla();
+    if (document.hidden) return;
+    velaPantalla();
+    miraSiLaHanCallado();
   });
   window.addEventListener('resize', () => {
     // girando no se pierde lo escondido —se esconde en las dos

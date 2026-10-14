@@ -295,6 +295,46 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   de los tomos impresos lleva la marca «ed. española» (ver
   [Breviarium/LEEME.md](../Breviarium/LEEME.md)).
 
+* **Rezarla en alta voz, de camino.** El botón del altavoz, en la cabecera,
+  la empieza a decir por la sección donde vaya la vista, y una barra de
+  mandos grandes —sección anterior, parar y seguir, sección siguiente—
+  queda abajo mientras suena. **Lo que se dice es lo que se ve, menos la
+  rúbrica**: el guión no sale de los datos sino de la página ya pintada, de
+  modo que dice la opción que esté elegida en cada sección y la forma del
+  comienzo que se haya escogido, y la reseña sólo si está abierta. La
+  rúbrica se calla porque es una indicación y no una oración, y eso basta
+  para callar con ella las siglas de los versículos, los rótulos de las
+  antífonas y los títulos de los salmos: van todos marcados como rúbrica en
+  la fuente (medido: 20 242 veces la sigla «V.» o «R.», ni una suelta). Lo
+  poco que queda se allana —las comillas angulares, los corchetes del
+  editor, la raya con que los tomos abren la respuesta de las preces— y la
+  «N.» del hueco del nombre («Protege al papa N.») se quita, que dicha sale
+  «ene».
+  **Pensada para el coche.** Los mandos van también al volante y a los
+  auriculares (MediaSession), de modo que se pasa de sección sin tocar el
+  teléfono; y para que no se calle con la pantalla apagada suena de fondo un
+  audio de un solo bit de amplitud, que no se oye y que al navegador le
+  basta para tratar la página como un reproductor. Dentro de una sección no
+  hay ni un temporizador: los trozos se le dan todos de golpe al motor y es
+  él quien los va diciendo, así que no depende de que la página despierte;
+  sólo al cambiar de sección se cuenta un silencio, y son siete u ocho en
+  toda la hora. Aun así, **si el teléfono la corta, al volver a mirarlo
+  sigue por donde iba**. Los trozos no pasan de 220 caracteres porque hay
+  versiones de Chrome que truncan una locución de más de quince segundos.
+  **Lo que cuesta.** Con una voz del sistema a velocidad normal (medido:
+  15,1 caracteres por segundo), el Oficio de lectura son unos 11 minutos,
+  Laudes 8, Vísperas 7, Completas 5 y las horas menores 4 cada una: las
+  siete, unos 44 minutos.
+  **Y una voz mejor, si se quiere.** La del sistema lee bien pero es voz de
+  máquina. En Ajustes se puede dar la clave de un servicio de síntesis
+  neuronal (ahora mismo Azure, que da medio millón de caracteres al mes sin
+  coste; una hora son unos siete mil), y entonces la dice ésa. Eso —y sólo
+  eso— pide conexión: lo que se trae queda guardado en la caché, así que una
+  hora pedida una vez se vuelve a decir sin red, y donde no llegue la red
+  sigue la voz del sistema y la hora no se corta. La clave se guarda en el
+  teléfono; el texto de lo que se reza va al servicio, que para decirlo
+  tiene que leerlo.
+
 **Lo que no trae:** el leccionario IX (misas con niños), que sí está en `out/`,
 en Word y en PDF.
 

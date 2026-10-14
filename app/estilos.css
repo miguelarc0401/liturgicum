@@ -638,7 +638,8 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   display: block; font-size: .76rem; line-height: 1.45;
   color: var(--tinta-suave); margin-top: .2rem; max-width: 22rem;
 }
-.ajuste select, .ajuste input[type="range"] {
+.ajuste select, .ajuste input[type="range"],
+.ajuste input[type="text"], .ajuste input[type="password"] {
   font-family: var(--sans); font-size: .88rem; flex: none; max-width: 52%;
   min-height: 2.5rem;
   background: var(--papel-alto); color: var(--tinta);
@@ -717,6 +718,10 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
    formulario. Una casilla por renglon: los rotulos son largos y en dos
    columnas se parte el que no cabe. */
 .ajuste.piezas { padding-bottom: .55rem; }
+/* los campos de la voz en linea: una clave no cabe en media fila */
+.ajuste.ancho input[type="text"], .ajuste.ancho input[type="password"] {
+  width: 100%; max-width: none; margin-top: .5rem;
+}
 .casillas { margin-top: .65rem; }
 .casilla {
   display: flex; align-items: flex-start; gap: .65rem;
@@ -1061,7 +1066,9 @@ h2.seccion {
   display: flex; align-items: center; gap: .4rem;
 }
 .fila-sub #subtitulo-dia { flex: 1 1 auto; min-width: 0; }
-.fila-sub #cab-zoom { flex: 0 0 auto; }
+.fila-sub #cab-zoom {
+  flex: 0 0 auto; display: flex; align-items: center; gap: .1rem;
+}
 #cab-zoom:empty, #cab-extra:empty { display: none; }
 .zoom {
   flex: none; display: flex; align-items: center; justify-content: flex-end;
@@ -1781,6 +1788,115 @@ select.elige {
 .devo-fuente > summary::before { content: "▸ "; }
 .devo-fuente[open] > summary::before { content: "▾ "; }
 .devo-fuente p { margin: .55rem 0; line-height: 1.5; }
+
+/* ------------------------------------------------- rezar en alta voz
+   Dos sitios: el boton que la arranca, en la cabecera al lado de las dos
+   aes —lo que se queda a la vista al bajar—, y los mandos abajo mientras
+   suena.
+
+   Los mandos son de coche: pocos, grandes y en el mismo sitio siempre. Se
+   quedan puestos aunque se escondan la cabecera y la barra —de viaje son lo
+   unico que hay que poder tocar— y bajan a ocupar el sitio de la barra
+   cuando ella se va. */
+.dale-voz {
+  width: 1.9rem; height: 1.9rem; display: grid; place-items: center;
+  border: 0; border-radius: 999px; background: none; cursor: pointer;
+  color: var(--tinta-suave); padding: 0;
+  transition: background-color var(--rapido), color var(--rapido),
+              transform var(--rapido) var(--curva);
+}
+.dale-voz svg {
+  width: 1.08rem; height: 1.08rem; fill: none; stroke: currentColor;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+.dale-voz:active { background: var(--filete); transform: scale(.9); }
+.dale-voz[aria-pressed="true"] {
+  color: var(--acento);
+  background: color-mix(in srgb, var(--acento) 14%, transparent);
+}
+/* encoge con la cabecera, como las dos aes */
+body.cab-fija .dale-voz {
+  width: calc(1.9rem - .25rem * var(--pliegue, 0));
+  height: calc(1.9rem - .45rem * var(--pliegue, 0));
+}
+body.cab-fija .dale-voz svg {
+  width: calc(1.08rem - .14rem * var(--pliegue, 0));
+  height: calc(1.08rem - .14rem * var(--pliegue, 0));
+}
+
+.voz {
+  position: fixed; z-index: 28;
+  /* del ancho de la caja de texto y centrada, como todo lo que se lee: en
+     una pantalla ancha, pegada a los dos bordes, los mandos quedaban en una
+     esquina y el dedo tenia que ir a buscarlos */
+  left: 50%; transform: translateX(-50%);
+  width: min(30rem, calc(100% - max(20px, env(safe-area-inset-left))
+    - max(20px, env(safe-area-inset-right))));
+  bottom: calc(4rem + env(safe-area-inset-bottom));
+  display: flex; align-items: center; gap: .2rem;
+  padding: .3rem .4rem;
+  background: color-mix(in srgb, var(--papel-alto) 94%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  border: 1px solid var(--filete);
+  border-radius: 999px; box-shadow: var(--sombra);
+  animation: aparece var(--medio) ease-out;
+  transition: bottom var(--medio) var(--curva);
+}
+.voz button {
+  flex: none; display: grid; place-items: center;
+  width: 2.9rem; height: 2.9rem; padding: 0;
+  border: 0; border-radius: 999px; background: none; cursor: pointer;
+  color: var(--tinta); transition: background-color var(--rapido),
+              transform var(--rapido) var(--curva);
+}
+.voz button svg {
+  width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+/* el del medio es el que se busca sin mirar: mas grande, tenido del color
+   del dia y con el triangulo relleno, que de reojo se reconoce antes */
+.voz button.grande {
+  width: 3.3rem; height: 3.3rem; color: var(--acento);
+  background: color-mix(in srgb, var(--acento) 12%, transparent);
+}
+.voz button.grande svg { width: 1.75rem; height: 1.75rem; }
+.voz button.grande svg path { fill: currentColor; }
+.voz button[data-voz="pausa"] svg path { fill: none; }
+.voz button:active { background: var(--filete); transform: scale(.93); }
+.voz button:last-child { width: 2.4rem; height: 2.4rem; }
+.voz button:last-child svg { width: 1.15rem; height: 1.15rem; }
+.voz-que {
+  flex: 1 1 auto; min-width: 0; padding: 0 .3rem;
+  font-family: var(--sans); font-size: .78rem; font-weight: 600;
+  letter-spacing: .01em; color: var(--tinta-suave);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* el texto no se mete debajo de los mandos */
+body.con-voz #vista { padding-bottom: 9rem; }
+/* escondida la barra, los mandos bajan a su sitio: se esconde lo que es
+   para navegar, no lo que es para rezar */
+body.cab-fija.pantalla-limpia .voz {
+  bottom: calc(.6rem + env(safe-area-inset-bottom));
+}
+body.cab-fija.pantalla-limpia.con-voz #vista {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+
+/* El renglon que suena. Es la misma marca que el realce de la busqueda
+   —papel subrayado—, no un bloque de color: lo que se esta diciendo se
+   senala, no se pinta. `box-decoration-break` lo hace para que un renglon
+   que se parta lleve el fondo en los dos pedazos y no uno solo. */
+.diciendo {
+  background: var(--realce); border-radius: 4px;
+  box-shadow: 0 0 0 2px var(--realce);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-color var(--rapido);
+}
+.sec-cab.diciendo {
+  background: none; box-shadow: none;
+}
+.sec-cab.diciendo .rotulo { color: var(--acento); }
 
 /* ------------------------------------------------------- menos movimiento */
 @media (prefers-reduced-motion: reduce) {
