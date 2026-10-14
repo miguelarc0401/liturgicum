@@ -1,0 +1,159 @@
+La hora de cada himno, según el Breviario
+=========================================
+
+199 secciones de himno en el Breviario; 64 piezas del devocionario casan con una, 62 no.
+
+
+MAITINES  (17)
+----------------------------------------------------------------
+  Audit tyránnus ánxius                                                Hymnus Matutinum
+  Cǽlitum, Joseph, decus                                               Hymnus Matutinum
+  Ex more docti mýstico                                   Cuaresma     Hymnus Quad
+  In monte olívis cónsito                                              Hymnus Matutinum_
+  Jesu Rex admirábilis                                    Navidad      Hymnus Matutinum
+  Pange Lingua                                            Pasión       Hymnus Quad5
+  Pange Lingua (Fortunátus)                               Pasión       Hymnus Quad5
+  Sacra jam splendent                                     Epifanía     Hymnus Matutinum
+  Verbum Supérnum                                         Adviento     Hymnus Adv
+  Verbum supérnum pródiens                                Adviento     Hymnus Adv
+  Nocte surgéntes                              domingo                 Day0 Hymnus
+  Primo diérum ómnium                          domingo                 Day0 Hymnus1M
+  Nox atra rerum cóntegit                      jueves                  Day4 Hymnus
+  Somno reféctis ártubus                       lunes                   Day1 Hymnus
+  Consors patérni lúminis                      martes                  Day2 Hymnus
+  Rerum Creátor óptime                         miércoles               Day3 Hymnus
+  Tu, Trinitátis Únitas                        viernes                 Day5 Hymnus
+
+LAUDES  (18)
+----------------------------------------------------------------
+  A solis ortus cárdine                                                Hymnus Laudes
+  Benedíctus                                                           el cántico de Zacarías
+  Iste, quem læti                                                      Hymnus Laudes
+  Jam morte, victor, óbruta                                            Hymnus Laudes
+  Jesu, decus angélicum                                   Navidad      Hymnus Laudes
+  O gente felix hóspita                                   Epifanía     Hymnus Laudes
+  O sola magnárum úrbium                                               Hymnus Laudes
+  Placáre, Christe, sérvulis                                           Hymnus Laudes
+  Salútis ætérnæ dator                                                 Hymnus Laudes
+  Summæ Deus cleméntiæ                                                 Hymnus Laudes
+  Ecce jam noctis                              domingo                 Hymnus Day0 Laudes
+  Ætérne rerum cónditor                        domingo                 Hymnus Day0 Laudes hiemalis
+  Lux ecce surgit áurea                        jueves                  Hymnus Day4 Laudes
+  Splendor patérnæ glóriæ                      lunes                   Hymnus Day1 Laudes
+  Ales diéi núntius                            martes                  Hymnus Day2 Laudes
+  Nox et ténebræ et núbila                     miércoles               Hymnus Day3 Laudes
+  Auróra jam spargit polum                     sábado                  Hymnus Day6 Laudes
+  Ætérna cæli glória                           viernes                 Hymnus Day5 Laudes
+
+PRIMA  (1)
+----------------------------------------------------------------
+  Jam Lucis Orto Sídere                                                Hymnus Prima
+
+TERCIA  (1)
+----------------------------------------------------------------
+  Nunc, Sancte, nobis Spíritus                                         Hymnus Tertia
+
+SEXTA  (1)
+----------------------------------------------------------------
+  Rector potens, verax Deus                                            Hymnus Sexta
+
+NONA  (1)
+----------------------------------------------------------------
+  Rerum, Deus, tenax vigor                                             Hymnus Nona
+
+VÍSPERAS  (19)
+----------------------------------------------------------------
+  Audi, benígne Cónditor                                  Cuaresma     Hymnus Quad Vespera
+  Christe, sanctórum decus Angelórum                                   Hymnus Vespera
+  Creátor alme síderum                                    Adviento     Hymnus Adv Vespera
+  Custódes hóminum psállimus Ángelos                                   Hymnus Vespera
+  Cæléstis aulæ Núntius                                                Hymnus Vespera
+  Jam sol recédit ígneus                                  Pentecostés  Hymnus Vespera
+  Jesu, Dulcis Memória                                    Navidad      Hymnus Vespera
+  Magníficat                                                           el cántico de la Virgen
+  O Lux beáta cǽlitum                                     Epifanía     Hymnus Vespera
+  Stabat Mater dolorósa                                   Cuaresma     Hymnus Vespera
+  Te Joseph célebrent ágmina cǽlitum                                   Hymnus Vespera
+  Te gestiéntem gáudiis                                                Hymnus Vespera 3
+  Te splendor et virtus Patris                                         Hymnus Vespera
+  Tibi Christe splendor Patris                                         Hymnus Vespera
+  Vexílla Regis                                           Pasión       Hymnus Quad5 Vespera
+  Lucis Creátor óptime                         domingo                 Hymnus Day0 Vespera
+  Magnæ Deus poténtiæ                          jueves                  Hymnus Day4 Vespera
+  Imménse cæli Cónditor                        lunes                   Hymnus Day1 Vespera
+  Cæli Deus sanctíssime                        miércoles               Hymnus Day3 Vespera
+
+COMPLETAS  (6)
+----------------------------------------------------------------
+  Alma Redemptóris Mater                                  Adviento     antífona final de Completas
+  Ave Regína Cælórum                                      Cuaresma     antífona final de Completas
+  Nunc Dimíttis                                                        el cántico de Simeón
+  Regína Cæli                                             Pascua       antífona final de Completas
+  Salve Regína                                            Tiempo ordinario antífona final de Completas
+  Te lucis ante términum                                               Hymnus Completorium
+
+
+SIN HORA  (62)
+----------------------------------------------------------------
+  aclamación     Laudes Divínæ                                  Euch
+  aclamación     Sanctus                                        Trinitas
+  antífona       Invioláta                                      BVM
+  antífona       Sub Tuum Præsídium                             BVM
+  cántico        Benedícite Dóminum                             Trinitas
+  cántico        Prex Manásse                                   Confessio
+  himno          Ad cenam Agni provídi                          Hymni/Paschale
+  himno          Adjútor Laborántium                            Filius
+  himno          Adéste, fidéles                                Hymni/Nativitatis
+  himno          Adóro Te Devóte                                Hymni/CorpusChristi
+  himno          Altus Prosátor                                 Hymni/Alii
+  himno          Auróra lucis rútilat                           Hymni/Paschale
+  himno          Ave Maris Stella                               BVM
+  himno          Ave Verum Corpus natum                         Euch
+  himno          Bone pastor, panis vere                        Euch
+  himno          Christe, Redémptor ómnium                      Hymni/Nativitatis
+  himno          Christe, Redémptor ómnium                      Hymni/OmnesSancti
+  himno          Christe, qui, splendor et dies                 Hymni/TempusPerAnnum
+  himno          Cónditor alme síderum                          Hymni/Adventus
+  himno          Deus creátor ómnium                            Hymni/TempusPerAnnum
+  himno          Dómine Jesu, nóverim me                        Filius
+  himno          Flos Carméli                                   BVM
+  himno          Gemma Cæléstis                                 Sancti/SBenedictusAb
+  himno          Glória                                         Trinitas
+  himno          Glória, laus et honor                          Hymni/Quadragesimae
+  himno          Hostis Heródes ímpie                           Hymni/Epiphania
+  himno          Jam, Christe, sol justítiæ                     Hymni/Quadragesimae
+  himno          Jesu, salvátor sǽculi                          Hymni/OmnesSancti
+  himno          Jesus Refúlsit Ómnium                          Hymni/Epiphania
+  himno          Magnis prophétæ vócibus                        Hymni/Adventus
+  himno          Meménto, salútis Auctor                        BVM
+  himno          O Gloriósa Dómina                              BVM
+  himno          O Salutáris Hóstia                             Euch
+  himno          O divi amóris víctima                          Sancti/SFranciscusAssisiensis
+  himno          O fílii et fíliæ                               Hymni/Paschale
+  himno          O lux beáta Trínitas                           Hymni/TempusPerAnnum
+  himno          O memoriále mortis Dómini                      Hymni/Triduum
+  himno          Orbis patrátor óptime                          Angeli
+  himno          Orátio Sancti Benedícti                        Sancti/SBenedictusAb
+  himno          Orátio Sancti Francísci                        Sancti/SFranciscusAssisiensis
+  himno          Plasmátor hóminis, Deus                        Hymni/TempusPerAnnum
+  himno          Quem terra, pontus, ǽthera                     BVM
+  himno          Sacris Solémniis                               Hymni/CorpusChristi
+  himno          Salutátio ad Dóminum Jesum Christum            Euch
+  himno          Sancti Patrícii Hymnus ad Temóriam             Sancti/SPatricius
+  himno          Sancti, veníte                                 AnteMissam
+  himno          Stabat Mater speciósa                          BVM
+  himno          Te Deum                                        Trinitas
+  himno          Tellúris ingens Cónditor                       Hymni/TempusPerAnnum
+  himno          Ubi cáritas                                    Hymni/Triduum
+  himno          Veni, Creátor Spíritus                         Hymni/Pentecoste
+  himno          Veni, Sancte Spíritus                          Hymni/Pentecoste
+  himno          Veni, Veni Emmánuel                            Hymni/Adventus
+  himno          Veni, redémptor géntium                        Hymni/Adventus
+  himno          Verbum salútis ómnium                          Hymni/Adventus
+  himno          Vox clara ecce íntonat                         Hymni/Adventus
+  himno          Ángelus ad Vírginem                            BVM
+  himno          Ætérna Lux, divínitas                          Hymni/TempusPerAnnum
+  pregón         Exsúltet                                       Hymni/Triduum
+  secuencia      Dies Iræ                                       Hymni/OmnesSancti
+  secuencia      Lauda Sion                                     Hymni/CorpusChristi
+  secuencia      Víctimæ Pascháli                               Hymni/Paschale

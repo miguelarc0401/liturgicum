@@ -147,6 +147,7 @@ antes de fiarse de lo que sale.
 | `comunes.json` | los comunes | `común/hora/sección` |
 | `santoral_indice.json` | qué se celebra cada día del año | `mm-dd` |
 | `bienal.json` | la lectura bíblica del Oficio de cada año del ciclo bienal | `tiempo/semana/día/oficio/sección` → `I`, `II` |
+| `ciclo.json` | la antífona evangélica del domingo de cada ciclo dominical | `tiempo/semana/día/hora/cantico_evangelico` → `A`, `B`, `C` |
 | `resenas.json` | la reseña biográfica de cada celebración | `mm-dd/santo` |
 | `pdf_santoral.json` | el Propio de los santos de los cuatro tomos en PDF | lista de entradas |
 | `antifonas.json` | las antífonas propias de una celebración | `mm-dd/santo/hora` |
@@ -155,11 +156,16 @@ En las claves, *día* es el día de la semana (0 = domingo) y *sección* es
 una de `invitatorio`, `himno`, `salmodia`, `lectura1`, `lectura2`,
 `responsorio`, `lectura_breve`, `responsorio_breve`, `cantico_evangelico`,
 `preces`, `oracion`… Los días sin semana numerada —el Triduo, la Navidad—
-usan `tiempo/@/título`.
+usan `tiempo/@/título`, y los que van por fecha (del 17 al 24 de
+diciembre, la octava de Navidad, del 2 de enero al Bautismo)
+`tiempo/@/17 de diciembre`.
 
 Cada casilla trae el texto canónico (`lineas`), su rótulo, cuántos
 testigos lo avalan y desde cuándo; y, si los años discrepan, la lista de
-`variantes` con sus ciclos, sus años feriales y sus fechas.
+`variantes` con sus ciclos, sus años feriales y sus fechas. En el
+santoral y los comunes, el texto canónico es el de fuera de Pascua; el de
+Pascua, si es otro, va en `pascua`, y `solo_pascua` avisa de que la casilla
+sólo se atestiguó en Pascua.
 
 ---
 
@@ -263,11 +269,16 @@ cambian los tomos.
   aquel día y la fase 2 no supo distinguir. Se mide (`4_app.py`,
   `lectura_biblica_del_santo`): la que en alguna de las fechas en que se
   celebra al santo dice lo mismo que la del tiempo —de cualquiera de los dos
-  años— es la del tiempo y se quita; la que no coincide nunca es suya. De
-  141 casillas quedan 14 memorias con lectura o responsorio propios: san
-  Atanasio, san Pío V, san Policarpo, san Ireneo, santa Catalina de Siena,
-  san Martín de Porres… Y el responsorio va con su lectura: elegida una, la
-  otra la sigue.
+  años— es la del tiempo y se quita; la que no coincide nunca es suya. Y el
+  responsorio va con su lectura: elegida una, la otra la sigue.
+
+  Medido otra vez el 2026-10-14, **ninguna memoria** tiene lectura bíblica
+  propia. Las catorce que parecían tenerla (san Policarpo, san Ireneo, san
+  Martín de Porres…) tenían sólo el responsorio, y era el de la lectura
+  hagiográfica: unos ochenta días el Oficio de la fuente no trae la primera
+  lectura —el domingo que impide una memoria, que la fuente publica igual—,
+  y el responsorio de la segunda salía numerado como el primero. Ahora el
+  responsorio se numera por la lectura que lo precede (`3_ordenar`).
 * **Las antífonas de la salmodia.** Lo que una celebración tiene propio en
   la salmodia no son los salmos —ésos son los del salterio que toque ese
   día— sino las **antífonas**, y por eso medir la salmodia entera no servía:
@@ -275,11 +286,15 @@ cambian los tomos.
   que valga. Se miden las antífonas aparte (`3_ordenar`, `antifonas.json`),
   comparándolas con las del hueco ferial; y como la fuente no siempre reza
   el salterio que le tocaría, se exige además que no sean las de ninguna
-  otra semana del salterio, y que dos años al menos las den. Salen 46
+  otra semana del salterio, y que dos años al menos las den. Salen 36
   casillas —san Mateo, san Andrés, los Arcángeles, los Ángeles Custodios,
-  la Inmaculada, santa María Magdalena…—.
+  la Inmaculada, santa María Magdalena…—. (Eran 46; las otras diez eran las
+  antífonas de la Ascensión, del Corpus, de Cristo Rey o de la feria, que se
+  colaban por la opción «De la Feria» o por unas primeras vísperas: ver más
+  abajo.) Las de Pascua se miden aparte y, si no se midieron, la fase 4 les
+  pone el aleluya.
 
-  Y en 16 de ellas los **salmos tampoco son los del día**: el libro lo dice
+  Y en 13 de ellas los **salmos tampoco son los del día**: el libro lo dice
   con una rúbrica —«se toma la salmodia del domingo I»— que la fuente no
   escribe, pero *aplica*. Así que la rúbrica se recupera midiendo: si los
   salmos que la fuente puso son los mismos todos los años aunque el día caiga
@@ -299,4 +314,75 @@ cambian los tomos.
   frontera (menos del 5 % de los testigos) no cuenta.
 * **El Te Deum** («Himno: Señor, Dios eterno» en la fuente) va tras el
   segundo responsorio, no al final del Oficio.
+
+---
+
+## Que cada pieza sea la de su tiempo
+
+Revisado el 2026-10-14, a raíz de una antífona: la memoria de san Calixto
+sacaba en Laudes «Estad alegres y contentos, santos de Dios… Aleluya», que
+es la del común de un mártir **en Pascua**, en lugar de «El que se aborrece
+a sí mismo en este mundo se guardará para la vida eterna». Detrás había
+varios defectos de la misma familia: lo que se guarda una sola vez por
+casilla, sin el tiempo en la clave, sale en el tiempo que no le toca.
+
+* **Pascua en el santoral y los comunes.** El libro da en Pascua otras
+  lecturas breves, otros responsorios, otras antífonas y hasta otros himnos
+  (el común de apóstoles), y a lo demás le añade el aleluya («T. P.
+  Aleluya»). La fase 3 mide la forma de todo el año con los testigos de
+  fuera de Pascua y la de Pascua con los suyos. No vale la más rezada en
+  Pascua: la fuente no es constante (san Estanislao lleva siempre la forma
+  pascual del común de un mártir; san Justino y san Bonifacio, cayendo en
+  Pascua, la de todo el año, y san Justino a veces la pascual en el
+  ordinario). Vale el texto **de Pascua**: el que sale sobre todo en ella,
+  o que fuera de ella sólo lo dicen las mismas celebraciones que lo dicen
+  en Pascua. Donde no se midió, la fase 4 aplica la regla del libro con la
+  letra de la fuente: aleluya al final de las antífonas, de los
+  versículos y de los responsorios, y el responsorio breve en su forma
+  pascual («R. Aleluya, aleluya.»). Cotejado con el tomo II: la forma
+  derivada del común de vírgenes coincide palabra por palabra. Y al revés:
+  el santo que cae unos años en Pascua y otros no, y al que la fuente le
+  da el aleluya siempre (la Visitación, san Carlos Lwanga…), lo pierde
+  fuera de Pascua. La marca «(T. P. Aleluya.)» que traían escrita algunos
+  textos del PDF se resuelve igual.
+* **Los nombres de los comunes.** La cabecera lleva a veces el salterio
+  pegado («Del Común de un mártir. Salterio I») o una errata («mártrir»), y
+  cada variante era un común distinto: los testigos del mártir se
+  repartían en cinco montones y ganaba la forma pascual, la única que no se
+  había partido. Se quita el salterio y se juntan los que difieren en una o
+  dos letras.
+* **Lo que es del día no es del santo.** La opción «De la Feria» de un día
+  con memoria heredaba el nombre del santo, y sus textos se tomaban por
+  propios (a san Justino le salía de himno el del lunes de la semana IX).
+  Ahora es feria. Y hay tres cosas que el libro no toma nunca del santo ni
+  del común: las **Completas** (salvo en las solemnidades, que llevan las
+  del domingo), el **himno de la Hora intermedia** («se escoge según la
+  Hora que se celebra, y el Tiempo litúrgico apropiado»; el del común de
+  apóstoles era «Al Señor confesamos, ¡aleluya!», el de Tercia en Pascua,
+  y salía en Santiago) y la **salmodia del salterio** (el común de la
+  Virgen tenía en Laudes el salmo 50 del viernes). En las memorias, además,
+  la Hora intermedia es toda del día. En las fiestas, la app compone la
+  antífona propia o del común sobre los salmos del día o la
+  complementaria, y no sobre los del año en que la fuente la publicó.
+* **Lo de un año solo.** Lo que el santoral sólo tiene de un año, cuando la
+  celebración se rezó tres o más, no es suyo: en 2020 las vísperas de san
+  Antonio de Padua fueron las primeras del Corpus, y como lo de los otros
+  siete años es del común, aquello quedaba solo y tapaba al común siempre.
+* **El ciclo dominical.** Las antífonas del Benedictus y del Magníficat del
+  domingo salen de su evangelio y cambian con el ciclo A, B o C. Se miden
+  dentro de cada ciclo (`ciclo.json`, 106 casillas del ordinario, la
+  Cuaresma y la Pascua), y la app toma la del ciclo del año. (Al hacerlo
+  salió que `ciclo_de` tenía el ciclo corrido una letra; no se notaba
+  porque nadie lo leía.)
+* **Los días que van por fecha.** La fuente rotula todas las ferias por
+  semana, pero del 17 al 24 de diciembre, en la octava de Navidad y del 2
+  de enero al Bautismo el libro va por fecha: el 17 de diciembre de 2026
+  salía la antífona del jueves de la semana III, y las antífonas «Oh»
+  caían en cualquier día. Medido sección por sección, en esos días todo
+  va por fecha salvo la salmodia y las Completas; el domingo IV de Adviento
+  es domingo, salvo la antífona del Magníficat, que es la «Oh» de la fecha.
+  La regla está una vez en `breviario.py` (`va_por_fecha`) y otra en la app
+  (`vaPorFecha`), y la fecha es la del título del día: con la Epifanía en
+  domingo, el lunes siguiente es «7 de enero — Lunes después de Epifanía» y
+  lleva los textos del 7.
 

@@ -1789,6 +1789,74 @@ select.elige {
 .devo-fuente[open] > summary::before { content: "▾ "; }
 .devo-fuente p { margin: .55rem 0; line-height: 1.5; }
 
+/* Lo que la fila dice sin abrir la oracion: que es, a que hora la canta el
+   Breviario, y si todavia esta solo en latin. Va debajo del castellano y
+   mas apagada que el, porque es dato y no texto. */
+.devo-sena {
+  display: block; margin-top: .14rem;
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .02em;
+  color: var(--tinta-suave); opacity: .9;
+}
+.devo-fila .devo-sena::first-letter { text-transform: uppercase; }
+/* la marca de las veintidos del Compendio: la lista de la Iglesia para
+   quien empieza, y por eso se ve de lejos */
+.devo-marca {
+  display: inline-block; margin-left: .4rem; vertical-align: .08em;
+  font-family: var(--sans); font-size: .58rem; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--rubrica);
+  border: 1px solid currentColor; border-radius: .2rem; padding: 0 .24rem;
+}
+/* de que capitulo viene una pieza, en las listas que atraviesan el libro */
+.devo-ctx {
+  display: block; margin-bottom: .1rem;
+  font-family: var(--sans); font-size: .66rem; letter-spacing: .04em;
+  color: var(--rubrica); opacity: .85;
+}
+.devo-pista {
+  display: block; margin-top: .1rem;
+  font-family: var(--sans); font-size: .7rem; color: var(--tinta-suave);
+}
+.devo-grupo > span:first-child { min-width: 0; }
+.devo-n {
+  font-family: var(--sans); font-size: .7rem; font-weight: 400;
+  color: var(--tinta-suave); letter-spacing: 0;
+}
+/* la fila de una devocion de varias partes: se abre y dentro estan */
+.devo-fila-col::after {
+  content: "›"; float: right; margin-top: -1.15rem;
+  color: var(--tinta-suave); font-size: 1.1rem; line-height: 1;
+}
+.devo-ficha { margin: 0 0 .9rem; }
+.devo-ficha .devo-sena { display: inline; }
+
+/* Los filtros. No son carpetas: una pieza vive en un solo capitulo, y el
+   filtro junta las de la misma clase de todo el libro. Se deslizan, como
+   los del dia, para que quepan sin comerse la pantalla. */
+.devo-chips {
+  display: flex; gap: .3rem; margin: .5rem 0 .2rem;
+  overflow-x: auto; scrollbar-width: none;
+  margin-left: -16px; margin-right: -16px; padding: 0 16px .15rem;
+}
+.devo-chips::-webkit-scrollbar { display: none; }
+.devo-chip {
+  flex: none; white-space: nowrap; text-decoration: none;
+  font-family: var(--sans); font-size: .74rem; min-height: 1.95rem;
+  display: inline-flex; align-items: center; gap: .28rem;
+  padding: .25rem .7rem; border-radius: 999px;
+  border: 1px solid var(--filete-fuerte); color: var(--tinta-suave);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva),
+              border-color var(--medio) var(--curva);
+}
+.devo-chip span { font-variant-numeric: tabular-nums; opacity: .7; }
+.devo-chip:active { background: var(--filete); }
+.devo-chip.activo {
+  background: var(--acento); border-color: var(--acento);
+  color: var(--papel-alto);
+}
+.devo-chip.activo span { opacity: .85; }
+.devo-chip-mas { border-style: dashed; }
+
 /* ------------------------------------------------- rezar en alta voz
    Dos sitios: el boton que la arranca, en la cabecera al lado de las dos
    aes —lo que se queda a la vista al bajar—, y los mandos abajo mientras

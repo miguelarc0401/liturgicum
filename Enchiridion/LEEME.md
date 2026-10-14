@@ -53,10 +53,11 @@ la que apuntan existe en otra carpeta y está bajada.
                          │
                          └─3_eclesiastico──▶ TRABAJO/piezas_ecl.json
                                              │
-   app/datos/horas.json ─┐                   │
-   app/datos/ordinario ──┼─4_castellano──▶ datos/castellano.json
-   Compendio (4a) ───────┘                   │
-                                             └─5_app──▶ app/datos/devocionario.json
+   app/datos/horas.json ─┐                   ├─4c_formas──▶ datos/formas.csv
+   app/datos/ordinario ──┼─4_castellano──┐   │
+   Compendio (4a) ───────┘               │   ├─4d_himnario──▶ datos/himnario.csv
+                                         │   │   (del Breviario de cache/acentos)
+                                         └───┴─5_app──▶ app/datos/devocionario.json
 ```
 
 La carpeta de trabajo **no está dentro del proyecto** —por omisión
@@ -185,11 +186,116 @@ se empareja: no es la misma oración.
 verificado cuál es ni de dónde sale. Las 406 pendientes están listadas en
 `datos/castellano_qa.txt`.
 
+### 4c. Qué es cada pieza
+
+Un devocionario no se hojea sólo por *a quién* se reza: también por *qué es*
+lo que se va a rezar. No es lo mismo abrir una letanía de seis minutos que
+una jaculatoria de nueve palabras, y en la lista las dos ocupan la misma
+fila. Esta fase le pone a cada pieza su forma —son **veintiocho**— y escribe
+en `datos/formas_qa.txt` por qué señal se decidió cada una.
+
+**La forma no se adivina por el título: se lee en la hechura del texto.** Un
+título puede faltar o mentir —hay cuatro piezas que se llaman «Dómine Jesu
+Christe»—, pero la hechura no: una letanía tiene el Kýrie y una respuesta
+que vuelve veinte veces; una colecta es prosa y acaba en «Per Christum
+Dóminum nostrum»; un himno son renglones cortos y parejos; una conmemoración
+es antífona, versículo y oración, en ese orden.
+
+| | |
+|---|---|
+| de la Escritura | salmo · cántico · salterio |
+| del canto | himno · secuencia · antífona · aclamación · pregón |
+| del rezo en coro | letanía · preces · conmemoración · responsorio |
+| de la devoción | oficio parvo · novena · rosario · vía crucis · ejercicio · rito |
+| de la liturgia | oración (la colecta) · bendición |
+| del alma | jaculatoria · súplica · acto · ofrecimiento · consagración · acción de gracias |
+| de la doctrina | credo · fórmula |
+| y de varias | colección, que es una pieza con un juego de oraciones dentro |
+
+Salen 132 oraciones, 108 himnos, 43 letanías, 18 conmemoraciones, 15
+súplicas, 12 oficios parvos, 11 novenas, 11 jaculatorias, 9 colecciones y el
+resto en grupos pequeños. Donde la hechura engaña hay **una tabla a mano**,
+como en los acentos: `datos/formas_mano.csv`, veinte piezas con su razón
+escrita —el *Te Deum* acaba en versículos y no por eso deja de ser el himno
+ambrosiano; el *Ánima Christi* está en verso y nadie lo llama himno; *Si
+quæris mirácula* es el responsorio de san Antonio—.
+
+### 4d. A qué hora se canta cada himno
+
+En el sitio, 32 himnos están en una carpeta llamada «Tiempo ordinario» y no
+son de ningún tiempo: son **el himnario del día**. *Jam lucis orto sídere* es
+de Prima, *Te lucis ante términum* de Completas, y la serie de Vísperas
+—*Lucis Creátor óptime*, *Imménse cæli Cónditor*, *Tellúris ingens
+Cónditor*— es la de Gregorio Magno, un himno para cada día de la semana
+siguiendo los días de la creación. Por orden alfabético, todo eso se pierde.
+
+La hora no hay que deducirla: **el Breviario la dice**. El volcado de Divinum
+Officium que la fase 3a ya usa para los acentos no es una lista de palabras,
+es el libro entero, y sus ficheros rotulan cada himno con su hora, su día y
+su tiempo: `[Hymnus Prima]`, `[Hymnus Day1 Laudes]` (Day0 es el domingo),
+`[Hymnus Adv Vespera]`, `[Day3 Hymnus]` en Maitines, y
+`@:Hymnus Day5 Vespera:s/un verso/otro/` para el que se canta cambiando dos
+versos. Se cotejan por el íncipit —las cuatro primeras palabras, sin
+acentos, sin ligaduras y con la i y la j confundidas— y el cotejo es exacto:
+o casa el verso o no casa.
+
+**64 piezas se quedan con su hora**: 17 de Maitines, 18 de Laudes, 19 de
+Vísperas, una por cada hora menor, y seis de Completas —el *Te lucis ante
+términum*, el *Nunc dimíttis* y las cuatro antífonas finales de la Virgen,
+que están en otro fichero del Breviario y por tiempos—. Los tres cánticos del Evangelio son lo único que se pone a mano
+aquí, porque el Breviario los guarda con los salmos y no con las horas. Lo
+que no casa sale en el devocionario bajo «sin hora en el Breviario», que es
+la verdad y no un hueco.
+
 ### 5. La app
 
-Junta todo en `app/datos/devocionario.json` (1,1 MB) y decide lo que se
-publica. La app lo carga sólo cuando se abre el devocionario, como las
-horas.
+Junta todo en `app/datos/devocionario.json` (1,1 MB), decide lo que se
+publica y **lo ordena**. La app lo carga sólo cuando se abre el devocionario,
+como las horas.
+
+El orden cambió el 2026-10-14. Antes eran las carpetas del sitio
+renombradas —veintiún grupos—, y las carpetas del sitio **mezclan tres
+criterios en el mismo nivel**: a quién se reza (Trinidad, Virgen, san José),
+qué es la pieza (himnos, salmos, credos) y cuándo se reza (antes de la misa,
+los tiempos del año). De ahí salían dos estorbos: el año litúrgico vivía en
+dos sitios —«Los tiempos del año», tres piezas, y cuarenta y tres himnos de
+tiempo en otra carpeta—, y el himnario del día quedaba escondido en una
+lista alfabética.
+
+Ahora son **once capítulos, por cuándo y a quién**, con una regla sola:
+
+> una pieza vive en un solo sitio —cuándo o a quién—, y lo que la pieza es
+> no es una carpeta: es una señal en la fila y un filtro que atraviesa el
+> libro entero.
+
+| capítulo | piezas | por dentro |
+|---|---|---|
+| Las oraciones comunes | 17 | lo que se reza de memoria |
+| El día | 8 | la mañana, la mesa, la noche |
+| La misa | 30 | antes, después, la comunión |
+| La confesión | 8 | |
+| El año litúrgico | 46 | los nueve tiempos, con sus himnos |
+| Las horas del día | 33 | el himnario, por la hora del Breviario |
+| A Dios | 92 | Trinidad, Padre, Hijo, Espíritu, Eucaristía |
+| A la Virgen y a los santos | 153 | veinte secciones |
+| En cada necesidad | 22 | la paz, el Papa, el viaje, los difuntos |
+| La Escritura | 30 | salmos y cánticos |
+| Para saber de memoria | 22 | credos y fórmulas |
+
+Y tres cosas más que el orden necesitaba:
+
+* **las colecciones.** Hay piezas que no son oraciones sueltas sino partes
+  de una devoción —las nueve novenas de letanías a san Benito, los siete
+  días de su semana, los trece salmos en sus dos ediciones—, y ocupaban
+  veintiséis filas indistinguibles. Van plegadas en una fila que se abre: la
+  sección de san Benito pasa de 26 filas a 10;
+* **la marca del Compendio.** Las veintidós del apéndice del Compendio del
+  Catecismo llevan su marca donde vivan, y sólo una por oración: cuando hay
+  tres «Veni, Sancte Spíritus», la marca va a la que el Compendio emparejó
+  de verdad en la fase 4, no a las tres;
+* **lo que distingue dos piezas del mismo nombre.** Antes era el año o
+  «versión 2»; ahora, cuando no hay año, es el primer renglón, que es lo que
+  de verdad las separa.
 
 ---
 
@@ -225,6 +331,8 @@ python Enchiridion/src/3a_acentos.py       # las tablas de este vocabulario
 python Enchiridion/src/3_eclesiastico.py   # jota, ligadura y acento
 python Enchiridion/src/4a_compendio.py     # el apéndice del Compendio
 python Enchiridion/src/4_castellano.py     # el castellano y su procedencia
+python Enchiridion/src/4c_formas.py        # qué es cada pieza
+python Enchiridion/src/4d_himnario.py      # la hora de cada himno
 python Enchiridion/src/5_app.py            # app/datos/devocionario.json
 ```
 
@@ -244,4 +352,14 @@ Después, `.\publicar.ps1` firma los datos y los sube.
   título propio, la lista enseña su primer renglón;
 * **169 acentos por omisión**, listados en el informe, que son palabras que
   no usan ni la Vulgata ni el Breviario;
+* **trece títulos heredados de la fase 2**: diez que se quedaron en
+  versalita entera (`DOMINICA`, `FERIA QUARTA`, `I. LITANIÆ`) y tres que
+  están en inglés y acentuados como si fueran latín («Práyers of St.
+  Bridget», «The Chord of St. Joseph», «Subjects for Daíly Meditátion»). Se
+  arreglan en la fase 2 y se notan en cualquier orden, porque la fila es el
+  título;
+* **52 himnos sin hora** —de 108, y sólo 7 de ellos en el capítulo de las
+  horas—, que son los que el Breviario canta con otro texto
+  —*Cónditor alme síderum* frente a *Creátor alme síderum*, que es la
+  revisión de 1632— o que no están en él;
 * **el inglés**, que está bajado y guardado, esperando permiso.

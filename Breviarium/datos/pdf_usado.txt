@@ -315,32 +315,30 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: antífona del Benedictus, segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: papa. En el tiempo de Navidad todo del 31 de diciembre, DÍA VII INFRAOCTAVA DE NAVIDAD. Para la conmemoración de San Silvestre I, papa sólo se dice lo siguiente:  →  pastores
 
-2. Santos con textos de la fuente a los que les faltaba algo: 2
+2. Santos con textos de la fuente a los que les faltaba algo: 1
 ------------------------------------------------------------
-  San Juan Bautista de la Salle, presbítero: responsorio (hallado en la fuente: santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio)
   San Ambrosio, obispo y doctor de la Iglesia: oración de Vísperas (hallado en la fuente: la misma oración, en otra hora)
 
-   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 24
-     San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
-     Santa Ángela de Merici, virgen — responsorio  ←  santoral: 08-24/san bartolome apostol/oficio/responsorio (variante de otro año)
+   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 23
+     San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     Santa Ángela de Merici, virgen — responsorio  ←  tiempo: Ordinario/21/2/oficio/responsorio (variante de otro año)
      San Jerónimo Emiliano — responsorio  ←  tiempo: Ordinario/16/1/oficio/responsorio2
      San Juan de Dios, religioso — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
      San Cirilo de Jerusalén, obispo y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
      Santo Toribio de Mogrovejo, obispo — segunda lectura  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/lectura2
-     San Juan Bautista de la Salle, presbítero — responsorio  ←  santoral: 04-07/san juan bautista de la salle presbitero/oficio/responsorio
-     San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
-     San Pedro Chanel, presbítero y mártir — responsorio  ←  santoral: 12-03/san francisco javier presbitero/oficio/responsorio (variante de otro año)
-     San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio
+     San Jorge, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
+     San Pedro Chanel, presbítero y mártir — responsorio  ←  santoral: 12-03/san francisco javier presbitero/oficio/responsorio2
+     San Pancracio, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
      Santa María Magdalena de Pazzi, virgen — responsorio  ←  santoral: 12-14/san juan de la cruz presbitero y doctor de la iglesia/oficio/responsorio2
      San Romualdo, abad — responsorio  ←  tiempo: Ordinario/4/6/oficio/responsorio2
      Santa Isabel de Portugal — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
      San Antonio María Zaccarías, presbítero — responsorio  ←  santoral: 06-01/san justino martir/oficio/responsorio2 (variante de otro año)
      Santos Sixto II, papa, y compañeros, mártires — responsorio  ←  tiempo: Pascua/6/2/oficio/responsorio
      Santos Ponciano, papa, e Hipólito, mártires — responsorio  ←  santoral: 09-16/santos cornelio papa y cipriano obispo martires/oficio/responsorio2
-     San Juan Eudes, presbítero — responsorio  ←  tiempo: Ordinario/4/3/oficio/responsorio
+     San Juan Eudes, presbítero — responsorio  ←  tiempo: Ordinario/4/3/oficio/responsorio (variante de otro año)
      San José de Calasanz, presbítero — responsorio  ←  santoral: 06-05/san bonifacio obispo y martir/oficio/responsorio2
      San Pedro Claver, presbítero — responsorio  ←  tiempo: Cuaresma/3/6/oficio/responsorio2
-     San Calixto I, papa y mártir — responsorio  ←  santoral: 08-28/san agustin obispo y doctor de la iglesia/oficio/responsorio
+     San Calixto I, papa y mártir — responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
      Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2
      San Juan Damasceno, presbítero y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
      San Ambrosio, obispo y doctor de la Iglesia — oración de Vísperas  ←  la misma oración, en otra hora
@@ -392,7 +390,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · himno del Oficio: otro himno — PDF «en el templo entra maria…», fuente «criaturas alegraos…»
 10/02  Santa Escolástica, virgen
         · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
-        · antífona del Magníficat: otra antífona — PDF «Ven, esposa de Cristo, recibe la corona eterna que el Señor te trae preparada.», fuente «Jesús tocó con la mano al leproso y al instante desapareció la lepra.»
+        · antífona del Magníficat: el PDF la trae propia; la fuente la toma del común
 22/02  La Cátedra de san Pedro, apóstol
         · himno de Laudes: otro himno — PDF «cristo te llama pedro y…», fuente «tu cefas eres pedro y…»
         · himno de Vísperas: otro himno — PDF «tu barca de pescador…», fuente «lo que en la tierra…»
@@ -402,14 +400,12 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · himno de Laudes: otro himno — PDF «oh virginal doncella…», fuente «que hoy bajo dios a…»
         · himno del Oficio: otro himno — PDF «oh virginal doncella…», fuente «por que bajaste a nosotros…»
         · lectura breve de Vísperas: cita distinta — PDF «1 Jn 1, 1-2», fuente «1Jn 1, 1-3a»
-07/04  San Juan Bautista de la Salle, presbítero
-        · responsorio: el PDF la trae propia; la fuente la toma de la feria
 11/04  San Estanislao, obispo y mártir
         · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
         · antífona del Magníficat: otra antífona — PDF «Los santos tienen su morada en el reino de Dios, y allí han encontrado descanso eterno.», fuente «Si el grano de trigo no cae en tierra y muere, queda infecundo; pero, si muere, da mucho fruto. Aleluya.»
 25/04  San Marcos, evangelista
         · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
-        · primera lectura: cita distinta — PDF «Efesios 4, 1-16», fuente «apóstoles 11, 19-30»
+        · primera lectura: el PDF la trae propia; la fuente la toma del común
         · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
@@ -420,7 +416,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
         · preces de Laudes: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
-        · himno de Vísperas: otro himno — PDF «columnas de la iglesia…», fuente «tristes estaban los apostoles…»
+        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
         · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
@@ -494,7 +490,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · himno de Vísperas: otro himno — PDF «ay dolor dolor dolor…», fuente «virgen de virgenes santas…»
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
 21/09  San Mateo, apóstol y evangelista
-        · primera lectura: cita distinta — PDF «Efesios 4,1-16», fuente «Tobit 4, 1-6. 20-23-5, 1-22»
+        · primera lectura: el PDF la trae propia; la fuente la toma del común
 29/09  Santos Arcángeles Miguel, Gabriel y Rafael
         · himno de Laudes: otro himno — PDF «miguel gabriel rafael…», fuente «en la hora en que…»
 02/10  Santos Ángeles Custodios
@@ -513,7 +509,7 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · himno de Laudes: otro himno — PDF «vuestra soy para vos naci…», fuente «veisme aqui mi dulce amor…»
         · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
-        · antífona del Magníficat: otra antífona — PDF «Quien cumpla y enseñe mi ley será grande en el reino de los cielos.», fuente «De oriente a occidente no hay otro dios fuera de mí. Yo soy el Señor y no hay otro.»
+        · antífona del Magníficat: el PDF la trae propia; la fuente la toma del común
         · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 18/10  San Lucas, evangelista

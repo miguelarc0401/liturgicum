@@ -1,21 +1,26 @@
 Fase 4 — el libro de horas empaquetado para la app
 ==========================================================
 
-horas.json         22.5 MB
+horas.json         21.1 MB
 horas_dias.json     2.6 MB  15701 fechas
 
       75  casillas en ordinario
      868  casillas en salterio
-   13460  casillas en tiempo
-    5274  casillas en santoral
-     226  casillas en comunes
+   13040  casillas en tiempo
+    4250  casillas en santoral
+     195  casillas en comunes
      158  santos con común conocido
-     722  lecturas del Oficio con texto propio del otro año del ciclo bienal
+     726  lecturas del Oficio con texto propio del otro año del ciclo bienal
+     106  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
+     871  fechas que van por fecha (17-24 de diciembre, octava de Navidad, 2 de enero al Bautismo)
+      95  piezas del santoral con su forma de Pascua: 58 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 34 forma pascual por la regla del libro, 84 sólo pascual: forma de todo el año sin el aleluya
+      90  piezas de los comunes con su forma de Pascua: 19 forma pascual medida en la fuente, 71 forma pascual por la regla del libro
+       0  salmodias con antífonas propias en su forma de Pascua
      124  días del salterio con la salmodia del día de la Hora intermedia; complementaria de nona, sexta, tercia
           ? Navidad/1/5: la del día sólo en otros años (va entera)
           ? Navidad/2/4: la del día sólo en otros años (va entera)
           ? Navidad/2/6: la del día sólo en otros años (va entera)
-      26  juegos de himnos de la Hora intermedia:
+      54  juegos de himnos de la Hora intermedia:
           Adviento/nona: oh dios tenaz vigor de | fundamento de todo lo que
           Adviento/sexta: oh senor dios eterno y | este mundo del hombre en | cuando la luz del dia
           Adviento/tercia: el trabajo senor de cada | oh santo espiritu que con
@@ -29,14 +34,42 @@ horas_dias.json     2.6 MB  15701 fechas
           Cuaresma/nona: cada tarde se nos van | ojos de aquel publicano
           Cuaresma/sexta: por el pecado primero | jesus contigo iremos al desierto
           Cuaresma/tercia: como el fuego calcina | amigo de los hombres jesucristo
-          Navidad/nona: fundamento de todo lo que | oh dios tenaz vigor de
-          Navidad/sexta: este mundo del hombre en | oh senor dios eterno y | cuando la luz del dia
-          Navidad/tercia: el trabajo senor de cada | oh santo espiritu que con
+          Navidad/@/10 de enero/nona: oh dios tenaz vigor de
+          Navidad/@/10 de enero/sexta: oh senor dios eterno y
+          Navidad/@/10 de enero/tercia: el trabajo senor de cada
+          Navidad/@/11 de enero/sexta: este mundo del hombre en
+          Navidad/@/11 de enero/tercia: el trabajo senor de cada
+          Navidad/@/29 de diciembre/sexta: este mundo del hombre en | cuando la luz del dia
+          Navidad/@/29 de diciembre/tercia: el trabajo senor de cada | oh santo espiritu que con
+          Navidad/@/3 de enero/sexta: este mundo del hombre en
+          Navidad/@/3 de enero/tercia: el trabajo senor de cada
+          Navidad/@/30 de diciembre/nona: oh dios tenaz vigor de
+          Navidad/@/30 de diciembre/sexta: oh senor dios eterno y
+          Navidad/@/30 de diciembre/tercia: el trabajo senor de cada
+          Navidad/@/31 de diciembre/sexta: este mundo del hombre en | cuando la luz del dia
+          Navidad/@/31 de diciembre/tercia: el trabajo senor de cada | oh santo espiritu que con
+          Navidad/@/4 de enero/nona: oh dios tenaz vigor de
+          Navidad/@/4 de enero/sexta: oh senor dios eterno y
+          Navidad/@/4 de enero/tercia: el trabajo senor de cada
+          Navidad/@/5 de enero/sexta: este mundo del hombre en
+          Navidad/@/5 de enero/tercia: el trabajo senor de cada
+          Navidad/@/7 de enero/sexta: este mundo del hombre en
+          Navidad/@/7 de enero/tercia: el trabajo senor de cada
+          Navidad/@/8 de enero/nona: oh dios tenaz vigor de
+          Navidad/@/8 de enero/sexta: oh senor dios eterno y
+          Navidad/@/8 de enero/tercia: el trabajo senor de cada
+          Navidad/@/9 de enero/sexta: este mundo del hombre en
+          Navidad/@/9 de enero/tercia: el trabajo senor de cada
+          Navidad/@/solemnidad de la natividad del senor/sexta: este mundo del hombre en | cuando la luz del dia
+          Navidad/@/solemnidad de la natividad del senor/tercia: el trabajo senor de cada | oh santo espiritu que con
+          Navidad/nona: fundamento de todo lo que
+          Navidad/sexta: cuando la luz del dia
+          Navidad/tercia: oh santo espiritu que con
           Ordinario/1/nona: oh jesus que en tu | fundamento de todo lo que
           Ordinario/1/sexta: este mundo del hombre en | te esta cantando el martillo | cuando la luz del dia
           Ordinario/1/tercia: el trabajo senor de cada | ven espiritu santo luz y
           Ordinario/2/nona: fundamento de todo lo que | danos senor la firme voluntad
-          Ordinario/2/sexta: este mundo del hombre en | el pan de cada dia | cuando la luz del dia
+          Ordinario/2/sexta: el pan de cada dia | este mundo del hombre en | cuando la luz del dia
           Ordinario/2/tercia: el trabajo senor de cada | ven del seno de dios
           Pascua/@/domingo de pentecostes/tercia: fuego de dios a nuestras
           Pascua/nona: salvador del mundo | reina el senor alli donde
@@ -47,11 +80,12 @@ horas_dias.json     2.6 MB  15701 fechas
 Cómo se resolvió cada fecha
 --------------------------------------------
    12968  aprendido del volcado
+     871  con casilla por fecha
      522  con conmemoración posible
     6222  con santo
        5  del calendario del leccionario
     2728  del volcado
-     381  sin textos del tiempo
+     369  sin textos del tiempo
 
 Días del leccionario cuyas coordenadas se aprendieron del volcado: 387
 

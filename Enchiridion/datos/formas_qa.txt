@@ -1,0 +1,550 @@
+Qué es cada pieza del devocionario
+==================================
+
+461 piezas en 28 formas.
+
+
+ORACIÓN  (132)
+------------------------------------------------------------
+     26  In te credo                                            prosa suelta
+     26  Sancti nóminis tui                                     prosa suelta
+     28  Ad Sanctum Raphǽlem Archángelum                        acaba en la conclusión litúrgica
+     28  Adorámus te                                            prosa suelta
+     28  Da, Dómine, propítius pacem                            acaba en la conclusión litúrgica
+     29  Actiónes Nostras                                       acaba en la conclusión litúrgica
+     29  Concéde, quǽsumus                                      acaba en la conclusión litúrgica
+     29  Deus omnípotens                                        acaba en la conclusión litúrgica
+     29  Orátio ante crucifíxum                                 prosa suelta
+     29  Sancta María, Succúrre Míseris                         prosa suelta
+     29  Ália Orátio post Missam ad Sanctam Famíliam            prosa suelta
+     30  Deus, qui pro nobis                                    empieza como una colecta
+     31  Ave María                                              prosa suelta
+     31  Dómine Jesu                                            prosa suelta
+     32  Deus, qui unigéniti Fílii                              empieza como una colecta
+     32  Dómine Jesu, clementíssime Salvátor                    acaba en la conclusión litúrgica
+     32  O Joseph, Virgo Pater Jesu                             prosa suelta
+     32  Patrocínio Joseph Suffúlti                             acaba en la conclusión litúrgica
+     33  Exáudi nos                                             acaba en la conclusión litúrgica
+     33  Ádjuvet nos                                            acaba en la conclusión litúrgica
+     34  Omnípotens sempitérne Deus                             acaba en la conclusión litúrgica
+     36  Omnipoténtia Patris                                    prosa suelta
+     36  Pláceat                                                acaba en la conclusión litúrgica
+     36  Vísita, quǽsumus, Dómine                               acaba en la conclusión litúrgica
+     38  Deus, qui ad majestátis tuæ glóriam                    empieza como una colecta
+     38  Fac nos, Dómine Jesu                                   acaba en la conclusión litúrgica
+     39  Salve, salutáris Víctima                               prosa suelta
+     40  Meménto nostri, beáte Joseph                           prosa suelta
+     40  Orátio ad Sanctum Míchaël                              prosa suelta
+     40  Pro defúncto nominátim                                 acaba en la conclusión litúrgica
+     41  Deus ómnium fidélium pastor                            acaba en la conclusión litúrgica
+     41  Dómine Deus omnípotens                                 acaba en la conclusión litúrgica
+     41  O Bona Crux                                            prosa suelta
+     41  O Creátor Sancte Spíritus                              prosa suelta
+     41  Orátio ad Sanctum Post Missam                          prosa suelta
+     41  Percéptio Córporis tui                                 acaba en la conclusión litúrgica
+     43  Dómine Jesu Christe                                    acaba en la conclusión litúrgica
+     44  Deus, qui Unigéniti Fílii tui passióne                 empieza como una colecta
+     44  Deus, qui fídei sacraménta                             empieza como una colecta
+     46  Orátio Ad Omnes Ángelos et Sanctos Ante Missam         prosa suelta
+     47  Dómine Jesu Christe, Rex glóriæ                        prosa suelta
+     47  O Dómina Mea                                           prosa suelta
+     47  O cæléstis médice                                      prosa suelta
+     48  O bone Jesu                                            prosa suelta
+     48  Orátio ad Sacratíssimum Cor Jesu                       prosa suelta
+     48  Orátio ante communiónem                                prosa suelta
+     49  Deus meus, credo in te                                 prosa suelta
+     50  Dómine Jesu Christe                                    prosa suelta
+     50  Orátio Domínica                                        prosa suelta
+     50  Orátio post Missam ad Sanctam Famíliam                 acaba en la conclusión litúrgica
+     51  Deus, qui nos patrem et matrem honoráre                acaba en la conclusión litúrgica
+     52  Orátio ad Sanctum Joseph                               prosa suelta
+     53  Dirígere et sanctificáre                               acaba en la conclusión litúrgica
+     54  O Virgo et Mater Sanctíssima                           prosa suelta
+     55  O fortitúdo Dei                                        prosa suelta
+     59  O María sine labe concépta                             prosa suelta
+     60  Orátio Sancti Genésii                                  prosa suelta
+     61  Convérsi ad Dóminum Deum                               prosa suelta
+     63  Confíteor                                              prosa suelta
+     64  Ánima Christi                                          está en verso pero se reza como oración (a mano)
+     65  Concéde mihi                                           empieza como una colecta
+     65  Orátio Sancti Joánnis Chrysóstomi                      prosa suelta
+     65  Salva me, sancta crux                                  acaba en la conclusión litúrgica
+     66  Dómine sancte, Pater omnípotens                        prosa suelta
+     68  Orátio Post Confessiónem                               acaba en la conclusión litúrgica
+     69  Ave, augustíssima Regína pacis                         prosa suelta
+     69  Orátio ad Sanctum in cujus Honórem Missa Celebrátur    acaba en la conclusión litúrgica
+     69  Orátio ante colligatiónem                              acaba en la conclusión litúrgica
+     70  Ad SS. Jóachim et Annam                                prosa suelta
+     70  Aufer a me cor lapídeum                                prosa suelta
+     70  Deus, qui per immaculátam conceptiónem                 prosa suelta
+     70  O divínum Cor Jesu                                     prosa suelta
+     71  O Dómina mea, Sancta María                             prosa suelta
+     71  O Princeps cæléstis milítiæ                            prosa suelta
+     71  Orátio in honórem Sanctæ Famíliæ                       acaba en la conclusión litúrgica
+     73  Sanctíssima Virgo de Cenáculo                          prosa suelta
+     74  Fórmula Intensiónis Ante Missam                        prosa suelta
+     74  Orátio pro summo Pontífice                             prosa suelta
+     74  Te, Jesu, verum Deum et Hóminem                        prosa suelta
+     78  Atténde Dómine                                         prosa suelta
+     83  Orátio ad Beátam Maríam Vírginem Ante Missam           prosa suelta
+     84  Dómine Jesu Christe                                    prosa suelta
+     85  En ego, o bone et dulcíssime Jesu                      prosa suelta
+     85  Veni, Sancte Spíritus                                  prosa suelta
+     87  Orátio ad ángelum custódem                             prosa suelta
+     88  O ineffábilis decor Dei excélsi                        prosa suelta
+     88  Orátio ad ss. Trinitátem pro felíci morte              prosa suelta
+     90  Tantum Ergo                                            acaba en la conclusión litúrgica
+     91  O Pater misericordiárum                                prosa suelta
+     91  Orátio S Francísci Xavérii                             prosa suelta
+     92  Immaculáta Mater Dei                                   prosa suelta
+     95  Orátio ad Maríam Vírginem Post Missam                  prosa suelta
+     96  Orátio Sancti Cajetáni                                 prosa suelta
+    103  Devóta Salutátio ad eósdem SS. Patrónos                prosa suelta
+    104  Pietáte tua                                            prosa suelta
+    111  Orátio S. Thomæ Aquinátis ante stúdium                 acaba en la conclusión litúrgica
+    117  O Pura et Immaculáta                                   prosa suelta
+    118  Orátio de Ángelo Próprio                               prosa suelta
+    124  Orátio Sancti Sophrónii ad Benedíctam                  prosa suelta
+    125  O Ómnium Dómine                                        prosa suelta
+    126  Princeps gloriosíssime                                 prosa suelta
+    128  Orátio Sancti Bernárdi ad Deíparam Vírginem            prosa suelta
+    128  Orátio ante perceptiónem Eucharístiæ                   prosa suelta
+    131  Ália Orátio de Ángelo Próprio                          prosa suelta
+    134  Orátio ad S. Michǽlem Archángelum                      prosa suelta
+    135  Ave, crux sancta, virtus nostra                        prosa suelta
+    140  O Angélice Spíritus                                    prosa suelta
+    141  Ad te Beáte Joseph                                     prosa suelta
+    141  Ádsumus                                                prosa suelta
+    142  Orátio Ad S. Patrem Benedíctum                         prosa suelta
+    147  Dómine Deus Omnípotens Rex Regum                       prosa suelta
+    149  Orátio Sancti Thomæ Aquinátis Post Missam              prosa suelta
+    151  Pater Cæléstis                                         prosa suelta
+    154  Jesu dulcíssime, Redémptor                             prosa suelta
+    161  Dómine Jesu Christe                                    prosa suelta
+    164  Ángele, qui meus es custos pietáte supérna             prosa suelta
+    165  O Beáta Virgo María                                    acaba en la conclusión litúrgica
+    165  Orátio per mérita S. Benedícti ad Jesum Christum       acaba en la conclusión litúrgica
+    169  Orátio Sancti Thomæ Aquinátis Ante Missam              acaba en la conclusión litúrgica
+    182  Orátio ad S. Ángelum Custódem                          prosa suelta
+    196  O Excellentíssima                                      prosa suelta
+    204  Salve a nobis, Deípara María                           prosa suelta
+    210  O Sacratíssimum Cor Jesu                               prosa suelta
+    214  Orátio Ante Confessiónem Sacramentálem                 acaba en la conclusión litúrgica
+    214  Orátio Universális                                     acaba en la conclusión litúrgica
+    232  Perénne Lumen in Templo Ætérni                         prosa suelta
+    255  Triságium Angélicum                                    acaba en la conclusión litúrgica
+    257  O Sancte Spíritus                                      prosa suelta
+    301  Concéde mihi, miséricors Deus                          acaba en la conclusión litúrgica
+    328  Orátio Ante Missam                                     acaba en la conclusión litúrgica
+    341  Orátio Sancti Cleméntis I                              prosa suelta
+    382  Orátio Post Missam                                     acaba en la conclusión litúrgica
+
+HIMNO  (108)
+------------------------------------------------------------
+     29  O Salutáris Hóstia                                     9 renglones cortos y parejos
+     38  Ave Verum Corpus natum                                 11 renglones cortos y parejos
+     40  Rector potens, verax Deus                              el libro lo trae entre los himnos
+     41  Bone pastor, panis vere                                10 renglones cortos y parejos
+     41  Rerum, Deus, tenax vigor                               el libro lo trae entre los himnos
+     41  Te lucis ante términum                                 el libro lo trae entre los himnos
+     42  Jam sol recédit ígneus                                 el libro lo trae entre los himnos
+     42  Nunc, Sancte, nobis Spíritus                           el libro lo trae entre los himnos
+     44  Meménto, salútis Auctor                                12 renglones cortos y parejos
+     44  O lux beáta Trínitas                                   el libro lo trae entre los himnos
+     48  Ecce jam noctis                                        el libro lo trae entre los himnos
+     50  Consors patérni lúminis                                el libro lo trae entre los himnos
+     50  Nocte surgéntes                                        el libro lo trae entre los himnos
+     51  Salutátio ad Dóminum Jesum Christum                    8 renglones cortos y parejos
+     56  Auróra jam spargit polum                               el libro lo trae entre los himnos
+     56  O Gloriósa Dómina                                      16 renglones cortos y parejos
+     58  Orátio Sancti Francísci                                14 renglones cortos y parejos
+     61  O memoriále mortis Dómini                              el libro lo trae entre los himnos
+     63  Cæli Deus sanctíssime                                  el libro lo trae entre los himnos
+     65  Rerum Creátor óptime                                   el libro lo trae entre los himnos
+     66  Audi, benígne Cónditor                                 el libro lo trae entre los himnos
+     66  Tellúris ingens Cónditor                               el libro lo trae entre los himnos
+     67  Lucis Creátor óptime                                   el libro lo trae entre los himnos
+     67  Summæ Deus cleméntiæ                                   el libro lo trae entre los himnos
+     68  Hostis Heródes ímpie                                   el libro lo trae entre los himnos
+     68  Jesu Rex admirábilis                                   el libro lo trae entre los himnos
+     68  Plasmátor hóminis, Deus                                el libro lo trae entre los himnos
+     69  Nox atra rerum cóntegit                                el libro lo trae entre los himnos
+     70  Imménse cæli Cónditor                                  el libro lo trae entre los himnos
+     70  Jam Lucis Orto Sídere                                  el libro lo trae entre los himnos
+     70  Somno reféctis ártubus                                 el libro lo trae entre los himnos
+     71  Christe, qui, splendor et dies                         el libro lo trae entre los himnos
+     71  Custódes hóminum psállimus Ángelos                     16 renglones cortos y parejos
+     71  Jesu, decus angélicum                                  el libro lo trae entre los himnos
+     71  Magnæ Deus poténtiæ                                    el libro lo trae entre los himnos
+     71  Verbum supérnum pródiens                               el libro lo trae entre los himnos
+     72  Quem terra, pontus, ǽthera                             20 renglones cortos y parejos
+     73  O sola magnárum úrbium                                 el libro lo trae entre los himnos
+     74  Jam, Christe, sol justítiæ                             el libro lo trae entre los himnos
+     74  Jesu, Dulcis Memória                                   el libro lo trae entre los himnos
+     74  Vox clara ecce íntonat                                 el libro lo trae entre los himnos
+     75  Lux ecce surgit áurea                                  el libro lo trae entre los himnos
+     76  Cónditor alme síderum                                  el libro lo trae entre los himnos
+     76  Salútis ætérnæ dator                                   el libro lo trae entre los himnos
+     77  Jesu, salvátor sǽculi                                  el libro lo trae entre los himnos
+     77  Verbum salútis ómnium                                  el libro lo trae entre los himnos
+     78  Orbis patrátor óptime                                  24 renglones cortos y parejos
+     78  Orátio Sancti Benedícti                                23 renglones cortos y parejos
+     79  Flos Carméli                                           40 renglones cortos y parejos
+     80  In monte olívis cónsito                                24 renglones cortos y parejos
+     80  Ætérna cæli glória                                     el libro lo trae entre los himnos
+     81  Creátor alme síderum                                   el libro lo trae entre los himnos
+     81  Tu, Trinitátis Únitas                                  el libro lo trae entre los himnos
+     82  Adjútor Laborántium                                    27 renglones cortos y parejos
+     82  Christe, Redémptor ómnium                              el libro lo trae entre los himnos
+     82  Jam morte, victor, óbruta                              24 renglones cortos y parejos
+     83  Ales diéi núntius                                      el libro lo trae entre los himnos
+     83  Cæléstis aulæ Núntius                                  24 renglones cortos y parejos
+     84  Cǽlitum, Joseph, decus                                 20 renglones cortos y parejos
+     84  Glória                                                 el Misal lo llama himno: «se canta el himno Glória» (a mano)
+     84  Iste, quem læti                                        20 renglones cortos y parejos
+     85  Magnis prophétæ vócibus                                el libro lo trae entre los himnos
+     86  Nox et ténebræ et núbila                               el libro lo trae entre los himnos
+     87  Ave Maris Stella                                       28 renglones cortos y parejos
+     87  Ubi cáritas                                            el libro lo trae entre los himnos
+     87  Ætérna Lux, divínitas                                  el libro lo trae entre los himnos
+     88  Te gestiéntem gáudiis                                  24 renglones cortos y parejos
+     88  Verbum Supérnum                                        el libro lo trae entre los himnos
+     90  Audit tyránnus ánxius                                  el libro lo trae entre los himnos
+     91  Placáre, Christe, sérvulis                             el libro lo trae entre los himnos
+     92  Te Joseph célebrent ágmina cǽlitum                     21 renglones cortos y parejos
+     94  Veni, Creátor Spíritus                                 el libro lo trae entre los himnos
+     95  Veni, Sancte Spíritus                                  el libro lo trae entre los himnos
+     96  Veni, redémptor géntium                                el libro lo trae entre los himnos
+     98  O divi amóris víctima                                  28 renglones cortos y parejos
+     99  Christe, sanctórum decus Angelórum                     24 renglones cortos y parejos
+    103  Dómine Jesu, nóverim me                                22 renglones cortos y parejos
+    106  Jesus Refúlsit Ómnium                                  el libro lo trae entre los himnos
+    106  O Lux beáta cǽlitum                                    28 renglones cortos y parejos
+    106  Sancti, veníte                                         44 renglones cortos y parejos
+    108  Christe, Redémptor ómnium                              el libro lo trae entre los himnos
+    108  Glória, laus et honor                                  el libro lo trae entre los himnos
+    108  Splendor patérnæ glóriæ                                el libro lo trae entre los himnos
+    111  Ad cenam Agni provídi                                  el libro lo trae entre los himnos
+    111  Veni, Veni Emmánuel                                    el libro lo trae entre los himnos
+    112  A solis ortus cárdine                                  el libro lo trae entre los himnos
+    112  Deus creátor ómnium                                    el libro lo trae entre los himnos
+    112  Gemma Cæléstis                                         29 renglones cortos y parejos
+    114  O gente felix hóspita                                  32 renglones cortos y parejos
+    115  Pange Lingua                                           el libro lo trae entre los himnos
+    117  Tibi Christe splendor Patris                           26 renglones cortos y parejos
+    120  Ex more docti mýstico                                  el libro lo trae entre los himnos
+    122  Primo diérum ómnium                                    el libro lo trae entre los himnos
+    124  Adéste, fidéles                                        el libro lo trae entre los himnos
+    124  Ætérne rerum cónditor                                  el libro lo trae entre los himnos
+    132  Sacris Solémniis                                       el libro lo trae entre los himnos
+    141  Auróra lucis rútilat                                   el libro lo trae entre los himnos
+    142  Te splendor et virtus Patris                           23 renglones cortos y parejos
+    145  Vexílla Regis                                          el libro lo trae entre los himnos
+    149  Adóro Te Devóte                                        el libro lo trae entre los himnos
+    149  O fílii et fíliæ                                       el libro lo trae entre los himnos
+    149  Sacra jam splendent                                    36 renglones cortos y parejos
+    149  Ángelus ad Vírginem                                    50 renglones cortos y parejos
+    202  Te Deum                                                el himno ambrosiano; la hechura engaña porque acaba en versículos (a mano)
+    217  Pange Lingua (Fortunátus)                              el libro lo trae entre los himnos
+    248  Stabat Mater speciósa                                  72 renglones cortos y parejos
+    317  Sancti Patrícii Hymnus ad Temóriam                     el libro lo trae entre los himnos
+    799  Altus Prosátor                                         el libro lo trae entre los himnos
+
+LETANÍA  (43)
+------------------------------------------------------------
+    101  Septem Litaníæ de Sancto Benedícto                     el título lo dice
+    124  FERIA TERTIA                                           18 veces la misma respuesta
+    127  SABBATO                                                18 veces la misma respuesta
+    133  FERIA SEXTA                                            18 veces la misma respuesta
+    134  FERIA QUINTA                                           18 veces la misma respuesta
+    135  FERIA SECUNDA                                          18 veces la misma respuesta
+    136  DOMINICA                                               18 veces la misma respuesta
+    136  FERIA QUARTA                                           18 veces la misma respuesta
+    158  Ave Mater Dolorósa                                     8 veces la misma respuesta
+    325  Litaníæ Sancti Joseph                                  el título lo dice
+    328  Litaníæ pretiosíssimi Sánguinis Dómini Nostri Jesu Chr el título lo dice
+    348  Litaníæ Sancti Michaélis                               el título lo dice
+    358  Litaníæ Dóminæ nostræ Dolórum                          el título lo dice
+    442  Litaníæ de Sacratíssimo Corde Jesu                     el título lo dice
+    449  Litaníæ de S. Anna. Matre B. V. Maríæ                  el título lo dice
+    449  Litaníæ de Sancto António                              el título lo dice
+    465  Litaníæ de S. P. N. Francísco                          el título lo dice
+    498  Litaníæ Conceptiónis Immaculátæ B. V. Maríæ            el título lo dice
+    519  Litaníæ de sancto Ángelo Custóde                       el título lo dice
+    551  Litaníæ Sanctíssimi Nóminis Jesu                       el título lo dice
+    555  Litaníæ de Sancta Scholástica                          el título lo dice
+    560  II. ALIÆ DE EODEM                                      Kýrie y 64 respuestas iguales
+    581  Litaníæ Sanctórum Angelórum                            el título lo dice
+    588  Jesu Infans Dulcíssime                                 12 veces la misma respuesta
+    600  Litaníæ Lauretánæ                                      el título lo dice
+    607  Litaníæ Jesu Christi Divíni Magístri                   el título lo dice
+    649  Litaníæ de Sancta Cruce, ex Sanctis Pátribus           el título lo dice
+    650  Litaníæ de Sanctíssimo Sacraménto                      el título lo dice
+    658  Litaníæ de S. António Paduáno                          el título lo dice
+    660  Litaníæ de S. Augustíno                                el título lo dice
+    663  III. ALIÆ DE EODEM                                     Kýrie y 23 respuestas iguales
+    664  Litaníæ de Sancto Spíritu                              el título lo dice
+    748  Litaníæ Jesu Christi Salvatóris Nostri                 el título lo dice
+    749  Litaníæ De Sancto Michǽle Archángelo                   el título lo dice
+    854  Litaníæ De Sanctíssima Trinitáte                       el título lo dice
+    903  Litaníæ ad Christum ex Scriptúra Sacra in Advéntu      el título lo dice
+    913  I. LITANIÆ                                             el título lo dice
+   1133  Litaníæ ad Deum Patrem                                 el título lo dice
+   1138  Litaníæ in Quadragésima                                el título lo dice
+   1211  Litaníæ de Sanctis Ángelis ex Sacra Scriptúra          el título lo dice
+   1356  Litaníæ de Sancto Patre Nostro Benedícto               el título lo dice
+   1549  Litaníæ vitæ et passiónis Dómini nostri Jesu Christi   el título lo dice
+   1845  Litaníæ Sanctórum                                      el título lo dice
+
+JACULATORIA  (11)
+------------------------------------------------------------
+      9  Signum Crucis                                          9 palabras
+     14  Ecce Crucem Dómini                                     14 palabras
+     15  María, Mater Grátiæ                                    15 palabras
+     17  Réquiem ætérnam                                        17 palabras
+     18  Da nobis fámulis tuis                                  18 palabras
+     19  Per signum Crucis                                      19 palabras
+     20  Doxológia Minor                                        20 palabras
+     20  Ángele Dei                                             20 palabras
+     22  Adésto nobis                                           22 palabras
+     25  Líbera me                                              25 palabras
+     25  Pro defúncta nominátim                                 25 palabras
+
+CONMEMORACIÓN  (18)
+------------------------------------------------------------
+     52  Veni, Sancte Spíritus                                  antífona, versículo y oración
+     58  Commemorátio Sancti Antónii                            el título lo dice
+     58  Commemorátio Sancti Joseph                             el título lo dice
+     61  Commemorátio Angelórum                                 el título lo dice
+     61  Commemorátio Sancti Raphaélis Archángeli               el título lo dice
+     65  Commemorátio Sancti Benedícti                          el título lo dice
+     66  Commemorátio Sancti Gabriélis Archángeli               el título lo dice
+     66  Commemorátio Sanctíssimi Nóminis Jesu                  el título lo dice
+     67  Commemorátio Sancti Michaélis Archángeli               el título lo dice
+     71  Commemorátio Sancti Francísci Assisiénsis              el título lo dice
+     73  Commemorátio Sacratíssimi Cordis Jesu                  el título lo dice
+     73  Orátio pro pace                                        antífona, versículo y oración
+     81  Commemorátio Sanctæ Scholásticæ                        el título lo dice
+     95  Commemorátio Crucis                                    el título lo dice
+     97  Commemorátio Pretiosíssimi Sánguinis                   el título lo dice
+     98  Commemorátio Sanctæ Trinitátis                         el título lo dice
+    109  O Sacrum Convívium                                     antífona, versículo y oración
+    118  Commemorátio Beátæ Vírginis Maríæ                      el título lo dice
+
+SALMO  (26)
+------------------------------------------------------------
+     87  Psalmus CL (Nova Vulgáta)                              el título lo dice
+     89  Psalmus CL (Sixto-Clementíne)                          el título lo dice
+    104  Psalmus CXXIX (Sixto-Clementíne)                       el título lo dice
+    106  Psalmus CXXIX (Nova Vulgáta)                           el título lo dice
+    113  Psalmus I (Nova Vulgáta)                               el título lo dice
+    119  Psalmus CXV (Nova Vulgáta)                             el título lo dice
+    119  Psalmus I (Sixto-Clementíne)                           el título lo dice
+    126  Psalmus CXV (Sixto-Clementíne)                         el título lo dice
+    161  Psalmus VI (Nova Vulgáta)                              el título lo dice
+    162  Psalmus VI (Sixto-Clementíne)                          el título lo dice
+    183  Psalmus LXXXIV (Nova Vulgáta)                          el título lo dice
+    186  Psalmus LXXXIV (Sixto-Clementíne)                      el título lo dice
+    200  Psalmus LXXXIII (Sixto-Clementíne)                     el título lo dice
+    201  Psalmus LXXXIII (Nova Vulgáta)                         el título lo dice
+    202  Psalmus XXXI (Nova Vulgáta)                            el título lo dice
+    210  Psalmus XXXI (Sixto-Clementíne)                        el título lo dice
+    234  Psalmus CXLII (Sixto-Clementíne)                       el título lo dice
+    236  Psalmus CXLII (Nova Vulgáta)                           el título lo dice
+    281  Psalmus L (Sixto-Clemetíne)                            el título lo dice
+    285  Psalmus L (Nova Vulgáta)                               el título lo dice
+    285  Psalmus LXXXV (Nova Vulgáta)                           el título lo dice
+    287  Psalmus LXXXV (Sixto-Clementíne)                       el título lo dice
+    340  Psalmus XXXVII (Nova Vulgáta)                          el título lo dice
+    353  Psalmus XXXVII (Sixto-Clementíne)                      el título lo dice
+    391  Psalmus CI (Nova Vulgáta)                              el título lo dice
+    391  Psalmus CI (Sixto-Clementíne)                          el título lo dice
+
+SÚPLICA  (15)
+------------------------------------------------------------
+     51  Memoráre, o puríssime Sponse Vírginis Maríæ            el íncipit la nombra
+     53  Memoráre, O piíssima Virgo María                       el íncipit la nombra
+     67  Óbsecro te, dulcíssime Dómine Jesu Christe             el íncipit la nombra
+     98  Memoráre, o Dómina Nostra a Sacro Corde                el íncipit la nombra
+    160  Recordáre, Virgo Mater Dei                             el íncipit la nombra
+    176  Óbsecro te, angélice spíritus                          el íncipit la nombra
+    211  Orátio Sancti Bonaventúræ                              211 palabras en primera persona, sin cierre
+    247  Tu es, Deus, ómnia nostra                              247 palabras en primera persona, sin cierre
+    251  Orátio Sancti Ambrósii Ante Missam                     251 palabras en primera persona, sin cierre
+    275  Memoráre, O piíssima Virgo María                       el íncipit la nombra
+    343  O Intemeráta                                           343 palabras en primera persona, sin cierre
+    400  O Beatíssima                                           400 palabras en primera persona, sin cierre
+    433  Orátio Præparatória ad Confessiónem Sacramentálem      433 palabras en primera persona, sin cierre
+    459  Ad Sanctitátis Tuæ Pedes                               459 palabras en primera persona, sin cierre
+    479  Óbsecro te                                             el íncipit la nombra
+
+FÓRMULA  (19)
+------------------------------------------------------------
+      3  Tria Præcípua bonórum óperum génera                    no es oración: es doctrina enumerada
+      4  Consília Evangélica                                    no es oración: es doctrina enumerada
+      4  De Quáttuor Novíssimis Memorándis                      no es oración: es doctrina enumerada
+      4  Quáttuor Virtútes Cardináles                           no es oración: es doctrina enumerada
+      5  Tres Virtútes Theologáles                              no es oración: es doctrina enumerada
+      8  Septem Dona Spíritus Sancti                            no es oración: es doctrina enumerada
+     12  Duódecim Fructus Spíritus Sancti                       no es oración: es doctrina enumerada
+     14  Quáttuor Peccáta Quæ ad Cælum Clamant                  no es oración: es doctrina enumerada
+     17  Septem Ópera Misericórdiæ Corporália                   no es oración: es doctrina enumerada
+     20  Septem Ópera Misericórdiæ Spirituália                  no es oración: es doctrina enumerada
+     21  Novem viæ cónscius in peccáto álii esse                no es oración: es doctrina enumerada
+     22  Septem Sacraménta                                      no es oración: es doctrina enumerada
+     24  Septem peccáta capitália et virtútes opponúntur        no es oración: es doctrina enumerada
+     26  Sex Peccáta in Spíritum Sanctum                        no es oración: es doctrina enumerada
+     35  Duódecim Apóstoli                                      no es oración: es doctrina enumerada
+     49  Sex Præcépta Ecclésiæ                                  no es oración: es doctrina enumerada
+     49  Subjects for Daíly Meditátion.                         no es oración: es doctrina enumerada
+     59  Octo Beatitúdines                                      no es oración: es doctrina enumerada
+    107  Præcépta Decálogi                                      no es oración: es doctrina enumerada
+
+OFICIO PARVO  (12)
+------------------------------------------------------------
+    331  Parvum Offícium Sancti Ángeli Custódis                 oficio o horas
+    337  Parvum Offícium Sanctíssimi Sacraménti                 oficio o horas
+    341  Horæ Spíritus Sancti                                   oficio o horas
+    353  Offícium Parvum de S. António Paduáno                  oficio o horas
+    375  Itinerárium                                            el oficio del camino, con su cántico y sus colectas (a mano)
+    487  Horæ Sanctæ Crucis                                     oficio o horas
+    547  Offícium Parvum de Sancto Joseph                       oficio o horas
+    579  Offícium parvum de S. Anna, Matre B. V. Maríæ          oficio o horas
+    713  Offícium parvum Conceptiónis Immaculátæ                oficio o horas
+    779  Offícium Parvum Sacratíssimi Cordis Jesu               oficio o horas
+    997  Offícium parvum de septem Dolóribus B. V. M.           oficio o horas
+   1167  Offícium Parvum Sanctórum Angelórum                    oficio o horas
+
+NOVENA  (11)
+------------------------------------------------------------
+    220  Novéna ad Sacratíssimum Cor Jesu                       nueve días
+    240  Novéna ad Beátam Maríam Vírginem                       nueve días
+    344  Novéna Litaniárum ad Sanctum Benedíctum, III           nueve días
+    364  Novéna Litaniárum ad Sanctum Benedíctum, IV            nueve días
+    386  Novéna Litaniárum ad Sanctum Benedíctum, II            nueve días
+    389  Novéna Litaniárum ad Sanctum Benedíctum, VII           nueve días
+    403  Novéna Litaniárum ad Sanctum Benedíctum                nueve días
+    465  Novéna Litaniárum ad Sanctum Benedíctum, VI            nueve días
+    492  Novéna Litaniárum ad Sanctum Benedíctum, V             nueve días
+    533  Novéna Litaniárum ad Sanctum Benedíctum, IX            nueve días
+    534  Novéna Litaniárum ad Sanctum Benedíctum, VIII          nueve días
+
+ACTO  (8)
+------------------------------------------------------------
+     30  Actus Caritátis                                        el título lo dice
+     32  Actus Caritátis                                        el título lo dice
+     37  Actus Spei                                             el título lo dice
+     39  Actus Spei                                             el título lo dice
+     41  Actus Fídei                                            el título lo dice
+     52  Actus Contritiónis                                     el título lo dice
+     65  Actus Fídei                                            el título lo dice
+    296  Actus reparatiónis                                     el título lo dice
+
+SECUENCIA  (4)
+------------------------------------------------------------
+     64  Víctimæ Pascháli                                       secuencia de la misa
+    210  Dies Iræ                                               secuencia de la misa
+    216  Stabat Mater dolorósa                                  secuencia de la misa
+    288  Lauda Sion                                             secuencia de la misa
+
+ANTÍFONA  (6)
+------------------------------------------------------------
+     25  Sub Tuum Præsídium                                     antífona del Breviario
+     54  Invioláta                                              antífona del Breviario
+     64  Regína Cæli                                            antífona del Breviario
+     72  Ave Regína Cælórum                                     antífona del Breviario
+    115  Salve Regína                                           antífona del Breviario
+    126  Alma Redemptóris Mater                                 antífona del Breviario
+
+PRECES  (6)
+------------------------------------------------------------
+     97  Preces ad Ad S. Jóachim                                serie de versículos
+    107  Preces Ad Sanctum Joseph Ante Missam                   serie de versículos
+    121  Preces ad Sanctam Matrem Annam                         serie de versículos
+    171  Tota pulchra es, María                                 serie de versículos
+    182  Ángelus                                                serie de versículos
+    470  Ália Orátio ad Sanctum Míchaël                         serie de versículos
+
+RESPONSORIO  (1)
+------------------------------------------------------------
+     89  Si quæris mirácula                                     el responsorio de san Antonio (a mano)
+
+VÍA CRUCIS  (4)
+------------------------------------------------------------
+    953  Fórmula peragéndi viam crucis                          las estaciones
+   1894  Exercítium Sanctæ Viæ Crucis                           las estaciones
+   1965  Preces Statiónum                                       las estaciones
+   2061  Exercítium Viæ Crucis de Sancto Alphónso María de Ligó las estaciones
+
+ROSARIO  (3)
+------------------------------------------------------------
+    209  Coróna Divínæ Misericórdiæ                             rosario o coronilla
+    344  Rosárium                                               rosario o coronilla
+    764  Rosárium ex Horis ad usum Sarum                        rosario o coronilla
+
+CÁNTICO  (5)
+------------------------------------------------------------
+     35  Nunc Dimíttis                                          cántico bíblico
+     98  Magníficat                                             cántico bíblico
+    149  Benedíctus                                             cántico bíblico
+    206  Benedícite Dóminum                                     cántico bíblico
+    287  Prex Manásse                                           oración bíblica del Antiguo Testamento (a mano)
+
+CREDO  (4)
+------------------------------------------------------------
+     76  Sýmbolum Apostolórum                                   profesión de fe
+    163  Sýmbolum Nicǽnum                                       profesión de fe
+    484  Quicúmque                                              profesión de fe
+    615  Proféssio fídei Tridentína                             profesión de fe
+
+SALTERIO  (3)
+------------------------------------------------------------
+    334  Psalmi Graduáles                                       una colección de salmos
+    855  Septem Psalmi Pænitentiáles                            una colección de salmos
+   2870  Psaltérium Sancti Hierónymi                            una colección de salmos
+
+BENDICIÓN  (2)
+------------------------------------------------------------
+     28  Benedíctio Post Mensam                                 el título lo dice
+     37  Benedíctio Ante Mensam                                 el título lo dice
+
+OFRECIMIENTO  (3)
+------------------------------------------------------------
+     26  Tibi offérimus                                         se ofrece algo
+     46  Oblátio Sui                                            se ofrece algo
+     63  Fórmula Oblatiónis Cotidiánæ ad SS. Cor Jesu           se ofrece algo
+
+ACCIÓN DE GRACIAS  (2)
+------------------------------------------------------------
+    133  Gratiárum áctio pro suscépto Baptísmi Sacraménto       el título lo dice
+    284  Gratiárum áctio ad Trinitátem                          el título lo dice
+
+EJERCICIO  (2)
+------------------------------------------------------------
+    279  The Chord of St. Joseph                                la devoción del cordón y su práctica (a mano)
+    435  Exercítium Singuláris Devotiónis Erga S. Joseph, Consí ejercicio de devoción
+
+COLECCIÓN  (9)
+------------------------------------------------------------
+    137  E Doctrína Duódecim Apostolórum                        las oraciones del Didaché (a mano)
+    144  Quinque Puncta                                         los cinco puntos de la preparación (a mano)
+    166  Innocéntii Tértii Oratiónes Tres                       tres oraciones (a mano)
+    225  Oratiónes Ante et Post Communiónem                     las de antes y las de después (a mano)
+    245  S Gregórii oratiónes de Passióne Dómini.               varias oraciones (a mano)
+    312  Septem Precatiónes Sancti Gregórii de Passióne Dómini  siete oraciones (a mano)
+   1238  Oratiónes Sancti Ambrósii Ante Missam síngulis hebdóma el título anuncia varias oraciones
+   1260  Práyers of St. Bridget                                 quince oraciones en una pieza (a mano)
+   2898  ORATIONES S. ALFONSI MARIÆ DE LIGORIO síngulis hebdóma el título anuncia varias oraciones
+
+ACLAMACIÓN  (2)
+------------------------------------------------------------
+     25  Sanctus                                                la aclamación del Prefacio (a mano)
+     73  Laudes Divínæ                                          las alabanzas de desagravio (a mano)
+
+PREGÓN  (1)
+------------------------------------------------------------
+    620  Exsúltet                                               el pregón pascual (a mano)
+
+RITO  (1)
+------------------------------------------------------------
+   2302  Ordo Commendatiónis Ánimæ                              el orden del Ritual para la recomendación del alma (a mano)

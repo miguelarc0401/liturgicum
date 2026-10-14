@@ -38,7 +38,7 @@ import zlib
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from breviario import clave
+from breviario import clave, clave_por_fecha
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LIBRO = os.path.join(RAIZ, 'Breviarium', 'datos', 'libro')
@@ -317,6 +317,179 @@ def quita_aleluya(t):
     return s if s.strip() else t
 
 
+# --- el tiempo pascual ----------------------------------------------------
+# «T. P. Aleluya»: en Pascua las antífonas, los versículos y los
+# responsorios del santo y del común acaban en aleluya, y el responsorio
+# breve toma su forma pascual. El libro lo marca así, pieza por pieza, y la
+# fuente lo aplica: en los santos que caen en Pascua escribe «… contigo.
+# Aleluya.» y «R. Aleluya, aleluya.». Lo que la fuente midió en Pascua manda
+# (fase 3, `pascua`); donde no lo midió —un común que no salió en Pascua,
+# un santo de junio que en el volcado nunca cayó en ella— se aplica la regla
+# con la letra de la fuente. Y al revés: lo que sólo se atestiguó en Pascua
+# (`solo_pascua`) pierde el aleluya el año que el santo cae fuera.
+
+TP = re.compile(r'\s*\(\s*T\.\s*P\.\s*Aleluya\.?\s*\)\.?', re.I)
+ALELUYA = re.compile(r'\baleluya\b', re.I)
+INTERMEDIAS_ = ('tercia', 'sexta', 'nona')
+
+
+def con_aleluya(t, doble=False):
+    """«… roca firme.» -> «… roca firme. Aleluya.»"""
+    if ALELUYA.search(t):
+        return t
+    s = t.rstrip()
+    if not s:
+        return t
+    if not s.endswith(('.', '!', '?', '.»', '!»', '?»')):
+        s += '.'
+    return s + (' Aleluya, aleluya.' if doble else ' Aleluya.')
+
+
+def marcada(ln, marcas):
+    """La línea abre con una rúbrica roja de éstas («Ant», «V.», «R.»)."""
+    return bool(ln) and bool(ln[0][0]) and ln[0][1].strip().startswith(marcas)
+
+
+def cambia_texto(ln, f):
+    """La línea con su último trozo negro pasado por `f`."""
+    i = max((j for j, (rojo, t) in enumerate(ln) if not rojo and t.strip()),
+            default=None)
+    if i is None:
+        return ln
+    return [[r, f(t)] if j == i else [r, t] for j, (r, t) in enumerate(ln)]
+
+
+def negro_de(ln):
+    return ''.join(t for rojo, t in ln if not rojo).strip()
+
+
+def marcas_de(cl, hora):
+    """Qué líneas de la pieza llevan el aleluya de Pascua."""
+    if cl in ('responsorio', 'responsorio2'):
+        return ('R.',)
+    if cl in ('invitatorio', 'preambulo', 'cantico_evangelico', 'salmodia'):
+        return ('Ant',)
+    if cl == 'lectura_breve' and hora in INTERMEDIAS_:
+        return ('V.', 'R.')
+    return None
+
+
+def vr_del_breve(lineas):
+    """Las seis líneas V./R. de un responsorio breve, o None."""
+    vr = [i for i, ln in enumerate(lineas) if marcada(ln, ('V.', 'R.'))]
+    if len(vr) != 6 or [lineas[i][0][1].strip()[:2] for i in vr] \
+            != ['V.', 'R.'] * 3:
+        return None
+    return vr
+
+
+def forma_pascual(cl, hora, lineas):
+    """La pieza como se dice en Pascua, con la regla del libro."""
+    lineas = [[[r, TP.sub(' Aleluya.', t)] for r, t in ln] for ln in lineas]
+    if cl == 'responsorio_breve':
+        vr = vr_del_breve(lineas)
+        if not vr or ALELUYA.search(negro_de(lineas[vr[0]])):
+            return lineas
+        x = negro_de(lineas[vr[0]])
+        nuevo = [list(ln) for ln in lineas]
+        for n, t in ((0, con_aleluya(x, True)), (1, con_aleluya(x, True)),
+                     (3, 'Aleluya, aleluya.'), (5, con_aleluya(x, True))):
+            nuevo[vr[n]] = [[1, 'VR'[n % 2] + '. '], [0, t]]
+        return nuevo
+    marcas = marcas_de(cl, hora)
+    if not marcas:
+        return lineas
+    # en la salmodia del Oficio, el versículo que la cierra (después de la
+    # última antífona) también; los «R.» de dentro de un cántico, no
+    desde = 0
+    if cl == 'salmodia':
+        ants = [i for i, ln in enumerate(lineas) if marcada(ln, ('Ant',))]
+        desde = ants[-1] if ants else len(lineas)
+    return [cambia_texto(ln, con_aleluya)
+            if marcada(ln, marcas) or (cl == 'salmodia' and i > desde
+                                       and marcada(ln, ('V.', 'R.')))
+            else ln for i, ln in enumerate(lineas)]
+
+
+def forma_comun(cl, hora, lineas):
+    """La pieza fuera de Pascua: sin la marca «T. P.» y, si sólo se conoce
+    su forma pascual, sin el aleluya."""
+    return [[[r, TP.sub('', t)] for r, t in ln] for ln in lineas]
+
+
+def sin_pascua(cl, hora, lineas):
+    """De la forma pascual, la de todo el año. El responsorio breve vuelve a
+    la suya repitiendo entera la respuesta, porque la mitad que el libro
+    repite no la dice la forma pascual."""
+    lineas = forma_comun(cl, hora, lineas)
+    if cl == 'responsorio_breve':
+        vr = vr_del_breve(lineas)
+        if not vr or not ALELUYA.search(negro_de(lineas[vr[0]])):
+            return lineas
+        x = quita_aleluya(negro_de(lineas[vr[0]]))
+        nuevo = [list(ln) for ln in lineas]
+        for n in (0, 1, 3, 5):
+            nuevo[vr[n]] = [[1, 'VR'[n % 2] + '. '], [0, x]]
+        return nuevo
+    marcas = marcas_de(cl, hora)
+    if not marcas:
+        return lineas
+    desde = 0
+    if cl == 'salmodia':
+        ants = [i for i, ln in enumerate(lineas) if marcada(ln, ('Ant',))]
+        desde = ants[-1] if ants else len(lineas)
+    return [cambia_texto(ln, quita_aleluya)
+            if marcada(ln, marcas) or (cl == 'salmodia' and i > desde
+                                       and marcada(ln, ('V.', 'R.')))
+            else ln for i, ln in enumerate(lineas)]
+
+
+def formas_del_tiempo(libro, podado, en_pascua, fuera_de_pascua):
+    """El libro de todo el año (se corrige en `podado`) y lo que cambia en
+    Pascua (se devuelve aparte, sólo lo que cambia).
+
+    `en_pascua(k)` y `fuera_de_pascua(k)` dicen si la casilla se reza alguna
+    vez en ese tiempo: no se deriva lo que nunca se va a rezar."""
+    pascua, cuenta = {}, Counter()
+    for k, c in podado.items():
+        hora, cl = k.split('/')[-2:]
+        v = libro.get(k) or {}
+        original = c['l']
+        # Un santo que cae unos años en Pascua y otros no, y cuya pieza la
+        # fuente da siempre con aleluya (la Visitación, san Justino, san
+        # Carlos Lwanga…, y san Estanislao el año que cayó en Cuaresma): ese
+        # aleluya es el de «T. P.», y fuera de Pascua sobra. El Corpus o el
+        # Sagrado Corazón lo llevan de suyo, pero no caen nunca en Pascua.
+        ambos = en_pascua(k) and fuera_de_pascua(k)
+        if ambos and 'pascua' not in v and sin_pascua(cl, hora, original) \
+                != forma_comun(cl, hora, original):
+            v = dict(v, solo_pascua=True)
+            cuenta['con aleluya todo el año, que es el de Pascua'] += 1
+        if v.get('solo_pascua'):
+            if fuera_de_pascua(k):
+                c['l'] = sin_pascua(cl, hora, original)
+                cuenta['sólo pascual: forma de todo el año sin el aleluya'] += 1
+            else:
+                c['l'] = forma_comun(cl, hora, original)
+            p = forma_pascual(cl, hora, original)
+            if en_pascua(k) and p != c['l']:
+                pascua[k] = {'r': c['r'], 'l': p}
+            continue
+        c['l'] = forma_comun(cl, hora, original)
+        if 'pascua' in v:
+            pascua[k] = {'r': v['pascua']['rotulo'] or c['r'],
+                         'l': forma_pascual(cl, hora, v['pascua']['lineas'])}
+            cuenta['forma pascual medida en la fuente'] += 1
+        elif en_pascua(k):
+            p = forma_pascual(cl, hora, original)
+            if p != c['l']:
+                pascua[k] = {'r': c['r'], 'l': p}
+                if 'f' in c:
+                    pascua[k]['f'] = c['f']
+                cuenta['forma pascual por la regla del libro'] += 1
+    return pascua, cuenta
+
+
 def unifica_santos(santoral):
     """(mm-dd, nombre) -> nombre con el que se queda, para los nombres de un
     mismo día que sólo difieren en artículos y palabras vacías."""
@@ -511,7 +684,8 @@ RUBRICAS_NEGRAS = {
 def rubricas_del_invitatorio(libro):
     """Pinta de rúbrica las indicaciones del invitatorio que vienen en negro."""
     n = 0
-    for tabla in ('ordinario', 'tiempo', 'santoral', 'comunes', 'salterio'):
+    for tabla in ('ordinario', 'tiempo', 'santoral', 'comunes', 'salterio',
+                  'santoral_pascua', 'comunes_pascua'):
         for k, v in libro[tabla].items():
             if k.rsplit('/', 1)[-1] not in ('invitatorio', 'preambulo'):
                 continue
@@ -556,12 +730,15 @@ def lectura_biblica_del_santo(santoral, tiempo, tiempo_anio, dias):
                 if k not in santoral:
                     continue
                 vistas.add(k)
-                hueco = f'{d["k"]}/oficio/{cl}'
-                if hueco in tiempo:
-                    ferial[k].add(texto(tiempo[hueco]))
-                for v in (tiempo_anio.get(hueco) or {}).values():
-                    ferial[k].add(clave(' '.join(s for ln in v['l']
-                                                 for _, s in ln)))
+                for base in (d.get('kf'), d['k']):
+                    if not base:
+                        continue
+                    hueco = f'{base}/oficio/{cl}'
+                    if hueco in tiempo:
+                        ferial[k].add(texto(tiempo[hueco]))
+                    for v in (tiempo_anio.get(hueco) or {}).values():
+                        ferial[k].add(clave(' '.join(s for ln in v['l']
+                                                     for _, s in ln)))
     return {k for k in vistas if texto(santoral[k]) in ferial[k]}
 
 
@@ -1101,6 +1278,19 @@ def main():
         reg = {'t': ti, 'k': clave_dia, 'd': ds, 'tt': temporal[2]['t']}
         if salt:
             reg['p'] = salt
+        # del 17 al 24 de diciembre, la octava de Navidad y del 2 de enero al
+        # Bautismo, el propio va por fecha; la app busca ahí primero, y lo
+        # que no esté (la salmodia, las Completas) en la casilla de la semana
+        # La fecha es la del título del día, no la civil: el calendario pasa
+        # la Epifanía al domingo, y el lunes siguiente es «7 de enero — Lunes
+        # después de Epifanía» aunque caiga el 4; sus textos son los del 7.
+        m = re.match(r'(\d+) de (enero|diciembre)\b', reg['tt'] or '')
+        fecha_kf = (f'{fecha[:5]}{1 if m[2] == "enero" else 12:02d}-'
+                    f'{int(m[1]):02d}') if m else fecha
+        kf = clave_por_fecha(ti, fecha_kf)
+        if kf:
+            reg['kf'] = kf
+            cuentas['con casilla por fecha'] += 1
 
         # Las celebraciones con textos, en el orden de precedencia del
         # calendario y sin las impedidas: [santo, mm-dd, título, grado,
@@ -1169,9 +1359,28 @@ def main():
     # salmos son lo dice la medida sobre la fuente (fase 3): `s`, la casilla
     # del salterio de la que se toman; `l`, la salmodia entera cuando no son
     # de ninguna casilla, porque son suyos.
+    # Qué celebraciones caen alguna vez en Pascua y cuáles fuera, en todo el
+    # calendario: sólo para ésas hace falta la otra forma.
+    cae_en_pascua, cae_fuera = set(), set()
+    for d in dias.values():
+        for c in d.get('c') or ():
+            (cae_en_pascua if d['t'] == 'Pascua' else cae_fuera).add(
+                (c[1], c[0]))
+
+    def de_quien(k):
+        return tuple(k.split('/')[:2])
+
     antifonas = {}
     for k, v in carga('antifonas.json').items():
-        antifonas[k] = {'a': v['antifonas']}
+        ants = v['antifonas']
+        if v.get('solo_pascua'):
+            pascuales = ants
+            ants = [quita_aleluya(a) for a in ants]
+        else:
+            pascuales = v.get('pascua') or [con_aleluya(a) for a in ants]
+        antifonas[k] = {'a': ants}
+        if de_quien(k) in cae_en_pascua and pascuales != ants:
+            antifonas[k]['ap'] = pascuales
         if v.get('salmos'):
             antifonas[k]['s'] = v['salmos']
         elif v.get('salmodia'):
@@ -1246,6 +1455,40 @@ def main():
         if otras:
             otras_lecturas[k] = [{'r': v['rotulo'], 'l': ls} for ls in otras]
 
+    # Las antífonas que vinieron del PDF traen escrita la marca «(T. P.
+    # Aleluya.)»: fuera de Pascua se quita, y en Pascua se dice.
+    for k, ent in antifonas.items():
+        if 'ap' in ent:
+            continue
+        ap = [TP.sub(' Aleluya.', a) if TP.search(a) else con_aleluya(a)
+              for a in ent['a']]
+        ent['a'] = [TP.sub('', a) for a in ent['a']]
+        if de_quien(k) in cae_en_pascua and ap != ent['a']:
+            ent['ap'] = ap
+
+    # Lo que cambia en Pascua, del santoral y de los comunes. Los comunes se
+    # rezan en cualquier tiempo; un santo, sólo en el suyo.
+    santoral_app = dict(poda(santoral), **extra)
+    comunes_app = poda(comunes)
+    santoral_pascua, cuenta_sp = formas_del_tiempo(
+        santoral, santoral_app,
+        lambda k: de_quien(k) in cae_en_pascua,
+        lambda k: de_quien(k) in cae_fuera)
+    comunes_pascua, cuenta_cp = formas_del_tiempo(
+        comunes, comunes_app, lambda k: True, lambda k: True)
+
+    # El ciclo dominical: de las antífonas evangélicas que cambian con el
+    # ciclo A, B o C, sólo los ciclos cuyo texto no es el que ya guarda
+    # `tiempo`.
+    tiempo_ciclo = {}
+    for k, por_ciclo in (carga('ciclo.json', opcional=True) or {}).items():
+        canonico = (tiempo.get(k) or {}).get('lineas')
+        otros = {c: {'r': v['rotulo'] or (tiempo.get(k) or {}).get('rotulo'),
+                     'l': v['lineas']}
+                 for c, v in por_ciclo.items() if v['lineas'] != canonico}
+        if otros:
+            tiempo_ciclo[k] = otros
+
     libro = {
         'orden': carga('orden.json'),
         'comun_de': comun_de_santo,
@@ -1254,8 +1497,11 @@ def main():
         'salterio': poda(salterio),
         'tiempo': poda(tiempo),
         'tiempo_anio': tiempo_anio,
-        'santoral': dict(poda(santoral), **extra),
-        'comunes': poda(comunes),
+        'tiempo_ciclo': tiempo_ciclo,
+        'santoral': santoral_app,
+        'santoral_pascua': santoral_pascua,
+        'comunes': comunes_app,
+        'comunes_pascua': comunes_pascua,
         'otros_himnos': otros_himnos,
         'himnos_completas': himnos_completas,
         'himnos_intermedia': pools_intermedia,
@@ -1304,6 +1550,19 @@ def main():
         f.write(f'{len(comun_de_santo):8d}  santos con común conocido\n')
         f.write(f'{len(tiempo_anio):8d}  lecturas del Oficio con texto propio '
                 f'del otro año del ciclo bienal\n')
+        f.write(f'{len(tiempo_ciclo):8d}  antífonas evangélicas del domingo '
+                f'con texto propio de otro ciclo (A, B, C)\n')
+        f.write(f'{cuentas["con casilla por fecha"]:8d}  fechas que van por '
+                f'fecha (17-24 de diciembre, octava de Navidad, 2 de enero al '
+                f'Bautismo)\n')
+        f.write(f'{len(santoral_pascua):8d}  piezas del santoral con su forma '
+                f'de Pascua: ' + ', '.join(f'{n} {k}' for k, n in
+                                           sorted(cuenta_sp.items())) + '\n')
+        f.write(f'{len(comunes_pascua):8d}  piezas de los comunes con su forma '
+                f'de Pascua: ' + ', '.join(f'{n} {k}' for k, n in
+                                           sorted(cuenta_cp.items())) + '\n')
+        f.write(f'{sum(1 for v in antifonas.values() if "ap" in v):8d}  '
+                f'salmodias con antífonas propias en su forma de Pascua\n')
         f.write(f'{len(hora_intermedia["dia"]):8d}  días del salterio con la '
                 f'salmodia del día de la Hora intermedia; complementaria de '
                 f'{", ".join(sorted(hora_intermedia["comp"]))}\n')

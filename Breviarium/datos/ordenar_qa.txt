@@ -6,20 +6,29 @@ Textos distintos: 6904
 
 ordinario      75 casillas     0.1 MB  con variantes: 41 (55 %)
 salterio      868 casillas     5.0 MB  con variantes: 354 (41 %)
-tiempo      13460 casillas    15.0 MB  con variantes: 2086 (15 %)
-santoral     4776 casillas     8.8 MB  con variantes: 737 (15 %)
-comunes       226 casillas     0.4 MB  con variantes: 54 (24 %)
-bienal        722 casillas  (lectura bíblica del Oficio, distinta en los años I y II)
-antifonas      46 casillas  (las propias de una celebración, sobre los salmos del día; 148 descartadas)
+tiempo      13040 casillas    13.8 MB  con variantes: 1845 (14 %)
+santoral     3621 casillas     5.1 MB  con variantes: 140 (4 %)
+           3 con forma propia de Pascua, 329 atestiguadas sólo en Pascua
+comunes       195 casillas     0.3 MB  con variantes: 34 (17 %)
+           19 con forma propia de Pascua, 0 atestiguadas sólo en Pascua
+comunes que sólo diferían en una errata de la cabecera: «pastores para una santo obispo y del comun de doctores de la iglesia» -> «pastores para un santo obispo y del comun de doctores de la iglesia»; «un martrir» -> «un martir»
+bienal        726 casillas  (lectura bíblica del Oficio, distinta en los años I y II)
+ciclo         106 casillas  (antífona evangélica del domingo, distinta en los ciclos A, B y C)
+antifonas      36 casillas  (las propias de una celebración, sobre los salmos del día; 151 descartadas)
 
 Cómo se repartieron las secciones
 --------------------------------------------
-    6782  a los comunes
-   19286  al santoral
-   31311  del santo pero ferial
+    6774  a los comunes
+   14824  al santoral
+      73  al santoral, pero de un año solo entre tres o más (fuera)
+   10612  del santo pero ferial
+     355  del santo pero ferial: Hora intermedia de una memoria
+     554  del santo pero ferial: completas
+     482  del santo pero ferial: himno de la Hora intermedia
+     637  del santo pero ferial: salmodia del salterio
    50623  ordinario
-   26068  propio de la celebración
+   21598  propio de la celebración
    21441  salterio
-   69554  tiempo
+   92695  tiempo
 
 Días del año con celebración: 156

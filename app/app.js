@@ -3874,8 +3874,33 @@ async function cargaDevocionario() {
   const d = await json('devocionario.json');
   E.devo = d;
   E.devoDe = new Map(d.piezas.map((p) => [p.id, p]));
-  E.devoGrupo = new Map(d.grupos.map((g) => [g.g, g]));
+  E.devoCap = new Map(d.caps.map((c) => [c.c, c]));
+  // las devociones de varias partes: la novena de san Benito son nueve
+  // piezas y una sola devoción, y en la lista ocupan una fila
+  E.devoCol = new Map();
+  for (const p of d.piezas) {
+    if (!p.col) continue;
+    if (!E.devoCol.has(p.col)) E.devoCol.set(p.col, []);
+    E.devoCol.get(p.col).push(p);
+  }
 }
+
+/** El plural de cada forma, que es como se rotula una lista de ellas. */
+const DEVO_PLURAL = {
+  'oración': 'oraciones', 'himno': 'himnos', 'letanía': 'letanías',
+  'salmo': 'salmos', 'fórmula': 'fórmulas',
+  'conmemoración': 'conmemoraciones', 'súplica': 'súplicas',
+  'oficio parvo': 'oficios parvos', 'jaculatoria': 'jaculatorias',
+  'novena': 'novenas', 'colección': 'colecciones', 'acto': 'actos',
+  'preces': 'preces', 'antífona': 'antífonas', 'cántico': 'cánticos',
+  'credo': 'credos', 'secuencia': 'secuencias', 'vía crucis': 'vía crucis',
+  'ofrecimiento': 'ofrecimientos', 'salterio': 'salterios',
+  'rosario': 'rosarios', 'bendición': 'bendiciones',
+  'acción de gracias': 'acciones de gracias', 'aclamación': 'aclamaciones',
+  'ejercicio': 'ejercicios', 'pregón': 'pregones',
+  'responsorio': 'responsorios', 'rito': 'ritos'
+};
+function devoPlural(f) { return DEVO_PLURAL[f] || f; }
 
 /** Una línea de tiradas: 1 es rúbrica —roja y en cursiva, como en el
  *  libro— y 2 es la cursiva del original, que marca lo que sólo se dice en
@@ -3906,7 +3931,7 @@ function devoCastellano(p) {
 }
 
 /** De dónde sale lo que se está leyendo. El latín, del sitio; el
- *  castellano, de donde diga su ficha, que para eso se guarda. */
+ *  castellano, de donde diga su ficha; y la hora, del Breviario. */
 function devoProcedencia(p) {
   const f = p.fes || null;
   const h = ['<p><b>Latín:</b> texto tradicional, transcrito del '
@@ -3931,8 +3956,127 @@ function devoProcedencia(p) {
       + 'traducción: significa que aquí no se ha verificado cuál es ni de '
       + 'dónde sale.</p>');
   }
+  if (p.hora) {
+    h.push('<p><b>La hora:</b> el Breviario la canta en ' + esc(p.hora)
+      + (p.dia ? ' del ' + esc(p.dia) : '')
+      + (p.tpo ? ' en ' + esc(p.tpo) : '')
+      + '. Lo dice el Breviario de Divinum Officium'
+      + (p.hsrc ? ', en «' + esc(p.hsrc) + '»' : '') + '.</p>');
+  }
+  if (p.comp) {
+    h.push('<p><b>Del Compendio:</b> es la número ' + p.comp + ' del '
+      + 'apéndice de oraciones comunes del Compendio del Catecismo de la '
+      + 'Iglesia Católica.</p>');
+  }
   return '<details class="devo-fuente"><summary>De dónde sale esto'
     + '</summary>' + h.join('') + '</details>';
+}
+
+/** Lo que la fila dice de una pieza sin abrirla: qué es, a qué hora se
+ *  canta si el Breviario lo dice, y si todavía no tiene castellano. */
+function devoSena(p) {
+  const s = [p.f];
+  if (p.hora) {
+    s.push(p.hora + (p.dia ? ' del ' + p.dia
+      : (p.tpo ? ' · ' + p.tpo : '')));
+  }
+  if (!p.es) s.push('sólo en latín');
+  return '<small class="devo-sena">' + esc(s.join(' · ')) + '</small>';
+}
+
+/** Una fila de la lista. `ctx` es de dónde viene la pieza, y se pone en las
+ *  listas que atraviesan el libro —un filtro, una búsqueda—, donde sin eso
+ *  no se sabría en qué capítulo vive. */
+function devoFila(p, ctx) {
+  return '<a class="devo-fila" href="#/oraciones/o/' + esc(p.id) + '">'
+    + (ctx ? '<span class="devo-ctx">' + esc(ctx) + '</span>' : '')
+    + '<span lang="la">' + esc(tx(p.tla)) + '</span>'
+    + (p.comp ? '<span class="devo-marca">Compendio</span>' : '')
+    + (p.dist ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
+    + (p.tes ? '<small>' + esc(p.tes) + '</small>' : '')
+    + devoSena(p) + '</a>';
+}
+
+/** La fila de una devoción de varias partes: se abre y dentro están. */
+function devoFilaCol(partes) {
+  const p = partes[0];
+  return '<a class="devo-fila devo-fila-col" href="#/oraciones/k/'
+    + encodeURIComponent(p.col) + '">'
+    + '<span>' + esc(p.colt) + '</span>'
+    + '<small class="devo-sena">' + partes.length + ' '
+    + esc(p.colq || 'partes')
+    // no se dice dos veces lo mismo: «3 letanías», no «3 letanías · letanías»
+    + (devoPlural(p.f) === p.colq ? '' : ' · ' + esc(devoPlural(p.f)))
+    + (partes.some((x) => x.es) ? '' : ' · sólo en latín') + '</small></a>';
+}
+
+/** Una lista de piezas, con las colecciones plegadas en una fila. Cuando
+ *  pasa de doce, se corta por lo que es cada pieza: en una lista larga lo
+ *  que el ojo busca es «las letanías», no la letra con que empiezan. */
+function devoLista(piezas, opc) {
+  const o = opc || {};
+  const vistas = new Set();
+  const filas = [];
+  for (const p of piezas) {
+    if (p.col && !o.sinPlegar) {
+      if (vistas.has(p.col)) continue;
+      vistas.add(p.col);
+      filas.push({ col: p.col, f: p.f, partes: E.devoCol.get(p.col) });
+    } else filas.push({ p: p });
+  }
+  if (!filas.length) return '<p class="aviso">Aquí no hay nada todavía.</p>';
+  if (filas.length <= 12 || o.sinCortes) {
+    return filas.map((x) => (x.col ? devoFilaCol(x.partes)
+      : devoFila(x.p, o.ctx && o.ctx(x.p)))).join('');
+  }
+  const por = new Map();
+  for (const x of filas) {
+    const f = x.col ? x.f : x.p.f;
+    if (!por.has(f)) por.set(f, []);
+    por.get(f).push(x);
+  }
+  const orden = E.devo.formas.map((x) => x.f);
+  const claves = [...por.keys()].sort(
+    (a, b) => orden.indexOf(a) - orden.indexOf(b));
+  return claves.map((f) => '<h3 class="devo-sub">' + esc(devoPlural(f))
+    + ' <span class="devo-n">' + por.get(f).length + '</span></h3>'
+    + por.get(f).map((x) => (x.col ? devoFilaCol(x.partes)
+      : devoFila(x.p, o.ctx && o.ctx(x.p)))).join('')).join('');
+}
+
+function devoAtras(href, rotulo) {
+  return '<a class="devo-atras" href="' + href + '">' + ICONO.izq
+    + esc(rotulo) + '</a>';
+}
+
+/** Los filtros. No son carpetas: una pieza vive en un solo capítulo, y esto
+ *  atraviesa el libro entero para juntar lo que es de la misma clase. */
+function devoChips(forma, lengua) {
+  const enlace = (f, l) => '#/oraciones/f/' + encodeURIComponent(f || '-')
+    + (l ? '/' + l : '');
+  const h = ['<div class="devo-chips">'];
+  for (const x of E.devo.formas.slice(0, 12)) {
+    const act = x.f === forma;
+    h.push('<a class="devo-chip' + (act ? ' activo' : '') + '" href="'
+      + enlace(act ? null : x.f, lengua) + '">' + esc(devoPlural(x.f))
+      + ' <span>' + x.n + '</span></a>');
+  }
+  h.push('<a class="devo-chip devo-chip-mas" href="#/oraciones/f">'
+    + 'todas las formas…</a>');
+  h.push('</div><div class="devo-chips">');
+  h.push('<a class="devo-chip' + (lengua === 'es' ? ' activo' : '')
+    + '" href="' + enlace(forma, lengua === 'es' ? null : 'es')
+    + '">con castellano</a>');
+  h.push('<a class="devo-chip' + (lengua === 'la' ? ' activo' : '')
+    + '" href="' + enlace(forma, lengua === 'la' ? null : 'la')
+    + '">sólo en latín</a>');
+  h.push('</div>');
+  return h.join('');
+}
+
+function devoDondeVive(p) {
+  const c = E.devoCap.get(p.c);
+  return (c ? c.t : 'Devocionario') + (p.s ? ' · ' + p.s : '');
 }
 
 function pintaOracion(id) {
@@ -3941,15 +4085,20 @@ function pintaOracion(id) {
     vista.innerHTML = '<p class="aviso">No encuentro esa oración.</p>';
     return;
   }
-  const g = E.devoGrupo.get(p.g);
   // manda el título latino, que es el nombre de la oración; el castellano
   // va debajo, y cuando no hay más que el primer renglón, ése
   modoPanel(tx(p.tla));
   $('#subtitulo-dia').textContent = p.tes || '';
-  const atras = '<a class="devo-atras" href="#/oraciones/g/'
-    + encodeURIComponent(p.g) + '">' + ICONO.izq
-    + esc(g ? g.t : 'Devocionario') + '</a>';
-  vista.innerHTML = atras
+  const c = E.devoCap.get(p.c);
+  const vuelta = p.col
+    ? ['#/oraciones/k/' + encodeURIComponent(p.col), p.colt]
+    : (p.s ? ['#/oraciones/s/' + encodeURIComponent(p.c) + '/'
+        + encodeURIComponent(p.s), p.s]
+      : ['#/oraciones/c/' + encodeURIComponent(p.c),
+        c ? c.t : 'Devocionario']);
+  vista.innerHTML = devoAtras(vuelta[0], vuelta[1])
+    + '<p class="devo-ficha">' + devoSena(p)
+    + (p.comp ? '<span class="devo-marca">Compendio</span>' : '') + '</p>'
     + '<div class="devo">'
     + bilingue('<div lang="la">' + devoLatin(p) + '</div>',
       devoCastellano(p))
@@ -3957,30 +4106,113 @@ function pintaOracion(id) {
   colocaPosicion();
 }
 
-function devoFila(p) {
-  return '<a class="devo-fila" href="#/oraciones/o/' + esc(p.id) + '">'
-    + '<span lang="la">' + esc(tx(p.tla)) + '</span>'
-    + (p.dist ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
-    + (p.es ? '<small>' + esc(p.tes || '') + '</small>'
-      : '<small class="devo-solo-la">sólo en latín</small>') + '</a>';
-}
-
-function pintaGrupo(clave) {
-  const g = E.devoGrupo.get(clave);
-  if (!g) return pintaDevocionario();
-  modoPanel(g.t);
-  const piezas = E.devo.piezas.filter((p) => p.g === clave);
-  const h = ['<a class="devo-atras" href="#/oraciones">' + ICONO.izq
-    + 'Devocionario</a>'];
-  let sub = null;
-  for (const p of piezas) {
-    if ((p.sub || null) !== sub) {
-      sub = p.sub || null;
-      if (sub) h.push('<h3 class="devo-sub">' + esc(sub) + '</h3>');
+/** Un capítulo. Si tiene muchas secciones y mucha pieza, se enseñan las
+ *  secciones y se entra en una; si es corto, se enseña entero con sus
+ *  secciones por dentro, que así se ve de una vez. */
+function pintaCapitulo(clave) {
+  const c = E.devoCap.get(clave);
+  if (!c) return pintaDevocionario();
+  modoPanel(c.t);
+  $('#subtitulo-dia').textContent = c.n + (c.n === 1 ? ' oración · '
+    : ' oraciones · ') + c.p;
+  const piezas = E.devo.piezas.filter((p) => p.c === clave);
+  const h = [devoAtras('#/oraciones', 'Devocionario')];
+  if (c.secs.length > 3 && c.n > 40) {
+    h.push(c.secs.map((s) =>
+      '<a class="devo-fila devo-grupo" href="#/oraciones/s/'
+      + encodeURIComponent(clave) + '/' + encodeURIComponent(s.s) + '">'
+      + esc(s.s) + '<small>' + s.n + '</small></a>').join(''));
+  } else if (!c.secs.length) {
+    h.push(devoLista(piezas));
+  } else {
+    const sueltas = piezas.filter((p) => !p.s);
+    if (sueltas.length) h.push(devoLista(sueltas, { sinCortes: true }));
+    for (const s of c.secs) {
+      h.push('<h3 class="devo-sub">' + esc(s.s)
+        + ' <span class="devo-n">' + s.n + '</span></h3>');
+      h.push(devoLista(piezas.filter((p) => p.s === s.s),
+        { sinCortes: true }));
     }
-    h.push(devoFila(p));
   }
   vista.innerHTML = h.join('');
+  colocaPosicion();
+}
+
+function pintaSeccion(clave, sec) {
+  const c = E.devoCap.get(clave);
+  if (!c) return pintaDevocionario();
+  const piezas = E.devo.piezas.filter((p) => p.c === clave && p.s === sec);
+  if (!piezas.length) return pintaCapitulo(clave);
+  modoPanel(sec);
+  $('#subtitulo-dia').textContent = c.t + ' · ' + piezas.length
+    + (piezas.length === 1 ? ' oración' : ' oraciones');
+  vista.innerHTML = devoAtras('#/oraciones/c/' + encodeURIComponent(clave),
+    c.t) + devoLista(piezas);
+  colocaPosicion();
+}
+
+/** Una devoción de varias partes, por dentro. */
+function pintaColeccion(col) {
+  const partes = E.devoCol.get(col);
+  if (!partes || !partes.length) return pintaDevocionario();
+  const p = partes[0];
+  const c = E.devoCap.get(p.c);
+  modoPanel(p.colt);
+  $('#subtitulo-dia').textContent = partes.length + ' partes · '
+    + devoDondeVive(p);
+  const vuelta = p.s
+    ? ['#/oraciones/s/' + encodeURIComponent(p.c) + '/'
+      + encodeURIComponent(p.s), p.s]
+    : ['#/oraciones/c/' + encodeURIComponent(p.c), c ? c.t : 'Devocionario'];
+  vista.innerHTML = devoAtras(vuelta[0], vuelta[1])
+    + devoLista(partes, { sinPlegar: true, sinCortes: true });
+  colocaPosicion();
+}
+
+/** Todas las formas, por familias: de dónde le viene a cada una su nombre.
+ *  Veintiocho en una lista plana no se leen; agrupadas se leen de una vez,
+ *  y además se entiende por qué un salmo y una jaculatoria no son lo mismo
+ *  aunque las dos se recen. */
+function pintaFormas() {
+  modoPanel('Qué es cada oración');
+  $('#subtitulo-dia').textContent = E.devo.formas.length + ' formas';
+  const fam = (E.devo.familias || []).map((t) => ({ t: t, formas: [] }));
+  for (const x of E.devo.formas) {
+    let y = fam.find((z) => z.t === x.fam);
+    if (!y) { y = { t: x.fam, formas: [] }; fam.push(y); }
+    y.formas.push(x);
+  }
+  vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
+    + fam.map((y) => '<h3 class="devo-sub">' + esc(y.t) + '</h3>'
+      + y.formas.map((x) =>
+        '<a class="devo-fila devo-grupo" href="#/oraciones/f/'
+        + encodeURIComponent(x.f) + '">' + esc(devoPlural(x.f))
+        + '<small>' + x.n + '</small></a>').join('')).join('');
+  colocaPosicion();
+}
+
+/** El filtro: lo que es de una misma clase, de todo el libro. */
+function pintaFiltro(forma, lengua) {
+  const f = (forma && forma !== '-') ? forma : null;
+  const hay = E.devo.piezas.filter((p) =>
+    (!f || p.f === f) && (!lengua || (lengua === 'es' ? !!p.es : !p.es)));
+  const dicho = [];
+  if (f) dicho.push(devoPlural(f));
+  if (lengua) dicho.push(lengua === 'es' ? 'con castellano' : 'sólo en latín');
+  modoPanel(dicho.length ? dicho.join(' · ') : 'Todo el devocionario');
+  $('#subtitulo-dia').textContent = hay.length
+    + (hay.length === 1 ? ' oración' : ' oraciones');
+  vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
+    + devoChips(f, lengua)
+    + devoLista(hay, {
+      sinPlegar: true,
+      sinCortes: !!f,
+      ctx: (p) => devoDondeVive(p)
+    });
+  // el chip encendido puede estar fuera de la pantalla, porque la tira se
+  // desliza: se trae a la vista para que se vea qué filtro está puesto
+  const act = $('.devo-chip.activo');
+  if (act) act.parentElement.scrollLeft = Math.max(0, act.offsetLeft - 64);
   colocaPosicion();
 }
 
@@ -3988,33 +4220,35 @@ function pintaDevocionario() {
   modoPanel('Devocionario');
   $('#subtitulo-dia').textContent = E.devo.piezas.length
     + ' oraciones en latín';
+  const capitulos = E.devo.caps.map((c) =>
+    '<a class="devo-fila devo-grupo" href="#/oraciones/c/'
+    + encodeURIComponent(c.c) + '"><span>' + esc(c.t)
+    + '<span class="devo-pista">' + esc(c.p) + '</span></span>'
+    + '<small>' + c.n + '</small></a>').join('');
   vista.innerHTML = '<input class="campo" id="devo-q" type="search" '
     + 'placeholder="Buscar una oración por su título" autocomplete="off">'
-    + '<div id="devo-res">' + E.devo.grupos.map((g) =>
-      '<a class="devo-fila devo-grupo" href="#/oraciones/g/'
-      + encodeURIComponent(g.g) + '">' + esc(g.t)
-      + '<small>' + g.n + '</small></a>').join('') + '</div>';
+    + '<div id="devo-res">' + devoChips(null, null) + capitulos + '</div>';
   const campo = $('#devo-q');
   campo.addEventListener('input', () => {
     const q = plano(campo.value.trim());
     const caja = $('#devo-res');
     if (q.length < 2) {
-      caja.innerHTML = E.devo.grupos.map((g) =>
-        '<a class="devo-fila devo-grupo" href="#/oraciones/g/'
-        + encodeURIComponent(g.g) + '">' + esc(g.t)
-        + '<small>' + g.n + '</small></a>').join('');
+      caja.innerHTML = devoChips(null, null) + capitulos;
       return;
     }
     const hay = E.devo.piezas.filter((p) => p.k.includes(q)).slice(0, 60);
-    caja.innerHTML = hay.length ? hay.map(devoFila).join('')
+    caja.innerHTML = hay.length
+      ? devoLista(hay, { sinPlegar: true, sinCortes: true,
+        ctx: (p) => devoDondeVive(p) })
       : '<p class="aviso">Ninguna oración se llama así. La búsqueda '
       + 'ignora acentos y desata æ/œ, así que «quaesumus» encuentra '
-      + '«quǽsumus».</p>';
+      + '«quǽsumus», y entiende lo que la pieza es: «letanía», «himno», '
+      + '«novena».</p>';
   });
   colocaPosicion();
 }
 
-async function verDevocionario(que, cual) {
+async function verDevocionario(que, cual, mas) {
   E.vista = 'devocionario';
   // se llega desde Inicio, y es allí donde se vuelve
   marcaBarra('portada');
@@ -4028,7 +4262,12 @@ async function verDevocionario(que, cual) {
     return;
   }
   if (que === 'o' && cual) return pintaOracion(cual);
-  if (que === 'g' && cual) return pintaGrupo(cual);
+  if (que === 'c' && cual) return pintaCapitulo(cual);
+  if (que === 's' && cual && mas) return pintaSeccion(cual, mas);
+  if (que === 'k' && cual) return pintaColeccion(cual);
+  if (que === 'f' && cual) return pintaFiltro(cual, mas);
+  if (que === 'f') return pintaFormas();
+  // las direcciones viejas eran por grupo; se entra por la portada
   pintaDevocionario();
 }
 
@@ -4085,11 +4324,11 @@ async function cargaHoras() {
 //          hagiográfica del Oficio y la oración
 //   biblica  «la primera lectura, con su responsorio, se toma del Oficio
 //          corriente, es decir, del tiempo», salvo que el santo tenga la
-//          suya. Catorce memorias la tienen —san Atanasio, san Policarpo,
-//          san Ireneo, santa Catalina de Siena…—, y se sabe cuáles porque
-//          se mide: lo que el santoral guarda como propio es casi siempre
-//          la lectura corrida del otro año del ciclo, que la fuente
-//          publicó aquel día y la fase 2 no supo distinguir
+//          suya. Medido, ninguna memoria de la fuente la tiene: lo que
+//          parecía propio era la lectura corrida del otro año del ciclo, o
+//          el responsorio de la lectura hagiográfica numerado como el
+//          primero los años en que faltaba la bíblica (san Policarpo, san
+//          Ireneo…). La regla se queda por si algún día la hay
 //   (lo demás) del salterio, «excepto cuando tienen propios esos
 //          elementos»: la salmodia
 const EN_MEMORIA = {
@@ -4164,28 +4403,71 @@ function pieza(tabla, prefijo, hora, cl) {
  *
  *  La lectura bíblica del Oficio sigue el ciclo de dos años: el libro
  *  guarda la de un año en `tiempo` y la del otro en `tiempo_anio`, y el año
- *  ferial (I los impares, II los pares) lo dice el calendario. */
+ *  ferial (I los impares, II los pares) lo dice el calendario. Las antífonas
+ *  del Benedictus y del Magníficat del domingo salen de su evangelio y
+ *  cambian con el ciclo A, B o C (`tiempo_ciclo`).
+ *
+ *  Del 17 al 24 de diciembre, en la octava de Navidad y del 2 de enero al
+ *  Bautismo el propio va por fecha y no por semana (`d.kf`, «Adviento/@/17
+ *  de diciembre»): se busca ahí primero, y lo que no está —la salmodia, las
+ *  Completas, lo del domingo— en la casilla de la semana. */
 function delDia(d, hora, cl) {
   const L = E.horas;
-  const otroAnio = (L.tiempo_anio || {})[d.k + '/' + hora + '/' + cl];
-  if (otroAnio && otroAnio[d.a]) return otroAnio[d.a];
-  return pieza(L.tiempo, d.k + '/', hora, cl)
-    || (cl === 'salmodia' && d.p
+  for (const k of vaPorFecha(d, hora, cl) ? [d.kf, d.k] : [d.k]) {
+    const h = k + '/' + hora + '/' + cl;
+    const otroAnio = (L.tiempo_anio || {})[h];
+    if (otroAnio && otroAnio[d.a]) return otroAnio[d.a];
+    const ciclo = (L.tiempo_ciclo || {})[h];
+    if (ciclo && ciclo[d.ci]) return ciclo[d.ci];
+    const c = pieza(L.tiempo, k + '/', hora, cl);
+    if (c) return c;
+  }
+  return (cl === 'salmodia' && d.p
       && L.salterio[d.t + '/' + d.p + '/' + d.d + '/' + hora])
     || L.ordinario[d.t + '/' + hora + '/' + cl]
     || L.ordinario['@/' + hora + '/' + cl] || null;
 }
 
-function delSanto(op, hora, cl) {
-  if (!op.cel) return null;          // la de la Virgen en sábado no tiene día
-  return pieza(E.horas.santoral, op.cel[1] + '/' + op.cel[0] + '/', hora, cl);
+/** Si esta sección de este día va por fecha: la misma regla con que la fase
+ *  3 guardó el libro (Breviarium/src/breviario.py, `va_por_fecha`). Entre
+ *  semana, todo menos las Completas; el domingo IV de Adviento, sólo la
+ *  antífona del Magníficat, que del 17 al 23 es la «Oh» de la fecha; el 24,
+ *  las vísperas y Completas de Navidad; y el sábado de enero, las vísperas
+ *  son las primeras del domingo, que no son de la fecha. */
+function vaPorFecha(d, hora, cl) {
+  const m = d.kf && /(\d+) de (diciembre|enero)$/.exec(d.kf);
+  if (!m) return false;
+  const dia = +m[1], diciembre = m[2] === 'diciembre';
+  if (diciembre && dia === 24 && (hora === 'visperas' || hora === 'completas')) {
+    return true;
+  }
+  if (hora === 'completas') return false;
+  if (d.d === 0) {
+    return d.t === 'Adviento' && hora === 'visperas'
+      && cl === 'cantico_evangelico';
+  }
+  return !(!diciembre && d.d === 6 && hora === 'visperas');
 }
 
-function deSusComunes(op, hora, cl) {
+/* Lo del santo y lo de su común no es lo mismo todo el año: en Pascua el
+ * libro trae otras lecturas breves, otros responsorios, otras antífonas y
+ * hasta otros himnos, y lo demás lleva su aleluya («T. P. Aleluya»). Esa
+ * forma va aparte (`santoral_pascua`, `comunes_pascua`) y se toma en Pascua;
+ * fuera de ella, la de todo el año. */
+function delSanto(op, hora, cl, d) {
+  if (!op.cel) return null;          // la de la Virgen en sábado no tiene día
+  const L = E.horas, pre = op.cel[1] + '/' + op.cel[0] + '/';
+  return (d && d.t === 'Pascua' && pieza(L.santoral_pascua || {}, pre, hora, cl))
+    || pieza(L.santoral, pre, hora, cl);
+}
+
+function deSusComunes(op, hora, cl, d) {
   const L = E.horas;
   const ops = [];
+  const enPascua = d && d.t === 'Pascua';
   for (const k of L.comun_de[op.id] || []) {
-    const c = pieza(L.comunes, k + '/', hora, cl);
+    const c = (enPascua && pieza(L.comunes_pascua || {}, k + '/', hora, cl))
+      || pieza(L.comunes, k + '/', hora, cl);
     if (!c) continue;
     const rot = L.rotulo_comun[k] || 'Común';
     ops.push({ id: 'c:' + k, rot: rot, c: c });
@@ -4282,14 +4564,17 @@ function otrosHimnos(d, hora, base) {
     // la Hora intermedia: los del tiempo, y en el ordinario los de su
     // mitad; el Triduo y Pentecostés traen el suyo, y entonces sólo ése
     const H = L.himnos_intermedia || {};
-    pool = H[d.k + '/' + hora] || H[grupoHimnos(d) + '/' + hora] || [];
+    pool = (vaPorFecha(d, hora, 'himno') && H[d.kf + '/' + hora])
+      || H[d.k + '/' + hora] || H[grupoHimnos(d) + '/' + hora] || [];
   } else if (hora === 'completas') {
     // Completas: los del tiempo, y en el ordinario los de su mitad. Cada
     // tiempo tiene los suyos —medido, dos por grupo, que se turnan—, así
     // que no se le añaden los de ningún otro.
     pool = (L.himnos_completas || {})[grupoHimnos(d)] || [];
   } else {
-    pool = (L.otros_himnos || {})[d.k + '/' + hora + '/himno'] || [];
+    const O = L.otros_himnos || {};
+    pool = (vaPorFecha(d, hora, 'himno') && O[d.kf + '/' + hora + '/himno'])
+      || O[d.k + '/' + hora + '/himno'] || [];
   }
   const vistos = new Set([claveIncipit(base)]);
   return pool.filter((c) => {
@@ -4323,6 +4608,23 @@ function opcionesSeccion(d, op, hora, cl) {
     if (propias) return propias;
     const sal = salmodiaIntermedia(d, hora, alts[i].c);
     if (sal) return sal;
+  }
+  // En las fiestas, la Hora intermedia dice los salmos del día —«cuando se
+  // dice sólo una Hora, se toma la salmodia habitual del Salterio, incluso
+  // en las fiestas»— o la complementaria, con la antífona propia o del
+  // común (Ordinario). La fuente guarda la salmodia entera del año que la
+  // publicó, con los salmos del día de aquel año: de ella sólo vale la
+  // antífona. (Las solemnidades sí llevan siempre la complementaria.)
+  if (cl === 'salmodia' && INTERMEDIAS.includes(hora) && op.g === 'FIESTA'
+      && alts.length && i < 0) {
+    const ants = despieza(alts[0].c.l).ants;
+    const sal = ants.length && salmodiaIntermedia(d, hora, delDia(d, hora, cl));
+    if (sal) {
+      return sal.map((o) => ({ id: o.id, rot: o.rot,
+        tit: o.tit + ', con la antífona de la fiesta',
+        c: { r: o.c.r, l: compone(ants, despieza(o.c.l).salmos),
+          f: alts[0].c.f } }));
+    }
   }
   // los himnos que se pueden escoger se cuelgan del «del día»
   if (cl === 'himno' && i >= 0) {
@@ -4385,14 +4687,14 @@ function opcionesSeccionBase(d, op, hora, cl) {
   const yDelDia = (ops) => (cl === 'cantico_evangelico'
     && /^(MEMORIA|FIESTA)/.test(op.g || '')) ? distintas(ops.concat(soloDia))
     : ops;
-  const propio = delSanto(op, hora, cl);
+  const propio = delSanto(op, hora, cl, d);
   if (regla === 'biblica') {
     return propio ? distintas(
       [{ id: 'propio', rot: 'Propio', c: propio }].concat(soloDia)) : soloDia;
   }
   if (propio) return yDelDia([{ id: 'propio', rot: 'Propio', c: propio }]);
   if (regla === 'salterio') return soloDia;
-  const comunes = deSusComunes(op, hora, cl);
+  const comunes = deSusComunes(op, hora, cl, d);
   // lo propio del santo —aquí, lo de su común— va siempre delante, y lo
   // del día detrás: el orden de los botones es el mismo en toda la hora
   if (regla === 'elige') return distintas(comunes.concat(soloDia));
@@ -4461,8 +4763,9 @@ function compone(ants, salmos) {
  * antífonas del santo sobre los salmos del día— y se ofrece también la
  * salmodia tal cual, por si quien reza prefiere las del salterio.
  *
- * Medido sobre ocho años: 46 casillas las tienen (san Mateo, san Andrés,
- * los Arcángeles, los Ángeles Custodios, la Inmaculada…). */
+ * Medido sobre ocho años: 36 casillas las tienen (san Mateo, san Andrés,
+ * los Arcángeles, los Ángeles Custodios, la Inmaculada…). En Pascua llevan
+ * su aleluya (`ap`). */
 const DIAS_SEM = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves',
   'viernes', 'sábado'];
 
@@ -4471,6 +4774,7 @@ function antifonasPropias(d, op, hora, dia) {
   const e = op.cel
     && (L.antifonas || {})[op.cel[1] + '/' + op.cel[0] + '/' + hora];
   if (!e || !e.a || !e.a.length) return null;
+  const ants = (d.t === 'Pascua' && e.ap) || e.a;
   // De dónde salen los salmos lo dice el libro impreso con una rúbrica que
   // la fuente no escribe, porque la aplica: «se toma la salmodia del
   // domingo I», «los salmos, del Común de pastores», o los escribe enteros
@@ -4504,7 +4808,7 @@ function antifonasPropias(d, op, hora, dia) {
     : 'Antífonas propias · ' + rotulo;
   return [
     { id: 'propio', rot: 'Propio', tit: tit,
-      c: { r: dia.r || 'SALMODIA', l: compone(e.a, piezas.salmos), f: e.f } },
+      c: { r: dia.r || 'SALMODIA', l: compone(ants, piezas.salmos), f: e.f } },
     { id: 'dia', rot: 'Del día', tit: 'La salmodia del día', c: dia }
   ];
 }
@@ -4787,11 +5091,10 @@ function fija(cl, rotulo, lineas) {
  *  es entero de la feria, y del santo se añade, en el Oficio de lectura, la
  *  lectura hagiográfica con su responsorio y la oración; en Laudes y
  *  Vísperas, después de la oración, la antífona y la oración del santo. */
-function conmemora(secs, op, hora) {
+function conmemora(secs, op, hora, d) {
   const L = E.horas;
-  const delSantoOComun = (cl) => delSanto(op, hora, cl)
-    || (L.comun_de[op.id] || []).map((k) => L.comunes[k + '/' + hora + '/' + cl])
-      .find(Boolean) || null;
+  const delSantoOComun = (cl) => delSanto(op, hora, cl, d)
+    || (deSusComunes(op, hora, cl, d)[0] || {}).c || null;
   const rub = (t) => [[1, t]];
   const tras = (cl) => {
     const i = secs.findIndex((s) => s.cl === cl);
@@ -4827,8 +5130,10 @@ function conmemora(secs, op, hora) {
  *  pero ahora cada sección sabe además si se puede tomar de otro sitio. */
 function armaHora(iso, hora, idCel) {
   if (!E.horasDias.dias[iso]) return null;
-  // el año ferial (I o II), para la lectura bíblica del Oficio
-  const d = Object.assign({ a: (anioDe(iso) || {}).ferial },
+  // el año ferial (I o II), para la lectura bíblica del Oficio, y el ciclo
+  // dominical (A, B o C), para las antífonas evangélicas del domingo
+  const anio = anioDe(iso) || {};
+  const d = Object.assign({ a: anio.ferial, ci: anio.ciclo },
     E.horasDias.dias[iso]);
   const cels = celebracionesHoras(d, hora);
   const op = cels.ops.find((o) => o.id === idCel)
@@ -4861,7 +5166,7 @@ function armaHora(iso, hora, idCel) {
   } else if (secciones.some((s) => s.cl === 'invitatorio')) {
     secciones = secciones.filter((s) => s.cl !== 'invocacion');
   }
-  if (op.modo === 'conmemoracion') conmemora(secciones, op, hora);
+  if (op.modo === 'conmemoracion') conmemora(secciones, op, hora, d);
   for (const [resp, lect] of Object.entries(LIGADAS)) {
     const l = secciones.find((x) => x.cl === lect);
     const r = secciones.find((x) => x.cl === resp);
@@ -6910,7 +7215,7 @@ function enruta() {
   const h = location.hash.slice(2);
   const p = h.split('/').map(decodeURIComponent);
   if (p[0] === 'indice') return verIndice();
-  if (p[0] === 'oraciones') return verDevocionario(p[1], p[2]);
+  if (p[0] === 'oraciones') return verDevocionario(p[1], p[2], p[3]);
   if (p[0] === 'calendario') return verCalendario(p[1]);
   if (p[0] === 'buscar') return verBusqueda(p[1] || '');
   if (p[0] === 'ajustes') return verAjustes();

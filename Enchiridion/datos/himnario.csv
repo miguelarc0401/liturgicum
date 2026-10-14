@@ -1,0 +1,65 @@
+id,titulo,hora,dia,tiempo,seccion,fichero
+pl_3ff4dadf2c1f,Audit tyránnus ánxius,Maitines,,,Hymnus Matutinum,12-28.txt
+pl_63825c4530c7,"Cǽlitum, Joseph, decus",Maitines,,,Hymnus Matutinum,03-19.txt
+pl_deb63dfc9287,Ex more docti mýstico,Maitines,,Cuaresma,Hymnus Quad,Matutinum Special.txt
+pl_65963a58863a,Jesu Rex admirábilis,Maitines,,Navidad,Hymnus Matutinum,Nat2-0.txt
+pl_591ac106b916,In monte olívis cónsito,Maitines,,,Hymnus Matutinum_,10-07.txt
+pl_c2f3b3aad741,Pange Lingua,Maitines,,Pasión,Hymnus Quad5,Matutinum Special.txt
+pl_b550f49fe946,Pange Lingua (Fortunátus),Maitines,,Pasión,Hymnus Quad5,Matutinum Special.txt
+pl_c37e02c7e21d,Sacra jam splendent,Maitines,,Epifanía,Hymnus Matutinum,Epi1-0.txt
+pl_288db3639f47,Verbum Supérnum,Maitines,,Adviento,Hymnus Adv,Matutinum Special.txt
+pl_c8ab0a95cfa5,Verbum supérnum pródiens,Maitines,,Adviento,Hymnus Adv,Matutinum Special.txt
+pl_635288c81faf,Nocte surgéntes,Maitines,domingo,,Day0 Hymnus,Matutinum Special.txt
+pl_a5eda2557370,Primo diérum ómnium,Maitines,domingo,,Day0 Hymnus1M,Matutinum Special.txt
+pl_b46e9570b353,Nox atra rerum cóntegit,Maitines,jueves,,Day4 Hymnus,Matutinum Special.txt
+pl_711550597384,Somno reféctis ártubus,Maitines,lunes,,Day1 Hymnus,Matutinum Special.txt
+pl_7d905d70448c,Consors patérni lúminis,Maitines,martes,,Day2 Hymnus,Matutinum Special.txt
+pl_c51c150f80b8,Rerum Creátor óptime,Maitines,miércoles,,Day3 Hymnus,Matutinum Special.txt
+pl_20fb7cd9361c,"Tu, Trinitátis Únitas",Maitines,viernes,,Day5 Hymnus,Matutinum Special.txt
+pl_fce0b61737fb,A solis ortus cárdine,Laudes,,,Hymnus Laudes,12-25.txt
+pl_b86135e66e43,Benedíctus,Laudes,,,el cántico de Zacarías,(a mano)
+pl_615c4c72f0c2,"Jam morte, victor, óbruta",Laudes,,,Hymnus Laudes,10-07.txt
+pl_76a9a2623890,"Jesu, decus angélicum",Laudes,,Navidad,Hymnus Laudes,Nat2-0.txt
+pl_3ca5578e8cbc,"Iste, quem læti",Laudes,,,Hymnus Laudes,03-19.txt
+pl_6541dd2d55a2,O gente felix hóspita,Laudes,,Epifanía,Hymnus Laudes,Epi1-0.txt
+pl_c48917e04310,O sola magnárum úrbium,Laudes,,,Hymnus Laudes,01-06.txt
+pl_2d8bb8d3a51a,"Placáre, Christe, sérvulis",Laudes,,,Hymnus Laudes,03-24.txt
+pl_f6c233ef20e8,Salútis ætérnæ dator,Laudes,,,Hymnus Laudes,11-01.txt
+pl_a726bccffb7c,Summæ Deus cleméntiæ,Laudes,,,Hymnus Laudes,09-15.txt
+pl_f312dd6185bd,Ætérne rerum cónditor,Laudes,domingo,,Hymnus Day0 Laudes hiemalis,Major Special.txt
+pl_5fd81ad58850,Ecce jam noctis,Laudes,domingo,,Hymnus Day0 Laudes,Major Special.txt
+pl_80c059337a12,Lux ecce surgit áurea,Laudes,jueves,,Hymnus Day4 Laudes,Major Special.txt
+pl_8db08869c8d4,Splendor patérnæ glóriæ,Laudes,lunes,,Hymnus Day1 Laudes,Major Special.txt
+pl_c0984567115d,Ales diéi núntius,Laudes,martes,,Hymnus Day2 Laudes,Major Special.txt
+pl_cd5fee5fac7a,Nox et ténebræ et núbila,Laudes,miércoles,,Hymnus Day3 Laudes,Major Special.txt
+pl_ebf567a3c584,Auróra jam spargit polum,Laudes,sábado,,Hymnus Day6 Laudes,Major Special.txt
+pl_503309912340,Ætérna cæli glória,Laudes,viernes,,Hymnus Day5 Laudes,Major Special.txt
+pl_f56e2610aa1b,Jam Lucis Orto Sídere,Prima,,,Hymnus Prima,Prima Special.txt
+pl_41e70a59a9ce,"Nunc, Sancte, nobis Spíritus",Tercia,,,Hymnus Tertia,Minor Special.txt
+pl_8a0df4ea55d2,"Rector potens, verax Deus",Sexta,,,Hymnus Sexta,Minor Special.txt
+pl_356017486e6c,"Rerum, Deus, tenax vigor",Nona,,,Hymnus Nona,Minor Special.txt
+pl_2fad9ed18945,"Audi, benígne Cónditor",Vísperas,,Cuaresma,Hymnus Quad Vespera,Major Special.txt
+pl_fb64abb591dd,Cæléstis aulæ Núntius,Vísperas,,,Hymnus Vespera,10-07.txt
+pl_4e863ceaeb02,"Christe, sanctórum decus Angelórum",Vísperas,,,Hymnus Vespera,03-24.txt
+pl_5ec52d7d8be3,Creátor alme síderum,Vísperas,,Adviento,Hymnus Adv Vespera,Major Special.txt
+pl_808821d3664a,Custódes hóminum psállimus Ángelos,Vísperas,,,Hymnus Vespera,10-02.txt
+pl_b57a6db30fb3,Jam sol recédit ígneus,Vísperas,,Pentecostés,Hymnus Vespera,Pent01-0.txt
+pl_dc35ae70792c,"Jesu, Dulcis Memória",Vísperas,,Navidad,Hymnus Vespera,Nat2-0.txt
+pl_6b0269e8943e,Magníficat,Vísperas,,,el cántico de la Virgen,(a mano)
+pl_5c90f2fdb1b8,O Lux beáta cǽlitum,Vísperas,,Epifanía,Hymnus Vespera,Epi1-0.txt
+pl_7cff01f836cb,Stabat Mater dolorósa,Vísperas,,Cuaresma,Hymnus Vespera,Quad5-5.txt
+pl_fa9132640485,Te gestiéntem gáudiis,Vísperas,,,Hymnus Vespera 3,10-07.txt
+pl_d489485323e7,Te Joseph célebrent ágmina cǽlitum,Vísperas,,,Hymnus Vespera,03-19.txt
+pl_b57b3722ca14,Te splendor et virtus Patris,Vísperas,,,Hymnus Vespera,05-08.txt
+pl_60e2a9c2b41c,Tibi Christe splendor Patris,Vísperas,,,Hymnus Vespera,10-24.txt
+pl_74f6250426c9,Vexílla Regis,Vísperas,,Pasión,Hymnus Quad5 Vespera,Major Special.txt
+pl_733e4e6e535d,Lucis Creátor óptime,Vísperas,domingo,,Hymnus Day0 Vespera,Major Special.txt
+pl_0c310f5b45f3,Magnæ Deus poténtiæ,Vísperas,jueves,,Hymnus Day4 Vespera,Major Special.txt
+pl_5d98d3dc5cf7,Imménse cæli Cónditor,Vísperas,lunes,,Hymnus Day1 Vespera,Major Special.txt
+pl_15331b84b0e1,Cæli Deus sanctíssime,Vísperas,miércoles,,Hymnus Day3 Vespera,Major Special.txt
+pl_825029ef0b1b,Alma Redemptóris Mater,Completas,,Adviento,antífona final de Completas,Mariaant.txt
+pl_ef626a170ffe,Ave Regína Cælórum,Completas,,Cuaresma,antífona final de Completas,Mariaant.txt
+pl_1a9a0df547c0,Nunc Dimíttis,Completas,,,el cántico de Simeón,(a mano)
+pl_1bed71005446,Regína Cæli,Completas,,Pascua,antífona final de Completas,Mariaant.txt
+pl_7aaad5565fd7,Salve Regína,Completas,,Tiempo ordinario,antífona final de Completas,Mariaant.txt
+pl_cba92fa05cc8,Te lucis ante términum,Completas,,,Hymnus Completorium,Minor Special.txt

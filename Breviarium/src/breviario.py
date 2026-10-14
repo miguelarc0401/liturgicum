@@ -185,3 +185,58 @@ def clave(texto):
 def clave_de_lineas(lineas):
     """La clave de un bloque entero de líneas."""
     return clave(' '.join(plano(ln) for ln in lineas if plano(ln)))
+
+
+# --------------------------------------------------------------------------
+# los días que van por fecha
+# --------------------------------------------------------------------------
+# La fuente rotula todas las ferias por semana y día («MARTES DE LA SEMANA
+# III»), pero el libro no las guarda así en tres tramos: del 17 al 24 de
+# diciembre, la octava de Navidad y del 2 de enero al Bautismo, el propio va
+# por fecha. Medido sobre el volcado: en esos días la antífona del
+# Benedictus y del Magníficat, las lecturas, la oración, las preces y la
+# lectura breve no fallan nunca agrupadas por fecha, y agrupadas por semana y
+# día se contradicen en casi todos los años (el 17 de diciembre de 2026 salía
+# la antífona del jueves de la semana III, y las antífonas «Oh» caían en
+# cualquier día). La salmodia sí va por el salterio, y las Completas por el
+# día de la semana.
+
+MESES_NOMBRE = {12: 'diciembre', 1: 'enero'}
+
+
+def clave_por_fecha(tiempo, fecha):
+    """La casilla por fecha del día («Adviento/@/17 de diciembre»), si cae
+    en uno de los tramos que van por fecha; si no, None."""
+    md = fecha[5:]
+    d, m = int(md[3:]), int(md[:2])
+    if tiempo == 'Adviento' and '12-17' <= md <= '12-24':
+        return f'Adviento/@/{d} de diciembre'
+    if tiempo == 'Navidad' and ('12-29' <= md <= '12-31'
+                                or '01-02' <= md <= '01-13'):
+        return f'Navidad/@/{d} de {MESES_NOMBRE[m]}'
+    return None
+
+
+def va_por_fecha(tiempo, fecha, dia_semana, hora, clase):
+    """Si esta sección de este día se guarda en su casilla por fecha.
+
+    Entre semana, todo menos las Completas, que van por el día de la semana
+    (salvo las del 24 de diciembre, que son las del domingo, tras las
+    primeras vísperas de Navidad). El domingo IV de Adviento es domingo, y lo
+    suyo va por semana, salvo la antífona del Magníficat, que del 17 al 23 es
+    la antífona «Oh» de la fecha también en domingo, y las vísperas del 24,
+    que son las primeras de Navidad. El sábado de enero, las vísperas son las
+    primeras del domingo que viene, y ésas no son de la fecha."""
+    if not clave_por_fecha(tiempo, fecha):
+        return False
+    md = fecha[5:]
+    if md == '12-24' and hora in ('visperas', 'completas'):
+        return True
+    if hora == 'completas':
+        return False
+    if dia_semana == 0:
+        return (tiempo == 'Adviento' and hora == 'visperas'
+                and clase == 'cantico_evangelico')
+    if md < '12' and dia_semana == 6 and hora == 'visperas':
+        return False
+    return True

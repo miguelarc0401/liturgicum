@@ -115,8 +115,19 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   los salmos penitenciales, las oraciones antes y después de la misa— en la
   ortografía de los libros litúrgicos, con su jota, su ligadura y su acento,
   y con el castellano de cada una donde se ha podido verificar de dónde
-  sale. No va por fechas: se hojea por grupos o se busca por el título, en
-  cualquiera de las dos lenguas. Cada oración lleva al pie, plegada, su
+  sale. No va por fechas: va **por once capítulos, por cuándo y a quién** se
+  reza —las oraciones comunes, el día, la misa, la confesión, el año, las
+  horas, a Dios, a la Virgen y a los santos, en cada necesidad, la Escritura
+  y lo que se sabe de memoria—, y lo que la pieza *es* no es una carpeta
+  sino una señal en la fila y un filtro que atraviesa el libro: 132
+  oraciones, 108 himnos, 43 letanías, 18 conmemoraciones, 12 oficios parvos,
+  11 novenas, 11 jaculatorias… veintiocho formas en total, y otro filtro
+  para ver sólo lo que ya tiene castellano. La fila dice qué es la pieza, a
+  qué hora la canta el Breviario cuando se sabe, y si todavía está sólo en
+  latín. Las veintidós del apéndice del Compendio del Catecismo van
+  marcadas donde vivan. También se busca por el título, en cualquiera de las
+  dos lenguas, o por lo que la pieza es: «letanía», «novena». Cada oración
+  lleva al pie, plegada, su
   procedencia: la del latín y la del castellano, con la autoridad, el
   territorio y si es traducción aprobada o sólo publicada. Las que todavía
   no tienen castellano lo dicen; «no hay» significa que aquí no se ha
