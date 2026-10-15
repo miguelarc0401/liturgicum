@@ -3723,8 +3723,17 @@ async function alCambiarAjuste(ev) {
     const l = Object.assign({}, E.cfg.vozLinea);
     const t = (ev.target.value || '').trim();
     if (t) l[vl] = t; else delete l[vl];
+    // cambiar de servicio cambia los campos que pide y los nombres de las
+    // voces, que no se parecen en nada de uno a otro: la voz elegida se
+    // pone en la primera del nuevo, que si no quedaría una de Azure
+    // pedida a Google y el servicio contestaría que no la conoce
+    if (vl === 'prov') {
+      const p = PROVEEDOR[l.prov];
+      l.voz = p ? p.voces[0][0] : '';
+    }
     E.cfg.vozLinea = l;
     guardaCfg();
+    if (vl === 'prov') { recuerdaAjustes(); verAjustes(); }
     return;
   }
   const id = (ev.target.id || '').replace(/^aj-/, '');
@@ -7009,28 +7018,135 @@ function otraSeccionVoz(n) {
  * servicio que se elija; el texto de lo que se reza, en cambio, va a ese
  * servicio, que es lo que hace falta para que lo diga. */
 const PROVEEDOR = {
+  google: {
+    rot: 'Google Cloud',
+    campos: ['clave'],
+    // Dónde se saca la clave. Va escrito porque el sitio cambia de nombre
+    // los menús cada dos por tres y sin esto no se encuentra.
+    donde: 'console.cloud.google.com · API y servicios · Credenciales · '
+      + 'Crear credenciales · Clave de API. Antes hay que activar la API '
+      + '«Cloud Text-to-Speech» en la Biblioteca.',
+    // El tramo gratuito de Google no es uno solo: cada familia de voces
+    // tiene el suyo, y entre la primera y las otras hay cuatro veces. Va
+    // dicho en el rótulo de cada voz, porque es lo que de verdad decide
+    // cuál conviene: con las WaveNet caben cuatro millones de caracteres
+    // al mes —el oficio entero, los siete, todos los días del año— y con
+    // las demás, uno.
+    voces: [
+      ['es-ES-Wavenet-F', 'España · mujer · 4 M al mes gratis'],
+      ['es-ES-Wavenet-H', 'España · mujer (2) · 4 M al mes gratis'],
+      ['es-ES-Wavenet-E', 'España · hombre · 4 M al mes gratis'],
+      ['es-ES-Wavenet-G', 'España · hombre (2) · 4 M al mes gratis'],
+      ['es-US-Wavenet-A', 'América · mujer · 4 M al mes gratis'],
+      ['es-US-Wavenet-B', 'América · hombre · 4 M al mes gratis'],
+      ['es-ES-Neural2-A', 'España · mujer · 1 M al mes gratis'],
+      ['es-ES-Neural2-F', 'España · hombre · 1 M al mes gratis'],
+      ['es-ES-Chirp3-HD-Sulafat', 'España · mujer, de las nuevas · 1 M'],
+      ['es-ES-Chirp3-HD-Charon', 'España · hombre, de las nuevas · 1 M'],
+      ['es-ES-Standard-F', 'España · mujer, la sencilla · 4 M al mes']
+    ],
+    // Sin SSML: el texto va limpio y la velocidad en su propio campo, de
+    // modo que no se paga ni una etiqueta. Google cuenta como carácter
+    // todo lo que entra, marcas incluidas.
+    pide: async function (c, texto, vel) {
+      const v = c.voz || 'es-ES-Wavenet-F';
+      const r = await fetch(
+        'https://texttospeech.googleapis.com/v1/text:synthesize',
+        { method: 'POST',
+          headers: { 'X-Goog-Api-Key': c.clave,
+            'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({
+            input: { text: texto },
+            voice: { languageCode: v.slice(0, 5), name: v },
+            audioConfig: { audioEncoding: 'MP3', speakingRate: vel }
+          }) });
+      if (!r.ok) throw new Error(await razonDeFallo(r));
+      const j = await r.json();
+      if (!j.audioContent) throw new Error('no ha devuelto audio');
+      return deBase64(j.audioContent, 'audio/mpeg');
+    }
+  },
   azure: {
     rot: 'Azure · Microsoft',
-    voces: ['es-ES-ElviraNeural', 'es-ES-AlvaroNeural', 'es-ES-TrianaNeural',
-      'es-MX-DaliaNeural', 'es-MX-JorgeNeural', 'it-IT-DiegoNeural'],
-    url: (c) => 'https://' + encodeURIComponent(c.region || 'westeurope')
-      + '.tts.speech.microsoft.com/cognitiveservices/v1',
-    cabeceras: (c) => ({
-      'Ocp-Apim-Subscription-Key': c.clave,
-      'Content-Type': 'application/ssml+xml',
-      'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3'
-    }),
-    cuerpo: (c, texto, vel) => {
+    campos: ['region', 'clave'],
+    donde: 'portal.azure.com · crea un recurso «Speech services» con el '
+      + 'plan F0, que es el gratuito, y copia de su página la clave 1 y la '
+      + 'ubicación. Son 500 000 caracteres al mes.',
+    voces: [
+      ['es-ES-ElviraNeural', 'España · mujer'],
+      ['es-ES-AlvaroNeural', 'España · hombre'],
+      ['es-ES-TrianaNeural', 'España · mujer (2)'],
+      ['es-MX-DaliaNeural', 'México · mujer'],
+      ['es-MX-JorgeNeural', 'México · hombre'],
+      ['it-IT-DiegoNeural', 'Italiana · para el latín']
+    ],
+    // Aquí el SSML es obligatorio, pero se paga: Microsoft dice que no
+    // cobra `<speak>` ni `<voice>` y sí todo lo demás, así que el
+    // `<prosody>` se pone sólo cuando hay algo que decirle. A velocidad
+    // normal son 37 caracteres menos por trozo, que en una hora son unos
+    // dos mil seiscientos de los siete mil que cuesta.
+    pide: async function (c, texto, vel) {
       const v = c.voz || 'es-ES-ElviraNeural';
-      return '<speak version="1.0"'
-        + ' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="'
-        + esc(v.slice(0, 5)) + '"><voice name="' + esc(v) + '">'
-        + '<prosody rate="' + (vel >= 1 ? '+' : '')
-        + Math.round((vel - 1) * 100) + '%">' + esc(texto)
-        + '</prosody></voice></speak>';
+      const dentro = vel === 1 ? esc(texto)
+        : '<prosody rate="' + (vel > 1 ? '+' : '')
+          + Math.round((vel - 1) * 100) + '%">' + esc(texto) + '</prosody>';
+      const r = await fetch('https://'
+        + encodeURIComponent(c.region || 'westeurope')
+        + '.tts.speech.microsoft.com/cognitiveservices/v1',
+        { method: 'POST',
+          headers: { 'Ocp-Apim-Subscription-Key': c.clave,
+            'Content-Type': 'application/ssml+xml',
+            'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' },
+          body: '<speak version="1.0"'
+            + ' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="'
+            + esc(v.slice(0, 5)) + '"><voice name="' + esc(v) + '">'
+            + dentro + '</voice></speak>' });
+      if (!r.ok) throw new Error(await razonDeFallo(r));
+      return r.blob();
     }
   }
 };
+
+const PROV_POR_OMISION = 'google';
+
+function proveedorDe() {
+  const c = E.cfg.vozLinea || {};
+  return PROVEEDOR[c.prov] ? c.prov : PROV_POR_OMISION;
+}
+
+/** Lo que el servicio contesta cuando dice que no, en corto y en claro: un
+ *  401 es la clave, un 400 suele ser el nombre de la voz, y un 403 que la
+ *  API no está activada. Sin esto, todos los fallos se parecen.
+ *
+ *  Lo que devuelve va a la barra de mandos, que es ancha de un dedo: cabe
+ *  la razón y no cabe el párrafo en inglés con que el servicio la explica.
+ *  Ése se escribe en la consola, que es donde se va a buscar cuando la
+ *  razón corta no baste. */
+async function razonDeFallo(r) {
+  let detalle = '';
+  try {
+    const t = (await r.text()).slice(0, 400);
+    const m = t.match(/"message"\s*:\s*"([^"]{0,110})/);
+    // el servicio cierra su frase con punto y aquí va dentro de otra: se le
+    // quita, que si no salen dos seguidos
+    detalle = m ? m[1].replace(/\s*\.*\s*$/, '') : '';
+  } catch (_) { /* da igual: queda el número */ }
+  const comun = r.status === 401 || r.status === 403
+      ? 'La clave no vale, o la API no está activada'
+    : r.status === 400 ? 'No le cuadra la petición: mira el nombre de la voz'
+    : r.status === 429 ? 'Te ha cortado por exceso de peticiones'
+    : 'El servicio responde ' + r.status;
+  if (detalle) console.warn('voz en línea (' + r.status + '): ' + detalle);
+  return comun;
+}
+
+/** El audio que viene en base64 dentro de un JSON, a fichero. */
+function deBase64(b64, tipo) {
+  const bin = atob(b64);
+  const n = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) n[i] = bin.charCodeAt(i);
+  return new Blob([n], { type: tipo });
+}
 
 /** Una firma corta del trozo, para nombrarlo en la caché. FNV de 32 bits,
  *  que para esto basta. */
@@ -7045,10 +7161,11 @@ function firmaVoz(s) {
 
 async function audioEnLinea(texto) {
   const c = E.cfg.vozLinea || {};
-  const p = PROVEEDOR[c.prov || 'azure'];
-  if (!p || !c.clave) throw new Error('sin clave');
+  const prov = proveedorDe();
+  const p = PROVEEDOR[prov];
+  if (!c.clave) throw new Error('falta la clave');
   const vel = Math.max(0.5, Math.min(2, (E.cfg.vozVel || 100) / 100));
-  const llave = 'https://voz.guardada/' + (c.prov || 'azure') + '/'
+  const llave = 'https://voz.guardada/' + prov + '/'
     + encodeURIComponent(c.voz || '') + '/' + vel + '/' + firmaVoz(texto);
   let cache = null;
   try { cache = await caches.open('voz-en-linea'); } catch (_) { cache = null; }
@@ -7056,13 +7173,16 @@ async function audioEnLinea(texto) {
     const guardada = await cache.match(llave);
     if (guardada) return guardada.blob();
   }
-  const r = await fetch(p.url(c), { method: 'POST', headers: p.cabeceras(c),
-    body: p.cuerpo(c, texto, vel) });
-  if (!r.ok) throw new Error('el servicio responde ' + r.status);
+  // cada proveedor devuelve el audio ya hecho —uno lo manda en crudo y el
+  // otro en base64 dentro de un JSON—; de la caché para dentro son iguales
+  const blob = await p.pide(c, texto, vel);
   if (cache) {
-    try { await cache.put(llave, r.clone()); } catch (_) { /* sin sitio */ }
+    try {
+      await cache.put(llave, new Response(blob,
+        { headers: { 'Content-Type': blob.type || 'audio/mpeg' } }));
+    } catch (_) { /* sin sitio: se volverá a pedir */ }
   }
-  return r.blob();
+  return blob;
 }
 
 /* Con audio no hay avisos de palabra: el renglón se sigue por la regla de
@@ -7081,7 +7201,10 @@ async function diceEnLinea(k) {
     V.fallos++;
     if (V.fallos >= 3) {
       V.motor = 'sistema';
-      V.aviso = 'Sin la voz en línea: sigue la del sistema.';
+      // con el motivo delante: «la clave no vale» y «no hay cobertura» se
+      // arreglan de maneras muy distintas, y sin decirlo nadie sabe cuál es
+      V.aviso = (err && err.message ? err.message
+        : 'La voz en línea no responde') + '. Sigue la del teléfono.';
     }
     if (g === V.gen && V.estado === 'diciendo' && V.i === k) {
       V.hasta = k;
@@ -7133,6 +7256,10 @@ function pintaBarraVoz() {
   const s = tz && E.oficio && E.oficio.secciones[tz.sec];
   const dice = V.estado === 'diciendo';
   c.hidden = false;
+  // con un aviso puesto, el renglon se parte en dos: un motivo de fallo no
+  // cabe en una linea cortada con puntos suspensivos, y es justo lo que hay
+  // que poder leer
+  c.classList.toggle('con-aviso', !!V.aviso);
   c.innerHTML = '<button type="button" data-voz="atras" '
     + 'aria-label="Sección anterior">' + ICONO_VOZ.atras + '</button>'
     + '<button type="button" class="grande" data-voz="'
@@ -7216,22 +7343,34 @@ function vocesQueHay() {
  *  que se está rezando, que es lo que el servicio necesita para decirlo. */
 function camposDeLaVozEnLinea(campoVoz) {
   const c = E.cfg.vozLinea || {};
-  const p = PROVEEDOR[c.prov || 'azure'];
+  const prov = proveedorDe();
+  const p = PROVEEDOR[prov];
+  const opcion = (v, rot, puesta) => '<option value="' + esc(v) + '"'
+    + (puesta ? ' selected' : '') + '>' + esc(rot) + '</option>';
   return '<div class="ajuste ancho"><p class="pista-g">'
-    + 'Hace falta una cuenta en el servicio y su clave. Ahora mismo la app '
-    + 'sabe hablar con ' + esc(p.rot) + ', que da medio millón de '
-    + 'caracteres al mes sin coste —una hora entera son unos siete mil— y '
-    + 'tiene voces de España. La clave se guarda en este teléfono y no va a '
-    + 'ningún otro sitio; el texto de lo que se reza, en cambio, va al '
+    + 'Hace falta una cuenta en el servicio y su clave; hecho eso, no se '
+    + 'vuelve a tocar. Las dos cuentas piden una tarjeta para identificarte '
+    + '—no cobran nada—, y las dos son gratis para lo que esto gasta: una '
+    + 'hora rezada son unos siete mil caracteres, y las siete horas de un '
+    + 'día, treinta y ocho mil. La clave se guarda en este teléfono y no va '
+    + 'a ningún otro sitio; el texto de lo que se reza, en cambio, sí va al '
     + 'servicio, que para decirlo tiene que leerlo. Sin conexión, o si '
-    + 'falla, habla la voz del teléfono y la hora sigue.'
+    + 'falla, habla la voz del teléfono y la hora no se corta.'
     + '</p></div>'
-    + campoVoz('region', 'Región', 'La de la clave: westeurope, eastus…')
+    + '<div class="ajuste"><label for="aj-vl-prov">El servicio</label>'
+    + '<select id="aj-vl-prov" data-vozlinea="prov">'
+    + Object.keys(PROVEEDOR).map((k) =>
+      opcion(k, PROVEEDOR[k].rot, k === prov)).join('')
+    + '</select></div>'
+    + '<div class="ajuste ancho"><p class="pista-g">' + esc(p.donde)
+    + '</p></div>'
+    + (p.campos.indexOf('region') >= 0
+      ? campoVoz('region', 'Región', 'La del recurso: westeurope, eastus…')
+      : '')
     + campoVoz('clave', 'Clave', 'No se enseña ni se comparte.', 'password')
     + '<div class="ajuste"><label for="aj-vl-voz">La voz</label>'
     + '<select id="aj-vl-voz" data-vozlinea="voz">'
-    + p.voces.map((v) => '<option value="' + esc(v) + '"'
-      + (c.voz === v ? ' selected' : '') + '>' + esc(v) + '</option>').join('')
+    + p.voces.map(([v, rot]) => opcion(v, rot, c.voz === v)).join('')
     + '</select></div>';
 }
 

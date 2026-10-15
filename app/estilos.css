@@ -1940,6 +1940,13 @@ body.cab-fija .dale-voz svg {
   letter-spacing: .01em; color: var(--tinta-suave);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+/* un motivo de fallo no cabe en un renglon cortado con puntos suspensivos,
+   y es justo lo que hay que poder leer: se le dejan tres */
+.voz.con-aviso { border-radius: 1.6rem; }
+.voz.con-aviso .voz-que {
+  white-space: normal; font-weight: 500; font-size: .72rem;
+  line-height: 1.3; max-height: 5.2em; color: var(--rubrica);
+}
 /* el texto no se mete debajo de los mandos */
 body.con-voz #vista { padding-bottom: 9rem; }
 /* escondida la barra, los mandos bajan a su sitio: se esconde lo que es

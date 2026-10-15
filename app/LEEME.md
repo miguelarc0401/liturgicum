@@ -338,13 +338,29 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   siete, unos 44 minutos.
   **Y una voz mejor, si se quiere.** La del sistema lee bien pero es voz de
   máquina. En Ajustes se puede dar la clave de un servicio de síntesis
-  neuronal (ahora mismo Azure, que da medio millón de caracteres al mes sin
-  coste; una hora son unos siete mil), y entonces la dice ésa. Eso —y sólo
-  eso— pide conexión: lo que se trae queda guardado en la caché, así que una
-  hora pedida una vez se vuelve a decir sin red, y donde no llegue la red
-  sigue la voz del sistema y la hora no se corta. La clave se guarda en el
-  teléfono; el texto de lo que se reza va al servicio, que para decirlo
-  tiene que leerlo.
+  neuronal y entonces la dice ésa. Eso —y sólo eso— pide conexión: lo que se
+  trae queda guardado en la caché del navegador, de modo que **una hora
+  pedida una vez se vuelve a decir sin red**; y donde la red no llegue, ese
+  trozo lo dice la voz del sistema y la hora no se corta (tres fallos
+  seguidos y deja de pedir hasta la hora siguiente, con el motivo escrito en
+  la barra). La clave se guarda en el teléfono; el texto de lo que se reza
+  va al servicio, que para decirlo tiene que leerlo.
+  **Dos servicios, y no dan lo mismo.** El que viene puesto es **Google
+  Cloud**, y no por la voz —las dos son excelentes en español— sino por la
+  cuenta: su tramo gratuito **no es uno solo, sino uno por familia de
+  voces**, y con las **WaveNet** son cuatro millones de caracteres al mes.
+  Las siete horas de un día son 37 785 caracteres, o sea 1,13 millones al
+  mes rezándolas todas a diario: a Google le caben casi cuatro veces, y en
+  **Azure**, que da 500 000, se sale. Por eso cada voz de la lista dice en
+  su rótulo lo que trae de tramo gratuito. Con Google va texto limpio y la
+  velocidad en su propio campo (`speakingRate`), de modo que no se paga ni
+  una etiqueta; con Azure el SSML es obligatorio, y como **Microsoft cobra
+  todo el marcado menos `<speak>` y `<voice>`**, el `<prosody>` sólo se pone
+  cuando la velocidad no es la normal: son 37 caracteres por trozo, unos
+  2 600 de los 7 000 que cuesta una hora.
+  Los nombres de las voces se midieron contra la documentación, que es
+  donde se ven las trampas: las WaveNet de España son **E, F, G y H**, y no
+  las A–D que uno daría por supuestas.
 
 **Lo que no trae:** el leccionario IX (misas con niños), que sí está en `out/`,
 en Word y en PDF.
