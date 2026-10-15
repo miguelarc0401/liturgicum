@@ -675,9 +675,16 @@ def main():
     # sólo el texto canónico de cada casilla: entre las variantes del
     # salterio están las salmodias propias de las fiestas que declararon su
     # semana, y con ellas las antífonas de los apóstoles pasaban por feriales
+    # Y sin el de Navidad: después de la Epifanía y en los días de la octava
+    # el salterio repite las antífonas de la Epifanía y de la octava («El
+    # misterio, escondido desde el comienzo de los siglos», «José y María, la
+    # madre de Jesús, estaban maravillados»), y con ellas la Epifanía y Santa
+    # María, Madre de Dios, se quedaban sin su Hora intermedia.
     ants_del_salterio = set()
-    for v in salterio_libro.values():
-        ants_del_salterio.update(clave(a) for a in antifonas_de(v['lineas']))
+    for k, v in salterio_libro.items():
+        if not k.startswith('Navidad/'):
+            ants_del_salterio.update(clave(a)
+                                     for a in antifonas_de(v['lineas']))
     himnos_del_dia = set()
     for k, v in tiempo_libro.items():
         p = k.split('/')

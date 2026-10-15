@@ -1,19 +1,43 @@
 Fase 4 — el libro de horas empaquetado para la app
 ==========================================================
 
-horas.json         21.1 MB
-horas_dias.json     2.6 MB  15701 fechas
+horas.json         21.5 MB
+horas_dias.json     2.8 MB  15701 fechas
 
       75  casillas en ordinario
      868  casillas en salterio
-   13040  casillas en tiempo
-    4250  casillas en santoral
+   13120  casillas en tiempo
+    4526  casillas en santoral
      195  casillas en comunes
-     158  santos con común conocido
-     726  lecturas del Oficio con texto propio del otro año del ciclo bienal
+     190  santos con común conocido
+     732  lecturas del Oficio con texto propio del otro año del ciclo bienal
+      22  celebraciones del calendario de México sin oficio en ninguna parte: con su común y la colecta del Misal mexicano
+          Beato Sebastián de Aparicio, religioso  ->  santos varones para los santos religiosos
+          San Gregorio de Narek, abad y doctor de la Iglesia  ->  doctores de la iglesia, santos varones para los santos religiosos
+          Santa María Guadalupe García Zavala, virgen  ->  virgenes
+          Nuestra Señora de Fátima  ->  santisima virgen maria
+          San Juan Nepomuceno, presbítero y mártir  ->  un martir, pastores para un santo presbitero
+          San Pablo VI, papa  ->  pastores
+          Nuestra Señora del Perpetuo Socorro  ->  santisima virgen maria
+          Nuestra Señora del Refugio  ->  santisima virgen maria
+          Santa María de Jesús Sacramentado Venegas, virgen  ->  virgenes
+          Santa Teresa Benedicta de la Cruz, virgen y mártir  ->  un martir, virgenes
+          Beato Bartolomé Laurel, religioso y mártir  ->  un martir, santos varones para los santos religiosos
+          Beatos Pedro de Zúñiga y Luis Flores, presbíteros y mártires  ->  varios martires, pastores para un santo presbitero
+          San Junípero Serra, presbítero  ->  pastores para un santo presbitero
+          Beato Bartolomé Gutiérrez, presbítero y mártir  ->  un martir, pastores para un santo presbitero
+          Santa Teresa de Calcuta, virgen  ->  virgenes
+          San José María de Yermo y Parres, presbítero  ->  pastores para un santo presbitero
+          Santa Faustina Kowalska, virgen  ->  virgenes
+          San Juan Pablo II, papa  ->  pastores
+          San Rafael Guízar y Valencia, obispo  ->  pastores para un santo obispo
+          San Antonio María Claret, obispo  ->  pastores para un santo obispo
+          Beato Miguel Agustín Pro, presbítero y mártir  ->  un martir, pastores para un santo presbitero
+          Nuestra Señora de Loreto  ->  santisima virgen maria
+     309  oraciones del PDF cambiadas por la colecta del Misal mexicano
      106  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
      871  fechas que van por fecha (17-24 de diciembre, octava de Navidad, 2 de enero al Bautismo)
-      95  piezas del santoral con su forma de Pascua: 58 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 34 forma pascual por la regla del libro, 84 sólo pascual: forma de todo el año sin el aleluya
+     121  piezas del santoral con su forma de Pascua: 58 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 44 forma pascual por la regla del libro, 84 sólo pascual: forma de todo el año sin el aleluya
       90  piezas de los comunes con su forma de Pascua: 19 forma pascual medida en la fuente, 71 forma pascual por la regla del libro
        0  salmodias con antífonas propias en su forma de Pascua
      124  días del salterio con la salmodia del día de la Hora intermedia; complementaria de nona, sexta, tercia
@@ -75,14 +99,14 @@ horas_dias.json     2.6 MB  15701 fechas
           Pascua/nona: salvador del mundo | reina el senor alli donde
           Pascua/sexta: cuando la luz del dia | verbo de dios el sol
           Pascua/tercia: espiritu de dios la tierra | al senor confesamos aleluya
-     203  celebraciones del calendario con textos (102 aprendidas del volcado, 101 por el nombre)
+     243  celebraciones del calendario con textos (104 aprendidas del volcado, 139 por el nombre)
 
 Cómo se resolvió cada fecha
 --------------------------------------------
    12968  aprendido del volcado
      871  con casilla por fecha
-     522  con conmemoración posible
-    6222  con santo
+     564  con conmemoración posible
+    7303  con santo
        5  del calendario del leccionario
     2728  del volcado
      369  sin textos del tiempo
@@ -91,6 +115,11 @@ Días del leccionario cuyas coordenadas se aprendieron del volcado: 387
 
 Celebraciones del calendario -> casillas del santoral
 --------------------------------------------
+  Beato Bartolomé Gutiérrez, presbítero y mártir  ->  beato bartolome gutierrez presbitero y martir
+  Beato Bartolomé Laurel, religioso y mártir  ->  beato bartolome laurel religioso y martir
+  Beato Miguel Agustín Pro, presbítero y mártir  ->  beato miguel agustin pro presbitero y martir
+  Beato Sebastián de Aparicio, religioso  ->  beato sebastian de aparicio religioso
+  Beatos Pedro de Zúñiga y Luis Flores, presbíteros y mártires  ->  beatos pedro de zuniga y luis flores presbiteros y martires
   Conmemoración de todos los fieles difuntos  ->  todos los fieles difuntos
   Dedicación de la basílica de Letrán  ->  la dedicacion de la basilica de san juan de letran
   Dedicación de la basílica de Santa María  ->  la dedicacion de la basilica de santa maria
@@ -100,8 +129,11 @@ Celebraciones del calendario -> casillas del santoral
   El Inmaculado Corazón de la Santísima Virgen María  ->  el inmaculado corazon de la santisima virgen maria
   El Martirio de san Juan Bautista  ->  el martirio de san juan bautista
   El Nacimiento de san Juan Bautista  ->  el nacimiento de san juan bautista
+  El Santísimo Nombre de Jesús  ->  santo nombre de jesus
+  El Santísimo Nombre de María  ->  santo nombre de maria
   La Anunciación del Señor  ->  la anunciacion del senor
   La Asunción de la Santísima Virgen María  ->  la asuncion de la santisima virgen maria
+  La Bienaventurada Virgen María, Madre de la Iglesia  ->  maria madre de la iglesia
   La Conversión de san Pablo, apóstol  ->  la conversion de san pablo
   La Cátedra de san Pedro, apóstol  ->  la catedra de san pedro apostol
   La Epifanía del Señor  ->  la epifania del senor
@@ -110,16 +142,22 @@ Celebraciones del calendario -> casillas del santoral
   La Natividad de la Santísima Virgen María  ->  la natividad de la santisima virgen maria
   La Presentación de la Santísima Virgen María  ->  la presentacion de la santisima virgen maria
   La Presentación del Señor  ->  la presentacion del senor
+  La Santa Cruz  ->  exaltacion de la santa cruz
   La Santísima Virgen María, Reina  ->  la santisima virgen maria reina
   La Transfiguración del Señor  ->  la transfiguracion del senor
   La Visitación de la Santísima Virgen María  ->  la visitacion de la santisima virgen maria
   Los Santos Inocentes, mártires  ->  los santos inocentes martires
   Los siete santos Fundadores de la Orden de los Siervos de santa María Virgen  ->  los siete santos fundadores de la orden de los siervos de la virgen maria
+  Nuestra Señora de Fátima  ->  nuestra senora de fatima
   Nuestra Señora de Guadalupe  ->  nuestra senora de guadalupe
+  Nuestra Señora de Loreto  ->  nuestra senora de loreto
   Nuestra Señora de Lourdes  ->  nuestra senora de lourdes
   Nuestra Señora de los Dolores  ->  nuestra senora de los dolores
   Nuestra Señora del Carmen  ->  nuestra senora del carmen
+  Nuestra Señora del Perpetuo Socorro  ->  nuestra senora del perpetuo socorro
+  Nuestra Señora del Refugio  ->  nuestra senora del refugio
   Nuestra Señora del Rosario  ->  nuestra senora del rosario
+  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote  ->  jesucristo sumo y eterno sacerdote
   Primeros mártires de la Iglesia de Roma  ->  santos protomartires de la santa iglesia romana
   San Adalberto, obispo y mártir  ->  san adalberto obispo y martir
   San Agustín de Cantorbery, obispo  ->  san agustin de cantorbery obispo
@@ -133,6 +171,7 @@ Celebraciones del calendario -> casillas del santoral
   San Antonio María Zaccarías, presbítero  ->  san antonio maria zaccaria presbitero
   San Antonio de Padua, presbítero y doctor de la Iglesia  ->  san antonio de padua presbitero y doctor de la iglesia
   San Antonio, abad  ->  san antonio abad
+  San Apolinar, obispo y mártir  ->  san apolinar obispo y martir
   San Atanasio, obispo y doctor de la Iglesia  ->  san atanasio obispo y doctor de la iglesia
   San Bartolomé, apóstol  ->  san bartolome apostol
   San Beda el Venerable, presbítero y doctor de la Iglesia  ->  san beda el venerable presbitero y doctor de la iglesia
@@ -149,6 +188,7 @@ Celebraciones del calendario -> casillas del santoral
   San Carlos Borromeo, obispo  ->  san carlos borromeo obispo
   San Casimiro  ->  san casimiro
   San Cayetano, presbítero  ->  san cayetano presbitero
+  San Charbel Makhlouf, presbítero  ->  san sarbelio charbel maklluf presbitero
   San Cirilo de Alejandría, obispo y doctor de la Iglesia  ->  san cirilo de alejandria obispo y doctor de la iglesia
   San Cirilo de Jerusalén, obispo y doctor de la Iglesia  ->  san cirilo de jerusalen obispo y doctor de la iglesia
   San Clemente I, papa y mártir  ->  san clemente i papa y martir
@@ -162,6 +202,7 @@ Celebraciones del calendario -> casillas del santoral
   San Eusebio de Vercelli, obispo  ->  san eusebio de vercelli obispo
   San Fabián, papa y mártir  ->  san fabian papa y martir
   San Felipe Neri, presbítero  ->  san felipe neri presbitero
+  San Felipe de Jesús, protomártir mexicano  ->  san felipe de jesus protomartir mexicano
   San Fidel de Sigmaringen, presbítero y mártir  ->  san fidel de sigmaringa presbitero y martir
   San Francisco Javier, presbítero  ->  san francisco javier presbitero
   San Francisco de Asís  ->  san francisco de asis
@@ -169,16 +210,19 @@ Celebraciones del calendario -> casillas del santoral
   San Francisco de Sales, obispo y doctor de la Iglesia  ->  san francisco de sales obispo y doctor de la iglesia
   San Gregorio Magno, papa y doctor de la Iglesia  ->  san gregorio magno papa y doctor de la iglesia
   San Gregorio VII, papa  ->  san gregorio vii papa
+  San Gregorio de Narek, abad y doctor de la Iglesia  ->  san gregorio de narek abad y doctor de la iglesia
   San Hilario, obispo y doctor de la Iglesia  ->  san hilario obispo y doctor de la iglesia
   San Ignacio de Antioquía, obispo y mártir  ->  san ignacio de antioquia obispo y martir
   San Ignacio de Loyola, presbítero  ->  san ignacio de loyola presbitero
   San Ireneo, obispo y mártir  ->  san ireneo obispo y martir
   San Isidoro, obispo y doctor de la Iglesia  ->  san isidoro de sevilla obispo y doctor de la iglesia
+  San Isidro Labrador  ->  san isidro labrador
   San Jenaro, obispo y mártir  ->  san jenaro obispo y martir
   San Jerónimo Emiliano  ->  san jeronimo emiliani
   San Jerónimo, presbítero y doctor de la Iglesia  ->  san jeronimo presbitero y doctor de la iglesia
   San Jorge, mártir  ->  san jorge martir
   San Josafat, obispo y mártir  ->  san josafat obispo y martir
+  San José María de Yermo y Parres, presbítero  ->  san jose maria de yermo y parres presbitero
   San José Obrero  ->  san jose obrero
   San José de Calasanz, presbítero  ->  san jose de calasanz presbitero
   San José, esposo de santa María Virgen  ->  san jose esposo de la bienaventurada virgen maria
@@ -186,15 +230,21 @@ Celebraciones del calendario -> casillas del santoral
   San Juan Bosco, presbítero  ->  san juan bosco presbitero
   San Juan Crisóstomo, obispo y doctor de la Iglesia  ->  san juan crisostomo obispo y doctor de la iglesia
   San Juan Damasceno, presbítero y doctor de la Iglesia  ->  san juan damasceno presbitero y doctor de la iglesia
+  San Juan Diego Cuauhtlatoatzin  ->  san juan diego de cuauhtlatoatzin
   San Juan Eudes, presbítero  ->  san juan eudes presbitero
   San Juan I, papa y mártir  ->  san juan i papa y martir
   San Juan Leonardi, presbítero  ->  san juan leonardi presbitero
   San Juan María Vianney, presbítero  ->  san juan maria vianney presbitero
+  San Juan Nepomuceno, presbítero y mártir  ->  san juan nepomuceno presbitero y martir
+  San Juan Pablo II, papa  ->  san juan pablo ii papa
+  San Juan XXIII, papa  ->  beato juan xxiii papa
   San Juan de Capistrano, presbítero  ->  san juan de capistrano presbitero
   San Juan de Dios, religioso  ->  san juan de dios religioso
   San Juan de Kanty, presbítero  ->  san juan de kety presbitero
   San Juan de la Cruz, presbítero y doctor de la Iglesia  ->  san juan de la cruz presbitero y doctor de la iglesia
+  San Juan de Ávila, presbítero y doctor de la Iglesia  ->  san juan de avila presbitero
   San Juan, apóstol y evangelista  ->  san juan apostol y evangelista
+  San Junípero Serra, presbítero  ->  san junipero serra presbitero
   San Justino, mártir  ->  san justino martir
   San León Magno, papa y doctor de la Iglesia  ->  san leon magno papa y doctor de la iglesia
   San Lorenzo de Brindis, presbítero y doctor de la Iglesia  ->  san lorenzo de brindis presbitero y doctor de la iglesia
@@ -212,6 +262,7 @@ Celebraciones del calendario -> casillas del santoral
   San Maximiliano María Kolbe, presbítero y mártir  ->  san maximiliano maria kolbe presbitero y martir
   San Nicolás, obispo  ->  san nicolas obispo
   San Norberto, obispo  ->  san norberto obispo
+  San Pablo VI, papa  ->  san pablo vi papa
   San Pablo de la Cruz, presbítero  ->  san pablo de la cruz presbitero
   San Pancracio, mártir  ->  san pancracio martir
   San Patricio, obispo  ->  san patricio obispo
@@ -225,6 +276,8 @@ Celebraciones del calendario -> casillas del santoral
   San Policarpo, obispo y mártir  ->  san policarpo obispo y martir
   San Pío V, papa  ->  san pio v papa
   San Pío X, papa  ->  san pio x papa
+  San Pío de Pietrelcina, presbítero  ->  san pio de pietrelcina presbitero
+  San Rafael Guízar y Valencia, obispo  ->  san rafael guizar y valencia obispo
   San Raimundo de Peñafort, presbítero  ->  san raimundo de penafort presbitero
   San Roberto Belarmino, obispo y doctor de la Iglesia  ->  san roberto belarmino obispo y doctor de la iglesia
   San Romualdo, abad  ->  san romualdo abad
@@ -236,25 +289,33 @@ Celebraciones del calendario -> casillas del santoral
   San Wenceslao, mártir  ->  san wenceslao martir
   San Óscar, obispo  ->  san oscar obispo
   Santa Brígida, religiosa  ->  santa brigida religiosa patrona de europa
+  Santa Catalina de Alejandría, virgen y mártir  ->  santa catalina de alejandria virgen y martir
   Santa Catalina de Siena, virgen y doctora de la Iglesia  ->  santa catalina de siena virgen y doctora de la iglesia
   Santa Cecilia, virgen y mártir  ->  santa cecilia virgen y martir
   Santa Clara, virgen  ->  santa clara virgen
   Santa Eduviges, religiosa  ->  santa eduvigis religiosa
   Santa Escolástica, virgen  ->  santa escolastica virgen
+  Santa Faustina Kowalska, virgen  ->  santa faustina kowalska virgen
   Santa Francisca Romana, religiosa  ->  santa francisca romana religiosa
   Santa Gertrudis, virgen  ->  santa gertrudis virgen
   Santa Inés, virgen y mártir  ->  santa ines virgen y martir
   Santa Isabel de Hungría  ->  santa isabel de hungria
   Santa Isabel de Portugal  ->  santa isabel de portugal
+  Santa Josefina Bakhita, virgen  ->  santa josefa bakhita virgen
+  Santa Juana Francisca de Chantal, religiosa  ->  santa juana francisca de chantal religiosa
   Santa Lucía, virgen y mártir  ->  santa lucia virgen y martir
   Santa Margarita María Alacoque, virgen  ->  santa margarita maria de alacoque virgen
   Santa Margarita de Escocia  ->  santa margarita de escocia
-  Santa Marta  ->  santa marta
   Santa María Goretti, virgen y mártir  ->  santa maria goretti virgen y martir
+  Santa María Guadalupe García Zavala, virgen  ->  santa maria guadalupe garcia zavala virgen
   Santa María Magdalena  ->  santa maria magdalena
   Santa María Magdalena de Pazzi, virgen  ->  santa maria magdalena de pazzi virgen
+  Santa María de Jesús Sacramentado Venegas, virgen  ->  santa maria de jesus sacramentado venegas virgen
   Santa Mónica  ->  santa monica
+  Santa Rita de Casia, religiosa  ->  santa rita de casia religiosa
   Santa Rosa de Lima, virgen  ->  santa rosa de lima virgen patrona de america latina
+  Santa Teresa Benedicta de la Cruz, virgen y mártir  ->  santa teresa benedicta de la cruz virgen y martir
+  Santa Teresa de Calcuta, virgen  ->  santa teresa de calcuta virgen
   Santa Teresa de Jesús, virgen y doctora de la Iglesia  ->  santa teresa de jesus virgen y doctora de la iglesia
   Santa Teresa del Niño Jesús, virgen  ->  santa teresa del nino jesus
   Santa Águeda, virgen y mártir  ->  santa agueda virgen y martir
@@ -266,6 +327,7 @@ Celebraciones del calendario -> casillas del santoral
   Santo Tomás de Aquino, presbítero y doctor de la Iglesia  ->  santo tomas de aquino presbitero y doctor de la iglesia
   Santo Tomás, apóstol  ->  santo tomas apostol
   Santo Toribio de Mogrovejo, obispo  ->  santo toribio de mogrovejo obispo
+  Santos Agustín Zhao Rong, presbítero, y compañeros, mártires  ->  san agustin zhao rong presbitero y companeros martires
   Santos Andrés Dung-Lac, presbítero, y compañeros, mártires  ->  santos andres dung lac presbitero y companeros martires
   Santos Andrés Kim Taegon, presbítero, Pablo Chong Hasang y compañeros, mártires  ->  santos andres kim taegon presbitero pablo chong hasang y companeros martires
   Santos Arcángeles Miguel, Gabriel y Rafael  ->  santos arcangeles miguel gabriel y rafael
@@ -274,6 +336,7 @@ Celebraciones del calendario -> casillas del santoral
   Santos Cirilo, monje, y Metodio, obispo  ->  santos cirilo monje y metodio obispo
   Santos Cornelio, papa, y Cipriano, obispo, mártires  ->  santos cornelio papa y cipriano obispo martires
   Santos Cosme y Damián, mártires  ->  san cosme y san damian martires
+  Santos Cristóbal Magallanes, presbítero, y compañeros, mártires  ->  san cristobal magallanes presbitero y companeros martires
   Santos Dionisio, obispo, y compañeros, mártires  ->  san dionisio obispo y companeros martires
   Santos Felipe y Santiago, apóstoles  ->  santos felipe y santiago apostoles
   Santos Joaquín y Ana, padres de la Santísima Virgen María  ->  santos joaquin y ana padres de la santisima virgen maria
@@ -281,6 +344,7 @@ Celebraciones del calendario -> casillas del santoral
   Santos Juan de Brébeuf e Isaac Jogues, presbíteros, y compañeros, mártires  ->  san juan de brebeuf y san isaac jogues presbiteros y companeros martires
   Santos Lorenzo Ruiz y compañeros, mártires  ->  san lorenzo ruiz y companeros martires
   Santos Marcelino y Pedro, mártires  ->  san marcelino y san pedro martires
+  Santos Marta, María y Lázaro  ->  santa marta
   Santos Nereo y Aquileo, mártires  ->  san nereo y san aquiles martires
   Santos Pablo Miki y compañeros, mártires  ->  santos pablo miki y companeros martires
   Santos Pedro y Pablo, apóstoles  ->  santos pedro y pablo apostoles

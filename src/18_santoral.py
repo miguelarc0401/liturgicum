@@ -462,7 +462,11 @@ def construye_dias(santoral):
 def fechas_moviles(anio, cfg, m14):
     """Las celebraciones del santoral que no van en fecha fija."""
     pent = m14.pascua(anio) + dt.timedelta(days=49)
-    return {"inmaculado_corazon": pent + dt.timedelta(days=20)}
+    # el lunes después de Pentecostés, María Madre de la Iglesia (2018), y el
+    # jueves, Jesucristo Sumo y Eterno Sacerdote (fiesta propia de México)
+    return {"inmaculado_corazon": pent + dt.timedelta(days=20),
+            "madre_iglesia": pent + dt.timedelta(days=1),
+            "sumo_sacerdote": pent + dt.timedelta(days=4)}
 
 
 def celebraciones_de_anio(anio, cfg, m14, santoral, por_clave):

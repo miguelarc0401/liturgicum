@@ -10,12 +10,11 @@ Los prefacios propios cosechados, atribuidos por sus días
 
     El misterio de la Iglesia, esposa de Cristo y templo testigos en 2 celebraciones
     El misterio de la Santísima Trinidad                 testigos en 3 celebraciones
-    El sacerdocio de Cristo y el ministerio de los sacer testigos en 5 celebraciones
+    El sacerdocio de Cristo y el ministerio de los sacer testigos en 2 celebraciones
     El sacrificio y el sacramento de Cristo              testigos en 2 celebraciones
     La doble misión de san Pedro y san Pablo en la Igles testigos en 5 celebraciones
     La gloria de Dios manifestada en los ángeles         testigos en 7 celebraciones
     La misión del Precursor                              testigos en 4 celebraciones
-    La victoria de la Cruz gloriosa                      testigos en 5 celebraciones
 
 Las rúbricas del Ordinario que no están en las dos lenguas
 ----------------------------------------------------------
@@ -26,40 +25,40 @@ Las rúbricas del Ordinario que no están en las dos lenguas
 Lo que se escribió
 ------------------
 
-  app/datos/misa.json                  2092 KB
-  app/datos/lecturas_es.json           4768 KB
+  app/datos/misa.json                  2163 KB
+  app/datos/lecturas_es.json           4756 KB
   app/datos/misal_latino.json           775 KB
   app/datos/prefacios.json              237 KB
   app/datos/ordinario.json              234 KB
-  TOTAL                                8106 KB
+  TOTAL                                8165 KB
 
-  versión de datos: clementina+lect1977+nova-2855208382
+  versión de datos: clementina+lect1977+nova-2674508339
 
 Los formularios y sus piezas
 ----------------------------
 
   formularios del leccionario : 1051
-    completo                     810
-    parcial                      154
-    latino                        55
+    completo                     816
+    parcial                      149
+    latino                        54
     nada                          32
 
   piezas (seis ranuras por formulario, 6306 en total):
-      por celebración                         1765
-      por común                                109
-      por día                                  667
-      por gemela                                74
+      por celebración                         1760
+      por común                                112
+      por día                                  706
+      por gemela                                64
       por suelto                                76
       por unidad                              1896
-    piezas en castellano                      4587
-    piezas que sólo tiene el latín             520
+    piezas en castellano                      4614
+    piezas que sólo tiene el latín             498
 
   Las piezas que sólo tiene el latín no se copian en misa.json:
   van en misal_latino.json y la app las alcanza por el puntero
   `la` del formulario. La castellana dice «no disponible», que es
   lo que se decidió en la pregunta 6 del plan.
 
-  otras misas sin clave del leccionario: 158
+  otras misas sin clave del leccionario: 145
     Son la vigilia de san Juan Bautista y la de san Pedro y san
     Pablo, la vigilia de Pentecostés, la segunda y la tercera de
     los Difuntos —que el Misal da aparte y el leccionario no
@@ -71,16 +70,16 @@ Las lecturas en castellano
 --------------------------
 
   formularios con alguna lectura castellana: 1042 de 1044
-  lecturas con castellano                       5091
-  lecturas sin castellano                       1351
+  lecturas con castellano                       5083
+  lecturas sin castellano                       1359
   formularios sin una sola lectura en castellano     2
 
   por tipo de lectura:
                                         total con es     %
     evangelio                            1577   1268   80%
-    salmo responsorial                   1367   1159   85%
+    salmo responsorial                   1367   1158   85%
     aleluya                              1233   1062   86%
-    primera lectura                      1201    987   82%
+    primera lectura                      1201    980   82%
     segunda lectura                       409    313   77%
     lectura del Nuevo Testamento          355    153   43%
     lectura del Antiguo Testamento        256    105   41%
@@ -93,15 +92,15 @@ Las lecturas en castellano
 
   por la ruta con que la fase 5 la halló:
     cita                                        4428
-    día                                           87
+    día                                           79
     versículos                                   576
 
   Las dos rutas que no son la cita —los versículos y el día— son
-  de esta pasada, y traen 663 lecturas que la primera versión daba
+  de esta pasada, y traen 655 lecturas que la primera versión daba
   por no impresas teniéndolas el misalito impreso. El informe de la
   fase 5 explica cada una.
 
-  lecturas que abarcan otros versículos, y se dice    87
+  lecturas que abarcan otros versículos, y se dice    79
   Son las de la ruta del día: las otras dos exigen la misma cita o
   el mismo conjunto de versículos, así que no pueden diferir. La
   app las enseña con las dos citas, la del leccionario y la que el
@@ -117,12 +116,12 @@ Desarmar la perícopa impresa
   dentro cuatro cosas. Separarlas es de esta fase, y esto es lo
   que salió:
 
-    lecturas con fórmula                        2783
-    lecturas sin fórmula reconocida               87
-    lecturas con sumario                        2443
-    lecturas con cierre                         2758
-    lecturas sin cierre reconocido               112
-    lecturas con respuesta del pueblo           2279
+    lecturas con fórmula                        2775
+    lecturas sin fórmula reconocida               88
+    lecturas con sumario                        2434
+    lecturas con cierre                         2752
+    lecturas sin cierre reconocido               111
+    lecturas con respuesta del pueblo           2272
     salmo o aclamación sin respuesta              35
     salmo sin estrofas                             0
 
@@ -154,6 +153,7 @@ Desarmar la perícopa impresa
     Is 49,14-15
     Jn 15,9-17
     Jn 18,1—19.42
+    Jn 19,25-27
     Jr 31,10.11-12ab.13
     Lc 1,46-47.48-49.50-51.52-53.54-55
     Lc 1,46-47.48-49.50.53.54-55
@@ -179,7 +179,7 @@ Desarmar la perícopa impresa
   ele en vez de uno, y la cita de Ester con «(Neovulgata)»
   detrás.
 
-  Perícopas en que no se halló el cierre (43):
+  Perícopas en que no se halló el cierre (42):
     1 Cro 29,10.11abc.11d-12a.12bcd
     1 S 2,1.4-5.6-7.8abcd
     Ap 14,13
@@ -193,7 +193,6 @@ Desarmar la perícopa impresa
     Dt 32,26-27ab.27cd-28.30.35cd-36ab
     Dt 4,1-2.6-8
     Ex 14,15—15.1
-    Ex 14,21-15.1
     Ex 15,1b-2.3-4.5-6.17-18
     Is 12,2-3.4bcd.5-6
     Is 38,10.11.12abcd.16
@@ -220,7 +219,8 @@ Desarmar la perícopa impresa
     Mt 21,1-11
     Mt 26,14—27.66
     Mt 28,1-10
-    … y 3 más
+    Mt 9,36–10.8
+    … y 2 más
 
   Salmos o aclamaciones sin respuesta del pueblo:
     Jn 4,12R/.Aleluya.aleluya
@@ -245,7 +245,7 @@ El Misal latino
 ---------------
 
   formularios latinos                            575
-  formularios latinos que alguna clave usa       548
+  formularios latinos que alguna clave usa       546
   formularios latinos sin una pieza                0
 
   bendiciones solemnes: 20
@@ -262,9 +262,9 @@ Los prefacios
   propios cosechados        : 28
   latinos sin pareja        : 39
   prefacios castellanos sin pareja latina             18
-  prefacios castellanos que ningún formulario cita    10
-  prefacios propios con celebración                   20
-  prefacios propios sin celebración                    8
+  prefacios castellanos que ningún formulario cita    12
+  prefacios propios con celebración                   21
+  prefacios propios sin celebración                    7
   formularios con prefacio propio cosechado           45
 
   por grupo, leído del propio título:
@@ -513,8 +513,8 @@ Lo que esta fase topa y no es suyo
     que 182 perícopas con la respuesta del pueblo impresa no se
     alcancen —por eso esta fase sólo halla 2 lecturas con
     respuesta—. **Medido, cuesta poco:** plegando la raya al
-    guión se recuperarían 3 lecturas (3 perícopas distintas) de
-    las 1351 que hoy no tienen castellano, porque las demás ya están
+    guión se recuperarían 5 lecturas (5 perícopas distintas) de
+    las 1359 que hoy no tienen castellano, porque las demás ya están
     alcanzadas por su gemela con guión. No se arregla aquí: el
     puente de citas es de la fase 5, y `misa.json` es la decisión
     auditada; si la app enseñara texto que esa decisión dice que

@@ -729,17 +729,31 @@ def secciones_de(e):
             cita = ''
             if pars and len(pars[0]) < 40 and re.search(r'\d', pars[0]):
                 cita = pars.pop(0)
+            # el versículo que sigue a la lectura breve de la Hora
+            # intermedia lleva su «V.» y su «R.» en rojo, como en la fuente
             pieza = {'r': ('LECTURA BREVE ' + cita).strip(),
-                     'l': [[]] + [[[0, p]] for p in pars]}
+                     'l': [[]] + [runs(p) if re.match(r'^(V|R)\.\s', p)
+                                  else [[0, p]] for p in pars]}
         elif cl == 'salmodia':
             pieza = salmodia(cuerpo)
             if not pieza:
                 continue
         elif cl == 'preces':
-            pars = parrafos(cuerpo)
-            pieza = {'r': 'PRECES', 'l': [[]] + [runs(p) if p else []
-                                                for p in pars
-                                                if not p.startswith('Padre nuestro')]}
+            # La rúbrica de las intenciones libres va en su renglón y en
+            # rojo; la maqueta la deja pegada a la última petición, y con
+            # ella la invitación al Padre nuestro, que va detrás aparte.
+            pars, rubricas = [], set()
+            for p in parrafos(cuerpo):
+                trozos = re.split(r'\s*(Se pueden añadir algunas intenciones '
+                                  r'libres\.)\s*', p)
+                for t in trozos:
+                    if t.startswith('Se pueden añadir'):
+                        rubricas.add(t)
+                    if t or not p:
+                        pars.append(t)
+            pieza = {'r': 'PRECES', 'l': [[]] + [
+                [[1, p]] if p in rubricas else runs(p) if p else []
+                for p in pars if not p.startswith('Padre nuestro')]}
         else:
             avisos.append(f'{e["md"]} {e["titulo"]}: sección {k} sin tratar')
             continue
@@ -752,6 +766,88 @@ def secciones_de(e):
         for k in ('oficio/oracion', 'laudes/oracion', 'visperas/oracion'):
             piezas.setdefault(k, orac)
     return piezas, avisos
+
+
+# --------------------------------------------------------------------------
+# las ferias de Navidad que van por fecha
+# --------------------------------------------------------------------------
+# Del 2 de enero al Bautismo el propio del tiempo va por fecha
+# (breviario.va_por_fecha). La fuente celebró siempre la Epifanía el 6 y el
+# 2 de enero cae siempre en la memoria de san Basilio y san Gregorio, así que
+# de cuatro días no publicó nunca la feria: el 2, el 6 y el 7 antes de una
+# Epifanía en domingo, y el sábado después de la Epifanía (el 12). El tomo I
+# los trae; se leen todos, y la fase 4 usa sólo lo que la fuente no tiene, y
+# antes de usarlo lo busca en ella.
+
+FERIA_FECHA = re.compile(r'^\s{6,}(\d{1,2}) DE ENERO\b\s*(.*?)\s*!?\s*$')
+# lo que viene detrás de la última feria de cada tramo: el Bautismo («Domingo
+# después del 6 de enero»), la Epifanía («DESDE LA SOLEMNIDAD DE LA
+# EPIFANÍA», «6 de enero»)
+FIN_FERIA = re.compile(r'^\s*(?:\d{1,2} de (?:enero|diciembre)\s*$|'
+                       r'EL BAUTISMO DEL SE|LA EPIFAN|SANTA MAR[ÍI]A,? MADRE|'
+                       r'Domingo despu[ée]s del 6 de enero|DESDE LA SOLEMNIDAD)')
+
+
+def clave_de_feria(dia, resto):
+    """«2 DE ENERO» -> «Navidad/@/2 de enero», la casilla de la fase 3. El 7
+    de enero sin más es el de antes de una Epifanía en domingo 8, y no el
+    «7 de enero o lunes después del domingo de Epifanía»: van aparte."""
+    if int(dia) == 7 and not resto:
+        return 'Navidad/@/antes de la Epifanía, 7 de enero'
+    return f'Navidad/@/{int(dia)} de enero'
+
+
+def por_anios(ls):
+    """El Oficio de una feria con la primera lectura de los dos años: dos
+    juegos de líneas, uno con la del año I y otro con la del año II."""
+    t = [(l or '').strip() for l in ls]
+    try:
+        i1, i2 = t.index('Año I:'), t.index('Año II:')
+        fin = next(n for n in range(i2, len(t)) if t[n].startswith('SEGUNDA LECTURA'))
+    except (ValueError, StopIteration):
+        return {'': ls}
+    return {'I': ls[:i1] + ls[i1 + 1:i2] + ls[fin:],
+            'II': ls[:i1] + ls[i2 + 1:fin] + ls[fin:]}
+
+
+def ferias_de_navidad():
+    lineas = limpia(texto_de('LH_I_ADVIENTO_NAVIDAD'))
+    bloques, act = [], None
+    for l in lineas:
+        m = FERIA_FECHA.match(l or '')
+        if m:
+            act = {'k': clave_de_feria(m.group(1), m.group(2)),
+                   'lineas': [f'{m.group(1)} DE ENERO']}
+            bloques.append(act)
+            continue
+        if act is not None and l is not None and FIN_FERIA.match(l):
+            act = None
+            continue
+        if act is not None:
+            act['lineas'].append(l)
+    salida = {}
+    for b in bloques:
+        juegos = por_anios(b['lineas'])
+        piezas = {}
+        for anio, ls in juegos.items():
+            e = lee_entrada({'md': None, 'lineas': list(ls)})
+            p, _ = secciones_de(e)
+            for k, v in p.items():
+                if k in ('oficio/lectura1', 'oficio/responsorio') and anio:
+                    piezas.setdefault(k, {})[anio] = v
+                else:
+                    piezas.setdefault(k, v)
+        # «Oración como en las Laudes»: es la de Laudes
+        laudes = piezas.get('laudes/oracion')
+        for k in list(piezas):
+            if k.endswith('/oracion') and k != 'laudes/oracion':
+                texto = ''.join(t for ln in piezas[k]['l'] for _, t in ln)
+                if laudes and re.match(r'^\s*como en', texto, re.I):
+                    piezas[k] = laudes
+        # la versión más completa, si un día sale dos veces (índice y cuerpo)
+        if len(piezas) > len(salida.get(b['k'], {})):
+            salida[b['k']] = piezas
+    return salida
 
 
 def main():
@@ -782,6 +878,13 @@ def main():
     with open(os.path.join(LIBRO, 'pdf_santoral.json'), 'w',
               encoding='utf-8') as f:
         json.dump(finales, f, ensure_ascii=False, indent=0)
+
+    ferias = ferias_de_navidad()
+    with open(os.path.join(LIBRO, 'pdf_tiempo.json'), 'w',
+              encoding='utf-8') as f:
+        json.dump(ferias, f, ensure_ascii=False, indent=0)
+    print(f'{len(ferias)} ferias de Navidad por fecha: '
+          + ', '.join(k.split('/')[-1] for k in ferias))
 
     cuenta = Counter()
     for e in finales:

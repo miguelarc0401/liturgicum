@@ -1,16 +1,22 @@
 # Publicar.ps1 - de la carpeta del escritorio al telefono, en una orden.
 #
 #   1. rehace el calendario con el santoral y la precedencia (18_santoral.py)
-#   2. rehace la liturgia de las horas para la app  (Breviarium/src/4_app.py)
-#   3. rehace la misa castellana para la app          (Missale/src/6_app.py)
-#   4. rehace los datos de la app                            (15_app_data.py)
-#   5. los sube a GitHub, que republica GitHub Pages
-#   6. el telefono se entera solo: la app pregunta si hay version nueva al
+#   2. rehace el indice de la app con ese calendario          (15_app_data.py)
+#   3. vuelve a atribuir la misa al calendario (Missale/src/4_piezas.py y
+#      5_resolver.py) y la empaqueta                    (Missale/src/6_app.py)
+#   4. rehace la liturgia de las horas para la app  (Breviarium/src/4_app.py)
+#   5. rehace los datos de la app y los firma                (15_app_data.py)
+#   6. los sube a GitHub, que republica GitHub Pages
+#   7. el telefono se entera solo: la app pregunta si hay version nueva al
 #      abrirse y al volver a primer plano, y se recarga cuando la hay
 #
-# El orden de 2, 3 y 4 importa: 15_app_data.py firma TODO lo que hay en
-# app/datos/, y esa firma es la que obliga al service worker del telefono a
-# tirar su cache. Si las horas o la misa se rehicieran despues, la firma se
+# El orden importa. La misa lee el indice de la app (paso 2) para saber que
+# formulario va con cada celebracion, y las horas leen de la misa la colecta
+# de los santos que no tienen oficio (paso 4 despues del 3); si el santoral
+# cambia y la misa no se vuelve a atribuir, un santo movido de fecha se
+# queda con la misa del que ocupaba su dia. Y 15_app_data.py firma TODO lo
+# que hay en app/datos/, y esa firma es la que obliga al service worker del
+# telefono a tirar su cache: si algo se rehiciera despues, la firma se
 # quedaria vieja y el telefono seguiria rezando con los textos de antes.
 #
 # Uso:   .\publicar.ps1
@@ -31,13 +37,21 @@ Paso "Calendario, santoral y precedencia"
 python src/18_santoral.py
 if ($LASTEXITCODE -ne 0) { throw "18_santoral.py fallo" }
 
+Paso "Indice de la app con el calendario nuevo"
+python src/15_app_data.py
+if ($LASTEXITCODE -ne 0) { throw "15_app_data.py fallo" }
+
+Paso "Misa castellana"
+python Missale/src/4_piezas.py
+if ($LASTEXITCODE -ne 0) { throw "Missale/src/4_piezas.py fallo" }
+python Missale/src/5_resolver.py
+if ($LASTEXITCODE -ne 0) { throw "Missale/src/5_resolver.py fallo" }
+python Missale/src/6_app.py
+if ($LASTEXITCODE -ne 0) { throw "Missale/src/6_app.py fallo" }
+
 Paso "Liturgia de las horas"
 python Breviarium/src/4_app.py
 if ($LASTEXITCODE -ne 0) { throw "Breviarium/src/4_app.py fallo" }
-
-Paso "Misa castellana"
-python Missale/src/6_app.py
-if ($LASTEXITCODE -ne 0) { throw "Missale/src/6_app.py fallo" }
 
 Paso "Datos de la app"
 python src/15_app_data.py

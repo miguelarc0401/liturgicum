@@ -150,6 +150,7 @@ antes de fiarse de lo que sale.
 | `ciclo.json` | la antífona evangélica del domingo de cada ciclo dominical | `tiempo/semana/día/hora/cantico_evangelico` → `A`, `B`, `C` |
 | `resenas.json` | la reseña biográfica de cada celebración | `mm-dd/santo` |
 | `pdf_santoral.json` | el Propio de los santos de los cuatro tomos en PDF | lista de entradas |
+| `pdf_tiempo.json` | las ferias de Navidad por fecha del tomo I (2 al 12 de enero) | `Navidad/@/2 de enero` → `hora/sección` |
 | `antifonas.json` | las antífonas propias de una celebración | `mm-dd/santo/hora` |
 
 En las claves, *día* es el día de la semana (0 = domingo) y *sección* es
@@ -384,5 +385,31 @@ casilla, sin el tiempo en la clave, sale en el tiempo que no le toca.
   La regla está una vez en `breviario.py` (`va_por_fecha`) y otra en la app
   (`vaPorFecha`), y la fecha es la del título del día: con la Epifanía en
   domingo, el lunes siguiente es «7 de enero — Lunes después de Epifanía» y
-  lleva los textos del 7.
+  lleva los textos del 7; y el «7 de enero» a secas, el de antes de una
+  Epifanía en domingo 8, tiene su casilla aparte («antes de la Epifanía, 7
+  de enero»).
+* **Las ferias de enero que la fuente no publicó.** La fuente celebró
+  siempre la Epifanía el 6, y el 2 de enero es siempre san Basilio y san
+  Gregorio: del 2, del 6 y del 7 antes de una Epifanía en domingo, del
+  sábado después de la Epifanía (el 12) y de las vísperas del 11 no hay
+  feria en ningún año. La fase 3b las lee del tomo I (`pdf_tiempo.json`,
+  con la primera lectura de los dos años del ciclo) y la fase 4 usa sólo lo
+  que falta, buscándolo antes en la fuente: 34 piezas se hallaron allí (las
+  lecturas del 2 de enero, en los años en que la fuente rezó la memoria con
+  la lectura del día; antífonas y lecturas breves que se repiten en otros
+  días de Navidad) y 54 van del PDF, con su marca. Todo queda en
+  `pdf_usado.txt`, apartado 7.
+* **La Hora intermedia de las fiestas y las solemnidades.** Para las fiestas
+  de los santos el libro dice: «Las antífonas y los salmos se toman de la
+  feria correspondiente»; sólo la lectura breve y la oración son propias. Así
+  que la antífona del común de apóstoles («Id y proclamad el Evangelio…»)
+  no falta: es la de Santiago donde es solemnidad (en España), y en las
+  fiestas va la de la feria. Las fiestas que sí tienen antífonas propias (la
+  Natividad de la Virgen, la Exaltación de la Cruz…) las dicen sobre los
+  salmos del día o la complementaria. Las solemnidades, con la
+  complementaria, salvo en domingo: «en este caso se toman de la semana I
+  del Salterio», repartida como la de cualquier domingo, y sin tocar los
+  salmos propios (la Epifanía tiene los suyos en una de las horas). Las
+  antífonas de la Epifanía y de la octava de Navidad, que el salterio de
+  Navidad repite después, ya no se toman por del salterio.
 

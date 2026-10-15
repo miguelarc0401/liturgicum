@@ -186,6 +186,43 @@ def comunes_del_pdf(texto, titulo, existentes):
     return lista
 
 
+def comunes_por_titulo(titulo, existentes):
+    """Los comunes de una celebración que no los declara, por su título
+    («San Juan Pablo II, papa» -> pastores; «Nuestra Señora de Fátima» -> la
+    Virgen), como hace el Misal con las que no tienen formulario. Sólo los
+    comunes que la fuente dejó medir."""
+    t = clave(titulo)
+    lista = []
+
+    def pon(k):
+        if k in existentes and k not in lista:
+            lista.append(k)
+    # «Santa María Guadalupe García Zavala» no es de la Virgen: hace falta
+    # que el título la nombre a ella
+    if re.search(r'\b(nuestra senora|virgen maria|santa maria virgen|'
+                 r'santisima virgen|madre de dios)\b', t):
+        pon('santisima virgen maria')
+    if re.search(r'\bmartires\b', t):
+        pon('varios martires')
+    elif re.search(r'\bmartir\b', t):
+        pon('un martir')
+    if re.search(r'\bobispo\b', t):
+        pon('pastores para un santo obispo')
+    if re.search(r'\bpresbiteros?\b', t):
+        pon('pastores para un santo presbitero')
+    if re.search(r'\bpapa\b', t):
+        pon('pastores')
+    if re.search(r'\bdoctora?\b', t):
+        pon('doctores de la iglesia')
+    if re.search(r'\bvirgen\b', t) and 'virgen maria' not in t:
+        pon('virgenes')
+    if re.search(r'\breligiosos?\b|\babad\b', t):
+        pon('santos varones para los santos religiosos')
+    if re.search(r'\breligiosa\b', t):
+        pon('santas mujeres')
+    return lista
+
+
 FAMILIA = [('lectura_breve', 'breve'), ('responsorio_breve', 'responsorio'),
            ('lectura', 'lectura'), ('responsorio', 'responsorio'),
            ('oracion', 'oracion'), ('himno', 'himno'), ('preces', 'preces'),
@@ -484,9 +521,12 @@ def formas_del_tiempo(libro, podado, en_pascua, fuera_de_pascua):
             p = forma_pascual(cl, hora, original)
             if p != c['l']:
                 pascua[k] = {'r': c['r'], 'l': p}
-                if 'f' in c:
-                    pascua[k]['f'] = c['f']
                 cuenta['forma pascual por la regla del libro'] += 1
+    # lo que viene del PDF sigue viniendo del PDF en su forma de Pascua, por
+    # cualquier camino que se haya derivado: la app lo dice («ed. española»)
+    for k, p in pascua.items():
+        if podado[k].get('f'):
+            p['f'] = podado[k]['f']
     return pascua, cuenta
 
 
@@ -977,6 +1017,15 @@ def main():
             if p >= 0.5:
                 santo_de_slug[slug] = s
 
+    # Las que cambiaron de nombre después de que la fuente las publicara: el
+    # calendario dice «Santos Marta, María y Lázaro» (así desde 2021) y la
+    # fuente, «Santa Marta». Por el nombre no casan.
+    RENOMBRADAS = {'santos marta maria y lazaro': 'santa marta'}
+    for slug, m in titulos.items():
+        s = RENOMBRADAS.get(clave(m['t']))
+        if slug not in santo_de_slug and s in casillas:
+            santo_de_slug[slug] = s
+
     def md_de(santo, fecha):
         """En qué fecha del santoral buscar sus textos: la suya si la tiene;
         si no —las fiestas móviles—, la más completa."""
@@ -1116,10 +1165,12 @@ def main():
     con_pdf = []
     for slug, m in sorted(titulos.items(), key=lambda x: x[0]):
         fm = re.match(r'st_(\d\d)(\d\d)_', slug)
-        if not fm or m.get('k') != 's':
+        if m.get('k') != 's' or not (fm or re.match(r'st_[a-z_]+$', slug)):
             continue
-        md = f'{fm[1]}-{fm[2]}'
-        e = entrada_pdf(md, m['t'])
+        # las móviles del calendario (Jesucristo Sumo y Eterno Sacerdote) no
+        # tienen fecha: en el PDF van sin ella, y en el libro, bajo «movil»
+        md = f'{fm[1]}-{fm[2]}' if fm else 'movil'
+        e = entrada_pdf(md if fm else None, m['t'])
         if slug not in santo_de_slug:
             # la celebración entera, del PDF
             if not e or 'oficio/lectura2' not in e['piezas']:
@@ -1129,7 +1180,12 @@ def main():
                 # la salmodia no es un texto que se copie: va aparte, con
                 # las antífonas y la rúbrica que dice de dónde salen los
                 # salmos (los salmos los pone la fuente, en su traducción)
-                if k.split('/')[0] in HORAS_PDF and 'l' in p:
+                # (la antífona del Benedictus y del Magníficat viene sin
+                # texto, sólo la antífona: también va, que se arma con el
+                # cántico de la fuente; antes se quedaba fuera)
+                if k.split('/')[0] in HORAS_PDF and (
+                        'l' in p or (k.endswith('/cantico_evangelico')
+                                     and p.get('ant'))):
                     pieza_del_pdf(md, santo, k, p, m["t"])
             # la reseña, también primero la de la fuente si la dio en otra
             # fecha (santo Toribio: el 27 de abril, que es su día en Perú)
@@ -1188,6 +1244,98 @@ def main():
             else:
                 pieza_del_pdf(md_s, santo, k, e["piezas"][k], m["t"])
             rellenos.append((m['t'], k))
+
+    # --- lo que da el Misal mexicano ---------------------------------------
+    # La oración de un santo en las horas es la colecta de su misa, y la misa
+    # sí la trae el Misal mexicano (Missale, fase 4: `propios_es.json`, por
+    # celebración del calendario). Sirve para dos cosas:
+    #  · las celebraciones del calendario de México que no tienen oficio ni
+    #    en la fuente ni en los PDF (san Rafael Guízar, san Juan Pablo II,
+    #    Nuestra Señora de Fátima…): se rezan con su común, que se deduce del
+    #    título, y con su colecta como oración;
+    #  · la oración que salía del PDF (la traducción española), si el Misal
+    #    la tiene en la mexicana.
+    propios_misa = carga('propios_es.json', os.path.join(RAIZ, 'Missale',
+                                                         'datos', 'libro'),
+                         opcional=True) or {}
+
+    def colecta_de(slug):
+        p = ((propios_misa.get(slug) or {}).get('piezas') or {}).get('colecta')
+        if not p or not p.get('texto'):
+            return None
+        t = re.sub(r'\s+', ' ', ' '.join(p['texto'])).strip()
+        return {'r': 'ORACION', 'l': [[], [[0, t]]]}
+
+    HORAS_ORACION = ('oficio', 'laudes', 'tercia', 'sexta', 'nona', 'visperas')
+    de_misal, oracion_misal = [], []
+    for slug, m in sorted(titulos.items()):
+        if m.get('k') != 's' or slug in santo_de_slug:
+            continue
+        c = colecta_de(slug)
+        if not c:
+            continue
+        fm = re.match(r'st_(\d\d)(\d\d)_', slug)
+        md = f'{fm[1]}-{fm[2]}' if fm else 'movil'
+        santo = clave(m['t'])
+        for h in HORAS_ORACION:
+            extra[f'{md}/{santo}/{h}/oracion'] = c
+        lista = comunes_por_titulo(m['t'], nombres_comunes)
+        if lista:
+            comun_de_santo[santo] = lista
+        santo_de_slug[slug] = santo
+        casillas[santo][md] += 1
+        de_misal.append((m['t'], lista))
+    for slug, santo in sorted(santo_de_slug.items()):
+        c = colecta_de(slug)
+        if not c:
+            continue
+        for k in [k for k, v in extra.items() if k.endswith('/oracion')
+                  and v.get('f') == 'pdf' and k.split('/')[1] == santo]:
+            extra[k] = c
+            oracion_misal.append(k)
+
+    # --- las ferias de Navidad que la fuente no publicó ---------------------
+    # Del 2 de enero al Bautismo el propio va por fecha, y de cuatro días la
+    # fuente no dio nunca la feria (el 2, siempre san Basilio y san Gregorio;
+    # el 6 y el 7 antes de una Epifanía en domingo; el sábado después de la
+    # Epifanía). Se toman del tomo I (fase 3b, `pdf_tiempo.json`) sólo las
+    # piezas que faltan, con el mismo orden de preferencia que los santos:
+    # el texto de la fuente si está en otra parte, y si no el del PDF, con su
+    # marca. La primera lectura, con sus dos años.
+    tiempo_extra, feria_anio, ferias_pdf = {}, {}, []
+
+    def pieza_de_feria(k, cl, hora, p):
+        if cl == 'cantico_evangelico':
+            h = equiv.antifona(p['ant'][0])
+            c = cantico_con(hora, h[0] if h else p['ant'][0])
+            if c and h:
+                del c['f']
+            return c, (h[1] if h else None)
+        h = equiv.busca(cl, p['l'])
+        if h:
+            return {'r': h[1] or p['r'], 'l': h[2]}, h[3]
+        return {'r': p['r'], 'l': p['l'], 'f': 'pdf'}, None
+
+    for kf, piezas in sorted((carga('pdf_tiempo.json', opcional=True)
+                              or {}).items()):
+        for hc, p in sorted(piezas.items()):
+            hora, cl = hc.split('/')
+            k = f'{kf}/{hc}'
+            if k in tiempo or hora not in ('oficio', 'laudes', 'tercia',
+                                           'sexta', 'nona', 'visperas'):
+                continue
+            if cl in ('lectura1', 'responsorio') and 'I' in p:
+                por_anio = {}
+                for a, pa in sorted(p.items()):
+                    por_anio[a], donde = pieza_de_feria(k, cl, hora, pa)
+                    ferias_pdf.append((k + f' (año {a})', donde))
+                tiempo_extra[k] = por_anio.get('I') or por_anio.get('II')
+                feria_anio[k] = por_anio
+                continue
+            c, donde = pieza_de_feria(k, cl, hora, p)
+            if c:
+                tiempo_extra[k] = c
+                ferias_pdf.append((k, donde))
 
     # --- los himnos que se pueden escoger ----------------------------------
     # «En el Oficio dominical y ferial, se dice el himno que se indica en el
@@ -1288,6 +1436,11 @@ def main():
         fecha_kf = (f'{fecha[:5]}{1 if m[2] == "enero" else 12:02d}-'
                     f'{int(m[1]):02d}') if m else fecha
         kf = clave_por_fecha(ti, fecha_kf)
+        # el «7 de enero» a secas es el de antes de una Epifanía en domingo
+        # 8, que tiene otros textos que el del lunes después de la Epifanía
+        if kf and m and m[2] == 'enero' and int(m[1]) == 7 \
+                and '—' not in reg['tt']:
+            kf = 'Navidad/@/antes de la Epifanía, 7 de enero'
         if kf:
             reg['kf'] = kf
             cuentas['con casilla por fecha'] += 1
@@ -1341,6 +1494,7 @@ def main():
         dias[fecha] = reg
 
     tiempo_anio = del_otro_anio(bienal, tiempo)
+    tiempo_anio.update(feria_anio)
     # De las lecturas bíblicas que el santoral da como propias, las que son
     # del tiempo y no del santo sobran: se quitan, y lo que queda es lo que
     # la app ofrece delante de la del día.
@@ -1495,7 +1649,7 @@ def main():
         'rotulo_comun': rotulo_comun,
         'ordinario': poda(ordinario),
         'salterio': poda(salterio),
-        'tiempo': poda(tiempo),
+        'tiempo': dict(poda(tiempo), **tiempo_extra),
         'tiempo_anio': tiempo_anio,
         'tiempo_ciclo': tiempo_ciclo,
         'santoral': santoral_app,
@@ -1550,6 +1704,13 @@ def main():
         f.write(f'{len(comun_de_santo):8d}  santos con común conocido\n')
         f.write(f'{len(tiempo_anio):8d}  lecturas del Oficio con texto propio '
                 f'del otro año del ciclo bienal\n')
+        f.write(f'{len(de_misal):8d}  celebraciones del calendario de México '
+                f'sin oficio en ninguna parte: con su común y la colecta del '
+                f'Misal mexicano\n')
+        for t, lista in de_misal:
+            f.write(f'          {t}  ->  {", ".join(lista) or "(sin común)"}\n')
+        f.write(f'{len(oracion_misal):8d}  oraciones del PDF cambiadas por la '
+                f'colecta del Misal mexicano\n')
         f.write(f'{len(tiempo_ciclo):8d}  antífonas evangélicas del domingo '
                 f'con texto propio de otro ciclo (A, B, C)\n')
         f.write(f'{cuentas["con casilla por fecha"]:8d}  fechas que van por '
@@ -1601,6 +1762,21 @@ def main():
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas_de(santoral), entrada_pdf,
                         hallados, extra, sal_pdf, sal_choque, sal_falta)
+    with open(INFORME, 'a', encoding='utf-8') as f:
+        f.write('\n7. Las ferias de Navidad que van por fecha y la fuente no '
+                'publicó nunca\n' + '-' * 60 + '\n'
+                'Del tomo I: el 2 de enero, el 6 y el 7 antes de una Epifanía '
+                'en domingo, el 12\n(sábado después de la Epifanía) y las '
+                'vísperas del 11. Antes de usar un texto\nse buscó en la '
+                'fuente.\n\n')
+        de_pdf = [k for k, donde in ferias_pdf if not donde]
+        f.write(f'   Del PDF ({len(de_pdf)}):\n')
+        for k in de_pdf:
+            f.write(f'     {k}\n')
+        hall = [(k, d) for k, d in ferias_pdf if d]
+        f.write(f'\n   Halladas en la fuente ({len(hall)}):\n')
+        for k, d in hall:
+            f.write(f'     {k}  ←  {d}\n')
 
 
 def casillas_de(santoral):
@@ -1755,7 +1931,8 @@ def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                 'De cada texto del PDF se buscó primero si estaba en la fuente\n'
                 '(en otro día, en un común, en otro año): lo que se halló va\n'
                 'con la traducción de la fuente; lo demás, con la del PDF.\n\n')
-        for t, g, e, lista in sorted(desde_pdf, key=lambda x: x[2]['md']):
+        for t, g, e, lista in sorted(desde_pdf,
+                                     key=lambda x: x[2]['md'] or 'movil'):
             ks = [k for k in sorted(e['piezas'])
                   if k.split('/')[0] in ('oficio', 'laudes', 'visperas')
                   and k in NOMBRE_SECCION]
@@ -1765,7 +1942,7 @@ def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                                                  'visperas/oracion')]
             de_pdf = [NOMBRE_SECCION[k] for k in ks if k not in en_fuente[t]]
             de_fte = [NOMBRE_SECCION[k] for k in ks if k in en_fuente[t]]
-            d, m = e['md'][3:], e['md'][:2]
+            d, m = (e['md'][3:], e['md'][:2]) if e['md'] else ('móvil', '-')
             f.write(f'{d}/{m}  {t} ({g.lower()})\n')
             if de_pdf:
                 f.write(f'        del PDF: {", ".join(de_pdf)}'

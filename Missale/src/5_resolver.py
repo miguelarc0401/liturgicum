@@ -737,12 +737,33 @@ def puente_santoral(lat, cal, inf_filas, avisos, otros=()):
         if not f or k in pareja:
             continue
         cands = [c for c in porfecha.get(f, []) if c['slug'] not in de_quien]
+        # El calendario de México mueve algunos santos para dejar sitio a los
+        # suyos —santa Águeda al 4 de febrero, el 5 es san Felipe de Jesús;
+        # san Antonio María Claret al 25 de octubre, el 24 es san Rafael
+        # Guízar; santa Rosa de Lima al 30 de agosto—, y el latín de la fecha
+        # se quedaba con el santo mexicano, que no tiene original latino, o
+        # con nadie. Si en la fecha no hay nadie cuyo nombre se parezca, se
+        # busca el santo por su nombre en la semana de alrededor.
+        nl = nombre_latino(lat[k])
+        if not any(parecido(nl, c['titulo']) >= 0.2 for c in cands):
+            vecinos = []
+            for delta in range(-7, 8):
+                g = date(2001, *f) + timedelta(days=delta)
+                vecinos += [c for c in porfecha.get((g.month, g.day), [])
+                            if delta and c['slug'] not in de_quien]
+            mejor = max(((parecido(nl, c['titulo']), c) for c in vecinos),
+                        key=lambda x: x[0], default=(0, None))
+            if mejor[0] >= 0.5:
+                cands = [mejor[1]]
         if not cands:
             avisos.append(('latino con fecha que el santoral no tiene', k,
                            '%02d-%02d' % f))
             continue
         if len(cands) == 1:
             elegido, via, sc = cands[0], 'fecha', None
+            if (cands[0]['mes'], cands[0]['dia']) != f:
+                via, sc = 'nombre, en otra fecha', parecido(
+                    nl, cands[0]['titulo'])
         else:
             puntos = sorted(((parecido(nombre_latino(lat[k]), c['titulo']), c)
                              for c in cands), key=lambda x: -x[0])

@@ -2039,6 +2039,20 @@ function armaMisa(clave, lects) {
       f = Object.assign({}, f, { p: E.misa.otros[otras[iMisa].id].p || {} });
     }
   }
+  // Las celebraciones del propio de México (Guadalupe, san Juan Diego, san
+  // Rafael Guízar…) no tienen formulario en el leccionario, que es el de
+  // España, y la misa sale del común que les toca. Pero el Misal mexicano sí
+  // trae sus propios, y la fase 6 los guarda en `otros`, por la celebración:
+  // van por encima del común. No tienen original latino en el Misal Romano,
+  // así que no se emparejan con el latín del común, que sería otra oración.
+  const mx = (!iMisa && E.slugMisa)
+    ? (E.misa.otros || {})['st/' + E.slugMisa] : null;
+  let latDe = lat;
+  if (mx && mx.p && Object.keys(mx.p).length && mx.u !== f.u) {
+    f = Object.assign({}, f, { p: Object.assign({}, f.p, mx.p),
+      t: mx.t || f.t });
+    latDe = mx.la ? (E.latino.formularios[mx.la] || null) : null;
+  }
   const sinMisa = SIN_MISA[f.u];
   _sinOrdo = !!sinMisa;
   _fMisa = f;
@@ -2059,7 +2073,8 @@ function armaMisa(clave, lects) {
    * sin latín—, y la oración sobre el pueblo, que no entra aquí porque sólo
    * la tiene la Cuaresma y su sección no se pinta si no hay nada. */
   const pieza = (ran) => {
-    const o = formularioDe(ran, f, lat, clave);
+    const o = formularioDe(ran, f,
+      (mx && mx.p && mx.p[ran]) ? latDe : lat, clave);
     const h = pintaPieza(o.f, o.lat, ran);
     if (h || ran === 'pueblo') return h;
     return '<p class="omision">El Misal no trae esta oración en este '
@@ -4626,6 +4641,46 @@ function opcionesSeccion(d, op, hora, cl) {
           f: alts[0].c.f } }));
     }
   }
+  // «En las solemnidades, los salmos se toman de la salmodia complementaria,
+  // a no ser que caigan en domingo, pues en este caso se toman de la semana
+  // I del Salterio» (Ordinario). La fuente guarda la del año en que cayó
+  // entre semana; si es la complementaria (salmos 119-131) y hoy es domingo,
+  // las antífonas de la solemnidad van sobre la salmodia del domingo I, que
+  // se reparte como la de cualquier domingo: la del día en una hora y la
+  // complementaria en las otras. Los salmos propios —la Epifanía tiene los
+  // suyos— no se tocan.
+  if (cl === 'salmodia' && INTERMEDIAS.includes(hora) && op.g === 'SOLEMNIDAD'
+      && d.d === 0 && alts.length && i < 0) {
+    const suya = despieza(alts[0].c.l);
+    const numeros = (p) => p.salmos.map((s) => +((s[0][0][1].match(/\d+/) || [])[0]));
+    const complementaria = (ns) => ns.every((n) => n >= 119 && n <= 131);
+    const nums = numeros(suya);
+    // si en alguna de las tres horas trae salmos suyos, ésos hacen de los
+    // del día, y las otras horas se quedan con la complementaria
+    const conPropios = INTERMEDIAS.some((h) => {
+      const p = delSanto(op, h, 'salmodia', d);
+      return p && !complementaria(numeros(despieza(p.l)));
+    });
+    const S = E.horas.salterio, I = E.horas.intermedia || { dia: {}, comp: {} };
+    let dom = I.dia[d.t + '/1/0'] || I.dia['Ordinario/1/0'];
+    if (typeof dom === 'string') {
+      dom = S[d.t + '/1/0/' + dom] || S['Ordinario/1/0/' + dom];
+    }
+    const comp = I.comp[hora];
+    if (suya.ants.length && nums.length && complementaria(nums) && !conPropios
+        && dom && comp) {
+      const con = (c) => ({ r: alts[0].c.r, f: alts[0].c.f,
+        l: compone(suya.ants, despieza(c.l).salmos) });
+      return [
+        { id: 'sal-dia', rot: 'Del día',
+          tit: 'Salmos del domingo I, con la antífona de la solemnidad',
+          c: con(dom) },
+        { id: 'sal-comp', rot: 'Complementaria',
+          tit: 'Salmodia complementaria, con la antífona de la solemnidad',
+          c: con(comp) }
+      ];
+    }
+  }
   // los himnos que se pueden escoger se cuelgan del «del día»
   if (cl === 'himno' && i >= 0) {
     const otros = otrosHimnos(d, hora, alts[i].c);
@@ -5082,9 +5137,13 @@ function ordenDe(hora) {
   return o;
 }
 
-/** Una sección que no se elige: la que añade la conmemoración. */
-function fija(cl, rotulo, lineas) {
-  return { cl: cl, alts: [{ id: 'propio', rot: '', c: { r: rotulo, l: lineas } }], i: 0 };
+/** Una sección que no se elige: la que añade la conmemoración. `f` es la
+ *  marca de lo que viene de los tomos impresos («ed. española»), que se
+ *  pierde si no se pasa: la pieza se rehace aquí. */
+function fija(cl, rotulo, lineas, f) {
+  const c = { r: rotulo, l: lineas };
+  if (f) c.f = f;
+  return { cl: cl, alts: [{ id: 'propio', rot: '', c: c }], i: 0 };
 }
 
 /** La conmemoración (Principios y normas generales, nn. 238-239): el oficio
@@ -5108,8 +5167,8 @@ function conmemora(secs, op, hora, d) {
     const extra = [fija('conm', 'Conmemoración: ' + op.t,
       [rub('Después de la lectura patrística se añade la del santo, con su '
         + 'responsorio, y se concluye con su oración.')]),
-    fija('conm_lectura', lec.r, lec.l)];
-    if (resp) extra.push(fija('conm_resp', resp.r, resp.l));
+    fija('conm_lectura', lec.r, lec.l, lec.f)];
+    if (resp) extra.push(fija('conm_resp', resp.r, resp.l, resp.f));
     secs.splice(tras(secs.some((s) => s.cl === 'responsorio2')
       ? 'responsorio2' : 'lectura2'), 0, ...extra);
     const o = secs.find((s) => s.cl === 'oracion');
@@ -5120,7 +5179,8 @@ function conmemora(secs, op, hora, d) {
       && /^Ant/.test(ln[0][1])).slice(0, 1) : [];
     secs.splice(tras('oracion'), 0, fija('conm', 'Conmemoración: ' + op.t,
       [rub('Se omite la conclusión de la oración del día, y se añade:'), []]
-        .concat(ant, [[]], orac.l)));
+        .concat(ant, [[]], orac.l),
+      (cant && cant.f) || orac.f));
   }
 }
 
