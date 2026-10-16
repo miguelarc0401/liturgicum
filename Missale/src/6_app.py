@@ -90,7 +90,8 @@ import misal
 from misal import DATOS, LIBRO, RAIZ, Informe
 
 APP = os.path.join(RAIZ, 'app', 'datos')
-CODIGO_APP = ['index.html', 'app.js', 'estilos.css', 'manifest.webmanifest']
+CODIGO_APP = ['index.html', 'app.js', 'piper.js', 'estilos.css',
+              'manifest.webmanifest']
 QA = os.path.join(DATOS, 'app_qa.txt')
 
 RANURAS = ['entrada', 'colecta', 'ofrendas', 'comunion', 'poscomunion',

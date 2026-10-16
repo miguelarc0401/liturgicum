@@ -361,6 +361,36 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   Los nombres de las voces se midieron contra la documentación, que es
   donde se ven las trampas: las WaveNet de España son **E, F, G y H**, y no
   las A–D que uno daría por supuestas.
+  **Piper: una voz neuronal sin cuenta.** Las dos cuentas de arriba piden
+  una tarjeta para abrirse, y eso deja fuera a quien no quiera darla. Piper
+  es una voz neuronal que **se baja una vez y vive en el teléfono**: desde
+  entonces habla sin conexión, sin cuenta y sin que el texto salga del
+  teléfono. El motor está aparte, en `piper.js`, que corre en un worker
+  para no trabar la página; trae de fuera tres piezas —onnxruntime-web de
+  cdnjs, el fonetizador de piper (espeak-ng compilado a wasm) de jsDelivr y
+  la voz de `rhasspy/piper-voices` en Hugging Face— y las guarda en una
+  caché suya, `voz-piper`, que el service worker no tira al publicar. No se
+  copian al repositorio: espeak-ng es GPL. El motor son 29 MB, comunes a
+  todas las voces, y cada voz de 28 a 77 MB más; se bajan desde Ajustes, con
+  su barra, y **decir no baja nunca nada**: noventa megas no se piden por
+  sorpresa a media hora rezada.
+  Las voces: **sharvard** (España, mujer y hombre en un mismo modelo),
+  **davefx** (España, hombre), **carlfm** (España, ligera), y dos italianas,
+  **paola** y **riccardo**, para el latín con la pronunciación eclesiástica
+  —las horas están en castellano, así que hoy leen el castellano con acento
+  de Roma—. Kokoro y Chatterbox se miraron y no sirven aquí: la versión de
+  Kokoro para el navegador sólo trae voces inglesas, y Chatterbox pide una
+  tarjeta gráfica.
+  **Lo que tarda.** Piper hace la voz al momento, y eso se paga en tiempo.
+  Medido en el PC, a la vista: la voz media hace 11,5 segundos de voz en
+  3,6 (unas tres veces más deprisa de lo que se dice), y la ligera en 2,1.
+  Pero **con la página escondida el navegador la frena casi a 1:1**, y con
+  la pantalla apagada pasará lo mismo. Por eso no se hace sólo el trozo
+  siguiente, como en línea, sino **hasta cuarenta por delante** mientras la
+  pantalla está encendida: lo adelantado al principio cubre después. Se
+  guarda sólo en memoria y sólo mientras suena la hora (en disco serían cien
+  megas al día de WAV). El botón **Probar** de Ajustes mide el teléfono
+  mismo y dice si va sobrado o justo.
 
 **Lo que no trae:** el leccionario IX (misas con niños), que sí está en `out/`,
 en Word y en PDF.

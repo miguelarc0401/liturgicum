@@ -722,6 +722,14 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .ajuste.ancho input[type="text"], .ajuste.ancho input[type="password"] {
   width: 100%; max-width: none; margin-top: .5rem;
 }
+/* Los botones de la voz de Piper: bajarla, probarla, quitarla. Del mismo
+   porte que los selectores de al lado, y altos de un dedo. */
+.piper-boton {
+  font-family: var(--sans); font-size: .88rem; min-height: 2.5rem;
+  margin: .5rem .4rem 0 0; padding: .35rem .9rem;
+  background: var(--papel-alto); color: var(--tinta);
+  border: 1px solid var(--filete-fuerte); border-radius: 10px; cursor: pointer;
+}
 .casillas { margin-top: .65rem; }
 .casilla {
   display: flex; align-items: flex-start; gap: .65rem;

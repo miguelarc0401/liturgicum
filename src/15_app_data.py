@@ -50,7 +50,8 @@ DATOS = os.path.join(APP, "datos")
 # Los iconos entran en la firma aunque no los escriba este guion: si no, se
 # cambia la tapa y el telefono sigue ensenando la de antes, porque el service
 # worker los tiene cacheados y nada le dice que ha cambiado nada.
-CODIGO_APP = ["index.html", "app.js", "estilos.css", "manifest.webmanifest",
+CODIGO_APP = ["index.html", "app.js", "piper.js", "estilos.css",
+              "manifest.webmanifest",
               "icono.svg", "icono-32.png", "icono-180.png", "icono-192.png",
               "icono-512.png", "icono-maskable-512.png"]
 

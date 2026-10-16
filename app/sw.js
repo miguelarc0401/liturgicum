@@ -55,7 +55,10 @@ const DESPUES = [
   'datos/horas.json',
   // el devocionario: 1 MB de oraciones que no hacen falta para abrir la app
   // ni para rezar la misa ni las horas, y que la vista pide cuando se entra
-  'datos/devocionario.json'
+  'datos/devocionario.json',
+  // el motor de la voz de Piper; lo que él trae de fuera —el modelo, el
+  // wasm— lo guarda él en su propia caché, que ésta no toca
+  'piper.js'
 ];
 
 async function guarda(c, ficheros) {

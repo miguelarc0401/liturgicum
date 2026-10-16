@@ -37,7 +37,9 @@ const POR_OMISION = {
   // y al rezar en alta voz: la voz del sistema (vacío: la que haya),
   // la velocidad en centésimas, y lo que se dice de más
   voz: '', vozVel: 100, vozRotulos: 'si', vozPausa: 'normal',
-  vozSigue: 'no', vozMotor: 'sistema', vozLinea: {}
+  vozSigue: 'no', vozMotor: 'sistema', vozLinea: {},
+  // la voz de Piper: el modelo y, si trae varios hablantes, cuál
+  vozPiper: 'es_ES-sharvard-medium:F'
 };
 
 const E = {              // todo el estado de la app
@@ -3639,11 +3641,15 @@ function verAjustes() {
     bloqueVoz(),
     sel('vozMotor', 'Qué voz',
       'La del teléfono viene con el sistema y habla sin conexión: lee bien, '
-      + 'pero es voz de máquina. La otra suena a persona, y pide conexión y '
-      + 'una cuenta en el servicio que la da.',
+      + 'pero es voz de máquina. Piper suena a persona y también habla sin '
+      + 'conexión: se baja una vez y vive en el teléfono, sin cuenta. Los '
+      + 'servicios en línea suenan mejor aún, pero piden conexión y una '
+      + 'cuenta con tarjeta.',
       [['sistema', 'La del teléfono · sin conexión'],
-        ['linea', 'Una voz neuronal · pide conexión']]),
+        ['piper', 'Piper · neuronal, en el teléfono'],
+        ['linea', 'Un servicio en línea · pide cuenta']]),
     E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
+      : E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
       : sel('voz', 'La voz del teléfono', vocesQueHay(),
         [['', 'La que haya']].concat(vocesDeLaVoz()
           .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
@@ -3756,8 +3762,10 @@ async function alCambiarAjuste(ev) {
   E.cfg[id] = (id === 'tam' || id === 'vozVel') ? +v : v;
   guardaCfg();
   aplicaCfg();
-  // elegir la otra voz hace aparecer, o irse, los campos del servicio
-  if (id === 'vozMotor') {
+  // elegir la otra voz hace aparecer, o irse, los campos del servicio; y
+  // otra de Piper, si está bajada o no
+  if (id === 'vozMotor' || id === 'vozPiper') {
+    PIPER.prueba = null;
     recuerdaAjustes();
     verAjustes();
     return;
@@ -6801,6 +6809,7 @@ function manoEnLaVoz() {
 }
 
 function hablaElSistema() {
+  if (V.motor === 'piper') return false;
   return V.motor !== 'linea' || !E.cfg.vozLinea || !E.cfg.vozLinea.clave;
 }
 
@@ -6909,9 +6918,17 @@ function arrancaVoz(desde) {
   }
   V.guion = guionDeLaHora();
   V.iso = E.fecha; V.hora = E.hora;
-  V.motor = E.cfg.vozMotor === 'linea' ? 'linea' : 'sistema';
+  V.motor = E.cfg.vozMotor === 'linea' || E.cfg.vozMotor === 'piper'
+    ? E.cfg.vozMotor : 'sistema';
   V.fallos = 0;
   V.aviso = '';
+  // sabido ya que la de Piper no está bajada, se dice antes de empezar y no
+  // después de tres trozos callados
+  if (V.motor === 'piper' && PIPER.hay[vozPiper().voz] === false) {
+    V.motor = 'sistema';
+    V.aviso = 'La voz de Piper no está bajada: se baja en Ajustes. '
+      + 'Sigue la del teléfono.';
+  }
   V.manos = 0;
   if (!V.guion.length) {
     V.aviso = 'No hay nada que decir en esta hora.';
@@ -6981,6 +6998,7 @@ function paraVoz() {
   V.guion = null;
   V.hasta = 0;
   V.aviso = '';
+  PIPER.audios.clear();
   resalta(null);
   if (navigator.mediaSession) navigator.mediaSession.playbackState = 'none';
   pintaBarraVoz();
@@ -7192,13 +7210,19 @@ async function diceEnLinea(k) {
   const tz = V.guion && V.guion[k];
   if (!tz) return;
   const g = V.gen;
+  const piper = V.motor === 'piper';
   let blob;
   try {
-    blob = await audioEnLinea(tz.texto);
+    const pide = piper ? audioPiper(tz.texto) : audioEnLinea(tz.texto);
+    // Piper va haciendo lo que viene detrás de éste mientras suena
+    if (piper) adelantaPiper();
+    blob = await pide;
     V.fallos = 0;
     if (V.aviso) { V.aviso = ''; pintaBarraVoz(); }
   } catch (err) {
     V.fallos++;
+    // sin la voz bajada no hay nada que reintentar
+    if (piper && PIPER.hay[vozPiper().voz] === false) V.fallos = 3;
     if (V.fallos >= 3) {
       V.motor = 'sistema';
       // con el motivo delante: «la clave no vale» y «no hay cobertura» se
@@ -7233,7 +7257,290 @@ async function diceEnLinea(k) {
   a.play().catch(() => acabo(k));
   // y el siguiente se va pidiendo mientras éste suena, que así no se nota
   const sig = V.guion[k + 1];
-  if (sig) audioEnLinea(sig.texto).catch(() => { /* ya se verá al llegar */ });
+  if (piper) adelantaPiper();
+  else if (sig) audioEnLinea(sig.texto).catch(() => { /* ya se verá al llegar */ });
+}
+
+/* ------------------------------------------------------- la voz de Piper
+ * Una voz neuronal que vive en el teléfono: el motor está en piper.js, que
+ * corre aparte en un worker, y aquí sólo se le piden trozos y se le
+ * escucha. Por fuera es un motor en línea más —da el audio hecho y suena
+ * por un <audio>, que es lo que el sistema respeta con la pantalla
+ * apagada—, con dos diferencias:
+ *  · No pide nada a la red al decir. Se baja una vez, desde Ajustes, y
+ *    después habla sin conexión; y el texto no sale del teléfono.
+ *  · Hace la voz al momento, y eso se paga en tiempo. En el PC donde se
+ *    midió, la voz media hace once segundos de voz en tres y medio; pero
+ *    con la página escondida el navegador la frena —se midió: casi al
+ *    ritmo de lo que dice—, y con la pantalla apagada pasará lo mismo. Por
+ *    eso no se hace el siguiente trozo y basta, como en línea, sino todos
+ *    los que se pueda por delante mientras la pantalla está encendida: lo
+ *    ganado al principio es lo que cubre después.
+ *
+ * Lo hecho se guarda sólo en memoria y sólo mientras suena la hora. En
+ * disco serían cien megas al día —es WAV, que el navegador no sabe
+ * comprimir—, y rehacerlo no cuesta nada más que tiempo. */
+const PIPER = {
+  w: null, n: 0, esperan: new Map(),
+  hay: {},          // voz -> true | false: si está bajada (sin mirar: falta)
+  bajando: null,    // la voz que se está bajando, y cómo va
+  progreso: null,
+  prueba: null,     // lo medido con «Probar», para decirlo en Ajustes
+  audios: new Map(),   // llave -> promesa del audio de un trozo
+  adelantando: false
+};
+
+/* Las voces, con lo que pesan: el motor son 29 MB más, la primera vez, que
+ * comparten todas. La de sharvard son dos hablantes en un mismo modelo, y
+ * se baja una vez para los dos. La italiana es la pronunciación eclesiástica
+ * del latín; las horas están en castellano, así que hoy lo que hace es leer
+ * el castellano con acento de Roma, y está para cuando haya latín que decir. */
+const VOCES_PIPER = [
+  ['es_ES-sharvard-medium:F', 'España · mujer · 77 MB'],
+  ['es_ES-sharvard-medium:M', 'España · hombre · la misma descarga'],
+  ['es_ES-davefx-medium', 'España · hombre (2) · 63 MB'],
+  ['es_ES-carlfm-x_low', 'España · hombre, ligera y rápida · 28 MB'],
+  ['it_IT-paola-medium', 'Italiana · mujer · para el latín · 64 MB'],
+  ['it_IT-riccardo-x_low', 'Italiana · hombre, ligera · 28 MB']
+];
+
+/* Para la prueba, algo de lo que de verdad se reza. */
+const PRUEBA_PIPER = {
+  es: 'Bendito sea el Señor, Dios de Israel,\nporque ha visitado y '
+    + 'redimido a su pueblo,\nsuscitándonos una fuerza de salvación\nen la '
+    + 'casa de David, su siervo.',
+  it: 'Pater noster, qui es in caelis,\nsanctificetur nomen tuum.\nAdveniat '
+    + 'regnum tuum.\nFiat voluntas tua, sicut in caelo et in terra.'
+};
+
+function vozPiper() {
+  const id = VOCES_PIPER.some((x) => x[0] === E.cfg.vozPiper)
+    ? E.cfg.vozPiper : VOCES_PIPER[0][0];
+  const [voz, hablante] = id.split(':');
+  return { id: id, voz: voz, hablante: hablante || '' };
+}
+
+function trabajadorPiper() {
+  if (PIPER.w) return PIPER.w;
+  PIPER.w = new Worker('piper.js');
+  PIPER.w.onmessage = (ev) => {
+    const d = ev.data || {};
+    const e = PIPER.esperan.get(d.id);
+    if (!e) return;
+    if (d.progreso) { if (e.avisa) e.avisa(d.progreso); return; }
+    PIPER.esperan.delete(d.id);
+    if (d.ok) e.res(d); else e.rej(new Error(d.error || 'Piper ha fallado'));
+  };
+  // el worker mismo se ha caído —no ha podido cargar lo que trae de fuera—:
+  // se contesta que no a todo lo que esperaba, y el siguiente es uno nuevo
+  PIPER.w.onerror = (ev) => {
+    const msg = (ev && ev.message) || 'Piper no ha arrancado';
+    PIPER.esperan.forEach((e) => e.rej(new Error(msg)));
+    PIPER.esperan.clear();
+    PIPER.w.terminate();
+    PIPER.w = null;
+  };
+  return PIPER.w;
+}
+
+function pidePiper(q, avisa) {
+  return new Promise((res, rej) => {
+    const id = ++PIPER.n;
+    PIPER.esperan.set(id, { res: res, rej: rej, avisa: avisa });
+    trabajadorPiper().postMessage(Object.assign({ id: id }, q));
+  });
+}
+
+function velVoz() {
+  return Math.max(0.5, Math.min(2, (E.cfg.vozVel || 100) / 100));
+}
+
+function llavePiper(texto) {
+  return vozPiper().id + '|' + velVoz() + '|' + texto;
+}
+
+function audioPiper(texto) {
+  const llave = llavePiper(texto);
+  let p = PIPER.audios.get(llave);
+  if (p) return p;
+  const v = vozPiper();
+  p = pidePiper({ tipo: 'di', voz: v.voz, hablante: v.hablante, texto: texto,
+    vel: velVoz() })
+    .then((r) => new Blob([r.wav], { type: 'audio/wav' }));
+  p.catch((err) => {
+    PIPER.audios.delete(llave);
+    if (/no está bajada/.test(err.message)) PIPER.hay[v.voz] = false;
+  });
+  PIPER.audios.set(llave, p);
+  return p;
+}
+
+/* Cuántos trozos se hacen por delante del que suena. Cuarenta son unos ocho
+ * o nueve minutos de voz —una hora entera, casi siempre— y unos veinte
+ * megas de memoria, que un teléfono lleva sin notarlo. */
+const PIPER_DELANTE = 40;
+
+/** Va haciendo, de uno en uno y por orden, los trozos que vienen detrás del
+ *  que suena; y suelta los que ya quedaron atrás. Se le llama a cada trozo,
+ *  y si ya está en marcha no hace nada: la vuelta en curso se entera sola
+ *  de por dónde va la hora. */
+async function adelantaPiper() {
+  if (PIPER.adelantando) return;
+  PIPER.adelantando = true;
+  try {
+    for (;;) {
+      if (V.motor !== 'piper' || V.estado === 'parada' || !V.guion) break;
+      const hasta = Math.min(V.guion.length, V.i + PIPER_DELANTE);
+      const vivas = new Set();
+      for (let j = Math.max(0, V.i - 1); j < hasta; j++) {
+        vivas.add(llavePiper(V.guion[j].texto));
+      }
+      for (const ll of PIPER.audios.keys()) {
+        if (!vivas.has(ll)) PIPER.audios.delete(ll);
+      }
+      let k = -1;
+      for (let j = V.i; j < hasta; j++) {
+        if (!PIPER.audios.has(llavePiper(V.guion[j].texto))) { k = j; break; }
+      }
+      if (k < 0) break;
+      try { await audioPiper(V.guion[k].texto); } catch (_) { break; }
+    }
+  } finally {
+    PIPER.adelantando = false;
+  }
+}
+
+/* ------------------------------------------- Piper en Ajustes
+ * La voz se elige, se baja, se prueba y se quita desde aquí. La prueba es
+ * la medida que importa: cuánto más deprisa hace la voz este teléfono de
+ * lo que tarda en decirla. */
+function camposDePiper(sel) {
+  return '<div class="ajuste ancho"><p class="pista-g">'
+    + 'Una voz neuronal que vive en el teléfono. Se baja una vez —mejor con '
+    + 'wifi: el motor son 29 MB, comunes a todas, y la voz de 28 a 77 más— '
+    + 'y desde entonces habla sin conexión, sin cuenta y sin que el texto '
+    + 'salga del teléfono. Va haciendo la voz mientras reza, y lo que tarda '
+    + 'en hacerla depende del teléfono: «Probar» lo mide.'
+    + '</p></div>'
+    + sel('vozPiper', 'La voz de Piper', '', VOCES_PIPER)
+    + '<div class="ajuste ancho" id="piper-estado">' + estadoPiper() + '</div>';
+}
+
+function estadoPiper() {
+  const v = vozPiper();
+  const hay = PIPER.hay[v.voz];
+  const boton = (que, rot) => '<button type="button" class="piper-boton" '
+    + 'data-piper="' + que + '">' + rot + '</button>';
+  if (PIPER.bajando === v.voz) {
+    const p = PIPER.progreso || { hecho: 0, total: 0 };
+    const mb = (n) => (n / 1048576).toFixed(0);
+    return '<p class="pista-g">Bajando… ' + mb(p.hecho) + ' MB'
+      + (p.total > p.hecho ? ' de ' + mb(p.total) : '') + '</p>';
+  }
+  if (hay === undefined) {
+    miraSiHayPiper(v.voz);
+    return '<p class="pista-g">Mirando si está bajada…</p>';
+  }
+  if (!hay) {
+    return '<p class="pista-g">' + (PIPER.prueba && PIPER.prueba.error
+      ? esc(PIPER.prueba.error) + '. ' : '')
+      + 'Esta voz no está bajada todavía.</p>'
+      + '<p>' + boton('baja', 'Bajar la voz') + '</p>';
+  }
+  const pr = PIPER.prueba;
+  let medida = '';
+  if (pr && pr.voz === v.id) {
+    if (pr.error) medida = 'La prueba ha fallado: ' + esc(pr.error) + '.';
+    else if (pr.haciendo) medida = 'Haciendo la prueba…';
+    else {
+      const x = pr.segundos / (pr.ms / 1000);
+      const coma = (n) => n.toFixed(1).replace('.', ',');
+      medida = 'Medido en este aparato: hace ' + coma(pr.segundos)
+        + ' segundos de voz en ' + coma(pr.ms / 1000) + ' (' + coma(x)
+        + ' veces más deprisa de lo que se dice). '
+        + (x >= 3 ? 'Va sobrada.'
+          : x >= 1.5 ? 'Va bien con la pantalla encendida, que es cuando se '
+            + 'adelanta; con la pantalla apagada el teléfono la frena, y si '
+            + 'en el camino se queda callada entre trozos, la ligera va más '
+            + 'deprisa.'
+          : 'Va justa: es fácil que se quede callada entre trozos. La '
+            + 'ligera va casi el doble de deprisa.');
+    }
+  }
+  return '<p class="pista-g">Bajada: habla sin conexión.'
+    + (medida ? ' ' + medida : '') + '</p>'
+    + '<p>' + boton('prueba', 'Probar') + ' ' + boton('quita', 'Quitarla')
+    + '</p>';
+}
+
+function repintaPiper() {
+  const c = $('#piper-estado');
+  if (c) c.innerHTML = estadoPiper();
+}
+
+async function miraSiHayPiper(voz) {
+  try {
+    const r = await pidePiper({ tipo: 'hay', voz: voz });
+    PIPER.hay[voz] = !!r.hay;
+  } catch (_) {
+    PIPER.hay[voz] = false;
+  }
+  repintaPiper();
+}
+
+async function alTocarPiper(ev) {
+  const b = ev.target.closest && ev.target.closest('[data-piper]');
+  if (!b || E.vista !== 'ajustes') return;
+  const v = vozPiper();
+  const que = b.dataset.piper;
+  if (que === 'baja') {
+    // que el navegador no la tire para hacer sitio: son muchos megas, y
+    // volver a bajarlos en el coche no es una opción
+    try { if (navigator.storage && navigator.storage.persist) await navigator.storage.persist(); }
+    catch (_) { /* sin permiso: se guarda igual, sólo que no blindada */ }
+    PIPER.bajando = v.voz;
+    PIPER.progreso = null;
+    PIPER.prueba = null;
+    repintaPiper();
+    try {
+      await pidePiper({ tipo: 'baja', voz: v.voz }, (p) => {
+        PIPER.progreso = p;
+        repintaPiper();
+      });
+      PIPER.hay[v.voz] = true;
+    } catch (err) {
+      PIPER.hay[v.voz] = false;
+      PIPER.prueba = { voz: v.id, error: 'No se ha podido bajar ('
+        + (err.message || 'sin red') + ')' };
+    }
+    PIPER.bajando = null;
+    repintaPiper();
+  } else if (que === 'prueba') {
+    const texto = PRUEBA_PIPER[v.voz.slice(0, 2)] || PRUEBA_PIPER.es;
+    PIPER.prueba = { voz: v.id, haciendo: true };
+    repintaPiper();
+    try {
+      // dos veces: la primera carga la voz en memoria, y eso no es lo que
+      // tarda rezando, que la voz ya está cargada
+      await pidePiper({ tipo: 'di', voz: v.voz, hablante: v.hablante,
+        texto: texto, vel: velVoz() });
+      const r = await pidePiper({ tipo: 'di', voz: v.voz,
+        hablante: v.hablante, texto: texto, vel: velVoz() });
+      PIPER.prueba = { voz: v.id, segundos: r.segundos, ms: r.ms };
+      const url = URL.createObjectURL(new Blob([r.wav], { type: 'audio/wav' }));
+      const a = new Audio(url);
+      a.addEventListener('ended', () => URL.revokeObjectURL(url));
+      a.play().catch(() => URL.revokeObjectURL(url));
+    } catch (err) {
+      PIPER.prueba = { voz: v.id, error: err.message || 'sin respuesta' };
+    }
+    repintaPiper();
+  } else if (que === 'quita') {
+    try { await pidePiper({ tipo: 'borra', voz: v.voz }); } catch (_) { /* */ }
+    PIPER.hay[v.voz] = false;
+    PIPER.prueba = null;
+    repintaPiper();
+  }
 }
 
 /* --------------------------------------------------------- la barra
@@ -7468,6 +7775,7 @@ async function arranca() {
   vista.addEventListener('click', alTocarMisa);
   vista.addEventListener('click', alTocarZoom);
   vista.addEventListener('click', alTocarCalendario);
+  vista.addEventListener('click', alTocarPiper);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);
   });
