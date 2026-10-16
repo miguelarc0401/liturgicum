@@ -163,7 +163,8 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   color, su pastilla. La pista va debajo del nombre y a todo lo ancho, no
   apretada al lado del mando, y al final, como en un libro, el colofón.
 * **El tamaño de la letra, a mano mientras se reza.** Dos aes en la cabecera
-  —en la hora y en la misa— lo suben y lo bajan sin ir a Ajustes: que la
+  —en la hora, en la misa y en la oración del devocionario, que son las tres
+  páginas que se rezan— lo suben y lo bajan sin ir a Ajustes: que la
   letra se ve chica se nota rezando, no al abrir la app. Al cambiarlo, el
   renglón que se está leyendo se queda donde estaba: lo que crece o encoge
   es todo lo que va por encima, y el desplazamiento lo compensa.
@@ -176,8 +177,9 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Un toque esconde la cabecera y la barra.** Tumbado caben diez renglones
   y de ellos los dos marcos se llevan tres: un toque en el texto los manda
   fuera de la pantalla —del todo, no atenuados— y otro los devuelve. De lado
-  y de pie, y en las dos vistas que se leen, la hora y la misa; en el
-  calendario y en los paneles no, que allí la barra es la única puerta. El
+  y de pie, y en las tres páginas que se rezan —la hora, la misa y la oración
+  del devocionario—; en el calendario y en los demás paneles no, que allí la
+  barra es la única puerta. El
   renglón que se está leyendo no se mueve ni al esconderlos ni al traerlos;
   el índice al borde se queda, que es una cinta y no un mando. En las horas,
   pasar de hora deslizando el dedo los devuelve: la hora que entra se
@@ -336,7 +338,22 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
 * **Rezarla en alta voz, de camino.** El botón del altavoz, en la cabecera,
   la empieza a decir por la sección donde vaya la vista, y una barra de
   mandos grandes —sección anterior, parar y seguir, sección siguiente—
-  queda abajo mientras suena. **Lo que se dice es lo que se ve, menos la
+  queda abajo mientras suena.
+  **La hora, la misa y el devocionario.** Las tres se pintan en cajas de la
+  misma hechura, así que el reproductor es uno solo y no sabe en qué libro
+  está: lo único que cambia de una a otra —quién es la página, de dónde salen
+  los nombres de sus secciones y qué pasa al acabar— está en una función de
+  cinco renglones. En la misa los mandos pasan de parte —colecta, primera
+  lectura, evangelio—; en una oración del devocionario, que es una sola caja,
+  pasan de párrafo. Y al acabar sólo encadena la hora: una misa no sigue en
+  otra, y de una oración no se pasa sola a la de al lado.
+  **Donde hay dos lenguas, dice el castellano.** La columna latina del
+  bilingüe no se dice —la voz es española y lo mismo está enfrente—, pero el
+  latín solo sí: en una versión latina a secas, y en la oración del
+  devocionario que no está traducida, es lo único que hay. Callan también el
+  número del versículo —dicho sale «once en aquel tiempo»—, la cita que va
+  dentro de la fórmula de la lectura, lo que dice de dónde sale la pieza
+  («del día») y los avisos de la app, que son de la app y no del libro. **Lo que se dice es lo que se ve, menos la
   rúbrica**: el guión no sale de los datos sino de la página ya pintada, de
   modo que dice la opción que esté elegida en cada sección y la forma del
   comienzo que se haya escogido, y la reseña sólo si está abierta. La
@@ -401,16 +418,30 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   todas las voces, y cada voz de 28 a 77 MB más; se bajan desde Ajustes, con
   su barra, y **decir no baja nunca nada**: noventa megas no se piden por
   sorpresa a media hora rezada.
-  Las voces: **sharvard** (España, mujer y hombre en un mismo modelo),
-  **davefx** (España, hombre), **carlfm** (España, ligera), y dos italianas,
-  **paola** y **riccardo**, para el latín con la pronunciación eclesiástica
-  —las horas están en castellano, así que hoy leen el castellano con acento
-  de Roma—. Kokoro y Chatterbox se miraron y no sirven aquí: la versión de
-  Kokoro para el navegador sólo trae voces inglesas, y Chatterbox pide una
-  tarjeta gráfica.
+  **Mexicanas, que es la lengua del libro.** Viene puesta una de México, no
+  de España, porque el castellano de la app es la traducción litúrgica
+  mexicana y el calendario es el de allá. Y no es sólo el acento: a espeak
+  se le pide `es-419` en vez de `es`, de modo que **sesean** —«grasia», no
+  «graθia»—, que es como se reza esto. Son **claude** (mujer; el nombre es
+  del quien la entrenó y no tiene que ver con nada de aquí) y **ald** (Aldo,
+  hombre), ésta también en una versión ligera que va un 25 % más deprisa y
+  ocupa un tercio. De España quedan **sharvard** (mujer y hombre en un mismo
+  modelo), **davefx** (hombre) y **carlfm** (la más rápida de todas), que
+  distinguen la c y la z. Y dos italianas, **paola** y **riccardo**, para el
+  latín con la pronunciación eclesiástica —las horas están en castellano,
+  así que hoy leen el castellano con acento de Roma—.
+  Lo descartado, y por qué: **Kokoro**, porque la versión para el navegador
+  sólo trae voces inglesas; **Chatterbox**, porque pide tarjeta gráfica; y
+  **daniela** (Argentina), porque al medirla tardaba 47 segundos en hacer 4
+  de voz. Que una voz se llame «high» no dice si es lenta: daniela lo es y
+  pesa 114 MB, mientras que claude, que también se llama «high», pesa 63 y
+  corre como las medianas. Hay que medirlas, no deducirlo del rótulo.
   **Lo que tarda.** Piper hace la voz al momento, y eso se paga en tiempo.
-  Medido en el PC, a la vista: la voz media hace 11,5 segundos de voz en
-  3,6 (unas tres veces más deprisa de lo que se dice), y la ligera en 2,1.
+  Medido en el PC y con la página a la vista, las medianas (claude, ald,
+  sharvard) la hacen unas **2,8 veces** más deprisa de lo que se dice, la
+  ligera mexicana **3,4** y carlfm **4,5**. Esas cifras bailan bastante de
+  una pasada a otra —el equipo tiene sus rachas—, así que valen para
+  comparar unas voces con otras, medidas a la vez, y no como promesa.
   Pero **con la página escondida el navegador la frena casi a 1:1**, y con
   la pantalla apagada pasará lo mismo. Por eso no se hace sólo el trozo
   siguiente, como en línea, sino **hasta cuarenta por delante** mientras la

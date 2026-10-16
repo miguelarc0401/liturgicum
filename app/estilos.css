@@ -212,6 +212,11 @@ button { font: inherit; color: inherit; }
 #cabecera.compacta #celebraciones,
 #cabecera.compacta #nota-dia { display: none; }
 #cabecera.compacta h1 { margin: .35rem 0 .05rem; }
+/* La oracion del devocionario se reza, y por eso lleva las dos aes y el
+   altavoz; con ellos puestos el renglon de abajo vuelve -con el titulo
+   castellano al lado-, que es donde van en la hora y en la misa. */
+#cabecera.compacta.con-mandos .fila-sub { display: flex; }
+#cabecera.compacta.con-mandos #subtitulo-dia { display: block; }
 
 /* ------------------------------------------------- la cabecera, al bajar
    La cabecera se pliega siguiendo el dedo. Una sola variable, `--pliegue`,
@@ -1831,7 +1836,8 @@ body.con-carril #vista { padding-right: 2.1rem; }
     padding-bottom: calc(.3rem - .12rem * var(--pliegue, 0));
   }
   body.cab-fija .fila-titulo,
-  body.cab-fija .fila-sub { display: contents; }
+  body.cab-fija .fila-sub,
+  body.cab-fija #cabecera.compacta.con-mandos .fila-sub { display: contents; }
 
   /* La fecha no se deshace: las dos flechas y el rotulo son una sola cosa
      -lo que sirve para cambiar de dia- y van juntas al final del renglon.
@@ -2278,6 +2284,10 @@ select.elige {
 .devo-insignia.enlace:active { background: var(--filete); }
 .devo-insignia.apagada { font-style: italic; }
 .devo { margin-top: .4rem; }
+/* La oracion va en una caja de las que se rezan (.hora-sec), que es lo que
+   la pone al alcance de la voz y de los mandos; pero su hueco de abajo es
+   el de la oracion, no el de una seccion de la hora. */
+.devo-sec { margin: 0; }
 /* el título y el epígrafe que la fuente imprime dentro de la oración: el
    nombre del salmo, «Ad Matutinum», la cita con que el Oficio lo encabeza */
 .devo-tit {

@@ -34,7 +34,6 @@ horas_dias.json     2.8 MB  15701 fechas
           San Antonio María Claret, obispo  ->  pastores para un santo obispo
           Beato Miguel Agustín Pro, presbítero y mártir  ->  un martir, pastores para un santo presbitero
           Nuestra Señora de Loreto  ->  santisima virgen maria
-     309  oraciones del PDF cambiadas por la colecta del Misal mexicano
      106  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
      871  fechas que van por fecha (17-24 de diciembre, octava de Navidad, 2 de enero al Bautismo)
      121  piezas del santoral con su forma de Pascua: 58 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 44 forma pascual por la regla del libro, 84 sólo pascual: forma de todo el año sin el aleluya

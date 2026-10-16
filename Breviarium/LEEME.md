@@ -235,6 +235,15 @@ la fase 4 lo usa con un orden de preferencia estricto:
 3. **el PDF**, sólo si no está en ninguna parte. Esos textos llevan la marca
    `f: "pdf"`, y la app los señala con un discreto «ed. española».
 
+El Misal no entra en esa preferencia. Unas pocas celebraciones del
+calendario de México (san Rafael Guízar, san Juan Pablo II, Nuestra Señora
+de Fátima…) no tienen oficio ni en la fuente ni en los tomos: sólo ésas se
+rezan con su común, deducido del título, y con la colecta de su misa
+(`Missale/datos/libro/propios_es.json`) como oración. Donde el tomo sí trae
+la oración del santo manda el tomo, con su marca, aunque el Misal diga otra
+cosa: en san Calixto, por ejemplo, el Breviario conserva una fórmula
+anterior a la que hoy trae el Misal, y es la del Breviario la que se reza.
+
 Todo queda apuntado en `datos/pdf_usado.txt`: qué celebraciones salen del
 PDF y con qué común, qué textos se hallaron en la fuente, y un cotejo de
 citas, antífonas e himnos entre el PDF y la fuente en los santos que tienen

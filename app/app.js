@@ -38,8 +38,9 @@ const POR_OMISION = {
   // la velocidad en centésimas, y lo que se dice de más
   voz: '', vozVel: 100, vozRotulos: 'si', vozPausa: 'normal',
   vozSigue: 'no', vozMotor: 'sistema', vozLinea: {},
-  // la voz de Piper: el modelo y, si trae varios hablantes, cuál
-  vozPiper: 'es_ES-sharvard-medium:F'
+  // la voz de Piper: el modelo y, si trae varios hablantes, cuál. Mexicana,
+  // como la traducción que se reza (ver VOCES_PIPER)
+  vozPiper: 'es_MX-claude-high'
 };
 
 const E = {              // todo el estado de la app
@@ -72,7 +73,8 @@ const E = {              // todo el estado de la app
   calQ: '',              // lo que se busca en el calendario
   calAHoy: false,        // el calendario que se abre, a centrar en hoy
   devoQ: '',             // lo que se busca en el devocionario
-  devoVuelta: null       // la lista del devocionario de la que se viene
+  devoVuelta: null,      // la lista del devocionario de la que se viene
+  devoPieza: null        // la oración del devocionario que está abierta
 };
 
 const $ = (s) => document.querySelector(s);
@@ -1078,9 +1080,10 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
     partes.push(d.b[0].e);
   }
   $('#subtitulo-dia').textContent = partes.join(' · ');
-  // el tamaño de la letra, también en la misa: el formulario se lee igual
-  // que la hora, y la cabecera es la que se queda arriba al bajar
-  $('#cab-zoom').innerHTML = controlZoom();
+  // el tamaño de la letra y el altavoz, también en la misa: el formulario
+  // se lee y se reza igual que la hora, y la cabecera es la que se queda
+  // arriba al bajar
+  $('#cab-zoom').innerHTML = botonVoz() + controlZoom();
   pintaChipsCelebraciones(cels || [], slug);
   pintaChipsFormularios(d, bloque, !!iso);
   pintaNota(cel, val);
@@ -1103,6 +1106,8 @@ function pintaFormulario(slug, bloque, iso, cels, val) {
   pintaCuerpoMisa(b.k, hoy);
   if (iso) { E.ultimaMisa = location.hash; cabeceraFija(true); }
   colocaPosicion();
+  // y la voz, si venía diciendo: contra la página nueva
+  vozTrasPintar();
 }
 
 /* El cuerpo de la misa: el formulario entero si los cuatro ficheros del
@@ -1132,6 +1137,9 @@ function pintaCuerpoMisa(clave, lects) {
         vista.innerHTML = h;
         pintaCarril(E.misaVista);
         aprietaCabeceras();
+        // las lecturas solas se han vuelto el formulario entero: lo que la
+        // voz tenía armado ya no está en la página
+        vozTrasPintar();
         return;
       }
     }
@@ -2343,6 +2351,8 @@ function repintaMisaSec(cl) {
   caja.replaceWith(nueva);
   const cab = nueva.querySelector('.sec-cab');
   if (cab) aprietaCabecera(cab);
+  // la sección es otra: si la voz venía diciendo, se rehace el guión
+  rearmaVoz();
 }
 
 /** Tocar en la misa: plegar una sección del Ordinario, o elegir. */
@@ -2529,6 +2539,7 @@ function verDia(iso, slug, bloque) {
 function limpiaCabExtra() {
   $('#cab-extra').innerHTML = '';
   $('#cab-zoom').innerHTML = '';
+  $('#cabecera').classList.remove('con-mandos');
   $('#cabecera').classList.remove('cal-pegada');
   cabeceraFija(false);
   limpiaCarril();
@@ -3770,6 +3781,29 @@ function verAjustes() {
           + 'la pantalla se queda encendida.', true, false)
         : ''
     ]),
+    seccion('voz', 'Rezar en alta voz', ICONO_VOZ.voz, [
+      bloqueVoz(),
+      tarjetas('vozMotor', 'Qué voz', ''),
+      E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
+        : E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
+        : sel('voz', 'La voz del teléfono', vocesQueHay(),
+          [['', 'La que haya']].concat(vocesDeLaVoz()
+            .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
+      tira('vozVel', 'Velocidad',
+        'Rezada, no leída: despacio se entiende, y de camino se agradece.'),
+      interruptor('vozRotulos', 'Nombrar cada sección',
+        'Dice «Himno», «Salmodia», «Lectura breve» —y en la misa «Colecta», '
+        + '«Evangelio»— antes de cada una: con la pantalla apagada es lo '
+        + 'único que sitúa.'),
+      tira('vozPausa', 'Silencio entre secciones',
+        'Dentro de una sección el silencio lo pone la puntuación del texto, '
+        + 'que la dice el motor de corrido: por eso no se corta con la '
+        + 'pantalla apagada.'),
+      interruptor('vozSigue', 'Al acabar, la hora siguiente',
+        'Sólo en las horas: empieza la siguiente sin tocar nada, hasta '
+        + 'Completas. Para un viaje largo. Una misa no sigue en otra, y de '
+        + 'una oración del devocionario no se pasa sola a la de al lado.')
+    ]),
 
     rotulo('La misa'),
     seccion('lengua', 'La lengua de la misa', ICONO_AJ.lengua, [
@@ -3827,28 +3861,6 @@ function verAjustes() {
         'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
         + 'nada: queda marcada aquella cuyo final has llegado a leer.')
     ]),
-    seccion('voz', 'Rezar en alta voz', ICONO_VOZ.voz, [
-      bloqueVoz(),
-      tarjetas('vozMotor', 'Qué voz', ''),
-      E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
-        : E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
-        : sel('voz', 'La voz del teléfono', vocesQueHay(),
-          [['', 'La que haya']].concat(vocesDeLaVoz()
-            .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
-      tira('vozVel', 'Velocidad',
-        'Rezada, no leída: despacio se entiende, y de camino se agradece.'),
-      interruptor('vozRotulos', 'Nombrar cada sección',
-        'Dice «Himno», «Salmodia», «Lectura breve» antes de cada una: con la '
-        + 'pantalla apagada es lo único que sitúa.'),
-      tira('vozPausa', 'Silencio entre secciones',
-        'Dentro de una sección el silencio lo pone la puntuación del texto, '
-        + 'que la dice el motor de corrido: por eso no se corta con la '
-        + 'pantalla apagada.'),
-      interruptor('vozSigue', 'Al acabar, la hora siguiente',
-        'Empieza la siguiente sin tocar nada, hasta Completas. Para un viaje '
-        + 'largo.')
-    ]),
-
     rotulo('El año y la app'),
     seccion('calendario', 'Calendario', ICONO_AJ.calendario, [
       tira('epifania', 'Epifanía',
@@ -4505,6 +4517,7 @@ function pintaOracion(id) {
     vista.innerHTML = '<p class="aviso">No encuentro esa oración.</p>';
     return;
   }
+  E.devoPieza = p;
   // manda el título latino, que es el nombre de la oración; el castellano
   // va debajo, y cuando no hay más que el primer renglón, ése
   modoPanel(tx(p.tla));
@@ -4522,13 +4535,26 @@ function pintaOracion(id) {
     '<span class="devo-insignia' + (p.es ? '' : ' apagada') + '">'
     + (p.es ? 'latín y castellano' : 'sólo en latín') + '</span>'
   ];
+  // La oración va en una caja de las que se rezan, la misma que la hora y
+  // el formulario: con eso se dice en alta voz y se sigue con los mandos,
+  // sin que el reproductor sepa que esto es el devocionario.
   vista.innerHTML = devoAtras(l.href, l.rot)
     + '<p class="devo-ficha">' + ficha.join('') + '</p>'
+    + '<section class="hora-sec devo-sec" data-cl="oracion">'
     + '<div class="devo">'
     + bilingue('<div lang="la">' + devoLatin(p) + '</div>',
       devoCastellano(p))
-    + '</div>' + devoProcedencia(p) + devoPasa(l, l.ids.indexOf(p.id));
+    + '</div></section>'
+    + devoProcedencia(p) + devoPasa(l, l.ids.indexOf(p.id));
+  // y la letra y el altavoz a la mano: la cabecera se queda arriba al bajar,
+  // así que las dos aes están a mano a media oración y no sólo al empezar.
+  // El panel esconde el renglón de abajo —en una página sin fecha no dice
+  // nada— y aquí vuelve, que es donde van los mandos y el título castellano.
+  $('#cab-zoom').innerHTML = botonVoz() + controlZoom();
+  $('#cabecera').classList.add('con-mandos');
+  cabeceraFija(true);
   colocaPosicion();
+  vozTrasPintar();
 }
 
 /** Un capítulo. Abre con su portadilla —el número en romanos y de qué
@@ -4770,6 +4796,8 @@ function pintaDevocionario() {
 
 async function verDevocionario(que, cual, mas) {
   E.vista = 'devocionario';
+  // la oración abierta, sólo mientras lo esté: es lo que la voz lee aquí
+  E.devoPieza = null;
   // se llega desde Inicio, y es allí donde se vuelve
   marcaBarra('portada');
   modoPanel('Devocionario');
@@ -6957,7 +6985,7 @@ const V = {
   guion: null,          // los trozos que hay que decir, en orden
   i: 0,                 // el trozo que suena
   estado: 'parada',     // parada | diciendo | pausada
-  iso: null, hora: null,   // de qué hora es el guión que está armado
+  que: null,            // de qué página es el guión armado (ver loQueSeLee)
   silencio: null,       // el audio mudo que mantiene viva la página
   audio: null,          // el <audio> del motor en línea
   url: null,            // su blob, para soltarlo al acabar
@@ -6995,14 +7023,20 @@ const ICONO_VOZ = {
 /* ------------------------------------------------- qué se dice y qué no
  * El texto que llega a la voz es el de la página menos lo que allí no se
  * lee en alta voz: la rúbrica, la cruz del flexo —que es una marca, no una
- * palabra— y el rotulito de la edición española. */
+ * palabra—, el rotulito de la edición española y la cita, que en la misa va
+ * dentro de la fórmula que sí se dice: de «Lectura del libro de los Hechos
+ * de los Apóstoles · Hch 2, 1-11» se dice lo primero y no lo segundo. */
 function textoDicho(el) {
   let t = '';
   el.childNodes.forEach((n) => {
     if (n.nodeType === 3) { t += n.nodeValue; return; }
     if (n.nodeType !== 1) return;
+    // el número del versículo es una marca del libro, no una palabra: sin
+    // esto, la lectura de la misa empieza diciendo «once en aquel tiempo»
+    if (n.tagName === 'SUP') return;
     if (n.classList.contains('rub') || n.classList.contains('cruz')
-      || n.classList.contains('ed-pdf')) return;
+      || n.classList.contains('ed-pdf')
+      || n.classList.contains('cita')) return;
     t += textoDicho(n);
   });
   return t;
@@ -7108,33 +7142,105 @@ function renglonesDe(p) {
   return lineas;
 }
 
-/** El guión de la hora que está en la pantalla. */
-function guionDeLaHora() {
+/* ------------------------------------------ qué página se está leyendo
+ * La voz empezó en las horas, y la misa y el devocionario se leen igual:
+ * una página de cajas con renglones. Lo poco que cambia de una a otra va
+ * aquí —quién es, de dónde salen los nombres de sus secciones, cómo se
+ * llama lo que se lee y qué pasa al acabar—, y el resto del reproductor no
+ * vuelve a preguntar en qué libro está.
+ *
+ * `k` dice quién es, y con eso se sabe, después de pintar, si lo que hay
+ * delante sigue siendo aquello de lo que se armó el guión: pasar a otra
+ * hora, a otro formulario o a otra oración para la voz; elegir otra opción
+ * dentro de la misma página, no. */
+function loQueSeLee() {
+  if (E.vista === 'horas' && E.oficio) {
+    return { v: 'horas', k: 'h|' + E.fecha + '|' + E.hora + '|'
+      + E.oficio.op.id, secs: E.oficio.secciones, rot: 'Oficio',
+      nada: 'No hay nada que decir en esta hora.' };
+  }
+  if (E.vista === 'hoy') {
+    // el formulario entero trae sus secciones armadas; mientras el Misal no
+    // está, la misa son sus lecturas, y cada lectura es una caja que no
+    // tiene sección detrás: su nombre se lee de la página
+    return { v: 'misa', k: 'm|' + (E.claveMisa || '')
+      + (E.misaVista ? '|formulario' : '|lecturas'),
+      secs: E.misaVista ? E.misaVista.secciones : [], rot: 'Misa',
+      nada: 'No hay nada que decir en este formulario.' };
+  }
+  if (E.vista === 'devocionario' && E.devoPieza) {
+    return { v: 'devo', k: 'd|' + E.devoPieza.id,
+      secs: [{ cl: 'oracion', nombre: tx(E.devoPieza.tla) }], rot: 'Oración',
+      nada: 'No hay nada que decir en esta oración.' };
+  }
+  return null;
+}
+
+/** Las cajas que se dicen: la hora, el formulario y la oración las pintan de
+ *  la misma hechura, y las lecturas solas de la misa van cada una en la
+ *  suya. Hijas de la vista y no descendientes: la misa entera mete las
+ *  lecturas dentro de sus secciones, y no se han de contar dos veces. */
+const SEC_VOZ = '#vista > .hora-sec, #vista > .lect';
+
+/** Los párrafos que se dicen de una caja: las estrofas de la hora, si las
+ *  trae, y si no todos, menos los que en la página no se rezan:
+ *
+ *  · el latín que tiene su castellano enfrente. La columna latina del
+ *    bilingüe no se dice —la voz es española y lo mismo está al lado en
+ *    castellano—, pero el latín solo sí: en una versión latina a secas, y en
+ *    la oración del devocionario que no está traducida, es lo único que hay;
+ *  · la rúbrica, que en la misa es un párrafo entero y no una tirada;
+ *  · lo que dice de dónde sale la pieza —«del día», el epigrafe del
+ *    prefacio— y los avisos de la app, que son de la app y no del libro;
+ *  · y lo que está plegado dentro de la caja. */
+function parrafosDichos(caja) {
+  const est = caja.querySelectorAll('p.estrofa-h');
+  const ps = est.length ? est : caja.querySelectorAll('p');
+  const CALLA = ['ordo-rub', 'testigo', 'epigrafe', 'omision', 'aviso'];
+  return Array.prototype.filter.call(ps, (p) => !p.closest('.bi-la')
+    && !p.closest('.cuerpo[hidden]')
+    && !CALLA.some((c) => p.classList.contains(c)));
+}
+
+/** Cómo se llama una caja: su sección armada lo sabe, y donde no hay
+ *  sección —las lecturas solas— se lee el rótulo que lleve puesto. */
+function nombreDeCaja(s, caja) {
+  if (s) return nombreSeccion(s);
+  const r = caja.querySelector('.rubrica, .sec-cab .vs, h3');
+  const t = (r ? r.textContent : '').trim();
+  return t ? t.charAt(0) + t.slice(1).toLowerCase() : '';
+}
+
+/** El guión de la página que está en la pantalla. */
+function guionDeLaPagina() {
   const guion = [];
-  const secs = document.querySelectorAll('#vista .hora-sec');
+  const q = loQueSeLee();
+  const secs = document.querySelectorAll(SEC_VOZ);
   const pausa = PAUSA[E.cfg.vozPausa] || 1;
-  secs.forEach((sec, j) => {
-    // lo plegado no se ve, y lo que no se ve no se dice
-    if (sec.querySelector('.cuerpo[hidden]')) return;
-    const s = E.oficio && E.oficio.secciones[j];
-    const prosa = sec.classList.contains('prosa');
-    const parrafos = sec.querySelectorAll('p.estrofa-h');
+  secs.forEach((caja, j) => {
+    // Lo plegado no se ve, y lo que no se ve no se dice. Su propio cuerpo y
+    // no cualquiera de dentro: en la misa cada sección lleva plegadas las
+    // rúbricas del Ordo que la rodean, y por una rúbrica escondida no se ha
+    // de callar la colecta que está debajo, a la vista.
+    const propio = caja.querySelector(':scope > .cuerpo');
+    if (propio && propio.hidden) return;
+    const s = q && q.secs[j];
+    const prosa = caja.classList.contains('prosa');
     const suyos = [];
-    (parrafos.length ? parrafos : sec.querySelectorAll('.cuerpo p'))
-      .forEach((p) => {
-        const lineas = renglonesDe(p);
-        if (!lineas.length) return;
-        for (const tz of trozosDeEstrofa(j, s ? s.cl : '', lineas, prosa,
-          Math.round(320 * pausa))) suyos.push(tz);
-      });
-    if (!suyos.length) return;      // una sección sin nada que decir se salta
+    parrafosDichos(caja).forEach((p) => {
+      const lineas = renglonesDe(p);
+      if (!lineas.length) return;
+      for (const tz of trozosDeEstrofa(j, s ? s.cl : '', lineas, prosa,
+        Math.round(320 * pausa))) suyos.push(tz);
+    });
+    if (!suyos.length) return;      // una caja sin nada que decir se salta
     // el rótulo, delante: con la pantalla apagada es lo único que dice por
     // dónde va la hora
-    if (E.cfg.vozRotulos !== 'no' && s) {
-      const n = nombreSeccion(s);
+    if (E.cfg.vozRotulos !== 'no') {
+      const n = nombreDeCaja(s, caja);
       if (n) {
         guion.push({ sec: j, cl: '@rotulo', texto: n + '.', base: 0,
-          tabla: [{ off: 0, nodo: sec.querySelector('.sec-cab') || sec }],
+          tabla: [{ off: 0, nodo: caja.querySelector('.sec-cab') || caja }],
           pausa: Math.round(420 * pausa) });
       }
     }
@@ -7355,7 +7461,7 @@ function suena(k, idx) {
 function acabo(k) {
   if (V.estado !== 'diciendo' || k !== V.i || !V.guion) return;
   const tz = V.guion[k];
-  if (k + 1 >= V.guion.length) { seAcaboLaHora(); return; }
+  if (k + 1 >= V.guion.length) { seAcabo(); return; }
   // el motor del sistema trae por delante toda la sección: si queda cola,
   // sigue él solo y aquí no hay nada que hacer
   if (hablaElSistema() && k + 1 < V.hasta) { V.i = k + 1; return; }
@@ -7372,8 +7478,12 @@ function esperaY(ms, f) {
   V.pasa = setTimeout(f, Math.max(60, ms || 60));
 }
 
-function seAcaboLaHora() {
+function seAcabo() {
   resalta(null);
+  // encadenar es cosa de las horas: una misa no sigue en otra, y de una
+  // oración del devocionario no se pasa a la de al lado sin pedirlo
+  const q = loQueSeLee();
+  if (!q || q.v !== 'horas') { paraVoz(); return; }
   marcaRezada(E.hora);
   // de viaje se encadena: acabada una hora empieza la siguiente sin tocar
   // nada. De Completas no se pasa, que ahí se acaba el día.
@@ -7395,7 +7505,7 @@ function seAcaboLaHora() {
 function trozoALaVista() {
   if (!V.guion || !V.guion.length) return 0;
   const corte = $('#cabecera').getBoundingClientRect().bottom + 24;
-  const secs = document.querySelectorAll('#vista .hora-sec');
+  const secs = document.querySelectorAll(SEC_VOZ);
   let n = 0;
   secs.forEach((s, i) => {
     if (s.getBoundingClientRect().top <= corte) n = i;
@@ -7410,8 +7520,9 @@ function arrancaVoz(desde) {
     pintaBarraVoz();
     return;
   }
-  V.guion = guionDeLaHora();
-  V.iso = E.fecha; V.hora = E.hora;
+  const q = loQueSeLee();
+  V.guion = guionDeLaPagina();
+  V.que = q ? q.k : null;
   V.motor = E.cfg.vozMotor === 'linea' || E.cfg.vozMotor === 'piper'
     ? E.cfg.vozMotor : 'sistema';
   V.fallos = 0;
@@ -7425,7 +7536,7 @@ function arrancaVoz(desde) {
   }
   V.manos = 0;
   if (!V.guion.length) {
-    V.aviso = 'No hay nada que decir en esta hora.';
+    V.aviso = (q && q.nada) || 'No hay nada que decir aquí.';
     pintaBarraVoz();
     return;
   }
@@ -7502,10 +7613,17 @@ function paraVoz() {
  *  el versículo. */
 function otraSeccionVoz(n) {
   if (!V.guion || !V.guion.length) return;
+  // una página de una sola caja —una oración del devocionario— no tiene
+  // secciones que saltar: allí el mando pasa de trozo, que es lo que hay
+  if (V.guion.every((tz) => tz.sec === V.guion[0].sec)) {
+    if (n > 0 && V.i + 1 >= V.guion.length) { seAcabo(); return; }
+    vaATrozo(V.i + n);
+    return;
+  }
   const hoy = V.guion[V.i].sec;
   if (n > 0) {
     const k = V.guion.findIndex((tz, j) => j > V.i && tz.sec > hoy);
-    if (k < 0) { seAcaboLaHora(); return; }
+    if (k < 0) { seAcabo(); return; }
     vaATrozo(k);
     return;
   }
@@ -7785,15 +7903,26 @@ const PIPER = {
 };
 
 /* Las voces, con lo que pesan: el motor son 29 MB más, la primera vez, que
- * comparten todas. La de sharvard son dos hablantes en un mismo modelo, y
- * se baja una vez para los dos. La italiana es la pronunciación eclesiástica
- * del latín; las horas están en castellano, así que hoy lo que hace es leer
- * el castellano con acento de Roma, y está para cuando haya latín que decir. */
+ * comparten todas.
+ *
+ * Las mexicanas van primero y una de ellas viene puesta, porque es la
+ * lengua del libro: el castellano de la app es la traducción litúrgica de
+ * México y el calendario es el de allá. Y no es sólo el acento: a espeak se
+ * le pide `es-419` en vez de `es`, así que sesean —«grasia», no «graθia»—,
+ * que es como se reza esto. Las de España distinguen la c y la z.
+ *
+ * La de sharvard son dos hablantes en un mismo modelo, y se baja una vez
+ * para los dos. Las italianas son la pronunciación eclesiástica del latín;
+ * las horas están en castellano, así que hoy lo que hacen es leerlo con
+ * acento de Roma, y están para cuando haya latín que decir. */
 const VOCES_PIPER = [
+  ['es_MX-claude-high', 'México · mujer · 63 MB'],
+  ['es_MX-ald-medium', 'México · hombre · 63 MB'],
+  ['es_MX-ald-x_low', 'México · hombre, ligera y rápida · 21 MB'],
   ['es_ES-sharvard-medium:F', 'España · mujer · 77 MB'],
   ['es_ES-sharvard-medium:M', 'España · hombre · la misma descarga'],
   ['es_ES-davefx-medium', 'España · hombre (2) · 63 MB'],
-  ['es_ES-carlfm-x_low', 'España · hombre, ligera y rápida · 28 MB'],
+  ['es_ES-carlfm-x_low', 'España · hombre, la más rápida · 28 MB'],
   ['it_IT-paola-medium', 'Italiana · mujer · para el latín · 64 MB'],
   ['it_IT-riccardo-x_low', 'Italiana · hombre, ligera · 28 MB']
 ];
@@ -8055,7 +8184,9 @@ function pintaBarraVoz() {
     return;
   }
   const tz = V.guion && V.guion[V.i];
-  const s = tz && E.oficio && E.oficio.secciones[tz.sec];
+  const q = loQueSeLee();
+  const caja = tz ? document.querySelectorAll(SEC_VOZ)[tz.sec] : null;
+  const nom = caja ? nombreDeCaja(q && q.secs[tz.sec], caja) : '';
   const dice = V.estado === 'diciendo';
   c.hidden = false;
   // con un aviso puesto, el renglon se parte en dos: un motivo de fallo no
@@ -8071,7 +8202,7 @@ function pintaBarraVoz() {
     + '<button type="button" data-voz="luego" '
     + 'aria-label="Sección siguiente">' + ICONO_VOZ.luego + '</button>'
     + '<span class="voz-que">'
-    + esc(V.aviso || (s ? nombreSeccion(s) : 'Oficio'))
+    + esc(V.aviso || nom || (q && q.rot) || 'Oficio')
     + (V.estado === 'pausada' && !V.aviso ? ' · en pausa' : '') + '</span>'
     + '<button type="button" data-voz="para" aria-label="Dejar de leer">'
     + ICONO.cerrar + '</button>';
@@ -8095,13 +8226,14 @@ function alTocarVoz(ev) {
 }
 
 /** El botón que la pone en marcha, en la cabecera: al lado de las dos aes,
- *  que es lo que se queda a la vista al bajar. */
+ *  que es lo que se queda a la vista al bajar. Sale en las tres páginas que
+ *  se rezan —la hora, la misa y la oración del devocionario—. */
 function botonVoz() {
   if (!('speechSynthesis' in window)) return '';
   pideVoces();
   return '<button type="button" id="dale-voz" class="dale-voz" data-voz="dale"'
     + ' aria-pressed="' + (V.estado !== 'parada') + '"'
-    + ' aria-label="Leer la hora en alta voz">' + ICONO_VOZ.voz + '</button>';
+    + ' aria-label="Leer en alta voz">' + ICONO_VOZ.voz + '</button>';
 }
 
 /* ------------------------------------------------------- en Ajustes
@@ -8112,12 +8244,15 @@ function bloqueVoz() {
   const hay = vocesDeLaVoz().length;
   const es = pideVoces().filter((v) => /^es/i.test(v.lang)).length;
   return '<p class="aj-nota">'
-    + 'La hora se dice en alta voz desde el botón del altavoz, arriba a la '
-    + 'derecha, y se gobierna con los mandos de abajo. Está hecha para '
-    + 'rezarla de camino: el botón del volante o el de los auriculares pasa '
-    + 'de sección y la para, sin tocar la pantalla. Con la pantalla apagada '
-    + 'sigue mientras el teléfono la deje —eso lo decide él, no la app—, y '
-    + 'si la corta, al volver a mirarlo sigue por donde iba.'
+    + 'La hora, la misa y las oraciones del devocionario se dicen en alta '
+    + 'voz desde el botón del altavoz, arriba a la derecha, y se gobiernan '
+    + 'con los mandos de abajo. Está hecho para rezar de camino: el botón '
+    + 'del volante o el de los auriculares pasa de sección y para, sin '
+    + 'tocar la pantalla. Con la pantalla apagada sigue mientras el '
+    + 'teléfono la deje —eso lo decide él, no la app—, y si la corta, al '
+    + 'volver a mirarlo sigue por donde iba. Donde la página trae las dos '
+    + 'lenguas enfrentadas dice el castellano; el latín, sólo cuando no hay '
+    + 'traducción al lado.'
     + (hay && !es
       ? '<br><br>Este teléfono no trae ninguna voz española. Con la que haya '
         + 'se entiende, pero el castellano suena a extranjero: las voces se '
@@ -8188,7 +8323,8 @@ function vozTrasPintar() {
     return;
   }
   if (V.estado === 'parada') return;
-  if (V.iso === E.fecha && V.hora === E.hora) { rearmaVoz(); return; }
+  const q = loQueSeLee();
+  if (q && q.k === V.que) { rearmaVoz(); return; }
   paraVoz();
 }
 
@@ -8201,7 +8337,7 @@ function rearmaVoz() {
   const diciendo = V.estado === 'diciendo';
   clearTimeout(V.pasa);
   callaElMotor();
-  V.guion = guionDeLaHora();
+  V.guion = guionDeLaPagina();
   if (!V.guion.length) { paraVoz(); return; }
   const k = V.guion.findIndex((tz) => tz.sec >= sec);
   V.i = Math.max(0, k);

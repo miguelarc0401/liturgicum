@@ -1249,13 +1249,15 @@ def main():
     # --- lo que da el Misal mexicano ---------------------------------------
     # La oración de un santo en las horas es la colecta de su misa, y la misa
     # sí la trae el Misal mexicano (Missale, fase 4: `propios_es.json`, por
-    # celebración del calendario). Sirve para dos cosas:
-    #  · las celebraciones del calendario de México que no tienen oficio ni
-    #    en la fuente ni en los PDF (san Rafael Guízar, san Juan Pablo II,
-    #    Nuestra Señora de Fátima…): se rezan con su común, que se deduce del
-    #    título, y con su colecta como oración;
-    #  · la oración que salía del PDF (la traducción española), si el Misal
-    #    la tiene en la mexicana.
+    # celebración del calendario). Sólo para las celebraciones del calendario
+    # de México que no tienen oficio ni en la fuente ni en los PDF (san Rafael
+    # Guízar, san Juan Pablo II, Nuestra Señora de Fátima…): se rezan con su
+    # común, que se deduce del título, y con su colecta como oración. Donde el
+    # PDF sí trae la oración del santo no se toca: manda el libro de horas, con
+    # su marca «ed. española», aunque el Misal diga otra cosa —en san Calixto,
+    # por ejemplo, el Breviario conserva una fórmula anterior a la que hoy trae
+    # el Misal—. La preferencia de la fase 4 es la fuente, la fuente en otro
+    # sitio y el PDF, y el Misal no entra en ella.
     propios_misa = carga('propios_es.json', os.path.join(RAIZ, 'Missale',
                                                          'datos', 'libro'),
                          opcional=True) or {}
@@ -1268,7 +1270,7 @@ def main():
         return {'r': 'ORACION', 'l': [[], [[0, t]]]}
 
     HORAS_ORACION = ('oficio', 'laudes', 'tercia', 'sexta', 'nona', 'visperas')
-    de_misal, oracion_misal = [], []
+    de_misal = []
     for slug, m in sorted(titulos.items()):
         if m.get('k') != 's' or slug in santo_de_slug:
             continue
@@ -1286,14 +1288,6 @@ def main():
         santo_de_slug[slug] = santo
         casillas[santo][md] += 1
         de_misal.append((m['t'], lista))
-    for slug, santo in sorted(santo_de_slug.items()):
-        c = colecta_de(slug)
-        if not c:
-            continue
-        for k in [k for k, v in extra.items() if k.endswith('/oracion')
-                  and v.get('f') == 'pdf' and k.split('/')[1] == santo]:
-            extra[k] = c
-            oracion_misal.append(k)
 
     # --- las ferias de Navidad que la fuente no publicó ---------------------
     # Del 2 de enero al Bautismo el propio va por fecha, y de cuatro días la
@@ -1710,8 +1704,6 @@ def main():
                 f'Misal mexicano\n')
         for t, lista in de_misal:
             f.write(f'          {t}  ->  {", ".join(lista) or "(sin común)"}\n')
-        f.write(f'{len(oracion_misal):8d}  oraciones del PDF cambiadas por la '
-                f'colecta del Misal mexicano\n')
         f.write(f'{len(tiempo_ciclo):8d}  antífonas evangélicas del domingo '
                 f'con texto propio de otro ciclo (A, B, C)\n')
         f.write(f'{cuentas["con casilla por fecha"]:8d}  fechas que van por '
