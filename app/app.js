@@ -70,7 +70,9 @@ const E = {              // todo el estado de la app
   claveVista: null,      // qué se está leyendo, para saber si es lo mismo
   ultimaMisa: null,      // la ruta de la misa que se leía
   calQ: '',              // lo que se busca en el calendario
-  calAHoy: false         // el calendario que se abre, a centrar en hoy
+  calAHoy: false,        // el calendario que se abre, a centrar en hoy
+  devoQ: '',             // lo que se busca en el devocionario
+  devoVuelta: null       // la lista del devocionario de la que se viene
 };
 
 const $ = (s) => document.querySelector(s);
@@ -3348,32 +3350,36 @@ function alTocarPaso(ev) {
     aplicaCfg();
   }
   refrescaPasos();
+  refrescaResumenes();
 }
 
 /* Una pestaña por sección, con su muestra y sus tres mandos. «Igual que
  * todas» no guarda nada: es la ausencia de valor, y entonces manda el
  * formato general. */
 function bloqueFmt(g) {
-  const selFmt = (campo, etiqueta, ops) => {
+  // una tira por campo, con «igual que todas» delante: es lo que vale
+  // mientras la sección no diga nada, y así se ve que es lo que vale
+  const tiraFmt = (campo, etiqueta, ops) => {
     const v = (((E.cfg.fmt || {})[g[0]] || {})[campo]) || '';
-    return '<div class="ajuste"><label for="aj-f-' + g[0] + '-' + campo
-      + '">' + etiqueta + '</label><select id="aj-f-' + g[0] + '-' + campo
-      + '" data-fmt="' + g[0] + '" data-campo="' + campo + '">'
-      + ops.map(([x, t]) => '<option value="' + x + '"'
-        + (v === x ? ' selected' : '') + '>' + t + '</option>').join('')
-      + '</select></div>';
+    return '<div class="ajuste apilado" role="radiogroup" aria-label="'
+      + etiqueta + '"><span class="eti">' + etiqueta + '</span>'
+      + '<div class="tira">' + ops.map(([x, t]) => '<label><input '
+        + 'type="radio" name="aj-f-' + g[0] + '-' + campo + '" data-fmt="'
+        + g[0] + '" data-campo="' + campo + '" value="' + x + '"'
+        + (v === x ? ' checked' : '') + '><span>' + t + '</span></label>')
+        .join('') + '</div></div>';
   };
   return '<details class="fmt-grupo"><summary>' + esc(g[1]) + '</summary>'
     + '<div class="fmt-cuerpo"><p class="pista-g">' + esc(g[2]) + '</p>'
     + muestraGrupo(g[0], g[3])
-    + selFmt('justifica', 'Alineación', [['', 'Igual que todas'],
+    + tiraFmt('justifica', 'Alineación', [['', 'Igual que todas'],
       ['si', 'Justificado'], ['no', 'A la izquierda']])
-    + '<div class="ajuste ancho"><span class="eti">Interlineado</span>'
+    + '<div class="ajuste apilado"><span class="eti">Interlineado</span>'
     + '<div class="mandos-paso">' + pasoInterlinea(g[0])
     + '<button type="button" class="vuelve-general" data-grupo="' + g[0]
     + '"' + ((((E.cfg.fmt || {})[g[0]] || {}).interlinea) ? '' : ' disabled')
     + '>Igual que todas</button></div></div>'
-    + selFmt('particion', 'Partir las palabras', [['', 'Igual que todas'],
+    + tiraFmt('particion', 'Partir las palabras', [['', 'Igual que todas'],
       ['si', 'Sí'], ['no', 'No']])
     + '</div></details>';
 }
@@ -3384,15 +3390,15 @@ function bloqueFmt(g) {
  * pintarse, para que se reconozca lo que se marca. */
 function piezasDeLaMisa() {
   const puestas = piezasPuestas() || [];
-  return '<div class="ajuste ancho piezas"><label>Las piezas'
-    + '<span class="pista">En el orden de la misa. El Gloria y la profesión '
+  return '<div class="ajuste apilado piezas"><span class="eti">Las piezas</span>'
+    + '<p class="pista">En el orden de la misa. El Gloria y la profesión '
     + 'de fe salen sólo los días que el Misal los manda, aunque aquí estén '
     + 'marcados: eso lo dice el formulario del día y no se toca desde '
-    + 'aquí.</span></label><div class="casillas">'
+    + 'aquí.</p><div class="casillas">'
     + MISA_PIEZAS.map(([id, rot, deOrdo]) =>
       '<label class="casilla"><input type="checkbox" data-pieza="' + esc(id)
       + '"' + (puestas.indexOf(id) >= 0 ? ' checked' : '') + '><span>'
-      + esc(rot) + (deOrdo ? '<em> · del Ordinario</em>' : '')
+      + esc(rot) + (deOrdo ? '<em>del Ordinario</em>' : '')
       + '</span></label>').join('')
     + '</div></div>';
 }
@@ -3411,279 +3417,470 @@ function recuerdaAjustes() {
   _ajustesAbiertas = t;
 }
 
-/* Las tres latinas, para el mando del bilingüe: las mismas de «Versión»,
- * sin el castellano ni el bilingüe mismo. */
-const LATINES = [['clementina', 'Vulgata Clementina'],
-  ['nova', 'Nova Vulgata'],
-  ['lect1977', 'Misal con lecturas · Roma, 1977']];
+/* ------------------------------------------------- los mandos de Ajustes
+ * Cada ajuste lleva el mando que le va a lo que se elige, y no una lista
+ * desplegable para todo: la lista esconde las opciones hasta que se abre, y
+ * lo que aquí se elige se entiende mejor viéndolo.
+ *
+ *  · sí o no: un interruptor, que se lee de lejos.
+ *  · dos, tres o cuatro opciones cortas: una tira, todas a la vista.
+ *  · opciones que hay que explicar —la versión, qué se enseña de la misa,
+ *    la voz—: una tarjeta cada una, con lo que trae.
+ *  · la letra, el papel y el color: la muestra misma, que es lo que se
+ *    elige.
+ *  · las listas largas —las voces del teléfono—: la lista de siempre.
+ *
+ * Todos van con el prefijo `aj-` y los oye `alCambiarAjuste`. El
+ * interruptor dice qué vale encendido y qué apagado (`data-si`, `data-no`),
+ * y las opciones de una tira o de unas tarjetas dicen de qué ajuste son
+ * (`data-aj`): son varias, y no pueden llevar todas el mismo `id`. */
 
-/** Qué se enseña de cada fuente latina. Son tres textos latinos distintos y
- *  no tres maneras de imprimir el mismo, y lo que cada uno trae de suyo no
- *  se ve con sólo cambiar de versión: hace falta decirlo. */
-function notaFuentes() {
-  return '<div class="ajuste ancho"><dl class="nota-fuentes">'
-    + '<dt>Vulgata Clementina</dt><dd>La Vulgata de siempre, con su '
-    + '<i>j</i> y sus ligaduras, y la fórmula con que el leccionario '
-    + 'presenta cada lectura.</dd>'
-    + '<dt>Nova Vulgata</dt><dd>El latín de los libros litúrgicos '
-    + 'vigentes. Numera los salmos a la hebrea, y la cita dice entre '
-    + 'corchetes dónde queda el salmo en ella.</dd>'
-    + '<dt>Misal con lecturas · Roma, 1977</dt><dd>La Nova en el Nuevo '
-    + 'Testamento y en los salmos, y la Clementina en el Antiguo: es lo '
-    + 'que aquel libro lee, y de él se toma la decisión, no la letra. '
-    + 'Suyos son el íncipit («In illo témpore», «Fratres») y la fórmula; '
-    + 'el salmo en estrofas y renglones, como él lo imprime; y la '
-    + 'aclamación antes del Evangelio, que en Cuaresma no es el Allelúia '
-    + 'sino el «Versus ante Evangelium».</dd>'
-    + '</dl></div>';
+/** Las opciones con nombre, para los mandos y para el resumen que cada
+ *  pestaña lleva bajo su título. El tercer campo, donde lo hay, es lo que
+ *  trae esa opción, y va dentro de su tarjeta. */
+const AJ_OPS = {
+  fuente: [
+    ['clementina', 'Vulgata Clementina', 'La Vulgata de siempre, con su '
+      + '<i>j</i> y sus ligaduras, y la fórmula con que el leccionario '
+      + 'presenta cada lectura.'],
+    ['nova', 'Nova Vulgata', 'El latín de los libros litúrgicos vigentes. '
+      + 'Numera los salmos a la hebrea, y la cita dice entre corchetes dónde '
+      + 'queda el salmo en ella.'],
+    ['lect1977', 'Misal con lecturas · Roma, 1977', 'La Nova en el Nuevo '
+      + 'Testamento y en los salmos, y la Clementina en el Antiguo: es lo '
+      + 'que aquel libro lee, y de él se toma la decisión, no la letra. '
+      + 'Suyos son el íncipit («In illo témpore», «Fratres») y la fórmula; '
+      + 'el salmo en estrofas y renglones, como él lo imprime; y la '
+      + 'aclamación antes del Evangelio, que en Cuaresma no es el Allelúia '
+      + 'sino el «Versus ante Evangelium».'],
+    ['es', 'Castellano · misalito de México', 'La traducción litúrgica '
+      + 'aprobada para México, cosechada del misalito mensual de 2018 a '
+      + '2026: dos de cada tres lecturas la tienen, y lo que no se imprimió '
+      + 'nunca lo dice en su sitio.'],
+    ['bi', 'Bilingüe · latín y castellano', 'El castellano enfrentado a uno '
+      + 'de los tres latines, el que se diga aquí debajo: en el teléfono, '
+      + 'uno encima de otro; en una pantalla ancha, a dos columnas.']
+  ],
+  latinBi: [['clementina', 'Clementina'], ['nova', 'Nova Vulgata'],
+    ['lect1977', 'Misal de 1977']],
+  misaVer: [
+    ['todo', 'Todo, en el orden de la misa', 'El formulario entero, con el '
+      + 'Ordinario intercalado donde va.'],
+    ['breve', 'Lo breve: lo que cambia y se dice', 'Antífona de entrada, el '
+      + 'Gloria los días que lo lleva, la colecta, las lecturas con su salmo '
+      + 'y su aclamación, la oración de los fieles, la de las ofrendas, la '
+      + 'antífona de comunión y la oración después de la comunión.'],
+    ['propio', 'Lo que yo elija', 'Una casilla por pieza, en el orden de la '
+      + 'misa. La lista empieza por lo que se estuviera viendo.']
+  ],
+  ordinario: [['plegado', 'Plegado'], ['abierto', 'Abierto'],
+    ['no', 'Sin él']],
+  letra: [['serif', 'De libro'], ['antigua', 'De misal'],
+    ['gruesa', 'De libro, gruesa'], ['periodico', 'De periódico'],
+    ['sans', 'De pantalla'], ['humanista', 'De pantalla, suave'],
+    ['ancha', 'De pantalla, ancha']],
+  tema: [['auto', 'Según el teléfono'], ['claro', 'Claro'],
+    ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']],
+  color: [['dia', 'El del día'], ['verde', 'Verde'], ['rojo', 'Rojo'],
+    ['morado', 'Morado'], ['blanco', 'Dorado'], ['azul', 'Azul'],
+    ['neutro', 'Granate']],
+  medida: [['normal', 'Estrecha, como un libro'],
+    ['ancha', 'Toda la pantalla']],
+  inicio: [['menu', 'Preguntar'], ['misa', 'La misa'],
+    ['horas', 'Las horas']],
+  epifania: [['domingo', 'Domingo entre el 2 y el 8'],
+    ['6enero', 'Siempre el 6 de enero']],
+  ascension: [['domingo', 'Trasladada al domingo'],
+    ['jueves', 'Jueves, a los 40 días']],
+  corpus: [['domingo', 'Trasladado al domingo'], ['jueves', 'Jueves']],
+  memorias: [
+    ['santo', 'Las del santo', 'Lo que pone la Tabla de los días '
+      + 'litúrgicos, que deja la memoria por encima de la feria.'],
+    ['feria', 'La lectura continua de la feria', 'Lo que manda el Ordo '
+      + 'lectionum Missae (n. 82), salvo que el santo tenga lecturas '
+      + 'propias.']
+  ],
+  hLibre: [['santo', 'El oficio del santo'], ['feria', 'El de la feria']],
+  hComun: [['comun', 'Del común'], ['dia', 'Del día']],
+  vozMotor: [
+    ['sistema', 'La del teléfono', 'Viene con el sistema y habla sin '
+      + 'conexión. Lee bien, pero es voz de máquina.'],
+    ['piper', 'Piper · neuronal, en el teléfono', 'Suena a persona. Se baja '
+      + 'una vez, vive en el teléfono y habla sin conexión y sin cuenta.'],
+    ['linea', 'Un servicio en línea', 'Suena mejor aún, pero pide conexión '
+      + 'y una cuenta con tarjeta.']
+  ],
+  vozVel: [[85, 'Despacio'], [100, 'Normal'], [115, 'Deprisa'],
+    [130, 'Muy deprisa']],
+  vozPausa: [['corta', 'Poco'], ['normal', 'Normal'], ['larga', 'Mucho']]
+};
+
+function nombreOp(id, v) {
+  const o = (AJ_OPS[id] || []).find((x) => String(x[0]) === String(v));
+  return o ? o[1] : '';
+}
+
+/* El icono de cada pestaña, del mismo juego de trazo que los de la barra:
+ * el renglón, el papel a medias, los dos bocadillos de las dos lenguas, la
+ * lista con sus marcas, el reloj, el altavoz, el calendario y la puerta. */
+const ICONO_AJ = {
+  formato: svg('<path d="M4 6.5h16M4 10.5h16M4 14.5h16M4 18.5h9.5"/>'),
+  aspecto: svg('<circle cx="12" cy="12" r="8"/>'
+    + '<path d="M12 4a8 8 0 0 0 0 16Z" fill="currentColor"/>'),
+  lengua: svg('<path d="M4.5 5.5h9.5v7H9l-3.2 2.7v-2.7H4.5z"/>'
+    + '<path d="M14 9.5h5.5v7h-1.3v2.7L15 16.5h-4.5v-2"/>'),
+  misa: svg('<path d="M9.5 7H20M9.5 12H20M9.5 17H20"/>'
+    + '<path d="m3.8 7 1.1 1.1L7 6M3.8 12l1.1 1.1L7 11M3.8 17l1.1 1.1L7 16"/>'),
+  horas: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  calendario: svg('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/>'
+    + '<path d="M3.5 10h17M8 3v4M16 3v4"/>'),
+  abrir: svg('<path d="M14 4h4.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 '
+    + '1.5H14"/><path d="M4 12h10M10.5 8.5 14 12l-3.5 3.5"/>')
+};
+
+/** Lo que cada pestaña tiene puesto, en un renglón bajo su título: así se
+ *  ve sin abrirla, y se aprende qué hay dentro antes de ir a buscarlo. */
+function resumenAjustes(k) {
+  const c = E.cfg;
+  const junta = (xs) => xs.filter(Boolean).join(' · ');
+  if (k === 'formato') {
+    return junta([c.tam + ' %', 'renglón ' + cifraRenglon(c.interlinea),
+      c.justifica === 'si' ? 'justificado' : 'a la izquierda',
+      c.fmtUno === 'si' ? '' : 'cada sección el suyo']);
+  }
+  if (k === 'aspecto') {
+    return junta([nombreOp('letra', c.letra),
+      { auto: 'papel según el teléfono', claro: 'papel claro',
+        sepia: 'papel sepia', oscuro: 'papel oscuro',
+        noche: 'de noche' }[c.tema],
+      c.color === 'dia' ? 'el color del día'
+        : 'color ' + nombreOp('color', c.color).toLowerCase()]);
+  }
+  if (k === 'lengua') {
+    const latin = { clementina: 'la Clementina', nova: 'la Nova',
+      lect1977: 'el Misal de 1977' };
+    return junta([c.fuente === 'bi'
+      ? 'Bilingüe, con ' + (latin[c.latinBi] || 'la Clementina')
+      : nombreOp('fuente', c.fuente).split(' · ')[0],
+    c.acentos ? 'con acentos' : 'sin acentos',
+    c.numeros ? 'con versículos' : 'sin versículos']);
+  }
+  if (k === 'misa') {
+    if (c.misaVer === 'breve') return 'Lo breve: lo que cambia y se dice';
+    if (c.misaVer === 'propio') {
+      const n = (piezasPuestas() || []).length;
+      return 'Lo que yo elija · ' + n + (n === 1 ? ' pieza' : ' piezas');
+    }
+    return 'Todo · ' + ({ abierto: 'el Ordinario abierto',
+      no: 'sin el Ordinario' }[c.ordinario] || 'el Ordinario plegado');
+  }
+  if (k === 'horas') {
+    return junta([c.hLibre === 'feria' ? 'La feria en las memorias libres'
+      : 'El santo en las memorias libres',
+    c.hComun === 'dia' ? 'lo no propio, del día' : 'lo no propio, del común']);
+  }
+  if (k === 'voz') {
+    return junta([{ piper: 'Piper', linea: 'Un servicio en línea' }[c.vozMotor]
+      || 'La voz del teléfono', nombreOp('vozVel', c.vozVel).toLowerCase(),
+    c.vozSigue === 'si' ? 'sigue con la hora siguiente' : '']);
+  }
+  if (k === 'calendario') {
+    const dom = ['epifania', 'ascension', 'corpus']
+      .filter((x) => c[x] === 'domingo').length;
+    return junta([dom === 3 ? 'Epifanía, Ascensión y Corpus, en domingo'
+      : junta([c.epifania === 'domingo' ? 'Epifanía en domingo'
+        : 'Epifanía el 6 de enero',
+      c.ascension === 'domingo' ? 'Ascensión en domingo'
+        : 'Ascensión en jueves',
+      c.corpus === 'domingo' ? 'Corpus en domingo' : 'Corpus en jueves']),
+    c.memorias === 'feria' ? 'en las memorias, la feria'
+      : 'en las memorias, el santo']);
+  }
+  if (k === 'abrir') {
+    return { misa: 'Abre la misa de hoy',
+      horas: 'Abre la hora que toca' }[c.inicio] || 'Pregunta qué libro abrir';
+  }
+  return '';
+}
+
+/** El resumen, al día: se toca un ajuste y cambia el renglón de su
+ *  pestaña sin repintar nada más. */
+function refrescaResumenes() {
+  document.querySelectorAll('.ajustes-sec[data-clave]').forEach((d) => {
+    const r = d.querySelector('.aj-resumen');
+    if (r) r.textContent = resumenAjustes(d.dataset.clave);
+  });
 }
 
 function verAjustes() {
   E.vista = 'ajustes';
   marcaBarra('ajustes');
   modoPanel('Ajustes');
-  const sel = (id, etiqueta, pista, ops) =>
-    '<div class="ajuste"><label for="aj-' + id + '">' + etiqueta
-    + (pista ? '<span class="pista">' + pista + '</span>' : '')
-    + '</label><select id="aj-' + id + '">' + ops.map(([v, t]) =>
-      '<option value="' + v + '"' + (E.cfg[id] === v ? ' selected' : '')
-      + '>' + t + '</option>').join('') + '</select></div>';
+  const pista = (t) => (t ? '<p class="pista">' + t + '</p>' : '');
+  const puesto = (id, v) => String(E.cfg[id]) === String(v);
+  // la lista de siempre, para lo que no cabe a la vista
+  const sel = (id, etiqueta, p, ops) =>
+    '<div class="ajuste apilado"><label class="eti" for="aj-' + id + '">'
+    + etiqueta + '</label>' + pista(p) + '<select id="aj-' + id + '">'
+    + ops.map(([v, t]) => '<option value="' + v + '"'
+      + (puesto(id, v) ? ' selected' : '') + '>' + t + '</option>').join('')
+    + '</select></div>';
+  // sí o no: el nombre a la izquierda y el interruptor a la derecha, y la
+  // pista debajo, a todo lo ancho, que apretada al lado de un mando no se lee
+  const interruptor = (id, etiqueta, p, si, no) => {
+    const s = si === undefined ? 'si' : si;
+    const n = no === undefined ? 'no' : no;
+    return '<div class="ajuste"><label class="eti" for="aj-' + id + '">'
+      + etiqueta + '</label><input type="checkbox" role="switch" '
+      + 'class="interruptor" id="aj-' + id + '" data-si="' + s
+      + '" data-no="' + n + '"' + (puesto(id, s) ? ' checked' : '') + '>'
+      + pista(p) + '</div>';
+  };
+  // las opciones de un grupo: un botón de radio cada una, con lo que lleva
+  // dentro, y el nombre del grupo para quien no las ve
+  const opcion = (id, v, dentro, clase) => '<label'
+    + (clase ? ' class="' + clase + '"' : '') + '><input type="radio" name="aj-'
+    + id + '" data-aj="' + id + '" value="' + v + '"'
+    + (puesto(id, v) ? ' checked' : '') + '>' + dentro + '</label>';
+  const grupo = (id, etiqueta, p, clase, opciones) =>
+    '<div class="ajuste apilado" role="radiogroup" aria-labelledby="aj-' + id
+    + '-eti"><span class="eti" id="aj-' + id + '-eti">' + etiqueta + '</span>'
+    + pista(p) + '<div class="' + clase + '">' + opciones.join('')
+    + '</div></div>';
+  const tira = (id, etiqueta, p) => grupo(id, etiqueta, p, 'tira',
+    AJ_OPS[id].map(([v, t]) => opcion(id, v, '<span>' + t + '</span>')));
+  const tarjetas = (id, etiqueta, p) => grupo(id, etiqueta, p, 'opciones',
+    AJ_OPS[id].map(([v, t, d]) => opcion(id, v,
+      '<span class="opcion-t">' + t + '</span>'
+      + (d ? '<span class="opcion-p">' + d + '</span>' : ''), 'opcion')));
+  // la letra se elige viéndola: cada una pinta sus aes con la suya
+  const letras = grupo('letra', 'Tipo de letra',
+    'Ninguna se descarga: la app tiene que abrir sin conexión, así que lo '
+    + 'que se elige no es una fuente sino un aire, y lo sirve la que el '
+    + 'teléfono ya tenga. Las de libro se leen como un libro —la de '
+    + 'periódico es la que más cabe en el renglón—; las de pantalla, mejor '
+    + 'con la letra muy pequeña o muy grande, y la ancha con poca luz.',
+    'letras', AJ_OPS.letra.map(([v, t]) => opcion('letra', v,
+      '<span class="letra-aa" style="font-family:var(--' + v + ')" '
+      + 'aria-hidden="true">Aa</span><span class="letra-n">' + t + '</span>',
+      'letra')));
+  // y el papel, con una hoja de cada uno: su papel, su tinta y su rúbrica
+  const hoja = (t) => '<span class="tema-cara ' + ({ claro: 'tema-claro',
+    sepia: 'tema-claro tema-sepia', oscuro: 'tema-oscuro',
+    noche: 'tema-noche' }[t]) + '"><i></i><i></i><i></i><i></i></span>';
+  const temas = grupo('tema', 'Color del papel',
+    '«Según el teléfono» es claro de día y oscuro de noche, si el teléfono '
+    + 'lo cambia. «De noche» es para Completas a oscuras: ámbar sobre negro, '
+    + 'sin un gramo de azul.',
+    'temas', AJ_OPS.tema.map(([v, t]) => opcion('tema', v,
+      '<span class="tema-hoja" aria-hidden="true">'
+      + (v === 'auto' ? hoja('claro') + hoja('oscuro') : hoja(v)) + '</span>'
+      + '<span class="tema-n">' + t + '</span>', 'tema')));
+  const colores = grupo('color', 'El color de la app',
+    'El litúrgico tiñe la cabecera, las rúbricas y los controles, y cambia '
+    + 'de un día a otro: verde en el tiempo ordinario, morado en Adviento y '
+    + 'Cuaresma, rojo en los mártires. Quien prefiera uno quieto lo dice '
+    + 'aquí; el calendario sigue enseñando el de cada día, porque allí el '
+    + 'color es lo que se lee.',
+    'colores', AJ_OPS.color.map(([v, t]) => opcion('color', v,
+      '<span class="color-punto color-' + v + '" aria-hidden="true"></span>'
+      + '<span class="color-n">' + t + '</span>', 'color')));
   // Los campos de la voz en línea no son una lista de opciones sino lo que
   // haya que escribir —la región, la clave, el nombre de la voz—, y no
   // cuelgan de un ajuste con nombre sino de la tabla `vozLinea`.
-  const campoVoz = (campo, etiqueta, pista, tipo) => {
+  const campoVoz = (campo, etiqueta, p, tipo) => {
     const c = E.cfg.vozLinea || {};
-    return '<div class="ajuste ancho"><label for="aj-vl-' + campo + '">'
-      + etiqueta + (pista ? '<span class="pista">' + pista + '</span>' : '')
-      + '</label><input id="aj-vl-' + campo + '" type="' + (tipo || 'text')
-      + '" data-vozlinea="' + campo + '" value="' + esc(c[campo] || '')
+    return '<div class="ajuste apilado"><label class="eti" for="aj-vl-'
+      + campo + '">' + etiqueta + '</label>' + pista(p) + '<input id="aj-vl-'
+      + campo + '" type="' + (tipo || 'text') + '" data-vozlinea="' + campo
+      + '" value="' + esc(c[campo] || '')
       + '" autocomplete="off" spellcheck="false"></div>';
   };
-  // Cada sección, una pestaña que se abre: la lista entera de un tirón son
+  // Cada sección, una tarjeta que se abre: la lista entera de un tirón son
   // cuatro pantallas de deslizar para cambiar una cosa. Todas vienen
-  // plegadas, de modo que lo primero que se ve es de qué se puede hablar;
-  // sólo se queda abierta la que lo estuviera cuando la vista se rehace
-  // sola (al cambiar de versión, o el modo de la misa).
-  const ajuste = (titulo) => '</div></details>'
-    + '<details class="ajustes-sec" data-sec="' + esc(titulo) + '"'
-    + ((_ajustesAbiertas && _ajustesAbiertas[titulo]) ? ' open' : '')
-    + '><summary>' + titulo + '</summary><div class="ajustes-cuerpo">';
+  // plegadas, de modo que lo primero que se ve es de qué se puede hablar y
+  // lo que cada una tiene puesto; sólo se queda abierta la que lo estuviera
+  // cuando la vista se rehace sola (al cambiar de versión, o el modo de la
+  // misa).
+  const seccion = (clave, titulo, icono, partes) =>
+    '<details class="ajustes-sec" data-sec="' + esc(titulo) + '" data-clave="'
+    + clave + '"' + ((_ajustesAbiertas && _ajustesAbiertas[titulo])
+      ? ' open' : '') + '><summary>'
+    + '<span class="aj-icono">' + icono + '</span>'
+    + '<span class="aj-cab"><span class="aj-t">' + titulo + '</span>'
+    + '<span class="aj-resumen">' + esc(resumenAjustes(clave)) + '</span>'
+    + '</span><span class="aj-flecha" aria-hidden="true"></span></summary>'
+    + '<div class="ajustes-cuerpo">' + partes.join('') + '</div></details>';
+  const rotulo = (t) => '<h2 class="aj-grupo">' + t + '</h2>';
+
   vista.innerHTML = [
-    ajuste('La lengua de la misa'),
-    sel('fuente', 'Versión',
-      'Tres latines y un castellano, y debajo qué trae cada uno. El '
-      + 'castellano es la traducción litúrgica aprobada para México, '
-      + 'cosechada del misalito mensual de 2018 a 2026: dos de cada tres '
-      + 'lecturas la tienen, y lo que no se imprimió nunca lo dice en su '
-      + 'sitio. El bilingüe enfrenta el castellano con uno de los tres '
-      + 'latines, el que se diga aquí mismo.',
-      [['clementina', 'Vulgata Clementina'], ['nova', 'Nova Vulgata'],
-        ['lect1977', 'Misal con lecturas · Roma, 1977'],
-        ['es', 'Castellano · misalito de México'],
-        ['bi', 'Bilingüe · latín y castellano']]),
-    // el mando del latín del bilingüe sólo sale con el bilingüe puesto: con
-    // una versión latina a solas, el latín es ésa y no hay nada que elegir
-    E.cfg.fuente === 'bi'
-      ? sel('latinBi', 'El latín de la doble columna',
-        'Cuál de los tres va enfrentado al castellano. Cambia también al '
-        + 'leer una versión latina a solas: el bilingüe se queda con la '
-        + 'última que se haya leído.', LATINES)
-      : '',
-    notaFuentes(),
-    sel('acentos', 'Acentuación litúrgica',
-      'El acento tónico marcado, como en los libros de coro.',
-      [[true, 'Sí'], [false, 'No']]),
-    sel('numeros', 'Números de versículo', '', [[true, 'Sí'], [false, 'No']]),
-    ajuste('Qué se enseña de la misa'),
-    sel('misaVer', 'Del formulario, enseñar',
-      'Tres cuartas partes del formulario son el Ordinario, que no cambia '
-      + 'de un día para otro. Lo breve deja lo que sí: antífona de entrada, '
-      + 'el Gloria los días que lo lleva, la colecta, las lecturas con su '
-      + 'salmo y su aclamación, la oración de los fieles, la de las '
-      + 'ofrendas, la antífona de comunión y la oración después de la '
-      + 'comunión.',
-      [['todo', 'Todo, en el orden de la misa'],
-        ['breve', 'Lo breve: lo que cambia y se dice'],
-        ['propio', 'Lo que yo elija']]),
-    E.cfg.misaVer === 'propio' ? piezasDeLaMisa() : '',
-    // el ajuste del Ordinario sólo manda en el modo entero: en los otros
-    // dos lo que entra se decide pieza por pieza, y ofrecerlo ahí sería
-    // ofrecer un mando que no mueve nada
-    E.cfg.misaVer === 'todo'
-      ? sel('ordinario', 'El ordinario de la misa',
-        'El Ordo Missæ intercalado donde va, con sus 146 rúbricas en las '
-        + 'dos lenguas. No se lee cada día, pero cuando se busca se busca '
-        + 'ahí: viene plegado y se abre tocando su rótulo.',
-        [['plegado', 'Plegado'], ['abierto', 'Abierto'],
-          ['no', 'No: sólo los propios y las lecturas']])
-      : '',
-    ajuste('Formato del texto'),
-    muestraFormato(),
-    '<div class="ajuste ancho"><label for="aj-tam">Tamaño de letra'
-    + '<span class="pista">Lo de arriba es el texto de verdad, con las '
-    + 'mismas reglas: lo que se vea ahí es lo que se verá rezando.</span>'
-    + '</label>'
-    + '<input type="range" id="aj-tam" min="80" max="200" step="5" value="'
-    + E.cfg.tam + '">'
-    + '<span class="marcas"><span>Menor</span><span id="aj-tam-pct">'
-    + E.cfg.tam + '%</span><span>Mayor</span></span></div>',
-    sel('fmtUno', 'Un solo formato para todo',
-      'La alineación, el interlineado y la partición de palabras, los '
-      + 'mismos en toda la app. Diciendo «no», cada sección puede llevar el '
-      + 'suyo —los salmos de una manera y las lecturas de otra—, y lo que '
-      + 'una sección no diga lo sigue diciendo el general.',
-      [['si', 'Sí'], ['no', 'No: cada sección']]),
-    E.cfg.fmtUno === 'si' ? ''
-      : '<p class="pista-g">Lo que sigue vale para toda la app; cada '
-        + 'sección, más abajo, puede decir otra cosa.</p>',
-    '<div class="ajuste"><span class="eti">Interlineado'
-    + '<span class="pista">El alto del renglón, en veces el cuerpo de la '
-    + 'letra. No hay cuatro medidas sino todas: se mueve de cinco en cinco '
-    + 'centésimas, y la muestra de arriba es el renglón de verdad.</span>'
-    + '</span>' + pasoInterlinea('') + '</div>',
-    sel('justifica', 'Lecturas justificadas',
-      'Las lecturas, los responsorios, las preces y la oración, a caja, '
-      + 'como en el libro. Los himnos, los salmos y los cánticos van '
-      + 'siempre por renglones, con sangría francesa.',
-      [['si', 'Sí'], ['no', 'No: a la izquierda']]),
-    sel('particion', 'Partir las palabras',
-      'Con guiones al final del renglón. Sin partirlas, el justificado abre '
-      + 'más espacio entre palabras.',
-      [['si', 'Sí'], ['no', 'No']]),
-    sel('cruces', 'La cruz del salmo',
-      'Donde el salmo empieza repitiendo su antífona, una cruz dice dónde '
-      + 'seguir: «El Señor es mi pastor †».',
-      [['si', 'Sí'], ['no', 'No']]),
-    sel('medida', 'Ancho de la columna',
-      'En una tableta o en el ordenador, un renglón corto se lee mejor que '
-      + 'uno que cruza la pantalla.',
-      [['normal', 'Estrecha, como un libro'], ['ancha', 'Toda la pantalla']]),
-    E.cfg.fmtUno === 'si' ? ''
-      : '<h2 class="seccion">El formato de cada sección</h2>'
-        + GRUPO_FMT.map((g) => bloqueFmt(g)).join(''),
-    ajuste('Aspecto'),
-    sel('letra', 'Tipo de letra',
-      'Ninguna se descarga: la app tiene que abrir sin conexión, así que lo '
-      + 'que se elige no es una fuente sino un aire, y lo sirve la que el '
-      + 'teléfono ya tenga. Las de remates se leen como un libro —la de '
-      + 'periódico es la que más cabe en el renglón—; las de palo seco, '
-      + 'mejor con la letra muy pequeña o muy grande, y la ancha con poca '
-      + 'luz.',
-      [['serif', 'De libro'], ['antigua', 'De misal'],
-        ['gruesa', 'De libro, gruesa'], ['periodico', 'De periódico'],
-        ['sans', 'De pantalla'], ['humanista', 'De pantalla, suave'],
-        ['ancha', 'De pantalla, ancha']]),
-    sel('tema', 'Color del papel', '',
-      [['auto', 'Según el teléfono'], ['claro', 'Claro'],
-        ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']]),
-    sel('color', 'El color de la app',
-      'El litúrgico tiñe la cabecera, las rúbricas y los controles, y '
-      + 'cambia de un día a otro: verde en el tiempo ordinario, morado en '
-      + 'Adviento y Cuaresma, rojo en los mártires. Quien prefiera uno '
-      + 'quieto lo dice aquí; el calendario sigue enseñando el de cada día, '
-      + 'porque allí el color es lo que se lee.',
-      [['dia', 'El del día'], ['verde', 'Verde'], ['rojo', 'Rojo'],
-        ['morado', 'Morado'], ['blanco', 'Dorado'], ['azul', 'Azul'],
-        ['neutro', 'Granate']]),
-    'wakeLock' in navigator
-      ? sel('despierto', 'No apagar la pantalla',
-        'Un oficio son diez o quince minutos de lectura sin tocar nada, y '
-        + 'el teléfono se apaga a la mitad. Mientras la app esté delante, '
-        + 'la pantalla se queda encendida.',
-        [[false, 'No'], [true, 'Sí']])
-      : '',
-    ajuste('Al abrir la app'),
-    sel('inicio', 'Al abrir la app',
-      'La app lleva dentro dos libros. Si siempre vas al mismo, dilo aquí y '
-      + 'no se te vuelve a preguntar.',
-      [['menu', 'Preguntar'], ['misa', 'Las lecturas de la misa'],
-        ['horas', 'La liturgia de las horas']]),
-    ajuste('Calendario'),
-    sel('epifania', 'Epifanía',
-      'En España se celebra el 6 de enero; en gran parte de América, el '
-      + 'domingo entre el 2 y el 8.',
-      [['domingo', 'Domingo entre el 2 y el 8'], ['6enero', 'Siempre el 6 de enero']]),
-    sel('ascension', 'Ascensión', '',
-      [['domingo', 'Trasladada al domingo'], ['jueves', 'Jueves, 40 días']]),
-    sel('corpus', 'Corpus Christi', '',
-      [['domingo', 'Trasladado al domingo'], ['jueves', 'Jueves']]),
-    sel('memorias', 'En las memorias, leer',
-      'El Ordo lectionum Missae (n. 82) manda seguir la lectura continua de '
-      + 'la feria salvo que el santo tenga lecturas propias; la Tabla de los '
-      + 'días litúrgicos, en cambio, pone la memoria por encima de la feria. '
-      + 'Las dos opciones se ofrecen siempre: esto sólo decide cuál sale '
-      + 'primero.',
-      [['santo', 'Las del santo (Tabla de los días litúrgicos)'],
-        ['feria', 'La lectura continua de la feria (OLM 82)']]),
-    ajuste('Liturgia de las Horas'),
-    sel('hLibre', 'En las memorias libres, rezar',
-      'Una memoria libre se puede celebrar o dejar. Las dos opciones salen '
-      + 'siempre arriba: esto sólo decide cuál viene marcada.',
-      [['santo', 'El oficio del santo'], ['feria', 'El de la feria']]),
-    sel('hComun', 'En las memorias, lo que no es propio',
-      'Las rúbricas dejan tomarlo del común o del día, y cada sección lleva '
-      + 'su selector: esto sólo decide cuál viene marcado.',
-      [['comun', 'Del común'], ['dia', 'Del día']]),
-    sel('carril', 'Índice al borde',
-      'Las cintas del breviario: una raya por sección al borde de la caja, '
-      + 'más larga la de donde vas. Tocar una lleva a su sección. Sirve '
-      + 'igual para la hora y para el formulario de la misa.',
-      [['si', 'Sí'], ['no', 'No']]),
-    sel('gestos', 'Deslizar para cambiar de hora',
-      'Arrastrar sobre el texto pasa a la hora siguiente o a la anterior, y '
-      + 'de Completas al Oficio de lectura del día siguiente.',
-      [['si', 'Sí'], ['no', 'No']]),
-    sel('rezadas', 'Marcar lo ya rezado hoy',
-      'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
-      + 'nada: queda marcada aquella cuyo final has llegado a leer.',
-      [['si', 'Sí'], ['no', 'No']]),
-    ajuste('Rezar en alta voz'),
-    bloqueVoz(),
-    sel('vozMotor', 'Qué voz',
-      'La del teléfono viene con el sistema y habla sin conexión: lee bien, '
-      + 'pero es voz de máquina. Piper suena a persona y también habla sin '
-      + 'conexión: se baja una vez y vive en el teléfono, sin cuenta. Los '
-      + 'servicios en línea suenan mejor aún, pero piden conexión y una '
-      + 'cuenta con tarjeta.',
-      [['sistema', 'La del teléfono · sin conexión'],
-        ['piper', 'Piper · neuronal, en el teléfono'],
-        ['linea', 'Un servicio en línea · pide cuenta']]),
-    E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
-      : E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
-      : sel('voz', 'La voz del teléfono', vocesQueHay(),
-        [['', 'La que haya']].concat(vocesDeLaVoz()
-          .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
-    sel('vozVel', 'Velocidad',
-      'Rezada, no leída: despacio se entiende, y de camino se agradece.',
-      [[85, 'Despacio'], [100, 'Normal'], [115, 'Deprisa'],
-        [130, 'Muy deprisa']]),
-    sel('vozRotulos', 'Nombrar cada sección',
-      'Dice «Himno», «Salmodia», «Lectura breve» antes de cada una: con la '
-      + 'pantalla apagada es lo único que sitúa.',
-      [['si', 'Sí'], ['no', 'No']]),
-    sel('vozPausa', 'Silencio entre secciones',
-      'Dentro de una sección el silencio lo pone la puntuación del texto, '
-      + 'que la dice el motor de corrido: por eso no se corta con la '
-      + 'pantalla apagada.',
-      [['corta', 'Poco'], ['normal', 'Normal'], ['larga', 'Mucho']]),
-    sel('vozSigue', 'Al acabar, la hora siguiente',
-      'Empieza la siguiente sin tocar nada, hasta Completas. Para un viaje '
-      + 'largo.',
-      [['no', 'No'], ['si', 'Sí']]),
-    '<p class="pie">' + esc(E.lecturas.cabecera)
+    '<p class="aj-intro">Lo que se elige aquí vale desde ese momento y se '
+    + 'queda guardado en este teléfono: no hay que guardar nada. Bajo el '
+    + 'nombre de cada pestaña va lo que tiene puesto.</p>',
+
+    rotulo('Cómo se lee'),
+    seccion('formato', 'Formato del texto', ICONO_AJ.formato, [
+      muestraFormato(),
+      '<div class="ajuste apilado"><label class="eti con-valor" '
+      + 'for="aj-tam">Tamaño de letra<span id="aj-tam-pct" class="aj-valor">'
+      + E.cfg.tam + '%</span></label>'
+      + '<span class="deslizador"><span class="a-chica" aria-hidden="true">'
+      + 'A</span><input type="range" id="aj-tam" min="80" max="200" step="5" '
+      + 'value="' + E.cfg.tam + '"><span class="a-grande" aria-hidden="true">'
+      + 'A</span></span>'
+      + pista('Lo de arriba es el texto de verdad, con las mismas reglas: lo '
+        + 'que se vea ahí es lo que se verá rezando. Rezando se cambia también '
+        + 'con las dos aes de la cabecera.') + '</div>',
+      interruptor('fmtUno', 'Un solo formato para todo',
+        'La alineación, el interlineado y la partición de palabras, los '
+        + 'mismos en toda la app. Apagado, cada sección puede llevar el suyo '
+        + '—los salmos de una manera y las lecturas de otra—, y lo que una '
+        + 'sección no diga lo sigue diciendo el general.'),
+      E.cfg.fmtUno === 'si' ? ''
+        : '<p class="aj-nota">Lo que sigue vale para toda la app; cada '
+          + 'sección, más abajo, puede decir otra cosa.</p>',
+      '<div class="ajuste"><span class="eti">Interlineado</span>'
+      + pasoInterlinea('')
+      + pista('El alto del renglón, en veces el cuerpo de la letra. No hay '
+        + 'cuatro medidas sino todas: se mueve de cinco en cinco centésimas, '
+        + 'y la muestra de arriba es el renglón de verdad.') + '</div>',
+      interruptor('justifica', 'Lecturas justificadas',
+        'Las lecturas, los responsorios, las preces y la oración, a caja, '
+        + 'como en el libro; apagado, a la izquierda. Los himnos, los salmos '
+        + 'y los cánticos van siempre por renglones, con sangría francesa.'),
+      interruptor('particion', 'Partir las palabras',
+        'Con guiones al final del renglón. Sin partirlas, el justificado '
+        + 'abre más espacio entre palabras.'),
+      interruptor('cruces', 'La cruz del salmo',
+        'Donde el salmo empieza repitiendo su antífona, una cruz dice dónde '
+        + 'seguir: «El Señor es mi pastor †».'),
+      tira('medida', 'Ancho de la columna',
+        'En una tableta o en el ordenador, un renglón corto se lee mejor que '
+        + 'uno que cruza la pantalla.'),
+      E.cfg.fmtUno === 'si' ? ''
+        : '<h2 class="seccion">El formato de cada sección</h2>'
+          + GRUPO_FMT.map((g) => bloqueFmt(g)).join('')
+    ]),
+    seccion('aspecto', 'Aspecto', ICONO_AJ.aspecto, [
+      letras, temas, colores,
+      'wakeLock' in navigator
+        ? interruptor('despierto', 'No apagar la pantalla',
+          'Un oficio son diez o quince minutos de lectura sin tocar nada, y '
+          + 'el teléfono se apaga a la mitad. Mientras la app esté delante, '
+          + 'la pantalla se queda encendida.', true, false)
+        : ''
+    ]),
+
+    rotulo('La misa'),
+    seccion('lengua', 'La lengua de la misa', ICONO_AJ.lengua, [
+      tarjetas('fuente', 'Versión',
+        'Tres latines y un castellano. Son textos distintos y no tres '
+        + 'maneras de imprimir el mismo, y lo que cada uno trae de suyo no se '
+        + 've con sólo cambiar de versión: por eso va dicho.'),
+      // el mando del latín del bilingüe sólo sale con el bilingüe puesto:
+      // con una versión latina a solas, el latín es ésa y no hay nada que
+      // elegir
+      E.cfg.fuente === 'bi'
+        ? tira('latinBi', 'El latín de la doble columna',
+          'Cuál de los tres va enfrentado al castellano. Cambia también al '
+          + 'leer una versión latina a solas: el bilingüe se queda con la '
+          + 'última que se haya leído.')
+        : '',
+      interruptor('acentos', 'Acentuación litúrgica',
+        'El acento tónico marcado, como en los libros de coro: '
+        + '«Dóminus vobíscum».', true, false),
+      interruptor('numeros', 'Números de versículo', '', true, false)
+    ]),
+    seccion('misa', 'Qué se enseña de la misa', ICONO_AJ.misa, [
+      tarjetas('misaVer', 'Del formulario, enseñar',
+        'Tres cuartas partes del formulario son el Ordinario, que no cambia '
+        + 'de un día para otro.'),
+      E.cfg.misaVer === 'propio' ? piezasDeLaMisa() : '',
+      // el ajuste del Ordinario sólo manda en el modo entero: en los otros
+      // dos lo que entra se decide pieza por pieza, y ofrecerlo ahí sería
+      // ofrecer un mando que no mueve nada
+      E.cfg.misaVer === 'todo'
+        ? tira('ordinario', 'El Ordinario de la misa',
+          'El Ordo Missæ intercalado donde va, con sus 146 rúbricas en las '
+          + 'dos lenguas. No se lee cada día, pero cuando se busca se busca '
+          + 'ahí: plegado, se abre tocando su rótulo; sin él, quedan sólo los '
+          + 'propios y las lecturas.')
+        : ''
+    ]),
+
+    rotulo('Las horas'),
+    seccion('horas', 'Liturgia de las Horas', ICONO_AJ.horas, [
+      tira('hLibre', 'En las memorias libres, rezar',
+        'Una memoria libre se puede celebrar o dejar. Las dos opciones salen '
+        + 'siempre arriba: esto sólo decide cuál viene marcada.'),
+      tira('hComun', 'En las memorias, lo que no es propio',
+        'Las rúbricas dejan tomarlo del común o del día, y cada sección '
+        + 'lleva su selector: esto sólo decide cuál viene marcado.'),
+      interruptor('carril', 'Índice al borde',
+        'Las cintas del breviario: una raya por sección al borde de la caja, '
+        + 'más larga la de donde vas. Tocar una lleva a su sección. Sirve '
+        + 'igual para la hora y para el formulario de la misa.'),
+      interruptor('gestos', 'Deslizar para cambiar de hora',
+        'Arrastrar sobre el texto pasa a la hora siguiente o a la anterior, '
+        + 'y de Completas al Oficio de lectura del día siguiente.'),
+      interruptor('rezadas', 'Marcar lo ya rezado hoy',
+        'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
+        + 'nada: queda marcada aquella cuyo final has llegado a leer.')
+    ]),
+    seccion('voz', 'Rezar en alta voz', ICONO_VOZ.voz, [
+      bloqueVoz(),
+      tarjetas('vozMotor', 'Qué voz', ''),
+      E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
+        : E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
+        : sel('voz', 'La voz del teléfono', vocesQueHay(),
+          [['', 'La que haya']].concat(vocesDeLaVoz()
+            .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
+      tira('vozVel', 'Velocidad',
+        'Rezada, no leída: despacio se entiende, y de camino se agradece.'),
+      interruptor('vozRotulos', 'Nombrar cada sección',
+        'Dice «Himno», «Salmodia», «Lectura breve» antes de cada una: con la '
+        + 'pantalla apagada es lo único que sitúa.'),
+      tira('vozPausa', 'Silencio entre secciones',
+        'Dentro de una sección el silencio lo pone la puntuación del texto, '
+        + 'que la dice el motor de corrido: por eso no se corta con la '
+        + 'pantalla apagada.'),
+      interruptor('vozSigue', 'Al acabar, la hora siguiente',
+        'Empieza la siguiente sin tocar nada, hasta Completas. Para un viaje '
+        + 'largo.')
+    ]),
+
+    rotulo('El año y la app'),
+    seccion('calendario', 'Calendario', ICONO_AJ.calendario, [
+      tira('epifania', 'Epifanía',
+        'En España se celebra el 6 de enero; en gran parte de América, el '
+        + 'domingo entre el 2 y el 8.'),
+      tira('ascension', 'Ascensión', ''),
+      tira('corpus', 'Corpus Christi', ''),
+      tarjetas('memorias', 'En las memorias, leer',
+        'Las dos opciones se ofrecen siempre: esto sólo decide cuál sale '
+        + 'primero.')
+    ]),
+    seccion('abrir', 'Al abrir la app', ICONO_AJ.abrir, [
+      tira('inicio', 'Abrir por',
+        'La app lleva dentro dos libros. Si siempre vas al mismo, dilo aquí y '
+        + 'no se te vuelve a preguntar.')
+    ]),
+
+    // el colofón, como en un libro: de dónde sale lo que se lee
+    '<footer class="colofon"><span class="colofon-cruz" aria-hidden="true">'
+    + ICONO.misa + '</span><p class="colofon-t">Liturgicum</p>'
+    + '<p>' + esc(E.lecturas.cabecera) + '</p>'
     + (E.cfg.fuente === 'bi' && E.lecturasEs
-      ? '<br><br>' + esc(E.lecturasEs.cabecera) : '')
-    + (E.misa ? '<br><br>' + esc(E.misa.cabecera) : '') + '<br><br>'
-    + 'Calendario general romano y latinoamericano, con el propio y el común '
-    + 'de los santos (leccionario V), las misas por diversas necesidades y '
-    + 'votivas (VI) y las rituales y de difuntos (VIII). La concurrencia de '
-    + 'celebraciones se resuelve con la Tabla de los días litúrgicos. '
-    + 'El leccionario IX (misas con niños) no está incluido. '
-    + 'Calendario de ' + E.cal.rango[0] + ' a ' + E.cal.rango[1] + '.'
-    + '</p>'
-  // el primer `ajuste()` no tiene nada que cerrar, y el último se queda sin
-  // cerrar: se le quita a uno y se le pone al otro
-  ].join('').replace('</div></details>', '') + '</div></details>';
+      ? '<p>' + esc(E.lecturasEs.cabecera) + '</p>' : '')
+    + (E.misa ? '<p>' + esc(E.misa.cabecera) + '</p>' : '')
+    + '<p>Calendario general romano y latinoamericano, con el propio y el '
+    + 'común de los santos (leccionario V), las misas por diversas '
+    + 'necesidades y votivas (VI) y las rituales y de difuntos (VIII). La '
+    + 'concurrencia de celebraciones se resuelve con la Tabla de los días '
+    + 'litúrgicos. El leccionario IX (misas con niños) no está incluido. '
+    + 'Calendario de ' + E.cal.rango[0] + ' a ' + E.cal.rango[1] + '.</p>'
+    + '</footer>'
+  ].join('');
 
   _ajustesAbiertas = null;
   colocaPosicion();
@@ -3691,9 +3888,15 @@ function verAjustes() {
 
 /** Un solo oyente para todos los ajustes: la vista se repinta a menudo y
  *  colgar oyentes en cada repintado los iría acumulando. Los controles van
- *  con el prefijo `aj-` para no chocar con los `id` de la página. */
+ *  con el prefijo `aj-` para no chocar con los `id` de la página. Hecho el
+ *  cambio, se pone al día el resumen de cada pestaña. */
 async function alCambiarAjuste(ev) {
   if (E.vista !== 'ajustes') return;
+  await cambiaAjuste(ev);
+  if (E.vista === 'ajustes') refrescaResumenes();
+}
+
+async function cambiaAjuste(ev) {
   // las casillas del modo propio no son un ajuste con nombre sino una
   // lista, y se guarda en el orden del formulario para que `armaMisa` no
   // tenga que ordenarla después
@@ -3742,9 +3945,13 @@ async function alCambiarAjuste(ev) {
     if (vl === 'prov') { recuerdaAjustes(); verAjustes(); }
     return;
   }
-  const id = (ev.target.id || '').replace(/^aj-/, '');
+  // una opción de una tira o de unas tarjetas dice de qué ajuste es; un
+  // interruptor, qué vale encendido y qué apagado
+  const id = ev.target.dataset.aj || (ev.target.id || '').replace(/^aj-/, '');
   if (!(id in E.cfg)) return;
-  let v = ev.target.value;
+  let v = ev.target.type === 'checkbox'
+    ? (ev.target.checked ? ev.target.dataset.si : ev.target.dataset.no)
+    : ev.target.value;
   if (v === 'true' || v === 'false') v = (v === 'true');
   if (id === 'misaVer') {
     // al pasar a elegir, la lista empieza por lo que se estaba viendo: no
@@ -3823,6 +4030,9 @@ function horaDeLaPortada() {
 
 function verPortada() {
   E.vista = 'portada';
+  // entrar otra vez al devocionario desde aquí es empezar, no volver
+  E.devoQ = '';
+  E.devoVuelta = null;
   marcaBarra('portada');
   const iso = hoyISO();
   E.fecha = iso;
@@ -3962,89 +4172,196 @@ function devoCastellano(p) {
     + parr.map((ln) => devoLinea(ln, false)).join('') + '</p>').join('');
 }
 
+/** Qué es cada forma, en un renglón. La página de las formas lo pone junto
+ *  a su nombre, y el filtro de una forma, debajo del título: «letanía» no le
+ *  dice nada a quien no ha rezado ninguna, y un devocionario es también para
+ *  aprender a rezar. */
+const DEVO_QUE = {
+  'oración': 'Una plegaria en prosa, dicha de una vez: la forma más común.',
+  'himno': 'Poesía en estrofas medidas, para cantarse; los del Breviario '
+    + 'abren cada hora.',
+  'letanía': 'Una cadena de invocaciones, cada una con la misma respuesta: '
+    + '«ora pro nobis», «miserére nobis».',
+  'salmo': 'Uno de los ciento cincuenta del Salterio, la oración de Israel '
+    + 'que la Iglesia hizo suya.',
+  'fórmula': 'Lo que se aprende de memoria: los mandamientos, las '
+    + 'bienaventuranzas, los frutos del Espíritu.',
+  'conmemoración': 'Antífona, versículo y oración de un misterio o de un '
+    + 'santo, que se añaden a otra oración.',
+  'súplica': 'Una petición confiada, más larga que una jaculatoria, para un '
+    + 'momento o una necesidad.',
+  'oficio parvo': 'Un oficio breve, con sus horas como el Breviario, que no '
+    + 'cambia de un día a otro.',
+  'jaculatoria': 'Una frase breve que se lanza —eso dice su nombre: '
+    + '«iaculum» es el dardo— a lo largo del día.',
+  'novena': 'Nueve días seguidos de oración, por una intención o para '
+    + 'preparar una fiesta.',
+  'colección': 'Varias oraciones que la tradición reúne bajo un nombre, como '
+    + 'las de antes de la misa repartidas por la semana.',
+  'acto': 'Una declaración breve de fe, de esperanza, de caridad o de '
+    + 'contrición: decirla es hacerla.',
+  'preces': 'Versículos y respuestas que se alternan, con su oración al '
+    + 'final, como el Ángelus.',
+  'antífona': 'Un canto breve: el que enmarca un salmo, o el saludo a la '
+    + 'Virgen con que acaba el día.',
+  'cántico': 'Un canto de la Escritura que no está en el Salterio: el '
+    + 'Magníficat, el Benedictus, el Nunc dimittis.',
+  'credo': 'Un símbolo de la fe: el de los Apóstoles, el de Nicea, el '
+    + '«Quicúmque».',
+  'secuencia': 'Un poema que en ciertas fiestas se canta en la misa antes '
+    + 'del Evangelio: Víctimæ pascháli, Lauda Sion.',
+  'vía crucis': 'Las estaciones del camino de Cristo al Calvario, cada una '
+    + 'con su meditación y su oración.',
+  'ofrecimiento': 'Se pone en manos de Dios el día, la obra o uno mismo.',
+  'salterio': 'Salmos escogidos que se rezan seguidos: los siete '
+    + 'penitenciales, los graduales.',
+  'rosario': 'Los misterios de la vida de Cristo, meditados al paso de las '
+    + 'cuentas.',
+  'bendición': 'Se pide el favor de Dios sobre algo: aquí, sobre la mesa, '
+    + 'antes y después de comer.',
+  'acción de gracias': 'Lo que se dice después de recibir un don.',
+  'aclamación': 'Un grito breve de alabanza: el Sanctus, las alabanzas '
+    + 'divinas.',
+  'ejercicio': 'Una devoción guiada paso a paso, con su orden de oraciones.',
+  'pregón': 'El anuncio solemne de la Pascua, que se canta en la Vigilia.',
+  'responsorio': 'Un canto de respuesta: un versículo y la parte que se '
+    + 'repite tras él.',
+  'rito': 'Una ceremonia de la Iglesia con sus palabras: aquí, la '
+    + 'recomendación del alma.'
+};
+
+/** Y de cada familia de formas, de dónde le viene el nombre. */
+const DEVO_FAMILIA = {
+  'De la Escritura': 'Lo que se reza con las palabras mismas de la Biblia.',
+  'Del canto': 'Lo que nació para cantarse.',
+  'Del rezo en coro': 'Lo que se dice a dos voces: uno propone y todos '
+    + 'responden.',
+  'De la devoción': 'Ejercicios de piedad con su propio orden, de varios '
+    + 'días o de varias partes.',
+  'De la liturgia': 'La oración en prosa, al modo de la liturgia, y las '
+    + 'bendiciones.',
+  'De lo que uno dice': 'Lo que se dice en primera persona, con palabras '
+    + 'propias de quien reza.',
+  'De la doctrina': 'Lo que se aprende para saberlo: los credos y las '
+    + 'fórmulas del catecismo.',
+  'Varias en una': 'Series de oraciones que la tradición reza juntas.'
+};
+
+/** Los capítulos van numerados como en un libro, en romanos. */
+function romano(n) {
+  let r = '';
+  for (const [v, l] of [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]) {
+    while (n >= v) { r += l; n -= v; }
+  }
+  return r;
+}
+
+function mayuscula(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
+
+/** Cuántas son y cuántas tienen ya castellano: lo que se encuentra al abrir
+ *  un capítulo, dicho antes de bajar por él. */
+function devoCuenta(piezas) {
+  const n = piezas.length;
+  const es = piezas.filter((p) => p.es).length;
+  return n + (n === 1 ? ' oración' : ' oraciones') + ' · '
+    + (es ? es + ' con castellano'
+      : (n === 1 ? 'sólo en latín' : 'todas sólo en latín'));
+}
+
 /** De dónde sale lo que se está leyendo. El latín, del sitio; el
- *  castellano, de donde diga su ficha; y la hora, del Breviario. */
+ *  castellano, de donde diga su ficha; y la hora, del Breviario. Va como una
+ *  ficha de biblioteca: el nombre de cada dato arriba y el dato debajo. */
 function devoProcedencia(p) {
   const f = p.fes || null;
-  const h = ['<p><b>Latín:</b> texto tradicional, transcrito del '
+  const h = ['<dt>Latín</dt><dd>Texto tradicional, transcrito del '
     + '<i>Thesaurus Precum Latinarum</i> de Michael Martin'
     + (p.anio ? ' (la fuente fecha esta versión en ' + esc(p.anio) + ')' : '')
     + '. Ortografía eclesiástica y acentuación puestas aquí'
     + (p.orto ? ', salvo la ortografía, que es la de la ' + esc(p.orto) : '')
-    + '.</p>'];
+    + '.</dd>'];
   if (f) {
-    h.push('<p><b>Castellano:</b> ' + esc(f.obra || '')
-      + (f.autoridad ? ' · ' + esc(f.autoridad) : '')
-      + (f.oficial ? ' · traducción aprobada' : ' · versión no oficial')
-      + (f.territorio ? ' (' + esc(f.territorio) + ')' : '')
-      + (f.que_es ? ' · ' + esc(f.que_es) : '') + '.</p>');
-    if (f.aviso) h.push('<p>' + esc(f.aviso) + '</p>');
-    if (f.url) {
-      h.push('<p><a href="' + esc(f.url) + '" target="_blank" '
-        + 'rel="noreferrer">' + esc(f.url) + '</a></p>');
-    }
+    h.push('<dt>Castellano</dt><dd><span class="devo-sello'
+      + (f.oficial ? ' oficial' : '') + '">'
+      + (f.oficial ? 'traducción aprobada' : 'versión no oficial')
+      + (f.territorio ? ' · ' + esc(f.territorio) : '') + '</span>'
+      + esc(f.obra || '') + (f.autoridad ? ' · ' + esc(f.autoridad) : '')
+      + (f.que_es ? ' · ' + esc(f.que_es) : '') + '.'
+      + (f.aviso ? '<br>' + esc(f.aviso) : '')
+      + (f.url ? '<br><a href="' + esc(f.url) + '" target="_blank" '
+        + 'rel="noreferrer">' + esc(f.url) + '</a>' : '') + '</dd>');
   } else {
-    h.push('<p><b>Castellano:</b> todavía no. No significa que no exista '
+    h.push('<dt>Castellano</dt><dd>Todavía no. No significa que no exista '
       + 'traducción: significa que aquí no se ha verificado cuál es ni de '
-      + 'dónde sale.</p>');
+      + 'dónde sale.</dd>');
   }
   if (p.hora) {
-    h.push('<p><b>La hora:</b> el Breviario la canta en ' + esc(p.hora)
+    h.push('<dt>La hora</dt><dd>El Breviario la canta en ' + esc(p.hora)
       + (p.dia ? ' del ' + esc(p.dia) : '')
       + (p.tpo ? ' en ' + esc(p.tpo) : '')
       + '. Lo dice el Breviario de Divinum Officium'
-      + (p.hsrc ? ', en «' + esc(p.hsrc) + '»' : '') + '.</p>');
+      + (p.hsrc ? ', en «' + esc(p.hsrc) + '»' : '') + '.</dd>');
   }
   if (p.comp) {
-    h.push('<p><b>Del Compendio:</b> es la número ' + p.comp + ' del '
+    h.push('<dt>Del Compendio</dt><dd>Es la número ' + p.comp + ' del '
       + 'apéndice de oraciones comunes del Compendio del Catecismo de la '
-      + 'Iglesia Católica.</p>');
+      + 'Iglesia Católica.</dd>');
   }
   return '<details class="devo-fuente"><summary>De dónde sale esto'
-    + '</summary>' + h.join('') + '</details>';
+    + '</summary><dl>' + h.join('') + '</dl></details>';
 }
 
-/** Lo que la fila dice de una pieza sin abrirla: qué es, a qué hora se
+/** A qué hora la canta el Breviario, cuando lo dice. */
+function devoHora(p) {
+  return p.hora ? p.hora + (p.dia ? ' del ' + p.dia
+    : (p.tpo ? ' · ' + p.tpo : '')) : '';
+}
+
+/** Lo que la fila dice de una pieza sin abrirla: qué es —en versalitas y
+ *  en rojo, como la rúbrica que la anunciaría en el libro—, a qué hora se
  *  canta si el Breviario lo dice, y si todavía no tiene castellano. */
 function devoSena(p) {
-  const s = [p.f];
-  if (p.hora) {
-    s.push(p.hora + (p.dia ? ' del ' + p.dia
-      : (p.tpo ? ' · ' + p.tpo : '')));
-  }
-  if (!p.es) s.push('sólo en latín');
-  return '<small class="devo-sena">' + esc(s.join(' · ')) + '</small>';
+  const s = ['<span class="devo-forma">' + esc(p.f) + '</span>'];
+  if (p.hora) s.push(esc(devoHora(p)));
+  if (!p.es) s.push('<i>sólo en latín</i>');
+  return '<small class="devo-sena">' + s.join(' · ') + '</small>';
 }
 
 /** Una fila de la lista. `ctx` es de dónde viene la pieza, y se pone en las
  *  listas que atraviesan el libro —un filtro, una búsqueda—, donde sin eso
- *  no se sabría en qué capítulo vive. */
-function devoFila(p, ctx) {
+ *  no se sabría en qué capítulo vive. `num` es su número en una lista que
+ *  tiene orden propio: la del Compendio. */
+function devoFila(p, ctx, num) {
   return '<a class="devo-fila" href="#/oraciones/o/' + esc(p.id) + '">'
+    + (num ? '<span class="devo-num">' + num + '</span>' : '')
+    + '<span class="devo-fila-cuerpo">'
     + (ctx ? '<span class="devo-ctx">' + esc(ctx) + '</span>' : '')
-    + '<span lang="la">' + esc(tx(p.tla)) + '</span>'
-    + (p.comp ? '<span class="devo-marca">Compendio</span>' : '')
+    + '<span class="devo-la" lang="la">' + esc(tx(p.tla)) + '</span>'
+    + (p.comp && !num ? '<span class="devo-marca">Compendio</span>' : '')
     + (p.dist ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
-    + (p.tes ? '<small>' + esc(p.tes) + '</small>' : '')
-    + devoSena(p) + '</a>';
+    + (p.tes ? '<span class="devo-es">' + esc(p.tes) + '</span>' : '')
+    + devoSena(p) + '</span></a>';
 }
 
 /** La fila de una devoción de varias partes: se abre y dentro están. */
 function devoFilaCol(partes) {
   const p = partes[0];
   return '<a class="devo-fila devo-fila-col" href="#/oraciones/k/'
-    + encodeURIComponent(p.col) + '">'
-    + '<span>' + esc(p.colt) + '</span>'
-    + '<small class="devo-sena">' + partes.length + ' '
-    + esc(p.colq || 'partes')
+    + encodeURIComponent(p.col) + '"><span class="devo-fila-cuerpo">'
+    + '<span class="devo-la">' + esc(p.colt) + '</span>'
+    + '<small class="devo-sena"><span class="devo-forma">' + partes.length
+    + ' ' + esc(p.colq || 'partes') + '</span>'
     // no se dice dos veces lo mismo: «3 letanías», no «3 letanías · letanías»
     + (devoPlural(p.f) === p.colq ? '' : ' · ' + esc(devoPlural(p.f)))
-    + (partes.some((x) => x.es) ? '' : ' · sólo en latín') + '</small></a>';
+    + (partes.some((x) => x.es) ? '' : ' · <i>sólo en latín</i>')
+    + '</small></span></a>';
 }
 
 /** Una lista de piezas, con las colecciones plegadas en una fila. Cuando
  *  pasa de doce, se corta por lo que es cada pieza: en una lista larga lo
- *  que el ojo busca es «las letanías», no la letra con que empiezan. */
+ *  que el ojo busca es «las letanías», no la letra con que empiezan.
+ *
+ *  `ids`, si se da, se llena con las oraciones sueltas en el orden en que
+ *  salen: es la lista que se recorre luego con «anterior» y «siguiente». */
 function devoLista(piezas, opc) {
   const o = opc || {};
   const vistas = new Set();
@@ -4057,10 +4374,12 @@ function devoLista(piezas, opc) {
     } else filas.push({ p: p });
   }
   if (!filas.length) return '<p class="aviso">Aquí no hay nada todavía.</p>';
-  if (filas.length <= 12 || o.sinCortes) {
-    return filas.map((x) => (x.col ? devoFilaCol(x.partes)
-      : devoFila(x.p, o.ctx && o.ctx(x.p)))).join('');
-  }
+  const fila = (x) => {
+    if (x.col) return devoFilaCol(x.partes);
+    if (o.ids) o.ids.push(x.p.id);
+    return devoFila(x.p, o.ctx && o.ctx(x.p));
+  };
+  if (filas.length <= 12 || o.sinCortes) return filas.map(fila).join('');
   const por = new Map();
   for (const x of filas) {
     const f = x.col ? x.f : x.p.f;
@@ -4072,8 +4391,7 @@ function devoLista(piezas, opc) {
     (a, b) => orden.indexOf(a) - orden.indexOf(b));
   return claves.map((f) => '<h3 class="devo-sub">' + esc(devoPlural(f))
     + ' <span class="devo-n">' + por.get(f).length + '</span></h3>'
-    + por.get(f).map((x) => (x.col ? devoFilaCol(x.partes)
-      : devoFila(x.p, o.ctx && o.ctx(x.p)))).join('')).join('');
+    + por.get(f).map(fila).join('')).join('');
 }
 
 function devoAtras(href, rotulo) {
@@ -4081,34 +4399,104 @@ function devoAtras(href, rotulo) {
     + esc(rotulo) + '</a>';
 }
 
-/** Los filtros. No son carpetas: una pieza vive en un solo capítulo, y esto
- *  atraviesa el libro entero para juntar lo que es de la misma clase. */
-function devoChips(forma, lengua) {
-  const enlace = (f, l) => '#/oraciones/f/' + encodeURIComponent(f || '-')
-    + (l ? '/' + l : '');
-  const h = ['<div class="devo-chips">'];
+/** Una entrada del índice, como en un libro: el número, el título, los
+ *  puntos guía y, donde iría la página, cuántas oraciones; y debajo, de qué
+ *  trata. */
+function devoEntrada(href, titulo, pista, n, num) {
+  return '<a class="devo-entrada" href="' + href + '">'
+    + (num ? '<span class="devo-entrada-num">' + num + '</span>' : '')
+    + '<span class="devo-entrada-cuerpo"><span class="devo-entrada-linea">'
+    + '<span class="devo-entrada-t">' + esc(titulo) + '</span>'
+    + '<span class="devo-entrada-guia" aria-hidden="true"></span>'
+    + '<span class="devo-entrada-n">' + n + '</span></span>'
+    + (pista ? '<span class="devo-entrada-p">' + esc(pista) + '</span>' : '')
+    + '</span></a>';
+}
+
+/* Los filtros. No son carpetas: una pieza vive en un solo capítulo, y esto
+ * atraviesa el libro entero para juntar lo que es de la misma clase. En la
+ * portada van envueltos, que se vean todos; en una lista filtrada, en una
+ * tira que se desliza, para no comerse la pantalla. */
+function devoEnlaceFiltro(f, l) {
+  return '#/oraciones/f/' + encodeURIComponent(f || '-') + (l ? '/' + l : '');
+}
+
+function devoChipsForma(forma, lengua, envuelve) {
+  const h = ['<div class="devo-chips' + (envuelve ? ' envuelve' : '') + '">'];
   for (const x of E.devo.formas.slice(0, 12)) {
     const act = x.f === forma;
     h.push('<a class="devo-chip' + (act ? ' activo' : '') + '" href="'
-      + enlace(act ? null : x.f, lengua) + '">' + esc(devoPlural(x.f))
+      + devoEnlaceFiltro(act ? null : x.f, lengua) + '"'
+      + (act ? ' aria-current="true"' : '') + '>' + esc(devoPlural(x.f))
       + ' <span>' + x.n + '</span></a>');
   }
   h.push('<a class="devo-chip devo-chip-mas" href="#/oraciones/f">'
-    + 'todas las formas…</a>');
-  h.push('</div><div class="devo-chips">');
-  h.push('<a class="devo-chip' + (lengua === 'es' ? ' activo' : '')
-    + '" href="' + enlace(forma, lengua === 'es' ? null : 'es')
-    + '">con castellano</a>');
-  h.push('<a class="devo-chip' + (lengua === 'la' ? ' activo' : '')
-    + '" href="' + enlace(forma, lengua === 'la' ? null : 'la')
-    + '">sólo en latín</a>');
-  h.push('</div>');
+    + 'todas las formas…</a></div>');
   return h.join('');
+}
+
+/** Con castellano o sólo en latín, y cuántas hay de cada, contadas dentro
+ *  de la forma que esté puesta. */
+function devoChipsLengua(forma, lengua, envuelve) {
+  const base = E.devo.piezas.filter((p) => !forma || p.f === forma);
+  const es = base.filter((p) => p.es).length;
+  const chip = (l, rot, n) => '<a class="devo-chip'
+    + (lengua === l ? ' activo' : '') + '" href="'
+    + devoEnlaceFiltro(forma, lengua === l ? null : l) + '"'
+    + (lengua === l ? ' aria-current="true"' : '') + '>' + rot
+    + ' <span>' + n + '</span></a>';
+  return '<div class="devo-chips' + (envuelve ? ' envuelve' : '') + '">'
+    + chip('es', 'con castellano', es)
+    + chip('la', 'sólo en latín', base.length - es) + '</div>';
 }
 
 function devoDondeVive(p) {
   const c = E.devoCap.get(p.c);
   return (c ? c.t : 'Devocionario') + (p.s ? ' · ' + p.s : '');
+}
+
+/** La lista de la que se ha llegado a una oración, para volver a ella y
+ *  para pasar a la de al lado sin volver. Si se vino de una lista —un
+ *  capítulo, un filtro, una búsqueda, las del Compendio— es ésa, que es la
+ *  que se estaba recorriendo; si se llegó de fuera, la de su sitio en el
+ *  libro. */
+function devoListaDe(p) {
+  const v = E.devoVuelta;
+  if (v && v.ids.indexOf(p.id) >= 0) return v;
+  if (p.col) {
+    return { ids: E.devoCol.get(p.col).map((x) => x.id),
+      href: '#/oraciones/k/' + encodeURIComponent(p.col), rot: p.colt };
+  }
+  const ids = E.devo.piezas.filter((x) => x.c === p.c && !x.col
+    && (x.s || null) === (p.s || null)).map((x) => x.id);
+  if (p.s) {
+    return { ids: ids, rot: p.s, href: '#/oraciones/s/'
+      + encodeURIComponent(p.c) + '/' + encodeURIComponent(p.s) };
+  }
+  const c = E.devoCap.get(p.c);
+  return { ids: ids, href: '#/oraciones/c/' + encodeURIComponent(p.c),
+    rot: c ? c.t : 'Devocionario' };
+}
+
+/** Al pie de la oración, la de antes y la de después en la misma lista: una
+ *  novena se reza de corrido, y volver al índice entre parte y parte es
+ *  perder el hilo. */
+function devoPasa(l, i) {
+  if (i < 0 || l.ids.length < 2) return '';
+  const una = (k, cual) => {
+    const q = E.devoDe.get(l.ids[k]);
+    if (!q) return '<span></span>';
+    return '<a class="devo-pasa-' + cual + '" href="#/oraciones/o/'
+      + esc(q.id) + '"><small>'
+      + (cual === 'antes' ? ICONO.izq + 'Anterior' : 'Siguiente' + ICONO.der)
+      + '</small><span lang="la">' + esc(tx(q.tla)) + '</span></a>';
+  };
+  return '<nav class="devo-pasa" aria-label="Otras oraciones de esta lista">'
+    + '<p class="devo-pasa-donde">' + (i + 1) + ' de ' + l.ids.length + ' · '
+    + esc(l.rot) + '</p>'
+    + (i > 0 ? una(i - 1, 'antes') : '<span></span>')
+    + (i < l.ids.length - 1 ? una(i + 1, 'luego') : '<span></span>')
+    + '</nav>';
 }
 
 function pintaOracion(id) {
@@ -4121,26 +4509,32 @@ function pintaOracion(id) {
   // va debajo, y cuando no hay más que el primer renglón, ése
   modoPanel(tx(p.tla));
   $('#subtitulo-dia').textContent = p.tes || '';
-  const c = E.devoCap.get(p.c);
-  const vuelta = p.col
-    ? ['#/oraciones/k/' + encodeURIComponent(p.col), p.colt]
-    : (p.s ? ['#/oraciones/s/' + encodeURIComponent(p.c) + '/'
-        + encodeURIComponent(p.s), p.s]
-      : ['#/oraciones/c/' + encodeURIComponent(p.c),
-        c ? c.t : 'Devocionario']);
-  vista.innerHTML = devoAtras(vuelta[0], vuelta[1])
-    + '<p class="devo-ficha">' + devoSena(p)
-    + (p.comp ? '<span class="devo-marca">Compendio</span>' : '') + '</p>'
+  const l = devoListaDe(p);
+  // la ficha: qué es —y un toque lleva a las demás de su clase—, si es del
+  // Compendio, a qué hora la canta el Breviario y en qué lenguas está
+  const ficha = [
+    '<a class="devo-insignia enlace" href="' + devoEnlaceFiltro(p.f) + '">'
+    + esc(p.f) + '</a>',
+    p.comp ? '<a class="devo-insignia enlace" href="#/oraciones/p">'
+      + 'Compendio · ' + p.comp + '</a>' : '',
+    p.hora ? '<span class="devo-insignia">' + esc(devoHora(p)) + '</span>'
+      : '',
+    '<span class="devo-insignia' + (p.es ? '' : ' apagada') + '">'
+    + (p.es ? 'latín y castellano' : 'sólo en latín') + '</span>'
+  ];
+  vista.innerHTML = devoAtras(l.href, l.rot)
+    + '<p class="devo-ficha">' + ficha.join('') + '</p>'
     + '<div class="devo">'
     + bilingue('<div lang="la">' + devoLatin(p) + '</div>',
       devoCastellano(p))
-    + '</div>' + devoProcedencia(p);
+    + '</div>' + devoProcedencia(p) + devoPasa(l, l.ids.indexOf(p.id));
   colocaPosicion();
 }
 
-/** Un capítulo. Si tiene muchas secciones y mucha pieza, se enseñan las
+/** Un capítulo. Abre con su portadilla —el número en romanos y de qué
+ *  trata—, y luego: si tiene muchas secciones y mucha pieza, se enseñan las
  *  secciones y se entra en una; si es corto, se enseña entero con sus
- *  secciones por dentro, que así se ve de una vez. */
+ *  secciones por dentro, y arriba una tira para saltar a cada una. */
 function pintaCapitulo(clave) {
   const c = E.devoCap.get(clave);
   if (!c) return pintaDevocionario();
@@ -4148,25 +4542,44 @@ function pintaCapitulo(clave) {
   $('#subtitulo-dia').textContent = c.n + (c.n === 1 ? ' oración · '
     : ' oraciones · ') + c.p;
   const piezas = E.devo.piezas.filter((p) => p.c === clave);
-  const h = [devoAtras('#/oraciones', 'Devocionario')];
+  const ids = [];
+  const h = [devoAtras('#/oraciones', 'Devocionario'),
+    '<header class="devo-portadilla"><span class="devo-portadilla-num">'
+    + romano(E.devo.caps.indexOf(c) + 1) + '</span>'
+    + '<p class="devo-portadilla-p">' + esc(c.p) + '</p>'
+    + '<p class="devo-portadilla-n">' + devoCuenta(piezas) + '</p></header>'];
   if (c.secs.length > 3 && c.n > 40) {
-    h.push(c.secs.map((s) =>
-      '<a class="devo-fila devo-grupo" href="#/oraciones/s/'
-      + encodeURIComponent(clave) + '/' + encodeURIComponent(s.s) + '">'
-      + esc(s.s) + '<small>' + s.n + '</small></a>').join(''));
+    h.push('<div class="devo-indice">' + c.secs.map((s) => devoEntrada(
+      '#/oraciones/s/' + encodeURIComponent(clave) + '/'
+      + encodeURIComponent(s.s), s.s, null, s.n)).join('') + '</div>');
   } else if (!c.secs.length) {
-    h.push(devoLista(piezas));
+    h.push(devoLista(piezas, { ids: ids }));
   } else {
+    if (c.secs.length > 1) {
+      h.push('<nav class="devo-chips devo-salta" aria-label="Secciones">'
+        + c.secs.map((s, i) => '<button type="button" class="devo-chip" '
+          + 'data-salta="' + i + '">' + esc(s.s) + '</button>').join('')
+        + '</nav>');
+    }
     const sueltas = piezas.filter((p) => !p.s);
-    if (sueltas.length) h.push(devoLista(sueltas, { sinCortes: true }));
-    for (const s of c.secs) {
-      h.push('<h3 class="devo-sub">' + esc(s.s)
+    if (sueltas.length) {
+      h.push(devoLista(sueltas, { sinCortes: true, ids: ids }));
+    }
+    c.secs.forEach((s, i) => {
+      h.push('<h3 class="devo-sub" id="devo-sec-' + i + '">' + esc(s.s)
         + ' <span class="devo-n">' + s.n + '</span></h3>');
       h.push(devoLista(piezas.filter((p) => p.s === s.s),
-        { sinCortes: true }));
-    }
+        { sinCortes: true, ids: ids }));
+    });
   }
+  E.devoVuelta = { ids: ids, rot: c.t,
+    href: '#/oraciones/c/' + encodeURIComponent(clave) };
   vista.innerHTML = h.join('');
+  vista.querySelectorAll('[data-salta]').forEach((b) =>
+    b.addEventListener('click', () => {
+      const t = $('#devo-sec-' + b.dataset.salta);
+      if (t) t.scrollIntoView({ behavior: suave(), block: 'start' });
+    }));
   colocaPosicion();
 }
 
@@ -4178,8 +4591,12 @@ function pintaSeccion(clave, sec) {
   modoPanel(sec);
   $('#subtitulo-dia').textContent = c.t + ' · ' + piezas.length
     + (piezas.length === 1 ? ' oración' : ' oraciones');
+  const ids = [];
   vista.innerHTML = devoAtras('#/oraciones/c/' + encodeURIComponent(clave),
-    c.t) + devoLista(piezas);
+    c.t) + '<p class="devo-cuenta">' + devoCuenta(piezas) + '</p>'
+    + devoLista(piezas, { ids: ids });
+  E.devoVuelta = { ids: ids, rot: sec, href: '#/oraciones/s/'
+    + encodeURIComponent(clave) + '/' + encodeURIComponent(sec) };
   colocaPosicion();
 }
 
@@ -4196,15 +4613,20 @@ function pintaColeccion(col) {
     ? ['#/oraciones/s/' + encodeURIComponent(p.c) + '/'
       + encodeURIComponent(p.s), p.s]
     : ['#/oraciones/c/' + encodeURIComponent(p.c), c ? c.t : 'Devocionario'];
+  const ids = [];
   vista.innerHTML = devoAtras(vuelta[0], vuelta[1])
-    + devoLista(partes, { sinPlegar: true, sinCortes: true });
+    + '<p class="devo-cuenta">' + partes.length + ' partes · '
+    + esc(devoDondeVive(p)) + '</p>'
+    + devoLista(partes, { sinPlegar: true, sinCortes: true, ids: ids });
+  E.devoVuelta = { ids: ids, rot: p.colt,
+    href: '#/oraciones/k/' + encodeURIComponent(col) };
   colocaPosicion();
 }
 
-/** Todas las formas, por familias: de dónde le viene a cada una su nombre.
- *  Veintiocho en una lista plana no se leen; agrupadas se leen de una vez,
- *  y además se entiende por qué un salmo y una jaculatoria no son lo mismo
- *  aunque las dos se recen. */
+/** Todas las formas, por familias: de dónde le viene a cada una su nombre,
+ *  y qué es cada una. Veintiocho en una lista plana no se leen; agrupadas y
+ *  dichas se leen de una vez, y además se entiende por qué un salmo y una
+ *  jaculatoria no son lo mismo aunque las dos se recen. */
 function pintaFormas() {
   modoPanel('Qué es cada oración');
   $('#subtitulo-dia').textContent = E.devo.formas.length + ' formas';
@@ -4215,15 +4637,22 @@ function pintaFormas() {
     y.formas.push(x);
   }
   vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
-    + fam.map((y) => '<h3 class="devo-sub">' + esc(y.t) + '</h3>'
-      + y.formas.map((x) =>
-        '<a class="devo-fila devo-grupo" href="#/oraciones/f/'
-        + encodeURIComponent(x.f) + '">' + esc(devoPlural(x.f))
-        + '<small>' + x.n + '</small></a>').join('')).join('');
+    + '<p class="devo-lede">Cada oración vive en un capítulo, por cuándo y a '
+    + 'quién se reza; pero además es algo: un himno, una letanía, una '
+    + 'novena. Aquí están todas las formas, por familias y con lo que es '
+    + 'cada una. Tocar una junta las de su clase de todo el libro.</p>'
+    + fam.filter((y) => y.formas.length).map((y) =>
+      '<section class="devo-familia"><h3 class="devo-sub">' + esc(y.t)
+      + '</h3>' + (DEVO_FAMILIA[y.t]
+        ? '<p class="devo-familia-p">' + esc(DEVO_FAMILIA[y.t]) + '</p>' : '')
+      + '<div class="devo-indice">' + y.formas.map((x) => devoEntrada(
+        devoEnlaceFiltro(x.f), mayuscula(devoPlural(x.f)), DEVO_QUE[x.f],
+        x.n)).join('') + '</div></section>').join('');
   colocaPosicion();
 }
 
-/** El filtro: lo que es de una misma clase, de todo el libro. */
+/** El filtro: lo que es de una misma clase, de todo el libro. Debajo del
+ *  título, qué es esa forma. */
 function pintaFiltro(forma, lengua) {
   const f = (forma && forma !== '-') ? forma : null;
   const hay = E.devo.piezas.filter((p) =>
@@ -4231,52 +4660,111 @@ function pintaFiltro(forma, lengua) {
   const dicho = [];
   if (f) dicho.push(devoPlural(f));
   if (lengua) dicho.push(lengua === 'es' ? 'con castellano' : 'sólo en latín');
-  modoPanel(dicho.length ? dicho.join(' · ') : 'Todo el devocionario');
+  const titulo = dicho.length ? mayuscula(dicho.join(' · '))
+    : 'Todo el devocionario';
+  modoPanel(titulo);
   $('#subtitulo-dia').textContent = hay.length
     + (hay.length === 1 ? ' oración' : ' oraciones');
+  const ids = [];
   vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
-    + devoChips(f, lengua)
+    + (f && DEVO_QUE[f] ? '<p class="devo-lede">' + esc(DEVO_QUE[f]) + '</p>'
+      : '')
+    + devoChipsForma(f, lengua) + devoChipsLengua(f, lengua)
+    + '<p class="devo-cuenta">' + devoCuenta(hay) + '</p>'
     + devoLista(hay, {
       sinPlegar: true,
       sinCortes: !!f,
-      ctx: (p) => devoDondeVive(p)
+      ctx: (p) => devoDondeVive(p),
+      ids: ids
     });
+  E.devoVuelta = { ids: ids, rot: titulo, href: location.hash };
   // el chip encendido puede estar fuera de la pantalla, porque la tira se
   // desliza: se trae a la vista para que se vea qué filtro está puesto
-  const act = $('.devo-chip.activo');
-  if (act) act.parentElement.scrollLeft = Math.max(0, act.offsetLeft - 64);
+  vista.querySelectorAll('.devo-chip.activo').forEach((act) => {
+    act.parentElement.scrollLeft = Math.max(0, act.offsetLeft - 64);
+  });
   colocaPosicion();
 }
 
+/** Las del Compendio, en su orden: la puerta de quien empieza. */
+function pintaCompendio() {
+  const piezas = E.devo.piezas.filter((p) => p.comp)
+    .sort((a, b) => a.comp - b.comp);
+  modoPanel('Las oraciones del Compendio');
+  $('#subtitulo-dia').textContent = piezas.length + ' oraciones comunes';
+  vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
+    + '<p class="devo-lede">El Compendio del Catecismo de la Iglesia Católica '
+    + '(2005) termina con un apéndice de oraciones comunes. Son éstas, en su '
+    + 'orden: las primeras que se aprenden y las que se rezan en común.</p>'
+    + '<p class="devo-cuenta">' + devoCuenta(piezas) + '</p>'
+    + piezas.map((p) => devoFila(p, null, p.comp)).join('');
+  E.devoVuelta = { ids: piezas.map((p) => p.id), href: '#/oraciones/p',
+    rot: 'Las del Compendio' };
+  colocaPosicion();
+}
+
+/** La portada del devocionario: el buscador, la puerta de quien empieza, el
+ *  índice de los capítulos y, debajo, los filtros por lo que es cada pieza
+ *  y por la lengua. Lo que se buscaba se recuerda mientras se anda por el
+ *  devocionario, para volver de una oración a la misma búsqueda. */
 function pintaDevocionario() {
   modoPanel('Devocionario');
-  $('#subtitulo-dia').textContent = E.devo.piezas.length
-    + ' oraciones en latín';
-  const capitulos = E.devo.caps.map((c) =>
-    '<a class="devo-fila devo-grupo" href="#/oraciones/c/'
-    + encodeURIComponent(c.c) + '"><span>' + esc(c.t)
-    + '<span class="devo-pista">' + esc(c.p) + '</span></span>'
-    + '<small>' + c.n + '</small></a>').join('');
-  vista.innerHTML = '<input class="campo" id="devo-q" type="search" '
-    + 'placeholder="Buscar una oración por su título" autocomplete="off">'
-    + '<div id="devo-res">' + devoChips(null, null) + capitulos + '</div>';
+  const total = E.devo.piezas.length;
+  const comp = E.devo.piezas.filter((p) => p.comp).length;
+  $('#subtitulo-dia').textContent = total + ' oraciones en latín';
+  const portada = [
+    '<p class="devo-lede">Las oraciones de la Iglesia en latín, en la '
+    // la raya de cierre, pegada a su palabra: sola al principio de un
+    // renglón no se lee como cierre
+    + 'ortografía de los libros litúrgicos —con su jota, su ligadura y su '
+    + 'acento⁠—, y con el castellano de cada una donde se ha podido verificar '
+    + 'de dónde sale. ' + devoCuenta(E.devo.piezas) + '.</p>',
+    comp ? '<a class="devo-destacada" href="#/oraciones/p">'
+      + '<span class="devo-destacada-ojo">Para empezar</span>'
+      + '<span class="devo-destacada-t">Las oraciones del Compendio</span>'
+      + '<span class="devo-destacada-p">Las ' + comp + ' oraciones comunes '
+      + 'del Catecismo, de la señal de la cruz al acto de contrición, en su '
+      + 'orden.</span><span class="devo-destacada-ir">' + ICONO.der
+      + '</span></a>' : '',
+    '<h2 class="devo-h">Índice<small>por cuándo y a quién se reza</small></h2>',
+    '<div class="devo-indice">' + E.devo.caps.map((c, i) => devoEntrada(
+      '#/oraciones/c/' + encodeURIComponent(c.c), c.t, c.p, c.n,
+      romano(i + 1))).join('') + '</div>',
+    '<h2 class="devo-h">Por lo que son<small>un filtro que atraviesa el '
+    + 'libro</small></h2>',
+    devoChipsForma(null, null, true),
+    '<h2 class="devo-h">Por la lengua</h2>',
+    devoChipsLengua(null, null, true)
+  ].join('');
+  vista.innerHTML = '<div class="devo-busca">' + ICONO.buscar
+    + '<input class="campo" id="devo-q" type="search" '
+    + 'placeholder="Buscar por el título, en latín o en castellano" '
+    + 'aria-label="Buscar una oración" autocomplete="off"></div>'
+    + '<div id="devo-res">' + portada + '</div>';
   const campo = $('#devo-q');
-  campo.addEventListener('input', () => {
+  const busca = () => {
+    E.devoQ = campo.value;
     const q = plano(campo.value.trim());
     const caja = $('#devo-res');
     if (q.length < 2) {
-      caja.innerHTML = devoChips(null, null) + capitulos;
+      caja.innerHTML = portada;
       return;
     }
     const hay = E.devo.piezas.filter((p) => p.k.includes(q)).slice(0, 60);
+    const ids = [];
     caja.innerHTML = hay.length
-      ? devoLista(hay, { sinPlegar: true, sinCortes: true,
-        ctx: (p) => devoDondeVive(p) })
+      ? '<p class="devo-cuenta">' + (hay.length === 60 ? 'Las 60 primeras'
+        : devoCuenta(hay)) + '</p>'
+        + devoLista(hay, { sinPlegar: true, sinCortes: true,
+          ctx: (p) => devoDondeVive(p), ids: ids })
       : '<p class="aviso">Ninguna oración se llama así. La búsqueda '
       + 'ignora acentos y desata æ/œ, así que «quaesumus» encuentra '
       + '«quǽsumus», y entiende lo que la pieza es: «letanía», «himno», '
       + '«novena».</p>';
-  });
+    E.devoVuelta = { ids: ids, href: '#/oraciones', rot: 'La búsqueda' };
+  };
+  campo.addEventListener('input', busca);
+  if (E.devoQ) { campo.value = E.devoQ; busca(); }
   colocaPosicion();
 }
 
@@ -4299,6 +4787,7 @@ async function verDevocionario(que, cual, mas) {
   if (que === 'k' && cual) return pintaColeccion(cual);
   if (que === 'f' && cual) return pintaFiltro(cual, mas);
   if (que === 'f') return pintaFormas();
+  if (que === 'p') return pintaCompendio();
   // las direcciones viejas eran por grupo; se entra por la portada
   pintaDevocionario();
 }
@@ -5598,7 +6087,7 @@ function pintaLineas(lineas, prosa, seccion) {
         : ln.map((tr) => tr[0]
           ? '<b class="rub">' + esc(tr[1]) + '</b>'
           : marcaNombre(esc(tr[1]))).join('');
-    actual.push({ sigla: cl.includes(' sigla'),
+    actual.push({ sigla: cl.includes(' sigla'), tit: tit,
       h: '<span class="' + cl + '">'
         + (marcas.ini.has(i) ? CRUZ + ' ' : '') + t
         + (marcas.fin.has(i) ? ' ' + CRUZ : '') + '</span>' });
@@ -5619,7 +6108,12 @@ function pintaLineas(lineas, prosa, seccion) {
     // de blanco. Va como los versos, a la izquierda y con sangría francesa.
     // Su primer párrafo, que sí es prosa seguida, es bloque de un renglón.
     const sentido = seccion === 'examen' && b.length > 1 && !b[0].sigla;
-    return '<p class="estrofa-h' + (sentido ? ' sentido' : '') + '">'
+    // El título del salmo viene en un párrafo suyo —la fuente deja un
+    // renglón en blanco antes de la primera estrofa—, pero no se separa de
+    // ella como una estrofa de otra: es su encabezamiento.
+    const deTit = b.every((x) => x.tit);
+    return '<p class="estrofa-h' + (sentido ? ' sentido' : '')
+      + (deTit ? ' de-tit' : '') + '">'
       + b.map((x) => x.h).join('') + '</p>';
   }).join('');
 }
@@ -7415,15 +7909,16 @@ async function adelantaPiper() {
  * la medida que importa: cuánto más deprisa hace la voz este teléfono de
  * lo que tarda en decirla. */
 function camposDePiper(sel) {
-  return '<div class="ajuste ancho"><p class="pista-g">'
+  return '<p class="aj-nota">'
     + 'Una voz neuronal que vive en el teléfono. Se baja una vez —mejor con '
     + 'wifi: el motor son 29 MB, comunes a todas, y la voz de 28 a 77 más— '
     + 'y desde entonces habla sin conexión, sin cuenta y sin que el texto '
     + 'salga del teléfono. Va haciendo la voz mientras reza, y lo que tarda '
     + 'en hacerla depende del teléfono: «Probar» lo mide.'
-    + '</p></div>'
+    + '</p>'
     + sel('vozPiper', 'La voz de Piper', '', VOCES_PIPER)
-    + '<div class="ajuste ancho" id="piper-estado">' + estadoPiper() + '</div>';
+    + '<div class="ajuste ancho piper" id="piper-estado">' + estadoPiper()
+    + '</div>';
 }
 
 function estadoPiper() {
@@ -7616,7 +8111,7 @@ function botonVoz() {
 function bloqueVoz() {
   const hay = vocesDeLaVoz().length;
   const es = pideVoces().filter((v) => /^es/i.test(v.lang)).length;
-  return '<div class="ajuste ancho"><p class="pista-g">'
+  return '<p class="aj-nota">'
     + 'La hora se dice en alta voz desde el botón del altavoz, arriba a la '
     + 'derecha, y se gobierna con los mandos de abajo. Está hecha para '
     + 'rezarla de camino: el botón del volante o el de los auriculares pasa '
@@ -7632,7 +8127,7 @@ function bloqueVoz() {
           + 'Configuración · Hora e idioma · Voz; en Android y en iPhone '
           + 'vienen puestas.'
         : '')
-    + '</p></div>';
+    + '</p>';
 }
 
 /** La pista de la lista de voces: cuántas hay y de dónde salen. */
@@ -7654,7 +8149,7 @@ function camposDeLaVozEnLinea(campoVoz) {
   const p = PROVEEDOR[prov];
   const opcion = (v, rot, puesta) => '<option value="' + esc(v) + '"'
     + (puesta ? ' selected' : '') + '>' + esc(rot) + '</option>';
-  return '<div class="ajuste ancho"><p class="pista-g">'
+  return '<p class="aj-nota">'
     + 'Hace falta una cuenta en el servicio y su clave; hecho eso, no se '
     + 'vuelve a tocar. Las dos cuentas piden una tarjeta para identificarte '
     + '—no cobran nada—, y las dos son gratis para lo que esto gasta: una '
@@ -7663,19 +8158,20 @@ function camposDeLaVozEnLinea(campoVoz) {
     + 'a ningún otro sitio; el texto de lo que se reza, en cambio, sí va al '
     + 'servicio, que para decirlo tiene que leerlo. Sin conexión, o si '
     + 'falla, habla la voz del teléfono y la hora no se corta.'
-    + '</p></div>'
-    + '<div class="ajuste"><label for="aj-vl-prov">El servicio</label>'
+    + '</p>'
+    + '<div class="ajuste apilado"><label class="eti" for="aj-vl-prov">'
+    + 'El servicio</label>'
     + '<select id="aj-vl-prov" data-vozlinea="prov">'
     + Object.keys(PROVEEDOR).map((k) =>
       opcion(k, PROVEEDOR[k].rot, k === prov)).join('')
     + '</select></div>'
-    + '<div class="ajuste ancho"><p class="pista-g">' + esc(p.donde)
-    + '</p></div>'
+    + '<p class="aj-nota">' + esc(p.donde) + '</p>'
     + (p.campos.indexOf('region') >= 0
       ? campoVoz('region', 'Región', 'La del recurso: westeurope, eastus…')
       : '')
     + campoVoz('clave', 'Clave', 'No se enseña ni se comparte.', 'password')
-    + '<div class="ajuste"><label for="aj-vl-voz">La voz</label>'
+    + '<div class="ajuste apilado"><label class="eti" for="aj-vl-voz">'
+    + 'La voz</label>'
     + '<select id="aj-vl-voz" data-vozlinea="voz">'
     + p.voces.map(([v, rot]) => opcion(v, rot, c.voz === v)).join('')
     + '</select></div>';

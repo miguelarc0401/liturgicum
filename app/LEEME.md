@@ -131,10 +131,37 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   procedencia: la del latín y la del castellano, con la autoridad, el
   territorio y si es traducción aprobada o sólo publicada. Las que todavía
   no tienen castellano lo dicen; «no hay» significa que aquí no se ha
-  verificado cuál es, no que no exista. Lo hace
+  verificado cuál es, no que no exista.
+  **Y se hojea como un libro.** La portada es un **índice**: los capítulos
+  en romanos, los puntos guía y, donde iría la página, cuántas oraciones
+  trae cada uno. Encima, la puerta de quien empieza —**las veintidós del
+  Compendio, en su orden y numeradas**— y debajo los filtros, todos a la
+  vista. Cada capítulo abre con su portadilla, que dice cuántas trae y
+  cuántas tienen ya castellano; los cortos llevan una tira para saltar a
+  cada sección. La página de las formas dice **qué es cada una** en un
+  renglón —qué es una letanía, una conmemoración, una jaculatoria—, y el
+  filtro de una forma lo repite bajo el título: el devocionario es también
+  para aprender a rezar. Abierta una oración, su ficha lleva a las demás
+  de su clase, la procedencia va como una ficha de biblioteca, y al pie
+  están **la anterior y la siguiente de la lista de la que se vino** —el
+  capítulo, el filtro, la búsqueda o las del Compendio—, porque una novena
+  se reza de corrido y volver al índice entre parte y parte es perder el
+  hilo. La búsqueda se recuerda al volver de una oración. Lo hace
   [`Enchiridion/`](../Enchiridion/LEEME.md).
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
+* **Ajustes, en tarjetas.** Una por pestaña, en cuatro grupos —cómo se lee,
+  la misa, las horas, el año y la app—, y bajo el nombre de cada una lo que
+  tiene puesto, que se pone al día al tocar cualquier cosa: plegadas, son el
+  índice de lo que se puede cambiar. Cada ajuste lleva el mando que le va,
+  y no una lista desplegable para todo: el sí o no, un interruptor; dos,
+  tres o cuatro opciones cortas, una tira con todas a la vista; las que hay
+  que explicar —la versión, qué se enseña de la misa, la voz—, una tarjeta
+  por opción con lo que trae; y la letra, el papel y el color se eligen
+  viéndolos: cada letra pinta sus aes con la suya, cada papel es una hoja
+  con su tinta y su rúbrica —aunque la app esté puesta en otro—, y cada
+  color, su pastilla. La pista va debajo del nombre y a todo lo ancho, no
+  apretada al lado del mando, y al final, como en un libro, el colofón.
 * **El tamaño de la letra, a mano mientras se reza.** Dos aes en la cabecera
   —en la hora y en la misa— lo suben y lo bajan sin ir a Ajustes: que la
   letra se ve chica se nota rezando, no al abrir la app. Al cambiarlo, el

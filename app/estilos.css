@@ -81,11 +81,21 @@ body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo
 body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #255c8a; }
 body[data-color="neutro"] { --acento: #6b1220; }
 
-body[data-tema="sepia"] {
+/* Las fichas de cada tema sirven tambien para una hoja suelta: la muestra
+   del papel en Ajustes lleva la clase de su tema (`.tema-sepia`…) y pinta
+   sus colores de verdad aunque la app este puesta en otro. La del claro va
+   aparte, porque el claro es el de `:root` y no tiene regla propia; y va
+   antes que las demas, que la sepia la completa y no al reves. */
+.tema-claro {
+  --tinta: #1f1710; --tinta-suave: #685d51; --papel: #fbf8f1;
+  --papel-alto: #ffffff; --filete: #e7ddcc; --filete-fuerte: #d5c6ad;
+  --rubrica: #9a1b1b;
+}
+body[data-tema="sepia"], .tema-sepia {
   --papel: #f4e9d6; --papel-alto: #fbf3e4; --tinta: #3b2c19;
   --filete: #dfceb0; --filete-fuerte: #cdb790; --tinta-suave: #6f5d40;
 }
-body[data-tema="oscuro"] {
+body[data-tema="oscuro"], .tema-oscuro {
   --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
   --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
   --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
@@ -100,7 +110,7 @@ body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rub
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
    del todo a quien va a dormirse—. */
-body[data-tema="noche"] {
+body[data-tema="noche"], .tema-noche {
   --papel: #0b0806; --papel-alto: #120e0b; --tinta: #d8ae80;
   --tinta-suave: #96714f; --filete: #2a1d13; --filete-fuerte: #3e2c1d;
   --rubrica: #c8795c; --realce: #3a2a10; --acento: #c08d63;
@@ -625,27 +635,331 @@ body[data-cruces="no"] .cruz { display: none; }
 .resultado .frag { display: block; font-size: .92rem; color: var(--tinta-suave); }
 mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius: 2px; }
 
-/* --------------------------------------------------------------- ajustes */
+/* --------------------------------------------------------------- ajustes
+   Ajustes es una pagina de tarjetas, como la portada: una por pestana, con
+   su icono, su nombre y, debajo, lo que tiene puesto. Plegadas son el
+   indice de lo que se puede cambiar; abiertas llevan dentro los mandos.
+   Van en cuatro grupos —como se lee, la misa, las horas, el ano y la app—,
+   que son los libros de la app y lo comun a todos. */
+.aj-intro {
+  margin: .1rem .1rem 0; font-family: var(--sans); font-size: .8rem;
+  line-height: 1.55; color: var(--tinta-suave);
+}
+.aj-grupo {
+  margin: 1.7rem .15rem .6rem; font-family: var(--sans); font-size: .68rem;
+  font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.ajustes-sec {
+  margin: 0 0 .6rem; background: var(--papel-alto);
+  border: 1px solid var(--filete); border-radius: 14px;
+  box-shadow: 0 1px 2px rgb(60 40 20 / .04);
+  transition: border-color var(--medio) var(--curva),
+              box-shadow var(--medio) var(--curva);
+}
+.ajustes-sec[open] { border-color: var(--filete-fuerte); box-shadow: var(--sombra); }
+.ajustes-sec > summary {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center; gap: .85rem; min-height: 4rem;
+  padding: .7rem .95rem .7rem .8rem; cursor: pointer; list-style: none;
+  border-radius: 13px;
+  transition: background-color var(--rapido);
+}
+.ajustes-sec > summary::-webkit-details-marker { display: none; }
+.ajustes-sec > summary:active { background: var(--filete); }
+.ajustes-sec[open] > summary { border-radius: 13px 13px 0 0; }
+/* el icono en su azulejo, tenido del color del dia como el de la portada */
+.aj-icono {
+  width: 2.4rem; height: 2.4rem; display: grid; place-items: center;
+  border-radius: 11px; color: var(--acento);
+  background: color-mix(in srgb, var(--acento) 11%, transparent);
+  transition: color var(--lento) var(--curva),
+              background-color var(--lento) var(--curva);
+}
+.aj-icono svg { width: 1.3rem; height: 1.3rem; stroke-width: 1.6; }
+.aj-cab { min-width: 0; }
+.aj-t { display: block; font-size: 1.04rem; line-height: 1.3; }
+/* lo que tiene puesto: hasta dos renglones, y si no cabe, puntos
+   suspensivos */
+.aj-resumen {
+  display: -webkit-box; margin-top: .14rem;
+  -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  font-family: var(--sans); font-size: .73rem; line-height: 1.4;
+  color: var(--tinta-suave);
+}
+.aj-flecha {
+  width: .5rem; height: .5rem; margin-right: .2rem;
+  border-right: 2px solid var(--tinta-suave);
+  border-bottom: 2px solid var(--tinta-suave);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--medio) var(--curva);
+}
+.ajustes-sec[open] .aj-flecha { transform: rotate(-135deg) translate(-2px, -2px); }
+.ajustes-cuerpo {
+  padding: .15rem 1rem .55rem; border-top: 1px solid var(--filete);
+  animation: entra-vista .2s var(--curva);
+}
+.ajustes-cuerpo > .ajuste:last-child { border-bottom: 0; }
+/* dentro de la tarjeta, lo que es papel —la muestra, las opciones— va del
+   color de la pagina, que se vea que es otra cosa que la tarjeta */
+.ajustes-cuerpo .muestra { background: var(--papel); }
+
+/* Cada ajuste: el nombre y, a su derecha, el mando cuando es pequeno (un
+   interruptor, el interlineado); debajo y a todo lo ancho, la pista. En
+   los que se apilan, el nombre, la pista y despues las opciones: se lee
+   que hace antes de elegir. */
 .ajuste {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--filete);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; column-gap: 1rem;
+  padding: 1rem 0; border-bottom: 1px solid var(--filete);
 }
-/* `.eti` es la etiqueta de los mandos que no son un control al que un
-   <label> pueda apuntar —el paso del interlineado son dos botones y una
-   cifra—: misma letra, mismo sitio, y el nombre lo lleva el grupo. */
-.ajuste label, .ajuste .eti { font-family: var(--sans); font-size: .9rem; }
+.ajuste > * { grid-column: 1; }
+.ajuste > :is(.interruptor, .paso) { grid-column: 2; grid-row: 1; }
+.ajuste > .pista { grid-column: 1 / -1; }
+.ajuste.apilado, .ajuste.ancho { grid-template-columns: minmax(0, 1fr); }
+.ajuste.apilado > *, .ajuste.ancho > * { grid-column: 1; grid-row: auto; }
+/* `.eti` es la etiqueta de cada mando, sea un <label> o, en los grupos de
+   opciones y en el interlineado, un rotulo que nombra al grupo */
+.ajuste .eti {
+  font-family: var(--sans); font-size: .9rem; font-weight: 500;
+  line-height: 1.35; color: var(--tinta);
+}
 .ajuste .pista {
-  display: block; font-size: .76rem; line-height: 1.45;
-  color: var(--tinta-suave); margin-top: .2rem; max-width: 22rem;
+  margin: .3rem 0 0; max-width: 34rem;
+  font-family: var(--sans); font-size: .76rem; line-height: 1.5;
+  color: var(--tinta-suave);
 }
-.ajuste select, .ajuste input[type="range"],
-.ajuste input[type="text"], .ajuste input[type="password"] {
-  font-family: var(--sans); font-size: .88rem; flex: none; max-width: 52%;
-  min-height: 2.5rem;
-  background: var(--papel-alto); color: var(--tinta);
-  border: 1px solid var(--filete-fuerte); border-radius: 10px; padding: .35rem .5rem;
+.ajuste select, .ajuste input[type="text"], .ajuste input[type="password"] {
+  width: 100%; margin-top: .6rem; min-height: 2.75rem;
+  font-family: var(--sans); font-size: .9rem;
+  background: var(--papel); color: var(--tinta);
+  border: 1px solid var(--filete-fuerte); border-radius: 10px;
+  padding: .4rem .65rem;
 }
-.ajuste input[type="range"] { width: 8rem; padding: 0; border: 0; accent-color: var(--acento); }
+/* el tamano de la letra: su cifra a la derecha del nombre, y el deslizador
+   entre una a chica y una a grande, que dicen hacia donde crece */
+.eti.con-valor { display: flex; justify-content: space-between; gap: 1rem; }
+.aj-valor {
+  font-weight: 600; color: var(--acento);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.deslizador { display: flex; align-items: center; gap: .75rem; margin-top: .3rem; }
+.deslizador input[type="range"] {
+  flex: 1; min-width: 0; height: 2.75rem; margin: 0;
+  accent-color: var(--acento); background: none;
+}
+.a-chica, .a-grande { color: var(--tinta-suave); line-height: 1; }
+.a-chica { font-size: .8rem; }
+.a-grande { font-size: 1.4rem; }
+
+/* El interruptor: el de si o no. Apagado es un hueco con el boton chico y
+   del color de la pista; encendido se llena del color del dia y el boton
+   crece y se va a la derecha. Las dos posiciones se distinguen por la forma
+   y por el sitio, no solo por el color. */
+.interruptor {
+  -webkit-appearance: none; appearance: none; margin: 0; flex: none;
+  position: relative; width: 3rem; height: 1.75rem; cursor: pointer;
+  border-radius: 999px; border: 2px solid var(--tinta-suave);
+  background: var(--papel);
+  transition: background-color var(--medio) var(--curva),
+              border-color var(--medio) var(--curva);
+}
+.interruptor::before {
+  content: ""; position: absolute; top: 50%; left: .17rem;
+  width: 1.15rem; height: 1.15rem; border-radius: 50%;
+  background: var(--tinta-suave);
+  transform: translateY(-50%) scale(.68);
+  transition: transform var(--medio) var(--curva),
+              background-color var(--medio) var(--curva);
+}
+.interruptor:checked { background: var(--acento); border-color: var(--acento); }
+.interruptor:checked::before {
+  background: var(--papel-alto);
+  transform: translate(1.2rem, -50%) scale(1);
+}
+.interruptor:active::before { transform: translateY(-50%) scale(.82); }
+.interruptor:checked:active::before { transform: translate(1.1rem, -50%) scale(1.05); }
+
+/* Las opciones de un grupo. El boton de radio va encima de su opcion,
+   transparente y del mismo tamano: el dedo toca la opcion entera, y el
+   teclado y el lector de pantalla siguen teniendo un boton de verdad. */
+:is(.tira, .letras, .temas, .colores) > label { position: relative; }
+:is(.tira, .letras, .temas, .colores) input {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  margin: 0; opacity: 0; cursor: pointer;
+}
+/* la tira: dos, tres o cuatro opciones cortas, todas a la vista. La
+   elegida se llena del color del dia, como la hora que toca en la portada */
+/* las opciones se reparten el ancho a partes iguales, y la que no cabe se
+   parte dentro de su casilla: una sola, sola en otro renglon, parecia otra
+   pregunta */
+.tira {
+  display: flex; gap: .25rem; margin-top: .6rem;
+  padding: .25rem; border-radius: 12px;
+  background: var(--papel); border: 1px solid var(--filete);
+}
+.tira > label { flex: 1 1 0; min-width: 0; display: flex; }
+.tira span {
+  flex: 1; display: grid; place-items: center; text-align: center;
+  min-height: 2.6rem; padding: .35rem .45rem; border-radius: 9px;
+  font-family: var(--sans); font-size: .82rem; line-height: 1.25;
+  overflow-wrap: anywhere; -webkit-hyphens: auto; hyphens: auto;
+  color: var(--tinta-suave);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva);
+}
+.tira > label:active span { background: var(--filete); }
+.tira input:checked + span {
+  background: var(--acento); color: var(--papel-alto); font-weight: 600;
+}
+.tira input:focus-visible + span { outline: 2px solid var(--acento); outline-offset: 2px; }
+
+/* las tarjetas: una por opcion, con lo que trae cada una */
+.opciones { display: grid; gap: .45rem; margin-top: .65rem; }
+.opcion {
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  column-gap: .75rem; padding: .8rem .9rem .85rem; cursor: pointer;
+  background: var(--papel); border: 1px solid var(--filete-fuerte);
+  border-radius: 12px;
+  transition: border-color var(--medio) var(--curva),
+              background-color var(--medio) var(--curva);
+}
+.opcion:active { background: var(--filete); }
+.opcion input {
+  -webkit-appearance: none; appearance: none; grid-row: 1 / span 2;
+  width: 1.2rem; height: 1.2rem; margin: .08rem 0 0; cursor: pointer;
+  border-radius: 50%; border: 2px solid var(--tinta-suave);
+  transition: border-color var(--rapido), border-width var(--rapido) var(--curva);
+}
+.opcion input:checked { border: .38rem solid var(--acento); }
+.opcion:has(input:checked) {
+  border-color: var(--acento);
+  background: color-mix(in srgb, var(--acento) 7%, var(--papel-alto));
+}
+.opcion-t {
+  font-family: var(--sans); font-size: .88rem; font-weight: 600;
+  line-height: 1.35; color: var(--tinta);
+}
+.opcion-p {
+  grid-column: 2; margin-top: .22rem;
+  font-family: var(--sans); font-size: .76rem; line-height: 1.5;
+  color: var(--tinta-suave);
+}
+
+/* La letra se elige viendola: cada ficha pinta sus aes con la suya. */
+.letras {
+  display: grid; gap: .45rem; margin-top: .65rem;
+  grid-template-columns: repeat(auto-fill, minmax(5.9rem, 1fr));
+}
+.letra {
+  display: flex; flex-direction: column; align-items: center; gap: .25rem;
+  padding: .75rem .35rem .65rem; text-align: center;
+  background: var(--papel); border: 1px solid var(--filete-fuerte);
+  border-radius: 12px;
+  transition: border-color var(--medio) var(--curva),
+              background-color var(--medio) var(--curva);
+}
+.letra-aa { font-size: 1.75rem; line-height: 1.05; color: var(--tinta); }
+.letra-n {
+  font-family: var(--sans); font-size: .7rem; line-height: 1.3;
+  color: var(--tinta-suave);
+}
+.letra:has(input:checked) {
+  border-color: var(--acento); box-shadow: inset 0 0 0 1px var(--acento);
+  background: color-mix(in srgb, var(--acento) 7%, var(--papel-alto));
+}
+.letra input:checked ~ .letra-n { color: var(--acento); font-weight: 600; }
+.letra:active { background: var(--filete); }
+
+/* El papel: una hoja de cada uno, con su papel, su tinta y su rubrica.
+   Cada hoja lleva las fichas de su tema (`.tema-claro`, `.tema-oscuro`…,
+   arriba con las de los temas), asi que enseña los colores de verdad aunque
+   la app este puesta en otro. «Segun el telefono» es media y media. */
+.temas {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .45rem; margin-top: .7rem;
+}
+.tema {
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  padding: .1rem 0;
+}
+.tema-hoja {
+  display: flex; width: 100%; max-width: 3.9rem; aspect-ratio: 3 / 4;
+  overflow: hidden; border-radius: 7px;
+  border: 1px solid var(--filete-fuerte);
+  box-shadow: 0 1px 3px rgb(0 0 0 / .14);
+  transition: transform var(--rapido) var(--curva);
+}
+.tema-cara {
+  flex: 1; display: flex; flex-direction: column; gap: .2rem;
+  padding: .55rem .32rem; background: var(--papel); min-width: 0;
+}
+.tema-cara i {
+  display: block; height: .16rem; border-radius: 2px;
+  background: var(--tinta); opacity: .7;
+}
+.tema-cara i:first-child { width: 60%; margin-bottom: .1rem; background: var(--rubrica); opacity: 1; }
+.tema-cara i:last-child { width: 70%; }
+.tema-n {
+  font-family: var(--sans); font-size: .68rem; line-height: 1.25;
+  text-align: center; color: var(--tinta-suave);
+}
+.tema:has(input:checked) .tema-hoja { outline: 2px solid var(--acento); outline-offset: 2px; }
+.tema input:checked ~ .tema-n { color: var(--acento); font-weight: 600; }
+.tema:active .tema-hoja { transform: scale(.94); }
+
+/* El color de la app: una pastilla por color, con un aro del papel que la
+   separa del fondo y otro, del color del dia, alrededor de la elegida. «El
+   del dia» lleva los cuatro del ano en cuartos, que son los que va a ir
+   poniendo. */
+.colores {
+  display: grid; gap: .6rem .3rem; margin-top: .7rem;
+  grid-template-columns: repeat(auto-fill, minmax(4.1rem, 1fr));
+}
+.color {
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  padding: .2rem 0;
+}
+.color-punto {
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .14),
+              0 0 0 3px var(--papel-alto), 0 0 0 4px var(--filete-fuerte);
+  transition: box-shadow var(--medio) var(--curva),
+              transform var(--rapido) var(--curva);
+}
+.color-verde { background: var(--lit-verde); }
+.color-rojo { background: var(--lit-rojo); }
+.color-morado { background: var(--lit-morado); }
+.color-blanco { background: var(--lit-blanco); }
+.color-azul { background: var(--lit-azul); }
+.color-neutro { background: #6b1220; }
+.color-dia {
+  background: conic-gradient(var(--lit-verde) 0 25%, var(--lit-morado) 0 50%,
+    var(--lit-blanco) 0 75%, var(--lit-rojo) 0);
+}
+.color-n {
+  font-family: var(--sans); font-size: .68rem; line-height: 1.25;
+  text-align: center; color: var(--tinta-suave);
+}
+.color:has(input:checked) .color-punto {
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .14),
+              0 0 0 3px var(--papel-alto), 0 0 0 5px var(--acento);
+}
+.color input:checked ~ .color-n { color: var(--acento); font-weight: 600; }
+.color:active .color-punto { transform: scale(.9); }
+:is(.letra, .tema, .color):has(input:focus-visible) {
+  outline: 2px solid var(--acento); outline-offset: 3px; border-radius: 12px;
+}
+
+/* Lo que hay que advertir antes de nada —que voces trae el telefono, que
+   pide una cuenta—: una nota aparte, con su filete, que no es la pista de
+   un mando sino lo que hay que saber de toda la pestana. */
+.aj-nota {
+  margin: .9rem 0 .2rem; padding: .7rem .85rem;
+  font-family: var(--sans); font-size: .78rem; line-height: 1.55;
+  color: var(--tinta-suave); background: var(--papel); border-radius: 10px;
+  border-left: 3px solid color-mix(in srgb, var(--acento) 55%, transparent);
+}
 
 /* ------------------------------------------------ el interlineado, al paso
    El interlineado no es una lista de cuatro nombres sino un numero, y se
@@ -655,11 +969,11 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
    1,6— y se puede apretar varias veces sin mirar. */
 .paso {
   flex: none; display: flex; align-items: center; gap: .1rem; padding: .1rem;
-  background: var(--papel-alto);
+  background: var(--papel);
   border: 1px solid var(--filete-fuerte); border-radius: 10px;
 }
 .paso button {
-  width: 2.2rem; height: 2.3rem; display: grid; place-items: center;
+  width: 2.5rem; height: 2.5rem; display: grid; place-items: center;
   border: 0; border-radius: 8px; background: none; cursor: pointer;
   color: var(--acento); font-family: var(--sans); font-size: 1.2rem;
   line-height: 1;
@@ -679,14 +993,14 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .paso .cifra.heredada { color: var(--tinta-suave); }
 .mandos-paso {
   display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
-  margin-top: .5rem;
+  margin-top: .55rem;
 }
 /* «Igual que todas» no es una opcion de la lista —ya no hay lista— sino el
    boton que devuelve la seccion al formato general. Solo esta vivo cuando la
    seccion dice algo propio: mientras no diga nada no hay nada que deshacer. */
 .vuelve-general {
-  padding: .35rem .7rem; cursor: pointer;
-  font-family: var(--sans); font-size: .74rem; color: var(--acento);
+  min-height: 2.5rem; padding: .35rem .8rem; cursor: pointer;
+  font-family: var(--sans); font-size: .76rem; color: var(--acento);
   background: none; border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--acento) 30%, transparent);
 }
@@ -705,74 +1019,52 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .muestra .hora-sec + .hora-sec { margin-top: .9rem; }
 .muestra .sec-cab { margin-top: 0; }
 .muestra .estrofa-h:last-child { margin-bottom: 0; }
-/* el deslizador del tamano, a lo ancho: la muestra esta justo encima y se
-   mira mientras se arrastra */
-.ajuste.ancho { display: block; }
-.ajuste.ancho input[type="range"] { width: 100%; max-width: none; margin-top: .5rem; }
-.ajuste.ancho .marcas {
-  display: flex; justify-content: space-between;
-  font-family: var(--sans); font-size: .68rem; color: var(--tinta-suave);
-}
 
 /* El modo propio de la misa: las piezas en casillas, en el orden del
-   formulario. Una casilla por renglon: los rotulos son largos y en dos
-   columnas se parte el que no cabe. */
-.ajuste.piezas { padding-bottom: .55rem; }
-/* los campos de la voz en linea: una clave no cabe en media fila */
-.ajuste.ancho input[type="text"], .ajuste.ancho input[type="password"] {
-  width: 100%; max-width: none; margin-top: .5rem;
+   formulario, como una lista de comprobar. Una casilla por renglon: los
+   rotulos son largos y en dos columnas se parte el que no cabe. Las del
+   Ordinario lo dicen al margen, en versalitas. */
+.casillas {
+  margin-top: .65rem; padding: .1rem .8rem;
+  background: var(--papel); border: 1px solid var(--filete);
+  border-radius: 12px;
 }
-/* Los botones de la voz de Piper: bajarla, probarla, quitarla. Del mismo
-   porte que los selectores de al lado, y altos de un dedo. */
-.piper-boton {
-  font-family: var(--sans); font-size: .88rem; min-height: 2.5rem;
-  margin: .5rem .4rem 0 0; padding: .35rem .9rem;
-  background: var(--papel-alto); color: var(--tinta);
-  border: 1px solid var(--filete-fuerte); border-radius: 10px; cursor: pointer;
-}
-.casillas { margin-top: .65rem; }
 .casilla {
-  display: flex; align-items: flex-start; gap: .65rem;
-  padding: .4rem .1rem; font-family: var(--sans); font-size: .87rem;
-  cursor: pointer;
+  display: flex; align-items: center; gap: .7rem; min-height: 2.75rem;
+  padding: .3rem 0; border-bottom: 1px solid var(--filete);
+  font-family: var(--sans); font-size: .87rem; cursor: pointer;
 }
+.casilla:last-child { border-bottom: 0; }
 .casilla input[type="checkbox"] {
-  flex: none; width: 1.1rem; height: 1.1rem; margin: .06rem 0 0;
+  flex: none; width: 1.15rem; height: 1.15rem; margin: 0;
   accent-color: var(--acento);
 }
-.casilla em {
-  font-style: normal; font-size: .78rem; color: var(--tinta-suave);
+.casilla span {
+  flex: 1; display: flex; align-items: baseline; justify-content: space-between;
+  gap: .6rem;
 }
+.casilla em {
+  flex: none; font-style: normal; font-size: .62rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--tinta-suave);
+}
+/* Los botones de la voz de Piper: bajarla, probarla, quitarla. Del mismo
+   porte que los mandos de al lado, y altos de un dedo. */
+.ajuste.piper > p { margin: 0 0 .2rem; }
+.piper-boton {
+  font-family: var(--sans); font-size: .88rem; min-height: 2.75rem;
+  margin: .5rem .4rem 0 0; padding: .35rem 1rem;
+  background: var(--papel); color: var(--acento); font-weight: 600;
+  border: 1px solid color-mix(in srgb, var(--acento) 40%, transparent);
+  border-radius: 999px; cursor: pointer;
+  transition: background-color var(--rapido), transform var(--rapido) var(--curva);
+}
+.piper-boton:active { background: var(--filete); transform: scale(.96); }
 
 h2.seccion {
   margin: 2rem 0 .2rem; font-family: var(--sans); font-size: .72rem;
   font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
   color: var(--acento);
 }
-/* Ajustes, por pestanas: la lista entera de un tiron son cuatro pantallas
-   de deslizar para cambiar una cosa. */
-.ajustes-sec { border-bottom: 1px solid var(--filete); }
-.ajustes-sec > summary {
-  cursor: pointer; list-style: none;
-  display: flex; align-items: center; justify-content: space-between;
-  font-family: var(--sans); font-size: .76rem; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--acento);
-  padding: 1.05rem .1rem;
-}
-.ajustes-sec > summary::-webkit-details-marker { display: none; }
-.ajustes-sec > summary::after {
-  content: ""; width: .5rem; height: .5rem; margin-right: .3rem;
-  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translate(-2px, -2px);
-  transition: transform var(--medio) var(--curva);
-}
-.ajustes-sec[open] > summary::after {
-  transform: rotate(-135deg) translate(-2px, -2px);
-}
-.ajustes-sec > summary:active { background: var(--filete); }
-.ajustes-cuerpo { padding-bottom: .9rem; animation: entra-vista .2s var(--curva); }
-.ajustes-cuerpo > .ajuste:last-child { border-bottom: 0; }
-.ajustes-cuerpo > .pie { margin-top: .6rem; }
 /* El formato de una seccion sola: una pestana por seccion dentro de la
    pestana del formato. Va un paso adentro —filete a la izquierda y rotulo en
    caja baja— para que se vea que es lo de dentro de algo y no otra lista al
@@ -784,8 +1076,9 @@ h2.seccion {
 .fmt-grupo > summary {
   cursor: pointer; list-style: none;
   display: flex; align-items: center; justify-content: space-between;
-  font-family: var(--sans); font-size: .85rem; color: var(--tinta);
-  padding: .7rem .1rem;
+  min-height: 2.75rem;
+  font-family: var(--sans); font-size: .87rem; color: var(--tinta);
+  padding: .55rem .1rem;
 }
 .fmt-grupo > summary::-webkit-details-marker { display: none; }
 .fmt-grupo > summary::after {
@@ -809,21 +1102,26 @@ h2.seccion {
 .muestra.chica .ordo-p:last-child { margin-bottom: 0; }
 .pista-g {
   margin: 0 0 .1rem; font-family: var(--sans); font-size: .76rem;
-  line-height: 1.45; color: var(--tinta-suave); max-width: 24rem;
-}
-/* La nota de las fuentes latinas: que trae cada una de suyo, que no se ve
-   con solo cambiar de version. Va debajo del mando, en la misma casilla. */
-.nota-fuentes { margin: 0; max-width: 24rem; font-family: var(--sans); }
-.nota-fuentes dt { font-size: .8rem; margin-top: .55rem; }
-.nota-fuentes dt:first-child { margin-top: 0; }
-.nota-fuentes dd {
-  margin: .12rem 0 0; font-size: .76rem; line-height: 1.45;
-  color: var(--tinta-suave);
+  line-height: 1.5; color: var(--tinta-suave); max-width: 34rem;
 }
 .pie {
   margin-top: 2rem; font-family: var(--sans); font-size: .74rem;
   color: var(--tinta-suave); line-height: 1.5;
 }
+/* El colofon, como en un libro: al final y centrado, la cruz, el nombre y
+   de donde sale lo que se lee. */
+.colofon {
+  margin: 2.8rem auto .5rem; max-width: 27rem; text-align: center;
+  font-family: var(--sans); font-size: .72rem; line-height: 1.6;
+  color: var(--tinta-suave);
+}
+.colofon-cruz { display: inline-grid; color: var(--acento); }
+.colofon-cruz svg { width: 1.35rem; height: 1.35rem; stroke-width: 1.4; }
+.colofon-t {
+  margin: .3rem 0 .9rem; font-family: var(--familia); font-size: .82rem;
+  letter-spacing: .26em; text-transform: uppercase; color: var(--acento);
+}
+.colofon p:not(.colofon-t) { margin: 0 0 .7rem; }
 
 /* --------------------------------------------------------------- barra
    Cinco puertas, con icono de trazo y su nombre. La elegida lleva una
@@ -1048,6 +1346,12 @@ h2.seccion {
 }
 .hora-sec .ln.tit .vs { letter-spacing: .06em; }
 .hora-sec .ln.tit { margin: .1rem 0 .1rem; }
+/* y del titulo a la primera estrofa, interlineado sencillo: la fuente los
+   separa con un renglon en blanco, pero el titulo encabeza la estrofa, no
+   es otra. Va despues de la regla de la salmodia y con su misma fuerza. */
+.estrofa-h.de-tit,
+.hora-sec.en-verso.fmt-salmos .estrofa-h.de-tit { margin-bottom: 0; }
+.hora-sec .estrofa-h.de-tit .ln.tit:last-child { margin-bottom: 0; }
 .hora-sec .rub {
   /* En el original la rubrica se distingue del texto por el color y por
      nada mas: ni negrita ni cursiva. Se respeta. */
@@ -1736,44 +2040,243 @@ select.elige {
 .testigo::before { content: "— "; }
 
 /* ------------------------------------------------------------ devocionario
-   Un libro de oraciones se hojea, así que lo que manda es la lista: una
-   fila por oración, el título latino grande y el castellano debajo en
-   pequeño, y nada más. La oración abierta se compone como el Ordinario de
-   la misa, con las dos lenguas enfrentadas (.bi) y la rúbrica en rojo. */
-.devo-fila {
-  display: block; text-decoration: none; color: inherit;
-  padding: .7rem .2rem .75rem; border-bottom: 1px solid var(--filete);
+   Un libro de oraciones se hojea, y su portada es la de un libro: un indice
+   con los capitulos en romanos, los puntos guia y, donde iria la pagina,
+   cuantas oraciones trae. Lo que la pieza *es* —un himno, una letania— no
+   es un capitulo sino un filtro, y va debajo, en fichas. La oracion abierta
+   se compone como el Ordinario de la misa, con las dos lenguas enfrentadas
+   (.bi) y la rubrica en rojo; al pie, de donde sale, y la de al lado. */
+
+/* el buscador, con su lupa dentro */
+.devo-busca { position: relative; }
+.devo-busca svg {
+  position: absolute; left: .95rem; top: 50%; transform: translateY(-50%);
+  width: 1.1rem; height: 1.1rem; color: var(--tinta-suave);
+  pointer-events: none;
+}
+.devo-busca .campo {
+  min-height: 2.9rem; padding-left: 2.7rem; border-radius: 999px;
+  font-family: var(--sans); font-size: .9rem;
+}
+/* la entradilla: de que va lo que sigue, en la cursiva del libro */
+.devo-lede {
+  margin: 1rem .1rem 0; font-size: .97rem; line-height: 1.55;
+  font-style: italic; color: var(--tinta-suave); text-wrap: pretty;
+}
+/* cuantas hay en la lista, y cuantas con castellano */
+.devo-cuenta {
+  margin: .9rem .1rem .2rem; font-family: var(--sans); font-size: .7rem;
+  letter-spacing: .04em; color: var(--tinta-suave);
+}
+
+/* La puerta de quien empieza: las del Compendio, en una tarjeta como las
+   de la portada, con su canto del color del dia. */
+.devo-destacada {
+  position: relative; display: block; margin: 1.15rem 0 0;
+  padding: 1rem 3rem 1.05rem 1.1rem; text-decoration: none; color: inherit;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  border-left: 4px solid var(--acento); border-radius: 14px;
+  box-shadow: var(--sombra);
+  transition: transform var(--rapido) var(--curva),
+              background-color var(--medio) var(--curva),
+              border-color var(--lento) var(--curva);
+}
+.devo-destacada:active { background: var(--filete); transform: scale(.985); }
+.devo-destacada-ojo {
+  display: block; font-family: var(--sans); font-size: .62rem;
+  font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--acento);
+}
+.devo-destacada-t { display: block; margin: .3rem 0 .3rem; font-size: 1.15rem; line-height: 1.3; }
+.devo-destacada-p {
+  display: block; font-family: var(--sans); font-size: .76rem;
+  line-height: 1.5; color: var(--tinta-suave);
+}
+.devo-destacada-ir {
+  position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+  color: var(--acento);
+}
+
+/* los rotulos de la portada: en versalitas y del color del dia, con lo que
+   cada parte es al otro lado del filete */
+.devo-h {
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: .2rem 1rem;
+  margin: 2.1rem 0 .3rem; padding: 0 .1rem .45rem;
+  border-bottom: 1px solid var(--filete-fuerte);
+  font-family: var(--sans); font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--acento);
+}
+.devo-h small {
+  font-size: .72rem; font-weight: 400; letter-spacing: .01em;
+  text-transform: none; color: var(--tinta-suave);
+}
+
+/* El indice. Cada entrada: el numero en romanos y en rojo, el titulo, los
+   puntos guia hasta la cuenta, y debajo de que trata. Los puntos van en el
+   primer renglon del titulo; si el titulo se parte, se acortan. */
+.devo-entrada {
+  display: flex; align-items: flex-start; gap: .8rem;
+  padding: .85rem .15rem .9rem; text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--filete);
   transition: background-color var(--medio) var(--curva);
 }
-.devo-fila:active { background: var(--filete); }
-.devo-fila small {
-  display: block; margin-top: .12rem;
-  font-family: var(--sans); font-size: .74rem; color: var(--tinta-suave);
+.devo-entrada:active { background: var(--filete); }
+.devo-entrada-num {
+  flex: none; width: 2.2rem; padding-top: .14rem; text-align: right;
+  font-size: .86rem; letter-spacing: .05em; color: var(--rubrica);
 }
-.devo-fila .devo-solo-la { font-style: italic; opacity: .75; }
+.devo-entrada-cuerpo { flex: 1; min-width: 0; }
+.devo-entrada-linea { display: flex; align-items: baseline; gap: .45rem; }
+.devo-entrada-t { font-size: 1.06rem; line-height: 1.3; }
+.devo-entrada-guia {
+  flex: 1; min-width: .9rem; transform: translateY(-.3em);
+  border-bottom: 2px dotted var(--filete-fuerte);
+}
+.devo-entrada-n {
+  flex: none; font-family: var(--sans); font-size: .76rem;
+  font-variant-numeric: tabular-nums lining-nums; color: var(--tinta-suave);
+}
+.devo-entrada-p {
+  display: block; margin-top: .18rem;
+  font-family: var(--sans); font-size: .74rem; line-height: 1.45;
+  color: var(--tinta-suave);
+}
+
+/* La portadilla de un capitulo: su numero en grande, de que trata, cuantas
+   trae, y un filete corto que la separa de la lista. */
+.devo-portadilla { margin: .3rem 0 .6rem; text-align: center; }
+.devo-portadilla-num {
+  display: block; font-size: 1.6rem; line-height: 1.2; letter-spacing: .12em;
+  color: var(--rubrica);
+}
+.devo-portadilla-p {
+  margin: .25rem auto 0; max-width: 24rem; font-size: 1rem; line-height: 1.45;
+  font-style: italic; color: var(--tinta); text-wrap: balance;
+}
+.devo-portadilla-n {
+  margin: .35rem 0 0; font-family: var(--sans); font-size: .68rem;
+  letter-spacing: .06em; color: var(--tinta-suave);
+}
+.devo-portadilla::after {
+  content: ""; display: block; width: 2.6rem; height: 1px;
+  margin: .95rem auto 0; background: var(--filete-fuerte);
+}
+
+/* Una fila de la lista: el titulo latino grande, el castellano debajo en
+   cursiva, y lo que la pieza es en una linea de datos. Lleva su flecha al
+   borde, que se vea que se abre. */
+.devo-fila {
+  position: relative; display: flex; align-items: flex-start; gap: .75rem;
+  padding: .8rem 1.7rem .85rem .15rem; text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--filete);
+  transition: background-color var(--medio) var(--curva);
+}
+.devo-fila::after {
+  content: ""; position: absolute; right: .55rem; top: 50%;
+  width: .45rem; height: .45rem; margin-top: -.23rem;
+  border-top: 1.5px solid var(--tinta-suave);
+  border-right: 1.5px solid var(--tinta-suave);
+  transform: rotate(45deg); opacity: .7;
+}
+.devo-fila:active { background: var(--filete); }
+.devo-fila-cuerpo { flex: 1; min-width: 0; }
+.devo-la { font-size: 1.04rem; line-height: 1.35; }
+.devo-es {
+  display: block; margin-top: .12rem; font-size: .9rem; line-height: 1.35;
+  font-style: italic; color: var(--tinta-suave);
+}
+/* el numero de su orden, en la lista que lo tiene: la del Compendio */
+.devo-num {
+  flex: none; width: 2rem; height: 2rem; margin-top: .05rem;
+  display: grid; place-items: center; border-radius: 50%;
+  font-family: var(--sans); font-size: .76rem; font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums; color: var(--acento);
+  border: 1px solid color-mix(in srgb, var(--acento) 35%, transparent);
+}
 /* lo que distingue dos versiones de la misma oración: el año que da la
    fuente, y donde no lo da, el número de orden */
 .devo-dist {
   margin-left: .45rem; font-family: var(--sans); font-size: .68rem;
   letter-spacing: .04em; color: var(--tinta-suave);
 }
-.devo-grupo {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: .8rem; font-size: 1.05rem;
+/* Lo que la fila dice sin abrir la oracion: que es —en versalitas y en
+   rojo, como la rubrica que la anunciaria en el libro—, a que hora la canta
+   el Breviario, y si todavia esta solo en latin. Es dato y no texto, y va
+   mas apagado que el. */
+.devo-sena {
+  display: block; margin-top: .3rem;
+  font-family: var(--sans); font-size: .7rem; letter-spacing: .02em;
+  line-height: 1.4; color: var(--tinta-suave);
 }
-.devo-grupo small { margin-top: 0; font-variant-numeric: tabular-nums; }
+.devo-forma {
+  font-size: .62rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--rubrica);
+}
+/* la marca de las veintidos del Compendio: la lista de la Iglesia para
+   quien empieza, y por eso se ve de lejos */
+.devo-marca {
+  display: inline-block; margin-left: .4rem; vertical-align: .12em;
+  font-family: var(--sans); font-size: .56rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--rubrica);
+  border: 1px solid currentColor; border-radius: .2rem; padding: 0 .26rem;
+}
+/* de que capitulo viene una pieza, en las listas que atraviesan el libro */
+.devo-ctx {
+  display: block; margin-bottom: .12rem;
+  font-family: var(--sans); font-size: .66rem; letter-spacing: .04em;
+  color: var(--rubrica); opacity: .9;
+}
 .devo-atras {
-  display: inline-flex; align-items: center; gap: .15rem;
-  margin: 0 0 .7rem; padding: .35rem .5rem .35rem .2rem;
+  display: inline-flex; align-items: center; gap: .15rem; min-height: 2.5rem;
+  margin: -.3rem 0 .2rem; padding: .35rem .6rem .35rem .2rem;
   font-family: var(--sans); font-size: .8rem; color: var(--tinta-suave);
-  text-decoration: none;
+  text-decoration: none; border-radius: 999px;
+  transition: background-color var(--rapido);
 }
+.devo-atras:active { background: var(--filete); }
 .devo-atras svg { width: 1.05rem; height: 1.05rem; }
+/* el rotulo de una seccion dentro de la lista: en rojo, con su cuenta y un
+   filete que corre hasta el borde. Al saltar a el desde la tira se para por
+   debajo de la cabecera. */
 .devo-sub {
-  margin: 1.4rem 0 .3rem; font-family: var(--sans); font-size: .72rem;
-  letter-spacing: .09em; text-transform: uppercase;
-  color: var(--tinta-suave);
+  display: flex; align-items: baseline; gap: .45rem;
+  margin: 1.7rem 0 .25rem; padding: 0 .1rem;
+  font-family: var(--sans); font-size: .68rem; font-weight: 700;
+  letter-spacing: .11em; text-transform: uppercase; color: var(--rubrica);
+  scroll-margin-top: 4.5rem;
 }
+.devo-sub::after {
+  content: ""; flex: 1; height: 1px; background: var(--filete);
+  transform: translateY(-.25em);
+}
+.devo-n {
+  font-weight: 400; letter-spacing: 0; color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+/* la pagina de las formas: cada familia con de donde le viene el nombre */
+.devo-familia-p {
+  margin: .1rem .1rem .2rem; font-family: var(--sans); font-size: .74rem;
+  line-height: 1.5; color: var(--tinta-suave);
+}
+
+/* La oracion abierta. Arriba, su ficha: que es —y un toque lleva a las
+   demas de su clase—, si es del Compendio, a que hora, en que lenguas. */
+.devo-ficha { display: flex; flex-wrap: wrap; gap: .35rem; margin: .1rem 0 1.15rem; }
+.devo-insignia {
+  display: inline-flex; align-items: center; min-height: 2rem;
+  padding: .15rem .7rem; border-radius: 999px;
+  font-family: var(--sans); font-size: .72rem; letter-spacing: .02em;
+  color: var(--tinta-suave); background: var(--papel-alto);
+  border: 1px solid var(--filete); text-decoration: none;
+}
+.devo-insignia.enlace {
+  color: var(--acento);
+  border-color: color-mix(in srgb, var(--acento) 35%, transparent);
+  transition: background-color var(--rapido);
+}
+.devo-insignia.enlace:active { background: var(--filete); }
+.devo-insignia.apagada { font-style: italic; }
 .devo { margin-top: .4rem; }
 /* el título y el epígrafe que la fuente imprime dentro de la oración: el
    nombre del salmo, «Ad Matutinum», la cita con que el Oficio lo encabeza */
@@ -1784,86 +2287,114 @@ select.elige {
   margin: -.3rem 0 .7rem; font-style: italic; text-align: center;
   font-size: .9em; color: var(--tinta-suave);
 }
+/* De donde sale: una ficha de biblioteca, plegada. El nombre de cada dato
+   arriba en versalitas y el dato debajo; la traduccion aprobada lleva su
+   sello en verde, y la que no lo es, el suyo en gris. */
 .devo-fuente {
-  margin: 1.8rem 0 .5rem; font-family: var(--sans); font-size: .76rem;
-  color: var(--tinta-suave);
+  margin: 2rem 0 .5rem; font-family: var(--sans); font-size: .78rem;
+  color: var(--tinta-suave); background: var(--papel-alto);
+  border: 1px solid var(--filete); border-radius: 12px;
 }
 .devo-fuente > summary {
-  cursor: pointer; padding: .4rem 0; letter-spacing: .02em;
-  border-bottom: 1px solid var(--filete); list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 2.9rem; padding: .5rem 1rem; cursor: pointer;
+  list-style: none; letter-spacing: .02em; border-radius: 11px;
 }
 .devo-fuente > summary::-webkit-details-marker { display: none; }
-.devo-fuente > summary::before { content: "▸ "; }
-.devo-fuente[open] > summary::before { content: "▾ "; }
-.devo-fuente p { margin: .55rem 0; line-height: 1.5; }
+.devo-fuente > summary::after {
+  content: ""; width: .42rem; height: .42rem; margin-right: .2rem;
+  border-right: 2px solid var(--tinta-suave);
+  border-bottom: 2px solid var(--tinta-suave);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform var(--medio) var(--curva);
+}
+.devo-fuente[open] > summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+.devo-fuente dl {
+  margin: 0; padding: .1rem 1rem .85rem; border-top: 1px solid var(--filete);
+}
+.devo-fuente dt {
+  margin-top: .8rem; font-size: .62rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--acento);
+}
+.devo-fuente dd { margin: .22rem 0 0; line-height: 1.55; color: var(--tinta); }
+.devo-fuente a { color: var(--acento); overflow-wrap: anywhere; }
+.devo-sello {
+  display: inline-block; margin: 0 .4rem .15rem 0; padding: .05rem .4rem;
+  border: 1px solid currentColor; border-radius: 4px;
+  font-size: .6rem; letter-spacing: .07em; text-transform: uppercase;
+  vertical-align: .1em; color: var(--tinta-suave);
+}
+.devo-sello.oficial { color: var(--lit-verde); }
 
-/* Lo que la fila dice sin abrir la oracion: que es, a que hora la canta el
-   Breviario, y si todavia esta solo en latin. Va debajo del castellano y
-   mas apagada que el, porque es dato y no texto. */
-.devo-sena {
-  display: block; margin-top: .14rem;
-  font-family: var(--sans); font-size: .68rem; letter-spacing: .02em;
-  color: var(--tinta-suave); opacity: .9;
+/* La de antes y la de despues, en la misma lista: dos tarjetas al pie, con
+   donde se esta —«3 de 9 · Novena»— encima. */
+.devo-pasa {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .5rem; margin: 1.4rem 0 .5rem;
 }
-.devo-fila .devo-sena::first-letter { text-transform: uppercase; }
-/* la marca de las veintidos del Compendio: la lista de la Iglesia para
-   quien empieza, y por eso se ve de lejos */
-.devo-marca {
-  display: inline-block; margin-left: .4rem; vertical-align: .08em;
-  font-family: var(--sans); font-size: .58rem; letter-spacing: .07em;
-  text-transform: uppercase; color: var(--rubrica);
-  border: 1px solid currentColor; border-radius: .2rem; padding: 0 .24rem;
+.devo-pasa-donde {
+  grid-column: 1 / -1; margin: 0 0 .1rem; text-align: center;
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .05em;
+  color: var(--tinta-suave);
 }
-/* de que capitulo viene una pieza, en las listas que atraviesan el libro */
-.devo-ctx {
-  display: block; margin-bottom: .1rem;
-  font-family: var(--sans); font-size: .66rem; letter-spacing: .04em;
-  color: var(--rubrica); opacity: .85;
+.devo-pasa a {
+  display: flex; flex-direction: column; gap: .25rem; min-height: 4.2rem;
+  padding: .7rem .85rem; text-decoration: none; color: inherit;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  border-radius: 12px;
+  transition: background-color var(--rapido),
+              transform var(--rapido) var(--curva);
 }
-.devo-pista {
-  display: block; margin-top: .1rem;
-  font-family: var(--sans); font-size: .7rem; color: var(--tinta-suave);
+.devo-pasa a:active { background: var(--filete); transform: scale(.98); }
+.devo-pasa-luego { align-items: flex-end; text-align: right; }
+.devo-pasa small {
+  display: inline-flex; align-items: center; gap: .1rem;
+  font-family: var(--sans); font-size: .62rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--acento);
 }
-.devo-grupo > span:first-child { min-width: 0; }
-.devo-n {
-  font-family: var(--sans); font-size: .7rem; font-weight: 400;
-  color: var(--tinta-suave); letter-spacing: 0;
+.devo-pasa small svg { width: .9rem; height: .9rem; stroke-width: 2; }
+.devo-pasa a > span {
+  font-size: .9rem; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-/* la fila de una devocion de varias partes: se abre y dentro estan */
-.devo-fila-col::after {
-  content: "›"; float: right; margin-top: -1.15rem;
-  color: var(--tinta-suave); font-size: 1.1rem; line-height: 1;
-}
-.devo-ficha { margin: 0 0 .9rem; }
-.devo-ficha .devo-sena { display: inline; }
 
 /* Los filtros. No son carpetas: una pieza vive en un solo capitulo, y el
-   filtro junta las de la misma clase de todo el libro. Se deslizan, como
-   los del dia, para que quepan sin comerse la pantalla. */
+   filtro junta las de la misma clase de todo el libro. En una lista se
+   deslizan, como los del dia, para que quepan sin comerse la pantalla; en
+   la portada se envuelven, que se vean todos. */
 .devo-chips {
-  display: flex; gap: .3rem; margin: .5rem 0 .2rem;
+  display: flex; gap: .35rem; margin: .6rem 0 .2rem;
   overflow-x: auto; scrollbar-width: none;
   margin-left: -16px; margin-right: -16px; padding: 0 16px .15rem;
 }
 .devo-chips::-webkit-scrollbar { display: none; }
+.devo-chips.envuelve {
+  flex-wrap: wrap; overflow: visible; margin: .8rem 0 0; padding: 0;
+}
 .devo-chip {
-  flex: none; white-space: nowrap; text-decoration: none;
-  font-family: var(--sans); font-size: .74rem; min-height: 1.95rem;
-  display: inline-flex; align-items: center; gap: .28rem;
-  padding: .25rem .7rem; border-radius: 999px;
-  border: 1px solid var(--filete-fuerte); color: var(--tinta-suave);
+  flex: none; white-space: nowrap; text-decoration: none; cursor: pointer;
+  font-family: var(--sans); font-size: .76rem; min-height: 2.4rem;
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .25rem .8rem; border-radius: 999px;
+  background: var(--papel-alto);
+  border: 1px solid var(--filete-fuerte); color: var(--tinta);
   transition: background-color var(--medio) var(--curva),
               color var(--medio) var(--curva),
               border-color var(--medio) var(--curva);
 }
-.devo-chip span { font-variant-numeric: tabular-nums; opacity: .7; }
+.devo-chip span {
+  font-variant-numeric: tabular-nums; color: var(--tinta-suave);
+}
 .devo-chip:active { background: var(--filete); }
 .devo-chip.activo {
   background: var(--acento); border-color: var(--acento);
   color: var(--papel-alto);
 }
-.devo-chip.activo span { opacity: .85; }
-.devo-chip-mas { border-style: dashed; }
+.devo-chip.activo span { color: inherit; opacity: .8; }
+.devo-chip-mas {
+  border-style: dashed; background: none; color: var(--acento);
+}
 
 /* ------------------------------------------------- rezar en alta voz
    Dos sitios: el boton que la arranca, en la cabecera al lado de las dos
