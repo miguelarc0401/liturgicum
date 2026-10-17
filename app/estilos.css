@@ -2227,6 +2227,23 @@ select.elige {
   text-transform: uppercase; color: var(--rubrica);
   border: 1px solid currentColor; border-radius: .2rem; padding: 0 .26rem;
 }
+/* la favorita, en las listas que no son la de ellas: una estrella llena y
+   pequena detras del titulo */
+.devo-estrella { display: inline-block; margin-left: .4rem; color: var(--acento); }
+.devo-estrella svg {
+  width: .8rem; height: .8rem; vertical-align: -.04em;
+  fill: currentColor; stroke-width: 1.4;
+}
+/* las favoritas abren la portada, asi que su rotulo no lleva el hueco de
+   arriba de los demas; y debajo, el enlace a todas cuando no caben */
+.devo-h-fav { margin-top: 1.4rem; }
+.devo-todas {
+  display: flex; align-items: center; justify-content: flex-end; gap: .3rem;
+  padding: .7rem .15rem 0; text-decoration: none;
+  font-family: var(--sans); font-size: .78rem; color: var(--acento);
+}
+.devo-todas span { color: var(--tinta-suave); }
+.devo-todas svg { width: 1rem; height: 1rem; }
 /* de que capitulo viene una pieza, en las listas que atraviesan el libro */
 .devo-ctx {
   display: block; margin-bottom: .12rem;
@@ -2283,6 +2300,16 @@ select.elige {
 }
 .devo-insignia.enlace:active { background: var(--filete); }
 .devo-insignia.apagada { font-style: italic; }
+/* la estrella de las favoritas: hueca hasta que se marca, y entonces llena
+   y del color del dia */
+.devo-fav { gap: .35rem; cursor: pointer; transition: background-color var(--rapido); }
+.devo-fav svg { width: 1rem; height: 1rem; stroke-width: 1.6; }
+.devo-fav:active { background: var(--filete); }
+.devo-fav.activa {
+  color: var(--acento);
+  border-color: color-mix(in srgb, var(--acento) 35%, transparent);
+}
+.devo-fav.activa svg { fill: currentColor; }
 .devo { margin-top: .4rem; }
 /* La oracion va en una caja de las que se rezan (.hora-sec), que es lo que
    la pone al alcance de la voz y de los mandos; pero su hueco de abajo es

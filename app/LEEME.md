@@ -148,6 +148,12 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   se reza de corrido y volver al índice entre parte y parte es perder el
   hilo. La búsqueda se recuerda al volver de una oración. Lo hace
   [`Enchiridion/`](../Enchiridion/LEEME.md).
+  **Y las de cada uno, a mano.** Una estrella en la ficha de la oración la
+  marca como **favorita**, y las favoritas abren la portada, antes que
+  nada: las cinco últimas marcadas, y si hay más, un enlace a todas; en
+  cualquier otra lista llevan su estrellita detrás del título. Se guardan
+  en el propio teléfono, por el id de la pieza, que no cambia al rehacer
+  el devocionario.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **Ajustes, en tarjetas.** Una por pestaña, en cuatro grupos —cómo se lee,

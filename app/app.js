@@ -74,7 +74,8 @@ const E = {              // todo el estado de la app
   calAHoy: false,        // el calendario que se abre, a centrar en hoy
   devoQ: '',             // lo que se busca en el devocionario
   devoVuelta: null,      // la lista del devocionario de la que se viene
-  devoPieza: null        // la oración del devocionario que está abierta
+  devoPieza: null,       // la oración del devocionario que está abierta
+  devoFav: []            // las oraciones marcadas, la última delante
 };
 
 const $ = (s) => document.querySelector(s);
@@ -85,6 +86,8 @@ const vista = $('#vista');
 const svg = (d) => '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
 const ICONO = {
   buscar: svg('<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/>'),
+  estrella: svg('<path d="M12 3.8l2.5 5.1 5.6.8-4.05 3.95.95 5.6L12 16.6'
+    + 'l-5 2.65.95-5.6L3.9 9.7l5.6-.8Z"/>'),
   cerrar: svg('<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'),
   izq: svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>'),
   der: svg('<path d="M9.5 5.5 16 12l-6.5 6.5"/>'),
@@ -4137,6 +4140,38 @@ async function cargaDevocionario() {
     if (!E.devoCol.has(p.col)) E.devoCol.set(p.col, []);
     E.devoCol.get(p.col).push(p);
   }
+  cargaFavoritas();
+}
+
+/* Las favoritas: las oraciones que se marcan con la estrella para tenerlas
+ * a mano, arriba de la portada. Se guardan en este teléfono y por su id,
+ * que sale de la página de la fuente y del sitio de la pieza en ella, así
+ * que no cambia al rehacer el devocionario. */
+function cargaFavoritas() {
+  E.devoFav = [];
+  try {
+    const f = JSON.parse(localStorage.getItem('devoFav') || '[]');
+    if (Array.isArray(f)) E.devoFav = f.filter((x) => typeof x === 'string');
+  } catch (_) { /* sin almacenamiento: se marcan sólo en esta sesión */ }
+}
+
+function esFavorita(id) { return E.devoFav.indexOf(id) >= 0; }
+
+/** Marca o desmarca, y dice cómo queda. La recién marcada va delante. */
+function cambiaFavorita(id) {
+  const i = E.devoFav.indexOf(id);
+  if (i >= 0) E.devoFav.splice(i, 1);
+  else E.devoFav.unshift(id);
+  try {
+    localStorage.setItem('devoFav', JSON.stringify(E.devoFav));
+  } catch (_) {}
+  return i < 0;
+}
+
+/** Las favoritas que el devocionario de ahora todavía tiene. La que ya no
+ *  está no se borra de lo guardado: se calla, por si vuelve. */
+function devoFavoritas() {
+  return E.devoFav.map((id) => E.devoDe.get(id)).filter(Boolean);
 }
 
 /** El plural de cada forma, que es como se rotula una lista de ellas. */
@@ -4342,12 +4377,15 @@ function devoSena(p) {
  *  listas que atraviesan el libro —un filtro, una búsqueda—, donde sin eso
  *  no se sabría en qué capítulo vive. `num` es su número en una lista que
  *  tiene orden propio: la del Compendio. */
-function devoFila(p, ctx, num) {
+function devoFila(p, ctx, num, sinEstrella) {
   return '<a class="devo-fila" href="#/oraciones/o/' + esc(p.id) + '">'
     + (num ? '<span class="devo-num">' + num + '</span>' : '')
     + '<span class="devo-fila-cuerpo">'
     + (ctx ? '<span class="devo-ctx">' + esc(ctx) + '</span>' : '')
     + '<span class="devo-la" lang="la">' + esc(tx(p.tla)) + '</span>'
+    // la estrella de la favorita, en las listas que no son la de ellas
+    + (!sinEstrella && esFavorita(p.id) ? '<span class="devo-estrella" '
+      + 'title="Favorita">' + ICONO.estrella + '</span>' : '')
     + (p.comp && !num ? '<span class="devo-marca">Compendio</span>' : '')
     + (p.dist ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
     + (p.tes ? '<span class="devo-es">' + esc(p.tes) + '</span>' : '')
@@ -4389,7 +4427,7 @@ function devoLista(piezas, opc) {
   const fila = (x) => {
     if (x.col) return devoFilaCol(x.partes);
     if (o.ids) o.ids.push(x.p.id);
-    return devoFila(x.p, o.ctx && o.ctx(x.p));
+    return devoFila(x.p, o.ctx && o.ctx(x.p), null, o.sinEstrella);
   };
   if (filas.length <= 12 || o.sinCortes) return filas.map(fila).join('');
   const por = new Map();
@@ -4526,6 +4564,7 @@ function pintaOracion(id) {
   // la ficha: qué es —y un toque lleva a las demás de su clase—, si es del
   // Compendio, a qué hora la canta el Breviario y en qué lenguas está
   const ficha = [
+    devoBotonFav(p),
     '<a class="devo-insignia enlace" href="' + devoEnlaceFiltro(p.f) + '">'
     + esc(p.f) + '</a>',
     p.comp ? '<a class="devo-insignia enlace" href="#/oraciones/p">'
@@ -4546,6 +4585,13 @@ function pintaOracion(id) {
       devoCastellano(p))
     + '</div></section>'
     + devoProcedencia(p) + devoPasa(l, l.ids.indexOf(p.id));
+  const fav = $('#devo-fav');
+  fav.addEventListener('click', () => {
+    const si = cambiaFavorita(p.id);
+    fav.classList.toggle('activa', si);
+    fav.setAttribute('aria-pressed', si);
+    fav.querySelector('span').textContent = devoRotuloFav(si);
+  });
   // y la letra y el altavoz a la mano: la cabecera se queda arriba al bajar,
   // así que las dos aes están a mano a media oración y no sólo al empezar.
   // El panel esconde el renglón de abajo —en una página sin fecha no dice
@@ -4556,6 +4602,16 @@ function pintaOracion(id) {
   colocaPosicion();
   vozTrasPintar();
 }
+
+/** La estrella de la oración abierta, que la marca o la desmarca. */
+function devoBotonFav(p) {
+  const si = esFavorita(p.id);
+  return '<button type="button" id="devo-fav" class="devo-insignia devo-fav'
+    + (si ? ' activa' : '') + '" aria-pressed="' + si + '">'
+    + ICONO.estrella + '<span>' + devoRotuloFav(si) + '</span></button>';
+}
+
+function devoRotuloFav(si) { return si ? 'Favorita' : 'Marcar favorita'; }
 
 /** Un capítulo. Abre con su portadilla —el número en romanos y de qué
  *  trata—, y luego: si tiene muchas secciones y mucha pieza, se enseñan las
@@ -4729,6 +4785,40 @@ function pintaCompendio() {
   colocaPosicion();
 }
 
+/** Todas las favoritas, la última marcada delante. */
+function pintaFavoritas() {
+  const piezas = devoFavoritas();
+  modoPanel('Favoritas');
+  $('#subtitulo-dia').textContent = piezas.length
+    + (piezas.length === 1 ? ' oración marcada' : ' oraciones marcadas');
+  const ids = [];
+  vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
+    + (piezas.length ? '<p class="devo-cuenta">' + devoCuenta(piezas) + '</p>'
+      + devoLista(piezas, { sinPlegar: true, sinCortes: true,
+        sinEstrella: true, ctx: (p) => devoDondeVive(p), ids: ids })
+      : '<p class="aviso">Todavía no hay ninguna. Al abrir una oración, la '
+      + 'estrella de arriba la marca, y aquí se queda a mano.</p>');
+  E.devoVuelta = { ids: ids, href: '#/oraciones/m', rot: 'Favoritas' };
+  colocaPosicion();
+}
+
+/** Las favoritas en la portada, lo primero: son las que se vienen a buscar.
+ *  Van las cinco últimas marcadas, y si hay más, un enlace a todas. */
+const DEVO_FAV_PORTADA = 5;
+function devoFavPortada(ids) {
+  const favs = devoFavoritas();
+  if (!favs.length) return '';
+  const mas = favs.length > DEVO_FAV_PORTADA;
+  // se ven cinco, pero «anterior» y «siguiente» las recorren todas
+  for (const p of favs) ids.push(p.id);
+  return '<h2 class="devo-h devo-h-fav">Favoritas<small>las marcadas con la '
+    + 'estrella</small></h2>'
+    + devoLista(favs.slice(0, DEVO_FAV_PORTADA), { sinPlegar: true,
+      sinCortes: true, sinEstrella: true, ctx: (p) => devoDondeVive(p) })
+    + (mas ? '<a class="devo-todas" href="#/oraciones/m">Todas las favoritas'
+      + ' <span>' + favs.length + '</span>' + ICONO.der + '</a>' : '');
+}
+
 /** La portada del devocionario: el buscador, la puerta de quien empieza, el
  *  índice de los capítulos y, debajo, los filtros por lo que es cada pieza
  *  y por la lengua. Lo que se buscaba se recuerda mientras se anda por el
@@ -4738,7 +4828,9 @@ function pintaDevocionario() {
   const total = E.devo.piezas.length;
   const comp = E.devo.piezas.filter((p) => p.comp).length;
   $('#subtitulo-dia').textContent = total + ' oraciones en latín';
+  const idsFav = [];
   const portada = [
+    devoFavPortada(idsFav),
     '<p class="devo-lede">Las oraciones de la Iglesia en latín, en la '
     // la raya de cierre, pegada a su palabra: sola al principio de un
     // renglón no se lee como cierre
@@ -4774,6 +4866,7 @@ function pintaDevocionario() {
     const caja = $('#devo-res');
     if (q.length < 2) {
       caja.innerHTML = portada;
+      E.devoVuelta = vueltaFav;
       return;
     }
     const hay = E.devo.piezas.filter((p) => p.k.includes(q)).slice(0, 60);
@@ -4789,6 +4882,9 @@ function pintaDevocionario() {
       + '«novena».</p>';
     E.devoVuelta = { ids: ids, href: '#/oraciones', rot: 'La búsqueda' };
   };
+  // de una favorita de la portada se pasa a la de al lado entre ellas
+  const vueltaFav = { ids: idsFav, href: '#/oraciones', rot: 'Favoritas' };
+  E.devoVuelta = vueltaFav;
   campo.addEventListener('input', busca);
   if (E.devoQ) { campo.value = E.devoQ; busca(); }
   colocaPosicion();
@@ -4816,6 +4912,7 @@ async function verDevocionario(que, cual, mas) {
   if (que === 'f' && cual) return pintaFiltro(cual, mas);
   if (que === 'f') return pintaFormas();
   if (que === 'p') return pintaCompendio();
+  if (que === 'm') return pintaFavoritas();
   // las direcciones viejas eran por grupo; se entra por la portada
   pintaDevocionario();
 }
