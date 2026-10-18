@@ -7094,6 +7094,7 @@ const V = {
   motor: 'sistema',     // el que se está usando de verdad, no el elegido
   fallos: 0,            // seguidos, del motor en línea
   gen: 0,               // de qué tanda es lo que suena (ver callaElMotor)
+  eligiendo: null,      // las voces que se ofrecen antes de empezar, si se está eligiendo
   voces: null, vocesPedidas: false
 };
 
@@ -7700,6 +7701,7 @@ function paraVoz() {
   V.guion = null;
   V.hasta = 0;
   V.aviso = '';
+  V.eligiendo = null;
   PIPER.audios.clear();
   resalta(null);
   if (navigator.mediaSession) navigator.mediaSession.playbackState = 'none';
@@ -7995,6 +7997,7 @@ const PIPER = {
   bajando: null,    // la voz que se está bajando, y cómo va
   progreso: null,
   prueba: null,     // lo medido con «Probar», para decirlo en Ajustes
+  disco: undefined, // { usado, blindada } del navegador (sin mirar: falta)
   audios: new Map(),   // llave -> promesa del audio de un trozo
   adelantando: false
 };
@@ -8191,7 +8194,54 @@ function estadoPiper() {
   return '<p class="pista-g">Bajada: habla sin conexión.'
     + (medida ? ' ' + medida : '') + '</p>'
     + '<p>' + boton('prueba', 'Probar') + ' ' + boton('quita', 'Quitarla')
-    + '</p>';
+    + '</p>' + estadoDisco(boton);
+}
+
+/* Lo que ocupa la app y si el navegador la ha blindado. Sin blindar, el
+ * navegador puede tirar la caché de la voz cuando le falta sitio, sin
+ * avisar —y es lo que hacía pedir la voz otra vez—; blindada, sólo se va
+ * si se quita aquí o se borran los datos del navegador. Blindarla no lo
+ * decide la app sino el navegador: Chrome lo concede casi siempre a la app
+ * instalada en la pantalla de inicio. */
+function estadoDisco(boton) {
+  const d = PIPER.disco;
+  if (d === undefined) {
+    PIPER.disco = null;     // mientras se mira, que no se pida dos veces
+    miraDisco();
+    return '';
+  }
+  if (!d) return '';
+  const mb = d.usado == null ? ''
+    : 'La app ocupa ' + Math.round(d.usado / 1048576) + ' MB en el teléfono, '
+      + 'con la voz. ';
+  if (d.blindada) {
+    return '<p class="pista-g">' + mb + 'El navegador la tiene blindada: no '
+      + 'la borra para hacer sitio, y sólo se va si la quitas aquí o borras '
+      + 'los datos del navegador.</p>';
+  }
+  return '<p class="pista-g">' + mb + 'El navegador no la ha blindado: si el '
+    + 'teléfono se queda sin espacio, puede borrar la voz sin avisar. Lo '
+    + 'concede casi siempre con la app instalada en la pantalla de inicio y '
+    + 'abierta desde ese icono.</p>'
+    + '<p>' + boton('blinda', 'Pedir que la guarde') + '</p>';
+}
+
+async function miraDisco(pide) {
+  const s = navigator.storage;
+  if (!s || !s.persisted) { PIPER.disco = null; repintaPiper(); return; }
+  try {
+    let blindada = await s.persisted();
+    // con la voz bajada se pide cada vez que se mira: el navegador puede
+    // negarlo hoy y concederlo mañana, cuando la app ya está instalada
+    if (!blindada && s.persist && (pide || PIPER.hay[vozPiper().voz])) {
+      blindada = await s.persist();
+    }
+    const e = s.estimate ? await s.estimate() : {};
+    PIPER.disco = { usado: e.usage == null ? null : e.usage, blindada: blindada };
+  } catch (_) {
+    PIPER.disco = null;
+  }
+  repintaPiper();
 }
 
 function repintaPiper() {
@@ -8235,7 +8285,10 @@ async function alTocarPiper(ev) {
         + (err.message || 'sin red') + ')' };
     }
     PIPER.bajando = null;
+    PIPER.disco = undefined;
     repintaPiper();
+  } else if (que === 'blinda') {
+    await miraDisco(true);
   } else if (que === 'prueba') {
     const texto = PRUEBA_PIPER[v.voz.slice(0, 2)] || PRUEBA_PIPER.es;
     PIPER.prueba = { voz: v.id, haciendo: true };
@@ -8260,6 +8313,7 @@ async function alTocarPiper(ev) {
     try { await pidePiper({ tipo: 'borra', voz: v.voz }); } catch (_) { /* */ }
     PIPER.hay[v.voz] = false;
     PIPER.prueba = null;
+    PIPER.disco = undefined;
     repintaPiper();
   }
 }
@@ -8273,7 +8327,16 @@ function pintaBarraVoz() {
   const c = $('#voz');
   if (!c) return;
   const b = $('#dale-voz');
-  if (b) b.setAttribute('aria-pressed', V.estado !== 'parada');
+  if (b) b.setAttribute('aria-pressed', V.estado !== 'parada' || !!V.eligiendo);
+  if (V.eligiendo) {
+    c.hidden = false;
+    c.classList.remove('con-aviso');
+    c.classList.add('eligiendo');
+    c.innerHTML = barraEligiendo();
+    document.body.classList.add('con-voz');
+    return;
+  }
+  c.classList.remove('eligiendo');
   if (V.estado === 'parada' && !V.aviso) {
     c.hidden = true;
     c.innerHTML = '';
@@ -8311,10 +8374,12 @@ function alTocarVoz(ev) {
   if (!b) return;
   const q = b.dataset.voz;
   if (q === 'dale') {
-    if (V.estado === 'parada') arrancaVoz();
+    if (V.eligiendo) paraVoz();
+    else if (V.estado === 'parada') eligeVoz();
     else paraVoz();
     return;
   }
+  if (q === 'con') return empiezaCon(b.dataset.cual);
   if (q === 'pausa') return pausaVoz();
   if (q === 'sigue') return sigueVoz();
   if (q === 'atras') return otraSeccionVoz(-1);
@@ -8331,6 +8396,64 @@ function botonVoz() {
   return '<button type="button" id="dale-voz" class="dale-voz" data-voz="dale"'
     + ' aria-pressed="' + (V.estado !== 'parada') + '"'
     + ' aria-label="Leer en alta voz">' + ICONO_VOZ.voz + '</button>';
+}
+
+/* ------------------------------------------------ con qué voz, al empezar
+ * El botón del altavoz no arranca a la primera: pregunta con cuál de las
+ * voces que hay bajadas se quiere rezar esta vez, y la que se elige se
+ * queda puesta en Ajustes, como si se hubiera elegido allí. Sólo se ofrecen
+ * las de Piper que están en el teléfono —una sin bajar no puede hablar en
+ * el coche— y, siempre, la del sistema. La que está puesta va primero y
+ * señalada, para que repetir sea un toque en el mismo sitio. Si no hay
+ * nada entre qué elegir, no se pregunta. Los botones del volante y de los
+ * auriculares no preguntan: siguen con la que haya. */
+async function eligeVoz() {
+  const bases = [...new Set(VOCES_PIPER.map((x) => x[0].split(':')[0]))];
+  V.eligiendo = [];
+  V.aviso = '';
+  pintaBarraVoz();
+  await Promise.all(bases.filter((b) => PIPER.hay[b] === undefined)
+    .map((b) => pidePiper({ tipo: 'hay', voz: b })
+      .then((r) => { PIPER.hay[b] = !!r.hay; })
+      .catch(() => { PIPER.hay[b] = false; })));
+  if (!V.eligiendo) return;      // se cerró mientras miraba
+  const puesta = E.cfg.vozMotor === 'piper' ? 'piper:' + vozPiper().id
+    : E.cfg.vozMotor === 'linea' ? 'linea' : 'sistema';
+  const ops = VOCES_PIPER.filter((x) => PIPER.hay[x[0].split(':')[0]])
+    .map((x) => ['piper:' + x[0],
+      x[1].replace(/ · (\d+ MB|la misma descarga)$/, '')]);
+  if (E.cfg.vozMotor === 'linea') ops.push(['linea', 'La del servicio en línea']);
+  ops.push(['sistema', 'La del teléfono']);
+  if (ops.length < 2) { V.eligiendo = null; arrancaVoz(); return; }
+  const k = ops.findIndex((o) => o[0] === puesta);
+  if (k > 0) ops.unshift(ops.splice(k, 1)[0]);
+  V.eligiendo = ops.map((o) => ({ cual: o[0], rot: o[1], puesta: o[0] === puesta }));
+  pintaBarraVoz();
+}
+
+function barraEligiendo() {
+  const ops = V.eligiendo.length
+    ? V.eligiendo.map((o) => '<button type="button" class="voz-opcion'
+      + (o.puesta ? ' puesta' : '') + '" data-voz="con" data-cual="'
+      + esc(o.cual) + '">' + esc(o.rot) + '</button>').join('')
+    : '<span class="voz-que">Mirando qué voces hay bajadas…</span>';
+  return '<span class="voz-que">¿Con qué voz?</span>'
+    + '<button type="button" data-voz="para" aria-label="No leer">'
+    + ICONO.cerrar + '</button>'
+    + '<div class="voz-opciones">' + ops + '</div>';
+}
+
+function empiezaCon(cual) {
+  V.eligiendo = null;
+  if (cual.startsWith('piper:')) {
+    E.cfg.vozMotor = 'piper';
+    E.cfg.vozPiper = cual.slice(6);
+  } else {
+    E.cfg.vozMotor = cual === 'linea' ? 'linea' : 'sistema';
+  }
+  PIPER.prueba = null;
+  guardaCfg();
+  arrancaVoz();
 }
 
 /* ------------------------------------------------------- en Ajustes

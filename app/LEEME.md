@@ -345,6 +345,10 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   la empieza a decir por la sección donde vaya la vista, y una barra de
   mandos grandes —sección anterior, parar y seguir, sección siguiente—
   queda abajo mientras suena.
+  **Antes de empezar pregunta con qué voz**, entre las de Piper que hay
+  bajadas y la del teléfono; la elegida se queda puesta en Ajustes y la
+  próxima vez sale primera. Si no hay más que una, no pregunta. El botón del
+  volante no pregunta: sigue con la que haya.
   **La hora, la misa y el devocionario.** Las tres se pintan en cajas de la
   misma hechura, así que el reproductor es uno solo y no sabe en qué libro
   está: lo único que cambia de una a otra —quién es la página, de dónde salen
