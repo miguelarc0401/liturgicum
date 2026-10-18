@@ -1351,12 +1351,15 @@ h2.seccion {
 }
 .hora-sec .ln.tit .vs { letter-spacing: .06em; }
 .hora-sec .ln.tit { margin: .1rem 0 .1rem; }
-/* y del titulo a la primera estrofa, interlineado sencillo: la fuente los
+/* y del titulo a la primera estrofa, un respiro corto: la fuente los
    separa con un renglon en blanco, pero el titulo encabeza la estrofa, no
-   es otra. Va despues de la regla de la salmodia y con su misma fuerza. */
+   es otra, asi que se queda mas cerca de ella que una estrofa de la
+   siguiente. Va despues de la regla de la salmodia y con su misma fuerza.
+   Y si la fuente no deja el renglon en blanco, el mismo respiro. */
 .estrofa-h.de-tit,
-.hora-sec.en-verso.fmt-salmos .estrofa-h.de-tit { margin-bottom: 0; }
+.hora-sec.en-verso.fmt-salmos .estrofa-h.de-tit { margin-bottom: .6em; }
 .hora-sec .estrofa-h.de-tit .ln.tit:last-child { margin-bottom: 0; }
+.hora-sec .ln.tit + .ln:not(.tit) { margin-top: .6em; }
 .hora-sec .rub {
   /* En el original la rubrica se distingue del texto por el color y por
      nada mas: ni negrita ni cursiva. Se respeta. */
@@ -1811,28 +1814,28 @@ body.con-carril #vista { padding-right: 2.1rem; }
   #vista { padding-bottom: calc(4.4rem + env(safe-area-inset-bottom)); }
   .ir-hoy { bottom: calc(3.3rem + env(safe-area-inset-bottom)); }
 
-  /* ------------------------------------------- la cabecera, en un renglon
-     Tumbado sobran dos palmos de ancho y falta medio de alto, asi que lo
-     que en vertical son tres filas -la fecha, la hora, lo que se celebra-
-     aqui es una sola: el nombre de la hora, a continuacion en que dia cae,
-     las dos aes del tamano, y al final la fecha con sus flechas. Las dos
-     filas de texto se deshacen con `display: contents` y la rejilla las
-     recoge, de modo que el marcado sigue siendo el mismo en las dos
+  /* ------------------------------------------- la cabecera, en dos renglones
+     Tumbado sobran dos palmos de ancho y falta medio de alto. La fecha va
+     arriba, con sus flechas y en su forma larga, como de pie: es lo primero
+     que se mira y lo que se toca para cambiar de dia. Debajo, en un solo
+     renglon, el nombre de la hora, en que dia cae y las dos aes del tamano.
+     Las dos filas de texto se deshacen con `display: contents` y la rejilla
+     las recoge, de modo que el marcado sigue siendo el mismo en las dos
      orientaciones y no hay dos cabeceras que mantener.
 
      Rejilla y no caja flexible: una caja flexible, cuando no cabe todo,
      primero parte el renglon y solo despues encoge lo que lleva dentro,
      que es justo lo contrario de lo que aqui se quiere. La rejilla coloca
-     por celdas -nombre, dia, aes, fecha- y no parte nunca; lo que no cabe
-     se abrevia.
+     por celdas -nombre, dia, aes- y no parte nunca; lo que no cabe se
+     abrevia.
 
      Solo en las vistas que se leen -`cab-fija` son la hora y la misa-: en
      el calendario y en los paneles la cabecera es otra cosa. */
   body.cab-fija #cabecera {
     display: grid; align-items: baseline;
-    grid-template-columns: minmax(0, auto) minmax(4.5rem, 1fr) auto auto;
+    grid-template-columns: minmax(0, auto) minmax(4.5rem, 1fr) auto;
     column-gap: .3rem;
-    padding-top: calc(env(safe-area-inset-top) + .15rem - .05rem * var(--pliegue, 0));
+    padding-top: calc(env(safe-area-inset-top) + .1rem - .05rem * var(--pliegue, 0));
     padding-bottom: calc(.3rem - .12rem * var(--pliegue, 0));
   }
   body.cab-fija .fila-titulo,
@@ -1840,24 +1843,15 @@ body.con-carril #vista { padding-right: 2.1rem; }
   body.cab-fija #cabecera.compacta.con-mandos .fila-sub { display: contents; }
 
   /* La fecha no se deshace: las dos flechas y el rotulo son una sola cosa
-     -lo que sirve para cambiar de dia- y van juntas al final del renglon.
-     El dia tiene cuatro picas y media garantizadas; pasadas esas, lo que
-     se abrevia es el nombre de la celebracion, que es largo. */
+     -lo que sirve para cambiar de dia- y se llevan el primer renglon
+     entero. En el segundo, el dia tiene cuatro picas y media garantizadas;
+     pasadas esas, lo que se abrevia es el nombre de la celebracion. */
+  body.cab-fija .fila-fecha { grid-area: 1 / 1 / 2 / -1; align-self: center; }
   body.cab-fija #titulo-dia {
-    grid-area: 1 / 1; overflow: hidden; text-overflow: ellipsis;
+    grid-area: 2 / 1; overflow: hidden; text-overflow: ellipsis;
   }
-  body.cab-fija #subtitulo-dia { grid-area: 1 / 2; }
-  body.cab-fija #cab-zoom { grid-area: 1 / 3; align-self: center; }
-  body.cab-fija .fila-fecha {
-    grid-area: 1 / 4; align-self: center; margin-left: .15rem;
-  }
-  /* El rotulo abreviado mide dos renglones de nada, y debajo esta el
-     <input type="date"> que abre el calendario: se le da el alto de
-     las flechas para que el dedo lo encuentre. */
-  body.cab-fija .envoltorio-fecha {
-    flex: 0 0 auto; display: flex; align-items: center;
-    min-height: calc(2.05rem - .45rem * var(--pliegue, 0));
-  }
+  body.cab-fija #subtitulo-dia { grid-area: 2 / 2; }
+  body.cab-fija #cab-zoom { grid-area: 2 / 3; align-self: center; }
   /* lo que se celebra, los formularios y la nota se llevan el renglon
      siguiente entero -sangrando los 16 px de cada lado, que es lo que deja
      la tira deslizarse de borde a borde- y siguen plegandose al bajar. */
@@ -1880,21 +1874,15 @@ body.con-carril #vista { padding-right: 2.1rem; }
     content: "\0000b7"; margin-right: .28rem;
   }
 
-  /* La fecha no se va: se abrevia. Lleva su forma corta a cuestas desde que
-     se pinta -«sab, 10 oct»-, y es la que cabe al final del renglon; el
-     rotulo largo sigue ahi para quien lo lea con el oido. Las flechas van
-     con ella, que es a lo que sirven. */
-  body.cab-fija #rotulo-fecha {
-    padding: 0; font-size: 0; letter-spacing: 0; text-align: right;
-  }
-  body.cab-fija #rotulo-fecha::after {
-    content: attr(data-corta);
-    font-size: calc(.7rem - .04rem * var(--pliegue, 0)); letter-spacing: .05em;
+  /* La fila de la fecha, mas baja que de pie: el rotulo pierde su relleno
+     y las flechas encogen, y al bajar siguen plegandose con el dedo. */
+  body.cab-fija .fecha {
+    padding: calc(.15rem * (1 - var(--pliegue, 0))) 0;
+    font-size: calc(.72rem - .05rem * var(--pliegue, 0));
   }
   body.cab-fija .fila-fecha .icono {
-    height: calc(2.05rem - .45rem * var(--pliegue, 0));
-    width: calc(2rem - .3rem * var(--pliegue, 0));
-    align-self: center;
+    height: calc(1.9rem - .5rem * var(--pliegue, 0));
+    width: calc(2.3rem - .4rem * var(--pliegue, 0));
   }
   body.cab-fija .fila-fecha .icono svg {
     width: calc(1.15rem - .22rem * var(--pliegue, 0));
