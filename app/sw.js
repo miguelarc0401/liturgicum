@@ -58,7 +58,21 @@ const DESPUES = [
   'datos/devocionario.json',
   // el motor de la voz de Piper; lo que él trae de fuera —el modelo, el
   // wasm— lo guarda él en su propia caché, que ésta no toca
-  'piper.js'
+  'piper.js',
+  // las dos letras que la app lleva dentro, Garamond y Tinos: 680 kB entre
+  // las doce, y sin ellas, sin red, se leería con la de libro
+  'fuentes/ebgaramond-400-800-cursiva-latin-ext.woff2',
+  'fuentes/ebgaramond-400-800-cursiva-latin.woff2',
+  'fuentes/ebgaramond-400-800-latin-ext.woff2',
+  'fuentes/ebgaramond-400-800-latin.woff2',
+  'fuentes/tinos-400-cursiva-latin-ext.woff2',
+  'fuentes/tinos-400-cursiva-latin.woff2',
+  'fuentes/tinos-400-latin-ext.woff2',
+  'fuentes/tinos-400-latin.woff2',
+  'fuentes/tinos-700-cursiva-latin-ext.woff2',
+  'fuentes/tinos-700-cursiva-latin.woff2',
+  'fuentes/tinos-700-latin-ext.woff2',
+  'fuentes/tinos-700-latin.woff2'
 ];
 
 async function guarda(c, ficheros) {

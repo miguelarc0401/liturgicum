@@ -30,8 +30,9 @@ const POR_OMISION = {
   // `fmt` es grupo -> {justifica, interlinea, particion}, y lo que un grupo
   // no diga lo sigue diciendo el general
   fmtUno: 'si', fmt: {},
-  // el color de la app: el litúrgico del día, o uno fijo
-  color: 'dia',
+  // el color de la app: el litúrgico del día, o uno fijo; y el tono de
+  // cada color, color -> {claro, oscuro}, donde no se quiera el de siempre
+  color: 'dia', tonos: {},
   // al rezar (Ajustes, «Liturgia de las Horas»)
   carril: 'si', gestos: 'si', rezadas: 'si',
   // y al rezar en alta voz: la voz del sistema (vacío: la que haya),
@@ -284,6 +285,10 @@ function cargaCfg() {
   try {
     Object.assign(E.cfg, JSON.parse(localStorage.getItem('cfg') || '{}'));
   } catch (_) { /* almacenamiento bloqueado: se usan los valores de fábrica */ }
+  // de las siete letras de antes quedan cuatro: la que se fue, a la que
+  // más se le parece de las que quedan
+  E.cfg.letra = { antigua: 'garamond', gruesa: 'serif', periodico: 'times',
+    humanista: 'sans', ancha: 'sans' }[E.cfg.letra] || E.cfg.letra;
   numeraInterlineado();
 }
 function guardaCfg() {
@@ -329,6 +334,7 @@ function aplicaCfg() {
   est.setProperty('--interlinea-verso', rv);
   est.setProperty('--cuerpo', (E.cfg.tam / 100 * 1.0625).toFixed(3) + 'rem');
   aplicaFormatoSecs();
+  aplicaTonos();
   ponColor(null);
   velaPantalla();
 }
@@ -346,6 +352,94 @@ function ponColor(c) {
   if (c) E.colorDia = c;
   document.body.dataset.color = E.cfg.color === 'dia'
     ? (E.colorDia || 'neutro') : E.cfg.color;
+}
+
+/* Cada color, en varios tonos: el verde puede ser de bosque o de oliva, y
+ * el de quien reza es el que él elija. Uno para el papel claro y otro para
+ * el oscuro, porque un verde de tinta sobre negro no se lee: todos los de
+ * cada columna pasan de 5:1 sobre su papel (el claro medido contra la
+ * sepia, que es el más oscuro de los claros). El primero de cada lista es
+ * el de siempre, y elegirlo es dejar de elegir.
+ *
+ * Lo elegido va al <html> como variable (`--tono-verde-claro`…), y la hoja
+ * de estilo la toma donde antes ponía el color fijo: vale en la cabecera,
+ * en las rúbricas, en los controles y en el calendario, que es el mismo
+ * color el día que toque. Nombre, tono claro, tono oscuro. */
+const TONOS = {
+  verde: [
+    ['Bosque', '#23492f', '#5aa876'],
+    ['Esmeralda', '#1a7048', '#5abe90'],
+    ['Oliva', '#4c5e21', '#9cb366'],
+    ['Pino', '#19574d', '#55b4a4'],
+    ['Musgo', '#456336', '#8caa7d'],
+    ['Botella', '#144323', '#79c392'],
+    ['Jade', '#296d57', '#79b9a4']
+  ],
+  rojo: [
+    ['Carmesí', '#7a1414', '#d07676'],
+    ['Escarlata', '#af211d', '#d98f8c'],
+    ['Rubí', '#8d1b38', '#d78ea0'],
+    ['Bermellón', '#a13217', '#d89483'],
+    ['Vino', '#5f1c27', '#d6a3ac'],
+    ['Ladrillo', '#7e352a', '#ca9891'],
+    ['Cereza', '#8a0f19', '#e09096']
+  ],
+  morado: [
+    ['Obispo', '#4c2a63', '#b99bd6'],
+    ['Violeta', '#693597', '#bea6d3'],
+    ['Ciruela', '#6a2f6a', '#cba5cb'],
+    ['Amatista', '#873fa6', '#ceb5d9'],
+    ['Berenjena', '#411f47', '#bd97c4'],
+    ['Uva', '#493172', '#bdb1d3'],
+    ['Malva', '#85477a', '#cbafc6']
+  ],
+  blanco: [
+    ['Oro viejo', '#7a5c17', '#d9b65e'],
+    ['Ocre', '#865a18', '#c89e5f'],
+    ['Bronce', '#774a22', '#c09672'],
+    ['Ámbar', '#7f5c0a', '#d1a848'],
+    ['Miel', '#725d1d', '#c7b275'],
+    ['Mostaza', '#716114', '#c1ad49'],
+    ['Latón', '#645c26', '#b9b179']
+  ],
+  azul: [
+    ['Mariano', '#1f4e79', '#93bcdf'],
+    ['Cobalto', '#2154ab', '#96afda'],
+    ['Marino', '#162d5a', '#92a8d3'],
+    ['Añil', '#313881', '#afb2d5'],
+    ['Celeste', '#18658b', '#7eb6d3'],
+    ['Pizarra', '#3f5469', '#9fadbc'],
+    ['Turquesa', '#0d6573', '#4cbbcd']
+  ],
+  neutro: [
+    ['Granate', '#6b1220', '#d9a0a0'],
+    ['Burdeos', '#631d34', '#d6a3b4'],
+    ['Caoba', '#673422', '#ca9f91'],
+    ['Tierra', '#60462e', '#bea793'],
+    ['Tinta', '#30251d', '#c0b0a5'],
+    ['Pizarra', '#3d4452', '#b0b5bf'],
+    ['Ciprés', '#2a4638', '#8daf9e']
+  ]
+};
+const MODOS_TONO = ['claro', 'oscuro'];
+
+function aplicaTonos() {
+  const est = document.documentElement.style;
+  const t = E.cfg.tonos || {};
+  for (const c of Object.keys(TONOS)) {
+    for (const m of MODOS_TONO) {
+      const v = (t[c] || {})[m];
+      if (v) est.setProperty('--tono-' + c + '-' + m, v);
+      else est.removeProperty('--tono-' + c + '-' + m);
+    }
+  }
+}
+
+/** El tono puesto de un color en un papel: [nombre, claro, oscuro]. */
+function tonoPuesto(c, m) {
+  const v = ((E.cfg.tonos || {})[c] || {})[m];
+  const i = MODOS_TONO.indexOf(m) + 1;
+  return TONOS[c].find((x) => x[i] === v) || TONOS[c][0];
 }
 
 /* --------------------------------------------- el formato, sección a sección
@@ -3489,10 +3583,8 @@ const AJ_OPS = {
   ],
   ordinario: [['plegado', 'Plegado'], ['abierto', 'Abierto'],
     ['no', 'Sin él']],
-  letra: [['serif', 'De libro'], ['antigua', 'De misal'],
-    ['gruesa', 'De libro, gruesa'], ['periodico', 'De periódico'],
-    ['sans', 'De pantalla'], ['humanista', 'De pantalla, suave'],
-    ['ancha', 'De pantalla, ancha']],
+  letra: [['serif', 'De libro'], ['garamond', 'Garamond'],
+    ['times', 'Times New Roman'], ['sans', 'De pantalla']],
   tema: [['auto', 'Según el teléfono'], ['claro', 'Claro'],
     ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']],
   color: [['dia', 'El del día'], ['verde', 'Verde'], ['rojo', 'Rojo'],
@@ -3568,7 +3660,9 @@ function resumenAjustes(k) {
         sepia: 'papel sepia', oscuro: 'papel oscuro',
         noche: 'de noche' }[c.tema],
       c.color === 'dia' ? 'el color del día'
-        : 'color ' + nombreOp('color', c.color).toLowerCase()]);
+        : 'color ' + nombreOp('color', c.color).toLowerCase()
+          + (tonoPuesto(c.color, 'claro') !== TONOS[c.color][0]
+            ? ' ' + tonoPuesto(c.color, 'claro')[0].toLowerCase() : '')]);
   }
   if (k === 'lengua') {
     const latin = { clementina: 'la Clementina', nova: 'la Nova',
@@ -3626,6 +3720,68 @@ function refrescaResumenes() {
   });
 }
 
+/* La paleta del color: debajo de las pastillas, la del que se haya
+ * elegido —o, con «El del día», la del que se quiera afinar, que se escoge
+ * en una tira—. Dos filas, cada una sobre su papel, para que el tono se
+ * vea donde se va a leer. */
+let _tonoAbierto = null;
+
+function colorDePaleta() {
+  if (E.cfg.color !== 'dia') return E.cfg.color;
+  return _tonoAbierto || (TONOS[E.colorDia] ? E.colorDia : 'verde');
+}
+
+function paletaTonos(abre) {
+  const c = colorDePaleta();
+  const fila = (m) => {
+    const i = MODOS_TONO.indexOf(m) + 1;
+    const puesto = tonoPuesto(c, m);
+    return '<div class="tonos-fila"><span class="tonos-modo">Con papel ' + m
+      + ' · <b class="tonos-nombre">' + esc(puesto[0]) + '</b></span>'
+      + '<div class="tonos-puntos tema-' + m + '" role="radiogroup" '
+      + 'aria-label="Tono con papel ' + m + '">'
+      + TONOS[c].map((x) => '<label class="tono" title="' + esc(x[0]) + '">'
+        + '<input type="radio" name="aj-tono-' + m + '" data-tono="' + c
+        + '" data-modo="' + m + '" value="' + x[i] + '" aria-label="'
+        + esc(x[0]) + '"' + (x === puesto ? ' checked' : '') + '>'
+        + '<span class="tono-punto" style="background:' + x[i]
+        + '" aria-hidden="true"></span></label>').join('')
+      + '</div></div>';
+  };
+  const afina = E.cfg.color === 'dia'
+    ? '<div class="tira tonos-de" role="radiogroup" aria-label="Color que se '
+      + 'afina">' + Object.keys(TONOS).map((x) => '<label><input type="radio" '
+        + 'name="aj-afina" data-afina="' + x + '" value="' + x + '"'
+        + (x === c ? ' checked' : '') + '><span>' + nombreOp('color', x)
+        + '</span></label>').join('') + '</div>'
+    : '';
+  return '<div class="ajuste apilado tonos' + (abre ? ' abre' : '')
+    + '" id="aj-tonos"><span class="eti">'
+    + (E.cfg.color === 'dia' ? 'El tono de cada color'
+      : 'Los tonos del ' + nombreOp('color', c).toLowerCase())
+    + '</span><p class="pista">' + (E.cfg.color === 'dia'
+      ? 'Cada color litúrgico, en el tono que se quiera: el que se elija sale '
+        + 'los días de ese color, en la cabecera, las rúbricas y el calendario.'
+      : 'El que se elija vale en toda la app: la cabecera, las rúbricas, los '
+        + 'controles, y el calendario los días de ese color.')
+    + ' Uno para el papel claro y otro para el oscuro.</p>'
+    + afina + fila('claro') + fila('oscuro') + '</div>';
+}
+
+/** Repinta la paleta sola, sin la vista: se está tocando ahí. El foco
+ *  vuelve al mismo mando, que si no se va al principio de la página. */
+function repintaTonos(abre) {
+  const viejo = $('#aj-tonos');
+  if (!viejo) return;
+  const a = document.activeElement;
+  const foco = a && viejo.contains(a) ? a.name : '';
+  viejo.outerHTML = paletaTonos(abre);
+  if (foco) {
+    const n = $('#aj-tonos input[name="' + foco + '"]:checked');
+    if (n) n.focus();
+  }
+}
+
 function verAjustes() {
   E.vista = 'ajustes';
   marcaBarra('ajustes');
@@ -3669,11 +3825,10 @@ function verAjustes() {
       + (d ? '<span class="opcion-p">' + d + '</span>' : ''), 'opcion')));
   // la letra se elige viéndola: cada una pinta sus aes con la suya
   const letras = grupo('letra', 'Tipo de letra',
-    'Ninguna se descarga: la app tiene que abrir sin conexión, así que lo '
-    + 'que se elige no es una fuente sino un aire, y lo sirve la que el '
-    + 'teléfono ya tenga. Las de libro se leen como un libro —la de '
-    + 'periódico es la que más cabe en el renglón—; las de pantalla, mejor '
-    + 'con la letra muy pequeña o muy grande, y la ancha con poca luz.',
+    'Ninguna se descarga: la app tiene que abrir sin conexión, así que la '
+    + 'sirve el teléfono. Garamond y Times New Roman vienen en Windows y en '
+    + 'el Mac; donde no están, se pone la más parecida que haya. La de '
+    + 'pantalla, mejor con la letra muy pequeña o muy grande.',
     'letras', AJ_OPS.letra.map(([v, t]) => opcion('letra', v,
       '<span class="letra-aa" style="font-family:var(--' + v + ')" '
       + 'aria-hidden="true">Aa</span><span class="letra-n">' + t + '</span>',
@@ -3698,7 +3853,7 @@ function verAjustes() {
     + 'color es lo que se lee.',
     'colores', AJ_OPS.color.map(([v, t]) => opcion('color', v,
       '<span class="color-punto color-' + v + '" aria-hidden="true"></span>'
-      + '<span class="color-n">' + t + '</span>', 'color')));
+      + '<span class="color-n">' + t + '</span>', 'color'))) + paletaTonos();
   // Los campos de la voz en línea no son una lista de opciones sino lo que
   // haya que escribir —la región, la clave, el nombre de la voz—, y no
   // cuelgan de un ajuste con nombre sino de la tabla `vozLinea`.
@@ -3960,6 +4115,29 @@ async function cambiaAjuste(ev) {
     if (vl === 'prov') { recuerdaAjustes(); verAjustes(); }
     return;
   }
+  // el tono de un color tampoco: es una casilla de la tabla `tonos`, y el
+  // primero de la lista, el de siempre, la borra
+  const tono = ev.target.dataset.tono;
+  if (tono) {
+    const m = ev.target.dataset.modo;
+    const t = Object.assign({}, E.cfg.tonos);
+    const uno = Object.assign({}, t[tono]);
+    if (ev.target.value === TONOS[tono][0][MODOS_TONO.indexOf(m) + 1]) delete uno[m];
+    else uno[m] = ev.target.value;
+    if (Object.keys(uno).length) t[tono] = uno; else delete t[tono];
+    E.cfg.tonos = t;
+    guardaCfg();
+    aplicaTonos();
+    repintaTonos();
+    return;
+  }
+  // con «El del día», de qué color se ve la paleta
+  const afina = ev.target.dataset.afina;
+  if (afina) {
+    _tonoAbierto = afina;
+    repintaTonos(true);
+    return;
+  }
   // una opción de una tira o de unas tarjetas dice de qué ajuste es; un
   // interruptor, qué vale encendido y qué apagado
   const id = ev.target.dataset.aj || (ev.target.id || '').replace(/^aj-/, '');
@@ -3996,6 +4174,11 @@ async function cambiaAjuste(ev) {
     recuerdaAjustes();
     verAjustes();      // aparecen, o se van, las pestañas de cada sección
     return;
+  }
+  // otro color abre su paleta
+  if (id === 'color') {
+    _tonoAbierto = null;
+    repintaTonos(true);
   }
   if (id === 'tam') {
     const pct = $('#aj-tam-pct');

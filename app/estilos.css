@@ -1,6 +1,7 @@
 /* Leccionario latino — hoja de estilo unica.
    Nada de fuentes remotas: la app tiene que abrir sin conexion desde el primer
-   dia, asi que todo lo tipografico sale de lo que el telefono ya trae.
+   dia, asi que lo tipografico sale de lo que el telefono ya trae, salvo dos
+   letras que la app lleva dentro (ver «las letras de la casa»).
 
    El aire es el de un libro de coro: papel, tinta y rubrica roja, y el
    color liturgico del dia como unico adorno. Los controles son discretos a
@@ -20,18 +21,14 @@
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
            "Noto Serif", Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  /* Las demas que se ofrecen en Ajustes. Ninguna se descarga: cada lista es
-     una fila de nombres y el telefono se queda con el primero que tenga, asi
-     que lo que se elige no es una fuente sino un aire —de libro, de
-     periodico, de pantalla— y el que lo sirve cambia de un aparato a otro. */
-  --antigua: "Hoefler Text", Constantia, Cambria, "Noto Serif",
-             "Times New Roman", serif;
-  --gruesa: Georgia, Charter, "Droid Serif", "Noto Serif", serif;
-  --periodico: "Times New Roman", Tinos, "Liberation Serif", "Noto Serif",
-               serif;
-  --humanista: Optima, Candara, "Gill Sans", "Gill Sans MT", "Noto Sans",
-               system-ui, sans-serif;
-  --ancha: Verdana, "DejaVu Sans", Tahoma, "Noto Sans", system-ui, sans-serif;
+  /* Las otras dos que se ofrecen en Ajustes, que la app lleva dentro.
+     La Garamond es siempre la suya, la misma en todos los telefonos. La
+     Times, donde la haya —Windows, el Mac, el iPhone—, la del sistema; y
+     donde no, Tinos, que tiene sus mismas medidas letra a letra. */
+  --garamond: "EB Garamond", Garamond, "Palatino Linotype", Palatino,
+              "Noto Serif", serif;
+  --times: "Times New Roman", Times, Tinos, "Liberation Serif",
+           "Noto Serif", serif;
   --cuerpo: 1.0625rem;
   --interlinea: 1.62;
   /* Los versos van mas apretados que la prosa: un renglon de salmo es corto
@@ -54,32 +51,50 @@
    cabecera del dia y las rubricas de la hora: el mismo dia se reconoce por
    el mismo color en cualquier seccion. Sobre papel oscuro son esos mismos
    colores con otra luz, aclarados lo justo para que se lean (4,5:1): un
-   verde de tinta sobre fondo negro no es un verde, es un borron. */
+   verde de tinta sobre fondo negro no es un verde, es un borron.
+
+   Cada color tiene ademas su tono elegido en Ajustes, uno para el papel
+   claro y otro para el oscuro: el guion los pone en el <html> como
+   `--tono-verde-claro`, `--tono-verde-oscuro`…, y donde no hay ninguno
+   manda el de siempre, que es el segundo valor de cada `var()`. */
 :root {
-  --lit-verde: #23492f; --lit-rojo: #7a1414; --lit-morado: #4c2a63;
-  --lit-blanco: #7a5c17; --lit-azul: #1f4e79;
+  --lit-verde: var(--tono-verde-claro, #23492f);
+  --lit-rojo: var(--tono-rojo-claro, #7a1414);
+  --lit-morado: var(--tono-morado-claro, #4c2a63);
+  --lit-blanco: var(--tono-blanco-claro, #7a5c17);
+  --lit-azul: var(--tono-azul-claro, #1f4e79);
+  --lit-neutro: var(--tono-neutro-claro, #6b1220);
 }
 body[data-tema="oscuro"], body[data-tema="noche"] {
-  --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
-  --lit-blanco: #d9b65e; --lit-azul: #93bcdf;
+  --lit-verde: var(--tono-verde-oscuro, #5aa876);
+  --lit-rojo: var(--tono-rojo-oscuro, #d07676);
+  --lit-morado: var(--tono-morado-oscuro, #b99bd6);
+  --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
+  --lit-azul: var(--tono-azul-oscuro, #93bcdf);
+  --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
-    --lit-verde: #5aa876; --lit-rojo: #d07676; --lit-morado: #b99bd6;
-    --lit-blanco: #d9b65e; --lit-azul: #93bcdf;
+    --lit-verde: var(--tono-verde-oscuro, #5aa876);
+    --lit-rojo: var(--tono-rojo-oscuro, #d07676);
+    --lit-morado: var(--tono-morado-oscuro, #b99bd6);
+    --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
+    --lit-azul: var(--tono-azul-oscuro, #93bcdf);
+    --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
   }
 }
 
 /* color liturgico del dia: tine la cabecera, las rubricas y los controles.
    El morado, el dorado y el azul aclaran un punto la rubrica respecto del
    acento, que sobre papel claro se leen justos (4,5:1); el verde y el rojo
-   van del mismo tono en los dos sitios. */
-body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: #74418f; }
-body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #7d6118; }
+   van del mismo tono en los dos sitios. Un tono elegido va igual en los
+   dos: todos los de la paleta se leen sobre su papel. */
+body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-claro, #74418f); }
+body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-claro, #7d6118); }
 body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #255c8a; }
-body[data-color="neutro"] { --acento: #6b1220; }
+body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-claro, #255c8a); }
+body[data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-claro, #9a1b1b); }
 
 /* Las fichas de cada tema sirven tambien para una hoja suelta: la muestra
    del papel en Ajustes lleva la clase de su tema (`.tema-sepia`…) y pinta
@@ -101,11 +116,12 @@ body[data-tema="oscuro"], .tema-oscuro {
   --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
   --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
-body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: #c0a3dc; }
-body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #e2bf66; }
+body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
+body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #e2bf66); }
 body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #9cc3e4; }
+body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
+body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -124,11 +140,80 @@ body[data-tema="noche"], .tema-noche {
     --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
     --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
-  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: #c0a3dc; }
-  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: #e2bf66; }
+  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
+  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #e2bf66); }
   body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
   body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: #9cc3e4; }
+  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
+  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
+}
+
+/* ------------------------------------------------ las letras de la casa
+   EB Garamond y Tinos, las dos de licencia libre (OFL, en fuentes/), en
+   woff2 y partidas como las sirve Google Fonts: el latin de siempre y el
+   extendido, que es donde caen la «ǽ» y las demas del latin con acento. El
+   navegador solo baja el trozo que la pagina usa, y solo si la letra esta
+   puesta; el service worker las guarda todas para cuando no haya red.
+   `swap`: mientras llega, se lee con la de libro, no se espera en blanco. */
+@font-face {
+  font-family: "EB Garamond"; font-style: italic; font-weight: 400 800;
+  font-display: swap; src: url(fuentes/ebgaramond-400-800-cursiva-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "EB Garamond"; font-style: italic; font-weight: 400 800;
+  font-display: swap; src: url(fuentes/ebgaramond-400-800-cursiva-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "EB Garamond"; font-style: normal; font-weight: 400 800;
+  font-display: swap; src: url(fuentes/ebgaramond-400-800-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "EB Garamond"; font-style: normal; font-weight: 400 800;
+  font-display: swap; src: url(fuentes/ebgaramond-400-800-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Tinos"; font-style: italic; font-weight: 400;
+  font-display: swap; src: url(fuentes/tinos-400-cursiva-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Tinos"; font-style: italic; font-weight: 400;
+  font-display: swap; src: url(fuentes/tinos-400-cursiva-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Tinos"; font-style: italic; font-weight: 700;
+  font-display: swap; src: url(fuentes/tinos-700-cursiva-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Tinos"; font-style: italic; font-weight: 700;
+  font-display: swap; src: url(fuentes/tinos-700-cursiva-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Tinos"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url(fuentes/tinos-400-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Tinos"; font-style: normal; font-weight: 400;
+  font-display: swap; src: url(fuentes/tinos-400-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Tinos"; font-style: normal; font-weight: 700;
+  font-display: swap; src: url(fuentes/tinos-700-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Tinos"; font-style: normal; font-weight: 700;
+  font-display: swap; src: url(fuentes/tinos-700-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 * { box-sizing: border-box; }
@@ -554,11 +639,8 @@ body.cab-fija .fila-fecha .icono {
    modo que la muestra de Ajustes ensena exactamente lo que se vera: es el
    mismo texto con las mismas reglas, no una imitacion. */
 body[data-letra="sans"] { --familia: var(--sans); }
-body[data-letra="antigua"] { --familia: var(--antigua); }
-body[data-letra="gruesa"] { --familia: var(--gruesa); }
-body[data-letra="periodico"] { --familia: var(--periodico); }
-body[data-letra="humanista"] { --familia: var(--humanista); }
-body[data-letra="ancha"] { --familia: var(--ancha); }
+body[data-letra="garamond"] { --familia: var(--garamond); }
+body[data-letra="times"] { --familia: var(--times); }
 /* El interlineado no es una lista de nombres sino un numero, y lo pone el
    <html> con `--interlinea` cada vez que se toca en Ajustes (`aplicaCfg`):
    no hay cuatro escalones a los que ajustarse, sino un renglon que se abre y
@@ -937,7 +1019,7 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .color-morado { background: var(--lit-morado); }
 .color-blanco { background: var(--lit-blanco); }
 .color-azul { background: var(--lit-azul); }
-.color-neutro { background: #6b1220; }
+.color-neutro { background: var(--lit-neutro); }
 .color-dia {
   background: conic-gradient(var(--lit-verde) 0 25%, var(--lit-morado) 0 50%,
     var(--lit-blanco) 0 75%, var(--lit-rojo) 0);
@@ -954,6 +1036,50 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .color:active .color-punto { transform: scale(.9); }
 :is(.letra, .tema, .color):has(input:focus-visible) {
   outline: 2px solid var(--acento); outline-offset: 3px; border-radius: 12px;
+}
+
+/* La paleta del color elegido: dos filas de tonos, cada una sobre su papel
+   —la ficha del tema, `.tema-claro` o `.tema-oscuro`, le da el fondo—, de
+   modo que el verde para leer de noche se ve sobre negro. Se abre debajo
+   de las pastillas al elegir un color. */
+.tonos.abre { animation: tonos-abre var(--lento) var(--curva); }
+@keyframes tonos-abre {
+  from { opacity: 0; transform: translateY(-.4rem); }
+  to { opacity: 1; transform: none; }
+}
+/* seis colores no caben en un renglon sin partirse: dos de tres */
+.tonos-de { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tonos-de span {
+  min-height: 2.3rem; overflow-wrap: normal; -webkit-hyphens: none; hyphens: none;
+}
+.tonos-fila { margin-top: .8rem; }
+.tonos-modo {
+  display: block; margin-bottom: .35rem;
+  font-family: var(--sans); font-size: .74rem; color: var(--tinta-suave);
+}
+.tonos-nombre { font-weight: 600; color: var(--tinta); }
+.tonos-puntos {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: .3rem; padding: .55rem .5rem; border-radius: 12px;
+  background: var(--papel); border: 1px solid var(--filete-fuerte);
+}
+.tono { position: relative; display: grid; place-items: center; min-height: 2.6rem; }
+.tono input {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  margin: 0; opacity: 0; cursor: pointer;
+}
+.tono-punto {
+  width: 2rem; height: 2rem; border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--papel), 0 0 0 4px transparent;
+  transition: box-shadow var(--medio) var(--curva),
+              transform var(--rapido) var(--curva);
+}
+.tono:has(input:checked) .tono-punto {
+  box-shadow: 0 0 0 3px var(--papel), 0 0 0 5px var(--tinta);
+}
+.tono:active .tono-punto { transform: scale(.88); }
+.tono:has(input:focus-visible) .tono-punto {
+  outline: 2px solid var(--acento); outline-offset: 5px;
 }
 
 /* Lo que hay que advertir antes de nada —que voces trae el telefono, que
