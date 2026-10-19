@@ -1152,6 +1152,13 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
   width: 1.25rem; height: 2.3rem; border: 0; border-radius: 0;
   background: var(--flecha) center / 100% 100% no-repeat;
 }
+/* lo que avisa de que el tono elegido se lee poco: el sitio se guarda
+   mientras la barra esta puesta, para que la caja no salte al deslizar */
+.tonos-aviso {
+  margin: 0; font-family: var(--sans); font-size: .7rem; line-height: 1.4;
+  color: var(--tinta-suave);
+}
+.tonos-barra.puesta .tonos-aviso { min-height: 1.4em; }
 .tonos-barra input[type="range"]:focus-visible {
   outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 8px;
 }

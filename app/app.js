@@ -444,20 +444,32 @@ function tonoPuesto(c, m) {
   return TONOS[c].find((x) => x[i] === v) || [A_TU_GUSTO, v, v];
 }
 
-/* Y, al final de cada paleta, una barra con todos los tonos del color: de
- * un extremo al otro de su familia —el verde, del amarillento al azulado;
- * el rojo, del bermellón al carmín—, y se escoge el que se quiera
- * deslizando la flecha. La barra mueve el matiz, y la luz la pone la
- * cuenta: cada punto de la barra es el tono más vivo de ese matiz que
- * todavía se lee sobre su papel (6:1 sobre el claro, medido contra la
- * sepia, y 6,5:1 sobre el oscuro). Así no hay punto de la barra que deje
- * las rúbricas ilegibles. Matiz de un extremo, del otro, y saturación. */
+/* Y, al final de cada paleta, una barra con todos los tonos del color, de
+ * un extremo a otro: a la izquierda el color en su punto más vivo —un
+ * amarillo de yema, un rojo de amapola, un verde de hoja nueva— y a la
+ * derecha casi negro, y en medio todo lo que va de uno a otro. Se escoge
+ * el que se quiera deslizando la flecha.
+ *
+ * Aquí la app no protege la lectura, como hacen los puntos: un amarillo
+ * vivo sobre papel claro no se lee, ni un verde casi negro sobre el oscuro,
+ * y la barra los deja elegir igual. Lo que hace es avisar, bajo la barra,
+ * cuando el tono elegido no llega a 4,5:1 sobre ese papel.
+ *
+ * Cada color, sus dos extremos en matiz, saturación y luz; entre ellos se
+ * va en línea recta, y el matiz gira un poco: el dorado vivo es amarillo y
+ * el oscuro, pardo. */
 const A_TU_GUSTO = 'A tu gusto';
 const BARRA = {
-  verde: [75, 175, 0.5], rojo: [340, 380, 0.7], morado: [255, 320, 0.42],
-  blanco: [25, 55, 0.75], azul: [190, 245, 0.6], neutro: [325, 375, 0.5]
+  verde: [[115, 1, 0.45], [150, 0.6, 0.07]],
+  rojo: [[360, 1, 0.5], [350, 0.75, 0.08]],
+  morado: [[285, 1, 0.58], [270, 0.6, 0.08]],
+  blanco: [[52, 1, 0.5], [32, 0.8, 0.08]],
+  azul: [[200, 1, 0.5], [228, 0.7, 0.08]],
+  neutro: [[345, 1, 0.47], [345, 0.6, 0.06]]
 };
 const BARRA_PASOS = 1000;
+// el papel de cada fila, para el aviso
+const PAPEL_TONO = { claro: '#fbf8f1', oscuro: '#13110e' };
 
 function hslHex(h, s, l) {
   const a = s * Math.min(l, 1 - l);
@@ -481,42 +493,37 @@ function contraste(a, b) {
 }
 
 /** El tono de la barra en una posición (0 a BARRA_PASOS). */
-function tonoDeBarra(c, m, pos) {
-  const [h0, h1, sat] = BARRA[c];
-  const h = (h0 + (h1 - h0) * pos / BARRA_PASOS) % 360;
-  let l;
-  if (m === 'claro') {
-    for (l = 0.6; l > 0.05 && contraste(hslHex(h, sat, l), '#f4e9d6') < 6; l -= 0.005);
-    return hslHex(h, sat, l);
-  }
-  for (l = 0.3; l < 0.95 && contraste(hslHex(h, sat * 0.75, l), '#1c1915') < 6.5; l += 0.005);
-  return hslHex(h, sat * 0.75, l);
+function tonoDeBarra(c, pos) {
+  const [x, y] = BARRA[c];
+  const t = pos / BARRA_PASOS;
+  const v = (i) => x[i] + (y[i] - x[i]) * t;
+  return hslHex(v(0) % 360, v(1), v(2));
 }
 
-/** Y al revés: dónde cae un tono en la barra, por su matiz. Lo que cae
- *  fuera de la familia se queda en el extremo más cercano. */
+/** Y al revés: dónde cae un tono en la barra. Se busca el punto que más
+ *  se le parece; uno de los puntos de la paleta cae donde cae su pariente. */
 function posDeTono(c, hex) {
-  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
-  let h = 0;
-  if (d) {
-    h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
-    h = (h * 60 + 360) % 360;
+  const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const a = rgb(hex);
+  let mejor = 0, dist = Infinity;
+  for (let pos = 0; pos <= BARRA_PASOS; pos += 5) {
+    const d = rgb(tonoDeBarra(c, pos)).reduce((n, v, i) => n + (v - a[i]) ** 2, 0);
+    if (d < dist) { dist = d; mejor = pos; }
   }
-  const [h0, h1] = BARRA[c];
-  const dentro = [h, h + 360, h - 360].find((x) => x >= h0 && x <= h1);
-  if (dentro === undefined) {
-    const dist = (x) => Math.min(Math.abs(x - h), 360 - Math.abs(x - h));
-    h = dist(h0 % 360) <= dist(h1 % 360) ? h0 : h1;
-  } else h = dentro;
-  return Math.round((h - h0) / (h1 - h0) * BARRA_PASOS);
+  return mejor;
+}
+
+/** Si el tono no se lee bien sobre su papel, lo que se dice debajo. */
+function avisoTono(hex, m) {
+  return contraste(hex, PAPEL_TONO[m]) < 4.5
+    ? 'Se lee poco sobre este papel' : '';
 }
 
 /** La barra pintada: trece paradas, cada una el tono de su punto. */
-function gradienteBarra(c, m) {
+function gradienteBarra(c) {
   const paradas = [];
   for (let i = 0; i <= 12; i++) {
-    paradas.push(tonoDeBarra(c, m, BARRA_PASOS * i / 12) + ' '
+    paradas.push(tonoDeBarra(c, BARRA_PASOS * i / 12) + ' '
       + (i * 100 / 12).toFixed(1) + '%');
   }
   return 'linear-gradient(90deg, ' + paradas.join(', ') + ')';
@@ -3836,7 +3843,9 @@ function paletaTonos(abre) {
       + '<input type="range" id="aj-barra-' + m + '" min="0" max="'
       + BARRA_PASOS + '" step="1" value="' + posDeTono(c, puesto[i])
       + '" data-barra="' + c + '" data-modo="' + m + '" style="--barra:'
-      + gradienteBarra(c, m) + '"></div></div>';
+      + gradienteBarra(c) + '" aria-describedby="aj-aviso-' + m + '">'
+      + '<p class="tonos-aviso" id="aj-aviso-' + m + '" aria-live="polite">'
+      + (propio ? avisoTono(puesto[i], m) : '') + '</p></div></div>';
   };
   const afina = E.cfg.color === 'dia'
     ? '<div class="tira tonos-de" role="radiogroup" aria-label="Color que se '
@@ -3878,7 +3887,7 @@ function repintaTonos(abre) {
  *  guarda. En la fila, ningún punto queda elegido: lo elegido es la barra. */
 function ponBarra(el, guarda) {
   const c = el.dataset.barra, m = el.dataset.modo;
-  const hex = tonoDeBarra(c, m, +el.value);
+  const hex = tonoDeBarra(c, +el.value);
   const t = Object.assign({}, E.cfg.tonos);
   t[c] = Object.assign({}, t[c], { [m]: hex });
   E.cfg.tonos = t;
@@ -3891,6 +3900,8 @@ function ponBarra(el, guarda) {
     const nom = fila.querySelector('.tonos-nombre');
     if (nom) nom.textContent = A_TU_GUSTO;
     el.closest('.tonos-barra').classList.add('puesta');
+    const av = fila.querySelector('.tonos-aviso');
+    if (av) av.textContent = avisoTono(hex, m);
   }
   if (guarda) guardaCfg();
 }
