@@ -1,6 +1,6 @@
 /* Leccionario latino — hoja de estilo unica.
    Nada de fuentes remotas: la app tiene que abrir sin conexion desde el primer
-   dia, asi que lo tipografico sale de lo que el telefono ya trae, salvo dos
+   dia, asi que lo tipografico sale de lo que el telefono ya trae, salvo tres
    letras que la app lleva dentro (ver «las letras de la casa»).
 
    El aire es el de un libro de coro: papel, tinta y rubrica roja, y el
@@ -21,7 +21,7 @@
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
            "Noto Serif", Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  /* Las otras dos que se ofrecen en Ajustes, que la app lleva dentro.
+  /* Las otras tres que se ofrecen en Ajustes, que la app lleva dentro.
      La Garamond es siempre la suya, la misma en todos los telefonos. La
      Times, donde la haya —Windows, el Mac, el iPhone—, la del sistema; y
      donde no, Tinos, que tiene sus mismas medidas letra a letra. */
@@ -29,6 +29,12 @@
               "Noto Serif", serif;
   --times: "Times New Roman", Times, Tinos, "Liberation Serif",
            "Noto Serif", serif;
+  /* Y la de pluma: Alegreya, en lugar de Aldhabi, que es lo que se pidio.
+     Aldhabi es de Microsoft, no se puede llevar dentro, y su latin es el
+     acompanante de una letra arabe -sin el latin extendido, con las medidas
+     verticales del arabe-; Alegreya es el mismo aire caligrafico de pluma
+     ancha, hecho para leer texto seguido. */
+  --pluma: Alegreya, "Noto Serif", serif;
   --cuerpo: 1.0625rem;
   --interlinea: 1.62;
   /* Los versos van mas apretados que la prosa: un renglon de salmo es corto
@@ -58,29 +64,29 @@
    `--tono-verde-claro`, `--tono-verde-oscuro`…, y donde no hay ninguno
    manda el de siempre, que es el segundo valor de cada `var()`. */
 :root {
-  --lit-verde: var(--tono-verde-claro, #23492f);
-  --lit-rojo: var(--tono-rojo-claro, #7a1414);
-  --lit-morado: var(--tono-morado-claro, #4c2a63);
-  --lit-blanco: var(--tono-blanco-claro, #7a5c17);
-  --lit-azul: var(--tono-azul-claro, #1f4e79);
-  --lit-neutro: var(--tono-neutro-claro, #6b1220);
+  --lit-verde: var(--tono-verde-claro, #1e3e28);
+  --lit-rojo: var(--tono-rojo-claro, #681111);
+  --lit-morado: var(--tono-morado-claro, #412454);
+  --lit-blanco: var(--tono-blanco-claro, #684e14);
+  --lit-azul: var(--tono-azul-claro, #1a4267);
+  --lit-neutro: var(--tono-neutro-claro, #5b0f1b);
 }
 body[data-tema="oscuro"], body[data-tema="noche"] {
-  --lit-verde: var(--tono-verde-oscuro, #5aa876);
-  --lit-rojo: var(--tono-rojo-oscuro, #d07676);
-  --lit-morado: var(--tono-morado-oscuro, #b99bd6);
-  --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
-  --lit-azul: var(--tono-azul-oscuro, #93bcdf);
-  --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
+  --lit-verde: var(--tono-verde-oscuro, #4f9568);
+  --lit-rojo: var(--tono-rojo-oscuro, #ca6565);
+  --lit-morado: var(--tono-morado-oscuro, #aa85cd);
+  --lit-blanco: var(--tono-blanco-oscuro, #d3ab45);
+  --lit-azul: var(--tono-azul-oscuro, #7badd8);
+  --lit-neutro: var(--tono-neutro-oscuro, #d08a8a);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
-    --lit-verde: var(--tono-verde-oscuro, #5aa876);
-    --lit-rojo: var(--tono-rojo-oscuro, #d07676);
-    --lit-morado: var(--tono-morado-oscuro, #b99bd6);
-    --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
-    --lit-azul: var(--tono-azul-oscuro, #93bcdf);
-    --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
+    --lit-verde: var(--tono-verde-oscuro, #4f9568);
+    --lit-rojo: var(--tono-rojo-oscuro, #ca6565);
+    --lit-morado: var(--tono-morado-oscuro, #aa85cd);
+    --lit-blanco: var(--tono-blanco-oscuro, #d3ab45);
+    --lit-azul: var(--tono-azul-oscuro, #7badd8);
+    --lit-neutro: var(--tono-neutro-oscuro, #d08a8a);
   }
 }
 
@@ -89,12 +95,12 @@ body[data-tema="oscuro"], body[data-tema="noche"] {
    acento, que sobre papel claro se leen justos (4,5:1); el verde y el rojo
    van del mismo tono en los dos sitios. Un tono elegido va igual en los
    dos: todos los de la paleta se leen sobre su papel. */
-body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-claro, #74418f); }
-body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-claro, #7d6118); }
+body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-claro, #63377a); }
+body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-claro, #6a5214); }
 body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-claro, #255c8a); }
-body[data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-claro, #9a1b1b); }
+body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-claro, #1f4e75); }
+body[data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-claro, #831717); }
 
 /* Las fichas de cada tema sirven tambien para una hoja suelta: la muestra
    del papel en Ajustes lleva la clase de su tema (`.tema-sepia`…) y pinta
@@ -116,12 +122,12 @@ body[data-tema="oscuro"], .tema-oscuro {
   --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
   --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
-body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
-body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #e2bf66); }
+body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #b18dd4); }
+body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #ddb44c); }
 body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
-body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
+body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #84b4dd); }
+body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #d98383); }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -140,16 +146,16 @@ body[data-tema="noche"], .tema-noche {
     --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
     --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
-  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
-  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #e2bf66); }
+  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #b18dd4); }
+  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #ddb44c); }
   body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
   body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
-  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
+  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #84b4dd); }
+  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #d98383); }
 }
 
 /* ------------------------------------------------ las letras de la casa
-   EB Garamond y Tinos, las dos de licencia libre (OFL, en fuentes/), en
+   EB Garamond, Tinos y Alegreya, de licencia libre (OFL, en fuentes/), en
    woff2 y partidas como las sirve Google Fonts: el latin de siempre y el
    extendido, que es donde caen la «ǽ» y las demas del latin con acento. El
    navegador solo baja el trozo que la pagina usa, y solo si la letra esta
@@ -213,6 +219,26 @@ body[data-tema="noche"], .tema-noche {
 @font-face {
   font-family: "Tinos"; font-style: normal; font-weight: 700;
   font-display: swap; src: url(fuentes/tinos-700-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Alegreya"; font-style: italic; font-weight: 400 900;
+  font-display: swap; src: url(fuentes/alegreya-400-900-cursiva-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Alegreya"; font-style: italic; font-weight: 400 900;
+  font-display: swap; src: url(fuentes/alegreya-400-900-cursiva-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Alegreya"; font-style: normal; font-weight: 400 900;
+  font-display: swap; src: url(fuentes/alegreya-400-900-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Alegreya"; font-style: normal; font-weight: 400 900;
+  font-display: swap; src: url(fuentes/alegreya-400-900-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -641,6 +667,7 @@ body.cab-fija .fila-fecha .icono {
 body[data-letra="sans"] { --familia: var(--sans); }
 body[data-letra="garamond"] { --familia: var(--garamond); }
 body[data-letra="times"] { --familia: var(--times); }
+body[data-letra="pluma"] { --familia: var(--pluma); }
 /* El interlineado no es una lista de nombres sino un numero, y lo pone el
    <html> con `--interlinea` cada vez que se toca en Ajustes (`aplicaCfg`):
    no hay cuatro escalones a los que ajustarse, sino un renglon que se abre y

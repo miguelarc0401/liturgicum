@@ -1,0 +1,336 @@
+/* -------------------------------------------- pruebas del devocionario
+   PROVISIONAL, con devo-pruebas.js. Todo va colgado de `body.pd-on` o de
+   clases `pd-`, así que «Antes» se ve exactamente como siempre. */
+
+/* La tira de las pruebas, flotando sobre la barra de abajo. */
+.pd-barra {
+  position: fixed; left: 50%; z-index: 29;
+  bottom: calc(var(--pd-barra, 3.7rem) + .55rem);
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: .1rem;
+  max-width: calc(100vw - 20px);
+  padding: .25rem .25rem .25rem .8rem; border-radius: 999px;
+  background: var(--tinta); color: var(--papel);
+  box-shadow: 0 4px 18px rgb(0 0 0 / .28);
+  font-family: var(--sans); font-size: .72rem;
+}
+.pd-barra-n { margin-right: .4rem; white-space: nowrap; opacity: .75; }
+.pd-barra button {
+  min-width: 2.2rem; height: 2.2rem; padding: 0 .55rem; cursor: pointer;
+  border: 0; border-radius: 999px; background: none; color: inherit;
+  font: inherit; font-weight: 600;
+}
+.pd-barra button[aria-pressed="true"] { background: var(--papel); color: var(--tinta); }
+body.pd-con-barra #vista { padding-bottom: calc(9rem + env(safe-area-inset-bottom)); }
+
+/* --------------------------------------------------- lo común */
+
+.pd-busca .campo { font-size: .88rem; }
+
+.pd-intro {
+  margin: 0 .1rem 1rem; font-family: var(--sans); font-size: .76rem;
+  line-height: 1.5; color: var(--tinta-suave);
+}
+
+/* las migas: de dónde cuelga lo que se ve; la última, la más a mano, va
+   del color del día */
+.pd-migas {
+  display: flex; align-items: center; gap: .05rem; min-height: 2.5rem;
+  margin: -.45rem 0 .5rem; overflow-x: auto; white-space: nowrap;
+  scrollbar-width: none; font-family: var(--sans); font-size: .78rem;
+}
+.pd-migas::-webkit-scrollbar { display: none; }
+.pd-migas a {
+  padding: .35rem .3rem; border-radius: 6px; text-decoration: none;
+  color: var(--tinta-suave);
+}
+.pd-migas a:first-child { padding-left: .1rem; }
+.pd-migas a:last-of-type { color: var(--acento); }
+.pd-migas a:active { background: var(--filete); }
+.pd-migas > svg { width: .75rem; height: .75rem; color: var(--filete-fuerte); stroke-width: 2.2; }
+/* la estrella, junto a las migas y sin rótulo */
+body.pd-on .pd-migas .devo-fav {
+  margin-left: auto; min-width: 2.5rem; min-height: 2.5rem; padding: 0;
+  justify-content: center; border: 0; background: none; border-radius: 50%;
+}
+body.pd-on .pd-migas .devo-fav span {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+body.pd-on .pd-migas .devo-fav svg { width: 1.3rem; height: 1.3rem; }
+
+/* la ficha de la oración, en un renglón: «acto · Compendio 21 · latín y
+   castellano», sin cajitas */
+body.pd-on .devo-ficha { gap: 0; margin: -.1rem .1rem 1rem; align-items: baseline; }
+body.pd-on .devo-ficha .devo-insignia {
+  min-height: 0; padding: 0; border: 0; background: none; font-size: .74rem;
+}
+body.pd-on .devo-ficha .devo-insignia + .devo-insignia::before {
+  content: "·"; margin: 0 .45rem; color: var(--tinta-suave);
+}
+
+/* el rótulo de una banda: gris y pequeño; lo que destaca es lo de debajo */
+.pd-banda {
+  display: flex; align-items: baseline; gap: .4rem;
+  margin: 1.7rem 0 .5rem; padding: 0 .15rem;
+  font-family: var(--sans); font-size: .68rem; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave);
+}
+.pd-banda .pd-n { font-weight: 400; letter-spacing: 0; opacity: .8; }
+
+.pd-n {
+  flex: none; font-family: var(--sans); font-size: .76rem;
+  font-variant-numeric: tabular-nums lining-nums; color: var(--tinta-suave);
+}
+
+/* la caja de cada lista: en A, B y D una tarjeta, como los grupos de los
+   ajustes de un teléfono; en C, la lista va suelta dentro de su rama */
+.pd-lista { margin: 0; }
+body[data-prueba="a"] .pd-lista,
+body[data-prueba="b"] .pd-lista,
+body[data-prueba="d"] .pd-lista {
+  overflow: hidden; border-radius: 14px;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+}
+
+/* las filas: el título, el castellano si lo hay, y lo que es si no es una
+   oración; con su flecha */
+.pd-fila, .pd-cap-fila, .pd-sec, .pd-puerta {
+  position: relative; display: flex; align-items: center; gap: .75rem;
+  padding: .74rem 2rem .76rem 1rem; text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--filete);
+  transition: background-color var(--medio) var(--curva);
+}
+.pd-fila { align-items: flex-start; }
+.pd-lista > :last-child { border-bottom: 0; }
+.pd-fila::after, .pd-cap-fila::after, .pd-sec::after, .pd-puerta::after {
+  content: ""; position: absolute; right: .9rem; top: 50%;
+  width: .42rem; height: .42rem; margin-top: -.21rem;
+  border-top: 1.5px solid var(--tinta-suave);
+  border-right: 1.5px solid var(--tinta-suave);
+  transform: rotate(45deg); opacity: .55;
+}
+.pd-fila:active, .pd-cap-fila:active, .pd-sec:active, .pd-puerta:active {
+  background: var(--filete);
+}
+.pd-fila-c, .pd-cap-c { flex: 1; min-width: 0; }
+.pd-ctx {
+  display: block; margin-bottom: .1rem; font-family: var(--sans);
+  font-size: .66rem; letter-spacing: .03em; color: var(--rubrica);
+}
+.pd-la { display: block; font-size: 1.02rem; line-height: 1.35; }
+.pd-es {
+  display: block; margin-top: .1rem; font-size: .88rem; line-height: 1.35;
+  font-style: italic; color: var(--tinta-suave);
+}
+.pd-meta {
+  display: block; margin-top: .2rem; font-family: var(--sans);
+  font-size: .68rem; letter-spacing: .02em; color: var(--tinta-suave);
+}
+.pd-dist { font-family: var(--sans); font-size: .66rem; color: var(--tinta-suave); }
+.pd-estrella { color: var(--acento); }
+.pd-estrella svg {
+  width: .8rem; height: .8rem; margin-left: .35rem; vertical-align: -.04em;
+  fill: currentColor; stroke-width: 1.4;
+}
+.pd-num {
+  flex: none; width: 1.9rem; height: 1.9rem; display: grid; place-items: center;
+  border-radius: 50%; font-family: var(--sans); font-size: .74rem;
+  font-weight: 600; color: var(--acento);
+  border: 1px solid color-mix(in srgb, var(--acento) 35%, transparent);
+}
+.pd-cap-t { display: block; font-size: 1.04rem; line-height: 1.3; }
+.pd-cap-p {
+  display: block; margin-top: .12rem; font-family: var(--sans);
+  font-size: .72rem; line-height: 1.4; color: var(--tinta-suave);
+}
+.pd-sec-t { flex: 1; min-width: 0; font-size: 1.02rem; line-height: 1.3; }
+
+/* la puerta del Compendio: una fila sola, con un tinte del color del día */
+.pd-puerta {
+  margin-top: 1.1rem; border-radius: 14px;
+  background: color-mix(in srgb, var(--acento) 8%, var(--papel-alto));
+  border: 1px solid color-mix(in srgb, var(--acento) 28%, transparent);
+}
+.pd-puerta-ojo {
+  display: block; margin-bottom: .1rem; font-family: var(--sans);
+  font-size: .6rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--acento);
+}
+.pd-puerta::after { border-color: var(--acento); opacity: .9; }
+
+.pd-mas {
+  display: flex; align-items: center; justify-content: flex-end; gap: .25rem;
+  width: 100%; padding: .65rem .2rem 0; border: 0; background: none;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--sans); font-size: .78rem; color: var(--acento);
+}
+.pd-mas svg { width: .95rem; height: .95rem; }
+
+/* ------------------------------------------------------- B · mosaico */
+
+.pd-teselas {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem;
+}
+.pd-arriba { margin-top: 1.1rem; }
+.pd-arriba:empty { display: none; }
+.pd-tesela {
+  display: flex; flex-direction: column; gap: .7rem; min-height: 7.4rem;
+  padding: .85rem .9rem .8rem; border-radius: 16px; text-decoration: none;
+  color: inherit; background: var(--papel-alto); border: 1px solid var(--filete);
+  box-shadow: var(--sombra);
+  transition: transform var(--rapido) var(--curva), background-color var(--medio);
+}
+.pd-tesela:active { transform: scale(.97); background: var(--filete); }
+.pd-tesela-i {
+  flex: none; width: 2.5rem; height: 2.5rem; display: grid; place-items: center;
+  border-radius: 12px; color: var(--pd-tono, var(--acento));
+  background: color-mix(in srgb, var(--pd-tono, var(--acento)) 13%, transparent);
+}
+.pd-tesela-i svg { width: 1.4rem; height: 1.4rem; stroke-width: 1.6; }
+.pd-tesela-c { display: flex; flex-direction: column; gap: .15rem; margin-top: auto; }
+.pd-tesela-t { font-size: 1rem; line-height: 1.25; }
+.pd-tesela-n {
+  font-family: var(--sans); font-size: .7rem; color: var(--tinta-suave);
+  font-variant-numeric: tabular-nums;
+}
+.pd-tesela-ancha {
+  grid-column: 1 / -1; flex-direction: row; align-items: center;
+  min-height: 0; gap: .85rem;
+}
+.pd-tesela-ancha .pd-tesela-c { margin-top: 0; }
+/* la que queda sola en la última fila se estira, que no quede un hueco */
+.pd-teselas > .pd-tesela:last-child:nth-child(odd) {
+  grid-column: 1 / -1; flex-direction: row; align-items: center;
+  min-height: 0; gap: .85rem;
+}
+.pd-teselas > .pd-tesela:last-child:nth-child(odd) .pd-tesela-c { margin-top: 0; }
+.pd-tira { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-bottom: .45rem; }
+.pd-tira::-webkit-scrollbar { display: none; }
+
+.pd-cab-b { display: flex; align-items: center; gap: .9rem; margin: 0 0 1rem; }
+.pd-cab-b .pd-tesela-i { width: 3.1rem; height: 3.1rem; border-radius: 15px; }
+.pd-cab-b .pd-tesela-i svg { width: 1.7rem; height: 1.7rem; }
+.pd-cab-b-p { display: block; font-size: 1rem; line-height: 1.35; font-style: italic; }
+.pd-cab-b-n {
+  display: block; margin-top: .15rem; font-family: var(--sans);
+  font-size: .72rem; color: var(--tinta-suave);
+}
+
+/* las pestañas del capítulo, pegadas bajo la cabecera al bajar */
+.pd-pestanas {
+  position: sticky; top: var(--pd-cab, 3.5rem); z-index: 6;
+  display: flex; gap: .4rem; overflow-x: auto; scrollbar-width: none;
+  margin: 0 -16px .3rem; padding: .55rem 16px;
+  background: var(--papel); border-bottom: 1px solid var(--filete);
+}
+.pd-pestanas::-webkit-scrollbar { display: none; }
+.pd-pestanas button {
+  flex: none; min-height: 2.2rem; padding: .2rem .85rem; cursor: pointer;
+  border-radius: 999px; border: 1px solid var(--filete-fuerte);
+  background: var(--papel-alto); font-family: var(--sans); font-size: .78rem;
+  color: var(--tinta);
+}
+.pd-pestanas button span { margin-left: .15rem; opacity: .55; }
+.pd-pestanas button[aria-selected="true"] {
+  background: var(--tinta); border-color: var(--tinta); color: var(--papel);
+}
+#pd-pest > .pd-banda:first-child { margin-top: 1rem; }
+#pd-pest > .pd-lista:first-child { margin-top: .8rem; }
+
+/* ----------------------------------------------- C · árbol plegable */
+
+.pd-cap { border-bottom: 1px solid var(--filete); scroll-margin-top: var(--pd-cab, 3.5rem); }
+.pd-cap > summary, .pd-rama > summary {
+  position: relative; display: flex; align-items: center; gap: .75rem;
+  min-height: 3.4rem; padding: .55rem 2rem .55rem .15rem;
+  list-style: none; cursor: pointer;
+  transition: background-color var(--medio) var(--curva);
+}
+.pd-cap > summary::-webkit-details-marker,
+.pd-rama > summary::-webkit-details-marker { display: none; }
+.pd-cap > summary::after, .pd-rama > summary::after {
+  content: ""; position: absolute; right: .8rem; top: 50%;
+  width: .45rem; height: .45rem; margin-top: -.32rem;
+  border-right: 1.6px solid var(--tinta-suave);
+  border-bottom: 1.6px solid var(--tinta-suave);
+  transform: rotate(45deg); transition: transform var(--medio) var(--curva);
+}
+.pd-cap[open] > summary::after, .pd-rama[open] > summary::after {
+  transform: rotate(-135deg); margin-top: -.08rem;
+}
+.pd-cap > summary:active, .pd-rama > summary:active { background: var(--filete); }
+/* el capítulo abierto se queda arriba mientras se baja por él: siempre se
+   ve dónde se está */
+.pd-cap[open] > summary {
+  position: sticky; top: var(--pd-cab, 3.5rem); z-index: 5;
+  background: var(--papel); border-bottom: 1px solid var(--filete-fuerte);
+}
+.pd-cap[open] > summary .pd-cap-t { color: var(--acento); }
+.pd-cap[open] > summary .pd-cap-p { display: none; }
+.pd-cap-dentro {
+  margin: .2rem 0 1rem .35rem; padding-left: .85rem;
+  border-left: 2px solid color-mix(in srgb, var(--acento) 45%, transparent);
+}
+.pd-cap-dentro .pd-banda { margin: 1.1rem 0 .1rem; color: var(--acento); }
+.pd-cap-dentro > .pd-banda:first-child { margin-top: .6rem; }
+.pd-cap-dentro .pd-fila, .pd-cap-dentro .pd-sec { padding-left: .1rem; }
+.pd-rama { border-bottom: 1px solid var(--filete); scroll-margin-top: calc(var(--pd-cab, 3.5rem) + 3.4rem); }
+.pd-rama > summary { min-height: 3rem; padding-left: .1rem; }
+.pd-rama-t { flex: 1; min-width: 0; font-size: 1rem; }
+.pd-rama[open] > summary {
+  position: sticky; top: calc(var(--pd-cab, 3.5rem) + 3.4rem); z-index: 4;
+  background: var(--papel);
+}
+.pd-rama[open] > summary .pd-rama-t { font-style: italic; }
+.pd-rama > .pd-lista { padding-left: .9rem; border-top: 1px solid var(--filete); }
+body[data-prueba="c"] .pd-cap-dentro > .pd-lista + .pd-lista,
+body[data-prueba="c"] .pd-cap-dentro > .pd-lista + .pd-rama { border-top: 1px solid var(--filete); }
+
+/* --------------------------------------------------- D · para hoy */
+
+.pd-hoy-fecha {
+  margin: 1.1rem .1rem .2rem; font-family: var(--sans); font-size: .78rem;
+  color: var(--tinta-suave);
+}
+.pd-hoy-fecha span { display: block; margin-top: .1rem; font-family: var(--familia); font-size: 1.05rem; font-style: italic; color: var(--tinta); }
+.pd-tarjeta {
+  margin: .8rem 0 0; padding: .85rem 1rem .75rem; border-radius: 16px;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  box-shadow: var(--sombra);
+}
+.pd-tarjeta-ojo {
+  margin: 0; font-family: var(--sans); font-size: .6rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--acento);
+}
+.pd-tarjeta-t { margin: .15rem 0 .35rem; font-size: 1.1rem; font-weight: normal; line-height: 1.3; }
+body[data-prueba="d"] .pd-tarjeta .pd-lista { border: 0; border-radius: 0; background: none; }
+.pd-tarjeta .pd-fila { padding-left: 0; }
+.pd-tarjeta .pd-lista > .pd-fila:first-child { border-top: 1px solid var(--filete); }
+.pd-tarjeta .pd-mas { padding-top: .5rem; }
+
+.pd-amano { display: flex; flex-wrap: wrap; gap: .4rem; }
+.pd-amano a {
+  display: inline-flex; align-items: center; gap: .3rem; min-height: 2.4rem;
+  padding: .3rem .85rem; border-radius: 999px; text-decoration: none;
+  color: inherit; background: var(--papel-alto);
+  border: 1px solid var(--filete-fuerte); font-size: .92rem;
+}
+.pd-amano a:active { background: var(--filete); }
+.pd-amano svg { width: .85rem; height: .85rem; fill: currentColor; color: var(--acento); }
+.pd-amano .pd-amano-mas {
+  border-style: dashed; font-family: var(--sans); font-size: .76rem;
+  color: var(--acento);
+}
+
+.pd-rejilla-t {
+  margin: 1rem .15rem .1rem; font-family: var(--sans); font-size: .7rem;
+  color: var(--acento);
+}
+.pd-rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1rem; }
+.pd-rejilla a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: .5rem;
+  min-height: 2.9rem; padding: .65rem .15rem; text-decoration: none; color: inherit;
+  border-bottom: 1px solid var(--filete); font-size: .96rem; line-height: 1.3;
+}
+.pd-rejilla a:active { background: var(--filete); }

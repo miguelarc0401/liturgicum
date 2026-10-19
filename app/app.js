@@ -367,58 +367,58 @@ function ponColor(c) {
  * color el día que toque. Nombre, tono claro, tono oscuro. */
 const TONOS = {
   verde: [
-    ['Bosque', '#23492f', '#5aa876'],
-    ['Esmeralda', '#1a7048', '#5abe90'],
-    ['Oliva', '#4c5e21', '#9cb366'],
-    ['Pino', '#19574d', '#55b4a4'],
-    ['Musgo', '#456336', '#8caa7d'],
-    ['Botella', '#144323', '#79c392'],
-    ['Jade', '#296d57', '#79b9a4']
+    ['Bosque', '#1e3e28', '#4f9568'],
+    ['Esmeralda', '#165f3d', '#46b381'],
+    ['Oliva', '#41501c', '#8ea753'],
+    ['Pino', '#154a41', '#48a393'],
+    ['Musgo', '#3b542e', '#7c9e6a'],
+    ['Botella', '#11391e', '#64ba81'],
+    ['Jade', '#235d4a', '#65ae96']
   ],
   rojo: [
-    ['Carmesí', '#7a1414', '#d07676'],
-    ['Escarlata', '#af211d', '#d98f8c'],
-    ['Rubí', '#8d1b38', '#d78ea0'],
-    ['Bermellón', '#a13217', '#d89483'],
-    ['Vino', '#5f1c27', '#d6a3ac'],
-    ['Ladrillo', '#7e352a', '#ca9891'],
-    ['Cereza', '#8a0f19', '#e09096']
+    ['Carmesí', '#681111', '#ca6565'],
+    ['Escarlata', '#951c19', '#d17975'],
+    ['Rubí', '#781730', '#cf778d'],
+    ['Bermellón', '#892a14', '#d1806c'],
+    ['Vino', '#511821', '#cd8e99'],
+    ['Ladrillo', '#6b2d24', '#c0857c'],
+    ['Cereza', '#750d15', '#d9787f']
   ],
   morado: [
-    ['Obispo', '#4c2a63', '#b99bd6'],
-    ['Violeta', '#693597', '#bea6d3'],
-    ['Ciruela', '#6a2f6a', '#cba5cb'],
-    ['Amatista', '#873fa6', '#ceb5d9'],
-    ['Berenjena', '#411f47', '#bd97c4'],
-    ['Uva', '#493172', '#bdb1d3'],
-    ['Malva', '#85477a', '#cbafc6']
+    ['Obispo', '#412454', '#aa85cd'],
+    ['Violeta', '#592d80', '#af92c9'],
+    ['Ciruela', '#5a285a', '#c092c0'],
+    ['Amatista', '#73368d', '#c1a1cf'],
+    ['Berenjena', '#371a3c', '#b183b9'],
+    ['Uva', '#3e2a61', '#ac9dc8'],
+    ['Malva', '#713c68', '#bf9cb9']
   ],
   blanco: [
-    ['Oro viejo', '#7a5c17', '#d9b65e'],
-    ['Ocre', '#865a18', '#c89e5f'],
-    ['Bronce', '#774a22', '#c09672'],
-    ['Ámbar', '#7f5c0a', '#d1a848'],
-    ['Miel', '#725d1d', '#c7b275'],
-    ['Mostaza', '#716114', '#c1ad49'],
-    ['Latón', '#645c26', '#b9b179']
+    ['Oro viejo', '#684e14', '#d3ab45'],
+    ['Ocre', '#724c14', '#c09048'],
+    ['Bronce', '#653f1d', '#b7865d'],
+    ['Ámbar', '#6c4e08', '#c89b32'],
+    ['Miel', '#614f19', '#bea65f'],
+    ['Mostaza', '#605211', '#b09c3c'],
+    ['Latón', '#554e20', '#aea565']
   ],
   azul: [
-    ['Mariano', '#1f4e79', '#93bcdf'],
-    ['Cobalto', '#2154ab', '#96afda'],
-    ['Marino', '#162d5a', '#92a8d3'],
-    ['Añil', '#313881', '#afb2d5'],
-    ['Celeste', '#18658b', '#7eb6d3'],
-    ['Pizarra', '#3f5469', '#9fadbc'],
-    ['Turquesa', '#0d6573', '#4cbbcd']
+    ['Mariano', '#1a4267', '#7badd8'],
+    ['Cobalto', '#1c4791', '#7f9ed2'],
+    ['Marino', '#13264c', '#7c97ca'],
+    ['Añil', '#2a306e', '#9b9fca'],
+    ['Celeste', '#145676', '#67a9cb'],
+    ['Pizarra', '#364759', '#8d9eaf'],
+    ['Turquesa', '#0b5662', '#37b0c4']
   ],
   neutro: [
-    ['Granate', '#6b1220', '#d9a0a0'],
-    ['Burdeos', '#631d34', '#d6a3b4'],
-    ['Caoba', '#673422', '#ca9f91'],
-    ['Tierra', '#60462e', '#bea793'],
-    ['Tinta', '#30251d', '#c0b0a5'],
-    ['Pizarra', '#3d4452', '#b0b5bf'],
-    ['Ciprés', '#2a4638', '#8daf9e']
+    ['Granate', '#5b0f1b', '#d08a8a'],
+    ['Burdeos', '#54192c', '#cd8ea3'],
+    ['Caoba', '#582c1d', '#c08d7c'],
+    ['Tierra', '#523c27', '#b39780'],
+    ['Tinta', '#291f19', '#b3a093'],
+    ['Pizarra', '#343a46', '#9fa5b1'],
+    ['Ciprés', '#243b30', '#7ba28f']
   ]
 };
 const MODOS_TONO = ['claro', 'oscuro'];
@@ -3584,7 +3584,8 @@ const AJ_OPS = {
   ordinario: [['plegado', 'Plegado'], ['abierto', 'Abierto'],
     ['no', 'Sin él']],
   letra: [['serif', 'De libro'], ['garamond', 'Garamond'],
-    ['times', 'Times New Roman'], ['sans', 'De pantalla']],
+    ['times', 'Times New Roman'], ['pluma', 'Alegreya'],
+    ['sans', 'De pantalla']],
   tema: [['auto', 'Según el teléfono'], ['claro', 'Claro'],
     ['sepia', 'Sepia'], ['oscuro', 'Oscuro'], ['noche', 'De noche']],
   color: [['dia', 'El del día'], ['verde', 'Verde'], ['rojo', 'Rojo'],
@@ -3825,10 +3826,10 @@ function verAjustes() {
       + (d ? '<span class="opcion-p">' + d + '</span>' : ''), 'opcion')));
   // la letra se elige viéndola: cada una pinta sus aes con la suya
   const letras = grupo('letra', 'Tipo de letra',
-    'Ninguna se descarga: la app tiene que abrir sin conexión, así que la '
-    + 'sirve el teléfono. Garamond y Times New Roman vienen en Windows y en '
-    + 'el Mac; donde no están, se pone la más parecida que haya. La de '
-    + 'pantalla, mejor con la letra muy pequeña o muy grande.',
+    'Ninguna se descarga: Garamond, Times y Alegreya van dentro de la app, '
+    + 'y las otras dos las pone el teléfono. Alegreya es la de pluma, la más '
+    + 'parecida a Aldhabi que se puede llevar dentro. La de pantalla, mejor '
+    + 'con la letra muy pequeña o muy grande.',
     'letras', AJ_OPS.letra.map(([v, t]) => opcion('letra', v,
       '<span class="letra-aa" style="font-family:var(--' + v + ')" '
       + 'aria-hidden="true">Aa</span><span class="letra-n">' + t + '</span>',

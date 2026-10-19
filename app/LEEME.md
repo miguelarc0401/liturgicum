@@ -204,14 +204,15 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   la cifra y más, de cinco en cinco centésimas, y la muestra de encima es el
   renglón de verdad mientras se aprieta. En una sección vale además «igual
   que todas», que es volver a seguir al general.
-* **Cuatro tipos de letra** —de libro, Garamond, Times New Roman y de
+* **Cinco tipos de letra** —de libro, Garamond, Times New Roman, Alegreya
+  (la de pluma, en lugar de Aldhabi, que no se puede llevar dentro) y de
   pantalla— y **el color de la app** fijo si se quiere: en vez del litúrgico
   del día, el que se elija. Cada color, además, en el tono que se quiera:
   siete por color, uno para el papel claro y otro para el oscuro. En el
   calendario el color sigue siendo el de cada día, porque allí el color es
   lo que se lee y no un adorno. La de libro y la de pantalla las pone el
-  teléfono; Garamond (EB Garamond) y Tinos —la Times de medidas idénticas,
-  para donde el sistema no trae la Times— van dentro de la app, en
+  teléfono; Garamond (EB Garamond), Alegreya y Tinos —la Times de medidas
+  idénticas, para donde el sistema no trae la Times— van dentro de la app, en
   `fuentes/`, con su licencia libre, y el service worker las guarda para
   leer sin conexión.
 * **Calendario litúrgico** de cada año (2024–2060): qué se celebra cada día

@@ -59,8 +59,12 @@ const DESPUES = [
   // el motor de la voz de Piper; lo que él trae de fuera —el modelo, el
   // wasm— lo guarda él en su propia caché, que ésta no toca
   'piper.js',
-  // las dos letras que la app lleva dentro, Garamond y Tinos: 680 kB entre
-  // las doce, y sin ellas, sin red, se leería con la de libro
+  // las tres letras que la app lleva dentro, Garamond, Tinos y Alegreya:
+  // 840 kB entre las dieciséis, y sin ellas, sin red, se leería con la de libro
+  'fuentes/alegreya-400-900-cursiva-latin-ext.woff2',
+  'fuentes/alegreya-400-900-cursiva-latin.woff2',
+  'fuentes/alegreya-400-900-latin-ext.woff2',
+  'fuentes/alegreya-400-900-latin.woff2',
   'fuentes/ebgaramond-400-800-cursiva-latin-ext.woff2',
   'fuentes/ebgaramond-400-800-cursiva-latin.woff2',
   'fuentes/ebgaramond-400-800-latin-ext.woff2',
