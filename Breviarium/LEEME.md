@@ -236,13 +236,22 @@ la fase 4 lo usa con un orden de preferencia estricto:
    `f: "pdf"`, y la app los señala con un discreto «ed. española».
 
 El Misal no entra en esa preferencia. Unas pocas celebraciones del
-calendario de México (san Rafael Guízar, san Juan Pablo II, Nuestra Señora
-de Fátima…) no tienen oficio ni en la fuente ni en los tomos: sólo ésas se
+calendario de México (san Rafael Guízar, Nuestra Señora de Fátima…) no
+tienen oficio ni en la fuente ni en los tomos: sólo ésas se
 rezan con su común, deducido del título, y con la colecta de su misa
 (`Missale/datos/libro/propios_es.json`) como oración. Donde el tomo sí trae
 la oración del santo manda el tomo, con su marca, aunque el Misal diga otra
 cosa: en san Calixto, por ejemplo, el Breviario conserva una fórmula
 anterior a la que hoy trae el Misal, y es la del Breviario la que se reza.
+
+El Propio de los santos se parte en entradas por los rótulos de día: «19 de
+octubre», «El mismo día», «Lunes después del II domingo de Pascua». Un
+rótulo que no se reconoce no da error: lo que va debajo se pega sin más al
+santo anterior. Así estuvo san Juan Pablo II, rotulado «22 octubre» sin el
+«de», con su reseña, su lectura y su oración dentro del oficio de san Pablo
+de la Cruz, y la Santa Faz («Jueves de la II semana de Pascua») dentro del
+de san Vicente Ferrer. Por eso `datos/pdf_qa.txt` lista los rótulos que
+parecen de día y no abren entrada; tiene que quedar en 0.
 
 Todo queda apuntado en `datos/pdf_usado.txt`: qué celebraciones salen del
 PDF y con qué común, qué textos se hallaron en la fuente, y un cotejo de

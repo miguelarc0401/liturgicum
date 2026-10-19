@@ -11,7 +11,7 @@ horas_dias.json     2.8 MB  15701 fechas
      195  casillas en comunes
      190  santos con común conocido
      732  lecturas del Oficio con texto propio del otro año del ciclo bienal
-      22  celebraciones del calendario de México sin oficio en ninguna parte: con su común y la colecta del Misal mexicano
+      21  celebraciones del calendario de México sin oficio en ninguna parte: con su común y la colecta del Misal mexicano
           Beato Sebastián de Aparicio, religioso  ->  santos varones para los santos religiosos
           San Gregorio de Narek, abad y doctor de la Iglesia  ->  doctores de la iglesia, santos varones para los santos religiosos
           Santa María Guadalupe García Zavala, virgen  ->  virgenes
@@ -29,7 +29,6 @@ horas_dias.json     2.8 MB  15701 fechas
           Santa Teresa de Calcuta, virgen  ->  virgenes
           San José María de Yermo y Parres, presbítero  ->  pastores para un santo presbitero
           Santa Faustina Kowalska, virgen  ->  virgenes
-          San Juan Pablo II, papa  ->  pastores
           San Rafael Guízar y Valencia, obispo  ->  pastores para un santo obispo
           San Antonio María Claret, obispo  ->  pastores para un santo obispo
           Beato Miguel Agustín Pro, presbítero y mártir  ->  un martir, pastores para un santo presbitero
@@ -235,7 +234,7 @@ Celebraciones del calendario -> casillas del santoral
   San Juan Leonardi, presbítero  ->  san juan leonardi presbitero
   San Juan María Vianney, presbítero  ->  san juan maria vianney presbitero
   San Juan Nepomuceno, presbítero y mártir  ->  san juan nepomuceno presbitero y martir
-  San Juan Pablo II, papa  ->  san juan pablo ii papa
+  San Juan Pablo II, papa  ->  beato juan pablo ii papa
   San Juan XXIII, papa  ->  beato juan xxiii papa
   San Juan de Capistrano, presbítero  ->  san juan de capistrano presbitero
   San Juan de Dios, religioso  ->  san juan de dios religioso

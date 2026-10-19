@@ -7,7 +7,7 @@ años y se tomó de los cuatro tomos en PDF, que traen la
 traducción de la Conferencia Episcopal Española. En la app esos
 textos llevan la marca «f: pdf».
 
-1. Celebraciones que la fuente no publicó nunca: 107
+1. Celebraciones que la fuente no publicó nunca: 108
 ------------------------------------------------------------
 De cada texto del PDF se buscó primero si estaba en la fuente
 (en otro día, en un común, en otro año): lo que se halló va
@@ -308,6 +308,9 @@ con la traducción de la fuente; lo demás, con la del PDF.
 19/10  San Pablo de la Cruz, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores, o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
+22/10  San Juan Pablo II, papa (memoria libre)
+        del PDF: segunda lectura, oración, responsorio, reseña
+        común: Del Común de pastores: para un papa.  →  pastores
 23/10  San Juan de Capistrano, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: misioneros  →  pastores

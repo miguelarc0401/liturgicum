@@ -537,14 +537,17 @@ def responsorio(lineas, cita=''):
     return cita, [[]] + [runs(t) for t in trozos]
 
 
+# El PDF abrevia de varias maneras: «Él que vive y reina contigo.», «Él, que
+# vive y reina.» (san Juan Pablo II), «Por nuestro Señor Jesucristo, tu
+# Hijo.» (san Alfonso)
 FINALES = [
-    (r'Por nuestro Señor Jesucristo\.?$',
+    (r'Por nuestro Señor Jesucristo(?:, tu Hijo)?\.?$',
      'Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la '
      'unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén'),
-    (r'[ÉE]l que vive y reina contigo\.?$',
+    (r'[ÉE]l,? que vive y reina(?: contigo)?\.?$',
      'Él, que vive y reina contigo en la unidad del Espíritu Santo y es '
      'Dios, por los siglos de los siglos. Amén'),
-    (r'Que vive y reina contigo\.?$',
+    (r'Que vive y reina(?: contigo)?\.?$',
      'Que vive y reina contigo en la unidad del Espíritu Santo y es Dios, '
      'por los siglos de los siglos. Amén'),
     (r'Que vives y reinas\.?$',
