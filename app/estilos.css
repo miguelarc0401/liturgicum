@@ -64,29 +64,29 @@
    `--tono-verde-claro`, `--tono-verde-oscuro`…, y donde no hay ninguno
    manda el de siempre, que es el segundo valor de cada `var()`. */
 :root {
-  --lit-verde: var(--tono-verde-claro, #1e3e28);
-  --lit-rojo: var(--tono-rojo-claro, #681111);
-  --lit-morado: var(--tono-morado-claro, #412454);
-  --lit-blanco: var(--tono-blanco-claro, #684e14);
-  --lit-azul: var(--tono-azul-claro, #1a4267);
-  --lit-neutro: var(--tono-neutro-claro, #5b0f1b);
+  --lit-verde: var(--tono-verde-claro, #23492f);
+  --lit-rojo: var(--tono-rojo-claro, #7a1414);
+  --lit-morado: var(--tono-morado-claro, #4c2a63);
+  --lit-blanco: var(--tono-blanco-claro, #7a5c17);
+  --lit-azul: var(--tono-azul-claro, #1f4e79);
+  --lit-neutro: var(--tono-neutro-claro, #6b1220);
 }
 body[data-tema="oscuro"], body[data-tema="noche"] {
-  --lit-verde: var(--tono-verde-oscuro, #4f9568);
-  --lit-rojo: var(--tono-rojo-oscuro, #ca6565);
-  --lit-morado: var(--tono-morado-oscuro, #aa85cd);
-  --lit-blanco: var(--tono-blanco-oscuro, #d3ab45);
-  --lit-azul: var(--tono-azul-oscuro, #7badd8);
-  --lit-neutro: var(--tono-neutro-oscuro, #d08a8a);
+  --lit-verde: var(--tono-verde-oscuro, #5aa876);
+  --lit-rojo: var(--tono-rojo-oscuro, #d07676);
+  --lit-morado: var(--tono-morado-oscuro, #b99bd6);
+  --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
+  --lit-azul: var(--tono-azul-oscuro, #93bcdf);
+  --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
-    --lit-verde: var(--tono-verde-oscuro, #4f9568);
-    --lit-rojo: var(--tono-rojo-oscuro, #ca6565);
-    --lit-morado: var(--tono-morado-oscuro, #aa85cd);
-    --lit-blanco: var(--tono-blanco-oscuro, #d3ab45);
-    --lit-azul: var(--tono-azul-oscuro, #7badd8);
-    --lit-neutro: var(--tono-neutro-oscuro, #d08a8a);
+    --lit-verde: var(--tono-verde-oscuro, #5aa876);
+    --lit-rojo: var(--tono-rojo-oscuro, #d07676);
+    --lit-morado: var(--tono-morado-oscuro, #b99bd6);
+    --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
+    --lit-azul: var(--tono-azul-oscuro, #93bcdf);
+    --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
   }
 }
 
@@ -95,12 +95,12 @@ body[data-tema="oscuro"], body[data-tema="noche"] {
    acento, que sobre papel claro se leen justos (4,5:1); el verde y el rojo
    van del mismo tono en los dos sitios. Un tono elegido va igual en los
    dos: todos los de la paleta se leen sobre su papel. */
-body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-claro, #63377a); }
-body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-claro, #6a5214); }
+body[data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-claro, #74418f); }
+body[data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-claro, #7d6118); }
 body[data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-claro, #1f4e75); }
-body[data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-claro, #831717); }
+body[data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-claro, #255c8a); }
+body[data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-claro, #9a1b1b); }
 
 /* Las fichas de cada tema sirven tambien para una hoja suelta: la muestra
    del papel en Ajustes lleva la clase de su tema (`.tema-sepia`…) y pinta
@@ -122,12 +122,12 @@ body[data-tema="oscuro"], .tema-oscuro {
   --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
   --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
-body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #b18dd4); }
-body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #ddb44c); }
+body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
+body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #e2bf66); }
 body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #84b4dd); }
-body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #d98383); }
+body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
+body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -146,12 +146,12 @@ body[data-tema="noche"], .tema-noche {
     --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
     --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
-  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #b18dd4); }
-  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #ddb44c); }
+  body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
+  body[data-tema="auto"][data-color="blanco"] { --acento: var(--lit-blanco); --rubrica: var(--tono-blanco-oscuro, #e2bf66); }
   body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
   body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
-  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #84b4dd); }
-  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #d98383); }
+  body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
+  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
 }
 
 /* ------------------------------------------------ las letras de la casa
@@ -1107,6 +1107,53 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .tono:active .tono-punto { transform: scale(.88); }
 .tono:has(input:focus-visible) .tono-punto {
   outline: 2px solid var(--acento); outline-offset: 5px;
+}
+
+/* La barra al final de cada paleta: todos los tonos del color de un extremo
+   al otro, sobre el mismo papel que los puntos, y una flecha que se desliza.
+   La pinta el guion (`--barra`, un degradado de trece paradas). La flecha
+   son dos puntas -una arriba y otra abajo- y un filo entre ellas, que dice
+   exactamente que punto de la barra se esta eligiendo: un circulo taparia
+   el tono que tiene debajo. Una flecha de tinta para cada papel. */
+.tonos-barra {
+  margin-top: .4rem; padding: .45rem .75rem .35rem; border-radius: 12px;
+  background: var(--papel); border: 1px solid var(--filete-fuerte);
+  transition: box-shadow var(--medio) var(--curva);
+}
+.tonos-barra.puesta { box-shadow: inset 0 0 0 1px var(--tinta); border-color: var(--tinta); }
+.tonos-barra-eti {
+  display: block; font-family: var(--sans); font-size: .7rem;
+  letter-spacing: .03em; color: var(--tinta-suave);
+}
+.tonos-barra.puesta .tonos-barra-eti { color: var(--tinta); font-weight: 600; }
+.tonos-barra input[type="range"] {
+  -webkit-appearance: none; appearance: none; display: block;
+  width: 100%; height: 2.6rem; margin: 0; cursor: pointer;
+  background: transparent; touch-action: pan-y;
+  --flecha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 37'%3E%3Cpath d='M10 9v19' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M10 9v19' stroke='%231f1710' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M3 1h14l-7 8zM3 36h14l-7-8z' fill='%231f1710'/%3E%3C/svg%3E");
+}
+.tonos-barra.tema-oscuro input[type="range"] {
+  --flecha: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 37'%3E%3Cpath d='M10 9v19' stroke='%2313110e' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M10 9v19' stroke='%23e9e1d5' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M3 1h14l-7 8zM3 36h14l-7-8z' fill='%23e9e1d5'/%3E%3C/svg%3E");
+}
+.tonos-barra input[type="range"]::-webkit-slider-runnable-track {
+  height: 1.1rem; border-radius: 999px; background: var(--barra);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .12);
+}
+.tonos-barra input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 1.25rem; height: 2.3rem; margin-top: -.6rem; border: 0;
+  background: var(--flecha) center / 100% 100% no-repeat;
+}
+.tonos-barra input[type="range"]::-moz-range-track {
+  height: 1.1rem; border-radius: 999px; background: var(--barra);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / .12);
+}
+.tonos-barra input[type="range"]::-moz-range-thumb {
+  width: 1.25rem; height: 2.3rem; border: 0; border-radius: 0;
+  background: var(--flecha) center / 100% 100% no-repeat;
+}
+.tonos-barra input[type="range"]:focus-visible {
+  outline: 2px solid var(--acento); outline-offset: 2px; border-radius: 8px;
 }
 
 /* Lo que hay que advertir antes de nada —que voces trae el telefono, que

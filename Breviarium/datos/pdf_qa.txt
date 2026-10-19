@@ -1,7 +1,7 @@
 Fase 3b — el Propio de los santos de los PDF
 ==================================================
 
-Entradas leídas: 325; distintas: 277
+Entradas leídas: 327; distintas: 279
 
 Secciones halladas
 ------------------------------
@@ -14,43 +14,43 @@ Secciones halladas
     14  i_visperas/salmodia
      2  intermedia/himno
      1  intermedia/salmodia
-   115  laudes/cantico_evangelico
+   116  laudes/cantico_evangelico
     47  laudes/himno
-    51  laudes/lectura_breve
-   269  laudes/oracion
-    51  laudes/preces
+    52  laudes/lectura_breve
+   271  laudes/oracion
+    52  laudes/preces
      1  laudes/responsorio
-    50  laudes/responsorio_breve
+    51  laudes/responsorio_breve
     24  laudes/salmodia
      1  nona/himno
-    33  nona/lectura_breve
+    34  nona/lectura_breve
     13  nona/oracion
      1  nona/salmodia
      1  oficio/cantico_evangelico
     36  oficio/himno
-    39  oficio/lectura1
-   269  oficio/lectura2
+    40  oficio/lectura1
+   271  oficio/lectura2
      1  oficio/lectura_breve
-   269  oficio/oracion
+   271  oficio/oracion
      1  oficio/preces
-    38  oficio/responsorio
-   268  oficio/responsorio2
+    39  oficio/responsorio
+   270  oficio/responsorio2
      1  oficio/responsorio_breve
-    24  oficio/salmodia
+    25  oficio/salmodia
      1  sexta/himno
-    33  sexta/lectura_breve
+    34  sexta/lectura_breve
     13  sexta/oracion
      1  sexta/salmodia
      1  tercia/himno
-    33  tercia/lectura_breve
+    34  tercia/lectura_breve
     13  tercia/oracion
      1  tercia/salmodia
-   104  visperas/cantico_evangelico
+   105  visperas/cantico_evangelico
     36  visperas/himno
-    45  visperas/lectura_breve
-   270  visperas/oracion
-    45  visperas/preces
-    44  visperas/responsorio_breve
+    46  visperas/lectura_breve
+   272  visperas/oracion
+    46  visperas/preces
+    45  visperas/responsorio_breve
     29  visperas/salmodia
 
 Entradas sin ninguna sección: 7
@@ -61,6 +61,8 @@ Entradas sin ninguna sección: 7
   10-28    [IV]
   11-06  MÁRTIRES DE ESPAÑA DEL SIGLO XX  [IV]
   None  DEDICACIÓN DE LA PROPIA IGLESIA  [IV]
+
+Rótulos de día que no abren entrada (lo de debajo se pega al santo anterior): 0
 
 Avisos: 0
 
@@ -741,6 +743,9 @@ Entradas
 10-19  SAN PEDRO DE ALCÁNTARA, PRESBÍTERO  (—; tomo IV)
       común: Del Común de pastores, o del Común de santos varones: para religiosos.
       laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
+10-22  BEATO JUAN PABLO II, PAPA  (—; tomo IV)
+      común: Del Común de pastores: para un papa.
+      laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
 10-23  SAN JUAN DE CAPISTRANO, PRESBÍTERO  (—; tomo IV)
       común: Del Común de pastores: misioneros
       laudes/oracion, oficio/lectura2, oficio/oracion, oficio/responsorio2, visperas/oracion
@@ -891,9 +896,12 @@ movible  EL INMACULADO CORAZÓN DE LA VIRGEN MARÍA  (MEMORIA; tomo III)
 movible  JESUCRISTO, SUMO Y ETERNO SACERDOTE  (FIESTA; tomo III)
       común: None
       laudes/cantico_evangelico, laudes/himno, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, oficio/salmodia, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve, visperas/salmodia
+movible  LA SANTA FAZ DE NUESTRO SEÑOR JESUCRISTO  (MEMORIA; tomo II)
+      común: None
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, oficio/salmodia, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve
 movible  NUESTRA SEÑORA DE LOS DESAMPARADOS  (—; tomo II)
       común: Todo del Común de la Santísima Virgen María, en tiempo pascual.
       laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, laudes/salmodia, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, oficio/salmodia, sexta/lectura_breve, tercia/lectura_breve, visperas/oracion
 movible  SAN VICENTE FERRER, PRESBÍTERO, PATRONO DE LA ARCHIDIÓCESIS DE VALENCIA  (SOLEMNIDAD; tomo II)
       común: Del Común de pastores o de religiosos excepto lo siguiente:
-      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, laudes/salmodia, nona/lectura_breve, oficio/himno, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, oficio/salmodia, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/himno, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve, visperas/salmodia
+      laudes/cantico_evangelico, laudes/lectura_breve, laudes/oracion, laudes/preces, laudes/responsorio_breve, laudes/salmodia, nona/lectura_breve, oficio/lectura1, oficio/lectura2, oficio/oracion, oficio/responsorio, oficio/responsorio2, oficio/salmodia, sexta/lectura_breve, tercia/lectura_breve, visperas/cantico_evangelico, visperas/lectura_breve, visperas/oracion, visperas/preces, visperas/responsorio_breve, visperas/salmodia

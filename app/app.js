@@ -367,58 +367,58 @@ function ponColor(c) {
  * color el día que toque. Nombre, tono claro, tono oscuro. */
 const TONOS = {
   verde: [
-    ['Bosque', '#1e3e28', '#4f9568'],
-    ['Esmeralda', '#165f3d', '#46b381'],
-    ['Oliva', '#41501c', '#8ea753'],
-    ['Pino', '#154a41', '#48a393'],
-    ['Musgo', '#3b542e', '#7c9e6a'],
-    ['Botella', '#11391e', '#64ba81'],
-    ['Jade', '#235d4a', '#65ae96']
+    ['Bosque', '#23492f', '#5aa876'],
+    ['Esmeralda', '#1a7048', '#5abe90'],
+    ['Oliva', '#4c5e21', '#9cb366'],
+    ['Pino', '#19574d', '#55b4a4'],
+    ['Musgo', '#456336', '#8caa7d'],
+    ['Botella', '#144323', '#79c392'],
+    ['Jade', '#296d57', '#79b9a4']
   ],
   rojo: [
-    ['Carmesí', '#681111', '#ca6565'],
-    ['Escarlata', '#951c19', '#d17975'],
-    ['Rubí', '#781730', '#cf778d'],
-    ['Bermellón', '#892a14', '#d1806c'],
-    ['Vino', '#511821', '#cd8e99'],
-    ['Ladrillo', '#6b2d24', '#c0857c'],
-    ['Cereza', '#750d15', '#d9787f']
+    ['Carmesí', '#7a1414', '#d07676'],
+    ['Escarlata', '#af211d', '#d98f8c'],
+    ['Rubí', '#8d1b38', '#d78ea0'],
+    ['Bermellón', '#a13217', '#d89483'],
+    ['Vino', '#5f1c27', '#d6a3ac'],
+    ['Ladrillo', '#7e352a', '#ca9891'],
+    ['Cereza', '#8a0f19', '#e09096']
   ],
   morado: [
-    ['Obispo', '#412454', '#aa85cd'],
-    ['Violeta', '#592d80', '#af92c9'],
-    ['Ciruela', '#5a285a', '#c092c0'],
-    ['Amatista', '#73368d', '#c1a1cf'],
-    ['Berenjena', '#371a3c', '#b183b9'],
-    ['Uva', '#3e2a61', '#ac9dc8'],
-    ['Malva', '#713c68', '#bf9cb9']
+    ['Obispo', '#4c2a63', '#b99bd6'],
+    ['Violeta', '#693597', '#bea6d3'],
+    ['Ciruela', '#6a2f6a', '#cba5cb'],
+    ['Amatista', '#873fa6', '#ceb5d9'],
+    ['Berenjena', '#411f47', '#bd97c4'],
+    ['Uva', '#493172', '#bdb1d3'],
+    ['Malva', '#85477a', '#cbafc6']
   ],
   blanco: [
-    ['Oro viejo', '#684e14', '#d3ab45'],
-    ['Ocre', '#724c14', '#c09048'],
-    ['Bronce', '#653f1d', '#b7865d'],
-    ['Ámbar', '#6c4e08', '#c89b32'],
-    ['Miel', '#614f19', '#bea65f'],
-    ['Mostaza', '#605211', '#b09c3c'],
-    ['Latón', '#554e20', '#aea565']
+    ['Oro viejo', '#7a5c17', '#d9b65e'],
+    ['Ocre', '#865a18', '#c89e5f'],
+    ['Bronce', '#774a22', '#c09672'],
+    ['Ámbar', '#7f5c0a', '#d1a848'],
+    ['Miel', '#725d1d', '#c7b275'],
+    ['Mostaza', '#716114', '#c1ad49'],
+    ['Latón', '#645c26', '#b9b179']
   ],
   azul: [
-    ['Mariano', '#1a4267', '#7badd8'],
-    ['Cobalto', '#1c4791', '#7f9ed2'],
-    ['Marino', '#13264c', '#7c97ca'],
-    ['Añil', '#2a306e', '#9b9fca'],
-    ['Celeste', '#145676', '#67a9cb'],
-    ['Pizarra', '#364759', '#8d9eaf'],
-    ['Turquesa', '#0b5662', '#37b0c4']
+    ['Mariano', '#1f4e79', '#93bcdf'],
+    ['Cobalto', '#2154ab', '#96afda'],
+    ['Marino', '#162d5a', '#92a8d3'],
+    ['Añil', '#313881', '#afb2d5'],
+    ['Celeste', '#18658b', '#7eb6d3'],
+    ['Pizarra', '#3f5469', '#9fadbc'],
+    ['Turquesa', '#0d6573', '#4cbbcd']
   ],
   neutro: [
-    ['Granate', '#5b0f1b', '#d08a8a'],
-    ['Burdeos', '#54192c', '#cd8ea3'],
-    ['Caoba', '#582c1d', '#c08d7c'],
-    ['Tierra', '#523c27', '#b39780'],
-    ['Tinta', '#291f19', '#b3a093'],
-    ['Pizarra', '#343a46', '#9fa5b1'],
-    ['Ciprés', '#243b30', '#7ba28f']
+    ['Granate', '#6b1220', '#d9a0a0'],
+    ['Burdeos', '#631d34', '#d6a3b4'],
+    ['Caoba', '#673422', '#ca9f91'],
+    ['Tierra', '#60462e', '#bea793'],
+    ['Tinta', '#30251d', '#c0b0a5'],
+    ['Pizarra', '#3d4452', '#b0b5bf'],
+    ['Ciprés', '#2a4638', '#8daf9e']
   ]
 };
 const MODOS_TONO = ['claro', 'oscuro'];
@@ -435,11 +435,91 @@ function aplicaTonos() {
   }
 }
 
-/** El tono puesto de un color en un papel: [nombre, claro, oscuro]. */
+/** El tono puesto de un color en un papel: [nombre, claro, oscuro]. Si no
+ *  es ninguno de la lista, es uno de la barra. */
 function tonoPuesto(c, m) {
   const v = ((E.cfg.tonos || {})[c] || {})[m];
   const i = MODOS_TONO.indexOf(m) + 1;
-  return TONOS[c].find((x) => x[i] === v) || TONOS[c][0];
+  if (!v) return TONOS[c][0];
+  return TONOS[c].find((x) => x[i] === v) || [A_TU_GUSTO, v, v];
+}
+
+/* Y, al final de cada paleta, una barra con todos los tonos del color: de
+ * un extremo al otro de su familia —el verde, del amarillento al azulado;
+ * el rojo, del bermellón al carmín—, y se escoge el que se quiera
+ * deslizando la flecha. La barra mueve el matiz, y la luz la pone la
+ * cuenta: cada punto de la barra es el tono más vivo de ese matiz que
+ * todavía se lee sobre su papel (6:1 sobre el claro, medido contra la
+ * sepia, y 6,5:1 sobre el oscuro). Así no hay punto de la barra que deje
+ * las rúbricas ilegibles. Matiz de un extremo, del otro, y saturación. */
+const A_TU_GUSTO = 'A tu gusto';
+const BARRA = {
+  verde: [75, 175, 0.5], rojo: [340, 380, 0.7], morado: [255, 320, 0.42],
+  blanco: [25, 55, 0.75], azul: [190, 245, 0.6], neutro: [325, 375, 0.5]
+};
+const BARRA_PASOS = 1000;
+
+function hslHex(h, s, l) {
+  const a = s * Math.min(l, 1 - l);
+  const f = (n) => {
+    const k = (n + h / 30) % 12;
+    return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+  };
+  return '#' + [0, 8, 4].map((n) =>
+    Math.round(f(n) * 255).toString(16).padStart(2, '0')).join('');
+}
+
+function luzDe(hex) {
+  const c = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((x) => (x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+
+function contraste(a, b) {
+  const [x, y] = [luzDe(a), luzDe(b)].sort((p, q) => q - p);
+  return (x + 0.05) / (y + 0.05);
+}
+
+/** El tono de la barra en una posición (0 a BARRA_PASOS). */
+function tonoDeBarra(c, m, pos) {
+  const [h0, h1, sat] = BARRA[c];
+  const h = (h0 + (h1 - h0) * pos / BARRA_PASOS) % 360;
+  let l;
+  if (m === 'claro') {
+    for (l = 0.6; l > 0.05 && contraste(hslHex(h, sat, l), '#f4e9d6') < 6; l -= 0.005);
+    return hslHex(h, sat, l);
+  }
+  for (l = 0.3; l < 0.95 && contraste(hslHex(h, sat * 0.75, l), '#1c1915') < 6.5; l += 0.005);
+  return hslHex(h, sat * 0.75, l);
+}
+
+/** Y al revés: dónde cae un tono en la barra, por su matiz. Lo que cae
+ *  fuera de la familia se queda en el extremo más cercano. */
+function posDeTono(c, hex) {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  let h = 0;
+  if (d) {
+    h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+    h = (h * 60 + 360) % 360;
+  }
+  const [h0, h1] = BARRA[c];
+  const dentro = [h, h + 360, h - 360].find((x) => x >= h0 && x <= h1);
+  if (dentro === undefined) {
+    const dist = (x) => Math.min(Math.abs(x - h), 360 - Math.abs(x - h));
+    h = dist(h0 % 360) <= dist(h1 % 360) ? h0 : h1;
+  } else h = dentro;
+  return Math.round((h - h0) / (h1 - h0) * BARRA_PASOS);
+}
+
+/** La barra pintada: trece paradas, cada una el tono de su punto. */
+function gradienteBarra(c, m) {
+  const paradas = [];
+  for (let i = 0; i <= 12; i++) {
+    paradas.push(tonoDeBarra(c, m, BARRA_PASOS * i / 12) + ' '
+      + (i * 100 / 12).toFixed(1) + '%');
+  }
+  return 'linear-gradient(90deg, ' + paradas.join(', ') + ')';
 }
 
 /* --------------------------------------------- el formato, sección a sección
@@ -3737,7 +3817,9 @@ function paletaTonos(abre) {
   const fila = (m) => {
     const i = MODOS_TONO.indexOf(m) + 1;
     const puesto = tonoPuesto(c, m);
-    return '<div class="tonos-fila"><span class="tonos-modo">Con papel ' + m
+    const propio = puesto[0] === A_TU_GUSTO;
+    return '<div class="tonos-fila" data-modo="' + m + '">'
+      + '<span class="tonos-modo">Con papel ' + m
       + ' · <b class="tonos-nombre">' + esc(puesto[0]) + '</b></span>'
       + '<div class="tonos-puntos tema-' + m + '" role="radiogroup" '
       + 'aria-label="Tono con papel ' + m + '">'
@@ -3747,7 +3829,14 @@ function paletaTonos(abre) {
         + esc(x[0]) + '"' + (x === puesto ? ' checked' : '') + '>'
         + '<span class="tono-punto" style="background:' + x[i]
         + '" aria-hidden="true"></span></label>').join('')
-      + '</div></div>';
+      + '</div>'
+      + '<div class="tonos-barra tema-' + m + (propio ? ' puesta' : '') + '">'
+      + '<label class="tonos-barra-eti" for="aj-barra-' + m + '">'
+      + A_TU_GUSTO + '</label>'
+      + '<input type="range" id="aj-barra-' + m + '" min="0" max="'
+      + BARRA_PASOS + '" step="1" value="' + posDeTono(c, puesto[i])
+      + '" data-barra="' + c + '" data-modo="' + m + '" style="--barra:'
+      + gradienteBarra(c, m) + '"></div></div>';
   };
   const afina = E.cfg.color === 'dia'
     ? '<div class="tira tonos-de" role="radiogroup" aria-label="Color que se '
@@ -3775,12 +3864,35 @@ function repintaTonos(abre) {
   const viejo = $('#aj-tonos');
   if (!viejo) return;
   const a = document.activeElement;
-  const foco = a && viejo.contains(a) ? a.name : '';
+  const dentro = a && viejo.contains(a);
+  const foco = dentro ? a.name : '';
+  const id = dentro ? a.id : '';
   viejo.outerHTML = paletaTonos(abre);
-  if (foco) {
-    const n = $('#aj-tonos input[name="' + foco + '"]:checked');
-    if (n) n.focus();
+  const n = foco ? $('#aj-tonos input[name="' + foco + '"]:checked')
+    : id ? document.getElementById(id) : null;
+  if (n) n.focus();
+}
+
+/** Al deslizar la flecha: el tono se pone mientras se mueve, sin repintar
+ *  nada —repintar soltaría la flecha de debajo del dedo—, y al soltarla se
+ *  guarda. En la fila, ningún punto queda elegido: lo elegido es la barra. */
+function ponBarra(el, guarda) {
+  const c = el.dataset.barra, m = el.dataset.modo;
+  const hex = tonoDeBarra(c, m, +el.value);
+  const t = Object.assign({}, E.cfg.tonos);
+  t[c] = Object.assign({}, t[c], { [m]: hex });
+  E.cfg.tonos = t;
+  aplicaTonos();
+  const fila = el.closest('.tonos-fila');
+  if (fila) {
+    fila.querySelectorAll('input[type="radio"]').forEach((r) => {
+      r.checked = false;
+    });
+    const nom = fila.querySelector('.tonos-nombre');
+    if (nom) nom.textContent = A_TU_GUSTO;
+    el.closest('.tonos-barra').classList.add('puesta');
   }
+  if (guarda) guardaCfg();
 }
 
 function verAjustes() {
@@ -4114,6 +4226,11 @@ async function cambiaAjuste(ev) {
     E.cfg.vozLinea = l;
     guardaCfg();
     if (vl === 'prov') { recuerdaAjustes(); verAjustes(); }
+    return;
+  }
+  // la barra de tonos, al soltar la flecha
+  if (ev.target.dataset.barra) {
+    ponBarra(ev.target, true);
     return;
   }
   // el tono de un color tampoco: es una casilla de la tabla `tonos`, y el
@@ -8814,6 +8931,9 @@ async function arranca() {
   vista.addEventListener('click', alTocarPiper);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);
+    else if (E.vista === 'ajustes' && ev.target.dataset.barra) {
+      ponBarra(ev.target, false);
+    }
   });
   document.querySelectorAll('#barra button').forEach((b) =>
     b.addEventListener('click', () => {
@@ -8942,7 +9062,11 @@ async function arranca() {
 function vigilaActualizaciones() {
   if (!('serviceWorker' in navigator)) return;
   navigator.serviceWorker.register('sw.js').then((reg) => {
-    const mira = () => { reg.update().catch(() => {}); };
+    // de paso, que el worker acabe de bajar lo que le falte para abrir sin red
+    const mira = () => {
+      reg.update().catch(() => {});
+      if (reg.active) reg.active.postMessage('completa');
+    };
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) mira();
     });

@@ -146,12 +146,19 @@ def limpia(lineas):
 # las entradas de cada santo
 # --------------------------------------------------------------------------
 
-FECHA = re.compile(r'^(?:El mismo(?: día)?\s+)?(\d{1,2}) de ('
+# El «de» es optativo: el tomo IV rotula «22 octubre» a san Juan Pablo II, y
+# con el «de» obligatorio esa fecha no abría entrada y el oficio entero del
+# papa —reseña, lectura, responsorio y oración— se pegaba al de san Pablo de
+# la Cruz, el último del 19. Es la única fecha de los cuatro tomos sin «de».
+FECHA = re.compile(r'^(?:El mismo(?: día)?\s+)?(\d{1,2})\s+(?:de\s+)?('
                    + '|'.join(MESES) + r')$', re.I)
-# el rótulo de una celebración movible, que abre entrada aunque no sea fecha
+# el rótulo de una celebración movible, que abre entrada aunque no sea fecha;
+# «Jueves de la II semana de Pascua» (la Santa Faz) también, que si no se
+# pegaba a san Vicente Ferrer
 MOVIBLE = re.compile(
     r'^(?:Lunes|Martes|Mi[eé]rcoles|Jueves|Viernes|S[áa]bado|Domingo)\b'
-    r'[^.]*\b(?:despu[eé]s|siguiente|anterior|posterior|antes)\b', re.I)
+    r'[^.]*\b(?:despu[eé]s|siguiente|anterior|posterior|antes|semana)\b',
+    re.I)
 GRADOS = {'memoria': 'MEMORIA', 'fiesta': 'FIESTA',
           'solemnidad': 'SOLEMNIDAD', 'memoria libre': 'MEMORIA LIBRE'}
 
@@ -211,6 +218,35 @@ def trocea(lineas):
         if act is not None:
             act['lineas'].append(l)
     return entradas
+
+
+CASI_FECHA = re.compile(r'^(?:El mismo\b\D*)?\d{1,2}\b.*\b(?:'
+                        + '|'.join(MESES) + r')\b', re.I)
+DIA_SEMANA = re.compile(
+    r'^(?:Lunes|Martes|Mi[eé]rcoles|Jueves|Viernes|S[áa]bado|Domingo)\b', re.I)
+
+
+def cortes_dudosos(lineas):
+    """Los rótulos que parecen de día y no abren entrada: una fecha centrada
+    que FECHA no reconoce, o un día de la semana con un título en versales
+    detrás que MOVIBLE deja pasar. Lo que hay debajo se pega al santo
+    anterior sin que nada falle, así que va al informe para que se vea."""
+    dudosos = []
+    for n, l in enumerate(lineas):
+        if not l:
+            continue
+        t = l.strip()
+        centrada = len(l) - len(l.lstrip()) >= 15
+        if centrada and len(t) <= 40 and CASI_FECHA.search(t) \
+                and not FECHA.match(t) and not t.startswith('('):
+            dudosos.append((n, t))
+            continue
+        if DIA_SEMANA.match(t) and len(t) < 80 and not MOVIBLE.match(t):
+            sig = next((x.strip() for x in lineas[n + 1:n + 6]
+                        if x and x.strip()), '')
+            if es_versal(sig) and not es_hora(sig) and not seccion_de(sig)[0]:
+                dudosos.append((n, t))
+    return dudosos
 
 
 # Los rótulos de sección del PDF, a las clases del libro. El orden importa:
@@ -851,9 +887,10 @@ def ferias_de_navidad():
 
 
 def main():
-    entradas, avisos = [], []
+    entradas, avisos, dudosos = [], [], []
     for tomo, nombre in TOMOS:
         lineas = limpia(tramo_del_santoral(texto_de(nombre)))
+        dudosos += [(tomo, n, t) for n, t in cortes_dudosos(lineas)]
         for e in trocea(lineas):
             e['tomo'] = tomo
             lee_entrada(e)
@@ -902,6 +939,10 @@ def main():
         f.write(f'\nEntradas sin ninguna sección: {len(sin)}\n')
         for e in sin:
             f.write(f'  {e["md"]}  {e["titulo"]}  [{e["tomo"]}]\n')
+        f.write(f'\nRótulos de día que no abren entrada (lo de debajo se '
+                f'pega al santo anterior): {len(dudosos)}\n')
+        for tomo, n, t in dudosos:
+            f.write(f'  tomo {tomo}, línea {n}: «{t}»\n')
         f.write(f'\nAvisos: {len(avisos)}\n')
         for a in avisos:
             f.write('  ' + a + '\n')
