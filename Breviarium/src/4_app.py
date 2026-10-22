@@ -947,6 +947,12 @@ def main():
     # del tiempo, mientras que la del tiempo sigue ahí debajo y es la que
     # vale para los demás años.
     aprendido = defaultdict(Counter)
+    # y de los días sin semana numerada, su semana del salterio, que la
+    # cabecera de la fuente sí dice: el miércoles de Ceniza y los tres días
+    # que lo siguen van con la IV, y de lunes a jueves santo con la II. Sin
+    # ella, en los años que la fuente aún no ha publicado la salmodia salía
+    # vacía en las siete horas, que no tenían de dónde tomarla.
+    salterio_aprendido = defaultdict(Counter)
     for fecha, cab in fuente.items():
         ent = civil['fechas'].get(fecha, {}).get('c')
         if not ent or not cab.get('tiempo'):
@@ -961,7 +967,11 @@ def main():
         else:
             coord = (cab['tiempo'], None, clave(cab.get('titulo') or ''))
         aprendido[temporal[0]][coord] += 1
+        if cab.get('semana') is None and cab.get('salterio'):
+            salterio_aprendido[temporal[0]][cab['salterio']] += 1
     aprendido = {s: c.most_common(1)[0][0] for s, c in aprendido.items()}
+    salterio_aprendido = {s: max(c.items(), key=lambda par: (par[1], -par[0]))[0]
+                          for s, c in salterio_aprendido.items()}
 
     # --- qué celebración del calendario es cada santo del libro -----------
     # Qué se celebra cada día, y con qué grado, no lo decide este módulo: lo
@@ -979,6 +989,39 @@ def main():
     for k in santoral:
         md, santo = k.split('/', 2)[:2]
         casillas[santo][md] += 1
+
+    # Las fiestas móviles quedan en el santoral una vez por cada fecha en que
+    # cayeron, y cada fecha es un año solo. La app tomaba la más completa, y
+    # la más completa del Corpus era la de 2019, el 23 de junio, cuya tarde
+    # ya eran las primeras vísperas de san Juan Bautista: el Corpus de 2027
+    # salía con las vísperas del Bautista. Si una celebración está en tres
+    # fechas o más, cada pieza es la que dan más fechas, y todas las fechas
+    # quedan con esa misma pieza.
+    reunidas = 0
+    for santo, mds in casillas.items():
+        if len(mds) < 3:
+            continue
+        por_pieza = defaultdict(list)
+        for md in mds:
+            pre = f'{md}/{santo}/'
+            for k, v in santoral.items():
+                if k.startswith(pre):
+                    por_pieza[k[len(pre):]].append((md, v))
+        for resto, vs in por_pieza.items():
+            cuenta = Counter(json.dumps(v['lineas'], ensure_ascii=False)
+                             for _, v in vs)
+            gana = max(vs, key=lambda mv: (
+                cuenta[json.dumps(mv[1]['lineas'], ensure_ascii=False)],
+                mv[1].get('testigos', 0), mds[mv[0]], mv[0]))[1]
+            for md in mds:
+                k = f'{md}/{santo}/{resto}'
+                if santoral.get(k) is not gana:
+                    if k in santoral and santoral[k]['lineas'] != gana['lineas']:
+                        reunidas += 1
+                    santoral[k] = gana
+        casillas[santo] = Counter({md: len(por_pieza) for md in mds})
+    print(f'{reunidas} piezas de fiestas móviles tomadas de la mayoría de '
+          f'sus fechas', flush=True)
 
     votos = defaultdict(Counter)
     for fecha, cab in fuente.items():
@@ -1391,12 +1434,19 @@ def main():
             ti, sem = cab['tiempo'], cab.get('semana')
             if cab.get('dia_semana') is not None:
                 ds = cab['dia_semana']
-            salt = cab.get('salterio')
+            # la cabecera de un día que celebra no siempre dice su semana del
+            # salterio («De la memoria»), y sin ella la app no tenía de dónde
+            # tomar la salmodia: se saca de la semana, como en los años que
+            # la fuente no ha publicado
+            salt = (cab.get('salterio')
+                    or (((sem - 1) % 4) + 1 if sem else None)
+                    or salterio_aprendido.get(slug))
             titulo_clave = clave(cab.get('titulo') or '')
             cuentas['del volcado'] += 1
         elif slug in aprendido:
             ti, sem, titulo_clave = aprendido[slug]
-            salt = ((sem - 1) % 4) + 1 if sem else None
+            salt = (((sem - 1) % 4) + 1 if sem
+                    else salterio_aprendido.get(slug))
             cuentas['aprendido del volcado'] += 1
         else:
             ti, sem, _ = coord_slug.get(slug, (None, None, None))
@@ -1488,8 +1538,35 @@ def main():
 
         dias[fecha] = reg
 
+    # El título del día es el del calendario de la misa, y tres días el
+    # calendario lo toma de un formulario y no del día: «Misa de la
+    # vigilia» el 24 de diciembre (que es la de la tarde), «Misa del día» en
+    # Navidad y «Misa del día de Pascua». En las horas se lee el del día.
+    DEL_DIA = {'Misa de la vigilia': '24 de diciembre',
+               'Misa del día': 'Natividad del Señor',
+               'Misa del día de Pascua':
+                   'Domingo de Pascua de la Resurrección del Señor'}
+    for reg in dias.values():
+        reg['tt'] = DEL_DIA.get(reg['tt'], reg['tt'])
+
     tiempo_anio = del_otro_anio(bienal, tiempo)
     tiempo_anio.update(feria_anio)
+    # Un sábado (el XXIV) la fuente abrió dos veces la primera lectura los
+    # años pares, la primera vacía, y la del año II quedó en `lectura12`: la
+    # app las daba las dos, todos los años. Es la del otro año, y se guarda
+    # como tal.
+    def ferial_de_fecha(iso):
+        f = dt.date.fromisoformat(iso)
+        adv = dt.date(f.year, 12, 3)
+        adv -= dt.timedelta(days=(adv.weekday() + 1) % 7)
+        return 'I' if (f.year + (f >= adv)) % 2 else 'II'
+    for k in [k for k in tiempo if k.endswith('/oficio/lectura12')]:
+        base = k[:-len('lectura12')] + 'lectura1'
+        v = tiempo.pop(k)
+        if base in tiempo and v['lineas'] != tiempo[base]['lineas']:
+            tiempo_anio.setdefault(base, {}).setdefault(
+                ferial_de_fecha(v['desde']),
+                {'r': v['rotulo'] or tiempo[base]['rotulo'], 'l': v['lineas']})
     # De las lecturas bíblicas que el santoral da como propias, las que son
     # del tiempo y no del santo sobran: se quitan, y lo que queda es lo que
     # la app ofrece delante de la del día.
@@ -1618,6 +1695,14 @@ def main():
     # Lo que cambia en Pascua, del santoral y de los comunes. Los comunes se
     # rezan en cualquier tiempo; un santo, sólo en el suyo.
     santoral_app = dict(poda(santoral), **extra)
+    # Una pieza que dice «como en las Laudes» es la de Laudes: la oración del
+    # Oficio de san Pedro Canisio lo dice, y en su conmemoración salía eso.
+    for k, v in list(santoral_app.items()):
+        texto = ' '.join(t for ln in v['l'] for _, t in ln).strip()
+        laudes = re.sub(r'/[^/]+/([^/]+)$', r'/laudes/\1', k)
+        if (re.fullmatch(r'como en (las )?laudes\.?', texto, re.I)
+                and laudes in santoral_app and laudes != k):
+            santoral_app[k] = santoral_app[laudes]
     comunes_app = poda(comunes)
     santoral_pascua, cuenta_sp = formas_del_tiempo(
         santoral, santoral_app,
@@ -1638,13 +1723,48 @@ def main():
         if otros:
             tiempo_ciclo[k] = otros
 
+    # Del 7 al 12 de enero los himnos son los de la Epifanía, los mismos todos
+    # los días; al 12 (que la fuente no publicó nunca como feria) y a las
+    # vísperas del 11 les faltaban, y esas horas salían sin himno. Se toman
+    # del que llevan los otros días de esa semana.
+    tiempo_app = dict(poda(tiempo), **tiempo_extra)
+    EPIFANIA = [f'Navidad/@/{n} de enero' for n in range(7, 13)]
+    for hora in ('oficio', 'laudes', 'tercia', 'sexta', 'nona', 'visperas'):
+        hay = Counter(json.dumps(tiempo_app[f'{k}/{hora}/himno'], ensure_ascii=False)
+                      for k in EPIFANIA if f'{k}/{hora}/himno' in tiempo_app)
+        if not hay:
+            continue
+        himno = json.loads(max(hay.items(), key=lambda par: (par[1], par[0]))[0])
+        for k in EPIFANIA:
+            if (f'{k}/{hora}/himno' not in tiempo_app
+                    and any(x.startswith(f'{k}/{hora}/') for x in tiempo_app)):
+                tiempo_app[f'{k}/{hora}/himno'] = himno
+
+    # El Oficio trae el invitatorio en dos casillas, según la forma con que
+    # la fuente lo escribió cada año («Si ésta es la primera oración del
+    # día» o «Si el Oficio de Lectura es la primera…»), y la app toma la
+    # primera. En cinco días dicen antífonas distintas, y una de ellas es la
+    # de un año solo: el domingo IV de Adviento salía con la del 24 («Hoy
+    # sabréis que vendrá el Señor»), que es la de cuando cae en 24. Manda la
+    # que más años dan.
+    def antifona(v):
+        return next((t for ln in v['lineas'] if ln and ln[0][0]
+                     and ln[0][1].strip().startswith('Ant')
+                     for t in [''.join(x for _, x in ln)]), None)
+    for k in [k for k in tiempo if k.endswith('/oficio/preambulo')]:
+        ki = k[:-len('preambulo')] + 'invitatorio'
+        if (ki in tiempo and antifona(tiempo[k]) and antifona(tiempo[ki])
+                and antifona(tiempo[k]) != antifona(tiempo[ki])
+                and tiempo[k]['testigos'] > tiempo[ki]['testigos']):
+            tiempo_app[ki] = tiempo_app[k]
+
     libro = {
         'orden': carga('orden.json'),
         'comun_de': comun_de_santo,
         'rotulo_comun': rotulo_comun,
         'ordinario': poda(ordinario),
         'salterio': poda(salterio),
-        'tiempo': dict(poda(tiempo), **tiempo_extra),
+        'tiempo': tiempo_app,
         'tiempo_anio': tiempo_anio,
         'tiempo_ciclo': tiempo_ciclo,
         'santoral': santoral_app,

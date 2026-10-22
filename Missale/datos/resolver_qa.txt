@@ -7,19 +7,19 @@ castellano, por qué camino, con cuántos testigos, y si no lo
 tiene, por qué no.
 
 formularios del leccionario     : 1051
-   con las cinco piezas en castellano :  816  (78 %)
-   con alguna pieza en castellano :  149  (14 %)
+   con las cinco piezas en castellano :  812  (77 %)
+   con alguna pieza en castellano :  153  (15 %)
    sólo en latín                :   54  (5 %)
    sin nada, ni latín           :   32  (3 %)
 piezas resueltas                : 6306
    de la propia celebración     : 1760
-   de otra celebración del mismo formulario del Misal : 1896
+   de otra celebración del mismo formulario del Misal : 1895
    de un texto suelto que cae en ese formulario :   76
-   de lo que el misalito imprimió esos días :  706
-   del común que la celebración ofrece :  112
-   de otro formulario con la misma oración latina :   64
-   del Misal latino, en latín   :  498
-   sin nada                     : 1194
+   de lo que el misalito imprimió esos días :  699
+   del común que la celebración ofrece :  109
+   de otro formulario con la misma oración latina :   68
+   del Misal latino, en latín   :  502
+   sin nada                     : 1197
 
 La unidad del Misal no es el día: es el formulario
 --------------------------------------------------
@@ -32,7 +32,7 @@ La unidad del Misal no es el día: es el formulario
   sitio. Esto es cuánto recupera, medido:
 
     piezas que vienen de otra celebración del mismo
-    formulario del Misal                        : 1896
+    formulario del Misal                        : 1895
     piezas que vienen de un texto suelto colocado: 76
     textos sueltos de la fase 4                 : 319
        colocados en un formulario               : 13
@@ -168,7 +168,7 @@ Los formularios, uno por uno
 
     sección                                        completo  parcial  latino   nada
     TIEMPO ORDINARIO                                    436       71       0      0
-    PROPIO DE LOS SANTOS                                179       17       1      0
+    PROPIO DE LOS SANTOS                                175       21       1      0
     TRIDUO PASCUAL Y TIEMPO DE PASCUA                    50       22       3      0
     MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · lec       47       10      10      0
     TIEMPO DE CUARESMA                                   58        4       0      3
@@ -198,7 +198,7 @@ Los formularios, uno por uno
     V|5223COMDBA.htm|0         LLLLL.  Leccionario V. Propio y común de los santos  —
     V|5224COMSVI.html|0        GLLGL.  Leccionario V. Propio y común de los santos  —
     V|5225COMMAR.html|0        ULUUU.  Leccionario V. Propio y común de los santos  14
-    V|5226COMPAS.html|0        UUUUL.  Leccionario V. Propio y común de los santos  2
+    V|5226COMPAS.html|0        ULUUL.  Leccionario V. Propio y común de los santos  2
     V|5227COMDOC.html|0        ULLLL.  Leccionario V. Propio y común de los santos  21
     V|5228COMVIR.html|0        ULLUL.  Leccionario V. Propio y común de los santos  5
     V|5229COMSAN.html|0        ULLUL.  Leccionario V. Propio y común de los santos  16
@@ -342,7 +342,7 @@ Los formularios, uno por uno
     V|5022TA0206.html|0        MCCMC.  Santos Pablo Miki y compañeros, mártires     3
     V|5023TA0208.html|0        CCCCC.  San Jerónimo Emiliano                        1
     V|5024TA0210.html|0        CCCCC.  Santa Escolástica, virgen                    2
-    V|5025TA0211.html|0        .CC.C.  Nuestra Señora de Lourdes                    5
+    V|5025TA0211.html|0        .C....  Nuestra Señora de Lourdes                    7
     V|5026TA0214.html|0        LCCCC.  Santos Cirilo, monje, y Metodio, obispo      6
     V|5027TA0217.html|0        DCCDC.  Los siete santos Fundadores de la Orden de l 3
     V|5028TA0221.html|0        MCCMC.  San Pedro Damián, obispo y doctor de la Igle 4
@@ -406,7 +406,7 @@ Los formularios, uno por uno
     V|5094TA0630.html|0        MCDMC.  Primeros mártires de la Iglesia de Roma      4
     V|5095TA0632.html|0        CCDDD.  El Inmaculado Corazón de la Santísima Virgen 7
     V|5096TA0703.html|0        CCCCC.  Santo Tomás, apóstol                         7
-    V|5097TA0704.html|0        .C....  Santa Isabel de Portugal                     7
+    V|5097TA0704.html|0        .CC.C.  Santa Isabel de Portugal                     7
     V|5098TA0705.html|0        MCCMC.  San Antonio María Zaccarías, presbítero      4
     V|5099TA0706.html|0        MCCDC.  Santa María Goretti, virgen y mártir         7
     V|5100TA0711.html|0        CCCDC.  San Benito, abad                             7
@@ -420,16 +420,16 @@ Los formularios, uno por uno
     V|5108TA0725.html|0        CCCCC.  Santiago, apóstol                            7
     V|5109TA0726.html|0        CCCCC.  Santos Joaquín y Ana, padres de la Santísima 7
     V|5110TA0729.html|0        CCCMC.  Santos Marta, María y Lázaro                 6
-    V|5111TA0730.html|0        MDMM..  San Pedro Crisólogo, obispo y doctor de la I 2
+    V|5111TA0730.html|0        MLMM..  San Pedro Crisólogo, obispo y doctor de la I 2
     V|5112TA0731.html|0        DCCCC.  San Ignacio de Loyola, presbítero            7
     V|5113TA0801.html|0        MCCMC.  San Alfonso María de Ligorio, obispo y docto 7
     V|5114TA0802.html|0        DCCDC.  San Eusebio de Vercelli, obispo              4
     V|5115TA0802_2.html|0      CCCDC.  San Pedro Julián Eymard, presbítero          3
     V|5116TA0804.html|0        MCCMC.  San Juan María Vianney, presbítero           4
-    V|5117TA0805.html|0        DCDDD.  Dedicación de la basílica de Santa María     8
+    V|5117TA0805.html|0        .CDDD.  Dedicación de la basílica de Santa María     8
     V|5118TA0806.html|0        CCCCC.  La Transfiguración del Señor                 8
     V|5119TA0807.html|0        CCMMC.  Santos Sixto II, papa, y compañeros, mártire 1
-    V|5120TA0807_2.html|0      MCCMC.  San Cayetano, presbítero                     1
+    V|5120TA0807_2.html|0      M.CM..  San Cayetano, presbítero                     4
     V|5121TA0808.html|0        MCCMC.  Santo Domingo, presbítero                    7
     V|5122TA0809.html|0        DCCMC.  Santa Teresa Benedicta de la Cruz, virgen y  4
     V|5123TA0810.html|0        CCCDC.  San Lorenzo, diácono y mártir                7
@@ -457,13 +457,13 @@ Los formularios, uno por uno
     V|5147A0915.html|0         DDCDD.  Nuestra Señora de los Dolores                1
     V|5148TA0916.html|0        MCCMC.  Santos Cornelio, papa, y Cipriano, obispo, m 4
     V|5149TA0917.html|0        MCCMC.  San Roberto Belarmino, obispo y doctor de la 3
-    V|5150TA0919.html|0        MMMMM.  San Jenaro, obispo y mártir                  7
+    V|5150TA0919.html|0        MLMMM.  San Jenaro, obispo y mártir                  14
     V|5151TA0920.html|0        MCCMC.  Santos Andrés Kim Taegon, presbítero, Pablo  4
     V|5152TA0921.html|0        CCCCC.  San Mateo, apóstol y evangelista             6
     V|5153TA0926.html|0        MCDMC.  Santos Cosme y Damián, mártires              7
     V|5154TA0927.html|0        CCCDC.  San Vicente de Paúl, presbítero              6
     V|5155TA0928.html|0        DCCDC.  San Wenceslao, mártir                        3
-    V|5156TA0928_2.html|0      M.MMM.  Santos Lorenzo Ruiz y compañeros, mártires   14
+    V|5156TA0928_2.html|0      M.MMC.  Santos Lorenzo Ruiz y compañeros, mártires   4
     V|5157TA0929.html|0        DCDCD.  Santos Arcángeles Miguel, Gabriel y Rafael   1
     V|5158TA0930.html|0        CCCCC.  San Jerónimo, presbítero y doctor de la Igle 7
     V|5159TA1001.html|0        CCCCC.  Santa Teresa del Niño Jesús, virgen          7
@@ -490,17 +490,17 @@ Los formularios, uno por uno
     V|5185TA1104.html|0        DCCDC.  San Carlos Borromeo, obispo                  6
     V|5186TA1109.html|0        LLDDD.  Dedicación de la basílica de Letrán          9
     V|5187TA1110.html|0        DCCDD.  San León Magno, papa y doctor de la Iglesia  5
-    V|5188TA1111.html|0        MMCCC.  San Martín, obispo                           7
+    V|5188TA1111.html|0        MCCCC.  San Martín, obispo                           7
     V|5189TA1112.html|0        MCCMC.  San Josafat, obispo y mártir                 7
     V|5191TA1115.html|0        MCCMC.  San Alberto Magno, obispo y doctor de la Igl 4
     V|5192TA1116.html|0        DCCDC.  Santa Margarita de Escocia                   3
     V|5193TA1116_2.html|0      CCCCC.  Santa Gertrudis, virgen                      4
     V|5194TA1117.html|0        DCCDC.  Santa Isabel de Hungría                      6
     V|5195TA1118.html|0        CCCCC.  Dedicación de las basílicas de San Pedro y d 7
-    V|5196TA1121.html|0        DDDDD.  La Presentación de la Santísima Virgen María 9
-    V|5197TA1122.html|0        DCCDC.  Santa Cecilia, virgen y mártir               7
-    V|5198TA1123.html|0        CCCCC.  San Clemente I, papa y mártir                2
-    V|5199TA1123_2.html|0      MMMM..  San Columbano, abad                          2
+    V|5196TA1121.html|0        .DDDD.  La Presentación de la Santísima Virgen María 9
+    V|5197TA1122.html|0        DCCDC.  Santa Cecilia, virgen y mártir               4
+    V|5198TA1123.html|0        CLMCM.  San Clemente I, papa y mártir                4
+    V|5199TA1123_2.html|0      MCCMC.  San Columbano, abad                          2
     V|5200TA1124.html|0        MCCMC.  Santos Andrés Dung-Lac, presbítero, y compañ 6
     V|5201TA1130.html|0        CCCCC.  San Andrés, apóstol                          7
     V|5202TA1203.html|0        CCCCC.  San Francisco Javier, presbítero             6
@@ -828,9 +828,9 @@ Los formularios, uno por uno
     IV|4103ITOL18.html|0       UUDUU.  Lunes de la 18ª semana de Tiempo Ordinario   1
     IV|4104ITOM18.html|0       UUGUU.  Martes de la 18ª semana de Tiempo Ordinario  5
     IV|4105ITOX18.html|0       UUGUU.  Miércoles de la 18ª semana de Tiempo Ordinar 5
-    IV|4106ITOJ18.html|0       UUDUU.  Jueves de la 18ª semana de Tiempo Ordinario  5
+    IV|4106ITOJ18.html|0       UUGUU.  Jueves de la 18ª semana de Tiempo Ordinario  5
     IV|4107ITOV18.html|0       UUGUU.  Viernes de la 18ª semana de Tiempo Ordinario 5
-    IV|4108ITOS18.html|0       UUDUU.  Sábado de la 18ª semana de Tiempo Ordinario  5
+    IV|4108ITOS18.html|0       UUGUU.  Sábado de la 18ª semana de Tiempo Ordinario  5
     IV|4109ITOL19.html|0       UUDUU.  Lunes de la 19ª semana de Tiempo Ordinario   7
     IV|4110ITOM19.html|0       UUDUU.  Martes de la 19ª semana de Tiempo Ordinario  7
     IV|4111ITOX19.html|0       UUDUU.  Miércoles de la 19ª semana de Tiempo Ordinar 7
@@ -1032,9 +1032,9 @@ Los formularios, uno por uno
     IV|4307PTOL18.html|0       UUDUU.  Lunes de la 18ª semana de Tiempo Ordinario   1
     IV|4308PTOM18.html|0       UUGUU.  Martes de la 18ª semana de Tiempo Ordinario  5
     IV|4309PTOX18.html|0       UUGUU.  Miércoles de la 18ª semana de Tiempo Ordinar 5
-    IV|4310PTOJ18.html|0       UUDUU.  Jueves de la 18ª semana de Tiempo Ordinario  5
+    IV|4310PTOJ18.html|0       UUGUU.  Jueves de la 18ª semana de Tiempo Ordinario  5
     IV|4311PTOV18.html|0       UUGUU.  Viernes de la 18ª semana de Tiempo Ordinario 5
-    IV|4312PTOS18.html|0       UUDUU.  Sábado de la 18ª semana de Tiempo Ordinario  5
+    IV|4312PTOS18.html|0       UUGUU.  Sábado de la 18ª semana de Tiempo Ordinario  5
     IV|4313PTOL19.html|0       UUDUU.  Lunes de la 19ª semana de Tiempo Ordinario   7
     IV|4314PTOM19.html|0       UUDUU.  Martes de la 19ª semana de Tiempo Ordinario  7
     IV|4315PTOX19.html|0       UUDUU.  Miércoles de la 19ª semana de Tiempo Ordinar 7
@@ -1546,7 +1546,7 @@ Las ranuras rescatadas por su gemela latina
   toma de las ranuras bien atribuidas (celebración o unidad) y
   sólo si el castellano es uno: con dos no se elige.
 
-  rescatadas: 64
+  rescatadas: 68
   dejadas en latín por tener dos castellanos: 1
     VII|7008TAVM02.html|0          ofrendas     2 castellanos
 

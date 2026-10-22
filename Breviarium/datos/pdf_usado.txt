@@ -371,11 +371,10 @@ móvil/-  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote (fiesta)
         hallado en la fuente: responsorio
         común: —  →  (ninguno de los que hay: lo demás, de la feria)
 
-2. Santos con textos de la fuente a los que les faltaba algo: 1
+2. Santos con textos de la fuente a los que les faltaba algo: 0
 ------------------------------------------------------------
-  San Ambrosio, obispo y doctor de la Iglesia: oración de Vísperas (hallado en la fuente: la misma oración, en otra hora)
 
-   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 43
+   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 42
      El Santísimo Nombre de Jesús — responsorio  ←  tiempo: Ordinario/12/1/oficio/responsorio2
      San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
      Santa Ángela de Merici, virgen — responsorio  ←  tiempo: Ordinario/21/2/oficio/responsorio (variante de otro año)
@@ -406,7 +405,6 @@ móvil/-  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote (fiesta)
      Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2
      Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles — antífona del Benedictus  ←  santoral: 06-29/santos pedro y pablo apostoles/visperas/cantico_evangelico
      San Juan Damasceno, presbítero y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
-     San Ambrosio, obispo y doctor de la Iglesia — oración de Vísperas  ←  la misma oración, en otra hora
      San Juan Diego Cuauhtlatoatzin — oficio/lectura_breve  ←  santoral: 07-25/santiago apostol/laudes/lectura_breve
      San Juan Diego Cuauhtlatoatzin — oficio/responsorio_breve  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/responsorio_breve
      San Juan Diego Cuauhtlatoatzin — oficio/preces  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/preces
@@ -445,8 +443,6 @@ traducción— y, al lado, la del día.
   San Martín de Porres, religioso — Laudes: antífonas del PDF, salmos de 1/0
   San Martín de Porres, religioso — Vísperas: antífonas del PDF, salmos de del día
   San Andrés, apóstol — Vísperas: salmos propios
-  La Inmaculada Concepción de la Santísima Virgen María — Laudes: salmos de 1/0
-  La Inmaculada Concepción de la Santísima Virgen María — Vísperas: salmos propios
   San Juan Diego Cuauhtlatoatzin — Oficio: antífonas del PDF, salmos de del día
   Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Oficio: antífonas del PDF, salmos de del día
   Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Vísperas: antífonas del PDF, salmos de del día
@@ -485,10 +481,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · antífona del Benedictus: el PDF la trae propia; la fuente la toma del común
         · antífona del Magníficat: otra antífona — PDF «Los santos tienen su morada en el reino de Dios, y allí han encontrado descanso eterno.», fuente «Si el grano de trigo no cae en tierra y muere, queda infecundo; pero, si muere, da mucho fruto. Aleluya.»
 25/04  San Marcos, evangelista
-        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
-        · primera lectura: el PDF la trae propia; la fuente la toma del común
-        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
-        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 01/05  San José Obrero
         · himno de Laudes: otro himno — PDF «porque fue varon justo…», fuente «llamando a trabajo al mundo…»
@@ -546,7 +538,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · preces de Laudes: el PDF la trae propia; la fuente la toma del común
         · himno del Oficio: otro himno — PDF «nina de dios por nuestro…», fuente «vestida de sol y petalos…»
         · himno de Vísperas: otro himno — PDF «canten hoy pues naceis vos…», fuente «vino a la vida para…»
-        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 13/09  San Juan Crisóstomo, obispo y doctor de la Iglesia
         · responsorio: cita distinta — PDF «2 Tm 2, 9-10; Sal 26, 1», fuente «2Tm 2, 9-10»
@@ -562,8 +553,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · primera lectura: el PDF la trae propia; la fuente la toma del común
         · himno de Vísperas: otro himno — PDF «ay dolor dolor dolor…», fuente «virgen de virgenes santas…»
         · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
-21/09  San Mateo, apóstol y evangelista
-        · primera lectura: el PDF la trae propia; la fuente la toma del común
 23/09  San Pío de Pietrelcina, presbítero
         · responsorio: cita distinta — PDF «Ef 2, 21-22», fuente «Mt 16, 24; Hb 12, 2»
 29/09  Santos Arcángeles Miguel, Gabriel y Rafael
@@ -588,12 +577,8 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 18/10  San Lucas, evangelista
-        · lectura breve de Laudes: el PDF la trae propia; la fuente la toma del común
-        · preces de Laudes: el PDF la trae propia; la fuente la toma del común
         · himno del Oficio: el PDF la trae propia; la fuente la toma del común
         · antífona del Magníficat: otra antífona — PDF «Dichoso evangelista san Lucas, que resplandece en toda la Iglesia por haber destacado en sus escritos la misericordia de Cristo.», fuente «El bienaventurado evangelista Lucas, escriba de la mansedumbre de Cristo, merece las alabanzas de la Iglesia.»
-        · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
-        · preces de Vísperas: el PDF la trae propia; la fuente la toma del común
 01/11  Todos los Santos
         · himno de Laudes: otro himno — PDF «patriarcas que fuisteis la semilla…», fuente «vosotros sois luz del mundo…»
         · himno del Oficio: otro himno — PDF «peregrinos del reino celeste…», fuente «nacidos del amor para la…»
@@ -633,8 +618,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 03/12  San Francisco Javier, presbítero
         · responsorio: cita distinta — PDF «Lc 4, 10, 2; Hch 1, 8», fuente «Lc 10, 2; Hch 1, 8»
-07/12  San Ambrosio, obispo y doctor de la Iglesia
-        · oración de Vísperas: el PDF la trae propia; la fuente la toma de la feria
 08/12  La Inmaculada Concepción de la Santísima Virgen María
         · himno de Laudes: otro himno — PDF «ninguno del ser humano…», fuente «pureza inmaculada…»
         · himno del Oficio: otro himno — PDF «eva nos vistio de luto…», fuente «ninguno del ser humano…»
@@ -652,7 +635,7 @@ Del tomo I: el 2 de enero, el 6 y el 7 antes de una Epifanía en domingo, el 12
 (sábado después de la Epifanía) y las vísperas del 11. Antes de usar un texto
 se buscó en la fuente.
 
-   Del PDF (54):
+   Del PDF (49):
      Navidad/@/11 de enero/visperas/oracion
      Navidad/@/12 de enero/laudes/oracion
      Navidad/@/12 de enero/laudes/preces
@@ -672,13 +655,8 @@ se buscó en la fuente.
      Navidad/@/2 de enero/laudes/oracion
      Navidad/@/2 de enero/laudes/preces
      Navidad/@/2 de enero/laudes/responsorio_breve
-     Navidad/@/2 de enero/nona/lectura_breve
-     Navidad/@/2 de enero/nona/oracion
      Navidad/@/2 de enero/oficio/lectura2
      Navidad/@/2 de enero/oficio/oracion
-     Navidad/@/2 de enero/sexta/oracion
-     Navidad/@/2 de enero/tercia/lectura_breve
-     Navidad/@/2 de enero/tercia/oracion
      Navidad/@/2 de enero/visperas/oracion
      Navidad/@/2 de enero/visperas/preces
      Navidad/@/6 de enero/laudes/cantico_evangelico
@@ -708,7 +686,7 @@ se buscó en la fuente.
      Navidad/@/antes de la Epifanía, 7 de enero/tercia/oracion
      Navidad/@/antes de la Epifanía, 7 de enero/visperas/oracion
 
-   Halladas en la fuente (34):
+   Halladas en la fuente (33):
      Navidad/@/11 de enero/visperas/cantico_evangelico  ←  tiempo: Navidad/2/6/visperas/cantico_evangelico
      Navidad/@/11 de enero/visperas/lectura_breve  ←  santoral: 12-27/san juan apostol y evangelista/visperas/lectura_breve
      Navidad/@/11 de enero/visperas/preces  ←  tiempo: Navidad/2/6/visperas/preces (variante de otro año)
@@ -724,7 +702,6 @@ se buscó en la fuente.
      Navidad/@/2 de enero/oficio/responsorio (año I)  ←  santoral: 01-02/santos basilio magno y gregorio nacianzo obispos y doctores de la iglesia/oficio/responsorio (variante de otro año)
      Navidad/@/2 de enero/oficio/responsorio (año II)  ←  santoral: 01-02/santos basilio magno y gregorio nacianzo obispos y doctores de la iglesia/oficio/responsorio
      Navidad/@/2 de enero/oficio/responsorio2  ←  tiempo: Navidad/2/0/oficio/responsorio2 (variante de otro año)
-     Navidad/@/2 de enero/sexta/lectura_breve  ←  tiempo: Navidad/@/9 de enero/sexta/lectura_breve
      Navidad/@/2 de enero/visperas/cantico_evangelico  ←  tiempo: Navidad/@/3 de enero/visperas/cantico_evangelico
      Navidad/@/2 de enero/visperas/lectura_breve  ←  tiempo: Navidad/@/9 de enero/visperas/lectura_breve
      Navidad/@/2 de enero/visperas/responsorio_breve  ←  santoral: 12-26/san esteban protomartir/visperas/responsorio_breve

@@ -1315,6 +1315,23 @@ def candidatos(f, cal_fechas, santoral_md, comunes_de, avisos):
     return ids
 
 
+# Los santos que una oración nombra («concediste a san Tranquilino Ubiarco
+# luchar por la justicia»). María y José no cuentan: los nombran fiestas que
+# no los llevan en el título (la Sagrada Familia, Nuestra Señora de…).
+NOMBRA = re.compile(r'\b(?:san|santa|santo|santos|beato|beata|beatos)\s+'
+                    r'((?:[A-ZÁÉÍÓÚÑ][\wáéíóúñ]+)(?:\s+(?:de\s+)?'
+                    r'[A-ZÁÉÍÓÚÑ][\wáéíóúñ]+)*)')
+NO_NOMBRAN = {'maria', 'jose', 'virgen', 'nuestro', 'nuestra', 'senor'}
+
+
+def nombrados(texto):
+    salida = set()
+    for m in NOMBRA.finditer(texto):
+        salida |= {w for w in re.findall(r'[a-z]+', sinac(m.group(1)))
+                   if len(w) >= 4 and w not in NO_NOMBRAN}
+    return salida
+
+
 def atribuye(formularios, cands, cuantos):
     """Para cada ranura y cada texto, la celebración que lo explica.
 
@@ -1343,9 +1360,26 @@ def atribuye(formularios, cands, cuantos):
     salvo = []          # lo atribuido con una excepción, para el informe
     for ran, porclave in donde.items():
         for ck, fs in porclave.items():
+            # Una oración que nombra a un santo es de una celebración que lo
+            # nombra. El 5 de octubre el misalito trae dos misas, la de santa
+            # Faustina y la de san Tranquilino Ubiarco, y la de san
+            # Tranquilino, que sale todos los años ese día, se atribuía a la
+            # que el calendario pone ese día: santa Faustina tenía su colecta,
+            # su oración sobre las ofrendas y su poscomunión. Lo mismo la
+            # Virgen del Refugio con santa Isabel de Portugal, la del Perpetuo
+            # Socorro con san Cirilo y el beato Sebastián de Aparicio con
+            # santo Toribio Romo. Lo que no lleva título (la fecha) no se
+            # puede cotejar, y se queda.
+            nombres = nombrados(' '.join(textos[(ran, ck)]['texto']))
+
+            def lo_nombra(f, cid):
+                tit = (cands[f.testigo].get(cid) or (None, None))[1]
+                if not nombres or not tit:
+                    return True
+                return bool(nombres & set(re.findall(r'[a-z]+', sinac(tit))))
             comunes = None
             for f in fs:
-                ids = set(cands[f.testigo])
+                ids = {cid for cid in cands[f.testigo] if lo_nombra(f, cid)}
                 comunes = ids if comunes is None else (comunes & ids)
             excepcion = None
             if not comunes:

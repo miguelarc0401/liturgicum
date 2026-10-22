@@ -2,33 +2,38 @@ Fase 3 — el libro: tiempos, salterio, santoral, comunes
 ==============================================================
 
 Días leídos: 2728
-Textos distintos: 6904
+Textos distintos: 6885
 
 ordinario      75 casillas     0.1 MB  con variantes: 41 (55 %)
-salterio      868 casillas     5.0 MB  con variantes: 354 (41 %)
-tiempo      13040 casillas    13.8 MB  con variantes: 1845 (14 %)
-santoral     3634 casillas     5.2 MB  con variantes: 148 (4 %)
-           3 con forma propia de Pascua, 329 atestiguadas sólo en Pascua
-comunes       195 casillas     0.3 MB  con variantes: 34 (17 %)
+salterio      760 casillas     4.1 MB  con variantes: 268 (35 %)
+tiempo      13430 casillas    14.8 MB  con variantes: 1841 (14 %)
+santoral     3977 casillas     5.7 MB  con variantes: 149 (4 %)
+           3 con forma propia de Pascua, 333 atestiguadas sólo en Pascua
+comunes       196 casillas     0.3 MB  con variantes: 34 (17 %)
            19 con forma propia de Pascua, 0 atestiguadas sólo en Pascua
 comunes que sólo diferían en una errata de la cabecera: «pastores para una santo obispo y del comun de doctores de la iglesia» -> «pastores para un santo obispo y del comun de doctores de la iglesia»; «un martrir» -> «un martir»
 bienal        726 casillas  (lectura bíblica del Oficio, distinta en los años I y II)
 ciclo         106 casillas  (antífona evangélica del domingo, distinta en los ciclos A, B y C)
-antifonas      36 casillas  (las propias de una celebración, sobre los salmos del día; 151 descartadas)
+antifonas      26 casillas  (las propias de una celebración, sobre los salmos del día; 128 descartadas)
 
 Cómo se repartieron las secciones
 --------------------------------------------
-    6774  a los comunes
-   14914  al santoral
-      74  al santoral, pero de un año solo entre tres o más (fuera)
-   10612  del santo pero ferial
+    6785  a los comunes
+   14930  al santoral
+      72  al santoral, pero de un año solo entre tres o más (fuera)
+     132  casillas del tiempo que sólo dan días que celebran
+      23  del común, pero lo que la fiesta reza siempre: suyo
+   10617  del santo pero ferial
      355  del santo pero ferial: Hora intermedia de una memoria
-     554  del santo pero ferial: completas
+     556  del santo pero ferial: completas
      482  del santo pero ferial: himno de la Hora intermedia
-     547  del santo pero ferial: salmodia del salterio
+     514  del santo pero ferial: salmodia del salterio
    50623  ordinario
-   21688  propio de la celebración
-   21441  salterio
-   92695  tiempo
+     623  primeras vísperas, al santoral
+     294  primeras vísperas, al tiempo
+   21715  propio de la celebración
+       7  salmodia sin antífonas ni salmos (fuera)
+   19769  salterio
+   94308  tiempo
 
 Días del año con celebración: 156

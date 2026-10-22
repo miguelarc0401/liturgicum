@@ -17229,12 +17229,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 4,
-     "de": "md_02-09",
+     "d": 13,
+     "de": 314,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 0,
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -25545,13 +25546,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "de": "d3_6_6",
      "f": "misalito",
+     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xviii-per-annum",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
-     "via": "día"
+     "t": null,
+     "v": null,
+     "via": "gemela"
     },
     "poscomunion": {
      "de": "d5_17_0",
@@ -25744,13 +25745,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "de": "d3_6_6",
      "f": "misalito",
+     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xviii-per-annum",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
-     "via": "día"
+     "t": null,
+     "v": null,
+     "via": "gemela"
     },
     "poscomunion": {
      "de": "d5_17_0",
@@ -25845,12 +25846,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "d": 18,
+     "de": 235,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 15,
+     "u": "d5_18_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -25944,12 +25946,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 1,
-     "de": "st_0810_109",
+     "d": 18,
+     "de": 235,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 15,
+     "u": "d5_18_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -26044,12 +26047,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "d": 18,
+     "de": 235,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 15,
+     "u": "d5_18_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -27040,12 +27044,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 3,
-     "de": "st_0824_120",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -27140,12 +27145,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 4,
-     "de": "st_0824_120",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -27239,12 +27245,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0824_120",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -27339,12 +27346,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "md_08-31",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -27439,12 +27447,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 3,
-     "de": "md_08-31",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -27540,12 +27549,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 3,
-     "de": "md_08-31",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -34531,12 +34541,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 1,
-     "de": "md_11-20",
+     "d": 16,
+     "de": 272,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
+     "t": 27,
+     "u": "d5_32_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -34631,12 +34642,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 4,
-     "de": "md_11-20",
+     "d": 16,
+     "de": 272,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
+     "t": 27,
+     "u": "d5_32_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -34731,12 +34743,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 3,
-     "de": "md_11-20",
+     "d": 16,
+     "de": 272,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
+     "t": 27,
+     "u": "d5_32_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -37907,12 +37920,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 4,
-     "de": "md_02-09",
+     "d": 13,
+     "de": 314,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 5,
-     "v": 0,
+     "t": 19,
+     "u": "d5_3_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -46243,13 +46257,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "de": "d3_6_6",
      "f": "misalito",
+     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xviii-per-annum",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
-     "via": "día"
+     "t": null,
+     "v": null,
+     "via": "gemela"
     },
     "poscomunion": {
      "de": "d5_17_0",
@@ -46443,13 +46457,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "de": "d3_6_6",
      "f": "misalito",
+     "la": "tempore/missae-dominicales-et-cotidianae-dominica-xviii-per-annum",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
-     "via": "día"
+     "t": null,
+     "v": null,
+     "via": "gemela"
     },
     "poscomunion": {
      "de": "d5_17_0",
@@ -46544,12 +46558,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "d": 18,
+     "de": 235,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 15,
+     "u": "d5_18_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -46644,12 +46659,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 1,
-     "de": "st_0810_109",
+     "d": 18,
+     "de": 235,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 15,
+     "u": "d5_18_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -46744,12 +46760,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0810_109",
+     "d": 18,
+     "de": 235,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 15,
+     "u": "d5_18_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -47749,12 +47766,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 3,
-     "de": "st_0824_120",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -47850,12 +47868,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 4,
-     "de": "st_0824_120",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -47949,12 +47968,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "st_0824_120",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -48049,12 +48069,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 2,
-     "de": "md_08-31",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -48149,12 +48170,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 3,
-     "de": "md_08-31",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -48250,12 +48272,13 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 3,
-     "de": "md_08-31",
+     "d": 17,
+     "de": 258,
      "f": "misalito",
      "r": "ofrendas",
-     "t": 8,
-     "v": 0,
+     "t": 18,
+     "u": "d5_20_0",
+     "v": null,
      "via": "día"
     },
     "poscomunion": {
@@ -55245,12 +55268,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 1,
-     "de": "md_11-20",
+     "d": 16,
+     "de": 272,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
+     "t": 27,
+     "u": "d5_32_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -55345,12 +55369,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 4,
-     "de": "md_11-20",
+     "d": 16,
+     "de": 272,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
+     "t": 27,
+     "u": "d5_32_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -55445,12 +55470,13 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 3,
-     "de": "md_11-20",
+     "d": 16,
+     "de": 272,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 0,
+     "t": 27,
+     "u": "d5_32_0",
+     "v": null,
      "via": "día"
     },
     "pueblo": null
@@ -101131,7 +101157,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 2,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -101155,7 +101181,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "poscomunion": {
@@ -101163,7 +101189,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -102657,7 +102683,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -102681,7 +102707,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 3,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "poscomunion": {
@@ -102689,7 +102715,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -102885,8 +102911,8 @@
      "de": "st_0210_20",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 4,
-     "v": 3,
+     "t": 2,
+     "v": 1,
      "via": "celebración"
     },
     "poscomunion": {
@@ -102967,22 +102993,8 @@
     },
     "comunion": null,
     "entrada": null,
-    "ofrendas": {
-     "de": "st_0211_21",
-     "f": "misalito",
-     "r": "ofrendas",
-     "t": 5,
-     "v": 0,
-     "via": "celebración"
-    },
-    "poscomunion": {
-     "de": "st_0211_21",
-     "f": "misalito",
-     "r": "poscomunion",
-     "t": 5,
-     "v": 0,
-     "via": "celebración"
-    },
+    "ofrendas": null,
+    "poscomunion": null,
     "pueblo": null
    },
    "prefacio": [
@@ -104794,8 +104806,8 @@
      "de": "st_0413_41",
      "f": "misalito",
      "r": "colecta",
-     "t": 2,
-     "v": 2,
+     "t": 1,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -104900,8 +104912,8 @@
      "de": "st_0421_42",
      "f": "misalito",
      "r": "colecta",
-     "t": 3,
-     "v": 4,
+     "t": 2,
+     "v": 2,
      "via": "celebración"
     },
     "comunion": {
@@ -108597,8 +108609,8 @@
      "de": "st_0621_74",
      "f": "misalito",
      "r": "colecta",
-     "t": 7,
-     "v": 2,
+     "t": 6,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -108622,7 +108634,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
-     "v": 3,
+     "v": 2,
      "via": "celebración"
     },
     "poscomunion": {
@@ -108630,7 +108642,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
-     "v": 2,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -109071,7 +109083,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 5,
-     "v": 0,
+     "v": 1,
      "via": "celebración"
     },
     "poscomunion": {
@@ -109079,7 +109091,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 5,
-     "v": 0,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -109713,13 +109725,27 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 1,
+     "v": 3,
      "via": "celebración"
     },
     "comunion": null,
     "entrada": null,
-    "ofrendas": null,
-    "poscomunion": null,
+    "ofrendas": {
+     "de": "st_0704_84",
+     "f": "misalito",
+     "r": "ofrendas",
+     "t": 8,
+     "v": 0,
+     "via": "celebración"
+    },
+    "poscomunion": {
+     "de": "st_0704_84",
+     "f": "misalito",
+     "r": "poscomunion",
+     "t": 7,
+     "v": 0,
+     "via": "celebración"
+    },
     "pueblo": null
    },
    "prefacio": [],
@@ -111033,13 +111059,12 @@
    ],
    "piezas": {
     "colecta": {
-     "d": 9,
-     "de": "st_0730_218",
-     "f": "misalito",
+     "de": "sanctis/die-30-iulii-s-petri-chrysologi-episcopi-et-ecclesiae-doctoris",
+     "f": "latino",
      "r": "colecta",
-     "t": 7,
-     "v": 1,
-     "via": "día"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "comunion": {
      "de": "comun_5226COMPAS",
@@ -111626,15 +111651,7 @@
      "v": null,
      "via": "día"
     },
-    "entrada": {
-     "d": 11,
-     "de": 196,
-     "f": "misalito",
-     "r": "entrada",
-     "t": 31,
-     "v": null,
-     "via": "día"
-    },
+    "entrada": null,
     "ofrendas": {
      "d": 11,
      "de": 242,
@@ -111661,7 +111678,7 @@
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Dedicación de la basílica de Santa María",
    "u": "st/st_0805_104",
-   "v": "completo"
+   "v": "parcial"
   },
   "V|5118TA0806.html|0": {
    "alt": [],
@@ -111858,8 +111875,8 @@
      "de": "st_0807_106",
      "f": "misalito",
      "r": "colecta",
-     "t": 4,
-     "v": 1,
+     "t": 1,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -111952,14 +111969,7 @@
     }
    ],
    "piezas": {
-    "colecta": {
-     "de": "st_0807_107",
-     "f": "misalito",
-     "r": "colecta",
-     "t": 1,
-     "v": 0,
-     "via": "celebración"
-    },
+    "colecta": null,
     "comunion": {
      "de": "comun_5226COMPAS",
      "f": "misalito",
@@ -111981,17 +111991,10 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
-    "poscomunion": {
-     "de": "st_0807_107",
-     "f": "misalito",
-     "r": "poscomunion",
-     "t": 4,
-     "v": 1,
-     "via": "celebración"
-    },
+    "poscomunion": null,
     "pueblo": null
    },
    "prefacio": [],
@@ -112000,7 +112003,7 @@
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Cayetano, presbítero",
    "u": "st/st_0807_107",
-   "v": "completo"
+   "v": "parcial"
   },
   "V|5121TA0808.html|0": {
    "alt": [],
@@ -112830,7 +112833,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "poscomunion": {
@@ -112937,7 +112940,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
-     "v": 3,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -114826,7 +114829,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 5,
-     "v": 2,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -114858,7 +114861,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -114920,12 +114923,12 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "comun_5226COMPAS",
-     "f": "misalito",
+     "de": "sanctis/die-19-septembris-s-ianuarii-episcopi-et-martyris",
+     "f": "latino",
      "r": "colecta",
-     "t": 7,
-     "v": 0,
-     "via": "común"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "comunion": {
      "de": "comun_5225COMMAR",
@@ -114967,7 +114970,7 @@
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Jenaro, obispo y mártir",
    "u": "st/st_0919_134",
-   "v": "completo"
+   "v": "parcial"
   },
   "V|5151TA0920.html|0": {
    "alt": [],
@@ -115445,8 +115448,8 @@
      "de": "st_0928_139",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 4,
-     "v": 2,
+     "t": 3,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -115524,12 +115527,12 @@
      "via": "común"
     },
     "poscomunion": {
-     "de": "comun_5225COMMAR",
+     "de": "st_0928_140",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 14,
+     "t": 4,
      "v": 0,
-     "via": "común"
+     "via": "celebración"
     },
     "pueblo": null
    },
@@ -116964,15 +116967,15 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 1,
-     "v": 0,
+     "v": 3,
      "via": "celebración"
     },
     "poscomunion": {
      "de": "st_1016_152",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 1,
-     "v": 0,
+     "t": 2,
+     "v": 2,
      "via": "celebración"
     },
     "pueblo": null
@@ -117722,7 +117725,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 3,
+     "v": 1,
      "via": "celebración"
     },
     "comunion": {
@@ -117746,7 +117749,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
-     "v": 2,
+     "v": 1,
      "via": "celebración"
     },
     "poscomunion": {
@@ -117754,7 +117757,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -118507,12 +118510,12 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "comun_5226COMPAS",
+     "de": "st_1111_167",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
      "v": 0,
-     "via": "común"
+     "via": "celebración"
     },
     "comunion": {
      "de": "st_1111_167",
@@ -118609,7 +118612,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -118633,7 +118636,7 @@
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "poscomunion": {
@@ -118641,7 +118644,7 @@
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "pueblo": null
@@ -119200,15 +119203,7 @@
      "v": null,
      "via": "día"
     },
-    "entrada": {
-     "d": 15,
-     "de": 196,
-     "f": "misalito",
-     "r": "entrada",
-     "t": 31,
-     "v": null,
-     "via": "día"
-    },
+    "entrada": null,
     "ofrendas": {
      "d": 15,
      "de": 233,
@@ -119235,7 +119230,7 @@
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "La Presentación de la Santísima Virgen María",
    "u": "st/st_1121_174",
-   "v": "completo"
+   "v": "parcial"
   },
   "V|5197TA1122.html|0": {
    "alt": [],
@@ -119281,7 +119276,7 @@
      "f": "misalito",
      "r": "colecta",
      "t": 7,
-     "v": 1,
+     "v": 0,
      "via": "celebración"
     },
     "comunion": {
@@ -119314,8 +119309,8 @@
      "de": "st_1122_175",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 7,
-     "v": 2,
+     "t": 4,
+     "v": 1,
      "via": "celebración"
     },
     "pueblo": null
@@ -119377,12 +119372,12 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1123_176",
-     "f": "misalito",
+     "de": "sanctis/die-23-novembris-s-clementis-i-papae-et-martyris",
+     "f": "latino",
      "r": "colecta",
-     "t": 2,
-     "v": 2,
-     "via": "celebración"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "comunion": {
      "de": "st_1123_176",
@@ -119401,20 +119396,20 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1123_176",
+     "de": "comun_5225COMMAR",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 4,
-     "v": 0,
-     "via": "celebración"
+     "t": 22,
+     "v": 2,
+     "via": "común"
     },
     "poscomunion": {
-     "de": "st_1123_176",
+     "de": "comun_5225COMMAR",
      "f": "misalito",
      "r": "poscomunion",
-     "t": 4,
+     "t": 14,
      "v": 0,
-     "via": "celebración"
+     "via": "común"
     },
     "pueblo": null
    },
@@ -119424,7 +119419,7 @@
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Clemente I, papa y mártir",
    "u": "st/st_1123_176",
-   "v": "completo"
+   "v": "parcial"
   },
   "V|5199TA1123_2.html|0": {
    "alt": [],
@@ -119475,12 +119470,12 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "comun_5226COMPAS",
+     "de": "st_1123_177",
      "f": "misalito",
      "r": "colecta",
-     "t": 7,
-     "v": 0,
-     "via": "común"
+     "t": 2,
+     "v": 2,
+     "via": "celebración"
     },
     "comunion": {
      "de": "comun_5226COMPAS",
@@ -119499,14 +119494,21 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "comun_5226COMPAS",
+     "de": "st_1123_177",
      "f": "misalito",
      "r": "ofrendas",
-     "t": 2,
+     "t": 4,
      "v": 0,
-     "via": "común"
+     "via": "celebración"
     },
-    "poscomunion": null,
+    "poscomunion": {
+     "de": "st_1123_177",
+     "f": "misalito",
+     "r": "poscomunion",
+     "t": 4,
+     "v": 0,
+     "via": "celebración"
+    },
     "pueblo": null
    },
    "prefacio": [],
@@ -119515,7 +119517,7 @@
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Columbano, abad",
    "u": "st/st_1123_177",
-   "v": "parcial"
+   "v": "completo"
   },
   "V|5200TA1124.html|0": {
    "alt": [],
@@ -123609,12 +123611,12 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "comun_5226COMPAS",
-     "f": "misalito",
+     "de": "communia/commune-pastorum-i-pro-papa-vel-pro-episcopo-1",
+     "f": "latino",
      "r": "colecta",
-     "t": 7,
-     "v": 0,
-     "via": "unidad"
+     "t": null,
+     "v": null,
+     "via": "latino"
     },
     "comunion": {
      "de": "comun_5226COMPAS",
@@ -128252,10 +128254,14 @@
   "lviii_8027nb": "misa/lviii_8027nb",
   "lviii_8028nb": "misa/lviii_8028nb",
   "md_01-09": "fecha/01-09",
+  "md_01-17": "fecha/01-17",
   "md_01-23": "fecha/01-23",
   "md_01-30": "fecha/01-30",
+  "md_02-06": "fecha/02-06",
   "md_02-07": "fecha/02-07",
   "md_02-09": "fecha/02-09",
+  "md_02-11": "fecha/02-11",
+  "md_02-25": "fecha/02-25",
   "md_03-02": "fecha/03-02",
   "md_03-03": "fecha/03-03",
   "md_03-05": "fecha/03-05",
@@ -128285,12 +128291,14 @@
   "md_04-10": "fecha/04-10",
   "md_04-11": "fecha/04-11",
   "md_04-12": "fecha/04-12",
+  "md_04-13": "fecha/04-13",
   "md_04-14": "fecha/04-14",
   "md_04-15": "fecha/04-15",
   "md_04-16": "fecha/04-16",
   "md_04-17": "fecha/04-17",
   "md_04-19": "fecha/04-19",
   "md_04-20": "fecha/04-20",
+  "md_04-21": "fecha/04-21",
   "md_04-24": "fecha/04-24",
   "md_04-26": "fecha/04-26",
   "md_05-05": "fecha/05-05",
@@ -128306,18 +128314,24 @@
   "md_05-30": "fecha/05-30",
   "md_06-07": "fecha/06-07",
   "md_06-20": "fecha/06-20",
+  "md_06-21": "fecha/06-21",
   "md_06-26": "fecha/06-26",
   "md_07-01": "fecha/07-01",
   "md_07-19": "fecha/07-19",
   "md_08-03": "fecha/08-03",
+  "md_08-07": "fecha/08-07",
   "md_08-30": "fecha/08-30",
   "md_08-31": "fecha/08-31",
   "md_09-18": "fecha/09-18",
   "md_09-22": "fecha/09-22",
+  "md_10-05": "fecha/10-05",
   "md_10-12": "fecha/10-12",
+  "md_10-28": "fecha/10-28",
   "md_10-30": "fecha/10-30",
   "md_11-09": "fecha/11-09",
+  "md_11-12": "fecha/11-12",
   "md_11-20": "fecha/11-20",
+  "md_11-22": "fecha/11-22",
   "md_12-01": "fecha/12-01",
   "md_12-05": "fecha/12-05",
   "md_12-14": "fecha/12-14",
@@ -128338,7 +128352,6 @@
   "san_beata-maria-vicenta-de": "st/san_beata-maria-vicenta-de",
   "san_beata-maria-vicenta-de-santa": "st/san_beata-maria-vicenta-de-santa",
   "san_beata-maria-vicenta-de-santa-dorotea": "st/san_beata-maria-vicenta-de-santa-dorotea",
-  "san_beato-elias-del-socorro-nieves": "st/san_beato-elias-del-socorro-nieves",
   "san_beato-gabriel-escoto-ruiz-o-c-d": "st/san_beato-gabriel-escoto-ruiz-o-c-d",
   "san_beato-gabriel-escoto-ruiz-o-c-d-martir-mexicano": "st/san_beato-gabriel-escoto-ruiz-o-c-d-martir-mexicano",
   "san_beato-luis-magana-servin": "st/san_beato-luis-magana-servin",

@@ -1280,6 +1280,32 @@ def flojo(cel, unidad, ranura, p, propios, por_unidad):
     return not p or len(p['testigos']) < 2
 
 
+# Los santos que una oración nombra, y si la celebración los nombra también.
+# La fase 4 ya no atribuye a una celebración la oración de otro santo, pero
+# los pasos de abajo —lo que el misalito imprimió esos días, el mismo
+# formulario del Misal, el común— la volvían a meter: san Cayetano rezaba la
+# colecta de san Miguel de la Mora, que el misalito pone antes el 7 de agosto,
+# y las ferias de la semana XVIII la oración sobre las ofrendas de san
+# Lorenzo. Lo que no pasa la prueba sigue cascada abajo (el común, el latín).
+# María y José no cuentan: los nombran fiestas que no los llevan en el título.
+NOMBRA = re.compile(r'\b(?:san|santa|santo|santos|beato|beata|beatos)\s+'
+                    r'((?:[A-ZÁÉÍÓÚÑ][\wáéíóúñ]+)(?:\s+(?:de\s+)?'
+                    r'[A-ZÁÉÍÓÚÑ][\wáéíóúñ]+)*)')
+NO_NOMBRAN = {'maria', 'jose', 'virgen', 'nuestro', 'nuestra', 'senor'}
+TITULO_DE = {}
+
+
+def nombra_bien(cel, texto):
+    nombres = set()
+    for m in NOMBRA.finditer(' '.join(texto or [])):
+        nombres |= {w for w in re.findall(r'[a-z]+', sinac(m.group(1)))
+                    if len(w) >= 4 and w not in NO_NOMBRAN}
+    if not nombres:
+        return True
+    titulo = TITULO_DE.get(cel) or ''
+    return bool(nombres & set(re.findall(r'[a-z]+', sinac(titulo))))
+
+
 def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
              latino, lat, dias_de, impreso, sueltos, dias):
     """Las seis ranuras de un formulario, cada una con el camino por el que se
@@ -1302,7 +1328,8 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
             continue
         jefe, otros = mejor_de(
             hermanos, propios, r,
-            lambda c, q: not flojo(c, unidad, r, q, propios, por_unidad))
+            lambda c, q: (not flojo(c, unidad, r, q, propios, por_unidad)
+                          and nombra_bien(cel, q['texto'])))
         if jefe:
             p = propios[jefe]['piezas'][r]
             piezas[r] = {'f': 'misalito', 'via': 'unidad', 'de': jefe, 'r': r,
@@ -1316,6 +1343,10 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
                          't': len(sueltos[i]['testigos']), 'v': None}
             continue
         cual, cuantos = del_dia(cel, r, dias_de, impreso, dias)
+        if cual and not nombra_bien(cel, sueltos[cual[1]]['texto']
+                                    if cual[0] == 'suelto'
+                                    else propios[cual[1]]['piezas'][r]['texto']):
+            cual = None
         if cual:
             clase, quien = cual
             if clase == 'suelto':
@@ -1346,6 +1377,10 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
         hecho = False
         for otro in sorted(hermanos, key=lambda c: (not c.endswith('_0'), c)):
             cual, _ = del_dia(otro, r, dias_de, impreso, dias)
+            if cual and not nombra_bien(cel, sueltos[cual[1]]['texto']
+                                        if cual[0] == 'suelto'
+                                        else propios[cual[1]]['piezas'][r]['texto']):
+                cual = None
             if not cual:
                 continue
             clase, quien = cual
@@ -1367,7 +1402,7 @@ def resuelve(cel, unidad, propios, por_unidad, sueltos_de, comunes_de,
         hecho = False
         for cm in comunes_de.get(cel, []):
             p = propios.get(cm, {}).get('piezas', {}).get(r)
-            if p:
+            if p and nombra_bien(cel, p['texto']):
                 piezas[r] = {'f': 'misalito', 'via': 'común', 'de': cm,
                              'r': r, 't': len(p['testigos']),
                              'v': len(p['variantes'])}
@@ -2442,6 +2477,7 @@ def main():
     titulo_de = {c: t for c, t, _, _ in cels}
     for c in propios:
         titulo_de.setdefault(c, propios[c].get('titulo') or c)
+    TITULO_DE.update(titulo_de)
     pareja_vot = puente_votivas(propios, pareja_misas, indice, fvot, avisos)
 
     unidades = {}

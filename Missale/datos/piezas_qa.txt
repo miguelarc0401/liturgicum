@@ -6,15 +6,15 @@ testigos y sus variantes. Lo que no se pudo atribuir está aquí,
 nombrado, y no ha entrado en los ficheros.
 
 formularios leídos            : 7572
-celebraciones con propios     : 560
+celebraciones con propios     : 575
 perícopas distintas por cita  : 3559
 prefacios propios cosechados  : 28
 textos propios atribuidos     : 2555
-   por lo que nombra la fuente: 871
-   por lo que titula el día   : 965
-   por la fecha del año       : 203
-   por el común que comparten : 50
-   por el calendario          : 360
+   por lo que nombra la fuente: 855
+   por lo que titula el día   : 967
+   por la fecha del año       : 240
+   por el común que comparten : 49
+   por el calendario          : 338
    por todos sus días menos uno: 106
 textos sin celebración que los explique: 319
    (van aparte, en sueltos_es.json, con sus días)
@@ -592,14 +592,14 @@ Los testigos: lo que está decidido y lo que no
 ----------------------------------------------
 
 Piezas propias por número de testigos del texto canónico:
-    1 testigo(s) :   211 piezas
-    2 testigo(s) :    99 piezas
-    3 testigo(s) :   133 piezas
-    4 testigo(s) :   192 piezas
-    5 testigo(s) :   131 piezas
-    6 testigo(s) :   187 piezas
-    7 testigo(s) :   434 piezas
-    8 testigo(s) :   370 piezas
+    1 testigo(s) :   210 piezas
+    2 testigo(s) :   101 piezas
+    3 testigo(s) :   138 piezas
+    4 testigo(s) :   198 piezas
+    5 testigo(s) :   132 piezas
+    6 testigo(s) :   191 piezas
+    7 testigo(s) :   440 piezas
+    8 testigo(s) :   371 piezas
     9 testigo(s) :    64 piezas
    10 testigo(s) :     5 piezas
    11 testigo(s) :     7 piezas
@@ -616,11 +616,11 @@ Piezas propias por número de testigos del texto canónico:
    42 testigo(s) :     1 piezas
 
 Piezas con variantes (la fuente no imprimió lo mismo todos los
-años): 515. La variante se guarda con los días que la respaldan,
+años): 504. La variante se guarda con los días que la respaldan,
 que es lo que impide que una errata de un año se imponga a los
 otros siete.
 
-Piezas decididas a la fuerza por empate de testigos: 69. Es el
+Piezas decididas a la fuerza por empate de testigos: 60. Es el
 único sitio donde la mayoría no decide, y conviene mirarlas:
    d3_0_3                             entrada      4 testigos, 1 variantes
    d3_2_0                             entrada      4 testigos, 1 variantes
@@ -638,16 +638,10 @@ Piezas decididas a la fuerza por empate de testigos: 69. Es el
    md_05-23                           colecta      1 testigos, 1 variantes
    md_09-18                           ofrendas     4 testigos, 1 variantes
    san_san-david-uribe-velasco        ofrendas     1 testigos, 1 variantes
-   san_santa-eduwiges-religiosa       ofrendas     1 testigos, 2 variantes
-   st_0117_3                          ofrendas     7 testigos, 1 variantes
-   st_0117_3                          poscomunion  7 testigos, 1 variantes
    st_0122_7                          poscomunion  2 testigos, 2 variantes
    st_0204_17                         ofrendas     3 testigos, 2 variantes
-   st_0206_18                         ofrendas     3 testigos, 1 variantes
-   st_0206_18                         poscomunion  3 testigos, 1 variantes
    st_0208_19                         poscomunion  1 testigos, 2 variantes
-   st_0225_200                        ofrendas     4 testigos, 1 variantes
-   st_0225_200                        poscomunion  4 testigos, 1 variantes
+   st_0210_20                         ofrendas     2 testigos, 1 variantes
    st_0308_29                         colecta      3 testigos, 1 variantes
    st_0309_30                         colecta      3 testigos, 2 variantes
    st_0427_202                        ofrendas     3 testigos, 1 variantes
@@ -656,15 +650,21 @@ Piezas decididas a la fuerza por empate de testigos: 69. Es el
    st_0518_57#misa-vespertina-de-la-v poscomunion  1 testigos, 1 variantes
    st_0525_60                         poscomunion  1 testigos, 1 variantes
    st_0525_61                         ofrendas     1 testigos, 1 variantes
+   st_0704_84                         colecta      7 testigos, 3 variantes
    st_0715_90                         ofrendas     4 testigos, 1 variantes
    st_0715_90                         poscomunion  4 testigos, 1 variantes
    st_0721_92                         ofrendas     2 testigos, 4 variantes
    st_0721_92                         poscomunion  2 testigos, 4 variantes
    st_0811_110                        ofrendas     3 testigos, 2 variantes
    st_0812_220                        poscomunion  4 testigos, 1 variantes
-   … y 29 más
+   st_0819_115                        ofrendas     4 testigos, 2 variantes
+   st_0819_222                        poscomunion  3 testigos, 3 variantes
+   st_0826_223                        poscomunion  4 testigos, 1 variantes
+   st_0902_224                        poscomunion  4 testigos, 1 variantes
+   st_0909_128                        ofrendas     4 testigos, 1 variantes
+   … y 20 más
 
-Piezas con un solo testigo y sin variante: 190. Entran, pero el
+Piezas con un solo testigo y sin variante: 189. Entran, pero el
 texto no está confirmado por nadie más:
    d0_1_0                             ofrendas     2021-12-05/0
    d0_1_5                             ofrendas     2021-12-10/0
@@ -706,7 +706,7 @@ texto no está confirmado por nadie más:
    md_03-16                           colecta      2026-03-16/0
    md_03-20                           colecta      2026-03-20/0
    md_03-20                           poscomunion  2025-03-20/0
-   … y 150 más
+   … y 149 más
 
 Lo atribuido con una excepción
 ------------------------------
@@ -781,7 +781,7 @@ varios comunes a la vez. Lo que sí entra hecho en
 comunes del Misal latino —que los trae enteros— es lo que la
 fase 5 necesita para colocarlos.
 
-Los 50 que sí son de un solo común (el común que ofrecen todos
+Los 49 que sí son de un solo común (el común que ofrecen todos
 sus días, sin una excepción) han entrado en `propios_es.json`.
 
 ranura        días  texto
@@ -928,24 +928,24 @@ números 142 y 143. Los misalitos sí las imprimen, y aquí están:
 Las celebraciones y lo que tienen
 ---------------------------------
 
-   santoral     254
+   santoral     257
    tiempo       157
-   fecha         81
+   fecha         93
    votiva        63
    común          5
 
-Con las cinco piezas del formulario completas: 162 de 560. Que la
+Con las cinco piezas del formulario completas: 161 de 575. Que la
 mayoría no las tenga todas no es un hueco del parseo: es lo que
 el misalito imprime. En una memoria pone la colecta del santo y
 deja las antífonas de la feria, así que el santo se queda con su
 colecta y nada más, y es correcto —la app tomará las demás de
 donde el día las toma—. Lo que falta, ranura por ranura:
 
-   sin comunion       311 celebraciones
-   sin entrada        293 celebraciones
-   sin ofrendas       166 celebraciones
-   sin poscomunion    164 celebraciones
-   sin colecta         36 celebraciones
+   sin comunion       326 celebraciones
+   sin entrada        308 celebraciones
+   sin ofrendas       175 celebraciones
+   sin poscomunion    171 celebraciones
+   sin colecta         41 celebraciones
 
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
@@ -955,10 +955,9 @@ fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
 calendario se armó con el general. Sus textos entran, con
-identificador `san_…`: son 22 celebraciones.
+identificador `san_…`: son 21 celebraciones.
 
    san_beata-maria-de-la-concepcion               colecta, comunion, ofrendas, poscomunion
-   san_beato-elias-del-socorro-nieves             poscomunion
    san_beato-luis-magana-servin                   ofrendas
    san_beato-luis-magana-servin-martir-mexicano   ofrendas
    san_beato-mateo-elias-del-socorro              colecta
@@ -976,7 +975,7 @@ identificador `san_…`: son 22 celebraciones.
    san_san-sabas-reyes-salazar                    comunion, ofrendas, poscomunion
    san_san-sabas-reyes-salazar-martir-mexicano    colecta
    san_san-tranquilino-ubiarco-robles             colecta, ofrendas, poscomunion
-   san_santa-eduwiges-religiosa                   colecta, ofrendas, poscomunion
+   san_santa-eduwiges-religiosa                   colecta
    san_santa-maria-en-sabado                      poscomunion
    san_santos-cristobal-antonio-y-juan            colecta, ofrendas, poscomunion
 

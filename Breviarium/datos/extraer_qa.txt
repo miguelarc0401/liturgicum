@@ -31,13 +31,13 @@ Horas y secciones halladas
    11030  sec:cantico_evangelico
    21785  sec:conclusion
     3553  sec:examen
-   26071  sec:himno
+   26066  sec:himno
     6806  sec:invitatorio
    18467  sec:invocacion
     3564  sec:lectura1
     3653  sec:lectura2
    21690  sec:lectura_breve
-   25432  sec:oracion
+   25363  sec:oracion
     7477  sec:padrenuestro
    11531  sec:preambulo
     7477  sec:preces

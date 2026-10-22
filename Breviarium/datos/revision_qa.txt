@@ -1,0 +1,180 @@
+Revisión de las horas del 2026-10-21 al 2027-10-20, contra la fuente
+============================================================
+
+días de la fuente que rezan lo que la app pone ese día: 2577 de 2728
+secciones (celebración por omisión):
+    12952  igual
+     1545  sin_testigo
+      417  otra_opcion
+      211  parecido
+       49  distinto
+
+Horas con secciones de menos o repetidas
+----------------------------------------
+  2027-03-28 oficio Domingo de Pascua de la Resurrección del Señor faltan: ['apertura', 'salmodia', 'responsorio', 'responsorio2'] repetidas: []
+
+Secciones que no dicen lo que su nombre dice
+----------------------------------------
+  2027-01-22 oficio responsorio2 San Vicente, diácono y mártir ['responsorio larguísimo (1725 letras)'] | Me ha probado el Señor como el oro en el crisol; mis pies pi
+  2027-03-25 visperas responsorio_breve Jueves santo de la Cena del Señor ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte.
+  2027-03-25 completas responsorio_breve Jueves santo de la Cena del Señor ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte.
+  2027-03-26 laudes responsorio_breve Viernes santo. Celebración de la Pasión  ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte, y una 
+  2027-03-26 visperas responsorio_breve Viernes santo. Celebración de la Pasión  ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte, y una 
+  2027-03-26 completas responsorio_breve Viernes santo. Celebración de la Pasión  ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte, y una 
+  2027-03-27 laudes responsorio_breve Vigilia pascual en la noche santa ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte, y una 
+  2027-03-27 visperas responsorio_breve Vigilia pascual en la noche santa ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte, y una 
+  2027-03-27 completas responsorio_breve Vigilia pascual en la noche santa ['responsorio breve sin R.'] | Cristo, por nosotros, se sometió incluso a la muerte, y una 
+  2027-03-28 laudes responsorio_breve Domingo de Pascua de la Resurrección del ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-28 visperas responsorio_breve Domingo de Pascua de la Resurrección del ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-29 laudes responsorio_breve Lunes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-29 visperas responsorio_breve Lunes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-29 completas responsorio_breve Lunes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-30 laudes responsorio_breve Martes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-30 visperas responsorio_breve Martes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-30 completas responsorio_breve Martes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-31 laudes responsorio_breve Miércoles de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-31 visperas responsorio_breve Miércoles de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-03-31 completas responsorio_breve Miércoles de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-01 laudes responsorio_breve Jueves de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-01 visperas responsorio_breve Jueves de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-01 completas responsorio_breve Jueves de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-02 laudes responsorio_breve Viernes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-02 visperas responsorio_breve Viernes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-02 completas responsorio_breve Viernes de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-03 laudes responsorio_breve Sábado de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-03 visperas responsorio_breve Sábado de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-03 completas responsorio_breve Sábado de la octava de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-04 laudes responsorio_breve Domingo II de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+  2027-04-04 visperas responsorio_breve Domingo II de Pascua ['responsorio breve sin R.'] | Éste es el día en que actuó el Señor: sea él nuestra alegría
+
+Distintas de la fuente en un día igual
+----------------------------------------
+  2026-12-11 visperas oracion [San Dámaso I, papa] parecido 0.56 primeras vísperas
+      app : Concédenos la gracia, Señor, de glorificarte siempre por el triunfo de tus mártires, a qui
+      2020-12-11: Dios todopoderoso, concede a tu pueblo permanecer siempre en vela aguardando la venida de tu Hijo, para que cu
+  2026-12-20 oficio lectura2 [Domingo IV de Adviento] parecido 0.05 
+      app : De la Carta a Diogneto (Cap. 8, 5—9, 6: Funk 1, 325-327) Nadie jamás ha visto ni ha conoci
+      2020-12-20: De las Homilías de san Bernardo, abad, Sobre las excelencias de la Virgen Madre (Homilía 4, 8-9: Opera omnia, 
+  2026-12-20 oficio responsorio2 [Domingo IV de Adviento] parecido 0.09 
+      app : Desde ahora me felicitarán todas las generaciones, porque el Poderoso ha hecho obras grand
+      2020-12-20: Recibe la palabra, Virgen María, que el Señor te anuncia por medio del ángel: concebirás y darás a luz al Dios
+  2026-12-20 laudes cantico_evangelico [Domingo IV de Adviento] parecido 0.89 
+      app : A María le llegó el tiempo de su alumbramiento, y dio a luz a su Hijo primogénito. Bendito
+      2020-12-20: El ángel Gabriel fue enviado a María Virgen, desposada con José. Bendito sea el Señor, Dios de Israel, porque 
+  2026-12-24 sexta salmodia [24 de diciembre] parecido 0.36 
+      app : El Ángel Gabriel saludó a María, diciendo: «Alégrate, llena de gracia, el Señor está conti
+      2020-12-24: El Ángel Gabriel saludó a María, diciendo: «Alégrate, llena de gracia, el Señor está contigo, bendita tú entre
+  2026-12-24 completas oracion [24 de diciembre] parecido 0.25 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+      2020-12-24: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2026-12-26 sexta salmodia [San Esteban, protomártir] parecido 0.32 
+      app : María conservaba todas estas cosas, meditándolas en su corazón. Dichoso el que, con vida i
+      2019-12-26: María conservaba todas estas cosas, meditándolas en su corazón. A ti levanto mis ojos, a ti que habitas en el 
+  2026-12-26 nona salmodia [San Esteban, protomártir] parecido 0.46 
+      app : Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos. Cuando el
+      2019-12-26: Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos. Mira mi abatimiento y líbrame
+  2026-12-28 nona salmodia [Los Santos Inocentes, mártires] parecido 0.31 
+      app : Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos. Cuando el
+      2019-12-28: Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos. Que llegue mi clamor a tu Pre
+  2026-12-29 nona salmodia [29 de diciembre: 5º día de la octava de ] parecido 0.33 
+      app : Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos. Cuando el
+      2020-12-29: Mis ojos han visto a tu Salvador, a quien has presentado ante todos los pueblos. Dichoso el que, con vida inta
+  2026-12-30 laudes preces [30 de diciembre: 6º día de la octava de ] parecido 0.88 
+      app : Oremos a Cristo, el Señor, en quien el Padre ha querido renovar todas las cosas, y digámos
+      2019-12-30: Oremos a Cristo, el Señor, en quien el Padre ha querido renovar todas las cosas, y digámosle: Hijo amado de Di
+  2026-12-30 tercia salmodia [30 de diciembre: 6º día de la octava de ] parecido 0.32 
+      app : José y María, la madre de Jesús, estaban maravillados de lo que se decía de él. En mi afli
+      2019-12-30: José y María, la madre de Jesús, estaban maravillados de lo que se decía de él. La ley del Señor es perfecta y
+  2026-12-31 sexta salmodia [31 de diciembre: 7º día de la octava de ] parecido 0.31 
+      app : María conservaba todas estas cosas, meditándolas en su corazón. A ti levanto mis ojos, a t
+      2019-12-31: María conservaba todas estas cosas, meditándolas en su corazón. Dichoso el que, con vida intachable, camina en
+  2027-01-02 oficio apertura [Santos Basilio Magno y Gregorio de Nacia] parecido 0.11 
+      app : Dios mío, ven en mi auxilio Señor, date prisa en socorrerme. Gloria al Padre, y al Hijo, y
+      2021-01-02: Si el Oficio de Lectura es la primera oración del día: Señor abre mis labios Y mi boca proclamará tu alabanza 
+  2027-01-02 visperas himno [Santos Basilio Magno y Gregorio de Nacia] parecido 0.12 primeras vísperas
+      app : Reyes que venís por ellas, no busquéis estrellas ya, porque donde el sol está no tienen lu
+  2027-01-02 visperas salmodia [Santos Basilio Magno y Gregorio de Nacia] parecido 0.23 primeras vísperas
+      app : Engendrado antes de la aurora de los siglos, el Señor, nuestro Salvador, hoy se ha manifes
+  2027-01-02 visperas lectura_breve [Santos Basilio Magno y Gregorio de Nacia] parecido 0.16 primeras vísperas
+      app : Dios nos ha salvado y nos ha llamado con santa llamada, no según nuestras obras, sino segú
+  2027-01-02 visperas responsorio_breve [Santos Basilio Magno y Gregorio de Nacia] parecido 0.43 primeras vísperas
+      app : Será la bendición de todos los pueblos. Será la bendición de todos los pueblos. Lo proclam
+  2027-01-02 visperas cantico_evangelico [Santos Basilio Magno y Gregorio de Nacia] parecido 0.80 primeras vísperas
+      app : Los magos, al ver la estrella, se dijeron: «Éste es el signo del gran Rey; vayamos a busca
+  2027-01-02 visperas preces [Santos Basilio Magno y Gregorio de Nacia] parecido 0.21 primeras vísperas
+      app : Veneremos a nuestro Salvador, adorado hoy por los magos, y digámosle suplicantes: Salva, S
+  2027-01-02 visperas oracion [Santos Basilio Magno y Gregorio de Nacia] parecido 0.49 primeras vísperas
+      app : Señor, tú que manifestaste a tu Hijo en este día a todas las naciones por medio de una est
+  2027-01-25 nona salmodia [La Conversión de san Pablo, apóstol] parecido 0.90 
+      app : El Señor dijo a Saulo: «Yo soy Jesús Nazareno, a quien tú persigues.» Cuando el Señor camb
+      2021-01-25: El Señor dijo a Saulo: «Yo soy Jesús Nazareno, a quien tú persigues.» ¡Cuánta guerra me han hecho desde mi juv
+  2027-02-05 tercia salmodia [San Felipe de Jesús, protomártir mexican] parecido 0.24 
+      app : El Señor le dio la victoria en la dura batalla, para que supiera que la sabiduría es más f
+      2021-02-05: Mucha paz tienen, Señor, los que aman tus leyes. Los nobles me perseguían sin motivo, pero mi corazón respetab
+  2027-02-05 sexta lectura_breve [San Felipe de Jesús, protomártir mexican] parecido 0.13 
+      app : Dichoso el hombre que soporta la prueba, porque, una vez aquilatado, recibirá la corona de
+      2021-02-05: En esto hemos conocido el amor: en que él dio su vida por nosotros. También nosotros debemos dar nuestra vida 
+  2027-02-05 nona lectura_breve [San Felipe de Jesús, protomártir mexican] parecido 0.10 
+      app : Las almas de los justos están en las manos de Dios y no los alcanzará tormento alguno. Cre
+      2021-02-05: En esto se manifestó el amor que Dios nos tiene: en que Dios envió al mundo a su Hijo único para que vivamos p
+  2027-02-09 nona salmodia [Martes de la 5ª semana de Tiempo Ordinar] parecido 0.10 
+      app : El Señor ha estado grande con nosotros, y estamos alegres. Cuando el Señor cambió la suert
+      2021-02-09: Dichoso el que anda por los senderos del Señor. Dichoso el que, con vida intachable, camina en la voluntad del
+  2027-03-18 visperas himno [Jueves de la 5ª semana de Cuaresma] parecido 0.10 primeras vísperas
+      app : Cante tu gloria célica armonía, tú que compartes con la siempre pura la misteriosa genealo
+  2027-03-18 visperas salmodia [Jueves de la 5ª semana de Cuaresma] parecido 0.18 primeras vísperas
+      app : Jacob engendró a José, el esposo de María, de la cual nació Jesús, que es el Mesías. Alaba
+  2027-03-18 visperas lectura_breve [Jueves de la 5ª semana de Cuaresma] parecido 0.10 primeras vísperas
+      app : Lo que hacéis, hacedlo con toda el alma, como para servir al Señor y no a los hombres: sab
+  2027-03-18 visperas responsorio_breve [Jueves de la 5ª semana de Cuaresma] parecido 0.45 primeras vísperas
+      app : El justo florecerá como un lirio. El justo florecerá como un lirio. Y se alegrará etername
+  2027-03-18 visperas cantico_evangelico [Jueves de la 5ª semana de Cuaresma] parecido 0.82 primeras vísperas
+      app : Éste es el administrador fiel y solícito a quien el amo ha puesto al frente de su servidum
+  2027-03-18 visperas preces [Jueves de la 5ª semana de Cuaresma] parecido 0.20 primeras vísperas
+      app : Acudamos suplicantes a Dios Padre todopoderoso, de quien procede toda la familia del cielo
+  2027-03-18 visperas oracion [Jueves de la 5ª semana de Cuaresma] parecido 0.50 primeras vísperas
+      app : Dios todopoderoso, que, en los albores del nuevo Testamento, encomendaste a san José los m
+  2027-05-03 laudes responsorio_breve [La Santa Cruz] parecido 0.89 
+      app : Te adoramos, oh Cristo, y te bendecimos. Aleluya, aleluya. Te adoramos, oh Cristo, y te be
+  2027-05-03 visperas responsorio_breve [La Santa Cruz] parecido 0.87 
+      app : Oh cruz gloriosa, en ti triunfó el Rey de los ángeles. Aleluya, aleluya. Oh cruz gloriosa,
+  2027-05-26 oficio resena [San Felipe Neri, presbítero] parecido 0.00 
+      app : Nació en Florencia el año 1515; marchó a Roma y allí empezó a dedicarse al apostolado de l
+  2027-05-31 laudes responsorio_breve [La Visitación de la Santísima Virgen Mar] parecido 0.85 
+      app : El Señor la eligió y la predestinó. El Señor la eligió y la predestinó. La hizo morar en s
+      2021-05-31: El Señor la eligió y la predestinó. Aleluya, Aleluya. El Señor la eligió y la predestinó. Aleluya, Aleluya. La
+  2027-05-31 visperas responsorio_breve [La Visitación de la Santísima Virgen Mar] parecido 0.86 
+      app : Alégrate, María, llena de gracia, el Señor está contigo. Alégrate, María, llena de gracia,
+      2021-05-31: Alégrate, María, llena de gracia, el Señor está contigo. Aleluya, Aleluya. Alégrate, María, llena de gracia, e
+  2027-06-03 laudes responsorio_breve [Santos Carlos Lwanga y compañeros, márti] parecido 0.85 
+      app : La alegría eterna coronará a los santos. La alegría eterna coronará a los santos. Vivirán 
+      2021-06-03: La alegría eterna coronará a los santos. Aleluya, aleluya. La alegría eterna coronará a los santos. Aleluya, a
+  2027-06-03 completas lectura_breve [Santos Carlos Lwanga y compañeros, márti] parecido 0.02 primeras vísperas
+      app : Escucha, Israel: El Señor, nuestro Dios, es solamente uno. Amarás al Señor, tu Dios, con t
+      2019-06-27: Que el mismo Dios de la paz os consagre totalmente y que todo vuestro ser, alma y cuerpo, sea custodiado sin r
+  2027-06-03 completas oracion [Santos Carlos Lwanga y compañeros, márti] parecido 0.29 primeras vísperas
+      app : OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus sa
+      2019-06-27: OREMOS, Señor, Dios nuestro, concédenos un descanso tranquilo que restaure nuestras fuerzas, desgastadas ahora
+  2027-07-27 nona salmodia [Martes de la 17ª semana de Tiempo Ordina] parecido 0.10 
+      app : El Señor ha estado grande con nosotros, y estamos alegres. Cuando el Señor cambió la suert
+      2020-07-28: Dichoso el que anda por los senderos del Señor. Dichoso el que, con vida intachable, camina en la voluntad del
+  2027-08-06 tercia salmodia [La Transfiguración del Señor] parecido 0.29 
+      app : El Señor apareció transfigurado entre Moisés y Elías: así recibió el testimonio de la ley 
+      2021-08-06: El Señor apareció transfigurado entre Moisés y Elías: así recibió el testimonio de la ley y de los profetas. H
+  2027-08-15 nona salmodia [La Asunción de la Santísima Virgen María] parecido 0.89 
+      app : La santa Madre de Dios ha sido glorificada en el reino celestial sobre los coros de los án
+      2021-08-15: La santa Madre de Dios ha sido glorificada en el reino celestial sobre los coros de los ángeles. Cuando el Señ
+  2027-08-24 nona salmodia [San Bartolomé, apóstol] parecido 0.10 
+      app : El Señor ha estado grande con nosotros, y estamos alegres. Cuando el Señor cambió la suert
+      2021-08-24: Dichoso el que anda por los senderos del Señor. Dichoso el que, con vida intachable, camina en la voluntad del
+  2027-08-30 oficio resena [Santa Rosa de Lima, virgen] parecido 0.00 
+      app : Nació en Lima (Perú) el año 1586; cuando vivía en su casa se dedicó ya a una vida de pieda
+  2027-08-30 nona salmodia [Santa Rosa de Lima, virgen] parecido 0.78 
+      app : Qué hermosa y resplandeciente es la generación casta. Cuando el Señor cambió la suerte de 
+      2021-08-30: Qué hermosa y resplandeciente es la generación casta. Cuando el Señor cambió la suerte de Sión, nos parecía so
+  2027-09-08 nona salmodia [La Natividad de la Santísima Virgen Marí] parecido 0.80 
+      app : Cantemos con todo el corazón y con toda nuestra mente las glorias de Cristo, en esta sagra
+      2021-09-08: Cantemos con todo el corazón y con toda nuestra mente las glorias de Cristo, en esta sagrada festividad de Mar
+  2027-09-14 tercia salmodia [La Exaltación de la Santa Cruz] parecido 0.89 
+      app : Oh Cristo, Salvador nuestro, sálvanos por la fuerza de la cruz; tú que salvaste a Pedro en
+      2021-09-14: Oh Cristo, Salvador nuestro, sálvanos por la fuerza de la cruz; tú que salvaste a Pedro en el mar, ten piedad 

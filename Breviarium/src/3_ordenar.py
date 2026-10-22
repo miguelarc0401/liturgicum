@@ -132,7 +132,28 @@ def hueco_salterio(dia, hora_cl):
     tiempo deja el 0 % de casillas con un solo texto; con él, el 85 %."""
     if not dia.get('salterio') or dia.get('dia_semana') is None:
         return None
-    return f"{dia['tiempo']}/{dia['salterio']}/{dia['dia_semana']}/{hora_cl}"
+    # Y hay salmodias que el salterio no da aunque la cabecera diga su semana,
+    # porque sus antífonas son del día. Al salterio iban a mezclarse con otra
+    # semana, y la mayoría se quedaba con la de una sola:
+    #  · los días sin semana (de Ceniza al sábado siguiente, y de lunes a
+    #    jueves santo) comparten número del salterio con la IV y la II de
+    #    Cuaresma, y el miércoles de la IV salía en Laudes con el salmo 50 del
+    #    de Ceniza, y el martes de la II con antífonas de Semana Santa;
+    #  · el 24 de diciembre, cuyas Laudes y primeras vísperas de Navidad son
+    #    suyas;
+    #  · las vísperas del sábado, que son las primeras del domingo, y en la
+    #    semana XXXIII las de Cristo Rey, en la XXXIV las del domingo I de
+    #    Adviento, en Cuaresma y en Pascua las de cada domingo;
+    #  · los domingos de Adviento, Cuaresma y Pascua, que tienen antífonas
+    #    propias: el I y el V de Cuaresma caen en la misma semana del salterio.
+    # Esas van a su casilla del tiempo, que sí distingue la semana.
+    ds = dia['dia_semana']
+    if (dia.get('semana') is None
+            or (dia.get('fecha') or '')[5:] == '12-24'
+            or (hora_cl == 'visperas' and ds == 6)
+            or (ds == 0 and dia['tiempo'] in ('Adviento', 'Cuaresma', 'Pascua'))):
+        return None
+    return f"{dia['tiempo']}/{dia['salterio']}/{ds}/{hora_cl}"
 
 
 def comun_de(dia):
@@ -392,6 +413,7 @@ def main():
     rotulos_bienal = defaultdict(Counter)         # (hueco, texto) -> rótulos
     santos = defaultdict(Counter)
     resenas = defaultdict(Counter)                # mm-dd/santo -> reseñas
+    primeras_visperas = []                        # (fecha, cl, huella, rótulo, testigo)
     cuentas, avisos = Counter(), []
     dias_vistos = 0
 
@@ -445,6 +467,13 @@ def main():
                         resenas[f'{fecha[5:]}/{clave(cel)}'][of['resena']] += 1
 
                 for hora_cl, h in (of.get('horas') or {}).items():
+                    # La fuente rotula las primeras vísperas («I VÍSPERAS DE
+                    # LA SANTÍSIMA TRINIDAD»), y son del día que viene: se
+                    # apuntan también para él (ver más abajo, `visperas1`).
+                    rotulada_primeras = (hora_cl == 'visperas'
+                                         and clave(h.get('titulo') or '')
+                                         .startswith('i visperas'))
+                    es_primeras = rotulada_primeras and of is oficios[0]
                     # Una misma clase puede salir dos veces en la misma
                     # hora: el Oficio de Lectura tiene dos lecturas y, tras
                     # cada una, su responsorio. Si las dos fueran a la
@@ -473,9 +502,22 @@ def main():
                         hu = texto_de(lineas)
                         if not hu:
                             continue
+                        # Una salmodia sin antífonas ni salmos no lo es: el 4
+                        # de octubre de 2025 la fuente puso la lectura breve
+                        # debajo del rótulo «SALMODIA», y san Francisco la
+                        # rezaba de salmodia propia.
+                        if (base == 'salmodia' and not antifonas_de(lineas)
+                                and not salmos_de(lineas)):
+                            cuentas['salmodia sin antífonas ni salmos '
+                                    '(fuera)'] += 1
+                            continue
                         textos.setdefault(hu, lineas)
                         rot = sec.get('rotulo')
                         secuencia.append(cl)
+                        if es_primeras and base not in ORDINARIO and base not in (
+                                'preambulo', 'padrenuestro'):
+                            primeras_visperas.append((fecha, cl, hu, rot,
+                                                      testigo))
 
                         if base in ORDINARIO:
                             # El ordinario tampoco es del todo invariable:
@@ -525,7 +567,16 @@ def main():
                             if rot:
                                 rotulos_bienal[(kf, hu)][rot] += 1
 
-                        if celebra:
+                        # La salmodia de las vísperas de un sábado que celebra
+                        # y que la fuente rotula «I VÍSPERAS» es la de las
+                        # primeras del domingo, no la del santo: tomada por
+                        # suya, san Antonio rezaba en sus vísperas las
+                        # antífonas del Corpus de 2020. Va a la casilla del
+                        # sábado. (Las de la Exaltación de la Cruz en sábado
+                        # son sus segundas, y son suyas.)
+                        sabado = (base == 'salmodia' and rotulada_primeras
+                                  and of.get('dia_semana') == 6)
+                        if celebra and not sabado:
                             propios.append((kf, cel, comun_de(of), rango,
                                             hora_cl, cl, hu, rot, testigo))
                         else:
@@ -695,33 +746,60 @@ def main():
     himnos_del_dia.discard('')
 
     candidatos = []
+    # Lo que es del día pero cae en un día que no es nunca feria —san Esteban
+    # y los Inocentes en la octava, el Bautismo, Cristo Rey, la Trinidad, el
+    # Corpus, el 2 de enero— no tiene casilla del tiempo de la que tomarse, y
+    # al descartarlo del santo se perdía: esos días salían sin Completas y
+    # con la Hora intermedia sin himno. Si la casilla del tiempo no lo tiene,
+    # se le da lo que la fuente rezó esos días, que es lo del día. La
+    # salmodia, sólo en las casillas sin semana (`@`): en las otras sale del
+    # salterio, y la que rezó una fiesta —los salmos del domingo I, con sus
+    # antífonas, que también son del salterio— taparía la del día.
+    huerfanos = defaultdict(lambda: defaultdict(list))
+    rotulos_huerfanos = defaultdict(Counter)
+
+    def del_dia(motivo, kf, hu, rot, testigo):
+        cuentas[motivo] += 1
+        if kf.endswith('/salmodia') and '/@/' not in kf:
+            return
+        if kf not in tiempo_libro:
+            huerfanos[kf][hu].append(testigo)
+            if rot:
+                rotulos_huerfanos[kf][rot] += 1
+
     for kf, cel, comun, rango, hora_cl, cl, hu, rot, testigo in propios:
         if hu in textos_del_hueco.get(kf, ()):
             cuentas['del santo pero ferial'] += 1
             continue
         if hora_cl == 'completas' and rango not in ('SOLEMNIDAD',
                                                     'CONMEMORACIÓN'):
-            cuentas['del santo pero ferial: completas'] += 1
+            del_dia('del santo pero ferial: completas', kf, hu, rot, testigo)
             continue
         # «En la Hora intermedia nunca se hace mención de las memorias de
         # los santos» (Ordinario): lo que la fuente rezó en ellas es la feria
         # —la oración de Tercia del salterio salía como del común de un
         # mártir—
         if hora_cl in INTERMEDIAS and rango in ('MEMORIA', 'MEMORIA LIBRE'):
-            cuentas['del santo pero ferial: Hora intermedia de una '
-                    'memoria'] += 1
+            del_dia('del santo pero ferial: Hora intermedia de una memoria',
+                    kf, hu, rot, testigo)
             continue
         if (hora_cl in INTERMEDIAS and cl == 'himno'
                 and incipit(textos[hu]) in himnos_del_dia):
-            cuentas['del santo pero ferial: himno de la Hora intermedia'] += 1
+            del_dia('del santo pero ferial: himno de la Hora intermedia',
+                    kf, hu, rot, testigo)
             continue
         if cl == 'salmodia':
             ants = antifonas_de(textos[hu])
             if ants and all(clave(a) in ants_del_salterio for a in ants):
-                cuentas['del santo pero ferial: salmodia del salterio'] += 1
+                del_dia('del santo pero ferial: salmodia del salterio', kf,
+                        hu, rot, testigo)
                 continue
         candidatos.append((cel, comun, rango, hora_cl, cl, hu, rot, testigo))
         cuentas['propio de la celebración'] += 1
+    del_dia_libro, _ = decide(huerfanos, textos, rotulos_huerfanos)
+    tiempo_libro.update(del_dia_libro)
+    cuentas['casillas del tiempo que sólo dan días que celebran'] += len(
+        del_dia_libro)
 
     # --------------------------------------------------------- tercera pasada
     # de lo propio, lo que sale con dos santos distintos del mismo común,
@@ -772,20 +850,99 @@ def main():
     for kf, cel, comun, rango, hora_cl, cl, hu, rot, testigo in propios:
         anios[f"{testigo['f'][5:]}/{clave(cel)}/{hora_cl}/{cl}"].add(
             testigo['f'][:4])
+    # Salvo la salmodia que repite cada año sus antífonas sobre los salmos
+    # del día de la semana en que cae —la Hora intermedia de san Esteban, en
+    # la octava, que no tiene semana del salterio—: cada año es un texto
+    # distinto, pero lo suyo, las antífonas, es siempre lo mismo, y podada se
+    # quedaba sin salmodia.
+    def mismas_antifonas(cuenta):
+        ants = {antifonas_de(textos[h]) for h in cuenta}
+        return len(ants) == 1 and () not in ants
+
     sueltos = sorted(k for k, cuenta in santoral.items()
                      if max(len(ts) for ts in cuenta.values()) == 1
-                     and len(anios[k]) >= 3)
+                     and len(anios[k]) >= 3
+                     and not (k.endswith('/salmodia')
+                              and mismas_antifonas(cuenta)))
     for k in sueltos:
         del santoral[k]
+
+    # Las primeras vísperas, con el día al que pertenecen. Guardadas sólo en
+    # la víspera —como las publica la fuente—, las de las solemnidades que
+    # se mueven caían cada año en una casilla distinta (el sábado de una
+    # semana u otra, el jueves del Sagrado Corazón, el 23 de junio) y la
+    # mayoría de esa casilla era la de un sábado cualquiera: la Trinidad, el
+    # Corpus, el Sagrado Corazón, la Sagrada Familia o el Bautismo salían
+    # con las vísperas de la feria. Aquí van también bajo el día que entra,
+    # como hora `visperas1`: en el santoral si ese día celebra una
+    # solemnidad o una fiesta, y en el tiempo si es un día sin semana (la
+    # Navidad, Pentecostés, el domingo de Ramos). Los domingos con semana no
+    # hacen falta: su sábado es siempre suyo.
+    primeras_tiempo = defaultdict(lambda: defaultdict(list))
+    rotulos_primeras = defaultdict(Counter)
+    for fecha, cl, hu, rot, testigo in primeras_visperas:
+        man = (dt.date.fromisoformat(fecha) + dt.timedelta(days=1)).isoformat()
+        cab = cabeceras.get(man) or {}
+        if not cab.get('tiempo'):
+            continue
+        t_man = dict(testigo, f=man, t=cab['tiempo'])
+        cel = cab.get('celebracion')
+        if cel and cab.get('rango') in ('SOLEMNIDAD', 'FIESTA'):
+            k = f'{man[5:]}/{clave(cel)}/visperas1/{cl}'
+            santoral[k][hu].append(t_man)
+            if rot:
+                rotulos['san:' + k][rot] += 1
+            cuentas['primeras vísperas, al santoral'] += 1
+        elif cab.get('semana') is None:
+            k = hueco_ferial(dict(cab, fecha=man), 'visperas1', cl)
+            if k:
+                primeras_tiempo[k][hu].append(t_man)
+                if rot:
+                    rotulos_primeras[k][rot] += 1
+                cuentas['primeras vísperas, al tiempo'] += 1
     cuentas['al santoral, pero de un año solo entre tres o más '
             '(fuera)'] += len(sueltos)
 
     comunes_libro, var_c = decide(
         comunes, textos, {k[4:]: v for k, v in rotulos.items()
                           if k.startswith('com:')}, rot_texto, True)
+
+    # Un texto que rezan dos santos del mismo común va al común, y si no es
+    # el que más se reza en él se queda de variante: la app ofrece el del
+    # común, y la fiesta perdía el suyo. San Mateo tiene de primera lectura
+    # Efesios 4, 1-16 todos los años, pero otro apóstol la rezó alguna vez,
+    # y la app le daba la de los apóstoles (1 Corintios 4). En las fiestas
+    # y las solemnidades, lo que la celebración reza la mayoría de sus años
+    # y no es la forma del común —ni la de todo el año ni la de Pascua— es
+    # suyo. En las memorias no se toca: lo suyo sería quitar la elección
+    # entre las lecturas del común que la app ofrece.
+    por_santo = defaultdict(Counter)
+    for kc, hs in comunes.items():
+        for hu, ts in hs.items():
+            for t in ts:
+                rango_t = (cabeceras.get(t['f']) or {}).get('rango')
+                if rango_t in ('FIESTA', 'SOLEMNIDAD'):
+                    por_santo[(t['s'], t['f'][5:], kc)][hu] += 1
+    for (santo, md, kc), cuenta in sorted(por_santo.items()):
+        canon = comunes_libro.get(kc) or {}
+        formas = [canon.get('lineas'), (canon.get('pascua') or {}).get('lineas')]
+        hu, n = max(cuenta.items(), key=lambda par: (par[1], par[0]))
+        if textos[hu] in formas or n < 2 or n * 2 <= sum(cuenta.values()):
+            continue
+        hora_cl, cl = kc.split('/')[-2:]
+        k = f'{md}/{santo}/{hora_cl}/{cl}'
+        if k in santoral:
+            continue
+        santoral[k][hu] = [t for t in comunes[kc][hu]
+                           if t['s'] == santo and t['f'][5:] == md]
+        rotulos['san:' + k].update(rot_texto.get((kc, hu))
+                                   or rotulos.get('com:' + kc) or {})
+        cuentas['del común, pero lo que la fiesta reza siempre: suyo'] += 1
     santoral_libro, var_n = decide(
         santoral, textos, {k[4:]: v for k, v in rotulos.items()
                            if k.startswith('san:')}, rot_texto, True)
+    primeras_libro, _ = decide(primeras_tiempo, textos, rotulos_primeras)
+    tiempo_libro.update(primeras_libro)
 
     # ------------------------------------------------------------- se escribe
     libros = [('ordinario', ordinario_libro, var_o),

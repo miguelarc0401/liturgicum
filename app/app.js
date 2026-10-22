@@ -1170,6 +1170,24 @@ function composicionOraciones(slug, cels, clave) {
       + 'la feria (IGMR 363).' };
 }
 
+/* En el común, la colecta es la del santo si la tiene (IGMR 363). El
+ * formulario del Común de pastores que la app ofrece como alternativa traía
+ * la de san Martín de Tours —la imprimía así el misalito, con el nombre
+ * puesto—, y la decía en san Carlos Borromeo, san Juan de Capistrano y
+ * otros treinta. Si el formulario que se reza no trae colecta en
+ * castellano, se toma la del formulario propio del santo, con su latín. */
+function colectaDelSanto(clave) {
+  const d = E.slugMisa && E.diaDe.get(E.slugMisa);
+  if (!d) return null;
+  for (const b of d.b) {
+    const g = b.k !== clave && E.misa.formularios[b.k];
+    if (g && ((g.p || {}).colecta || {}).t) {
+      return { f: g, lat: g.la ? (E.latino.formularios[g.la] || null) : null };
+    }
+  }
+  return null;
+}
+
 /** El formulario del que sale una ranura, con la opción elegida. */
 function formularioDe(ranura, f, lat, clave) {
   const O = E.oraciones;
@@ -2269,8 +2287,11 @@ function armaMisa(clave, lects) {
    * sin latín—, y la oración sobre el pueblo, que no entra aquí porque sólo
    * la tiene la Cuaresma y su sección no se pinta si no hay nada. */
   const pieza = (ran) => {
-    const o = formularioDe(ran, f,
+    let o = formularioDe(ran, f,
       (mx && mx.p && mx.p[ran]) ? latDe : lat, clave);
+    if (ran === 'colecta' && !((o.f.p || {}).colecta || {}).t) {
+      o = colectaDelSanto(clave) || o;
+    }
     const h = pintaPieza(o.f, o.lat, ran);
     if (h || ran === 'pueblo') return h;
     return '<p class="omision">El Misal no trae esta oración en este '
@@ -5378,6 +5399,7 @@ function delDia(d, hora, cl) {
     const ciclo = (L.tiempo_ciclo || {})[h];
     if (ciclo && ciclo[d.ci]) return ciclo[d.ci];
     const c = pieza(L.tiempo, k + '/', hora, cl);
+    if (c && cl === 'salmodia' && k === d.kf) return salmosDelDia(c, d, hora);
     if (c) return c;
   }
   return (cl === 'salmodia' && d.p
@@ -5386,12 +5408,29 @@ function delDia(d, hora, cl) {
     || L.ordinario['@/' + hora + '/' + cl] || null;
 }
 
+/* La salmodia que va por fecha, la del 24 de diciembre, trae los salmos del
+ * día de la semana en que cayó el año que la fuente más veces la publicó, y
+ * cada año cae en otro. Medido en la fuente, año tras año: en Laudes y en
+ * la Hora intermedia las antífonas son de la fecha y los salmos, del
+ * salterio de hoy; en el Oficio, todo es del salterio; y las vísperas y las
+ * Completas son las de Navidad, con sus salmos. */
+function salmosDelDia(c, d, hora) {
+  if (hora === 'visperas' || hora === 'completas' || !d.p) return c;
+  const sal = E.horas.salterio[d.t + '/' + d.p + '/' + d.d + '/' + hora];
+  if (!sal) return c;
+  if (hora === 'oficio') return sal;
+  const ants = despieza(c.l).ants, salmos = despieza(sal.l).salmos;
+  if (!ants.length || !salmos.length) return c;
+  return Object.assign({}, c, { l: compone(ants, salmos) });
+}
+
 /** Si esta sección de este día va por fecha: la misma regla con que la fase
  *  3 guardó el libro (Breviarium/src/breviario.py, `va_por_fecha`). Entre
  *  semana, todo menos las Completas; el domingo IV de Adviento, sólo la
  *  antífona del Magníficat, que del 17 al 23 es la «Oh» de la fecha; el 24,
- *  las vísperas y Completas de Navidad; y el sábado de enero, las vísperas
- *  son las primeras del domingo, que no son de la fecha. */
+ *  las vísperas y Completas de Navidad; y las vísperas del sábado son las
+ *  primeras del domingo, que no son de la fecha —en diciembre, salvo la
+ *  antífona «Oh»—. */
 function vaPorFecha(d, hora, cl) {
   const m = d.kf && /(\d+) de (diciembre|enero)$/.exec(d.kf);
   if (!m) return false;
@@ -5400,11 +5439,11 @@ function vaPorFecha(d, hora, cl) {
     return true;
   }
   if (hora === 'completas') return false;
-  if (d.d === 0) {
+  if (d.d === 0 || (d.d === 6 && hora === 'visperas')) {
     return d.t === 'Adviento' && hora === 'visperas'
       && cl === 'cantico_evangelico';
   }
-  return !(!diciembre && d.d === 6 && hora === 'visperas');
+  return true;
 }
 
 /* Lo del santo y lo de su común no es lo mismo todo el año: en Pascua el
@@ -6127,6 +6166,40 @@ function conmemora(secs, op, hora, d) {
   }
 }
 
+/* Las primeras vísperas de lo que entra mañana. La fuente las publica en la
+ * víspera, y las de las solemnidades que se mueven —la Trinidad, el Corpus,
+ * el Sagrado Corazón, la Sagrada Familia, el Bautismo— caían cada año en una
+ * casilla distinta, cuya mayoría era la de un sábado o un jueves cualquiera.
+ * La fase 3 las guarda además con su día, como hora `visperas1`. Cuando
+ * hoy son ya las primeras vísperas de mañana (`cualVisperas`) y mañana las
+ * tiene, cada sección que trae se toma de ahí; lo que no trae —la
+ * invocación, la conclusión— es lo de todos los días. */
+function primerasDelQueEntra(secs, iso, d, op) {
+  const vis = cualVisperas(iso, 'visperas', d, op);
+  if (!vis || vis.n !== 1 || !E.horasDias.dias[vis.iso]) return secs;
+  const anio = anioDe(vis.iso) || {};
+  const dm = Object.assign({ a: anio.ferial, ci: anio.ciclo },
+    E.horasDias.dias[vis.iso]);
+  const cm = celebracionesHoras(dm, 'visperas');
+  const opm = cm.ops.find((o) => o.id === cm.def);
+  const L = E.horas;
+  const pre = opm && opm.cel ? opm.cel[1] + '/' + opm.cel[0] + '/' : null;
+  const de = (cl) => (pre && ((dm.t === 'Pascua'
+      && pieza(L.santoral_pascua || {}, pre, 'visperas1', cl))
+      || pieza(L.santoral, pre, 'visperas1', cl)))
+    || [dm.kf, dm.k].filter(Boolean)
+      .map((k) => L.tiempo[k + '/visperas1/' + cl]).find(Boolean) || null;
+  if (!de('oracion')) return secs;
+  const nuevas = [];
+  for (const cl of ordenDe('visperas')) {
+    const c = de(cl);
+    const s = secs.find((x) => x.cl === cl);
+    if (c) nuevas.push({ cl: cl, alts: [{ id: 'propio', rot: 'Propio', c: c }], i: 0 });
+    else if (s) nuevas.push(s);
+  }
+  return nuevas;
+}
+
 /** Las secciones de una hora, con sus opciones. La cascada es la del libro
  *  —lo propio del santo; si no lo tiene, lo de su común; si no, lo del
  *  tiempo; la salmodia, del salterio; lo que no cambia, del ordinario—,
@@ -6149,6 +6222,7 @@ function armaHora(iso, hora, idCel) {
         i: eleccionDe(iso, op.id, hora, cl, alts, d) });
     }
   }
+  if (hora === 'visperas') secciones = primerasDelQueEntra(secciones, iso, d, op);
   // La reseña del santo o de la fiesta: el libro la trae delante de todo el
   // oficio, y aquí va pegada a la segunda lectura, que es la que cuenta su
   // vida —de él, si es hagiográfica; del misterio que se celebra, si es

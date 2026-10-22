@@ -78,6 +78,23 @@ def clase_de_rotulo(texto):
     return None
 
 
+def es_titulo_de_lectura(texto, act):
+    """Verdadero si este rótulo rojo es el título de la lectura en curso.
+
+    Las lecturas del oficio llevan su título en versales rojas, y algunos
+    empiezan como un rótulo de sección: «ORACIÓN EN TIEMPO DE TRIBULACIÓN»
+    (Habacuc), «HIMNO DE ACCIÓN DE GRACIAS», «ORACIÓN AL BUEN PASTOR».
+    Tomados por rótulo, el cuerpo de la lectura se iba a la oración del
+    día y la oración de verdad quedaba de segunda. Dentro de una lectura
+    sólo la cierra un rótulo exacto o el responsorio; lo que entra por un
+    prefijo de oración o de himno es su título.
+    """
+    if not act or act['clase'] not in ('lectura1', 'lectura2'):
+        return False
+    c = clave(texto)
+    return c not in EXACTOS and c.startswith(('oracion', 'himno'))
+
+
 def es_salmo(texto):
     """Los rótulos rojos que dentro de la salmodia abren un salmo o cántico."""
     c = clave(texto)
@@ -253,9 +270,14 @@ def hora(ruta):
 
     for ln in lineas[i:]:
         t = plano(ln)
-        if es_rubrica(ln) and t:
+        # Lo que va entre paréntesis es una acotación, nunca un rótulo:
+        # las primeras vísperas que titulan en dos renglones («I VÍSPERAS /
+        # de la Asunción…») dejan el «(Oración de la tarde)» fuera del
+        # subtítulo, y abría una oración vacía delante de la de verdad.
+        if es_rubrica(ln) and t and not t.startswith('('):
             cl = clase_de_rotulo(t)
-            if cl and not (act and act['clase'] == 'salmodia' and es_salmo(t)):
+            if (cl and not (act and act['clase'] == 'salmodia' and es_salmo(t))
+                    and not es_titulo_de_lectura(t, act)):
                 abre(cl, t)
                 continue
         if act is None:
