@@ -142,7 +142,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
 20/05  San Bernardino de Siena, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores.  →  pastores
-21/05  Santos Cristóbal Magallanes, presbítero, y compañeros, mártires (memoria)
+21/05  Santos Cristóbal Magallanes, presbítero, y compañeros, mártires (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de varios mártires.  →  varios martires
 22/05  Santa Rita de Casia, religiosa (memoria libre)
@@ -541,11 +541,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 13/09  San Juan Crisóstomo, obispo y doctor de la Iglesia
         · responsorio: cita distinta — PDF «2 Tm 2, 9-10; Sal 26, 1», fuente «2Tm 2, 9-10»
-14/09  La Exaltación de la Santa Cruz
-        · himno de Laudes: otro himno — PDF «oh cruz fiel arbol unico…», fuente «brille la cruz del verbo…»
-        · himno del Oficio: otro himno — PDF «oh cruz fiel arbol unico…», fuente «cruz de cristo…»
-        · primera lectura: cita distinta — PDF «Gálatas 2, 19-3, 7. 13-14; 6, 14-16», fuente «Gálatas 2, 19»
-        · himno de Vísperas: otro himno — PDF «en la cruz esta la…», fuente «las banderas reales se adelantan…»
 15/09  Nuestra Señora de los Dolores
         · himno de Laudes: otro himno — PDF «la madre piadosa estaba…», fuente «habra dolor mas intenso…»
         · preces de Laudes: el PDF la trae propia; la fuente la toma del común
@@ -635,7 +630,7 @@ Del tomo I: el 2 de enero, el 6 y el 7 antes de una Epifanía en domingo, el 12
 (sábado después de la Epifanía) y las vísperas del 11. Antes de usar un texto
 se buscó en la fuente.
 
-   Del PDF (49):
+   Del PDF (61):
      Navidad/@/11 de enero/visperas/oracion
      Navidad/@/12 de enero/laudes/oracion
      Navidad/@/12 de enero/laudes/preces
@@ -685,8 +680,20 @@ se buscó en la fuente.
      Navidad/@/antes de la Epifanía, 7 de enero/sexta/oracion
      Navidad/@/antes de la Epifanía, 7 de enero/tercia/oracion
      Navidad/@/antes de la Epifanía, 7 de enero/visperas/oracion
+     Ordinario/8/6/visperas/cantico_evangelico (ciclo B)
+     Ordinario/8/6/visperas/cantico_evangelico (ciclo C)
+     Ordinario/9/0/laudes/cantico_evangelico (ciclo A)
+     Ordinario/9/0/laudes/cantico_evangelico (ciclo B)
+     Ordinario/9/0/laudes/cantico_evangelico (ciclo C)
+     Ordinario/9/0/oficio/lectura1 (año I)
+     Ordinario/9/0/oficio/lectura1 (año II)
+     Ordinario/9/0/oficio/responsorio (año I)
+     Ordinario/9/0/oficio/responsorio (año II)
+     Ordinario/9/0/visperas/cantico_evangelico (ciclo A)
+     Ordinario/9/0/visperas/cantico_evangelico (ciclo B)
+     Ordinario/9/0/visperas/cantico_evangelico (ciclo C)
 
-   Halladas en la fuente (33):
+   Halladas en la fuente (36):
      Navidad/@/11 de enero/visperas/cantico_evangelico  ←  tiempo: Navidad/2/6/visperas/cantico_evangelico
      Navidad/@/11 de enero/visperas/lectura_breve  ←  santoral: 12-27/san juan apostol y evangelista/visperas/lectura_breve
      Navidad/@/11 de enero/visperas/preces  ←  tiempo: Navidad/2/6/visperas/preces (variante de otro año)
@@ -720,3 +727,6 @@ se buscó en la fuente.
      Navidad/@/antes de la Epifanía, 7 de enero/oficio/responsorio (año II)  ←  tiempo: Navidad/@/7 de enero/oficio/responsorio
      Navidad/@/antes de la Epifanía, 7 de enero/sexta/lectura_breve  ←  tiempo: Navidad/@/30 de diciembre/sexta/lectura_breve
      Navidad/@/antes de la Epifanía, 7 de enero/tercia/lectura_breve  ←  tiempo: Navidad/@/30 de diciembre/tercia/lectura_breve
+     Ordinario/8/6/visperas/cantico_evangelico (ciclo A)  ←  tiempo: Ordinario/26/0/visperas/cantico_evangelico
+     Ordinario/9/0/oficio/lectura2  ←  tiempo: Ordinario/5/0/oficio/lectura2
+     Ordinario/9/0/oficio/responsorio2  ←  tiempo: Cuaresma/2/3/oficio/responsorio2

@@ -129,7 +129,7 @@ mes,dia,movil,nombre,grado,ambito,fuente,nota
 9,8,,La Natividad de la Santísima Virgen María,fiesta,general,calco,
 9,9,,"San Pedro Claver, presbítero",memoria_libre,general,calco,
 9,13,,"San Juan Crisóstomo, obispo y doctor de la Iglesia",memoria,general,calco,
-9,14,,La Exaltación de la Santa Cruz,fiesta,general,calco,
+9,14,,,fiesta,general,calco,"La Exaltación de la Santa Cruz: en México se celebra el 3 de mayo, y el 14 de septiembre es feria (misalitos: «En la República Mexicana, la Fiesta de la EXALTACIÓN DE LA SANTA CRUZ…»)"
 9,15,,Nuestra Señora de los Dolores,memoria,general,calco,
 9,16,,"Santos Cornelio, papa, y Cipriano, obispo, mártires",memoria,general,calco,
 9,17,,"San Roberto Belarmino, obispo y doctor de la Iglesia",memoria_libre,general,calco,

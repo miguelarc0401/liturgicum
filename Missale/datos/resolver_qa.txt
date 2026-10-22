@@ -7,18 +7,18 @@ castellano, por qué camino, con cuántos testigos, y si no lo
 tiene, por qué no.
 
 formularios del leccionario     : 1051
-   con las cinco piezas en castellano :  812  (77 %)
-   con alguna pieza en castellano :  153  (15 %)
-   sólo en latín                :   54  (5 %)
+   con las cinco piezas en castellano :  811  (77 %)
+   con alguna pieza en castellano :  157  (15 %)
+   sólo en latín                :   51  (5 %)
    sin nada, ni latín           :   32  (3 %)
 piezas resueltas                : 6306
    de la propia celebración     : 1760
    de otra celebración del mismo formulario del Misal : 1895
    de un texto suelto que cae en ese formulario :   76
-   de lo que el misalito imprimió esos días :  699
+   de lo que el misalito imprimió esos días :  708
    del común que la celebración ofrece :  109
    de otro formulario con la misma oración latina :   68
-   del Misal latino, en latín   :  502
+   del Misal latino, en latín   :  493
    sin nada                     : 1197
 
 La unidad del Misal no es el día: es el formulario
@@ -64,15 +64,16 @@ El puente con el Misal latino
     fecha                                             119
     orden del libro y nombre                           38
     fecha y nombre                                     21
-    la tabla                                            4
     nombre, en otra fecha                               4
-    orden del libro, sin que el nombre lo confirme      2
+    la tabla                                            3
+    orden del libro, sin que el nombre lo confirme      3
 
   Las parejas que el nombre no pudo confirmar, una por una. El
   latín y el castellano llaman a estos santos con palabras
   distintas, y lo que las empareja es el orden del libro:
     st_0624_77     in-nativitate-s-ioannis-baptistae-ad-missam-in-die       El Nacimiento de san Juan Bautista
-    st_1102_162    in-commemoratione-omnium-fidelium-defunctorum-1          Conmemoración de todos los fieles difunt
+    st_1102_161    in-commemoratione-omnium-fidelium-defunctorum-1          Conmemoración de todos los fieles difunt
+    st_1117_171    in-commemoratione-omnium-fidelium-defunctorum-s-elisabet Santa Isabel de Hungría
 
   Las cuatro de la tabla, y por qué están en ella: Ludovicus es
   Luis, Elisabeth es Isabel y Stephanus es Esteban, de modo que
@@ -82,7 +83,6 @@ El puente con el Misal latino
     st_0825_121    in-assumptione-beatae-mariae-virginis-s-ludovici         San Luis
     st_0816_114    in-assumptione-beatae-mariae-virginis-s-stephani-hungari San Esteban de Hungría
     st_0704_84     iulius-s-elisabeth-lusitaniae                            Santa Isabel de Portugal
-    st_1117_172    in-commemoratione-omnium-fidelium-defunctorum-s-elisabet Santa Isabel de Hungría
 
 Las misas por diversas necesidades, votivas, rituales y de difuntos
 -------------------------------------------------------------------
@@ -167,16 +167,16 @@ Los formularios, uno por uno
   Por sección, y dentro de cada una por veredicto:
 
     sección                                        completo  parcial  latino   nada
-    TIEMPO ORDINARIO                                    436       71       0      0
-    PROPIO DE LOS SANTOS                                175       21       1      0
+    TIEMPO ORDINARIO                                    432       75       0      0
+    PROPIO DE LOS SANTOS                                175       21       0      0
     TRIDUO PASCUAL Y TIEMPO DE PASCUA                    50       22       3      0
     MISAS POR DIVERSAS NECESIDADES Y VOTIVAS · lec       47       10      10      0
     TIEMPO DE CUARESMA                                   58        4       0      3
     TIEMPO DE ADVIENTO                                   21       12       4      0
     MISAS RITUALES Y DE DIFUNTOS · leccionario VII        0        4      31      0
     TIEMPO DE NAVIDAD                                    19        3       1      5
-    OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS            0        0       0     16
-    SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO         6        0       3      0
+    OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS            0        0       1     16
+    SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO         9        0       0      0
     APÉNDICES                                             0        0       0      7
     COMÚN DE LOS SANTOS                                   0        6       1      0
     FORMULARIOS SUELTOS                                   0        0       0      1
@@ -312,6 +312,7 @@ Los formularios, uno por uno
     V|5075TA0532.html|0        ......  JESUCRISTO, SUMO Y ETERNO SACERDOTE          —
     V|5130TA0819_2.html|0      ......  San Ezequiel Moreno, obispo                  —
     V|5138TA0826.html|0        ......  Santa Teresa de Jesús Jornet e Ibars, virgen —
+    V|5146TA0914.html|0        LLLLL.  LA EXALTACIÓN DE LA SANTA CRUZ               —
     V|5161TA1003.html|0        ......  San Francisco de Borja, presbítero           —
     V|5167TA1010.html|0        ......  Santo Tomás de Villanueva, obispo            —
     V|5168TA1011.html|0        ......  Santa Soledad Torres Acosta, virgen          —
@@ -453,7 +454,6 @@ Los formularios, uno por uno
     V|5143TA0908.html|0        CCCCC.  La Natividad de la Santísima Virgen María    4
     V|5144TA0908_2.html|0      MCCMC.  San Pedro Claver, presbítero                 3
     V|5145TA0913.html|0        DCCMC.  San Juan Crisóstomo, obispo y doctor de la I 6
-    V|5146TA0914.html|0        LLLLL.  La Exaltación de la Santa Cruz               —
     V|5147A0915.html|0         DDCDD.  Nuestra Señora de los Dolores                1
     V|5148TA0916.html|0        MCCMC.  Santos Cornelio, papa, y Cipriano, obispo, m 4
     V|5149TA0917.html|0        MCCMC.  San Roberto Belarmino, obispo y doctor de la 3
@@ -519,13 +519,13 @@ Los formularios, uno por uno
     V|5217TA1229.html|0        CCDDD.  Santo Tomás Becket, obispo y mártir          6
     V|5218TA1231.html|0        DCDCC.  San Silvestre I, papa                        5
     III|3032CFSATR.html|0      CCCCC.  Solemnidad de la Santísima Trinidad          5
-    III|3033CFCORP.html|0      LLLLL.  Solemnidad del Santísimo Cuerpo y Sangre de  —
+    III|3033CFCORP.html|0      DDDDD.  Solemnidad del Santísimo Cuerpo y Sangre de  17
     III|3034CFSCDJ.html|0      DCCDC.  Solemnidad del Sagrado Corazón de Jesús      7
     II|2032BFSATR.html|0       CCCCC.  Solemnidad de la Santísima Trinidad          5
-    II|2033BFCORP.html|0       LLLLL.  Solemnidad del Santísimo Cuerpo y Sangre de  —
+    II|2033BFCORP.html|0       DDDDD.  Solemnidad del Santísimo Cuerpo y Sangre de  17
     II|2034BFSCDJ.html|0       DCCDC.  Solemnidad del Sagrado Corazón de Jesús      7
     I|1032AFSATR.html|0        CCCCC.  Solemnidad de la Santísima Trinidad          5
-    I|1033AFCORP.html|0        LLLLL.  Solemnidad del Santísimo Cuerpo y Sangre de  —
+    I|1033AFCORP.html|0        DDDDD.  Solemnidad del Santísimo Cuerpo y Sangre de  17
     I|1034AFSCDJ.html|0        DCCDC.  Solemnidad del Sagrado Corazón de Jesús      7
     III|3001CAVD01.html|0      CCDCD.  Domingo I de Adviento                        8
     III|3002CAVD02.html|0      CCCCD.  Domingo II de Adviento                       1
@@ -774,7 +774,7 @@ Los formularios, uno por uno
     IV|4049ITOL09.html|0       UULLU.  Lunes de la 9ª semana de Tiempo Ordinario    2
     IV|4050ITOM09.html|0       UULLU.  Martes de la 9ª semana de Tiempo Ordinario   2
     IV|4051ITOX09.html|0       UULLU.  Miércoles de la 9ª semana de Tiempo Ordinari 2
-    IV|4052ITOJ09.html|0       UUDDU.  Jueves de la 9ª semana de Tiempo Ordinario   2
+    IV|4052ITOJ09.html|0       UULLU.  Jueves de la 9ª semana de Tiempo Ordinario   2
     IV|4053ITOV09.html|0       UULLU.  Viernes de la 9ª semana de Tiempo Ordinario  2
     IV|4054ITOS09.html|0       UUDDU.  Sábado de la 9ª semana de Tiempo Ordinario   2
     IV|4055ITOL10.html|0       UUUUU.  Lunes de la 10ª semana de Tiempo Ordinario   3
@@ -786,7 +786,7 @@ Los formularios, uno por uno
     IV|4061ITOL11.html|0       UULUU.  Lunes de la 11ª semana de Tiempo Ordinario   1
     IV|4062ITOM11.html|0       UULUU.  Martes de la 11ª semana de Tiempo Ordinario  1
     IV|4063ITOX11.html|0       UULUU.  Miércoles de la 11ª semana de Tiempo Ordinar 1
-    IV|4064TOJ11.html|0        UUDUU.  Jueves de la 11ª semana de Tiempo Ordinario  1
+    IV|4064TOJ11.html|0        UULUU.  Jueves de la 11ª semana de Tiempo Ordinario  1
     IV|4065ITOV11.html|0       UULUU.  Viernes de la 11ª semana de Tiempo Ordinario 1
     IV|4066ITOS11.html|0       UUDUU.  Sábado de la 11ª semana de Tiempo Ordinario  1
     IV|4067ITOL12.html|0       LUUSU.  Lunes de la 12ª semana de Tiempo Ordinario   3
@@ -978,7 +978,7 @@ Los formularios, uno por uno
     IV|4253PTOL09.html|0       UULLU.  Lunes de la 9ª semana de Tiempo Ordinario    2
     IV|4254PTOM09.html|0       UULLU.  Martes de la 9ª semana de Tiempo Ordinario   2
     IV|4255PTOX09.html|0       UULLU.  Miércoles de la 9ª semana de Tiempo Ordinari 2
-    IV|4256PTOJ09.html|0       UUDDU.  Jueves de la 9ª semana de Tiempo Ordinario   2
+    IV|4256PTOJ09.html|0       UULLU.  Jueves de la 9ª semana de Tiempo Ordinario   2
     IV|4257PTOV09.html|0       UULLU.  Viernes de la 9ª semana de Tiempo Ordinario  2
     IV|4258PTOS09.html|0       UUDDU.  Sábado de la 9ª semana de Tiempo Ordinario   2
     IV|4259PTOL10.html|0       UUUUU.  Lunes de la 10ª semana de Tiempo Ordinario   3
@@ -990,7 +990,7 @@ Los formularios, uno por uno
     IV|4265PTOL11.html|0       UULUU.  Lunes de la 11ª semana de Tiempo Ordinario   1
     IV|4266PTOM11.html|0       UULUU.  Martes de la 11ª semana de Tiempo Ordinario  1
     IV|4267PTOX11.html|0       UULUU.  Miércoles de la 11ª semana de Tiempo Ordinar 1
-    IV|4268PTOJ11.html|0       UUDUU.  Jueves de la 11ª semana de Tiempo Ordinario  1
+    IV|4268PTOJ11.html|0       UULUU.  Jueves de la 11ª semana de Tiempo Ordinario  1
     IV|4269PTOV11.html|0       UULUU.  Viernes de la 11ª semana de Tiempo Ordinario 1
     IV|4270PTOS11.html|0       UUDUU.  Sábado de la 11ª semana de Tiempo Ordinario  1
     IV|4271PTOL12.html|0       LUUSU.  Lunes de la 12ª semana de Tiempo Ordinario   3
@@ -1260,10 +1260,10 @@ Las lecturas: por qué ruta se halla la castellana
         y la cita lo confirma por libro y capítulo     14
         y abarca otros versículos, y se dice       79
       sin castellano                             1359
-      la impresión que el día respalda           2857
-        y no era la canónica, y se cambia         821
+      la impresión que el día respalda           2871
+        y no era la canónica, y se cambia         829
       la que el día respalda pierde estrofas, y no se toca      5
-      el día no respalda ninguna impresión       1760
+      el día no respalda ninguna impresión       1746
 
   **Y hallada la perícopa, cuál de sus impresiones.** La cita no
   identifica el salmo: «Sal 104, 2-3. 4-5. 6-7» son tres salmos
@@ -1324,9 +1324,9 @@ Las lecturas: el cotejo de citas
   día y se comparan las citas que uno imprime con las que el otro
   manda:
 
-    la cita no está en ninguna celebración de ese día     11010
+    la cita no está en ninguna celebración de ese día     10943
     la cita es la de otra celebración del mismo día —la feria, casi siempre   8802
-    la cita es la que el leccionario da a esa celebración   8380
+    la cita es la que el leccionario da a esa celebración   8447
     el misalito no imprime lecturas                         598
 
   lecturas que los formularios mandan   : 6442
@@ -1348,14 +1348,14 @@ Las lecturas: el cotejo de citas
     sexta lectura                           5      0
     epistola                                4      0
 
-  Las citas que no están en ninguna celebración de su día son 11010,
+  Las citas que no están en ninguna celebración de su día son 10943,
   y no se reparten al azar:
 
-    salmo           3867
-    aclamacion      3186
-    primera         2151
-    evangelio       1256
-    segunda          498
+    salmo           3858
+    aclamacion      3172
+    primera         2136
+    evangelio       1241
+    segunda          484
     sexta             12
     tercera           11
     septima            8
@@ -1367,7 +1367,7 @@ Las lecturas: el cotejo de citas
   es de formulario sino de versículos: el leccionario mexicano
   elige otros del mismo salmo, y el verso del aleluya lo cambia
   más todavía. Lo que de verdad dice que el editor rezó otra cosa
-  son la primera lectura y el evangelio, y son 3407 de las 11010.
+  son la primera lectura y el evangelio, y son 3377 de las 10943.
 
   Las veinte primeras, para que se vea:
     2016-01-01/0  md_01-01                     aclamacion   Hb 1,1-2R/.Aleluya —
@@ -1470,20 +1470,20 @@ Los días de una celebración que no imprimen lo mismo
     II|2064BTOD31.html|0       entrada      d5_30_0        suelto 184, suelto 185
     IV|4070ITOJ12.html|0       entrada      d5_11_4        celebración st_0624_77, celebración st_0629_80, suel
     IV|4071ITOV12.html|0       entrada      d5_11_5        celebración md_06-26, celebración st_0629_80
-    IV|4175ITOL30.html|0       entrada      d5_29_1        celebración md_10-30, celebración st_1028_160, suelt
-    IV|4176ITOM30.html|0       entrada      d5_29_2        celebración md_10-30, celebración st_1028_160, celeb
-    IV|4177ITOX30.html|0       entrada      d5_29_3        celebración md_10-30, celebración st_1028_160, suelt
+    IV|4175ITOL30.html|0       entrada      d5_29_1        celebración md_10-30, celebración st_1028_159, suelt
+    IV|4176ITOM30.html|0       entrada      d5_29_2        celebración md_10-30, celebración st_1028_159, celeb
+    IV|4177ITOX30.html|0       entrada      d5_29_3        celebración md_10-30, celebración st_1028_159, suelt
     IV|4178ITOJ30.html|0       entrada      d5_29_4        celebración md_10-30, suelto 168
-    IV|4179ITOV30.html|0       entrada      d5_29_5        celebración md_10-30, celebración st_1028_160, suelt
-    IV|4195ITOX33.html|0       poscomunion  d5_32_3        celebración md_11-20, celebración st_1118_173
+    IV|4179ITOV30.html|0       entrada      d5_29_5        celebración md_10-30, celebración st_1028_159, suelt
+    IV|4195ITOX33.html|0       poscomunion  d5_32_3        celebración md_11-20, celebración st_1118_172
     IV|4274PTOJ12.html|0       entrada      d5_11_4        celebración st_0624_77, celebración st_0629_80, suel
     IV|4275PTOV12.html|0       entrada      d5_11_5        celebración md_06-26, celebración st_0629_80
-    IV|4379PTOL30.html|0       entrada      d5_29_1        celebración md_10-30, celebración st_1028_160, suelt
-    IV|4380PTOM30.html|0       entrada      d5_29_2        celebración md_10-30, celebración st_1028_160, celeb
-    IV|4381PTOX30.html|0       entrada      d5_29_3        celebración md_10-30, celebración st_1028_160, suelt
+    IV|4379PTOL30.html|0       entrada      d5_29_1        celebración md_10-30, celebración st_1028_159, suelt
+    IV|4380PTOM30.html|0       entrada      d5_29_2        celebración md_10-30, celebración st_1028_159, celeb
+    IV|4381PTOX30.html|0       entrada      d5_29_3        celebración md_10-30, celebración st_1028_159, suelt
     IV|4382PTOJ30.html|0       entrada      d5_29_4        celebración md_10-30, suelto 168
-    IV|4383PTOV30.html|0       entrada      d5_29_5        celebración md_10-30, celebración st_1028_160, suelt
-    IV|4399PTOX33.html|0       poscomunion  d5_32_3        celebración md_11-20, celebración st_1118_173
+    IV|4383PTOV30.html|0       entrada      d5_29_5        celebración md_10-30, celebración st_1028_159, suelt
+    IV|4399PTOX33.html|0       poscomunion  d5_32_3        celebración md_11-20, celebración st_1118_172
     I|1003AAVD03.html|0        ofrendas     d0_2_0         celebración md_12-14, suelto 231
     I|1042ATOD09.html|0        ofrendas     d5_8_0         celebración d4_0_0, suelto 228
     I|1042ATOD09.html|0        comunion     d5_8_0         celebración d4_0_0, suelto 43
@@ -1595,14 +1595,16 @@ Los prefacios
     PREFACIO COMÚN IX                              sin número
     PREFACIO II DE LA SANTÍSIMA EUCARISTÍA         n. 61
 
-  prefacios que algún formulario cita: 57
-  prefacios que ningún formulario cita: 12
+  prefacios que algún formulario cita: 55
+  prefacios que ningún formulario cita: 14
     PREFACIO DE LA CONFIRMACIÓN
     PREFACIO DE LA PENITENCIA
     PREFACIO DE LA UNCIÓN DE ENFERMOS
     PREFACIO DEL BAUTISMO
     PREFACIO I DE LA PASIÓN DEL SEÑOR
+    PREFACIO I DE LA SANTÍSIMA EUCARISTÍA
     PREFACIO I DE LOS SANTOS
+    PREFACIO II DE LA SANTÍSIMA EUCARISTÍA
     PREFACIO II DE LOS SANTOS
     PREFACIO II DE SANTA MARÍA VIRGEN
     PREFACIO III DE LA SANTÍSIMA EUCARISTÍA
@@ -1620,7 +1622,7 @@ Lo que esta fase topa y no es suyo
     les guardó la fecha —son los que el Misal titula con el
     rótulo del mes, y con él se pierde el renglón «Die N
     mensis»—. Esta fase los coloca por el orden del libro y el
-    nombre, y los 2 que ni así se confirman van arriba uno por
+    nombre, y los 3 que ni así se confirman van arriba uno por
     uno. Lo limpio sería que la fase 1 leyera la fecha.
   · las ferias del tiempo de Navidad. El Misal las imprime en dos
     grupos, «a die 2 ianuarii» y «post sollemnitatem Epiphaniæ»,
@@ -1652,6 +1654,7 @@ Avisos
   Todo lo que no se pudo resolver, por clase y uno por uno.
 
   votiva del misalito sin rótulo del leccionario              4
+  la tabla nombra una celebración que no existe               1
   items del Misal que ningún rótulo del leccionario consume    1
   latino del tiempo sin unidad                                1
   rótulo del leccionario sin título propio                    1
@@ -1663,6 +1666,9 @@ Avisos
     items del Misal que ningún rótulo del leccionario consume
       rituales
       iv-orationes-diversae-pro-defunctis-2-pro-episcopo-b-pro-alio-episcopo, iv-orationes-diversae-pro-defunctis-3-pro-sacerdote, iv-orationes-diversae-pro-defunctis-4-pro-diacono, iv-orationes-diversae-pr
+    la tabla nombra una celebración que no existe
+      sanctis/in-commemoratione-omnium-fidelium-defunctorum-s-elisabeth-hungariae
+      st_1117_172
     latino del tiempo sin unidad
       tempore/feria-v-in-cena-domini-v-simul-quoque-cum-beatis-videamus
       V. Simul quoque cum beátis videámus

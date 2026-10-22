@@ -1,9 +1,9 @@
-Revisión de las oraciones de la misa del 2026-10-21 al 2027-10-20
+Revisión de las oraciones de la misa del 2026-10-22 al 2027-10-21
 ============================================================
 
 Nombran a un santo que la celebración no nombra: 0
 
-Misas de santos sin colecta en castellano: 15
+Misas de santos sin colecta en castellano: 14
   ('2026-11-09', 'Dedicación de la basílica de Letrán', 'V|5186TA1109.html|0')
   ('2026-11-23', 'San Clemente I, papa y mártir', 'V|5198TA1123.html|0')
   ('2026-11-23', 'San Clemente I, papa y mártir', 'V|5225COMMAR.html|0')
@@ -15,7 +15,6 @@ Misas de santos sin colecta en castellano: 15
   ('2027-08-07', 'San Cayetano, presbítero', 'V|5120TA0807_2.html|0')
   ('2027-08-07', 'San Cayetano, presbítero', 'V|5226COMPAS.html|0')
   ('2027-08-07', 'San Cayetano, presbítero', 'V|5229COMSAN.html|0')
-  ('2027-09-14', 'La Exaltación de la Santa Cruz', 'V|5146TA0914.html|0')
   ('2027-09-23', 'Santos Cristóbal, Antonio y Juan, niños márti', 'V|5225COMMAR.html|0')
   ('2027-09-28', 'Santos Lorenzo Ruiz y compañeros, mártires', 'V|5156TA0928_2.html|0')
   ('2027-09-28', 'Santos Lorenzo Ruiz y compañeros, mártires', 'V|5225COMMAR.html|0')

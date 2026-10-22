@@ -1,13 +1,13 @@
-Revisión de las horas del 2026-10-21 al 2027-10-20, contra la fuente
+Revisión de las horas del 2026-10-22 al 2027-10-21, contra la fuente
 ============================================================
 
-días de la fuente que rezan lo que la app pone ese día: 2577 de 2728
+días de la fuente que rezan lo que la app pone ese día: 2555 de 2728
 secciones (celebración por omisión):
-    12952  igual
-     1545  sin_testigo
-      417  otra_opcion
-      211  parecido
-       49  distinto
+    12844  igual
+     1639  sin_testigo
+      414  otra_opcion
+      190  parecido
+       90  distinto
 
 Horas con secciones de menos o repetidas
 ----------------------------------------
@@ -49,9 +49,42 @@ Secciones que no dicen lo que su nombre dice
 
 Distintas de la fuente en un día igual
 ----------------------------------------
+  2026-12-07 completas oracion [San Ambrosio, obispo y doctor de la Igle] parecido 0.30 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
+      2020-12-07: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2026-12-08 completas oracion [La Inmaculada Concepción de la Santísima] parecido 0.29 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+      2020-12-08: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2026-12-11 visperas himno [San Dámaso I, papa] parecido 0.10 primeras vísperas
+      app : Como a Belén llegaste a dar a luz al Hijo, del Padre la sustancia, de tu carne vestido, al
+      2020-12-11: Éste es el tiempo en que llegas, Esposo, tan de repente, que invitas a los que velan y olvidas a los que duerm
+  2026-12-11 visperas salmodia [San Dámaso I, papa] parecido 0.24 primeras vísperas
+      app : ¿Qué es eso que sube del desierto, como nube de incienso y de mirra, y de perfumes precios
+      2020-12-11: Arranca, Señor, mi vida de la muerte, mis pies de la caída. Amo al Señor, porque escucha mi voz suplicante, po
+  2026-12-11 visperas lectura_breve [San Dámaso I, papa] parecido 0.09 primeras vísperas
+      app : Se abrió el santuario de Dios en el cielo, y apareció el arca de su alianza en el santuari
+      2020-12-11: Para el Señor un día es como mil años, y mil años como un día. No es tardo el Señor en el cumplimiento de sus 
+  2026-12-11 visperas responsorio_breve [San Dámaso I, papa] parecido 0.26 primeras vísperas
+      app : Transformará el desierto en un jardín, y hará brotar fuentes de la roca. Transformará el d
+      2020-12-11: Ven a salvarnos, Señor Dios de los ejércitos. Ven a salvarnos, Señor Dios de los ejércitos. Que brille tu rost
+  2026-12-11 visperas cantico_evangelico [San Dámaso I, papa] parecido 0.86 primeras vísperas
+      app : Soy morena pero hermosa, como las tiendas del desierto, como los pabellones de Salomón, pu
+      2020-12-11: Sacaréis agua con gozo de las fuentes del Salvador. Proclama mi alma la grandeza del Señor, se alegra mi espír
+  2026-12-11 visperas preces [San Dámaso I, papa] parecido 0.12 primeras vísperas
+      app : Elevemos nuestras súplicas a Dios, que quiso enviarnos a la Santísima Virgen María para da
+      2020-12-11: Roguemos a nuestro Redentor, que viene a dar la Buena Noticia a los pobres, y digámosle: Manifiesta, Señor, tu
   2026-12-11 visperas oracion [San Dámaso I, papa] parecido 0.56 primeras vísperas
-      app : Concédenos la gracia, Señor, de glorificarte siempre por el triunfo de tus mártires, a qui
+      app : Señor, Dios nuestro, que has concedido a tu pueblo la protección maternal de la siempre Vi
       2020-12-11: Dios todopoderoso, concede a tu pueblo permanecer siempre en vela aguardando la venida de tu Hijo, para que cu
+  2026-12-11 completas salmodia [San Dámaso I, papa] parecido 0.18 primeras vísperas
+      app : Ten piedad de mí, Señor, y escucha mi oración. Escúchame cuando te invoco, Dios, defensor 
+      2020-12-11: Señor, Dios mío, de día te pido auxilio, de noche grito en tu presencia. Señor, Dios mío, de día te pido auxil
+  2026-12-11 completas lectura_breve [San Dámaso I, papa] parecido 0.05 primeras vísperas
+      app : Escucha, Israel: El Señor, nuestro Dios, es solamente uno. Amarás al Señor, tu Dios, con t
+      2020-12-11: Tú estás en medio de nosotros, Señor, tu nombre ha sido invocado sobre nosotros: no nos abandones, Señor Dios 
+  2026-12-11 completas oracion [San Dámaso I, papa] parecido 0.12 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
+      2020-12-11: OREMOS, Señor, Dios todopoderoso: ya que con nuestro descanso vamos a imitar a tu Hijo que reposó en el sepulc
   2026-12-20 oficio lectura2 [Domingo IV de Adviento] parecido 0.05 
       app : De la Carta a Diogneto (Cap. 8, 5—9, 6: Funk 1, 325-327) Nadie jamás ha visto ni ha conoci
       2020-12-20: De las Homilías de san Bernardo, abad, Sobre las excelencias de la Virgen Madre (Homilía 4, 8-9: Opera omnia, 
@@ -134,12 +167,59 @@ Distintas de la fuente en un día igual
       app : Acudamos suplicantes a Dios Padre todopoderoso, de quien procede toda la familia del cielo
   2027-03-18 visperas oracion [Jueves de la 5ª semana de Cuaresma] parecido 0.50 primeras vísperas
       app : Dios todopoderoso, que, en los albores del nuevo Testamento, encomendaste a san José los m
-  2027-05-03 laudes responsorio_breve [La Santa Cruz] parecido 0.89 
-      app : Te adoramos, oh Cristo, y te bendecimos. Aleluya, aleluya. Te adoramos, oh Cristo, y te be
-  2027-05-03 visperas responsorio_breve [La Santa Cruz] parecido 0.87 
-      app : Oh cruz gloriosa, en ti triunfó el Rey de los ángeles. Aleluya, aleluya. Oh cruz gloriosa,
+  2027-03-18 completas salmodia [Jueves de la 5ª semana de Cuaresma] parecido 0.15 primeras vísperas
+      app : Ten piedad de mí, Señor, y escucha mi oración. Escúchame cuando te invoco, Dios, defensor 
+  2027-03-18 completas lectura_breve [Jueves de la 5ª semana de Cuaresma] parecido 0.02 primeras vísperas
+      app : Escucha, Israel: El Señor, nuestro Dios, es solamente uno. Amarás al Señor, tu Dios, con t
+  2027-03-18 completas oracion [Jueves de la 5ª semana de Cuaresma] parecido 0.10 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
+  2027-03-19 completas salmodia [San José, esposo de santa María Virgen] parecido 0.15 
+      app : Al amparo del Altísimo no temo el espanto nocturno. Tú que habitas al amparo del Altísimo,
+  2027-03-19 completas lectura_breve [San José, esposo de santa María Virgen] parecido 0.16 
+      app : Verán el rostro del Señor, y tendrán su nombre en la frente. Y no habrá más noche, y no ne
+  2027-03-19 completas oracion [San José, esposo de santa María Virgen] parecido 0.17 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+  2027-04-05 completas oracion [La Anunciación del Señor] parecido 0.25 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+      2024-04-08: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
   2027-05-26 oficio resena [San Felipe Neri, presbítero] parecido 0.00 
       app : Nació en Florencia el año 1515; marchó a Roma y allí empezó a dedicarse al apostolado de l
+  2027-05-26 visperas himno [San Felipe Neri, presbítero] parecido 0.10 primeras vísperas
+      app : Publica, lengua, y canta el misterio del cuerpo glorioso y de la sangre santa que dio por 
+  2027-05-26 visperas salmodia [San Felipe Neri, presbítero] parecido 0.44 primeras vísperas
+      app : El Señor es clemente, él da alimento a sus fieles en memoria de sus maravillas. Doy gracia
+  2027-05-26 visperas lectura_breve [San Felipe Neri, presbítero] parecido 0.15 primeras vísperas
+      app : El cáliz bendito que consagramos es la comunión de la sangre de Cristo; y el pan que parti
+  2027-05-26 visperas responsorio_breve [San Felipe Neri, presbítero] parecido 0.56 primeras vísperas
+      app : Les ha dado pan del cielo. Aleluya, aleluya. Les ha dado pan del cielo. Aleluya, aleluya. 
+  2027-05-26 visperas cantico_evangelico [San Felipe Neri, presbítero] parecido 0.79 primeras vísperas
+      app : Señor, cuán suave es tu Espíritu; para hacer sentir tu dulzura a tus hijos, los llenas de 
+  2027-05-26 visperas preces [San Felipe Neri, presbítero] parecido 0.20 primeras vísperas
+      app : Acudamos a Cristo, que invita a todos a su cena y en ella entrega su cuerpo y su sangre pa
+  2027-05-26 visperas oracion [San Felipe Neri, presbítero] parecido 0.41 primeras vísperas
+      app : Señor nuestro Jesucristo, que en este sacramento admirable nos dejaste el memorial de tu p
+  2027-05-26 completas salmodia [San Felipe Neri, presbítero] parecido 0.29 primeras vísperas
+      app : Ten piedad de mí, Señor, y escucha mi oración. Escúchame cuando te invoco, Dios, defensor 
+  2027-05-26 completas lectura_breve [San Felipe Neri, presbítero] parecido 0.03 primeras vísperas
+      app : Escucha, Israel: El Señor, nuestro Dios, es solamente uno. Amarás al Señor, tu Dios, con t
+  2027-05-26 completas oracion [San Felipe Neri, presbítero] parecido 0.23 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
+  2027-05-27 completas salmodia [Solemnidad del Santísimo Cuerpo y Sangre] parecido 0.17 
+      app : Al amparo del Altísimo no temo el espanto nocturno. Tú que habitas al amparo del Altísimo,
+  2027-05-27 completas lectura_breve [Solemnidad del Santísimo Cuerpo y Sangre] parecido 0.14 
+      app : Verán el rostro del Señor, y tendrán su nombre en la frente. Y no habrá más noche, y no ne
+  2027-05-27 completas oracion [Solemnidad del Santísimo Cuerpo y Sangre] parecido 0.20 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+  2027-05-29 visperas salmodia [San Pablo VI, papa] parecido 0.23 primeras vísperas
+      app : Suba mi oración, Señor, como incienso en tu presencia. Señor, te estoy llamando, ven de pr
+  2027-05-29 visperas responsorio_breve [San Pablo VI, papa] parecido 0.36 primeras vísperas
+      app : Cuántas son tus obras, Señor. Cuántas son tus obras, Señor. Y todas las hiciste con sabidu
+  2027-05-29 visperas cantico_evangelico [San Pablo VI, papa] parecido 0.77 primeras vísperas
+      app : Jesús, apenado por la dureza de corazón de los fariseos, les dijo: «El sábado se ha hecho 
+  2027-05-29 visperas preces [San Pablo VI, papa] parecido 0.21 primeras vísperas
+      app : Glorifiquemos a Dios, Padre, Hijo, y Espíritu Santo, y supliquémosle diciendo: Escucha a t
+  2027-05-29 visperas oracion [San Pablo VI, papa] parecido 0.46 primeras vísperas
+      app : OREMOS, Señor Dios, cuya providencia no se equivoca en sus designios, te pedimos humildeme
   2027-05-31 laudes responsorio_breve [La Visitación de la Santísima Virgen Mar] parecido 0.85 
       app : El Señor la eligió y la predestinó. El Señor la eligió y la predestinó. La hizo morar en s
       2021-05-31: El Señor la eligió y la predestinó. Aleluya, Aleluya. El Señor la eligió y la predestinó. Aleluya, Aleluya. La
@@ -148,13 +228,36 @@ Distintas de la fuente en un día igual
       2021-05-31: Alégrate, María, llena de gracia, el Señor está contigo. Aleluya, Aleluya. Alégrate, María, llena de gracia, e
   2027-06-03 laudes responsorio_breve [Santos Carlos Lwanga y compañeros, márti] parecido 0.85 
       app : La alegría eterna coronará a los santos. La alegría eterna coronará a los santos. Vivirán 
-      2021-06-03: La alegría eterna coronará a los santos. Aleluya, aleluya. La alegría eterna coronará a los santos. Aleluya, a
+  2027-06-03 completas salmodia [Santos Carlos Lwanga y compañeros, márti] parecido 0.15 primeras vísperas
+      app : Ten piedad de mí, Señor, y escucha mi oración. Escúchame cuando te invoco, Dios, defensor 
+      2019-06-27: Mi carne descansa serena. Protégeme, Dios mío, que me refugio en ti; yo digo al Señor: «Tú eres mi bien.» Los 
   2027-06-03 completas lectura_breve [Santos Carlos Lwanga y compañeros, márti] parecido 0.02 primeras vísperas
       app : Escucha, Israel: El Señor, nuestro Dios, es solamente uno. Amarás al Señor, tu Dios, con t
       2019-06-27: Que el mismo Dios de la paz os consagre totalmente y que todo vuestro ser, alma y cuerpo, sea custodiado sin r
-  2027-06-03 completas oracion [Santos Carlos Lwanga y compañeros, márti] parecido 0.29 primeras vísperas
-      app : OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus sa
+  2027-06-03 completas oracion [Santos Carlos Lwanga y compañeros, márti] parecido 0.10 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
       2019-06-27: OREMOS, Señor, Dios nuestro, concédenos un descanso tranquilo que restaure nuestras fuerzas, desgastadas ahora
+  2027-06-04 completas oracion [Solemnidad del Sagrado Corazón de Jesús] parecido 0.25 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+      2019-06-28: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2027-06-23 completas oracion [Miércoles de la 12ª semana de Tiempo Ord] parecido 0.23 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
+      2021-06-23: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2027-06-24 completas oracion [El Nacimiento de san Juan Bautista] parecido 0.25 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+      2021-06-24: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2027-06-28 completas salmodia [San Ireneo, obispo y mártir] parecido 0.19 primeras vísperas
+      app : Ten piedad de mí, Señor, y escucha mi oración. Escúchame cuando te invoco, Dios, defensor 
+      2021-06-28: Señor, Dios mío, de día te pido auxilio, de noche grito en tu presencia. Señor, Dios mío, de día te pido auxil
+  2027-06-28 completas lectura_breve [San Ireneo, obispo y mártir] parecido 0.05 primeras vísperas
+      app : Escucha, Israel: El Señor, nuestro Dios, es solamente uno. Amarás al Señor, tu Dios, con t
+      2021-06-28: Tú estás en medio de nosotros, Señor, tu nombre ha sido invocado sobre nosotros: no nos abandones, Señor Dios 
+  2027-06-28 completas oracion [San Ireneo, obispo y mártir] parecido 0.30 primeras vísperas
+      app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
+      2021-06-28: OREMOS, Señor, Dios todopoderoso: ya que con nuestro descanso vamos a imitar a tu Hijo que reposó en el sepulc
+  2027-06-29 completas oracion [Santos Pedro y Pablo, apóstoles] parecido 0.29 
+      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+      2021-06-29: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
   2027-07-27 nona salmodia [Martes de la 17ª semana de Tiempo Ordina] parecido 0.10 
       app : El Señor ha estado grande con nosotros, y estamos alegres. Cuando el Señor cambió la suert
       2020-07-28: Dichoso el que anda por los senderos del Señor. Dichoso el que, con vida intachable, camina en la voluntad del
@@ -175,6 +278,3 @@ Distintas de la fuente en un día igual
   2027-09-08 nona salmodia [La Natividad de la Santísima Virgen Marí] parecido 0.80 
       app : Cantemos con todo el corazón y con toda nuestra mente las glorias de Cristo, en esta sagra
       2021-09-08: Cantemos con todo el corazón y con toda nuestra mente las glorias de Cristo, en esta sagrada festividad de Mar
-  2027-09-14 tercia salmodia [La Exaltación de la Santa Cruz] parecido 0.89 
-      app : Oh Cristo, Salvador nuestro, sálvanos por la fuerza de la cruz; tú que salvaste a Pedro en
-      2021-09-14: Oh Cristo, Salvador nuestro, sálvanos por la fuerza de la cruz; tú que salvaste a Pedro en el mar, ten piedad 

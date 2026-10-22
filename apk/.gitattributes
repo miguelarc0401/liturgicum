@@ -1,0 +1,5 @@
+# Lo que corre en el Linux de GitHub Actions tiene que llegar con LF: con
+# CRLF, bash se atraganta en la primera linea.
+*.sh            text eol=lf
+android/gradlew text eol=lf
+*.bat           text eol=crlf

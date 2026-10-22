@@ -14,7 +14,7 @@
 const RUTA_DATOS = 'datos/';
 const POR_OMISION = {
   fuente: 'clementina', acentos: true, numeros: true, tam: 100, tema: 'auto',
-  epifania: 'domingo', ascension: 'domingo', corpus: 'domingo',
+  epifania: 'domingo', ascension: 'domingo', corpus: 'jueves',
   memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun',
   hAntFinal: '', calAbre: 'misa',
   // la misa: el Ordinario intercalado, y lo que se elige en él
@@ -285,6 +285,14 @@ function cargaCfg() {
   try {
     Object.assign(E.cfg, JSON.parse(localStorage.getItem('cfg') || '{}'));
   } catch (_) { /* almacenamiento bloqueado: se usan los valores de fábrica */ }
+  // El Corpus era en domingo por omisión, y en México es el jueves. Los
+  // ajustes se guardan todos a la vez en cuanto se toca uno, así que el
+  // «domingo» guardado no dice que alguien lo eligiera: se pasa al jueves una
+  // vez, y quien lo quiera en domingo lo vuelve a poner.
+  if (!E.cfg.corpusMx) {
+    E.cfg.corpus = 'jueves';
+    E.cfg.corpusMx = 1;
+  }
   // de las siete letras de antes quedan cuatro: la que se fue, a la que
   // más se le parece de las que quedan
   E.cfg.letra = { antigua: 'garamond', gruesa: 'serif', periodico: 'times',
@@ -337,6 +345,7 @@ function aplicaCfg() {
   aplicaTonos();
   ponColor(null);
   velaPantalla();
+  barrasDelSistema();
 }
 
 /* -------------------------------------------- el color, y el de cada día
@@ -3707,7 +3716,7 @@ const AJ_OPS = {
     ['6enero', 'Siempre el 6 de enero']],
   ascension: [['domingo', 'Trasladada al domingo'],
     ['jueves', 'Jueves, a los 40 días']],
-  corpus: [['domingo', 'Trasladado al domingo'], ['jueves', 'Jueves']],
+  corpus: [['jueves', 'Jueves, como en México'], ['domingo', 'Trasladado al domingo']],
   memorias: [
     ['santo', 'Las del santo', 'Lo que pone la Tabla de los días '
       + 'litúrgicos, que deja la memoria por encima de la feria.'],
@@ -5663,6 +5672,23 @@ function opcionesSeccion(d, op, hora, cl) {
       ];
     }
   }
+  // Y al revés: la solemnidad entre semana dice la complementaria. La fuente
+  // guarda la del año en que cayó en domingo, con los salmos del domingo I
+  // (el 117), y el Corpus, que en México es el jueves, la rezaba así. Las
+  // antífonas de la solemnidad van sobre la complementaria de la hora.
+  if (cl === 'salmodia' && INTERMEDIAS.includes(hora) && op.g === 'SOLEMNIDAD'
+      && d.d !== 0 && alts.length && i < 0) {
+    const suya = despieza(alts[0].c.l);
+    const nums = suya.salmos.map((s) => +((s[0][0][1].match(/\d+/) || [])[0]));
+    const comp = (E.horas.intermedia || { comp: {} }).comp[hora];
+    if (suya.ants.length && nums.length && nums.every((n) => n === 117)
+        && comp) {
+      return [{ id: 'propio', rot: 'Propio',
+        tit: 'Salmodia complementaria, con la antífona de la solemnidad',
+        c: { r: alts[0].c.r, f: alts[0].c.f,
+          l: compone(suya.ants, despieza(comp.l).salmos) } }];
+    }
+  }
   // los himnos que se pueden escoger se cuelgan del «del día»
   if (cl === 'himno' && i >= 0) {
     const otros = otrosHimnos(d, hora, alts[i].c);
@@ -6200,6 +6226,74 @@ function primerasDelQueEntra(secs, iso, d, op) {
   return nuevas;
 }
 
+/* Las Completas de las solemnidades. «Después de las primeras vísperas del
+ * domingo se dicen las Completas del domingo I, y después de las segundas,
+ * las del domingo II»; y lo mismo en las solemnidades que caen entre semana
+ * (PNLH 88). La fuente no lo aplicaba —la Inmaculada, san José, el Corpus,
+ * el Sagrado Corazón, san Juan Bautista o san Pedro y san Pablo rezaban las
+ * del día de la semana—, así que se hace aquí: la víspera de la solemnidad,
+ * las del sábado de esa semana, que son las del domingo I; el día, las de su
+ * domingo, que son las del domingo II. Los días que van por fecha (la octava
+ * de Navidad, el 24 de diciembre) y los que no tienen semana ya traen las
+ * suyas. */
+const FERIA_COMPLETAS = { id: 'feria', modo: 'feria', t: '', g: '' };
+
+function completasDelDomingo(iso, d, op) {
+  if ((d.kf && op.modo !== 'entero') || !/\/\d+\/\d$/.test(d.k || '')) {
+    return null;
+  }
+  const vis = cualVisperas(iso, 'visperas', d, op);
+  let dia = null;
+  if (vis && vis.n === 1 && d.d !== 6) dia = 6;
+  // la solemnidad, también en domingo: la fuente da a veces las de un año
+  // en que cayó entre semana, con «Visita, Señor», y en domingo es la suya
+  else if (op.g === 'SOLEMNIDAD' && !(vis && vis.n === 1)) dia = 0;
+  if (dia === null) return null;
+  let k = d.k.replace(/\/\d$/, '/' + dia);
+  // La casilla de ese domingo puede no tener sus Completas: el II de Pascua
+  // la fuente lo guarda sin semana («domingo de la octava de Pascua»), y la
+  // Anunciación trasladada al lunes siguiente se quedaba con las del lunes.
+  // Las Completas del domingo son las mismas todas las semanas del tiempo:
+  // se toman de otra.
+  if (!E.horas.tiempo[k + '/completas/oracion']) {
+    k = null;
+    for (let n = 1; n <= 34 && !k; n++) {
+      const otra = d.t + '/' + n + '/' + dia;
+      if (E.horas.tiempo[otra + '/completas/oracion']) k = otra;
+    }
+    if (!k) return null;
+  }
+  return Object.assign({}, d, { d: dia, k: k, v: dia === 6 ? 1 : d.v });
+}
+
+/* El Te Deum: «después de la segunda lectura con su responsorio, los
+ * domingos, excepto en Cuaresma, en los días de las octavas de Pascua y de
+ * Navidad, en las solemnidades y en las fiestas» (PNLH 68). Lo ponía lo que
+ * la fuente imprimió cada día, y se lo saltaba en san José, la Anunciación o
+ * un domingo del tiempo ordinario que casi nunca cae como tal. Ahora va por
+ * la rúbrica, con el texto que la fuente da. */
+function pideTeDeum(iso, d, op) {
+  if (op.modo === 'entero') return /^(SOLEMNIDAD|FIESTA)/.test(op.g || '');
+  if (op.modo !== 'feria') return false;
+  const md = iso.slice(5);
+  if (md >= '12-25' || md === '01-01') return true;
+  if (/octava de pascua|domingo de pascua/.test(d.k || '')) return true;
+  return d.d === 0 && d.t !== 'Cuaresma';
+}
+
+function conTeDeum(secs, iso, d, op) {
+  const pide = pideTeDeum(iso, d, op);
+  const hay = secs.some((s) => s.cl === 'himno2');
+  if (!pide && hay) return secs.filter((s) => s.cl !== 'himno2');
+  const td = E.horas.ordinario['@/oficio/te_deum'];
+  if (!pide || hay || !td) return secs;
+  const tras = ['responsorio2', 'lectura2'].map((cl) =>
+    secs.findIndex((s) => s.cl === cl)).find((i) => i >= 0);
+  const s = { cl: 'himno2', alts: [{ id: 'dia', rot: '', c: td }], i: 0 };
+  return tras === undefined ? secs.concat([s])
+    : secs.slice(0, tras + 1).concat([s], secs.slice(tras + 1));
+}
+
 /** Las secciones de una hora, con sus opciones. La cascada es la del libro
  *  —lo propio del santo; si no lo tiene, lo de su común; si no, lo del
  *  tiempo; la salmodia, del salterio; lo que no cambia, del ordinario—,
@@ -6215,14 +6309,26 @@ function armaHora(iso, hora, idCel) {
   const op = cels.ops.find((o) => o.id === idCel)
     || cels.ops.find((o) => o.id === cels.def);
   let secciones = [];
+  // las Completas de una solemnidad son las del domingo (ver abajo)
+  const dom = hora === 'completas' ? completasDelDomingo(iso, d, op) : null;
   for (const cl of ordenDe(hora)) {
-    const alts = opcionesSeccion(d, op, hora, cl);
+    const alts = dom ? opcionesSeccion(dom, FERIA_COMPLETAS, hora, cl)
+      : opcionesSeccion(d, op, hora, cl);
     if (alts.length) {
       secciones.push({ cl: cl, alts: alts,
         i: eleccionDe(iso, op.id, hora, cl, alts, d) });
     }
   }
+  if (dom && dom.d === 0 && d.d !== 0) {
+    // «Después de las segundas vísperas de las solemnidades que no coinciden
+    // en domingo: Visita, Señor, esta habitación…» (la del domingo habla de
+    // «los misterios de la resurrección»)
+    const o = E.horas.ordinario['@/completas/oracion_solemnidad'];
+    const s = secciones.find((x) => x.cl === 'oracion');
+    if (o && s) { s.alts = [{ id: 'dia', rot: '', c: o }]; s.i = 0; }
+  }
   if (hora === 'visperas') secciones = primerasDelQueEntra(secciones, iso, d, op);
+  if (hora === 'oficio') secciones = conTeDeum(secciones, iso, d, op);
   // La reseña del santo o de la fiesta: el libro la trae delante de todo el
   // oficio, y aquí va pegada a la segunda lectura, que es la que cuenta su
   // vida —de él, si es hagiográfica; del misterio que se celebra, si es
@@ -6889,8 +6995,13 @@ function cualVisperas(iso, hora, d, op) {
   // ¿gana el día que entra?
   const man = suma(iso, 1);
   const e1 = celebracionDelDia(man);
+  // el sábado de la octava de Pascua los dos días son del n. 2 de la Tabla,
+  // y la tarde es ya del domingo II: sus primeras vísperas
+  const pas = (anioDe(iso) || {}).pascua;
+  const octava = pas && iso > pas && iso <= suma(pas, 6);
   if (conPrimerasVisperas(man, e1)
-      && rangoDeLaTabla(e1) < rangoDeLaTabla(celebracionDelDia(iso))) {
+      && (rangoDeLaTabla(e1) < rangoDeLaTabla(celebracionDelDia(iso))
+        || (octava && new Date(man + 'T12:00:00').getDay() === 0))) {
     // en la casilla del sábado están de verdad las vísperas del domingo;
     // las de una solemnidad de entre semana, no, y eso se dice debajo
     return cuales(e1, 1, man, d.d === 6 && /\/\d+\//.test(d.k));
@@ -9145,6 +9256,8 @@ async function arranca() {
  * vez, para que los datos viejos que ya estaban en memoria no sobrevivan.
  */
 function vigilaActualizaciones() {
+  // en el APK no hay service worker: la pone al día el actualizador (abajo)
+  if (enElApk()) { vigilaElPaquete(); return; }
   if (!('serviceWorker' in navigator)) return;
   navigator.serviceWorker.register('sw.js').then((reg) => {
     // de paso, que el worker acabe de bajar lo que le falte para abrir sin red
@@ -9175,6 +9288,143 @@ function vigilaActualizaciones() {
     location.reload();
   });
   E.controlada = !!navigator.serviceWorker.controller;
+}
+
+/* --------------------------------------------------------- dentro del APK
+ * En el APK de Android (apk/LEEME.md) la app no viene de la red: va dentro
+ * del propio APK, y no hay service worker. La pone al día el actualizador
+ * de Capgo, al que se le habla por el puente de Capacitor. Se pregunta lo
+ * mismo que en la web —al arrancar y al volver a primer plano—, pero a
+ * paquete.json, que GitHub Actions deja en GitHub Pages con la huella de
+ * todo app/. Si no es la de aquí, se baja el paquete entero (unos 16 MB) en
+ * segundo plano, y la versión nueva se estrena la próxima vez que la app
+ * arranque o vuelva tras un rato fuera: nunca a media lectura, ni con la voz
+ * sonando. Lo bajado y sin estrenar se estrena también sin red.
+ *
+ * Si la versión nueva no llega a decir que arranca (notifyAppReady), el
+ * actualizador vuelve solo a la anterior; aquí se apunta, para no bajarla
+ * otra vez en cada arranque mientras no se publique otra.
+ */
+const WEB_PUBLICADA = 'https://miguelarc0401.github.io/liturgicum/';
+
+/* Lo que tiene que estar fuera la app para que, a la vuelta, se estrene la
+ * versión bajada: salir un momento a mirar un mensaje no recarga nada. */
+const FUERA_PARA_ESTRENAR = 60 * 1000;
+
+function enElApk() {
+  return !!(window.Capacitor && window.Capacitor.isNativePlatform
+    && window.Capacitor.isNativePlatform());
+}
+
+function actualizador(metodo, opciones) {
+  return window.Capacitor.nativePromise('CapacitorUpdater', metodo,
+    opciones || {});
+}
+
+async function vigilaElPaquete() {
+  // lo primero, antes de nada que pueda tardar: sin este aviso en treinta
+  // segundos el actualizador da la versión por rota y vuelve a la anterior
+  actualizador('notifyAppReady').catch(() => {});
+
+  const P = E.paquete = { propia: null, fallidas: [], bajando: false,
+    mirando: null, fuera: 0 };
+  try {
+    P.propia = (await (await fetch('paquete-version.json')).json()).version;
+  } catch (_) { /* compilado sin ella: cualquier publicada es nueva */ }
+  try {
+    P.fallidas = JSON.parse(localStorage.getItem('apkFallidas') || '[]');
+    const estrenada = localStorage.getItem('apkEstrenando');
+    if (estrenada && estrenada !== P.propia) P.fallidas.push(estrenada);
+    localStorage.removeItem('apkEstrenando');
+    localStorage.setItem('apkFallidas', JSON.stringify(P.fallidas.slice(-5)));
+  } catch (_) { /* sin almacén: como mucho, se vuelve a intentar */ }
+
+  const mira = (puedeEstrenar) => {
+    if (!P.mirando) {
+      P.mirando = (async () => {
+        if (puedeEstrenar) await estrenaLoBajado();
+        await bajaLoPublicado();
+      })().catch(() => {}).finally(() => { P.mirando = null; });
+    }
+  };
+  window.Capacitor.addListener('App', 'appStateChange', (d) => {
+    if (!d) return;
+    if (!d.isActive) { P.fuera = Date.now(); return; }
+    mira(P.fuera && Date.now() - P.fuera >= FUERA_PARA_ESTRENAR);
+  });
+  mira(true);
+}
+
+/* La versión ya bajada, si la hay, se pone ahora: recarga la app, y de
+ * set() no se vuelve. */
+async function estrenaLoBajado() {
+  const P = E.paquete;
+  if (V.estado !== 'parada') return;
+  const { bundles } = await actualizador('list');
+  const b = (bundles || [])
+    .filter((x) => x.id !== 'builtin'
+      && (x.status === 'pending' || x.status === 'success')
+      && x.version !== P.propia && !P.fallidas.includes(x.version))
+    .sort((x, y) => (x.downloaded < y.downloaded ? 1 : -1))[0];
+  if (!b) return;
+  try { localStorage.setItem('apkEstrenando', b.version); } catch (_) {}
+  await actualizador('set', { id: b.id });
+}
+
+/* Pregunta por la versión publicada y, si es otra, la baja para la próxima
+ * vez. Lo bajado que ya no es lo publicado se tira. */
+async function bajaLoPublicado() {
+  const P = E.paquete;
+  if (P.bajando) return;
+  let pub;
+  try {
+    const r = await fetch(WEB_PUBLICADA + 'paquete.json', { cache: 'no-store' });
+    if (!r.ok) return;
+    pub = await r.json();
+  } catch (_) { return; }   // sin red: ya se mirará
+
+  const { bundles } = await actualizador('list');
+  let hay = false;
+  for (const x of bundles || []) {
+    if (x.id === 'builtin' || x.version === P.propia) continue;
+    // una que se quedó bajando en otra sesión no va a acabar: fuera también
+    const sirve = x.version === pub.version
+      && (x.status === 'pending' || x.status === 'success');
+    if (sirve) hay = true;
+    else actualizador('delete', { id: x.id }).catch(() => {});
+  }
+  if (hay || pub.version === P.propia || P.fallidas.includes(pub.version)) {
+    return;
+  }
+  P.bajando = true;
+  try {
+    await actualizador('download', {
+      url: new URL(pub.zip, WEB_PUBLICADA).href,
+      version: pub.version,
+      checksum: pub.sha256
+    });
+  } catch (err) {
+    console.warn('no se ha podido bajar la versión nueva:', err);
+  } finally {
+    P.bajando = false;
+  }
+}
+
+/* Los iconos de la barra de arriba —la hora, la batería— los pinta Android,
+ * y no saben del tema de la app: con el oscuro elegido en Ajustes y el
+ * teléfono en claro saldrían negros sobre negro. */
+function barrasDelSistema() {
+  if (!enElApk()) return;
+  const t = E.cfg.tema;
+  const noche = matchMedia('(prefers-color-scheme: dark)');
+  const oscuro = t === 'oscuro' || t === 'noche'
+    || (t === 'auto' && noche.matches);
+  window.Capacitor.nativePromise('SystemBars', 'setStyle',
+    { style: oscuro ? 'DARK' : 'LIGHT' }).catch(() => {});
+  if (!E.barrasAtentas) {
+    E.barrasAtentas = true;
+    noche.addEventListener('change', barrasDelSistema);
+  }
 }
 
 arranca();

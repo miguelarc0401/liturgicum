@@ -1,0 +1,23 @@
+{
+  "appId": "io.github.miguelarc0401.liturgicum",
+  "appName": "Liturgicum",
+  "webDir": "../app",
+  "backgroundColor": "#fbf7ef",
+  "plugins": {
+    "CapacitorUpdater": {
+      "autoUpdate": false,
+      "statsUrl": "",
+      "updateUrl": "",
+      "channelUrl": "",
+      "appReadyTimeout": 30000,
+      "keepUrlPathAfterReload": true,
+      "resetWhenUpdate": true,
+      "autoDeletePrevious": true,
+      "autoDeleteFailed": true
+    },
+    "SystemBars": {
+      "insetsHandling": "native",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}

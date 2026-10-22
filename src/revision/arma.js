@@ -29,8 +29,8 @@ vm.createContext(ctx);
 let src = fs.readFileSync(path.join(app, 'app.js'), 'utf8');
 src = src.replace(/\narranca\(\);\s*$/, '\n');
 vm.runInContext(src + `
-;globalThis.__api = { E, armaHora, celebracionesHoras, ordenDe };`, ctx, { filename: 'app.js' });
-const { E, armaHora } = ctx.__api;
+;globalThis.__api = { E, armaHora, celebracionesHoras, ordenDe, cualVisperas };`, ctx, { filename: 'app.js' });
+const { E, armaHora, cualVisperas } = ctx.__api;
 E.cal = lee('calendario.json');
 E.horas = lee('horas.json');
 E.horasDias = lee('horas_dias.json');
@@ -55,7 +55,10 @@ for (let t = new Date(desde + 'T12:00:00Z'); t <= new Date(hasta + 'T12:00:00Z')
     if (!base) continue;
     dia.horas[h] = base.cels.ops.map((op) => {
       const o = op.id === base.op.id ? base : armaHora(iso, h, op.id);
+      // qué vísperas son, según la app: las primeras de mañana o las segundas
+      const vis = h === 'visperas' ? cualVisperas(iso, h, o.dia, op) : null;
       return {
+        vis: vis ? { n: vis.n, iso: vis.iso, t: vis.t } : null,
         op: op.id, t: op.t, g: op.g, modo: op.modo, def: op.id === base.cels.def,
         secs: o.secciones.map((s) => {
           const x = { cl: s.cl, i: s.i, alts: alts(s) };

@@ -85,3 +85,16 @@ Missale/datos/web/
 # fase 5 deja ahi misa.json, otros 2,5 MB, que tampoco lleva texto: lleva de
 # donde sale cada pieza, y es lo que hay que poder auditar.
 
+
+#
+# El APK (apk/LEEME.md). Las dependencias de Capacitor se bajan al compilar,
+# en GitHub Actions, y el paquete con que se pone al dia se arma alli mismo
+# al publicar: 16 MB por publicacion, que en git se quedarian para siempre.
+apk/node_modules/
+app/paquete.zip
+app/paquete.json
+app/paquete-version.json
+# la llave de firma no va nunca aqui dentro (apk/LEEME.md)
+*.p12
+*.jks
+*.keystore

@@ -55,12 +55,16 @@ ROMANOS = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x",
 NUM_ROMANO = {r: i for i, r in enumerate(ROMANOS) if r}
 
 # Las tres opciones que cambian de un pais a otro. El valor por omision es el
-# uso mas extendido en Espana y en America Latina: las tres trasladadas al
-# domingo (salvo la Epifania en Espana, que es el 6 de enero; de ahi la opcion).
+# de Mexico, que es para donde es la app: la Epifania y la Ascension
+# trasladadas al domingo, y el Corpus en su jueves. Los misalitos mexicanos de
+# 2022 a 2026 lo imprimen todos los anos el jueves despues de la Trinidad,
+# como solemnidad, y el domingo siguiente es el domingo del tiempo ordinario
+# (y asi lo da tambien el calendario de Mexico de GCatholic). La otra forma
+# de cada una queda de parche, que es lo que se elige en Ajustes.
 OPCIONES = OrderedDict([
     ("epifania", ("domingo", "6enero")),
     ("ascension", ("domingo", "jueves")),
-    ("corpus", ("domingo", "jueves")),
+    ("corpus", ("jueves", "domingo")),
 ])
 
 

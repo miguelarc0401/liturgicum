@@ -25,33 +25,33 @@ Las rúbricas del Ordinario que no están en las dos lenguas
 Lo que se escribió
 ------------------
 
-  app/datos/misa.json                  2164 KB
+  app/datos/misa.json                  2166 KB
   app/datos/lecturas_es.json           4756 KB
   app/datos/misal_latino.json           775 KB
   app/datos/prefacios.json              237 KB
   app/datos/ordinario.json              234 KB
-  TOTAL                                8166 KB
+  TOTAL                                8168 KB
 
-  versión de datos: clementina+lect1977+nova-2696065666
+  versión de datos: clementina+lect1977+nova-1014302697
 
 Los formularios y sus piezas
 ----------------------------
 
   formularios del leccionario : 1051
-    completo                     812
-    parcial                      153
-    latino                        54
+    completo                     811
+    parcial                      157
+    latino                        51
     nada                          32
 
   piezas (seis ranuras por formulario, 6306 en total):
       por celebración                         1760
       por común                                109
-      por día                                  699
+      por día                                  708
       por gemela                                68
       por suelto                                76
       por unidad                              1895
-    piezas en castellano                      4607
-    piezas que sólo tiene el latín             502
+    piezas en castellano                      4616
+    piezas que sólo tiene el latín             493
 
   Las piezas que sólo tiene el latín no se copian en misa.json:
   van en misal_latino.json y la app las alcanza por el puntero
@@ -119,10 +119,10 @@ Desarmar la perícopa impresa
     lecturas con fórmula                        2775
     lecturas sin fórmula reconocida               88
     lecturas con sumario                        2434
-    lecturas con cierre                         2752
-    lecturas sin cierre reconocido               111
-    lecturas con respuesta del pueblo           2272
-    salmo o aclamación sin respuesta              35
+    lecturas con cierre                         2753
+    lecturas sin cierre reconocido               110
+    lecturas con respuesta del pueblo           2273
+    salmo o aclamación sin respuesta              34
     salmo sin estrofas                             0
 
   El cierre se busca en el texto ya juntado y no en el último
@@ -262,7 +262,7 @@ Los prefacios
   propios cosechados        : 28
   latinos sin pareja        : 39
   prefacios castellanos sin pareja latina             18
-  prefacios castellanos que ningún formulario cita    12
+  prefacios castellanos que ningún formulario cita    14
   prefacios propios con celebración                   21
   prefacios propios sin celebración                    7
   formularios con prefacio propio cosechado           45

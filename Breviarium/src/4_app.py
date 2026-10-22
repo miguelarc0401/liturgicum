@@ -966,6 +966,16 @@ def main():
             coord = (cab['tiempo'], cab['semana'], None)
         else:
             coord = (cab['tiempo'], None, clave(cab.get('titulo') or ''))
+            # Un día del tiempo ordinario sin semana es una solemnidad que la
+            # fuente celebra ese domingo, y sólo enseña algo si el calendario
+            # de México la celebra también. La fuente es argentina y pone el
+            # Corpus en domingo; en México es el jueves, y el domingo IX y el
+            # X, que tantos años coincidieron con él allá, aprendían a buscar
+            # sus textos en «domingo de Corpus Christi».
+            if cab['tiempo'] == 'Ordinario' and not any(
+                    parecido((e[2] or {}).get('t') or '', cab.get('titulo') or '')
+                    >= 0.5 for e in ent):
+                continue
         aprendido[temporal[0]][coord] += 1
         if cab.get('semana') is None and cab.get('salterio'):
             salterio_aprendido[temporal[0]][cab['salterio']] += 1
@@ -1354,13 +1364,44 @@ def main():
             return {'r': h[1] or p['r'], 'l': h[2]}, h[3]
         return {'r': p['r'], 'l': p['l'], 'f': 'pdf'}, None
 
+    # Y los domingos del tiempo ordinario que la fuente no rezó nunca como
+    # tales (el IX: en Argentina es siempre la Trinidad o el Corpus), con lo
+    # suyo del tomo III o IV —las lecturas del Oficio con sus dos años, las
+    # antífonas del Benedictus y del Magníficat con sus tres ciclos (van a
+    # `ciclo_extra`)— y la oración, que la fuente sí da: es la del Oficio de
+    # las ferias de esa semana. Las primeras vísperas van al sábado anterior.
+    ciclo_extra = {}
+    domingos_pdf = {}
     for kf, piezas in sorted((carga('pdf_tiempo.json', opcional=True)
                               or {}).items()):
+        m_dom = re.fullmatch(r'Ordinario/(\d+)/0', kf)
+        if m_dom and f'{kf}/laudes/oracion' in tiempo:
+            continue                    # la fuente tiene el domingo: manda ella
+        if m_dom:
+            domingos_pdf[int(m_dom[1])] = piezas
         for hc, p in sorted(piezas.items()):
             hora, cl = hc.split('/')
             k = f'{kf}/{hc}'
-            if k in tiempo or hora not in ('oficio', 'laudes', 'tercia',
-                                           'sexta', 'nona', 'visperas'):
+            if m_dom and hora == 'i_visperas':
+                k = f'Ordinario/{int(m_dom[1]) - 1}/6/visperas/{cl}'
+                hora = 'visperas'
+            if m_dom and cl == 'oracion':
+                propia = tiempo.get(f'Ordinario/{m_dom[1]}/1/oficio/oracion')
+                if propia:
+                    tiempo_extra[k] = {'r': propia['rotulo'],
+                                       'l': propia['lineas']}
+                    continue
+            if m_dom and 'ciclos' in p:
+                por_ciclo = {}
+                for ci, ant in sorted(p['ciclos'].items()):
+                    por_ciclo[ci], donde = pieza_de_feria(
+                        k, cl, hora, {'ant': [ant]})
+                    ferias_pdf.append((k + f' (ciclo {ci})', donde))
+                ciclo_extra[k] = {ci: c for ci, c in por_ciclo.items() if c}
+                tiempo_extra[k] = ciclo_extra[k].get('A')
+                continue
+            if (k in tiempo and not m_dom) or hora not in (
+                    'oficio', 'laudes', 'tercia', 'sexta', 'nona', 'visperas'):
                 continue
             if cl in ('lectura1', 'responsorio') and 'I' in p:
                 por_anio = {}
@@ -1429,6 +1470,13 @@ def main():
         slug = temporal[0]
 
         cab = fuente.get(fecha)
+        # (lo mismo que al aprender: el domingo que la fuente hizo Corpus y en
+        # México es del tiempo ordinario no toma de ella sus coordenadas)
+        if (cab and cab.get('tiempo') == 'Ordinario' and cab.get('semana') is None
+                and not any(parecido((e[2] or {}).get('t') or '',
+                                     cab.get('titulo') or '') >= 0.5
+                            for e in ent['c'])):
+            cab = None
         if cab and cab.get('tiempo'):
             # el volcado lo dice él mismo, y no hay fuente mejor
             ti, sem = cab['tiempo'], cab.get('semana')
@@ -1668,6 +1716,82 @@ def main():
             elif nuevo or p.get('rub'):
                 sal_pdf.append((titulo, hora, nuevo, de_donde))
 
+    # --- las primeras vísperas que sólo trae el PDF ------------------------
+    # La fuente es argentina, y lo que en México es solemnidad y allá fiesta
+    # no tiene en ella primeras vísperas: Nuestra Señora de Guadalupe, cuyas
+    # vísperas del 11 de diciembre eran las de la feria. El tomo I las trae
+    # («Las I Vísperas sólo se dicen en México y en aquellas iglesias en las
+    # que la festividad … se celebra como solemnidad»), y van con la marca
+    # de siempre. Cada pieza se busca antes en la fuente; los salmos, que el
+    # PDF remite al Común de santa María Virgen (112, 147 y Efesios 1), son
+    # los de la fuente para la Inmaculada, que son esos mismos; y la oración,
+    # la de la propia celebración, que es la colecta del día.
+    con_v1 = {k.split('/')[1] for k in santoral if '/visperas1/' in k}
+    salmos_virgen = next((v['lineas'] for k, v in sorted(santoral.items())
+                          if k.endswith('/la inmaculada concepcion de la '
+                                        'santisima virgen maria/visperas1/'
+                                        'salmodia')), None)
+
+    def con_antifonas(lineas, ants):
+        salida, i = [], -1
+        for ln in lineas:
+            if es_antifona(ln):
+                rot = ln[0][1]
+                if re.match(r'\s*Ant\.?\s*\d', rot):
+                    i += 1
+                n = max(i, 0)
+                if n < len(ants):
+                    salida.append([[1, rot], [0, ants[n]]])
+                    continue
+            salida.append(ln)
+        return salida
+
+    primeras_pdf = []
+    for slug, m in sorted(titulos.items()):
+        santo = santo_de_slug.get(slug)
+        fm = re.match(r'st_(\d\d)(\d\d)_', slug)
+        if (not santo or not fm or m.get('k') != 's' or santo in con_v1
+                or grado(m) != 'SOLEMNIDAD'):
+            continue
+        md = f'{fm[1]}-{fm[2]}'
+        # el título del tomo es más largo («…, patrona de América Latina y de
+        # las islas Filipinas»): vale si dice todo lo que dice el calendario
+        e = entrada_pdf(md, m['t']) or next(
+            (x for x in pdf_por_md.get(md, [])
+             if set(clave(m['t']).split()) <= set(clave(x['titulo']).split())),
+            None)
+        if not e or not any(k.startswith('i_visperas/') for k in e['piezas']):
+            continue
+        for k, p in e['piezas'].items():
+            if not k.startswith('i_visperas/'):
+                continue
+            cl = k.split('/')[1]
+            c = None
+            if cl == 'salmodia':
+                if (p.get('ant') and salmos_virgen and 'santa maría virgen'
+                        in (p.get('rub') or '').lower()):
+                    c = {'r': p['r'], 'l': con_antifonas(salmos_virgen,
+                                                         p['ant']), 'f': 'pdf'}
+            elif cl == 'cantico_evangelico':
+                h = equiv.antifona(p['ant'][0])
+                c = cantico_con('visperas', h[0] if h else p['ant'][0])
+                if c and h:
+                    del c['f']
+            elif cl == 'oracion':
+                propia = (santoral.get(f'{md}/{santo}/visperas/oracion')
+                          or santoral.get(f'{md}/{santo}/laudes/oracion'))
+                c = ({'r': propia['rotulo'], 'l': propia['lineas']} if propia
+                     else {'r': p['r'], 'l': p['l'], 'f': 'pdf'})
+            elif p.get('l'):
+                h = equiv.busca(cl, p['l'])
+                c = ({'r': h[1] or p['r'], 'l': h[2]} if h
+                     else {'r': p['r'], 'l': p['l'], 'f': 'pdf'})
+            if c:
+                extra[f'{md}/{santo}/visperas1/{cl}'] = c
+        primeras_pdf.append(m['t'])
+    print('primeras vísperas del PDF: ' + (', '.join(primeras_pdf) or 'ninguna'),
+          flush=True)
+
     # De los comunes, las segundas lecturas que la fuente da como variantes
     # son otras tantas lecturas a elegir: un común ofrece varias, y quien
     # reza escoge. (El Común de la Virgen, dos.)
@@ -1740,6 +1864,59 @@ def main():
                     and any(x.startswith(f'{k}/{hora}/') for x in tiempo_app)):
                 tiempo_app[f'{k}/{hora}/himno'] = himno
 
+    # El domingo que la fuente no rezó nunca (el IX) tiene ya lo suyo —del
+    # PDF y la oración de la fuente—; lo del salterio se toma de un domingo
+    # de la misma semana del salterio que sí rezó (el XIII, semana I): el
+    # invitatorio, los himnos, la salmodia, las lecturas breves, las preces,
+    # la Hora intermedia. Y las vísperas del sábado anterior, que en la
+    # fuente eran las primeras de la Trinidad o del Corpus, son las primeras
+    # de un sábado de esa misma semana, con la antífona del Magníficat y la
+    # oración del domingo que entra.
+    PROPIO_DEL_DOMINGO = ('oracion', 'cantico_evangelico', 'lectura1',
+                          'responsorio', 'lectura2', 'responsorio2')
+    for n in sorted(domingos_pdf):
+        m = next((m for m in range(2, 34) if m != n and (m - n) % 4 == 0
+                  and f'Ordinario/{m}/0/laudes/oracion' in tiempo_app), None)
+        if m is None:
+            continue
+        for base_n, base_m, solo in ((f'Ordinario/{n}/0/', f'Ordinario/{m}/0/', None),
+                                     (f'Ordinario/{n - 1}/6/', f'Ordinario/{m - 1}/6/',
+                                      'visperas/')):
+            sab = solo is not None
+            oracion_dom = tiempo_app.get(f'Ordinario/{n}/0/laudes/oracion')
+            if sab:
+                # el sábado sólo si sus vísperas no son ya las del domingo (lo
+                # que dice la fuente, no lo que se acaba de poner)
+                actual = tiempo.get(base_n + 'visperas/oracion')
+                if actual and oracion_dom and actual['lineas'] == oracion_dom['l']:
+                    continue
+            for k, v in list(tiempo_app.items()):
+                if not k.startswith(base_m):
+                    continue
+                resto = k[len(base_m):]
+                hora, cl = resto.split('/', 1)
+                if sab and hora != 'visperas':
+                    continue
+                if cl in PROPIO_DEL_DOMINGO and hora != 'completas':
+                    continue
+                # las Completas, siempre: las del domingo son las mismas todas
+                # las semanas, y lo que hubiera en la casilla era de otro día
+                if sab or hora == 'completas' or base_n + resto not in tiempo_app:
+                    tiempo_app[base_n + resto] = v
+            if sab:
+                if oracion_dom:
+                    tiempo_app[base_n + 'visperas/oracion'] = oracion_dom
+                kc = base_n + 'visperas/cantico_evangelico'
+                if kc in tiempo_extra:
+                    tiempo_app[kc] = tiempo_extra[kc]
+            else:
+                # la oración del domingo también en la Hora intermedia
+                for h in ('tercia', 'sexta', 'nona'):
+                    if oracion_dom and f'{base_n}{h}/oracion' not in tiempo_app:
+                        tiempo_app[f'{base_n}{h}/oracion'] = oracion_dom
+    for k, por_ciclo in ciclo_extra.items():
+        tiempo_ciclo[k] = por_ciclo
+
     # El Oficio trae el invitatorio en dos casillas, según la forma con que
     # la fuente lo escribió cada año («Si ésta es la primera oración del
     # día» o «Si el Oficio de Lectura es la primera…»), y la app toma la
@@ -1779,6 +1956,28 @@ def main():
         'antifonas': antifonas,
         'otras_lecturas': otras_lecturas,
     }
+    # El Te Deum lo pone la app por la rúbrica (PNLH 68) y no por lo que la
+    # fuente imprimió cada día, que se lo saltaba en san José, la Anunciación
+    # o un domingo del tiempo ordinario que casi nunca cae como tal. El texto
+    # es el que la fuente da las más de las veces.
+    te_deum = Counter(json.dumps(v, ensure_ascii=False)
+                      for t in (tiempo_app, santoral_app)
+                      for k, v in t.items() if k.endswith('/oficio/himno2'))
+    if te_deum:
+        libro['ordinario']['@/oficio/te_deum'] = json.loads(
+            max(te_deum.items(), key=lambda par: (par[1], par[0]))[0])
+    # Y la oración de las Completas «después de las segundas vísperas de las
+    # solemnidades que no coinciden en domingo: Visita, Señor, esta
+    # habitación…» (tomo III, Completas del domingo II), que la del domingo
+    # habla de la resurrección. La fuente la da en Navidad, la Epifanía…
+    visita = Counter(json.dumps(v, ensure_ascii=False)
+                     for t in (tiempo_app, santoral_app)
+                     for k, v in t.items() if k.endswith('/completas/oracion')
+                     and 'Visita, Señor, esta habitación' in json.dumps(
+                         v, ensure_ascii=False))
+    if visita:
+        libro['ordinario']['@/completas/oracion_solemnidad'] = json.loads(
+            max(visita.items(), key=lambda par: (par[1], par[0]))[0])
     sin_nombre_del_papa(libro)
     nr = rubricas_del_invitatorio(libro)
     ruta_libro = os.path.join(APP, 'horas.json')

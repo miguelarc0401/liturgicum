@@ -506,6 +506,7 @@ def celebraciones_de_anio(anio, cfg, m14, santoral, por_clave):
                 "titulo": s["nombre"], "bloques": s["bloques"],
                 "rango": s["rango"], "grado": s["grado"], "orden": 0,
                 "feria": False, "ambito": s["ambito"], "nota": s["nota"],
+                "movil": s["movil"],
             })
     return agenda, inicio, fin
 
@@ -551,8 +552,25 @@ def resuelve(agenda, inicio, fin, avisos):
         cs = agenda[f]
         t = min(c["rango"] for c in cs)
         vivos, omitidas = [], []
+        # Dos memorias obligatorias el mismo dia: las dos pasan a libres. Es
+        # lo que dispuso la Congregacion para el Culto Divino al hacer
+        # obligatoria la del Inmaculado Corazon (1996), que cae el sabado
+        # despues del Sagrado Corazon y se encuentra con otras: san Ireneo en
+        # 2025, san Antonio en 2026, san Bonifacio en 2027. Se daba solo la
+        # primera, y el Inmaculado Corazon —que es la que los misalitos de
+        # Mexico imprimen como memoria del dia— desaparecia de las Horas. La
+        # movil va delante, que es la que la fuente pone.
+        dos = [c for c in cs if c["clase"] == "santoral" and c["rango"] == 10]
+        coinciden = len(dos) > 1 and t >= 10
         for c in cs:
             c = dict(c)
+            if coinciden and c["clase"] == "santoral" and c["rango"] == 10:
+                c["rango"] = 12
+                c["grado"] = "memoria_libre"
+                c["rebajada"] = ("memoria obligatoria que coincide con otra: "
+                                 "las dos se celebran como libres")
+                if c.get("movil"):
+                    c["orden"] = -1
             # memoria obligatoria en feria de Cuaresma -> memoria libre
             if (c["clase"] == "santoral" and c["rango"] == 10
                     and any(x["clave"][0] == "cua" and x["clave"][1] == "fer"

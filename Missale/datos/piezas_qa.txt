@@ -29,11 +29,11 @@ cosa que el plan pedía de esta fase.
 
 grado            celebr lecturas   su día otro día    nunca   sin una
 Solemnidad            7       31       25        1        5         0
-Fiesta               25       67       52        6        9         0
+Fiesta               24       64       52        3        9         0
 Memoria              69      148       14       65       69        15
 Memoria libre        98      204        5       98      101        23
 Conmemoración         1        7        1        1        5         0
-TOTAL               200      457       97      171      189        38
+TOTAL               199      454       97      168      189        38
 
 «su día»   : la perícopa está impresa en un día del santo;
 «otro día» : no, pero sí en otro día del corpus, y de ahí la
@@ -644,9 +644,9 @@ Piezas decididas a la fuerza por empate de testigos: 60. Es el
    st_0210_20                         ofrendas     2 testigos, 1 variantes
    st_0308_29                         colecta      3 testigos, 1 variantes
    st_0309_30                         colecta      3 testigos, 2 variantes
-   st_0427_202                        ofrendas     3 testigos, 1 variantes
-   st_0427_202                        comunion     3 testigos, 1 variantes
-   st_0427_202                        poscomunion  3 testigos, 1 variantes
+   st_0427_201                        ofrendas     3 testigos, 1 variantes
+   st_0427_201                        comunion     3 testigos, 1 variantes
+   st_0427_201                        poscomunion  3 testigos, 1 variantes
    st_0518_57#misa-vespertina-de-la-v poscomunion  1 testigos, 1 variantes
    st_0525_60                         poscomunion  1 testigos, 1 variantes
    st_0525_61                         ofrendas     1 testigos, 1 variantes
@@ -656,11 +656,11 @@ Piezas decididas a la fuerza por empate de testigos: 60. Es el
    st_0721_92                         ofrendas     2 testigos, 4 variantes
    st_0721_92                         poscomunion  2 testigos, 4 variantes
    st_0811_110                        ofrendas     3 testigos, 2 variantes
-   st_0812_220                        poscomunion  4 testigos, 1 variantes
+   st_0812_219                        poscomunion  4 testigos, 1 variantes
    st_0819_115                        ofrendas     4 testigos, 2 variantes
-   st_0819_222                        poscomunion  3 testigos, 3 variantes
-   st_0826_223                        poscomunion  4 testigos, 1 variantes
-   st_0902_224                        poscomunion  4 testigos, 1 variantes
+   st_0819_221                        poscomunion  3 testigos, 3 variantes
+   st_0826_222                        poscomunion  4 testigos, 1 variantes
+   st_0902_223                        poscomunion  4 testigos, 1 variantes
    st_0909_128                        ofrendas     4 testigos, 1 variantes
    … y 20 más
 
@@ -743,7 +743,7 @@ su nombre:
    d5_17_0                            salvo 2025-08-07/0  (2 piezas)
    st_0107_1                          salvo 2025-01-09/0  (2 piezas)
    st_0430_50                         salvo 2022-05-05/0  (2 piezas)
-   st_0503_203                        salvo 2021-01-15/0  (2 piezas)
+   st_0503_202                        salvo 2021-01-15/0  (2 piezas)
    st_0527_63                         salvo 2024-05-28/0  (2 piezas)
    vot_misa-de-santa-maria-en-sabado  salvo 2018-09-01/0  (2 piezas)
    vot_misa-para-pedir-la-gracia-de-u salvo 2022-11-11/0  (2 piezas)
@@ -950,7 +950,7 @@ donde el día las toma—. Lo que falta, ranura por ranura:
 Las celebraciones que el calendario del proyecto no trae
 --------------------------------------------------------
 
-Los 503 avisos son todos de lo mismo, y es un hallazgo, no un
+Los 506 avisos son todos de lo mismo, y es un hallazgo, no un
 fallo: el misalito ofrece santos que el calendario del
 proyecto no tiene, porque son el **propio de México** —los
 mártires cristeros, los santos de Guadalajara— y el
@@ -1101,4 +1101,4 @@ Y los avisos, día por día:
    2025-01-30/0   la fuente ofrece «SAN DAVID GALVÁN BERMÚDEZ, Mártir Mexicano *» y el calendario no trae ese santo ese día
    2025-03-03/0   la fuente ofrece «BEATA MARÍA DE LA CONCEPCIÓN» y el calendario no trae ese santo ese día
    2025-04-11/1   la fuente ofrece «NUESTRA SEÑORA DE LOS DOLORES» y el calendario no trae ese santo ese día
-   … y 383 más
+   … y 386 más

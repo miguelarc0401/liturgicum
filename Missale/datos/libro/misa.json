@@ -3427,8 +3427,9 @@
      "es": "Sal 109,1.2.3.4",
      "o": 2,
      "otros_vers": false,
-     "t": 10,
+     "t": 13,
      "tipo": "salmo responsorial",
+     "vi": 3,
      "via_es": "cita"
     },
     {
@@ -3436,8 +3437,9 @@
      "es": "1 Co 11,23-26",
      "o": 3,
      "otros_vers": false,
-     "t": 8,
+     "t": 2,
      "tipo": "segunda lectura",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -3445,8 +3447,9 @@
      "es": "Jn 6,51",
      "o": 4,
      "otros_vers": false,
-     "t": 20,
+     "t": 2,
      "tipo": "aleluya",
+     "vi": 2,
      "via_es": "cita"
     },
     {
@@ -3461,44 +3464,49 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 28,
+     "f": "misalito",
      "r": "colecta",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "comunion": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 61,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 135,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 255,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 280,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -3508,7 +3516,7 @@
    "seccion": "SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO",
    "titulo": "Solemnidad del Santísimo Cuerpo y Sangre de Cristo",
    "u": "sol/corpus",
-   "v": "latino"
+   "v": "completo"
   },
   "III|3034CFSCDJ.html|0": {
    "alt": [],
@@ -10771,6 +10779,7 @@
      "otros_vers": false,
      "t": 2,
      "tipo": "salmo responsorial",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -10787,8 +10796,9 @@
      "es": "Jn 6,51",
      "o": 4,
      "otros_vers": false,
-     "t": 20,
+     "t": 10,
      "tipo": "aleluya",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -10803,44 +10813,49 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 28,
+     "f": "misalito",
      "r": "colecta",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "comunion": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 61,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 135,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 255,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 280,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -10850,7 +10865,7 @@
    "seccion": "SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO",
    "titulo": "Solemnidad del Santísimo Cuerpo y Sangre de Cristo",
    "u": "sol/corpus",
-   "v": "latino"
+   "v": "completo"
   },
   "II|2034BFSCDJ.html|0": {
    "alt": [],
@@ -19576,11 +19591,12 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 3,
-     "de": 280,
+     "d": 5,
+     "de": 275,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 17,
+     "t": 18,
+     "u": "d5_7_0",
      "v": null,
      "via": "día"
     },
@@ -20153,13 +20169,12 @@
      "via": "unidad"
     },
     "comunion": {
-     "d": 5,
-     "de": 61,
-     "f": "misalito",
+     "de": "tempore/missae-dominicales-et-cotidianae-dominica-ix-per-annum",
+     "f": "latino",
      "r": "comunion",
-     "t": 18,
+     "t": null,
      "v": null,
-     "via": "día"
+     "via": "latino"
     },
     "entrada": {
      "de": "d5_8_0",
@@ -20170,13 +20185,12 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 5,
-     "de": 255,
-     "f": "misalito",
+     "de": "tempore/missae-dominicales-et-cotidianae-dominica-ix-per-annum",
+     "f": "latino",
      "r": "ofrendas",
-     "t": 17,
+     "t": null,
      "v": null,
-     "via": "día"
+     "via": "latino"
     },
     "poscomunion": {
      "de": "d5_8_0",
@@ -20194,7 +20208,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 9ª semana de Tiempo Ordinario",
    "u": "to/9",
-   "v": "completo"
+   "v": "parcial"
   },
   "IV|4053ITOV09.html|0": {
    "alt": [],
@@ -21381,13 +21395,12 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 7,
-     "de": 255,
-     "f": "misalito",
+     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xi-per-annum",
+     "f": "latino",
      "r": "ofrendas",
-     "t": 17,
+     "t": null,
      "v": null,
-     "via": "día"
+     "via": "latino"
     },
     "poscomunion": {
      "de": "d5_10_0",
@@ -21405,7 +21418,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 11ª semana de Tiempo Ordinario",
    "u": "to/11",
-   "v": "completo"
+   "v": "parcial"
   },
   "IV|4065ITOV11.html|0": {
    "alt": [],
@@ -29417,7 +29430,7 @@
     },
     "entrada": {
      "d": 5,
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -29516,7 +29529,7 @@
     },
     "entrada": {
      "d": 5,
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -29615,7 +29628,7 @@
     },
     "entrada": {
      "d": 5,
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -40270,11 +40283,12 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "d": 3,
-     "de": 280,
+     "d": 5,
+     "de": 275,
      "f": "misalito",
      "r": "poscomunion",
-     "t": 17,
+     "t": 18,
+     "u": "d5_7_0",
      "v": null,
      "via": "día"
     },
@@ -40845,13 +40859,12 @@
      "via": "unidad"
     },
     "comunion": {
-     "d": 5,
-     "de": 61,
-     "f": "misalito",
+     "de": "tempore/missae-dominicales-et-cotidianae-dominica-ix-per-annum",
+     "f": "latino",
      "r": "comunion",
-     "t": 18,
+     "t": null,
      "v": null,
-     "via": "día"
+     "via": "latino"
     },
     "entrada": {
      "de": "d5_8_0",
@@ -40862,13 +40875,12 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 5,
-     "de": 255,
-     "f": "misalito",
+     "de": "tempore/missae-dominicales-et-cotidianae-dominica-ix-per-annum",
+     "f": "latino",
      "r": "ofrendas",
-     "t": 17,
+     "t": null,
      "v": null,
-     "via": "día"
+     "via": "latino"
     },
     "poscomunion": {
      "de": "d5_8_0",
@@ -40886,7 +40898,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 9ª semana de Tiempo Ordinario",
    "u": "to/9",
-   "v": "completo"
+   "v": "parcial"
   },
   "IV|4257PTOV09.html|0": {
    "alt": [],
@@ -42072,13 +42084,12 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "d": 7,
-     "de": 255,
-     "f": "misalito",
+     "de": "tempore/missae-dominicales-et-cotidianae-dominica-xi-per-annum",
+     "f": "latino",
      "r": "ofrendas",
-     "t": 17,
+     "t": null,
      "v": null,
-     "via": "día"
+     "via": "latino"
     },
     "poscomunion": {
      "de": "d5_10_0",
@@ -42096,7 +42107,7 @@
    "seccion": "TIEMPO ORDINARIO",
    "titulo": "Jueves de la 11ª semana de Tiempo Ordinario",
    "u": "to/11",
-   "v": "completo"
+   "v": "parcial"
   },
   "IV|4269PTOV11.html|0": {
    "alt": [],
@@ -50156,7 +50167,7 @@
     },
     "entrada": {
      "d": 5,
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -50257,7 +50268,7 @@
     },
     "entrada": {
      "d": 5,
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -50357,7 +50368,7 @@
     },
     "entrada": {
      "d": 5,
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -59894,8 +59905,9 @@
      "es": "Sal 147,12-13.14-15.19-20",
      "o": 2,
      "otros_vers": false,
-     "t": 5,
+     "t": 3,
      "tipo": "salmo responsorial",
+     "vi": 4,
      "via_es": "cita"
     },
     {
@@ -59912,8 +59924,9 @@
      "es": "Jn 6,51",
      "o": 4,
      "otros_vers": false,
-     "t": 20,
+     "t": 10,
      "tipo": "aleluya",
+     "vi": 1,
      "via_es": "cita"
     },
     {
@@ -59923,49 +59936,55 @@
      "otros_vers": false,
      "t": 4,
      "tipo": "evangelio",
+     "vi": 1,
      "via_es": "cita"
     }
    ],
    "piezas": {
     "colecta": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 28,
+     "f": "misalito",
      "r": "colecta",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "comunion": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 61,
+     "f": "misalito",
      "r": "comunion",
-     "t": null,
+     "t": 18,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "entrada": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 135,
+     "f": "misalito",
      "r": "entrada",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "ofrendas": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 255,
+     "f": "misalito",
      "r": "ofrendas",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "poscomunion": {
-     "de": "tempore/in-sollemnitatibus-domini-per-annum-occurrentibus-sanctissimi-corporis-et-sanguinis-christi",
-     "f": "latino",
+     "d": 17,
+     "de": 280,
+     "f": "misalito",
      "r": "poscomunion",
-     "t": null,
+     "t": 17,
      "v": null,
-     "via": "latino"
+     "via": "día"
     },
     "pueblo": null
    },
@@ -59975,7 +59994,7 @@
    "seccion": "SOLEMNIDADES DEL SEÑOR EN EL TIEMPO ORDINARIO",
    "titulo": "Solemnidad del Santísimo Cuerpo y Sangre de Cristo",
    "u": "sol/corpus",
-   "v": "latino"
+   "v": "completo"
   },
   "I|1034AFSCDJ.html|0": {
    "alt": [],
@@ -76419,7 +76438,7 @@
     },
     "entrada": {
      "d": 4,
-     "de": "st_1229_194",
+     "de": "st_1229_193",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -76606,7 +76625,7 @@
     },
     "comunion": {
      "d": 3,
-     "de": "st_1231_195",
+     "de": "st_1231_194",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -76633,7 +76652,7 @@
     },
     "poscomunion": {
      "d": 3,
-     "de": "st_1231_195",
+     "de": "st_1231_194",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -100724,7 +100743,7 @@
      "via": "latino"
     },
     "comunion": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "la": "votivae/19-de-omnibus-sanctis",
      "r": "comunion",
@@ -100741,7 +100760,7 @@
      "via": "latino"
     },
     "ofrendas": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "la": "votivae/19-de-omnibus-sanctis",
      "r": "ofrendas",
@@ -106477,7 +106496,7 @@
   },
   "V|5063TA0515.html|0": {
    "alt": [],
-   "cel": "st_0515_206",
+   "cel": "st_0515_205",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -106533,7 +106552,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0515_206",
+     "de": "st_0515_205",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -106541,7 +106560,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_0515_206",
+     "de": "st_0515_205",
      "f": "misalito",
      "r": "comunion",
      "t": 6,
@@ -106549,7 +106568,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_0515_206",
+     "de": "st_0515_205",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -106557,7 +106576,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_0515_206",
+     "de": "st_0515_205",
      "f": "misalito",
      "r": "ofrendas",
      "t": 5,
@@ -106565,7 +106584,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0515_206",
+     "de": "st_0515_205",
      "f": "misalito",
      "r": "poscomunion",
      "t": 5,
@@ -106579,7 +106598,7 @@
    "resena": "Nació cerca de Madrid. Fue labrador, trabajó la tierra de sol a sol y murió en la pobreza. Nunca fue a la escuela, pero del contacto íntimo y constante con Dios aprendió una gran serenidad de carácter. Recibía a todos los pobres que se presentaban en su casa. Murió a los 60 años (1130). Especialmente el mundo campesino le tiene gran veneración.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Isidro Labrador",
-   "u": "st/st_0515_206",
+   "u": "st/st_0515_205",
    "v": "completo"
   },
   "V|5064TA0517.html|0": {
@@ -112106,7 +112125,7 @@
   },
   "V|5122TA0809.html|0": {
    "alt": [],
-   "cel": "st_0809_219",
+   "cel": "st_0809_218",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -112153,7 +112172,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0809_219",
+     "de": "st_0809_218",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -112178,7 +112197,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_0809_219",
+     "de": "st_0809_218",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -112186,7 +112205,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0809_219",
+     "de": "st_0809_218",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -112200,7 +112219,7 @@
    "resena": "Edith Stein nació en Breslau, Alemania (hoy Broklaw, Polonia), el 12 de octubre de 1891, de una familia de profunda fe judía. Después de haber enseñado filosofía durante algunos años, recibió por el bautismo la nueva vida en Cristo y la desarrolló bajo el velo de religiosa de la Orden de las Carmelitas Descalzas. En tiempo del nazismo, hostil a la dignidad del hombre y a la fe, fue desterrada y encarcelada, y murió en la cámara de gas del campo de exterminio de Auschwitz, cerca de Cracovia, Polonia, el 9 de agosto de 1942.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Teresa Benedicta de la Cruz, virgen y mártir",
-   "u": "st/st_0809_219",
+   "u": "st/st_0809_218",
    "v": "completo"
   },
   "V|5123TA0810.html|0": {
@@ -114478,12 +114497,12 @@
   },
   "V|5146TA0914.html|0": {
    "alt": [],
-   "cel": "st_0914_130",
-   "color": "rojo",
+   "cel": "lv_5146ta0914",
+   "color": null,
    "credo": null,
-   "etiqueta": "Propio",
+   "etiqueta": "",
    "gloria": true,
-   "grado": "Fiesta",
+   "grado": null,
    "la": "sanctis/september-in-exaltatione-sanctae-crucis",
    "lecturas": [
     {
@@ -114569,14 +114588,14 @@
    "prefacio": [],
    "prefacio_propio": null,
    "resena": null,
-   "seccion": "PROPIO DE LOS SANTOS",
-   "titulo": "La Exaltación de la Santa Cruz",
-   "u": "st/st_0914_130",
+   "seccion": "OTROS FORMULARIOS DEL PROPIO DE LOS SANTOS",
+   "titulo": "LA EXALTACIÓN DE LA SANTA CRUZ",
+   "u": "st/lv_5146ta0914",
    "v": "latino"
   },
   "V|5147A0915.html|0": {
    "alt": [],
-   "cel": "st_0915_131",
+   "cel": "st_0915_130",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -114651,7 +114670,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_0915_131",
+     "de": "st_0915_130",
      "f": "misalito",
      "r": "ofrendas",
      "t": 1,
@@ -114674,12 +114693,12 @@
    "resena": "La santísima Virgen María estuvo íntimamente unida a la pasión de su Hijo. Por eso está asociada de un modo particular a la gloria de su resurrección. La compasión de María, que celebramos en esta fiesta, nos recuerda que al pie de la cruz la maternidad de María se extendió a todo el cuerpo de Cristo, que es la Iglesia, es decir, a todos nosotros.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Nuestra Señora de los Dolores",
-   "u": "st/st_0915_131",
+   "u": "st/st_0915_130",
    "v": "completo"
   },
   "V|5148TA0916.html|0": {
    "alt": [],
-   "cel": "st_0916_132",
+   "cel": "st_0916_131",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -114726,7 +114745,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0916_132",
+     "de": "st_0916_131",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -114750,7 +114769,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_0916_132",
+     "de": "st_0916_131",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -114758,7 +114777,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0916_132",
+     "de": "st_0916_131",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -114772,12 +114791,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Cornelio, papa, y Cipriano, obispo, mártires",
-   "u": "st/st_0916_132",
+   "u": "st/st_0916_131",
    "v": "completo"
   },
   "V|5149TA0917.html|0": {
    "alt": [],
-   "cel": "st_0917_133",
+   "cel": "st_0917_132",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -114825,7 +114844,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0917_133",
+     "de": "st_0917_132",
      "f": "misalito",
      "r": "colecta",
      "t": 5,
@@ -114849,7 +114868,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_0917_133",
+     "de": "st_0917_132",
      "f": "misalito",
      "r": "ofrendas",
      "t": 3,
@@ -114857,7 +114876,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0917_133",
+     "de": "st_0917_132",
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
@@ -114871,12 +114890,12 @@
    "resena": "Nacido en Toscana (Italia), entró muy joven en la Compañía de Jesús y dio clases en Lovaina y Roma. Allí escribió sus “Controversias” y dirigió espiritualmente a san Luis Gonzaga. Nombrado por el Papa cardenal-arzobispo de Capua, manifestó su gran habilidad pastoral. Pero tuvo que volver a Roma como consejero papal (1542-1621).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Roberto Belarmino, obispo y doctor de la Iglesia",
-   "u": "st/st_0917_133",
+   "u": "st/st_0917_132",
    "v": "completo"
   },
   "V|5150TA0919.html|0": {
    "alt": [],
-   "cel": "st_0919_134",
+   "cel": "st_0919_133",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -114969,12 +114988,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Jenaro, obispo y mártir",
-   "u": "st/st_0919_134",
+   "u": "st/st_0919_133",
    "v": "parcial"
   },
   "V|5151TA0920.html|0": {
    "alt": [],
-   "cel": "st_0920_135",
+   "cel": "st_0920_134",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -115021,7 +115040,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0920_135",
+     "de": "st_0920_134",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115045,7 +115064,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_0920_135",
+     "de": "st_0920_134",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -115053,7 +115072,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0920_135",
+     "de": "st_0920_134",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -115067,12 +115086,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Andrés Kim Taegon, presbítero, Pablo Chong Hasang y compañeros, mártires",
-   "u": "st/st_0920_135",
+   "u": "st/st_0920_134",
    "v": "completo"
   },
   "V|5152TA0921.html|0": {
    "alt": [],
-   "cel": "st_0921_136",
+   "cel": "st_0921_135",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -115112,7 +115131,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115120,7 +115139,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -115128,7 +115147,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -115136,7 +115155,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -115144,7 +115163,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0921_136",
+     "de": "st_0921_135",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -115161,12 +115180,12 @@
    "resena": "Es una figura que destaca en el grupo de los apóstoles. La vocación de este recaudador de impuestos de Cafarnaúm, constituye uno de los episodios sobresalientes del ministerio de Jesús en Galilea. El Evangelio según san Mateo es el que conecta más luminosamente el Antiguo con el Nuevo Testamento.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Mateo, apóstol y evangelista",
-   "u": "st/st_0921_136",
+   "u": "st/st_0921_135",
    "v": "completo"
   },
   "V|5153TA0926.html|0": {
    "alt": [],
-   "cel": "st_0926_137",
+   "cel": "st_0926_136",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -115213,7 +115232,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0926_137",
+     "de": "st_0926_136",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115246,7 +115265,7 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "st_0926_137",
+     "de": "st_0926_136",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -115260,12 +115279,12 @@
    "resena": "Cosme y Damián sufrieron el martirio en Alepo (Siria). Desde el siglo IV se realizaban tantos milagros sobre sus sepulcros que la leyenda los empezó a considerar como los médicos que curaban gratuitamente. Así, su culto no tardó en difundirse por todos los países mediterráneos.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Cosme y Damián, mártires",
-   "u": "st/st_0926_137",
+   "u": "st/st_0926_136",
    "v": "completo"
   },
   "V|5154TA0927.html|0": {
    "alt": [],
-   "cel": "st_0927_138",
+   "cel": "st_0927_137",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -115312,7 +115331,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0927_138",
+     "de": "st_0927_137",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115329,7 +115348,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_0927_138",
+     "de": "st_0927_137",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -115337,7 +115356,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_0927_138",
+     "de": "st_0927_137",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -115345,7 +115364,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0927_138",
+     "de": "st_0927_137",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -115359,12 +115378,12 @@
    "resena": "Es el fundador de los Padres de la Misión y de las Hijas de la Caridad y uno de los maestros de la espiritualidad francesa del siglo XVII. Pero, más que nada, es el tipo consumado de la caridad cristiana, que busca a todos los miserables para ayudarlos, porque ha descubierto los rasgos del Señor en cada persona que sufre (1581-1660).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Vicente de Paúl, presbítero",
-   "u": "st/st_0927_138",
+   "u": "st/st_0927_137",
    "v": "completo"
   },
   "V|5155TA0928.html|0": {
    "alt": [],
-   "cel": "st_0928_139",
+   "cel": "st_0928_138",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -115411,7 +115430,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0928_139",
+     "de": "st_0928_138",
      "f": "misalito",
      "r": "colecta",
      "t": 4,
@@ -115437,7 +115456,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_0928_139",
+     "de": "st_0928_138",
      "f": "misalito",
      "r": "ofrendas",
      "t": 3,
@@ -115445,7 +115464,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0928_139",
+     "de": "st_0928_138",
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
@@ -115459,12 +115478,12 @@
    "resena": "Wenceslao, duque de Bohemia, no cumplía aún los 30 años de edad, cuando fue asesinado por su hermano (935). En medio de una corte de costumbres bárbaras, se distinguió por su austeridad y su gran amor a los pobres. Su tumba, en Praga, se convirtió muy pronto en un centro de peregrinaciones.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Wenceslao, mártir",
-   "u": "st/st_0928_139",
+   "u": "st/st_0928_138",
    "v": "completo"
   },
   "V|5156TA0928_2.html|0": {
    "alt": [],
-   "cel": "st_0928_140",
+   "cel": "st_0928_139",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -115527,7 +115546,7 @@
      "via": "común"
     },
     "poscomunion": {
-     "de": "st_0928_140",
+     "de": "st_0928_139",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -115541,12 +115560,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Lorenzo Ruiz y compañeros, mártires",
-   "u": "st/st_0928_140",
+   "u": "st/st_0928_139",
    "v": "parcial"
   },
   "V|5157TA0929.html|0": {
    "alt": [],
-   "cel": "st_0929_141",
+   "cel": "st_0929_140",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -115603,7 +115622,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0929_141",
+     "de": "st_0929_140",
      "f": "misalito",
      "r": "colecta",
      "t": 1,
@@ -115611,7 +115630,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_0929_141",
+     "de": "st_0929_140",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -115652,12 +115671,12 @@
    "resena": "Junto con estos tres arcángeles, celebramos hoy a todos los ángeles, que, desde el paraíso del Génesis, hasta el del Apocalipsis, llenan con su intervención invisible el desarrollo de la historia de la salvación. Son mensajeros del Señor, que nos descubren sus secretos y nos transmiten sus órdenes. Y son los primeros adoradores del Dios vivo, en medio de una muchedumbre inmensa.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Arcángeles Miguel, Gabriel y Rafael",
-   "u": "st/st_0929_141",
+   "u": "st/st_0929_140",
    "v": "completo"
   },
   "V|5158TA0930.html|0": {
    "alt": [],
-   "cel": "st_0930_142",
+   "cel": "st_0930_141",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -115704,7 +115723,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_0930_142",
+     "de": "st_0930_141",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115712,7 +115731,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_0930_142",
+     "de": "st_0930_141",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -115720,7 +115739,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_0930_142",
+     "de": "st_0930_141",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -115728,7 +115747,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_0930_142",
+     "de": "st_0930_141",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -115736,7 +115755,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_0930_142",
+     "de": "st_0930_141",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -115750,12 +115769,12 @@
    "resena": "En diferentes temporadas, el sacerdote Jerónimo permaneció en Roma, en donde sirvió de secretario al Papa Dámaso. Pero los últimos 35 años de su vida los pasó cerca de la cueva de Belén, en donde nació Jesús. Ahí, entre penitencias y oraciones, se entregó en alma y cuerpo al estudio de la Biblia, que tradujo al latín y comentó (340-420).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Jerónimo, presbítero y doctor de la Iglesia",
-   "u": "st/st_0930_142",
+   "u": "st/st_0930_141",
    "v": "completo"
   },
   "V|5159TA1001.html|0": {
    "alt": [],
-   "cel": "st_1001_143",
+   "cel": "st_1001_142",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -115803,7 +115822,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1001_143",
+     "de": "st_1001_142",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115811,7 +115830,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1001_143",
+     "de": "st_1001_142",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -115819,7 +115838,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1001_143",
+     "de": "st_1001_142",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -115827,7 +115846,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1001_143",
+     "de": "st_1001_142",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -115835,7 +115854,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1001_143",
+     "de": "st_1001_142",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -115849,12 +115868,12 @@
    "resena": "Teresa Martin realizó durante su breve vida todo el programa que encerraba su nombre de religiosa: \"Teresa del Niño Jesús y de la Santa Faz\". Se adentró en el espíritu de la niñez de Jesús de Nazaret, siguiendo \"su caminito\" y en esta forma encontró al Cristo de la pasión, que la conduciría hasta la Pascua (1873-1897).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Teresa del Niño Jesús, virgen",
-   "u": "st/st_1001_143",
+   "u": "st/st_1001_142",
    "v": "completo"
   },
   "V|5160TA1002.html|0": {
    "alt": [],
-   "cel": "st_1002_144",
+   "cel": "st_1002_143",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -115901,7 +115920,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1002_144",
+     "de": "st_1002_143",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -115918,7 +115937,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_1002_144",
+     "de": "st_1002_143",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -115926,7 +115945,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1002_144",
+     "de": "st_1002_143",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -115934,7 +115953,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1002_144",
+     "de": "st_1002_143",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -115948,7 +115967,7 @@
    "resena": "MR 806 [837] / 1ª. Lect y Sal. propios. Ev: Lecc. II p. 1127 La vocación de los ángeles consiste, primero que nada, en contemplar al Señor en el cielo y alabarlo sin cesar. Pero, de acuerdo con la Sagrada Escritura, el Señor les ha encargado presentarse ante los hombres en una forma fraternal. Esto es lo que recordamos al festejar a los santos ángeles custodios o ángeles de la guarda.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Ángeles Custodios",
-   "u": "st/st_1002_144",
+   "u": "st/st_1002_143",
    "v": "completo"
   },
   "V|5161TA1003.html|0": {
@@ -116016,7 +116035,7 @@
   },
   "V|5162TA1004.html|0": {
    "alt": [],
-   "cel": "st_1004_145",
+   "cel": "st_1004_144",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -116064,7 +116083,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1004_145",
+     "de": "st_1004_144",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -116081,7 +116100,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_1004_145",
+     "de": "st_1004_144",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -116089,7 +116108,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1004_145",
+     "de": "st_1004_144",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -116097,7 +116116,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1004_145",
+     "de": "st_1004_144",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -116111,12 +116130,12 @@
    "resena": "Desde el día en que encontró al Señor en San Damián, hasta el día en que murió en la Porciún- cula, a lo largo de su vida de peregrino con sus hermanos, los Frailes Menores, aquel “pove- rello” de Asís redujo literalmente su vida a seguir a Jesús con alegría, sencillez, fidelidad a la Iglesia y ternura para todos (1182-1226).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Francisco de Asís",
-   "u": "st/st_1004_145",
+   "u": "st/st_1004_144",
    "v": "completo"
   },
   "V|5163TA1006.html|0": {
    "alt": [],
-   "cel": "st_1006_146",
+   "cel": "st_1006_145",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -116163,7 +116182,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1006_146",
+     "de": "st_1006_145",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -116187,7 +116206,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1006_146",
+     "de": "st_1006_145",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -116195,7 +116214,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1006_146",
+     "de": "st_1006_145",
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
@@ -116209,12 +116228,12 @@
    "resena": "Durante algún tiempo fue profesor en Reims. Pero un día, junto con algunos discípulos, se estableció en el valle de Cartuja, para dedicarse a la penitencia y a la contemplación. Llevaban una vida combinada de soledad de ermitaños con una pequeña porción de vida comunitaria. Urbano II lo llamó a Roma. Bruno murió en una ermita de Calabria (1035-1101).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Bruno, presbítero",
-   "u": "st/st_1006_146",
+   "u": "st/st_1006_145",
    "v": "completo"
   },
   "V|5164TA1007.html|0": {
    "alt": [],
-   "cel": "st_1007_147",
+   "cel": "st_1007_146",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -116261,7 +116280,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1007_147",
+     "de": "st_1007_146",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -116269,7 +116288,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1007_147",
+     "de": "st_1007_146",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -116277,7 +116296,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1007_147",
+     "de": "st_1007_146",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -116285,7 +116304,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1007_147",
+     "de": "st_1007_146",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -116293,7 +116312,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1007_147",
+     "de": "st_1007_146",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -116307,12 +116326,12 @@
    "resena": "El 7 de octubre de 1571, el Occidente fue salvado de la amenaza turca, mediante la victoria de los cristianos en la batalla naval de Lepanto. Dicha victoria se atribuyó al rezo del rosario. Este hecho histórico se nos ha convertido ya en algo remoto. La Iglesia nos invita a descubrir en el rosario el sitio que ocupa la santísima Virgen en el misterio de la salvación y a saludar a la Madre de Dios con el saludo del ángel, \"Ave María\".",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Nuestra Señora del Rosario",
-   "u": "st/st_1007_147",
+   "u": "st/st_1007_146",
    "v": "completo"
   },
   "V|5165TA1009.html|0": {
    "alt": [],
-   "cel": "st_1009_148",
+   "cel": "st_1009_147",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -116359,7 +116378,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1009_148",
+     "de": "st_1009_147",
      "f": "misalito",
      "r": "colecta",
      "t": 4,
@@ -116409,12 +116428,12 @@
    "resena": "Dionisio, primer obispo de París, sufrió el martirio hacia mediados del siglo III. Su cuerpo fue inhumado al norte de la ciudad. Hacia 495, santa Genoveva mandó construir una basílica sobre su tumba. Se le asocian dos compañeros en el martirio, Eleuterio y Rústico.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Dionisio, obispo, y compañeros, mártires",
-   "u": "st/st_1009_148",
+   "u": "st/st_1009_147",
    "v": "completo"
   },
   "V|5166TA1009_2.html|0": {
    "alt": [],
-   "cel": "st_1009_149",
+   "cel": "st_1009_148",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -116461,7 +116480,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1009_149",
+     "de": "st_1009_148",
      "f": "misalito",
      "r": "colecta",
      "t": 3,
@@ -116487,7 +116506,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1009_149",
+     "de": "st_1009_148",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -116495,7 +116514,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1009_149",
+     "de": "st_1009_148",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -116509,7 +116528,7 @@
    "resena": "Siendo sacerdote en Toscana, fundó en su ciudad, Lucca, una comunidad de clérigos para catequizar a jóvenes y adultos, llamada “Los Clérigos de la Madre de Dios”. Se vio obligado a establecerse en Roma, donde, con Juan Bautista Vives, echó los cimientos del Seminario para la Propagación de la Fe. Por su caridad, murió víctima de la peste (1541-1609).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Juan Leonardi, presbítero",
-   "u": "st/st_1009_149",
+   "u": "st/st_1009_148",
    "v": "completo"
   },
   "V|5167TA1010.html|0": {
@@ -116703,7 +116722,7 @@
   },
   "V|5170TA1014.html|0": {
    "alt": [],
-   "cel": "st_1014_150",
+   "cel": "st_1014_149",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -116741,7 +116760,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1014_150",
+     "de": "st_1014_149",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -116765,7 +116784,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1014_150",
+     "de": "st_1014_149",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -116773,7 +116792,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1014_150",
+     "de": "st_1014_149",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -116787,12 +116806,12 @@
    "resena": "Siendo aún diácono de la Iglesia romana, Calixto estableció el cementerio que lleva su nombre, en la vía Apia. Ya siendo Papa, demostró su firmeza en defender la fe contra las especulaciones de ciertos teólogos. Durante un levantamiento popular murió en el Transtévere, en donde se conserva su memoria.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Calixto I, papa y mártir",
-   "u": "st/st_1014_150",
+   "u": "st/st_1014_149",
    "v": "completo"
   },
   "V|5171TA1015.html|0": {
    "alt": [],
-   "cel": "st_1015_151",
+   "cel": "st_1015_150",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -116839,7 +116858,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1015_151",
+     "de": "st_1015_150",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -116847,7 +116866,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1015_151",
+     "de": "st_1015_150",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -116855,7 +116874,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1015_151",
+     "de": "st_1015_150",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -116863,7 +116882,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1015_151",
+     "de": "st_1015_150",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -116871,7 +116890,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1015_151",
+     "de": "st_1015_150",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -116885,12 +116904,12 @@
    "resena": "Esta reformadora de las carmelitas es, al mismo tiempo, contemplativa y una mujer eficaz y activa. Nos ha heredado los secretos de su camino de subida hacia Dios, por medio de la contemplación, en sus libros, que la convierten en maestra de la vida espiritual. Como fundadora, recorrió incansablemente toda España para establecer sus monasterios. El alma de Teresa se sintetiza en su sed de vivir unida al Señor: 'Yo ya no quiero otro amor, pues a mi Dios me he entregado, que mi amado es para mí, y yo soy para mi amado\" (1515-1582).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Teresa de Jesús, virgen y doctora de la Iglesia",
-   "u": "st/st_1015_151",
+   "u": "st/st_1015_150",
    "v": "completo"
   },
   "V|5172TA1016.html|0": {
    "alt": [],
-   "cel": "st_1016_152",
+   "cel": "st_1016_151",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -116937,7 +116956,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1016_152",
+     "de": "st_1016_151",
      "f": "misalito",
      "r": "colecta",
      "t": 3,
@@ -116963,7 +116982,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1016_152",
+     "de": "st_1016_151",
      "f": "misalito",
      "r": "ofrendas",
      "t": 1,
@@ -116971,7 +116990,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1016_152",
+     "de": "st_1016_151",
      "f": "misalito",
      "r": "poscomunion",
      "t": 2,
@@ -116985,12 +117004,12 @@
    "resena": "Siendo duquesa de Silesia y de Polonia, llevó en su hogar una intensa vida de fe. Después de morir su esposo, se retiró a Breslau, monasterio cisterciense, en el cual su hija era abadesa. Tuvo la enorme pena de ver morir a seis de sus siete hijos. Y poco después de que su hijo mayor cayó en el combate contra los tártaros, también ella murió (1174-1243).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Eduviges, religiosa",
-   "u": "st/st_1016_152",
+   "u": "st/st_1016_151",
    "v": "completo"
   },
   "V|5173TA1016_2.html|0": {
    "alt": [],
-   "cel": "st_1016_153",
+   "cel": "st_1016_152",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -117037,7 +117056,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1016_153",
+     "de": "st_1016_152",
      "f": "misalito",
      "r": "colecta",
      "t": 3,
@@ -117063,7 +117082,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1016_153",
+     "de": "st_1016_152",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -117071,7 +117090,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1016_153",
+     "de": "st_1016_152",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -117085,12 +117104,12 @@
    "resena": "Entre 1673 y 1675, el Señor descubrió la profundidad de su amor por la humanidad a esta joven religiosa visitandina de Paray-le-Monial. Le mostró su corazón y le hizo el encargo tiernísimo de obtener la institución de una fiesta para festejar su amor. Margarita María, entre innumerables dificultades, se consagró a esa finalidad y la logró (1647-1690).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Margarita María Alacoque, virgen",
-   "u": "st/st_1016_153",
+   "u": "st/st_1016_152",
    "v": "completo"
   },
   "V|5174TA1017.html|0": {
    "alt": [],
-   "cel": "st_1017_154",
+   "cel": "st_1017_153",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -117137,7 +117156,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1017_154",
+     "de": "st_1017_153",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117145,7 +117164,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1017_154",
+     "de": "st_1017_153",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -117153,7 +117172,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1017_154",
+     "de": "st_1017_153",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -117161,7 +117180,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1017_154",
+     "de": "st_1017_153",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -117169,7 +117188,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1017_154",
+     "de": "st_1017_153",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -117183,12 +117202,12 @@
    "resena": "Este obispo fue arrojado a las fieras en Roma, hacia el año 110. Por imprevistas escalas de su viaje a Roma, camino del suplicio, dirigió varias cartas a diversas Iglesias, que son un bellísimo canto de amor cristiano: “Soy trigo de Dios y he de ser molido por los dientes de las fieras, para llegar a ser pan limpio de Cristo”.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Ignacio de Antioquía, obispo y mártir",
-   "u": "st/st_1017_154",
+   "u": "st/st_1017_153",
    "v": "completo"
   },
   "V|5175TA1018.html|0": {
    "alt": [],
-   "cel": "st_1018_155",
+   "cel": "st_1018_154",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -117235,7 +117254,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1018_155",
+     "de": "st_1018_154",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117243,7 +117262,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1018_155",
+     "de": "st_1018_154",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -117260,7 +117279,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1018_155",
+     "de": "st_1018_154",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -117268,7 +117287,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1018_155",
+     "de": "st_1018_154",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -117284,12 +117303,12 @@
    "resena": "Este \"médico querido\" fue compañero de san Pablo, en sus viajes. Es el evangelista que ha recalcado mejor la mansedumbre de Cristo. En los Hechos de los Apóstoles se convierte en el cronista del impulso de la Iglesia inmediatamente después de Pentecostés. Su estilo literario entona un verdadero cántico de agradecimiento, lleno de gozo y optimismo.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Lucas, evangelista",
-   "u": "st/st_1018_155",
+   "u": "st/st_1018_154",
    "v": "completo"
   },
   "V|5177TA1019_2.html|0": {
    "alt": [],
-   "cel": "st_1019_156",
+   "cel": "st_1019_155",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -117336,7 +117355,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1019_156",
+     "de": "st_1019_155",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117344,7 +117363,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1019_156",
+     "de": "st_1019_155",
      "f": "misalito",
      "r": "comunion",
      "t": 5,
@@ -117352,7 +117371,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1019_156",
+     "de": "st_1019_155",
      "f": "misalito",
      "r": "entrada",
      "t": 1,
@@ -117360,7 +117379,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1019_156",
+     "de": "st_1019_155",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -117368,7 +117387,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1019_156",
+     "de": "st_1019_155",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -117382,12 +117401,12 @@
    "resena": "Juan e Isaac son los abanderados de los ocho jesuitas que fueron sacrificados por Cristo en los actuales territorios de Canadá y de los Estados Unidos, allá por los años 1642-1649. Isaac Jogues fue martirizado por los indios iroqueses cerca de Auriesville (estado de Nueva York). Juan de Brébeuf murió a manos de los indios hurones, en territorio canadiense.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Juan de Brébeuf e Isaac Jogues, presbíteros, y compañeros, mártires",
-   "u": "st/st_1019_156",
+   "u": "st/st_1019_155",
    "v": "completo"
   },
   "V|5178TA1019_3.html|0": {
    "alt": [],
-   "cel": "st_1019_157",
+   "cel": "st_1019_156",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -117434,7 +117453,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1019_157",
+     "de": "st_1019_156",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -117451,7 +117470,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_1019_157",
+     "de": "st_1019_156",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -117459,7 +117478,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1019_157",
+     "de": "st_1019_156",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -117467,7 +117486,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1019_157",
+     "de": "st_1019_156",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -117481,12 +117500,12 @@
    "resena": "Experimentaba un atractivo especial en contemplar la pasión de nuestro Señor y en evangelizar las zonas rurales. Junto con sus compañeros de la Congregación de los Pasionistas, por él fundada, se dedicó a sus anhelos. En 1765 se estableció en Roma, cerca de la basílica de los santos mártires Juan y Pablo (1694-1775).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Pablo de la Cruz, presbítero",
-   "u": "st/st_1019_157",
+   "u": "st/st_1019_156",
    "v": "completo"
   },
   "V|5179TA1023.html|0": {
    "alt": [],
-   "cel": "st_1023_158",
+   "cel": "st_1023_157",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -117533,7 +117552,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1023_158",
+     "de": "st_1023_157",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117557,7 +117576,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1023_158",
+     "de": "st_1023_157",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -117565,7 +117584,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1023_158",
+     "de": "st_1023_157",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -117579,12 +117598,12 @@
    "resena": "Franciscano, predicador lleno de talento y de palabra ardiente, arrastraba a las multitudes. Trabajó primero en la reforma de su Orden en Francia y en Italia, y después recorrió toda la Europa central para luchar contra la herejía de Juan Hus. Finalmente, predicó la cruzada contra los turcos, que por entonces estaban invadiendo Hungría (1386-1456).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Juan de Capistrano, presbítero",
-   "u": "st/st_1023_158",
+   "u": "st/st_1023_157",
    "v": "completo"
   },
   "V|5180TA1024.html|0": {
    "alt": [],
-   "cel": "st_1025_159",
+   "cel": "st_1025_158",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -117631,7 +117650,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1025_159",
+     "de": "st_1025_158",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117655,7 +117674,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1025_159",
+     "de": "st_1025_158",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -117663,7 +117682,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1025_159",
+     "de": "st_1025_158",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -117677,12 +117696,12 @@
    "resena": "Nació en Cataluña (1807). Se dedicó a la predicación popular y luego fundó un Instituto misionero. Se entregó al apostolado en Cuba, como arzobispo de Santiago, y después lo llamaron para que fuera consejero de la reina de España, a quien acompañó en el destierro. Perseguido y calumniado, murió en Francia (1870). Fundó la Congregación de Misioneros Hijos del Inmaculado Corazón de María, conocidos como claretianos, que continúan su carisma.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Antonio María Claret, obispo",
-   "u": "st/st_1025_159",
+   "u": "st/st_1025_158",
    "v": "completo"
   },
   "V|5181TA1028.html|0": {
    "alt": [],
-   "cel": "st_1028_160",
+   "cel": "st_1028_159",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -117721,7 +117740,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1028_160",
+     "de": "st_1028_159",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117729,7 +117748,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1028_160",
+     "de": "st_1028_159",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -117737,7 +117756,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1028_160",
+     "de": "st_1028_159",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -117745,7 +117764,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1028_160",
+     "de": "st_1028_159",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -117753,7 +117772,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1028_160",
+     "de": "st_1028_159",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -117767,12 +117786,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Simón y Judas, apóstoles",
-   "u": "st/st_1028_160",
+   "u": "st/st_1028_159",
    "v": "completo"
   },
   "V|5182TA1101.html|0": {
    "alt": [],
-   "cel": "st_1101_161",
+   "cel": "st_1101_160",
    "color": "blanco",
    "credo": true,
    "etiqueta": "Propio",
@@ -117829,7 +117848,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "r": "colecta",
      "t": 8,
@@ -117837,7 +117856,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -117845,7 +117864,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -117853,7 +117872,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -117861,7 +117880,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1101_161",
+     "de": "st_1101_160",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -117875,7 +117894,7 @@
    "resena": "Esta solemnidad nos representa visualmente a toda la multitud de los redimidos, para descubrirnos el destino que nos espera también a nosotros, peregrinos. Es, además, un motivo para hacernos conscientes de nuestra solidaridad con todos aquellos que nos han precedido en el mundo del espíritu. Todos ellos, que viven frente a Dios, son nuestros intercesores, que dan impulso a nuestra vida.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Todos los Santos",
-   "u": "st/st_1101_161",
+   "u": "st/st_1101_160",
    "v": "completo"
   },
   "V|5183TA1102.html|0": {
@@ -117883,7 +117902,7 @@
     "sanctis/in-commemoratione-omnium-fidelium-defunctorum-2",
     "sanctis/in-commemoratione-omnium-fidelium-defunctorum-3"
    ],
-   "cel": "st_1102_162",
+   "cel": "st_1102_161",
    "color": "morado",
    "credo": true,
    "etiqueta": "Propio",
@@ -117986,7 +118005,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1102_162#primera-misa",
+     "de": "st_1102_161#primera-misa",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -117994,7 +118013,7 @@
      "via": "unidad"
     },
     "comunion": {
-     "de": "st_1102_162#primera-misa",
+     "de": "st_1102_161#primera-misa",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -118002,7 +118021,7 @@
      "via": "unidad"
     },
     "entrada": {
-     "de": "st_1102_162#primera-misa",
+     "de": "st_1102_161#primera-misa",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -118010,7 +118029,7 @@
      "via": "unidad"
     },
     "ofrendas": {
-     "de": "st_1102_162#primera-misa",
+     "de": "st_1102_161#primera-misa",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -118018,7 +118037,7 @@
      "via": "unidad"
     },
     "poscomunion": {
-     "de": "st_1102_162#primera-misa",
+     "de": "st_1102_161#primera-misa",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -118038,12 +118057,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Conmemoración de todos los fieles difuntos",
-   "u": "st/st_1102_162",
+   "u": "st/st_1102_161",
    "v": "completo"
   },
   "V|5184TA1103.html|0": {
    "alt": [],
-   "cel": "st_1103_163",
+   "cel": "st_1103_162",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118090,7 +118109,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1103_163",
+     "de": "st_1103_162",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -118116,7 +118135,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1103_163",
+     "de": "st_1103_162",
      "f": "misalito",
      "r": "ofrendas",
      "t": 3,
@@ -118124,7 +118143,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1103_163",
+     "de": "st_1103_162",
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
@@ -118138,12 +118157,12 @@
    "resena": "Hijo ilegítimo de un caballero español, “Martinico” era mulato, lo cual le valió muchas discriminaciones. En el convento de los dominicos de Lima solamente fue admitido como hermano lego, sin posibilidad de recibir el sacerdocio. Le dieron el cargo de enfermero, pero fue también excelente catequista, que se inspiraba en su vida de oración, especialmente oración nocturna (1579-1639).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Martín de Porres, religioso",
-   "u": "st/st_1103_163",
+   "u": "st/st_1103_162",
    "v": "completo"
   },
   "V|5185TA1104.html|0": {
    "alt": [],
-   "cel": "st_1104_164",
+   "cel": "st_1104_163",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118190,7 +118209,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1104_164",
+     "de": "st_1104_163",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -118216,7 +118235,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1104_164",
+     "de": "st_1104_163",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -118224,7 +118243,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1104_164",
+     "de": "st_1104_163",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -118238,12 +118257,12 @@
    "resena": "Como arzobispo de Milán, cumplió personalmente con lo que el reciente Concilio de Trento prescribía sobre los obispos. Trabajó en la reforma del clero mediante celebración de síno- dos y fundación de seminarios. Quiso también renovar las costumbres cristianas mediante sus visitas pastorales, en las cuales daba un ejemplo universal de vida auténticamente evangélica (1538-1584).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Carlos Borromeo, obispo",
-   "u": "st/st_1104_164",
+   "u": "st/st_1104_163",
    "v": "completo"
   },
   "V|5186TA1109.html|0": {
    "alt": [],
-   "cel": "st_1109_165",
+   "cel": "st_1109_164",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118348,12 +118367,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Dedicación de la basílica de Letrán",
-   "u": "st/st_1109_165",
+   "u": "st/st_1109_164",
    "v": "parcial"
   },
   "V|5187TA1110.html|0": {
    "alt": [],
-   "cel": "st_1110_166",
+   "cel": "st_1110_165",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118400,7 +118419,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1110_166",
+     "de": "st_1110_165",
      "f": "misalito",
      "r": "colecta",
      "t": 5,
@@ -118426,7 +118445,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1110_166",
+     "de": "st_1110_165",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -118449,12 +118468,12 @@
    "resena": "Con una sublime inteligencia y una firme voluntad se enfrentó a las invasiones de los bárbaros y a la herejía de Eutiques, que socavaba el misterio de la encarnación del Señor. Y como pastor plenamente consciente de su cargo, no dejó de recordar al pueblo cristiano que la fe se traduce en hechos.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San León Magno, papa y doctor de la Iglesia",
-   "u": "st/st_1110_166",
+   "u": "st/st_1110_165",
    "v": "completo"
   },
   "V|5188TA1111.html|0": {
    "alt": [],
-   "cel": "st_1111_167",
+   "cel": "st_1111_166",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118510,7 +118529,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1111_167",
+     "de": "st_1111_166",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -118518,7 +118537,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1111_167",
+     "de": "st_1111_166",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -118534,7 +118553,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1111_167",
+     "de": "st_1111_166",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -118542,7 +118561,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1111_167",
+     "de": "st_1111_166",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -118556,12 +118575,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Martín, obispo",
-   "u": "st/st_1111_167",
+   "u": "st/st_1111_166",
    "v": "completo"
   },
   "V|5189TA1112.html|0": {
    "alt": [],
-   "cel": "st_1112_168",
+   "cel": "st_1112_167",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -118608,7 +118627,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1112_168",
+     "de": "st_1112_167",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -118632,7 +118651,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1112_168",
+     "de": "st_1112_167",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -118640,7 +118659,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1112_168",
+     "de": "st_1112_167",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -118654,12 +118673,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Josafat, obispo y mártir",
-   "u": "st/st_1112_168",
+   "u": "st/st_1112_167",
    "v": "completo"
   },
   "V|5191TA1115.html|0": {
    "alt": [],
-   "cel": "st_1115_169",
+   "cel": "st_1115_168",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118706,7 +118725,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1115_169",
+     "de": "st_1115_168",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -118730,7 +118749,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1115_169",
+     "de": "st_1115_168",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -118738,7 +118757,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1115_169",
+     "de": "st_1115_168",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -118752,12 +118771,12 @@
    "resena": "Este sacerdote dominico, nacido en Baviera, da clases en París, en donde lo escucha, como discípulo, Tomás de Aquino (1245-1248). Su obispado en Ratisbona constituye un paréntesis de sólo dos años en su vida de profesor e investigador, siempre consagrado a descubrir las leyes físicas para encontrar en el fondo al creador de ellas. Muere en Colonia en 1280.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Alberto Magno, obispo y doctor de la Iglesia",
-   "u": "st/st_1115_169",
+   "u": "st/st_1115_168",
    "v": "completo"
   },
   "V|5192TA1116.html|0": {
    "alt": [],
-   "cel": "st_1116_170",
+   "cel": "st_1116_169",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118795,7 +118814,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1116_170",
+     "de": "st_1116_169",
      "f": "misalito",
      "r": "colecta",
      "t": 3,
@@ -118821,7 +118840,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1116_170",
+     "de": "st_1116_169",
      "f": "misalito",
      "r": "ofrendas",
      "t": 3,
@@ -118829,7 +118848,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1116_170",
+     "de": "st_1116_169",
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
@@ -118843,12 +118862,12 @@
    "resena": "Nace en Hungría (hacia 1046) y en 1070 se convierte en reina de Escocia, casada con Malcolm III, con quien tuvo ocho hijos. Influyó profundamente en su marido y en la renovación religiosa de todo su pueblo, por su cultura, su tacto político y su espléndida caridad. Separados por la distancia de unos cuantos días, murieron estos reyes, en 1093.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Margarita de Escocia",
-   "u": "st/st_1116_170",
+   "u": "st/st_1116_169",
    "v": "completo"
   },
   "V|5193TA1116_2.html|0": {
    "alt": [],
-   "cel": "st_1116_171",
+   "cel": "st_1116_170",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118895,7 +118914,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1116_171",
+     "de": "st_1116_170",
      "f": "misalito",
      "r": "colecta",
      "t": 4,
@@ -118903,7 +118922,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1116_171",
+     "de": "st_1116_170",
      "f": "misalito",
      "r": "comunion",
      "t": 4,
@@ -118911,7 +118930,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1116_171",
+     "de": "st_1116_170",
      "f": "misalito",
      "r": "entrada",
      "t": 4,
@@ -118919,7 +118938,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1116_171",
+     "de": "st_1116_170",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -118927,7 +118946,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1116_171",
+     "de": "st_1116_170",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -118941,12 +118960,12 @@
    "resena": "Era una religiosa de la abadía cisterciense de Helfta, en Sajonia, cuando, según sus propias palabras, el Señor \"tomó posesión de ella, la levantó y la estableció junto a él\". Desde entonces vivió en profunda unión con Dios, consagrada a la meditación de las Sagradas Escrituras y de los Santos Padres y anotando el fruto de su contemplación de Cristo crucificado (+ 1301 /1302).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Gertrudis, virgen",
-   "u": "st/st_1116_171",
+   "u": "st/st_1116_170",
    "v": "completo"
   },
   "V|5194TA1117.html|0": {
    "alt": [],
-   "cel": "st_1117_172",
+   "cel": "st_1117_171",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -118993,7 +119012,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1117_172",
+     "de": "st_1117_171",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -119019,7 +119038,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1117_172",
+     "de": "st_1117_171",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -119027,7 +119046,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1117_172",
+     "de": "st_1117_171",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -119041,12 +119060,12 @@
    "resena": "A los 14 años de edad, Isabel se casó con Luis IV de Turingia (Alemania). Juntos pasaron seis años de felicidad, tratando de vivir en el hogar los ideales de san Francisco de Asís. Pero en 1227 muere Luis y deja a Isabel esperando un niño. Entonces ella escucha el llama- miento a una vida de total pobreza, en la cual se desgasta prematuramente, al servicio de los más pobres.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Isabel de Hungría",
-   "u": "st/st_1117_172",
+   "u": "st/st_1117_171",
    "v": "completo"
   },
   "V|5195TA1118.html|0": {
    "alt": [],
-   "cel": "st_1118_173",
+   "cel": "st_1118_172",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -119084,7 +119103,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1118_173",
+     "de": "st_1118_172",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -119092,7 +119111,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1118_173",
+     "de": "st_1118_172",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -119100,7 +119119,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1118_173",
+     "de": "st_1118_172",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -119108,7 +119127,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1118_173",
+     "de": "st_1118_172",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -119116,7 +119135,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1118_173",
+     "de": "st_1118_172",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -119133,12 +119152,12 @@
    "resena": "San Pedro fue sepultado en el Vaticano, junto al circo de Nerón, y la tumba de san Pablo está en el camino de Ostia. En el siglo IV, el emperador Constantino emprende la construcción de una enorme basílica sobre la tumba de Pedro, y otra de menores dimensiones, sobre el sepulcro de Pablo. Celebrando hoy a los dos Apóstoles, conmemoramos la dedicación de ambas basílicas.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles",
-   "u": "st/st_1118_173",
+   "u": "st/st_1118_172",
    "v": "completo"
   },
   "V|5196TA1121.html|0": {
    "alt": [],
-   "cel": "st_1121_174",
+   "cel": "st_1121_173",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -119229,12 +119248,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "La Presentación de la Santísima Virgen María",
-   "u": "st/st_1121_174",
+   "u": "st/st_1121_173",
    "v": "parcial"
   },
   "V|5197TA1122.html|0": {
    "alt": [],
-   "cel": "st_1122_175",
+   "cel": "st_1122_174",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -119272,7 +119291,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1122_175",
+     "de": "st_1122_174",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -119298,7 +119317,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1122_175",
+     "de": "st_1122_174",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -119306,7 +119325,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1122_175",
+     "de": "st_1122_174",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -119320,12 +119339,12 @@
    "resena": "Esta joven romana es célebre en la vida de la Iglesia, desde el siglo V. Una basílica en el Transtévere la recuerda. Su papel como “patrona de los músicos” se debe a un pa- saje del relato de la pasión de los mártires Cecilia, Valeriano y Tiburcio.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Cecilia, virgen y mártir",
-   "u": "st/st_1122_175",
+   "u": "st/st_1122_174",
    "v": "completo"
   },
   "V|5198TA1123.html|0": {
    "alt": [],
-   "cel": "st_1123_176",
+   "cel": "st_1123_175",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -119380,7 +119399,7 @@
      "via": "latino"
     },
     "comunion": {
-     "de": "st_1123_176",
+     "de": "st_1123_175",
      "f": "misalito",
      "r": "comunion",
      "t": 4,
@@ -119388,7 +119407,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1123_176",
+     "de": "st_1123_175",
      "f": "misalito",
      "r": "entrada",
      "t": 4,
@@ -119418,12 +119437,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Clemente I, papa y mártir",
-   "u": "st/st_1123_176",
+   "u": "st/st_1123_175",
    "v": "parcial"
   },
   "V|5199TA1123_2.html|0": {
    "alt": [],
-   "cel": "st_1123_177",
+   "cel": "st_1123_176",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -119470,7 +119489,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1123_177",
+     "de": "st_1123_176",
      "f": "misalito",
      "r": "colecta",
      "t": 2,
@@ -119494,7 +119513,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1123_177",
+     "de": "st_1123_176",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -119502,7 +119521,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1123_177",
+     "de": "st_1123_176",
      "f": "misalito",
      "r": "poscomunion",
      "t": 4,
@@ -119516,12 +119535,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Columbano, abad",
-   "u": "st/st_1123_177",
+   "u": "st/st_1123_176",
    "v": "completo"
   },
   "V|5200TA1124.html|0": {
    "alt": [],
-   "cel": "st_1124_178",
+   "cel": "st_1124_177",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -119577,7 +119596,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1124_178",
+     "de": "st_1124_177",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -119601,7 +119620,7 @@
      "via": "común"
     },
     "ofrendas": {
-     "de": "st_1124_178",
+     "de": "st_1124_177",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -119609,7 +119628,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1124_178",
+     "de": "st_1124_177",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -119623,12 +119642,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santos Andrés Dung-Lac, presbítero, y compañeros, mártires",
-   "u": "st/st_1124_178",
+   "u": "st/st_1124_177",
    "v": "completo"
   },
   "V|5201TA1130.html|0": {
    "alt": [],
-   "cel": "st_1130_179",
+   "cel": "st_1130_178",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -119675,7 +119694,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1130_179",
+     "de": "st_1130_178",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -119683,7 +119702,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1130_179",
+     "de": "st_1130_178",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -119691,7 +119710,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1130_179",
+     "de": "st_1130_178",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -119699,7 +119718,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1130_179",
+     "de": "st_1130_178",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -119707,7 +119726,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1130_179",
+     "de": "st_1130_178",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -119724,12 +119743,12 @@
    "resena": "Andrés y su hermano Pedro son pescadores de Betsaida. Es uno de los dos primeros Apóstoles que encuentran al Señor en las márgenes del Jordán. Él conduce a Pedro ante Jesús. La tradición afirma que fue crucificado en Patras, después de predicar el Evangelio en Grecia. La Iglesia de Constantinopla lo considera como \"el primero de los llamados\" y lo ha adoptado como patrono.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Andrés, apóstol",
-   "u": "st/st_1130_179",
+   "u": "st/st_1130_178",
    "v": "completo"
   },
   "V|5202TA1203.html|0": {
    "alt": [],
-   "cel": "st_1203_180",
+   "cel": "st_1203_179",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -119776,7 +119795,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1203_180",
+     "de": "st_1203_179",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -119784,7 +119803,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1203_180",
+     "de": "st_1203_179",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -119792,7 +119811,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1203_180",
+     "de": "st_1203_179",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -119800,7 +119819,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1203_180",
+     "de": "st_1203_179",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -119808,7 +119827,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1203_180",
+     "de": "st_1203_179",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -119826,12 +119845,12 @@
    "resena": "Oriundo de Navarra, Francisco Javier es uno de los primeros compañeros de san Ignacio de Loyola en la Universidad de París. En 1541 lo designan para predicar el Evangelio en las Indias Orientales (portuguesas): evangeliza la India, Ceilán (Sri Lanka), las islas Mo- lucas y el Japón. Muere a la vista de China, totalmente consumido por la pasión de buscar la gloria de Dios y la salvación de todos los hombres. Él quería comunicar a la humanidad esta pasión soberana.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Francisco Javier, presbítero",
-   "u": "st/st_1203_180",
+   "u": "st/st_1203_179",
    "v": "completo"
   },
   "V|5203TA1204.html|0": {
    "alt": [],
-   "cel": "st_1204_181",
+   "cel": "st_1204_180",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -119887,7 +119906,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1204_181",
+     "de": "st_1204_180",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -119913,7 +119932,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1204_181",
+     "de": "st_1204_180",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -119921,7 +119940,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1204_181",
+     "de": "st_1204_180",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -119935,12 +119954,12 @@
    "resena": "Cuando colaboraba con la administración árabe, Juan escuchó el llamamiento a la vida monástica (hacia 710). Se estableció en el monasterio de san Sabás, situado en el desierto de Judea, de donde sólo salía para predicar en Jerusalén. De estas predicaciones proviene su libro \"Exposición de la fe ortodoxa\". Fue un decidido defensor del culto a las sagradas imágenes (hacia 675-749).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Juan Damasceno, presbítero y doctor de la Iglesia",
-   "u": "st/st_1204_181",
+   "u": "st/st_1204_180",
    "v": "completo"
   },
   "V|5204TA1206.html|0": {
    "alt": [],
-   "cel": "st_1206_182",
+   "cel": "st_1206_181",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -119987,7 +120006,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1206_182",
+     "de": "st_1206_181",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -120013,7 +120032,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1206_182",
+     "de": "st_1206_181",
      "f": "misalito",
      "r": "ofrendas",
      "t": 5,
@@ -120021,7 +120040,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1206_182",
+     "de": "st_1206_181",
      "f": "misalito",
      "r": "poscomunion",
      "t": 5,
@@ -120035,12 +120054,12 @@
    "resena": "Fue obispo de Mira (Asia Menor) en la primera mitad del siglo IV. Ya en el siglo VI su sepulcro quedó abrigado por una iglesia. Pero, en 1087, unos marineros de Bari se apoderaron de sus reliquias y las condujeron a su tierra, por lo cual Bari se ha convertido en el centro del culto a san Nicolás.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Nicolás, obispo",
-   "u": "st/st_1206_182",
+   "u": "st/st_1206_181",
    "v": "completo"
   },
   "V|5205TA1207.html|0": {
    "alt": [],
-   "cel": "st_1207_183",
+   "cel": "st_1207_182",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -120087,7 +120106,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1207_183",
+     "de": "st_1207_182",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -120113,7 +120132,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1207_183",
+     "de": "st_1207_182",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -120121,7 +120140,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1207_183",
+     "de": "st_1207_182",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -120139,12 +120158,12 @@
    "resena": "Nació en Tréveris. Ambrosio era gobernador de Emilia y Liguria; vivía en Milán cuando fue elegido como obispo de esta ciudad (374). Es uno de los tipos más bien dibujados de pastor de almas. Resiste enérgicamente las usurpaciones del poder imperial y al mismo tiempo se dedica a catequizar al pueblo, comentando las Sagradas Escrituras y difundiendo los cánticos religiosos.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Ambrosio, obispo y doctor de la Iglesia",
-   "u": "st/st_1207_183",
+   "u": "st/st_1207_182",
    "v": "completo"
   },
   "V|5206TA1208.html|0": {
    "alt": [],
-   "cel": "st_1208_184",
+   "cel": "st_1208_183",
    "color": "blanco",
    "credo": true,
    "etiqueta": "Propio",
@@ -120202,7 +120221,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1208_184",
+     "de": "st_1208_183",
      "f": "misalito",
      "r": "colecta",
      "t": 8,
@@ -120210,7 +120229,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1208_184",
+     "de": "st_1208_183",
      "f": "misalito",
      "r": "comunion",
      "t": 8,
@@ -120218,7 +120237,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1208_184",
+     "de": "st_1208_183",
      "f": "misalito",
      "r": "entrada",
      "t": 8,
@@ -120226,7 +120245,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1208_184",
+     "de": "st_1208_183",
      "f": "misalito",
      "r": "ofrendas",
      "t": 8,
@@ -120234,7 +120253,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1208_184",
+     "de": "st_1208_183",
      "f": "misalito",
      "r": "poscomunion",
      "t": 8,
@@ -120248,12 +120267,12 @@
    "resena": "Desde el primer instante de su vida, la santísima Virgen María, por una gracia derivada anticipadamente de la muerte de su Hijo, es preservada de todo pecado. Así pues, la concepción inmaculada de la Virgen María se funda en su maternidad divina. La asunción y la concepción inmaculada de María santísima son la imagen anticipada de la Iglesia, la cual “no tiene mancha, ni arruga, sino que es santa e inmaculada”, por voluntad de Dios.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "La Inmaculada Concepción de la Santísima Virgen María",
-   "u": "st/st_1208_184",
+   "u": "st/st_1208_183",
    "v": "completo"
   },
   "V|5208TA1211.html|0": {
    "alt": [],
-   "cel": "st_1211_185",
+   "cel": "st_1211_184",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -120300,7 +120319,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1211_185",
+     "de": "st_1211_184",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -120326,7 +120345,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1211_185",
+     "de": "st_1211_184",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -120334,7 +120353,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1211_185",
+     "de": "st_1211_184",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -120348,7 +120367,7 @@
    "resena": "Fue Papa de 366 a 384. Es célebre por su fervor en promover el culto a los mártires de Roma. Restauró los antiguos cementerios, consignó en las inscripciones los recuerdos de las grandes persecuciones, con lo cual impulsó definitivamente el culto de esos santos. Además, por petición del Papa Dámaso, san Jerónimo tradujo la Biblia al latín.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Dámaso I, papa",
-   "u": "st/st_1211_185",
+   "u": "st/st_1211_184",
    "v": "completo"
   },
   "V|5209TA1212.html|0": {
@@ -120416,7 +120435,7 @@
   },
   "V|5210TA1213.html|0": {
    "alt": [],
-   "cel": "st_1213_187",
+   "cel": "st_1213_186",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -120454,7 +120473,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1213_187",
+     "de": "st_1213_186",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -120480,7 +120499,7 @@
      "via": "día"
     },
     "ofrendas": {
-     "de": "st_1213_187",
+     "de": "st_1213_186",
      "f": "misalito",
      "r": "ofrendas",
      "t": 4,
@@ -120488,7 +120507,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1213_187",
+     "de": "st_1213_186",
      "f": "misalito",
      "r": "poscomunion",
      "t": 3,
@@ -120507,12 +120526,12 @@
    "resena": "Muere en Siracusa (Sicilia) en el tiempo de la sangrienta persecución desatada por el emperador Diocleciano (304). Imagen de la luz y patrona de los ciegos, Lucía es venerada en todo el mundo, gracias a los incansables sicilianos.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santa Lucía, virgen y mártir",
-   "u": "st/st_1213_187",
+   "u": "st/st_1213_186",
    "v": "completo"
   },
   "V|5211TA1214.html|0": {
    "alt": [],
-   "cel": "st_1214_188",
+   "cel": "st_1214_187",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -120559,7 +120578,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1214_188",
+     "de": "st_1214_187",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -120576,7 +120595,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_1214_188",
+     "de": "st_1214_187",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -120584,7 +120603,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1214_188",
+     "de": "st_1214_187",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -120592,7 +120611,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1214_188",
+     "de": "st_1214_187",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -120606,12 +120625,12 @@
    "resena": "Nació en Fontiveros, cerca de Salamanca. Religioso carmelita, a los 25 años se encontró con santa Teresa de Jesús, que por entonces emprendía la reforma de la Orden carmelita. Conquistado para la reforma, la inició con dos compañeros. Es el doctor clásico de la teología mística. Incomprendido y humillado, murió en Ubeda en 1591.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Juan de la Cruz, presbítero y doctor de la Iglesia",
-   "u": "st/st_1214_188",
+   "u": "st/st_1214_187",
    "v": "completo"
   },
   "V|5212TA1221.html|0": {
    "alt": [],
-   "cel": "st_1221_189",
+   "cel": "st_1221_188",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -120658,7 +120677,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1221_189",
+     "de": "st_1221_188",
      "f": "misalito",
      "r": "colecta",
      "t": 5,
@@ -120675,7 +120694,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_1221_189",
+     "de": "st_1221_188",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -120683,7 +120702,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1221_189",
+     "de": "st_1221_188",
      "f": "misalito",
      "r": "ofrendas",
      "t": 1,
@@ -120691,7 +120710,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1221_189",
+     "de": "st_1221_188",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -120705,12 +120724,12 @@
    "resena": "¡Oh sol que naces de lo alto, resplandor de la luz eterna, sol de justicia, ven a iluminar a los que viven en tinieblas y en sombras de muerte! Nació en Holanda. En Alemania entró en la Compañía de Jesús y ahí mismo transcurrió la mayor parte de su vida. Profesor, predicador, catequista, escritor, misionero, luchó en todos los campos para impedir que el luteranismo se apoderara de Alemania. Vivió sus últimos años en Friburgo, Suiza (1521-1597).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Pedro Canisio, presbítero y doctor de la Iglesia",
-   "u": "st/st_1221_189",
+   "u": "st/st_1221_188",
    "v": "completo"
   },
   "V|5213TA1223.html|0": {
    "alt": [],
-   "cel": "st_1223_190",
+   "cel": "st_1223_189",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -120757,7 +120776,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1223_190",
+     "de": "st_1223_189",
      "f": "misalito",
      "r": "colecta",
      "t": 4,
@@ -120765,7 +120784,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1223_190",
+     "de": "st_1223_189",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -120773,7 +120792,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1223_190",
+     "de": "st_1223_189",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -120781,7 +120800,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1223_190",
+     "de": "st_1223_189",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -120789,7 +120808,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1223_190",
+     "de": "st_1223_189",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -120803,12 +120822,12 @@
    "resena": null,
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Juan de Kanty, presbítero",
-   "u": "st/st_1223_190",
+   "u": "st/st_1223_189",
    "v": "completo"
   },
   "V|5214TA1226.html|0": {
    "alt": [],
-   "cel": "st_1226_191",
+   "cel": "st_1226_190",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -120855,7 +120874,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1226_191",
+     "de": "st_1226_190",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -120863,7 +120882,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1226_191",
+     "de": "st_1226_190",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -120871,7 +120890,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1226_191",
+     "de": "st_1226_190",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -120879,7 +120898,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1226_191",
+     "de": "st_1226_190",
      "f": "misalito",
      "r": "ofrendas",
      "t": 6,
@@ -120887,7 +120906,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1226_191",
+     "de": "st_1226_190",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -120905,12 +120924,12 @@
    "resena": "Es el primer mártir cristiano. Su testimonio ha sido siempre muy valioso para la Iglesia. Fue designado como uno de aquellos primeros “siete diáconos”, que descargaron de los trabajos materiales a los Apóstoles, y se encargó también de cumplir su papel en la predicación del Evangelio. Por dar testimonio de Jesús resucitado e imitando la pasión del Señor, murió apedreado en Jerusalén.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Esteban, protomártir",
-   "u": "st/st_1226_191",
+   "u": "st/st_1226_190",
    "v": "completo"
   },
   "V|5215TA1227.html|0": {
    "alt": [],
-   "cel": "st_1227_192",
+   "cel": "st_1227_191",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -120950,7 +120969,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1227_192",
+     "de": "st_1227_191",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -120958,7 +120977,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1227_192",
+     "de": "st_1227_191",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -120966,7 +120985,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1227_192",
+     "de": "st_1227_191",
      "f": "misalito",
      "r": "entrada",
      "t": 1,
@@ -120974,7 +120993,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1227_192",
+     "de": "st_1227_191",
      "f": "misalito",
      "r": "ofrendas",
      "t": 5,
@@ -120982,7 +121001,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1227_192",
+     "de": "st_1227_191",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -121000,12 +121019,12 @@
    "resena": "Había encontrado al Señor, junto con Andrés, en las orillas del Jordán. Desde aquella tarde fue “el amigo” del Señor, amigo íntimo, testigo de su transfiguración y de su agonía; testigo presencial de su muerte y sepultura. En la mañana del domingo de Pascua, es el primero en creer en la resurrección de Cristo. Todo esto lo transmite, casi encandilado, en sus escritos: “Lo que hemos visto y oído; lo que hemos tocado con nuestras propias manos...”.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Juan, apóstol y evangelista",
-   "u": "st/st_1227_192",
+   "u": "st/st_1227_191",
    "v": "completo"
   },
   "V|5216TA1228.html|0": {
    "alt": [],
-   "cel": "st_1228_193",
+   "cel": "st_1228_192",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -121044,7 +121063,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1228_193",
+     "de": "st_1228_192",
      "f": "misalito",
      "r": "colecta",
      "t": 7,
@@ -121052,7 +121071,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1228_193",
+     "de": "st_1228_192",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -121060,7 +121079,7 @@
      "via": "celebración"
     },
     "entrada": {
-     "de": "st_1228_193",
+     "de": "st_1228_192",
      "f": "misalito",
      "r": "entrada",
      "t": 7,
@@ -121068,7 +121087,7 @@
      "via": "celebración"
     },
     "ofrendas": {
-     "de": "st_1228_193",
+     "de": "st_1228_192",
      "f": "misalito",
      "r": "ofrendas",
      "t": 7,
@@ -121076,7 +121095,7 @@
      "via": "celebración"
     },
     "poscomunion": {
-     "de": "st_1228_193",
+     "de": "st_1228_192",
      "f": "misalito",
      "r": "poscomunion",
      "t": 6,
@@ -121094,12 +121113,12 @@
    "resena": "Por lo menos desde el siglo VI, la Iglesia venera en los días de Navidad a los santos Inocentes. Constituyen las primicias de los que mueren por Cristo. Su muerte violenta por el Señor ha plantado la cruz junto al pesebre.",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Los Santos Inocentes, mártires",
-   "u": "st/st_1228_193",
+   "u": "st/st_1228_192",
    "v": "completo"
   },
   "V|5217TA1229.html|0": {
    "alt": [],
-   "cel": "st_1229_194",
+   "cel": "st_1229_193",
    "color": "rojo",
    "credo": null,
    "etiqueta": "Propio",
@@ -121146,7 +121165,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1229_194",
+     "de": "st_1229_193",
      "f": "misalito",
      "r": "colecta",
      "t": 6,
@@ -121163,7 +121182,7 @@
      "via": "día"
     },
     "entrada": {
-     "de": "st_1229_194",
+     "de": "st_1229_193",
      "f": "misalito",
      "r": "entrada",
      "t": 6,
@@ -121199,12 +121218,12 @@
    "resena": "Era canciller de Inglaterra, cuando el rey Enrique II lo eligió como obispo de Canterbury. En ese cargo defendió vigorosamente los derechos de la Iglesia, a quien el rey quería dominar. En represalia, fue desterrado a Francia, y cuando volvió a Canterbury, los incondicionales del rey lo asesinaron en su catedral (1118-1173).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "Santo Tomás Becket, obispo y mártir",
-   "u": "st/st_1229_194",
+   "u": "st/st_1229_193",
    "v": "completo"
   },
   "V|5218TA1231.html|0": {
    "alt": [],
-   "cel": "st_1231_195",
+   "cel": "st_1231_194",
    "color": "blanco",
    "credo": null,
    "etiqueta": "Propio",
@@ -121251,7 +121270,7 @@
    ],
    "piezas": {
     "colecta": {
-     "de": "st_1231_195",
+     "de": "st_1231_194",
      "f": "misalito",
      "r": "colecta",
      "t": 5,
@@ -121259,7 +121278,7 @@
      "via": "celebración"
     },
     "comunion": {
-     "de": "st_1231_195",
+     "de": "st_1231_194",
      "f": "misalito",
      "r": "comunion",
      "t": 7,
@@ -121285,7 +121304,7 @@
      "via": "día"
     },
     "poscomunion": {
-     "de": "st_1231_195",
+     "de": "st_1231_194",
      "f": "misalito",
      "r": "poscomunion",
      "t": 7,
@@ -121303,7 +121322,7 @@
    "resena": "Fue elegido Papa inmediatamente después de la paz constantiniana y gobernó la Iglesia romana durante 21 años (314-335). Le tocó presenciar la difusión del cristianismo en todas las clases sociales. Pero asistió también, sin poder hacer nada, a la crisis desencadenada por el sacerdote de Alejandría, Arrio, que negaba la divinidad de Cristo. Por medio de sus legados, estuvo presente en el Concilio de Nicea, primer concilio ecuménico (325).",
    "seccion": "PROPIO DE LOS SANTOS",
    "titulo": "San Silvestre I, papa",
-   "u": "st/st_1231_195",
+   "u": "st/st_1231_194",
    "v": "completo"
   },
   "V|5219TATEMP_1.html|0": {
@@ -123017,10 +123036,8 @@
    "prefacio": [
     "prefacio-i-de-cuaresma",
     "prefacio-i-de-la-ascension-del-senor",
-    "prefacio-i-de-la-santisima-eucaristia",
     "prefacio-ii-de-cuaresma",
     "prefacio-ii-de-la-ascension-del-senor",
-    "prefacio-ii-de-la-santisima-eucaristia",
     "prefacio-iii-de-cuaresma",
     "prefacio-iv-de-cuaresma",
     "prefacio-v-de-cuaresma",
@@ -125358,8 +125375,6 @@
     "pueblo": null
    },
    "prefacio": [
-    "prefacio-i-de-la-santisima-eucaristia",
-    "prefacio-ii-de-la-santisima-eucaristia",
     "propio-el-misterio-de-pentecostes"
    ],
    "prefacio_propio": null,
@@ -126442,11 +126457,15 @@
    "alt": [],
    "k": "tempore/hebdomada-sancta-dominica-in-palmis-de-passione-domini"
   },
+  "st/lv_5146ta0914": {
+   "alt": [],
+   "k": "sanctis/september-in-exaltatione-sanctae-crucis"
+  },
   "st/st_0102_0": {
    "alt": [],
    "k": "sanctis/die-2-ianuarii-ss-basilii-magni-et-gregorii-nazianzeni"
   },
-  "st/st_0103_196": {
+  "st/st_0103_195": {
    "alt": [],
    "k": "sanctis/die-3-ianuarii-sanctissimi-nominis-iesu"
   },
@@ -126650,7 +126669,7 @@
    "alt": [],
    "k": "sanctis/die-12-maii-ss-nerei-et-achillei-martyrum"
   },
-  "st/st_0513_205": {
+  "st/st_0513_204": {
    "alt": [],
    "k": "sanctis/die-13-maii-beatae-mariae-virginis-de-fatima"
   },
@@ -126666,11 +126685,11 @@
    "alt": [],
    "k": "sanctis/die-20-maii-s-bernardini-senensis-presbyteri"
   },
-  "st/st_0521_208": {
+  "st/st_0521_207": {
    "alt": [],
    "k": "sanctis/die-21-maii-ss-christophori-magallanes-presbyteri-et-sociorum"
   },
-  "st/st_0522_209": {
+  "st/st_0522_208": {
    "alt": [],
    "k": "sanctis/die-22-maii-s-ritae-de-cascia-religiosae"
   },
@@ -126774,7 +126793,7 @@
    "alt": [],
    "k": "sanctis/die-6-iulii-s-mariae-goretti-virginis-et-martyris"
   },
-  "st/st_0709_215": {
+  "st/st_0709_214": {
    "alt": [],
    "k": "sanctis/die-9-iulii-ss-augustini-zhao-rong-presbyteri"
   },
@@ -126798,7 +126817,7 @@
    "alt": [],
    "k": "sanctis/die-16-iulii-beatae-mariae-virginis-de-monte-carmelo"
   },
-  "st/st_0720_216": {
+  "st/st_0720_215": {
    "alt": [],
    "k": "sanctis/die-20-iulii-s-apollinaris-episcopi-et-martyris"
   },
@@ -126814,7 +126833,7 @@
    "alt": [],
    "k": "sanctis/die-23-iulii-s-birgittae-religiosae"
   },
-  "st/st_0724_217": {
+  "st/st_0724_216": {
    "alt": [],
    "k": "sanctis/die-24-iulii-s-sarbelii-makhlu-f-presbyteri"
   },
@@ -126866,7 +126885,7 @@
    "alt": [],
    "k": "sanctis/die-8-augusti-s-dominici-presbyteri"
   },
-  "st/st_0809_219": {
+  "st/st_0809_218": {
    "alt": [],
    "k": "sanctis/die-9-augusti-s-teresiae-benedictae-a-cruce-virginis-et-martyris"
   },
@@ -126878,7 +126897,7 @@
    "alt": [],
    "k": "sanctis/die-11-augusti-s-clarae-virginis"
   },
-  "st/st_0812_220": {
+  "st/st_0812_219": {
    "alt": [],
    "k": "sanctis/die-12-augusti-s-ioannae-franciscae-de-chantal-religiosae"
   },
@@ -126944,7 +126963,7 @@
    "alt": [],
    "k": "sanctis/die-3-septembris-s-gregorii-magni-papae-et-ecclesiae-doctoris"
   },
-  "st/st_0905_225": {
+  "st/st_0905_224": {
    "alt": [],
    "k": "sanctis/september-in-nativitate-beatae-mariae-virginis"
   },
@@ -126956,7 +126975,7 @@
    "alt": [],
    "k": "sanctis/die-9-septembris-s-petri-claver-presbyteri"
   },
-  "st/st_0912_226": {
+  "st/st_0912_225": {
    "alt": [],
    "k": "sanctis/die-12-septembris-sanctissimi-nominis-mariae"
   },
@@ -126964,242 +126983,238 @@
    "alt": [],
    "k": "sanctis/die-13-septembris-s-ioannis-chrysostomi-episcopi-et-ecclesiae-doctoris"
   },
-  "st/st_0914_130": {
-   "alt": [],
-   "k": "sanctis/september-in-exaltatione-sanctae-crucis"
-  },
-  "st/st_0916_132": {
+  "st/st_0916_131": {
    "alt": [],
    "k": "sanctis/die-16-septembris-ss-cornelii-papae-et-cypriani-episcopi-martyrum"
   },
-  "st/st_0917_133": {
+  "st/st_0917_132": {
    "alt": [],
    "k": "sanctis/die-17-septembris-s-roberti-bellarmino-episcopi-et-ecclesiae-doctoris"
   },
-  "st/st_0919_134": {
+  "st/st_0919_133": {
    "alt": [],
    "k": "sanctis/die-19-septembris-s-ianuarii-episcopi-et-martyris"
   },
-  "st/st_0920_135": {
+  "st/st_0920_134": {
    "alt": [],
    "k": "sanctis/die-20-septembris-ss-andreae-kim-tae-go-n-presbyteri"
   },
-  "st/st_0921_136": {
+  "st/st_0921_135": {
    "alt": [],
    "k": "sanctis/september-s-matthaei-apostoli-et-evangelistae"
   },
-  "st/st_0926_137": {
+  "st/st_0926_136": {
    "alt": [],
    "k": "sanctis/die-26-septembris-ss-cosmae-et-damiani-martyrum"
   },
-  "st/st_0927_138": {
+  "st/st_0927_137": {
    "alt": [],
    "k": "sanctis/die-27-septembris-s-vincentii-de-paul-presbyteri"
   },
-  "st/st_0928_139": {
+  "st/st_0928_138": {
    "alt": [],
    "k": "sanctis/die-28-septembris-s-venceslai-martyris"
   },
-  "st/st_0929_141": {
+  "st/st_0929_140": {
    "alt": [],
    "k": "sanctis/september-s-matthaei-apostoli-et-evangelistae-ss-michaelis-gabrielis-et-raphaelis-archangelorum"
   },
-  "st/st_0930_142": {
+  "st/st_0930_141": {
    "alt": [],
    "k": "sanctis/die-30-septembris-s-hieronymi-presbyteri-et-ecclesiae-doctoris"
   },
-  "st/st_1001_143": {
+  "st/st_1001_142": {
    "alt": [],
    "k": "sanctis/die-1-octobris-s-teresiae-a-iesu-infante-virginis-et-ecclesiae-doctoris"
   },
-  "st/st_1002_144": {
+  "st/st_1002_143": {
    "alt": [],
    "k": "sanctis/die-2-octobris-ss-angelorum-custodum"
   },
-  "st/st_1004_145": {
+  "st/st_1004_144": {
    "alt": [],
    "k": "sanctis/october-s-francisci-assisiensis"
   },
-  "st/st_1006_146": {
+  "st/st_1006_145": {
    "alt": [],
    "k": "sanctis/die-6-octobris-s-brunonis-presbyteri"
   },
-  "st/st_1007_147": {
+  "st/st_1007_146": {
    "alt": [],
    "k": "sanctis/die-7-octobris-beatae-mariae-virginis-a-rosario"
   },
-  "st/st_1009_148": {
+  "st/st_1009_147": {
    "alt": [],
    "k": "sanctis/die-9-octobris-ss-dionysii-episcopi-et-sociorum-martyrum"
   },
-  "st/st_1014_150": {
+  "st/st_1014_149": {
    "alt": [],
    "k": "sanctis/die-14-octobris-s-callisti-i-papae-et-martyris"
   },
-  "st/st_1015_151": {
+  "st/st_1015_150": {
    "alt": [],
    "k": "sanctis/die-15-octobris-s-teresiae-a-iesu-virginis-et-ecclesiae-doctoris"
   },
-  "st/st_1016_152": {
+  "st/st_1016_151": {
    "alt": [],
    "k": "sanctis/die-16-octobris-s-hedvigis-religiosae"
   },
-  "st/st_1017_154": {
+  "st/st_1017_153": {
    "alt": [],
    "k": "sanctis/die-17-octobris-s-ignatii-antiocheni-episcopi-et-martyris"
   },
-  "st/st_1018_155": {
+  "st/st_1018_154": {
    "alt": [],
    "k": "sanctis/october-s-lucae-evangelistae"
   },
-  "st/st_1019_156": {
+  "st/st_1019_155": {
    "alt": [],
    "k": "sanctis/die-19-octobris-ss-ioannis-de-brebeuf-et-isaac-jogues"
   },
-  "st/st_1023_158": {
+  "st/st_1023_157": {
    "alt": [],
    "k": "sanctis/die-23-octobris-s-ioannis-de-capestrano-presbyteri"
   },
-  "st/st_1025_159": {
+  "st/st_1025_158": {
    "alt": [],
    "k": "sanctis/die-24-octobris-s-antonii-mariae-claret-episcopi"
   },
-  "st/st_1028_160": {
+  "st/st_1028_159": {
    "alt": [],
    "k": "sanctis/october-s-lucae-evangelistae-ss-simonis-et-iudae-apostolorum"
   },
-  "st/st_1101_161": {
+  "st/st_1101_160": {
    "alt": [],
    "k": "sanctis/november-omnium-sanctorum"
   },
-  "st/st_1102_162": {
+  "st/st_1102_161": {
    "alt": [
     "sanctis/in-commemoratione-omnium-fidelium-defunctorum-2",
     "sanctis/in-commemoratione-omnium-fidelium-defunctorum-3"
    ],
    "k": "sanctis/in-commemoratione-omnium-fidelium-defunctorum-1"
   },
-  "st/st_1103_163": {
+  "st/st_1103_162": {
    "alt": [],
    "k": "sanctis/die-3-novembris-s-martini-de-porres-religiosi"
   },
-  "st/st_1104_164": {
+  "st/st_1104_163": {
    "alt": [],
    "k": "sanctis/die-4-novembris-s-caroli-borromeo-episcopi"
   },
-  "st/st_1109_165": {
+  "st/st_1109_164": {
    "alt": [],
    "k": "sanctis/in-commemoratione-omnium-fidelium-defunctorum-in-dedicatione-basilicae-lateranensis"
   },
-  "st/st_1110_166": {
+  "st/st_1110_165": {
    "alt": [],
    "k": "sanctis/die-10-novembris-s-leonis-magni-papae-et-ecclesiae-doctoris"
   },
-  "st/st_1111_167": {
+  "st/st_1111_166": {
    "alt": [],
    "k": "sanctis/die-11-novembris-s-martini-turonensis-episcopi"
   },
-  "st/st_1112_168": {
+  "st/st_1112_167": {
    "alt": [],
    "k": "sanctis/die-12-novembris-s-iosaphat-episcopi-et-martyris"
   },
-  "st/st_1115_169": {
+  "st/st_1115_168": {
    "alt": [],
    "k": "sanctis/die-15-novembris-s-alberti-magni-episcopi-et-ecclesiae-doctoris"
   },
-  "st/st_1116_170": {
+  "st/st_1116_169": {
    "alt": [],
    "k": "sanctis/in-commemoratione-omnium-fidelium-defunctorum-s-margaritae-scotiae"
   },
-  "st/st_1117_172": {
+  "st/st_1117_171": {
    "alt": [],
    "k": "sanctis/in-commemoratione-omnium-fidelium-defunctorum-s-elisabeth-hungariae"
   },
-  "st/st_1118_173": {
+  "st/st_1118_172": {
    "alt": [],
    "k": "sanctis/die-18-novembris-in-dedicatione-basilicarum"
   },
-  "st/st_1121_174": {
+  "st/st_1121_173": {
    "alt": [],
    "k": "sanctis/die-21-novembris-in-praesentatione-beatae-mariae-virginis"
   },
-  "st/st_1122_175": {
+  "st/st_1122_174": {
    "alt": [],
    "k": "sanctis/die-22-novembris-s-caeciliae-virginis-et-martyris"
   },
-  "st/st_1123_176": {
+  "st/st_1123_175": {
    "alt": [],
    "k": "sanctis/die-23-novembris-s-clementis-i-papae-et-martyris"
   },
-  "st/st_1124_178": {
+  "st/st_1124_177": {
    "alt": [],
    "k": "sanctis/die-24-novembris-ss-andreae-dung-la-c-presbyteri"
   },
-  "st/st_1125_237": {
+  "st/st_1125_236": {
    "alt": [],
    "k": "sanctis/die-25-novembris-s-catharinae-alexandrinae-virginis-et-martyris"
   },
-  "st/st_1130_179": {
+  "st/st_1130_178": {
    "alt": [],
    "k": "sanctis/in-commemoratione-omnium-fidelium-defunctorum-s-andreae-apostoli"
   },
-  "st/st_1203_180": {
+  "st/st_1203_179": {
    "alt": [],
    "k": "sanctis/die-3-decembris-s-francisci-xavier-presbyteri"
   },
-  "st/st_1204_181": {
+  "st/st_1204_180": {
    "alt": [],
    "k": "sanctis/die-4-decembris-s-ioannis-damasceni-presbyteri-et-ecclesiae-doctoris"
   },
-  "st/st_1206_182": {
+  "st/st_1206_181": {
    "alt": [],
    "k": "sanctis/die-6-decembris-s-nicolai-episcopi"
   },
-  "st/st_1207_183": {
+  "st/st_1207_182": {
    "alt": [],
    "k": "sanctis/die-7-decembris-s-ambrosii-episcopi-et-ecclesiae-doctoris"
   },
-  "st/st_1208_184": {
+  "st/st_1208_183": {
    "alt": [],
    "k": "sanctis/december-in-conceptione-immaculata-beatae-mariae-virginis"
   },
-  "st/st_1211_185": {
+  "st/st_1211_184": {
    "alt": [],
    "k": "sanctis/die-11-decembris-s-damasi-i-papae"
   },
-  "st/st_1213_187": {
+  "st/st_1213_186": {
    "alt": [],
    "k": "sanctis/die-13-decembris-s-luciae-virginis-et-martyris"
   },
-  "st/st_1214_188": {
+  "st/st_1214_187": {
    "alt": [],
    "k": "sanctis/die-14-decembris-s-ioannis-a-cruce-presbyteri-et-ecclesiae-doctoris"
   },
-  "st/st_1221_189": {
+  "st/st_1221_188": {
    "alt": [],
    "k": "sanctis/die-21-decembris-s-petri-canisii-presbyteri-et-ecclesiae-doctoris"
   },
-  "st/st_1223_190": {
+  "st/st_1223_189": {
    "alt": [],
    "k": "sanctis/die-23-decembris-s-ioannis-de-keo-ty-presbyteri"
   },
-  "st/st_1226_191": {
+  "st/st_1226_190": {
    "alt": [],
    "k": "sanctis/december-s-stephani-protomartyris"
   },
-  "st/st_1227_192": {
+  "st/st_1227_191": {
    "alt": [],
    "k": "sanctis/december-s-ioannis-apostoli-et-evangelistae"
   },
-  "st/st_1228_193": {
+  "st/st_1228_192": {
    "alt": [],
    "k": "sanctis/december-s-ioannis-apostoli-et-evangelistae-ss-innocentium-martyrum"
   },
-  "st/st_1229_194": {
+  "st/st_1229_193": {
    "alt": [],
    "k": "sanctis/die-29-decembris-s-thomae-becket-episcopi-et-martyris"
   },
-  "st/st_1231_195": {
+  "st/st_1231_194": {
    "alt": [],
    "k": "sanctis/die-31-decembris-s-silvestri-i-papae"
   },
@@ -128158,6 +128173,7 @@
   "lv_5075ta0532": "st/lv_5075ta0532",
   "lv_5130ta0819_2": "st/lv_5130ta0819_2",
   "lv_5138ta0826": "st/lv_5138ta0826",
+  "lv_5146ta0914": "st/lv_5146ta0914",
   "lv_5161ta1003": "st/lv_5161ta1003",
   "lv_5167ta1010": "st/lv_5167ta1010",
   "lv_5168ta1011": "st/lv_5168ta1011",
@@ -128389,7 +128405,7 @@
   "san_santo-toribio-romo-gonzalez": "st/san_santo-toribio-romo-gonzalez",
   "san_santos-cristobal-antonio-y-juan": "st/san_santos-cristobal-antonio-y-juan",
   "st_0102_0": "st/st_0102_0",
-  "st_0103_196": "st/st_0103_196",
+  "st_0103_195": "st/st_0103_195",
   "st_0107_1": "st/st_0107_1",
   "st_0113_2": "st/st_0113_2",
   "st_0117_3": "st/st_0117_3",
@@ -128407,11 +128423,11 @@
   "st_0203_15": "st/st_0203_15",
   "st_0203_16": "st/st_0203_16",
   "st_0204_17": "st/st_0204_17",
-  "st_0205_197": "st/st_0205_197",
+  "st_0205_196": "st/st_0205_196",
   "st_0206_18": "st/st_0206_18",
   "st_0208_19": "st/st_0208_19",
-  "st_0208_198": "st/st_0208_198",
-  "st_0210_199": "st/st_0210_199",
+  "st_0208_197": "st/st_0208_197",
+  "st_0210_198": "st/st_0210_198",
   "st_0210_20": "st/st_0210_20",
   "st_0211_21": "st/st_0211_21",
   "st_0214_22": "st/st_0214_22",
@@ -128419,8 +128435,8 @@
   "st_0221_24": "st/st_0221_24",
   "st_0222_25": "st/st_0222_25",
   "st_0223_26": "st/st_0223_26",
-  "st_0225_200": "st/st_0225_200",
-  "st_0227_201": "st/st_0227_201",
+  "st_0225_199": "st/st_0225_199",
+  "st_0227_200": "st/st_0227_200",
   "st_0304_27": "st/st_0304_27",
   "st_0307_28": "st/st_0307_28",
   "st_0308_29": "st/st_0308_29",
@@ -128441,33 +128457,33 @@
   "st_0423_44": "st/st_0423_44",
   "st_0424_45": "st/st_0424_45",
   "st_0425_46": "st/st_0425_46",
-  "st_0427_202": "st/st_0427_202",
+  "st_0427_201": "st/st_0427_201",
   "st_0428_47": "st/st_0428_47",
   "st_0428_48": "st/st_0428_48",
   "st_0429_49": "st/st_0429_49",
   "st_0430_50": "st/st_0430_50",
   "st_0501_51": "st/st_0501_51",
   "st_0502_52": "st/st_0502_52",
-  "st_0503_203": "st/st_0503_203",
+  "st_0503_202": "st/st_0503_202",
   "st_0504_53": "st/st_0504_53",
-  "st_0510_204": "st/st_0510_204",
+  "st_0510_203": "st/st_0510_203",
   "st_0512_54": "st/st_0512_54",
   "st_0512_55": "st/st_0512_55",
-  "st_0513_205": "st/st_0513_205",
+  "st_0513_204": "st/st_0513_204",
   "st_0514_56": "st/st_0514_56",
-  "st_0515_206": "st/st_0515_206",
-  "st_0516_207": "st/st_0516_207",
+  "st_0515_205": "st/st_0515_205",
+  "st_0516_206": "st/st_0516_206",
   "st_0518_57": "st/st_0518_57",
   "st_0518_57#misa-vespertina-de-la-vigilia": "st/st_0624_77#vigilia",
   "st_0520_58": "st/st_0520_58",
-  "st_0521_208": "st/st_0521_208",
-  "st_0522_209": "st/st_0522_209",
+  "st_0521_207": "st/st_0521_207",
+  "st_0522_208": "st/st_0522_208",
   "st_0525_59": "st/st_0525_59",
   "st_0525_60": "st/st_0525_60",
   "st_0525_61": "st/st_0525_61",
   "st_0526_62": "st/st_0526_62",
   "st_0527_63": "st/st_0527_63",
-  "st_0529_210": "st/st_0529_210",
+  "st_0529_209": "st/st_0529_209",
   "st_0531_64": "st/st_0531_64",
   "st_0601_65": "st/st_0601_65",
   "st_0602_66": "st/st_0602_66",
@@ -128482,31 +128498,31 @@
   "st_0622_75": "st/st_0622_75",
   "st_0622_76": "st/st_0622_76",
   "st_0624_77": "st/st_0624_77",
-  "st_0627_213": "st/st_0627_213",
+  "st_0627_212": "st/st_0627_212",
   "st_0627_78": "st/st_0627_78",
   "st_0628_79": "st/st_0628_79",
   "st_0629_80": "st/st_0629_80",
   "st_0630_81": "st/st_0630_81",
   "st_0703_83": "st/st_0703_83",
-  "st_0704_214": "st/st_0704_214",
+  "st_0704_213": "st/st_0704_213",
   "st_0704_84": "st/st_0704_84",
   "st_0705_85": "st/st_0705_85",
   "st_0706_86": "st/st_0706_86",
-  "st_0709_215": "st/st_0709_215",
+  "st_0709_214": "st/st_0709_214",
   "st_0711_87": "st/st_0711_87",
   "st_0713_88": "st/st_0713_88",
   "st_0714_89": "st/st_0714_89",
   "st_0715_90": "st/st_0715_90",
   "st_0716_91": "st/st_0716_91",
-  "st_0720_216": "st/st_0720_216",
+  "st_0720_215": "st/st_0720_215",
   "st_0721_92": "st/st_0721_92",
   "st_0722_93": "st/st_0722_93",
   "st_0723_94": "st/st_0723_94",
-  "st_0724_217": "st/st_0724_217",
+  "st_0724_216": "st/st_0724_216",
   "st_0725_95": "st/st_0725_95",
   "st_0726_96": "st/st_0726_96",
   "st_0729_97": "st/st_0729_97",
-  "st_0730_218": "st/st_0730_218",
+  "st_0730_217": "st/st_0730_217",
   "st_0730_98": "st/st_0730_98",
   "st_0731_99": "st/st_0731_99",
   "st_0801_100": "st/st_0801_100",
@@ -128518,117 +128534,116 @@
   "st_0807_106": "st/st_0807_106",
   "st_0807_107": "st/st_0807_107",
   "st_0808_108": "st/st_0808_108",
-  "st_0809_219": "st/st_0809_219",
+  "st_0809_218": "st/st_0809_218",
   "st_0810_109": "st/st_0810_109",
   "st_0811_110": "st/st_0811_110",
-  "st_0812_220": "st/st_0812_220",
+  "st_0812_219": "st/st_0812_219",
   "st_0813_111": "st/st_0813_111",
   "st_0814_112": "st/st_0814_112",
   "st_0815_113": "st/st_0815_113",
   "st_0816_114": "st/st_0816_114",
-  "st_0816_221": "st/st_0816_221",
+  "st_0816_220": "st/st_0816_220",
   "st_0819_115": "st/st_0819_115",
-  "st_0819_222": "st/st_0819_222",
+  "st_0819_221": "st/st_0819_221",
   "st_0820_116": "st/st_0820_116",
   "st_0821_117": "st/st_0821_117",
   "st_0822_118": "st/st_0822_118",
   "st_0824_120": "st/st_0824_120",
   "st_0825_121": "st/st_0825_121",
   "st_0825_122": "st/st_0825_122",
-  "st_0826_223": "st/st_0826_223",
+  "st_0826_222": "st/st_0826_222",
   "st_0827_123": "st/st_0827_123",
   "st_0828_124": "st/st_0828_124",
   "st_0829_125": "st/st_0829_125",
   "st_0830_119": "st/st_0830_119",
-  "st_0902_224": "st/st_0902_224",
+  "st_0902_223": "st/st_0902_223",
   "st_0903_126": "st/st_0903_126",
-  "st_0905_225": "st/st_0905_225",
+  "st_0905_224": "st/st_0905_224",
   "st_0908_127": "st/st_0908_127",
   "st_0909_128": "st/st_0909_128",
-  "st_0912_226": "st/st_0912_226",
+  "st_0912_225": "st/st_0912_225",
   "st_0913_129": "st/st_0913_129",
-  "st_0914_130": "st/st_0914_130",
-  "st_0915_131": "st/st_0915_131",
-  "st_0916_132": "st/st_0916_132",
-  "st_0917_133": "st/st_0917_133",
-  "st_0917_227": "st/st_0917_227",
-  "st_0919_134": "st/st_0919_134",
-  "st_0919_228": "st/st_0919_228",
-  "st_0920_135": "st/st_0920_135",
-  "st_0921_136": "st/st_0921_136",
+  "st_0915_130": "st/st_0915_130",
+  "st_0916_131": "st/st_0916_131",
+  "st_0917_132": "st/st_0917_132",
+  "st_0917_226": "st/st_0917_226",
+  "st_0919_133": "st/st_0919_133",
+  "st_0919_227": "st/st_0919_227",
+  "st_0920_134": "st/st_0920_134",
+  "st_0921_135": "st/st_0921_135",
+  "st_0923_228": "st/st_0923_228",
   "st_0923_229": "st/st_0923_229",
-  "st_0923_230": "st/st_0923_230",
-  "st_0926_137": "st/st_0926_137",
-  "st_0927_138": "st/st_0927_138",
+  "st_0926_136": "st/st_0926_136",
+  "st_0927_137": "st/st_0927_137",
+  "st_0928_138": "st/st_0928_138",
   "st_0928_139": "st/st_0928_139",
-  "st_0928_140": "st/st_0928_140",
-  "st_0929_141": "st/st_0929_141",
-  "st_0930_142": "st/st_0930_142",
-  "st_1001_143": "st/st_1001_143",
-  "st_1002_144": "st/st_1002_144",
-  "st_1004_145": "st/st_1004_145",
-  "st_1005_231": "st/st_1005_231",
-  "st_1006_146": "st/st_1006_146",
-  "st_1007_147": "st/st_1007_147",
+  "st_0929_140": "st/st_0929_140",
+  "st_0930_141": "st/st_0930_141",
+  "st_1001_142": "st/st_1001_142",
+  "st_1002_143": "st/st_1002_143",
+  "st_1004_144": "st/st_1004_144",
+  "st_1005_230": "st/st_1005_230",
+  "st_1006_145": "st/st_1006_145",
+  "st_1007_146": "st/st_1007_146",
+  "st_1009_147": "st/st_1009_147",
   "st_1009_148": "st/st_1009_148",
-  "st_1009_149": "st/st_1009_149",
-  "st_1009_232": "st/st_1009_232",
-  "st_1011_233": "st/st_1011_233",
-  "st_1014_150": "st/st_1014_150",
-  "st_1015_151": "st/st_1015_151",
+  "st_1009_231": "st/st_1009_231",
+  "st_1011_232": "st/st_1011_232",
+  "st_1014_149": "st/st_1014_149",
+  "st_1015_150": "st/st_1015_150",
+  "st_1016_151": "st/st_1016_151",
   "st_1016_152": "st/st_1016_152",
-  "st_1016_153": "st/st_1016_153",
-  "st_1017_154": "st/st_1017_154",
-  "st_1018_155": "st/st_1018_155",
+  "st_1017_153": "st/st_1017_153",
+  "st_1018_154": "st/st_1018_154",
+  "st_1019_155": "st/st_1019_155",
   "st_1019_156": "st/st_1019_156",
-  "st_1019_157": "st/st_1019_157",
-  "st_1022_234": "st/st_1022_234",
-  "st_1023_158": "st/st_1023_158",
-  "st_1024_235": "st/st_1024_235",
-  "st_1025_159": "st/st_1025_159",
-  "st_1028_160": "st/st_1028_160",
-  "st_1101_161": "st/st_1101_161",
-  "st_1102_162": "st/st_1102_162",
-  "st_1102_162#primera-misa": "st/st_1102_162",
-  "st_1102_162#segunda-misa": "st/st_1102_162#2",
-  "st_1102_162#tercera-misa": "st/st_1102_162#3",
-  "st_1103_163": "st/st_1103_163",
-  "st_1104_164": "st/st_1104_164",
-  "st_1109_165": "st/st_1109_165",
-  "st_1110_166": "st/st_1110_166",
-  "st_1111_167": "st/st_1111_167",
-  "st_1112_168": "st/st_1112_168",
-  "st_1115_169": "st/st_1115_169",
+  "st_1022_233": "st/st_1022_233",
+  "st_1023_157": "st/st_1023_157",
+  "st_1024_234": "st/st_1024_234",
+  "st_1025_158": "st/st_1025_158",
+  "st_1028_159": "st/st_1028_159",
+  "st_1101_160": "st/st_1101_160",
+  "st_1102_161": "st/st_1102_161",
+  "st_1102_161#primera-misa": "st/st_1102_161",
+  "st_1102_161#segunda-misa": "st/st_1102_161#2",
+  "st_1102_161#tercera-misa": "st/st_1102_161#3",
+  "st_1103_162": "st/st_1103_162",
+  "st_1104_163": "st/st_1104_163",
+  "st_1109_164": "st/st_1109_164",
+  "st_1110_165": "st/st_1110_165",
+  "st_1111_166": "st/st_1111_166",
+  "st_1112_167": "st/st_1112_167",
+  "st_1115_168": "st/st_1115_168",
+  "st_1116_169": "st/st_1116_169",
   "st_1116_170": "st/st_1116_170",
-  "st_1116_171": "st/st_1116_171",
-  "st_1117_172": "st/st_1117_172",
-  "st_1118_173": "st/st_1118_173",
-  "st_1121_174": "st/st_1121_174",
-  "st_1122_175": "st/st_1122_175",
+  "st_1117_171": "st/st_1117_171",
+  "st_1118_172": "st/st_1118_172",
+  "st_1121_173": "st/st_1121_173",
+  "st_1122_174": "st/st_1122_174",
+  "st_1123_175": "st/st_1123_175",
   "st_1123_176": "st/st_1123_176",
-  "st_1123_177": "st/st_1123_177",
-  "st_1123_236": "st/st_1123_236",
-  "st_1124_178": "st/st_1124_178",
-  "st_1125_237": "st/st_1125_237",
-  "st_1130_179": "st/st_1130_179",
-  "st_1203_180": "st/st_1203_180",
-  "st_1204_181": "st/st_1204_181",
-  "st_1206_182": "st/st_1206_182",
-  "st_1207_183": "st/st_1207_183",
-  "st_1208_184": "st/st_1208_184",
-  "st_1209_238": "st/st_1209_238",
-  "st_1210_239": "st/st_1210_239",
-  "st_1211_185": "st/st_1211_185",
-  "st_1212_186": "st/st_1212_186",
-  "st_1213_187": "st/st_1213_187",
-  "st_1214_188": "st/st_1214_188",
-  "st_1221_189": "st/st_1221_189",
-  "st_1223_190": "st/st_1223_190",
-  "st_1226_191": "st/st_1226_191",
-  "st_1227_192": "st/st_1227_192",
-  "st_1228_193": "st/st_1228_193",
-  "st_1229_194": "st/st_1229_194",
-  "st_1231_195": "st/st_1231_195",
+  "st_1123_235": "st/st_1123_235",
+  "st_1124_177": "st/st_1124_177",
+  "st_1125_236": "st/st_1125_236",
+  "st_1130_178": "st/st_1130_178",
+  "st_1203_179": "st/st_1203_179",
+  "st_1204_180": "st/st_1204_180",
+  "st_1206_181": "st/st_1206_181",
+  "st_1207_182": "st/st_1207_182",
+  "st_1208_183": "st/st_1208_183",
+  "st_1209_237": "st/st_1209_237",
+  "st_1210_238": "st/st_1210_238",
+  "st_1211_184": "st/st_1211_184",
+  "st_1212_185": "st/st_1212_185",
+  "st_1213_186": "st/st_1213_186",
+  "st_1214_187": "st/st_1214_187",
+  "st_1221_188": "st/st_1221_188",
+  "st_1223_189": "st/st_1223_189",
+  "st_1226_190": "st/st_1226_190",
+  "st_1227_191": "st/st_1227_191",
+  "st_1228_192": "st/st_1228_192",
+  "st_1229_193": "st/st_1229_193",
+  "st_1231_194": "st/st_1231_194",
   "st_inmaculado_corazon": "st/st_inmaculado_corazon",
   "st_madre_iglesia": "st/st_madre_iglesia",
   "st_sumo_sacerdote": "st/st_sumo_sacerdote",

@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace = "io.github.miguelarc0401.liturgicum"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "io.github.miguelarc0401.liturgicum"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // El número lo pone GitHub Actions (el de la ejecución): Android no
+        // deja instalar un APK encima de otro con un número menor
+        versionCode = Integer.parseInt(System.getenv("APK_NUMERO") ?: "1")
+        versionName = "1." + (System.getenv("APK_NUMERO") ?: "0")
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    // La llave con que se firma. Tiene que ser siempre la misma: Android no
+    // instala un APK encima de otro firmado con otra. Vive en los secretos
+    // del repositorio y GitHub Actions la deja en un fichero al compilar
+    // (ver apk/LEEME.md); sin ella, el APK sale sin firmar.
+    signingConfigs {
+        release {
+            if (System.getenv("APK_LLAVE")) {
+                storeFile file(System.getenv("APK_LLAVE"))
+                storePassword System.getenv("APK_LLAVE_CLAVE")
+                keyAlias System.getenv("APK_LLAVE_ALIAS")
+                keyPassword System.getenv("APK_LLAVE_CLAVE")
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (System.getenv("APK_LLAVE")) {
+                signingConfig signingConfigs.release
+            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

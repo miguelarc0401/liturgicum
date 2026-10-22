@@ -1,10 +1,10 @@
 EL SANTORAL Y LA PRECEDENCIA ENTRE CELEBRACIONES
 
-celebraciones del calendario : 240 (237 en fecha fija, 3 moviles)
-   por grado                 : Solemnidad 8, Conmemoración 1, Fiesta 29, Memoria 72, Memoria libre 130
-   leidas del PDF            : 143; reconstruidas del calco del reverso (agosto y septiembre, que faltan en el escaneo): 42
+celebraciones del calendario : 239 (236 en fecha fija, 3 moviles)
+   por grado                 : Solemnidad 8, Conmemoración 1, Fiesta 28, Memoria 72, Memoria libre 130
+   leidas del PDF            : 143; reconstruidas del calco del reverso (agosto y septiembre, que faltan en el escaneo): 41
 formularios del leccionario V: 229 (217 con fecha, 7 comunes)
-emparejadas con su propio    : 201 de 238
+emparejadas con su propio    : 200 de 237
    con un dia de diferencia entre el calendario y el leccionario: 8
       Santa Águeda, virgen y mártir: calendario 4/2, leccionario 5 de febrero
       San Isidoro, obispo y doctor de la Iglesia: calendario 4/4, leccionario 26 de abril
@@ -15,7 +15,7 @@ emparejadas con su propio    : 201 de 238
       Santa María Guadalupe García Zavala, virgen: calendario 27/4, leccionario 28 de abril
       San Juan Pablo II, papa: calendario 22/10, leccionario 23 de octubre
 
-grados: el calendario y el leccionario V discrepan en 20 de 201 celebraciones emparejadas
+grados: el calendario y el leccionario V discrepan en 20 de 200 celebraciones emparejadas
    (manda el calendario que aportaste; el leccionario V de Koinonia es el de Espana y sube o baja algunos grados)
       Santa Inés, virgen y mártir                                calendario: Memoria        leccionario: Memoria libre
       San Vicente, diácono y mártir                              calendario: Memoria libre  leccionario: Memoria
@@ -38,7 +38,7 @@ grados: el calendario y el leccionario V discrepan en 20 de 201 celebraciones em
       San Isidro Labrador                                        calendario: Memoria libre  leccionario: Memoria
       Santa Teresa Benedicta de la Cruz, virgen y mártir         calendario: Memoria libre  leccionario: Fiesta
 
-formularios del leccionario V con fecha que el calendario no trae: 20
+formularios del leccionario V con fecha que el calendario no trae: 21
    (siguen accesibles por el indice, pero no se colocan en ninguna fecha; casi todos son del propio de Espana)
       9 de enero: San Eulogio de Córdoba, presbítero y mártir
       20 de enero: San Fructuoso, obispo y mártir, y sus diáconos, santos Augurio y Eulog
@@ -51,6 +51,7 @@ formularios del leccionario V con fecha que el calendario no trae: 20
       26 de junio: San Pelayo, mártir
       19 de agosto: San Ezequiel Moreno, obispo
       26 de agosto: Santa Teresa de Jesús Jornet e Ibars, virgen, Patrona de la ancianidad
+      14 de septiembre: LA EXALTACIÓN DE LA SANTA CRUZ
       3 de octubre: San Francisco de Borja, presbítero
       10 de octubre: Santo Tomás de Villanueva, obispo
       11 de octubre: Santa Soledad Torres Acosta, virgen
@@ -64,7 +65,7 @@ formularios del leccionario V con fecha que el calendario no trae: 20
 fechas con al menos una celebracion: 15701 (anos 2018-2060)
 parche epifania_6enero     : 216 fechas cambian
 parche ascension_jueves    : 86 fechas cambian
-parche corpus_jueves       : 86 fechas cambian
+parche corpus_domingo      : 86 fechas cambian
 dias sin ninguna celebracion en 2018-2020: 0
 
 solemnidades trasladadas por concurrencia: 33
@@ -95,7 +96,7 @@ solemnidades trasladadas por concurrencia: 33
    2049-12-12 -> 2049-12-13  Nuestra Señora de Guadalupe
    ... y 8 mas
 
-celebraciones por dia: 7816 dia(s) con 1, 6857 dia(s) con 2, 916 dia(s) con 3, 109 dia(s) con 4, 3 dia(s) con 5
+celebraciones por dia: 7877 dia(s) con 1, 6796 dia(s) con 2, 916 dia(s) con 3, 109 dia(s) con 4, 3 dia(s) con 5
 
 Tabla de celebraciones movibles (2016-2027): 132 cotejos, 6 diferencias
    2024 ciclo              calculado B-C           impreso C-A
@@ -125,7 +126,7 @@ Tabla de celebraciones movibles (2016-2027): 132 cotejos, 6 diferencias
    febrero, y el ciclo dominical de 2024 fue el B y el de 2025 el
    C. Los 126 cotejos restantes cuadran.
 
-escrito data/calendario_completo.json  (2739 KB)
+escrito data/calendario_completo.json  (2736 KB)
 
 AVISOS:
    leccionario V: 5058TA0503.html (cel 1) dice «28 de octubre» y el fichero codifica el 3/5; se descarta por bloque repetido

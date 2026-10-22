@@ -889,6 +889,74 @@ def ferias_de_navidad():
     return salida
 
 
+# Los domingos del tiempo ordinario, de los tomos III y IV. La fuente no los
+# tiene todos: es argentina, y el domingo que sigue a la Trinidad es allí
+# siempre el Corpus, de modo que el IX no lo rezó nunca como domingo del
+# tiempo, y en México sí lo es (el Corpus va en jueves). De cada domingo se
+# toma sólo lo suyo —las lecturas del Oficio, con sus dos años; las
+# antífonas del Benedictus y del Magníficat, con sus tres ciclos; la
+# oración—, que lo demás es del salterio.
+DOMINGO_TO = re.compile(r'^\s*DOMINGO ([IVXL]+) DEL TIEMPO ORDINARIO\s*!?\s*$')
+FIN_DOMINGO = re.compile(r'^\s*(?:LUNES\b|SEMANA [IVXL]+ DEL TIEMPO ORDINARIO)')
+ROMANO = {'I': 1, 'V': 5, 'X': 10, 'L': 50}
+
+
+def de_romano(r):
+    n = 0
+    for a, b in zip(r, r[1:] + ' '):
+        v = ROMANO[a]
+        n += -v if b != ' ' and ROMANO[b] > v else v
+    return n
+
+
+def por_ciclos(p):
+    """«Año A: … Año B: … Año C: … O bien: …» -> {'A': …, 'B': …, 'C': …}"""
+    t = ' '.join(x for x in (p.get('ant') or []) if x != 'Antífona')
+    t = re.split(r'\s*O bien:', t)[0]
+    partes = re.split(r'\s*Año ([ABC]):\s*', t)
+    return {partes[i]: partes[i + 1].strip()
+            for i in range(1, len(partes) - 1, 2) if partes[i + 1].strip()}
+
+
+def domingos_del_ordinario():
+    salida = {}
+    for nombre in ('LH_III_TIEMPO_ORDINARIO_I', 'LH_IV_TIEMPO_ORDINARIO_II'):
+        lineas = limpia(texto_de(nombre))
+        i = 0
+        while i < len(lineas):
+            m = DOMINGO_TO.match(lineas[i] or '')
+            if not m:
+                i += 1
+                continue
+            j = i + 1
+            while j < len(lineas) and not (lineas[j] and (
+                    FIN_DOMINGO.match(lineas[j]) or DOMINGO_TO.match(lineas[j]))):
+                j += 1
+            bloque, i = lineas[i:j], j
+            if len(bloque) < 40:               # el índice del tomo
+                continue
+            piezas = {}
+            for anio, ls in por_anios(bloque).items():
+                e = lee_entrada({'md': None, 'lineas': list(ls)})
+                p, _ = secciones_de(e)
+                for k, v in p.items():
+                    hora, cl = k.split('/')
+                    if hora not in ('i_visperas', 'oficio', 'laudes', 'visperas'):
+                        continue
+                    if cl == 'cantico_evangelico':
+                        ciclos = por_ciclos(v)
+                        if ciclos:
+                            piezas.setdefault(k, {'ciclos': ciclos})
+                    elif cl in ('lectura1', 'responsorio') and anio:
+                        piezas.setdefault(k, {})[anio] = v
+                    elif cl in ('lectura2', 'responsorio2', 'oracion'):
+                        piezas.setdefault(k, v)
+            k = f'Ordinario/{de_romano(m.group(1))}/0'
+            if len(piezas) > len(salida.get(k, {})):
+                salida[k] = piezas
+    return salida
+
+
 def main():
     entradas, avisos, dudosos = [], [], []
     for tomo, nombre in TOMOS:
@@ -920,11 +988,13 @@ def main():
         json.dump(finales, f, ensure_ascii=False, indent=0)
 
     ferias = ferias_de_navidad()
+    domingos = domingos_del_ordinario()
     with open(os.path.join(LIBRO, 'pdf_tiempo.json'), 'w',
               encoding='utf-8') as f:
-        json.dump(ferias, f, ensure_ascii=False, indent=0)
+        json.dump(dict(ferias, **domingos), f, ensure_ascii=False, indent=0)
     print(f'{len(ferias)} ferias de Navidad por fecha: '
           + ', '.join(k.split('/')[-1] for k in ferias))
+    print(f'{len(domingos)} domingos del tiempo ordinario')
 
     cuenta = Counter()
     for e in finales:

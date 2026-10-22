@@ -4,13 +4,13 @@ Fase 4 — el libro de horas empaquetado para la app
 horas.json         22.6 MB
 horas_dias.json     2.8 MB  15701 fechas
 
-      75  casillas en ordinario
+      77  casillas en ordinario
      760  casillas en salterio
-   13510  casillas en tiempo
-    4938  casillas en santoral
+   13537  casillas en tiempo
+    4944  casillas en santoral
      196  casillas en comunes
      190  santos con común conocido
-     733  lecturas del Oficio con texto propio del otro año del ciclo bienal
+     735  lecturas del Oficio con texto propio del otro año del ciclo bienal
       21  celebraciones del calendario de México sin oficio en ninguna parte: con su común y la colecta del Misal mexicano
           Beato Sebastián de Aparicio, religioso  ->  santos varones para los santos religiosos
           San Gregorio de Narek, abad y doctor de la Iglesia  ->  doctores de la iglesia, santos varones para los santos religiosos
@@ -33,7 +33,7 @@ horas_dias.json     2.8 MB  15701 fechas
           San Antonio María Claret, obispo  ->  pastores para un santo obispo
           Beato Miguel Agustín Pro, presbítero y mártir  ->  un martir, pastores para un santo presbitero
           Nuestra Señora de Loreto  ->  santisima virgen maria
-     106  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
+     109  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
      871  fechas que van por fecha (17-24 de diciembre, octava de Navidad, 2 de enero al Bautismo)
      127  piezas del santoral con su forma de Pascua: 41 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 67 forma pascual por la regla del libro, 48 sólo pascual: forma de todo el año sin el aleluya
       91  piezas de los comunes con su forma de Pascua: 19 forma pascual medida en la fuente, 72 forma pascual por la regla del libro
@@ -137,16 +137,16 @@ horas_dias.json     2.8 MB  15701 fechas
           Pascua/nona: salvador del mundo | reina el senor alli donde
           Pascua/sexta: cuando la luz del dia | verbo de dios el sol
           Pascua/tercia: espiritu de dios la tierra | al senor confesamos aleluya
-     243  celebraciones del calendario con textos (104 aprendidas del volcado, 139 por el nombre)
+     242  celebraciones del calendario con textos (102 aprendidas del volcado, 140 por el nombre)
 
 Cómo se resolvió cada fecha
 --------------------------------------------
-   12968  aprendido del volcado
+   12965  aprendido del volcado
      871  con casilla por fecha
      564  con conmemoración posible
-    7303  con santo
-       5  del calendario del leccionario
-    2728  del volcado
+    7242  con santo
+      16  del calendario del leccionario
+    2720  del volcado
       27  sin textos del tiempo
 
 Días del leccionario cuyas coordenadas se aprendieron del volcado: 387
@@ -175,7 +175,6 @@ Celebraciones del calendario -> casillas del santoral
   La Conversión de san Pablo, apóstol  ->  la conversion de san pablo
   La Cátedra de san Pedro, apóstol  ->  la catedra de san pedro apostol
   La Epifanía del Señor  ->  la epifania del senor
-  La Exaltación de la Santa Cruz  ->  exaltacion de la santa cruz
   La Inmaculada Concepción de la Santísima Virgen María  ->  la inmaculada concepcion de la santisima virgen maria
   La Natividad de la Santísima Virgen María  ->  la natividad de la santisima virgen maria
   La Presentación de la Santísima Virgen María  ->  la presentacion de la santisima virgen maria

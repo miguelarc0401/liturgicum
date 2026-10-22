@@ -1,0 +1,155 @@
+name: Compilar el APK
+
+# El APK de Android (apk/LEEME.md). No hace falta compilarlo cada vez que se
+# publica: los textos y el código de app/ los baja el propio APK de GitHub
+# Pages. Sólo cuando cambia lo nativo -lo que hay en apk/: Capacitor, los
+# plugins, el icono- o a mano, desde la pestaña Actions.
+#
+# Cada compilación se prueba en un emulador antes de darla por buena: se
+# instala, se abre y se le saca una foto, que queda con el APK en los
+# artefactos de la ejecución. El de main, además, se deja en la release
+# "apk", que es de donde se baja al teléfono:
+#   https://github.com/miguelarc0401/liturgicum/releases/download/apk/liturgicum.apk
+
+on:
+  push:
+    paths:
+      - 'apk/**'
+      - '.github/workflows/apk.yml'
+  workflow_dispatch:
+    inputs:
+      probar_actualizacion:
+        description: 'Compilar con una huella vieja, para ver en el emulador que se baja y estrena la de Pages (ese APK no va a la release)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compilar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apk/package-lock.json
+
+      # la huella de app/, que el APK lleva dentro para saber qué versión es
+      - name: Huella de la app
+        run: |
+          bash apk/paquete.sh
+          if [ "${{ inputs.probar_actualizacion }}" = "true" ]; then
+            echo '{"version":"prueba-vieja"}' > app/paquete-version.json
+          fi
+
+      - name: Capacitor
+        working-directory: apk
+        run: |
+          npm ci
+          npx cap sync android
+
+      - name: La llave de firma
+        env:
+          LLAVE: ${{ secrets.APK_LLAVE_BASE64 }}
+        run: |
+          if [ -z "$LLAVE" ]; then
+            echo "::error::Falta el secreto APK_LLAVE_BASE64 (ver apk/LEEME.md)"
+            exit 1
+          fi
+          echo "$LLAVE" | base64 -d > "$RUNNER_TEMP/llave.p12"
+          echo "APK_LLAVE=$RUNNER_TEMP/llave.p12" >> "$GITHUB_ENV"
+
+      - name: Compilar
+        working-directory: apk/android
+        env:
+          APK_NUMERO: ${{ github.run_number }}
+          APK_LLAVE_CLAVE: ${{ secrets.APK_LLAVE_CLAVE }}
+          APK_LLAVE_ALIAS: ${{ secrets.APK_LLAVE_ALIAS }}
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon --stacktrace
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/liturgicum.apk"
+          ls -l "$GITHUB_WORKSPACE/liturgicum.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: liturgicum-apk
+          path: liturgicum.apk
+          retention-days: 30
+
+  probar:
+    needs: compilar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: liturgicum-apk
+
+      - name: KVM para el emulador
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Abrirlo en un emulador
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb install -r liturgicum.apk
+            adb logcat -c
+            adb shell am start -n io.github.miguelarc0401.liturgicum/.MainActivity
+            sleep 25
+            adb exec-out screencap -p > pantalla.png
+            if [ "${{ inputs.probar_actualizacion }}" = "true" ]; then sleep 60; adb shell am force-stop io.github.miguelarc0401.liturgicum; sleep 3; adb shell am start -n io.github.miguelarc0401.liturgicum/.MainActivity; sleep 30; adb exec-out screencap -p > pantalla-2.png; fi
+            adb logcat -d > logcat.txt
+
+      - name: Lo que dijo
+        if: always()
+        run: |
+          grep -iE "Capacitor|CapgoUpdater|chromium|AndroidRuntime" logcat.txt | tail -n 150 || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prueba-emulador
+          path: |
+            pantalla*.png
+            logcat.txt
+
+  publicar:
+    needs: probar
+    if: github.ref == 'refs/heads/main' && inputs.probar_actualizacion != true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: liturgicum-apk
+
+      - name: Dejarlo en la release "apk"
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if ! gh release view apk >/dev/null 2>&1; then
+            gh release create apk --target "$GITHUB_SHA" --title "Liturgicum para Android" \
+              --notes "El APK de la app. Se actualiza solo con lo que se publica; sólo hay que volver a instalarlo cuando cambia lo nativo (apk/LEEME.md)."
+          fi
+          gh release upload apk liturgicum.apk --clobber
