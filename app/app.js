@@ -9159,6 +9159,14 @@ function vigilaActualizaciones() {
     setTimeout(mira, 3000);
   }).catch(() => {});
 
+  // que el navegador no tire la caché para hacer sitio cuando el teléfono
+  // va justo de espacio: sin ella no se reza sin cobertura. Sólo instalada,
+  // que es cuando Chrome lo concede sin preguntar; Firefox sacaría un aviso
+  if (navigator.storage && navigator.storage.persist
+      && matchMedia('(display-mode: standalone)').matches) {
+    navigator.storage.persist().catch(() => {});
+  }
+
   let recargando = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
     // sólo cuando ya había uno: la primera instalación no necesita recargar
