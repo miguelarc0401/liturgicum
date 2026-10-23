@@ -23,6 +23,7 @@ const FICHEROS = [
   'index.html',
   'estilos.css',
   'app.js',
+  'nativo.js',
   'manifest.webmanifest',
   'icono.svg',
   'icono-32.png',

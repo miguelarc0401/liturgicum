@@ -19,6 +19,12 @@
  *  · { tipo: 'baja', voz }      bájalo, avisando de cómo va ({ progreso })
  *  · { tipo: 'di', voz, hablante, texto, vel }   el audio, en `wav`
  *  · { tipo: 'borra', voz }     quita el modelo de esa voz de la caché
+ *
+ * Y dos más para el APK de Android, donde las piezas no van a la caché sino
+ * a archivos de la app, que baja el teléfono (app.js, «Piper en archivos»):
+ *  · { tipo: 'piezas', voz }    qué piezas pide esa voz (sin tocar la red)
+ *  · { tipo: 'mide', voz }      lo que mide cada una, para la barra al bajar
+ *  · { tipo: 'locales', mapa }  de qué dirección leer cada pieza ya bajada
  */
 
 const CACHE = 'voz-piper';
@@ -57,10 +63,30 @@ function piezas(voz) {
 
 /* ------------------------------------------------------------ la caché */
 
+/* En el APK, pieza -> dirección del archivo ya bajado. Lo que está aquí se
+ * lee de ahí y no de la caché. */
+const _locales = {};
+
 async function guardadas(urls) {
   const c = await caches.open(CACHE);
   const r = [];
-  for (const u of urls) r.push(!!(await c.match(u)));
+  for (const u of urls) r.push(!!_locales[u] || !!(await c.match(u)));
+  return r;
+}
+
+/** Lo que mide cada pieza, para dar la barra en megas y no en piezas. */
+async function mide(urls) {
+  const r = [];
+  for (let i = 0; i < urls.length; i++) {
+    if (i < MIDEN.length) { r.push(MIDEN[i]); continue; }
+    // la voz sí se pregunta: Hugging Face da la medida
+    try {
+      const h = await fetch(urls[i], { method: 'HEAD' });
+      r.push(+(h.headers.get('Content-Length') || 0));
+    } catch (_) {
+      r.push(0);    // sin medida: la barra irá a ojo
+    }
+  }
   return r;
 }
 
@@ -68,6 +94,11 @@ async function guardadas(urls) {
  *  red se guarda antes de devolverlo. `avisa(n)` recibe los bytes que van
  *  llegando, para la barra de la descarga. */
 async function trae(url, avisa) {
+  if (_locales[url]) {
+    const r = await fetch(_locales[url]);
+    if (!r.ok) throw new Error('el archivo de la voz responde ' + r.status);
+    return r.blob();
+  }
   const c = await caches.open(CACHE);
   const hay = await c.match(url);
   if (hay) return hay.blob();
@@ -235,18 +266,10 @@ async function atiende(ev) {
       responde({ ok: true, hay: r.every(Boolean) });
     } else if (q.tipo === 'baja') {
       const urls = piezas(q.voz);
-      // lo que mide cada pieza, para dar la barra en megas y no en piezas
       let total = 0, hecho = 0, ultimo = 0;
       const ya = await guardadas(urls);
-      for (let i = 0; i < urls.length; i++) {
-        if (ya[i]) continue;
-        if (i < MIDEN.length) { total += MIDEN[i]; continue; }
-        // la voz sí se pregunta: Hugging Face da la medida
-        try {
-          const h = await fetch(urls[i], { method: 'HEAD' });
-          total += +(h.headers.get('Content-Length') || 0);
-        } catch (_) { /* sin medida: la barra irá a ojo */ }
-      }
+      const miden = await mide(urls);
+      for (let i = 0; i < urls.length; i++) if (!ya[i]) total += miden[i];
       for (let i = 0; i < urls.length; i++) {
         if (ya[i]) continue;
         await trae(urls[i], (n) => {
@@ -274,7 +297,18 @@ async function atiende(ev) {
       const c = await caches.open(CACHE);
       await c.delete(rutaVoz(q.voz));
       await c.delete(rutaVoz(q.voz) + '.json');
+      delete _locales[rutaVoz(q.voz)];
+      delete _locales[rutaVoz(q.voz) + '.json'];
       if (_voz && _voz.nombre === q.voz) _voz = null;
+      responde({ ok: true });
+    } else if (q.tipo === 'piezas') {
+      // sin preguntar a la red: se pide para saber si está bajada, también
+      // en el coche y sin cobertura
+      responde({ ok: true, urls: piezas(q.voz) });
+    } else if (q.tipo === 'mide') {
+      responde({ ok: true, miden: await mide(piezas(q.voz)) });
+    } else if (q.tipo === 'locales') {
+      Object.assign(_locales, q.mapa || {});
       responde({ ok: true });
     } else {
       responde({ ok: false, error: 'no sé qué es «' + q.tipo + '»' });

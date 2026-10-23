@@ -42,21 +42,55 @@ el APK, que se pone al día enseguida si hace falta.
 El zip no entra en git: 16 MB por publicación se quedarían en la historia
 para siempre. Se arma en GitHub Actions y vive sólo en GitHub Pages.
 
-## Lo que todavía no va en el APK
+## La voz en el APK
 
-Esta es la primera fase: el esqueleto que abre la app y se actualiza solo.
 Dentro del APK la página corre en el WebView de Android, no en Chrome, y al
-WebView le faltan tres cosas que la app usa para la voz:
+WebView le faltan las tres cosas en que se apoya la voz de la web. Las pone
+el propio APK, con tres plugins suyos que están en
+`android/app/src/main/java/.../liturgicum/` y que `MainActivity.java` apunta
+al abrir:
 
-- **la voz del teléfono** (`speechSynthesis`): hay que pasarla al motor de
-  voz de Android con un plugin;
-- **el botón del volante y los mandos de la pantalla bloqueada**
-  (MediaSession): hace falta una pieza nativa, con su notificación;
-- **mantener la pantalla encendida** (`wakeLock`): con un plugin.
+- **La voz del teléfono** (`VozPlugin.java`). El WebView no trae
+  `speechSynthesis`; `app/nativo.js` monta uno encima del motor de voz de
+  Android, con lo mismo que da Chrome, y así la voz de `app.js` sirve igual
+  en los dos sitios. Trae una cosa más que Chrome no tiene, `silencio(ms)`:
+  con ella `app.js` le da al motor la hora entera de una vez, con el
+  silencio de cada sección dentro, y el motor la dice sin que la página
+  tenga que despertarse entre una sección y otra. Las voces son las que
+  tenga puestas el teléfono en Ajustes de Android.
+- **Los mandos y la pantalla apagada** (`VozServicio.java`). Mientras suena
+  la voz hay un servicio en primer plano, con su aviso en la barra de
+  notificaciones: Android no duerme la app aunque se apague la pantalla. El
+  aviso trae los mandos, que salen también en la pantalla de bloqueo, y la
+  sesión de medios recibe el botón del volante y el de los auriculares. Para
+  que Android le mande esos botones a esta app y no a la radio, el servicio
+  hace sonar un audio que no se oye, como el `<audio>` mudo de la web: la voz
+  del sistema suena desde el motor de voz, que es otra app.
+- **No apagar la pantalla** (`PantallaPlugin.java`), en vez de `wakeLock`.
 
-Piper debería funcionar como en Chrome, pero sigue guardando las voces en la
-caché del navegador; la fase siguiente las pasa a archivos de la app, que
-Android no borra.
+Y Piper guarda sus piezas en **archivos de la app** (`ArchivosPlugin.java`,
+`files/piper/`), no en la caché del navegador: Android no los borra para
+hacer sitio. Las baja el teléfono, porque el worker de `piper.js` no puede
+hablar con él, y al worker se le dan las direcciones de los archivos ya
+bajados.
+
+Todo esto mira primero si el APK trae el plugin (`conPlugin()` en `app.js`):
+un APK viejo puede recibir por el actualizador un `app.js` nuevo, y entonces
+esa parte sigue como en la web hasta que se instale el APK nuevo.
+
+Cada compilación lo prueba en el emulador (trabajo «voz», `prueba/voz.mjs`):
+pone a rezar Laudes con la voz del teléfono, apaga la pantalla y mira que
+sigue, toca los botones de medios que manda el volante (pausa, seguir,
+siguiente, parar), mira que sale el aviso y que «No apagar la pantalla»
+funciona, y baja la voz ligera de Piper a archivos para hacerla hablar desde
+ahí. Si algo de eso falla, el APK no va a la release. Usa el APK de
+depuración, que es el único que deja mirar la página desde fuera.
+
+**Lo que falta:** al empezar, la voz pide el audio, así que la música que
+estuviera sonando se calla; pero lo que pase después no se atiende todavía.
+Pausar al entrar una llamada y seguir al colgar está por hacer, porque el
+motor de voz y el WebView también suenan y hay que ver en un teléfono de
+verdad que no se pisan entre ellos antes de fiarse de esos avisos.
 
 ## La llave de firma
 
@@ -78,7 +112,11 @@ desinstalar la app y volver a instalarla.
   y así no sale nada del teléfono más que la pregunta a GitHub Pages.
 - `android/`: el proyecto de Android que genera Capacitor. Lo tocado a mano:
   la firma y el número de versión en `app/build.gradle`, la pantalla de
-  arranque (`res/values/styles.xml` y los dos `colors.xml`) y los iconos.
+  arranque (`res/values/styles.xml` y los dos `colors.xml`), los iconos, los
+  cuatro ficheros de la voz y de Piper (ver arriba), y en
+  `AndroidManifest.xml` el servicio, sus permisos y la consulta del motor de
+  voz, sin la que desde Android 11 la app no lo ve.
+- `prueba/voz.mjs`: la prueba de la voz en el emulador (ver arriba).
 - `iconos.py`: rehace los iconos de Android a partir de los de `app/`. Sólo
   hace falta si cambia el icono.
 - `paquete.sh`: la huella y el zip (ver arriba).

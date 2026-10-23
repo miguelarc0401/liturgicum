@@ -684,6 +684,13 @@ function aplicaFormatoSecs() {
  * que se vuelve a pedir al volver. Donde no exista, el ajuste no se ofrece. */
 let _vela = null;
 async function velaPantalla() {
+  // en el APK no hay wakeLock: se le dice a la ventana (PantallaPlugin.java),
+  // que lo mantiene mientras la app esté delante
+  if (conPlugin('Pantalla')) {
+    NATIVO.llama('Pantalla', 'despierta', { si: !!E.cfg.despierto })
+      .catch(() => {});
+    return;
+  }
   if (!('wakeLock' in navigator)) return;
   if (E.cfg.despierto && !_vela && !document.hidden) {
     try {
@@ -4086,7 +4093,7 @@ function verAjustes() {
     ]),
     seccion('aspecto', 'Aspecto', ICONO_AJ.aspecto, [
       letras, temas, colores,
-      'wakeLock' in navigator
+      'wakeLock' in navigator || conPlugin('Pantalla')
         ? interruptor('despierto', 'No apagar la pantalla',
           'Un oficio son diez o quince minutos de lectura sin tocar nada, y '
           + 'el teléfono se apaga a la mitad. Mientras la app esté delante, '
@@ -7592,7 +7599,9 @@ const V = {
   fallos: 0,            // seguidos, del motor en línea
   gen: 0,               // de qué tanda es lo que suena (ver callaElMotor)
   eligiendo: null,      // las voces que se ofrecen antes de empezar, si se está eligiendo
-  voces: null, vocesPedidas: false
+  voces: null, vocesPedidas: false,
+  oyendoMandos: false,  // en el APK, si ya se escucha al servicio de la voz
+  mandosDichos: ''      // lo último que se le ha dicho, para no repetírselo
 };
 
 /* Los trozos no pasan de esta medida, y la medida la pone un defecto
@@ -7906,6 +7915,8 @@ function wavMudo() {
 }
 
 function arrancaSilencio() {
+  // en el APK el audio mudo lo pone el servicio de la voz (VozServicio.java)
+  if (conPlugin('Voz')) return;
   if (!V.silencio) {
     V.silencio = new Audio(wavMudo());
     V.silencio.loop = true;
@@ -7921,6 +7932,7 @@ function arrancaSilencio() {
  * algo sonando —y lo hay, el audio mudo—, así que funcionan con la pantalla
  * apagada y sin tocar el teléfono. */
 function ponMandos() {
+  if (conPlugin('Voz')) { oyeLosMandosDelTelefono(); return; }
   const ms = navigator.mediaSession;
   if (!ms) return;
   const pon = (n, f) => {
@@ -7936,10 +7948,11 @@ function ponMandos() {
 }
 
 function nombraEnLosMandos() {
-  const ms = navigator.mediaSession;
-  if (!ms) return;
   const tz = V.guion && V.guion[V.i];
   const s = tz && E.oficio && E.oficio.secciones[tz.sec];
+  if (conPlugin('Voz')) { nombraEnElTelefono(s); return; }
+  const ms = navigator.mediaSession;
+  if (!ms) return;
   if (window.MediaMetadata) {
     try {
       ms.metadata = new MediaMetadata({
@@ -7953,6 +7966,42 @@ function nombraEnLosMandos() {
   }
   ms.playbackState = V.estado === 'diciendo' ? 'playing'
     : V.estado === 'pausada' ? 'paused' : 'none';
+}
+
+/* En el APK los mandos de fuera no llegan por navigator.mediaSession, que
+ * el WebView no trae, sino por el servicio de la voz (VozServicio.java): la
+ * notificación, la pantalla de bloqueo, el volante y los auriculares. Ese
+ * servicio es también lo que mantiene la app en marcha con la pantalla
+ * apagada, así que se pone con la voz y se quita al pararla. */
+function oyeLosMandosDelTelefono() {
+  if (V.oyendoMandos) return;
+  V.oyendoMandos = true;
+  NATIVO.oye('Voz', 'mando', (d) => {
+    const a = d && d.accion;
+    if (a === 'sigue') sigueVoz();
+    else if (a === 'pausa') pausaVoz();
+    else if (a === 'para') paraVoz();
+    else if (a === 'siguiente') otraSeccionVoz(1);
+    else if (a === 'anterior') otraSeccionVoz(-1);
+    else if (a === 'adelante') vaATrozo(V.i + 1);
+    else if (a === 'atras') vaATrozo(V.i - 1);
+  });
+}
+
+/** Lo que dice el aviso del servicio. Se le dice sólo cuando cambia: a cada
+ *  trozo se rehace el aviso, y el rótulo cambia de sección en sección. */
+function nombraEnElTelefono(s) {
+  const estado = V.estado === 'diciendo' ? 'sonando'
+    : V.estado === 'pausada' ? 'pausada' : 'parada';
+  const m = {
+    titulo: s ? nombreSeccion(s) : ($('#titulo-dia').textContent || 'Oficio'),
+    artista: $('#titulo-dia').textContent || '',
+    estado: estado
+  };
+  const llave = JSON.stringify(m);
+  if (llave === V.mandosDichos) return;
+  V.mandosDichos = estado === 'parada' ? '' : llave;
+  NATIVO.llama('Voz', 'mandos', m).catch(() => { V.mandosDichos = ''; });
 }
 
 /* ------------------------------------------------------- el reproductor */
@@ -8016,8 +8065,15 @@ function hablaElSistema() {
  * de la pausa, que gobierna los cambios de sección. */
 function encolaHastaElFinDeLaSeccion() {
   const gui = V.guion;
+  // En el APK el motor de Android sabe callar dentro de su cola (nativo.js):
+  // se le da la hora entera, con el silencio de cada sección dentro, y no
+  // hace falta que la página despierte entre una sección y otra
+  const entera = typeof speechSynthesis.silencio === 'function';
   while (V.hasta < gui.length
-    && !(V.hasta > V.i && gui[V.hasta - 1].pausa > 600)) {
+    && (entera || !(V.hasta > V.i && gui[V.hasta - 1].pausa > 600))) {
+    if (entera && V.hasta > V.i && gui[V.hasta - 1].pausa > 600) {
+      speechSynthesis.silencio(gui[V.hasta - 1].pausa);
+    }
     encolaEnElSistema(V.hasta++);
   }
 }
@@ -8201,7 +8257,8 @@ function paraVoz() {
   V.eligiendo = null;
   PIPER.audios.clear();
   resalta(null);
-  if (navigator.mediaSession) navigator.mediaSession.playbackState = 'none';
+  if (conPlugin('Voz')) nombraEnElTelefono(null);
+  else if (navigator.mediaSession) navigator.mediaSession.playbackState = 'none';
   pintaBarraVoz();
 }
 
@@ -8543,6 +8600,8 @@ function vozPiper() {
 function trabajadorPiper() {
   if (PIPER.w) return PIPER.w;
   PIPER.w = new Worker('piper.js');
+  // uno nuevo no sabe dónde están los archivos del APK: se le vuelven a dar
+  PIPER_ARCH.dadas = {};
   PIPER.w.onmessage = (ev) => {
     const d = ev.data || {};
     const e = PIPER.esperan.get(d.id);
@@ -8563,12 +8622,97 @@ function trabajadorPiper() {
   return PIPER.w;
 }
 
-function pidePiper(q, avisa) {
+function pideAlTrabajador(q, avisa) {
   return new Promise((res, rej) => {
     const id = ++PIPER.n;
     PIPER.esperan.set(id, { res: res, rej: rej, avisa: avisa });
     trabajadorPiper().postMessage(Object.assign({ id: id }, q));
   });
+}
+
+/* Dentro del APK, lo que es de disco —si está bajada, bajarla, quitarla— lo
+ * hace el teléfono («Piper en archivos», abajo), y el worker sólo dice. */
+async function pidePiper(q, avisa) {
+  if (conPlugin('Archivos')) {
+    if (q.tipo === 'hay') return { ok: true, hay: (await enArchivos(q.voz)).hay.every(Boolean) };
+    if (q.tipo === 'baja') { await bajaAArchivos(q.voz, avisa); return { ok: true }; }
+    if (q.tipo === 'borra') await borraDeArchivos(q.voz);
+    if (q.tipo === 'di') await daLosArchivos(q.voz);
+  }
+  return pideAlTrabajador(q, avisa);
+}
+
+/* ------------------------------------------------- Piper en archivos
+ * En el APK las piezas de Piper no van a la caché del navegador, que las
+ * puede tirar para hacer sitio, sino a archivos de la app
+ * (ArchivosPlugin.java), que Android no toca: sólo se van si se quitan aquí
+ * o se desinstala la app. El worker no puede hablar con el teléfono, así
+ * que las baja el teléfono, y al worker se le dan las direcciones de los
+ * archivos ya bajados para que los lea como leería la caché. */
+const PIPER_ARCH = {
+  piezas: {},       // voz -> las direcciones de lo que pide, según piper.js
+  dadas: {}         // voz -> true: el worker ya sabe dónde están sus archivos
+};
+
+function nombreDePieza(url) {
+  return url.split('/').pop();
+}
+
+async function piezasDePiper(voz) {
+  if (!PIPER_ARCH.piezas[voz]) {
+    PIPER_ARCH.piezas[voz] = (await pideAlTrabajador({ tipo: 'piezas', voz: voz })).urls;
+  }
+  return PIPER_ARCH.piezas[voz];
+}
+
+async function enArchivos(voz) {
+  const urls = await piezasDePiper(voz);
+  const r = await NATIVO.llama('Archivos', 'hay',
+    { nombres: urls.map(nombreDePieza) });
+  return { urls: urls, hay: r.hay || [], uri: r.uri };
+}
+
+async function bajaAArchivos(voz, avisa) {
+  const a = await enArchivos(voz);
+  const miden = (await pideAlTrabajador({ tipo: 'mide', voz: voz })).miden || [];
+  let total = 0;
+  a.urls.forEach((u, i) => { if (!a.hay[i]) total += miden[i] || 0; });
+  let antes = 0;
+  const oido = NATIVO.oye('Archivos', 'progreso', (d) => {
+    if (avisa && d) avisa({ hecho: antes + (d.hecho || 0), total: total });
+  });
+  try {
+    for (let i = 0; i < a.urls.length; i++) {
+      if (a.hay[i]) continue;
+      const r = await NATIVO.llama('Archivos', 'baja',
+        { url: a.urls[i], nombre: nombreDePieza(a.urls[i]) });
+      antes += r.bytes || 0;
+    }
+  } finally {
+    oido.remove();
+  }
+  delete PIPER_ARCH.dadas[voz];
+  // lo que hubiera quedado en la caché del navegador de antes ya no se lee
+  try { await caches.delete('voz-piper'); } catch (_) { /* no había */ }
+}
+
+async function borraDeArchivos(voz) {
+  const urls = await piezasDePiper(voz);
+  // sólo la voz: el motor lo comparten todas, como en la caché
+  await NATIVO.llama('Archivos', 'borra',
+    { nombres: urls.slice(-2).map(nombreDePieza) });
+  delete PIPER_ARCH.dadas[voz];
+}
+
+async function daLosArchivos(voz) {
+  if (PIPER_ARCH.dadas[voz]) return;
+  const a = await enArchivos(voz);
+  const mapa = {};
+  a.urls.forEach((u, i) => {
+    if (a.hay[i]) mapa[u] = NATIVO.archivo(a.uri + nombreDePieza(u));
+  });
+  await pideAlTrabajador({ tipo: 'locales', mapa: mapa });
+  PIPER_ARCH.dadas[voz] = true;
 }
 
 function velVoz() {
@@ -8708,6 +8852,11 @@ function estadoDisco(boton) {
     return '';
   }
   if (!d) return '';
+  if (d.apk) {
+    return '<p class="pista-g">Las voces ocupan ' + Math.round(d.usado / 1048576)
+      + ' MB en archivos de la app: Android no las borra para hacer sitio, y '
+      + 'sólo se van si las quitas aquí o desinstalas la app.</p>';
+  }
   const mb = d.usado == null ? ''
     : 'La app ocupa ' + Math.round(d.usado / 1048576) + ' MB en el teléfono, '
       + 'con la voz. ';
@@ -8724,6 +8873,17 @@ function estadoDisco(boton) {
 }
 
 async function miraDisco(pide) {
+  // en el APK no hay nada que blindar: los archivos son de la app
+  if (conPlugin('Archivos')) {
+    try {
+      const r = await NATIVO.llama('Archivos', 'ocupa');
+      PIPER.disco = { usado: r.bytes || 0, blindada: true, apk: true };
+    } catch (_) {
+      PIPER.disco = null;
+    }
+    repintaPiper();
+    return;
+  }
   const s = navigator.storage;
   if (!s || !s.persisted) { PIPER.disco = null; repintaPiper(); return; }
   try {
@@ -8965,15 +9125,26 @@ function bloqueVoz() {
     + 'voz desde el botón del altavoz, arriba a la derecha, y se gobiernan '
     + 'con los mandos de abajo. Está hecho para rezar de camino: el botón '
     + 'del volante o el de los auriculares pasa de sección y para, sin '
-    + 'tocar la pantalla. Con la pantalla apagada sigue mientras el '
-    + 'teléfono la deje —eso lo decide él, no la app—, y si la corta, al '
-    + 'volver a mirarlo sigue por donde iba. Donde la página trae las dos '
+    + 'tocar la pantalla. '
+    + (conPlugin('Voz')
+      ? 'Con la pantalla apagada sigue: mientras suena, la app se queda en '
+        + 'marcha con su aviso en la barra de notificaciones, que trae '
+        + 'también los mandos. '
+      : 'Con la pantalla apagada sigue mientras el teléfono la deje —eso lo '
+        + 'decide él, no la app—, y si la corta, al volver a mirarlo sigue '
+        + 'por donde iba. ')
+    + 'Donde la página trae las dos '
     + 'lenguas enfrentadas dice el castellano; el latín, sólo cuando no hay '
     + 'traducción al lado.'
     + (hay && !es
       ? '<br><br>Este teléfono no trae ninguna voz española. Con la que haya '
         + 'se entiende, pero el castellano suena a extranjero: las voces se '
         + 'añaden en los ajustes del sistema, no aquí.'
+      : !hay && enElApk()
+        ? '<br><br>El teléfono no da ninguna voz. Se ponen en los ajustes de '
+          + 'Android, en Accesibilidad · Salida de texto a voz (el nombre '
+          + 'cambia un poco de un teléfono a otro), bajando la española del '
+          + 'motor de Google.'
       : !hay
         ? '<br><br>Este navegador no da ninguna voz. En Windows se añaden en '
           + 'Configuración · Hora e idioma · Voz; en Android y en iPhone '
@@ -9314,6 +9485,14 @@ const FUERA_PARA_ESTRENAR = 60 * 1000;
 function enElApk() {
   return !!(window.Capacitor && window.Capacitor.isNativePlatform
     && window.Capacitor.isNativePlatform());
+}
+
+/** Dentro del APK, y si el APK trae ese plugin nativo (nativo.js). Un APK
+ *  viejo puede recibir por el actualizador un app.js nuevo que pide
+ *  plugins que él no tiene: entonces esa cosa sigue como en la web, hasta
+ *  que se instale el APK nuevo. */
+function conPlugin(nombre) {
+  return enElApk() && !!window.NATIVO && NATIVO.tiene(nombre);
 }
 
 function actualizador(metodo, opciones) {

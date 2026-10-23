@@ -7,8 +7,9 @@ name: Compilar el APK
 #
 # Cada compilación se prueba en un emulador antes de darla por buena: se
 # instala, se abre y se le saca una foto, que queda con el APK en los
-# artefactos de la ejecución. El de main, además, se deja en la release
-# "apk", que es de donde se baja al teléfono:
+# artefactos de la ejecución; y en otro, la voz (apk/prueba/voz.mjs). El de
+# main, si pasa las dos, se deja en la release "apk", que es de donde se baja
+# al teléfono:
 #   https://github.com/miguelarc0401/liturgicum/releases/download/apk/liturgicum.apk
 
 on:
@@ -79,17 +80,26 @@ jobs:
           APK_NUMERO: ${{ github.run_number }}
           APK_LLAVE_CLAVE: ${{ secrets.APK_LLAVE_CLAVE }}
           APK_LLAVE_ALIAS: ${{ secrets.APK_LLAVE_ALIAS }}
+        # el de depuración es sólo para la prueba de la voz: es el único que
+        # deja asomarse a la página desde fuera. No va a la release.
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease assembleDebug --no-daemon --stacktrace
           cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/liturgicum.apk"
-          ls -l "$GITHUB_WORKSPACE/liturgicum.apk"
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/liturgicum-depuracion.apk"
+          ls -l "$GITHUB_WORKSPACE"/liturgicum*.apk
 
       - uses: actions/upload-artifact@v4
         with:
           name: liturgicum-apk
           path: liturgicum.apk
           retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: liturgicum-depuracion
+          path: liturgicum-depuracion.apk
+          retention-days: 7
 
   probar:
     needs: compilar
@@ -134,8 +144,63 @@ jobs:
             pantalla*.png
             logcat.txt
 
+  # La voz, como en el coche: Laudes con la voz del teléfono, la pantalla
+  # apagada, los botones de medios que manda el volante, y Piper bajado a
+  # archivos de la app (apk/prueba/voz.mjs).
+  voz:
+    needs: compilar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: liturgicum-depuracion
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: KVM para el emulador
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Rezar en el emulador
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: |
+            adb install -r liturgicum-depuracion.apk
+            adb logcat -c
+            adb shell am start -n io.github.miguelarc0401.liturgicum/.MainActivity
+            sleep 20
+            node apk/prueba/voz.mjs || touch voz-fallo
+            adb logcat -d > logcat-voz.txt
+
+      - name: Lo que dijo
+        if: always()
+        run: |
+          grep -E "Liturgicum|AndroidRuntime" logcat-voz.txt | tail -n 120 || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prueba-voz
+          path: |
+            voz-*.png
+            voz-informe.json
+            logcat-voz.txt
+
+      - name: ¿Ha pasado?
+        run: test ! -f voz-fallo
+
   publicar:
-    needs: probar
+    needs: [probar, voz]
     if: github.ref == 'refs/heads/main' && inputs.probar_actualizacion != true
     runs-on: ubuntu-latest
     steps:
