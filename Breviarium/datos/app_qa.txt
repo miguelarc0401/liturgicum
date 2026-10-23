@@ -33,6 +33,9 @@ horas_dias.json     2.8 MB  15701 fechas
           San Antonio María Claret, obispo  ->  pastores para un santo obispo
           Beato Miguel Agustín Pro, presbítero y mártir  ->  un martir, pastores para un santo presbitero
           Nuestra Señora de Loreto  ->  santisima virgen maria
+       2  celebraciones con textos copiados del libro de horas de México (libro_mexicano.json)
+          San Juan de Capistrano, presbítero  ->  oficio/resena, oficio/lectura2, oficio/responsorio2, oficio/oracion, laudes/oracion, visperas/oracion
+          San Rafael Guízar y Valencia, obispo  ->  oficio/oracion, laudes/oracion, tercia/oracion, sexta/oracion, nona/oracion, visperas/oracion
      109  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
      871  fechas que van por fecha (17-24 de diciembre, octava de Navidad, 2 de enero al Bautismo)
      127  piezas del santoral con su forma de Pascua: 41 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 67 forma pascual por la regla del libro, 48 sólo pascual: forma de todo el año sin el aleluya

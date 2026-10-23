@@ -2464,6 +2464,65 @@ def main():
         if de_quien(k) in cae_en_pascua and ap != ent['a']:
             ent['ap'] = ap
 
+    # --- lo que da el libro de México, copiado a mano ----------------------
+    # Lo que el usuario copió de su libro de horas impreso en México
+    # (`libro_mexicano.json`, por slug del calendario) es la misma traducción
+    # que la fuente: manda sobre el PDF y sobre el Misal, y no lleva marca.
+    # La oración viene como la imprime el libro, «Por nuestro Señor
+    # Jesucristo, tu Hijo.», y se completa en cada hora como la escribe la
+    # fuente: entera en el Oficio, en Laudes y en Vísperas, y «Por Cristo
+    # nuestro Señor» en la Hora intermedia.
+    libro_mx = carga('libro_mexicano.json', opcional=True) or {}
+    CORTA = 'Por nuestro Señor Jesucristo, tu Hijo.'
+    LARGA = ('Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo '
+             'en la unidad del Espíritu Santo y es Dios, por los siglos de los '
+             'siglos.')
+
+    def oracion_en(hora, texto):
+        if not texto.endswith(CORTA):
+            return {'r': 'ORACION', 'l': [[], [[0, texto]]]}
+        cuerpo = texto[:-len(CORTA)].rstrip()
+        if hora == 'oficio':
+            ls = [[], [[0, f'{cuerpo} {LARGA}']], [[0, 'Amén']]]
+        elif hora in ('laudes', 'visperas'):
+            ls = [[], [[0, f'{cuerpo} {LARGA} Amén']]]
+        else:
+            ls = [[], [[0, f'{cuerpo} Por Cristo nuestro Señor.']],
+                  [[0, 'Amén.']]]
+        return {'r': 'ORACION', 'l': ls}
+
+    del_libro_mx = []                       # (celebración, secciones)
+    mx_puestas = set()                      # (celebración, hora/sección)
+    for slug, ent in libro_mx.items():
+        santo = santo_de_slug.get(slug)
+        if slug.startswith('_') or not santo:
+            continue
+        fm = re.match(r'st_(\d\d)(\d\d)_', slug)
+        md = f'{fm[1]}-{fm[2]}' if fm else 'movil'
+        if md not in casillas[santo] and casillas[santo]:
+            md = casillas[santo].most_common(1)[0][0]
+        # el común, si el libro lo dice («Del Común de pastores: para un
+        # santo presbítero», donde el tomo español decía «misioneros»)
+        lista = comunes_del_pdf(ent.get('comun'), titulos[slug]['t'],
+                                nombres_comunes)
+        if lista:
+            comun_de_santo[santo] = lista
+        puestas = []
+        for k, p in ent['piezas'].items():
+            if k == 'oracion':
+                # en las horas mayores siempre; en la intermedia, donde ya la
+                # tenía la celebración (las fiestas)
+                for h in HORAS_ORACION:
+                    kh = f'{md}/{santo}/{h}/oracion'
+                    if h in HORAS_PDF or kh in extra or kh in santoral:
+                        extra[kh] = oracion_en(h, p)
+                        puestas.append(f'{h}/oracion')
+            else:
+                extra[f'{md}/{santo}/{k}'] = {'r': p['r'], 'l': p['l']}
+                puestas.append(k)
+        del_libro_mx.append((ent.get('titulo') or titulos[slug]['t'], puestas))
+        mx_puestas.update((titulos[slug]['t'], k) for k in puestas)
+
     # Lo que cambia en Pascua, del santoral y de los comunes. Los comunes se
     # rezan en cualquier tiempo; un santo, sólo en el suyo.
     santoral_app = dict(poda(santoral), **extra)
@@ -2681,6 +2740,10 @@ def main():
                 f'Misal mexicano\n')
         for t, lista in de_misal:
             f.write(f'          {t}  ->  {", ".join(lista) or "(sin común)"}\n')
+        f.write(f'{len(del_libro_mx):8d}  celebraciones con textos copiados del '
+                f'libro de horas de México (libro_mexicano.json)\n')
+        for t, puestas in del_libro_mx:
+            f.write(f'          {t}  ->  {", ".join(puestas)}\n')
         f.write(f'{len(tiempo_ciclo):8d}  antífonas evangélicas del domingo '
                 f'con texto propio de otro ciclo (A, B, C)\n')
         f.write(f'{cuentas["con casilla por fecha"]:8d}  fechas que van por '
@@ -2731,7 +2794,8 @@ def main():
     escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas_de(santoral), entrada_pdf,
-                        hallados, extra, sal_pdf, sal_choque, sal_falta)
+                        hallados, extra, sal_pdf, sal_choque, sal_falta,
+                        mx_puestas)
     with open(INFORME, 'a', encoding='utf-8') as f:
         f.write('\n7. Las ferias de Navidad que van por fecha y la fuente no '
                 'publicó nunca\n' + '-' * 60 + '\n'
@@ -2834,7 +2898,8 @@ def autor_de(lineas):
 def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas, entrada_pdf, hallados,
-                        extra, sal_pdf=(), sal_choque=(), sal_falta=()):
+                        extra, sal_pdf=(), sal_choque=(), sal_falta=(),
+                        mx_puestas=frozenset()):
     """El informe para quien reza: qué se tomó de los PDF (la traducción
     española), qué sigue sin textos en ninguna parte, y en qué difieren los
     PDF de la fuente en los santos que tienen los dos."""
@@ -2929,13 +2994,21 @@ def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
             if 'oficio/oracion' in ks:
                 ks = [k for k in ks if k not in ('laudes/oracion',
                                                  'visperas/oracion')]
+            # lo copiado del libro de México ya no es del PDF
+            de_mx = [NOMBRE_SECCION[k] for k in ks if (t, k) in mx_puestas]
+            ks = [k for k in ks if (t, k) not in mx_puestas]
+            resena_pdf = e.get('resena') and (t, 'oficio/resena') not in mx_puestas
+            if e.get('resena') and not resena_pdf:
+                de_mx.append('reseña')
             de_pdf = [NOMBRE_SECCION[k] for k in ks if k not in en_fuente[t]]
             de_fte = [NOMBRE_SECCION[k] for k in ks if k in en_fuente[t]]
             d, m = (e['md'][3:], e['md'][:2]) if e['md'] else ('móvil', '-')
             f.write(f'{d}/{m}  {t} ({g.lower()})\n')
-            if de_pdf:
-                f.write(f'        del PDF: {", ".join(de_pdf)}'
-                        f'{", reseña" if e.get("resena") else ""}\n')
+            if de_pdf or resena_pdf:
+                f.write(f'        del PDF: '
+                        f'{", ".join(de_pdf + ["reseña"] * bool(resena_pdf))}\n')
+            if de_mx:
+                f.write(f'        del libro de México: {", ".join(de_mx)}\n')
             if de_fte:
                 f.write(f'        hallado en la fuente: {", ".join(de_fte)}\n')
             f.write(f'        común: {e.get("comun") or "—"}'

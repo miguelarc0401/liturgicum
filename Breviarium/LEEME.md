@@ -153,6 +153,7 @@ antes de fiarse de lo que sale.
 | `pdf_tiempo.json` | las ferias de Navidad por fecha del tomo I (2 al 12 de enero) | `Navidad/@/2 de enero` → `hora/sección` |
 | `pdf_comunes.json` | los Oficios comunes enteros del tomo IV, con sus variantes («Para un santo obispo:») | `común` → `hora/sección` → variantes |
 | `antifonas.json` | las antífonas propias de una celebración | `mm-dd/santo/hora` |
+| `libro_mexicano.json` | lo copiado a mano del libro de horas impreso en México | slug → `hora/sección` |
 
 En las claves, *día* es el día de la semana (0 = domingo) y *sección* es
 una de `invitatorio`, `himno`, `salmodia`, `lectura1`, `lectura2`,
@@ -263,6 +264,19 @@ rezan con su común, deducido del título, y con la colecta de su misa
 la oración del santo manda el tomo, con su marca, aunque el Misal diga otra
 cosa: en san Calixto, por ejemplo, el Breviario conserva una fórmula
 anterior a la que hoy trae el Misal, y es la del Breviario la que se reza.
+
+**El libro de México, copiado a mano.** Lo que se copia del libro de horas
+impreso en México va en `libro_mexicano.json`, por slug del calendario
+(`st_1023_157`) y `hora/sección`, y es la misma traducción que la fuente:
+manda sobre el PDF y sobre el Misal, y no lleva marca. La oración se copia
+como la imprime el libro («… Por nuestro Señor Jesucristo, tu Hijo.») y la
+fase 4 la completa en cada hora como la escribe la fuente: entera en el
+Oficio, Laudes y Vísperas, «Por Cristo nuestro Señor» en la Hora
+intermedia, que sólo la lleva si la celebración ya la tenía (las fiestas).
+Si se copia también la cabecera («Del Común de pastores: para un santo
+presbítero»), da el común. Desde el 2026-10-23: el Oficio de lectura de san
+Juan de Capistrano (reseña, segunda lectura, responsorio y oración) y la
+oración de san Rafael Guízar, que no es la colecta de su misa.
 
 El Propio de los santos se parte en entradas por los rótulos de día: «19 de
 octubre», «El mismo día», «Lunes después del II domingo de Pascua». Un

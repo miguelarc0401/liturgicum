@@ -1,0 +1,39 @@
+{
+  "_": "Textos copiados a mano del libro de horas impreso de México (fotos del usuario), para lo que la fuente no trae. Mandan sobre el PDF español y sobre el Misal, y no llevan marca. La oración va como la imprime el libro, con la conclusión abreviada; la fase 4 la completa en cada hora como la escribe la fuente. Clave: el slug del calendario; dentro, hora/sección.",
+  "st_1023_157": {
+    "titulo": "San Juan de Capistrano, presbítero",
+    "pagina": "1471",
+    "comun": "Del Común de pastores: para un santo presbítero, p. 1678.",
+    "piezas": {
+      "oficio/resena": {"r": null, "l": [[], [[0, "Nació en Capistrano, en la región de los Abruzos, el año 1386. Estudió derecho en Perusa y ejerció por un tiempo el cargo de juez. Ingresó en la Orden de los Frailes Menores y, ordenado sacerdote, ejerció incansablemente el apostolado por toda Europa, trabajando en la reforma de costumbres y en la lucha contra las herejías. Murió en Ilok (Croacia) el año 1456."]]]},
+      "oficio/lectura2": {"r": "SEGUNDA LECTURA", "l": [
+        [],
+        [[0, "Del Tratado «Espejo de los clérigos», de san Juan de Capistrano, presbítero"]],
+        [[0, "(Parte 1, Venecia 1580, 2)"]],
+        [],
+        [[1, "LA VIDA DE LOS CLÉRIGOS VIRTUOSOS ILUMINA Y SERENA"]],
+        [],
+        [[0, "Los que han sido llamados a ministrar en la mesa del Señor deben brillar por el ejemplo de una vida loable y recta, en la que no se halle mancha ni suciedad alguna de pecado. Viviendo honorablemente como sal de la tierra para sí mismos y para los demás e iluminando a todos con el resplandor de su conducta, como luz que son del mundo, deben tener presente la solemne advertencia del sublime maestro Cristo Jesús, dirigida no sólo a los apóstoles y discípulos, sino también a todos sus sucesores, presbíteros y clérigos: Vosotros sois la sal de la tierra; pero si la sal pierde su sabor, ¿con qué la vais a salar? No vale para otra cosa, sino para tirarla fuera y que la pise la gente."]],
+        [],
+        [[0, "En verdad es pisado por la gente, como barro despreciable, el clero inmundo y sucio, impregnado de la sordidez de sus vicios y envuelto en las cadenas de sus pecados, considerado inútil para sí y para los demás; porque, como dice san Gregorio: «De aquel cuya vida está desprestigiada queda también desprestigiada la predicación.»"]],
+        [],
+        [[0, "Los presbíteros que ejercen bien su cargo merecen doble honor, principalmente los que se afanan en la predicación y en la enseñanza. En efecto, los presbíteros que se comportan con dignidad son acreedores a un doble honor, material y personal, o sea, temporal y a la vez espiritual, que es lo mismo que decir transitorio y eterno al mismo tiempo; pues, aunque viven en la tierra sujetos a las limitaciones naturales como los demás mortales, su anhelo tiende a la convivencia con los ángeles en el cielo, para ser agradables al Rey, como prudentes ministros suyos. Por lo cual, como un sol que nace para el mundo desde las alturas donde habita Dios, alumbre vuestra luz a los hombres para que, viendo vuestras buenas obras, den gloria a vuestro Padre celestial."]],
+        [],
+        [[0, "Vosotros sois la luz del mundo. Pues, así como la luz no se ilumina a sí misma, sino que con sus rayos llena de resplandor todo lo que está a su alrededor, así también la vida luminosa de los clérigos virtuosos y justos ilumina y serena con el fulgor de su santidad a todos los que la observan. Por consiguiente, el que está puesto al cuidado de los demás debe mostrar en sí mismo cómo deben conducirse los otros en la casa de Dios."]]
+      ]},
+      "oficio/responsorio2": {"r": "RESPONSORIO Sir 4, 28-29; 2 Tm 4, 2", "l": [
+        [],
+        [[1, "R. "], [0, "No retengas tu palabra ni ocultes tu sabiduría, cuando puedan ser ellas instrumento de salvación; "], [1, "*"], [0, " pues la sabiduría se da a conocer en el hablar, y los conocimientos en las palabras de la lengua."]],
+        [[1, "V. "], [0, "Proclama la palabra, insiste con oportunidad o sin ella, persuade, reprende, exhorta, armado con toda paciencia y doctrina."]],
+        [[1, "R. "], [0, "Pues la sabiduría se da a conocer en el hablar, y los conocimientos en las palabras de la lengua."]]
+      ]},
+      "oracion": "Señor Dios nuestro, que suscitaste a san Juan de Capistrano, para que confortara a tu pueblo en las adversidades, haz que nosotros nos sintamos siempre seguros bajo tu protección y conserva constantemente en paz a tu Iglesia. Por nuestro Señor Jesucristo, tu Hijo."
+    }
+  },
+  "st_1024_234": {
+    "titulo": "San Rafael Guízar y Valencia, obispo",
+    "piezas": {
+      "oracion": "Señor, tú que colocaste a san Rafael Guízar en el número de los santos pastores y lo hiciste brillar por el ardor de la caridad y de aquella fe que vence al mundo, haz que también nosotros, por su intercesión, perseveremos firmes en la fe y arraigados en el amor y merezcamos así participar de su gloria. Por nuestro Señor Jesucristo, tu Hijo."
+    }
+  }
+}
