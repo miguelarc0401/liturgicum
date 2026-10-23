@@ -8068,7 +8068,8 @@ function encolaHastaElFinDeLaSeccion() {
   // En el APK el motor de Android sabe callar dentro de su cola (nativo.js):
   // se le da la hora entera, con el silencio de cada sección dentro, y no
   // hace falta que la página despierte entre una sección y otra
-  const entera = typeof speechSynthesis.silencio === 'function';
+  const entera = hayVozDelSistema()
+    && typeof speechSynthesis.silencio === 'function';
   while (V.hasta < gui.length
     && (entera || !(V.hasta > V.i && gui[V.hasta - 1].pausa > 600))) {
     if (entera && V.hasta > V.i && gui[V.hasta - 1].pausa > 600) {
@@ -8165,8 +8166,15 @@ function trozoALaVista() {
   return k < 0 ? 0 : k;
 }
 
+/** Si hay voz del sistema: en Chrome casi siempre; en el APK, la del motor
+ *  de Android que pone nativo.js, y que un APK viejo no trae. Sin ella
+ *  todavía se puede rezar con Piper. */
+function hayVozDelSistema() {
+  return 'speechSynthesis' in window;
+}
+
 function arrancaVoz(desde) {
-  if (!('speechSynthesis' in window)) {
+  if (!hayVozDelSistema() && !enElApk()) {
     V.aviso = 'Este navegador no sabe leer en alta voz.';
     pintaBarraVoz();
     return;
@@ -8183,7 +8191,14 @@ function arrancaVoz(desde) {
   if (V.motor === 'piper' && PIPER.hay[vozPiper().voz] === false) {
     V.motor = 'sistema';
     V.aviso = 'La voz de Piper no está bajada: se baja en Ajustes. '
-      + 'Sigue la del teléfono.';
+      + (hayVozDelSistema() ? 'Sigue la del teléfono.' : '');
+  }
+  if (V.motor === 'sistema' && !hayVozDelSistema()) {
+    V.aviso = V.aviso || 'Esta versión del APK no trae la voz del teléfono: '
+      + 'instala el APK nuevo, o baja una voz de Piper en Ajustes.';
+    V.guion = null;
+    pintaBarraVoz();
+    return;
   }
   V.manos = 0;
   if (!V.guion.length) {
@@ -8497,6 +8512,24 @@ async function diceEnLinea(k) {
       // arreglan de maneras muy distintas, y sin decirlo nadie sabe cuál es
       V.aviso = (err && err.message ? err.message
         : 'La voz en línea no responde') + '. Sigue la del teléfono.';
+    }
+    if (g === V.gen && V.estado === 'diciendo' && V.i === k
+        && !hayVozDelSistema()) {
+      // sin voz del teléfono que la sustituya: tres fallos y se para, con el
+      // motivo; antes, se vuelve a intentar el mismo trozo
+      if (V.fallos >= 3) {
+        callaElMotor();
+        V.estado = 'parada';
+        V.guion = null;
+        V.aviso = (err && err.message ? err.message : 'La voz no responde')
+          + '. No hay otra voz en esta versión del APK.';
+        resalta(null);
+        nombraEnLosMandos();
+        pintaBarraVoz();
+      } else {
+        esperaY(800, () => { if (g === V.gen && V.i === k) diceEnLinea(k); });
+      }
+      return;
     }
     if (g === V.gen && V.estado === 'diciendo' && V.i === k) {
       V.hasta = k;
@@ -9051,7 +9084,9 @@ function alTocarVoz(ev) {
  *  que es lo que se queda a la vista al bajar. Sale en las tres páginas que
  *  se rezan —la hora, la misa y la oración del devocionario—. */
 function botonVoz() {
-  if (!('speechSynthesis' in window)) return '';
+  // en el APK sale siempre: un APK viejo no trae la voz del teléfono, pero
+  // Piper habla igual, y si no hay ninguna, al tocarlo se dice qué falta
+  if (!hayVozDelSistema() && !enElApk()) return '';
   pideVoces();
   return '<button type="button" id="dale-voz" class="dale-voz" data-voz="dale"'
     + ' aria-pressed="' + (V.estado !== 'parada') + '"'
@@ -9083,7 +9118,10 @@ async function eligeVoz() {
     .map((x) => ['piper:' + x[0],
       x[1].replace(/ · (\d+ MB|la misma descarga)$/, '')]);
   if (E.cfg.vozMotor === 'linea') ops.push(['linea', 'La del servicio en línea']);
-  ops.push(['sistema', 'La del teléfono']);
+  if (hayVozDelSistema()) ops.push(['sistema', 'La del teléfono']);
+  // sin la del teléfono —un APK viejo— y con una sola de Piper, ésa, aunque
+  // en Ajustes estuviera puesta la del teléfono
+  if (ops.length === 1 && ops[0][0] !== 'sistema') { empiezaCon(ops[0][0]); return; }
   if (ops.length < 2) { V.eligiendo = null; arrancaVoz(); return; }
   const k = ops.findIndex((o) => o[0] === puesta);
   if (k > 0) ops.unshift(ops.splice(k, 1)[0]);
@@ -9143,17 +9181,39 @@ function bloqueVoz() {
       ? '<br><br>Este teléfono no trae ninguna voz española. Con la que haya '
         + 'se entiende, pero el castellano suena a extranjero: las voces se '
         + 'añaden en los ajustes del sistema, no aquí.'
-      : !hay && enElApk()
+      : !hay && conPlugin('Voz')
         ? '<br><br>El teléfono no da ninguna voz. Se ponen en los ajustes de '
           + 'Android, en Accesibilidad · Salida de texto a voz (el nombre '
           + 'cambia un poco de un teléfono a otro), bajando la española del '
           + 'motor de Google.'
-      : !hay
+      : !hay && !enElApk()
         ? '<br><br>Este navegador no da ninguna voz. En Windows se añaden en '
           + 'Configuración · Hora e idioma · Voz; en Android y en iPhone '
           + 'vienen puestas.'
         : '')
+    + lineaDelApk()
     + '</p>';
+}
+
+/* La versión del APK, en Ajustes. Con uno viejo la voz del teléfono no
+ * está —la pone un plugin que él no trae—, y es lo primero que hay que
+ * saber cuando el altavoz no habla como se espera. */
+const APK_NUEVO = 'https://github.com/miguelarc0401/liturgicum/releases/download/apk/liturgicum.apk';
+
+function lineaDelApk() {
+  if (!enElApk()) return '';
+  if (E.infoApk === undefined) {
+    E.infoApk = null;           // mientras se pregunta, que no se pida dos veces
+    window.Capacitor.nativePromise('App', 'getInfo', {}).then((r) => {
+      E.infoApk = r || {};
+      if (E.vista === 'ajustes') { recuerdaAjustes(); verAjustes(); }
+    }).catch(() => { E.infoApk = {}; });
+  }
+  const v = E.infoApk && E.infoApk.version ? ' ' + esc(E.infoApk.version) : '';
+  if (conPlugin('Voz')) return '<br><br>Versión del APK' + v + '.';
+  return '<br><br>Esta versión del APK' + v + ' no trae la voz del teléfono: '
+    + 'con ella sólo habla Piper. <a href="' + APK_NUEVO + '">El APK nuevo</a> '
+    + 'se baja de ahí y se instala encima, sin perder los ajustes.';
 }
 
 /** La pista de la lista de voces: cuántas hay y de dónde salen. */
