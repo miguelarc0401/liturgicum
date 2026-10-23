@@ -1809,6 +1809,13 @@ body.con-carril #vista { padding-right: 2.1rem; }
   border: 1px solid var(--filete-fuerte); border-radius: 999px; padding: 0 .45rem;
 }
 .hora-sec.resena .ed-pdf { margin: .5rem 0 0; }
+/* el nombre del santo o de la celebración, encima: en versalitas y sin
+   cursiva, como el título que lleva en el libro */
+.hora-sec.resena p.resena-nombre {
+  margin: 0 0 .4rem; font-style: normal; font-variant-caps: small-caps;
+  letter-spacing: .03em; font-size: .95em; color: var(--tinta);
+  text-align: left; hyphens: manual;
+}
 
 /* ------------------------------------------------------------ calendario */
 .cal-cab { margin: .2rem 0 .6rem; }

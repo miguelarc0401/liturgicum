@@ -62,7 +62,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de pastores o de doctores de la Iglesia. En el tiempo de Cuaresma: Para la conmemoración sólo lo siguiente:  →  pastores, doctores de la iglesia
 04/03  San Casimiro (memoria)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+        común: Del Común de santos varones.  →  santos varones
 07/03  Santas Perpetua y Felícitas, mártires (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de mártires.  →  varios martires
@@ -118,10 +118,10 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de un mártir.  →  un martir
 28/04  San Luis María Grignion de Monfort, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de pastores: presbíteros, o del Común de santos varones.  →  pastores para un santo presbitero
+        común: Del Común de pastores: presbíteros, o del Común de santos varones.  →  pastores para un santo presbitero, santos varones
 30/04  San Pío V, papa (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de pastores: para un santo papa.  →  pastores
+        común: Del Común de pastores: para un santo papa.  →  pastores para un santo papa
 10/05  San Juan de Ávila, presbítero y doctor de la Iglesia (memoria libre)
         del PDF: segunda lectura, oración, reseña
         hallado en la fuente: responsorio
@@ -135,7 +135,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de un mártir.  →  un martir
 15/05  San Isidro Labrador (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+        común: Del Común de santos varones.  →  santos varones
 18/05  San Juan I, papa y mártir (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de un mártir o del Común de pastores.  →  un martir, pastores
@@ -153,7 +153,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de pastores o de doctores de la Iglesia.  →  pastores, doctores de la iglesia
 25/05  San Gregorio VII, papa (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de pastores: para un santo papa.  →  pastores
+        común: Del Común de pastores: para un santo papa.  →  pastores para un santo papa
 25/05  Santa María Magdalena de Pazzi, virgen (memoria libre)
         del PDF: segunda lectura, oración, reseña
         hallado en la fuente: responsorio
@@ -202,10 +202,10 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de mártires.  →  varios martires
 13/07  San Enrique (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+        común: Del Común de santos varones.  →  santos varones
 14/07  San Camilo de Lelis, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de santos varones: para los santos que se consagraron a una actividad caritativa.  →  (ninguno de los que hay: lo demás, de la feria)
+        común: Del Común de santos varones: para los santos que se consagraron a una actividad caritativa.  →  santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia
 20/07  San Apolinar, obispo y mártir (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: obispo, o del Común de un mártir.  →  pastores para un santo obispo, un martir
@@ -246,14 +246,14 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de mártires o del Común de pastores.  →  varios martires, pastores
 16/08  San Esteban de Hungría (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+        común: Del Común de santos varones.  →  santos varones
 19/08  San Juan Eudes, presbítero (memoria libre)
         del PDF: segunda lectura, oración, reseña
         hallado en la fuente: responsorio
         común: Del Común de pastores o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
 25/08  San Luis (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de santos varones.  →  (ninguno de los que hay: lo demás, de la feria)
+        común: Del Común de santos varones.  →  santos varones
 25/08  San José de Calasanz, presbítero (memoria libre)
         del PDF: segunda lectura, oración, reseña
         hallado en la fuente: responsorio
@@ -288,7 +288,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de mártires.  →  varios martires
 09/10  San Juan Leonardi, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de pastores o del Común de santos varones: para los que se han consagrado a una actividad caritativa.  →  pastores
+        común: Del Común de pastores o del Común de santos varones: para los que se han consagrado a una actividad caritativa.  →  pastores, santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia
 11/10  San Juan XXIII, papa (memoria libre)
         del PDF: himno de Laudes, segunda lectura, oración, responsorio, himno de Vísperas, reseña
         común: Del Común de pastores,  →  pastores
@@ -310,7 +310,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
         común: Del Común de pastores, o del Común de santos varones: para religiosos.  →  pastores, santos varones para los santos religiosos
 22/10  San Juan Pablo II, papa (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
-        común: Del Común de pastores: para un papa.  →  pastores
+        común: Del Común de pastores: para un papa.  →  pastores para un santo papa
 23/10  San Juan de Capistrano, presbítero (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: misioneros  →  pastores
@@ -345,8 +345,9 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores: para un obispo.  →  pastores para un santo obispo
 09/12  San Juan Diego Cuauhtlatoatzin (memoria)
-        del PDF: himno del Oficio, segunda lectura, oración, responsorio, reseña
-        común: —  →  (ninguno de los que hay: lo demás, de la feria)
+        del PDF: antífona del Benedictus, himno de Laudes, segunda lectura, oración, responsorio, antífona del Magníficat, himno de Vísperas, reseña
+        hallado en la fuente: lectura breve de Laudes, preces de Laudes, responsorio breve de Laudes, lectura breve de Vísperas, preces de Vísperas, responsorio breve de Vísperas
+        común: —  →  santos varones
 11/12  San Dámaso I, papa (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores.  →  pastores
@@ -365,7 +366,7 @@ con la traducción de la fuente; lo demás, con la del PDF.
 31/12  San Silvestre I, papa (memoria libre)
         del PDF: segunda lectura, oración, responsorio, reseña
         hallado en la fuente: antífona del Benedictus
-        común: Del Común de pastores: papa. En el tiempo de Navidad todo del 31 de diciembre, DÍA VII INFRAOCTAVA DE NAVIDAD. Para la conmemoración de San Silvestre I, papa sólo se dice lo siguiente:  →  pastores
+        común: Del Común de pastores: papa. En el tiempo de Navidad todo del 31 de diciembre, DÍA VII INFRAOCTAVA DE NAVIDAD. Para la conmemoración de San Silvestre I, papa sólo se dice lo siguiente:  →  pastores para un santo papa
 móvil/-  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote (fiesta)
         del PDF: antífona del Benedictus, himno de Laudes, lectura breve de Laudes, preces de Laudes, responsorio breve de Laudes, himno del Oficio, primera lectura, segunda lectura, oración, antífona del Magníficat, himno de Vísperas, lectura breve de Vísperas, preces de Vísperas, responsorio breve de Vísperas
         hallado en la fuente: responsorio
@@ -374,7 +375,7 @@ móvil/-  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote (fiesta)
 2. Santos con textos de la fuente a los que les faltaba algo: 0
 ------------------------------------------------------------
 
-   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 42
+   Textos del PDF que ya estaban en la fuente y se usan con su traducción: 45
      El Santísimo Nombre de Jesús — responsorio  ←  tiempo: Ordinario/12/1/oficio/responsorio2
      San Sebastián, mártir — responsorio  ←  santoral: 04-11/san estanislao obispo y martir/oficio/responsorio2
      Santa Ángela de Merici, virgen — responsorio  ←  tiempo: Ordinario/21/2/oficio/responsorio (variante de otro año)
@@ -405,9 +406,12 @@ móvil/-  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote (fiesta)
      Santa Margarita de Escocia — segunda lectura  ←  tiempo: Ordinario/3/1/oficio/lectura2
      Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles — antífona del Benedictus  ←  santoral: 06-29/santos pedro y pablo apostoles/visperas/cantico_evangelico
      San Juan Damasceno, presbítero y doctor de la Iglesia — responsorio  ←  santoral: 06-28/san ireneo obispo y martir/oficio/responsorio2
-     San Juan Diego Cuauhtlatoatzin — oficio/lectura_breve  ←  santoral: 07-25/santiago apostol/laudes/lectura_breve
-     San Juan Diego Cuauhtlatoatzin — oficio/responsorio_breve  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/responsorio_breve
-     San Juan Diego Cuauhtlatoatzin — oficio/preces  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/preces
+     San Juan Diego Cuauhtlatoatzin — lectura breve de Laudes  ←  santoral: 07-25/santiago apostol/laudes/lectura_breve
+     San Juan Diego Cuauhtlatoatzin — lectura breve de Vísperas  ←  santoral: 07-25/santiago apostol/laudes/lectura_breve
+     San Juan Diego Cuauhtlatoatzin — responsorio breve de Laudes  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/responsorio_breve
+     San Juan Diego Cuauhtlatoatzin — responsorio breve de Vísperas  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/responsorio_breve
+     San Juan Diego Cuauhtlatoatzin — preces de Laudes  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/preces
+     San Juan Diego Cuauhtlatoatzin — preces de Vísperas  ←  santoral: 12-12/nuestra senora de guadalupe/laudes/preces
      San Pedro Canisio, presbítero y doctor de la Iglesia — antífona del Benedictus  ←  comunes: pastores para un santo presbitero y del comun de doctores de la iglesia/laudes/cantico_evangelico
      San Pedro Canisio, presbítero y doctor de la Iglesia — antífona del Magníficat  ←  santoral: 07-15/san buenaventura obispo y doctor de la iglesia/visperas/cantico_evangelico
      San Juan de Kanty, presbítero — responsorio  ←  tiempo: Ordinario/17/2/oficio/responsorio2
@@ -434,17 +438,23 @@ traducción— y, al lado, la del día.
 
   Santa Inés, virgen y mártir — Laudes: salmos de 1/0
   Santa Inés, virgen y mártir — Vísperas: salmos propios
+  Santa María Magdalena — Laudes: salmos de 1/0
   Santa María Magdalena — Vísperas: salmos propios
+  La Natividad de la Santísima Virgen María — Laudes: salmos de 1/0
   La Natividad de la Santísima Virgen María — Vísperas: salmos propios
   Santos Arcángeles Miguel, Gabriel y Rafael — Laudes: salmos de 1/0
   Santos Ángeles Custodios — Laudes: salmos de 1/0
+  Santa Teresa de Jesús, virgen y doctora de la Iglesia — Laudes: antífonas del PDF, salmos de 1/0
   Santa Teresa de Jesús, virgen y doctora de la Iglesia — Vísperas: antífonas del PDF, salmos de del día
-  San Martín de Porres, religioso — Oficio: antífonas del PDF, salmos de del día
+  San Martín de Porres, religioso — Oficio: antífonas del PDF, salmos de santos varones
   San Martín de Porres, religioso — Laudes: antífonas del PDF, salmos de 1/0
-  San Martín de Porres, religioso — Vísperas: antífonas del PDF, salmos de del día
+  San Martín de Porres, religioso — Vísperas: antífonas del PDF, salmos de santos varones
+  San Andrés, apóstol — Laudes: salmos de 1/0
   San Andrés, apóstol — Vísperas: salmos propios
-  San Juan Diego Cuauhtlatoatzin — Oficio: antífonas del PDF, salmos de del día
+  San Juan Diego Cuauhtlatoatzin — Laudes: antífonas del PDF, salmos de santos varones
+  San Juan Diego Cuauhtlatoatzin — Vísperas: antífonas del PDF, salmos de santos varones
   Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Oficio: antífonas del PDF, salmos de del día
+  Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Laudes: antífonas del PDF, salmos de 1/0
   Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Vísperas: antífonas del PDF, salmos de del día
 
    El PDF escribe los salmos enteros y la fuente no los dio nunca: se reza la salmodia del día con las antífonas de la celebración (3)
@@ -489,7 +499,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · himno de Laudes: otro himno — PDF «y salta el pequeno juan…», fuente «la virgen santa gravida del…»
 24/06  El Nacimiento de san Juan Bautista
         · himno de Laudes: otro himno — PDF «nino que antes de nacer…», fuente «que sera este nino decia…»
-        · himno de Vísperas: otro himno — PDF «el himno como en las…», fuente «profeta de soledades…»
 29/06  Santos Pedro y Pablo, apóstoles
         · himno de Laudes: otro himno — PDF «i…», fuente «cuando el gallo tres veces…»
         · himno de Vísperas: otro himno — PDF «san pedro y san pablo…», fuente «la hermosa luz de eternidad…»
@@ -592,7 +601,6 @@ Aquí no se cambió nada: manda la fuente. Sólo se apunta.
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 11/11  San Martín, obispo
         · responsorio breve de Laudes: el PDF la trae propia; la fuente la toma del común
-        · himno de Vísperas: el PDF la trae propia; la fuente la toma del común
         · lectura breve de Vísperas: el PDF la trae propia; la fuente la toma del común
         · responsorio breve de Vísperas: el PDF la trae propia; la fuente la toma del común
 21/11  La Presentación de la Santísima Virgen María
@@ -630,7 +638,7 @@ Del tomo I: el 2 de enero, el 6 y el 7 antes de una Epifanía en domingo, el 12
 (sábado después de la Epifanía) y las vísperas del 11. Antes de usar un texto
 se buscó en la fuente.
 
-   Del PDF (61):
+   Del PDF (60):
      Navidad/@/11 de enero/visperas/oracion
      Navidad/@/12 de enero/laudes/oracion
      Navidad/@/12 de enero/laudes/preces
@@ -658,7 +666,6 @@ se buscó en la fuente.
      Navidad/@/6 de enero/laudes/oracion
      Navidad/@/6 de enero/laudes/responsorio_breve
      Navidad/@/6 de enero/nona/oracion
-     Navidad/@/6 de enero/oficio/lectura1 (año II)
      Navidad/@/6 de enero/oficio/lectura2
      Navidad/@/6 de enero/oficio/oracion
      Navidad/@/6 de enero/oficio/responsorio (año I)
@@ -693,7 +700,7 @@ se buscó en la fuente.
      Ordinario/9/0/visperas/cantico_evangelico (ciclo B)
      Ordinario/9/0/visperas/cantico_evangelico (ciclo C)
 
-   Halladas en la fuente (36):
+   Halladas en la fuente (37):
      Navidad/@/11 de enero/visperas/cantico_evangelico  ←  tiempo: Navidad/2/6/visperas/cantico_evangelico
      Navidad/@/11 de enero/visperas/lectura_breve  ←  santoral: 12-27/san juan apostol y evangelista/visperas/lectura_breve
      Navidad/@/11 de enero/visperas/preces  ←  tiempo: Navidad/2/6/visperas/preces (variante de otro año)
@@ -716,6 +723,7 @@ se buscó en la fuente.
      Navidad/@/6 de enero/laudes/preces  ←  tiempo: Navidad/@/solemnidad de la natividad del senor/laudes/preces
      Navidad/@/6 de enero/nona/lectura_breve  ←  santoral: 01-06/la epifania del senor/sexta/lectura_breve
      Navidad/@/6 de enero/oficio/lectura1 (año I)  ←  santoral: 01-12/el bautismo del senor/oficio/lectura1
+     Navidad/@/6 de enero/oficio/lectura1 (año II)  ←  santoral: 01-12/el bautismo del senor/oficio/lectura1 (sus versículos)
      Navidad/@/6 de enero/visperas/lectura_breve  ←  santoral: 01-12/el bautismo del senor/visperas/lectura_breve
      Navidad/@/6 de enero/visperas/preces  ←  tiempo: Navidad/@/solemnidad de la natividad del senor/visperas/preces
      Navidad/@/6 de enero/visperas/responsorio_breve  ←  santoral: 12-26/san esteban protomartir/visperas/responsorio_breve
@@ -730,3 +738,245 @@ se buscó en la fuente.
      Ordinario/8/6/visperas/cantico_evangelico (ciclo A)  ←  tiempo: Ordinario/26/0/visperas/cantico_evangelico
      Ordinario/9/0/oficio/lectura2  ←  tiempo: Ordinario/5/0/oficio/lectura2
      Ordinario/9/0/oficio/responsorio2  ←  tiempo: Cuaresma/2/3/oficio/responsorio2
+
+8. Los comunes, completados con el tomo IV
+------------------------------------------------------------
+Lo que la fuente no da de cada común y el tomo sí: la salmodia, las lecturas
+del Oficio, las antífonas del Benedictus y del Magníficat, la lectura breve de
+la Hora intermedia… Cada texto se buscó antes en la fuente; «PDF» es que no
+estaba y va con la letra española.
+
+   Del PDF (50):
+     dedicacion de una iglesia/oficio/invitatorio
+     dedicacion de una iglesia/laudes/invitatorio
+     dedicacion de una iglesia/oficio/lectura2
+     dedicacion de una iglesia/oficio/responsorio2
+     doctores de la iglesia/oficio/responsorio
+     doctores de la iglesia/oficio/lectura2
+     doctores de la iglesia/oficio/responsorio2
+     pastores/oficio/lectura2
+     pastores/oficio/responsorio2
+     pastores para un santo obispo/oficio/lectura2
+     pastores para un santo obispo/oficio/responsorio2
+     pastores para un santo papa/oficio/lectura2
+     pastores para un santo presbitero/oficio/responsorio
+     pastores para un santo presbitero/oficio/lectura2
+     santas mujeres/oficio/salmodia
+     santas mujeres/laudes/salmodia
+     santas mujeres/laudes/cantico_evangelico
+     santas mujeres/tercia/lectura_breve
+     santas mujeres/sexta/lectura_breve
+     santas mujeres/nona/lectura_breve
+     santas mujeres/visperas/salmodia
+     santas mujeres/visperas/cantico_evangelico
+     santos varones/oficio/himno
+     santos varones/oficio/salmodia
+     santos varones/oficio/lectura2
+     santos varones/laudes/himno
+     santos varones/laudes/salmodia
+     santos varones/tercia/lectura_breve
+     santos varones/sexta/lectura_breve
+     santos varones/nona/lectura_breve
+     santos varones/visperas/salmodia
+     santos varones/visperas/cantico_evangelico
+     santos varones para los santos educadores/oficio/lectura2
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/responsorio
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/lectura2
+     santos varones para los santos religiosos/oficio/responsorio
+     santos varones para los santos religiosos/oficio/lectura2
+     un martir/oficio/lectura2
+     un martir/oficio/responsorio2
+     un martir/laudes/salmodia
+     un martir/sexta/lectura_breve
+     un martir/visperas/salmodia
+     varios martires/oficio/salmodia
+     varios martires/oficio/responsorio
+     varios martires/oficio/lectura2
+     varios martires/laudes/salmodia
+     varios martires/sexta/lectura_breve
+     varios martires/visperas/salmodia
+     virgenes/oficio/lectura2
+     virgenes/oficio/responsorio2
+
+   Halladas en la fuente o tomadas de su común (160):
+     apostoles/laudes/salmodia  ←  santoral: 05-14/san matias apostol/laudes/salmodia
+     apostoles/laudes/cantico_evangelico  ←  santoral: 08-24/san bartolome apostol/laudes/cantico_evangelico
+     apostoles/visperas/cantico_evangelico  ←  santoral: 08-24/san bartolome apostol/visperas/cantico_evangelico
+     dedicacion de una iglesia/oficio/himno  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/oficio/himno
+     dedicacion de una iglesia/oficio/salmodia  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/oficio/salmodia
+     dedicacion de una iglesia/oficio/lectura1  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/oficio/lectura1
+     dedicacion de una iglesia/oficio/responsorio  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/oficio/responsorio
+     dedicacion de una iglesia/laudes/himno  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/laudes/himno
+     dedicacion de una iglesia/laudes/salmodia  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/laudes/salmodia
+     dedicacion de una iglesia/laudes/lectura_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/laudes/lectura_breve
+     dedicacion de una iglesia/laudes/responsorio_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/laudes/responsorio_breve
+     dedicacion de una iglesia/laudes/cantico_evangelico  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/laudes/cantico_evangelico
+     dedicacion de una iglesia/laudes/preces  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/laudes/preces
+     dedicacion de una iglesia/tercia/lectura_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/tercia/lectura_breve
+     dedicacion de una iglesia/sexta/lectura_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/sexta/lectura_breve
+     dedicacion de una iglesia/nona/lectura_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/nona/lectura_breve
+     dedicacion de una iglesia/visperas/himno  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/visperas/himno
+     dedicacion de una iglesia/visperas/salmodia  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/visperas/salmodia
+     dedicacion de una iglesia/visperas/lectura_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/visperas/lectura_breve
+     dedicacion de una iglesia/visperas/responsorio_breve  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/visperas/responsorio_breve
+     dedicacion de una iglesia/visperas/cantico_evangelico  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/visperas/cantico_evangelico
+     dedicacion de una iglesia/visperas/preces  ←  santoral: 11-09/la dedicacion de la basilica de san juan de letran/visperas/preces
+     doctores de la iglesia/oficio/lectura1  ←  tiempo: Ordinario/29/4/oficio/lectura1 (sus versículos)
+     doctores de la iglesia/visperas/cantico_evangelico  ←  santoral: 09-30/san jeronimo presbitero y doctor de la iglesia/visperas/cantico_evangelico
+     pastores/oficio/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/salmodia
+     pastores/oficio/lectura1  ←  tiempo: Ordinario/21/0/oficio/lectura1 + tiempo: Ordinario/21/1/oficio/lectura1 (sus versículos)
+     pastores/oficio/responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
+     pastores/laudes/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/salmodia
+     pastores/laudes/cantico_evangelico  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
+     pastores/tercia/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/tercia/lectura_breve
+     pastores/sexta/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/sexta/lectura_breve
+     pastores/nona/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/nona/lectura_breve
+     pastores/visperas/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/visperas/salmodia
+     pastores/visperas/cantico_evangelico  ←  santoral: 07-24/san francisco solano presbitero/visperas/cantico_evangelico
+     pastores para un santo obispo/oficio/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/salmodia
+     pastores para un santo obispo/oficio/lectura1  ←  tiempo: Ordinario/21/0/oficio/lectura1 + tiempo: Ordinario/21/1/oficio/lectura1 (sus versículos)
+     pastores para un santo obispo/oficio/responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
+     pastores para un santo obispo/laudes/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/salmodia
+     pastores para un santo obispo/laudes/cantico_evangelico  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
+     pastores para un santo obispo/tercia/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/tercia/lectura_breve
+     pastores para un santo obispo/sexta/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/sexta/lectura_breve
+     pastores para un santo obispo/nona/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/nona/lectura_breve
+     pastores para un santo obispo/visperas/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/visperas/salmodia
+     pastores para un santo obispo/visperas/cantico_evangelico  ←  santoral: 07-24/san francisco solano presbitero/visperas/cantico_evangelico
+     pastores para un santo papa/oficio/invitatorio  ←  santoral: 08-21/san pio x papa/oficio/invitatorio
+     pastores para un santo papa/laudes/invitatorio  ←  santoral: 08-21/san pio x papa/oficio/invitatorio
+     pastores para un santo papa/oficio/himno  ←  santoral: 08-21/san pio x papa/oficio/himno
+     pastores para un santo papa/oficio/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/salmodia
+     pastores para un santo papa/oficio/lectura1  ←  tiempo: Ordinario/21/0/oficio/lectura1 + tiempo: Ordinario/21/1/oficio/lectura1 (sus versículos)
+     pastores para un santo papa/oficio/responsorio  ←  tiempo: Ordinario/21/5/oficio/responsorio (variante de otro año)
+     pastores para un santo papa/oficio/responsorio2  ←  santoral: 11-10/san leon magno papa y doctor de la iglesia/oficio/responsorio2
+     pastores para un santo papa/laudes/himno  ←  santoral: 08-21/san pio x papa/laudes/himno
+     pastores para un santo papa/laudes/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/salmodia
+     pastores para un santo papa/laudes/lectura_breve  ←  santoral: 08-21/san pio x papa/laudes/lectura_breve
+     pastores para un santo papa/laudes/responsorio_breve  ←  santoral: 08-21/san pio x papa/laudes/responsorio_breve
+     pastores para un santo papa/laudes/cantico_evangelico  ←  santoral: 07-24/san francisco solano presbitero/laudes/cantico_evangelico
+     pastores para un santo papa/laudes/preces  ←  santoral: 08-21/san pio x papa/laudes/preces
+     pastores para un santo papa/tercia/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/tercia/lectura_breve
+     pastores para un santo papa/sexta/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/sexta/lectura_breve
+     pastores para un santo papa/nona/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/nona/lectura_breve
+     pastores para un santo papa/visperas/himno  ←  santoral: 08-21/san pio x papa/visperas/himno
+     pastores para un santo papa/visperas/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/visperas/salmodia
+     pastores para un santo papa/visperas/lectura_breve  ←  santoral: 08-21/san pio x papa/visperas/lectura_breve
+     pastores para un santo papa/visperas/responsorio_breve  ←  santoral: 08-21/san pio x papa/visperas/responsorio_breve
+     pastores para un santo papa/visperas/cantico_evangelico  ←  santoral: 07-24/san francisco solano presbitero/visperas/cantico_evangelico
+     pastores para un santo papa/visperas/preces  ←  santoral: 08-21/san pio x papa/visperas/preces
+     pastores para un santo presbitero/oficio/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/oficio/salmodia
+     pastores para un santo presbitero/oficio/lectura1  ←  tiempo: Pascua/@/sabado de la octava de pascua/oficio/lectura1 (sus versículos)
+     pastores para un santo presbitero/oficio/responsorio2  ←  santoral: 06-05/san bonifacio obispo y martir/oficio/responsorio2
+     pastores para un santo presbitero/laudes/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/laudes/salmodia
+     pastores para un santo presbitero/tercia/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/tercia/lectura_breve
+     pastores para un santo presbitero/sexta/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/sexta/lectura_breve
+     pastores para un santo presbitero/nona/lectura_breve  ←  santoral: 04-27/santo toribio de mogrovejo obispo/nona/lectura_breve
+     pastores para un santo presbitero/visperas/salmodia  ←  santoral: 04-27/santo toribio de mogrovejo obispo/visperas/salmodia
+     santas mujeres/oficio/invitatorio  ←  santoral: 11-19/santa isabel de hungria/oficio/invitatorio
+     santas mujeres/laudes/invitatorio  ←  santoral: 11-19/santa isabel de hungria/oficio/invitatorio
+     santas mujeres/oficio/lectura1  ←  tiempo: Pascua/@/domingo de la octava de pascua/oficio/lectura1
+     santas mujeres/oficio/responsorio  ←  tiempo: Ordinario/9/3/oficio/responsorio
+     santisima virgen maria/laudes/salmodia  ←  santoral: 10-12/nuestra senora del pilar/laudes/salmodia
+     santisima virgen maria/visperas/salmodia  ←  santoral: 07-09/nuestra senora del rosario de chiquinquira patrona de colombia/visperas/salmodia
+     santos varones/oficio/invitatorio  ←  santoral: 11-19/santa isabel de hungria/oficio/invitatorio
+     santos varones/laudes/invitatorio  ←  santoral: 11-19/santa isabel de hungria/oficio/invitatorio
+     santos varones/oficio/lectura1  ←  tiempo: Pascua/@/domingo de la octava de pascua/oficio/lectura1
+     santos varones/oficio/responsorio  ←  tiempo: Ordinario/9/3/oficio/responsorio
+     santos varones/oficio/responsorio2  ←  tiempo: Ordinario/21/2/oficio/responsorio (variante de otro año)
+     santos varones/laudes/lectura_breve  ←  santoral: 09-27/san vicente de paul presbitero/laudes/lectura_breve
+     santos varones/laudes/responsorio_breve  ←  santoral: 09-27/san vicente de paul presbitero/laudes/responsorio_breve
+     santos varones/laudes/cantico_evangelico  ←  tiempo: Pascua/2/3/visperas/cantico_evangelico
+     santos varones/laudes/preces  ←  santoral: 07-26/santos joaquin y ana padres de la santisima virgen maria/laudes/preces
+     santos varones/visperas/himno  ←  santoral: 07-26/santos joaquin y ana padres de la santisima virgen maria/visperas/himno
+     santos varones/visperas/lectura_breve  ←  santoral: 09-27/san vicente de paul presbitero/visperas/lectura_breve
+     santos varones/visperas/responsorio_breve  ←  santoral: 09-27/san vicente de paul presbitero/visperas/responsorio_breve
+     santos varones/visperas/preces  ←  santoral: 07-26/santos joaquin y ana padres de la santisima virgen maria/visperas/preces
+     santos varones para los santos educadores/oficio/responsorio2  ←  tiempo: Ordinario/22/1/oficio/responsorio2
+     santos varones para los santos educadores/laudes/cantico_evangelico  ←  santoral: 01-31/san juan bosco presbitero/laudes/cantico_evangelico
+     santos varones para los santos educadores/visperas/cantico_evangelico  ←  santoral: 01-31/san juan bosco presbitero/visperas/cantico_evangelico
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/lectura1  ←  tiempo: Ordinario/7/5/oficio/lectura1
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/responsorio2  ←  tiempo: Ordinario/21/6/oficio/responsorio2
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/cantico_evangelico  ←  santoral: 11-19/santa isabel de hungria/laudes/cantico_evangelico
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/visperas/cantico_evangelico  ←  santoral: 11-19/santa isabel de hungria/visperas/cantico_evangelico
+     santos varones para los santos religiosos/oficio/lectura1  ←  tiempo: Pascua/@/domingo de la ascension del senor/oficio/lectura1
+     santos varones para los santos religiosos/oficio/responsorio2  ←  santoral: 08-27/santa monica/oficio/responsorio2
+     un martir/oficio/salmodia  ←  santoral: 08-10/san lorenzo diacono y martir/oficio/salmodia
+     un martir/oficio/lectura1  ←  santoral: 02-05/san felipe de jesus protomartir mexicano/oficio/lectura1 (variante de otro año)
+     un martir/oficio/responsorio  ←  santoral: 02-05/san felipe de jesus protomartir mexicano/oficio/responsorio (variante de otro año)
+     un martir/tercia/lectura_breve  ←  santoral: 08-10/san lorenzo diacono y martir/tercia/lectura_breve
+     un martir/nona/lectura_breve  ←  santoral: 08-10/san lorenzo diacono y martir/nona/lectura_breve
+     varios martires/oficio/lectura1  ←  tiempo: Ordinario/3/1/oficio/lectura1 (variante de otro año)
+     varios martires/oficio/responsorio2  ←  santoral: 09-16/santos cornelio papa y cipriano obispo martires/oficio/responsorio2
+     varios martires/tercia/lectura_breve  ←  santoral: 08-10/san lorenzo diacono y martir/tercia/lectura_breve
+     varios martires/nona/lectura_breve  ←  santoral: 08-10/san lorenzo diacono y martir/nona/lectura_breve
+     virgenes/oficio/salmodia  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/oficio/salmodia
+     virgenes/oficio/lectura1  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/oficio/lectura1
+     virgenes/oficio/responsorio  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/oficio/responsorio
+     virgenes/laudes/salmodia  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/laudes/salmodia
+     virgenes/tercia/lectura_breve  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/tercia/lectura_breve
+     virgenes/sexta/lectura_breve  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/sexta/lectura_breve
+     virgenes/nona/lectura_breve  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/nona/lectura_breve
+     virgenes/visperas/salmodia  ←  santoral: 08-23/santa rosa de lima virgen patrona de america latina/visperas/salmodia
+     doctores de la iglesia/laudes/salmodia  ←  del Común de pastores
+     doctores de la iglesia/nona/lectura_breve  ←  del Común de pastores
+     doctores de la iglesia/oficio/salmodia  ←  del Común de pastores
+     doctores de la iglesia/sexta/lectura_breve  ←  del Común de pastores
+     doctores de la iglesia/tercia/lectura_breve  ←  del Común de pastores
+     doctores de la iglesia/visperas/salmodia  ←  del Común de pastores
+     santos varones para los santos educadores/laudes/invitatorio  ←  del Común de santos varones
+     santos varones para los santos educadores/laudes/preces  ←  del Común de santos varones
+     santos varones para los santos educadores/laudes/responsorio_breve  ←  del Común de santos varones
+     santos varones para los santos educadores/laudes/salmodia  ←  del Común de santos varones
+     santos varones para los santos educadores/nona/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos educadores/oficio/invitatorio  ←  del Común de santos varones
+     santos varones para los santos educadores/oficio/lectura1  ←  del Común de santos varones
+     santos varones para los santos educadores/oficio/responsorio  ←  del Común de santos varones
+     santos varones para los santos educadores/oficio/salmodia  ←  del Común de santos varones
+     santos varones para los santos educadores/sexta/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos educadores/tercia/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos educadores/visperas/salmodia  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/himno  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/invitatorio  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/preces  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/responsorio_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/laudes/salmodia  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/nona/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/himno  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/invitatorio  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/oficio/salmodia  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/sexta/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/tercia/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/visperas/himno  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/visperas/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/visperas/preces  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/visperas/responsorio_breve  ←  del Común de santos varones
+     santos varones para los santos que se distinguieron por el ejercicio de las obras de misericordia/visperas/salmodia  ←  del Común de santos varones
+     santos varones para los santos religiosos/laudes/salmodia  ←  del Común de santos varones
+     santos varones para los santos religiosos/nona/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos religiosos/oficio/salmodia  ←  del Común de santos varones
+     santos varones para los santos religiosos/sexta/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos religiosos/tercia/lectura_breve  ←  del Común de santos varones
+     santos varones para los santos religiosos/visperas/salmodia  ←  del Común de santos varones
+
+   Celebraciones de la fuente cuyo común no decía la cabecera y dice el tomo (19):
+     San Francisco de Sales, obispo y doctor de la Iglesia  →  pastores, doctores de la iglesia
+     La Conversión de san Pablo, apóstol  →  apostoles
+     Santa Águeda, virgen y mártir  →  un martir, virgenes
+     La Cátedra de san Pedro, apóstol  →  apostoles
+     San José, esposo de santa María Virgen  →  santos varones
+     San Juan Bautista de la Salle, presbítero  →  pastores, santos varones para los santos educadores
+     San Felipe Neri, presbítero  →  pastores, santos varones para los santos religiosos
+     La Visitación de la Santísima Virgen María  →  santisima virgen maria
+     El Nacimiento de san Juan Bautista  →  santos varones
+     Santos Pedro y Pablo, apóstoles  →  apostoles
+     Santiago, apóstol  →  apostoles
+     La Asunción de la Santísima Virgen María  →  santisima virgen maria
+     San Bartolomé, apóstol  →  apostoles
+     El Martirio de san Juan Bautista  →  un martir
+     Santa Rosa de Lima, virgen  →  virgenes
+     Santa Isabel de Hungría  →  santas mujeres
+     La Inmaculada Concepción de la Santísima Virgen María  →  santisima virgen maria
+     Los Santos Inocentes, mártires  →  varios martires
+     La Bienaventurada Virgen María, Madre de la Iglesia  →  santisima virgen maria

@@ -5471,8 +5471,13 @@ function vaPorFecha(d, hora, cl) {
 function delSanto(op, hora, cl, d) {
   if (!op.cel) return null;          // la de la Virgen en sábado no tiene día
   const L = E.horas, pre = op.cel[1] + '/' + op.cel[0] + '/';
-  return (d && d.t === 'Pascua' && pieza(L.santoral_pascua || {}, pre, hora, cl))
+  const p = (d && d.t === 'Pascua' && pieza(L.santoral_pascua || {}, pre, hora, cl))
     || pieza(L.santoral, pre, hora, cl);
+  // «La oración como en las Laudes»: en la Hora intermedia de una fiesta la
+  // fuente no siempre la da (santa María Magdalena, que allá es memoria),
+  // y sin ella salía la de la feria
+  if (p || cl !== 'oracion' || !INTERMEDIAS.includes(hora)) return p;
+  return delSanto(op, 'laudes', cl, d) || delSanto(op, 'oficio', cl, d);
 }
 
 function deSusComunes(op, hora, cl, d) {
@@ -5617,9 +5622,16 @@ function opcionesSeccion(d, op, hora, cl) {
   }
   const alts = opcionesSeccionBase(d, op, hora, cl);
   const i = alts.findIndex((o) => o.id === 'dia');
-  if (cl === 'salmodia' && i >= 0 && alts.length === 1) {
-    const propias = antifonasPropias(d, op, hora, alts[i].c);
+  // Las antífonas propias de una celebración van delante de la salmodia de
+  // su común: san Mateo reza en Laudes las suyas sobre los salmos del
+  // domingo I, no las del Común de apóstoles. (Lo que el santo tiene entero
+  // en el santoral, `propio`, manda sobre las dos.)
+  if (cl === 'salmodia' && !alts.some((o) => o.id === 'propio')) {
+    const dia = i >= 0 ? alts[i].c : delDia(d, hora, cl);
+    const propias = dia && antifonasPropias(d, op, hora, dia);
     if (propias) return propias;
+  }
+  if (cl === 'salmodia' && i >= 0 && alts.length === 1) {
     const sal = salmodiaIntermedia(d, hora, alts[i].c);
     if (sal) return sal;
   }
@@ -5765,6 +5777,13 @@ function opcionesSeccionBase(d, op, hora, cl) {
   }
   if (propio) return yDelDia([{ id: 'propio', rot: 'Propio', c: propio }]);
   if (regla === 'salterio') return soloDia;
+  // La Hora intermedia de una fiesta dice los salmos de la feria con sus
+  // antífonas, salvo que la fiesta traiga las suyas (la Natividad de la
+  // Virgen sí; la Visitación, san Lucas o la Cátedra de san Pedro, no). Las
+  // del común son para las solemnidades.
+  if (cl === 'salmodia' && INTERMEDIAS.includes(hora) && op.g === 'FIESTA') {
+    return soloDia;
+  }
   const comunes = deSusComunes(op, hora, cl, d);
   // lo propio del santo —aquí, lo de su común— va siempre delante, y lo
   // del día detrás: el orden de los botones es el mismo en toda la hora
@@ -6346,6 +6365,9 @@ function armaHora(iso, hora, idCel) {
     if (r) {
       const s = fija('resena', null, r.l);
       if (r.f) s.alts[0].c.f = r.f;
+      // encabezada por el nombre, como en el libro: la reseña se lee suelta,
+      // lejos del título de la hora, y sin él no se sabe de quién habla
+      s.titulo = op.t;
       const i = secciones.findIndex((x) => x.cl === 'lectura2');
       secciones.splice(i < 0 ? 0 : i, 0, s);
     }
@@ -6529,7 +6551,9 @@ function pintaSeccionHora(s) {
       + 'class="pliega menuda" data-pliega="resena" aria-expanded="'
       + abierta + '">Reseña</button></h2></div>'
       + '<div class="cuerpo"' + (abierta ? '' : ' hidden') + '>'
-      + (abierta ? o.c.l.filter((ln) => ln.length).map((ln) => '<p>'
+      + (abierta ? (s.titulo ? '<p class="resena-nombre">' + esc(s.titulo)
+        + '</p>' : '')
+        + o.c.l.filter((ln) => ln.length).map((ln) => '<p>'
         + esc(ln.map((tr) => tr[1]).join('')) + '</p>').join('') + ed : '')
       + '</div></section>';
   }

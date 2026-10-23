@@ -22,7 +22,10 @@ argentino, no el de México. Esto mira cada día con las normas, sin la fuente:
     la octava de Navidad) son conmemoración (PNLH 238-239);
   · la Hora intermedia de las solemnidades entre semana, con la salmodia
     complementaria (Ordinario);
-  · la semana del salterio, y Santa María en sábado.
+  · la semana del salterio, y Santa María en sábado;
+  · el grado: que una fiesta no tome «del día» lo que es del propio o del
+    común, y que una memoria tenga su lectura hagiográfica y su oración
+    (PNLH 134-135, 234-235).
 
 Escribe `Breviarium/datos/rubricas_qa.txt`.
 """
@@ -168,6 +171,31 @@ def son_primeras(iso):
     return tiene_primeras(man) and rango(man) < rango(iso)
 
 
+GRADO_FIESTA = {
+    'oficio': ['invitatorio', 'himno', 'salmodia', 'lectura1', 'responsorio',
+               'lectura2', 'responsorio2', 'oracion'],
+    'laudes': ['invitatorio', 'himno', 'salmodia', 'lectura_breve',
+               'responsorio_breve', 'cantico_evangelico', 'preces', 'oracion'],
+    'tercia': ['lectura_breve', 'oracion'], 'sexta': ['lectura_breve', 'oracion'],
+    'nona': ['lectura_breve', 'oracion'],
+    'visperas': ['himno', 'salmodia', 'lectura_breve', 'responsorio_breve',
+                 'cantico_evangelico', 'preces', 'oracion'],
+}
+GRADO_MEMORIA = ('lectura2', 'responsorio2', 'oracion')
+ELIGE_MEMORIA = ('lectura_breve', 'cantico_evangelico', 'preces')
+
+
+def elegidas(op, cl):
+    """Los ids de las opciones de una sección (el invitatorio está dentro
+    del comienzo de la hora), o None si la hora no la tiene."""
+    for s in op.get('secs', []):
+        if s['cl'] == cl:
+            return [a[0] for a in s['alts']]
+        if cl == 'invitatorio' and s.get('formas', {}).get('invitatorio'):
+            return [a[0] for a in s['formas']['invitatorio']['alts']]
+    return None
+
+
 hallazgos = defaultdict(list)
 cuenta = Counter()
 d0 = date.fromisoformat(DESDE)
@@ -299,6 +327,42 @@ while d0 <= date.fromisoformat(HASTA):
         if e.get('p') != quiere:
             hallazgos['semana del salterio'].append(
                 f'{iso} {tit} — p={e.get("p")}, toca {quiere}')
+
+    # --- el grado: de dónde sale cada sección -----------------------------
+    # Una fiesta lo toma todo de lo propio o del común, salvo la salmodia de
+    # la Hora intermedia, que es la de la feria (lo dice el Propio de cada
+    # fiesta); una memoria, la lectura hagiográfica, su responsorio y la
+    # oración, y lo demás a elegir (PNLH 234-235). «Del día» donde no toca es
+    # que al común le falta la pieza.
+    for h, cls in GRADO_FIESTA.items():
+        op = opcion(iso, h)
+        if not op or op['modo'] == 'feria' or op['op'] == 'smv':
+            continue
+        vis = op.get('vis') or {}
+        if h == 'visperas' and (vis.get('n') == 1 and vis.get('iso') == man
+                                or e.get('v')):
+            continue                  # son las primeras vísperas de mañana
+        if op['modo'] == 'entero' and op['g'] in ('FIESTA', 'SOLEMNIDAD'):
+            pide = cls
+        elif op['modo'] == 'memoria' and h in ('oficio', 'laudes', 'visperas'):
+            pide = [c for c in cls if c in GRADO_MEMORIA]
+        else:
+            continue
+        cuenta[f'secciones de {op["g"].lower()}'] += len(pide)
+        for cl in pide:
+            ids = elegidas(op, cl)
+            if ids is None:
+                hallazgos[f'{op["g"].lower()}: falta la sección'].append(
+                    f'{iso} {h} {cl} — {op["t"]}')
+            elif ids and all(i.startswith(('dia', 'sal-')) for i in ids):
+                hallazgos[f'{op["g"].lower()}: del día donde toca lo propio '
+                          f'o el común'].append(f'{iso} {h} {cl} — {op["t"]}')
+        if op['modo'] == 'memoria':
+            for cl in ELIGE_MEMORIA:
+                ids = elegidas(op, cl)
+                if ids and all(i.startswith('dia') for i in ids):
+                    hallazgos['memoria: sin propio ni común que elegir'].append(
+                        f'{iso} {h} {cl} — {op["t"]}')
 
     # --- Santa María en sábado ------------------------------------------
     lau = (dia.get('horas') or {}).get('laudes') or []

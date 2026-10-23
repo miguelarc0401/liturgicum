@@ -30,7 +30,7 @@ import re
 import subprocess
 import sys
 import unicodedata
-from collections import Counter
+from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from breviario import TRABAJO, clave
@@ -105,6 +105,8 @@ HORAS_PDF = {
     'primeras visperas': 'i_visperas', 'segundas visperas': 'visperas',
     'hora intermedia': 'intermedia', 'tercia': 'tercia', 'sexta': 'sexta',
     'nona': 'nona', 'completas': 'completas', 'invitatorio': 'invitatorio',
+    # san Juan Diego, en el tomo I: las dos horas con un mismo formulario
+    'laudes y visperas': 'laudes_visperas',
 }
 
 
@@ -445,8 +447,11 @@ def lee_entrada(e):
 
     def guarda():
         if hora and sec and texto_sec is not None:
-            k = f'{hora}/{sec}'
-            secciones.setdefault(k, []).extend(texto_sec)
+            # «Laudes y vísperas»: lo mismo en las dos (el cántico, en cada
+            # una el suyo, que la fase 4 arma con la antífona)
+            for h in (('laudes', 'visperas') if hora == 'laudes_visperas'
+                      else (hora,)):
+                secciones.setdefault(f'{h}/{sec}', []).extend(texto_sec)
 
     while i < len(ls):
         l = ls[i]
@@ -454,10 +459,23 @@ def lee_entrada(e):
         h = es_hora(t) if l is not None else None
         if h:
             guarda()
-            hora, sec, texto_sec = h, None, []
+            # el invitatorio es sólo su antífona, sin rótulo de sección
+            hora, sec, texto_sec = h, SIN_ROTULO.get(h), []
+            if sec == 'antifona':
+                sec = None
             i += 1
             continue
         cl, resto = seccion_de(t) if l is not None else (None, None)
+        # Las antífonas de la salmodia detrás del himno sin el rótulo
+        # «SALMODIA» (las Laudes de Jesucristo, sumo y eterno sacerdote, en
+        # el tomo III): un «Ant. 1.» no es un verso, abre la salmodia
+        if not cl and sec == 'himno' and l is not None and ABRE_ANT_PDF.match(t):
+            guarda()
+            sec, texto_sec = 'salmodia', [l]
+            if (hora, sec) not in orden:
+                orden.append((hora, sec))
+            i += 1
+            continue
         if cl:
             guarda()
             if cl == 'responsorio' and hora == 'oficio':
@@ -498,7 +516,15 @@ def separa_cabeza(pars):
                     and p.startswith('(')):
             cabeza.append(p)
             i += 1
-            if es_versal(p):
+            # (la referencia en mayúsculas, «(SALMO 61, 4: CCL 39…)», no es
+            # el título: va detrás)
+            if es_versal(p) and not p.startswith('('):
+                # el título largo sigue centrado en el renglón de abajo
+                # («… CUALIDADES Y LOS DEBERES DE / LOS OBISPOS»)
+                while i < len(pars) and es_versal(pars[i]) \
+                        and len(pars[i]) < 80:
+                    cabeza[-1] += ' ' + pars[i]
+                    i += 1
                 break
             continue
         break
@@ -510,7 +536,7 @@ def lectura(lineas):
     cabeza, cuerpo = separa_cabeza(pars)
     out = [[]]
     for p in cabeza:
-        if es_versal(p):
+        if es_versal(p) and not p.startswith('('):
             out += [[], [[1, p]]]
             continue
         # el autor y, en su línea, la referencia entre paréntesis
@@ -579,8 +605,10 @@ def antifona(lineas):
         if re.match(r'^O bien', p, re.I):
             continue
         p = re.sub(r'^Ant\.\s*', '', p)
-        # «… te trae preparada. Magnificat La oración conclusiva…»
-        p = re.split(r'\s+(?:Benedictus|Magn[iíl]ficat)\b', p)[0].strip()
+        # «… te trae preparada. Magnificat La oración conclusiva…», y «…
+        # Aquí está su Dios. Cuando se rezan Laudes: Benedictus»
+        p = re.split(r'\s+(?:Benedictus|Magn[iíl]ficat|Cuando se rezan|'
+                     r'El salmo (?:del )?[Ii]nvitatorio)\b', p)[0].strip()
         if p:
             ants.append(p)
     return ants
@@ -729,74 +757,11 @@ def secciones_de(e):
     piezas, avisos = {}, []
     crudas = e['secciones_crudas']
     for k, ls in crudas.items():
-        hora, cl = k.split('/')
-        if cl == 'te_deum':
-            continue
-        cuerpo = [l for l in ls if l is None or (l or '').strip()
-                  or True]
-        if cl in ('lectura1', 'lectura2'):
-            pieza = {'r': 'PRIMERA LECTURA' if cl == 'lectura1'
-                     else 'SEGUNDA LECTURA', 'l': lectura(cuerpo)}
-        elif cl in ('responsorio', 'responsorio2', 'responsorio_breve'):
-            primera = next((l.strip() for l in cuerpo if l and l.strip()), '')
-            cita = ''
-            if primera and not re.match(r'^(R|V)\.', primera):
-                cita = primera
-                cuerpo = cuerpo[cuerpo.index(next(
-                    l for l in cuerpo if l and l.strip())) + 1:]
-            cita, ls2 = responsorio(cuerpo, cita)
-            rot = 'RESPONSORIO BREVE' if cl == 'responsorio_breve' \
-                else 'RESPONSORIO'
-            pieza = {'r': (rot + ' ' + cita).strip(), 'l': ls2}
-        elif cl == 'oracion':
-            ls2 = oracion(cuerpo)
-            if not ls2:
-                continue
-            pieza = {'r': 'ORACION', 'l': ls2}
-        elif cl == 'cantico_evangelico':
-            ants = antifona(cuerpo)
-            if not ants:
-                continue
-            pieza = {'r': 'CÁNTICO EVANGÉLICO', 'ant': ants}
-        elif cl == 'himno':
-            ls2 = himno(cuerpo)
-            if not ls2:
-                continue
-            pieza = {'r': 'HIMNO', 'l': ls2}
-        elif cl == 'lectura_breve':
-            pars = [p for p in parrafos(cuerpo) if p]
-            cita = ''
-            if pars and len(pars[0]) < 40 and re.search(r'\d', pars[0]):
-                cita = pars.pop(0)
-            # el versículo que sigue a la lectura breve de la Hora
-            # intermedia lleva su «V.» y su «R.» en rojo, como en la fuente
-            pieza = {'r': ('LECTURA BREVE ' + cita).strip(),
-                     'l': [[]] + [runs(p) if re.match(r'^(V|R)\.\s', p)
-                                  else [[0, p]] for p in pars]}
-        elif cl == 'salmodia':
-            pieza = salmodia(cuerpo)
-            if not pieza:
-                continue
-        elif cl == 'preces':
-            # La rúbrica de las intenciones libres va en su renglón y en
-            # rojo; la maqueta la deja pegada a la última petición, y con
-            # ella la invitación al Padre nuestro, que va detrás aparte.
-            pars, rubricas = [], set()
-            for p in parrafos(cuerpo):
-                trozos = re.split(r'\s*(Se pueden añadir algunas intenciones '
-                                  r'libres\.)\s*', p)
-                for t in trozos:
-                    if t.startswith('Se pueden añadir'):
-                        rubricas.add(t)
-                    if t or not p:
-                        pars.append(t)
-            pieza = {'r': 'PRECES', 'l': [[]] + [
-                [[1, p]] if p in rubricas else runs(p) if p else []
-                for p in pars if not p.startswith('Padre nuestro')]}
-        else:
+        pieza = pieza_de(k, ls)
+        if pieza is False:
             avisos.append(f'{e["md"]} {e["titulo"]}: sección {k} sin tratar')
-            continue
-        piezas[k] = pieza
+        elif pieza:
+            piezas[k] = pieza
     # La oración del santo es la misma en todas las horas: en las memorias el
     # PDF la da una vez, en el Oficio («La oración conclusiva como en las
     # Laudes», o al revés), y la app la busca en cada hora.
@@ -805,6 +770,336 @@ def secciones_de(e):
         for k in ('oficio/oracion', 'laudes/oracion', 'visperas/oracion'):
             piezas.setdefault(k, orac)
     return piezas, avisos
+
+
+def pieza_de(k, ls):
+    """Las líneas crudas de una sección (`hora/sección`), hechas pieza del
+    libro; None si no hay nada que guardar, False si la sección no se sabe
+    tratar."""
+    hora, cl = k.split('/')
+    if cl == 'te_deum':
+        return None
+    cuerpo = list(ls)
+    if cl in ('lectura1', 'lectura2'):
+        pieza = {'r': 'PRIMERA LECTURA' if cl == 'lectura1'
+                 else 'SEGUNDA LECTURA', 'l': lectura(cuerpo)}
+    elif cl in ('responsorio', 'responsorio2', 'responsorio_breve'):
+        primera = next((l.strip() for l in cuerpo if l and l.strip()), '')
+        cita = ''
+        if primera and not re.match(r'^(R|V)\.', primera):
+            cita = primera
+            cuerpo = cuerpo[cuerpo.index(next(
+                l for l in cuerpo if l and l.strip())) + 1:]
+        cita, ls2 = responsorio(cuerpo, cita)
+        rot = 'RESPONSORIO BREVE' if cl == 'responsorio_breve' \
+            else 'RESPONSORIO'
+        pieza = {'r': (rot + ' ' + cita).strip(), 'l': ls2}
+    elif cl == 'oracion':
+        ls2 = oracion(cuerpo)
+        if not ls2:
+            return None
+        pieza = {'r': 'ORACION', 'l': ls2}
+    elif cl in ('cantico_evangelico', 'invitatorio', 'antifona'):
+        ants = antifona(cuerpo)
+        if not ants:
+            return None
+        pieza = {'r': {'cantico_evangelico': 'CÁNTICO EVANGÉLICO',
+                       'invitatorio': 'INVITATORIO'}.get(cl, 'ANTÍFONA'),
+                 'ant': ants}
+    elif cl == 'himno':
+        ls2 = himno(cuerpo)
+        if not ls2:
+            return None
+        pieza = {'r': 'HIMNO', 'l': ls2}
+    elif cl == 'lectura_breve':
+        pars = [p for p in parrafos(cuerpo) if p]
+        cita = ''
+        if pars and len(pars[0]) < 40 and re.search(r'\d', pars[0]):
+            cita = pars.pop(0)
+        # el versículo que sigue a la lectura breve de la Hora
+        # intermedia lleva su «V.» y su «R.» en rojo, como en la fuente
+        pieza = {'r': ('LECTURA BREVE ' + cita).strip(),
+                 'l': [[]] + [runs(p) if re.match(r'^(V|R)\.\s', p)
+                              else [[0, p]] for p in pars]}
+    elif cl == 'salmodia':
+        pieza = salmodia(cuerpo)
+        if not pieza:
+            return None
+    elif cl == 'preces':
+        # La rúbrica de las intenciones libres va en su renglón y en
+        # rojo; la maqueta la deja pegada a la última petición, y con
+        # ella la invitación al Padre nuestro, que va detrás aparte.
+        pars, rubricas = [], set()
+        for p in parrafos(cuerpo):
+            trozos = re.split(r'\s*(Se pueden añadir algunas intenciones '
+                              r'libres\.)\s*', p)
+            for t in trozos:
+                if t.startswith('Se pueden añadir'):
+                    rubricas.add(t)
+                if t or not p:
+                    pars.append(t)
+        pieza = {'r': 'PRECES', 'l': [[]] + [
+            [[1, p]] if p in rubricas else runs(p) if p else []
+            for p in pars if not p.startswith('Padre nuestro')]}
+    else:
+        return False
+    return pieza
+
+
+# --------------------------------------------------------------------------
+# los Oficios comunes
+# --------------------------------------------------------------------------
+# De un común, la fase 3 sólo sabe lo que rezan con él dos santos distintos,
+# y eso es casi siempre lo de las memorias: el himno, la lectura breve, las
+# preces. Lo que sólo se reza en las fiestas —la salmodia del Oficio y de
+# las Vísperas, las lecturas del Oficio, la antífona del Benedictus de un
+# obispo, la lectura breve de Tercia— no lo midió nunca: la fuente es
+# argentina y casi no tiene fiestas que lo tomen del común. San Rafael
+# Guízar, que en México es fiesta y lo toma todo del Común de pastores,
+# salía con la salmodia, las lecturas y el Benedictus de la feria.
+#
+# El tomo IV trae los comunes enteros, y aquí se leen hora por hora y
+# sección por sección, con sus variantes: dentro de una sección el libro
+# dice «Para un santo papa u obispo:», «Para un santo presbítero:», «O bien:»
+# y da otro texto. Cada variante se guarda con su rótulo; cuál va con cada
+# común de la app lo decide la fase 4, que además busca cada texto en la
+# fuente antes de tomarlo de aquí.
+
+TOMO_COMUNES = 'LH_IV_TIEMPO_ORDINARIO_II'
+
+# el rótulo de cada común, al nombre con que lo conoce el libro de la fuente
+# Al final de los santos varones y las santas mujeres vienen tres comunes
+# más cortos —los religiosos, los que se consagraron a una actividad
+# caritativa, los educadores—, que toman todo de aquéllos «excepto lo
+# siguiente». Van delante, que «santos varones» lo nombran todos.
+NOMBRE_COMUN = [('religiosos', 'santos varones para los santos religiosos'),
+                ('consagrado', 'santos varones para los santos que '
+                 'se distinguieron por el ejercicio de las obras de '
+                 'misericordia'),
+                ('educadores', 'santos varones para los santos educadores'),
+                ('dedicacion', 'dedicacion de una iglesia'),
+                ('virgen maria', 'santisima virgen maria'),
+                ('apostoles', 'apostoles'),
+                ('varios martires', 'varios martires'),
+                ('un martir', 'un martir'), ('pastores', 'pastores'),
+                ('doctores', 'doctores de la iglesia'),
+                ('virgenes', 'virgenes'), ('santos varones', 'santos varones'),
+                ('santas mujeres', 'santas mujeres')]
+
+TITULO_COMUN = re.compile(r'^(?:COMÚN DE\b.*|PARA VARIOS MÁRTIRES|'
+                          r'PARA UN MÁRTIR|MEMORIA DE SANTA MARÍA EN SÁBADO|'
+                          r'PARA RELIGIOSOS|PARA EDUCADORES|'
+                          r'PARA LOS QUE SE HAN CONSAGRADO A UNA)$')
+# «En el tiempo ordinario:», delante de la otra primera lectura de los
+# religiosos (la de antes es la de los tiempos fuertes)
+EN_EL_TIEMPO = re.compile(r'^En el tiempo (?:de )?([^:]{3,60}):$')
+
+# «Para un santo papa u obispo:», «Para una mártir», «Antífona para un santo
+# papa u obispo: Sacerdote del Altísimo…», «Para varios santos: Los ojos del
+# Señor…». Sólo cuando nombra a quién: «Para que te prepares…» es prosa, y
+# «Para vosotros, el misterio del Padre;», un verso.
+VARIANTE = re.compile(
+    r'^(?:Ant[íi]fona\s+)?[Pp]ara\s+((?:un|una|unos|unas|varios|varias|los|'
+    r'las|santos|santas)\s+(?:santos?|santas?|m[áa]rtir(?:es)?|mujer(?:es)?|'
+    r'v[íi]rgen(?:es)?|pastor(?:es)?|pap[ao]s?)\b[^:]*?)\s*(?::\s*(.*))?$')
+# «O bien:», «O bien esta otra:», «O bien esta otra, especialmente para un
+# santo obispo:», «O bien, para una santa que vivió en el matrimonio:»,
+# «O bien: Finísimo fue el lino.»
+O_BIEN = re.compile(r'^O bien\b(?:\s+esta\s+[Oo]tra)?\s*,?\s*'
+                    r'(?:(?:especialmente\s+)?para\s+([^:]+):)?\s*:?\s*(.*)$')
+# lo que en una antífona es rúbrica y no texto: «Cuando se usa la salmodia
+# complementaria…», el rótulo «Antífona» suelto, la apertura del invitatorio
+RUBRICA_ANT = re.compile(r'^(?:Cuando se\b|Si (?:se|es|antes)\b|'
+                         r'Ant[íi]fona\s*:?$|[VR]\.\s|El salmo del\b|'
+                         r'Se (?:dice|toma|añade)\b|La oraci[oó]n\b)')
+# la sección que abre cada hora sin rótulo propio: el invitatorio es sólo su
+# antífona, y la de Tercia, Sexta y Nona va delante de la lectura breve
+SIN_ROTULO = {'invitatorio': 'invitatorio', 'tercia': 'antifona',
+              'sexta': 'antifona', 'nona': 'antifona'}
+
+
+def tramo_de_los_comunes(lineas):
+    """De «OFICIOS COMUNES» a «OFICIO DE DIFUNTOS»: el tramo más largo, que
+    el índice del tomo repite los dos rótulos."""
+    ini = [i for i, l in enumerate(lineas) if l.strip() == 'OFICIOS COMUNES']
+    fin = [i for i, l in enumerate(lineas) if l.strip() == 'OFICIO DE DIFUNTOS']
+    mejor = (0, 0)
+    for a in ini:
+        b = next((x for x in fin if x > a), None)
+        if b is not None and b - a > mejor[1] - mejor[0]:
+            mejor = (a, b)
+    return lineas[mejor[0] + 1:mejor[1]]
+
+
+def nombre_del_comun(titulo):
+    t = clave(titulo)
+    if 'sabado' in t:
+        return None
+    return next((n for k, n in NOMBRE_COMUN if k in t), None)
+
+
+def secciones_del_comun(lineas):
+    """Las líneas de un común, repartidas por (hora/sección, variante).
+
+    La variante cambia con cada «Para …:» y cada «O bien:», y vuelve a la
+    general con cada rótulo de sección. El responsorio va con su lectura:
+    las del Oficio traen una por variante, cada una con el suyo, así que un
+    «Para un santo presbítero:» después de un responsorio vuelve a abrir la
+    lectura."""
+    crudas = defaultdict(list)
+    orden = []
+    hora, sec, var = None, None, ''
+    vista_l2 = False
+
+    def pon(l):
+        if hora and sec:
+            k = (f'{hora}/{sec}', var)
+            if k not in crudas:
+                orden.append(k)
+            crudas[k].append(l)
+
+    for l in lineas:
+        t = (l or '').strip()
+        if l is not None and t:
+            h = es_hora(t)
+            if h:
+                hora, sec, var = h, SIN_ROTULO.get(h), ''
+                vista_l2 = False
+                continue
+            cl, resto = seccion_de(t)
+            if cl:
+                if cl == 'responsorio' and hora == 'oficio' and vista_l2:
+                    cl = 'responsorio2'
+                if cl == 'lectura2':
+                    vista_l2 = True
+                if not (cl.startswith('responsorio') and sec
+                        and sec.startswith('lectura')):
+                    var = ''
+                sec = cl
+                if resto:
+                    pon(resto)
+                continue
+            m = VARIANTE.match(t) if len(t) < 120 else None
+            if m and not l.startswith(' '):
+                var = clave(m.group(1))
+                if sec in ('responsorio', 'responsorio2'):
+                    sec = 'lectura1' if sec == 'responsorio' else 'lectura2'
+                if m.group(2):
+                    pon(m.group(2))
+                continue
+            m = O_BIEN.match(t) if not l.startswith(' ') else None
+            mt = EN_EL_TIEMPO.match(t) if not l.startswith(' ') else None
+            if m or mt:
+                var = (clave(mt.group(1)) if mt else clave(m.group(1))
+                       if m.group(1) else var + '+')
+                if sec in ('responsorio', 'responsorio2'):
+                    sec = 'lectura1' if sec == 'responsorio' else 'lectura2'
+                if m and m.group(2):
+                    pon(m.group(2))
+                continue
+        pon(l)
+    return [(k, var, crudas[(k, var)]) for k, var in orden]
+
+
+def salmos_por_antifona(lineas):
+    """Los salmos que el libro escribe enteros, uno por antífona: sus
+    títulos y sus versos, renglón a renglón, como los da la fuente. La fase
+    4 busca en la fuente el mismo salmo, y sólo si no lo halla usa éste. Y
+    el versículo que cierra la salmodia del Oficio."""
+    tramos, act = [], None
+    verso, ant_abierta = [], False
+    for l in lineas:
+        if l is None:
+            continue
+        t = l.strip()
+        m = ABRE_ANT_PDF.match(t)
+        if m:
+            act = {'tit': [], 'l': []}
+            tramos.append(act)
+            ant_abierta = True
+            continue
+        if not t:
+            ant_abierta = False
+            if act and act['l'] and act['l'][-1]:
+                act['l'].append([])
+            continue
+        if t.startswith('Ant'):            # la que se repite al final
+            act, ant_abierta = None, False
+            continue
+        if re.match(r'^(V|R)\.\s', t):
+            verso.append(runs(t))
+            continue
+        if act is None or DICE_SALMOS.match(t):
+            continue
+        if ant_abierta and not act['tit'] and not act['l']:
+            continue                       # la antífona que sigue en otra línea
+        if re.match(r'^(Salmo|C[áa]ntico)\b', t, re.I) \
+                or re.fullmatch(r'[IV]{1,3}', t):
+            act['tit'].append(re.sub(r'\s+', ' ', re.split(r'\s{2,}', t)[0]))
+            resto = re.split(r'\s{2,}', t)[1:]
+            if resto:
+                act['l'].append([[0, ' '.join(resto)]])
+            ant_abierta = False
+            continue
+        act['l'].append([[0, t]])
+        ant_abierta = False
+    for a in tramos:
+        while a['l'] and not a['l'][-1]:
+            a['l'].pop()
+        while a['l'] and not a['l'][0]:
+            a['l'].pop(0)
+    return [a for a in tramos if a['l']], verso
+
+
+def oficios_comunes():
+    lineas = limpia(tramo_de_los_comunes(texto_de(TOMO_COMUNES)))
+    bloques, act = [], None
+    for l in lineas:
+        t = (l or '').strip()
+        if l is not None and TITULO_COMUN.match(t):
+            act = {'titulo': t, 'lineas': []}
+            bloques.append(act)
+            continue
+        if act is not None:
+            act['lineas'].append(l)
+    salida, avisos = {}, []
+    for b in bloques:
+        nombre = nombre_del_comun(b['titulo'])
+        if not nombre:
+            continue
+        # «Del Común de pastores, excepto lo siguiente:» (el de doctores)
+        cab = ' '.join((x or '').strip() for x in b['lineas'][:6])
+        m = re.search(r'[Dd]el Com[uú]n de ([^,.:]+?)(?:,? o de [^,.:]+)?,? '
+                      r'excepto', cab)
+        piezas = defaultdict(list)
+        for k, var, ls in secciones_del_comun(b['lineas']):
+            if k.endswith('/oracion'):
+                continue           # «Se dice la oración del día», con «san N.»
+            p = pieza_de(k, ls)
+            if p is False:
+                avisos.append(f'{nombre}: sección {k} sin tratar')
+                continue
+            if p and 'ant' in p and not k.endswith('/salmodia'):
+                p['ant'] = [a for a in p['ant'] if not RUBRICA_ANT.match(a)]
+                if not p['ant']:
+                    p = None
+            # una variante sin texto (el rótulo «Para un mártir:» con la
+            # lectura debajo de otro) o una remisión («Se toman los textos
+            # más aptos…») no es una pieza
+            texto = ' '.join(t for ln in (p or {}).get('l', [])
+                             for _, t in ln).strip()
+            if not p or ('l' in p and (not texto or texto.startswith(
+                    ('Se toman', 'Se dice', 'Como en')))):
+                continue
+            if k.endswith('/salmodia'):
+                p['tramos'], verso = salmos_por_antifona(ls)
+                if verso:
+                    p['verso'] = verso
+            piezas[k].append({'v': var, 'p': p})
+        salida[nombre] = {'titulo': b['titulo'], 'piezas': dict(piezas)}
+        if m:
+            salida[nombre]['excepto'] = nombre_del_comun(m.group(1))
+    return salida, avisos
 
 
 # --------------------------------------------------------------------------
@@ -995,6 +1290,14 @@ def main():
     print(f'{len(ferias)} ferias de Navidad por fecha: '
           + ', '.join(k.split('/')[-1] for k in ferias))
     print(f'{len(domingos)} domingos del tiempo ordinario')
+
+    comunes, av_comunes = oficios_comunes()
+    avisos += av_comunes
+    with open(os.path.join(LIBRO, 'pdf_comunes.json'), 'w',
+              encoding='utf-8') as f:
+        json.dump(comunes, f, ensure_ascii=False, indent=0)
+    print(f'{len(comunes)} oficios comunes: '
+          + ', '.join(f'{n} ({len(c["piezas"])})' for n, c in comunes.items()))
 
     cuenta = Counter()
     for e in finales:

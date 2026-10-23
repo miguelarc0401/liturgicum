@@ -123,6 +123,49 @@ ROTULOS_COMUN = [
 ]
 
 
+# Qué común del tomo IV completa cada común de la app (fase 3b,
+# `pdf_comunes.json`), y qué variantes de las que el libro da dentro de una
+# sección («Para un santo papa u obispo:», «Para un santo presbítero:») son
+# las suyas, por orden. Los demás comunes del tomo se llaman igual que en la
+# app y toman la general.
+DEL_TOMO = {
+    'pastores': ('pastores', ('un santo pastor', 'un santo obispo',
+                              'un santo papa u obispo')),
+    'pastores para un santo obispo': ('pastores', ('un santo obispo',
+                                                   'un santo papa u obispo')),
+    'pastores para un santo papa': ('pastores', ('un santo papa',
+                                                 'un santo papa u obispo')),
+    'pastores para un santo presbitero': ('pastores', ('un santo presbitero',)),
+    'un martir': ('un martir', ('un martir',)),
+    'varios martires': ('varios martires', ('varios martires',)),
+    'virgenes': ('virgenes', ('una santa virgen',)),
+    'santos varones': ('santos varones', ('un santo',)),
+    'santas mujeres': ('santas mujeres', ('una santa mujer',)),
+}
+# Una variante que es para otros no hace de general aunque vaya primero.
+ESPECIALES = (r'matrimonio|monja|fundador|misionero|martir virgen|'
+              r'mujer martir|varias|varios|religios|educador|caritativa')
+# Lo que se completa: lo de las fiestas. Las primeras vísperas no (una
+# fiesta no las tiene), ni la oración («se dice la oración del día»), ni la
+# salmodia de la Hora intermedia, que en las fiestas es la de la feria con
+# sus antífonas (lo dice el Propio de cada fiesta: «Las antífonas y los
+# salmos, de la feria correspondiente. La lectura breve, del Común»).
+SECCIONES_DEL_TOMO = {
+    'invitatorio': ('invitatorio',),
+    'oficio': ('himno', 'salmodia', 'lectura1', 'responsorio', 'lectura2',
+               'responsorio2'),
+    'laudes': ('himno', 'salmodia', 'lectura_breve', 'responsorio_breve',
+               'cantico_evangelico', 'preces'),
+    'tercia': ('lectura_breve',), 'sexta': ('lectura_breve',),
+    'nona': ('lectura_breve',),
+    'visperas': ('himno', 'salmodia', 'lectura_breve', 'responsorio_breve',
+                 'cantico_evangelico', 'preces'),
+}
+# el responsorio va con la variante de su lectura
+LECTURA_DE = {'responsorio': 'lectura1', 'responsorio2': 'lectura2',
+              'responsorio_breve': 'lectura_breve'}
+
+
 def rotulo_de_comun(nombre):
     ultimo = nombre.split(' y del comun de ')[-1]
     for prefijo, rotulo in ROTULOS_COMUN:
@@ -145,11 +188,10 @@ def comunes_del_pdf(texto, titulo, existentes):
     """«Del Común de un mártir o de pastores: para un presbítero» -> las
     claves de comunes.json que le corresponden, en el mismo orden.
 
-    El libro sólo tiene los comunes que la fuente dejó medir (los que salen
-    con dos santos distintos), así que se mapea a lo que hay y se calla lo
-    que no: el «Común de santos varones» a secas no está, y prestarle el de
-    los religiosos a un rey sería peor que dejar la feria, que las rúbricas
-    también permiten."""
+    Se mapea a los comunes que hay —los que la fuente dejó medir y los que
+    trae enteros el tomo IV— y se calla lo que no: prestarle a un rey el de
+    los religiosos sería peor que dejar la feria, que las rúbricas también
+    permiten."""
     if not texto:
         return []
     t = clave(texto)
@@ -165,7 +207,8 @@ def comunes_del_pdf(texto, titulo, existentes):
                  else len(t)]
         w = m.group(0)
         if w == 'pastores':
-            k = ('pastores para un santo obispo' if 'obispo' in tras
+            k = ('pastores para un santo papa' if 'papa' in tras
+                 else 'pastores para un santo obispo' if 'obispo' in tras
                  else 'pastores para un santo presbitero'
                  if 'presbitero' in tras else 'pastores')
         elif w == 'doctores':
@@ -176,7 +219,11 @@ def comunes_del_pdf(texto, titulo, existentes):
             k = ('santos varones para los santos religiosos'
                  if 'religios' in tras else
                  'santos varones para los santos educadores'
-                 if 'educador' in tras else None)
+                 if 'educador' in tras else
+                 'santos varones para los santos que se distinguieron por '
+                 'el ejercicio de las obras de misericordia'
+                 if re.search(r'caritativ|misericordia', tras)
+                 else 'santos varones')
         elif w in ('santa maria', 'santisima virgen'):
             k = 'santisima virgen maria'
         else:
@@ -211,6 +258,7 @@ def comunes_por_titulo(titulo, existentes):
     if re.search(r'\bpresbiteros?\b', t):
         pon('pastores para un santo presbitero')
     if re.search(r'\bpapa\b', t):
+        pon('pastores para un santo papa')
         pon('pastores')
     if re.search(r'\bdoctora?\b', t):
         pon('doctores de la iglesia')
@@ -344,6 +392,323 @@ class Equivalencias:
             if r > mejor[0]:
                 mejor = (r, (t, donde))
         return mejor[1] if mejor[0] >= 0.75 else None
+
+
+TITULO_SALMO = re.compile(r'^\s*(salmo|c[áa]ntico)\b', re.I)
+NUMERADA = re.compile(r'^\s*Ant\.?\s*\d')
+
+
+def es_titulo_salmo(ln):
+    return bool(ln) and ln[0][0] == 1 and bool(TITULO_SALMO.match(ln[0][1]))
+
+
+def antifonas_numeradas(lineas):
+    """Las antífonas de una salmodia, una por salmo («Ant 1.», «Ant 2.»…)."""
+    return [negro_de(ln) for ln in lineas
+            if es_antifona(ln) and NUMERADA.match(ln[0][1])]
+
+
+def bloques_de_salmos(lineas):
+    """Los salmos de una salmodia de la fuente, cada uno del título a la
+    gloria; sin las antífonas ni el versículo que cierra la del Oficio."""
+    salida, act = [], None
+    for ln in lineas:
+        if es_antifona(ln):
+            act = None
+        elif es_titulo_salmo(ln):
+            act = [ln]
+            salida.append(act)
+        elif act is not None:
+            act.append(ln)
+    for b in salida:
+        while b and not b[-1]:
+            b.pop()
+    return salida
+
+
+def sin_aleluya_clave(t):
+    return re.sub(r'\baleluya\b', '', clave(t)).strip()
+
+
+def casa_antifona(a, b, umbral=0.7):
+    return difflib.SequenceMatcher(None, sin_aleluya_clave(a),
+                                   sin_aleluya_clave(b)).ratio() >= umbral
+
+
+class Salmodias:
+    """Las salmodias de la fuente, para armar las de un común del tomo con su
+    letra: la salmodia entera si la fuente la rezó con esas antífonas (san
+    Toribio de Mogrovejo, que en Argentina es fiesta, reza todo el Común de
+    pastores); si no, cada salmo, buscado por su texto, y el versículo que
+    cierra la del Oficio."""
+
+    def __init__(self, libros):
+        self.enteras = []                    # (hora, antífonas, líneas, dónde)
+        self.bloques = []                    # (líneas del salmo, dónde)
+        self.indice = defaultdict(set)
+        self.versos = []                     # (V, R, dónde)
+        self.gloria = None
+        vistos = set()
+        for nombre, libro in libros:
+            for k, v in libro.items():
+                partes = k.split('/')
+                if partes[-1] == 'salmodia':
+                    hora = partes[-2]
+                elif nombre == 'salterio':
+                    hora = partes[-1]
+                else:
+                    continue
+                for ls in [v['lineas']] + [x['lineas']
+                                           for x in v.get('variantes', [])]:
+                    donde = f'{nombre}: {k}'
+                    ants = antifonas_numeradas(ls)
+                    if ants:
+                        self.enteras.append((hora, ants, ls, donde))
+                    for b in bloques_de_salmos(ls):
+                        j = json.dumps(b, ensure_ascii=False)
+                        if j in vistos:
+                            continue
+                        vistos.add(j)
+                        n = len(self.bloques)
+                        self.bloques.append((b, donde))
+                        for tr in tripletas(self.palabras(b)):
+                            self.indice[tr].add(n)
+                        if self.gloria is None and len(b) > 2 and \
+                                negro_de(b[-2]).startswith('Gloria al Padre'):
+                            self.gloria = b[-2:]
+                    # el versículo del Oficio, después de la última antífona
+                    if hora == 'oficio':
+                        ult = max((i for i, ln in enumerate(ls)
+                                   if es_antifona(ln)), default=None)
+                        vr = [ln for ln in ls[ult + 1:] if marcada(
+                            ln, ('V.', 'R.'))] if ult is not None else []
+                        if len(vr) == 2:
+                            self.versos.append((vr[0], vr[1], donde))
+
+    @staticmethod
+    def palabras(bloque):
+        ws = palabras([ln for ln in bloque[1:]
+                       if not negro_de(ln).startswith(('Gloria al Padre',
+                                                       'Como era en el'))])
+        return ws
+
+    def entera(self, hora, ants):
+        """La salmodia de la fuente con estas mismas antífonas, o None."""
+        for h, a, ls, donde in self.enteras:
+            if h == hora and len(a) == len(ants) and all(
+                    casa_antifona(x, y) for x, y in zip(a, ants)):
+                return ls, donde
+        return None
+
+    def salmo(self, versos):
+        """El salmo de la fuente que tiene estos versos, o None."""
+        trs = tripletas(palabras(versos))
+        if len(trs) < 4:
+            return None
+        votos = Counter()
+        for tr in trs:
+            for n in self.indice.get(tr, ()):
+                votos[n] += 1
+        # los más votados primero; el primero puede ser el salmo entero de
+        # algún santo que lo reza de una vez, y lo que se busca es su parte
+        for n, c in sorted(votos.items(), key=lambda x: (-x[1], x[0]))[:8]:
+            otro = tripletas(self.palabras(self.bloques[n][0]))
+            if c / len(trs) >= 0.6 and c / max(len(otro), 1) >= 0.6:
+                return self.bloques[n]
+        return None
+
+    def verso(self, v):
+        """El versículo de la fuente que dice esto, o None."""
+        for vv, rr, donde in self.versos:
+            if casa_antifona(negro_de(vv), v, 0.65):
+                return vv, rr, donde
+        return None
+
+
+# --- una lectura del tomo dentro de otra más larga de la fuente -----------
+# Las lecturas bíblicas del Oficio de los comunes no las rezó nunca la fuente
+# como tales, pero algunas están dentro de una lectura del tiempo más larga:
+# la del presbítero (1 Pe 5, 1-11) en la del sábado de la octava de Pascua
+# (1 Pe 4, 12—5, 14), la de los doctores (Si 39, 1-14) en la del jueves de la
+# semana XXIX del año II (Si 38, 25—39, 15), la del obispo en dos lecturas
+# seguidas de la semana XXI del año II. La traducción que se reza es la de
+# la fuente, así que de ella se toman justo esos versículos: el tramo que
+# empieza y acaba donde el texto del tomo, y sólo si empieza y acaba en
+# frase, que una lectura no se corta a media oración. Las segundas lecturas
+# de los comunes no están en ninguna parte de la fuente (medido en todo el
+# volcado, 2019-2026).
+PALABRA = re.compile(r'\w+')
+
+
+def cuerpo_de_lectura(lineas):
+    """(cabeza, párrafos): la cita, la referencia y el título en rojo, y
+    luego el texto, párrafo a párrafo."""
+    rojo = next((i for i, ln in enumerate(lineas) if ln and ln[0][0]), None)
+    if rojo is None:
+        rojo = next((i for i, ln in enumerate(lineas) if ln), 0)
+    return lineas[:rojo + 1], [negro_de(ln) for ln in lineas[rojo + 1:]
+                               if negro_de(ln)]
+
+
+def palabras_con_sitio(pars):
+    """Cada palabra de los párrafos, en su clave, con su párrafo y dónde
+    empieza y acaba en él."""
+    salida = []
+    for n, t in enumerate(pars):
+        for m in PALABRA.finditer(t):
+            k = clave(m.group(0))
+            if k:
+                salida.append((k, n, m.start(), m.end()))
+    return salida
+
+
+class Lecturas:
+    """Las lecturas del Oficio de la fuente, enteras, para hallar dentro de
+    una de ellas la que el tomo da más corta."""
+
+    def __init__(self, libros):
+        self.lecturas = []                   # (palabras con sitio, párrafos, dónde)
+        self.indice = defaultdict(set)
+        vistos = set()
+        for nombre, libro in libros:
+            for k, v in libro.items():
+                if not re.search(r'/lectura[12]\b', k):
+                    continue
+                for ls in [v['lineas']] + [x['lineas']
+                                           for x in v.get('variantes', [])]:
+                    _, pars = cuerpo_de_lectura(ls)
+                    j = '\n'.join(pars)
+                    if not pars or j in vistos:
+                        continue
+                    vistos.add(j)
+                    ws = palabras_con_sitio(pars)
+                    n = len(self.lecturas)
+                    self.lecturas.append((ws, pars, f'{nombre}: {k}'))
+                    for tr in tripletas([w[0] for w in ws]):
+                        self.indice[tr].add(n)
+
+    def dentro(self, lineas):
+        """Las líneas del tomo con el texto de la fuente, y dónde estaba; o
+        None si la fuente no lo tiene entero.
+
+        Primero, en una sola lectura de la fuente. Si no, en dos o tres
+        trozos seguidos, frase a frase, de lecturas distintas: la del Común
+        de pastores para un obispo (Tito 1, 7-11; 2, 1-8) son dos días
+        seguidos de la semana XXI del año II, el domingo (Tito 1, 1-16) y el
+        lunes (Tito 2, 1—3, 2). Si alguna frase no está, nada."""
+        cabeza, pars = cuerpo_de_lectura(lineas)
+        una = self.tramo(pars)
+        if una:
+            return cabeza + a_parrafos(una[0]), una[1]
+        frases = [f for t in pars for f in FRASE.split(t) if f.strip()]
+        if not frases:
+            return None
+        trozos, i = [], 0
+        while i < len(frases):
+            for j in range(len(frases), i, -1):
+                hecho = self.tramo([' '.join(frases[i:j])], minimo=10)
+                if hecho:
+                    break
+            else:
+                return None
+            trozos.append(hecho)
+            i = j
+            if len(trozos) > 3:
+                return None
+        return (cabeza + a_parrafos([t for ps, _ in trozos for t in ps]),
+                ' + '.join(d for _, d in trozos))
+
+    def tramo(self, pars, minimo=20):
+        """(párrafos con la letra de la fuente, dónde) si una sola lectura de
+        la fuente contiene estos párrafos enteros, de frase a frase."""
+        pw = palabras_con_sitio(pars)
+        p = [x[0] for x in pw]
+        trs = tripletas(p)
+        if len(trs) < minimo:
+            return None
+        votos = Counter()
+        for tr in trs:
+            for n in self.indice.get(tr, ()):
+                votos[n] += 1
+        for n, c in sorted(votos.items(), key=lambda x: (-x[1], x[0]))[:5]:
+            if c / len(trs) < 0.85:
+                break
+            ws, spars, donde = self.lecturas[n]
+            w = [x[0] for x in ws]
+            bloques = [b for b in difflib.SequenceMatcher(
+                None, p, w, autojunk=False).get_matching_blocks() if b.size >= 3]
+            if not bloques or sum(b.size for b in bloques) < 0.85 * len(p):
+                continue
+            a0, b0, _ = bloques[0]
+            a1, b1, s1 = bloques[-1]
+            if a0 > 3 or len(p) - (a1 + s1) > 3:
+                continue
+            ini, fin = b0, b1 + s1 + (len(p) - a1 - s1)
+            if fin > len(w) or fin - ini > 1.15 * len(p):
+                continue
+            # lo que el tomo pone delante y la fuente no: el «Querido
+            # hermano:» con que empieza una lectura, el «Pero» que la cose
+            incipit = (pars[0][:pw[a0][2]].strip()
+                       if a0 and pw[a0][1] == 0 else '')
+            hecho = recorta(ws, spars, ini, fin, incipit)
+            if hecho:
+                return hecho, donde
+        return None
+
+
+# las frases de un párrafo, para buscar por trozos
+FRASE = re.compile(r'(?<=[.!?»])\s+(?=[«¿¡"“A-ZÁÉÍÓÚÑ])')
+
+
+def a_parrafos(textos):
+    return [ln for t in textos for ln in ([], [[0, t]])]
+
+
+def recorta(ws, pars, ini, fin, incipit=''):
+    """Los párrafos de la palabra `ini` a la `fin` (sin incluirla), si el
+    tramo empieza y acaba en frase; si no, None.
+
+    El versículo con que abre el tomo puede empezar en la fuente con un nexo
+    que, al empezar la lectura, se calla («En cambio, el que se entrega de
+    lleno…», Si 39, 1, que el tomo empieza «El que se entrega…»): vale si son
+    tres palabras a lo sumo, y la lectura empieza donde el tomo, con lo que
+    el tomo pone delante (`incipit`). Y el último puede acabar en punto y
+    coma, porque la frase sigue en el versículo siguiente: ahí se cierra con
+    punto."""
+    _, p0, c0, _ = ws[ini]
+    _, p1, _, c1 = ws[fin - 1]
+    antes = pars[p0][:c0].rstrip()
+    if antes and not re.search(r'[.:;!?»”"]$', antes):
+        corte = max((m.end() for m in re.finditer(r'[.:;!?»”"]\s', antes)),
+                    default=0)
+        if len(PALABRA.findall(antes[corte:])) > 3:
+            return None
+    tras = re.match(r'[.!?…]+[»”"]?|[;:](?=\s)', pars[p1][c1:])
+    if not tras and pars[p1][c1:].strip():
+        return None
+    cierre = tras.group(0) if tras else ''
+    c1 += len(cierre)
+    salida = []
+    for n in range(p0, p1 + 1):
+        t = pars[n][c0 if n == p0 else 0:c1 if n == p1 else None].strip()
+        if t:
+            salida.append(t)
+    if not salida:
+        return None
+    primera = salida[0]
+    if incipit and not incipit.endswith((':', '.')):
+        # «Pero» + «Tú enseña…»: la mayúscula era la de empezar frase, y la
+        # palabra se escribe con minúscula en otra parte de la lectura
+        m = PALABRA.match(primera)
+        if m and re.search(r'\b' + re.escape(m.group(0).lower()) + r'\b',
+                           ' '.join(pars)):
+            primera = primera[0].lower() + primera[1:]
+    else:
+        primera = primera[0].upper() + primera[1:]
+    salida[0] = (incipit + ' ' + primera) if incipit else primera
+    if cierre in (';', ':'):
+        salida[-1] = salida[-1][:-1] + '.'
+    return salida
 
 
 def quita_aleluya(t):
@@ -528,6 +893,38 @@ def formas_del_tiempo(libro, podado, en_pascua, fuera_de_pascua):
         if podado[k].get('f'):
             p['f'] = podado[k]['f']
     return pascua, cuenta
+
+
+# Las preces de Vísperas del Común de mártires son cada una una sola frase
+# —«Te damos gracias, Señor, … porque nos amaste hasta el extremo»—, y el
+# libro mexicano las imprime de corrido: ni las parte en petición y respuesta
+# ni sangra la segunda mitad. La fuente las da en dos renglones, como todas,
+# y así las pintaba la app. Las de Laudes («Por la intercesión de los santos
+# mártires…») sí van partidas, como las demás.
+COMUNES_DE_MARTIRES = ('un martir', 'varios martires')
+
+
+def invitacion_de(lineas):
+    """El primer renglón de unas preces: la invitación, que las nombra."""
+    return next((negro_de(ln) for ln in lineas if negro_de(ln)), '')
+
+
+def de_corrido(lineas):
+    """Cada petición de dos renglones (un bloque entre renglones en blanco,
+    de texto negro) hecha uno solo."""
+    salida, i = [], 0
+    while i < len(lineas):
+        ln = lineas[i]
+        sig = lineas[i + 1] if i + 1 < len(lineas) else None
+        if (ln and sig and (i == 0 or not lineas[i - 1])
+                and (i + 2 >= len(lineas) or not lineas[i + 2])
+                and not any(r for r, _ in ln + sig)):
+            salida.append([[0, negro_de(ln) + ' ' + negro_de(sig)]])
+            i += 2
+            continue
+        salida.append(ln)
+        i += 1
+    return salida
 
 
 def unifica_santos(santoral):
@@ -901,6 +1298,7 @@ def main():
     fuente = carga('dias_fuente.json')
     resenas = carga('resenas.json', opcional=True) or {}
     pdf = carga('pdf_santoral.json', opcional=True) or []
+    pdf_comunes = carga('pdf_comunes.json', opcional=True) or {}
     bienal = carga('bienal.json', opcional=True) or {}
 
     # Un mismo santo puede salir en la fuente con dos nombres que sólo
@@ -1108,7 +1506,11 @@ def main():
         if cel and m:
             comun_voto[nombre_unico.get(clave(cel), clave(cel))][
                 clave(m.group(1))] += 1
-    nombres_comunes = sorted({k.split('/', 1)[0] for k in comunes})
+    # los de la fuente y los que sólo trae entero el tomo IV (el de la
+    # dedicación, el de un santo papa, el de santos varones a secas…)
+    nombres_comunes = sorted({k.split('/', 1)[0] for k in comunes}
+                             | (set(DEL_TOMO) | set(pdf_comunes)
+                                if pdf_comunes else set()))
 
     def comunes_de(nombre):
         nombre = re.sub(r'\s+salterio\s+[ivx]+$', '', nombre)
@@ -1173,10 +1575,198 @@ def main():
     # La traducción que manda es la de la fuente: antes de usar un texto del
     # PDF se busca en todo el libro, con sus variantes, y si está se usa el
     # de la fuente aunque difiera en alguna palabra.
+    # (con las lecturas de los dos años del ciclo bienal: la del año que no
+    # quedó como canónica en `tiempo` sólo está en `bienal.json`, y la de los
+    # doctores, Si 39, es la del jueves XXIX del año II)
+    del_bienal = {f'{k} ({a})': v for k, por in bienal.items()
+                  for a, v in por.items()}
     equiv = Equivalencias([('santoral', santoral), ('comunes', comunes),
                            ('tiempo', tiempo), ('salterio', salterio),
-                           ('ordinario', ordinario)])
+                           ('ordinario', ordinario), ('bienal', del_bienal)])
+    lecturas = Lecturas([('santoral', santoral), ('comunes', comunes),
+                         ('tiempo', tiempo), ('bienal', del_bienal)])
     hallados = []                     # (celebración, sección, dónde estaba)
+
+    def busca_en_fuente(cl, lineas):
+        """El texto de la fuente que es éste del PDF, con la forma de lo que
+        da `Equivalencias.busca` —(familia, rótulo, líneas, dónde)—; si es
+        una lectura del Oficio que la fuente tiene dentro de otra más larga,
+        esos versículos con la cabeza del PDF; o None."""
+        h = equiv.busca(cl, lineas)
+        if h or cl not in ('lectura1', 'lectura2'):
+            return h
+        d = lecturas.dentro(lineas)
+        return ('lectura', None, d[0], d[1] + ' (sus versículos)') if d \
+            else None
+
+    # --- los comunes enteros, del tomo IV -----------------------------------
+    # De un común la fase 3 sólo sabe lo que dos santos distintos rezaron con
+    # él, que es lo de las memorias. Lo de las fiestas —la salmodia, las
+    # lecturas del Oficio, la antífona del Benedictus, la lectura breve de
+    # la Hora intermedia— lo trae el tomo IV (fase 3b, `pdf_comunes.json`), y
+    # se completa con él cada común, sección por sección, sólo donde la
+    # fuente no da nada. Cada texto se busca antes en la fuente, como los de
+    # los santos; la salmodia, entera si la fuente la rezó alguna vez con
+    # esas antífonas, y si no, salmo por salmo.
+    salmodias = Salmodias([('santoral', santoral), ('comunes', comunes),
+                           ('tiempo', tiempo), ('salterio', salterio)])
+    comunes_tomo, del_tomo = {}, []      # (clave, dónde estaba, o None: PDF)
+
+    def salmodia_del_tomo(hora, p):
+        ants_pdf = p.get('ant') or []
+        if not ants_pdf:
+            return None, None
+        sin_al = not any(ALELUYA.search(a) for a in ants_pdf)
+        entera = salmodias.entera(hora, ants_pdf)
+        if entera:
+            ls, donde = entera
+            return {'r': 'SALMODIA',
+                    'l': sin_pascua('salmodia', hora, ls) if sin_al else ls}, \
+                donde
+        pdf = False
+        ants = []
+        for a in ants_pdf:
+            h = equiv.antifona(a)
+            ants.append(quita_aleluya(h[0]) if h and sin_al else
+                        h[0] if h else a)
+            pdf = pdf or not h
+        de = p.get('de') or {}
+        if de.get('salterio'):
+            base = salterio.get(f'Ordinario/{de["salterio"]}/{hora}')
+            bloques = bloques_de_salmos(base['lineas']) if base else []
+        else:
+            bloques, ultimo = [], ''
+            for tr in p.get('tramos') or []:
+                tit = ' '.join(tr['tit'])
+                if tr['tit'] and re.fullmatch(r'[IV]+', tr['tit'][0]):
+                    tit = (ultimo + ' ' + tit).strip()
+                elif tr['tit']:
+                    ultimo = tr['tit'][0]
+                hallado = salmodias.salmo(tr['l'])
+                if hallado:
+                    bloques.append(hallado[0])
+                else:
+                    pdf = True
+                    bloques.append([[[1, tit]], []] + tr['l'] + [[]]
+                                   + (salmodias.gloria or []))
+        if not bloques or (len(ants) > 1 and len(ants) != len(bloques)):
+            return None, None
+        l = [[]]
+        for i, b in enumerate(bloques):
+            a = ants[i] if len(ants) > 1 else ants[0]
+            if len(ants) > 1 or i == 0:
+                l += [[[1, f'Ant {i + 1}. '], [0, a]], []]
+            l += b + [[]]
+            if len(ants) > 1 or i == len(bloques) - 1:
+                l += [[[1, 'Ant. '], [0, a]], []]
+        verso = p.get('verso') or []
+        if len(verso) == 2:
+            v = negro_de(verso[0])
+            h = salmodias.verso(v)
+            if h:
+                vv, rr = h[0], h[1]
+                if sin_al and not ALELUYA.search(v):
+                    vv, rr = (cambia_texto(x, quita_aleluya) for x in (vv, rr))
+                l += [vv, rr]
+            else:
+                pdf = True
+                l += verso
+        while l and not l[-1]:
+            l.pop()
+        c = {'r': 'SALMODIA', 'l': l}
+        if pdf:
+            c['f'] = 'pdf'
+        return c, None
+
+    def pieza_del_tomo(hora, cl, p):
+        """Una pieza de un común del tomo, con la letra de la fuente si la
+        tiene en otra parte: (pieza, dónde estaba) o (pieza con la marca del
+        PDF, None)."""
+        if cl == 'salmodia':
+            return salmodia_del_tomo(hora, p)
+        sin_al = 'aleluya' not in clave(json.dumps(p, ensure_ascii=False))
+        if cl in ('cantico_evangelico', 'invitatorio'):
+            h = equiv.antifona(p['ant'][0])
+            ant = h[0] if h else p['ant'][0]
+            if h and sin_al:
+                ant = quita_aleluya(ant)
+            if cl == 'invitatorio':
+                c = {'r': 'INVITATORIO', 'l': [[], [[1, 'Ant. '], [0, ant]]]}
+                if not h:
+                    c['f'] = 'pdf'
+            else:
+                c = cantico_con(hora, ant)
+                if c and h:
+                    del c['f']
+            return c, (h[1] if h else None)
+        h = busca_en_fuente(cl, p['l'])
+        if h:
+            ls = h[2]
+            if sin_al:
+                ls = [[[r, quita_aleluya(t) if not r else t] for r, t in ln]
+                      for ln in ls]
+            return {'r': h[1] or p['r'], 'l': ls}, h[3]
+        return {'r': p['r'], 'l': p['l'], 'f': 'pdf'}, None
+
+    def elige_variante(lista, prefiere, ya=None):
+        """De las variantes de una sección, la de este común: la que pide,
+        la que ya se eligió para su lectura (el responsorio va con ella), la
+        general; o None si sólo hay variantes para otros (la lectura de una
+        santa casada no es la de cualquier santa)."""
+        por_v = {x['v']: x for x in lista}
+        for v in ((ya,) if ya is not None else ()) + tuple(prefiere):
+            if v in por_v:
+                return por_v[v]
+        if '' in por_v:
+            return por_v['']
+        x = lista[0]
+        return x if not re.search(ESPECIALES, x['v']) else None
+
+    for nombre in sorted(set(DEL_TOMO) | set(pdf_comunes)):
+        de, prefiere = DEL_TOMO.get(nombre, (nombre, ()))
+        tomo = (pdf_comunes.get(de) or {}).get('piezas') or {}
+        for hora, cls in SECCIONES_DEL_TOMO.items():
+            elegida = {}
+            for cl in cls:
+                lista = tomo.get(f'{hora}/{cl}')
+                if not lista:
+                    continue
+                lectura = LECTURA_DE.get(cl)
+                x = elige_variante(lista, prefiere, elegida.get(lectura))
+                if not x:
+                    continue
+                elegida[cl] = x['v']
+                destinos = (['oficio/invitatorio', 'laudes/invitatorio']
+                            if hora == 'invitatorio' else [f'{hora}/{cl}'])
+                destinos = [d for d in destinos
+                            if f'{nombre}/{d}' not in comunes]
+                if not destinos:
+                    continue
+                c, donde = pieza_del_tomo(hora, cl, x['p'])
+                if not c:
+                    continue
+                for d in destinos:
+                    comunes_tomo[f'{nombre}/{d}'] = c
+                    del_tomo.append((f'{nombre}/{d}', donde
+                                     or ('PDF' if c.get('f') else 'fuente')))
+    # Los que el libro da «excepto lo siguiente» —el de doctores toma lo
+    # demás del de pastores; los religiosos, los educadores y los que se
+    # dieron a la caridad, del de santos varones— reciben de su común lo
+    # que les falta.
+    for nombre in sorted(pdf_comunes):
+        base = pdf_comunes[nombre].get('excepto')
+        if not base:
+            continue
+        for k in sorted(set(comunes) | set(comunes_tomo)):
+            com, resto = k.split('/', 1)
+            propia = f'{nombre}/{resto}'
+            if com != base or propia in comunes or propia in comunes_tomo:
+                continue
+            comunes_tomo[propia] = comunes_tomo.get(k) or poda({k: comunes[k]})[k]
+            del_tomo.append((propia, f'del Común de {base}'))
+    print(f'{len(comunes_tomo)} piezas de los comunes completadas con el '
+          f'tomo IV ({sum(1 for _, d in del_tomo if d == "PDF")} con la letra '
+          f'del PDF)', flush=True)
 
     def pieza_del_pdf(md, santo, k, p, titulo):
         hora, cl = k.split('/')
@@ -1184,17 +1774,26 @@ def main():
         # firme. Aleluya.»): si el PDF no lo trae, el santo cae fuera de
         # Pascua y el aleluya sobra.
         sin_aleluya = 'aleluya' not in clave(json.dumps(p, ensure_ascii=False))
-        if cl == 'cantico_evangelico':
+        if cl in ('cantico_evangelico', 'invitatorio'):
             h = equiv.antifona(p['ant'][0])
             ant = h[0] if h else p['ant'][0]
             if h and sin_aleluya:
                 ant = quita_aleluya(ant)
-            c = cantico_con(hora, ant)
+            if cl == 'invitatorio':
+                # sólo la antífona: la app pone la apertura y el salmo 94
+                c = {'r': 'INVITATORIO', 'l': [[], [[1, 'Ant. '], [0, ant]]],
+                     'f': 'pdf'}
+                for h_ in ('oficio', 'laudes'):
+                    extra[f'{md}/{santo}/{h_}/invitatorio'] = c
+            else:
+                c = cantico_con(hora, ant)
             if c and h:
                 del c['f']
                 hallados.append((titulo, k, h[1]))
+            if cl == 'invitatorio':
+                return
         else:
-            h = equiv.busca(cl, p['l'])
+            h = busca_en_fuente(cl, p['l'])
             if h:
                 ls = h[2]
                 if sin_aleluya:
@@ -1214,6 +1813,25 @@ def main():
         return c
 
     HORAS_PDF = ('oficio', 'laudes', 'visperas')
+    BREVES_INTERMEDIA = ('tercia/lectura_breve', 'sexta/lectura_breve',
+                         'nona/lectura_breve')
+
+    def comun_del_pdf(e):
+        """Los comunes que da el tomo para una celebración: los de la
+        cabecera («Del Común de pastores…») o, si no la tiene, los que nombra
+        al remitir la salmodia («Los salmos y el cántico se toman del Común
+        de santos varones», san Juan Diego)."""
+        lista = comunes_del_pdf(e.get('comun'), e['titulo'], nombres_comunes)
+        for p in ([] if lista else e['piezas'].values()):
+            de = (p.get('de') or {}).get('comun')
+            if de:
+                lista = comunes_del_pdf(de, e['titulo'], nombres_comunes)
+                if lista:
+                    break
+        return lista
+
+    comunes_del_tomo_pdf = []           # (celebración, comunes) del tomo
+    comun_de_fuente = set(comun_de_santo)   # los que dijo la cabecera
     # (mm-dd, santo, entrada del PDF, título) de cada celebración, para la
     # pasada de la salmodia, que va después y necesita las dos ramas
     con_pdf = []
@@ -1237,8 +1855,12 @@ def main():
                 # (la antífona del Benedictus y del Magníficat viene sin
                 # texto, sólo la antífona: también va, que se arma con el
                 # cántico de la fuente; antes se quedaba fuera)
-                if k.split('/')[0] in HORAS_PDF and (
-                        'l' in p or (k.endswith('/cantico_evangelico')
+                # (y de la Hora intermedia, la lectura breve, que en las
+                # fiestas es propia; y la antífona del invitatorio)
+                if (k.split('/')[0] in HORAS_PDF or k in BREVES_INTERMEDIA
+                        or k == 'invitatorio/invitatorio') and (
+                        'l' in p or (k.endswith(('/cantico_evangelico',
+                                                 '/invitatorio'))
                                      and p.get('ant'))):
                     pieza_del_pdf(md, santo, k, p, m["t"])
             # la reseña, también primero la de la fuente si la dio en otra
@@ -1250,8 +1872,7 @@ def main():
             elif e.get('resena'):
                 extra[f'{md}/{santo}/oficio/resena'] = resena_pieza(
                     e['resena'], True)
-            lista = comunes_del_pdf(e.get('comun'), e['titulo'],
-                                    nombres_comunes)
+            lista = comun_del_pdf(e)
             if lista:
                 comun_de_santo[santo] = lista
             santo_de_slug[slug] = santo
@@ -1264,6 +1885,18 @@ def main():
             casillas[santo].most_common(1)[0][0]
         if e:
             con_pdf.append((md_s, santo, e, m['t']))
+        # El común, si la cabecera de la fuente no lo dijo nunca: el que dice
+        # el tomo (santa Águeda, san Felipe Neri, san Juan Bautista de la
+        # Salle, santa Rosa de Lima…). Sin él, lo que no tienen propio salía
+        # siempre de la feria, también en las fiestas.
+        if santo not in comun_de_santo:
+            # y si el tomo no la trae ese día (santa Águeda, que en México
+            # pasó al 4 de febrero), por el título, como las de México
+            lista = comun_del_pdf(e) if e else comunes_por_titulo(
+                m['t'], nombres_comunes)
+            if lista:
+                comun_de_santo[santo] = lista
+                comunes_del_tomo_pdf.append((m['t'], lista))
         # la reseña: la de la fuente, y si no la dio, la del PDF
         r = resenas.get(f'{md_s}/{santo}') or next(
             (v for k, v in resenas.items() if k.endswith('/' + santo)), None)
@@ -1277,12 +1910,26 @@ def main():
         # santo ni su común las tienen
         if not e:
             continue
-        for k in ('oficio/lectura2', 'oficio/responsorio2', 'oficio/oracion',
-                  'laudes/oracion', 'visperas/oracion'):
+        claves = ['oficio/lectura2', 'oficio/responsorio2', 'oficio/oracion',
+                  'laudes/oracion', 'visperas/oracion']
+        # Una fiesta lo toma todo de lo propio o del común, y la fuente, que
+        # la reza con el calendario argentino, a veces no la da entera: santa
+        # Rosa de Lima, el 30 de agosto, sin la lectura breve ni las preces
+        # de Laudes y Vísperas (las rezó el 23). Lo que le falta, del tomo.
+        if grado(m) in ('FIESTA', 'SOLEMNIDAD'):
+            claves += sorted(k for k, p in e['piezas'].items()
+                             if (k.split('/')[0] in HORAS_PDF
+                                 or k in BREVES_INTERMEDIA)
+                             and not k.endswith(('/salmodia', '/oracion'))
+                             and ('l' in p or p.get('ant')))
+        for k in claves:
             if k not in e['piezas']:
                 continue
-            tiene = f'{md_s}/{santo}/{k}' in santoral or any(
-                f'{c}/{k}' in comunes for c in comun_de_santo.get(santo, []))
+            # (el común sólo cuenta si la fuente dijo que rezaba con él: el
+            # que se le da ahora por el tomo no tapa lo propio del tomo)
+            tiene = f'{md_s}/{santo}/{k}' in santoral or (
+                santo in comun_de_fuente and any(
+                    f'{c}/{k}' in comunes for c in comun_de_santo[santo]))
             if tiene:
                 continue
             # la oración del santo es la misma en todas las horas: si la
@@ -1359,7 +2006,7 @@ def main():
             if c and h:
                 del c['f']
             return c, (h[1] if h else None)
-        h = equiv.busca(cl, p['l'])
+        h = busca_en_fuente(cl, p['l'])
         if h:
             return {'r': h[1] or p['r'], 'l': h[2]}, h[3]
         return {'r': p['r'], 'l': p['l'], 'f': 'pdf'}, None
@@ -1692,11 +2339,12 @@ def main():
                 ent['s'] = de['salterio']
             elif not tiene and de.get('comun'):
                 # «del Común de pastores»: los salmos del común, que los
-                # pone la fuente; sólo los comunes cuya salmodia se midió
+                # pone la fuente o el tomo; sólo los comunes que la tienen
                 ent['c'] = next(
                     (c for c in comunes_del_pdf(de['comun'], titulo,
                                                 nombres_comunes)
-                     if f'{c}/{hora}/salmodia' in comunes), None)
+                     if f'{c}/{hora}/salmodia' in comunes
+                     or f'{c}/{hora}/salmodia' in comunes_tomo), None)
                 if not ent['c']:
                     del ent['c']
             elif tiene and de.get('salterio') and ent.get('s') \
@@ -1783,7 +2431,7 @@ def main():
                 c = ({'r': propia['rotulo'], 'l': propia['lineas']} if propia
                      else {'r': p['r'], 'l': p['l'], 'f': 'pdf'})
             elif p.get('l'):
-                h = equiv.busca(cl, p['l'])
+                h = busca_en_fuente(cl, p['l'])
                 c = ({'r': h[1] or p['r'], 'l': h[2]} if h
                      else {'r': p['r'], 'l': p['l'], 'f': 'pdf'})
             if c:
@@ -1827,13 +2475,23 @@ def main():
         if (re.fullmatch(r'como en (las )?laudes\.?', texto, re.I)
                 and laudes in santoral_app and laudes != k):
             santoral_app[k] = santoral_app[laudes]
-    comunes_app = poda(comunes)
+    # lo de la fuente y, donde no dio nada, lo del tomo IV
+    comunes_app = dict(poda(comunes), **comunes_tomo)
     santoral_pascua, cuenta_sp = formas_del_tiempo(
         santoral, santoral_app,
         lambda k: de_quien(k) in cae_en_pascua,
         lambda k: de_quien(k) in cae_fuera)
     comunes_pascua, cuenta_cp = formas_del_tiempo(
         comunes, comunes_app, lambda k: True, lambda k: True)
+    # Las preces de Vísperas del Común de mártires, de corrido; y las de quien
+    # las toma de él, que se reconocen por su invitación.
+    invitaciones = {invitacion_de(c['l']) for k, c in comunes_app.items()
+                    if k.split('/')[0] in COMUNES_DE_MARTIRES
+                    and k.endswith('/visperas/preces')}
+    for tabla in (comunes_app, comunes_pascua, santoral_app, santoral_pascua):
+        for k, c in tabla.items():
+            if k.endswith('/preces') and invitacion_de(c['l']) in invitaciones:
+                c['l'] = de_corrido(c['l'])
 
     # El ciclo dominical: de las antífonas evangélicas que cambian con el
     # ciclo A, B o C, sólo los ciclos cuyo texto no es el que ya guarda
@@ -2089,6 +2747,25 @@ def main():
         f.write(f'\n   Halladas en la fuente ({len(hall)}):\n')
         for k, d in hall:
             f.write(f'     {k}  ←  {d}\n')
+        f.write('\n8. Los comunes, completados con el tomo IV\n' + '-' * 60
+                + '\nLo que la fuente no da de cada común y el tomo sí: la '
+                'salmodia, las lecturas\ndel Oficio, las antífonas del '
+                'Benedictus y del Magníficat, la lectura breve de\nla Hora '
+                'intermedia… Cada texto se buscó antes en la fuente; «PDF» es '
+                'que no\nestaba y va con la letra española.\n\n')
+        de_pdf = [k for k, d in del_tomo if d == 'PDF']
+        f.write(f'   Del PDF ({len(de_pdf)}):\n')
+        for k in de_pdf:
+            f.write(f'     {k}\n')
+        otros = [(k, d) for k, d in del_tomo if d != 'PDF']
+        f.write(f'\n   Halladas en la fuente o tomadas de su común '
+                f'({len(otros)}):\n')
+        for k, d in otros:
+            f.write(f'     {k}  ←  {d}\n')
+        f.write(f'\n   Celebraciones de la fuente cuyo común no decía la '
+                f'cabecera y dice el tomo ({len(comunes_del_tomo_pdf)}):\n')
+        for t, lista in comunes_del_tomo_pdf:
+            f.write(f'     {t}  →  {", ".join(lista)}\n')
 
 
 def casillas_de(santoral):

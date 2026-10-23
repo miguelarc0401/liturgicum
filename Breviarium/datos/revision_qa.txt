@@ -3,11 +3,11 @@ Revisión de las horas del 2026-10-22 al 2027-10-21, contra la fuente
 
 días de la fuente que rezan lo que la app pone ese día: 2555 de 2728
 secciones (celebración por omisión):
-    12844  igual
-     1639  sin_testigo
-      414  otra_opcion
-      190  parecido
-       90  distinto
+    12672  igual
+     1809  sin_testigo
+      418  otra_opcion
+      183  parecido
+       95  distinto
 
 Horas con secciones de menos o repetidas
 ----------------------------------------
@@ -49,12 +49,12 @@ Secciones que no dicen lo que su nombre dice
 
 Distintas de la fuente en un día igual
 ----------------------------------------
+  2026-11-22 completas himno [Domingo XXXIV del Tiempo Ordinario: Jesu] parecido 0.09 
+      app : Se inclina ya mi frente, sellado está el trabajo; Señor, tu pecho sea la gracia del descan
+      2019-11-24: Cristo, Señor de la noche, que disipas las tinieblas: mientras los cuerpos reposan, se tú nuestro centinela. D
   2026-12-07 completas oracion [San Ambrosio, obispo y doctor de la Igle] parecido 0.30 primeras vísperas
       app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
       2020-12-07: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
-  2026-12-08 completas oracion [La Inmaculada Concepción de la Santísima] parecido 0.29 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
-      2020-12-08: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
   2026-12-11 visperas himno [San Dámaso I, papa] parecido 0.10 primeras vísperas
       app : Como a Belén llegaste a dar a luz al Hijo, del Padre la sustancia, de tu carne vestido, al
       2020-12-11: Éste es el tiempo en que llegas, Esposo, tan de repente, que invitas a los que velan y olvidas a los que duerm
@@ -177,11 +177,8 @@ Distintas de la fuente en un día igual
       app : Al amparo del Altísimo no temo el espanto nocturno. Tú que habitas al amparo del Altísimo,
   2027-03-19 completas lectura_breve [San José, esposo de santa María Virgen] parecido 0.16 
       app : Verán el rostro del Señor, y tendrán su nombre en la frente. Y no habrá más noche, y no ne
-  2027-03-19 completas oracion [San José, esposo de santa María Virgen] parecido 0.17 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
-  2027-04-05 completas oracion [La Anunciación del Señor] parecido 0.25 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
-      2024-04-08: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2027-03-19 completas oracion [San José, esposo de santa María Virgen] parecido 0.24 
+      app : OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus sa
   2027-05-26 oficio resena [San Felipe Neri, presbítero] parecido 0.00 
       app : Nació en Florencia el año 1515; marchó a Roma y allí empezó a dedicarse al apostolado de l
   2027-05-26 visperas himno [San Felipe Neri, presbítero] parecido 0.10 primeras vísperas
@@ -208,8 +205,8 @@ Distintas de la fuente en un día igual
       app : Al amparo del Altísimo no temo el espanto nocturno. Tú que habitas al amparo del Altísimo,
   2027-05-27 completas lectura_breve [Solemnidad del Santísimo Cuerpo y Sangre] parecido 0.14 
       app : Verán el rostro del Señor, y tendrán su nombre en la frente. Y no habrá más noche, y no ne
-  2027-05-27 completas oracion [Solemnidad del Santísimo Cuerpo y Sangre] parecido 0.20 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
+  2027-05-27 completas oracion [Solemnidad del Santísimo Cuerpo y Sangre] parecido 0.29 
+      app : OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus sa
   2027-05-29 visperas salmodia [San Pablo VI, papa] parecido 0.23 primeras vísperas
       app : Suba mi oración, Señor, como incienso en tu presencia. Señor, te estoy llamando, ven de pr
   2027-05-29 visperas responsorio_breve [San Pablo VI, papa] parecido 0.36 primeras vísperas
@@ -237,15 +234,9 @@ Distintas de la fuente en un día igual
   2027-06-03 completas oracion [Santos Carlos Lwanga y compañeros, márti] parecido 0.10 primeras vísperas
       app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
       2019-06-27: OREMOS, Señor, Dios nuestro, concédenos un descanso tranquilo que restaure nuestras fuerzas, desgastadas ahora
-  2027-06-04 completas oracion [Solemnidad del Sagrado Corazón de Jesús] parecido 0.25 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
-      2019-06-28: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
   2027-06-23 completas oracion [Miércoles de la 12ª semana de Tiempo Ord] parecido 0.23 primeras vísperas
       app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
       2021-06-23: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
-  2027-06-24 completas oracion [El Nacimiento de san Juan Bautista] parecido 0.25 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
-      2021-06-24: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
   2027-06-28 completas salmodia [San Ireneo, obispo y mártir] parecido 0.19 primeras vísperas
       app : Ten piedad de mí, Señor, y escucha mi oración. Escúchame cuando te invoco, Dios, defensor 
       2021-06-28: Señor, Dios mío, de día te pido auxilio, de noche grito en tu presencia. Señor, Dios mío, de día te pido auxil
@@ -255,9 +246,33 @@ Distintas de la fuente en un día igual
   2027-06-28 completas oracion [San Ireneo, obispo y mártir] parecido 0.30 primeras vísperas
       app : OREMOS, Guárdanos, Señor, durante esta noche y haz que mañana, ya al clarear el nuevo día,
       2021-06-28: OREMOS, Señor, Dios todopoderoso: ya que con nuestro descanso vamos a imitar a tu Hijo que reposó en el sepulc
-  2027-06-29 completas oracion [Santos Pedro y Pablo, apóstoles] parecido 0.29 
-      app : OREMOS, Humildemente te pedimos, Señor, que después de haber celebrado en este día los mis
-      2021-06-29: OREMOS, Visita, Señor, esta habitación: aleja de ella las insidias del enemigo; que tus santos ángeles habiten
+  2027-07-22 oficio salmodia [Santa María Magdalena] parecido 0.21 
+      app : Abre la boca con sabiduría y su lengua enseña con bondad. El cielo proclama la gloria de D
+      2021-07-22: No fue su brazo el que les dio la victoria, sino tu diestra y la luz de tu rostro. ¡Oh Dios!, nuestros oídos l
+  2027-07-22 oficio lectura1 [Santa María Magdalena] parecido 0.06 
+      app : De la carta del apóstol san Pablo a los Colosenses 3, 1-17 Hermanos: Si habéis sido resuci
+      2021-07-22: Comienza el primer libro de los Reyes 1, 11-35; 2, 10-12 En aquellos días, dijo Natán a Betsabé, madre de Salo
+  2027-07-22 oficio responsorio [Santa María Magdalena] parecido 0.11 
+      app : Todos los que habéis sido bautizados en Cristo os habéis revestido de Cristo. Ya no hay di
+      2021-07-22: Hijas de Sión, salid a contemplar al rey Salomón con la diadema con que lo coronó su madre, en el día del gozo
+  2027-07-22 tercia lectura_breve [Santa María Magdalena] parecido 0.11 
+      app : Ga 6, 8 Lo que uno siembre, eso cosechará. El que siembre en su carne, de la carne cosecha
+      2021-07-22: Éste es el mandamiento de Dios: Que creamos en el nombre de su Hijo Jesucristo, y que nos amemos mutuamente co
+  2027-07-22 tercia oracion [Santa María Magdalena] parecido 0.15 
+      app : Dios nuestro, que quisiste que santa María Magdalena fuese la primera en recibir de tu Hij
+      2021-07-22: OREMOS, Señor Dios, que a la hora de tercia enviaste al Espíritu Santo sobre los apóstoles reunidos en oración
+  2027-07-22 sexta lectura_breve [Santa María Magdalena] parecido 0.16 
+      app : 1 Co 9, 26. 27a Yo corro, no como a la ventura; y ejerzo el pugilato, no como dando golpes
+      2021-07-22: Amad la justicia, los que juzgáis la tierra, pensad rectamente del Señor y con sencillez de corazón buscadlo. 
+  2027-07-22 sexta oracion [Santa María Magdalena] parecido 0.12 
+      app : Dios nuestro, que quisiste que santa María Magdalena fuese la primera en recibir de tu Hij
+      2021-07-22: OREMOS, Dios todopoderoso y eterno, ante ti no existe ni la oscuridad ni las tinieblas, haz, pues, brillar sob
+  2027-07-22 nona lectura_breve [Santa María Magdalena] parecido 0.13 
+      app : Flp 4, 8, 9b Todo lo que es verdadero, noble, justo, puro, amable, laudable, todo lo que e
+      2021-07-22: Después de habernos despojado de todo el peso y del equipaje que nos distraía, corramos también nosotros con f
+  2027-07-22 nona oracion [Santa María Magdalena] parecido 0.14 
+      app : Dios nuestro, que quisiste que santa María Magdalena fuese la primera en recibir de tu Hij
+      2021-07-22: OREMOS, Contempla, Señor, a tu familia en oración, y haz que imitando los ejemplos de paciencia de tu Hijo no 
   2027-07-27 nona salmodia [Martes de la 17ª semana de Tiempo Ordina] parecido 0.10 
       app : El Señor ha estado grande con nosotros, y estamos alegres. Cuando el Señor cambió la suert
       2020-07-28: Dichoso el que anda por los senderos del Señor. Dichoso el que, con vida intachable, camina en la voluntad del

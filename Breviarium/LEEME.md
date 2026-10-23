@@ -151,6 +151,7 @@ antes de fiarse de lo que sale.
 | `resenas.json` | la reseña biográfica de cada celebración | `mm-dd/santo` |
 | `pdf_santoral.json` | el Propio de los santos de los cuatro tomos en PDF | lista de entradas |
 | `pdf_tiempo.json` | las ferias de Navidad por fecha del tomo I (2 al 12 de enero) | `Navidad/@/2 de enero` → `hora/sección` |
+| `pdf_comunes.json` | los Oficios comunes enteros del tomo IV, con sus variantes («Para un santo obispo:») | `común` → `hora/sección` → variantes |
 | `antifonas.json` | las antífonas propias de una celebración | `mm-dd/santo/hora` |
 
 En las claves, *día* es el día de la semana (0 = domingo) y *sección* es
@@ -234,6 +235,25 @@ la fase 4 lo usa con un orden de preferencia estricto:
    santo cae fuera de Pascua, sin el aleluya);
 3. **el PDF**, sólo si no está en ninguna parte. Esos textos llevan la marca
    `f: "pdf"`, y la app los señala con un discreto «ed. española».
+
+**Los comunes enteros.** De un común, la fase 3 sólo sabe lo que rezaron
+con él dos santos distintos, y eso es lo de las memorias: el himno, la
+lectura breve, las preces. Lo que sólo se reza en las fiestas —la salmodia
+del Oficio, de Laudes y de Vísperas, las lecturas del Oficio, la antífona
+del Benedictus de un obispo, la lectura breve de la Hora intermedia— no lo
+midió nunca, porque la fuente es argentina y casi no tiene fiestas que lo
+tomen del común. San Rafael Guízar, que en México es fiesta y lo toma todo
+del Común de pastores, salía con la salmodia, las lecturas y el Benedictus
+de la feria. La fase 3b lee ahora también los Oficios comunes del tomo IV
+(`pdf_comunes.json`), cada sección con sus variantes, y la fase 4 completa
+cada común sólo donde la fuente no da nada, con el mismo orden de siempre:
+el texto de la fuente si está en otra parte (la salmodia de pastores, por
+ejemplo, la reza entera santo Toribio de Mogrovejo, que en Argentina es
+fiesta), y si no, el del tomo con su marca. Los salmos salen siempre de la
+fuente; del tomo, a lo sumo, las antífonas. Lo que se tomó de dónde queda en
+`pdf_usado.txt` (apartado 8). La Hora intermedia de una fiesta no toma del
+común más que la lectura breve: sus salmos y sus antífonas son los de la
+feria, salvo que la fiesta traiga las suyas (lo dice el Propio de cada una).
 
 El Misal no entra en esa preferencia. Unas pocas celebraciones del
 calendario de México (san Rafael Guízar, Nuestra Señora de Fátima…) no

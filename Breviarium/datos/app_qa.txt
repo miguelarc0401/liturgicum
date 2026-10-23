@@ -1,15 +1,15 @@
 Fase 4 — el libro de horas empaquetado para la app
 ==========================================================
 
-horas.json         22.6 MB
+horas.json         23.2 MB
 horas_dias.json     2.8 MB  15701 fechas
 
       77  casillas en ordinario
      760  casillas en salterio
    13537  casillas en tiempo
-    4944  casillas en santoral
-     196  casillas en comunes
-     190  santos con común conocido
+    4955  casillas en santoral
+     406  casillas en comunes
+     220  santos con común conocido
      735  lecturas del Oficio con texto propio del otro año del ciclo bienal
       21  celebraciones del calendario de México sin oficio en ninguna parte: con su común y la colecta del Misal mexicano
           Beato Sebastián de Aparicio, religioso  ->  santos varones para los santos religiosos
@@ -17,7 +17,7 @@ horas_dias.json     2.8 MB  15701 fechas
           Santa María Guadalupe García Zavala, virgen  ->  virgenes
           Nuestra Señora de Fátima  ->  santisima virgen maria
           San Juan Nepomuceno, presbítero y mártir  ->  un martir, pastores para un santo presbitero
-          San Pablo VI, papa  ->  pastores
+          San Pablo VI, papa  ->  pastores para un santo papa, pastores
           Nuestra Señora del Perpetuo Socorro  ->  santisima virgen maria
           Santa María de Jesús Sacramentado Venegas, virgen  ->  virgenes
           Santa Teresa Benedicta de la Cruz, virgen y mártir  ->  un martir, virgenes
@@ -36,7 +36,7 @@ horas_dias.json     2.8 MB  15701 fechas
      109  antífonas evangélicas del domingo con texto propio de otro ciclo (A, B, C)
      871  fechas que van por fecha (17-24 de diciembre, octava de Navidad, 2 de enero al Bautismo)
      127  piezas del santoral con su forma de Pascua: 41 con aleluya todo el año, que es el de Pascua, 3 forma pascual medida en la fuente, 67 forma pascual por la regla del libro, 48 sólo pascual: forma de todo el año sin el aleluya
-      91  piezas de los comunes con su forma de Pascua: 19 forma pascual medida en la fuente, 72 forma pascual por la regla del libro
+     245  piezas de los comunes con su forma de Pascua: 2 con aleluya todo el año, que es el de Pascua, 19 forma pascual medida en la fuente, 224 forma pascual por la regla del libro, 2 sólo pascual: forma de todo el año sin el aleluya
        0  salmodias con antífonas propias en su forma de Pascua
      111  días del salterio con la salmodia del día de la Hora intermedia; complementaria de nona, sexta, tercia
           ? Navidad/1/5: la del día sólo en otros años (va entera)

@@ -1892,14 +1892,7 @@
 [
 [
 1,
-"NO TENÍA AÚN EDAD DE SER CONDENADA, PERO ESTABA YA MADURA PARA LA"
-]
-],
-[],
-[
-[
-0,
-"VICTORIA"
+"NO TENÍA AÚN EDAD DE SER CONDENADA, PERO ESTABA YA MADURA PARA LA VICTORIA"
 ]
 ],
 [],
@@ -3016,6 +3009,12 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Aclamemos al Señor, en esta fiesta de la conversión del Maestro de los gentiles."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -5016,6 +5015,13 @@
 "Dios todopoderoso y eterno, te rogamos humildemente que, así como tu Hijo unigénito, revestido de nuestra humanidad, ha sido presentado hoy en el templo, nos concedas, de igual modo, a nosotros la gracia de ser presentados delante de ti con el alma limpia. Por nuestro Señor Jesucristo. La conclusión de la Hora como en el Ordinario."
 ]
 ]
+]
+},
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Mirad, el Señor llega a su templo santo, venid, adorémosle.",
+"El salmo invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23"
 ]
 },
 "oficio/himno": {
@@ -8719,6 +8725,13 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, rey de los apóstoles.",
+"El salmo invitatorio como en el Ordinario, Salmo 94; Salmo 99; Salmo 66; Salmo 23"
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -8771,61 +8784,20 @@
 0,
 "por todo el curso de incontables siglos. Amén."
 ]
+]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Dijo Pedro: «Dios resucitó a Jesús, a quien vosotros matasteis y lo exaltó en su gloria.»",
+"El Señor ha enviado a su ángel y me ha librado de las garras de Herodes.",
+"Una nube brillante los envolvió y se oyó la voz del Padre: «Éste es mi Hijo muy amado.»"
 ],
-[],
-[
-[
-0,
-"Ant. 1. Dijo Pedro: «Dios resucitó a Jesús, a quien vosotros matasteis y lo exaltó en su"
-]
-],
-[
-[
-0,
-"gloria.»"
-]
-],
-[],
-[
-[
-0,
-"Los salmos se toman del Común de apóstoles."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. El Señor ha enviado a su ángel y me ha librado de las garras de Herodes."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Una nube brillante los envolvió y se oyó la voz del Padre: «Éste es mi Hijo muy"
-]
-],
-[
-[
-0,
-"amado.»"
-]
-],
-[],
-[
-[
-0,
-"V. Señor, ¿a quién vamos a ir?"
-]
-],
-[
-[
-0,
-"R. Tú tienes palabras de vida eterna."
-]
-]
-]
+"de": {
+"comun": "Los salmos se toman del Común de apóstoles."
+},
+"rub": "Los salmos se toman del Común de apóstoles."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -9206,6 +9178,18 @@
 ],
 []
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor dijo a Simón: «Ten ánimo, de hoy en adelante vas a ser pescador de hombres.»",
+"«Tú eres el Mesías, el Hijo de Dios vivo.» «Bienaventurado eres tú, Simón Pedro.»",
+"El Señor dijo a Pedro: «Yo te daré las llaves del reino de los cielos.»"
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la semana I del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Hch 15, 7b-9",
@@ -9669,6 +9653,18 @@
 ],
 []
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"«Pedro, ¿me amas?» «Sí, Señor, tú sabes que te amo.» «Apacienta mis ovejas.»",
+"Mientras Pedro estaba detenido en la cárcel, la Iglesia oraba incesantemente por él.",
+"Tú eres Pedro, y sobre esta piedra edificaré mi Iglesia."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de apóstoles."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE 1 Pe 1, 3-5",
@@ -11281,6 +11277,18 @@
 []
 ]
 },
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Jacob engendró a José, el esposo de María, de la cual nació Jesús, llamado Cristo. (T. P. Aleluya.)",
+"El ángel Gabriel fue enviado por Dios a una ciudad de Galilea llamada Nazaret, a una virgen desposada con un hombre llamado José, de la estirpe de David; la virgen se llamaba María. (T. P. Aleluya.)",
+"María, madre de Jesús, estaba desposada con José y, antes de vivir juntos, resultó que ella esperaba un hijo por obra del Espíritu Santo. (T. P. Aleluya.)"
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de los santos varones."
+},
+"rub": "Los salmos y el cántico se toman del Común de los santos varones."
+},
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE Col 3, 23-24",
 "l": [
@@ -11547,6 +11555,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Aclamemos a Cristo, el Señor, en la solemnidad de san José. (T. P. Aleluya.)"
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -11650,73 +11664,20 @@
 0,
 "amor del gran Amor que nos da el Hijo. Amén."
 ]
+]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Un ángel del Señor se apareció a José, y le dijo: «José, hijo de David, no tengas reparo en llevarte a María, tu mujer. Dará a luz un hijo, y tú le pondrás por nombre Jesús.» (T. P. Aleluya.)",
+"Cuando José se despertó, hizo lo que le había mandado el ángel del Señor, y llevó a casa a María, su mujer. (T. P. Aleluya.)",
+"José subió desde Nazaret a la ciudad de David, que se llama Belén, para inscribirse con María. (T. P. Aleluya.)"
 ],
-[],
-[
-[
-0,
-"Ant. 1. Un ángel del Señor se apareció a José, y le dijo: «José, hijo de David, no tengas"
-]
-],
-[
-[
-0,
-"reparo en llevarte a María, tu mujer. Dará a luz un hijo, y tú le pondrás por nombre"
-]
-],
-[
-[
-0,
-"Jesús.» (T. P. Aleluya.)"
-]
-],
-[],
-[
-[
-0,
-"Los salmos se toman del Común de los santos varones."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Cuando José se despertó, hizo lo que le había mandado el ángel del Señor, y llevó"
-]
-],
-[
-[
-0,
-"a casa a María, su mujer. (T. P. Aleluya.)"
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. José subió desde Nazaret a la ciudad de David, que se llama Belén, para inscribirse"
-]
-],
-[
-[
-0,
-"con María. (T. P. Aleluya.)"
-]
-],
-[],
-[
-[
-0,
-"V. El justo germinará como una azucena. (T. P. Aleluya.)"
-]
-],
-[
-[
-0,
-"R. Y florecerá eternamente ante el Señor. (T. P. Aleluya.)"
-]
-]
-]
+"de": {
+"comun": "Los salmos se toman del Común de los santos varones."
+},
+"rub": "Los salmos se toman del Común de los santos varones."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -12120,6 +12081,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Los pastores fueron corriendo y encontraron a María y a José, y al niño acostado en el pesebre. (T. P. Aleluya.)",
+"José y María, la madre de Jesús, estaban admirados de lo que se decía de él, y Simeón los bendijo. (T. P. Aleluya.)",
+"José se levantó, cogió al niño y a su madre, de noche, se fue a Egipto, y se quedó hasta la muerte de Herodes. (T. P. Aleluya.)"
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la semana I del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE 2 S 7, 28-29",
 "l": [
@@ -12506,6 +12479,14 @@
 "como en las Laudes."
 ]
 ]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Los padres de Jesús lo encontraron en el templo, sentado en medio de los maestros, escuchándolos y haciéndoles preguntas. (T. P. Aleluya.) Los salmos se toman del Común de santos varones.",
+"Le dijo su madre a Jesús: «Hijo, ¿por qué nos has tratado así? Mira que tu padre y yo te buscábamos angustiados.»",
+"Jesús bajó con ellos a Nazaret y siguió bajo su autoridad. (T. P. Aleluya.)"
 ]
 },
 "visperas/lectura_breve": {
@@ -13366,6 +13347,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a la Palabra que se hizo carne. (T. P. Aleluya.)"
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -13929,6 +13916,18 @@
 ],
 []
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El ángel Gabriel fue enviado a María Virgen, desposada con José. (T. P. Aleluya.)",
+"Bendita tú entre las mujeres, y bendito el fruto de tu vientre. (T. P. Aleluya.)",
+"La Virgen concibió por la palabra, virgen permaneció, virgendio a luz al Salvador. (T. P. Aleluya.)"
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la semana I del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Flp 2, 6-7",
@@ -16691,6 +16690,12 @@
 "comun": "Del Común de Apóstoles en tiempo pascual, excepto lo siguiente: Los himnos latinos de san Marcos, evangelista, se hallan en el Apéndice IV.",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, que nos habla por medio del Evangelio. Aleluya."
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -17424,6 +17429,12 @@
 "comun": "Del Común de pastores o de doctores de la Iglesia.",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Dios de toda sabiduría, al Señor de toda verdad. Aleluya"
+]
+},
 "oficio/salmodia": {
 "r": "SALMODIA",
 "ant": [
@@ -17779,38 +17790,20 @@
 0,
 "pan y alegría de mi juventud. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"La plenitud de la sabiduría es temer al Señor. Aleluya.",
+"No has pedido riquezas, ni bienes, sino sabiduría e inteligencia. Aleluya.",
+"Dios concedió al hombre inteligencia para que se gloríe y no cese su actividad. Aleluya."
 ],
-[
-[
-0,
-"Ant. 1. La plenitud de la sabiduría es temer al Señor. Aleluya."
-]
-],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la I semana del salterio"
-]
-],
-[
-[
-0,
-"Ant. 2. No has pedido riquezas, ni bienes, sino sabiduría e inteligencia. Aleluya."
-]
-],
-[
-[
-0,
-"Ant. 3. Dios concedió al hombre inteligencia para que se gloríe y no cese su actividad."
-]
-],
-[
-[
-0,
-"Aleluya."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del salterio"
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Si 47, 14-17",
@@ -18115,6 +18108,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"En caso de que alguno de vosotros se vea falto de sabiduría, que se la pida a Dios, que da generosamente. Aleluya.",
+"Mi señor es prudente como el ángel de Dios, sabe todo cuanto sucede en la tierra. Aleluya.",
+"Los pueblos proclaman su sabiduría, y la asamblea pregona su alabanza. Aleluya."
+],
+"de": {
+"comun": "Los salmos y el cantico, del Común de pastores."
+},
+"rub": "Los salmos y el cantico, del Común de pastores."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE St 3, 17-18",
@@ -20143,6 +20148,12 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a Cristo, el Señor, que quiso ser tenido como hijo del carpintero. Aleluya."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -21618,51 +21629,17 @@
 ]
 ]
 },
-"visperas/himno": {
-"r": "HIMNO",
-"l": [
-[],
-[
-[
-0,
-"Columnas de la Iglesia."
-]
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Felipe, el que me ve ve también a mi Padre. Aleluya.",
+"Si me conocéis a mí, conoceréis también a mi Padre; desde ahora lo conocéis y lo habéis visto. Aleluya.",
+"Si me amáis, guardaréis mis mandatos. Aleluya."
 ],
-[],
-[
-[
-0,
-"Ant. 1. Felipe, el que me ve ve también a mi Padre. Aleluya."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del Común de apóstoles."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Si me conocéis a mí, conoceréis también a mi Padre; desde ahora lo conocéis y lo"
-]
-],
-[
-[
-0,
-"habéis visto. Aleluya."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Si me amáis, guardaréis mis mandatos. Aleluya."
-]
-]
-]
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de apóstoles."
+},
+"rub": "Los salmos y el cántico se toman del Común de apóstoles."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Ef 4, 11-13",
@@ -22187,17 +22164,16 @@
 "De los comentarios de san Agustín, obispo, sobre los salmos"
 ]
 ],
-[],
 [
 [
-1,
+0,
 "(SALMO 61, 4: CCL 39, 773-775)"
 ]
 ],
 [],
 [
 [
-0,
+1,
 "LA PASIÓN DE CRISTO NO SE LIMITA ÚNICAMENTE A CRISTO"
 ]
 ],
@@ -25640,6 +25616,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, Rey de las vírgenes."
+]
+},
 "oficio/salmodia": {
 "r": "SALMODIA",
 "ant": [
@@ -27078,6 +27060,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"María se puso en camino y fue aprisa a la montaña, a un pueblo de Judá. Aleluya.",
+"En cuanto Isabel oyó el saludo de María, saltó la criatura en su vientre y se llenó Isabel del Espíritu Santo. Aleluya.",
+"Dichosa tú, María, que has creído, porque lo que te ha dicho el Señor se cumplirá. Aleluya."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la semana I del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Jl 2, 27-28a",
 "l": [
@@ -27479,6 +27473,18 @@
 ]
 ]
 ]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"María entró en casa de Zacarías y saludó a Isabel. Aleluya.",
+"En cuanto tu saludo llegó a mis oídos, la criatura saltó de alegría en mi vientre. Aleluya.",
+"Bendita tú entre las mujeres y bendito el fruto de tu vientre. Aleluya."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de la Santísima Virgen María."
+},
+"rub": "Los salmos y el cántico se toman del Común de la Santísima Virgen María."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE 1 Pe 5, 5-7",
@@ -28133,14 +28139,7 @@
 [
 [
 1,
-"LOS QUE SON COMPAÑEROS DE CRISTO EN EL SUFRIR TAMBIÉN LO SON EN EL BUEN"
-]
-],
-[],
-[
-[
-0,
-"ÁNIMO"
+"LOS QUE SON COMPAÑEROS DE CRISTO EN EL SUFRIR TAMBIÉN LO SON EN EL BUEN ÁNIMO"
 ]
 ],
 [],
@@ -28310,17 +28309,16 @@
 "De la homilía pronunciada por el papa Pablo sexto en la canonización de los mártires de Uganda"
 ]
 ],
-[],
 [
 [
-1,
+0,
 "(AAS 56 (1964), 905-906)"
 ]
 ],
 [],
 [
 [
-0,
+1,
 "LA GLORIA DE LOS MÁRTIRES, SIGNO DE REGENERACIÓN"
 ]
 ],
@@ -28863,6 +28861,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"En la fiesta de San Marcelino, venid adoremos al supremo Pastor, Cristo el Señor (T. P. Aleluya)."
+]
+},
 "oficio/salmodia": {
 "r": "SALMODIA",
 "ant": [
@@ -29000,14 +29004,7 @@
 [
 [
 1,
-"OJALÁ SE PUDIERA AFIRMAR DE LOS HERMANITOS DE MARÍA: «MIRAD CÓMO SE"
-]
-],
-[],
-[
-[
-0,
-"AMAN»."
+"OJALÁ SE PUDIERA AFIRMAR DE LOS HERMANITOS DE MARÍA: «MIRAD CÓMO SE AMAN»."
 ]
 ],
 [],
@@ -30124,6 +30121,13 @@
 "comun": "Del Común de apóstoles, excepto lo siguiente:",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, rey de los apóstoles. O bien:",
+"Venid, adoremos al Espíritu Santo que nos habló por los profetas y los doctores."
+]
+},
 "oficio/lectura2": {
 "r": "SEGUNDA LECTURA",
 "l": [
@@ -31575,14 +31579,7 @@
 [
 [
 1,
-"DIOS INFUNDE SU AMOR EN LOS SUYOS POR TODA LA TIERRA, POR OBRA DEL"
-]
-],
-[],
-[
-[
-0,
-"ESPÍRITU SANTO"
+"DIOS INFUNDE SU AMOR EN LOS SUYOS POR TODA LA TIERRA, POR OBRA DEL ESPÍRITU SANTO"
 ]
 ],
 [],
@@ -31961,41 +31958,20 @@
 0,
 "y para gritar verdades. Amén."
 ]
+]
+]
+},
+"i_visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Isabel, esposa de Zacarías, dio a luz a un gran hombre: Juan Bautista, el precursor del Señor.",
+"El precursor del Señor, Juan Bautista, nació del vientre de una anciana estéril.",
+"Entre los nacidos de mujer no ha surgido nadie mayor que Juan Bautista."
 ],
-[
-[
-0,
-"Ant. 1. Isabel, esposa de Zacarías, dio a luz a un gran hombre: Juan Bautista, el precursor"
-]
-],
-[
-[
-0,
-"del Señor."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del Común de los Santos varones."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. El precursor del Señor, Juan Bautista, nació del vientre de una anciana estéril."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Entre los nacidos de mujer no ha surgido nadie mayor que Juan Bautista."
-]
-]
-]
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de los Santos varones."
+},
+"rub": "Los salmos y el cántico se toman del Común de los Santos varones."
 },
 "i_visperas/lectura_breve": {
 "r": "LECTURA BREVE Hch 13, 23.25",
@@ -32203,6 +32179,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Cordero de Dios, a quien Juan anunció lleno de alegría."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -32361,66 +32343,20 @@
 0,
 "sobre Jesús y san Juan. Amén."
 ]
+]
+]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor me llamó desde el vientre de mi madre, cuando aún estaba yo en el seno materno pronunció mi nombre.",
+"El Señor hizo de mi boca una espada afilada, me escondió en la sombra de su mano.",
+"Juan declaró como testigo: «El que ha de venir después de mí existía antes que yo.»"
 ],
-[
-[
-0,
-"Ant. 1. El Señor me llamó desde el vientre de mi madre, cuando aún estaba yo en el seno"
-]
-],
-[
-[
-0,
-"materno pronunció mi nombre."
-]
-],
-[],
-[
-[
-0,
-"Los salmos se toman del Común de los santos varones."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. El Señor hizo de mi boca una espada afilada, me escondió en la sombra de su"
-]
-],
-[
-[
-0,
-"mano."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Juan declaró como testigo: «El que ha de venir después de mí existía antes que"
-]
-],
-[
-[
-0,
-"yo.»"
-]
-],
-[],
-[
-[
-0,
-"V. Éste vino como testigo enviado a declarar en favor de la luz."
-]
-],
-[
-[
-0,
-"R. Para que por su medio todos abrazasen la fe."
-]
-]
-]
+"de": {
+"comun": "Los salmos se toman del Común de los santos varones."
+},
+"rub": "Los salmos se toman del Común de los santos varones."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -32907,6 +32843,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Le pondrás el nombre de Juan y su nacimiento será motivo de alegría para muchos.",
+"Precederá al Señor en su venida con el espíritu y el poder de Elías, preparando al Señor un pueblo bien dispuesto.",
+"A ti, niño, te llamarán profeta del Altísimo, porque irás delante del Señor a preparar sus caminos."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Ml 4, 5-6",
 "l": [
@@ -33193,45 +33141,17 @@
 ]
 ]
 },
-"visperas/himno": {
-"r": "HIMNO",
-"l": [
-[],
-[
-[
-0,
-"El himno, como en las I Vísperas."
-]
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Apareció un hombre, enviado por Dios, que se llamaba Juan.",
+"Juan vino como testigo para declarar en favor de la verdad.",
+"Juan era la lámpara que arde y que ilumina."
 ],
-[],
-[
-[
-0,
-"Ant. 1. Apareció un hombre, enviado por Dios, que se llamaba Juan."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del Común de santos varones."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Juan vino como testigo para declarar en favor de la verdad."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Juan era la lámpara que arde y que ilumina."
-]
-]
-]
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de santos varones."
+},
+"rub": "Los salmos y el cántico se toman del Común de santos varones."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Hch 13, 23-25",
@@ -34283,14 +34203,7 @@
 [
 [
 1,
-"LA GLORIA DE DIOS CONSISTE EN QUE EL HOMBRE VIVA, Y LA VIDA DEL HOMBRE"
-]
-],
-[],
-[
-[
-0,
-"CONSISTE EN LA VISIÓN DE DIOS"
+"LA GLORIA DE DIOS CONSISTE EN QUE EL HOMBRE VIVA, Y LA VIDA DEL HOMBRE CONSISTE EN LA VISIÓN DE DIOS"
 ]
 ],
 [],
@@ -34745,6 +34658,13 @@
 "Señor, Dios nuestro, tú que entregaste a la Iglesia las primicias de tu obra de salvación, mediante el ministerio apostólico de san Pedro y san Pablo, concédenos por su intercesión y sus méritos, los auxilios necesarios para nuestra salvación. Por nuestro Señor Jesucristo. La conclusión de la Hora como en el Ordinario."
 ]
 ]
+]
+},
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, rey de los apóstoles.",
+"El salmo invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23"
 ]
 },
 "oficio/himno": {
@@ -37158,17 +37078,16 @@
 "De la homilía del papa Juan Pablo II en la canonización de los bienaventurados mártires en China."
 ]
 ],
-[],
 [
 [
-1,
+0,
 "(AAS 92, 2000, 849-850)"
 ]
 ],
 [],
 [
 [
-0,
+1,
 "LA SANGRE DE LOS MÁRTIRES DA TESTIMONIO DE LA FE CRISTIANA"
 ]
 ],
@@ -38070,47 +37989,20 @@
 0,
 "que por tu amor nos llegó. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vosotros sois la luz del mundo. No se puede ocultar una ciudad puesta en lo alto de un monte.",
+"Alumbre así vuestra luz a los hombres, para que vean vuestras buenas obras y den gloria a vuestro Padre.",
+"La palabra de Dios es viva y eficaz, más tajante que espada de doble filo."
 ],
-[
-[
-0,
-"Ant. 1. Vosotros sois la luz del mundo. No se puede ocultar una ciudad puesta en lo alto"
-]
-],
-[
-[
-0,
-"de un monte."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la I semana del Salterio."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Alumbre así vuestra luz a los hombres, para que vean vuestras buenas obras y den"
-]
-],
-[
-[
-0,
-"gloria a vuestro Padre."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. La palabra de Dios es viva y eficaz, más tajante que espada de doble filo."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -39228,53 +39120,20 @@
 0,
 "tres Personas, sólo un Dios. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El primer día de la semana, muy de madrugada, cuando todavía estaba oscuro, vino María Magdalena al sepulcro.",
+"Busco al amor de mi alma, deseo ver a mi Señor; lo busco y no encuentro dónde lo han dejado. Aleluya.",
+"Mientras estaba llorando, se asomó María al sepulcro y vio a dos ángeles vestidos de blanco. Aleluya."
 ],
-[
-[
-0,
-"Ant. 1. El primer día de la semana, muy de madrugada, cuando todavía estaba oscuro,"
-]
-],
-[
-[
-0,
-"vino María Magdalena al sepulcro."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la I semana del Salterio."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Busco al amor de mi alma, deseo ver a mi Señor; lo busco y no encuentro dónde lo"
-]
-],
-[
-[
-0,
-"han dejado. Aleluya."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Mientras estaba llorando, se asomó María al sepulcro y vio a dos ángeles vestidos"
-]
-],
-[
-[
-0,
-"de blanco. Aleluya."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Rm 12, 1-2",
@@ -40462,6 +40321,12 @@
 "Dios todopoderoso y eterno, que consagraste los primeros trabajos de los apóstoles con la sangre de Santiago, haz que, por su martirio, sea fortalecida tu Iglesia y, por su patrocinio, España se mantenga fiel a Cristo hasta el final de los tiempos. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
+]
+},
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, rey de los apóstoles."
 ]
 },
 "oficio/himno": {
@@ -42578,6 +42443,13 @@
 "Del Propio del Perú: Fiesta"
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a Cristo, nacido de María Virgen, Príncipe de la paz.",
+"El salmo invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23"
+]
+},
 "oficio/lectura2": {
 "r": "SEGUNDA LECTURA",
 "l": [
@@ -44112,6 +43984,14 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a Cristo, Hijo de María Virgen.",
+"Aclamemos al Señor en esta fiesta de María Virgen.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -44869,6 +44749,13 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"A Cristo, el rey supremo de la gloria, venid, adorémosle.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -45298,6 +45185,18 @@
 ],
 []
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Hoy el rostro de nuestro Señor Jesucristo resplandeció en la montaña como el sol, y sus vestidos se volvieron blancos como la nieve.",
+"Hoy el Señor se transfiguró y fue testimoniado por la voz del Padre; se aparecieron radiantes Moisés y Elías y hablaban con Jesús de su muerte, que iba a consumar.",
+"La ley se dio por medio de Moisés, y la profecía por medio de Elías, los cuales fueron vistos hablando con el Señor, resplandecientes en la montaña."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -46146,14 +46045,7 @@
 [
 [
 1,
-"SABEMOS QUE LOS SOLDADOS DE CRISTO NO SON DESTRUIDOS SINO"
-]
-],
-[],
-[
-[
-0,
-"CORONADOS"
+"SABEMOS QUE LOS SOLDADOS DE CRISTO NO SON DESTRUIDOS SINO CORONADOS"
 ]
 ],
 [],
@@ -47836,14 +47728,7 @@
 [
 [
 1,
-"EL IDEAL DE LA VIDA APOSTÓLICA ES LA SALVACIÓN Y SANTIFICACIÓN DE"
-]
-],
-[],
-[
-[
-0,
-"LAS ALMAS"
+"EL IDEAL DE LA VIDA APOSTÓLICA ES LA SALVACIÓN Y SANTIFICACIÓN DE LAS ALMAS"
 ]
 ],
 [],
@@ -48354,6 +48239,13 @@
 "Porque te has complacido, Señor, en la humildad de tu sierva, la Virgen María, has querido elevarla a la dignidad de Madre de tu Hijo y la has coronado en este día de gloria y esplendor; por su intercesión, te pedimos que por el misterio de la redención nos concedas también el premio de tu gloria. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
+]
+},
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Rey de reyes, que ha elevado a la Virgen Madre al cielo.",
+"El salmo del Invitatorio como en el Ordinario."
 ]
 },
 "oficio/himno": {
@@ -50859,6 +50751,13 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Adoremos a Cristo, nuestro rey, que ha coronado como reina a María, su madre.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -52892,6 +52791,13 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Cordero de Dios, a quien Juan precedió en el martirio.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -53263,6 +53169,18 @@
 []
 ]
 },
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Señor extendió la mano y me tocó la boca, y me nombró profeta de los gentiles.",
+"Herodes sentía respeto por la persona de Juan, sabiendo que era un hombre santo y consagrado al servicio de Dios, y le otorgaba su protección.",
+"Herodes escuchaba con gusto a Juan, y, en muchas de las cosas que hacía, era aconsejado por él."
+],
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
+},
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Is 49, 1b-2",
 "l": [
@@ -53575,42 +53493,20 @@
 0,
 "de la eterna venturanza. Amén."
 ]
+]
+]
+},
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"«No les tengas miedo, que yo estoy contigo», dice el Señor.",
+"Herodes envió a uno de sus guardias para decapitar a Juan en la cárcel.",
+"Los discípulos de Juan vinieron a recoger el cadáver y lo depositaron en un sepulcro."
 ],
-[],
-[
-[
-0,
-"Ant. 1. «No les tengas miedo, que yo estoy contigo», dice el Señor."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico, del Común de un mártir."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Herodes envió a uno de sus guardias para decapitar a Juan en la cárcel."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Los discípulos de Juan vinieron a recoger el cadáver y lo depositaron en"
-]
-],
-[
-[
-0,
-"un sepulcro."
-]
-]
-]
+"de": {
+"comun": "Los salmos y el cántico, del Común de un mártir."
+},
+"rub": "Los salmos y el cántico, del Común de un mártir."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE Hch 13, 23-25",
@@ -54319,6 +54215,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Se toma del Común de vírgenes o del santas mujeres."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -54806,52 +54708,20 @@
 0,
 "nos colma de su amor el Fuego Santo. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Libremente confieso a Cristo; de Cristo está sedienta mi alma; deseo estar por siempre con Cristo.",
+"Vírgenes del Señor, bendecid al Señor; el que sembró en vosotras el deseo de la virginidad ha coronado ya su obra.",
+"Que los santos se alegren en la gloria, pues han conseguido una brillante victoria sobre la carne y la sangre."
 ],
-[
-[
-0,
-"Ant. 1. Libremente confieso a Cristo; de Cristo está sedienta mi alma; deseo"
-]
-],
-[
-[
-0,
-"estar por siempre con Cristo."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la semana I del Salterio."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Vírgenes del Señor, bendecid al Señor; el que sembró en vosotras el"
-]
-],
-[
-[
-0,
-"deseo de la virginidad ha coronado ya su obra."
-]
-],
-[
-[
-0,
-"Ant. 3. Que los santos se alegren en la gloria, pues han conseguido una"
-]
-],
-[
-[
-0,
-"brillante victoria sobre la carne y la sangre."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la semana I del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -55487,6 +55357,13 @@
 "Propio de la Archidiócesis de Valencia Todo Común de santa María Virgen."
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Aclamemos a Cristo, que nos da por Patrona a la Reina de los Ángeles.",
+"El salmo invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -56029,46 +55906,15 @@
 0,
 "moradores de esta tierra. Amén."
 ]
-],
-[],
-[
-[
-0,
-"Ant. 1. Vendrán numerosos pueblos que dirán: «Venid y subamos al monte del"
-]
-],
-[
-[
-0,
-"Señor, a la casa del Dios de Jacob»."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico, del domingo de la semana I."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Tendrá su fundamento en la cima de los montes."
-]
-],
-[
-[
-0,
-"Ant. 3. Oh collado de la Hija de Sión, a ti vuelve el poder antepasado, a ti el"
-]
-],
-[
-[
-0,
-"reino de Jerusalén."
 ]
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Vendrán numerosos pueblos que dirán: «Venid y subamos al monte del Señor, a la casa del Dios de Jacob».",
+"Tendrá su fundamento en la cima de los montes.",
+"Oh collado de la Hija de Sión, a ti vuelve el poder antepasado, a ti el reino de Jerusalén."
 ]
 },
 "laudes/lectura_breve": {
@@ -56886,6 +56732,13 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Celebremos el nacimiento de la Virgen María; adoremos a su Hijo Jesucristo, el Señor.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -57453,54 +57306,20 @@
 0,
 "por los siglos de los siglos. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Hoy es el nacimiento de la gloriosa Virgen María, descendiente de Abrahán, de la tribu de Judá y de la noble estirpe de David.",
+"Cuando nació la santísima Virgen, el mundo se iluminó; ¡dichosa estirpe, raíz santa, bendito su fruto!",
+"Celebremos con gozo el nacimiento de María, para que interceda por nosotros ante nuestro Señor Jesucristo."
 ],
-[],
-[
-[
-0,
-"Ant. 1. Hoy es el nacimiento de la gloriosa Virgen María, descendiente de"
-]
-],
-[
-[
-0,
-"Abrahán, de la tribu de Judá y de la noble estirpe de David."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la semana I del Salterio."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Cuando nació la santísima Virgen, el mundo se iluminó; ¡dichosa"
-]
-],
-[
-[
-0,
-"estirpe, raíz santa, bendito su fruto!"
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Celebremos con gozo el nacimiento de María, para que interceda por"
-]
-],
-[
-[
-0,
-"nosotros ante nuestro Señor Jesucristo."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la semana I del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Is 11, 1-3a",
@@ -58067,21 +57886,7 @@
 [
 [
 1,
-"ENVIADO PARA DAR LA BUENA NOTICIA A LOS QUE SUFREN, PARA VENDAR"
-]
-],
-[],
-[
-[
-0,
-"LOS CORAZONES DESGARRADOS, PARA PROCLAMAR LA AMNISTÍA A LOS"
-]
-],
-[],
-[
-[
-0,
-"CAUTIVOS."
+"ENVIADO PARA DAR LA BUENA NOTICIA A LOS QUE SUFREN, PARA VENDAR LOS CORAZONES DESGARRADOS, PARA PROCLAMAR LA AMNISTÍA A LOS CAUTIVOS."
 ]
 ],
 [],
@@ -58770,6 +58575,13 @@
 "Señor, Dios nuestro, que has querido realizar la salvación de todos los hombres por medio de tu Hijo, muerto en la cruz, concédenos te rogamos, a quienes hemos conocido en la tierra este misterio, alcanzar en el cielo los premios de la redención. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
+]
+},
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"A Cristo, Rey y Señor, que por nosotros fue exaltado en la cruz, venid, adorémosle.",
+"El salmo del Invitatorio como en el Ordinario."
 ]
 },
 "oficio/himno": {
@@ -60163,6 +59975,14 @@
 "comun": "Del Común de santa María Virgen, excepto lo siguiente.",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Salvador del mundo, a quien estuvo unida la Virgen Dolorosa.",
+"Venid, adoremos al Salvador del mundo, de cuya pasión María participó.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -61936,6 +61756,13 @@
 "En Perú: Fiesta"
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Aclamemos al Señor, en esta fiesta de san Juan Macías.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -63301,14 +63128,7 @@
 [
 [
 1,
-"PRECIOSA ES LA MUERTE DE LOS MÁRTIRES, COMPARADA CON EL PRECIO DE"
-]
-],
-[],
-[
-[
-0,
-"LA MUERTE DE CRISTO"
+"PRECIOSA ES LA MUERTE DE LOS MÁRTIRES, COMPARADA CON EL PRECIO DE LA MUERTE DE CRISTO"
 ]
 ],
 [],
@@ -63798,14 +63618,7 @@
 [
 [
 1,
-"\"QUÉ HERMOSOS SON SOBRE LOS MONTES LOS PIES DEL MENSAJERO QUE"
-]
-],
-[],
-[
-[
-0,
-"TRAE LA BUENA NUEVA\" (IS 52,7)."
+"\"QUÉ HERMOSOS SON SOBRE LOS MONTES LOS PIES DEL MENSAJERO QUE TRAE LA BUENA NUEVA\" (IS 52,7)."
 ]
 ],
 [],
@@ -63964,14 +63777,7 @@
 [
 [
 1,
-"CUANDO UN REY JUZGA LEALMENTE A LOS DESVALIDOS, SU TRONO ESTÁ"
-]
-],
-[],
-[
-[
-0,
-"SIEMPRE FIRME"
+"CUANDO UN REY JUZGA LEALMENTE A LOS DESVALIDOS, SU TRONO ESTÁ SIEMPRE FIRME"
 ]
 ],
 [],
@@ -64173,6 +63979,13 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, delante de los ángeles.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/salmodia": {
 "r": "SALMODIA",
 "ant": [
@@ -65391,6 +65204,13 @@
 "comun": null,
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, a quien sirven los ángeles.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/lectura2": {
 "r": "SEGUNDA LECTURA",
 "l": [
@@ -66681,6 +66501,13 @@
 "(El día 6 cuando el 5 cae en domingo)"
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, démosle gracias por sus beneficios.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -66734,14 +66561,7 @@
 [
 [
 1,
-"CONVERTÍOS DE TODO CORAZÓN, Y OS ENVIARÉ EL VINO, EL TRIGO Y EL"
-]
-],
-[],
-[
-[
-0,
-"ACEITE"
+"CONVERTÍOS DE TODO CORAZÓN, Y OS ENVIARÉ EL VINO, EL TRIGO Y EL ACEITE"
 ]
 ],
 [],
@@ -68947,14 +68767,7 @@
 [
 [
 1,
-"SANTIDAD E INTEGRIDAD DE VIDA, VIRTUDES INDISPENSABLES DEL BUEN"
-]
-],
-[],
-[
-[
-0,
-"PRELADO"
+"SANTIDAD E INTEGRIDAD DE VIDA, VIRTUDES INDISPENSABLES DEL BUEN PRELADO"
 ]
 ],
 [],
@@ -69126,46 +68939,15 @@
 0,
 "danos su gloria. Amén."
 ]
-],
-[],
-[
-[
-0,
-"Ant. 1. Alégrese vuestra alma por su misericordia."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico, del domingo de la semana I."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Derramó en el fundamento del altar el aroma divino, la ofrenda del"
-]
-],
-[
-[
-0,
-"Señor está en sus manos."
-]
-],
-[
-[
-0,
-"Ant.3. Honró el tiempo de su vida hasta su consumación, para alabanza del"
-]
-],
-[
-[
-0,
-"nombre del Señor."
 ]
 ]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Alégrese vuestra alma por su misericordia.",
+"Derramó en el fundamento del altar el aroma divino, la ofrenda del Señor está en sus manos.",
+"Honró el tiempo de su vida hasta su consumación, para alabanza del nombre del Señor."
 ]
 },
 "laudes/lectura_breve": {
@@ -70069,6 +69851,13 @@
 "En Perú: Memoria libre"
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Celebremos a María en su advocación del Pilar y adoremos a su Hijo, Cristo, el Señor.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -70398,42 +70187,20 @@
 0,
 "al Trino y Uno. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Tú eres la gloria de Jerusalén; tú, la alegría de Israel; tú, el orgullo de nuestra raza.",
+"Bendito eres, Señor, en el templo de tu santa gloria.",
+"Sobre el santo Pilar, Señora, guías y proteges a tu pueblo."
 ],
-[],
-[
-[
-0,
-"Ant. 1. Tú eres la gloria de Jerusalén; tú, la alegría de Israel; tú, el orgullo de"
-]
-],
-[
-[
-0,
-"nuestra raza."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la I semana del Salterio."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Bendito eres, Señor, en el templo de tu santa gloria."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Sobre el santo Pilar, Señora, guías y proteges a tu pueblo."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE 2 Cro 7, 15-16",
@@ -71502,42 +71269,20 @@
 0,
 "por los siglos de los siglos. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Se sació en ti el alma de tu esposa y se alegró de las cosas que le dijeron.",
+"Cantadle por el éxito de su trabajo; que sus obras la alaben en la plaza.",
+"Ésta es la virgen sensata, una del número de las prudentes."
 ],
-[],
-[
-[
-0,
-"Ant. 1. Se sació en ti el alma de tu esposa y se alegró de las cosas que le"
-]
-],
-[
-[
-0,
-"dijeron."
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico se toman del domingo de la I semana del Salterio."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Cantadle por el éxito de su trabajo; que sus obras la alaben en la plaza."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Ésta es la virgen sensata, una del número de las prudentes."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del domingo de la I semana del Salterio."
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Sb 7, 7-8",
@@ -72451,14 +72196,7 @@
 [
 [
 1,
-"DEBEMOS CONOCER EL AMOR DE CRISTO, QUE EXCEDE TODO"
-]
-],
-[],
-[
-[
-0,
-"CONOCIMIENTO"
+"DEBEMOS CONOCER EL AMOR DE CRISTO, QUE EXCEDE TODO CONOCIMIENTO"
 ]
 ],
 [],
@@ -72747,6 +72485,13 @@
 "comun": "Del Común de apóstoles.",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, que nos habla por medio del Evangelio.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -75013,6 +74758,13 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a Dios, que es glorificado en la asamblea de los santos.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -75202,14 +74954,7 @@
 [
 [
 1,
-"COMPRASTE PARA DIOS HOMBRES DE TODA RAZA, LENGUA, PUEBLO Y"
-]
-],
-[],
-[
-[
-0,
-"NACIÓN"
+"COMPRASTE PARA DIOS HOMBRES DE TODA RAZA, LENGUA, PUEBLO Y NACIÓN"
 ]
 ],
 [],
@@ -76640,6 +76385,13 @@
 "Cuando se celebra como solemnidad:"
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor nuestro Dios, que se manifiesta en los sencillos.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -79003,6 +78755,13 @@
 "comun": "Del Común de pastores, excepto lo siguiente:",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Aclamemos a nuestro Dios, en esta celebración de San Martín.",
+"El salmo del Invitatorio como en el Ordinario."
+]
+},
 "oficio/lectura2": {
 "r": "SEGUNDA LECTURA",
 "l": [
@@ -79231,56 +78990,17 @@
 ]
 ]
 },
-"visperas/himno": {
-"r": "HIMNO",
-"l": [
-[],
-[
-[
-0,
-"Ant. 1. ¡Oh varón digno de toda alabanza, nunca derrotado por las fatigas ni"
-]
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"¡Oh varón digno de toda alabanza, nunca derrotado por las fatigas ni vencido por la tumba, que no tembló ante la muerte ni rechazó la vida!",
+"Señor, si aún soy necesario a tu pueblo, no rehuyo el trabajo; hágase tu voluntad.",
+"El obispo san Martín partió de este mundo, y ahora vive glorioso con Cristo, como gloria de los sacerdotes."
 ],
-[
-[
-0,
-"vencido por la tumba, que no tembló ante la muerte ni rechazó la vida!"
-]
-],
-[],
-[
-[
-0,
-"Los salmos y el cántico, del Común de pastores."
-]
-],
-[],
-[
-[
-0,
-"Ant. 2. Señor, si aún soy necesario a tu pueblo, no rehuyo el trabajo; hágase"
-]
-],
-[
-[
-0,
-"tu voluntad."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. El obispo san Martín partió de este mundo, y ahora vive glorioso con"
-]
-],
-[
-[
-0,
-"Cristo, como gloria de los sacerdotes."
-]
-]
-]
+"de": {
+"comun": "Los salmos y el cántico, del Común de pastores."
+},
+"rub": "Los salmos y el cántico, del Común de pastores."
 },
 "visperas/lectura_breve": {
 "r": "LECTURA BREVE 1 P 5, 1-4",
@@ -80529,14 +80249,7 @@
 [
 [
 1,
-"ANUNCIAMOS LA BUENA NOTICIA CUANDO HACEMOS A CADA PERSONA EL"
-]
-],
-[],
-[
-[
-0,
-"BIEN QUE NECESITA"
+"ANUNCIAMOS LA BUENA NOTICIA CUANDO HACEMOS A CADA PERSONA EL BIEN QUE NECESITA"
 ]
 ],
 [],
@@ -81362,14 +81075,7 @@
 [
 [
 1,
-"LA GRANDEZA DEL HOMBRE CONSISTE EN SU SEMEJANZA CON DIOS, CON"
-]
-],
-[],
-[
-[
-0,
-"TAL DE QUE LA CONSERVE"
+"LA GRANDEZA DEL HOMBRE CONSISTE EN SU SEMEJANZA CON DIOS, CON TAL DE QUE LA CONSERVE"
 ]
 ],
 [],
@@ -82108,44 +81814,20 @@
 0,
 "y con paciencia la injuria. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Uno de los dos que había ido en seguimiento de Jesús era Andrés, el hermano de Simón Pedro.",
+"El Señor amó a Andrés con singular predilección.",
+"Dijo Andrés a su hermano Simón: «Hemos encontrado al Mesías»; y lo presentó a Jesús."
 ],
-[
-[
-0,
-"Ant. 1. Uno de los dos que había ido en seguimiento de Jesús era Andrés, el hermano de"
-]
-],
-[
-[
-0,
-"Simón Pedro."
-]
-],
-[
-[
-0,
-"Los salmos y el cántico se toman del Domingo I del Salterio"
-]
-],
-[
-[
-0,
-"Ant. 2. El Señor amó a Andrés con singular predilección."
-]
-],
-[
-[
-0,
-"Ant. 3. Dijo Andrés a su hermano Simón: «Hemos encontrado al Mesías»; y lo presentó a"
-]
-],
-[
-[
-0,
-"Jesús."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico se toman del Domingo I del Salterio"
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE Ef 2, 19-22",
@@ -83893,6 +83575,12 @@
 ]
 ]
 },
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Celebremos la Concepción Inmaculada de la Virgen María; adoremos a su Hijo, Cristo, el Señor. A continuación se dice el salmo del Invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -84046,6 +83734,18 @@
 ],
 []
 ]
+},
+"oficio/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"María recibió en su concepción la bendición del Señor y la misericordia de Dios, su salvador.",
+"Dios la socorre al despuntar la aurora, el Altísimo ha consagrado su morada.",
+"¡Qué pregón tan glorioso para ti, ciudad de Dios! El Señor te ha cimentado sobre el monte santo."
+],
+"de": {
+"comun": "Los salmos se toman del Común de Santa María Virgen."
+},
+"rub": "Los salmos se toman del Común de Santa María Virgen."
 },
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
@@ -85334,12 +85034,12 @@
 [
 [
 0,
-"Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo. Laudes y vísperas Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+"Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
 },
-"oficio/himno": {
+"laudes/himno": {
 "r": "HIMNO",
 "l": [
 [],
@@ -85574,7 +85274,242 @@
 ]
 ]
 },
-"oficio/salmodia": {
+"visperas/himno": {
+"r": "HIMNO",
+"l": [
+[],
+[
+[
+0,
+"¡Dancemos! ¡cantemos!"
+]
+],
+[
+[
+0,
+"al Dador de la Vida,"
+]
+],
+[
+[
+0,
+"al Dueño de cuanto nos rodea,"
+]
+],
+[
+[
+0,
+"porque nos ha entregado sus flores y cantos."
+]
+],
+[],
+[
+[
+0,
+"¡Dancemos! ¡cantemos!"
+]
+],
+[
+[
+0,
+"Por ti, Juan Diego, el más pequeño,"
+]
+],
+[
+[
+0,
+"olmos el Canto Florido;"
+]
+],
+[
+[
+0,
+"por ti vuelan en nuestra tierra"
+]
+],
+[
+[
+0,
+"las mariposas de jade"
+]
+],
+[
+[
+0,
+"y el reluciente colibrí abre sus alas."
+]
+],
+[],
+[
+[
+0,
+"¡Dancemos! ¡cantemos!"
+]
+],
+[
+[
+0,
+"porque tú nos recuerdas que vivimos"
+]
+],
+[],
+[
+[
+0,
+"en la tierra de nuestro sustento,"
+]
+],
+[
+[
+0,
+"en la tierra del maíz,"
+]
+],
+[
+[
+0,
+"de nuestra carne."
+]
+],
+[],
+[
+[
+0,
+"Suene para el Verdadero Dios por quien se vive"
+]
+],
+[
+[
+0,
+"el atabal de la alegría,"
+]
+],
+[
+[
+0,
+"el huehuetl de nuestro gozo."
+]
+],
+[],
+[
+[
+0,
+"¡Dancemos! ¡cantemos!"
+]
+],
+[
+[
+0,
+"al Dios Antiguo y Nuevo,"
+]
+],
+[
+[
+0,
+"porque tú recogiste fragantes flores"
+]
+],
+[
+[
+0,
+"ahí donde perdura el Rocío"
+]
+],
+[
+[
+0,
+"y se abre el Brillante arcoíris"
+]
+],
+[
+[
+0,
+"que cubrió la montaña."
+]
+],
+[],
+[
+[
+0,
+"¡Dancemos! ¡cantemos!"
+]
+],
+[
+[
+0,
+"vivimos agradecidos,"
+]
+],
+[
+[
+0,
+"ya no estamos tristes,"
+]
+],
+[
+[
+0,
+"no fuimos traicionados, Juan Diego."
+]
+],
+[
+[
+0,
+"El Dios de nuestros padres y abuelos"
+]
+],
+[
+[
+0,
+"nos entrega plena su Palabra."
+]
+],
+[],
+[
+[
+0,
+"¡Dancemos! ¡cantemos!"
+]
+],
+[
+[
+0,
+"Por ti se quedó entre nosotros, Juan Diego."
+]
+],
+[
+[
+0,
+"Nuestra Madre, Nuestra Muchachita,"
+]
+],
+[
+[
+0,
+"tu Hija Menor, Nuestra Señora,"
+]
+],
+[
+[
+0,
+"Nuestra Niña,"
+]
+],
+[
+[
+0,
+"Tonantzin—Guadalupe."
+]
+],
+[
+[
+0,
+"Amén."
+]
+]
+]
+},
+"laudes/salmodia": {
 "r": "SALMODIA",
 "ant": [
 "Juan Diego iba muy de madrugada a tomar parte del culto divino y a escuchar los mandatos de Dios.",
@@ -85586,7 +85521,19 @@
 },
 "rub": "Los salmos y el cántico se toman del Común de santos varones: Laudes — Vísperas"
 },
-"oficio/lectura_breve": {
+"visperas/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"Juan Diego iba muy de madrugada a tomar parte del culto divino y a escuchar los mandatos de Dios.",
+"Juan Diego bendecía a Dios con sencillez y alegría.",
+"He aquí a un varón prudente que construye su casa sobre roca y en cuya boca no se encuentra falsedad."
+],
+"de": {
+"comun": "Los salmos y el cántico se toman del Común de santos varones: Laudes — Vísperas"
+},
+"rub": "Los salmos y el cántico se toman del Común de santos varones: Laudes — Vísperas"
+},
+"laudes/lectura_breve": {
 "r": "LECTURA BREVE Ef 2, 19-22",
 "l": [
 [],
@@ -85598,7 +85545,19 @@
 ]
 ]
 },
-"oficio/responsorio_breve": {
+"visperas/lectura_breve": {
+"r": "LECTURA BREVE Ef 2, 19-22",
+"l": [
+[],
+[
+[
+0,
+"Ya no sois extranjeros ni forasteros, sino que sois ciudadanos del pueblo de Dios y miembros de la familia de Dios. Estáis edificados sobre el cimiento de los apóstoles y profetas, y el mismo Cristo Jesús es la piedra angular. Por él todo el edificio queda ensamblado, y se va levantando hasta formar un templo consagrado al Señor. Por él también os vais integrando en la construcción, para ser morada de Dios por el Espíritu."
+]
+]
+]
+},
+"laudes/responsorio_breve": {
 "r": "RESPONSORIO BREVE :",
 "l": [
 [],
@@ -85664,14 +85623,213 @@
 ]
 ]
 },
-"oficio/cantico_evangelico": {
+"visperas/responsorio_breve": {
+"r": "RESPONSORIO BREVE :",
+"l": [
+[],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Levanto mis ojos a los montes, ¿de dónde me vendrá el auxilio?"
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Levanto mis ojos a los montes, ¿de dónde me vendrá el auxilio?"
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Señor, por ti madrugo, dame una señal propicia."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"¿De dónde me vendrá el auxilio?"
+]
+],
+[
+[
+1,
+"V. "
+],
+[
+0,
+"Gloria al Padre, y al Hijo, y al Espíritu Santo."
+]
+],
+[
+[
+1,
+"R. "
+],
+[
+0,
+"Levanto mis ojos a los montes, ¿de dónde me vendrá el auxilio?"
+]
+]
+]
+},
+"laudes/cantico_evangelico": {
 "r": "CÁNTICO EVANGÉLICO",
 "ant": [
 ":",
-"Sube a un alto monte, alegre mensajero de Jerusalén, di a las ciudades de Judá: Aquí está su Dios. Cuando se rezan Laudes:"
+"Sube a un alto monte, alegre mensajero de Jerusalén, di a las ciudades de Judá: Aquí está su Dios."
 ]
 },
-"oficio/preces": {
+"visperas/cantico_evangelico": {
+"r": "CÁNTICO EVANGÉLICO",
+"ant": [
+":",
+"Sube a un alto monte, alegre mensajero de Jerusalén, di a las ciudades de Judá: Aquí está su Dios."
+]
+},
+"laudes/preces": {
+"r": "PRECES",
+"l": [
+[],
+[
+[
+0,
+"Alabemos a Dios Padre todopoderoso, el Creador por quien se vive, y digámosle:"
+]
+],
+[
+[
+0,
+"Señor, por quien vivimos, escucha nuestras plegarias."
+]
+],
+[
+[
+0,
+"Bendito seas, Señor del universo, que en tu inmensa piedad nos enviaste a la Madre de tu Hijo,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"para llamarnos a la fe y hacernos ingresar en tu pueblo santo."
+]
+],
+[
+[
+0,
+"Te bendecimos, Señor, porque ocultaste tu mensaje a los sabios y prudentes según el mundo y lo revelaste a los pequeños,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"a los que son tenidos por insignificantes y despreciables."
+]
+],
+[
+[
+0,
+"Concédenos ser, como Juan Diego, embajadores tuyos muy dignos de confianza,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"que llevemos a todos los hombres y a todas las naciones tu mensaje de amor y de paz."
+]
+],
+[
+[
+0,
+"Tú que, con la presencia de María, haces brillar los riscos como perlas y las espinas como el oro,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"haz que el amor de la Santísima Virgen María nos transforme en otros cristos."
+]
+],
+[
+[
+0,
+"Haz que, como Juan Diego, seamos siempre fieles al culto divino y a tus mandatos,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"para que merezcamos, también nosotros, que la Virgen María nos salga al paso en el camino de nuestra vida."
+]
+],
+[
+[
+0,
+"Tú que permitiste que los misioneros encontraran en los indígenas buenos colaboradores en la evangelización,"
+]
+],
+[
+[
+1,
+"— "
+],
+[
+0,
+"suscita en todos un testimonio de fe viva y operante en las condiciones ordinarias de la vida cotidiana."
+]
+],
+[
+[
+1,
+"Se pueden añadir algunas intenciones libres."
+]
+],
+[
+[
+0,
+"Con la confianza que nos da la predilección mostrada a Juan Diego por la Santa Madre de Dios hacia nosotros, digámosle al Padre de los Cielos, con profundo amor filial: Padre nuestro."
+]
+]
+]
+},
+"visperas/preces": {
 "r": "PRECES",
 "l": [
 [],
@@ -85804,7 +85962,7 @@
 [
 [
 0,
-"Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo. Laudes y vísperas Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+"Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -85816,7 +85974,7 @@
 [
 [
 0,
-"Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo. Laudes y vísperas Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
+"Dios nuestro, que concediste a Juan Diego el privilegio de ser el mensajero de la siempre Virgen María de Guadalupe, Madre del Salvador, concédenos por su intercesión la gracia de transformarnos en templos vivos de tu reino. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
 ]
@@ -86467,6 +86625,12 @@
 "Señor, Dios nuestro, que has concedido a tu pueblo la protección maternal de la siempre Virgen María, Madre de tu Hijo, concédenos, por su intercesión, permanecer siempre firmes en la fe y servir con sincero amor a nuestros hermanos. Por nuestro Señor Jesucristo. O bien: Señor, que quisiste colmar con beneficios incesantes a quienes nos hemos acogido bajo el patrocinio especial de la Santísima Virgen María: escucha nuestras oraciones y concédenos que después de celebrar con alegría su fiesta en la tierra, podamos llenarnos de gozo al contemplarla en el Cielo. Por nuestro Señor Jesucristo, tu Hijo, que vive y reina contigo en la unidad del Espíritu Santo y es Dios, por los siglos de los siglos. Amén"
 ]
 ]
+]
+},
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a Cristo, hijo de la siempre Virgen María. A continuación se dice el salmo del Invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23."
 ]
 },
 "oficio/himno": {
@@ -88506,6 +88670,12 @@
 "Los himnos latinos de san Esteban, protomártir, se hallan en el Apéndice IV."
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"A Cristo recién nacido, que ha otorgado a Esteban la corona de la gloria, venid, adorémosle. A continuación se dice el salmo del Invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23."
+]
+},
 "oficio/lectura1": {
 "r": "PRIMERA LECTURA",
 "l": [
@@ -89336,6 +89506,12 @@
 "Los himnos latinos de san Juan, apóstol y evangelista, se hallan en el Apéndice IV."
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos al Señor, rey de los apóstoles. A continuación se dice el salmo del Invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -90260,6 +90436,12 @@
 "Los himnos latinos de los santos Inocentes, mártires, se hallan en el Apéndice IV."
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"A Cristo recién nacido, que otorgó a los mártires Inocentes la corona de la gloria, venid, adorémosle. A continuación se dice el salmo del Invitatorio: Salmo 94; Salmo 99; Salmo 66; Salmo 23."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -91736,6 +91918,12 @@
 "Los himnos latinos de Jesucristo, sumo y eterno sacerdote, se hallan en el Apéndice IV."
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Glorifiquemos a Cristo, que tiene el sacerdocio que no pasa."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -92207,45 +92395,20 @@
 0,
 "eleva nuestro canto y nuestra ofrenda. Amén."
 ]
+]
+]
+},
+"laudes/salmodia": {
+"r": "SALMODIA",
+"ant": [
+"El Padre, por la sangre de la cruz de Cristo, hizo la paz con todos los seres del cielo y de la tierra.",
+"Todo fue creado por Cristo y para Cristo.",
+"Todo lo puso bajo sus pies, y lo dio a la Iglesia, como cabeza, sobre todo; ella es su cuerpo."
 ],
-[
-[
-0,
-"Ant. 1. El Padre, por la sangre de la cruz de Cristo, hizo la paz con todos los seres del cielo"
-]
-],
-[
-[
-0,
-"y de la tierra."
-]
-],
-[
-[
-0,
-"Los salmos y el cántico, del domingo de la I semana del salterio"
-]
-],
-[
-[
-0,
-"Ant. 2. Todo fue creado por Cristo y para Cristo."
-]
-],
-[],
-[
-[
-0,
-"Ant. 3. Todo lo puso bajo sus pies, y lo dio a la Iglesia, como cabeza, sobre todo; ella es"
-]
-],
-[
-[
-0,
-"su cuerpo."
-]
-]
-]
+"de": {
+"salterio": "1/0"
+},
+"rub": "Los salmos y el cántico, del domingo de la I semana del salterio"
 },
 "laudes/lectura_breve": {
 "r": "LECTURA BREVE",
@@ -92900,6 +93063,12 @@
 "En la ciudad de Alicante y Mutxamel: Fiesta"
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Entremos ante la faz del Señor dándole gracias, aclamándolo por su misericordia. Aleluya."
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -93161,265 +93330,6 @@
 0,
 "Ant. Oh Dios, meditamos tu misericordia en medio de tu templo. Aleluya."
 ]
-],
-[],
-[
-[
-0,
-"Ant. 3. Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
-]
-],
-[],
-[
-[
-0,
-"Salmo 83"
-]
-],
-[],
-[
-[
-0,
-"AÑORANZA DEL TEMPLO"
-]
-],
-[],
-[
-[
-0,
-"¡Qué deseables son tus moradas,                                   No tenemos aquí ciudad permanente,"
-]
-],
-[
-[
-0,
-"Señor de los ejércitos!                                          sino que vamos buscando la futura"
-]
-],
-[
-[
-0,
-"Mi alma se consume y anhela                                                                   (Heb 13, 14)."
-]
-],
-[],
-[
-[
-0,
-"los atrios del Señor,"
-]
-],
-[
-[
-0,
-"mi corazón y mi carne"
-]
-],
-[
-[
-0,
-"retozan por el Dios vivo."
-]
-],
-[],
-[
-[
-0,
-"Hasta el gorrión ha encontrado una casa;"
-]
-],
-[
-[
-0,
-"la golondrina, un nido"
-]
-],
-[
-[
-0,
-"donde colocar sus polluelos:"
-]
-],
-[
-[
-0,
-"tus altares, Señor de los ejércitos,"
-]
-],
-[
-[
-0,
-"Rey mío y Dios mío."
-]
-],
-[],
-[
-[
-0,
-"Dichosos los que viven en tu casa,"
-]
-],
-[
-[
-0,
-"alabándote siempre."
-]
-],
-[
-[
-0,
-"Dichosos los que encuentran en ti su fuerza"
-]
-],
-[
-[
-0,
-"al preparar su peregrinación."
-]
-],
-[],
-[
-[
-0,
-"Cuando atraviesan áridos valles,"
-]
-],
-[
-[
-0,
-"los convierten en oasis,"
-]
-],
-[
-[
-0,
-"como si la lluvia temprana"
-]
-],
-[
-[
-0,
-"los cubriera de bendiciones;"
-]
-],
-[
-[
-0,
-"caminan de baluarte en baluarte"
-]
-],
-[
-[
-0,
-"hasta ver a Dios en Sión."
-]
-],
-[],
-[
-[
-0,
-"Señor de los ejércitos, escucha mi súplica;"
-]
-],
-[
-[
-0,
-"atiéndeme, Dios de Jacob."
-]
-],
-[
-[
-0,
-"Fíjate, oh Dios, en nuestro Escudo,"
-]
-],
-[
-[
-0,
-"mira el rostro de tu Ungido."
-]
-],
-[],
-[
-[
-0,
-"Vale más un día en tus atrios"
-]
-],
-[
-[
-0,
-"que mil en mi casa,"
-]
-],
-[
-[
-0,
-"y prefiero el umbral de la casa de Dios"
-]
-],
-[
-[
-0,
-"a vivir con los malvados."
-]
-],
-[],
-[
-[
-0,
-"Porque el Señor es sol y escudo,"
-]
-],
-[
-[
-0,
-"él da la gracia y la gloria;"
-]
-],
-[
-[
-0,
-"el Señor no niega sus bienes"
-]
-],
-[
-[
-0,
-"a los de conducta intachable."
-]
-],
-[],
-[
-[
-0,
-"¡Señor de los ejércitos, dichoso el hombre"
-]
-],
-[
-[
-0,
-"que confía en ti!"
-]
-],
-[],
-[
-[
-0,
-"Ant. Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
-]
-],
-[
-[
-0,
-"V. Sálvame, ten misericordia de mí. Aleluya."
-]
-],
-[
-[
-0,
-"R. En la asamblea te bendeciré, Señor. Aleluya."
-]
 ]
 ]
 },
@@ -93427,17 +93337,20 @@
 "r": "SALMODIA",
 "ant": [
 "Este es el grupo que busca tu faz, Señor. Aleluya. Cuando el salmo 23 se ha dicho en el Invitatorio, aquí se dice el salmo 94.",
-"Oh Dios, meditamos tu misericordia en medio de tu templo. Aleluya."
+"Oh Dios, meditamos tu misericordia en medio de tu templo. Aleluya.",
+"Fíjate, oh Dios, en nuestro Escudo, mira el rostro de tu Ungido. Aleluya."
 ],
 "de": {
 "propios": [
 "Salmo 23",
-"Salmo 47"
+"Salmo 47",
+"Salmo 83"
 ]
 },
 "salmos": [
 "Salmo 23",
-"Salmo 47"
+"Salmo 47",
+"Salmo 83"
 ]
 },
 "oficio/lectura1": {
@@ -94295,6 +94208,12 @@
 "comun": "Todo del Común de la Santísima Virgen María, en tiempo pascual.",
 "notas": [],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Venid, adoremos a Cristo Salvador, que nos ha dado su Madre como nuestra. (T.P. Aleluya)"
+]
+},
 "oficio/himno": {
 "r": "HIMNO",
 "l": [
@@ -94973,6 +94892,13 @@
 "Común de pastores o de religiosos."
 ],
 "piezas": {
+"invitatorio/invitatorio": {
+"r": "INVITATORIO",
+"ant": [
+"Adoremos al Señor, justo juez, que premia a los que tienen amor a su venida. Aleluya.",
+"El salmo invitatorio como en el Ordinario, Salmo 94; salmo 99; salmo 66; salmo 23."
+]
+},
 "oficio/salmodia": {
 "r": "SALMODIA",
 "ant": [
