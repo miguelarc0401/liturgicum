@@ -86,6 +86,7 @@
     get paused() { return false; },
     getVoices: () => voces.slice(),
     speak(u) {
+      oyeAlMotor();
       const id = 'u' + (++n);
       cola.set(id, { u: u, empezada: false });
       llama('Voz', 'di', {
@@ -97,6 +98,7 @@
       }).catch(() => acaba(id, 'error'));
     },
     silencio(ms) {
+      oyeAlMotor();
       const id = 's' + (++n);
       cola.set(id, { u: null, empezada: false });
       llama('Voz', 'silencio', { id: id, ms: Math.round(ms) })
@@ -116,20 +118,31 @@
     }
   };
 
-  oye('Voz', 'trozo', (d) => {
-    const t = d && cola.get(d.id);
-    if (!t) return;
-    if (d.que === 'empieza') {
-      t.empezada = true;
-      if (t.u && t.u.onstart) t.u.onstart({});
-    } else if (d.que === 'palabra') {
-      if (t.u && t.u.onboundary) {
-        t.u.onboundary({ name: 'word', charIndex: d.inicio || 0 });
+  /* Lo que el motor va diciendo. El oyente se pone al decir el primer trozo
+   * y no al cargar: Capacitor borra los oyentes de todos los plugins cuando
+   * el WebView avisa de que empieza a cargar la página, y ese aviso puede
+   * llegar después de que este fichero haya corrido. Puesto aquí arriba, en
+   * el emulador se perdía una vez de cada pocas, y la voz hablaba sin que la
+   * página se enterase. */
+  let oyendo = false;
+  function oyeAlMotor() {
+    if (oyendo) return;
+    oyendo = true;
+    oye('Voz', 'trozo', (d) => {
+      const t = d && cola.get(d.id);
+      if (!t) return;
+      if (d.que === 'empieza') {
+        t.empezada = true;
+        if (t.u && t.u.onstart) t.u.onstart({});
+      } else if (d.que === 'palabra') {
+        if (t.u && t.u.onboundary) {
+          t.u.onboundary({ name: 'word', charIndex: d.inicio || 0 });
+        }
+      } else {
+        acaba(d.id, d.que);
       }
-    } else {
-      acaba(d.id, d.que);
-    }
-  });
+    });
+  }
 
   // El motor puede dar la lista vacía nada más arrancar —la va cargando—: se
   // le vuelve a preguntar unas cuantas veces antes de creérselo

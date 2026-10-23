@@ -16,6 +16,8 @@ on:
   push:
     paths:
       - 'apk/**'
+      # lo que le habla al teléfono: la prueba de la voz tiene que pasar por él
+      - 'app/nativo.js'
       - '.github/workflows/apk.yml'
   workflow_dispatch:
     inputs:
