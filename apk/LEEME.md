@@ -39,6 +39,17 @@ los ajustes y lo bajado se conservan. Al instalar un APK nuevo, el
 actualizador tira las versiones que había bajado y arranca con la que trae
 el APK, que se pone al día enseguida si hace falta.
 
+**La app avisa sola de que hay un APK nuevo.** El número del APK (1.11,
+1.12…) sólo sube cuando cambia lo nativo: son los commits que han tocado
+`apk/android`, `package.json`, `package-lock.json` o
+`capacitor.config.json`, más una base para que el primero numerado así
+siguiera siendo el 1.11 que ya estaba instalado. El workflow lo pone en la
+etiqueta del APK en la release («Liturgicum 1.12»), y la app, al abrirse y
+como mucho una vez cada seis horas, lo compara con el suyo: si el publicado
+es mayor, lo dice arriba de la portada, con el enlace, y en Ajustes. «Ahora
+no» lo esconde hasta el día siguiente. Recompilar sin tocar lo nativo da el
+mismo número, así que no avisa de nada.
+
 El zip no entra en git: 16 MB por publicación se quedarían en la historia
 para siempre. Se arma en GitHub Actions y vive sólo en GitHub Pages.
 

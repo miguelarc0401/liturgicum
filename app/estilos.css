@@ -582,6 +582,11 @@ body.cab-fija .fila-fecha .icono {
 }
 /* mientras se esperan los 25 MB del oficio, el aviso respira */
 .aviso.cargando { animation: respira 1.6s ease-in-out infinite; }
+/* el de un APK nuevo, arriba de la portada (app.js, «el APK nuevo»): se lee
+   como texto y no como pista, y el enlace va con forma de botón */
+.aviso-apk { margin: 0 0 1.1rem; color: var(--tinta); }
+.aviso-apk p { margin: 0; }
+.aviso-apk a.piper-boton { display: inline-flex; align-items: center; text-decoration: none; }
 @keyframes respira { 50% { opacity: .55; } }
 
 /* -------------------------------------------------------------- lecturas */

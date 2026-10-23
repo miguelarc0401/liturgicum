@@ -4423,6 +4423,7 @@ function verPortada() {
   }).join('');
 
   vista.innerHTML = [
+    avisoDelApk(),
     '<p class="portada-fecha">' + esc(fechaLarga(iso)) + '</p>',
     dia ? '<p class="portada-dia">' + esc(dia.t)
       + (cels[0].m && cels[0].m.g ? '<small>' + esc(cels[0].m.g) + '</small>'
@@ -9210,7 +9211,12 @@ function lineaDelApk() {
     }).catch(() => { E.infoApk = {}; });
   }
   const v = E.infoApk && E.infoApk.version ? ' ' + esc(E.infoApk.version) : '';
-  if (conPlugin('Voz')) return '<br><br>Versión del APK' + v + '.';
+  if (conPlugin('Voz')) {
+    return '<br><br>Versión del APK' + v + '.' + (E.apkNuevo
+      ? ' Hay uno nuevo, el 1.' + E.apkNuevo.numero + ': <a href="' + APK_NUEVO
+        + '">se baja de aquí</a> y se instala encima, sin perder los ajustes.'
+      : '');
+  }
   return '<br><br>Esta versión del APK' + v + ' no trae la voz del teléfono: '
     + 'con ella sólo habla Piper. <a href="' + APK_NUEVO + '">El APK nuevo</a> '
     + 'se baja de ahí y se instala encima, sin perder los ajustes.';
@@ -9359,6 +9365,7 @@ async function arranca() {
   vista.addEventListener('click', alTocarZoom);
   vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('click', alTocarPiper);
+  vista.addEventListener('click', alTocarAvisoApk);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);
     else if (E.vista === 'ajustes' && ev.target.dataset.barra) {
@@ -9593,8 +9600,91 @@ async function vigilaElPaquete() {
     if (!d) return;
     if (!d.isActive) { P.fuera = Date.now(); return; }
     mira(P.fuera && Date.now() - P.fuera >= FUERA_PARA_ESTRENAR);
+    miraElApkNuevo();
   });
   mira(true);
+  miraElApkNuevo();
+}
+
+/* --------------------------------------------------------- el APK nuevo
+ * Lo de app/ le llega solo al APK; lo nativo no: pide instalar un APK nuevo
+ * encima (apk/LEEME.md). La release «apk» lleva en la etiqueta del APK su
+ * número —«Liturgicum 1.12»—, que sólo sube cuando cambia lo nativo; aquí
+ * se compara con el del APK instalado y, si el publicado es mayor, se avisa
+ * arriba de la portada y en Ajustes. A GitHub se le pregunta como mucho una
+ * vez cada seis horas, y lo sabido se guarda para decirlo también sin red. */
+const RELEASE_APK = 'https://api.github.com/repos/miguelarc0401/liturgicum/releases/tags/apk';
+const CADA_CUANTO_APK = 6 * 60 * 60 * 1000;
+
+/** El número del APK instalado (su versionCode). */
+async function numeroDelApk() {
+  if (!E.infoApk || !E.infoApk.build) {
+    try {
+      E.infoApk = (await window.Capacitor.nativePromise('App', 'getInfo', {})) || {};
+    } catch (_) {
+      return 0;
+    }
+  }
+  return parseInt(E.infoApk.build, 10) || 0;
+}
+
+async function miraElApkNuevo() {
+  const instalado = await numeroDelApk();
+  if (!instalado) return;
+  let sabido = null;
+  let mirado = 0;
+  try {
+    sabido = JSON.parse(localStorage.getItem('apkNuevo') || 'null');
+    mirado = +localStorage.getItem('apkMirado') || 0;
+  } catch (_) { /* sin almacén: se pregunta cada vez */ }
+  E.apkNuevo = sabido && sabido.numero > instalado ? sabido : null;
+  if (Date.now() - mirado >= CADA_CUANTO_APK) {
+    try {
+      const r = await fetch(RELEASE_APK, { cache: 'no-store',
+        headers: { Accept: 'application/vnd.github+json' } });
+      if (r.ok) {
+        const rel = await r.json();
+        const a = (rel.assets || []).find((x) => x.name === 'liturgicum.apk');
+        const m = a && /\b1\.(\d+)\b/.exec(a.label || '');
+        const numero = m ? +m[1] : 0;
+        E.apkNuevo = numero > instalado ? { numero: numero } : null;
+        try {
+          localStorage.setItem('apkMirado', String(Date.now()));
+          localStorage.setItem('apkNuevo', JSON.stringify(E.apkNuevo));
+        } catch (_) { /* se volverá a preguntar */ }
+      }
+    } catch (_) { /* sin red: vale lo sabido */ }
+  }
+  const c = $('#aviso-apk');
+  if (c && E.vista === 'portada') c.outerHTML = avisoDelApk();
+}
+
+/** El aviso de arriba de la portada. «Ahora no» lo esconde hasta mañana. */
+function avisoDelApk() {
+  const n = E.apkNuevo;
+  let luego = null;
+  try { luego = JSON.parse(localStorage.getItem('apkLuego') || 'null'); } catch (_) { /* */ }
+  if (!n || (luego && luego.numero === n.numero && Date.now() < luego.hasta)) {
+    return '<div id="aviso-apk" hidden></div>';
+  }
+  return '<div id="aviso-apk" class="aviso aviso-apk" role="status">'
+    + '<p>Hay un APK nuevo, el 1.' + n.numero + '. Trae cosas que no llegan '
+    + 'solas con las actualizaciones: se baja y se instala encima de éste, '
+    + 'sin perder los ajustes.</p><p>'
+    + '<a class="piper-boton" href="' + APK_NUEVO + '">Bajarlo</a>'
+    + '<button type="button" class="piper-boton" data-apk="luego">Ahora no'
+    + '</button></p></div>';
+}
+
+function alTocarAvisoApk(ev) {
+  const b = ev.target.closest && ev.target.closest('[data-apk="luego"]');
+  if (!b || !E.apkNuevo) return;
+  try {
+    localStorage.setItem('apkLuego', JSON.stringify({ numero: E.apkNuevo.numero,
+      hasta: Date.now() + 24 * 60 * 60 * 1000 }));
+  } catch (_) { /* sin almacén: se esconde sólo ahora */ }
+  const c = $('#aviso-apk');
+  if (c) c.outerHTML = '<div id="aviso-apk" hidden></div>';
 }
 
 /* La versión ya bajada, si la hay, se pone ahora: recarga la app, y de

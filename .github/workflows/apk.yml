@@ -36,8 +36,26 @@ concurrency:
 jobs:
   compilar:
     runs-on: ubuntu-latest
+    outputs:
+      numero: ${{ steps.numero.outputs.numero }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0      # la historia entera: el número sale de ella
+
+      # El número del APK sube sólo cuando cambia lo nativo —lo que el
+      # actualizador no puede traer—: es lo que la app compara para avisar de
+      # que hay un APK nuevo que instalar (app.js, «el APK nuevo»). Son los
+      # commits que han tocado esas rutas, más una base para que el primero
+      # numerado así siga siendo el 1.11 que ya estaba instalado: con un
+      # número menor, Android no dejaría ponerlo encima.
+      - name: Número del APK
+        id: numero
+        run: |
+          N=$(( 6 + $(git rev-list --count HEAD -- apk/android apk/package.json apk/package-lock.json apk/capacitor.config.json) ))
+          echo "numero=$N" >> "$GITHUB_OUTPUT"
+          echo "APK_NUMERO=$N" >> "$GITHUB_ENV"
+          echo "APK 1.$N"
 
       - uses: actions/setup-java@v5
         with:
@@ -79,7 +97,6 @@ jobs:
       - name: Compilar
         working-directory: apk/android
         env:
-          APK_NUMERO: ${{ github.run_number }}
           APK_LLAVE_CLAVE: ${{ secrets.APK_LLAVE_CLAVE }}
           APK_LLAVE_ALIAS: ${{ secrets.APK_LLAVE_ALIAS }}
         # el de depuración es sólo para la prueba de la voz: es el único que
@@ -205,7 +222,7 @@ jobs:
         run: test ! -f voz-fallo
 
   publicar:
-    needs: [probar, voz]
+    needs: [compilar, probar, voz]
     if: github.ref == 'refs/heads/main' && inputs.probar_actualizacion != true
     runs-on: ubuntu-latest
     steps:
@@ -222,4 +239,5 @@ jobs:
             gh release create apk --target "$GITHUB_SHA" --title "Liturgicum para Android" \
               --notes "El APK de la app. Se actualiza solo con lo que se publica; sólo hay que volver a instalarlo cuando cambia lo nativo (apk/LEEME.md)."
           fi
-          gh release upload apk liturgicum.apk --clobber
+          # el número va en la etiqueta del APK: es lo que lee la app
+          gh release upload apk "liturgicum.apk#Liturgicum 1.${{ needs.compilar.outputs.numero }}" --clobber
