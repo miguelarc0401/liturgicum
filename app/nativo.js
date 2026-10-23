@@ -131,14 +131,23 @@
     }
   });
 
-  llama('Voz', 'voces').then((r) => {
-    voces = (r.voces || []).map((v) => ({
-      voiceURI: v.id, name: v.nombre, lang: v.lengua,
-      localService: !v.red, default: !!v.porOmision
-    }));
-    oyentes.forEach((f) => { try { f({}); } catch (_) { /* uno que falla */ } });
-    if (sintesis.onvoiceschanged) sintesis.onvoiceschanged({});
-  }).catch(() => { /* sin motor de voz: la lista se queda vacía y Ajustes lo dice */ });
+  // El motor puede dar la lista vacía nada más arrancar —la va cargando—: se
+  // le vuelve a preguntar unas cuantas veces antes de creérselo
+  function pideLasVoces(veces) {
+    llama('Voz', 'voces').then((r) => {
+      if (!(r.voces || []).length && veces > 0) {
+        setTimeout(() => pideLasVoces(veces - 1), 3000);
+        return;
+      }
+      voces = (r.voces || []).map((v) => ({
+        voiceURI: v.id, name: v.nombre, lang: v.lengua,
+        localService: !v.red, default: !!v.porOmision
+      }));
+      oyentes.forEach((f) => { try { f({}); } catch (_) { /* uno que falla */ } });
+      if (sintesis.onvoiceschanged) sintesis.onvoiceschanged({});
+    }).catch(() => { /* sin motor de voz: la lista se queda vacía y Ajustes lo dice */ });
+  }
+  pideLasVoces(10);
 
   Object.defineProperty(window, 'speechSynthesis',
     { value: sintesis, configurable: true, writable: true });

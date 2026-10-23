@@ -8208,9 +8208,12 @@ function vaATrozo(k) {
   V.i = Math.max(0, Math.min(V.guion.length - 1, k));
   V.estado = 'diciendo';
   V.hasta = V.i;
+  // los mandos antes que la cola: en el APK ponerlos arranca el servicio que
+  // mantiene la voz con la pantalla apagada, y Android sólo deja arrancarlo
+  // con la app delante, que es ahora, al tocar
+  nombraEnLosMandos();
   if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
   else diceEnLinea(V.i);
-  nombraEnLosMandos();
   pintaBarraVoz();
 }
 

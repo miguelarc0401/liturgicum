@@ -79,8 +79,8 @@ async function prueba() {
 
   // las voces del teléfono
   const voces = await evalua(`
-    for (let k = 0; k < 40 && !speechSynthesis.getVoices().length; k++)
-      await new Promise((r) => setTimeout(r, 500));
+    for (let k = 0; k < 45 && !speechSynthesis.getVoices().length; k++)
+      await new Promise((r) => setTimeout(r, 1000));
     return speechSynthesis.getVoices().map((v) => v.voiceURI + ' ' + v.lang);`);
   apunta('el teléfono da voces', { n: voces.length, voces: voces.slice(0, 8) }, voces.length > 0);
 
@@ -120,20 +120,30 @@ async function prueba() {
   // los botones de fuera, con la pantalla todavía apagada. Se mandan como
   // los manda el Bluetooth del coche, por la sesión de medios: con `input
   // keyevent` irían a la ventana, y con la pantalla apagada no hay ninguna
+  // y se mira en el registro que llegó a la app, no sólo cómo quedó la voz,
+  // que también avanza sola
   const boton = (b) => adb('shell cmd media_session dispatch ' + b);
+  const oidos = (accion) => adb('logcat -d -s Liturgicum:I').split('\n')
+    .filter((l) => l.endsWith('mando: ' + accion)).length;
+  let n0 = oidos('pausa');
   boton('pause');
   await espera(2500);
   e = await estado();
-  apunta('el botón de pausa la pausa', e, e.estado === 'pausada');
+  e.oido = oidos('pausa') > n0;
+  apunta('el botón de pausa la pausa', e, e.estado === 'pausada' && e.oido);
+  n0 = oidos('sigue');
   boton('play');
   await espera(2500);
   e = await estado();
-  apunta('el de seguir la sigue', e, e.estado === 'diciendo');
+  e.oido = oidos('sigue') > n0;
+  apunta('el de seguir la sigue', e, e.estado === 'diciendo' && e.oido);
   const sec = e.sec;
+  n0 = oidos('siguiente');
   boton('next');
-  await espera(2500);
+  await espera(1500);
   e = await estado();
-  apunta('el de siguiente pasa de sección', { antes: sec, ahora: e.sec }, e.sec > sec);
+  const oido = oidos('siguiente') > n0;
+  apunta('el de siguiente pasa de sección', { antes: sec, ahora: e.sec, oido }, e.sec > sec && oido);
   adb('shell input keyevent KEYCODE_WAKEUP');
   adb('shell wm dismiss-keyguard');
   await espera(1500);

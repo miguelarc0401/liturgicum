@@ -212,14 +212,22 @@ public class VozPlugin extends Plugin {
         });
     }
 
-    /** La voz elegida, y si no está, la lengua; y si tampoco, el castellano que haya. */
+    /**
+     * La voz elegida, y si no está, la lengua; y si tampoco, el castellano que
+     * haya. Sólo cuando cambia: setLanguage tarda —el motor carga la lengua—,
+     * y hecho a cada trozo, los setenta de una hora tenían la cola de los
+     * plugins ocupada medio minuto, y lo que iba detrás (los mandos, la
+     * pausa) esperaba otro tanto.
+     */
     private void ponVoz(String voz, String lengua) {
-        if (voz != null && !voz.equals(vozPuesta)) {
+        String pedida = (voz == null ? "" : voz) + "|" + lengua;
+        if (pedida.equals(vozPuesta)) return;
+        vozPuesta = pedida;
+        if (voz != null) {
             try {
                 for (Voice v : tts.getVoices()) {
                     if (v.getName().equals(voz)) {
                         tts.setVoice(v);
-                        vozPuesta = voz;
                         return;
                     }
                 }
@@ -227,8 +235,6 @@ public class VozPlugin extends Plugin {
                 // sin lista: se pide por la lengua
             }
         }
-        if (voz != null && voz.equals(vozPuesta)) return;
-        vozPuesta = null;
         int r = tts.setLanguage(Locale.forLanguageTag(lengua));
         if (r == TextToSpeech.LANG_MISSING_DATA || r == TextToSpeech.LANG_NOT_SUPPORTED) {
             tts.setLanguage(new Locale("es"));
@@ -262,15 +268,24 @@ public class VozPlugin extends Plugin {
     @PluginMethod
     public void mandos(PluginCall call) {
         String estado = call.getString("estado", "parada");
+        String titulo = call.getString("titulo", "");
+        String artista = call.getString("artista", "");
         Intent i = new Intent(getContext(), VozServicio.class);
         if ("parada".equals(estado)) {
             getContext().stopService(i);
             call.resolve();
             return;
         }
+        // Puesto ya, se le dice a él: arrancarlo otra vez con la pantalla
+        // apagada —al pasar de sección, al tocar el volante— Android no lo
+        // deja, porque la app está en segundo plano
+        if (VozServicio.pon(titulo, artista, estado)) {
+            call.resolve();
+            return;
+        }
         i.setAction(VozServicio.PON);
-        i.putExtra("titulo", call.getString("titulo", ""));
-        i.putExtra("artista", call.getString("artista", ""));
+        i.putExtra("titulo", titulo);
+        i.putExtra("artista", artista);
         i.putExtra("estado", estado);
         try {
             ContextCompat.startForegroundService(getContext(), i);

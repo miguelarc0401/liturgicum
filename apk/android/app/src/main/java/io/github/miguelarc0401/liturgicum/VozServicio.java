@@ -15,7 +15,9 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.PowerManager;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaSessionCompat;
@@ -48,6 +50,25 @@ public class VozServicio extends Service {
     private static final String CANAL = "voz";
     private static final int AVISO = 1;
 
+    private static volatile VozServicio instancia;
+    private final Handler principal = new Handler(Looper.getMainLooper());
+
+    /**
+     * Lo que dice el aviso, al servicio ya puesto. Devuelve false si no lo
+     * está, y entonces hay que arrancarlo (VozPlugin.mandos).
+     */
+    static boolean pon(String titulo, String artista, String estado) {
+        VozServicio s = instancia;
+        if (s == null) return false;
+        s.principal.post(() -> {
+            s.titulo = valor(titulo, "Liturgicum");
+            s.artista = valor(artista, "");
+            s.sonando = "sonando".equals(estado);
+            s.aplica();
+        });
+        return true;
+    }
+
     private MediaSessionCompat sesion;
     private PowerManager.WakeLock vela;
     private AudioTrack mudo;
@@ -64,6 +85,7 @@ public class VozServicio extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        instancia = this;
         audio = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         icono = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_foreground);
 
@@ -153,6 +175,8 @@ public class VozServicio extends Service {
 
     @Override
     public void onDestroy() {
+        if (instancia == this) instancia = null;
+        principal.removeCallbacksAndMessages(null);
         callaElMudo();
         if (vela.isHeld()) vela.release();
         sueltaElFoco();
