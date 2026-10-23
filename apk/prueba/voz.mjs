@@ -95,6 +95,8 @@ async function prueba() {
     arrancaVoz(0);`);
   await espera(10000);
   let e = await estado();
+  e.motor = await evalua('return { hablando: speechSynthesis.speaking, '
+    + 'pendiente: speechSynthesis.pending, voz: E.cfg.voz };');
   apunta('dice Laudes', e, e.estado === 'diciendo' && e.i >= 1);
   foto('voz-1-diciendo.png');
 
@@ -115,17 +117,20 @@ async function prueba() {
   apunta('sigue con la pantalla apagada', { antes, despues: e.i, estado: e.estado },
     e.estado === 'diciendo' && e.i > antes);
 
-  // los botones de fuera, con la pantalla todavía apagada
-  adb('shell input keyevent KEYCODE_MEDIA_PAUSE');
+  // los botones de fuera, con la pantalla todavía apagada. Se mandan como
+  // los manda el Bluetooth del coche, por la sesión de medios: con `input
+  // keyevent` irían a la ventana, y con la pantalla apagada no hay ninguna
+  const boton = (b) => adb('shell cmd media_session dispatch ' + b);
+  boton('pause');
   await espera(2500);
   e = await estado();
   apunta('el botón de pausa la pausa', e, e.estado === 'pausada');
-  adb('shell input keyevent KEYCODE_MEDIA_PLAY');
+  boton('play');
   await espera(2500);
   e = await estado();
   apunta('el de seguir la sigue', e, e.estado === 'diciendo');
   const sec = e.sec;
-  adb('shell input keyevent KEYCODE_MEDIA_NEXT');
+  boton('next');
   await espera(2500);
   e = await estado();
   apunta('el de siguiente pasa de sección', { antes: sec, ahora: e.sec }, e.sec > sec);
@@ -133,7 +138,7 @@ async function prueba() {
   adb('shell wm dismiss-keyguard');
   await espera(1500);
   foto('voz-3-de-vuelta.png');
-  adb('shell input keyevent KEYCODE_MEDIA_STOP');
+  boton('stop');
   await espera(2500);
   e = await estado();
   const servicio = adb('shell dumpsys activity services ' + PAQUETE);
@@ -156,11 +161,12 @@ async function prueba() {
     const t1 = Date.now();
     const r = await pidePiper({ tipo: 'di', voz: voz, hablante: '', vel: 1,
       texto: 'Bendito sea el Señor, Dios de Israel.' });
-    const cache = (await caches.keys()).includes('voz-piper');
+    const enCache = (await caches.keys()).includes('voz-piper')
+      ? (await (await caches.open('voz-piper')).keys()).length : 0;
     return { hay: hay, bajadaEn: Math.round((t1 - t0) / 1000), segundos: r.segundos,
-      ms: Math.round(r.ms), cacheDelNavegador: cache };`);
+      ms: Math.round(r.ms), enLaCacheDelNavegador: enCache };`);
   apunta('Piper baja a archivos y habla desde ellos', piper,
-    piper.hay && piper.segundos > 0 && !piper.cacheDelNavegador);
+    piper.hay && piper.segundos > 0 && piper.enLaCacheDelNavegador === 0);
   const archivos = adb('shell run-as ' + PAQUETE + ' ls -l files/piper');
   apunta('los archivos están en files/piper', { archivos: archivos.split('\n') }, /ald-x_low\.onnx/.test(archivos));
 }

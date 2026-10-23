@@ -123,6 +123,7 @@ public class VozPlugin extends Plugin {
     }
 
     private void avisa(String id, String que, int inicio) {
+        if (!"palabra".equals(que)) Log.d(TAG, "voz " + id + ": " + que);
         JSObject o = new JSObject();
         o.put("id", id);
         o.put("que", que);

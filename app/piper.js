@@ -68,9 +68,15 @@ function piezas(voz) {
 const _locales = {};
 
 async function guardadas(urls) {
-  const c = await caches.open(CACHE);
+  // la caché se abre sólo si hace falta: abrirla la crea, y en el APK no
+  // tiene por qué haberla
+  let c = null;
   const r = [];
-  for (const u of urls) r.push(!!_locales[u] || !!(await c.match(u)));
+  for (const u of urls) {
+    if (_locales[u]) { r.push(true); continue; }
+    if (!c) c = await caches.open(CACHE);
+    r.push(!!(await c.match(u)));
+  }
   return r;
 }
 
