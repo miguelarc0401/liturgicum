@@ -2260,6 +2260,29 @@ select.elige {
    se compone como el Ordinario de la misa, con las dos lenguas enfrentadas
    (.bi) y la rubrica en rojo; al pie, de donde sale, y la de al lado. */
 
+/* Las dos burbujas de la lengua, lo primero de la portada: deciden lo que
+   se ve en todo lo demas —en latin, las que tienen latin; en espanol, las
+   que tienen castellano, con su titulo—, y la puesta va llena del color del
+   dia, como el filtro encendido. */
+.devo-lenguas {
+  display: flex; justify-content: center; gap: .5rem; margin: 0 0 .9rem;
+}
+.devo-lengua {
+  min-width: 6.4rem; min-height: 2.5rem; padding: .3rem 1.2rem;
+  border-radius: 999px; cursor: pointer;
+  font-family: var(--sans); font-size: .86rem; letter-spacing: .02em;
+  color: var(--tinta); background: var(--papel-alto);
+  border: 1px solid var(--filete-fuerte);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva),
+              border-color var(--medio) var(--curva);
+}
+.devo-lengua:active { background: var(--filete); }
+.devo-lengua[aria-checked="true"] {
+  background: var(--acento); border-color: var(--acento);
+  color: var(--papel-alto);
+}
+
 /* el buscador, con su lupa dentro */
 .devo-busca { position: relative; }
 .devo-busca svg {
@@ -2517,6 +2540,24 @@ select.elige {
   border-color: color-mix(in srgb, var(--acento) 35%, transparent);
 }
 .devo-fav.activa svg { fill: currentColor; }
+/* Los dos cuadritos de la oracion que esta en las dos lenguas: encima del
+   texto, que es lo que cambian, y pegados como las dos caras de lo mismo. */
+.devo-cuadritos {
+  display: flex; width: max-content; margin: -.4rem 0 .5rem;
+  border: 1px solid var(--filete-fuerte); border-radius: 8px;
+  overflow: hidden;
+}
+.devo-cuadrito {
+  min-height: 2.2rem; min-width: 4.6rem; padding: .2rem .9rem;
+  border: 0; background: var(--papel-alto); cursor: pointer;
+  font-family: var(--sans); font-size: .76rem; letter-spacing: .02em;
+  color: var(--tinta-suave);
+  transition: background-color var(--medio) var(--curva),
+              color var(--medio) var(--curva);
+}
+.devo-cuadrito + .devo-cuadrito { border-left: 1px solid var(--filete-fuerte); }
+.devo-cuadrito:active { background: var(--filete); }
+.devo-cuadrito[aria-checked="true"] { background: var(--acento); color: var(--papel-alto); }
 .devo { margin-top: .4rem; }
 /* La oracion va en una caja de las que se rezan (.hora-sec), que es lo que
    la pone al alcance de la voz y de los mandos; pero su hueco de abajo es
@@ -2639,6 +2680,106 @@ select.elige {
 .devo-chip-mas {
   border-style: dashed; background: none; color: var(--acento);
 }
+
+/* ------------------------------------------------ el editor del libro
+   Solo existe cuando la app la sirve Enchiridion/src/editar.py: la caja de
+   la portada, la × de cada fila, quitar y devolver en la oracion, la pagina
+   para agregar y el aviso de abajo. Va en el rojo de la rubrica y con el
+   borde a trazos, que se vea que es del taller y no del libro. */
+.devo-editor {
+  margin: .9rem 0 0; padding: .8rem 1rem .9rem;
+  border: 1px dashed color-mix(in srgb, var(--rubrica) 60%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--rubrica) 5%, var(--papel-alto));
+}
+.devo-editor-ojo {
+  margin: 0; font-family: var(--sans); font-size: .62rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--rubrica);
+}
+.devo-editor-p {
+  margin: .3rem 0 0; font-family: var(--sans); font-size: .76rem;
+  line-height: 1.5; color: var(--tinta-suave);
+}
+.devo-editor-p code { font-size: .72rem; overflow-wrap: anywhere; }
+.devo-editor .devo-chips.envuelve { margin-top: .65rem; align-items: center; }
+.devo-editor-n { font-family: var(--sans); font-size: .72rem; color: var(--tinta-suave); }
+/* la × de la fila: a la derecha, antes de la flecha; quita sin abrir */
+.devo-ed {
+  flex: none; align-self: center; display: inline-grid; place-items: center;
+  width: 2.3rem; height: 2.3rem; margin: -.35rem -.3rem -.35rem 0;
+  border-radius: 999px; color: var(--tinta-suave); cursor: pointer;
+  transition: background-color var(--rapido), color var(--rapido);
+}
+.devo-ed svg { width: 1.05rem; height: 1.05rem; stroke-width: 1.8; }
+.devo-ed:hover, .devo-ed:focus-visible {
+  color: var(--rubrica);
+  background: color-mix(in srgb, var(--rubrica) 12%, transparent);
+}
+.devo-ed.devolver {
+  width: auto; height: 2rem; padding: 0 .85rem;
+  font-family: var(--sans); font-size: .74rem; color: var(--acento);
+  border: 1px solid color-mix(in srgb, var(--acento) 40%, transparent);
+}
+.devo-yendose { opacity: .35; pointer-events: none; transition: opacity var(--medio); }
+.devo-quitar { gap: .35rem; cursor: pointer; color: var(--rubrica); }
+.devo-quitar svg { width: .95rem; height: .95rem; stroke-width: 1.8; }
+.devo-quitada {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem;
+  margin: 0 0 1rem; padding: .7rem .9rem;
+  border: 1px dashed color-mix(in srgb, var(--rubrica) 60%, transparent);
+  border-radius: 12px; font-family: var(--sans); font-size: .8rem;
+  line-height: 1.45; color: var(--rubrica);
+  background: color-mix(in srgb, var(--rubrica) 5%, var(--papel-alto));
+}
+.devo-quitada .devo-ed { margin: 0; }
+/* el aviso de abajo, por encima de la barra, con su «Deshacer» */
+.devo-aviso {
+  position: fixed; left: 50%; z-index: 40; transform: translateX(-50%);
+  bottom: calc(5.4rem + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: .8rem;
+  max-width: calc(100vw - 32px); padding: .55rem .6rem .55rem 1rem;
+  border-radius: 12px; background: var(--tinta); color: var(--papel);
+  font-family: var(--sans); font-size: .8rem; box-shadow: var(--sombra);
+}
+.devo-aviso[hidden] { display: none; }
+.devo-aviso span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.devo-aviso button {
+  flex: none; min-height: 2.2rem; padding: 0 .5rem; border: 0;
+  background: none; color: inherit; font: inherit; font-weight: 700;
+  text-decoration: underline; cursor: pointer;
+}
+/* agregar o corregir una oracion: un formulario de ficha, por partes */
+.devo-form fieldset { margin: 1.3rem 0 0; padding: 0; border: 0; min-width: 0; }
+.devo-form legend {
+  width: 100%; padding: 0 .1rem .45rem;
+  border-bottom: 1px solid var(--filete-fuerte);
+  font-family: var(--sans); font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--acento);
+}
+.devo-form-campo { display: block; margin-top: .85rem; }
+.devo-form-eti {
+  display: block; margin: 0 .1rem .3rem; font-family: var(--sans);
+  font-size: .74rem; font-weight: 600; color: var(--tinta);
+}
+.devo-form-pista {
+  display: block; margin: .3rem .1rem 0; font-family: var(--sans);
+  font-size: .7rem; line-height: 1.45; color: var(--tinta-suave);
+}
+.devo-form textarea.campo { min-height: 9rem; resize: vertical; line-height: 1.5; }
+.devo-form-marca {
+  display: flex; align-items: center; gap: .5rem; margin-top: .9rem;
+  font-family: var(--sans); font-size: .8rem;
+}
+.devo-form-marca input { width: 1.1rem; height: 1.1rem; accent-color: var(--acento); }
+.devo-form-error {
+  margin: 1rem 0 0; padding: .6rem .8rem; border-radius: 10px;
+  font-family: var(--sans); font-size: .8rem; line-height: 1.45;
+  white-space: pre-line; color: var(--rubrica);
+  background: color-mix(in srgb, var(--rubrica) 8%, transparent);
+}
+.devo-form-error[hidden] { display: none; }
+.devo-form-botones { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 1rem; }
+.devo-form-botones .devo-chip { font-size: .84rem; padding: .35rem 1.15rem; }
 
 /* ------------------------------------------------- rezar en alta voz
    Dos sitios: el boton que la arranca, en la cabecera al lado de las dos

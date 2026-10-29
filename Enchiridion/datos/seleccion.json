@@ -1,0 +1,5 @@
+{
+ "nota": "Lo que el editor del devocionario ha decidido: las oraciones que quitó, por su id, y las que agregó, con su texto. Lo escribe Enchiridion/src/editar.py y lo aplica la fase 5.",
+ "quitadas": {},
+ "nuevas": []
+}

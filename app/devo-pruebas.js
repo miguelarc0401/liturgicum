@@ -154,9 +154,11 @@ function pdPasosDe(p) {
 }
 
 /** La fila. Lo que se dice sin abrir la oración, y nada más: el título
- *  latino; el castellano debajo, cuando lo hay —y eso mismo dice que lo
- *  hay—; y qué es, sólo si no es una oración, que es lo que son casi todas. */
+ *  en la lengua de la burbuja; en latín, el castellano debajo cuando lo hay
+ *  —y eso mismo dice que lo hay—; y qué es, sólo si no es una oración, que
+ *  es lo que son casi todas. */
 function pdFila(p, ctx, num, sinEstrella) {
+  const es = E.devoLengua === 'es';
   const meta = [];
   if (p.f !== 'oración' && p.f !== pdCalla) meta.push(esc(p.f));
   if (p.hora) meta.push(esc(devoHora(p)));
@@ -165,15 +167,15 @@ function pdFila(p, ctx, num, sinEstrella) {
     + (num ? '<span class="pd-num">' + num + '</span>' : '')
     + '<span class="pd-fila-c">'
     + (ctx ? '<span class="pd-ctx">' + esc(ctx) + '</span>' : '')
-    + '<span class="pd-la" lang="la">' + esc(tx(p.tla))
-    + (p.dist ? ' <span class="pd-dist">' + esc(p.dist) + '</span>' : '')
+    + '<span class="pd-la" lang="' + devoLangTit(p) + '">' + esc(devoTit(p))
+    + (p.dist && !es ? ' <span class="pd-dist">' + esc(p.dist) + '</span>' : '')
     + (!sinEstrella && esFavorita(p.id) ? '<span class="pd-estrella" '
       + 'title="Favorita">' + ICONO.estrella + '</span>' : '')
     + '</span>'
-    + (p.tes ? '<span class="pd-es">' + esc(p.tes) + '</span>' : '')
+    + (p.tes && !es ? '<span class="pd-es">' + esc(p.tes) + '</span>' : '')
     + (meta.length ? '<span class="pd-meta">' + meta.join(' · ') + '</span>'
       : '')
-    + '</span></a>';
+    + '</span>' + devoBotonEditor(p) + '</a>';
 }
 
 function pdFilaCol(partes) {
@@ -253,7 +255,7 @@ function pdFilaSec(c, s) {
   const piezas = E.devo.piezas.filter((p) => p.c === c.c && p.s === s.s);
   let href = pdEnlaceSec(c.c, s.s);
   if (piezas.length === 1) href = '#/oraciones/o/' + piezas[0].id;
-  else if (piezas.length && piezas.every((p) => p.col && p.col === piezas[0].col)) {
+  else if (piezas.length && piezas.every((p) => devoEnCol(p) && p.col === piezas[0].col)) {
     href = '#/oraciones/k/' + encodeURIComponent(piezas[0].col);
   }
   return '<a class="pd-sec" href="' + href + '"><span class="pd-sec-t">'
@@ -275,20 +277,14 @@ function pdFilaCap(c, conPista) {
     + '</span><span class="pd-n">' + c.n + '</span></a>';
 }
 
-function pdNumEs() { return E.devo.piezas.filter((p) => p.es).length; }
-
-/** Las otras dos entradas, que no son capítulos: por lo que es cada pieza
- *  y las que ya tienen castellano. */
+/** La otra entrada, que no es un capítulo: por lo que es cada pieza. Las
+ *  que tienen castellano ya no son una entrada: son la burbuja del español. */
 function pdOtrasEntradas() {
   return pdBanda('Otras maneras de buscar') + '<div class="pd-lista">'
     + '<a class="pd-cap-fila" href="#/oraciones/f"><span class="pd-cap-c">'
     + '<span class="pd-cap-t">Por tipo de oración</span>'
     + '<span class="pd-cap-p">Himnos, letanías, novenas, salmos…</span>'
-    + '</span><span class="pd-n">' + E.devo.formas.length + '</span></a>'
-    + '<a class="pd-cap-fila" href="' + devoEnlaceFiltro(null, 'es') + '">'
-    + '<span class="pd-cap-c"><span class="pd-cap-t">Con su castellano</span>'
-    + '<span class="pd-cap-p">Las que ya tienen la traducción verificada</span>'
-    + '</span><span class="pd-n">' + pdNumEs() + '</span></a></div>';
+    + '</span><span class="pd-n">' + E.devo.formas.length + '</span></a></div>';
 }
 
 function pdFavoritasArriba(ids, conBanda) {
@@ -306,11 +302,12 @@ function pdFavoritasArriba(ids, conBanda) {
  *  es una función, porque el árbol plegable cambia mientras se usa y al
  *  borrar la búsqueda tiene que volver como se dejó. */
 function pdBuscador(pinta, vuelta, alPintar) {
-  vista.innerHTML = '<div class="devo-busca pd-busca">' + ICONO.buscar
-    + '<input class="campo" id="devo-q" type="search" '
-    + 'placeholder="Buscar una oración, en latín o en castellano" '
+  vista.innerHTML = devoBurbujas() + '<div class="devo-busca pd-busca">'
+    + ICONO.buscar + '<input class="campo" id="devo-q" type="search" '
+    + 'placeholder="' + (E.devoLengua === 'es' ? 'Buscar una oración'
+      : 'Buscar una oración, en latín o en castellano') + '" '
     + 'aria-label="Buscar una oración" autocomplete="off"></div>'
-    + '<div id="devo-res">' + pinta() + '</div>';
+    + devoEditorCaja() + '<div id="devo-res">' + pinta() + '</div>';
   const campo = $('#devo-q');
   const caja = $('#devo-res');
   if (alPintar) alPintar(caja);
@@ -454,10 +451,7 @@ function pdPortadaB() {
         .join('') + '</div>').join('')
     + pdBanda('Por tipo de oración')
     + '<div class="devo-chips pd-tira">' + formas
-    + '<a class="devo-chip devo-chip-mas" href="#/oraciones/f">todas…</a></div>'
-    + '<div class="devo-chips pd-tira"><a class="devo-chip" href="'
-    + devoEnlaceFiltro(null, 'es') + '">con castellano <span>' + pdNumEs()
-    + '</span></a></div>';
+    + '<a class="devo-chip devo-chip-mas" href="#/oraciones/f">todas…</a></div>';
   pdBuscador(() => html, { ids: [], href: '#/oraciones', rot: 'Devocionario' });
   pdColoca();
 }
@@ -595,10 +589,7 @@ function pdArbolHtml() {
     + E.devo.formas.map((x) => '<a class="pd-sec" href="'
       + devoEnlaceFiltro(x.f) + '"><span class="pd-sec-t">'
       + esc(mayuscula(devoPlural(x.f))) + '</span><span class="pd-n">' + x.n
-      + '</span></a>').join('')
-    + '<a class="pd-sec" href="' + devoEnlaceFiltro(null, 'es') + '">'
-    + '<span class="pd-sec-t">Con su castellano</span><span class="pd-n">'
-    + pdNumEs() + '</span></a></div></div></details>');
+      + '</span></a>').join('') + '</div></div></details>');
   return h.join('');
 }
 
@@ -763,7 +754,7 @@ function pdPrimeras(piezas, n) {
   const r = [];
   const cols = new Set();
   for (const p of piezas) {
-    if (p.col) { if (cols.has(p.col)) continue; cols.add(p.col); }
+    if (devoEnCol(p)) { if (cols.has(p.col)) continue; cols.add(p.col); }
     r.push(p);
     if (r.length >= n) break;
   }
@@ -827,8 +818,8 @@ function pdPortadaD() {
     }).join('')
     + pdBanda('Siempre a mano')
     + '<div class="pd-amano">' + amano.map((p) => '<a href="#/oraciones/o/'
-      + esc(p.id) + '" lang="la">' + (esFavorita(p.id) ? ICONO.estrella : '')
-      + esc(tx(p.tla)) + '</a>').join('')
+      + esc(p.id) + '" lang="' + devoLangTit(p) + '">'
+      + (esFavorita(p.id) ? ICONO.estrella : '') + esc(devoTit(p)) + '</a>').join('')
     + '<a class="pd-amano-mas" href="#/oraciones/p">Las del Compendio</a></div>'
     + pdBanda('Todo el devocionario')
     + pdBandas().map((b) => '<p class="pd-rejilla-t">' + esc(b.t) + '</p>'
@@ -883,7 +874,7 @@ function pdRetoca(que, cual) {
   if (que === 'o') {
     const p = E.devoDe.get(cual);
     if (p) pasos = pdPasosDe(p);
-    if (p && p.col) pasos.push(['#/oraciones/k/' + encodeURIComponent(p.col), p.colt]);
+    if (p && devoEnCol(p)) pasos.push(['#/oraciones/k/' + encodeURIComponent(p.col), p.colt]);
   } else if (que === 'k') {
     const partes = E.devoCol.get(cual);
     if (partes) pasos = pdPasosDe(partes[0]);
@@ -930,7 +921,7 @@ verDevocionario = async function (que, cual, mas) {
   const v = pdCual();
   pdBarra();
   if (v === 'actual' || que === 'o' || que === 'k' || que === 'f'
-    || que === 'p' || que === 'm') {
+    || que === 'p' || que === 'm' || que === 'q' || que === 'n' || que === 'e') {
     await pdAntes.verDevocionario(que, cual, mas);
     if (v !== 'actual') pdRetoca(que, cual);
     pdTrasPintar();

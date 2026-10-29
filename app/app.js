@@ -76,7 +76,11 @@ const E = {              // todo el estado de la app
   devoQ: '',             // lo que se busca en el devocionario
   devoVuelta: null,      // la lista del devocionario de la que se viene
   devoPieza: null,       // la oración del devocionario que está abierta
-  devoFav: []            // las oraciones marcadas, la última delante
+  devoFav: [],           // las oraciones marcadas, la última delante
+  devoTodo: null,        // el devocionario entero, como viene del fichero
+  devoLengua: 'la',      // la burbuja de la portada: 'la' o 'es'
+  devoVer: null,         // {id, l}: en qué lengua se ve la oración abierta
+  editor: null           // lo quitado y lo agregado, si lo sirve editar.py
 };
 
 const $ = (s) => document.querySelector(s);
@@ -4475,22 +4479,188 @@ function verPortada() {
  * procedencia, y las que aún no tienen castellano se rezan en latín.
  *
  * Pesa 1 MB y no hace falta para nada más, así que no se carga hasta que se
- * abre, como las horas. */
+ * abre, como las horas.
+ *
+ * Se ve en una lengua, la de la burbuja de arriba: en latín, las que tienen
+ * latín, con su título latino; en español, las que tienen castellano, con el
+ * suyo. `E.devoTodo` es el libro entero y `E.devo` lo que se ve en la lengua
+ * puesta, con las cuentas de capítulos, secciones y formas hechas sobre eso,
+ * de modo que todo lo que pinta el devocionario pinta ya lo de esa lengua. */
 async function cargaDevocionario() {
-  if (E.devo) return;
+  if (E.devoTodo) return;
   const d = await json('devocionario.json');
-  E.devo = d;
+  await miraEditor();
+  E.devoTodo = d;
+  cargaLengua();
+  // la oración se abre por su id en cualquier lengua —una favorita, un
+  // enlace—, y en el editor también la quitada, para poder devolverla
   E.devoDe = new Map(d.piezas.map((p) => [p.id, p]));
-  E.devoCap = new Map(d.caps.map((c) => [c.c, c]));
+  if (E.editor) {
+    for (const p of E.editor.quitadas) {
+      if (!E.devoDe.has(p.id)) E.devoDe.set(p.id, p);
+    }
+  }
+  devoAplica();
+  cargaFavoritas();
+  escuchaDevocionario();
+}
+
+/** Si tiene lo que la burbuja pide: latín o castellano. */
+function devoTiene(p, l) {
+  return l === 'es' ? !!p.es : !!(p.b && p.b.length);
+}
+
+/** El número del salmo, para que en castellano sigan en su orden. */
+function devoNumSalmo(p) {
+  const m = /^psalmus\s+([ivxlcdm]+)/i.exec(p.tla || '');
+  if (!m) return 0;
+  const v = { i: 1, v: 5, x: 10, l: 50, c: 100, d: 500, m: 1000 };
+  let n = 0;
+  let previo = 0;
+  for (const c of m[1].toLowerCase().split('').reverse()) {
+    n += v[c] < previo ? -v[c] : v[c];
+    previo = Math.max(previo, v[c]);
+  }
+  return n;
+}
+
+/** Lo que se ve en la lengua puesta, con sus cuentas. En español, además:
+ *  las dos ediciones latinas de un salmo tienen el mismo castellano, y se
+ *  queda una; y dentro de cada sección van por el título castellano, que es
+ *  el que se lee, salvo los salmos, que van por su número. */
+function devoAplica() {
+  const d = E.devoTodo;
+  const l = E.devoLengua;
+  let piezas = d.piezas.filter((p) => devoTiene(p, l));
+  if (l === 'es') {
+    const vistos = new Set();
+    piezas = piezas.filter((p) => {
+      if (!p.col) return true;
+      const k = p.col + '|' + JSON.stringify(p.es);
+      if (vistos.has(k)) return false;
+      vistos.add(k);
+      return true;
+    });
+    const grupo = new Map();
+    const partes = new Map();
+    for (const p of piezas) {
+      const g = p.c + '|' + (p.s || '');
+      if (!grupo.has(g)) grupo.set(g, grupo.size);
+      if (p.col) partes.set(p.col, (partes.get(p.col) || 0) + 1);
+    }
+    // una colección va por su nombre, para que sus partes no se separen
+    const nombre = (p) => (partes.get(p.col) > 1 ? p.colt : p.tes) || '';
+    piezas = piezas.map((p, i) => ({ p: p, i: i,
+      g: grupo.get(p.c + '|' + (p.s || '')), n: devoNumSalmo(p), t: nombre(p) }))
+      .sort((a, b) => a.g - b.g || a.n - b.n
+        || a.t.localeCompare(b.t, 'es', { sensitivity: 'base' })
+        || (a.p.coli || 0) - (b.p.coli || 0) || a.i - b.i)
+      .map((x) => x.p);
+  }
+  const caps = [];
+  for (const c of d.caps) {
+    const dentro = piezas.filter((p) => p.c === c.c);
+    if (!dentro.length) continue;
+    const secs = [];
+    for (const p of dentro) {
+      if (p.s && !secs.some((s) => s.s === p.s)) {
+        secs.push({ s: p.s, n: dentro.filter((x) => x.s === p.s).length });
+      }
+    }
+    caps.push(Object.assign({}, c, { n: dentro.length, secs: secs }));
+  }
+  const cuenta = new Map();
+  for (const p of piezas) cuenta.set(p.f, (cuenta.get(p.f) || 0) + 1);
+  const formas = d.formas.filter((x) => cuenta.has(x.f))
+    .map((x) => Object.assign({}, x, { n: cuenta.get(x.f) }))
+    .sort((a, b) => b.n - a.n);
+  E.devo = Object.assign({}, d, { caps: caps, formas: formas, piezas: piezas });
+  E.devoVis = new Set(piezas.map((p) => p.id));
+  E.devoCap = new Map(caps.map((c) => [c.c, c]));
   // las devociones de varias partes: la novena de san Benito son nueve
-  // piezas y una sola devoción, y en la lista ocupan una fila
+  // piezas y una sola devoción, y en la lista ocupan una fila. La que en
+  // esta lengua se queda con una parte sola ya no es colección: es esa parte
   E.devoCol = new Map();
-  for (const p of d.piezas) {
+  for (const p of piezas) {
     if (!p.col) continue;
     if (!E.devoCol.has(p.col)) E.devoCol.set(p.col, []);
     E.devoCol.get(p.col).push(p);
   }
-  cargaFavoritas();
+  for (const [k, v] of E.devoCol) if (v.length < 2) E.devoCol.delete(k);
+}
+
+/** La burbuja que se puso la última vez, en este aparato. */
+function cargaLengua() {
+  try {
+    const l = localStorage.getItem('devoLengua');
+    if (l === 'la' || l === 'es') E.devoLengua = l;
+  } catch (_) {}
+}
+
+function ponLengua(l) {
+  E.devoLengua = l;
+  try { localStorage.setItem('devoLengua', l); } catch (_) {}
+  devoAplica();
+}
+
+/** El nombre de una pieza en una lengua: en castellano, su título
+ *  castellano; en latín, el latino, que pasa por `tx()`. La que no tiene
+ *  título en esa lengua se llama con el de la otra. */
+function devoTit(p, l) {
+  if ((l || E.devoLengua) === 'es' && p.tes) return p.tes;
+  return p.tla ? tx(p.tla) : (p.tes || '');
+}
+
+/** En qué lengua está ese nombre, para el atributo `lang`. */
+function devoLangTit(p, l) {
+  return ((l || E.devoLengua) === 'es' && p.tes) || !p.tla ? 'es' : 'la';
+}
+
+/** Si una pieza es de una colección que en esta lengua sigue siéndolo. */
+function devoEnCol(p) { return !!(p.col && E.devoCol.has(p.col)); }
+
+/** Las dos burbujas de la lengua, arriba de la portada. */
+function devoBurbujas() {
+  const una = (l, rot) => '<button type="button" class="devo-lengua" '
+    + 'role="radio" data-devo-lengua="' + l + '" aria-checked="'
+    + (E.devoLengua === l) + '">' + rot + '</button>';
+  return '<div class="devo-lenguas" role="radiogroup" '
+    + 'aria-label="La lengua de las oraciones">' + una('la', 'Latín')
+    + una('es', 'Español') + '</div>';
+}
+
+/* Lo que se toca dentro de las listas del devocionario —las burbujas y, en
+ * el editor, quitar y devolver—, escuchado una vez para todas las vistas:
+ * las pinta tanto app.js como las pruebas de diseño, y así da igual quién. */
+let devoEscuchando = false;
+function escuchaDevocionario() {
+  if (devoEscuchando) return;
+  devoEscuchando = true;
+  vista.addEventListener('click', (ev) => {
+    const b = ev.target.closest('[data-devo-lengua]');
+    if (b) {
+      if (b.dataset.devoLengua === E.devoLengua) return;
+      ponLengua(b.dataset.devoLengua);
+      E.devoVuelta = null;
+      E.devoVer = null;
+      enruta();
+      return;
+    }
+    const q = ev.target.closest('[data-quita], [data-devuelve]');
+    if (!q || !E.editor) return;
+    // el botón va dentro de la fila, que es un enlace: no se abre la oración
+    ev.preventDefault();
+    ev.stopPropagation();
+    if (q.dataset.quita) devoQuita(q.dataset.quita, q);
+    else devoDevuelve(q.dataset.devuelve);
+  });
+  vista.addEventListener('keydown', (ev) => {
+    if ((ev.key === 'Enter' || ev.key === ' ')
+        && ev.target.matches('[data-quita], [data-devuelve]')) {
+      ev.target.click();
+      ev.preventDefault();
+    }
+  });
 }
 
 /* Las favoritas: las oraciones que se marcan con la estrella para tenerlas
@@ -4518,10 +4688,296 @@ function cambiaFavorita(id) {
   return i < 0;
 }
 
-/** Las favoritas que el devocionario de ahora todavía tiene. La que ya no
- *  está no se borra de lo guardado: se calla, por si vuelve. */
+/** Las favoritas que el devocionario de ahora todavía tiene, en la lengua
+ *  puesta. La que ya no está no se borra de lo guardado: se calla, por si
+ *  vuelve, o por si se vuelve a la otra lengua. */
 function devoFavoritas() {
-  return E.devoFav.map((id) => E.devoDe.get(id)).filter(Boolean);
+  return E.devoFav.filter((id) => E.devoVis.has(id))
+    .map((id) => E.devoDe.get(id)).filter(Boolean);
+}
+
+/* ------------------------------------------------------ el editor del libro
+ * Lo que se quita y se agrega no se decide en el teléfono de cada uno: lo
+ * decide el editor del devocionario para todos, y vive en el repositorio
+ * (Enchiridion/datos/seleccion.json). Para eso la app tiene que poder
+ * escribir, y sólo puede cuando la sirve Enchiridion/src/editar.py en el
+ * ordenador; entonces, y sólo entonces, aparecen la caja del editor en la
+ * portada, el botón de quitar en cada fila y en cada oración, y la página
+ * para agregar. Publicada, nada de esto existe: la app ni lo pregunta. */
+async function miraEditor() {
+  if (E.editor !== null) return;
+  E.editor = false;
+  const h = location.hostname;
+  if (enElApk() || location.protocol !== 'http:'
+      || (h !== '127.0.0.1' && h !== 'localhost')) return;
+  try {
+    const r = await fetch('/__editor/estado', { method: 'POST',
+      headers: { 'Content-Type': 'application/json' }, body: '{}' });
+    if (!r.ok) return;
+    const d = await r.json();
+    if (d && d.ok && d.estado && d.estado.editor === 'enchiridion') {
+      E.editor = d.estado;
+    }
+  } catch (_) { /* un servidor cualquiera: no es el editor */ }
+}
+
+/** Manda una orden al editor y, si sale bien, vuelve a cargar el
+ *  devocionario, que la fase 5 acaba de rehacer. */
+async function devoEdita(orden, cuerpo) {
+  const r = await fetch('/__editor/' + orden, { method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cuerpo || {}) });
+  let d = {};
+  try { d = await r.json(); } catch (_) {}
+  if (!r.ok || !d.ok) throw new Error(d.error || ('el editor contesta ' + r.status));
+  E.editor = d.estado;
+  E.devoTodo = null;
+  await cargaDevocionario();
+  return d;
+}
+
+function devoQuitada(p) {
+  return !!(E.editor && p && E.editor.quitadas.some((x) => x.id === p.id));
+}
+
+function devoNuevaDe(id) {
+  return E.editor ? E.editor.nuevas.find((n) => n.id === id) : null;
+}
+
+/** Un aviso abajo, que se va solo, con una acción si la hay: «Deshacer». */
+let devoAvisoReloj = null;
+function devoAvisa(texto, accion, hace) {
+  let a = $('#devo-aviso');
+  if (!a) {
+    a = document.createElement('div');
+    a.id = 'devo-aviso';
+    a.className = 'devo-aviso';
+    a.setAttribute('role', 'status');
+    document.body.appendChild(a);
+  }
+  a.innerHTML = '<span>' + esc(texto) + '</span>'
+    + (accion ? '<button type="button">' + esc(accion) + '</button>' : '');
+  a.hidden = false;
+  if (accion) {
+    a.querySelector('button').addEventListener('click', () => {
+      a.hidden = true;
+      hace();
+    });
+  }
+  clearTimeout(devoAvisoReloj);
+  devoAvisoReloj = setTimeout(() => { a.hidden = true; }, accion ? 7000 : 4000);
+}
+
+/** Quitar desde una fila: la fila se va en el acto, y el libro se rehace
+ *  detrás. Desde la oración abierta, la oración se queda a la vista con su
+ *  aviso de quitada, por si fue sin querer. */
+async function devoQuita(id, boton) {
+  const p = E.devoDe.get(id);
+  const fila = boton && boton.closest('a');
+  if (fila) fila.classList.add('devo-yendose');
+  try {
+    await devoEdita('quitar', { id: id });
+  } catch (err) {
+    if (fila) fila.classList.remove('devo-yendose');
+    devoAvisa('No se ha quitado: ' + err.message);
+    return;
+  }
+  if (fila) fila.remove();
+  else await devoRepinta();
+  devoAvisa('Quitada: ' + (p ? devoTit(p) : id), 'Deshacer',
+    () => devoDevuelve(id));
+}
+
+async function devoDevuelve(id) {
+  const p = E.devoDe.get(id);
+  try {
+    await devoEdita('devolver', { id: id });
+  } catch (err) {
+    devoAvisa('No se ha devuelto: ' + err.message);
+    return;
+  }
+  // lo que se ve cambia de sitio —vuelve una fila—, así que se repinta
+  await devoRepinta();
+  devoAvisa('Devuelta: ' + (p ? devoTit(p) : id));
+}
+
+/** Vuelve a pintar lo que se está viendo, sin moverse de donde se estaba:
+ *  por la vista entera, que en las pruebas de diseño es otra función. */
+async function devoRepinta() {
+  const y = window.scrollY;
+  await verDevocionario.apply(null, location.hash.slice(2).split('/').slice(1)
+    .map(decodeURIComponent));
+  window.scrollTo(0, y);
+}
+
+/** El botón del editor dentro de una fila: quitar, o devolver si ya está
+ *  quitada. Va dentro del enlace de la fila, y el oyente de la vista lo
+ *  coge antes de que la fila se abra. */
+function devoBotonEditor(p) {
+  if (!E.editor) return '';
+  if (devoQuitada(p)) {
+    return '<span class="devo-ed devolver" role="button" tabindex="0" '
+      + 'data-devuelve="' + esc(p.id) + '">Devolver</span>';
+  }
+  return '<span class="devo-ed" role="button" tabindex="0" data-quita="'
+    + esc(p.id) + '" title="Quitar del libro" aria-label="Quitar del libro">'
+    + ICONO.cerrar + '</span>';
+}
+
+/** La caja del editor, en la portada, debajo del buscador. */
+function devoEditorCaja() {
+  if (!E.editor) return '';
+  const n = E.editor.quitadas.length;
+  const nuevas = E.editor.nuevas.length;
+  return '<section class="devo-editor"><p class="devo-editor-ojo">Editor del '
+    + 'libro · sólo en este ordenador</p><p class="devo-editor-p">La × de cada '
+    + 'fila quita la oración del devocionario. Lo que quites o agregues se '
+    + 'guarda en <code>' + esc(E.editor.fichero) + '</code>, y lo verán todos '
+    + 'cuando publiques.</p><div class="devo-chips envuelve">'
+    + '<a class="devo-chip activo" href="#/oraciones/n">Agregar una oración</a>'
+    + '<a class="devo-chip" href="#/oraciones/q">Quitadas <span>' + n
+    + '</span></a>' + (nuevas ? '<span class="devo-editor-n">' + nuevas
+      + (nuevas === 1 ? ' agregada' : ' agregadas') + '</span>' : '')
+    + '</div></section>';
+}
+
+/** Las quitadas: se abren para leerlas y se devuelven. */
+function pintaQuitadas() {
+  if (!E.editor) return pintaDevocionario();
+  const piezas = E.editor.quitadas.map((p) => E.devoDe.get(p.id) || p);
+  modoPanel('Quitadas del libro');
+  $('#subtitulo-dia').textContent = piezas.length
+    + (piezas.length === 1 ? ' oración' : ' oraciones');
+  const ids = piezas.map((p) => p.id);
+  vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
+    + '<p class="devo-lede">Las que no salen en el devocionario publicado. '
+    + 'Siguen en el volcado de la fuente: «Devolver» las pone otra vez en su '
+    + 'sitio.</p>'
+    + (piezas.length ? piezas.map((p) => devoFila(p, devoDondeVive(p), null,
+      true)).join('') : '<p class="aviso">No has quitado ninguna.</p>');
+  E.devoVuelta = { ids: ids, href: '#/oraciones/q', rot: 'Quitadas' };
+  colocaPosicion();
+}
+
+/** Agregar una oración, o corregir una agregada. Se escribe como se reza:
+ *  un renglón vacío separa los párrafos. Basta con una lengua; con las dos,
+ *  la burbuja de cada una la enseña en la suya. */
+function pintaNueva(id) {
+  if (!E.editor) return pintaDevocionario();
+  const n = id ? devoNuevaDe(id) : null;
+  if (id && !n) {
+    vista.innerHTML = '<p class="aviso">Esa oración agregada ya no está.</p>';
+    return;
+  }
+  const v = n || { c: '', s: '', f: 'oración' };
+  modoPanel(n ? 'Corregir la oración' : 'Agregar una oración');
+  $('#subtitulo-dia').textContent = 'Editor del devocionario';
+  const opcion = (val, rot, sel) => '<option value="' + esc(val) + '"'
+    + (sel ? ' selected' : '') + '>' + esc(rot) + '</option>';
+  const formas = E.devoTodo.formas.map((x) => x.f);
+  if (formas.indexOf(v.f) < 0) formas.push(v.f);
+  const campo = (k, rot, pista, largo) => '<label class="devo-form-campo">'
+    + '<span class="devo-form-eti">' + rot + '</span>'
+    + (largo ? '<textarea class="campo" name="' + k + '" rows="8">'
+      + esc(v[k] || '') + '</textarea>'
+      : '<input class="campo" name="' + k + '" value="' + esc(v[k] || '')
+        + '" autocomplete="off">')
+    + (pista ? '<span class="devo-form-pista">' + pista + '</span>' : '')
+    + '</label>';
+  vista.innerHTML = devoAtras(n ? '#/oraciones/o/' + esc(n.id) : '#/oraciones',
+    n ? 'La oración' : 'Devocionario')
+    + '<form class="devo-form" novalidate>'
+    + '<fieldset><legend>Dónde va</legend>'
+    + '<label class="devo-form-campo"><span class="devo-form-eti">Capítulo</span>'
+    + '<select class="campo" name="c">' + opcion('', 'Elige el capítulo…', !v.c)
+    + E.devoTodo.caps.map((c) => opcion(c.c, c.t, c.c === v.c)).join('')
+    + '</select></label>'
+    + '<label class="devo-form-campo"><span class="devo-form-eti">Sección</span>'
+    + '<input class="campo" name="s" list="devo-secs" value="' + esc(v.s || '')
+    + '" autocomplete="off"><datalist id="devo-secs"></datalist>'
+    + '<span class="devo-form-pista">Una de las del capítulo, o una nueva. '
+    + 'Vacía, va suelta al principio.</span></label>'
+    + '<label class="devo-form-campo"><span class="devo-form-eti">Qué es</span>'
+    + '<select class="campo" name="f">' + formas.map((f) => opcion(f, f,
+      f === v.f)).join('') + '</select></label></fieldset>'
+    + '<fieldset><legend>En latín</legend>'
+    + campo('tla', 'Título latino', 'Con sus acentos, como los demás: '
+      + '«Orátio ad sanctum Ioseph».')
+    + campo('la', 'Texto latino', 'Un renglón vacío separa los párrafos.', true)
+    + campo('fla', 'De dónde sale el latín', 'Opcional: el libro o el sitio.')
+    + '</fieldset>'
+    + '<fieldset><legend>En castellano</legend>'
+    + campo('tes', 'Título castellano', 'Vacío, se toma el primer renglón.')
+    + campo('es', 'Texto castellano', 'Un renglón vacío separa los párrafos.',
+      true)
+    + campo('fes', 'De dónde sale el castellano', 'La obra, y si la hay, '
+      + 'la autoridad que la aprueba.')
+    + campo('url', 'Enlace', 'Opcional.')
+    + '<label class="devo-form-marca"><input type="checkbox" name="oficial"'
+    + (v.oficial ? ' checked' : '') + '> Es traducción aprobada</label>'
+    + '</fieldset>'
+    + '<p class="devo-form-error" hidden></p>'
+    + '<div class="devo-form-botones"><button type="submit" class="devo-chip '
+    + 'activo">' + (n ? 'Guardar los cambios' : 'Agregar al devocionario')
+    + '</button>' + (n ? '<button type="button" class="devo-chip" '
+      + 'data-borra>Borrar del todo</button>' : '') + '</div></form>';
+  const form = vista.querySelector('.devo-form');
+  const el = form.elements;
+  const secs = () => {
+    const c = E.devoTodo.caps.find((x) => x.c === el.c.value);
+    $('#devo-secs').innerHTML = (c ? c.secs : []).map((s) =>
+      '<option value="' + esc(s.s) + '">').join('');
+  };
+  el.c.addEventListener('change', secs);
+  secs();
+  const error = form.querySelector('.devo-form-error');
+  const dice = (t) => { error.textContent = t; error.hidden = !t; };
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const pieza = { id: n ? n.id : null, oficial: el.oficial.checked };
+    for (const k of ['c', 's', 'f', 'tla', 'la', 'fla', 'tes', 'es', 'fes', 'url']) {
+      pieza[k] = el[k].value;
+    }
+    if (!pieza.c) return dice('Falta elegir el capítulo.');
+    if (!pieza.la.trim() && !pieza.es.trim()) {
+      return dice('Falta el texto, en latín o en castellano.');
+    }
+    if (pieza.la.trim() && !pieza.tla.trim()) {
+      return dice('La oración en latín necesita su título latino.');
+    }
+    dice('');
+    const boton = form.querySelector('[type="submit"]');
+    boton.disabled = true;
+    try {
+      const r = await devoEdita('guardar', { pieza: pieza });
+      // que se vea en la lengua en que se escribió, si en la puesta no está
+      const p = E.devoDe.get(r.id);
+      if (p && !devoTiene(p, E.devoLengua)) {
+        ponLengua(E.devoLengua === 'es' ? 'la' : 'es');
+      }
+      E.devoVuelta = null;
+      location.hash = '#/oraciones/o/' + r.id;
+      devoAvisa(n ? 'Guardada.' : 'Agregada al devocionario.');
+    } catch (err) {
+      boton.disabled = false;
+      dice(err.message);
+    }
+  });
+  const borra = form.querySelector('[data-borra]');
+  if (borra) {
+    borra.addEventListener('click', async () => {
+      if (!confirm('¿Borrar del todo «' + (n.tla || n.tes) + '»? No se puede '
+        + 'devolver.')) return;
+      try {
+        await devoEdita('borrar', { id: n.id });
+        location.hash = '#/oraciones';
+        devoAvisa('Borrada.');
+      } catch (err) {
+        dice(err.message);
+      }
+    });
+  }
+  colocaPosicion();
 }
 
 /** El plural de cada forma, que es como se rotula una lista de ellas. */
@@ -4660,6 +5116,8 @@ function mayuscula(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
 function devoCuenta(piezas) {
   const n = piezas.length;
   const es = piezas.filter((p) => p.es).length;
+  // en español todas lo tienen, y decirlo sería decir nada
+  if (E.devoLengua === 'es') return n + (n === 1 ? ' oración' : ' oraciones');
   return n + (n === 1 ? ' oración' : ' oraciones') + ' · '
     + (es ? es + ' con castellano'
       : (n === 1 ? 'sólo en latín' : 'todas sólo en latín'));
@@ -4670,18 +5128,27 @@ function devoCuenta(piezas) {
  *  ficha de biblioteca: el nombre de cada dato arriba y el dato debajo. */
 function devoProcedencia(p) {
   const f = p.fes || null;
-  const h = ['<dt>Latín</dt><dd>Texto tradicional, transcrito del '
+  let la = '<dt>Latín</dt><dd>Texto tradicional, transcrito del '
     + '<i>Thesaurus Precum Latinarum</i> de Michael Martin'
     + (p.anio ? ' (la fuente fecha esta versión en ' + esc(p.anio) + ')' : '')
     + '. Ortografía eclesiástica y acentuación puestas aquí'
     + (p.orto ? ', salvo la ortografía, que es la de la ' + esc(p.orto) : '')
-    + '.</dd>'];
+    + '.</dd>';
+  // la que agregó el editor no viene del Thesaurus: dice lo que él dijo
+  if (p.nueva) {
+    la = '<dt>Latín</dt><dd>' + (!devoTiene(p, 'la')
+      ? 'Esta oración no tiene texto latino.'
+      : 'Agregada al devocionario por su editor'
+        + (p.fla ? '. Sale de ' + esc(p.fla) : '') + '.') + '</dd>';
+  }
+  const h = [la];
   if (f) {
     h.push('<dt>Castellano</dt><dd><span class="devo-sello'
       + (f.oficial ? ' oficial' : '') + '">'
       + (f.oficial ? 'traducción aprobada' : 'versión no oficial')
       + (f.territorio ? ' · ' + esc(f.territorio) : '') + '</span>'
-      + esc(f.obra || '') + (f.autoridad ? ' · ' + esc(f.autoridad) : '')
+      + esc(f.obra || (p.nueva ? 'Agregada al devocionario por su editor' : ''))
+      + (f.autoridad ? ' · ' + esc(f.autoridad) : '')
       + (f.que_es ? ' · ' + esc(f.que_es) : '') + '.'
       + (f.aviso ? '<br>' + esc(f.aviso) : '')
       + (f.url ? '<br><a href="' + esc(f.url) + '" target="_blank" '
@@ -4719,27 +5186,33 @@ function devoHora(p) {
 function devoSena(p) {
   const s = ['<span class="devo-forma">' + esc(p.f) + '</span>'];
   if (p.hora) s.push(esc(devoHora(p)));
-  if (!p.es) s.push('<i>sólo en latín</i>');
+  if (!p.es && E.devoLengua === 'la') s.push('<i>sólo en latín</i>');
   return '<small class="devo-sena">' + s.join(' · ') + '</small>';
 }
 
 /** Una fila de la lista. `ctx` es de dónde viene la pieza, y se pone en las
  *  listas que atraviesan el libro —un filtro, una búsqueda—, donde sin eso
  *  no se sabría en qué capítulo vive. `num` es su número en una lista que
- *  tiene orden propio: la del Compendio. */
+ *  tiene orden propio: la del Compendio.
+ *
+ *  En latín, el título latino y el castellano debajo; en español, sólo el
+ *  castellano, y sin lo que distingue dos versiones latinas, que en
+ *  castellano no se distinguen por eso. */
 function devoFila(p, ctx, num, sinEstrella) {
+  const es = E.devoLengua === 'es';
   return '<a class="devo-fila" href="#/oraciones/o/' + esc(p.id) + '">'
     + (num ? '<span class="devo-num">' + num + '</span>' : '')
     + '<span class="devo-fila-cuerpo">'
     + (ctx ? '<span class="devo-ctx">' + esc(ctx) + '</span>' : '')
-    + '<span class="devo-la" lang="la">' + esc(tx(p.tla)) + '</span>'
+    + '<span class="devo-la" lang="' + devoLangTit(p) + '">'
+    + esc(devoTit(p)) + '</span>'
     // la estrella de la favorita, en las listas que no son la de ellas
     + (!sinEstrella && esFavorita(p.id) ? '<span class="devo-estrella" '
       + 'title="Favorita">' + ICONO.estrella + '</span>' : '')
     + (p.comp && !num ? '<span class="devo-marca">Compendio</span>' : '')
-    + (p.dist ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
-    + (p.tes ? '<span class="devo-es">' + esc(p.tes) + '</span>' : '')
-    + devoSena(p) + '</span></a>';
+    + (p.dist && !es ? '<span class="devo-dist">' + esc(p.dist) + '</span>' : '')
+    + (p.tes && !es ? '<span class="devo-es">' + esc(p.tes) + '</span>' : '')
+    + devoSena(p) + '</span>' + devoBotonEditor(p) + '</a>';
 }
 
 /** La fila de una devoción de varias partes: se abre y dentro están. */
@@ -4767,7 +5240,7 @@ function devoLista(piezas, opc) {
   const vistas = new Set();
   const filas = [];
   for (const p of piezas) {
-    if (p.col && !o.sinPlegar) {
+    if (devoEnCol(p) && !o.sinPlegar) {
       if (vistas.has(p.col)) continue;
       vistas.add(p.col);
       filas.push({ col: p.col, f: p.f, partes: E.devoCol.get(p.col) });
@@ -4863,11 +5336,11 @@ function devoDondeVive(p) {
 function devoListaDe(p) {
   const v = E.devoVuelta;
   if (v && v.ids.indexOf(p.id) >= 0) return v;
-  if (p.col) {
+  if (devoEnCol(p)) {
     return { ids: E.devoCol.get(p.col).map((x) => x.id),
       href: '#/oraciones/k/' + encodeURIComponent(p.col), rot: p.colt };
   }
-  const ids = E.devo.piezas.filter((x) => x.c === p.c && !x.col
+  const ids = E.devo.piezas.filter((x) => x.c === p.c && !devoEnCol(x)
     && (x.s || null) === (p.s || null)).map((x) => x.id);
   if (p.s) {
     return { ids: ids, rot: p.s, href: '#/oraciones/s/'
@@ -4889,7 +5362,8 @@ function devoPasa(l, i) {
     return '<a class="devo-pasa-' + cual + '" href="#/oraciones/o/'
       + esc(q.id) + '"><small>'
       + (cual === 'antes' ? ICONO.izq + 'Anterior' : 'Siguiente' + ICONO.der)
-      + '</small><span lang="la">' + esc(tx(q.tla)) + '</span></a>';
+      + '</small><span lang="' + devoLangTit(q) + '">' + esc(devoTit(q))
+      + '</span></a>';
   };
   return '<nav class="devo-pasa" aria-label="Otras oraciones de esta lista">'
     + '<p class="devo-pasa-donde">' + (i + 1) + ' de ' + l.ids.length + ' · '
@@ -4906,10 +5380,13 @@ function pintaOracion(id) {
     return;
   }
   E.devoPieza = p;
-  // manda el título latino, que es el nombre de la oración; el castellano
-  // va debajo, y cuando no hay más que el primer renglón, ése
-  modoPanel(tx(p.tla));
-  $('#subtitulo-dia').textContent = p.tes || '';
+  // Se ve en una lengua cada vez: la de la burbuja, si la oración la tiene,
+  // y si tiene las dos, un cuadrito arriba pasa a la otra sin salir de ella
+  const hay = { la: devoTiene(p, 'la'), es: devoTiene(p, 'es') };
+  let ver = E.devoVer && E.devoVer.id === p.id ? E.devoVer.l : E.devoLengua;
+  if (!hay[ver]) ver = ver === 'es' ? 'la' : 'es';
+  E.devoVer = { id: p.id, l: ver };
+  modoPanel(devoTit(p, ver));
   const l = devoListaDe(p);
   // la ficha: qué es —y un toque lleva a las demás de su clase—, si es del
   // Compendio, a qué hora la canta el Breviario y en qué lenguas está
@@ -4921,20 +5398,33 @@ function pintaOracion(id) {
       + 'Compendio · ' + p.comp + '</a>' : '',
     p.hora ? '<span class="devo-insignia">' + esc(devoHora(p)) + '</span>'
       : '',
-    '<span class="devo-insignia' + (p.es ? '' : ' apagada') + '">'
-    + (p.es ? 'latín y castellano' : 'sólo en latín') + '</span>'
+    hay.la && hay.es ? '' : '<span class="devo-insignia apagada">'
+      + (hay.la ? 'sólo en latín' : 'sólo en castellano') + '</span>'
   ];
+  // en el editor, quitarla; y si es de las agregadas, corregirla
+  if (E.editor && !devoQuitada(p)) {
+    ficha.push('<button type="button" class="devo-insignia devo-quitar" '
+      + 'data-quita="' + esc(p.id) + '">' + ICONO.cerrar
+      + '<span>Quitar del libro</span></button>');
+  }
+  if (E.editor && p.nueva && devoNuevaDe(p.id)) {
+    ficha.push('<a class="devo-insignia enlace" href="#/oraciones/e/'
+      + esc(p.id) + '">Corregir</a>');
+  }
   // La oración va en una caja de las que se rezan, la misma que la hora y
   // el formulario: con eso se dice en alta voz y se sigue con los mandos,
   // sin que el reproductor sepa que esto es el devocionario.
   vista.innerHTML = devoAtras(l.href, l.rot)
+    + (devoQuitada(p) ? '<p class="devo-quitada">Esta oración está quitada '
+      + 'del libro: no sale en el devocionario publicado. <span class="devo-ed '
+      + 'devolver" role="button" tabindex="0" data-devuelve="' + esc(p.id)
+      + '">Devolver</span></p>' : '')
     + '<p class="devo-ficha">' + ficha.join('') + '</p>'
+    + (hay.la && hay.es ? devoCuadritos(ver) : '')
     + '<section class="hora-sec devo-sec" data-cl="oracion">'
-    + '<div class="devo">'
-    + bilingue('<div lang="la">' + devoLatin(p) + '</div>',
-      devoCastellano(p))
-    + '</div></section>'
+    + '<div class="devo">' + devoTexto(p, ver) + '</div></section>'
     + devoProcedencia(p) + devoPasa(l, l.ids.indexOf(p.id));
+  devoTituloOracion(p, ver);
   const fav = $('#devo-fav');
   fav.addEventListener('click', () => {
     const si = cambiaFavorita(p.id);
@@ -4942,6 +5432,18 @@ function pintaOracion(id) {
     fav.setAttribute('aria-pressed', si);
     fav.querySelector('span').textContent = devoRotuloFav(si);
   });
+  // el cuadrito cambia la lengua de esta oración, y sólo de ésta: la de al
+  // lado se abre otra vez en la de la burbuja
+  vista.querySelectorAll('[data-ver]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (b.dataset.ver === E.devoVer.l) return;
+      E.devoVer = { id: p.id, l: b.dataset.ver };
+      vista.querySelector('.devo').innerHTML = devoTexto(p, b.dataset.ver);
+      vista.querySelectorAll('[data-ver]').forEach((x) =>
+        x.setAttribute('aria-checked', String(x === b)));
+      devoTituloOracion(p, b.dataset.ver);
+      vozTrasPintar();
+    }));
   // y la letra y el altavoz a la mano: la cabecera se queda arriba al bajar,
   // así que las dos aes están a mano a media oración y no sólo al empezar.
   // El panel esconde el renglón de abajo —en una página sin fecha no dice
@@ -4951,6 +5453,29 @@ function pintaOracion(id) {
   cabeceraFija(true);
   colocaPosicion();
   vozTrasPintar();
+}
+
+/** El texto de la oración en una lengua. */
+function devoTexto(p, l) {
+  return l === 'es' ? '<div lang="es">' + devoCastellano(p) + '</div>'
+    : '<div lang="la">' + devoLatin(p) + '</div>';
+}
+
+/** Arriba, el nombre en la lengua en que se lee, y debajo el de la otra. */
+function devoTituloOracion(p, l) {
+  $('#titulo-dia').textContent = devoTit(p, l);
+  $('#subtitulo-dia').textContent = l === 'es' ? (p.tla ? tx(p.tla) : '')
+    : (p.tes || '');
+}
+
+/** Los dos cuadritos de la oración que está en las dos lenguas, justo
+ *  encima del texto, que es lo que cambian. */
+function devoCuadritos(l) {
+  const uno = (k, rot) => '<button type="button" class="devo-cuadrito" '
+    + 'role="radio" data-ver="' + k + '" aria-checked="' + (l === k) + '">'
+    + rot + '</button>';
+  return '<div class="devo-cuadritos" role="radiogroup" aria-label="Leerla '
+    + 'en">' + uno('la', 'Latín') + uno('es', 'Español') + '</div>';
 }
 
 /** La estrella de la oración abierta, que la marca o la desmarca. */
@@ -5087,6 +5612,9 @@ function pintaFormas() {
  *  título, qué es esa forma. */
 function pintaFiltro(forma, lengua) {
   const f = (forma && forma !== '-') ? forma : null;
+  // con la burbuja del español puesta todas tienen castellano: el filtro
+  // de la lengua no tiene nada que separar
+  if (E.devoLengua === 'es') lengua = null;
   const hay = E.devo.piezas.filter((p) =>
     (!f || p.f === f) && (!lengua || (lengua === 'es' ? !!p.es : !p.es)));
   const dicho = [];
@@ -5101,7 +5629,8 @@ function pintaFiltro(forma, lengua) {
   vista.innerHTML = devoAtras('#/oraciones', 'Devocionario')
     + (f && DEVO_QUE[f] ? '<p class="devo-lede">' + esc(DEVO_QUE[f]) + '</p>'
       : '')
-    + devoChipsForma(f, lengua) + devoChipsLengua(f, lengua)
+    + devoChipsForma(f, lengua)
+    + (E.devoLengua === 'la' ? devoChipsLengua(f, lengua) : '')
     + '<p class="devo-cuenta">' + devoCuenta(hay) + '</p>'
     + devoLista(hay, {
       sinPlegar: true,
@@ -5177,11 +5706,17 @@ function pintaDevocionario() {
   modoPanel('Devocionario');
   const total = E.devo.piezas.length;
   const comp = E.devo.piezas.filter((p) => p.comp).length;
-  $('#subtitulo-dia').textContent = total + ' oraciones en latín';
+  const es = E.devoLengua === 'es';
+  $('#subtitulo-dia').textContent = total
+    + (es ? ' oraciones en castellano' : ' oraciones en latín');
   const idsFav = [];
   const portada = [
     devoFavPortada(idsFav),
-    '<p class="devo-lede">Las oraciones de la Iglesia en latín, en la '
+    es ? '<p class="devo-lede">Las oraciones del devocionario que ya tienen '
+      + 'su castellano, con el de dónde sale cada una. Las que también están '
+      + 'en latín llevan arriba un cuadrito para leerlas en latín. '
+      + devoCuenta(E.devo.piezas) + '.</p>'
+    : '<p class="devo-lede">Las oraciones de la Iglesia en latín, en la '
     // la raya de cierre, pegada a su palabra: sola al principio de un
     // renglón no se lee como cierre
     + 'ortografía de los libros litúrgicos —con su jota, su ligadura y su '
@@ -5200,15 +5735,16 @@ function pintaDevocionario() {
       romano(i + 1))).join('') + '</div>',
     '<h2 class="devo-h">Por lo que son<small>un filtro que atraviesa el '
     + 'libro</small></h2>',
-    devoChipsForma(null, null, true),
-    '<h2 class="devo-h">Por la lengua</h2>',
-    devoChipsLengua(null, null, true)
+    devoChipsForma(null, null, true)
   ].join('');
-  vista.innerHTML = '<div class="devo-busca">' + ICONO.buscar
+  // arriba de todo, las dos burbujas de la lengua: deciden qué se ve en
+  // todo lo demás, y por eso van antes que el buscador
+  vista.innerHTML = devoBurbujas() + '<div class="devo-busca">' + ICONO.buscar
     + '<input class="campo" id="devo-q" type="search" '
-    + 'placeholder="Buscar por el título, en latín o en castellano" '
+    + 'placeholder="' + (es ? 'Buscar una oración por su título'
+      : 'Buscar por el título, en latín o en castellano') + '" '
     + 'aria-label="Buscar una oración" autocomplete="off"></div>'
-    + '<div id="devo-res">' + portada + '</div>';
+    + devoEditorCaja() + '<div id="devo-res">' + portada + '</div>';
   const campo = $('#devo-q');
   const busca = () => {
     E.devoQ = campo.value;
@@ -5263,6 +5799,9 @@ async function verDevocionario(que, cual, mas) {
   if (que === 'f') return pintaFormas();
   if (que === 'p') return pintaCompendio();
   if (que === 'm') return pintaFavoritas();
+  if (que === 'q') return pintaQuitadas();
+  if (que === 'n') return pintaNueva(null);
+  if (que === 'e' && cual) return pintaNueva(cual);
   // las direcciones viejas eran por grupo; se entra por la portada
   pintaDevocionario();
 }
@@ -7799,7 +8338,8 @@ function loQueSeLee() {
   }
   if (E.vista === 'devocionario' && E.devoPieza) {
     return { v: 'devo', k: 'd|' + E.devoPieza.id,
-      secs: [{ cl: 'oracion', nombre: tx(E.devoPieza.tla) }], rot: 'Oración',
+      secs: [{ cl: 'oracion', nombre: devoTit(E.devoPieza,
+        E.devoVer ? E.devoVer.l : null) }], rot: 'Oración',
       nada: 'No hay nada que decir en esta oración.' };
   }
   return null;

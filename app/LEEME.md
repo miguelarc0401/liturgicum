@@ -121,8 +121,7 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   y lo que se sabe de memoria—, y lo que la pieza *es* no es una carpeta
   sino una señal en la fila y un filtro que atraviesa el libro: 132
   oraciones, 108 himnos, 43 letanías, 18 conmemoraciones, 12 oficios parvos,
-  11 novenas, 11 jaculatorias… veintiocho formas en total, y otro filtro
-  para ver sólo lo que ya tiene castellano. La fila dice qué es la pieza, a
+  11 novenas, 11 jaculatorias… veintiocho formas en total. La fila dice qué es la pieza, a
   qué hora la canta el Breviario cuando se sabe, y si todavía está sólo en
   latín. Las veintidós del apéndice del Compendio del Catecismo van
   marcadas donde vivan. También se busca por el título, en cualquiera de las
@@ -154,6 +153,24 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   cualquier otra lista llevan su estrellita detrás del título. Se guardan
   en el propio teléfono, por el id de la pieza, que no cambia al rehacer
   el devocionario.
+  **En latín o en español.** Lo primero de la portada son **dos burbujas,
+  «Latín» y «Español»**, y deciden lo que se ve en todo el devocionario: en
+  latín, las que tienen latín, con su título latino y el castellano debajo;
+  en español, sólo las que tienen castellano, con su título castellano, y
+  las cuentas de los capítulos, las secciones y las formas hechas sobre
+  ésas. Los dos salmos de cada número —la Nova Vulgata y la
+  Sixto-Clementina— tienen el mismo castellano, y en español se queda uno.
+  Abierta una oración se lee en una lengua cada vez, y la que está en las
+  dos lleva encima del texto **dos cuadritos, «Latín» y «Español»**, para
+  pasar a la otra sin salir de ella. La burbuja se recuerda en el teléfono.
+  **Y el libro lo decide su editor.** Qué oraciones se quedan y cuáles se
+  agregan no se decide en el teléfono de cada uno, sino en
+  `Enchiridion/datos/seleccion.json`, para todos. Se edita desde la propia
+  app servida por `python Enchiridion/src/editar.py` en el ordenador: sólo
+  entonces aparecen la caja del editor en la portada, una × en cada fila
+  para quitar, «Quitar del libro» y «Devolver» en la oración, la lista de
+  las quitadas y la página para agregar una oración, en latín, en
+  castellano o en las dos. Publicada, la app ni lo pregunta.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **Ajustes, en tarjetas.** Una por pestaña, en cuatro grupos —cómo se lee,

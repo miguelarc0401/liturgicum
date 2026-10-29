@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "editor-devocionario",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["Enchiridion/src/editar.py", "--sin-abrir"],
+      "port": 8780
+    },
+    {
       "name": "leccionario",
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8765", "--directory", "app"],

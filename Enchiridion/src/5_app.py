@@ -41,10 +41,19 @@ letanías a san Benito, los siete días de su semana, los trece salmos en sus
 dos ediciones—, y en una lista ocupaban veintiséis filas que no se podían
 distinguir. Van plegadas en una fila que se abre.
 
+Y lo último que se decide aquí es **qué se queda**. El editor del libro
+quita las oraciones que no quiere y agrega las que faltan, y eso vive en
+`datos/seleccion.json`: las quitadas por su id —que no cambia al rehacer el
+volcado— y las nuevas con su texto entero, tal como se escribieron. Se
+decide en la app, con `editar.py`, que es el que escribe ese fichero y
+vuelve a correr esta fase; las quitadas no salen en `devocionario.json`,
+pero se escriben aparte en la carpeta de trabajo para poder devolverlas.
+
     TRABAJO/piezas_ecl.json ─┐
-    datos/castellano.json ───┼──▶  app/datos/devocionario.json
-    datos/formas.csv ────────┤
-    datos/himnario.csv ──────┘
+    datos/castellano.json ───┤
+    datos/formas.csv ────────┼──▶  app/datos/devocionario.json
+    datos/himnario.csv ──────┤     TRABAJO/devocionario_quitadas.json
+    datos/seleccion.json ────┘
 
     python Enchiridion/src/5_app.py
 """
@@ -410,6 +419,82 @@ def coleccion_de(t, g, tla):
     return None
 
 
+# ----------------------------------------------------- lo que decide el editor
+SELECCION = os.path.join(DATOS, 'seleccion.json')
+QUITADAS = os.path.join(TRABAJO, 'devocionario_quitadas.json')
+
+
+def carga_seleccion():
+    """Lo que el editor ha quitado y agregado. Sin fichero, nada."""
+    if not os.path.exists(SELECCION):
+        return {'quitadas': {}, 'nuevas': []}
+    with io.open(SELECCION, encoding='utf-8') as fh:
+        s = json.load(fh)
+    return {'quitadas': s.get('quitadas') or {}, 'nuevas': s.get('nuevas') or []}
+
+
+def parrafos(texto):
+    """El texto como se escribe en el editor: un renglón vacío separa los
+    párrafos, y cada renglón es un renglón. Sale con la hechura de los de la
+    fuente —párrafos de renglones de tiradas—, todo tirada de texto."""
+    salida = []
+    for parr in re.split(r'\n[ \t]*\n', (texto or '').replace('\r\n', '\n')):
+        lineas = [ln.strip() for ln in parr.split('\n') if ln.strip()]
+        if lineas:
+            salida.append([[[0, ln]] for ln in lineas])
+    return salida
+
+
+def rotulo_es(parrs):
+    """El rótulo castellano de la lista cuando la pieza no trae título: su
+    primer renglón, que es como se conocen las oraciones («Dios te salve,
+    Reina y Madre de misericordia»), sin la coma en que se corta."""
+    for parr in parrs:
+        for ln in parr:
+            x = ''.join(y[1] for y in ln).strip()
+            if x:
+                x = x if len(x) <= 58 else x[:57].rstrip() + '…'
+                return x.rstrip(',;:')
+    return ''
+
+
+def pieza_nueva(n, cuenta):
+    """Una oración que el editor agregó, con la hechura de las demás. Puede
+    traer sólo latín, sólo castellano o las dos cosas: el latín se ve con la
+    burbuja del latín y el castellano con la del español."""
+    la = parrafos(n.get('la'))
+    es = parrafos(n.get('es'))
+    if not la and not es:
+        cuenta['nueva sin texto, fuera'] += 1
+        return None
+    d = OrderedDict([
+        ('id', n['id']),
+        ('src', 'editor'),
+        ('c', n['c']),
+        ('s', (n.get('s') or '').strip() or None),
+        ('f', n.get('f') or 'oración'),
+        ('tla', (n.get('tla') or '').strip()),
+        ('b', [OrderedDict([('t', p)]) for p in la]),
+        ('pal', sum(len(''.join(x[1] for x in ln).split())
+                    for p in (la or es) for ln in p)),
+        ('nueva', 1),
+    ])
+    if (n.get('fla') or '').strip():
+        d['fla'] = n['fla'].strip()
+    if es:
+        d['tes'] = (n.get('tes') or '').strip() or rotulo_es(es)
+        d['es'] = es
+        fuente = OrderedDict([
+            ('obra', (n.get('fes') or '').strip() or None),
+            ('oficial', bool(n.get('oficial'))),
+        ])
+        if (n.get('url') or '').strip():
+            fuente['url'] = n['url'].strip()
+        d['fes'] = fuente
+    cuenta['agregadas por el editor'] += 1
+    return d
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.parse_args()
@@ -503,32 +588,47 @@ def main():
         v = es.get(clave)
         if v:
             # el rótulo castellano de la lista: el título si lo tiene, y si
-            # no, el primer renglón, que es como se conocen las oraciones
-            # («Dios te salve, Reina y Madre de misericordia»)
-            tes = v.get('tes')
-            if not tes:
-                for parr in v['t']:
-                    for ln in parr:
-                        x = ''.join(y[1] for y in ln).strip()
-                        if x:
-                            tes = x if len(x) <= 58 else x[:57].rstrip() + '…'
-                            break
-                    if tes:
-                        break
+            # no, el primer renglón. El salmo lleva delante su número, que es
+            # su nombre: el VI y el XXXVII empiezan los dos «Señor, no me
+            # corrijas con ira», y en castellano sólo el número los separa
+            tes = v.get('tes') or rotulo_es(v['t'])
+            if not v.get('tes') and d.get('colq') == 'ediciones':
+                tes = d['colt'] + ' · ' + tes
             d['tes'] = tes
             d['es'] = v['t']
             d['fes'] = v['fuente']
             d['paso'] = v.get('paso')
-            cuenta['con castellano'] += 1
-        cuenta['publicadas'] += 1
         cuenta['forma: ' + forma] += 1
         piezas.append(d)
+
+    # ------------------------------------------------- lo que decide el editor
+    # Las nuevas entran como una más; las quitadas salen, también las nuevas
+    # que se hayan quitado. Una nueva con un capítulo que ya no existe no se
+    # pierde: va a parar a «En cada necesidad · Otras ocasiones» y se avisa.
+    sel = carga_seleccion()
+    orden_cap = [c[0] for c in CAPITULOS]
+    for n in sel['nuevas']:
+        if n.get('c') not in orden_cap:
+            print('  ¡nueva con capítulo desconocido!: %s (%s)'
+                  % (n.get('tla') or n.get('tes'), n.get('c')))
+            n = dict(n, c='necesidad', s='Otras ocasiones')
+        d = pieza_nueva(n, cuenta)
+        if d:
+            piezas.append(d)
+    quitadas = [d for d in piezas if d['id'] in sel['quitadas']]
+    piezas = [d for d in piezas if d['id'] not in sel['quitadas']]
+    cuenta['quitadas por el editor'] = len(quitadas)
+    cuenta['publicadas'] = len(piezas)
+    cuenta['con castellano'] = sum(1 for d in piezas if d.get('es'))
+    sobran = set(sel['quitadas']) - {d['id'] for d in quitadas}
+    if sobran:
+        print('  quitadas que ya no están en el volcado: ' + ', '.join(sorted(sobran)))
 
     # ------------------------------------------------------------ el orden
     # dentro de una sección, por el título latino, que es como se busca en
     # un devocionario; los salmos por su número, que es su nombre; y las
-    # partes de una colección, por su sitio en ella.
-    orden_cap = [c[0] for c in CAPITULOS]
+    # partes de una colección, por su sitio en ella. La que sólo está en
+    # castellano, por su título castellano.
 
     def orden_seccion(cap, sec):
         lista = ORDEN_SECCIONES.get(cap, [])
@@ -542,10 +642,11 @@ def main():
         return (orden_cap.index(d['c']),
                 orden_seccion(d['c'], d['s']),
                 numero_romano(d['tla']) or 0,
-                pelado(d.get('colt') or d['tla'], jota=False),
+                pelado(d.get('colt') or d['tla'] or d.get('tes'), jota=False),
                 d.get('coli', 0))
 
     piezas.sort(key=orden)
+    quitadas.sort(key=orden)
 
     # La marca del Compendio se pone por el título, y hay títulos con dos y
     # tres versiones: tres «Veni, Sancte Spíritus», dos «Actus Fídei». La
@@ -572,7 +673,8 @@ def main():
     # lo da, el primer renglón, que es lo que de verdad las separa.
     repes = defaultdict(list)
     for d in piezas:
-        repes[pelado(d['tla'])].append(d)
+        if d['tla']:
+            repes[pelado(d['tla'])].append(d)
     for grupo in repes.values():
         if len(grupo) < 2:
             continue
@@ -599,7 +701,7 @@ def main():
     # escribe. La jota no la desata, así que la clave lleva también la forma
     # con i: quien escriba «Iesu» encuentra «Jesu», y al revés. Y lleva la
     # forma, para que quien escriba «letanía» encuentre las letanías.
-    for d in piezas:
+    for d in piezas + quitadas:
         titulos = ' '.join([d['tla'], d.get('tes') or '', d['f'],
                             d.get('colt') or '', d.get('s') or ''])
         con = pelado(titulos)
@@ -657,6 +759,12 @@ def main():
     ruta = os.path.join(APP, 'devocionario.json')
     with io.open(ruta, 'w', encoding='utf-8') as fh:
         json.dump(salida, fh, ensure_ascii=False, separators=(',', ':'))
+    # las quitadas, fuera de la app y del repositorio: sólo las lee el editor,
+    # para enseñarlas y poder devolverlas
+    os.makedirs(TRABAJO, exist_ok=True)
+    with io.open(QUITADAS, 'w', encoding='utf-8') as fh:
+        json.dump({'piezas': quitadas}, fh, ensure_ascii=False,
+                  separators=(',', ':'))
 
     print('%d piezas -> %s (%.1f MB)'
           % (len(piezas), ruta, os.path.getsize(ruta) / 1e6))

@@ -297,6 +297,49 @@ Y tres cosas más que el orden necesitaba:
   «versión 2»; ahora, cuando no hay año, es el primer renglón, que es lo que
   de verdad las separa.
 
+### 5b. Lo que se queda: el editor
+
+Desde el 2026-10-28 el libro no es todo lo que trae la fuente: es lo que su
+editor decide. Las oraciones que quita y las que agrega viven en
+**`datos/seleccion.json`**, que entra en el repositorio, y la fase 5 lo
+aplica al final: las quitadas no salen en `devocionario.json`, y las nuevas
+entran como una más, ordenadas en su capítulo y su sección.
+
+```json
+{
+ "quitadas": { "pl_fc864acb15ef": { "tla": "Actiónes Nostras", "src": "…", "fecha": "…" } },
+ "nuevas": [ { "id": "nv_…", "c": "santos", "s": "San Judas Tadeo", "f": "oración",
+               "tla": "…", "la": "…", "fla": "…", "tes": "…", "es": "…",
+               "fes": "…", "url": "…", "oficial": false, "fecha": "…" } ]
+}
+```
+
+Las quitadas van **por su id**, que sale de la página y del sitio de la
+pieza en ella y no cambia al rehacer el volcado; el título va al lado para
+que el fichero se lea. Las nuevas guardan su texto tal como se escribió: un
+renglón vacío separa los párrafos. Pueden traer latín, castellano o las dos
+cosas, y la app las enseña con la burbuja de cada lengua.
+
+No se escribe a mano. Se decide **en la propia app**, servida por
+
+```bash
+python Enchiridion/src/editar.py
+```
+
+que abre `http://127.0.0.1:8780/#/oraciones` y, además de servir `app/`,
+contesta a cinco órdenes —estado, quitar, devolver, guardar, borrar—. Cada
+una escribe `seleccion.json` y vuelve a correr la fase 5 (menos de un
+segundo); si la fase 5 falla, el fichero vuelve a como estaba. Sólo
+escucha en 127.0.0.1, sólo acepta órdenes de su propia página y no lleva
+service worker, para que lo que se ve sea lo último escrito. La app lo
+descubre sola: sólo cuando la sirve él aparecen la caja del editor en la
+portada, la × de cada fila, «Quitar del libro» y «Corregir» en la
+oración, la lista de las quitadas —que se abren y se devuelven— y la
+página para agregar. Las quitadas se guardan aparte, en
+`TRABAJO/devocionario_quitadas.json`, que sólo lee el editor.
+
+Lo que se cambia lo ven todos al publicar con `.\publicar.ps1`.
+
 ---
 
 ## Los derechos
@@ -334,6 +377,7 @@ python Enchiridion/src/4_castellano.py     # el castellano y su procedencia
 python Enchiridion/src/4c_formas.py        # qué es cada pieza
 python Enchiridion/src/4d_himnario.py      # la hora de cada himno
 python Enchiridion/src/5_app.py            # app/datos/devocionario.json
+python Enchiridion/src/editar.py           # quitar y agregar, en la app
 ```
 
 La 3a necesita `cache/acentos/`, que baja `python src/13a_crawl_acentos.py`.
