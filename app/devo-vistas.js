@@ -1,38 +1,25 @@
-/* -------------------------------------------- pruebas del devocionario
- * PROVISIONAL. Cuatro maneras de enseñar el mismo devocionario, para elegir
- * una. No toca los datos ni lo que hay en app.js: se monta encima,
- * sustituyendo las funciones que pintan la portada, el capítulo, la sección
- * y la fila, y una tira abajo cambia de prueba sin salir de donde se está.
- * «Antes» es lo de siempre, sin tocar. Cuando se elija una, lo elegido pasa
- * a app.js y este fichero y devo-pruebas.css se borran.
+/* -------------------------------------------- las vistas del devocionario
+ * Cinco maneras de enseñar el mismo devocionario, y cada cual elige la suya
+ * en Ajustes («Devocionario», `E.cfg.devoVista`). Nacieron como pruebas y se
+ * quedaron todas. No tocan los datos ni lo que hay en app.js: se montan
+ * encima, sustituyendo las funciones que pintan la portada, el capítulo, la
+ * sección y la fila. «La primera» es la de app.js, sin tocar.
  *
  *   A · Índice sereno   el mismo árbol, con mucha menos tinta: los capítulos
- *                       en cuatro bandas, cada banda en su caja, migas de
+ *       (sereno)        en cuatro bandas, cada banda en su caja, migas de
  *                       pan arriba y las secciones grandes agrupadas.
  *   B · Mosaico         teselas con icono y un color por banda; dentro del
- *                       capítulo, pestañas en vez de un nivel más.
+ *       (mosaico)       capítulo, pestañas en vez de un nivel más.
  *   C · Árbol plegable  todo en una página: el capítulo se abre en su sitio,
- *                       y su rótulo se queda pegado arriba mientras se baja.
+ *       (arbol)         y su rótulo se queda pegado arriba mientras se baja.
  *   D · Para hoy        la portada empieza por lo de este momento —la hora
- *                       del día, el día de la semana, el tiempo o el mes— y
+ *       (hoy)           del día, el día de la semana, el tiempo o el mes— y
  *                       debajo, las de siempre a mano y el índice entero.
  */
 
-const PD = [
-  ['actual', 'Antes', 'Lo de ahora'],
-  ['a', 'A', 'Índice sereno'],
-  ['b', 'B', 'Mosaico'],
-  ['c', 'C', 'Árbol plegable'],
-  ['d', 'D', 'Para hoy']
-];
-
 function pdCual() {
-  let v = null;
-  try { v = localStorage.getItem('devoPrueba'); } catch (_) {}
-  return PD.some((x) => x[0] === v) ? v : 'a';
-}
-function pdPon(v) {
-  try { localStorage.setItem('devoPrueba', v); } catch (_) {}
+  const v = E.cfg.devoVista;
+  return AJ_OPS.devoVista.some((x) => x[0] === v) ? v : POR_OMISION.devoVista;
 }
 
 /* Los once capítulos, en cuatro bandas: lo que se reza en la vida de cada
@@ -336,7 +323,7 @@ function pdBuscador(pinta, vuelta, alPintar) {
   if (E.devoQ) { campo.value = E.devoQ; busca(); }
 }
 
-/** En las pruebas donde una página tiene varias listas (el árbol, las
+/** En las vistas donde una página tiene varias listas (el árbol, las
  *  tarjetas de hoy), «anterior» y «siguiente» recorren la lista donde se
  *  tocó, no la página entera. */
 function pdVueltaAlTocar(caja) {
@@ -846,9 +833,9 @@ function pdPortadaD() {
 
 function pdPortada() {
   const v = pdCual();
-  if (v === 'b') return pdPortadaB();
-  if (v === 'c') return pdPortadaC();
-  if (v === 'd') return pdPortadaD();
+  if (v === 'mosaico') return pdPortadaB();
+  if (v === 'arbol') return pdPortadaC();
+  if (v === 'hoy') return pdPortadaD();
   return pdPortadaA();
 }
 
@@ -900,16 +887,16 @@ const pdAntes = {
 };
 
 devoFila = function (p, ctx, num, sinEstrella) {
-  return pdCual() === 'actual' ? pdAntes.devoFila(p, ctx, num, sinEstrella)
+  return pdCual() === 'clasica' ? pdAntes.devoFila(p, ctx, num, sinEstrella)
     : pdFila(p, ctx, num, sinEstrella);
 };
 devoFilaCol = function (partes) {
-  return pdCual() === 'actual' ? pdAntes.devoFilaCol(partes) : pdFilaCol(partes);
+  return pdCual() === 'clasica' ? pdAntes.devoFilaCol(partes) : pdFilaCol(partes);
 };
-// en las pruebas, la lista no se vuelve a cortar por formas: la forma ya
+// en estas vistas, la lista no se vuelve a cortar por formas: la forma ya
 // la dice la fila, y un corte más era un nivel más
 devoLista = function (piezas, opc) {
-  if (pdCual() === 'actual') return pdAntes.devoLista(piezas, opc);
+  if (pdCual() === 'clasica') return pdAntes.devoLista(piezas, opc);
   pdCalla = piezas.length > 1 && piezas.every((p) => p.f === piezas[0].f)
     ? piezas[0].f : null;
   const h = pdAntes.devoLista(piezas, Object.assign({}, opc, { sinCortes: true }));
@@ -919,11 +906,11 @@ devoLista = function (piezas, opc) {
 
 verDevocionario = async function (que, cual, mas) {
   const v = pdCual();
-  pdBarra();
-  if (v === 'actual' || que === 'o' || que === 'k' || que === 'f'
+  pdMarca();
+  if (v === 'clasica' || que === 'o' || que === 'k' || que === 'f'
     || que === 'p' || que === 'm' || que === 'q' || que === 'n' || que === 'e') {
     await pdAntes.verDevocionario(que, cual, mas);
-    if (v !== 'actual') pdRetoca(que, cual);
+    if (v !== 'clasica') pdRetoca(que, cual);
     pdTrasPintar();
     return;
   }
@@ -939,9 +926,9 @@ verDevocionario = async function (que, cual, mas) {
       + esc(err.message) + ').</p>';
     return;
   }
-  if (v === 'b' && que === 'c' && cual) pdCapituloB(cual);
-  else if (v === 'b' && que === 's' && cual) pdCapituloB(cual, mas);
-  else if (v === 'c' && (que === 'c' || que === 's') && cual) pdPortadaC(cual, mas);
+  if (v === 'mosaico' && que === 'c' && cual) pdCapituloB(cual);
+  else if (v === 'mosaico' && que === 's' && cual) pdCapituloB(cual, mas);
+  else if (v === 'arbol' && (que === 'c' || que === 's') && cual) pdPortadaC(cual, mas);
   else if (que === 'c' && cual) pdCapituloA(cual);
   else if (que === 's' && cual && mas) pdSeccionA(cual, mas);
   else pdPortada();
@@ -949,39 +936,16 @@ verDevocionario = async function (que, cual, mas) {
 };
 
 function pdTrasPintar() {
-  const r = document.documentElement.style;
-  r.setProperty('--pd-cab', pdAltoCab() + 'px');
-  r.setProperty('--pd-barra', ($('#barra') ? $('#barra').offsetHeight : 58) + 'px');
+  document.documentElement.style.setProperty('--pd-cab', pdAltoCab() + 'px');
 }
 
-/* La tira de abajo, que cambia de prueba sin salir de donde se está. */
-function pdBarra() {
+/* Qué vista está puesta, dicho en el <body>: devo-vistas.css cuelga todo de
+ * ahí, y fuera del devocionario no queda nada puesto. */
+function pdMarca() {
   const en = location.hash.indexOf('#/oraciones') === 0;
   const v = pdCual();
-  document.body.classList.toggle('pd-con-barra', en);
-  document.body.classList.toggle('pd-on', en && v !== 'actual');
-  document.body.dataset.prueba = en ? v : '';
-  let b = $('#pd-barra');
-  if (!en) { if (b) b.hidden = true; return; }
-  if (!b) {
-    b = document.createElement('div');
-    b.id = 'pd-barra';
-    b.className = 'pd-barra';
-    b.setAttribute('role', 'group');
-    b.setAttribute('aria-label', 'Pruebas de diseño del devocionario');
-    document.body.appendChild(b);
-    b.addEventListener('click', (ev) => {
-      const x = ev.target.closest('[data-prueba]');
-      if (!x || x.dataset.prueba === pdCual()) return;
-      pdPon(x.dataset.prueba);
-      enruta();
-    });
-  }
-  b.hidden = false;
-  const nombre = PD.find((x) => x[0] === v)[2];
-  b.innerHTML = '<span class="pd-barra-n">' + esc(nombre) + '</span>'
-    + PD.map(([k, l]) => '<button type="button" data-prueba="' + k + '"'
-      + (k === v ? ' aria-pressed="true"' : '') + '>' + l + '</button>').join('');
+  document.body.classList.toggle('pd-on', en && v !== 'clasica');
+  document.body.dataset.devoVista = en ? v : '';
 }
 
 // este oyente va antes que el de la app, así que aún se ve lo que se deja
@@ -990,5 +954,5 @@ window.addEventListener('hashchange', (ev) => {
   if (antes.indexOf('#/oraciones') === 0 && antes.indexOf('#/oraciones/o/') !== 0) {
     pdPos[antes] = window.scrollY;
   }
-  pdBarra();
+  pdMarca();
 });

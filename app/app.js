@@ -41,7 +41,10 @@ const POR_OMISION = {
   vozSigue: 'no', vozMotor: 'sistema', vozLinea: {},
   // la voz de Piper: el modelo y, si trae varios hablantes, cuál. Mexicana,
   // como la traducción que se reza (ver VOCES_PIPER)
-  vozPiper: 'es_MX-claude-high'
+  vozPiper: 'es_MX-claude-high',
+  // cómo se ve el índice del devocionario (Ajustes, «Devocionario»; lo
+  // pintan devo-vistas.js y devo-vistas.css)
+  devoVista: 'sereno'
 };
 
 const E = {              // todo el estado de la app
@@ -78,7 +81,7 @@ const E = {              // todo el estado de la app
   devoPieza: null,       // la oración del devocionario que está abierta
   devoFav: [],           // las oraciones marcadas, la última delante
   devoTodo: null,        // el devocionario entero, como viene del fichero
-  devoLengua: 'la',      // la burbuja de la portada: 'la' o 'es'
+  devoLengua: 'todo',    // la burbuja de la portada: 'todo', 'la' o 'es'
   devoVer: null,         // {id, l}: en qué lengua se ve la oración abierta
   editor: null           // lo quitado y lo agregado, si lo sirve editar.py
 };
@@ -301,6 +304,17 @@ function cargaCfg() {
   // más se le parece de las que quedan
   E.cfg.letra = { antigua: 'garamond', gruesa: 'serif', periodico: 'times',
     humanista: 'sans', ancha: 'sans' }[E.cfg.letra] || E.cfg.letra;
+  // la vista del devocionario se elegía en una tira de pruebas que la
+  // guardaba aparte: la que se dejó puesta allí pasa a los ajustes
+  try {
+    const p = localStorage.getItem('devoPrueba');
+    if (p) {
+      E.cfg.devoVista = { actual: 'clasica', a: 'sereno', b: 'mosaico',
+        c: 'arbol', d: 'hoy' }[p] || E.cfg.devoVista;
+      guardaCfg();
+      localStorage.removeItem('devoPrueba');
+    }
+  } catch (_) {}
   numeraInterlineado();
 }
 function guardaCfg() {
@@ -3747,7 +3761,21 @@ const AJ_OPS = {
   ],
   vozVel: [[85, 'Despacio'], [100, 'Normal'], [115, 'Deprisa'],
     [130, 'Muy deprisa']],
-  vozPausa: [['corta', 'Poco'], ['normal', 'Normal'], ['larga', 'Mucho']]
+  vozPausa: [['corta', 'Poco'], ['normal', 'Normal'], ['larga', 'Mucho']],
+  devoVista: [
+    ['sereno', 'Índice sereno', 'El índice con poca tinta: los capítulos en '
+      + 'cuatro grupos, cada grupo en su caja, y arriba el camino de dónde se '
+      + 'está.'],
+    ['mosaico', 'Mosaico', 'Una tesela con su icono por capítulo, de un color '
+      + 'por grupo. Dentro, las secciones en pestañas.'],
+    ['arbol', 'Árbol plegable', 'Todo en una página: cada capítulo se abre en '
+      + 'su sitio, y su nombre se queda arriba mientras se baja por él.'],
+    ['hoy', 'Para hoy', 'Empieza por lo de este momento —la hora del día, el '
+      + 'día de la semana, el tiempo o el mes—; debajo, las de siempre y el '
+      + 'índice entero.'],
+    ['clasica', 'La primera', 'El índice de los capítulos con su número, lo '
+      + 'que es cada oración en rojo en su fila y los filtros a la vista.']
+  ]
 };
 
 function nombreOp(id, v) {
@@ -3833,6 +3861,7 @@ function resumenAjustes(k) {
     c.memorias === 'feria' ? 'en las memorias, la feria'
       : 'en las memorias, el santo']);
   }
+  if (k === 'devocionario') return nombreOp('devoVista', c.devoVista);
   if (k === 'abrir') {
     return { misa: 'Abre la misa de hoy',
       horas: 'Abre la hora que toca' }[c.inicio] || 'Pregunta qué libro abrir';
@@ -4184,6 +4213,12 @@ function verAjustes() {
         'Una rayita bajo las horas de hoy que ya has rezado. No hay que decir '
         + 'nada: queda marcada aquella cuyo final has llegado a leer.')
     ]),
+    rotulo('El devocionario'),
+    seccion('devocionario', 'Devocionario', ICONO.devocionario, [
+      tarjetas('devoVista', 'Cómo se ve',
+        'La portada y los capítulos. Las oraciones se leen igual con '
+        + 'cualquiera, y las burbujas de la lengua van en todas.')
+    ]),
     rotulo('El año y la app'),
     seccion('calendario', 'Calendario', ICONO_AJ.calendario, [
       tira('epifania', 'Epifanía',
@@ -4481,11 +4516,13 @@ function verPortada() {
  * Pesa 1 MB y no hace falta para nada más, así que no se carga hasta que se
  * abre, como las horas.
  *
- * Se ve en una lengua, la de la burbuja de arriba: en latín, las que tienen
- * latín, con su título latino; en español, las que tienen castellano, con el
- * suyo. `E.devoTodo` es el libro entero y `E.devo` lo que se ve en la lengua
- * puesta, con las cuentas de capítulos, secciones y formas hechas sobre eso,
- * de modo que todo lo que pinta el devocionario pinta ya lo de esa lengua. */
+ * Se ve en lo que diga la burbuja de arriba: «Todo», el libro entero, con
+ * el título latino donde lo hay y el castellano debajo; en latín, las que
+ * tienen latín, con su título latino; en español, las que tienen
+ * castellano, con el suyo. `E.devoTodo` es el libro entero y `E.devo` lo
+ * que se ve con la burbuja puesta, con las cuentas de capítulos, secciones
+ * y formas hechas sobre eso, de modo que todo lo que pinta el devocionario
+ * pinta ya lo de esa burbuja. */
 async function cargaDevocionario() {
   if (E.devoTodo) return;
   const d = await json('devocionario.json');
@@ -4505,8 +4542,9 @@ async function cargaDevocionario() {
   escuchaDevocionario();
 }
 
-/** Si tiene lo que la burbuja pide: latín o castellano. */
+/** Si tiene lo que la burbuja pide: latín o castellano; con «Todo», todas. */
 function devoTiene(p, l) {
+  if (l === 'todo') return true;
   return l === 'es' ? !!p.es : !!(p.b && p.b.length);
 }
 
@@ -4589,17 +4627,20 @@ function devoAplica() {
   for (const [k, v] of E.devoCol) if (v.length < 2) E.devoCol.delete(k);
 }
 
-/** La burbuja que se puso la última vez, en este aparato. */
+/** La burbuja que se puso la última vez, en este aparato. Con dos burbujas
+ *  se guardaba en `devoLengua`, y lo que ahí se eligió era latín o español,
+ *  no latín en vez de «Todo»: se tira, y se empieza otra vez por «Todo». */
 function cargaLengua() {
   try {
-    const l = localStorage.getItem('devoLengua');
-    if (l === 'la' || l === 'es') E.devoLengua = l;
+    localStorage.removeItem('devoLengua');
+    const l = localStorage.getItem('devoBurbuja');
+    if (l === 'todo' || l === 'la' || l === 'es') E.devoLengua = l;
   } catch (_) {}
 }
 
 function ponLengua(l) {
   E.devoLengua = l;
-  try { localStorage.setItem('devoLengua', l); } catch (_) {}
+  try { localStorage.setItem('devoBurbuja', l); } catch (_) {}
   devoAplica();
 }
 
@@ -4619,14 +4660,14 @@ function devoLangTit(p, l) {
 /** Si una pieza es de una colección que en esta lengua sigue siéndolo. */
 function devoEnCol(p) { return !!(p.col && E.devoCol.has(p.col)); }
 
-/** Las dos burbujas de la lengua, arriba de la portada. */
+/** Las tres burbujas de la lengua, arriba de la portada. */
 function devoBurbujas() {
   const una = (l, rot) => '<button type="button" class="devo-lengua" '
     + 'role="radio" data-devo-lengua="' + l + '" aria-checked="'
     + (E.devoLengua === l) + '">' + rot + '</button>';
   return '<div class="devo-lenguas" role="radiogroup" '
-    + 'aria-label="La lengua de las oraciones">' + una('la', 'Latín')
-    + una('es', 'Español') + '</div>';
+    + 'aria-label="La lengua de las oraciones">' + una('todo', 'Todo')
+    + una('la', 'Latín') + una('es', 'Español') + '</div>';
 }
 
 /* Lo que se toca dentro de las listas del devocionario —las burbujas y, en
@@ -5187,7 +5228,7 @@ function devoHora(p) {
 function devoSena(p) {
   const s = ['<span class="devo-forma">' + esc(p.f) + '</span>'];
   if (p.hora) s.push(esc(devoHora(p)));
-  if (!p.es && E.devoLengua === 'la') s.push('<i>sólo en latín</i>');
+  if (!p.es && E.devoLengua !== 'es') s.push('<i>sólo en latín</i>');
   return '<small class="devo-sena">' + s.join(' · ') + '</small>';
 }
 
@@ -5381,10 +5422,12 @@ function pintaOracion(id) {
     return;
   }
   E.devoPieza = p;
-  // Se ve en una lengua cada vez: la de la burbuja, si la oración la tiene,
-  // y si tiene las dos, un cuadrito arriba pasa a la otra sin salir de ella
+  // Se ve en una lengua cada vez: la de la burbuja, si la oración la tiene
+  // —con «Todo», el latín, que es la del libro—, y si tiene las dos, un
+  // cuadrito arriba pasa a la otra sin salir de ella
   const hay = { la: devoTiene(p, 'la'), es: devoTiene(p, 'es') };
-  let ver = E.devoVer && E.devoVer.id === p.id ? E.devoVer.l : E.devoLengua;
+  let ver = E.devoVer && E.devoVer.id === p.id ? E.devoVer.l
+    : (E.devoLengua === 'es' ? 'es' : 'la');
   if (!hay[ver]) ver = ver === 'es' ? 'la' : 'es';
   E.devoVer = { id: p.id, l: ver };
   modoPanel(devoTit(p, ver));
@@ -5631,7 +5674,7 @@ function pintaFiltro(forma, lengua) {
     + (f && DEVO_QUE[f] ? '<p class="devo-lede">' + esc(DEVO_QUE[f]) + '</p>'
       : '')
     + devoChipsForma(f, lengua)
-    + (E.devoLengua === 'la' ? devoChipsLengua(f, lengua) : '')
+    + (E.devoLengua !== 'es' ? devoChipsLengua(f, lengua) : '')
     + '<p class="devo-cuenta">' + devoCuenta(hay) + '</p>'
     + devoLista(hay, {
       sinPlegar: true,
@@ -5708,8 +5751,12 @@ function pintaDevocionario() {
   const total = E.devo.piezas.length;
   const comp = E.devo.piezas.filter((p) => p.comp).length;
   const es = E.devoLengua === 'es';
-  $('#subtitulo-dia').textContent = total
-    + (es ? ' oraciones en castellano' : ' oraciones en latín');
+  $('#subtitulo-dia').textContent = total + ({ es: ' oraciones en castellano',
+    la: ' oraciones en latín' }[E.devoLengua] || ' oraciones');
+  // la raya de cierre, pegada a su palabra: sola al principio de un
+  // renglón no se lee como cierre
+  const orto = 'la ortografía de los libros litúrgicos —con su jota, su '
+    + 'ligadura y su acento⁠—';
   const idsFav = [];
   const portada = [
     devoFavPortada(idsFav),
@@ -5717,12 +5764,13 @@ function pintaDevocionario() {
       + 'su castellano, con el de dónde sale cada una. Las que también están '
       + 'en latín llevan arriba un cuadrito para leerlas en latín. '
       + devoCuenta(E.devo.piezas) + '.</p>'
-    : '<p class="devo-lede">Las oraciones de la Iglesia en latín, en la '
-    // la raya de cierre, pegada a su palabra: sola al principio de un
-    // renglón no se lee como cierre
-    + 'ortografía de los libros litúrgicos —con su jota, su ligadura y su '
-    + 'acento⁠—, y con el castellano de cada una donde se ha podido verificar '
-    + 'de dónde sale. ' + devoCuenta(E.devo.piezas) + '.</p>',
+    : E.devoLengua === 'la' ? '<p class="devo-lede">Las oraciones de la '
+      + 'Iglesia en latín, en ' + orto + ', y con el castellano de cada una '
+      + 'donde se ha podido verificar de dónde sale. '
+      + devoCuenta(E.devo.piezas) + '.</p>'
+    : '<p class="devo-lede">Todo el devocionario: el latín en ' + orto
+      + ', y el castellano donde se ha podido verificar de dónde sale. '
+      + devoCuenta(E.devo.piezas) + '.</p>',
     comp ? '<a class="devo-destacada" href="#/oraciones/p">'
       + '<span class="devo-destacada-ojo">Para empezar</span>'
       + '<span class="devo-destacada-t">Las oraciones del Compendio</span>'
@@ -5738,7 +5786,7 @@ function pintaDevocionario() {
     + 'libro</small></h2>',
     devoChipsForma(null, null, true)
   ].join('');
-  // arriba de todo, las dos burbujas de la lengua: deciden qué se ve en
+  // arriba de todo, las burbujas de la lengua: deciden qué se ve en
   // todo lo demás, y por eso van antes que el buscador
   vista.innerHTML = devoBurbujas() + '<div class="devo-busca">' + ICONO.buscar
     + '<input class="campo" id="devo-q" type="search" '

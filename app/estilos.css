@@ -2260,15 +2260,16 @@ select.elige {
    se compone como el Ordinario de la misa, con las dos lenguas enfrentadas
    (.bi) y la rubrica en rojo; al pie, de donde sale, y la de al lado. */
 
-/* Las dos burbujas de la lengua, lo primero de la portada: deciden lo que
-   se ve en todo lo demas —en latin, las que tienen latin; en espanol, las
-   que tienen castellano, con su titulo—, y la puesta va llena del color del
-   dia, como el filtro encendido. */
+/* Las tres burbujas de la lengua, lo primero de la portada: deciden lo que
+   se ve en todo lo demas —todo el libro; en latin, las que tienen latin; en
+   espanol, las que tienen castellano, con su titulo—, y la puesta va llena
+   del color del dia, como el filtro encendido. Mas estrechas que cuando
+   eran dos, para que las tres quepan en un renglon en el telefono. */
 .devo-lenguas {
   display: flex; justify-content: center; gap: .5rem; margin: 0 0 .9rem;
 }
 .devo-lengua {
-  min-width: 6.4rem; min-height: 2.5rem; padding: .3rem 1.2rem;
+  min-width: 5.4rem; min-height: 2.5rem; padding: .3rem 1rem;
   border-radius: 999px; cursor: pointer;
   font-family: var(--sans); font-size: .86rem; letter-spacing: .02em;
   color: var(--tinta); background: var(--papel-alto);

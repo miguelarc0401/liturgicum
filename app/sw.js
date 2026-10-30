@@ -30,9 +30,9 @@ const FICHEROS = [
   'icono-180.png',
   'icono-192.png',
   'datos/version.js',
-  // PROVISIONAL, mientras duren las pruebas de diseño del devocionario
-  'devo-pruebas.css',
-  'devo-pruebas.js',
+  // las vistas del devocionario, que se eligen en Ajustes
+  'devo-vistas.css',
+  'devo-vistas.js',
   'datos/indice.json',
   'datos/calendario.json',
   'datos/lecturas_clementina.json'

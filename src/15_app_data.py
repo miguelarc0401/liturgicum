@@ -51,7 +51,7 @@ DATOS = os.path.join(APP, "datos")
 # cambia la tapa y el telefono sigue ensenando la de antes, porque el service
 # worker los tiene cacheados y nada le dice que ha cambiado nada.
 CODIGO_APP = ["index.html", "app.js", "piper.js", "estilos.css",
-              "manifest.webmanifest",
+              "devo-vistas.js", "devo-vistas.css", "manifest.webmanifest",
               "icono.svg", "icono-32.png", "icono-180.png", "icono-192.png",
               "icono-512.png", "icono-maskable-512.png"]
 

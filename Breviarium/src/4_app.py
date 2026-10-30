@@ -1277,7 +1277,7 @@ def refresca_version():
         for f in sorted(os.listdir(APP)) if f != 'version.js') + b''.join(
         open(os.path.join(raiz_app, f), 'rb').read()
         for f in ('index.html', 'app.js', 'piper.js', 'estilos.css',
-                  'manifest.webmanifest')
+                  'devo-vistas.js', 'devo-vistas.css', 'manifest.webmanifest')
         if os.path.exists(os.path.join(raiz_app, f)))) & 0xffffffff
     with open(ruta, 'w', encoding='utf-8') as f:
         f.write('// lo escribe src/15_app_data.py (y lo refresca\n'

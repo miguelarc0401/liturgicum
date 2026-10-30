@@ -1,27 +1,7 @@
-/* -------------------------------------------- pruebas del devocionario
-   PROVISIONAL, con devo-pruebas.js. Todo va colgado de `body.pd-on` o de
-   clases `pd-`, así que «Antes» se ve exactamente como siempre. */
-
-/* La tira de las pruebas, flotando sobre la barra de abajo. */
-.pd-barra {
-  position: fixed; left: 50%; z-index: 29;
-  bottom: calc(var(--pd-barra, 3.7rem) + .55rem);
-  transform: translateX(-50%);
-  display: flex; align-items: center; gap: .1rem;
-  max-width: calc(100vw - 20px);
-  padding: .25rem .25rem .25rem .8rem; border-radius: 999px;
-  background: var(--tinta); color: var(--papel);
-  box-shadow: 0 4px 18px rgb(0 0 0 / .28);
-  font-family: var(--sans); font-size: .72rem;
-}
-.pd-barra-n { margin-right: .4rem; white-space: nowrap; opacity: .75; }
-.pd-barra button {
-  min-width: 2.2rem; height: 2.2rem; padding: 0 .55rem; cursor: pointer;
-  border: 0; border-radius: 999px; background: none; color: inherit;
-  font: inherit; font-weight: 600;
-}
-.pd-barra button[aria-pressed="true"] { background: var(--papel); color: var(--tinta); }
-body.pd-con-barra #vista { padding-bottom: calc(9rem + env(safe-area-inset-bottom)); }
+/* -------------------------------------------- las vistas del devocionario
+   Con devo-vistas.js. Todo va colgado de `body.pd-on`, de
+   `body[data-devo-vista]` o de clases `pd-`, así que «La primera» se ve
+   exactamente como la pinta app.js. */
 
 /* --------------------------------------------------- lo común */
 
@@ -86,9 +66,9 @@ body.pd-on .devo-ficha .devo-insignia + .devo-insignia::before {
 /* la caja de cada lista: en A, B y D una tarjeta, como los grupos de los
    ajustes de un teléfono; en C, la lista va suelta dentro de su rama */
 .pd-lista { margin: 0; }
-body[data-prueba="a"] .pd-lista,
-body[data-prueba="b"] .pd-lista,
-body[data-prueba="d"] .pd-lista {
+body[data-devo-vista="sereno"] .pd-lista,
+body[data-devo-vista="mosaico"] .pd-lista,
+body[data-devo-vista="hoy"] .pd-lista {
   overflow: hidden; border-radius: 14px;
   background: var(--papel-alto); border: 1px solid var(--filete);
 }
@@ -284,8 +264,8 @@ body[data-prueba="d"] .pd-lista {
 }
 .pd-rama[open] > summary .pd-rama-t { font-style: italic; }
 .pd-rama > .pd-lista { padding-left: .9rem; border-top: 1px solid var(--filete); }
-body[data-prueba="c"] .pd-cap-dentro > .pd-lista + .pd-lista,
-body[data-prueba="c"] .pd-cap-dentro > .pd-lista + .pd-rama { border-top: 1px solid var(--filete); }
+body[data-devo-vista="arbol"] .pd-cap-dentro > .pd-lista + .pd-lista,
+body[data-devo-vista="arbol"] .pd-cap-dentro > .pd-lista + .pd-rama { border-top: 1px solid var(--filete); }
 
 /* --------------------------------------------------- D · para hoy */
 
@@ -304,7 +284,7 @@ body[data-prueba="c"] .pd-cap-dentro > .pd-lista + .pd-rama { border-top: 1px so
   letter-spacing: .14em; text-transform: uppercase; color: var(--acento);
 }
 .pd-tarjeta-t { margin: .15rem 0 .35rem; font-size: 1.1rem; font-weight: normal; line-height: 1.3; }
-body[data-prueba="d"] .pd-tarjeta .pd-lista { border: 0; border-radius: 0; background: none; }
+body[data-devo-vista="hoy"] .pd-tarjeta .pd-lista { border: 0; border-radius: 0; background: none; }
 .pd-tarjeta .pd-fila { padding-left: 0; }
 .pd-tarjeta .pd-lista > .pd-fila:first-child { border-top: 1px solid var(--filete); }
 .pd-tarjeta .pd-mas { padding-top: .5rem; }
