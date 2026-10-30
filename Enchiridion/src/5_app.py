@@ -433,15 +433,22 @@ def carga_seleccion():
     return {'quitadas': s.get('quitadas') or {}, 'nuevas': s.get('nuevas') or []}
 
 
+def tiradas(ln):
+    """Un renglón en sus tiradas: lo que va _entre guiones bajos_ es rúbrica
+    —tirada 1, la de la fuente, que la app pone en rojo y la voz no dice— y
+    lo demás, texto. Un guion bajo sin pareja se queda como está."""
+    return [[i % 2, t] for i, t in enumerate(re.split(r'_([^_]+)_', ln)) if t]
+
+
 def parrafos(texto):
     """El texto como se escribe en el editor: un renglón vacío separa los
     párrafos, y cada renglón es un renglón. Sale con la hechura de los de la
-    fuente —párrafos de renglones de tiradas—, todo tirada de texto."""
+    fuente —párrafos de renglones de tiradas—: texto, y la rúbrica marcada."""
     salida = []
     for parr in re.split(r'\n[ \t]*\n', (texto or '').replace('\r\n', '\n')):
         lineas = [ln.strip() for ln in parr.split('\n') if ln.strip()]
         if lineas:
-            salida.append([[[0, ln]] for ln in lineas])
+            salida.append([tiradas(ln) for ln in lineas])
     return salida
 
 

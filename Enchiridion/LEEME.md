@@ -317,8 +317,10 @@ entran como una más, ordenadas en su capítulo y su sección.
 Las quitadas van **por su id**, que sale de la página y del sitio de la
 pieza en ella y no cambia al rehacer el volcado; el título va al lado para
 que el fichero se lea. Las nuevas guardan su texto tal como se escribió: un
-renglón vacío separa los párrafos. Pueden traer latín, castellano o las dos
-cosas, y la app las enseña con la burbuja de cada lengua.
+renglón vacío separa los párrafos, y lo que va `_entre guiones bajos_` es
+rúbrica —sale en rojo, como la de la fuente, y la voz no la dice—. Pueden
+traer latín, castellano o las dos cosas, y la app las enseña con la burbuja
+de cada lengua.
 
 No se escribe a mano. Se decide **en la propia app**, servida por
 

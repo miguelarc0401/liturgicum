@@ -4903,13 +4903,14 @@ function pintaNueva(id) {
     + '<fieldset><legend>En latín</legend>'
     + campo('tla', 'Título latino', 'Con sus acentos, como los demás: '
       + '«Orátio ad sanctum Ioseph».')
-    + campo('la', 'Texto latino', 'Un renglón vacío separa los párrafos.', true)
+    + campo('la', 'Texto latino', 'Un renglón vacío separa los párrafos, y '
+      + 'lo que va _entre guiones bajos_ sale en rojo, como rúbrica.', true)
     + campo('fla', 'De dónde sale el latín', 'Opcional: el libro o el sitio.')
     + '</fieldset>'
     + '<fieldset><legend>En castellano</legend>'
     + campo('tes', 'Título castellano', 'Vacío, se toma el primer renglón.')
-    + campo('es', 'Texto castellano', 'Un renglón vacío separa los párrafos.',
-      true)
+    + campo('es', 'Texto castellano', 'Un renglón vacío separa los párrafos, y '
+      + 'lo que va _entre guiones bajos_ sale en rojo, como rúbrica.', true)
     + campo('fes', 'De dónde sale el castellano', 'La obra, y si la hay, '
       + 'la autoridad que la aprueba.')
     + campo('url', 'Enlace', 'Opcional.')

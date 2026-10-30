@@ -1800,6 +1800,38 @@
    "url": "",
    "oficial": true,
    "cambio": "2026-10-29"
+  },
+  {
+   "id": "nv_9176b32c4c17",
+   "fecha": "2026-10-30",
+   "c": "misa",
+   "s": "Antes de la misa",
+   "f": "colección",
+   "tla": "Oratiónes dicéndæ cum achólytis indúitur paraméntis, vel cléricis in mane hábitum indúitur",
+   "la": "_Ad collárem, dum impónitur, dicat:_ Súbjice me, Dómine, dulci jugo tuo, dulcíque Matris tuæ Maríæ.\n\n_Ad sotánam, dicat:_ Dóminus, pars hæreditátis meæ et cálicis mei, tu es qui restítues hæreditátem meam.\n\n_Ad Cíngulum, dum se cingit:_ Præcínge me, Dómine, cíngulo puritátis, et exstíngue in lumbis meis humórem libídinis; ut máneat in me virtus continéntiæ et castitátis.\n\n_Ad Superpellíceum, cum assúmitur:_ Índue me, Dómine, novum hóminem, qui secúndum Deum creátus est in justítia et sanctitáte veritátis. Amen.\n\n_Los laicos que van a oficiar de acólitos solo dicen las oraciones de la sotana y la sobrepelliz._",
+   "fla": "",
+   "tes": "Oraciones que dicen los acólitos al vestirse los ornamentos, o los clérigos en la mañana al revestirse del hábito",
+   "es": "_Al ponerse el alzacuellos, diga:_ Sujétame, Señor, a tu dulce yugo, y al de tu dulce Madre María.\n\n_A la sotana:_ Señor, la porción de mi herencia y mi cáliz: Tú eres el que restaurará mi heredad.\n\n_Al fajín, cuando se ciñe:_ Cíñeme, Señor, con un cíngulo de pureza, y extingue en mí la llama de la pasión, para que permanezca en mí la virtud de la continencia y de la castidad.\n\n_A la sobrepelliz, al revestirse:_ Revísteme, Señor, del hombre nuevo, que es creado por Dios en justicia y en la santidad de la verdad. Amén.\n\n_Los laicos que van a oficiar de acólitos solo dicen las oraciones de la sotana y la sobrepelliz._",
+   "fes": "",
+   "url": "",
+   "oficial": false,
+   "cambio": "2026-10-30"
+  },
+  {
+   "id": "nv_18beec84c9d8",
+   "fecha": "2026-10-30",
+   "c": "misa",
+   "s": "Antes de la misa",
+   "f": "colección",
+   "tla": "Oratiónes dicéndæ cum sacérdos indúitur sacerdotálibus paraméntis",
+   "la": "_Cum lavat manus, dicat:_ Da, Dómine, virtútem mánibus meis ad abstergéndam omnem máculam; ut sine pollutióne mentis et córporis váleam tibi servíre.\n\n_Ad Amíctum, dum pónitur super caput, dicat:_ Impóne, Dómine, cápiti meo gáleam salútis, ad expugnándos diabólicos incúrsus.\n\n_Ad Albam, cum ea indúitur:_ Deálba me, Dómine, et munda cor meum; ut, in Sánguine Agni dealbátus, gáudiis pérfruar sempitérnis.\n\n_Ad Cíngulum, dum se cingit:_ Præcínge me, Dómine, cíngulo puritátis, et exstíngue in lumbis meis humórem libídinis; ut máneat in me virtus continéntiæ et castitátis.\n\n_Ad Manípulum, dum impónitur bráchio sinístro:_ Mérear, Dómine, portáre manípulum fletus et dolóris; ut cum exsultatióne recípiam mercédem labóris.\n\n_Ad Stolam, dum impónitur collo:_ Redde mihi, Dómine, stolam immortalitátis, quam pérdidi in prævaricatióne primi paréntis: et, quamvis indígnus accédo ad tuum sacrum mystérium, mérear tamen gáudium sempitérnum.\n\n_Ad Cásulam, cum assúmitur:_ Dómine, qui dixísti: Jugum meum suáve est et onus meum leve: fac, ut istud portáre sic váleam, quod cónsequar tuam grátiam. Amen.",
+   "fla": "el Missale Romanum (ed. 1962), entre las oraciones para prepararse a la misa",
+   "tes": "Oraciones que dice el sacerdote al vestirse los ornamentos",
+   "es": "_Cuando se lava las manos, diga:_ Da, Señor, virtud a mis manos para lavarlas de toda mancha, para que pueda servirte sin impureza de alma y cuerpo.\n\n_Al Amito, luego de ponérselo sobre la cabeza:_ Pon, Señor, sobre mi cabeza el casco de salvación, para rechazar los asaltos diabólicos.\n\n_Al Alba, cuando se reviste con ella:_ Hazme puro, Señor, y limpia mi corazón, para que, santificado por la Sangre del Cordero, logre el gozo sempiterno.\n\n_Al Cíngulo, cuando se ciñe:_ Cíñeme, Señor, con un cíngulo de pureza, y extingue en mí la llama de la pasión, para que permanezca en mí la virtud de la continencia y de la castidad.\n\n_Al manípulo, cuando se lo pone en el brazo izquierdo:_ Merezca, Señor, llevar el manípulo del llanto y del dolor, para poder recibir con alegría el premio de mis trabajos.\n\n_A la Estola, cuando se la pone sobre el cuello:_ Devuélveme, Señor, la túnica de la inmortalidad, que perdí por el pecado de los primeros padres; y, aunque indigno me acerco a tus sagrados misterios, haz que merezca, no obstante, el gozo sempiterno.\n\n_A la Casulla, al ponérsela:_ Señor, que dijiste: ‘Mi yugo es suave y mi carga ligera’: haz que lo lleve de tal manera que alcance tu gracia. Amén.",
+   "fes": "",
+   "url": "",
+   "oficial": false,
+   "cambio": "2026-10-30"
   }
  ]
 }
