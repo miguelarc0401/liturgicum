@@ -1,5 +1,1805 @@
 {
  "nota": "Lo que el editor del devocionario ha decidido: las oraciones que quitó, por su id, y las que agregó, con su texto. Lo escribe Enchiridion/src/editar.py y lo aplica la fase 5.",
- "quitadas": {},
- "nuevas": []
+ "quitadas": {
+  "pl_926a5b6cd4d0": {
+   "tla": "Psalmus XXXVII (Sixto-Clementíne)",
+   "tes": "Salmo XXXVII · Señor, no me corrijas con ira",
+   "src": "Psalmi/SixtoClementine/PsalmXXXVII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8c2b9281de6c": {
+   "tla": "Psalmus XXXVII (Nova Vulgáta)",
+   "tes": "Salmo XXXVII · Señor, no me corrijas con ira",
+   "src": "Psalmi/NovaVulgata/PsalmXXXVII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_92522b9ee5bd": {
+   "tla": "Psalmus XXXI (Sixto-Clementíne)",
+   "tes": "Salmo XXXI · Dichoso el que está absuelto de su culpa",
+   "src": "Psalmi/SixtoClementine/PsalmXXXI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_311051caf60b": {
+   "tla": "Psalmus XXXI (Nova Vulgáta)",
+   "tes": "Salmo XXXI · Dichoso el que está absuelto de su culpa",
+   "src": "Psalmi/NovaVulgata/PsalmXXXI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a98b226e8fd3": {
+   "tla": "Psalmus VI (Sixto-Clementíne)",
+   "tes": "Salmo VI · Señor, no me corrijas con ira",
+   "src": "Psalmi/SixtoClementine/PsalmVI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7291dbe42ea7": {
+   "tla": "Psalmus VI (Nova Vulgáta)",
+   "tes": "Salmo VI · Señor, no me corrijas con ira",
+   "src": "Psalmi/NovaVulgata/PsalmVI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_79f14517ad0c": {
+   "tla": "Psalmus I (Sixto-Clementíne)",
+   "tes": "Salmo I · Dichoso el hombre",
+   "src": "Psalmi/SixtoClementine/PsalmI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6dbb0f468dc9": {
+   "tla": "Psalmus I (Nova Vulgáta)",
+   "tes": "Salmo I · Dichoso el hombre",
+   "src": "Psalmi/NovaVulgata/PsalmI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6a3d54f54586": {
+   "tla": "Psalmus LXXXIII (Nova Vulgáta)",
+   "tes": "Salmo LXXXIII · ¡Qué deseables son tus moradas",
+   "src": "Psalmi/NovaVulgata/PsalmLXXXIII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e16af1ae6196": {
+   "tla": "Psalmus LXXXIII (Sixto-Clementíne)",
+   "tes": "Salmo LXXXIII · ¡Qué deseables son tus moradas",
+   "src": "Psalmi/SixtoClementine/PsalmLXXXIII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5e6a1e48a9a4": {
+   "tla": "Psalmus CL (Sixto-Clementíne)",
+   "tes": "Salmo CL · Alabad al Señor en su templo",
+   "src": "Psalmi/SixtoClementine/PsalmCL.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_128c94c6df94": {
+   "tla": "Psalmus CL (Nova Vulgáta)",
+   "tes": "Salmo CL · Alabad al Señor en su templo",
+   "src": "Psalmi/NovaVulgata/PsalmCL.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_092c3f39be39": {
+   "tla": "Psalmus CXLII (Nova Vulgáta)",
+   "tes": "Salmo CXLII · Señor, escucha mi oración",
+   "src": "Psalmi/NovaVulgata/PsalmCXLII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d38d549f5148": {
+   "tla": "Psalmus CXLII (Sixto-Clementíne)",
+   "tes": "Salmo CXLII · Señor, escucha mi oración",
+   "src": "Psalmi/SixtoClementine/PsalmCXLII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9132006e89d6": {
+   "tla": "Psalmus CXXIX (Sixto-Clementíne)",
+   "tes": "Salmo CXXIX · Desde lo hondo a ti grito, Señor",
+   "src": "Psalmi/SixtoClementine/PsalmCXXIX.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b63f5d8e2e1a": {
+   "tla": "Psalmus CXXIX (Nova Vulgáta)",
+   "tes": "Salmo CXXIX · Desde lo hondo a ti grito, Señor",
+   "src": "Psalmi/NovaVulgata/PsalmCXXIX.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_de92da2f7b16": {
+   "tla": "Psalmus CXV (Sixto-Clementíne)",
+   "tes": "Salmo CXV · Tenía fe, aun cuando dije",
+   "src": "Psalmi/SixtoClementine/PsalmCXV.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1621ee50f54b": {
+   "tla": "Psalmus CXV (Nova Vulgáta)",
+   "tes": "Salmo CXV · Tenía fe, aun cuando dije",
+   "src": "Psalmi/NovaVulgata/PsalmCXV.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_de24af61de22": {
+   "tla": "Psalmus CI (Nova Vulgáta)",
+   "tes": "Salmo CI · Señor, escucha mi oración",
+   "src": "Psalmi/NovaVulgata/PsalmCI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7e7ad8bdc9b1": {
+   "tla": "Psalmus CI (Sixto-Clementíne)",
+   "tes": "Salmo CI · Señor, escucha mi oración",
+   "src": "Psalmi/SixtoClementine/PsalmCI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b71666bd3adb": {
+   "tla": "Psalmus LXXXV (Sixto-Clementíne)",
+   "tes": "Salmo LXXXV · Inclina tu oído, Señor; escúchame",
+   "src": "Psalmi/SixtoClementine/PsalmLXXXV.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_971cf7314726": {
+   "tla": "Psalmus LXXXV (Nova Vulgáta)",
+   "tes": "Salmo LXXXV · Inclina tu oído, Señor; escúchame",
+   "src": "Psalmi/NovaVulgata/PsalmLXXXV.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e7f2b0f72782": {
+   "tla": "Psalmus LXXXIV (Sixto-Clementíne)",
+   "tes": "Salmo LXXXIV · Señor, has sido bueno con tu tierra",
+   "src": "Psalmi/SixtoClementine/PsalmLXXXIV.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_3d8a427edb2b": {
+   "tla": "Psalmus LXXXIV (Nova Vulgáta)",
+   "tes": "Salmo LXXXIV · Señor, has sido bueno con tu tierra",
+   "src": "Psalmi/NovaVulgata/PsalmLXXXIV.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_03acdd2cbad7": {
+   "tla": "Exsúltet",
+   "tes": "",
+   "src": "Hymni/Triduum/Exsultet.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_95e0d2fe45ee": {
+   "tla": "Consília Evangélica",
+   "tes": "",
+   "src": "Numeri/Evan.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7ff3236df182": {
+   "tla": "De Quáttuor Novíssimis Memorándis",
+   "tes": "",
+   "src": "Numeri/Novissimis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_45af190af6e6": {
+   "tla": "Duódecim Apóstoli",
+   "tes": "",
+   "src": "Numeri/Apostoli.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f7c8fd650116": {
+   "tla": "Duódecim Fructus Spíritus Sancti",
+   "tes": "",
+   "src": "Numeri/Duodecim.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_cec81fa7b077": {
+   "tla": "Octo Beatitúdines",
+   "tes": "",
+   "src": "Numeri/Beatitudes.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1e78d8c04d16": {
+   "tla": "Novem viæ cónscius in peccáto álii esse",
+   "tes": "",
+   "src": "Numeri/Nonem.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_edcf7c765ec8": {
+   "tla": "Præcépta Decálogi",
+   "tes": "",
+   "src": "Numeri/PraeDeca.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_72dece08684b": {
+   "tla": "Quáttuor Peccáta Quæ ad Cælum Clamant",
+   "tes": "",
+   "src": "Numeri/Quattuor.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6b77d6b835e2": {
+   "tla": "Quáttuor Virtútes Cardináles",
+   "tes": "",
+   "src": "Numeri/VirCard.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bec473603583": {
+   "tla": "Septem Dona Spíritus Sancti",
+   "tes": "",
+   "src": "Numeri/SeptemDona.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a8859d120626": {
+   "tla": "Septem Ópera Misericórdiæ Corporália",
+   "tes": "",
+   "src": "Numeri/SeptemOMC.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4ac0dd867b24": {
+   "tla": "Septem Ópera Misericórdiæ Spirituália",
+   "tes": "",
+   "src": "Numeri/SeptemOMS.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bd18bf706617": {
+   "tla": "Septem peccáta capitália et virtútes opponúntur",
+   "tes": "",
+   "src": "Numeri/SeptemPec.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b1085a8c7714": {
+   "tla": "Septem Sacraménta",
+   "tes": "",
+   "src": "Numeri/SeptemSac.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_03a011f5406e": {
+   "tla": "Sex Peccáta in Spíritum Sanctum",
+   "tes": "",
+   "src": "Numeri/SexPecInSS.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_99eb6a2e9d90": {
+   "tla": "Sex Præcépta Ecclésiæ",
+   "tes": "",
+   "src": "Numeri/SexPrae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a3bb1cfdf400": {
+   "tla": "Subjects for Daíly Meditátion.",
+   "tes": "",
+   "src": "Numeri/Meditatio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9c7a29867787": {
+   "tla": "Tres Virtútes Theologáles",
+   "tes": "",
+   "src": "Numeri/TresVir.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6622b10e7a05": {
+   "tla": "Tria Præcípua bonórum óperum génera",
+   "tes": "",
+   "src": "Numeri/Tria.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_eba9fc380345": {
+   "tla": "E Doctrína Duódecim Apostolórum",
+   "tes": "",
+   "src": "PostMissam/Didache.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f4b6f880f3ab": {
+   "tla": "Innocéntii Tértii Oratiónes Tres",
+   "tes": "",
+   "src": "Varia/InnocentiiTres.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ed971f8adb02": {
+   "tla": "Septem Precatiónes Sancti Gregórii de Passióne Dómini",
+   "tes": "",
+   "src": "Filius/SeptemSG.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_388914f14df8": {
+   "tla": "S Gregórii oratiónes de Passióne Dómini.",
+   "tes": "",
+   "src": "Filius/SeptemSGAlia.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2570d5c01c3d": {
+   "tla": "Práyers of St. Bridget",
+   "tes": "",
+   "src": "Filius/StBrigid.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_12383d2f00b7": {
+   "tla": "Quinque Puncta",
+   "tes": "",
+   "src": "AnteMissam/Quinque.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7d905d70448c": {
+   "tla": "Consors patérni lúminis",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/Consors.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_635288c81faf": {
+   "tla": "Nocte surgéntes",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/NocteSurgentes.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b46e9570b353": {
+   "tla": "Nox atra rerum cóntegit",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/NoxAtra.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a5eda2557370": {
+   "tla": "Primo diérum ómnium",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/PrimoDierum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c51c150f80b8": {
+   "tla": "Rerum Creátor óptime",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/RerumCreator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_711550597384": {
+   "tla": "Somno reféctis ártubus",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/Somno.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_20fb7cd9361c": {
+   "tla": "Tu, Trinitátis Únitas",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/TuTrinitas.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_503309912340": {
+   "tla": "Ætérna cæli glória",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/AeternaCaeli.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f312dd6185bd": {
+   "tla": "Ætérne rerum cónditor",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/AeterneRerum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c0984567115d": {
+   "tla": "Ales diéi núntius",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/AlesDiei.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ebf567a3c584": {
+   "tla": "Auróra jam spargit polum",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/AuroraIam.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5fd81ad58850": {
+   "tla": "Ecce jam noctis",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/EcceIam.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_80c059337a12": {
+   "tla": "Lux ecce surgit áurea",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/LuxEcce.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_cd5fee5fac7a": {
+   "tla": "Nox et ténebræ et núbila",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/NoxEtTenebrae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8db08869c8d4": {
+   "tla": "Splendor patérnæ glóriæ",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/Splendor.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a726bccffb7c": {
+   "tla": "Summæ Deus cleméntiæ",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/SummaeDeus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f56e2610aa1b": {
+   "tla": "Jam Lucis Orto Sídere",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/IamLucisOrto.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_41e70a59a9ce": {
+   "tla": "Nunc, Sancte, nobis Spíritus",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/NuncSancte.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8a0df4ea55d2": {
+   "tla": "Rector potens, verax Deus",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/RectorPotens.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_356017486e6c": {
+   "tla": "Rerum, Deus, tenax vigor",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/RerumDeus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_15331b84b0e1": {
+   "tla": "Cæli Deus sanctíssime",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/CaeliDeus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b57a6db30fb3": {
+   "tla": "Jam sol recédit ígneus",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/IamSol.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5d98d3dc5cf7": {
+   "tla": "Imménse cæli Cónditor",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/Immense.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_733e4e6e535d": {
+   "tla": "Lucis Creátor óptime",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/LucisCreator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_0c310f5b45f3": {
+   "tla": "Magnæ Deus poténtiæ",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/MagnaeDeus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_cba92fa05cc8": {
+   "tla": "Te lucis ante términum",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/TeLucis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_41846f32e87f": {
+   "tla": "Ætérna Lux, divínitas",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/AeternaLux.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bcdd3126de25": {
+   "tla": "Altus Prosátor",
+   "tes": "",
+   "src": "Hymni/Alii/AltusProsator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_3796b2fb45c6": {
+   "tla": "Christe, qui, splendor et dies",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/ChristeQui.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7f34d12105af": {
+   "tla": "Deus creátor ómnium",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/DeusCreator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9f6eeb120a78": {
+   "tla": "O lux beáta Trínitas",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/OLuxBeata.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1b30c893034c": {
+   "tla": "Plasmátor hóminis, Deus",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/Plasmator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8ee6164a7859": {
+   "tla": "Tellúris ingens Cónditor",
+   "tes": "",
+   "src": "Hymni/TempusPerAnnum/Telluris.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ef0b60ac3298": {
+   "tla": "Cónditor alme síderum",
+   "tes": "",
+   "src": "Hymni/Adventus/Conditor.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_43395c8b9237": {
+   "tla": "Sancti, veníte",
+   "tes": "",
+   "src": "AnteMissam/SanctiVenite.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5ec52d7d8be3": {
+   "tla": "Creátor alme síderum",
+   "tes": "",
+   "src": "Hymni/Adventus/CreatorAlme.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_dd7a650cfec8": {
+   "tla": "Veni, Veni Emmánuel",
+   "tes": "",
+   "src": "Hymni/Adventus/VeniEmm.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_67cd988d1188": {
+   "tla": "Magnis prophétæ vócibus",
+   "tes": "",
+   "src": "Hymni/Adventus/MagnisProphetae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4a518335f546": {
+   "tla": "Veni, redémptor géntium",
+   "tes": "",
+   "src": "Hymni/Adventus/VeniRedemptorG.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_976939028cdf": {
+   "tla": "Verbum salútis ómnium",
+   "tes": "",
+   "src": "Hymni/Adventus/VerbumSalutis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c8ab0a95cfa5": {
+   "tla": "Verbum supérnum pródiens",
+   "tes": "",
+   "src": "Hymni/Adventus/VerbumProdiens.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d5f031d9e947": {
+   "tla": "Vox clara ecce íntonat",
+   "tes": "",
+   "src": "Hymni/Adventus/VoxClara.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_fce0b61737fb": {
+   "tla": "A solis ortus cárdine",
+   "tes": "",
+   "src": "Hymni/Nativitatis/ASolisOrtus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_3ff4dadf2c1f": {
+   "tla": "Audit tyránnus ánxius",
+   "tes": "",
+   "src": "Hymni/Nativitatis/Audittyranus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7c67d92c8c81": {
+   "tla": "Christe, Redémptor ómnium",
+   "tes": "",
+   "src": "Hymni/Nativitatis/ChristeRedOmn.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c415b8a11663": {
+   "tla": "Adjútor Laborántium",
+   "tes": "",
+   "src": "Filius/AdiutorLaborantium.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4f0120d04e05": {
+   "tla": "Sancti Patrícii Hymnus ad Temóriam",
+   "tes": "",
+   "src": "Sancti/SPatricius/Lorica.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9ae6654d1cef": {
+   "tla": "Orátio Sancti Francísci",
+   "tes": "",
+   "src": "Sancti/SFranciscusAssisiensis/PrayerofSF.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_dd26fd91dba7": {
+   "tla": "O divi amóris víctima",
+   "tes": "",
+   "src": "Sancti/SFranciscusAssisiensis/ODivi.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_84f6daace9f2": {
+   "tla": "Orátio Sancti Benedícti",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/OratioSB.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4b258029f769": {
+   "tla": "Gemma Cæléstis",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/Gemma.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_60e2a9c2b41c": {
+   "tla": "Tibi Christe splendor Patris",
+   "tes": "",
+   "src": "Angeli/TibiChriste.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b57b3722ca14": {
+   "tla": "Te splendor et virtus Patris",
+   "tes": "",
+   "src": "Angeli/TeSplendor.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_141d339d8b9b": {
+   "tla": "Orbis patrátor óptime",
+   "tes": "",
+   "src": "Angeli/OrbisPatrator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4e863ceaeb02": {
+   "tla": "Christe, sanctórum decus Angelórum",
+   "tes": "",
+   "src": "Angeli/ChristeSDA.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_808821d3664a": {
+   "tla": "Custódes hóminum psállimus Ángelos",
+   "tes": "",
+   "src": "Angeli/CustodesHominum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c37e02c7e21d": {
+   "tla": "Sacra jam splendent",
+   "tes": "",
+   "src": "SanctaFamilia/Sacra.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5c90f2fdb1b8": {
+   "tla": "O Lux beáta cǽlitum",
+   "tes": "",
+   "src": "SanctaFamilia/OLux.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6541dd2d55a2": {
+   "tla": "O gente felix hóspita",
+   "tes": "",
+   "src": "SanctaFamilia/OGente.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d489485323e7": {
+   "tla": "Te Joseph célebrent ágmina cǽlitum",
+   "tes": "",
+   "src": "Ioseph/TeIoseph.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_3ca5578e8cbc": {
+   "tla": "Iste, quem læti",
+   "tes": "",
+   "src": "Ioseph/IsteQuem.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_63825c4530c7": {
+   "tla": "Cǽlitum, Joseph, decus",
+   "tes": "",
+   "src": "Ioseph/Caelitum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9fdb58042867": {
+   "tla": "Litaníæ Sanctórum",
+   "tes": "",
+   "src": "Sancti/LitSanctorum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f3cca6fcd76d": {
+   "tla": "O Gloriósa Dómina",
+   "tes": "",
+   "src": "BVM/OGloriosa.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f34fc0bf7b56": {
+   "tla": "Quem terra, pontus, ǽthera",
+   "tes": "",
+   "src": "BVM/QuemTerra.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b9f183d5d775": {
+   "tla": "Flos Carméli",
+   "tes": "",
+   "src": "BVM/FlosCarmeli.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_fa9132640485": {
+   "tla": "Te gestiéntem gáudiis",
+   "tes": "",
+   "src": "BVM/TeGestientem.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c939e36153d1": {
+   "tla": "Meménto, salútis Auctor",
+   "tes": "",
+   "src": "BVM/MementoSA.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_591ac106b916": {
+   "tla": "In monte olívis cónsito",
+   "tes": "",
+   "src": "BVM/InMonteOlivis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_615c4c72f0c2": {
+   "tla": "Jam morte, victor, óbruta",
+   "tes": "",
+   "src": "BVM/IamMorte.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_fb64abb591dd": {
+   "tla": "Cæléstis aulæ Núntius",
+   "tes": "",
+   "src": "BVM/CaelestisAulae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6d664b4ad4f2": {
+   "tla": "Stabat Mater speciósa",
+   "tes": "",
+   "src": "BVM/SMSpeciosa.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_970a39f11a09": {
+   "tla": "Ave Verum Corpus natum",
+   "tes": "",
+   "src": "Euch/AveVerum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_77f606df237b": {
+   "tla": "Bone pastor, panis vere",
+   "tes": "",
+   "src": "Euch/BonePastor.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f03dd8475b8e": {
+   "tla": "O Salutáris Hóstia",
+   "tes": "",
+   "src": "Euch/OSalutaris.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8d35ba09b634": {
+   "tla": "Salutátio ad Dóminum Jesum Christum",
+   "tes": "",
+   "src": "Euch/Salutatio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_38e1b5ff9469": {
+   "tla": "Ángelus ad Vírginem",
+   "tes": "",
+   "src": "BVM/AngelusAdVirg.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_be1217b1ccb5": {
+   "tla": "Jesu, salvátor sǽculi",
+   "tes": "",
+   "src": "Hymni/OmnesSancti/IesuSalvator.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2d8bb8d3a51a": {
+   "tla": "Placáre, Christe, sérvulis",
+   "tes": "",
+   "src": "Hymni/OmnesSancti/Placare.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f6c233ef20e8": {
+   "tla": "Salútis ætérnæ dator",
+   "tes": "",
+   "src": "Hymni/OmnesSancti/Salutis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_33702ef2c99e": {
+   "tla": "Dómine Jesu, nóverim me",
+   "tes": "",
+   "src": "Filius/NoverimMe.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_10425a9ef1ef": {
+   "tla": "Sacris Solémniis",
+   "tes": "",
+   "src": "Hymni/CorpusChristi/SacrisSol.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ba1a12c31f09": {
+   "tla": "Christe, Redémptor ómnium",
+   "tes": "",
+   "src": "Hymni/OmnesSancti/ChristeRO.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_288db3639f47": {
+   "tla": "Verbum Supérnum",
+   "tes": "",
+   "src": "Hymni/CorpusChristi/VerbumSup.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4200e702e446": {
+   "tla": "O memoriále mortis Dómini",
+   "tes": "",
+   "src": "Hymni/Triduum/OMemoriale.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1ba5cda1cf2e": {
+   "tla": "Ad cenam Agni provídi",
+   "tes": "",
+   "src": "Hymni/Paschale/AdCenamAgni.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7e53dfb069ca": {
+   "tla": "Fórmula Intensiónis Ante Missam",
+   "tes": "",
+   "src": "AnteMissam/Formula.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c0f8fe3540dd": {
+   "tla": "Orátio Ante Missam",
+   "tes": "",
+   "src": "AnteMissam/OratioAnteMissam.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_cd8af28b80d2": {
+   "tla": "Orátio Ad Omnes Ángelos et Sanctos Ante Missam",
+   "tes": "",
+   "src": "AnteMissam/OmnAngSanc.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_178e007173d9": {
+   "tla": "Orátio ad Beátam Maríam Vírginem Ante Missam",
+   "tes": "",
+   "src": "AnteMissam/AdBVM.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_186fd80280c1": {
+   "tla": "Orátio Sancti Ambrósii Ante Missam",
+   "tes": "",
+   "src": "AnteMissam/Ambrose.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_494a67e92d76": {
+   "tla": "Preces Ad Sanctum Joseph Ante Missam",
+   "tes": "",
+   "src": "AnteMissam/AdStIoseph.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ff7d07515ceb": {
+   "tla": "Oratiónes Sancti Ambrósii Ante Missam síngulis hebdómadæ diébus distribútæ",
+   "tes": "",
+   "src": "AnteMissam/OrationesSAmb.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d2a4406b5373": {
+   "tla": "Orátio ad Sanctum in cujus Honórem Missa Celebrátur",
+   "tes": "",
+   "src": "AnteMissam/AdSanctum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bc4d487902c7": {
+   "tla": "Orátio ad Sanctum Joseph",
+   "tes": "",
+   "src": "PostMissam/VirCustos.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_3de02fb9eb82": {
+   "tla": "Orátio Sancti Bonaventúræ",
+   "tes": "",
+   "src": "PostMissam/Bonaventurae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b91b7edb9b6a": {
+   "tla": "Orátio Sancti Joánnis Chrysóstomi",
+   "tes": "",
+   "src": "PostMissam/Chrysostomi.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_66a06afcd811": {
+   "tla": "ORATIONES S. ALFONSI MARIÆ DE LIGORIO síngulis hebdómadæ diébus distribútæ",
+   "tes": "",
+   "src": "PostMissam/Ligouri.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_373e37ef06f5": {
+   "tla": "Pater Cæléstis",
+   "tes": "",
+   "src": "AnteMissam/PaterCaelestis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_158bc0a4b081": {
+   "tla": "Percéptio Córporis tui",
+   "tes": "",
+   "src": "AnteMissam/Perceptio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_33121132c018": {
+   "tla": "Pláceat",
+   "tes": "",
+   "src": "PostMissam/Placeat.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9f4f3ccd0647": {
+   "tla": "Orátio ante communiónem",
+   "tes": "Señor Jesucristo, Hijo de Dios vivo",
+   "src": "AnteMissam/OraAnte.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_27b44e5ccae1": {
+   "tla": "Orátio ante perceptiónem Eucharístiæ",
+   "tes": "",
+   "src": "AnteMissam/Euch.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ed63f2291253": {
+   "tla": "Oratiónes Ante et Post Communiónem",
+   "tes": "",
+   "src": "AnteMissam/OrationesPrivatae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1614b227f610": {
+   "tla": "Da, Dómine, propítius pacem",
+   "tes": "",
+   "src": "Varia/DaDomine.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_33e70014b5e3": {
+   "tla": "Orátio pro pace",
+   "tes": "",
+   "src": "Varia/OratioProPace.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2b69addf7626": {
+   "tla": "Deus, qui nos patrem et matrem honoráre",
+   "tes": "",
+   "src": "Varia/Deusmp.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c17b68875b1c": {
+   "tla": "Orátio pro summo Pontífice",
+   "tes": "",
+   "src": "Varia/ProPapa.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_dd6d6bd099b9": {
+   "tla": "Deus ómnium fidélium pastor",
+   "tes": "",
+   "src": "Varia/DeusOmnium.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_67002de2c5e9": {
+   "tla": "Orátio ante colligatiónem",
+   "tes": "",
+   "src": "Varia/SIsidore.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b2b1d7c54e47": {
+   "tla": "Orátio S Francísci Xavérii",
+   "tes": "",
+   "src": "Varia/XaveriiProConv.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c70fcf7c048d": {
+   "tla": "Deus, qui ad majestátis tuæ glóriam",
+   "tes": "",
+   "src": "Varia/DeusQuiAd.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e3a0d35d5ab3": {
+   "tla": "Orátio Universális",
+   "tes": "",
+   "src": "PostMissam/Universalis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_92f40b17d16b": {
+   "tla": "Orátio ad ss. Trinitátem pro felíci morte",
+   "tes": "",
+   "src": "Trinitas/ProMorte.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1315a79bccbc": {
+   "tla": "Ordo Commendatiónis Ánimæ",
+   "tes": "",
+   "src": "Varia/CommendatioAnimae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_75d6d4bf3efd": {
+   "tla": "Concéde mihi",
+   "tes": "",
+   "src": "Varia/ConcedeMihi.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8b0892673648": {
+   "tla": "Concéde mihi, miséricors Deus",
+   "tes": "",
+   "src": "Varia/Concede.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d3b02016dd6e": {
+   "tla": "Orátio Sancti Genésii",
+   "tes": "",
+   "src": "Filius/OratioSGenesii.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bb3ec027726b": {
+   "tla": "Omnípotens sempitérne Deus",
+   "tes": "",
+   "src": "Varia/OmnipotensSD.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1364d9c869b4": {
+   "tla": "Pro defúncto nominátim",
+   "tes": "",
+   "src": "Varia/Defuncto.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d2a0d2ff8b77": {
+   "tla": "Pro defúncta nominátim",
+   "tes": "",
+   "src": "Varia/Defuncta.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e5d60ac376f9": {
+   "tla": "Ad Sanctum Raphǽlem Archángelum",
+   "tes": "",
+   "src": "Angeli/SancteRaphael.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_fa0d08c3bb1a": {
+   "tla": "Commemorátio Sancti Raphaélis Archángeli",
+   "tes": "",
+   "src": "Angeli/CommRaphael.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c718ecf13604": {
+   "tla": "Commemorátio Sancti Gabriélis Archángeli",
+   "tes": "",
+   "src": "Angeli/CommGabriel.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_27cc01745256": {
+   "tla": "Ália Orátio de Ángelo Próprio",
+   "tes": "",
+   "src": "Angeli/AliaOratioDeAngeleProprio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9e7da354cc0f": {
+   "tla": "Litaníæ de sancto Ángelo Custóde",
+   "tes": "",
+   "src": "Angeli/LitAngCust.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6e25d0cf4a2d": {
+   "tla": "Parvum Offícium Sancti Ángeli Custódis",
+   "tes": "",
+   "src": "Angeli/OPSAngeli.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2298daffb814": {
+   "tla": "Litaníæ De Sancto Michǽle Archángelo",
+   "tes": "",
+   "src": "Angeli/LitSMichaelII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2ce4daa195df": {
+   "tla": "Litaníæ Sancti Michaélis",
+   "tes": "",
+   "src": "Angeli/LitSMichael.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2949a83535ce": {
+   "tla": "Commemorátio Sancti Michaélis Archángeli",
+   "tes": "",
+   "src": "Angeli/CommMichael.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d92824376617": {
+   "tla": "Ália Orátio ad Sanctum Míchaël",
+   "tes": "",
+   "src": "Angeli/StMLeoXIII.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b4303c175178": {
+   "tla": "Litaníæ de S. Augustíno",
+   "tes": "",
+   "src": "Sancti/SAugustinus/Litaniae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5aca50a9f2ba": {
+   "tla": "Commemorátio Sancti Antónii",
+   "tes": "",
+   "src": "Sancti/SAntoniusDePadova/CommSAntonius.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_73b1a3a33a5f": {
+   "tla": "Ecce Crucem Dómini",
+   "tes": "",
+   "src": "Sancti/SAntoniusDePadova/EcceCrucem.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f9ac64e95007": {
+   "tla": "Litaníæ de S. António Paduáno",
+   "tes": "",
+   "src": "Sancti/SAntoniusDePadova/AliaeLitaniae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5d31a12ccb7f": {
+   "tla": "Litaníæ de Sancto António",
+   "tes": "",
+   "src": "Sancti/SAntoniusDePadova/Litaniae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_37e4c1f26cc8": {
+   "tla": "Offícium Parvum de S. António Paduáno",
+   "tes": "",
+   "src": "Sancti/SAntoniusDePadova/OPSAntoniiPaduae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_0eaba68d8e47": {
+   "tla": "Si quæris mirácula",
+   "tes": "",
+   "src": "Sancti/SAntoniusDePadova/SiQuaeris.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7fbf9a4d392f": {
+   "tla": "Commemorátio Sancti Benedícti",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/CommSBenedictus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ca73ee9361a4": {
+   "tla": "Orátio per mérita S. Benedícti ad Jesum Christum",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanDouai.html#4",
+   "fecha": "2026-10-29"
+  },
+  "pl_93ee625e276d": {
+   "tla": "Orátio Ad S. Patrem Benedíctum",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanDouai.html#3",
+   "fecha": "2026-10-29"
+  },
+  "pl_a3ea87bd25a2": {
+   "tla": "Septem Litaníæ de Sancto Benedícto",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_82b6c88c3011": {
+   "tla": "Litaníæ de Sancto Patre Nostro Benedícto",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanGangelt.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_158542534286": {
+   "tla": "I. LITANIÆ",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanDouai.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_9ad4556a6067": {
+   "tla": "II. ALIÆ DE EODEM",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanDouai.html#1",
+   "fecha": "2026-10-29"
+  },
+  "pl_20ba954fe9e1": {
+   "tla": "III. ALIÆ DE EODEM",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanDouai.html#2",
+   "fecha": "2026-10-29"
+  },
+  "pl_fe173aca4eac": {
+   "tla": "Commemorátio Sanctæ Scholásticæ",
+   "tes": "",
+   "src": "Sancti/SScholastica/CommSScholastica.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_c087832300c1": {
+   "tla": "Litaníæ de Sancta Scholástica",
+   "tes": "",
+   "src": "Sancti/SScholastica/LitaniaeSS.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6fcf017862db": {
+   "tla": "Commemorátio Sancti Francísci Assisiénsis",
+   "tes": "",
+   "src": "Sancti/SFranciscusAssisiensis/CommSFranciscus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_22773171b237": {
+   "tla": "Litaníæ de S. P. N. Francísco",
+   "tes": "",
+   "src": "Sancti/SFranciscusAssisiensis/Litaniae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_062f704f4dd1": {
+   "tla": "Ad SS. Jóachim et Annam",
+   "tes": "",
+   "src": "Sancti/SAnna/AdSSIoachimAnna.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_57b836063bd4": {
+   "tla": "Devóta Salutátio ad eósdem SS. Patrónos",
+   "tes": "",
+   "src": "Sancti/SAnna/Salutatio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_210823bd920c": {
+   "tla": "Offícium parvum de S. Anna, Matre B. V. Maríæ",
+   "tes": "",
+   "src": "Sancti/SAnna/OPSAnna.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_dd513226a28e": {
+   "tla": "Litaníæ de S. Anna. Matre B. V. Maríæ",
+   "tes": "",
+   "src": "Sancti/SAnna/LitaniaDeSAnna.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ef87d34e199a": {
+   "tla": "Preces ad Sanctam Matrem Annam",
+   "tes": "",
+   "src": "Sancti/SAnna/PrecesAdAnn.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_446b6511e532": {
+   "tla": "Preces ad Ad S. Jóachim",
+   "tes": "",
+   "src": "Sancti/SAnna/PrecesAdIoc.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ab882986185b": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, IX",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#8",
+   "fecha": "2026-10-29"
+  },
+  "pl_b2d1bfa9b32a": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, VIII",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#7",
+   "fecha": "2026-10-29"
+  },
+  "pl_55795725b731": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, VII",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#6",
+   "fecha": "2026-10-29"
+  },
+  "pl_2470498d5d19": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, VI",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#5",
+   "fecha": "2026-10-29"
+  },
+  "pl_d3cb60abffc3": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, V",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#4",
+   "fecha": "2026-10-29"
+  },
+  "pl_5cfe95d11494": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, IV",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#3",
+   "fecha": "2026-10-29"
+  },
+  "pl_7ec8ff0a5e90": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, III",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#2",
+   "fecha": "2026-10-29"
+  },
+  "pl_26a4debd9329": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum, II",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#1",
+   "fecha": "2026-10-29"
+  },
+  "pl_69d1cbd2fdb4": {
+   "tla": "Novéna Litaniárum ad Sanctum Benedíctum",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/NovenaLit.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4add616ae4a5": {
+   "tla": "SABBATO",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#7",
+   "fecha": "2026-10-29"
+  },
+  "pl_69e02b0aaf9d": {
+   "tla": "FERIA SEXTA",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#6",
+   "fecha": "2026-10-29"
+  },
+  "pl_688c879dbd6d": {
+   "tla": "FERIA QUINTA",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#5",
+   "fecha": "2026-10-29"
+  },
+  "pl_f14a753aa73f": {
+   "tla": "FERIA QUARTA",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#4",
+   "fecha": "2026-10-29"
+  },
+  "pl_67d4a806d521": {
+   "tla": "FERIA TERTIA",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#3",
+   "fecha": "2026-10-29"
+  },
+  "pl_d2c3afacceaa": {
+   "tla": "FERIA SECUNDA",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#2",
+   "fecha": "2026-10-29"
+  },
+  "pl_66068387592f": {
+   "tla": "DOMINICA",
+   "tes": "",
+   "src": "Sancti/SBenedictusAb/LitanHaeften.html#1",
+   "fecha": "2026-10-29"
+  },
+  "pl_3a49964c4b86": {
+   "tla": "Princeps gloriosíssime",
+   "tes": "",
+   "src": "Angeli/Princeps.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_0e35ff6b348a": {
+   "tla": "Offícium Parvum Sanctórum Angelórum",
+   "tes": "",
+   "src": "Angeli/OPAngelorum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2dda722e83cc": {
+   "tla": "O Princeps cæléstis milítiæ",
+   "tes": "",
+   "src": "Angeli/OPrinceps.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7e0da339e7ac": {
+   "tla": "Óbsecro te, angélice spíritus",
+   "tes": "",
+   "src": "Angeli/ObsecroTeAngeliceSpiritus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ac971a8756cb": {
+   "tla": "O fortitúdo Dei",
+   "tes": "",
+   "src": "Angeli/OFortitudo.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f466ab8b50fb": {
+   "tla": "O cæléstis médice",
+   "tes": "",
+   "src": "Angeli/OCaelestis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_dc67f9c209a8": {
+   "tla": "O Angélice Spíritus",
+   "tes": "",
+   "src": "Angeli/OAngeliceSpiritus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_521cc97ba725": {
+   "tla": "Litaníæ Sanctórum Angelórum",
+   "tes": "",
+   "src": "Angeli/LitSanctorumAngelorum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_d0fb66885e7a": {
+   "tla": "Litaníæ de Sanctis Ángelis ex Sacra Scriptúra",
+   "tes": "",
+   "src": "Angeli/LitAngelorum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_5e3ce7c560cc": {
+   "tla": "Exáudi nos",
+   "tes": "",
+   "src": "Angeli/ExaudiNos.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_75587955215a": {
+   "tla": "Commemorátio Angelórum",
+   "tes": "",
+   "src": "Angeli/CommAngeli.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e8c9b1651b71": {
+   "tla": "Orátio post Missam ad Sanctam Famíliam",
+   "tes": "",
+   "src": "SanctaFamilia/OratioPM.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_aea0fbe0a38c": {
+   "tla": "Orátio in honórem Sanctæ Famíliæ",
+   "tes": "",
+   "src": "SanctaFamilia/Oratio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bfbadf666d61": {
+   "tla": "Ália Orátio post Missam ad Sanctam Famíliam",
+   "tes": "",
+   "src": "SanctaFamilia/AliaOratioPM.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e75f1b5d78cf": {
+   "tla": "The Chord of St. Joseph",
+   "tes": "",
+   "src": "Ioseph/Chord.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_02b4f06270f7": {
+   "tla": "Patrocínio Joseph Suffúlti",
+   "tes": "",
+   "src": "Ioseph/Patrocinio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_bbc765ebe6bc": {
+   "tla": "Offícium Parvum de Sancto Joseph",
+   "tes": "",
+   "src": "Ioseph/OPSI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6e015a0126e1": {
+   "tla": "O Joseph, Virgo Pater Jesu",
+   "tes": "",
+   "src": "Ioseph/OIoseph.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4e6c05c644eb": {
+   "tla": "Memoráre, o puríssime Sponse Vírginis Maríæ",
+   "tes": "",
+   "src": "Ioseph/MemoraeStJ.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_99bfc1db02c9": {
+   "tla": "Meménto nostri, beáte Joseph",
+   "tes": "",
+   "src": "Ioseph/Memento.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_153cf5c7ca3b": {
+   "tla": "Litaníæ Sancti Joseph",
+   "tes": "",
+   "src": "Ioseph/LitStIoeseph.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_87e6e64cc6e7": {
+   "tla": "Exercítium Singuláris Devotiónis Erga S. Joseph, Consístens in Quinque Oratiónibus",
+   "tes": "",
+   "src": "Ioseph/QuinqueOra.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f854ff8ea974": {
+   "tla": "Commemorátio Sancti Joseph",
+   "tes": "",
+   "src": "Ioseph/CommemIos.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8b3fd3b202c5": {
+   "tla": "Ad te Beáte Joseph",
+   "tes": "A vos, bienaventurado san José",
+   "src": "Ioseph/AdTe.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_0bd0ae985fe5": {
+   "tla": "Litaníæ Dóminæ nostræ Dolórum",
+   "tes": "",
+   "src": "BVM/Dolorum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4dff8d6b0555": {
+   "tla": "Ave Mater Dolorósa",
+   "tes": "",
+   "src": "Varia/AveMaterDolorosa.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a6dc19a48795": {
+   "tla": "Offícium parvum de septem Dolóribus B. V. M.",
+   "tes": "",
+   "src": "BVM/OPSDMariae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_af39b1b73f45": {
+   "tla": "Offícium parvum Conceptiónis Immaculátæ",
+   "tes": "",
+   "src": "BVM/OPConImm.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6228a31692ec": {
+   "tla": "O Pura et Immaculáta",
+   "tes": "",
+   "src": "BVM/OPura.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4fee3f646951": {
+   "tla": "O María sine labe concépta",
+   "tes": "",
+   "src": "Varia/OMariaSineLab.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_3bf5a1fbaf80": {
+   "tla": "O Intemeráta",
+   "tes": "",
+   "src": "BVM/OIntemerata.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_cb95e858a469": {
+   "tla": "Litaníæ Conceptiónis Immaculátæ B. V. Maríæ",
+   "tes": "",
+   "src": "BVM/LitConImmaculatae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8fb8929b12af": {
+   "tla": "Immaculáta Mater Dei",
+   "tes": "",
+   "src": "BVM/Immaculata.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f5cdadf9ea60": {
+   "tla": "Deus, qui per immaculátam conceptiónem",
+   "tes": "",
+   "src": "BVM/DeusQuiPer.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_483ffea6fd01": {
+   "tla": "Sanctíssima Virgo de Cenáculo",
+   "tes": "",
+   "src": "BVM/SanctissimaVirgo.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8740c5c97ad6": {
+   "tla": "Sancta María, Succúrre Míseris",
+   "tes": "",
+   "src": "BVM/SMSuccurre.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_98094f08890a": {
+   "tla": "Rosárium ex Horis ad usum Sarum",
+   "tes": "",
+   "src": "BVM/HortulusRosarium.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_daf27dc8f820": {
+   "tla": "Recordáre, Virgo Mater Dei",
+   "tes": "",
+   "src": "Varia/RecordareVirMatDei.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_a40d6c40ebe9": {
+   "tla": "Orátio Sancti Sophrónii ad Benedíctam",
+   "tes": "",
+   "src": "BVM/OraSSophronii.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_6c244c54003f": {
+   "tla": "Orátio Sancti Bernárdi ad Deíparam Vírginem",
+   "tes": "",
+   "src": "BVM/OratioSBern.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7dc6bf361ebb": {
+   "tla": "Commemorátio Beátæ Vírginis Maríæ",
+   "tes": "",
+   "src": "BVM/CommemBVM.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_cf55ce0953d7": {
+   "tla": "Ádjuvet nos",
+   "tes": "",
+   "src": "BVM/Adiuvet.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ee208ae33ea6": {
+   "tla": "Ad Sanctitátis Tuæ Pedes",
+   "tes": "",
+   "src": "BVM/AdSancPedes.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e6fd743c4cf3": {
+   "tla": "Ave, augustíssima Regína pacis",
+   "tes": "",
+   "src": "BVM/AveAugustissima.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1ad508cf1a47": {
+   "tla": "Da nobis fámulis tuis",
+   "tes": "",
+   "src": "BVM/DaNobis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_075607b07115": {
+   "tla": "Líbera me",
+   "tes": "",
+   "src": "Confessio/LiberaMe.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1b7eccbc970d": {
+   "tla": "Atténde Dómine",
+   "tes": "",
+   "src": "Confessio/Attende.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2d3ff695a5d0": {
+   "tla": "Itinerárium",
+   "tes": "",
+   "src": "Varia/Itinerarium.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2c1369cb17c8": {
+   "tla": "Ádsumus",
+   "tes": "",
+   "src": "Varia/Adsumus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_0fc094fd8d98": {
+   "tla": "Oblátio Sui",
+   "tes": "",
+   "src": "PostMissam/Oblatio.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_04b72d231ffb": {
+   "tla": "Proféssio fídei Tridentína",
+   "tes": "",
+   "src": "Symbola/Tridentinae.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_557824258cb3": {
+   "tla": "Quicúmque",
+   "tes": "",
+   "src": "Symbola/Quicumque.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_74557c15a60b": {
+   "tla": "Sýmbolum Nicǽnum",
+   "tes": "Creo en un solo Dios",
+   "src": "Symbola/Nicaenum.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_2068989f10a5": {
+   "tla": "Psaltérium Sancti Hierónymi",
+   "tes": "",
+   "src": "Confessio/PsalterJerome.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7dac2d605210": {
+   "tla": "Psalmi Graduáles",
+   "tes": "",
+   "src": "Varia/PsalmiGrad.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_23ac8ab45135": {
+   "tla": "Septem Psalmi Pænitentiáles",
+   "tes": "",
+   "src": "Confessio/Septem.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_df5941eb42b8": {
+   "tla": "Commemorátio Sanctæ Trinitátis",
+   "tes": "",
+   "src": "Trinitas/CommemoratioST.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8bca7ebfc3a5": {
+   "tla": "Commemorátio Sacratíssimi Cordis Jesu",
+   "tes": "",
+   "src": "Filius/CommSCI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_4f2b767a7e38": {
+   "tla": "Commemorátio Crucis",
+   "tes": "",
+   "src": "Filius/CommCrucis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ca2ba57357ff": {
+   "tla": "Commemorátio Pretiosíssimi Sánguinis",
+   "tes": "",
+   "src": "Filius/CommPSI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b3d77f133da9": {
+   "tla": "Commemorátio Sanctíssimi Nóminis Jesu",
+   "tes": "",
+   "src": "Filius/CommSNI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_1b3a4b91ea21": {
+   "tla": "Coróna Divínæ Misericórdiæ",
+   "tes": "",
+   "src": "Filius/DivinaMiser.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_7e1c38322a55": {
+   "tla": "O Pater misericordiárum",
+   "tes": "",
+   "src": "Filius/OPaterMiser.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_8393bb8bfb57": {
+   "tla": "Orátio Sancti Cleméntis I",
+   "tes": "",
+   "src": "Pater/OratioSClementis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ee9d6e377f8b": {
+   "tla": "Perénne Lumen in Templo Ætérni",
+   "tes": "",
+   "src": "Pater/Perenne.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_545a88aa6736": {
+   "tla": "O Ómnium Dómine",
+   "tes": "",
+   "src": "Pater/OODomine.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_422d880a849e": {
+   "tla": "Litaníæ ad Deum Patrem",
+   "tes": "",
+   "src": "Pater/LitaniaePatris.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_256767a0ec0c": {
+   "tla": "Dómine sancte, Pater omnípotens",
+   "tes": "",
+   "src": "Pater/DomineS.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_b06a8489087a": {
+   "tla": "Dómine Deus Omnípotens Rex Regum",
+   "tes": "",
+   "src": "Pater/DomineDeus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_54e8b2301f30": {
+   "tla": "Deus, qui fídei sacraménta",
+   "tes": "",
+   "src": "Pater/DeusQuis.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_e14dca7e94f0": {
+   "tla": "Deus meus, credo in te",
+   "tes": "",
+   "src": "Pater/DeusMeus.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_be24fec2c7cb": {
+   "tla": "Convérsi ad Dóminum Deum",
+   "tes": "",
+   "src": "Pater/CadDD.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_22dc683d7941": {
+   "tla": "Litaníæ pretiosíssimi Sánguinis Dómini Nostri Jesu Christi",
+   "tes": "",
+   "src": "Filius/LitPSDNIC.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_ccf1d9350fa8": {
+   "tla": "Litaníæ Sanctíssimi Nóminis Jesu",
+   "tes": "",
+   "src": "Filius/LitSNI.html#0",
+   "fecha": "2026-10-29"
+  },
+  "pl_f4408ba5b6c9": {
+   "tla": "Sancti nóminis tui",
+   "tes": "Señor, concédenos vivir siempre en el amor y respeto a tu…",
+   "src": "Filius/SanctiNominis.html#0",
+   "fecha": "2026-10-29"
+  }
+ },
+ "nuevas": [
+  {
+   "id": "nv_5b8d481268fd",
+   "fecha": "2026-10-29",
+   "c": "dia",
+   "s": "",
+   "f": "letanía",
+   "tla": "",
+   "la": "",
+   "fla": "",
+   "tes": "Letanías de la humildad",
+   "es": "Oh Jesús manso y humilde de Corazón\t    \n    R.  Óyeme\n\nDel deseo de ser estimado\t                            \n    R. Líbrame, Jesús\n\nDel deseo de ser lisonjeado\n    R. Líbrame, Jesús\n\nDel deseo de ser alabado\n    R. Líbrame, Jesús\n\nDel deseo de ser honrado\n    R. Líbrame, Jesús\n\nDel deseo de ser aplaudido\n    R. Líbrame, Jesús\n\nDel deseo de ser preferido a otros\n    R. Líbrame, Jesús\n\nDel deseo de ser consultado\n    R. Líbrame, Jesús\n\nDel deseo de tener aceptación\n    R. Líbrame, Jesús\n\nDel temor de ser humillado\n    R. Líbrame, Jesús\n\nDel temor de ser despreciado\n    R. Líbrame, Jesús\n\nDel temor de ser reprendido\n    R. Líbrame, Jesús\n\nDel temor de ser calumniado\n    R. Líbrame, Jesús\n\nDel temor de ser olvidado\n    R. Líbrame, Jesús\n\nDel temor de ser puesto en ridículo\n    R. Líbrame, Jesús\n\nDel temor de ser injuriado\n    R. Líbrame, Jesús\n\nDel temor de ser juzgado con malicia\n    R. Líbrame, Jesús\n\nQue otros sean más amados que yo\n    R. Jesús, concédeme la gracia de desearlo\n\nQue otros sean más estimados que yo\n    R. Jesús, concédeme la gracia de desearlo\n\nQue otros crezcan en la opinión del mundo y yo me eclipse\n    R. Jesús, concédeme la gracia de desearlo\n\nQue otros sean alabados y de mí no se haga caso\n    R. Jesús, concédeme la gracia de desearlo\n\nQue otros sean empleados en cargos y a mí se me juzgue inútil\n    R. Jesús, concédeme la gracia de desearlo\n\nQue otros sean preferidos a mí en todo\n    R. Jesús, concédeme la gracia de desearlo\n\nQue los demás sean más santos que yo con tal que yo sea todo lo santo que pueda\n    R. Jesús, concédeme la gracia de desearlo\n\nO R A C I Ó N\nOh Jesús que, siendo Dios, te humillaste hasta la muerte y muerte de cruz para ser ejemplo perenne que confunda nuestro orgullo y amor propio, concédenos la gracia de aprender y practicar tu ejemplo para que humillándonos como corresponde a nuestra miseria aquí en la tierra podamos ser ensalzados hasta gozar eternamente de Ti en el cielo. Amén.",
+   "fes": "",
+   "url": "",
+   "oficial": true,
+   "cambio": "2026-10-29"
+  }
+ ]
 }
