@@ -1,0 +1,27 @@
+{
+ "nota": "Las erratas corregidas a mano desde la app. Cada cambio dice el trozo como estaba («antes») y como queda («despues»), y en qué sitios: el fichero de app/datos/ y la ruta dentro de él. Lo escribe Enchiridion/src/editar.py y lo vuelve a aplicar cada fase que rehace los datos (src/erratas.py).",
+ "erratas": [
+  {
+   "id": "e_20261031_f52286",
+   "fecha": "2026-10-31",
+   "cambio": "puestro → puesto",
+   "cambios": [
+    {
+     "antes": "Mi Señor Jesucristo ha puestro en mi dedo un anillo",
+     "despues": "Mi Señor Jesucristo ha puesto en mi dedo un anillo",
+     "sitios": [
+      {
+       "f": "horas.json",
+       "r": [
+        "antifonas",
+        "01-21/santa ines virgen y martir/laudes",
+        "a",
+        0
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -42,6 +42,8 @@ import unicodedata
 import zlib
 from collections import OrderedDict
 
+import erratas
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 APP = os.path.join(ROOT, "app")
@@ -453,6 +455,7 @@ def main():
     avisos, inf = [], []
 
     def escribe(ruta, obj):
+        erratas.aplica(os.path.basename(ruta), obj)
         with open(ruta, "w", encoding="utf-8") as fh:
             json.dump(obj, fh, ensure_ascii=False, separators=(",", ":"))
         kb = os.path.getsize(ruta) // 1024

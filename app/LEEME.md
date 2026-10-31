@@ -171,6 +171,15 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   para quitar, «Quitar del libro» y «Devolver» en la oración, la lista de
   las quitadas y la página para agregar una oración, en latín, en
   castellano o en las dos. Publicada, la app ni lo pregunta.
+* **Las erratas, corregidas donde se leen.** Con la app servida por el
+  mismo editor (doble clic en `editar.bat`), cualquier texto se corrige en la página: se
+  selecciona, sale «Corregir» al lado, y se escribe como debe quedar. El
+  editor busca ese texto en `datos/` —con lo que la página enseña
+  alrededor, para no tocar otro igual—, lo cambia allí y lo apunta en
+  `data/fe_de_erratas.json`, que cada fase vuelve a aplicar al rehacer los
+  datos (`src/erratas.py`). El corrector vive aparte, en `erratas.js` y
+  `erratas.css`, que `app.js` sólo carga en el editor: el teléfono no los
+  pide nunca, y por eso no están en `sw.js` ni en la firma de `version.js`.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **Ajustes, en tarjetas.** Una por pestaña, en cuatro grupos —cómo se lee,

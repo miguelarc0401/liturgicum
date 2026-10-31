@@ -116,6 +116,28 @@ citas, hay que rehacer antes las fases que correspondan (ver
 > Y si el sitio sigue viéndose bien aunque la ejecución esté en rojo, es que
 > el despliegue anterior sigue en pie: no se ha perdido nada.
 
+### Corregir una errata desde la app
+
+Si al leer ves algo mal escrito —una palabra de una lectura, de un himno, de
+una oración—, se corrige en la propia app, en el ordenador: doble clic en
+**`editar.bat`**, en esta carpeta (o `python Enchiridion/src/editar.py` desde
+la terminal). Es un `.bat` y no un `.ps1` porque Windows no deja correr los
+`.ps1` sin cambiar la política de ejecución.
+
+Se abre una ventana negra —es el editor; mientras esté abierta, la app se
+puede corregir, y al cerrarla se para— y la app en el navegador, en
+`http://127.0.0.1:8780/`. Selecciona el texto (con un doble clic basta
+para una palabra), pulsa **Corregir** y escríbelo como debe quedar. «Buscar
+dónde está» dice en qué sitios de los datos está ese texto, y «Guardar la
+corrección» lo cambia. La pastilla **Erratas**, abajo a la izquierda, lista
+las corregidas y deja deshacerlas.
+
+Cada corrección se apunta en `data/fe_de_erratas.json` —el trozo como estaba,
+como queda y en qué sitios—, y cada fase que rehace los datos la vuelve a
+poner antes de escribir (`src/erratas.py`), así que no se pierde al rehacer.
+Si un día la fuente cambia y una errata ya no se encuentra, la fase lo dice
+con un AVISO. Lo corregido lo ven todos cuando publicas con `.\publicar.ps1`.
+
 ### Lo que la app hace para enterarse
 
 Un service worker guarda la app entera en caché —es lo que la hace funcionar

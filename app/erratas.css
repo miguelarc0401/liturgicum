@@ -1,0 +1,134 @@
+/* El corrector de erratas (erratas.js). Como el editor del devocionario,
+   solo existe con la app servida por Enchiridion/src/editar.py, y va en el
+   rojo de la rubrica y con el borde a trazos: que se vea que es del taller
+   y no del libro. Tres piezas: el boton que sale junto a lo seleccionado, la
+   pastilla de abajo con las ya corregidas, y la ficha. */
+
+.errata-boton {
+  position: fixed; z-index: 45;
+  display: inline-flex; align-items: center; gap: .35rem;
+  height: 2.2rem; padding: 0 .9rem 0 .75rem; border: 0; border-radius: 999px;
+  font-family: var(--sans); font-size: .78rem; font-weight: 600;
+  letter-spacing: .02em; cursor: pointer;
+  color: var(--papel-alto); background: var(--rubrica);
+  box-shadow: var(--sombra);
+  animation: aparece var(--rapido) ease-out;
+}
+.errata-boton[hidden] { display: none; }
+.errata-boton svg, .erratas-pildora svg {
+  width: 1rem; height: 1rem; stroke-width: 1.8;
+}
+
+/* a la izquierda, frente a «Hoy», que va a la derecha */
+.erratas-pildora {
+  position: fixed; z-index: 25;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: calc(4.2rem + env(safe-area-inset-bottom));
+  display: inline-flex; align-items: center; gap: .32rem;
+  height: 2.3rem; padding: 0 .85rem 0 .7rem;
+  font-family: var(--sans); font-size: .76rem; font-weight: 600;
+  cursor: pointer; color: var(--rubrica);
+  background: color-mix(in srgb, var(--rubrica) 6%, var(--papel-alto));
+  border: 1px dashed color-mix(in srgb, var(--rubrica) 60%, transparent);
+  border-radius: 999px; box-shadow: var(--sombra);
+}
+.erratas-pildora span {
+  font-variant-numeric: tabular-nums; color: var(--tinta-suave);
+  font-weight: 400;
+}
+
+.errata-fondo {
+  position: fixed; inset: 0; z-index: 50;
+  display: grid; place-items: center; padding: 16px;
+  background: rgb(20 14 8 / .38);
+  animation: aparece var(--rapido) ease-out;
+}
+.errata-ficha {
+  width: min(40rem, 100%); max-height: calc(100vh - 32px); overflow: auto;
+  padding: 1rem 1.15rem .2rem; border-radius: 16px;
+  color: var(--tinta); background: var(--papel);
+  border: 1px dashed color-mix(in srgb, var(--rubrica) 60%, transparent);
+  box-shadow: 0 12px 40px rgb(20 14 8 / .25);
+}
+.errata-ojo {
+  margin: 0; font-family: var(--sans); font-size: .62rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase; color: var(--rubrica);
+}
+.errata-tit {
+  margin: .25rem 0 .75rem; font-family: var(--serif); font-size: 1.3rem;
+  font-weight: 600; line-height: 1.2;
+}
+.errata-ficha textarea.campo {
+  display: block; resize: vertical; line-height: 1.5; min-height: 5rem;
+}
+.errata-pista {
+  margin: .5rem .1rem 0; font-family: var(--sans); font-size: .72rem;
+  line-height: 1.5; color: var(--tinta-suave);
+}
+.errata-pista code { font-size: .7rem; overflow-wrap: anywhere; }
+
+.errata-res {
+  margin-top: .95rem; padding-top: .8rem; border-top: 1px solid var(--filete);
+  font-family: var(--sans); font-size: .8rem; line-height: 1.5;
+}
+.errata-res[hidden] { display: none; }
+.errata-cambio {
+  margin: 0 0 .5rem; font-family: var(--serif); font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+.errata-ficha del {
+  color: var(--rubrica);
+  text-decoration-thickness: 1px;
+}
+.errata-ficha ins {
+  text-decoration: none; padding: 0 .12em; border-radius: 3px;
+  background: var(--realce);
+}
+.errata-flecha { color: var(--tinta-suave); }
+.errata-n { margin: 0; color: var(--tinta); }
+.errata-sitios {
+  margin: .3rem 0 0; padding-left: 1.15rem; color: var(--tinta-suave);
+  font-size: .76rem; overflow-wrap: anywhere;
+}
+.errata-sitios li + li { margin-top: .15rem; }
+.errata-mas { list-style: none; margin-left: -1.15rem; font-style: italic; }
+.errata-otros {
+  display: flex; align-items: flex-start; gap: .5rem; margin-top: .8rem;
+  cursor: pointer;
+}
+.errata-otros input {
+  flex: none; width: 1.05rem; height: 1.05rem; margin: .15rem 0 0;
+  accent-color: var(--rubrica);
+}
+.errata-det { margin: .3rem 0 0 1.55rem; color: var(--tinta-suave); }
+.errata-det summary { cursor: pointer; font-size: .74rem; }
+.errata-det .errata-sitios { margin-top: .2rem; }
+.errata-aviso, .errata-error {
+  margin: .8rem 0 0; padding: .55rem .8rem; border-radius: 10px;
+  font-family: var(--sans); font-size: .78rem; line-height: 1.45;
+  white-space: pre-line; color: var(--rubrica);
+  background: color-mix(in srgb, var(--rubrica) 8%, transparent);
+}
+.errata-error[hidden] { display: none; }
+
+.errata-botones {
+  position: sticky; bottom: 0;
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin: 1rem -1.15rem 0; padding: .7rem 1.15rem .9rem;
+  background: var(--papel);
+}
+.errata-botones .devo-chip { font-size: .84rem; padding: .35rem 1.15rem; }
+.errata-botones .devo-chip:disabled { opacity: .55; cursor: progress; }
+
+/* la lista de las corregidas */
+.errata-lista { margin: .9rem 0 0; padding: 0; list-style: none; }
+.errata-lista li {
+  display: grid; grid-template-columns: 1fr auto; align-items: center;
+  gap: .1rem .8rem; padding: .6rem 0; border-top: 1px solid var(--filete);
+}
+.errata-lista .errata-cambio { margin: 0; font-size: 1rem; }
+.errata-lista .errata-meta {
+  grid-column: 1; font-family: var(--sans); font-size: .72rem;
+  color: var(--tinta-suave);
+}
+.errata-lista .devo-chip { grid-column: 2; grid-row: 1 / span 2; }

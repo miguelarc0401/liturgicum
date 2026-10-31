@@ -13,19 +13,19 @@
 
 const RUTA_DATOS = 'datos/';
 const POR_OMISION = {
-  fuente: 'clementina', acentos: true, numeros: true, tam: 100, tema: 'auto',
+  fuente: 'es', acentos: true, numeros: true, tam: 100, tema: 'auto',
   epifania: 'domingo', ascension: 'domingo', corpus: 'jueves',
   memorias: 'santo', inicio: 'menu', hLibre: 'santo', hComun: 'comun',
   hAntFinal: '', calAbre: 'misa',
   // la misa: el Ordinario intercalado, y lo que se elige en él
   ordinario: 'plegado', latinBi: 'clementina', ordoOps: {},
   // qué se enseña del formulario (Ajustes, «Qué se enseña de la misa»)
-  misaVer: 'todo', misaSecs: null,
+  misaVer: 'breve', misaSecs: null,
   // el formato del texto (Ajustes, «Formato del texto»)
   // el interlineado es un numero: el alto del renglon en centesimas del
   // cuerpo de la letra (162 son 1,62), y se mueve de cinco en cinco
-  letra: 'serif', interlinea: 162, medida: 'normal', justifica: 'si',
-  particion: 'si', cruces: 'si', despierto: false,
+  letra: 'serif', interlinea: 120, medida: 'ancha', justifica: 'si',
+  particion: 'no', cruces: 'si', despierto: false,
   // y el de cada sección por su cuenta, cuando uno para todas no basta:
   // `fmt` es grupo -> {justifica, interlinea, particion}, y lo que un grupo
   // no diga lo sigue diciendo el general
@@ -34,11 +34,11 @@ const POR_OMISION = {
   // cada color, color -> {claro, oscuro}, donde no se quiera el de siempre
   color: 'dia', tonos: {},
   // al rezar (Ajustes, «Liturgia de las Horas»)
-  carril: 'si', gestos: 'si', rezadas: 'si',
+  carril: 'si', gestos: 'si', rezadas: 'no',
   // y al rezar en alta voz: la voz del sistema (vacío: la que haya),
   // la velocidad en centésimas, y lo que se dice de más
   voz: '', vozVel: 100, vozRotulos: 'si', vozPausa: 'normal',
-  vozSigue: 'no', vozMotor: 'sistema', vozLinea: {},
+  vozSigue: 'no', vozMotor: 'piper',
   // la voz de Piper: el modelo y, si trae varios hablantes, cuál. Mexicana,
   // como la traducción que se reza (ver VOCES_PIPER)
   vozPiper: 'es_MX-claude-high',
@@ -304,6 +304,14 @@ function cargaCfg() {
   // más se le parece de las que quedan
   E.cfg.letra = { antigua: 'garamond', gruesa: 'serif', periodico: 'times',
     humanista: 'sans', ancha: 'sans' }[E.cfg.letra] || E.cfg.letra;
+  // la voz de un servicio en línea ya no está: la clave que se escribió y
+  // el audio que se trajo no se quedan guardados (y la voz pasa a Piper
+  // con los valores de fábrica, aquí debajo)
+  if (E.cfg.vozLinea) {
+    delete E.cfg.vozLinea;
+    guardaCfg();
+    try { caches.delete('voz-en-linea').catch(() => {}); } catch (_) {}
+  }
   // la vista del devocionario se elegía en una tira de pruebas que la
   // guardaba aparte: la que se dejó puesta allí pasa a los ajustes
   try {
@@ -315,6 +323,19 @@ function cargaCfg() {
       localStorage.removeItem('devoPrueba');
     }
   } catch (_) {}
+  // Los valores de fábrica cambiaron el 2026-10-31, y por lo mismo que el
+  // Corpus lo guardado no dice que alguien lo eligiera: los que entonces se
+  // fijaron se ponen una vez, y lo que se cambie después se queda. Los que
+  // no se fijaron —el tamaño de la letra, las memorias, la voz del
+  // teléfono— siguen como estuvieran.
+  if (!E.cfg.fabrica) {
+    ['fmtUno', 'interlinea', 'justifica', 'particion', 'cruces', 'medida',
+      'letra', 'tema', 'color', 'vozMotor', 'vozVel', 'vozPausa', 'vozSigue',
+      'fuente', 'acentos', 'numeros', 'misaVer', 'rezadas', 'devoVista',
+      'epifania', 'ascension', 'corpus']
+      .forEach((k) => { E.cfg[k] = POR_OMISION[k]; });
+    E.cfg.fabrica = 1;
+  }
   numeraInterlineado();
 }
 function guardaCfg() {
@@ -3755,9 +3776,7 @@ const AJ_OPS = {
     ['sistema', 'La del teléfono', 'Viene con el sistema y habla sin '
       + 'conexión. Lee bien, pero es voz de máquina.'],
     ['piper', 'Piper · neuronal, en el teléfono', 'Suena a persona. Se baja '
-      + 'una vez, vive en el teléfono y habla sin conexión y sin cuenta.'],
-    ['linea', 'Un servicio en línea', 'Suena mejor aún, pero pide conexión '
-      + 'y una cuenta con tarjeta.']
+      + 'una vez, vive en el teléfono y habla sin conexión y sin cuenta.']
   ],
   vozVel: [[85, 'Despacio'], [100, 'Normal'], [115, 'Deprisa'],
     [130, 'Muy deprisa']],
@@ -3845,8 +3864,8 @@ function resumenAjustes(k) {
     c.hComun === 'dia' ? 'lo no propio, del día' : 'lo no propio, del común']);
   }
   if (k === 'voz') {
-    return junta([{ piper: 'Piper', linea: 'Un servicio en línea' }[c.vozMotor]
-      || 'La voz del teléfono', nombreOp('vozVel', c.vozVel).toLowerCase(),
+    return junta([c.vozMotor === 'piper' ? 'Piper' : 'La voz del teléfono',
+      nombreOp('vozVel', c.vozVel).toLowerCase(),
     c.vozSigue === 'si' ? 'sigue con la hora siguiente' : '']);
   }
   if (k === 'calendario') {
@@ -3870,12 +3889,94 @@ function resumenAjustes(k) {
 }
 
 /** El resumen, al día: se toca un ajuste y cambia el renglón de su
- *  pestaña sin repintar nada más. */
+ *  pestaña sin repintar nada más. Y con él, el botón de restablecer, que
+ *  sólo está vivo mientras haya algo distinto de lo de fábrica. */
 function refrescaResumenes() {
   document.querySelectorAll('.ajustes-sec[data-clave]').forEach((d) => {
     const r = d.querySelector('.aj-resumen');
     if (r) r.textContent = resumenAjustes(d.dataset.clave);
+    const b = d.querySelector('[data-restablece]');
+    if (b) b.disabled = deFabrica(d.dataset.clave);
   });
+}
+
+/* -------------------------------------------- restablecer una pestaña
+ * Al pie de cada pestaña, un botón que la deja como viene de fábrica: todo
+ * lo que se elige en ella, también lo que no se ve —el formato de cada
+ * sección, los tonos afinados, las piezas de la misa—, y nada de las
+ * demás. Lo que se elige fuera de Ajustes —qué abre el calendario, la
+ * antífona final— no es de ninguna pestaña y no se toca. */
+const AJ_SECCION = {
+  formato: ['tam', 'fmtUno', 'fmt', 'interlinea', 'justifica', 'particion',
+    'cruces', 'medida'],
+  aspecto: ['letra', 'tema', 'color', 'tonos', 'despierto'],
+  voz: ['vozMotor', 'voz', 'vozPiper', 'vozVel', 'vozRotulos', 'vozPausa',
+    'vozSigue'],
+  lengua: ['fuente', 'latinBi', 'acentos', 'numeros'],
+  misa: ['misaVer', 'misaSecs', 'ordinario'],
+  horas: ['hLibre', 'hComun', 'carril', 'gestos', 'rezadas'],
+  devocionario: ['devoVista'],
+  calendario: ['epifania', 'ascension', 'corpus', 'memorias'],
+  abrir: ['inicio']
+};
+
+/** Si la pestaña tiene ya todo como de fábrica. Se compara en JSON porque
+ *  hay tablas —`fmt`, `tonos`— y una lista, la de las piezas. */
+function deFabrica(clave) {
+  return (AJ_SECCION[clave] || []).every((k) =>
+    JSON.stringify(E.cfg[k]) === JSON.stringify(POR_OMISION[k]));
+}
+
+function botonRestablecer(clave) {
+  return '<div class="aj-restablece"><button type="button" '
+    + 'class="restablece" data-restablece="' + clave + '"'
+    + (deFabrica(clave) ? ' disabled' : '') + '>Restablecer valores'
+    + '</button></div>';
+}
+
+/* Un toque perdido al bajar por la pestaña no ha de borrar los tonos
+ * afinados uno a uno: el primero pregunta, en el botón mismo, y el segundo
+ * restablece. Si no llega el segundo, el botón vuelve a lo que era. */
+const RESTABLECE = 'Restablecer valores';
+
+function alRestablecer(ev) {
+  const b = ev.target.closest('[data-restablece]');
+  if (!b || b.disabled || E.vista !== 'ajustes') return;
+  if (!b.classList.contains('seguro')) {
+    b.classList.add('seguro');
+    b.textContent = 'Toca otra vez para restablecer';
+    setTimeout(() => {
+      b.classList.remove('seguro');
+      b.textContent = RESTABLECE;
+    }, 4000);
+    return;
+  }
+  restableceSeccion(b.dataset.restablece);
+}
+
+/** La pestaña, a lo de fábrica, y Ajustes repintado con ella abierta y el
+ *  botón donde estaba, bajo el dedo: lo que cambia por encima —las
+ *  secciones del formato que se van, la lista de las piezas— no ha de
+ *  mover la página. Si cambia la versión, se cargan sus lecturas. */
+async function restableceSeccion(clave) {
+  const ojo = vista.querySelector('[data-restablece="' + clave + '"]');
+  const y = ojo ? ojo.getBoundingClientRect().top : 0;
+  const version = E.cfg.fuente + '|' + E.cfg.latinBi;
+  AJ_SECCION[clave].forEach((k) => {
+    E.cfg[k] = JSON.parse(JSON.stringify(POR_OMISION[k]));
+  });
+  guardaCfg();
+  aplicaCfg();
+  PIPER.prueba = null;
+  _tonoAbierto = null;
+  recuerdaAjustes();
+  if (E.cfg.fuente + '|' + E.cfg.latinBi !== version) {
+    vista.innerHTML = '<p class="aviso">Cambiando de versión…</p>';
+    await cargaLecturas(E.cfg.fuente);
+  }
+  verAjustes();
+  const n = vista.querySelector('[data-restablece="' + clave + '"]');
+  if (n) window.scrollBy(0, n.getBoundingClientRect().top - y);
 }
 
 /* La paleta del color: debajo de las pastillas, la del que se haya
@@ -4048,17 +4149,6 @@ function verAjustes() {
     'colores', AJ_OPS.color.map(([v, t]) => opcion('color', v,
       '<span class="color-punto color-' + v + '" aria-hidden="true"></span>'
       + '<span class="color-n">' + t + '</span>', 'color'))) + paletaTonos();
-  // Los campos de la voz en línea no son una lista de opciones sino lo que
-  // haya que escribir —la región, la clave, el nombre de la voz—, y no
-  // cuelgan de un ajuste con nombre sino de la tabla `vozLinea`.
-  const campoVoz = (campo, etiqueta, p, tipo) => {
-    const c = E.cfg.vozLinea || {};
-    return '<div class="ajuste apilado"><label class="eti" for="aj-vl-'
-      + campo + '">' + etiqueta + '</label>' + pista(p) + '<input id="aj-vl-'
-      + campo + '" type="' + (tipo || 'text') + '" data-vozlinea="' + campo
-      + '" value="' + esc(c[campo] || '')
-      + '" autocomplete="off" spellcheck="false"></div>';
-  };
   // Cada sección, una tarjeta que se abre: la lista entera de un tirón son
   // cuatro pantallas de deslizar para cambiar una cosa. Todas vienen
   // plegadas, de modo que lo primero que se ve es de qué se puede hablar y
@@ -4073,7 +4163,8 @@ function verAjustes() {
     + '<span class="aj-cab"><span class="aj-t">' + titulo + '</span>'
     + '<span class="aj-resumen">' + esc(resumenAjustes(clave)) + '</span>'
     + '</span><span class="aj-flecha" aria-hidden="true"></span></summary>'
-    + '<div class="ajustes-cuerpo">' + partes.join('') + '</div></details>';
+    + '<div class="ajustes-cuerpo">' + partes.join('') + botonRestablecer(clave)
+    + '</div></details>';
   const rotulo = (t) => '<h2 class="aj-grupo">' + t + '</h2>';
 
   vista.innerHTML = [
@@ -4136,8 +4227,7 @@ function verAjustes() {
     seccion('voz', 'Rezar en alta voz', ICONO_VOZ.voz, [
       bloqueVoz(),
       tarjetas('vozMotor', 'Qué voz', ''),
-      E.cfg.vozMotor === 'linea' ? camposDeLaVozEnLinea(campoVoz)
-        : E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
+      E.cfg.vozMotor === 'piper' ? camposDePiper(sel)
         : sel('voz', 'La voz del teléfono', vocesQueHay(),
           [['', 'La que haya']].concat(vocesDeLaVoz()
             .map((v) => [v.voiceURI, v.name + ' · ' + v.lang]))),
@@ -4295,26 +4385,6 @@ async function cambiaAjuste(ev) {
     aplicaFormatoSecs();
     return;
   }
-  // la voz en línea tampoco es un ajuste con nombre, sino un campo de su
-  // tabla: vacío, se borra, y el servicio vuelve a estar sin configurar
-  const vl = ev.target.dataset.vozlinea;
-  if (vl) {
-    const l = Object.assign({}, E.cfg.vozLinea);
-    const t = (ev.target.value || '').trim();
-    if (t) l[vl] = t; else delete l[vl];
-    // cambiar de servicio cambia los campos que pide y los nombres de las
-    // voces, que no se parecen en nada de uno a otro: la voz elegida se
-    // pone en la primera del nuevo, que si no quedaría una de Azure
-    // pedida a Google y el servicio contestaría que no la conoce
-    if (vl === 'prov') {
-      const p = PROVEEDOR[l.prov];
-      l.voz = p ? p.voces[0][0] : '';
-    }
-    E.cfg.vozLinea = l;
-    guardaCfg();
-    if (vl === 'prov') { recuerdaAjustes(); verAjustes(); }
-    return;
-  }
   // la barra de tonos, al soltar la flecha
   if (ev.target.dataset.barra) {
     ponBarra(ev.target, true);
@@ -4367,8 +4437,8 @@ async function cambiaAjuste(ev) {
   E.cfg[id] = (id === 'tam' || id === 'vozVel') ? +v : v;
   guardaCfg();
   aplicaCfg();
-  // elegir la otra voz hace aparecer, o irse, los campos del servicio; y
-  // otra de Piper, si está bajada o no
+  // elegir la otra voz cambia lo que sale debajo —la lista de las del
+  // teléfono o las de Piper—; y otra de Piper, si está bajada o no
   if (id === 'vozMotor' || id === 'vozPiper') {
     PIPER.prueba = null;
     recuerdaAjustes();
@@ -8201,7 +8271,7 @@ const V = {
   estado: 'parada',     // parada | diciendo | pausada
   que: null,            // de qué página es el guión armado (ver loQueSeLee)
   silencio: null,       // el audio mudo que mantiene viva la página
-  audio: null,          // el <audio> del motor en línea
+  audio: null,          // el <audio> de Piper
   url: null,            // su blob, para soltarlo al acabar
   pasa: null,           // el temporizador del silencio entre secciones
   hasta: 0,             // hasta qué trozo va metido en el motor
@@ -8209,7 +8279,7 @@ const V = {
   manos: 0,             // hasta cuándo manda la mano que ha desplazado
   aviso: '',            // lo que la barra tiene que decir, si algo
   motor: 'sistema',     // el que se está usando de verdad, no el elegido
-  fallos: 0,            // seguidos, del motor en línea
+  fallos: 0,            // seguidos, de Piper
   gen: 0,               // de qué tanda es lo que suena (ver callaElMotor)
   eligiendo: null,      // las voces que se ofrecen antes de empezar, si se está eligiendo
   voces: null, vocesPedidas: false,
@@ -8667,8 +8737,7 @@ function manoEnLaVoz() {
 }
 
 function hablaElSistema() {
-  if (V.motor === 'piper') return false;
-  return V.motor !== 'linea' || !E.cfg.vozLinea || !E.cfg.vozLinea.clave;
+  return V.motor !== 'piper';
 }
 
 /* Dentro de una sección los trozos se meten todos de golpe: el motor los
@@ -8735,7 +8804,7 @@ function acabo(k) {
     V.i = k + 1;
     V.hasta = V.i;
     if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
-    else diceEnLinea(V.i);
+    else diceConPiper(V.i);
   });
 }
 
@@ -8796,8 +8865,7 @@ function arrancaVoz(desde) {
   const q = loQueSeLee();
   V.guion = guionDeLaPagina();
   V.que = q ? q.k : null;
-  V.motor = E.cfg.vozMotor === 'linea' || E.cfg.vozMotor === 'piper'
-    ? E.cfg.vozMotor : 'sistema';
+  V.motor = E.cfg.vozMotor === 'piper' ? 'piper' : 'sistema';
   V.fallos = 0;
   V.aviso = '';
   // sabido ya que la de Piper no está bajada, se dice antes de empezar y no
@@ -8842,7 +8910,7 @@ function vaATrozo(k) {
   // con la app delante, que es ahora, al tocar
   nombraEnLosMandos();
   if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
-  else diceEnLinea(V.i);
+  else diceConPiper(V.i);
   pintaBarraVoz();
 }
 
@@ -8919,213 +8987,30 @@ function otraSeccionVoz(n) {
   vaATrozo(ant ? V.guion.findIndex((tz) => tz.sec === ant.sec) : 0);
 }
 
-/* ------------------------------------------------------- el motor en línea
- * La voz del sistema no reza: lee. Para quien quiera una voz de verdad, la
- * app sabe pedírsela a un servicio de síntesis con la clave de quien la
- * tenga, y eso —sólo eso— pide conexión. Lo que se trae queda guardado en
- * la caché del navegador, así que una hora pedida una vez se vuelve a decir
- * sin red; y si no hay red y no estaba guardada, no se calla: ese trozo lo
- * dice la voz del sistema y la hora sigue. Tres fallos seguidos y se deja
- * de pedir hasta la hora siguiente, que con mala cobertura pedir por pedir
- * es ir callando a trompicones.
- *
- * La clave se guarda en este teléfono y no sale de él más que hacia el
- * servicio que se elija; el texto de lo que se reza, en cambio, va a ese
- * servicio, que es lo que hace falta para que lo diga. */
-const PROVEEDOR = {
-  google: {
-    rot: 'Google Cloud',
-    campos: ['clave'],
-    // Dónde se saca la clave. Va escrito porque el sitio cambia de nombre
-    // los menús cada dos por tres y sin esto no se encuentra.
-    donde: 'console.cloud.google.com · API y servicios · Credenciales · '
-      + 'Crear credenciales · Clave de API. Antes hay que activar la API '
-      + '«Cloud Text-to-Speech» en la Biblioteca.',
-    // El tramo gratuito de Google no es uno solo: cada familia de voces
-    // tiene el suyo, y entre la primera y las otras hay cuatro veces. Va
-    // dicho en el rótulo de cada voz, porque es lo que de verdad decide
-    // cuál conviene: con las WaveNet caben cuatro millones de caracteres
-    // al mes —el oficio entero, los siete, todos los días del año— y con
-    // las demás, uno.
-    voces: [
-      ['es-ES-Wavenet-F', 'España · mujer · 4 M al mes gratis'],
-      ['es-ES-Wavenet-H', 'España · mujer (2) · 4 M al mes gratis'],
-      ['es-ES-Wavenet-E', 'España · hombre · 4 M al mes gratis'],
-      ['es-ES-Wavenet-G', 'España · hombre (2) · 4 M al mes gratis'],
-      ['es-US-Wavenet-A', 'América · mujer · 4 M al mes gratis'],
-      ['es-US-Wavenet-B', 'América · hombre · 4 M al mes gratis'],
-      ['es-ES-Neural2-A', 'España · mujer · 1 M al mes gratis'],
-      ['es-ES-Neural2-F', 'España · hombre · 1 M al mes gratis'],
-      ['es-ES-Chirp3-HD-Sulafat', 'España · mujer, de las nuevas · 1 M'],
-      ['es-ES-Chirp3-HD-Charon', 'España · hombre, de las nuevas · 1 M'],
-      ['es-ES-Standard-F', 'España · mujer, la sencilla · 4 M al mes']
-    ],
-    // Sin SSML: el texto va limpio y la velocidad en su propio campo, de
-    // modo que no se paga ni una etiqueta. Google cuenta como carácter
-    // todo lo que entra, marcas incluidas.
-    pide: async function (c, texto, vel) {
-      const v = c.voz || 'es-ES-Wavenet-F';
-      const r = await fetch(
-        'https://texttospeech.googleapis.com/v1/text:synthesize',
-        { method: 'POST',
-          headers: { 'X-Goog-Api-Key': c.clave,
-            'Content-Type': 'application/json; charset=utf-8' },
-          body: JSON.stringify({
-            input: { text: texto },
-            voice: { languageCode: v.slice(0, 5), name: v },
-            audioConfig: { audioEncoding: 'MP3', speakingRate: vel }
-          }) });
-      if (!r.ok) throw new Error(await razonDeFallo(r));
-      const j = await r.json();
-      if (!j.audioContent) throw new Error('no ha devuelto audio');
-      return deBase64(j.audioContent, 'audio/mpeg');
-    }
-  },
-  azure: {
-    rot: 'Azure · Microsoft',
-    campos: ['region', 'clave'],
-    donde: 'portal.azure.com · crea un recurso «Speech services» con el '
-      + 'plan F0, que es el gratuito, y copia de su página la clave 1 y la '
-      + 'ubicación. Son 500 000 caracteres al mes.',
-    voces: [
-      ['es-ES-ElviraNeural', 'España · mujer'],
-      ['es-ES-AlvaroNeural', 'España · hombre'],
-      ['es-ES-TrianaNeural', 'España · mujer (2)'],
-      ['es-MX-DaliaNeural', 'México · mujer'],
-      ['es-MX-JorgeNeural', 'México · hombre'],
-      ['it-IT-DiegoNeural', 'Italiana · para el latín']
-    ],
-    // Aquí el SSML es obligatorio, pero se paga: Microsoft dice que no
-    // cobra `<speak>` ni `<voice>` y sí todo lo demás, así que el
-    // `<prosody>` se pone sólo cuando hay algo que decirle. A velocidad
-    // normal son 37 caracteres menos por trozo, que en una hora son unos
-    // dos mil seiscientos de los siete mil que cuesta.
-    pide: async function (c, texto, vel) {
-      const v = c.voz || 'es-ES-ElviraNeural';
-      const dentro = vel === 1 ? esc(texto)
-        : '<prosody rate="' + (vel > 1 ? '+' : '')
-          + Math.round((vel - 1) * 100) + '%">' + esc(texto) + '</prosody>';
-      const r = await fetch('https://'
-        + encodeURIComponent(c.region || 'westeurope')
-        + '.tts.speech.microsoft.com/cognitiveservices/v1',
-        { method: 'POST',
-          headers: { 'Ocp-Apim-Subscription-Key': c.clave,
-            'Content-Type': 'application/ssml+xml',
-            'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3' },
-          body: '<speak version="1.0"'
-            + ' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="'
-            + esc(v.slice(0, 5)) + '"><voice name="' + esc(v) + '">'
-            + dentro + '</voice></speak>' });
-      if (!r.ok) throw new Error(await razonDeFallo(r));
-      return r.blob();
-    }
-  }
-};
-
-const PROV_POR_OMISION = 'google';
-
-function proveedorDe() {
-  const c = E.cfg.vozLinea || {};
-  return PROVEEDOR[c.prov] ? c.prov : PROV_POR_OMISION;
-}
-
-/** Lo que el servicio contesta cuando dice que no, en corto y en claro: un
- *  401 es la clave, un 400 suele ser el nombre de la voz, y un 403 que la
- *  API no está activada. Sin esto, todos los fallos se parecen.
- *
- *  Lo que devuelve va a la barra de mandos, que es ancha de un dedo: cabe
- *  la razón y no cabe el párrafo en inglés con que el servicio la explica.
- *  Ése se escribe en la consola, que es donde se va a buscar cuando la
- *  razón corta no baste. */
-async function razonDeFallo(r) {
-  let detalle = '';
-  try {
-    const t = (await r.text()).slice(0, 400);
-    const m = t.match(/"message"\s*:\s*"([^"]{0,110})/);
-    // el servicio cierra su frase con punto y aquí va dentro de otra: se le
-    // quita, que si no salen dos seguidos
-    detalle = m ? m[1].replace(/\s*\.*\s*$/, '') : '';
-  } catch (_) { /* da igual: queda el número */ }
-  const comun = r.status === 401 || r.status === 403
-      ? 'La clave no vale, o la API no está activada'
-    : r.status === 400 ? 'No le cuadra la petición: mira el nombre de la voz'
-    : r.status === 429 ? 'Te ha cortado por exceso de peticiones'
-    : 'El servicio responde ' + r.status;
-  if (detalle) console.warn('voz en línea (' + r.status + '): ' + detalle);
-  return comun;
-}
-
-/** El audio que viene en base64 dentro de un JSON, a fichero. */
-function deBase64(b64, tipo) {
-  const bin = atob(b64);
-  const n = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) n[i] = bin.charCodeAt(i);
-  return new Blob([n], { type: tipo });
-}
-
-/** Una firma corta del trozo, para nombrarlo en la caché. FNV de 32 bits,
- *  que para esto basta. */
-function firmaVoz(s) {
-  let h = 0x811c9dc5;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = (h + (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24)) >>> 0;
-  }
-  return h.toString(16) + '-' + s.length;
-}
-
-async function audioEnLinea(texto) {
-  const c = E.cfg.vozLinea || {};
-  const prov = proveedorDe();
-  const p = PROVEEDOR[prov];
-  if (!c.clave) throw new Error('falta la clave');
-  const vel = Math.max(0.5, Math.min(2, (E.cfg.vozVel || 100) / 100));
-  const llave = 'https://voz.guardada/' + prov + '/'
-    + encodeURIComponent(c.voz || '') + '/' + vel + '/' + firmaVoz(texto);
-  let cache = null;
-  try { cache = await caches.open('voz-en-linea'); } catch (_) { cache = null; }
-  if (cache) {
-    const guardada = await cache.match(llave);
-    if (guardada) return guardada.blob();
-  }
-  // cada proveedor devuelve el audio ya hecho —uno lo manda en crudo y el
-  // otro en base64 dentro de un JSON—; de la caché para dentro son iguales
-  const blob = await p.pide(c, texto, vel);
-  if (cache) {
-    try {
-      await cache.put(llave, new Response(blob,
-        { headers: { 'Content-Type': blob.type || 'audio/mpeg' } }));
-    } catch (_) { /* sin sitio: se volverá a pedir */ }
-  }
-  return blob;
-}
-
 /* Con audio no hay avisos de palabra: el renglón se sigue por la regla de
  * tres entre lo que va sonando y lo que mide el texto. No es exacto al
  * carácter, pero para ir señalando el renglón sobra. */
-async function diceEnLinea(k) {
+async function diceConPiper(k) {
   const tz = V.guion && V.guion[k];
   if (!tz) return;
   const g = V.gen;
-  const piper = V.motor === 'piper';
   let blob;
   try {
-    const pide = piper ? audioPiper(tz.texto) : audioEnLinea(tz.texto);
+    const pide = audioPiper(tz.texto);
     // Piper va haciendo lo que viene detrás de éste mientras suena
-    if (piper) adelantaPiper();
+    adelantaPiper();
     blob = await pide;
     V.fallos = 0;
     if (V.aviso) { V.aviso = ''; pintaBarraVoz(); }
   } catch (err) {
     V.fallos++;
     // sin la voz bajada no hay nada que reintentar
-    if (piper && PIPER.hay[vozPiper().voz] === false) V.fallos = 3;
+    if (PIPER.hay[vozPiper().voz] === false) V.fallos = 3;
     if (V.fallos >= 3) {
       V.motor = 'sistema';
-      // con el motivo delante: «la clave no vale» y «no hay cobertura» se
-      // arreglan de maneras muy distintas, y sin decirlo nadie sabe cuál es
+      // con el motivo delante, que sin decirlo nadie sabe qué arreglar
       V.aviso = (err && err.message ? err.message
-        : 'La voz en línea no responde') + '. Sigue la del teléfono.';
+        : 'La voz de Piper no responde') + '. Sigue la del teléfono.';
     }
     if (g === V.gen && V.estado === 'diciendo' && V.i === k
         && !hayVozDelSistema()) {
@@ -9141,13 +9026,13 @@ async function diceEnLinea(k) {
         nombraEnLosMandos();
         pintaBarraVoz();
       } else {
-        esperaY(800, () => { if (g === V.gen && V.i === k) diceEnLinea(k); });
+        esperaY(800, () => { if (g === V.gen && V.i === k) diceConPiper(k); });
       }
       return;
     }
     if (g === V.gen && V.estado === 'diciendo' && V.i === k) {
       V.hasta = k;
-      // uno solo mientras se siga pidiendo en línea: si se encolara la
+      // uno solo mientras se siga pidiendo a Piper: si se encolara la
       // sección entera, al acabar el primero volvería a pedirse el
       // siguiente y se oiría dos veces
       if (hablaElSistema()) encolaHastaElFinDeLaSeccion();
@@ -9170,27 +9055,24 @@ async function diceEnLinea(k) {
   a.addEventListener('error', () => { if (g === V.gen) acabo(k); });
   suena(k, 0);
   a.play().catch(() => acabo(k));
-  // y el siguiente se va pidiendo mientras éste suena, que así no se nota
-  const sig = V.guion[k + 1];
-  if (piper) adelantaPiper();
-  else if (sig) audioEnLinea(sig.texto).catch(() => { /* ya se verá al llegar */ });
+  // y lo que sigue se va haciendo mientras éste suena, que así no se nota
+  adelantaPiper();
 }
 
 /* ------------------------------------------------------- la voz de Piper
  * Una voz neuronal que vive en el teléfono: el motor está en piper.js, que
  * corre aparte en un worker, y aquí sólo se le piden trozos y se le
- * escucha. Por fuera es un motor en línea más —da el audio hecho y suena
- * por un <audio>, que es lo que el sistema respeta con la pantalla
- * apagada—, con dos diferencias:
+ * escucha. Da el audio hecho y suena por un <audio>, que es lo que el
+ * sistema respeta con la pantalla apagada:
  *  · No pide nada a la red al decir. Se baja una vez, desde Ajustes, y
  *    después habla sin conexión; y el texto no sale del teléfono.
  *  · Hace la voz al momento, y eso se paga en tiempo. En el PC donde se
  *    midió, la voz media hace once segundos de voz en tres y medio; pero
  *    con la página escondida el navegador la frena —se midió: casi al
  *    ritmo de lo que dice—, y con la pantalla apagada pasará lo mismo. Por
- *    eso no se hace el siguiente trozo y basta, como en línea, sino todos
- *    los que se pueda por delante mientras la pantalla está encendida: lo
- *    ganado al principio es lo que cubre después.
+ *    eso no se hace el siguiente trozo y basta, sino todos los que se
+ *    pueda por delante mientras la pantalla está encendida: lo ganado al
+ *    principio es lo que cubre después.
  *
  * Lo hecho se guarda sólo en memoria y sólo mientras suena la hora. En
  * disco serían cien megas al día —es WAV, que el navegador no sabe
@@ -9727,11 +9609,10 @@ async function eligeVoz() {
       .catch(() => { PIPER.hay[b] = false; })));
   if (!V.eligiendo) return;      // se cerró mientras miraba
   const puesta = E.cfg.vozMotor === 'piper' ? 'piper:' + vozPiper().id
-    : E.cfg.vozMotor === 'linea' ? 'linea' : 'sistema';
+    : 'sistema';
   const ops = VOCES_PIPER.filter((x) => PIPER.hay[x[0].split(':')[0]])
     .map((x) => ['piper:' + x[0],
       x[1].replace(/ · (\d+ MB|la misma descarga)$/, '')]);
-  if (E.cfg.vozMotor === 'linea') ops.push(['linea', 'La del servicio en línea']);
   if (hayVozDelSistema()) ops.push(['sistema', 'La del teléfono']);
   // sin la del teléfono —un APK viejo— y con una sola de Piper, ésa, aunque
   // en Ajustes estuviera puesta la del teléfono
@@ -9761,7 +9642,7 @@ function empiezaCon(cual) {
     E.cfg.vozMotor = 'piper';
     E.cfg.vozPiper = cual.slice(6);
   } else {
-    E.cfg.vozMotor = cual === 'linea' ? 'linea' : 'sistema';
+    E.cfg.vozMotor = 'sistema';
   }
   PIPER.prueba = null;
   guardaCfg();
@@ -9844,44 +9725,6 @@ function vocesQueHay() {
     + 'siempre.';
 }
 
-/** Los campos del servicio, cuando se quiere la voz neuronal. La clave se
- *  escribe aquí y se queda aquí: en este teléfono, en el mismo sitio donde
- *  la app guarda lo demás que se elige. Lo que sale de él es el texto de lo
- *  que se está rezando, que es lo que el servicio necesita para decirlo. */
-function camposDeLaVozEnLinea(campoVoz) {
-  const c = E.cfg.vozLinea || {};
-  const prov = proveedorDe();
-  const p = PROVEEDOR[prov];
-  const opcion = (v, rot, puesta) => '<option value="' + esc(v) + '"'
-    + (puesta ? ' selected' : '') + '>' + esc(rot) + '</option>';
-  return '<p class="aj-nota">'
-    + 'Hace falta una cuenta en el servicio y su clave; hecho eso, no se '
-    + 'vuelve a tocar. Las dos cuentas piden una tarjeta para identificarte '
-    + '—no cobran nada—, y las dos son gratis para lo que esto gasta: una '
-    + 'hora rezada son unos siete mil caracteres, y las siete horas de un '
-    + 'día, treinta y ocho mil. La clave se guarda en este teléfono y no va '
-    + 'a ningún otro sitio; el texto de lo que se reza, en cambio, sí va al '
-    + 'servicio, que para decirlo tiene que leerlo. Sin conexión, o si '
-    + 'falla, habla la voz del teléfono y la hora no se corta.'
-    + '</p>'
-    + '<div class="ajuste apilado"><label class="eti" for="aj-vl-prov">'
-    + 'El servicio</label>'
-    + '<select id="aj-vl-prov" data-vozlinea="prov">'
-    + Object.keys(PROVEEDOR).map((k) =>
-      opcion(k, PROVEEDOR[k].rot, k === prov)).join('')
-    + '</select></div>'
-    + '<p class="aj-nota">' + esc(p.donde) + '</p>'
-    + (p.campos.indexOf('region') >= 0
-      ? campoVoz('region', 'Región', 'La del recurso: westeurope, eastus…')
-      : '')
-    + campoVoz('clave', 'Clave', 'No se enseña ni se comparte.', 'password')
-    + '<div class="ajuste apilado"><label class="eti" for="aj-vl-voz">'
-    + 'La voz</label>'
-    + '<select id="aj-vl-voz" data-vozlinea="voz">'
-    + p.voces.map(([v, rot]) => opcion(v, rot, c.voz === v)).join('')
-    + '</select></div>';
-}
-
 /** La hora se ha vuelto a pintar. Pasando sola de hora, empieza la nueva
  *  por el principio; repintada la misma, se rehace el guión contra la
  *  página nueva y se sigue; y si lo que se ve ya no es lo que suena, se
@@ -9952,6 +9795,15 @@ async function arranca() {
   cargaMisaOps();
   cargaRezadas();
   aplicaCfg();
+  // servida por Enchiridion/src/editar.py, la app trae además el corrector
+  // de erratas (erratas.js), que en el teléfono no se pide nunca
+  await miraEditor();
+  if (E.editor) {
+    document.head.insertAdjacentHTML('beforeend',
+      '<link rel="stylesheet" href="erratas.css">');
+    document.head.appendChild(Object.assign(
+      document.createElement('script'), { src: 'erratas.js' }));
+  }
   try {
     const [ind, cal] = await Promise.all([json('indice.json'),
       json('calendario.json')]);
@@ -9973,6 +9825,7 @@ async function arranca() {
   vista.addEventListener('change', alCambiarAjuste);
   vista.addEventListener('change', alElegirEnMisa);
   vista.addEventListener('click', alTocarPaso);
+  vista.addEventListener('click', alRestablecer);
   vista.addEventListener('click', alElegirOpcion);
   vista.addEventListener('click', alTocarMisa);
   vista.addEventListener('click', alTocarZoom);

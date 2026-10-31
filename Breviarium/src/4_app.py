@@ -41,6 +41,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from breviario import clave, clave_por_fecha
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# la fe de erratas de la app (src/erratas.py): lo corregido a mano en el
+# texto se vuelve a poner cada vez que se rehace el libro
+sys.path.append(os.path.join(RAIZ, 'src'))
+import erratas  # noqa: E402
 LIBRO = os.path.join(RAIZ, 'Breviarium', 'datos', 'libro')
 APP = os.path.join(RAIZ, 'app', 'datos')
 QA = os.path.join(RAIZ, 'Breviarium', 'datos', 'app_qa.txt')
@@ -2698,12 +2702,15 @@ def main():
     sin_nombre_del_papa(libro)
     nr = rubricas_del_invitatorio(libro)
     ruta_libro = os.path.join(APP, 'horas.json')
+    erratas.aplica('horas.json', libro)
     with open(ruta_libro, 'w', encoding='utf-8') as f:
         json.dump(libro, f, ensure_ascii=False, separators=(',', ':'))
 
     ruta_dias = os.path.join(APP, 'horas_dias.json')
+    salida_dias = {'rango': civil['rango'], 'dias': dias}
+    erratas.aplica('horas_dias.json', salida_dias)
     with open(ruta_dias, 'w', encoding='utf-8') as f:
-        json.dump({'rango': civil['rango'], 'dias': dias}, f,
+        json.dump(salida_dias, f,
                   ensure_ascii=False, separators=(',', ':'))
 
     # El teléfono no se entera de que los textos han cambiado por arte de

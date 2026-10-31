@@ -1,14 +1,29 @@
 # -*- coding: utf-8 -*-
-"""El editor del devocionario: la app, servida en este ordenador, con
-permiso para decidir qué oraciones se quedan en el libro.
+"""El editor de la app: la app, servida en este ordenador, con permiso
+para corregir sus textos y para decidir qué oraciones se quedan en el
+devocionario.
 
-    python Enchiridion/src/editar.py            # abre http://127.0.0.1:8780/#/oraciones
+    python Enchiridion/src/editar.py            # abre http://127.0.0.1:8780/
+    editar.bat                                  # lo mismo, con doble clic
 
 La app publicada es estática —GitHub Pages y el APK—, y desde ahí no se
 puede escribir en el repositorio. Aquí sí: este servidor sirve `app/` como
-cualquier otro y además contesta a cinco órdenes, que la app sólo descubre
-cuando la abre él (en la portada del devocionario aparece la caja del
-editor):
+cualquier otro y además contesta a unas órdenes, que la app sólo descubre
+cuando la abre él.
+
+La fe de erratas, en cualquier texto de la app: se selecciona, sale
+«Corregir» al lado, y se escribe como debe quedar (app/erratas.js).
+
+    buscar     dónde está en los datos el texto que la app enseña
+    corregir   lo cambia en app/datos/ y lo apunta en data/fe_de_erratas.json
+    deshacer   lo devuelve a como estaba y lo borra de la fe de erratas
+    erratas    las corregidas hasta ahora
+
+Lo apuntado lo vuelve a poner cada fase al rehacer los datos (src/erratas.py),
+así que lo corregido sigue corregido después de `.\\publicar.ps1`, que es
+cuando lo ven todos.
+
+El devocionario (en su portada aparece la caja del editor):
 
     estado     lo quitado y lo agregado hasta ahora
     quitar     una oración sale del libro
@@ -39,6 +54,7 @@ import os
 import subprocess
 import sys
 import threading
+import urllib.request
 import uuid
 import webbrowser
 
@@ -48,6 +64,8 @@ from enchiridion import DATOS, TRABAJO  # noqa: E402
 
 RAIZ = os.path.dirname(os.path.dirname(AQUI))
 APP = os.path.join(RAIZ, 'app')
+sys.path.append(os.path.join(RAIZ, 'src'))
+import erratas  # noqa: E402
 FASE5 = os.path.join(AQUI, '5_app.py')
 SELECCION = os.path.join(DATOS, 'seleccion.json')
 QUITADAS = os.path.join(TRABAJO, 'devocionario_quitadas.json')
@@ -118,7 +136,9 @@ def estado():
     s = lee_seleccion()
     return {'editor': 'enchiridion', 'quitadas': quitadas,
             'nuevas': s['nuevas'],
-            'fichero': os.path.relpath(SELECCION, RAIZ).replace(os.sep, '/')}
+            'fichero': os.path.relpath(SELECCION, RAIZ).replace(os.sep, '/'),
+            'erratas': len(erratas.lee()['erratas']),
+            'fe': os.path.relpath(erratas.FICHERO, RAIZ).replace(os.sep, '/')}
 
 
 def aplica(cambia):
@@ -246,12 +266,43 @@ def borrar(datos):
     return aplica(cambia)
 
 
+# ------------------------------------------------------- la fe de erratas
+# Los ficheros de app/datos/ se leen una vez y se quedan leídos: buscar un
+# texto en los 55 MB es cosa de un segundo, y leerlos cada vez, de diez.
+PUBLICADOS = erratas.Publicados()
+
+
+def buscar(datos):
+    with CERROJO:
+        plan = erratas.busca(PUBLICADOS, datos.get('texto'),
+                             datos.get('nuevo'), datos.get('antes') or '',
+                             datos.get('despues') or '')
+        return {'plan': erratas.resumen(PUBLICADOS, plan),
+                'estado': estado()}
+
+
+def corregir(datos):
+    with CERROJO:
+        r = erratas.corrige(PUBLICADOS, datos)
+    return dict(r, estado=estado())
+
+
+def deshacer(datos):
+    with CERROJO:
+        r = erratas.deshace(PUBLICADOS, str(datos.get('id') or ''))
+    return dict(r, estado=estado())
+
+
 ORDENES = {
     'estado': lambda datos: estado(),
     'quitar': quitar,
     'devolver': devolver,
     'guardar': guardar,
     'borrar': borrar,
+    'buscar': buscar,
+    'corregir': corregir,
+    'deshacer': deshacer,
+    'erratas': lambda datos: {'erratas': erratas.lista(), 'estado': estado()},
 }
 
 
@@ -326,7 +377,7 @@ class Editor(http.server.SimpleHTTPRequestHandler):
             return
         try:
             r = hace(datos)
-        except Fallo as e:
+        except (Fallo, erratas.Fallo) as e:
             self._responde(400, {'ok': False, 'error': str(e)})
             return
         except Exception as e:      # noqa: BLE001 — se dice y se sigue
@@ -339,6 +390,26 @@ class Editor(http.server.SimpleHTTPRequestHandler):
             self._responde(200, {'ok': True, 'estado': r})
 
 
+class Servidor(http.server.ThreadingHTTPServer):
+    # En Windows, SO_REUSEADDR deja que dos servidores escuchen a la vez en
+    # el mismo puerto, y las peticiones van a uno u otro sin avisar: mejor
+    # que el segundo falle
+    allow_reuse_address = os.name != 'nt'
+
+
+def ya_abierto(puerto):
+    """Lo que contesta el editor que ya esté abierto en ese puerto, o None."""
+    pide = urllib.request.Request(
+        'http://127.0.0.1:%d/__editor/estado' % puerto, data=b'{}',
+        headers={'Content-Type': 'application/json'})
+    try:
+        with urllib.request.urlopen(pide, timeout=2) as r:
+            e = json.load(r).get('estado') or {}
+    except (OSError, ValueError, AttributeError):
+        return None
+    return e if e.get('editor') == 'enchiridion' else None
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -348,18 +419,41 @@ def main():
     a = ap.parse_args()
     # la consola de Windows no sabe escribir «Caritátis» con todas sus letras
     sys.stdout.reconfigure(errors='replace')
+    # sin la carpeta de trabajo del Enchiridion la fase 5 no corre: las
+    # erratas se corrigen igual, y quitar y agregar oraciones lo dirá
     if not os.path.exists(os.path.join(TRABAJO, 'piezas_ecl.json')):
-        sys.exit('Falta la carpeta de trabajo del Enchiridion (%s): corre '
-                 'antes las fases 1 a 3, como dice Enchiridion/LEEME.md.'
-                 % TRABAJO)
+        print('Falta la carpeta de trabajo del Enchiridion (%s): quitar y '
+              'agregar oraciones no irá hasta que se corran las fases 1 a 3, '
+              'como dice Enchiridion/LEEME.md.' % TRABAJO)
     # que las quitadas estén escritas aunque nadie haya corrido la fase 5
-    if not os.path.exists(QUITADAS):
+    elif not os.path.exists(QUITADAS):
         subprocess.run([sys.executable, FASE5], cwd=RAIZ, check=True,
                        capture_output=True)
-    srv = http.server.ThreadingHTTPServer(('127.0.0.1', a.puerto), Editor)
-    url = 'http://127.0.0.1:%d/#/oraciones' % a.puerto
-    print('El editor del devocionario, en ' + url)
-    print('Lo que se cambie va a ' + os.path.relpath(SELECCION, RAIZ))
+    url = 'http://127.0.0.1:%d/' % a.puerto
+    # un segundo doble clic en editar.bat: el editor ya está abierto, y basta
+    # con volver a abrir el navegador. Pero uno de antes de la fe de erratas
+    # no sabe corregir, y el navegador iría a él
+    abierto = ya_abierto(a.puerto)
+    if abierto and 'erratas' not in abierto:
+        sys.exit('En el puerto %d sigue abierto un editor de antes, que no '
+                 'sabe corregir erratas. Ciérralo (su ventana, o Ctrl+C en '
+                 'ella) y vuelve a abrir éste.' % a.puerto)
+    if abierto:
+        print('El editor ya estaba abierto, en ' + url)
+        if not a.sin_abrir:
+            webbrowser.open(url)
+        return
+    try:
+        srv = Servidor(('127.0.0.1', a.puerto), Editor)
+    except OSError:
+        sys.exit('El puerto %d lo tiene ocupado otro programa. Prueba con '
+                 'otro: python Enchiridion/src/editar.py --puerto %d'
+                 % (a.puerto, a.puerto + 1))
+    print('El editor de la app, en ' + url)
+    print('Las erratas corregidas van a '
+          + os.path.relpath(erratas.FICHERO, RAIZ))
+    print('Lo que se quite o agregue del devocionario, a '
+          + os.path.relpath(SELECCION, RAIZ))
     print('Para pararlo, Ctrl+C.')
     if not a.sin_abrir:
         webbrowser.open(url)

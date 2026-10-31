@@ -88,6 +88,10 @@ from collections import Counter, OrderedDict, defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import misal
 from misal import DATOS, LIBRO, RAIZ, Informe
+# la fe de erratas de la app (src/erratas.py): lo corregido a mano en el
+# texto se vuelve a poner cada vez que se rehace la misa
+sys.path.append(os.path.join(RAIZ, 'src'))
+import erratas  # noqa: E402
 
 APP = os.path.join(RAIZ, 'app', 'datos')
 CODIGO_APP = ['index.html', 'app.js', 'piper.js', 'estilos.css',
@@ -1360,6 +1364,7 @@ def main():
     tamanos = []
 
     def escribe(nombre, obj):
+        erratas.aplica(nombre, obj)
         ruta = os.path.join(APP, nombre)
         with open(ruta, 'w', encoding='utf-8') as f:
             json.dump(obj, f, ensure_ascii=False, separators=(',', ':'))

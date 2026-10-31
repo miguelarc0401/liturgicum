@@ -75,6 +75,10 @@ from enchiridion import DATOS, SITIO, TRABAJO
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__))))
 APP = os.path.join(RAIZ, 'app', 'datos')
+# la fe de erratas de la app (src/erratas.py): lo corregido a mano en el
+# texto se vuelve a poner cada vez que se rehace el devocionario
+sys.path.append(os.path.join(RAIZ, 'src'))
+import erratas  # noqa: E402
 
 # ---------------------------------------------------------------- el libro
 # Los once capítulos, en el orden en que se enseñan: primero lo que se reza
@@ -764,6 +768,7 @@ def main():
         ('piezas', piezas),
     ])
     ruta = os.path.join(APP, 'devocionario.json')
+    erratas.aplica('devocionario.json', salida)
     with io.open(ruta, 'w', encoding='utf-8') as fh:
         json.dump(salida, fh, ensure_ascii=False, separators=(',', ':'))
     # las quitadas, fuera de la app y del repositorio: sólo las lee el editor,

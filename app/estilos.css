@@ -36,10 +36,10 @@
      ancha, hecho para leer texto seguido. */
   --pluma: Alegreya, "Noto Serif", serif;
   --cuerpo: 1.0625rem;
-  --interlinea: 1.62;
+  --interlinea: 1.20;
   /* Los versos van mas apretados que la prosa: un renglon de salmo es corto
      y el aire lo pone el renglon siguiente, no el espacio entre lineas. */
-  --interlinea-verso: 1.5;
+  --interlinea-verso: 1.16;
   --familia: var(--serif);
   --medida: 38rem;
   --alto-cabecera: 0px;
@@ -1224,6 +1224,28 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
 .vuelve-general:disabled {
   color: var(--tinta-suave); border-color: var(--filete);
   opacity: .55; cursor: default;
+}
+/* Al pie de cada pestana, el boton que la deja como viene de fabrica: del
+   mismo corte que «Igual que todas», que hace lo mismo con una seccion, y
+   apagado mientras no haya nada que restablecer. Al primer toque pregunta,
+   y entonces se llena del color del dia, que se vea que el segundo va en
+   serio. */
+.aj-restablece { display: flex; justify-content: center; padding: .9rem 0 .4rem; }
+.restablece {
+  min-height: 2.5rem; padding: .35rem 1rem; cursor: pointer;
+  font-family: var(--sans); font-size: .8rem; color: var(--acento);
+  background: none; border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--acento) 30%, transparent);
+  transition: background-color var(--rapido), color var(--rapido),
+              transform var(--rapido) var(--curva);
+}
+.restablece:active { transform: scale(.96); }
+.restablece.seguro {
+  color: var(--papel-alto); background: var(--acento); border-color: var(--acento);
+}
+.restablece:disabled {
+  color: var(--tinta-suave); border-color: var(--filete);
+  opacity: .55; cursor: default; transform: none;
 }
 /* La muestra: un trozo de salmo y otro de lectura, con las mismas clases
    que el oficio de verdad, para que el ajuste se vea antes de volver a el. */

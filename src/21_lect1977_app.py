@@ -48,6 +48,8 @@ import json
 import os
 import re
 
+import erratas
+
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(AQUI)
 DATA = os.path.join(RAIZ, "data")
@@ -672,6 +674,7 @@ def main(argv=None):
     obj = {"fuente": "lect1977", "titulo": TITULO,
            "cabecera": CABECERA, "cierre": nova["cierre"], "bloques": salida}
     ruta = os.path.join(DATOS, "lecturas_lect1977.json")
+    erratas.aplica("lecturas_lect1977.json", obj)
     with open(ruta, "w", encoding="utf-8") as fh:
         json.dump(obj, fh, ensure_ascii=False, separators=(",", ":"))
     inf.append("")
