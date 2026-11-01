@@ -36,10 +36,10 @@
      ancha, hecho para leer texto seguido. */
   --pluma: Alegreya, "Noto Serif", serif;
   --cuerpo: 1.0625rem;
-  --interlinea: 1.20;
+  --interlinea: 1.35;
   /* Los versos van mas apretados que la prosa: un renglon de salmo es corto
      y el aire lo pone el renglon siguiente, no el espacio entre lineas. */
-  --interlinea-verso: 1.16;
+  --interlinea-verso: 1.28;
   --familia: var(--serif);
   --medida: 38rem;
   --alto-cabecera: 0px;
@@ -73,20 +73,20 @@
 }
 body[data-tema="oscuro"], body[data-tema="noche"] {
   --lit-verde: var(--tono-verde-oscuro, #5aa876);
-  --lit-rojo: var(--tono-rojo-oscuro, #d07676);
+  --lit-rojo: var(--tono-rojo-oscuro, #e45757);
   --lit-morado: var(--tono-morado-oscuro, #b99bd6);
   --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
   --lit-azul: var(--tono-azul-oscuro, #93bcdf);
-  --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
+  --lit-neutro: var(--tono-neutro-oscuro, #d86263);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
     --lit-verde: var(--tono-verde-oscuro, #5aa876);
-    --lit-rojo: var(--tono-rojo-oscuro, #d07676);
+    --lit-rojo: var(--tono-rojo-oscuro, #e45757);
     --lit-morado: var(--tono-morado-oscuro, #b99bd6);
     --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
     --lit-azul: var(--tono-azul-oscuro, #93bcdf);
-    --lit-neutro: var(--tono-neutro-oscuro, #d9a0a0);
+    --lit-neutro: var(--tono-neutro-oscuro, #d86263);
   }
 }
 
@@ -119,7 +119,7 @@ body[data-tema="sepia"], .tema-sepia {
 body[data-tema="oscuro"], .tema-oscuro {
   --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
   --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
-  --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
+  --rubrica: #dc5e5c; --realce: #4a3f18; --acento: #d86263;
   --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
 }
 body[data-tema="oscuro"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
@@ -127,7 +127,7 @@ body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --r
 body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
 body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
-body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
+body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #dc5e5c); }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -143,7 +143,7 @@ body[data-tema="noche"], .tema-noche {
   body[data-tema="auto"] {
     --tinta: #e9e1d5; --tinta-suave: #a39a8e; --papel: #13110e;
     --papel-alto: #1c1915; --filete: #34302a; --filete-fuerte: #4a443b;
-    --rubrica: #e09a9a; --realce: #4a3f18; --acento: #d9a0a0;
+    --rubrica: #dc5e5c; --realce: #4a3f18; --acento: #d86263;
     --sombra: 0 1px 2px rgb(0 0 0 / .4), 0 6px 20px rgb(0 0 0 / .35);
   }
   body[data-tema="auto"][data-color="morado"] { --acento: var(--lit-morado); --rubrica: var(--tono-morado-oscuro, #c0a3dc); }
@@ -151,7 +151,7 @@ body[data-tema="noche"], .tema-noche {
   body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
   body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
   body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
-  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #e09a9a); }
+  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #dc5e5c); }
 }
 
 /* ------------------------------------------------ las letras de la casa

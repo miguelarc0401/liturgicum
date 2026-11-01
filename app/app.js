@@ -24,7 +24,7 @@ const POR_OMISION = {
   // el formato del texto (Ajustes, «Formato del texto»)
   // el interlineado es un numero: el alto del renglon en centesimas del
   // cuerpo de la letra (162 son 1,62), y se mueve de cinco en cinco
-  letra: 'serif', interlinea: 120, medida: 'ancha', justifica: 'si',
+  letra: 'serif', interlinea: 135, medida: 'ancha', justifica: 'si',
   particion: 'no', cruces: 'si', despierto: false,
   // y el de cada sección por su cuenta, cuando uno para todas no basta:
   // `fmt` es grupo -> {justifica, interlinea, particion}, y lo que un grupo
@@ -334,7 +334,17 @@ function cargaCfg() {
       'fuente', 'acentos', 'numeros', 'misaVer', 'rezadas', 'devoVista',
       'epifania', 'ascension', 'corpus']
       .forEach((k) => { E.cfg[k] = POR_OMISION[k]; });
-    E.cfg.fabrica = 1;
+  } else if (E.cfg.fabrica < 2 && E.cfg.interlinea === 120) {
+    // y el renglón de fábrica pasó al día siguiente de 1,20 a 1,35: quien
+    // se quedó en el de entonces, al de ahora
+    E.cfg.interlinea = POR_OMISION.interlinea;
+  }
+  E.cfg.fabrica = 2;
+  // quien eligió en la paleta uno de los rojos rosados de antes, a su pareja
+  // de ahora, que si no se le quedaría como «a tu gusto» y rosado
+  for (const c of ['rojo', 'neutro']) {
+    const t = (E.cfg.tonos || {})[c];
+    if (t && ROJOS_DE_ANTES[t.oscuro]) t.oscuro = ROJOS_DE_ANTES[t.oscuro];
   }
   numeraInterlineado();
 }
@@ -409,6 +419,10 @@ function ponColor(c) {
  * sepia, que es el más oscuro de los claros). El primero de cada lista es
  * el de siempre, y elegirlo es dejar de elegir.
  *
+ * Los rojos y los granates del oscuro llegan a 5:1 con saturación y no con
+ * luz: un rojo aclarado hasta leerse sobre negro, con la mitad de color, ya
+ * no es rojo sino rosa (así eran hasta el 2026-11-01; ver ROJOS_DE_ANTES).
+ *
  * Lo elegido va al <html> como variable (`--tono-verde-claro`…), y la hoja
  * de estilo la toma donde antes ponía el color fijo: vale en la cabecera,
  * en las rúbricas, en los controles y en el calendario, que es el mismo
@@ -424,13 +438,13 @@ const TONOS = {
     ['Jade', '#296d57', '#79b9a4']
   ],
   rojo: [
-    ['Carmesí', '#7a1414', '#d07676'],
-    ['Escarlata', '#af211d', '#d98f8c'],
-    ['Rubí', '#8d1b38', '#d78ea0'],
-    ['Bermellón', '#a13217', '#d89483'],
-    ['Vino', '#5f1c27', '#d6a3ac'],
-    ['Ladrillo', '#7e352a', '#ca9891'],
-    ['Cereza', '#8a0f19', '#e09096']
+    ['Carmesí', '#7a1414', '#e45757'],
+    ['Escarlata', '#af211d', '#ef4d3f'],
+    ['Rubí', '#8d1b38', '#e05a67'],
+    ['Bermellón', '#a13217', '#e95537'],
+    ['Vino', '#5f1c27', '#cd686e'],
+    ['Ladrillo', '#7e352a', '#cf6a58'],
+    ['Cereza', '#8a0f19', '#ec5057']
   ],
   morado: [
     ['Obispo', '#4c2a63', '#b99bd6'],
@@ -460,9 +474,9 @@ const TONOS = {
     ['Turquesa', '#0d6573', '#4cbbcd']
   ],
   neutro: [
-    ['Granate', '#6b1220', '#d9a0a0'],
-    ['Burdeos', '#631d34', '#d6a3b4'],
-    ['Caoba', '#673422', '#ca9f91'],
+    ['Granate', '#6b1220', '#d86263'],
+    ['Burdeos', '#631d34', '#cd6877'],
+    ['Caoba', '#673422', '#c76f57'],
     ['Tierra', '#60462e', '#bea793'],
     ['Tinta', '#30251d', '#c0b0a5'],
     ['Pizarra', '#3d4452', '#b0b5bf'],
@@ -470,6 +484,13 @@ const TONOS = {
   ]
 };
 const MODOS_TONO = ['claro', 'oscuro'];
+// los tonos del oscuro de antes, rosados, con el que les tocó (cargaCfg)
+const ROJOS_DE_ANTES = {
+  '#d07676': '#e45757', '#d98f8c': '#ef4d3f', '#d78ea0': '#e05a67',
+  '#d89483': '#e95537', '#d6a3ac': '#cd686e', '#ca9891': '#cf6a58',
+  '#e09096': '#ec5057', '#d9a0a0': '#d86263', '#d6a3b4': '#cd6877',
+  '#ca9f91': '#c76f57'
+};
 
 function aplicaTonos() {
   const est = document.documentElement.style;
@@ -7840,15 +7861,20 @@ async function verHoras(iso, hora, idCel) {
   // la conmemoración no cambia el oficio, que sigue siendo de la feria: ni
   // su título ni su color
   const conm = o.op.modo === 'conmemoracion';
-  const primeras = !!vis && vis.n === 1;
-  ponColor(primeras ? colorHoras(vis.iso, vis.m.t, null)
+  // Completas van con las vísperas de esa tarde: si fueron las primeras de
+  // un domingo o de una solemnidad, el día que entra ya ha empezado, y suyos
+  // son el color y el nombre de debajo —como suyos son los textos (ver
+  // completasDelDomingo)—. El título sigue siendo «Completas».
+  const v1 = hora === 'completas' ? cualVisperas(iso, 'visperas', d, o.op) : vis;
+  const entra = v1 && v1.n === 1 ? v1 : null;
+  ponColor(entra ? colorHoras(entra.iso, entra.m.t, null)
     : colorHoras(iso, conm ? d.tt : o.op.t, o.op));
   $('#titulo-dia').textContent = vis ? vis.rot
     : HORAS.find((x) => x[0] === hora)[1];
-  const partes = [primeras ? vis.t : (conm ? d.tt : o.op.t)];
-  if (primeras) {
+  const partes = [entra ? entra.t : (conm ? d.tt : o.op.t)];
+  if (entra) {
     // «Domingo XXXI · Domingo» no dice nada: el grado sólo cuando añade
-    if (vis.g !== 'Domingo') partes.push(vis.g);
+    if (entra.g !== 'Domingo') partes.push(entra.g);
   } else if (o.op.g && !conm) partes.push(bonito(o.op.g));
   if (d.p) partes.push('Salterio ' + ['', 'I', 'II', 'III', 'IV'][d.p]);
   $('#subtitulo-dia').textContent = partes.join(' · ');
