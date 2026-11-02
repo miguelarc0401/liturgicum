@@ -7,8 +7,8 @@ sus fuentes —las lecturas, src/15_app_data.py y 21_lect1977_app.py; las
 horas, Breviarium/src/4_app.py; la misa, Missale/src/6_app.py; el
 devocionario, Enchiridion/src/5_app.py—, y una errata corregida en el JSON
 publicado volvería a salir en la siguiente pasada. Así que lo corregido se
-apunta aparte, en data/fe_de_erratas.json, y cada una de esas fases llama a
-`aplica()` justo antes de escribir su fichero.
+apunta aparte, en data/fe_de_erratas/ —un fichero por errata—, y cada una
+de esas fases llama a `aplica()` justo antes de escribir su fichero.
 
 Cada errata guarda el trozo como estaba y como queda, con unas palabras de
 contexto, y los sitios donde se cambió: el fichero de app/datos/ y la ruta
@@ -17,10 +17,12 @@ dentro de él. Al rehacer, se cambia en esos sitios; si un sitio ya no está
 se cambia sólo si sale en tantos sitios como faltan. Lo que no se encuentra
 se dice, que es que la fuente cambió (o que ya trae la corrección).
 
-Las erratas se corrigen desde la app, servida por Enchiridion/src/editar.py:
-se selecciona el texto y se escribe como debe quedar. El servidor busca ese
-texto en los datos publicados (`busca`), lo cambia y lo apunta (`corrige`),
-y lo devuelve a como estaba si se deshace (`deshace`).
+Las erratas se corrigen desde la app: se selecciona el texto y se escribe
+como debe quedar. En el ordenador, servida por Enchiridion/src/editar.py,
+el servidor busca ese texto en los datos publicados (`busca`), lo cambia y
+lo apunta (`corrige`), y lo devuelve a como estaba si se deshace
+(`deshace`). Desde el teléfono hace lo mismo GitHub, con los pedidos que el
+teléfono le deja (src/erratas_telefono.py).
 """
 
 import bisect
@@ -34,13 +36,10 @@ import uuid
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_DATOS = os.path.join(RAIZ, 'app', 'datos')
+CARPETA = os.path.join(RAIZ, 'data', 'fe_de_erratas')
+# donde iban antes todas juntas; se sigue leyendo mientras exista
 FICHERO = os.path.join(RAIZ, 'data', 'fe_de_erratas.json')
-
-NOTA = ('Las erratas corregidas a mano desde la app. Cada cambio dice el '
-        'trozo como estaba («antes») y como queda («despues»), y en qué '
-        'sitios: el fichero de app/datos/ y la ruta dentro de él. Lo escribe '
-        'Enchiridion/src/editar.py y lo vuelve a aplicar cada fase que '
-        'rehace los datos (src/erratas.py).')
+ID = re.compile(r'^e_\d{8}_[0-9a-f]{6}$')
 
 # para decir dónde está un texto con palabras y no con el nombre del fichero
 NOMBRES = {
@@ -174,18 +173,53 @@ def sustituye(texto, antes, despues):
 
 
 # --------------------------------------------- la fe de erratas en el disco
+# Cada errata en su fichero, data/fe_de_erratas/<id>.json: lo que se corrige
+# en el teléfono lo sube GitHub y lo que se corrige en el ordenador lo sube
+# publicar.ps1, y al juntarse en git son ficheros nuevos, no renglones del
+# mismo fichero, así que no chocan nunca.
 def lee():
-    if not os.path.exists(FICHERO):
-        return {'nota': NOTA, 'erratas': []}
-    with io.open(FICHERO, encoding='utf-8') as fh:
-        d = json.load(fh)
-    return {'nota': NOTA, 'erratas': d.get('erratas') or []}
+    """Todas las erratas, en el orden en que se corrigieron: si una corrige
+    lo que otra ya había corregido, ha de ir detrás."""
+    hay = {}
+    if os.path.isdir(CARPETA):
+        for f in sorted(os.listdir(CARPETA)):
+            if f.endswith('.json'):
+                with io.open(os.path.join(CARPETA, f), encoding='utf-8') as fh:
+                    e = json.load(fh)
+                hay[e['id']] = e
+    if os.path.exists(FICHERO):
+        with io.open(FICHERO, encoding='utf-8') as fh:
+            for e in json.load(fh).get('erratas') or []:
+                hay.setdefault(e['id'], e)
+    return {'erratas': sorted(hay.values(), key=lambda e: (
+        e.get('creada') or e.get('fecha', ''), e['id']))}
 
 
-def escribe(d):
-    with io.open(FICHERO, 'w', encoding='utf-8', newline='\n') as fh:
-        json.dump(d, fh, ensure_ascii=False, indent=1)
+def guarda(e):
+    os.makedirs(CARPETA, exist_ok=True)
+    with io.open(os.path.join(CARPETA, e['id'] + '.json'), 'w',
+                 encoding='utf-8', newline='\n') as fh:
+        json.dump(e, fh, ensure_ascii=False, indent=1)
         fh.write('\n')
+
+
+def borra(eid):
+    ruta = os.path.join(CARPETA, eid + '.json')
+    if os.path.exists(ruta):
+        os.remove(ruta)
+
+
+def migra():
+    """Las de data/fe_de_erratas.json, cada una a su fichero."""
+    if not os.path.exists(FICHERO):
+        return 0
+    with io.open(FICHERO, encoding='utf-8') as fh:
+        viejas = json.load(fh).get('erratas') or []
+    for e in viejas:
+        if not os.path.exists(os.path.join(CARPETA, e['id'] + '.json')):
+            guarda(e)
+    os.remove(FICHERO)
+    return len(viejas)
 
 
 # ---------------------------------------------------- al rehacer los datos
@@ -235,7 +269,7 @@ def aplica(nombre, obj, di=print):
            + (' (%d ya venían bien)' % ya if ya else ''))
     for p in perdidas:
         di('  AVISO fe de erratas: no encuentro %s en %s. La fuente ha '
-           'cambiado; mira data/fe_de_erratas.json.' % (p, nombre))
+           'cambiado; mira data/fe_de_erratas/.' % (p, nombre))
     return puestas
 
 
@@ -544,19 +578,29 @@ def resumen(pub, plan, cuantos=40):
             'n_otros': len(plan['otros']), 'otros': lista(plan['otros'])}
 
 
-def corrige(pub, datos):
+def corrige(pub, datos, eid=None, desde=None):
     """Corrige en los datos publicados y lo apunta en la fe de erratas.
     `datos` es lo mismo que para buscar, más `otros` (corregir también
     donde lo de alrededor no casa) y `cuantos`, los sitios que la app
-    enseñó: si ya no son esos, los datos han cambiado y no se toca nada."""
+    enseñó: si ya no son esos, los datos han cambiado y no se toca nada.
+
+    El teléfono no manda `cuantos`: él busca sólo en lo que tiene cargado, y
+    aquí se busca en todos los ficheros, así que puede salir el mismo pasaje
+    en alguno más (la Nova y el Misal de 1977), y se corrige también. Manda
+    en cambio `eid`, el nombre con que la apuntó, para seguirle la pista."""
     plan = busca(pub, datos.get('texto'), datos.get('nuevo'),
                  datos.get('antes') or '', datos.get('despues') or '')
     elegidos = plan['fuertes'] + (plan['otros'] if datos.get('otros') else [])
     if not elegidos:
-        raise Fallo('No hay ningún sitio marcado para corregir.')
-    if datos.get('cuantos') != len(elegidos):
+        raise Fallo('No lo encuentro con lo que tiene alrededor en la página, '
+                    'y no se marcó corregirlo en los otros sitios.')
+    if 'cuantos' in datos and datos['cuantos'] != len(elegidos):
         raise Fallo('Los datos han cambiado desde que buscaste: vuelve a '
                     'buscar.')
+    if eid is not None and not ID.match(eid):
+        raise Fallo('El nombre de la corrección no es válido.')
+    if eid and os.path.exists(os.path.join(CARPETA, eid + '.json')):
+        raise Fallo('Esa corrección ya estaba hecha.')
     # cadena por cadena, de atrás adelante, para que lo cambiado no mueva
     # dónde cae lo que queda por cambiar
     por_cadena = {}
@@ -585,21 +629,26 @@ def corrige(pub, datos):
         raise Fallo('No ha cambiado nada en los datos.')
     for f in sorted(tocados):
         pub.guarda(f)
-    d = lee()
-    hoy = datetime.date.today().isoformat()
-    errata = {'id': 'e_' + hoy.replace('-', '') + '_' + uuid.uuid4().hex[:6],
+    ahora = datetime.datetime.now().replace(microsecond=0)
+    hoy = ahora.date().isoformat()
+    errata = {'id': eid or ('e_' + hoy.replace('-', '') + '_'
+                            + uuid.uuid4().hex[:6]),
               'fecha': hoy,
+              'creada': ahora.isoformat(),
               'cambio': '%s → %s' % (plan['cambio']['de'],
                                      plan['cambio']['a']),
               'cambios': [{'antes': a, 'despues': b, 'sitios': ss}
                           for (a, b), ss in apuntes.items()]}
-    d['erratas'].append(errata)
-    escribe(d)
+    if desde:
+        errata['desde'] = desde
+    migra()
+    guarda(errata)
     print('  corregida: %s (%d %s)' % (errata['cambio'], len(cambios),
                                        'sitio' if len(cambios) == 1
                                        else 'sitios'))
     return {'id': errata['id'], 'cambio': errata['cambio'],
-            'n': len(cambios), 'cambios': cambios, 'total': len(d['erratas'])}
+            'n': len(cambios), 'cambios': cambios,
+            'total': len(lee()['erratas'])}
 
 
 def deshace(pub, eid):
@@ -628,11 +677,11 @@ def deshace(pub, eid):
                                 'nuevo': nuevo})
     for f in sorted(tocados):
         pub.guarda(f)
-    d['erratas'].remove(e)
-    escribe(d)
+    migra()
+    borra(eid)
     print('  deshecha: %s' % e.get('cambio', eid))
     return {'cambio': e.get('cambio', ''), 'n': len(cambios),
-            'cambios': cambios, 'total': len(d['erratas'])}
+            'cambios': cambios, 'total': len(lee()['erratas'])}
 
 
 def lista():

@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="estilos.css">
 <!-- las vistas del devocionario, que se eligen en Ajustes -->
 <link rel="stylesheet" href="devo-vistas.css">
+<!-- el recorrido para quien acaba de instalarla, que se repite desde Ajustes -->
+<link rel="stylesheet" href="recorrido.css">
 </head>
 <body data-tema="auto">
 
@@ -72,6 +74,10 @@
   <button data-ir="ajustes">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h9.5M18.5 7H20M4 17h3.5M12.5 17H20"/><circle cx="16" cy="7" r="2.5"/><circle cx="10" cy="17" r="2.5"/></svg>Ajustes
   </button>
+  <!-- ocupa el hueco de Ajustes mientras se anda por el devocionario -->
+  <button data-ir="devocionario" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2c-1.5 1.3-2.6 3.6-2.6 6.3v4.6L5.6 18l2.6 2.6L12 17"/><path d="M12 3.2c1.5 1.3 2.6 3.6 2.6 6.3v4.6l3.8 3.9-2.6 2.6L12 17"/><path d="M12 3.2V17"/></svg>Devocionario
+  </button>
 </nav>
 
 <!-- lo que pide al teléfono dentro del APK; en Chrome no hace nada -->
@@ -79,5 +85,7 @@
 <script src="app.js"></script>
 <!-- las vistas del devocionario, que se eligen en Ajustes -->
 <script src="devo-vistas.js"></script>
+<!-- el recorrido para quien acaba de instalarla, que se repite desde Ajustes -->
+<script src="recorrido.js"></script>
 </body>
 </html>

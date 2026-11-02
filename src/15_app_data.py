@@ -39,23 +39,17 @@ import json
 import os
 import re
 import unicodedata
-import zlib
 from collections import OrderedDict
 
 import erratas
+import firma
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 APP = os.path.join(ROOT, "app")
 DATOS = os.path.join(APP, "datos")
-# el codigo de la app, que tambien firma version.js (y Breviarium/src/4_app.py).
-# Los iconos entran en la firma aunque no los escriba este guion: si no, se
-# cambia la tapa y el telefono sigue ensenando la de antes, porque el service
-# worker los tiene cacheados y nada le dice que ha cambiado nada.
-CODIGO_APP = ["index.html", "app.js", "piper.js", "estilos.css",
-              "devo-vistas.js", "devo-vistas.css", "manifest.webmanifest",
-              "icono.svg", "icono-32.png", "icono-180.png", "icono-192.png",
-              "icono-512.png", "icono-maskable-512.png"]
+# el codigo de la app, que tambien entra en la firma de version.js, esta en
+# src/firma.py (CODIGO_APP)
 
 COLOR_SECCION = [
     (r"adviento|cuaresma", "morado"),
@@ -566,23 +560,9 @@ def main():
     # El rotulo de la version nombra las versiones latinas que la app sirve,
     # no solo las que escribe esta fase: el leccionario de 1977 lo escribe la
     # fase 21, y nombrando aqui nada mas que `fuentes` el rotulo mentiria.
-    latinas = sorted(f[len("lecturas_"):-len(".json")]
-                     for f in os.listdir(DATOS)
-                     if f.startswith("lecturas_") and f.endswith(".json")
-                     and f != "lecturas_es.json")
-    version = "%s-%d" % (
-        "+".join(latinas or fuentes),
-        zlib.crc32(b"".join(open(os.path.join(DATOS, f), "rb").read()
-                            for f in sorted(os.listdir(DATOS))
-                            if f != "version.js")
-                   + b"".join(open(os.path.join(APP, f), "rb").read()
-                              for f in CODIGO_APP
-                              if os.path.exists(os.path.join(APP, f))))
-        & 0xffffffff)
-    with open(os.path.join(DATOS, "version.js"), "w", encoding="utf-8") as fh:
-        fh.write("// lo escribe src/15_app_data.py; cambia con los datos, y al\n"
-                 "// cambiar obliga al service worker a rehacer su cache\n"
-                 'self.VERSION_DATOS = "%s";\n' % version)
+    # Vive en src/firma.py porque tambien firma GitHub cuando aplica una
+    # errata que manda el telefono (src/erratas_telefono.py).
+    version = firma.escribe(fuentes)
 
     print("\n".join(inf))
     print("%-34s %6d KB  (lo que ocupa la app sin conexion)" % ("TOTAL", total))

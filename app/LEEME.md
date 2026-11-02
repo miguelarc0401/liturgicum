@@ -171,15 +171,20 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   para quitar, «Quitar del libro» y «Devolver» en la oración, la lista de
   las quitadas y la página para agregar una oración, en latín, en
   castellano o en las dos. Publicada, la app ni lo pregunta.
-* **Las erratas, corregidas donde se leen.** Con la app servida por el
-  mismo editor (doble clic en `editar.bat`), cualquier texto se corrige en la página: se
-  selecciona, sale «Corregir» al lado, y se escribe como debe quedar. El
-  editor busca ese texto en `datos/` —con lo que la página enseña
-  alrededor, para no tocar otro igual—, lo cambia allí y lo apunta en
-  `data/fe_de_erratas.json`, que cada fase vuelve a aplicar al rehacer los
-  datos (`src/erratas.py`). El corrector vive aparte, en `erratas.js` y
-  `erratas.css`, que `app.js` sólo carga en el editor: el teléfono no los
-  pide nunca, y por eso no están en `sw.js` ni en la firma de `version.js`.
+* **Las erratas, corregidas donde se leen.** Cualquier texto se corrige en
+  la página: se selecciona, sale «Corregir» al lado, y se escribe como
+  debe quedar. Se busca ese texto en `datos/` —con lo que la página enseña
+  alrededor, para no tocar otro igual—, se cambia allí y se apunta en
+  `data/fe_de_erratas/`, que cada fase vuelve a aplicar al rehacer los
+  datos (`src/erratas.py`). Se puede en el ordenador, con la app servida
+  por el mismo editor (`editar.bat`), y en el teléfono de quien edita el
+  libro, con su llave de GitHub en **Ajustes › Editor del libro**: allí
+  busca el propio teléfono, y lo corregido va a GitHub como un pedido que
+  aplica y publica `.github/workflows/erratas.yml` (README, «Corregir una
+  errata desde la app»). El corrector vive aparte, en `erratas.js` y
+  `erratas.css`, que `app.js` sólo carga en esos dos casos; están en
+  `sw.js` y en la firma para que el teléfono del editor los tenga también
+  sin conexión, pero a nadie más se le cargan.
 * **Acentuación litúrgica** encendida o apagada, números de versículo,
   tamaño de letra, y aspecto claro / sepia / oscuro.
 * **Ajustes, en tarjetas.** Una por pestaña, en cuatro grupos —cómo se lee,
@@ -194,6 +199,18 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   con su tinta y su rúbrica —aunque la app esté puesta en otro—, y cada
   color, su pastilla. La pista va debajo del nombre y a todo lo ancho, no
   apretada al lado del mando, y al final, como en un libro, el colofón.
+* **Un recorrido para quien acaba de instalarla.** Seis capítulos —los tres
+  libros, de un día a otro, leer a gusto, las horas, Ajustes, sin cobertura
+  y en voz alta— hechos sobre la app de verdad: se oscurece todo menos lo
+  que se señala, y la tarjeta dice qué es. Los gestos, que no se ven, no se
+  cuentan sino que se piden: una yema dibujada hace el gesto encima, y el
+  paso sigue cuando lo ha hecho el dedo de quien aprende (o lo salta). Lo
+  que se cambia practicando se deshace practicando —la letra que se agranda
+  se achica, mañana vuelve a hoy, Tercia a Laudes—. Se abre solo una vez,
+  en la portada de un teléfono sin ningún ajuste guardado, y después desde
+  Ajustes, al pie de «El año y la app», con los capítulos vistos marcados y
+  los gestos en una tabla. Va en `recorrido.js` y `recorrido.css`, montado
+  encima de `app.js` sin tocarlo.
 * **El tamaño de la letra, a mano mientras se reza.** Dos aes en la cabecera
   —en la hora, en la misa y en la oración del devocionario, que son las tres
   páginas que se rezan— lo suben y lo bajan sin ir a Ajustes: que la
@@ -592,6 +609,7 @@ por eso no está hecho.
 index.html              la página
 estilos.css             la hoja de estilo (colores litúrgicos, temas)
 app.js                  toda la app: rutas, calendario, maquetación, buscador
+recorrido.js, .css      el recorrido de la primera vez, encima de app.js
 sw.js                   el service worker: lo que la hace funcionar sin conexión
 manifest.webmanifest    nombre, iconos y modo pantalla completa
 icono-*.png             los saca src/19_iconos.py de src/icono-fuente.webp

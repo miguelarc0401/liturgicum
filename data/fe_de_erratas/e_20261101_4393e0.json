@@ -1,0 +1,685 @@
+{
+ "id": "e_20261101_4393e0",
+ "fecha": "2026-11-01",
+ "cambio": "se → sé",
+ "cambios": [
+  {
+   "antes": "se tú nuestro centinela.",
+   "despues": "sé tú nuestro centinela.",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/17/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/18/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/18/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/19/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/19/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/20/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/20/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/20/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/21/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/21/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/22/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/22/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/23/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/23/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/23/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/23/4/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/23/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/24/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/24/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/4/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/26/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/26/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/26/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/27/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/27/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/27/4/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/27/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/28/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/28/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/28/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/29/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/29/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/29/4/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/30/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/30/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/30/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/30/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/31/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/31/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/31/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/32/0/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/32/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/32/4/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/32/5/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/32/6/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/1/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/3/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/34/2/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-24/nuestro senor jesucristo rey universal/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-22/nuestro senor jesucristo rey universal/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-02/todos los fieles difuntos/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-21/nuestro senor jesucristo rey universal/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-20/nuestro senor jesucristo rey universal/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-26/nuestro senor jesucristo rey universal/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-23/nuestro senor jesucristo rey universal/completas/himno",
+      "l",
+      4,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "himnos_completas",
+      "Ordinario/2",
+      1,
+      "l",
+      4,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ]
+}

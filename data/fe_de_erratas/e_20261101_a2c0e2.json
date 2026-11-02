@@ -1,0 +1,25 @@
+{
+ "id": "e_20261101_a2c0e2",
+ "fecha": "2026-11-01",
+ "cambio": "magos → manos",
+ "cambios": [
+  {
+   "antes": "los sabios; que en sus magos estamos nosotros y",
+   "despues": "los sabios; que en sus manos estamos nosotros y",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo_anio",
+      "Ordinario/30/6/oficio/lectura1",
+      "II",
+      "l",
+      5,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ]
+}

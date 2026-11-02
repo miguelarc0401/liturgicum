@@ -15,7 +15,7 @@ La fe de erratas, en cualquier texto de la app: se selecciona, sale
 «Corregir» al lado, y se escribe como debe quedar (app/erratas.js).
 
     buscar     dónde está en los datos el texto que la app enseña
-    corregir   lo cambia en app/datos/ y lo apunta en data/fe_de_erratas.json
+    corregir   lo cambia en app/datos/ y lo apunta en data/fe_de_erratas/
     deshacer   lo devuelve a como estaba y lo borra de la fe de erratas
     erratas    las corregidas hasta ahora
 
@@ -138,7 +138,8 @@ def estado():
             'nuevas': s['nuevas'],
             'fichero': os.path.relpath(SELECCION, RAIZ).replace(os.sep, '/'),
             'erratas': len(erratas.lee()['erratas']),
-            'fe': os.path.relpath(erratas.FICHERO, RAIZ).replace(os.sep, '/')}
+            'fe': os.path.relpath(erratas.CARPETA, RAIZ).replace(os.sep, '/')
+            + '/'}
 
 
 def aplica(cambia):
@@ -451,7 +452,7 @@ def main():
                  % (a.puerto, a.puerto + 1))
     print('El editor de la app, en ' + url)
     print('Las erratas corregidas van a '
-          + os.path.relpath(erratas.FICHERO, RAIZ))
+          + os.path.relpath(erratas.CARPETA, RAIZ) + os.sep)
     print('Lo que se quite o agregue del devocionario, a '
           + os.path.relpath(SELECCION, RAIZ))
     print('Para pararlo, Ctrl+C.')

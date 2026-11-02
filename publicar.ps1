@@ -1,5 +1,8 @@
 # Publicar.ps1 - de la carpeta del escritorio al telefono, en una orden.
+# (Con doble clic: publicar.bat, que lo corre sin pedirle nada a la politica
+# de ejecucion de Windows.)
 #
+#   0. trae de GitHub lo corregido desde el telefono (erratas.yml)
 #   1. rehace el calendario con el santoral y la precedencia (18_santoral.py)
 #   2. rehace el indice de la app con ese calendario          (15_app_data.py)
 #   3. vuelve a atribuir la misa al calendario (Missale/src/4_piezas.py y
@@ -32,6 +35,24 @@ $ErrorActionPreference = "Stop"
 Set-Location -Path $PSScriptRoot
 
 function Paso($texto) { Write-Host "`n== $texto" -ForegroundColor Cyan }
+
+# Las erratas que se corrigen desde el telefono las aplica y las sube GitHub
+# (.github/workflows/erratas.yml), asi que GitHub puede ir por delante de
+# esta carpeta. Hay que traerlo antes de rehacer nada: si no, la fe de
+# erratas de aqui no tendria lo del telefono, los datos rehechos lo
+# borrarian, y el push de abajo chocaria. Lo que app/datos/ tenga aqui sin
+# subir se tira antes, porque lo rehacen los pasos de abajo con todas las
+# erratas puestas; menos el devocionario, que no se rehace aqui (lo rehace
+# Enchiridion/src/5_app.py, desde el editor).
+if (Test-Path ".git") {
+    Paso "Lo corregido desde el telefono"
+    $derivados = @(git ls-files app/datos | Where-Object { $_ -ne "app/datos/devocionario.json" })
+    if ($derivados.Count -gt 0) { git checkout -- $derivados }
+    git pull --no-rebase --no-edit
+    if ($LASTEXITCODE -ne 0) {
+        throw "git pull fallo: hay algo aqui sin subir que choca con lo que ya esta en GitHub. Mira 'git status'."
+    }
+}
 
 Paso "Calendario, santoral y precedencia"
 python src/18_santoral.py

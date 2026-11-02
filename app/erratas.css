@@ -1,8 +1,9 @@
-/* El corrector de erratas (erratas.js). Como el editor del devocionario,
-   solo existe con la app servida por Enchiridion/src/editar.py, y va en el
-   rojo de la rubrica y con el borde a trazos: que se vea que es del taller
-   y no del libro. Tres piezas: el boton que sale junto a lo seleccionado, la
-   pastilla de abajo con las ya corregidas, y la ficha. */
+/* El corrector de erratas (erratas.js). Solo existe en el ordenador, con la
+   app servida por Enchiridion/src/editar.py, o en el telefono de quien
+   edita el libro, con su llave de GitHub; y va en el rojo de la rubrica y
+   con el borde a trazos: que se vea que es del taller y no del libro. Tres
+   piezas: el boton que sale junto a lo seleccionado, la pastilla de abajo
+   con las ya corregidas, y la ficha. */
 
 .errata-boton {
   position: fixed; z-index: 45;
@@ -132,3 +133,20 @@
   color: var(--tinta-suave);
 }
 .errata-lista .devo-chip { grid-column: 2; grid-row: 1 / span 2; }
+.errata-estado { font-weight: 600; }
+.errata-estado.estado-aplicada { color: var(--lit-verde); }
+.errata-estado.estado-rechazada { color: var(--rubrica); }
+.errata-motivo { display: block; margin-top: .15rem; color: var(--rubrica); }
+.errata-cuerpo { min-height: 2rem; }
+
+/* En el teléfono la ficha va arriba, que el teclado se come la mitad de
+   abajo, y ocupa lo que haya a lo ancho. */
+@media (max-width: 600px) {
+  .errata-fondo {
+    place-items: start center;
+    padding: max(10px, env(safe-area-inset-top)) 10px 10px;
+  }
+  .errata-ficha { max-height: calc(100dvh - 20px); padding: .9rem .95rem .2rem; }
+  .errata-botones { margin: 1rem -.95rem 0; padding: .7rem .95rem .9rem; }
+  .errata-boton { height: 2.6rem; font-size: .84rem; }
+}

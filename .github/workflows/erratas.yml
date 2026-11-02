@@ -1,0 +1,73 @@
+name: Erratas del teléfono
+
+# Lo que se corrige desde el teléfono, aplicado sin el ordenador.
+#
+# El teléfono de quien edita el libro (con su llave de GitHub puesta en
+# Ajustes) deja cada corrección como un pedido pequeño en
+# data/erratas_pendientes/. Esto lo aplica con el mismo programa que el
+# editor del ordenador (src/erratas_telefono.py → src/erratas.py): corrige
+# app/datos/, lo apunta en data/fe_de_erratas/, firma otra vez los datos y lo
+# sube. Y como lo que sube este proceso no pone en marcha los demás —GitHub
+# no lo hace con lo que sube su propia llave—, al acabar pide él mismo
+# "Publicar la app", que lo lleva a GitHub Pages y de ahí a todos los
+# teléfonos, el APK incluido.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/erratas_pendientes/**'
+  workflow_dispatch:          # y a mano, desde la pestaña Actions
+
+permissions:
+  contents: write             # subir los datos corregidos
+  actions: write              # pedir "Publicar la app"
+
+# Uno detrás de otro, sin cancelar: cada uno aplica lo que encuentre.
+concurrency:
+  group: erratas
+  cancel-in-progress: false
+
+jobs:
+  aplicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Si mientras tanto alguien ha subido otra cosa (publicar.ps1 desde el
+      # ordenador), el push no entra: se vuelve a empezar desde lo último,
+      # que la corrección se busca en los datos que haya entonces.
+      - name: Aplicar y subir
+        id: aplicar
+        run: |
+          git config user.name "Erratas del teléfono"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for intento in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python src/erratas_telefono.py
+            git add -A data app/datos
+            if git diff --cached --quiet; then
+              echo "Nada que subir."
+              echo "subido=0" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git commit -q -m "Erratas desde el teléfono"
+            if git push origin HEAD:main; then
+              echo "subido=1" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Otro cambio entró antes; vuelvo a empezar."
+            sleep 10
+          done
+          echo "::error::No he podido subir las erratas tras tres intentos."
+          exit 1
+
+      - name: Publicar la app
+        if: steps.aplicar.outputs.subido == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publicar-app.yml --ref main

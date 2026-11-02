@@ -33,6 +33,9 @@ const FICHEROS = [
   // las vistas del devocionario, que se eligen en Ajustes
   'devo-vistas.css',
   'devo-vistas.js',
+  // el recorrido: lo carga index.html, así que sin él no abre sin red
+  'recorrido.css',
+  'recorrido.js',
   'datos/indice.json',
   'datos/calendario.json',
   'datos/lecturas_clementina.json'
@@ -65,6 +68,10 @@ const DESPUES = [
   // el devocionario: 1 MB de oraciones que no hacen falta para abrir la app
   // ni para rezar la misa ni las horas, y que la vista pide cuando se entra
   'datos/devocionario.json',
+  // el corrector de erratas: sólo lo carga el teléfono de quien edita el
+  // libro (con su llave), y ha de funcionarle también sin red
+  'erratas.js',
+  'erratas.css',
   // el motor de la voz de Piper; lo que él trae de fuera —el modelo, el
   // wasm— lo guarda él en su propia caché, que ésta no toca
   'piper.js',

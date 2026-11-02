@@ -916,7 +916,8 @@ verDevocionario = async function (que, cual, mas) {
   }
   E.vista = 'devocionario';
   E.devoPieza = null;
-  marcaBarra('portada');
+  E.ultimaDevo = location.hash;
+  marcaBarra('devocionario');
   modoPanel('Devocionario');
   if (!E.devo) vista.innerHTML = '<p class="aviso">Abriendo…</p>';
   try {

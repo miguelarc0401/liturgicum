@@ -74,7 +74,8 @@ const E = {              // todo el estado de la app
   pos: {},               // vista -> {k, y}: dónde se dejó cada una
   claveVista: null,      // qué se está leyendo, para saber si es lo mismo
   ultimaMisa: null,      // la ruta de la misa que se leía
-  calQ: '',              // lo que se busca en el calendario
+  ultimaDevo: null,      // la ruta del devocionario que se leía
+  calQ: '',             // lo que se busca en el calendario
   calAHoy: false,        // el calendario que se abre, a centrar en hoy
   devoQ: '',             // lo que se busca en el devocionario
   devoVuelta: null,      // la lista del devocionario de la que se viene
@@ -99,10 +100,12 @@ const ICONO = {
   cerrar: svg('<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>'),
   izq: svg('<path d="M14.5 5.5 8 12l6.5 6.5"/>'),
   der: svg('<path d="M9.5 5.5 16 12l-6.5 6.5"/>'),
-  // la cruz del altar, el breviario abierto con su cinta y el rosario
+  // la cruz del altar, el breviario abierto con su cinta y las manos
+  // juntas (el rosario, un aro con la cruz debajo, era el signo de mujer)
   misa: svg('<path d="M12 3v18M6.5 8.2h11"/>'),
-  devocionario: svg('<circle cx="12" cy="9.2" r="5.4"/>'
-    + '<path d="M12 14.6v6.2M9.6 17.1h4.8"/>'),
+  devocionario: svg('<path d="M12 3.2c-1.5 1.3-2.6 3.6-2.6 6.3v4.6L5.6 18'
+    + 'l2.6 2.6L12 17"/><path d="M12 3.2c1.5 1.3 2.6 3.6 2.6 6.3v4.6l3.8 '
+    + '3.9-2.6 2.6L12 17"/><path d="M12 3.2V17"/>'),
   horas: svg('<path d="M12 7.3C10.2 5.9 7.4 5.5 4 5.9v12.4c3.4-.4 6.2.1 8 '
     + '1.5 1.8-1.4 4.6-1.9 8-1.5V5.9c-3.4-.4-6.2 0-8 1.4Z"/>'
     + '<path d="M12 7.3v12.5"/><path d="M15.2 5.6v5l1.6-1.3 1.6 1.3v-5"/>')
@@ -2972,7 +2975,20 @@ function modoPanel(titulo) {
   $('#celebraciones').innerHTML = '';
   $('#formularios').innerHTML = '';
   $('#nota-dia').style.display = 'none';
-  ponColor('neutro');
+  ponColor(colorDeHoy());
+}
+
+/** El color litúrgico de hoy, para lo que no es de ningún día —la portada,
+ *  el calendario, el devocionario, Ajustes—: con «El del día» puesto, la
+ *  app es del color de hoy también ahí, y no granate. El de la celebración
+ *  que gana hoy, y el azul si es de la Virgen. */
+function colorDeHoy() {
+  const val = E.cal && entradasDe(hoyISO());
+  const cels = val ? celebracionesDe(val) : [];
+  if (!cels.length) return 'neutro';
+  const dia = E.diaDe.get(cels[0].slug);
+  return esDeLaVirgen(dia && dia.t) ? 'azul'
+    : E.colorDe.get(cels[0].slug) || 'neutro';
 }
 
 function verIndice() {
@@ -4347,6 +4363,8 @@ function verAjustes() {
         + 'no se te vuelve a preguntar.')
     ]),
 
+    editorAjustes(),
+
     // el colofón, como en un libro: de dónde sale lo que se lee
     '<footer class="colofon"><span class="colofon-cruz" aria-hidden="true">'
     + ICONO.misa + '</span><p class="colofon-t">Liturgicum</p>'
@@ -4498,7 +4516,15 @@ async function cambiaAjuste(ev) {
   }
 }
 
+/* El último hueco de la barra es de Ajustes, salvo desde que se entra al
+ * devocionario: entonces es suyo, para volver a la oración que se rezaba
+ * desde la misa o las horas. Lo devuelve a Ajustes volver a Inicio, o
+ * tocarlo estando dentro, que lleva allí. */
 function marcaBarra(cual) {
+  if (cual === 'devocionario' || cual === 'portada' || cual === 'ajustes') {
+    $('#barra [data-ir="devocionario"]').hidden = cual !== 'devocionario';
+    $('#barra [data-ir="ajustes"]').hidden = cual === 'devocionario';
+  }
   document.querySelectorAll('#barra button').forEach((b) =>
     b.classList.toggle('activo', b.dataset.ir === cual));
 }
@@ -4539,11 +4565,8 @@ function verPortada() {
   const dia = cels.length ? E.diaDe.get(cels[0].slug) : null;
   const anio = anioDe(iso);
   const h = horaDeLaPortada();
-  // la portada toma el color del día, como las dos vistas a las que lleva
-  if (cels.length) {
-    ponColor(esDeLaVirgen(dia && dia.t) ? 'azul'
-      : E.colorDe.get(cels[0].slug) || 'neutro');
-  }
+  // el color del día ya lo ha puesto modoPanel, como en las dos vistas a las
+  // que lleva
 
   const tira = HORAS.map(([cl, , nombre, breve], i) => {
     const marcas = (i === h.i ? ' ahora' : '') + (h.ya(cl) ? ' rezada' : '');
@@ -4851,6 +4874,114 @@ async function miraEditor() {
       E.editor = d.estado;
     }
   } catch (_) { /* un servidor cualquiera: no es el editor */ }
+}
+
+/* Las erratas, en cambio, se corrigen también desde el teléfono de quien
+ * edita el libro, sin el ordenador: con su llave de GitHub guardada aquí
+ * (Ajustes › Editor del libro), la app carga el corrector (erratas.js), y lo
+ * corregido va al repositorio, donde un proceso de GitHub lo aplica a los
+ * datos y vuelve a publicar la app (.github/workflows/erratas.yml). La llave
+ * vive sólo en este teléfono; sin ella, nada de esto existe. */
+const REPO = 'miguelarc0401/liturgicum';
+
+function llaveEditor() {
+  try {
+    return localStorage.getItem('editorLlave') || '';
+  } catch (_) {
+    return '';
+  }
+}
+
+function cargaErratas() {
+  if (document.querySelector('script[src="erratas.js"]')) return;
+  document.head.insertAdjacentHTML('beforeend',
+    '<link rel="stylesheet" href="erratas.css">');
+  document.head.appendChild(Object.assign(
+    document.createElement('script'), { src: 'erratas.js' }));
+}
+
+/** La pestaña de Ajustes del editor: la llave, puesta o por poner. Va la
+ *  última y plegada, que a quien no edita el libro no le dice nada. */
+function editorAjustes() {
+  const llave = llaveEditor();
+  const abierta = _ajustesAbiertas && _ajustesAbiertas['Editor del libro'];
+  // sin data-clave: su resumen no es de un ajuste, y refrescaResumenes()
+  // lo dejaría en blanco
+  return '<details class="ajustes-sec" data-sec="Editor del libro"'
+    + (abierta ? ' open' : '') + '><summary>'
+    + '<span class="aj-icono">' + svg('<path d="M4 20h4L19 9a2.83 2.83 0 0 0'
+      + '-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/>') + '</span>'
+    + '<span class="aj-cab"><span class="aj-t">Editor del libro</span>'
+    + '<span class="aj-resumen">' + (E.editor ? 'Corriges desde este ordenador'
+      : llave ? 'Corriges erratas desde este teléfono'
+        : 'Sólo para quien corrige el libro') + '</span></span>'
+    + '<span class="aj-flecha" aria-hidden="true"></span></summary>'
+    + '<div class="ajustes-cuerpo">'
+    + (llave
+      ? '<p class="pista">Con la llave puesta, deja el dedo sobre cualquier '
+        + 'palabra y toca «Corregir». Lo corregido va a GitHub, que lo aplica '
+        + 'y vuelve a publicar la app: lo ven todos en un par de minutos. La '
+        + 'pastilla «Erratas», abajo a la izquierda, dice cómo va cada una.</p>'
+        + '<div class="aj-restablece"><button type="button" class="restablece" '
+        + 'data-editor="quita">Quitar la llave de este teléfono</button></div>'
+      : '<p class="pista">Para corregir erratas desde este teléfono: pega '
+        + 'aquí la llave de GitHub del repositorio (README, «Corregir desde el '
+        + 'teléfono»). Se guarda sólo en este teléfono.</p>'
+        + '<div class="ajuste apilado"><label class="eti" for="aj-llave">'
+        + 'Llave de GitHub</label><input class="campo" id="aj-llave" '
+        + 'type="password" autocomplete="off" autocapitalize="off" '
+        + 'spellcheck="false" placeholder="github_pat_…"></div>'
+        + '<p class="pista" id="aj-llave-msg" role="status"></p>'
+        + '<div class="aj-restablece"><button type="button" class="restablece" '
+        + 'data-editor="pon">Guardar la llave</button></div>')
+    + '</div></details>';
+}
+
+/** Ajustes otra vez, con la llave puesta o quitada, sin moverse de donde
+ *  se estaba: la pestaña del editor es la última. */
+function rehaceAjustes() {
+  const y = window.scrollY;
+  recuerdaAjustes();
+  verAjustes();
+  window.scrollTo(0, y);
+}
+
+/** Poner la llave: se prueba antes con GitHub, que una llave mal pegada no
+ *  se descubra al ir a corregir. */
+async function alTocarEditor(ev) {
+  const b = ev.target.closest('[data-editor]');
+  if (!b || E.vista !== 'ajustes') return;
+  if (b.dataset.editor === 'quita') {
+    try { localStorage.removeItem('editorLlave'); } catch (_) {}
+    rehaceAjustes();
+    devoAvisa('Llave quitada. Al volver a abrir la app ya no saldrá «Corregir».');
+    return;
+  }
+  const llave = ($('#aj-llave').value || '').trim();
+  const msg = $('#aj-llave-msg');
+  if (!llave) { msg.textContent = 'Pega primero la llave.'; return; }
+  b.disabled = true;
+  msg.textContent = 'Probando la llave con GitHub…';
+  try {
+    const r = await fetch('https://api.github.com/repos/' + REPO, {
+      cache: 'no-store', headers: { Authorization: 'Bearer ' + llave,
+        Accept: 'application/vnd.github+json' } });
+    if (!r.ok) {
+      throw new Error(r.status === 401 ? 'GitHub no reconoce esa llave: '
+        + 'cópiala otra vez entera.' : r.status === 404 ? 'Esa llave no '
+        + 'tiene acceso al repositorio ' + REPO + '.' : 'GitHub contesta '
+        + r.status + '.');
+    }
+    localStorage.setItem('editorLlave', llave);
+  } catch (err) {
+    b.disabled = false;
+    msg.textContent = err instanceof TypeError
+      ? 'Sin conexión: hace falta red para probar la llave.' : err.message;
+    return;
+  }
+  cargaErratas();
+  rehaceAjustes();
+  devoAvisa('Llave guardada: ya puedes corregir desde este teléfono.');
 }
 
 /** Manda una orden al editor y, si sale bien, vuelve a cargar el
@@ -5920,8 +6051,8 @@ async function verDevocionario(que, cual, mas) {
   E.vista = 'devocionario';
   // la oración abierta, sólo mientras lo esté: es lo que la voz lee aquí
   E.devoPieza = null;
-  // se llega desde Inicio, y es allí donde se vuelve
-  marcaBarra('portada');
+  E.ultimaDevo = location.hash;
+  marcaBarra('devocionario');
   modoPanel('Devocionario');
   if (!E.devo) vista.innerHTML = '<p class="aviso">Abriendo…</p>';
   try {
@@ -9821,15 +9952,10 @@ async function arranca() {
   cargaMisaOps();
   cargaRezadas();
   aplicaCfg();
-  // servida por Enchiridion/src/editar.py, la app trae además el corrector
-  // de erratas (erratas.js), que en el teléfono no se pide nunca
+  // servida por Enchiridion/src/editar.py, o en el teléfono de quien edita
+  // el libro con su llave, la app trae además el corrector de erratas
   await miraEditor();
-  if (E.editor) {
-    document.head.insertAdjacentHTML('beforeend',
-      '<link rel="stylesheet" href="erratas.css">');
-    document.head.appendChild(Object.assign(
-      document.createElement('script'), { src: 'erratas.js' }));
-  }
+  if (E.editor || llaveEditor()) cargaErratas();
   try {
     const [ind, cal] = await Promise.all([json('indice.json'),
       json('calendario.json')]);
@@ -9858,6 +9984,7 @@ async function arranca() {
   vista.addEventListener('click', alTocarCalendario);
   vista.addEventListener('click', alTocarPiper);
   vista.addEventListener('click', alTocarAvisoApk);
+  vista.addEventListener('click', alTocarEditor);
   vista.addEventListener('input', (ev) => {
     if (ev.target.id === 'aj-tam') alCambiarAjuste(ev);
     else if (E.vista === 'ajustes' && ev.target.dataset.barra) {
@@ -9875,9 +10002,14 @@ async function arranca() {
         ? E.ultimaMisa : '#/d/' + fecha;
       const horas = '#/h/' + fecha + (E.hora ? '/' + E.hora
         + (E.horasCel ? '/' + encodeURIComponent(E.horasCel) : '') : '');
+      // el devocionario vuelve también a la oración que se dejó; tocado
+      // estando dentro, lleva a Ajustes, cuyo hueco ocupa
+      const devo = E.vista === 'devocionario' ? '#/ajustes'
+        : E.ultimaDevo || '#/oraciones';
       const destino = ir === 'portada' ? '#/menu'
         : ir === 'hoy' ? misa
         : ir === 'horas' ? horas
+        : ir === 'devocionario' ? devo
         : '#/' + ir;
       // tocar la sección en la que ya se está la sube al principio
       if (location.hash === destino) {

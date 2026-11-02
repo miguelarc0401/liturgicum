@@ -95,8 +95,9 @@ funcionando con lo último que tuviera).
 .\publicar.ps1
 ```
 
-Rehace el calendario y los datos de la app, los sube, y GitHub Pages se
-republica en un par de minutos. Con `-Mensaje "..."` le pones tu propio texto
+(o doble clic en `publicar.bat`, si PowerShell no deja correr `.ps1`).
+Trae antes lo corregido desde el teléfono, rehace el calendario y los datos
+de la app, los sube, y GitHub Pages se republica en un par de minutos. Con `-Mensaje "..."` le pones tu propio texto
 al commit, y con `-SoloConstruir` rehace los datos sin subir nada.
 
 Si sólo tocas las tablas editables (`data/santoral.csv`, los `*_overrides.csv`)
@@ -119,24 +120,69 @@ citas, hay que rehacer antes las fases que correspondan (ver
 ### Corregir una errata desde la app
 
 Si al leer ves algo mal escrito —una palabra de una lectura, de un himno, de
-una oración—, se corrige en la propia app, en el ordenador: doble clic en
-**`editar.bat`**, en esta carpeta (o `python Enchiridion/src/editar.py` desde
-la terminal). Es un `.bat` y no un `.ps1` porque Windows no deja correr los
-`.ps1` sin cambiar la política de ejecución.
+una oración—, se corrige en la propia app, donde se lee: se selecciona el
+texto, sale **Corregir** al lado, se escribe como debe quedar, «Buscar dónde
+está» dice en qué sitios de los datos está, y «Guardar la corrección» lo
+cambia. La pastilla **Erratas**, abajo a la izquierda, lista las corregidas
+y deja deshacerlas. Se puede desde dos sitios:
 
-Se abre una ventana negra —es el editor; mientras esté abierta, la app se
-puede corregir, y al cerrarla se para— y la app en el navegador, en
-`http://127.0.0.1:8780/`. Selecciona el texto (con un doble clic basta
-para una palabra), pulsa **Corregir** y escríbelo como debe quedar. «Buscar
-dónde está» dice en qué sitios de los datos está ese texto, y «Guardar la
-corrección» lo cambia. La pastilla **Erratas**, abajo a la izquierda, lista
-las corregidas y deja deshacerlas.
+**Desde el teléfono, sin el ordenador.** Una vez, en el teléfono, se le da a
+la app una llave de GitHub (abajo, «La llave del teléfono»). Desde entonces,
+en ese teléfono, se deja el dedo sobre la palabra y se toca «Corregir». Lo
+corregido se ve al momento en el teléfono, y se manda a GitHub —sin
+conexión, se queda esperando y sale sola cuando vuelve—. Allí el proceso
+**Erratas del teléfono** (`.github/workflows/erratas.yml`) la aplica a los
+datos con el mismo programa que el ordenador y vuelve a publicar la app. La
+pastilla «Erratas» dice cómo va cada una: en GitHub, aplicada, o por qué no
+se pudo.
 
-Cada corrección se apunta en `data/fe_de_erratas.json` —el trozo como estaba,
-como queda y en qué sitios—, y cada fase que rehace los datos la vuelve a
-poner antes de escribir (`src/erratas.py`), así que no se pierde al rehacer.
-Si un día la fuente cambia y una errata ya no se encuentra, la fase lo dice
-con un AVISO. Lo corregido lo ven todos cuando publicas con `.\publicar.ps1`.
+**Desde el ordenador.** Doble clic en **`editar.bat`** (o `python
+Enchiridion/src/editar.py`). Se abre una ventana negra —es el editor;
+mientras esté abierta, la app se puede corregir, y al cerrarla se para— y la
+app en el navegador, en `http://127.0.0.1:8780/`. Con un doble clic se
+selecciona una palabra. Lo corregido cambia los datos de esta carpeta al
+momento, y llega a los demás al publicar.
+
+Cada corrección se apunta en `data/fe_de_erratas/`, una por fichero —el
+trozo como estaba, como queda y en qué sitios—, y cada fase que rehace los
+datos la vuelve a poner antes de escribir (`src/erratas.py`), así que no se
+pierde al rehacer. Si un día la fuente cambia y una errata ya no se
+encuentra, la fase lo dice con un AVISO.
+
+#### Cómo llega a los demás
+
+* **Lo corregido en el teléfono, solo.** GitHub la aplica en un minuto y
+  pone en marcha «Publicar la app»; en otro par de minutos está en GitHub
+  Pages. Los teléfonos de todos —la web instalada y el APK— lo ven la
+  próxima vez que abren la app o vuelven a ella, como cualquier otra
+  publicación: la firma de los datos ha cambiado y se recargan una vez.
+  Nada que hacer en el ordenador.
+* **Lo corregido en el ordenador, al publicar:** doble clic en
+  **`publicar.bat`** (corre `publicar.ps1` sin pedirle nada a la política de
+  ejecución de Windows). Antes de rehacer nada trae de GitHub lo corregido
+  desde el teléfono, de modo que lo uno y lo otro no se pisan nunca.
+
+#### La llave del teléfono
+
+Es un «token» de GitHub que sólo deja escribir en este repositorio. Se hace
+una vez, desde el teléfono o desde el ordenador:
+
+1. Entra en <https://github.com/settings/personal-access-tokens/new> (GitHub
+   › foto › Settings › Developer settings › Personal access tokens ›
+   Fine-grained tokens › Generate new token).
+2. **Token name:** «Liturgicum, erratas desde el teléfono». **Expiration:**
+   la más larga que deje; cuando caduque, se hace otra igual.
+3. **Repository access:** *Only select repositories* › `liturgicum`.
+4. **Permissions** › *Repository permissions* › **Contents: Read and
+   write**. Nada más.
+5. **Generate token**, y cópiala (empieza por `github_pat_`; GitHub no la
+   vuelve a enseñar).
+6. En la app del teléfono: **Ajustes › Editor del libro**, pégala y toca
+   «Guardar la llave». La app la prueba con GitHub antes de guardarla.
+
+La llave se queda sólo en ese teléfono, y sin ella la app de los demás no
+tiene nada de esto. Si pierdes el teléfono, bórrala en la misma página de
+GitHub y deja de servir en el acto.
 
 ### Lo que la app hace para enterarse
 
