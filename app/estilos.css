@@ -1230,7 +1230,10 @@ mark { background: var(--realce); color: inherit; padding: 0 .1em; border-radius
    apagado mientras no haya nada que restablecer. Al primer toque pregunta,
    y entonces se llena del color del dia, que se vea que el segundo va en
    serio. */
-.aj-restablece { display: flex; justify-content: center; padding: .9rem 0 .4rem; }
+.aj-restablece {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+  padding: .9rem 0 .4rem;
+}
 .restablece {
   min-height: 2.5rem; padding: .35rem 1rem; cursor: pointer;
   font-family: var(--sans); font-size: .8rem; color: var(--acento);

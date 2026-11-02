@@ -4920,9 +4920,12 @@ function editorAjustes() {
     + (llave
       ? '<p class="pista">Con la llave puesta, deja el dedo sobre cualquier '
         + 'palabra y toca «Corregir». Lo corregido va a GitHub, que lo aplica '
-        + 'y vuelve a publicar la app: lo ven todos en un par de minutos. La '
-        + 'pastilla «Erratas», abajo a la izquierda, dice cómo va cada una.</p>'
+        + 'y vuelve a publicar la app: lo ven todos en un par de minutos. Cómo '
+        + 'va cada una lo dice «Ver las corregidas», o la pastilla «Erratas» '
+        + 'que sale abajo a la izquierda mientras hay algo seleccionado.</p>'
         + '<div class="aj-restablece"><button type="button" class="restablece" '
+        + 'data-editor="lista">Ver las corregidas</button>'
+        + '<button type="button" class="restablece" '
         + 'data-editor="quita">Quitar la llave de este teléfono</button></div>'
       : '<p class="pista">Para corregir erratas desde este teléfono: pega '
         + 'aquí la llave de GitHub del repositorio (README, «Corregir desde el '
@@ -4951,6 +4954,10 @@ function rehaceAjustes() {
 async function alTocarEditor(ev) {
   const b = ev.target.closest('[data-editor]');
   if (!b || E.vista !== 'ajustes') return;
+  if (b.dataset.editor === 'lista') {
+    if (window.Erratas && window.Erratas.verLista) window.Erratas.verLista();
+    return;
+  }
   if (b.dataset.editor === 'quita') {
     try { localStorage.removeItem('editorLlave'); } catch (_) {}
     rehaceAjustes();

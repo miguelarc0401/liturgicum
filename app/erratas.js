@@ -15,7 +15,10 @@
  *    conexión, el pedido espera en el teléfono y sale cuando vuelve la red.
  *
  * Se selecciona el texto —una palabra basta: doble clic en el ordenador,
- * dedo encima en el teléfono— y sale «Corregir» al lado. En la ficha va la
+ * dedo encima en el teléfono— y sale «Corregir» al lado, y abajo a la
+ * izquierda la pastilla «Erratas» con las ya corregidas; sin nada
+ * seleccionado no se ve ninguna de las dos, que no estorben al leer (la
+ * lista está también en Ajustes › Editor del libro). En la ficha va la
  * tirada entera en que cae lo seleccionado (un versículo, un renglón del
  * himno, la antífona), y se escribe como debe quedar. «Buscar dónde está»
  * dice en qué sitios de los datos está ese texto con lo mismo alrededor. Al
@@ -27,7 +30,7 @@
 (() => {
   // la llave se puede poner con la app abierta, y entonces se carga otra vez
   if (window.Erratas) return;
-  window.Erratas = true;
+  window.Erratas = { verLista: verLista };
 
   const ORDENADOR = !!E.editor;
   const LAPIZ = '<svg viewBox="0 0 24 24" aria-hidden="true">'
@@ -39,6 +42,9 @@
   // el renglón: lo que la página enseña alrededor se toma dentro de él
   const RENGLON = '.ln, p, li, h1, h2, h3, h4, h5, h6, td, dd, dt, '
     + 'blockquote, div';
+  // las corregidas desde el teléfono (más abajo): aquí arriba, que la
+  // pastilla las cuenta ya al cargar
+  const CLAVE = 'erratasTelefono';
 
   let sel = null;       // lo que se corrige: {nodo, texto, ini, fin, antes, despues}
   let plan = null;      // dónde se ha encontrado
@@ -64,9 +70,17 @@
   const pildora = document.createElement('button');
   pildora.type = 'button';
   pildora.className = 'erratas-pildora';
-  pildora.title = 'Las erratas corregidas. Para corregir otra, selecciona '
-    + 'el texto.';
-  pildora.addEventListener('click', verLista);
+  pildora.hidden = true;
+  pildora.title = 'Las erratas corregidas';
+  // sale con la selección, y como «Corregir» tiene que abrirse antes de
+  // que el toque se la lleve y la esconda
+  pildora.addEventListener('pointerdown', (ev) => {
+    ev.preventDefault();
+    if (ev.pointerType !== 'mouse') abreLista();
+  });
+  pildora.addEventListener('click', () => {
+    if (!document.querySelector('.errata-fondo')) abreLista();
+  });
   document.body.appendChild(pildora);
   cuenta();
 
@@ -121,9 +135,11 @@
       rect: r.getBoundingClientRect() };
   }
 
-  /** El botón, debajo de lo seleccionado; encima si abajo no cabe. */
+  /** El botón, debajo de lo seleccionado; encima si abajo no cabe. La
+   *  pastilla, en su sitio, sólo mientras hay algo seleccionado. */
   function coloca() {
     const s = document.querySelector('.errata-fondo') ? null : seleccion();
+    pildora.hidden = !s;
     if (!s) { boton.hidden = true; return; }
     ultima = s;
     boton.hidden = false;
@@ -368,6 +384,13 @@
   }
 
   /* ------------------------------------------ la lista de las corregidas */
+  /** Desde la pastilla: lo seleccionado ya no hace falta, y al cerrar la
+   *  lista no tiene que volver a salir nada. */
+  function abreLista() {
+    window.getSelection().removeAllRanges();
+    verLista();
+  }
+
   async function verLista() {
     if (!ORDENADOR) { verListaTelefono(); return; }
     let d;
@@ -411,8 +434,6 @@
    * «aplicada», «rechazada» (con el motivo), «deshaciendo» y «deshecha».
    * Se guarda en el teléfono; lo que de verdad manda es lo que haya en
    * GitHub, y la lista se pone al día con él cada vez que se abre. */
-  const CLAVE = 'erratasTelefono';
-
   function apuntadas() {
     try {
       return JSON.parse(localStorage.getItem(CLAVE) || '[]');

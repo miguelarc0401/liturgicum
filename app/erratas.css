@@ -3,7 +3,8 @@
    edita el libro, con su llave de GitHub; y va en el rojo de la rubrica y
    con el borde a trazos: que se vea que es del taller y no del libro. Tres
    piezas: el boton que sale junto a lo seleccionado, la pastilla de abajo
-   con las ya corregidas, y la ficha. */
+   con las ya corregidas (que sale tambien solo con algo seleccionado), y
+   la ficha. */
 
 .errata-boton {
   position: fixed; z-index: 45;
@@ -32,7 +33,9 @@
   background: color-mix(in srgb, var(--rubrica) 6%, var(--papel-alto));
   border: 1px dashed color-mix(in srgb, var(--rubrica) 60%, transparent);
   border-radius: 999px; box-shadow: var(--sombra);
+  animation: aparece var(--rapido) ease-out;
 }
+.erratas-pildora[hidden] { display: none; }
 .erratas-pildora span {
   font-variant-numeric: tabular-nums; color: var(--tinta-suave);
   font-weight: 400;

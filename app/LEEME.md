@@ -173,7 +173,9 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   castellano o en las dos. Publicada, la app ni lo pregunta.
 * **Las erratas, corregidas donde se leen.** Cualquier texto se corrige en
   la página: se selecciona, sale «Corregir» al lado, y se escribe como
-  debe quedar. Se busca ese texto en `datos/` —con lo que la página enseña
+  debe quedar. La pastilla «Erratas», con las ya corregidas, sale también
+  sólo mientras hay algo seleccionado (y en **Ajustes › Editor del libro**,
+  «Ver las corregidas»), para que al leer no se vea nada del taller. Se busca ese texto en `datos/` —con lo que la página enseña
   alrededor, para no tocar otro igual—, se cambia allí y se apunta en
   `data/fe_de_erratas/`, que cada fase vuelve a aplicar al rehacer los
   datos (`src/erratas.py`). Se puede en el ordenador, con la app servida

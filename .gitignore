@@ -98,3 +98,7 @@ app/paquete-version.json
 *.p12
 *.jks
 *.keystore
+# ni la llave de GitHub del telefono (Ajustes › Editor del libro): con ella
+# cualquiera escribe en el repositorio, y `git add -A` la subiria
+Token Github*
+
