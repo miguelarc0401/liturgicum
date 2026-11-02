@@ -6452,6 +6452,11 @@ function opcionesSeccion(d, op, hora, cl) {
     const sal = salmodiaIntermedia(d, hora, alts[i].c);
     if (sal) return sal;
   }
+  if (cl === 'salmodia' && INTERMEDIAS.includes(hora) && op.modo === 'entero'
+      && !/^(FIESTA|SOLEMNIDAD)/.test(op.g || '') && alts.length && i < 0) {
+    const sal = salmodiaIntermediaPropia(d, op, hora, alts[0].c);
+    if (sal) return sal;
+  }
   // En las fiestas, la Hora intermedia dice los salmos del día —«cuando se
   // dice sólo una Hora, se toma la salmodia habitual del Salterio, incluso
   // en las fiestas»— o la complementaria, con la antífona propia o del
@@ -6588,6 +6593,15 @@ function opcionesSeccionBase(d, op, hora, cl) {
     && /^(MEMORIA|FIESTA)/.test(op.g || '')) ? distintas(ops.concat(soloDia))
     : ops;
   const propio = delSanto(op, hora, cl, d);
+  // El Oficio de difuntos da su himno para la Hora intermedia, la que se
+  // rece, y «para las otras Horas se puede decir un himno propio de la
+  // Hora» (tomo IV). La fuente lo puso en Tercia, y en Sexta y Nona salía
+  // sólo el del tiempo: va delante en las tres, y detrás el de la hora.
+  if (cl === 'himno' && INTERMEDIAS.includes(hora) && regla === 'entero') {
+    const suyo = propio
+      || INTERMEDIAS.map((h) => delSanto(op, h, cl, d)).find(Boolean);
+    if (suyo) return [{ id: 'propio', rot: 'Propio', c: suyo }].concat(soloDia);
+  }
   if (regla === 'biblica') {
     return propio ? distintas(
       [{ id: 'propio', rot: 'Propio', c: propio }].concat(soloDia)) : soloDia;
@@ -6742,6 +6756,34 @@ function salmodiaIntermedia(d, hora, dia) {
       c: { r: 'SALMODIA', l: esComp ? rehecha(delDiaC) : dia.l } },
     { id: 'sal-comp', rot: 'Complementaria', tit: 'Salmodia complementaria',
       c: { r: 'SALMODIA COMPLEMENTARIA', l: esComp ? dia.l : rehecha(compC) } }
+  ];
+}
+
+/* El Oficio de difuntos trae para la Hora intermedia una sola salmodia —los
+ * salmos 69, 84 y 85, con la antífona de cada hora— y «para las otras
+ * Horas, la salmodia complementaria» (tomo IV). La fuente la reza en las
+ * tres y puso la suya en Tercia, así que Sexta, que es la que la app abre
+ * por omisión, salía con los graduales. Se reparte como la de cualquier
+ * día: la suya, que hace de la del día, y la complementaria, cada una con
+ * la antífona de la hora. Las fiestas y solemnidades tienen sus reglas. */
+function salmodiaIntermediaPropia(d, op, hora, suya) {
+  const comp = (E.horas.intermedia || { comp: {} }).comp[hora];
+  const ants = despieza(suya.l).ants;
+  const gradual = (s) => {
+    const n = +((s[0][0][1].match(/\d+/) || [])[0]);
+    return n >= 119 && n <= 131;
+  };
+  const propios = INTERMEDIAS.map((h) => {
+    const p = delSanto(op, h, 'salmodia', d);
+    return p ? despieza(p.l).salmos : [];
+  }).find((salmos) => salmos.length && !salmos.every(gradual));
+  if (!comp || !ants.length || !propios) return null;
+  const con = (r, salmos) => ({ r: r, f: suya.f, l: compone(ants, salmos) });
+  return [
+    { id: 'sal-dia', rot: 'Del día', tit: 'Salmodia del día',
+      c: con(suya.r || 'SALMODIA', propios) },
+    { id: 'sal-comp', rot: 'Complementaria', tit: 'Salmodia complementaria',
+      c: con('SALMODIA COMPLEMENTARIA', despieza(comp.l).salmos) }
   ];
 }
 
