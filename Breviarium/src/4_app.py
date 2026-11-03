@@ -1496,6 +1496,22 @@ def main():
         r = m.get('r') or 99                  # las del Señor, por su número
         return 'SOLEMNIDAD' if r <= 4 else 'FIESTA' if r <= 8 else 'MEMORIA'
 
+    def rango(g):
+        g = (g or '').upper()
+        return 3 if 'SOLEMNIDAD' in g else 2 if 'FIESTA' in g \
+            else 1 if 'MEMORIA' in g else 0
+
+    def grado_del_pdf(e):
+        """El grado del oficio que el PDF escribe, que no siempre es el de su
+        cabecera: san Martín de Porres va sin grado y avisa «En Perú:
+        Solemnidad. Cuando se celebra como solemnidad:», y lo que sigue es
+        ese oficio."""
+        for n in e.get('notas') or []:
+            c = re.search(r'se celebra como (solemnidad|fiesta)\b', n, re.I)
+            if c:
+                return c[1].upper()
+        return e.get('grado')
+
     # --- de qué común toma su oficio cada santo ---------------------------
     # La app arma el día en cascada —lo del santo, si no lo de su común, si
     # no lo del tiempo— y para el segundo escalón necesita saber cuál es el
@@ -1838,8 +1854,8 @@ def main():
 
     comunes_del_tomo_pdf = []           # (celebración, comunes) del tomo
     comun_de_fuente = set(comun_de_santo)   # los que dijo la cabecera
-    # (mm-dd, santo, entrada del PDF, título) de cada celebración, para la
-    # pasada de la salmodia, que va después y necesita las dos ramas
+    # (mm-dd, santo, entrada del PDF, título, grado) de cada celebración,
+    # para la pasada de la salmodia, que va después y necesita las dos ramas
     con_pdf = []
     for slug, m in sorted(titulos.items(), key=lambda x: x[0]):
         fm = re.match(r'st_(\d\d)(\d\d)_', slug)
@@ -1884,13 +1900,13 @@ def main():
             santo_de_slug[slug] = santo
             casillas[santo][md] += 1
             desde_pdf.append((m['t'], grado(m), e, lista))
-            con_pdf.append((md, santo, e, m['t']))
+            con_pdf.append((md, santo, e, m['t'], grado(m)))
             continue
         santo = santo_de_slug[slug]
         md_s = md if md in casillas[santo] else \
             casillas[santo].most_common(1)[0][0]
         if e:
-            con_pdf.append((md_s, santo, e, m['t']))
+            con_pdf.append((md_s, santo, e, m['t'], grado(m)))
         # El común, si la cabecera de la fuente no lo dijo nunca: el que dice
         # el tomo (santa Águeda, san Felipe Neri, san Juan Bautista de la
         # Salle, santa Rosa de Lima…). Sin él, lo que no tienen propio salía
@@ -2320,8 +2336,14 @@ def main():
     # rúbrica delante, lo medido se explica (y se comprueba); y donde la
     # fuente no publicó nunca al santo, la rúbrica es lo único que hay, así
     # que de ella salen las antífonas y el sitio de los salmos.
-    sal_pdf, sal_choque, sal_falta = [], [], []
-    for md_s, santo, e, titulo in con_pdf:
+    sal_pdf, sal_choque, sal_falta, sal_de_mas = [], [], [], []
+    for md_s, santo, e, titulo, g in con_pdf:
+        # El PDF escribe a veces el oficio de un grado que en México no
+        # tiene: el de santa Teresa es de fiesta (en España), y el de san
+        # Martín de Porres, «cuando se celebra como solemnidad» (en Perú).
+        # Sus antífonas son de ese oficio, y la memoria dice los salmos con
+        # sus antífonas de la feria (OGLH 235).
+        de_mas = rango(grado_del_pdf(e)) > rango(g)
         for hora in HORAS_PDF:
             p = e['piezas'].get(f'{hora}/salmodia')
             if not p:
@@ -2338,6 +2360,9 @@ def main():
                 # sería cambiar a peor.
                 if not p.get('ant') \
                         or f'{md_s}/{santo}/{hora}/salmodia' in santoral:
+                    continue
+                if de_mas:
+                    sal_de_mas.append((titulo, hora, grado_del_pdf(e), g))
                     continue
                 ent = antifonas[k] = {'a': p['ant'], 'f': 'pdf'}
             tiene = 's' in ent or 'l' in ent
@@ -2804,7 +2829,7 @@ def main():
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas_de(santoral), entrada_pdf,
                         hallados, extra, sal_pdf, sal_choque, sal_falta,
-                        mx_puestas)
+                        mx_puestas, sal_de_mas)
     with open(INFORME, 'a', encoding='utf-8') as f:
         f.write('\n7. Las ferias de Navidad que van por fecha y la fuente no '
                 'publicó nunca\n' + '-' * 60 + '\n'
@@ -2908,7 +2933,7 @@ def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
                         santo_de_slug, titulos, santoral, comunes,
                         comun_de_santo, casillas, entrada_pdf, hallados,
                         extra, sal_pdf=(), sal_choque=(), sal_falta=(),
-                        mx_puestas=frozenset()):
+                        mx_puestas=frozenset(), sal_de_mas=()):
     """El informe para quien reza: qué se tomó de los PDF (la traducción
     española), qué sigue sin textos en ninguna parte, y en qué difieren los
     PDF de la fuente en los santos que tienen los dos."""
@@ -3064,6 +3089,13 @@ def escribe_informe_pdf(desde_pdf, rellenos, resenas_pdf, sin_textos,
             for t, hora, titulos_sal in sal_falta:
                 f.write(f'     {t} — {HORA_N.get(hora, hora)}: '
                         f'{titulos_sal}\n')
+        if sal_de_mas:
+            f.write(f'\n   El PDF trae el oficio de un grado que en México no '
+                    f'tiene: sus antífonas no se ponen, y la memoria reza la '
+                    f'salmodia del día ({len(sal_de_mas)})\n')
+            for t, hora, del_pdf, mx in sal_de_mas:
+                f.write(f'     {t} — {HORA_N.get(hora, hora)}: en el PDF '
+                        f'{del_pdf.lower()}, en México {mx.lower()}\n')
         f.write('\n6. Cotejo PDF / fuente en los santos que tienen los dos\n'
                 + '-' * 60 + '\n'
                 'Aquí no se cambió nada: manda la fuente. Sólo se apunta.\n\n')

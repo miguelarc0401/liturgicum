@@ -444,11 +444,6 @@ traducción— y, al lado, la del día.
   La Natividad de la Santísima Virgen María — Vísperas: salmos propios
   Santos Arcángeles Miguel, Gabriel y Rafael — Laudes: salmos de 1/0
   Santos Ángeles Custodios — Laudes: salmos de 1/0
-  Santa Teresa de Jesús, virgen y doctora de la Iglesia — Laudes: antífonas del PDF, salmos de 1/0
-  Santa Teresa de Jesús, virgen y doctora de la Iglesia — Vísperas: antífonas del PDF, salmos de del día
-  San Martín de Porres, religioso — Oficio: antífonas del PDF, salmos de santos varones
-  San Martín de Porres, religioso — Laudes: antífonas del PDF, salmos de 1/0
-  San Martín de Porres, religioso — Vísperas: antífonas del PDF, salmos de santos varones
   San Andrés, apóstol — Laudes: salmos de 1/0
   San Andrés, apóstol — Vísperas: salmos propios
   San Juan Diego Cuauhtlatoatzin — Laudes: antífonas del PDF, salmos de santos varones
@@ -457,10 +452,16 @@ traducción— y, al lado, la del día.
   Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Laudes: antífonas del PDF, salmos de 1/0
   Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Vísperas: antífonas del PDF, salmos de del día
 
-   El PDF escribe los salmos enteros y la fuente no los dio nunca: se reza la salmodia del día con las antífonas de la celebración (3)
-     Santa Teresa de Jesús, virgen y doctora de la Iglesia — Vísperas: Salmo 121, Salmo 126, Cántico Cf. Ap 19, 1-7
+   El PDF escribe los salmos enteros y la fuente no los dio nunca: se reza la salmodia del día con las antífonas de la celebración (2)
      Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Oficio: Salmo 2, Salmo 39, 2-13, Salmo 84
      Nuestro Señor Jesucristo, Sumo y Eterno Sacerdote — Vísperas: Salmo 109, 1-5. 7, Salmo 110, Cántico Cf. Col 1, 12-20
+
+   El PDF trae el oficio de un grado que en México no tiene: sus antífonas no se ponen, y la memoria reza la salmodia del día (5)
+     Santa Teresa de Jesús, virgen y doctora de la Iglesia — Laudes: en el PDF fiesta, en México memoria
+     Santa Teresa de Jesús, virgen y doctora de la Iglesia — Vísperas: en el PDF fiesta, en México memoria
+     San Martín de Porres, religioso — Oficio: en el PDF solemnidad, en México memoria
+     San Martín de Porres, religioso — Laudes: en el PDF solemnidad, en México memoria
+     San Martín de Porres, religioso — Vísperas: en el PDF solemnidad, en México memoria
 
 6. Cotejo PDF / fuente en los santos que tienen los dos
 ------------------------------------------------------------
