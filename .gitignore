@@ -94,6 +94,7 @@ apk/node_modules/
 app/paquete.zip
 app/paquete.json
 app/paquete-version.json
+app/**/*.br
 # la llave de firma no va nunca aqui dentro (apk/LEEME.md)
 *.p12
 *.jks

@@ -22,14 +22,27 @@ Hay dos cosas que pueden cambiar, y van por caminos distintos.
 **Lo de `app/` —los textos, `app.js`, los estilos—** llega solo, sin volver a
 instalar nada. `publicar.ps1` no cambia: al subir a main, el workflow de
 GitHub Pages corre `apk/paquete.sh --zip`, que saca una huella de todo
-`app/` y arma con ello `paquete.zip` y `paquete.json`, y los publica junto a
-la web. El APK pregunta por `paquete.json` al abrirse y al volver a primer
-plano; si la huella no es la suya, se baja el zip (unos 16 MB) en segundo
-plano con el actualizador de Capgo, y la versión nueva se estrena la próxima
-vez que la app arranca o vuelve tras más de un minuto fuera —nunca a media
-lectura, ni con la voz sonando—. Si la versión nueva no llegara a arrancar,
-el actualizador vuelve solo a la anterior, y esa no se vuelve a bajar hasta
-que se publique otra. Todo está en `app.js`, sección «dentro del APK».
+`app/` y arma con ello `paquete.json` —la huella, y la lista de los ficheros
+con la de cada uno— y `paquete.zip`, y los publica junto a la web. El APK
+pregunta por `paquete.json` al abrirse y al volver a primer plano; si la
+huella no es la suya, el actualizador de Capgo arma en segundo plano la
+versión nueva fichero a fichero: lo que ya tiene con esa huella —lo que trae
+el APK, lo bajado otras veces— lo copia, y baja sólo lo demás. Una
+publicación de las de cada día es `app.js` y poco más, unos 150 KB; si
+cambia `horas.json`, 1,7 MB, porque los ficheros grandes van también en
+brotli (`.br`), que el actualizador descomprime y comprueba contra la huella
+del fichero entero. Si la descarga se corta, lo bajado se queda, y la vez
+siguiente sigue por donde iba. La versión nueva se estrena la próxima vez que
+la app arranca o vuelve tras más de un minuto fuera —nunca a media lectura,
+ni con la voz sonando—. Si la versión nueva no llegara a arrancar, el
+actualizador vuelve solo a la anterior, y esa no se vuelve a bajar hasta que
+se publique otra. Todo está en `app.js`, sección «dentro del APK».
+
+El zip entero (15 MB) es para dos casos: los `app.js` de antes de la lista
+(2026-11-03), que no saben pedir otra cosa, y una lista que falle tres veces
+seguidas con la misma versión, para que un error en ella no deje la app sin
+ponerse al día. Antes de la lista, cada publicación eran esos 15 MB, y con
+datos móviles no acababan nunca: si se cortaba, se volvía a empezar.
 
 **Lo nativo —lo que hay en esta carpeta: Capacitor, los plugins, el icono,
 el nombre—** pide un APK nuevo. Al subir un cambio de `apk/`, el workflow
@@ -50,8 +63,9 @@ es mayor, lo dice arriba de la portada, con el enlace, y en Ajustes. «Ahora
 no» lo esconde hasta el día siguiente. Recompilar sin tocar lo nativo da el
 mismo número, así que no avisa de nada.
 
-El zip no entra en git: 16 MB por publicación se quedarían en la historia
-para siempre. Se arma en GitHub Actions y vive sólo en GitHub Pages.
+Ni el zip ni los `.br` entran en git: 16 MB por publicación se quedarían en
+la historia para siempre. Se arman en GitHub Actions y viven sólo en GitHub
+Pages.
 
 ## La voz en el APK
 
@@ -130,7 +144,8 @@ desinstalar la app y volver a instalarla.
 - `prueba/voz.mjs`: la prueba de la voz en el emulador (ver arriba).
 - `iconos.py`: rehace los iconos de Android a partir de los de `app/`. Sólo
   hace falta si cambia el icono.
-- `paquete.sh`: la huella y el zip (ver arriba).
+- `paquete.sh`: la huella, la lista de ficheros con los `.br` y el zip (ver
+  arriba).
 - `package.json`: las versiones de Capacitor y de los plugins, fijadas. Las
   dependencias se instalan en GitHub Actions; en el ordenador no hace falta
   ni Node ni el SDK de Android.

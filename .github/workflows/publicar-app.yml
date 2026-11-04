@@ -44,8 +44,12 @@ jobs:
       - uses: actions/configure-pages@v5
       # el paquete que se baja el APK para ponerse al día (apk/LEEME.md):
       # se arma aqui y viaja con la web, sin pasar por git
+      # (brotli, para los ficheros grandes de la lista: sin él van tal cual)
       - name: Paquete para el APK
-        run: bash apk/paquete.sh --zip
+        run: |
+          command -v brotli >/dev/null \
+            || { sudo apt-get update -qq && sudo apt-get install -y -qq brotli; }
+          bash apk/paquete.sh --zip
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app

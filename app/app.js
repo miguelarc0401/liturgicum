@@ -2975,13 +2975,17 @@ function modoPanel(titulo) {
   $('#celebraciones').innerHTML = '';
   $('#formularios').innerHTML = '';
   $('#nota-dia').style.display = 'none';
-  ponColor(colorDeHoy());
+  // el devocionario y Ajustes no son de ningún tiempo: van de granate
+  // siempre, aunque «El del día» tiña lo demás (2026-11-03). Un color
+  // fijado en Ajustes sigue mandando también aquí
+  ponColor(E.vista === 'devocionario' || E.vista === 'ajustes'
+    ? 'neutro' : colorDeHoy());
 }
 
 /** El color litúrgico de hoy, para lo que no es de ningún día —la portada,
- *  el calendario, el devocionario, Ajustes—: con «El del día» puesto, la
- *  app es del color de hoy también ahí, y no granate. El de la celebración
- *  que gana hoy, y el azul si es de la Virgen. */
+ *  el calendario, el índice—: con «El del día» puesto, la app es del color
+ *  de hoy también ahí, y no granate. El de la celebración que gana hoy, y
+ *  el azul si es de la Virgen. */
 function colorDeHoy() {
   const val = E.cal && entradasDe(hoyISO());
   const cels = val ? celebracionesDe(val) : [];
@@ -10210,10 +10214,11 @@ function vigilaActualizaciones() {
  * de Capgo, al que se le habla por el puente de Capacitor. Se pregunta lo
  * mismo que en la web —al arrancar y al volver a primer plano—, pero a
  * paquete.json, que GitHub Actions deja en GitHub Pages con la huella de
- * todo app/. Si no es la de aquí, se baja el paquete entero (unos 16 MB) en
- * segundo plano, y la versión nueva se estrena la próxima vez que la app
- * arranque o vuelva tras un rato fuera: nunca a media lectura, ni con la voz
- * sonando. Lo bajado y sin estrenar se estrena también sin red.
+ * todo app/ y la de cada fichero. Si no es la de aquí, se baja en segundo
+ * plano lo que haya cambiado —no el paquete entero, que son 15 MB y con
+ * datos no acababa nunca—, y la versión nueva se estrena la próxima vez que
+ * la app arranque o vuelva tras un rato fuera: nunca a media lectura, ni con
+ * la voz sonando. Lo bajado y sin estrenar se estrena también sin red.
  *
  * Si la versión nueva no llega a decir que arranca (notifyAppReady), el
  * actualizador vuelve solo a la anterior; aquí se apunta, para no bajarla
@@ -10393,6 +10398,8 @@ async function bajaLoPublicado() {
   for (const x of bundles || []) {
     if (x.id === 'builtin' || x.version === P.propia) continue;
     // una que se quedó bajando en otra sesión no va a acabar: fuera también
+    // (los ficheros que ya bajó se quedan en la caché del actualizador, y la
+    // vez siguiente no se vuelven a pedir)
     const sirve = x.version === pub.version
       && (x.status === 'pending' || x.status === 'success');
     if (sirve) hay = true;
@@ -10402,17 +10409,58 @@ async function bajaLoPublicado() {
     return;
   }
   P.bajando = true;
+  const como = comoBajarlo(pub);
   try {
-    await actualizador('download', {
+    await actualizador('download', Object.assign({
       url: new URL(pub.zip, WEB_PUBLICADA).href,
-      version: pub.version,
-      checksum: pub.sha256
-    });
+      version: pub.version
+    }, como));
+    try { localStorage.removeItem('apkFallosLista'); } catch (_) { /* */ }
   } catch (err) {
     console.warn('no se ha podido bajar la versión nueva:', err);
+    if (como.manifest) {
+      try {
+        localStorage.setItem('apkFallosLista', JSON.stringify({
+          v: pub.version, n: fallosDeLaLista(pub.version) + 1 }));
+      } catch (_) { /* sin almacén: se sigue probando con la lista */ }
+    }
   } finally {
     P.bajando = false;
   }
+}
+
+/* Con la lista de ficheros de paquete.json (apk/paquete.sh), el actualizador
+ * arma la versión nueva fichero a fichero: lo que ya tiene con esa huella
+ * —lo que trae el APK, lo bajado otras veces— lo copia, y baja lo demás,
+ * los grandes en brotli. Un paquete.json sin lista, de antes, da el zip.
+ *
+ * Y si la lista falla tres veces seguidas con la misma versión, ésa va por
+ * el zip: un corte de la red se arregla solo al reintentar, porque lo bajado
+ * se queda, y un fallo de la lista no, y no puede dejar la app sin ponerse
+ * al día, ni siquiera con el arreglo. */
+const FALLOS_LISTA = 3;
+
+function fallosDeLaLista(version) {
+  try {
+    const f = JSON.parse(localStorage.getItem('apkFallosLista') || 'null');
+    return f && f.v === version ? f.n : 0;
+  } catch (_) {
+    return 0;
+  }
+}
+
+function comoBajarlo(pub) {
+  if (!Array.isArray(pub.ficheros) || !pub.ficheros.length
+      || fallosDeLaLista(pub.version) >= FALLOS_LISTA) {
+    return { checksum: pub.sha256 };
+  }
+  return {
+    manifest: pub.ficheros.map((x) => ({
+      file_name: x.file_name,
+      file_hash: x.file_hash,
+      download_url: new URL(x.download_url, WEB_PUBLICADA).href
+    }))
+  };
 }
 
 /* Los iconos de la barra de arriba —la hora, la batería— los pinta Android,
