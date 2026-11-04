@@ -1,0 +1,27 @@
+{
+ "id": "e_20261104_3d3c6a",
+ "fecha": "2026-11-04",
+ "creada": "2026-11-04T12:44:08",
+ "cambio": "regocijaría. Con → regocijaría con",
+ "cambios": [
+  {
+   "antes": "me sentiría feliz y me regocijaría. Con todos ustedes. Y",
+   "despues": "me sentiría feliz y me regocijaría con todos ustedes. Y",
+   "sitios": [
+    {
+     "f": "lecturas_es.json",
+     "r": [
+      "bloques",
+      "IV|4387PTOX31.html|0",
+      0,
+      "g",
+      0,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
