@@ -36,6 +36,9 @@ const FICHEROS = [
   // el recorrido: lo carga index.html, así que sin él no abre sin red
   'recorrido.css',
   'recorrido.js',
+  // el Oficio Parvo de la Virgen, en el devocionario: lo carga index.html
+  'parvo.css',
+  'parvo.js',
   'datos/indice.json',
   'datos/calendario.json',
   'datos/lecturas_clementina.json'
@@ -68,6 +71,8 @@ const DESPUES = [
   // el devocionario: 1 MB de oraciones que no hacen falta para abrir la app
   // ni para rezar la misa ni las horas, y que la vista pide cuando se entra
   'datos/devocionario.json',
+  // el Oficio Parvo: 480 kB con sus 150 páginas, que se piden al abrirlo
+  'datos/parvo.json',
   // el corrector de erratas: sólo lo carga el teléfono de quien edita el
   // libro (con su llave), y ha de funcionarle también sin red
   'erratas.js',

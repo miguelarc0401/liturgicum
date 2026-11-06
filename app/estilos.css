@@ -2598,6 +2598,75 @@ select.elige {
   margin: -.3rem 0 .7rem; font-style: italic; text-align: center;
   font-size: .9em; color: var(--tinta-suave);
 }
+/* La oracion compuesta como un misal (app.js, devoCompone): capitular roja
+   y versalitas al empezar, las siglas de imprenta en rojo, el salmo partido
+   en su asterisco con el numero al margen, y los rotulos centrados entre
+   filetes. El unico adorno es el rojo de la rubrica, que es el del libro. */
+.devo .ordo-p .ln { text-wrap: pretty; }
+.devo .dv-sg { color: var(--rubrica); font-weight: 400; font-style: normal; }
+.devo .dv-ast { color: var(--rubrica); font-weight: 400; }
+.devo .dv-junto { white-space: nowrap; }
+.devo .dv-vs { font-variant-caps: small-caps; letter-spacing: .03em; }
+/* el «℣.» y su «℟.» son una sola cosa partida en dos: pegados */
+.devo .ordo-p .ln.sigla + .ln.sigla { margin-top: .04em; }
+.devo .ordo-p.dv-pegado { margin-top: -.6rem; }
+/* la respuesta de la letania, como la de las preces de la hora: debajo de
+   su invocacion, pegada a ella y entrada */
+.devo .ordo-p .ln.dv-resp { margin-top: .04em; padding-left: 1.6em; text-indent: 0; }
+/* La capitular, elevada: roja y mas grande, sube sobre su renglon y no baja
+   al segundo. Hundida se le metia encima al renglon de abajo, y en un
+   parrafo corto, al parrafo siguiente. */
+.devo .dv-cap::first-letter {
+  font-size: 1.9em; line-height: 1; color: var(--rubrica); font-weight: 400;
+  margin-right: .03em;
+}
+/* el verso del salmo: el numero colgado a la izquierda, y tres sangrias que
+   no se confunden: la primera mitad a ras, la segunda —la que va tras el
+   asterisco— algo entrada, y lo que no cabe en el renglon, mas adentro */
+.devo .dv-salmo { position: relative; padding-left: 1.6em; }
+.devo .dv-vnum {
+  position: absolute; left: 0; top: .28em; width: 1.3em; text-align: right;
+  font-family: var(--sans); font-size: .62em; font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+.devo .dv-salmo .ln { padding-left: 2.2em; text-indent: -2.2em; }
+.devo .dv-salmo .ln.dv-mitad { text-indent: -1.1em; }
+/* los rotulos: el titulo que la fuente pone dentro de la oracion, en tinta,
+   y el rotulo de la rubrica, en rojo; los dos entre filetes */
+.devo .dv-tit {
+  margin: 1.5rem 0 .8rem; font-size: 1.1rem; font-weight: 600;
+  font-variant-caps: all-small-caps; letter-spacing: .08em; color: var(--tinta);
+}
+.devo > div > .dv-tit:first-child { margin-top: .3rem; }
+.devo .dv-filete, .devo .dv-rot {
+  display: flex; align-items: center; gap: .7em; text-align: center;
+}
+.devo .dv-filete::before, .devo .dv-filete::after,
+.devo .dv-rot::before, .devo .dv-rot::after {
+  content: ""; flex: 1 1 1.5em; min-width: 1.5em; height: 1px;
+  background: var(--filete-fuerte);
+}
+.devo .dv-filete > span, .devo .dv-rot > span { text-wrap: balance; }
+.devo .dv-tit-sub {
+  display: block; margin-top: .3rem; text-align: center; text-wrap: balance;
+  font-variant-caps: normal; letter-spacing: 0; font-weight: 400;
+  font-style: italic; font-size: .88em; color: var(--tinta-suave);
+}
+.devo .dv-rot {
+  margin: 1.3rem 0 .8rem; color: var(--rubrica); font-style: normal;
+  font-variant-caps: all-small-caps; letter-spacing: .1em; font-size: 1.02rem;
+}
+/* Como el breviario (Ajustes › Devocionario): el titulo en rojo, a la
+   izquierda y sin filetes, como los titulillos de la hora, y el epigrafe
+   debajo de el, a la izquierda tambien */
+.devo .dv-brev .dv-tit {
+  margin: 1.2rem 0 .5rem; font-size: 1.02rem; font-weight: 400;
+  color: var(--rubrica);
+}
+.devo .dv-brev .dv-filete { display: block; text-align: left; }
+.devo .dv-brev .dv-filete::before, .devo .dv-brev .dv-filete::after { display: none; }
+.devo .dv-brev .dv-tit-sub { text-align: left; color: var(--tinta-suave); }
+.devo .dv-brev .devo-epi { margin-top: 0; text-align: left; }
 /* De donde sale: una ficha de biblioteca, plegada. El nombre de cada dato
    arriba en versalitas y el dato debajo; la traduccion aprobada lleva su
    sello en verde, y la que no lo es, el suyo en gris. */

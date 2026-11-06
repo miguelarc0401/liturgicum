@@ -44,7 +44,10 @@ const POR_OMISION = {
   vozPiper: 'es_MX-claude-high',
   // cómo se ve el índice del devocionario (Ajustes, «Devocionario»; lo
   // pintan devo-vistas.js y devo-vistas.css)
-  devoVista: 'sereno'
+  devoVista: 'sereno',
+  // y cómo se compone la oración: como un misal o como el breviario
+  // (`devoCompone`)
+  devoFormato: 'misal'
 };
 
 const E = {              // todo el estado de la app
@@ -3835,6 +3838,13 @@ const AJ_OPS = {
       + 'índice entero.'],
     ['clasica', 'La primera', 'El índice de los capítulos con su número, lo '
       + 'que es cada oración en rojo en su fila y los filtros a la vista.']
+  ],
+  devoFormato: [
+    ['misal', 'Misal', 'Capitular roja al empezar, ℣ y ℟ de imprenta y los '
+      + 'rótulos centrados entre filetes, como un libro de altar.'],
+    ['breviario', 'Breviario', 'La letra de la Liturgia de las Horas de la '
+      + 'app: «V.» y «R.» en rojo, sin capitular, y los títulos en rojo a la '
+      + 'izquierda.']
   ]
 };
 
@@ -3921,7 +3931,10 @@ function resumenAjustes(k) {
     c.memorias === 'feria' ? 'en las memorias, la feria'
       : 'en las memorias, el santo']);
   }
-  if (k === 'devocionario') return nombreOp('devoVista', c.devoVista);
+  if (k === 'devocionario') {
+    return junta([nombreOp('devoVista', c.devoVista),
+      'oración de ' + nombreOp('devoFormato', c.devoFormato).toLowerCase()]);
+  }
   if (k === 'abrir') {
     return { misa: 'Abre la misa de hoy',
       horas: 'Abre la hora que toca' }[c.inicio] || 'Pregunta qué libro abrir';
@@ -3956,7 +3969,7 @@ const AJ_SECCION = {
   lengua: ['fuente', 'latinBi', 'acentos', 'numeros'],
   misa: ['misaVer', 'misaSecs', 'ordinario'],
   horas: ['hLibre', 'hComun', 'carril', 'gestos', 'rezadas'],
-  devocionario: ['devoVista'],
+  devocionario: ['devoVista', 'devoFormato'],
   calendario: ['epifania', 'ascension', 'corpus', 'memorias'],
   abrir: ['inicio']
 };
@@ -4348,7 +4361,11 @@ function verAjustes() {
     seccion('devocionario', 'Devocionario', ICONO.devocionario, [
       tarjetas('devoVista', 'Cómo se ve',
         'La portada y los capítulos. Las oraciones se leen igual con '
-        + 'cualquiera, y las burbujas de la lengua van en todas.')
+        + 'cualquiera, y las burbujas de la lengua van en todas.'),
+      tarjetas('devoFormato', 'Cómo se compone la oración',
+        'Las dos ponen la respuesta de la letanía debajo de su invocación y '
+        + 'el salmo partido en su asterisco, y en las dos la voz calla las '
+        + 'siglas y los números.')
     ]),
     rotulo('El año y la app'),
     seccion('calendario', 'Calendario', ICONO_AJ.calendario, [
@@ -5285,19 +5302,229 @@ function devoLinea(ln, enLatin) {
   }).join('') + '</span>';
 }
 
-function devoLatin(p) {
-  return p.b.map((b) => {
-    const dentro = b.t.map((ln) => devoLinea(ln, true)).join('');
-    if (b.h === 1) return '<h3 class="devo-tit">' + dentro + '</h3>';
-    if (b.h === 2) return '<p class="devo-epi">' + dentro + '</p>';
-    return '<p class="ordo-p' + (b.r ? ' ordo-rub' : '') + '">'
-      + dentro + '</p>';
+/* ------------------------------------------ la oración, como en un misal
+ * La fuente no trae la composición marcada: la trae en la hechura del
+ * texto. La «V.» y la «R.» al principio del renglón, el número y el
+ * asterisco del verso del salmo, la palabra en mayúsculas con que el libro
+ * abre una oración —«DEUS, qui corda fidélium»—. Se lee de ahí y se compone
+ * como un misal:
+ *
+ *  · capitular roja y la primera palabra en versalitas al empezar;
+ *  · ℣ y ℟ de imprenta, en rojo;
+ *  · el salmo partido en su asterisco, con el número al margen;
+ *  · los rótulos —«Témpore Pascháli», «IV. Státio»— centrados entre
+ *    filetes;
+ *  · y la respuesta de la letanía como en el breviario: debajo de su
+ *    invocación, pegada a ella y entrada, que se vea de un vistazo qué dice
+ *    quien guía y qué responden todos.
+ *
+ * Lo que es marca y no palabra —la sigla, el número del verso, el
+ * asterisco— va como rúbrica, y así la voz lo calla, igual que en las
+ * horas: antes el devocionario decía «uve» y «erre» en cada versículo.
+ *
+ * La capitular va al principio de la oración, y además en la palabra en
+ * mayúsculas que abre una oración suelta —la colecta tras el «Orémus»—;
+ * pero no donde el libro abre así párrafo tras párrafo, como el Benedícite
+ * o las tres partes del Gloria, que una capitular en cada verso ya no
+ * marca nada. Es capitular elevada: sube sobre su renglón y no baja al
+ * segundo, que hundida se le metía encima. */
+const DV_SIG = /^\s*([VR])\.\s+/;
+const DV_NUM = /^\s*(\d{1,3})\s+(?=\S)/;
+const DV_VERSAL = /^([A-ZÁÉÍÓÚÆŒ]{2,})(?=[\s,.;:!?])/;
+const DV_ROMANO = /^[IVXLCDM]+$/;
+const DV_FIN_R = /\s+R\.\s*$/;
+const DV_R_DENTRO = /\sR\.\s(?=\S)/g;
+const DV_ELIPSIS = /,?\s*\.{3,}\s*$/;
+// el asterisco va pegado a la palabra de antes —que no empiece él solo un
+// renglón—, y detrás deja una marca por donde se parte el verso del salmo
+const DV_AST = /(\S+)\s\*\s/g;
+const DV_CORTE = '\u0001';
+
+/* Se compone de una de dos maneras, a elegir en Ajustes › Devocionario
+ * (`devoFormato`): como un misal, que es lo de arriba, o como el breviario,
+ * que es la letra de las horas de la app —«V.» y «R.» en rojo, sin
+ * capitular ni versalitas al empezar, los títulos en rojo a la izquierda y
+ * la rúbrica como rúbrica—. Lo demás es de las dos: la letanía, el salmo,
+ * el «℟.» pegado a su «℣.», lo que calla la voz. `devoCompone` dice cuál
+ * toca al empezar cada oración. */
+let dvMisal = true;
+
+/** La sigla, roja; el espacio de detrás no se parte, que la sigla no se
+ *  quede sola al final del renglón. */
+function dvSigla(v) {
+  const s = dvMisal ? (v === 'V' ? '℣.' : '℟.') : v + '.';
+  return '<b class="rub dv-sg">' + s + '</b>&nbsp;';
+}
+
+/** Las tiradas de un renglón, sin el renglón: para el título y el rótulo. */
+function dvTiradas(ln, enLatin) {
+  return ln.map((tr) => {
+    const t = esc(enLatin ? tx(tr[1]) : tr[1]);
+    if (tr[0] === 1) return '<i class="rub">' + t + '</i>';
+    if (tr[0] === 2) return '<i>' + t + '</i>';
+    return t;
   }).join('');
 }
 
-function devoCastellano(p) {
-  return (p.es || []).map((parr) => '<p class="ordo-p">'
-    + parr.map((ln) => devoLinea(ln, false)).join('') + '</p>').join('');
+/** Un renglón, leído: su sigla, el número de su verso, si acaba en la «R.»
+ *  del estribillo, y sus tiradas sin nada de eso. */
+function dvLee(ln, enLatin) {
+  const tr = ln.map((x) => [x[0], enLatin ? tx(x[1]) : x[1]]);
+  const o = { sig: '', num: '', tr: tr, finR: false, versal: '' };
+  if (tr.length && tr[0][0] === 0) {
+    let m = DV_SIG.exec(tr[0][1]);
+    if (m) { o.sig = m[1]; tr[0][1] = tr[0][1].slice(m[0].length); }
+    m = DV_NUM.exec(tr[0][1]);
+    if (m && /\s\*\s/.test(tr.map((x) => x[1]).join(''))) {
+      o.num = m[1];
+      tr[0][1] = tr[0][1].slice(m[0].length);
+    }
+    // la palabra en mayúsculas; un número romano —«II. Mystéria
+    // Luminósa»— no lo es
+    m = DV_VERSAL.exec(tr[0][1]);
+    if (m && !DV_ROMANO.test(m[1])) o.versal = m[1];
+  }
+  const u = tr[tr.length - 1];
+  if (u && u[0] === 0) {
+    if (DV_FIN_R.test(u[1])) {
+      o.finR = true;
+      u[1] = u[1].replace(DV_FIN_R, '');
+    }
+    u[1] = u[1].replace(DV_ELIPSIS, '…');
+  }
+  o.crudo = tr.map((x) => x[1]).join('');
+  return o;
+}
+
+/** El texto de un renglón leído: la rúbrica y la cursiva, el «R. Amen» que
+ *  viene seguido, el asterisco, y la palabra en mayúsculas en versalitas.
+ *  Con `primera`, la primera palabra va en versalitas aunque no venga en
+ *  mayúsculas: es la que abre la oración, la de la capitular. */
+function dvCuerpo(o, primera) {
+  return o.tr.map((x, i) => {
+    let t = esc(x[1]);
+    if (x[0] === 1) return '<i class="rub">' + t + '</i>';
+    if (x[0] === 2) return '<i>' + t + '</i>';
+    t = t.replace(DV_R_DENTRO, () => ' ' + dvSigla('R'))
+      .replace(DV_AST, '<span class="dv-junto">$1 <b class="rub dv-ast">*'
+        + '</b></span>' + DV_CORTE);
+    if (i === 0 && o.versal) {
+      t = '<span class="dv-vs">' + o.versal.charAt(0)
+        + o.versal.slice(1).toLowerCase() + '</span>'
+        + t.slice(o.versal.length);
+    } else if (i === 0 && primera) {
+      const w = /^[^\s,.;:!?&<]+/.exec(t);
+      if (w) t = '<span class="dv-vs">' + w[0] + '</span>' + t.slice(w[0].length);
+    }
+    return t;
+  }).join('');
+}
+
+/** La oración en una lengua, compuesta. El latín trae título, epígrafe y
+ *  rúbrica en bloques aparte; el castellano, párrafos y nada más. */
+function devoCompone(p, l) {
+  dvMisal = E.cfg.devoFormato !== 'breviario';
+  const la = l !== 'es';
+  const bs = la ? p.b.map((b) => ({ k: b.h === 1 ? 'tit' : b.h === 2 ? 'epi'
+    : b.r ? 'rub' : 'p', t: b.t }))
+    : (p.es || []).map((t) => ({ k: 'p', t: t }));
+  // los párrafos de texto, leídos de antemano: la capitular de la palabra
+  // en mayúsculas mira si el de antes y el de después abren igual
+  const leidos = bs.map((b) => (b.k === 'p' ? b.t.map((ln) => dvLee(ln, la))
+    : null));
+  const abreVersal = (j) => !!(leidos[j] && leidos[j][0]
+    && leidos[j][0].versal);
+  const vecino = (i, d) => {
+    for (let j = i + d; j >= 0 && j < bs.length; j += d) {
+      if (leidos[j]) return abreVersal(j);
+    }
+    return false;
+  };
+  let empezada = false;
+  // el «℣.» y su «℟.» vienen en párrafos aparte, y son una sola cosa
+  // partida en dos: el «℟.» que sigue a un «℣.» va pegado a él
+  let traeV = false;
+  const h = [];
+  bs.forEach((b, i) => {
+    const eraV = traeV;
+    traeV = false;
+    if (b.k === 'tit') {
+      // el título entre filetes; si trae un segundo renglón —el de la
+      // estación del vía crucis—, debajo y en letra de texto
+      const lns = b.t.map((ln) => dvTiradas(ln, la));
+      h.push('<h3 class="devo-tit dv-tit"><span class="dv-filete"><span>'
+        + lns[0] + '</span></span>' + lns.slice(1).map((x) =>
+          '<span class="dv-tit-sub">' + x + '</span>').join('') + '</h3>');
+      return;
+    }
+    if (b.k === 'epi') {
+      h.push('<p class="devo-epi">' + b.t.map((ln) => devoLinea(ln, la))
+        .join('') + '</p>');
+      return;
+    }
+    if (b.k === 'rub') {
+      // el rótulo corto —«Per annum», «Ad grana majóra»— entre filetes; la
+      // rúbrica que da una indicación —«hic moráre ad…», «A Septuagésima
+      // usque ad Pascha…»— se queda como estaba, que no es un rótulo. En el
+      // breviario, todas como rúbrica
+      const txt = b.t.map((ln) => ln.map((x) => x[1]).join('')).join(' ')
+        .replace(/:\s*$/, '').trim();
+      if (dvMisal && txt.length <= 40 && /^\p{Lu}/u.test(txt)) {
+        h.push('<p class="ordo-rub dv-rot"><span>' + esc(la ? tx(txt) : txt)
+          + '</span></p>');
+      } else {
+        h.push('<p class="ordo-p ordo-rub">' + b.t.map((ln) =>
+          devoLinea(ln, la)).join('') + '</p>');
+      }
+      return;
+    }
+    const os = leidos[i];
+    if (!os.length) return;
+    const primero = !empezada;
+    empezada = true;
+    // la capitular y la primera palabra en versalitas son del misal
+    const vs = dvMisal && primero && !os[0].sig;
+    const cap = dvMisal && !os[0].sig && (primero
+      || (abreVersal(i) && !vecino(i, -1) && !vecino(i, 1)));
+
+    // la letanía, como en el breviario: la respuesta debajo de su
+    // invocación, pegada a ella y entrada
+    if (os.length === 2 && !os[0].sig && os[1].sig === 'R') {
+      h.push('<p class="ordo-p"><span class="ln' + (cap ? ' dv-cap' : '')
+        + '">' + dvCuerpo(os[0], vs).split(DV_CORTE).join(' ')
+        + '</span><span class="ln dv-resp">' + dvSigla('R')
+        + dvCuerpo(os[1], false).split(DV_CORTE).join(' ') + '</span></p>');
+      return;
+    }
+
+    // el verso del salmo: el número al margen y partido en su asterisco
+    if (os.length === 1 && /\s\*\s/.test(os[0].crudo)) {
+      const o = os[0];
+      const partes = dvCuerpo(o, vs).split(DV_CORTE);
+      h.push('<p class="ordo-p dv-salmo">'
+        + (o.num ? '<span class="rub dv-vnum">' + o.num + '</span>' : '')
+        + partes.map((t, k) => '<span class="ln'
+          + (k ? ' dv-mitad' : cap ? ' dv-cap' : '')
+          + '">' + (k === 0 && o.sig ? dvSigla(o.sig) : '') + t
+          + (k === partes.length - 1 && o.finR ? ' ' + dvSigla('R') : '')
+          + '</span>').join('') + '</p>');
+      return;
+    }
+
+    // lo demás, renglón a renglón, colgado de su sigla
+    const solo = os.length === 1 ? os[0].sig : '';
+    traeV = solo === 'V';
+    const lns = os.map((o, k) => {
+      let t = dvCuerpo(o, k === 0 && vs).split(DV_CORTE).join(' ');
+      if (o.finR) t += ' ' + dvSigla('R').replace('&nbsp;', '');
+      if (o.sig) t = dvSigla(o.sig) + t;
+      return '<span class="ln' + (k === 0 && cap ? ' dv-cap' : '')
+        + (o.sig ? ' sigla' : '') + '">' + t + '</span>';
+    });
+    h.push('<p class="ordo-p' + (eraV && solo === 'R' ? ' dv-pegado' : '')
+      + '">' + lns.join('') + '</p>');
+  });
+  return h.join('');
 }
 
 /** Qué es cada forma, en un renglón. La página de las formas lo pone junto
@@ -5734,8 +5961,9 @@ function pintaOracion(id) {
 
 /** El texto de la oración en una lengua. */
 function devoTexto(p, l) {
-  return l === 'es' ? '<div lang="es">' + devoCastellano(p) + '</div>'
-    : '<div lang="la">' + devoLatin(p) + '</div>';
+  const h = devoCompone(p, l);
+  return '<div lang="' + (l === 'es' ? 'es' : 'la') + '" class="'
+    + (dvMisal ? 'dv-misal' : 'dv-brev') + '">' + h + '</div>';
 }
 
 /** Arriba, el nombre en la lengua en que se lee, y debajo el de la otra. */

@@ -1,0 +1,46 @@
+# El Oficio Parvo — informe de la extracción
+
+epub: Oficio_Parvo_BVM_1954_latin_espanol.epub
+páginas: 150
+versos distintos: 605
+rúbricas distintas: 134
+parvo.json: 480418 bytes
+
+## Lo raro (debe estar vacío salvo lo explicado)
+
+## Etiquetas de papel por manera
+  2569  dos A
+   451  dos Ambos
+  2215  dos B
+   615  grupo C
+   667  grupo H
+  1131  grupo I
+  1231  grupo II
+   186  grupo L
+  1405  grupo Todos
+
+## Secciones
+   150  comienzo     Comienzo
+   150  himno        Himno
+   135  final        Final (recuadro)
+   115  antifona     Antífona final de la Virgen (recuadro)
+   105  salmodia     Salmodia
+   105  capitula     Capítula
+   105  oracion      Oración
+   105  conclusion   Conclusión
+    45  invitatorio  Invitatorio
+    45  leccion1     Lección I
+    45  leccion2     Lección II
+    45  leccion3     Lección III
+    45  oracion      Oración (recuadro)
+    45  conclusion   Conclusión (recuadro)
+    30  conm         Conmemoración de los Santos
+    27  tedeum       Te Deum
+    15  salmodia     Salmodia — Nocturno I
+    15  salmodia     Salmodia — Nocturno II
+    15  salmodia     Salmodia — Nocturno III
+    15  cantico      Benedictus
+    15  cantico      Magníficat
+    15  cantico      Nunc dimíttis
+    15  antifona     Antífona final de la Virgen
+    15  terminar     Al terminar

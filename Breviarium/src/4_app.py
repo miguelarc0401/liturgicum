@@ -1282,7 +1282,7 @@ def refresca_version():
         open(os.path.join(raiz_app, f), 'rb').read()
         for f in ('index.html', 'app.js', 'piper.js', 'estilos.css',
                   'devo-vistas.js', 'devo-vistas.css', 'recorrido.js',
-                  'recorrido.css', 'erratas.js',
+                  'recorrido.css', 'parvo.js', 'parvo.css', 'erratas.js',
                   'erratas.css', 'manifest.webmanifest')
         if os.path.exists(os.path.join(raiz_app, f)))) & 0xffffffff
     with open(ruta, 'w', encoding='utf-8') as f:

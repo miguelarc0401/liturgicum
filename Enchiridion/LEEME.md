@@ -342,6 +342,32 @@ página para agregar. Las quitadas se guardan aparte, en
 
 Lo que se cambia lo ven todos al publicar con `.\publicar.ps1`.
 
+### 6. El Oficio Parvo de la Virgen
+
+No sale del sitio sino de un libro aparte, que trajo el usuario el
+2026-11-06: `Oficio_Parvo_BVM_1954_latin_espanol.epub`, en esta carpeta. El
+latín es el de Divinum Officium («Divino Afflatu – 1954», licencia MIT) y la
+traducción castellana y las rúbricas son de esa edición, verso a verso.
+
+El libro **ya viene compuesto**: cada hora está escrita entera para cada uno
+de sus cinco tiempos (durante el año, Adviento, Navidad, Septuagésima,
+Pascua) y para cada manera de rezarla (a solas, entre dos, en comunidad), y
+Maitines va tres veces, una por nocturno: 150 páginas. `parvo.py` no
+recompone nada; pasa las 150 a `app/datos/parvo.json` sin repetir texto
+—cada verso distinto se guarda una vez, y son 605—, y marca lo que la app
+tiene que reconocer: el nombre corto de cada sección, cuál de las cuatro
+antífonas finales es cada una, el «Allelúja» y el «Laus tibi», y las tres
+rúbricas «si…» que la app resuelve. Si el libro cambia y alguna ya no está,
+falla aquí. El informe va en `datos/parvo_qa.txt`.
+
+Lo que se elige por la fecha y la hora lo hace `app/parvo.js`, que lo
+explica en su cabecera: el tiempo (las Vísperas son las que lo cambian), el
+nocturno por el día de la semana, la antífona final por su propio
+calendario, la Septuagésima que empieza antes del 2 de febrero y la
+Anunciación, trasladada cuando cae en Semana Santa, en la octava de Pascua
+o en domingo. En el devocionario entra como una pieza más («A la Virgen y a
+los santos», entre los oficios parvos) y con su puerta en la portada.
+
 ---
 
 ## Los derechos
@@ -380,6 +406,7 @@ python Enchiridion/src/4c_formas.py        # qué es cada pieza
 python Enchiridion/src/4d_himnario.py      # la hora de cada himno
 python Enchiridion/src/5_app.py            # app/datos/devocionario.json
 python Enchiridion/src/editar.py           # quitar y agregar, en la app
+python Enchiridion/src/parvo.py            # app/datos/parvo.json, del epub
 ```
 
 La 3a necesita `cache/acentos/`, que baja `python src/13a_crawl_acentos.py`.

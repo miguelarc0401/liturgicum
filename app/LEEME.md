@@ -163,6 +163,20 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   Abierta una oración se lee en una lengua cada vez, y la que está en las
   dos lleva encima del texto **dos cuadritos, «Latín» y «Español»**, para
   pasar a la otra sin salir de ella. La burbuja se recuerda en el teléfono.
+  **Compuesta como un libro de rezo.** La fuente no marca la composición:
+  la trae en la hechura del texto —la «V.» y la «R.» al principio del
+  renglón, el número y el asterisco del verso del salmo, la palabra en
+  mayúsculas con que abre una oración—, y `devoCompone` la lee de ahí. En
+  las dos maneras que se eligen en Ajustes › Devocionario la respuesta de
+  la letanía va debajo de su invocación, entrada; el «℟.» va pegado a su
+  «℣.»; el salmo se parte en su asterisco con el número al margen; y la
+  sigla, el número y el asterisco son rúbrica, que la voz calla. **Misal**,
+  la de fábrica, pone además capitular roja elevada —sube sobre su renglón
+  y no baja al segundo— con la primera palabra en versalitas, ℣ y ℟ de
+  imprenta y los rótulos centrados entre filetes; **Breviario** es la letra
+  de las horas: «V.» y «R.» en rojo, sin capitular, y los títulos en rojo a
+  la izquierda. La capitular no se repite donde el libro abre en
+  mayúsculas párrafo tras párrafo, como el Benedícite o el Gloria.
   **Y el libro lo decide su editor.** Qué oraciones se quedan y cuáles se
   agregan no se decide en el teléfono de cada uno, sino en
   `Enchiridion/datos/seleccion.json`, para todos. Se edita desde la propia
@@ -420,7 +434,10 @@ corrige un versículo en el corpus, se regenera y la app lo trae.
   rúbrica se calla porque es una indicación y no una oración, y eso basta
   para callar con ella las siglas de los versículos, los rótulos de las
   antífonas y los títulos de los salmos: van todos marcados como rúbrica en
-  la fuente (medido: 20 242 veces la sigla «V.» o «R.», ni una suelta). Lo
+  la fuente (medido: 20 242 veces la sigla «V.» o «R.», ni una suelta). En
+  el devocionario la fuente no las marca —son 1 307 renglones que empiezan
+  por «V.» o «R.» en letra llana— y las marca la app al componer la
+  oración. Lo
   poco que queda se allana —las comillas angulares, los corchetes del
   editor, la raya con que los tomos abren la respuesta de las preces— y la
   «N.» del hueco del nombre («Protege al papa N.») se quita, que dicha sale

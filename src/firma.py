@@ -24,7 +24,7 @@ DATOS = os.path.join(APP, 'datos')
 # que ha cambiado nada.
 CODIGO_APP = ['index.html', 'app.js', 'piper.js', 'estilos.css',
               'devo-vistas.js', 'devo-vistas.css', 'recorrido.js',
-              'recorrido.css', 'erratas.js',
+              'recorrido.css', 'parvo.js', 'parvo.css', 'erratas.js',
               'erratas.css', 'manifest.webmanifest',
               'icono.svg', 'icono-32.png', 'icono-180.png', 'icono-192.png',
               'icono-512.png', 'icono-maskable-512.png']

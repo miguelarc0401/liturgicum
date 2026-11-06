@@ -1,0 +1,124 @@
+/* El Oficio Parvo de la Virgen (parvo.js). Se maqueta con las piezas de la
+   hora —.hora-sec, .sec-cab, .rotulo, .estrofa-h, .ln—, así que se lee como
+   las Horas, se pliega la cabecera, y el carril y la voz lo recorren igual.
+   Aquí va sólo lo que el libro trae y las Horas no: la etiqueta de quién
+   dice cada cosa, lo que se dice en secreto, el latín con su castellano
+   debajo, y el recuadro de lo que se dice sólo en un caso. */
+
+/* volver al devocionario: la hora no tiene otra puerta de salida, que el
+   botón de abajo, estando dentro, lleva a Ajustes */
+.pv-atras {
+  display: inline-flex; align-items: center; gap: .2rem;
+  margin: 0 0 .7rem -.2rem; padding: .2rem .2rem;
+  font-family: var(--sans); font-size: .78rem; letter-spacing: .02em;
+  color: var(--tinta-suave); text-decoration: none;
+}
+.pv-atras svg { width: 1rem; height: 1rem; }
+
+/* la lengua y la manera: dos píldoras como las de los selectores de la
+   hora, en su renglón cada una si no caben juntas */
+.pv-ajustes {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: .55rem .7rem; margin: 0 0 1.1rem;
+}
+.pv-ajustes .alterna { max-width: 100%; margin: 0; }
+.pv-ajustes .alterna button { padding: .32rem .75rem; }
+
+/* la leyenda de quién es quién, entre dos y en comunidad */
+.pv-leg {
+  margin: -.35rem 0 1rem; text-align: center; line-height: 2;
+  font-family: var(--sans); font-size: .72rem; color: var(--tinta-suave);
+}
+.pv-leg .rub { color: var(--rubrica); }
+
+/* La etiqueta de quién dice cada cosa: A y B entre dos; el Hebdomadario,
+   el Cantor, los dos coros, el Lector y Todos en comunidad. Pequeña y
+   recuadrada, como en el libro, y del color del día. La voz no la dice:
+   es rúbrica. */
+.hora-sec .rub.pv-rol, .pv-leg .rub.pv-rol, .pv-guia-p .rub.pv-rol {
+  display: inline-block; min-width: 1.35em; margin-right: .4em;
+  padding: .02em .28em; text-align: center; text-indent: 0;
+  font-family: var(--sans); font-size: .62em; font-weight: 700;
+  font-style: normal; letter-spacing: .03em; line-height: 1.3;
+  vertical-align: .14em; border: 1px solid currentColor; border-radius: 3px;
+  color: var(--acento);
+}
+/* en la leyenda, cada etiqueta con su nombre y aire antes de la siguiente;
+   dentro de una rúbrica, como una palabra más */
+.pv-leg .rub.pv-rol { margin: 0 .25em 0 .7em; }
+.pv-leg .rub.pv-rol:first-child { margin-left: 0; }
+.pv-r .rub.pv-rol, .pv-guia-p .rub.pv-rol { margin: 0 .05em; }
+
+/* Los versos del oficio son párrafos cortos —un verso del salmo, un
+   versículo y su respuesta—: entre ellos, un respiro y no el renglón en
+   blanco que separa las estrofas de las Horas. */
+.pv-sec .estrofa-h { margin-bottom: .75rem; }
+.pv-sec .estrofa-h .ln + .ln { margin-top: .3em; }
+.pv-sec .estrofa-h .ln.sigla + .ln.sigla { margin-top: .06em; }
+/* la estrofa del himno va de un tirón, renglón a renglón */
+.pv-sec .estrofa-h.pv-estrofa .ln + .ln { margin-top: 0; }
+/* en los versos, lo que es prosa —la oración, el Padrenuestro— va como
+   prosa: sin colgar del primer renglón */
+.en-verso .ln.pv-prosa {
+  padding-left: 0; text-indent: 0; text-wrap: pretty;
+  text-align: var(--alinea, left);
+}
+/* las cruces del verso, la del medio y la de la pausa breve, y la señal de
+   la cruz: del color de la rúbrica, como en el libro */
+.hora-sec .rub.pv-ast { font-weight: 600; }
+.hora-sec .rub.pv-cz { font-size: .9em; }
+
+/* lo que se dice en secreto: más pequeño y apagado */
+.pv-sec .pv-secreto { font-size: .9em; color: var(--tinta-suave); }
+
+/* los títulos de dentro: el salmo, el responsorio, cada antífona final */
+.pv-sec .pv-t { margin: 1.1rem 0 .45rem; }
+.pv-sec .pv-t .pv-lt { font-size: .86em; }
+.rotulo .pv-lt { font-style: italic; font-weight: 400; }
+
+/* la rúbrica, en su párrafo: algo menor que el texto que se reza */
+.pv-sec .pv-r .ln { font-size: .88em; line-height: 1.45; }
+.pv-sec .pv-r { margin-bottom: .55rem; }
+/* la cita de la capítula y de la lección */
+.pv-sec .pv-c { margin-bottom: .35rem; }
+.pv-sec .pv-c .ln { font-size: .82em; font-style: italic; text-align: right; }
+
+/* Lo que se dice sólo en un caso —«si aquí se termina el rezo»—, en su
+   recuadro, como en el libro: un filete a la izquierda. */
+.hora-sec.pv-cond {
+  border-left: 2px solid var(--filete-fuerte); padding-left: .85rem;
+}
+
+/* Los dos: el latín y debajo su castellano, verso a verso, en cursiva y
+   entrado, como el libro. La raya del bilingüe de la misa, fuera. */
+.pv-sec .estrofa-h.bi-la {
+  margin-bottom: .12rem; padding: 0; border: 0;
+}
+.pv-sec .estrofa-h.pv-es {
+  margin: 0 0 .8rem 1.1em; font-style: italic; font-size: .94em;
+  color: var(--tinta-suave);
+}
+.pv-sec .estrofa-h.pv-es .rub { font-style: normal; }
+
+/* la tira de las ocho horas: ocho caben de una vez si las otras siete van
+   en tres letras y algo más justas */
+.chips.finos button[data-pv-hora] { padding: .25rem .38rem; position: relative; }
+.chips.finos button[data-pv-hora].sel { padding: .25rem .62rem; }
+
+/* al pie de la hora: la guía y las oraciones antes y después */
+.pv-pie {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.2rem;
+  margin: 2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--filete);
+  font-family: var(--sans); font-size: .76rem;
+}
+.pv-pie a { color: var(--acento); text-decoration: none; }
+
+/* la guía */
+.pv-hoy {
+  margin: .9rem 0 1.2rem; padding: .7rem .9rem;
+  font-family: var(--sans); font-size: .8rem; line-height: 1.55;
+  background: var(--papel-alto); border: 1px solid var(--filete);
+  border-left: 4px solid var(--acento); border-radius: 10px;
+}
+.pv-guia-p { margin: 0 0 .6rem; line-height: 1.55; text-wrap: pretty; }
+.pv-guia-p .rub { color: var(--rubrica); }

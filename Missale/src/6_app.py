@@ -96,7 +96,7 @@ import erratas  # noqa: E402
 APP = os.path.join(RAIZ, 'app', 'datos')
 CODIGO_APP = ['index.html', 'app.js', 'piper.js', 'estilos.css',
               'devo-vistas.js', 'devo-vistas.css', 'recorrido.js',
-              'recorrido.css', 'erratas.js',
+              'recorrido.css', 'parvo.js', 'parvo.css', 'erratas.js',
               'erratas.css', 'manifest.webmanifest']
 QA = os.path.join(DATOS, 'app_qa.txt')
 
