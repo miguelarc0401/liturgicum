@@ -1,0 +1,26 @@
+{
+ "id": "e_20261106_7e6261",
+ "fecha": "2026-11-06",
+ "creada": "2026-11-06T17:27:40",
+ "cambio": "lleguamos → llegamos",
+ "cambios": [
+  {
+   "antes": "; así todos nosotros lleguamos a ser uno en Cristo,",
+   "despues": "; así todos nosotros llegamos a ser uno en Cristo,",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/31/5/oficio/lectura2",
+      "l",
+      8,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
