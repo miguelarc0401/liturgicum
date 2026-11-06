@@ -595,6 +595,10 @@ service worker la usa como nombre de su caché, así que al cambiar los datos
 tira la caché vieja sola: no hay que desinstalar nada en el teléfono. Y
 `app.js` pregunta si hay versión nueva al arrancar, al volver la app a primer
 plano y al recuperar la conexión, de modo que el teléfono se pone al día solo.
+La recarga que eso trae vuelve a la misma pantalla y al mismo renglón
+(`guardaSitio`), y espera si la voz está sonando o se está escribiendo. Y si
+la app se queda atrás de un día para otro, al volver tras más de una hora
+fuera lo que se leía de hoy pasa al día nuevo (`pasaAlDiaNuevo`).
 
 ## ¿Y un `.apk` de verdad?
 

@@ -32,9 +32,13 @@ publicación de las de cada día es `app.js` y poco más, unos 150 KB; si
 cambia `horas.json`, 1,7 MB, porque los ficheros grandes van también en
 brotli (`.br`), que el actualizador descomprime y comprueba contra la huella
 del fichero entero. Si la descarga se corta, lo bajado se queda, y la vez
-siguiente sigue por donde iba. La versión nueva se estrena la próxima vez que
-la app arranca o vuelve tras más de un minuto fuera —nunca a media lectura,
-ni con la voz sonando—. Si la versión nueva no llegara a arrancar, el
+siguiente sigue por donde iba. La versión nueva se estrena en cuanto acaba
+de bajarse, en esa misma vuelta: quien la tiene abierta en segundo plano y
+no la cierra nunca ve lo publicado la próxima vez que la mira. Estrenar
+recarga la app, pero vuelve a la misma pantalla y al mismo renglón. No se
+estrena con la voz sonando o en pausa, a media escritura ni con la app
+atrás —Android la congela, y el actualizador podría darla por rota—:
+entonces espera a la vuelta siguiente. Si la versión nueva no llegara a arrancar, el
 actualizador vuelve solo a la anterior, y esa no se vuelve a bajar hasta que
 se publique otra. Todo está en `app.js`, sección «dentro del APK».
 
@@ -153,4 +157,4 @@ desinstalar la app y volver a instalarla.
 Para probar que se baja y estrena una versión publicada, el workflow
 «Compilar el APK» tiene, a mano, la opción *probar_actualizacion*: compila
 el APK con una huella falsa y mira en el emulador que se baja la de Pages y
-que, al volver a abrir, la estrena. Ese APK no va a la release.
+la estrena. Ese APK no va a la release.

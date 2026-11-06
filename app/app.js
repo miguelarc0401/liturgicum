@@ -9972,6 +9972,8 @@ function rearmaVoz() {
 /* ------------------------------------------------------------------ rutas */
 function enruta() {
   guardaPosicion();
+  tomaSitioTrasRecargar();
+  E.hoyAlPintar = hoyISO();   // para ver, a la vuelta, si ha cambiado el día
   E.claveVista = null;        // la pone la vista nueva cuando acaba de pintarse
   const h = location.hash.slice(2);
   const p = h.split('/').map(decodeURIComponent);
@@ -10135,7 +10137,8 @@ async function arranca() {
   document.addEventListener('touchstart', alEmpezarGesto, { passive: true });
   document.addEventListener('touchend', alAcabarGesto, { passive: true });
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) return;
+    if (document.hidden) { alSalir(); return; }
+    pasaAlDiaNuevo();
     velaPantalla();
     miraSiLaHanCallado();
   });
@@ -10160,6 +10163,7 @@ async function arranca() {
     try { screen.orientation.unlock(); } catch (_) { /* no deja: paciencia */ }
   }
 
+  recuperaSitio();
   enruta();
 
   vigilaActualizaciones();
@@ -10198,14 +10202,95 @@ function vigilaActualizaciones() {
     navigator.storage.persist().catch(() => {});
   }
 
-  let recargando = false;
+  // con la voz diciendo o a media escritura, la recarga espera a la vuelta
+  // siguiente: el worker nuevo ya sirve, y lo de la página aguanta un rato
+  let recargando = false, pendiente = false;
+  const recarga = () => {
+    if (recargando) return;
+    if (!puedeRecargar()) { pendiente = true; return; }
+    recargando = true;
+    guardaSitio();
+    location.reload();
+  };
   navigator.serviceWorker.addEventListener('controllerchange', () => {
     // sólo cuando ya había uno: la primera instalación no necesita recargar
-    if (recargando || !E.controlada) return;
-    recargando = true;
-    location.reload();
+    if (E.controlada) recarga();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && pendiente) recarga();
   });
   E.controlada = !!navigator.serviceWorker.controller;
+}
+
+/* ----------------------------------------- al mismo sitio tras recargar
+ * Ponerse al día recarga la app —el actualizador en el APK, el worker nuevo
+ * en la web—, y recargar es empezar de cero: quien salía un momento de
+ * Laudes volvía a la portada. Así que antes se apunta la ruta y la altura,
+ * y al arrancar, si es de hace nada, se vuelve allí. En las horas, por la
+ * sección y no por la altura: lo publicado puede ser justo ese oficio
+ * corregido, y entonces la altura ya no es la misma. */
+const SITIO_VALE = 2 * 60 * 1000;
+
+function guardaSitio() {
+  try {
+    localStorage.setItem('sitioAlRecargar', JSON.stringify({
+      t: Date.now(), hash: location.hash, vista: E.vista, k: E.claveVista,
+      y: window.scrollY, donde: dondeIba() }));
+  } catch (_) { /* sin almacén: se vuelve al principio */ }
+}
+
+/** Al arrancar, antes de enruta(): pone la ruta apuntada, y deja en
+ *  E.sitioTrasRecargar la altura para que la tome la vista al pintarse. */
+function recuperaSitio() {
+  let s = null;
+  try {
+    s = JSON.parse(localStorage.getItem('sitioAlRecargar') || 'null');
+    localStorage.removeItem('sitioAlRecargar');
+  } catch (_) { return; }
+  if (!s || !(Date.now() - s.t < SITIO_VALE)) return;
+  if (s.hash !== location.hash) {
+    history.replaceState(null, '', location.pathname + location.search
+      + (s.hash || ''));
+  }
+  E.sitioTrasRecargar = s;
+}
+
+/** La llama enruta(), después de guardaPosicion(), que la habría pisado. */
+function tomaSitioTrasRecargar() {
+  const s = E.sitioTrasRecargar;
+  if (!s) return;
+  E.sitioTrasRecargar = null;
+  if (s.vista === 'horas') E.donde = s.donde;
+  else if (s.vista && s.k) E.pos[s.vista] = { k: s.k, y: s.y };
+}
+
+/* --------------------------------------------------------- el día nuevo
+ * «Hoy» se calcula al pintar, así que la app que se queda atrás de un día
+ * para otro enseñaba al volver el día de ayer. Si se ha estado fuera un
+ * rato largo y entretanto ha cambiado el día, lo que se leía de hoy pasa
+ * al día nuevo, como si se abriera de cero; lo de otra fecha, que se buscó
+ * a propósito, se queda. Un rato largo, porque las Completas se rezan a
+ * veces pasada la medianoche, y salir un momento a mirar un mensaje no
+ * puede cambiarlas por la hora del día siguiente. */
+const FUERA_PARA_DIA_NUEVO = 60 * 60 * 1000;
+
+function alSalir() { E.fueraDesde = Date.now(); }
+
+function pasaAlDiaNuevo() {
+  const antes = E.hoyAlPintar, hoy = hoyISO();
+  if (!antes || antes === hoy || !E.fueraDesde
+      || Date.now() - E.fueraDesde < FUERA_PARA_DIA_NUEVO
+      || V.estado !== 'parada') return;
+  const h = location.hash;
+  let nueva = null;
+  if (/^(#\/?(menu|misa)?)?$/.test(h)) nueva = h;      // ya son las de hoy
+  else if (h.startsWith('#/d/' + antes)) nueva = '#/d/' + hoy;
+  else if (h.startsWith('#/h/' + antes)) nueva = '#/h/' + hoy;
+  if (nueva === null) return;
+  if (nueva !== h) {
+    history.replaceState(null, '', location.pathname + location.search + nueva);
+  }
+  enruta();
 }
 
 /* --------------------------------------------------------- dentro del APK
@@ -10214,21 +10299,22 @@ function vigilaActualizaciones() {
  * de Capgo, al que se le habla por el puente de Capacitor. Se pregunta lo
  * mismo que en la web —al arrancar y al volver a primer plano—, pero a
  * paquete.json, que GitHub Actions deja en GitHub Pages con la huella de
- * todo app/ y la de cada fichero. Si no es la de aquí, se baja en segundo
- * plano lo que haya cambiado —no el paquete entero, que son 15 MB y con
- * datos no acababa nunca—, y la versión nueva se estrena la próxima vez que
- * la app arranque o vuelva tras un rato fuera: nunca a media lectura, ni con
- * la voz sonando. Lo bajado y sin estrenar se estrena también sin red.
+ * todo app/ y la de cada fichero. Si no es la de aquí, se baja lo que haya
+ * cambiado —no el paquete entero, que son 15 MB y con datos no acababa
+ * nunca— y se estrena en cuanto acaba, sin esperar a otra vuelta: quien
+ * corrige un oficio y lo publica quiere que los demás lo vean la próxima
+ * vez que miren la app, aunque no la cierren nunca. Estrenar recarga la
+ * app, pero vuelve al mismo sitio (guardaSitio). No se estrena con la voz
+ * sonando, a media escritura ni con la app atrás: entonces, a la vuelta
+ * siguiente. Sin red, lo bajado y sin estrenar se estrena igual.
  *
  * Si la versión nueva no llega a decir que arranca (notifyAppReady), el
  * actualizador vuelve solo a la anterior; aquí se apunta, para no bajarla
- * otra vez en cada arranque mientras no se publique otra.
+ * otra vez en cada arranque mientras no se publique otra. Por eso no se
+ * estrena con la app atrás: Android la congela, y el plazo del aviso podría
+ * vencer antes de que la página nueva llegue a correr.
  */
 const WEB_PUBLICADA = 'https://miguelarc0401.github.io/liturgicum/';
-
-/* Lo que tiene que estar fuera la app para que, a la vuelta, se estrene la
- * versión bajada: salir un momento a mirar un mensaje no recarga nada. */
-const FUERA_PARA_ESTRENAR = 60 * 1000;
 
 function enElApk() {
   return !!(window.Capacitor && window.Capacitor.isNativePlatform
@@ -10254,7 +10340,7 @@ async function vigilaElPaquete() {
   actualizador('notifyAppReady').catch(() => {});
 
   const P = E.paquete = { propia: null, fallidas: [], bajando: false,
-    mirando: null, fuera: 0 };
+    mirando: null, delante: true };
   try {
     P.propia = (await (await fetch('paquete-version.json')).json()).version;
   } catch (_) { /* compilado sin ella: cualquier publicada es nueva */ }
@@ -10266,22 +10352,62 @@ async function vigilaElPaquete() {
     localStorage.setItem('apkFallidas', JSON.stringify(P.fallidas.slice(-5)));
   } catch (_) { /* sin almacén: como mucho, se vuelve a intentar */ }
 
-  const mira = (puedeEstrenar) => {
+  const mira = () => {
     if (!P.mirando) {
-      P.mirando = (async () => {
-        if (puedeEstrenar) await estrenaLoBajado();
-        await bajaLoPublicado();
-      })().catch(() => {}).finally(() => { P.mirando = null; });
+      P.mirando = poneAlDia().catch(() => {})
+        .finally(() => { P.mirando = null; });
     }
   };
   window.Capacitor.addListener('App', 'appStateChange', (d) => {
     if (!d) return;
-    if (!d.isActive) { P.fuera = Date.now(); return; }
-    mira(P.fuera && Date.now() - P.fuera >= FUERA_PARA_ESTRENAR);
+    P.delante = !!d.isActive;
+    if (!d.isActive) { alSalir(); return; }
+    pasaAlDiaNuevo();
+    mira();
     miraElApkNuevo();
   });
-  mira(true);
+  mira();
   miraElApkNuevo();
+}
+
+/* Lo publicado, bajado si hace falta, y estrenado. Sin red, lo que ya
+ * estuviera bajado. */
+async function poneAlDia() {
+  const pub = await loPublicado();
+  if (pub) await bajaLoPublicado(pub);
+  await estrenaLoBajado(pub ? pub.version : null);
+}
+
+/** paquete.json de GitHub Pages, o null sin red. Con plazo: una red que no
+ *  contesta no puede dejar la app sin mirar las vueltas siguientes. */
+async function loPublicado() {
+  const corta = new AbortController();
+  const plazo = setTimeout(() => corta.abort(), 15000);
+  try {
+    const r = await fetch(WEB_PUBLICADA + 'paquete.json',
+      { cache: 'no-store', signal: corta.signal });
+    return r.ok ? await r.json() : null;
+  } catch (_) {
+    return null;
+  } finally {
+    clearTimeout(plazo);
+  }
+}
+
+/** Si se puede recargar la app ahora sin estropear nada: ni con la voz
+ *  diciendo o en pausa, ni a media escritura —buscando, corrigiendo una
+ *  errata—, ni en el recorrido, ni con la app atrás. */
+function puedeRecargar() {
+  if (V.estado !== 'parada' || document.hidden) return false;
+  if (E.paquete && !E.paquete.delante) return false;
+  const a = document.activeElement;
+  if (a && (a.isContentEditable || (a.matches && a.matches('textarea, '
+      + 'input:not([type]), input[type="text"], input[type="search"], '
+      + 'input[type="password"], input[type="url"], input[type="email"], '
+      + 'input[type="number"]')))) return false;
+  if (document.querySelector('.errata-fondo')) return false;
+  const rc = document.getElementById('recorrido');
+  return !(rc && !rc.hidden);
 }
 
 /* --------------------------------------------------------- el APK nuevo
@@ -10366,33 +10492,30 @@ function alTocarAvisoApk(ev) {
 }
 
 /* La versión ya bajada, si la hay, se pone ahora: recarga la app, y de
- * set() no se vuelve. */
-async function estrenaLoBajado() {
+ * set() no se vuelve. Con `version`, sólo ésa —la publicada—; sin ella
+ * —sin red—, la última que se bajó. */
+async function estrenaLoBajado(version) {
   const P = E.paquete;
-  if (V.estado !== 'parada') return;
+  if (!puedeRecargar()) return;
   const { bundles } = await actualizador('list');
   const b = (bundles || [])
     .filter((x) => x.id !== 'builtin'
       && (x.status === 'pending' || x.status === 'success')
-      && x.version !== P.propia && !P.fallidas.includes(x.version))
+      && x.version !== P.propia && !P.fallidas.includes(x.version)
+      && (!version || x.version === version))
     .sort((x, y) => (x.downloaded < y.downloaded ? 1 : -1))[0];
-  if (!b) return;
+  // mientras se pedía la lista ha podido arrancar la voz o irse la app
+  if (!b || !puedeRecargar()) return;
+  guardaSitio();
   try { localStorage.setItem('apkEstrenando', b.version); } catch (_) {}
   await actualizador('set', { id: b.id });
 }
 
-/* Pregunta por la versión publicada y, si es otra, la baja para la próxima
- * vez. Lo bajado que ya no es lo publicado se tira. */
-async function bajaLoPublicado() {
+/* Si la versión publicada es otra, la baja. Lo bajado que ya no es lo
+ * publicado se tira. */
+async function bajaLoPublicado(pub) {
   const P = E.paquete;
   if (P.bajando) return;
-  let pub;
-  try {
-    const r = await fetch(WEB_PUBLICADA + 'paquete.json', { cache: 'no-store' });
-    if (!r.ok) return;
-    pub = await r.json();
-  } catch (_) { return; }   // sin red: ya se mirará
-
   const { bundles } = await actualizador('list');
   let hay = false;
   for (const x of bundles || []) {
