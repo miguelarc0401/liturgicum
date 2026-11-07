@@ -205,7 +205,9 @@ function pvCfg() {
     m: PV_MODOS.some((x) => x[0] === c.m) ? c.m : 'solo',
     // las oraciones antes y después del oficio: plegadas, salvo que se
     // hayan abierto, y así se quedan
-    abre: c.abre && typeof c.abre === 'object' ? c.abre : {}
+    abre: c.abre && typeof c.abre === 'object' ? c.abre : {},
+    // el panel de lo que se elige, arriba de la hora: plegado de entrada
+    panel: !!c.panel
   };
   return E.parvoCfg;
 }
@@ -521,15 +523,46 @@ function pvPinta(ps, secs, lengua, sinRub) {
 }
 
 /** Las dos cosas que se eligen al empezar: la lengua y la manera. */
-function pvAjustes() {
+const PV_RUBRICAS = [['si', 'Con rúbricas'], ['no', 'Sólo el texto']];
+const PV_COLORES = [['azul', 'Azul'], ['neutro', 'El de Ajustes']];
+
+/** Lo que se elige al rezar: la lengua, la manera, las rúbricas y el color.
+ *  En la hora va plegado en un renglón que dice lo que está puesto —cuatro
+ *  tiras de botones arriba de cada hora eran más que lo que se reza—, y se
+ *  abre al tocarlo; abierto o plegado, así se queda. Las rúbricas y el color
+ *  son los mismos ajustes que en Ajustes → Devocionario. En la guía (`guia`)
+ *  sólo la lengua y la manera, abiertas: allí las rúbricas se enseñan
+ *  siempre. El color no sale si en «Aspecto» hay uno fijo para toda la
+ *  app, que entonces manda ése y el botón no haría nada. */
+function pvAjustes(guia) {
   const c = pvCfg();
   const grupo = (que, ops, sel, rot) => '<div class="alterna pv-elige" '
     + 'role="group" aria-label="' + rot + '">' + ops.map(([v, n]) =>
       '<button type="button" data-pv-' + que + '="' + v + '" aria-pressed="'
       + (v === sel) + '">' + n + '</button>').join('') + '</div>';
-  return '<div class="pv-ajustes">'
-    + grupo('lengua', PV_LENGUAS, c.l, 'La lengua')
-    + grupo('modo', PV_MODOS, c.m, 'Cómo se reza') + '</div>';
+  const grupos = [grupo('lengua', PV_LENGUAS, c.l, 'La lengua'),
+    grupo('modo', PV_MODOS, c.m, 'Cómo se reza')];
+  if (guia) return '<div class="pv-ajustes">' + grupos.join('') + '</div>';
+  const rub = pvSinRubricas() ? 'no' : 'si';
+  const conColor = E.cfg.color === 'dia';
+  grupos.push(grupo('rubricas', PV_RUBRICAS, rub, 'Las rúbricas'));
+  if (conColor) grupos.push(grupo('color', PV_COLORES, pvColor(), 'El color'));
+  const nombre = (ops, v) => (ops.find((x) => x[0] === v) || ['', ''])[1];
+  const resumen = [nombre(PV_LENGUAS, c.l), nombre(PV_MODOS, c.m),
+    nombre(PV_RUBRICAS, rub)].concat(conColor ? [nombre(PV_COLORES, pvColor())]
+    : []).join(' · ');
+  return '<div class="pv-panel"><button type="button" class="pliega menuda '
+    + 'pv-panel-cab" data-pv-panel aria-expanded="' + !!c.panel + '" '
+    + 'aria-controls="pv-panel-cuerpo" aria-label="Cómo se reza: ' + esc(resumen)
+    + '">' + esc(resumen) + '</button><div class="pv-ajustes" '
+    + 'id="pv-panel-cuerpo"' + (c.panel ? '' : ' hidden') + '>'
+    + grupos.join('') + '</div></div>';
+}
+
+/** El panel solo, sin repintar la hora: el color no mueve el texto. */
+function pvRepintaPanel() {
+  const p = vista.querySelector('.pv-panel');
+  if (p) p.outerHTML = pvAjustes();
 }
 
 function pvAtras(href, rot) {
@@ -619,7 +652,17 @@ function pvPintaHora() {
  *  queda donde estaba; si con otra manera ya no está, la sección. */
 function pvCambia(que, v) {
   const c = pvCfg();
-  if (c[que] === v) return;
+  // el color no toca el texto: se pone y se repinta el panel
+  if (que === 'c') {
+    if (pvColor() === v) return;
+    E.cfg.parvoColor = v;
+    guardaCfg();
+    ponColor(pvColor());
+    pvRepintaPanel();
+    return;
+  }
+  const antes = que === 'r' ? (pvSinRubricas() ? 'no' : 'si') : c[que];
+  if (antes === v) return;
   // el primer verso que asoma bajo la cabecera, y su sección
   const cab = $('#cabecera').getBoundingClientRect().bottom;
   const arriba = document.body.classList.contains('cab-fija') ? Math.max(0, cab) : 0;
@@ -631,13 +674,24 @@ function pvCambia(que, v) {
   const s = a && a.el.closest('.hora-sec');
   const nSec = s ? [...vista.querySelectorAll('.hora-sec')].indexOf(s) : -1;
   const clave = a ? String(a.el.dataset.pu).replace(/e$/, '') : null;
-  c[que] = v;
-  pvGuardaCfg();
+  if (que === 'r') {
+    // las rúbricas son un ajuste de la app (Ajustes → Devocionario), y con
+    // ellas cambia también el aviso del nocturno, arriba
+    E.cfg.parvoRubricas = v;
+    guardaCfg();
+    const nota = pvNota(E.parvo.c, E.parvo.iso);
+    $('#nota-dia').textContent = nota;
+    $('#nota-dia').style.display = nota ? '' : 'none';
+  } else {
+    c[que] = v;
+    pvGuardaCfg();
+  }
   if (que === 'm') E.parvo.c = pvCompone(v, E.parvo.iso, E.parvo.hora);
   pvPintaHora();
-  // con otra lengua los versos son los mismos y en el mismo sitio del libro;
-  // con otra manera, no (lleva más rúbricas), y se vuelve a la sección
-  const el = que === 'l' && clave != null
+  // con otra lengua, o con las rúbricas puestas o quitadas, los versos son
+  // los mismos y en el mismo sitio del libro; con otra manera, no (lleva
+  // más rúbricas), y se vuelve a la sección
+  const el = (que === 'l' || que === 'r') && clave != null
     ? vista.querySelector('[data-pu="' + clave + '"]') : null;
   if (el && a && window.scrollY > 0) {
     window.scrollTo(0, Math.max(0, Math.round(window.scrollY
@@ -696,7 +750,7 @@ async function pvGuia() {
     + 'Maitines y la antífona final de la Virgen, y hace lo que las rúbricas '
     + 'dejan dicho para la Septuagésima y la Anunciación.</p>'
     + '<p class="pv-hoy">Hoy: ' + hoy.join(' · ') + '.</p>'
-    + pvAjustes()
+    + pvAjustes(true)
     + parte('pv-calendario', P.guia.calendario)
     + partes
     + parte('pv-posturas', P.guia.posturas)
@@ -814,12 +868,27 @@ vista.addEventListener('click', (ev) => {
   rearmaVoz();
 });
 
+/* El renglón de lo elegido: abre o pliega el panel, y así se queda. */
 vista.addEventListener('click', (ev) => {
-  const b = ev.target.closest('[data-pv-lengua], [data-pv-modo]');
+  const b = ev.target.closest('[data-pv-panel]');
+  if (!b || !pvActiva()) return;
+  const c = pvCfg();
+  c.panel = !c.panel;
+  pvGuardaCfg();
+  const cuerpo = $('#pv-panel-cuerpo');
+  if (cuerpo) cuerpo.hidden = !c.panel;
+  b.setAttribute('aria-expanded', String(c.panel));
+});
+
+vista.addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-pv-lengua], [data-pv-modo], '
+    + '[data-pv-rubricas], [data-pv-color]');
   if (!b) return;
-  const que = b.dataset.pvLengua ? 'l' : 'm';
-  const v = b.dataset.pvLengua || b.dataset.pvModo;
+  const d = b.dataset;
+  const que = d.pvLengua ? 'l' : d.pvModo ? 'm' : d.pvRubricas ? 'r' : 'c';
+  const v = d.pvLengua || d.pvModo || d.pvRubricas || d.pvColor;
   if (pvActiva()) { pvCambia(que, v); return; }
+  if (que === 'r' || que === 'c') return;
   if (E.vista === 'devocionario' && location.hash.indexOf('#/oraciones/parvo/guia') === 0) {
     pvCfg()[que] = v;
     pvGuardaCfg();

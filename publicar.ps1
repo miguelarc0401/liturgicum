@@ -8,6 +8,7 @@
 #   3. vuelve a atribuir la misa al calendario (Missale/src/4_piezas.py y
 #      5_resolver.py) y la empaqueta                    (Missale/src/6_app.py)
 #   4. rehace la liturgia de las horas para la app  (Breviarium/src/4_app.py)
+#      y el Oficio Parvo de la Virgen, del epub     (Enchiridion/src/parvo.py)
 #   5. rehace los datos de la app y los firma                (15_app_data.py)
 #   6. los sube a GitHub, que republica GitHub Pages
 #   7. el telefono se entera solo: la app pregunta si hay version nueva al
@@ -73,6 +74,13 @@ if ($LASTEXITCODE -ne 0) { throw "Missale/src/6_app.py fallo" }
 Paso "Liturgia de las horas"
 python Breviarium/src/4_app.py
 if ($LASTEXITCODE -ne 0) { throw "Breviarium/src/4_app.py fallo" }
+
+# El Oficio Parvo sale del epub que hay en Enchiridion/: como lo de arriba,
+# se rehace aqui, que el paso 0 tira lo que app/datos/ tenga sin subir
+# (asi se perdio el 2026-11-06 un parvo.json rehecho a mano).
+Paso "Oficio Parvo de la Virgen"
+python Enchiridion/src/parvo.py
+if ($LASTEXITCODE -ne 0) { throw "parvo.py fallo" }
 
 Paso "Datos de la app"
 python src/15_app_data.py
