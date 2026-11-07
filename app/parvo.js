@@ -463,7 +463,8 @@ function pvPinta(ps, secs, lengua, sinRub) {
       return;
     }
     // sin rúbricas, sólo el texto: fuera la leyenda y los párrafos de
-    // rúbrica; las siglas, los títulos y quién dice qué se quedan
+    // rúbrica (las etiquetas de quién dice qué las esconde parvo.css); las
+    // siglas y los títulos se quedan
     if (sinRub && (p[0] === 'l' || p[0] === 'r')) return;
     if (p[0] === 'l') { antes.push('<p class="pv-leg">' + pvTexto(R[p[1]]) + '</p>'); return; }
     if (!sec) {

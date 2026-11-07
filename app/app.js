@@ -4399,7 +4399,8 @@ function verAjustes() {
       interruptor('parvoRubricas', 'Rúbricas en el Oficio Parvo',
         'Lo que el libro indica en rojo: de pie, de rodillas, en secreto, si '
         + 'sigue otra hora. Apagadas, queda sólo el texto que se reza, con sus '
-        + 'títulos, las siglas V. y R. y quién dice cada cosa. La guía las '
+        + 'títulos y las siglas V. y R., sin las etiquetas de quién dice cada '
+        + 'cosa. La guía las '
         + 'sigue explicando.')
     ]),
     rotulo('El año y la app'),

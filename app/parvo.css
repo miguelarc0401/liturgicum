@@ -107,6 +107,10 @@
 /* Sin rúbricas (Ajustes): sólo el texto. Los párrafos de rúbrica ni se
    pintan; lo de dentro del renglón se esconde aquí. */
 .pv-sin-rub .rub.pv-ri { display: none; }
+/* y las etiquetas de quién dice cada cosa (A, B, los coros), que también
+   las quiso fuera el usuario el 2026-11-06: quien ya se sabe el rezo sabe
+   cuándo le toca */
+.pv-sin-rub .rub.pv-rol { display: none; }
 /* la cita de la capítula y de la lección */
 .pv-sec .pv-c { margin-bottom: .35rem; }
 .pv-sec .pv-c .ln { font-size: .82em; font-style: italic; text-align: right; }
