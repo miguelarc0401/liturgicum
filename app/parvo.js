@@ -202,9 +202,39 @@ function pvCfg() {
   E.parvoCfg = {
     l: PV_LENGUAS.some((x) => x[0] === c.l) ? c.l
       : (E.devoLengua === 'es' ? 'es' : 'la'),
-    m: PV_MODOS.some((x) => x[0] === c.m) ? c.m : 'solo'
+    m: PV_MODOS.some((x) => x[0] === c.m) ? c.m : 'solo',
+    // las oraciones antes y después del oficio: plegadas, salvo que se
+    // hayan abierto, y así se quedan
+    abre: c.abre && typeof c.abre === 'object' ? c.abre : {}
   };
   return E.parvoCfg;
+}
+
+/** Sin las rúbricas ni las indicaciones, para quien ya sabe cómo se reza
+ *  (Ajustes, «Devocionario»). La guía las sigue enseñando: es para eso. */
+function pvSinRubricas() { return E.cfg.parvoRubricas === 'no'; }
+
+/** El color de sus horas: el azul de la Virgen o el de Ajustes y el
+ *  devocionario (Ajustes, «Devocionario»). Un color fijado para toda la
+ *  app sigue mandando: eso lo hace ponColor(). */
+function pvColor() {
+  return E.cfg.parvoColor === 'neutro' ? 'neutro' : 'azul';
+}
+
+/** Las oraciones antes y después del oficio, de la página del libro que
+ *  las trae, para ponerlas plegadas al principio y al final de cada hora.
+ *  Con su rúbrica delante —no son obligatorias, se dicen de rodillas—, y
+ *  en el rótulo su comienzo, que es como se las conoce. */
+function pvOraciones(k) {
+  const g = E.parvoDatos.guia.oraciones || [];
+  const i = g.findIndex((p) => p[0] === 'h' && p[4] === k);
+  if (i < 0) return [];
+  let j = i + 1;
+  while (j < g.length && g[j][0] !== 'h') j++;
+  const rub = g.find((p) => p[0] === 'r');
+  const h = g[i].slice();
+  h[2] = tx(k === 'antes' ? 'Aperi, Dómine' : 'Sacrosánctæ');
+  return [h].concat(rub ? [rub] : [], g.slice(i + 1, j));
 }
 
 function pvGuardaCfg() {
@@ -347,8 +377,9 @@ function pvNota(c, iso) {
   if (c.noct) {
     n.push('Nocturno ' + romano(c.noct) + ', el de los '
       + ['', 'domingos, lunes y jueves', 'martes y viernes',
-        'miércoles y sábados'][c.noct] + '. Si se rezan la tarde anterior, '
-      + 'son los del día siguiente: pasa al día con la flecha.');
+        'miércoles y sábados'][c.noct] + '.' + (pvSinRubricas() ? ''
+        : ' Si se rezan la tarde anterior, son los del día siguiente: pasa '
+          + 'al día con la flecha.'));
   }
   return n.join(' ');
 }
@@ -358,7 +389,11 @@ function pvNota(c, iso) {
 /** La marca de los datos, a HTML (ver parvo.py). */
 function pvTexto(t, latin) {
   let h = esc(latin ? tx(t) : t);
-  h = h.replace(/\{([^}]*)\}/g, '<b class="rub">$1</b>')
+  // entre llaves va lo rojo del renglón: las siglas (V., R., Ant.), que son
+  // del texto, y las indicaciones —«(inclinación)», «(se levantan)»—, que
+  // se van con las rúbricas cuando se quitan
+  h = h.replace(/\{([^}]*)\}/g, (m, s) => '<b class="rub'
+      + (/^(V\.|R\.|Ant\.)$/.test(s) ? '' : ' pv-ri') + '">' + s + '</b>')
     .replace(/\[([^\]]*)\]/g, '<b class="rub pv-rol">$1</b>')
     .replace(/[*†]/g, (c) => '<b class="rub pv-ast">' + c + '</b>')
     .replace(/\+/g, '<b class="rub pv-cz">✠</b>')
@@ -382,12 +417,13 @@ function pvRenglones(t, rol, latin, enVerso) {
 /** Las piezas de una página, en secciones como las de la hora. Lo que va
  *  antes de la primera sección (la leyenda de quién es quién) sale aparte.
  *  `secs` se llena con lo que el carril y la voz saben de cada sección. */
-function pvPinta(ps, secs, lengua) {
+function pvPinta(ps, secs, lengua, sinRub) {
   const U = E.parvoDatos.u;
   const R = E.parvoDatos.r;
   const antes = [];
   const out = [];
   let sec = null;
+  let plegada = false;
   let bloque = [];
   let enVerso = false;
   const cierraBloque = () => {
@@ -397,7 +433,7 @@ function pvPinta(ps, secs, lengua) {
   const cierraSec = () => {
     if (!sec) return;
     cierraBloque();
-    out.push(sec.join('') + '</section>');
+    out.push(sec.join('') + (plegada ? '</div>' : '') + '</section>');
     sec = null;
   };
   ps.forEach((p, i) => {
@@ -406,13 +442,27 @@ function pvPinta(ps, secs, lengua) {
       const k = p[4] || 'sec';
       enVerso = PV_VERSO.has(k);
       secs.push({ cl: k, nombre: p[1] });
+      const rot = '<span class="vs">' + esc(p[1]) + '</span>'
+        + (p[2] ? ' <span class="llano pv-lt">' + esc(p[2]) + '</span>' : '');
+      // Las oraciones antes y después del oficio van plegadas: no son
+      // obligatorias, y abiertas en cada hora se rezarían de paso. El
+      // rótulo es el botón; lo plegado ni se ve ni lo dice la voz.
+      plegada = k === 'antes' || k === 'despues';
+      const abierta = plegada && !!pvCfg().abre[k];
       sec = ['<section class="hora-sec pv-sec ' + (enVerso ? 'en-verso' : 'prosa')
-        + (p[3] ? ' pv-cond' : '') + '" data-cl="' + esc(k) + '">'
-        + '<div class="sec-cab"><h2 class="rotulo"><span class="vs">'
-        + esc(p[1]) + '</span>' + (p[2] ? ' <span class="llano pv-lt">'
-          + esc(p[2]) + '</span>' : '') + '</h2></div>'];
+        + (p[3] ? ' pv-cond' : '') + (plegada ? ' pv-plegada' : '')
+        + (sinRub ? ' pv-sin-rub' : '')
+        + '" data-cl="' + esc(k) + '">'
+        + '<div class="sec-cab"><h2 class="rotulo">'
+        + (plegada ? '<button type="button" class="pliega" data-pv-pliega="'
+          + k + '" aria-expanded="' + abierta + '">' + rot + '</button>' : rot)
+        + '</h2></div>' + (plegada ? '<div class="cuerpo"'
+          + (abierta ? '' : ' hidden') + '>' : '')];
       return;
     }
+    // sin rúbricas, sólo el texto: fuera la leyenda y los párrafos de
+    // rúbrica; las siglas, los títulos y quién dice qué se quedan
+    if (sinRub && (p[0] === 'l' || p[0] === 'r')) return;
     if (p[0] === 'l') { antes.push('<p class="pv-leg">' + pvTexto(R[p[1]]) + '</p>'); return; }
     if (!sec) {
       if (p[0] === 'r') antes.push('<p class="pv-leg">' + pvTexto(R[p[1]]) + '</p>');
@@ -519,7 +569,7 @@ async function pvVer(hora, iso) {
   marcaHoy(iso);
   ponFecha(iso);
   $('#celebraciones').innerHTML = '';
-  ponColor('azul');
+  ponColor(pvColor());
   $('#titulo-dia').textContent = pvNombreHora(hora);
   $('#subtitulo-dia').textContent = 'Oficio parvo';
   $('#nota-dia').style.display = 'none';
@@ -549,13 +599,19 @@ async function pvVer(hora, iso) {
 /** El cuerpo de la hora; se repinta solo al cambiar la lengua o la manera. */
 function pvPintaHora() {
   const secs = [];
-  const r = pvPinta(E.parvo.c.ps, secs, pvCfg().l);
+  // la oración antes del oficio, justo antes del comienzo; la de después,
+  // al final de todo
+  const ps = E.parvo.c.ps;
+  let i = ps.findIndex((p) => p[0] === 'h');
+  if (i < 0) i = ps.length;
+  const todo = ps.slice(0, i).concat(pvOraciones('antes'), ps.slice(i),
+    pvOraciones('despues'));
+  const r = pvPinta(todo, secs, pvCfg().l, pvSinRubricas());
   E.parvo.secciones = secs;
   vista.innerHTML = pvAtras('#/oraciones', 'Devocionario') + pvAjustes()
     + r.antes + r.html
     + '<p class="pv-pie"><a href="#/oraciones/parvo/guia">Cómo se reza y qué '
-    + 'toca cada día</a><a href="#/oraciones/parvo/guia#pv-oraciones">'
-    + 'Oraciones antes y después del oficio</a></p>';
+    + 'toca cada día</a></p>';
   pintaCarril(E.parvo);
 }
 
@@ -602,7 +658,7 @@ async function pvGuia() {
   E.ultimaDevo = location.hash;
   marcaBarra('devocionario');
   modoPanel('Oficio parvo');
-  ponColor('azul');
+  ponColor(pvColor());
   $('#subtitulo-dia').textContent = 'Cómo se reza';
   if (!E.parvoDatos) vista.innerHTML = '<p class="aviso cargando">Abriendo…</p>';
   try {
@@ -742,6 +798,22 @@ loQueSeLee = function () {
 conCarril = function () { return pvActiva() || pvAntes.conCarril(); };
 
 /* La lengua y la manera, arriba de la hora y en la guía. */
+/* Abrir o plegar la oración antes o después del oficio: sin repintar —el
+ * texto ya está, escondido—, y como se deje se queda para las demás horas.
+ * La voz se rehace, que lo abierto se dice y lo plegado no. */
+vista.addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-pv-pliega]');
+  if (!b || !pvActiva()) return;
+  const k = b.dataset.pvPliega;
+  const c = pvCfg();
+  c.abre = Object.assign({}, c.abre, { [k]: !c.abre[k] });
+  pvGuardaCfg();
+  const cuerpo = b.closest('.hora-sec').querySelector(':scope > .cuerpo');
+  if (cuerpo) cuerpo.hidden = !c.abre[k];
+  b.setAttribute('aria-expanded', String(!!c.abre[k]));
+  rearmaVoz();
+});
+
 vista.addEventListener('click', (ev) => {
   const b = ev.target.closest('[data-pv-lengua], [data-pv-modo]');
   if (!b) return;

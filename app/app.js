@@ -47,7 +47,12 @@ const POR_OMISION = {
   devoVista: 'sereno',
   // y cómo se compone la oración: como un misal o como el breviario
   // (`devoCompone`)
-  devoFormato: 'misal'
+  devoFormato: 'misal',
+  // y de qué color va el Oficio Parvo (parvo.js): el azul de la Virgen o
+  // el de Ajustes y el devocionario
+  parvoColor: 'azul',
+  // y si lleva sus rúbricas e indicaciones, o sólo el texto que se reza
+  parvoRubricas: 'si'
 };
 
 const E = {              // todo el estado de la app
@@ -510,12 +515,24 @@ function aplicaTonos() {
   }
 }
 
+/* El de fábrica de cada color en cada papel es el primero de su lista, con
+ * una salvedad: el neutro —el de Ajustes y el devocionario— va en caoba con
+ * papel oscuro, que así lo quiso el usuario el 2026-11-06; con papel claro
+ * sigue en granate. Las hojas de estilo llevan el mismo de respaldo
+ * (`--lit-neutro` y `--rubrica` del oscuro). */
+const TONO_DE_FABRICA = { neutro: { oscuro: 'Caoba' } };
+
+function tonoDeFabrica(c, m) {
+  const n = (TONO_DE_FABRICA[c] || {})[m];
+  return (n && TONOS[c].find((x) => x[0] === n)) || TONOS[c][0];
+}
+
 /** El tono puesto de un color en un papel: [nombre, claro, oscuro]. Si no
  *  es ninguno de la lista, es uno de la barra. */
 function tonoPuesto(c, m) {
   const v = ((E.cfg.tonos || {})[c] || {})[m];
   const i = MODOS_TONO.indexOf(m) + 1;
-  if (!v) return TONOS[c][0];
+  if (!v) return tonoDeFabrica(c, m);
   return TONOS[c].find((x) => x[i] === v) || [A_TU_GUSTO, v, v];
 }
 
@@ -3845,6 +3862,13 @@ const AJ_OPS = {
     ['breviario', 'Breviario', 'La letra de la Liturgia de las Horas de la '
       + 'app: «V.» y «R.» en rojo, sin capitular, y los títulos en rojo a la '
       + 'izquierda.']
+  ],
+  parvoColor: [
+    ['azul', 'Azul', 'El de la Virgen, como en las Horas sus fiestas y sus '
+      + 'memorias.'],
+    ['neutro', 'El de Ajustes', 'El mismo que Ajustes y el devocionario: '
+      + 'granate con papel claro y caoba con oscuro, o el tono que le hayas '
+      + 'puesto.']
   ]
 };
 
@@ -3888,7 +3912,7 @@ function resumenAjustes(k) {
         noche: 'de noche' }[c.tema],
       c.color === 'dia' ? 'el color del día'
         : 'color ' + nombreOp('color', c.color).toLowerCase()
-          + (tonoPuesto(c.color, 'claro') !== TONOS[c.color][0]
+          + (tonoPuesto(c.color, 'claro') !== tonoDeFabrica(c.color, 'claro')
             ? ' ' + tonoPuesto(c.color, 'claro')[0].toLowerCase() : '')]);
   }
   if (k === 'lengua') {
@@ -3933,7 +3957,10 @@ function resumenAjustes(k) {
   }
   if (k === 'devocionario') {
     return junta([nombreOp('devoVista', c.devoVista),
-      'oración de ' + nombreOp('devoFormato', c.devoFormato).toLowerCase()]);
+      'oración de ' + nombreOp('devoFormato', c.devoFormato).toLowerCase(),
+      c.parvoColor === 'neutro' ? 'Oficio parvo del color de Ajustes'
+        : 'Oficio parvo en azul',
+      c.parvoRubricas === 'no' ? 'sin rúbricas' : '']);
   }
   if (k === 'abrir') {
     return { misa: 'Abre la misa de hoy',
@@ -3969,7 +3996,7 @@ const AJ_SECCION = {
   lengua: ['fuente', 'latinBi', 'acentos', 'numeros'],
   misa: ['misaVer', 'misaSecs', 'ordinario'],
   horas: ['hLibre', 'hComun', 'carril', 'gestos', 'rezadas'],
-  devocionario: ['devoVista', 'devoFormato'],
+  devocionario: ['devoVista', 'devoFormato', 'parvoColor', 'parvoRubricas'],
   calendario: ['epifania', 'ascension', 'corpus', 'memorias'],
   abrir: ['inicio']
 };
@@ -4365,7 +4392,15 @@ function verAjustes() {
       tarjetas('devoFormato', 'Cómo se compone la oración',
         'Las dos ponen la respuesta de la letanía debajo de su invocación y '
         + 'el salmo partido en su asterisco, y en las dos la voz calla las '
-        + 'siglas y los números.')
+        + 'siglas y los números.'),
+      tarjetas('parvoColor', 'El color del Oficio Parvo',
+        'La cabecera, las rúbricas y los controles de sus horas. Si en '
+        + '«Aspecto» has fijado un color para toda la app, manda ése.'),
+      interruptor('parvoRubricas', 'Rúbricas en el Oficio Parvo',
+        'Lo que el libro indica en rojo: de pie, de rodillas, en secreto, si '
+        + 'sigue otra hora. Apagadas, queda sólo el texto que se reza, con sus '
+        + 'títulos, las siglas V. y R. y quién dice cada cosa. La guía las '
+        + 'sigue explicando.')
     ]),
     rotulo('El año y la app'),
     seccion('calendario', 'Calendario', ICONO_AJ.calendario, [
@@ -4451,13 +4486,13 @@ async function cambiaAjuste(ev) {
     return;
   }
   // el tono de un color tampoco: es una casilla de la tabla `tonos`, y el
-  // primero de la lista, el de siempre, la borra
+  // de fábrica, el de siempre, la borra
   const tono = ev.target.dataset.tono;
   if (tono) {
     const m = ev.target.dataset.modo;
     const t = Object.assign({}, E.cfg.tonos);
     const uno = Object.assign({}, t[tono]);
-    if (ev.target.value === TONOS[tono][0][MODOS_TONO.indexOf(m) + 1]) delete uno[m];
+    if (ev.target.value === tonoDeFabrica(tono, m)[MODOS_TONO.indexOf(m) + 1]) delete uno[m];
     else uno[m] = ev.target.value;
     if (Object.keys(uno).length) t[tono] = uno; else delete t[tono];
     E.cfg.tonos = t;

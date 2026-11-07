@@ -77,7 +77,7 @@ body[data-tema="oscuro"], body[data-tema="noche"] {
   --lit-morado: var(--tono-morado-oscuro, #b99bd6);
   --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
   --lit-azul: var(--tono-azul-oscuro, #93bcdf);
-  --lit-neutro: var(--tono-neutro-oscuro, #d86263);
+  --lit-neutro: var(--tono-neutro-oscuro, #c76f57);
 }
 @media (prefers-color-scheme: dark) {
   body[data-tema="auto"] {
@@ -86,7 +86,7 @@ body[data-tema="oscuro"], body[data-tema="noche"] {
     --lit-morado: var(--tono-morado-oscuro, #b99bd6);
     --lit-blanco: var(--tono-blanco-oscuro, #d9b65e);
     --lit-azul: var(--tono-azul-oscuro, #93bcdf);
-    --lit-neutro: var(--tono-neutro-oscuro, #d86263);
+    --lit-neutro: var(--tono-neutro-oscuro, #c76f57);
   }
 }
 
@@ -127,7 +127,7 @@ body[data-tema="oscuro"][data-color="blanco"] { --acento: var(--lit-blanco); --r
 body[data-tema="oscuro"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
 body[data-tema="oscuro"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
 body[data-tema="oscuro"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
-body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #dc5e5c); }
+body[data-tema="oscuro"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #c76f57); }
 
 /* Completas a oscuras: ambar sobre negro, sin un gramo de azul, y el color
    liturgico del dia no tine nada —de noche, lo que importa es no despertar
@@ -151,7 +151,7 @@ body[data-tema="noche"], .tema-noche {
   body[data-tema="auto"][data-color="verde"]  { --acento: var(--lit-verde); --rubrica: var(--lit-verde); }
   body[data-tema="auto"][data-color="rojo"]   { --acento: var(--lit-rojo); --rubrica: var(--lit-rojo); }
   body[data-tema="auto"][data-color="azul"]   { --acento: var(--lit-azul); --rubrica: var(--tono-azul-oscuro, #9cc3e4); }
-  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #dc5e5c); }
+  body[data-tema="auto"][data-color="neutro"] { --acento: var(--lit-neutro); --rubrica: var(--tono-neutro-oscuro, #c76f57); }
 }
 
 /* ------------------------------------------------ las letras de la casa

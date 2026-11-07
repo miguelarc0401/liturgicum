@@ -4,7 +4,7 @@ epub: Oficio_Parvo_BVM_1954_latin_espanol.epub
 páginas: 150
 versos distintos: 605
 rúbricas distintas: 134
-parvo.json: 480418 bytes
+parvo.json: 480430 bytes
 
 ## Lo raro (debe estar vacío salvo lo explicado)
 

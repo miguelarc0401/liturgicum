@@ -155,6 +155,9 @@ SECCIONES = [
     (r'^Oraci[óo]n', 'oracion'), (r'^Conmemoraci[óo]n', 'conm'),
     (r'^Conclusi[óo]n', 'conclusion'), (r'^Final', 'final'),
     (r'^Ant[íi]fona final', 'antifona'), (r'^Al terminar', 'terminar'),
+    # las oraciones antes y después del oficio, que la app pone plegadas al
+    # principio y al final de cada hora
+    (r'^Antes del Oficio', 'antes'), (r'^Despu[ée]s del Oficio', 'despues'),
 ]
 
 

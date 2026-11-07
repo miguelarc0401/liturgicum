@@ -76,9 +76,24 @@
 .pv-sec .pv-t .pv-lt { font-size: .86em; }
 .rotulo .pv-lt { font-style: italic; font-weight: 400; }
 
-/* la rúbrica, en su párrafo: algo menor que el texto que se reza */
-.pv-sec .pv-r .ln { font-size: .88em; line-height: 1.45; }
-.pv-sec .pv-r { margin-bottom: .55rem; }
+/* La rúbrica, discreta: como la imprime un breviario —menor, en cursiva y
+   un punto apagada—, pegada a lo que manda, para que se lea de un vistazo
+   y no compita con lo que se reza (2026-11-06: en tamaño de texto y a
+   todo color se comía la página). */
+.pv-sec .pv-r { margin: -.1rem 0 .45rem; }
+.pv-sec .pv-r .ln { font-size: .8em; line-height: 1.42; text-wrap: pretty; }
+.pv-sec .pv-r .rub {
+  font-style: italic;
+  color: color-mix(in srgb, var(--rubrica) 82%, var(--tinta-suave));
+}
+/* y las indicaciones de dentro del renglón —«(inclinación)»—, igual */
+.hora-sec .rub.pv-ri {
+  font-size: .8em; font-style: italic;
+  color: color-mix(in srgb, var(--rubrica) 82%, var(--tinta-suave));
+}
+/* Sin rúbricas (Ajustes): sólo el texto. Los párrafos de rúbrica ni se
+   pintan; lo de dentro del renglón se esconde aquí. */
+.pv-sin-rub .rub.pv-ri { display: none; }
 /* la cita de la capítula y de la lección */
 .pv-sec .pv-c { margin-bottom: .35rem; }
 .pv-sec .pv-c .ln { font-size: .82em; font-style: italic; text-align: right; }
@@ -88,6 +103,15 @@
 .hora-sec.pv-cond {
   border-left: 2px solid var(--filete-fuerte); padding-left: .85rem;
 }
+
+/* Las oraciones antes y después del oficio, plegadas: el rótulo es el botón,
+   con su galón delante, y al abrirse el texto entra sin sobresalto. Plegada,
+   la sección no se lleva más sitio que su renglón. */
+.hora-sec.pv-plegada { margin-bottom: 1rem; }
+.hora-sec.pv-plegada .pliega { color: inherit; }
+.hora-sec.pv-plegada .pliega::before { align-self: center; }
+.hora-sec.pv-plegada > .cuerpo { animation: entra-vista .18s var(--curva); }
+.hora-sec.pv-plegada > .cuerpo[hidden] { display: none; }
 
 /* Los dos: el latín y debajo su castellano, verso a verso, en cursiva y
    entrado, como el libro. La raya del bilingüe de la misa, fuera. */
