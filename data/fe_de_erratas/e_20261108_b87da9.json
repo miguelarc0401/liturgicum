@@ -1,0 +1,301 @@
+{
+ "id": "e_20261108_b87da9",
+ "fecha": "2026-11-08",
+ "creada": "2026-11-08T12:07:07",
+ "cambio": "El → Él",
+ "cambios": [
+  {
+   "antes": "El la afianzó sobre los",
+   "despues": "Él la afianzó sobre los",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Ordinario/4/0/oficio",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Cuaresma/1/2/laudes",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Pascua/1/2/laudes",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Ordinario/1/2/laudes",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Adviento/1/2/laudes",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Cuaresma/4/0/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Cuaresma/@/triduo pascual sabado santo/oficio/salmodia",
+      "l",
+      79,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Pascua/@/martes de la octava de pascua/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Pascua/4/0/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Adviento/4/0/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Navidad/@/la sagrada familia de jesus maria y jose fiesta/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-08/nuestra senora de lujan patrona de la republica argentina/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-31/la visitacion de la santisima virgen maria/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "08-15/la asuncion de la santisima virgen maria/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-09/la dedicacion de la basilica de san juan de letran/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-19/santa maria virgen madre de la divina providencia/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "12-08/la inmaculada concepcion de la santisima virgen maria/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "12-12/nuestra senora de guadalupe/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "01-01/santa maria madre de dios/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-09/nuestra senora de lujan patrona de la republica argentina/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral_pascua",
+      "05-31/la visitacion de la santisima virgen maria/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "comunes",
+      "santisima virgen maria/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "comunes",
+      "dedicacion de una iglesia/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "comunes_pascua",
+      "santisima virgen maria/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "comunes_pascua",
+      "dedicacion de una iglesia/oficio/salmodia",
+      "l",
+      8,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "antifonas",
+      "09-08/la natividad de la santisima virgen maria/oficio",
+      "l",
+      8,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
