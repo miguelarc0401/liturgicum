@@ -1,0 +1,23 @@
+{
+ "id": "e_20261109_57b46b",
+ "fecha": "2026-11-10",
+ "creada": "2026-11-10T04:23:42",
+ "cambio": "necessitátibus, sed → necessitátibus nostris, sed",
+ "cambios": [
+  {
+   "antes": "ne despícias in necessitátibus, sed a perículis cunctis",
+   "despues": "ne despícias in necessitátibus nostris, sed a perículis cunctis",
+   "sitios": [
+    {
+     "f": "parvo.json",
+     "r": [
+      "u",
+      489,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
