@@ -318,11 +318,10 @@ con la traducción de la fuente; lo demás, con la del PDF.
         del PDF: segunda lectura, oración, responsorio, reseña
         común: Del Común de pastores o del Común de doctores de la Iglesia, excepto lo siguiente:  →  pastores, doctores de la iglesia
 16/11  Santa Margarita de Escocia (memoria libre)
-        del PDF: oración, responsorio, reseña
-        hallado en la fuente: segunda lectura
+        del libro de México: segunda lectura, oración, responsorio, reseña
         común: Del Común de santas mujeres: para los que se han consagrado a una actividad caritativa.  →  santas mujeres
 16/11  Santa Gertrudis, virgen (memoria libre)
-        del PDF: segunda lectura, oración, responsorio, reseña
+        del libro de México: segunda lectura, oración, responsorio, reseña
         común: Del Común de vírgenes o del Común de santas mujeres: para religiosos.  →  virgenes, santas mujeres
 18/11  Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles (memoria libre)
         del PDF: segunda lectura, oración, responsorio, antífona del Magníficat, reseña
