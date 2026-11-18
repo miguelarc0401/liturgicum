@@ -1,5 +1,5 @@
 {
-  "_": "Textos copiados a mano del libro de horas impreso de México (fotos del usuario), para lo que la fuente no trae. Mandan sobre el PDF español y sobre el Misal, y no llevan marca. La oración va como la imprime el libro, con la conclusión abreviada; la fase 4 la completa en cada hora como la escribe la fuente. Clave: el slug del calendario; dentro, hora/sección.",
+  "_": "Textos copiados a mano del libro de horas impreso de México (fotos del usuario), para lo que la fuente no trae. Mandan sobre el PDF español y sobre el Misal, y no llevan marca. La oración va como la imprime el libro, con la conclusión abreviada; la fase 4 la completa en cada hora como la escribe la fuente. Clave: el slug del calendario; dentro, hora/sección. El cántico evangélico va sólo con su antífona («ant»); la fase 4 le pone el cántico de la fuente.",
   "st_1023_157": {
     "titulo": "San Juan de Capistrano, presbítero",
     "pagina": "1471",
@@ -102,6 +102,40 @@
     "comun": "Del Común de santas mujeres: para los santos que se distinguieron por el ejercicio de las obras de misericordia, página 1788.",
     "piezas": {
       "oficio/resena": {"r": null, "l": [[], [[0, "Era hija de Andrés, rey de Hungría, y nació el año 1207; siendo aún niña, fue dada en matrimonio a Luis, Landgrave de Turingia, del que tuvo tres hijos. Vivía entregada a la meditación de las cosas celestiales y, después de la muerte de su esposo, abrazó la pobreza y erigió un hospital en el que ella misma servía a los enfermos. Murió en Marburgo el año 1231."]]]}
+    }
+  },
+  "st_1118_172": {
+    "titulo": "Dedicación de las basílicas de San Pedro y de San Pablo, apóstoles",
+    "pagina": "1525",
+    "comun": "Del Común de apóstoles, p. 1616.",
+    "piezas": {
+      "oficio/resena": {"r": null, "l": [[], [[0, "Ya en el siglo XII se celebraba en la basílica Vaticana de san Pedro y en la basílica de san Pablo en la vía Ostiense el aniversario de las respectivas dedicaciones, hechas por los santos papas Silvestre y Siricio en el siglo IV. Esta conmemoración se extendió posteriormente a todo el rito romano. Del mismo modo que en el aniversario de la basílica de Santa María la Mayor (el día 5 de agosto) se celebra la maternidad de la Santísima Virgen, así hoy son honorados los dos principales apóstoles de Cristo."]]]},
+      "oficio/lectura2": {"r": "SEGUNDA LECTURA", "l": [
+        [],
+        [[0, "De los Sermones de san León Magno, papa"]],
+        [[0, "(Sermón 82, En el natalicio de los apóstoles Pedro y Pablo, 1, 6-7: PL 54, 426-428)"]],
+        [],
+        [[1, "PEDRO Y PABLO, DOS VÁSTAGOS PLANTADOS POR DIOS"]],
+        [],
+        [[0, "Vale mucho a los ojos del Señor la vida de sus fieles, y ningún género de crueldad puede destruir la religión fundada en el misterio de la cruz de Cristo. Las persecuciones no son en detrimento, sino en provecho de la Iglesia, y el campo del Señor se viste siempre con una cosecha más rica al nacer multiplicados los granos que caen uno a uno."]],
+        [],
+        [[0, "Por esto los millares de bienaventurados mártires atestiguan cuán abundante es la prole en que se han multiplicado estos dos insignes vástagos plantados por Dios, ya que aquéllos, emulando los triunfos de los apóstoles, han rodeado nuestra ciudad por todos lados con una multitud purpurada y rutilante, y la han coronado a manera de una diadema formada por una hermosa variedad de piedras preciosas."]],
+        [],
+        [[0, "De esta protección, amadísimos hermanos, preparada por Dios para nosotros como un ejemplo de paciencia y para fortalecer nuestra fe, hemos de alegrarnos siempre que celebramos la conmemoración de cualquiera de los santos, pero nuestra alegría ha de ser mayor aún cuando se trata de conmemorar a estos padres, que destacan por encima de los demás, ya que la gracia de Dios los elevó, entre los miembros de la Iglesia, a tan alto lugar que los puso como los dos ojos de aquel cuerpo cuya cabeza es Cristo."]],
+        [],
+        [[0, "Respecto a sus méritos y virtudes, que exceden cuanto pueda decirse, no debemos hacer distinción ni oposición alguna, ya que son iguales en la elección, semejantes en el trabajo, parecidos en la muerte."]],
+        [],
+        [[0, "Como nosotros mismos hemos experimentado y han comprobado nuestros mayores, creemos y confiamos que no ha de faltarnos la ayuda de las oraciones de nuestros particulares patronos, para obtener la misericordia de Dios en medio de las dificultades de esta vida; y así, cuanto más nos oprime el peso de nuestros pecados, tanto más levantarán nuestros ánimos los méritos de los apóstoles."]]
+      ]},
+      "oficio/responsorio2": {"r": "RESPONSORIO", "l": [
+        [],
+        [[1, "R. "], [0, "Los santos apóstoles que, sirviendo a Cristo con ánimo ferviente, plantaron con su sangre a la Iglesia, "], [1, "*"], [0, " bebieron el cáliz del Señor y se convirtieron en amigos de Dios."]],
+        [[1, "V. "], [0, "Así como en la vida les unió un estrecho afecto, así también ni en la muerte fueron separados."]],
+        [[1, "R. "], [0, "Bebieron el cáliz del Señor y se convirtieron en amigos de Dios."]]
+      ]},
+      "laudes/cantico_evangelico": {"ant": "Pedro, apóstol, y Pablo, maestro de los gentiles, nos han anunciado tu palabra, Señor."},
+      "visperas/cantico_evangelico": {"ant": "Los cuerpos de los santos fueron sepultados en paz, y su fama vive por generaciones."},
+      "oracion": "Sostén, Señor, a tu Iglesia con la protección de los santos apóstoles Pedro y Pablo, para que, así como por ellos fue iniciada en el conocimiento del Evangelio, así también reciba, por su intercesión, la fuerza necesaria para su pleno desarrollo hasta el fin de los tiempos. Por nuestro Señor Jesucristo, tu Hijo."
     }
   }
 }

@@ -2548,6 +2548,13 @@ def main():
                     if h in HORAS_PDF or kh in extra or kh in santoral:
                         extra[kh] = oracion_en(h, p)
                         puestas.append(f'{h}/oracion')
+            elif 'ant' in p:
+                # el cántico evangélico: el libro da la antífona y el
+                # cántico es el de la fuente
+                c = cantico_con(k.split('/')[0], p['ant'])
+                c.pop('f', None)
+                extra[f'{md}/{santo}/{k}'] = c
+                puestas.append(k)
             else:
                 extra[f'{md}/{santo}/{k}'] = {'r': p['r'], 'l': p['l']}
                 puestas.append(k)
