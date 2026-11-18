@@ -1,0 +1,27 @@
+{
+ "id": "e_20261117_4e8538",
+ "fecha": "2026-11-18",
+ "creada": "2026-11-18T04:55:31",
+ "cambio": "oro ,que → oro, que",
+ "cambios": [
+  {
+   "antes": "el ajuar de plata y oro ,que había allí y enviando",
+   "despues": "el ajuar de plata y oro, que había allí y enviando",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo_anio",
+      "Ordinario/33/2/oficio/lectura1",
+      "II",
+      "l",
+      9,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
