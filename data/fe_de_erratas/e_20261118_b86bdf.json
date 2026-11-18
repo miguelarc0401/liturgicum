@@ -1,0 +1,37 @@
+{
+ "id": "e_20261118_b86bdf",
+ "fecha": "2026-11-18",
+ "creada": "2026-11-18T15:27:38",
+ "cambio": "lá → la",
+ "cambios": [
+  {
+   "antes": "del mundo y por lá gloria mundana de aquel",
+   "despues": "del mundo y por la gloria mundana de aquel",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-19/santa isabel de hungria/oficio/lectura2",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-17/santa isabel de hungria/oficio/lectura2",
+      "l",
+      10,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
