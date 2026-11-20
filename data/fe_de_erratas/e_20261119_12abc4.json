@@ -1,0 +1,114 @@
+{
+ "id": "e_20261119_12abc4",
+ "fecha": "2026-11-20",
+ "creada": "2026-11-20T02:11:09",
+ "cambio": "Entre → entre",
+ "cambios": [
+  {
+   "antes": "Entre los hombres,",
+   "despues": "entre los hombres,",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/13/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/17/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/21/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/29/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/1/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/5/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/9/4/visperas/himno",
+      "l",
+      10,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
