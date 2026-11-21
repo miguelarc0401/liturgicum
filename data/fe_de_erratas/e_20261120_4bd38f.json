@@ -1,0 +1,158 @@
+{
+ "id": "e_20261120_4bd38f",
+ "fecha": "2026-11-21",
+ "creada": "2026-11-21T01:40:47",
+ "cambio": "celestial: → celestial: padre nuestro. ",
+ "cambios": [
+  {
+   "antes": "nuestra voz al Padre celestial:",
+   "despues": "nuestra voz al Padre celestial: padre nuestro. ",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/6/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-24/nuestro senor jesucristo rey universal/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-22/nuestro senor jesucristo rey universal/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-21/nuestro senor jesucristo rey universal/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-20/nuestro senor jesucristo rey universal/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-26/nuestro senor jesucristo rey universal/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-23/nuestro senor jesucristo rey universal/visperas/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-24/nuestro senor jesucristo rey universal/visperas1/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-22/nuestro senor jesucristo rey universal/visperas1/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-21/nuestro senor jesucristo rey universal/visperas1/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-26/nuestro senor jesucristo rey universal/visperas1/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-23/nuestro senor jesucristo rey universal/visperas1/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "11-20/nuestro senor jesucristo rey universal/visperas1/preces",
+      "l",
+      25,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
