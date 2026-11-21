@@ -1,0 +1,114 @@
+{
+ "id": "e_20261120_e30253",
+ "fecha": "2026-11-21",
+ "creada": "2026-11-21T00:56:00",
+ "cambio": "decir: → decir: Padre nuestro. ",
+ "cambios": [
+  {
+   "antes": ", nos atrevemos a decir:",
+   "despues": ", nos atrevemos a decir: Padre nuestro. ",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/13/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/17/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/21/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/29/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/1/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/5/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/9/5/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
