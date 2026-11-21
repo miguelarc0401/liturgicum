@@ -1,0 +1,70 @@
+{
+ "id": "e_20261121_6dc08b",
+ "fecha": "2026-11-21",
+ "creada": "2026-11-21T15:01:03",
+ "cambio": "El Señor → Yahvé",
+ "cambios": [
+  {
+   "antes": "su nombre es «El Señor».",
+   "despues": "su nombre es «Yahvé».",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Cuaresma/1/6/laudes",
+      "l",
+      41,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Pascua/1/6/laudes",
+      "l",
+      41,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Ordinario/1/6/laudes",
+      "l",
+      41,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Adviento/1/6/laudes",
+      "l",
+      41,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "salterio",
+      "Navidad/1/6/laudes",
+      "l",
+      41,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
