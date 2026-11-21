@@ -1,0 +1,114 @@
+{
+ "id": "e_20261120_9828a9",
+ "fecha": "2026-11-21",
+ "creada": "2026-11-21T00:55:35",
+ "cambio": "tu → tú",
+ "cambios": [
+  {
+   "antes": "difuntos a la luz donde tu habitas",
+   "despues": "difuntos a la luz donde tú habitas",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/13/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/17/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/21/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/25/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/29/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/33/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/1/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/5/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/9/5/visperas/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
