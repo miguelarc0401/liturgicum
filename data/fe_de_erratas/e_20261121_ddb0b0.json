@@ -1,0 +1,279 @@
+{
+ "id": "e_20261121_ddb0b0",
+ "fecha": "2026-11-21",
+ "creada": "2026-11-21T15:06:29",
+ "cambio": "confiadamente: → confiadamente: Padre nuestro.",
+ "cambios": [
+  {
+   "antes": "del Señor, digamos confiadamente:",
+   "despues": "del Señor, digamos confiadamente: Padre nuestro.",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "03-25/la anunciacion del senor/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-31/la visitacion de la santisima virgen maria/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-10/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-10/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "07-09/nuestra senora del rosario de chiquinquira patrona de colombia/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "08-15/la asuncion de la santisima virgen maria/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "12-08/la inmaculada concepcion de la santisima virgen maria/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "01-24/maria reina de la paz/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-01/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-01/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-06/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-06/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-29/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-29/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "04-08/la anunciacion del senor/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-20/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-20/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-09/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "06-09/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-25/maria madre de la iglesia/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "05-25/maria madre de la iglesia/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "07-09/nuestra senora de itati/laudes/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "santoral",
+      "07-09/nuestra senora de itati/visperas/preces",
+      "l",
+      22,
+      0,
+      1
+     ]
+    },
+    {
+     "f": "horas.json",
+     "r": [
+      "comunes",
+      "santisima virgen maria/laudes/preces",
+      "l",
+      19,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
