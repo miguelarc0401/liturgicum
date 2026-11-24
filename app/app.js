@@ -6552,10 +6552,17 @@ function vaPorFecha(d, hora, cl) {
  * libro trae otras lecturas breves, otros responsorios, otras antífonas y
  * hasta otros himnos, y lo demás lleva su aleluya («T. P. Aleluya»). Esa
  * forma va aparte (`santoral_pascua`, `comunes_pascua`) y se toma en Pascua;
- * fuera de ella, la de todo el año. */
+ * fuera de ella, la de todo el año.
+ *
+ * Y una celebración, Cristo Rey, trae la primera lectura del Oficio por
+ * años, como el tiempo: «Año I: Apocalipsis…; Año II: Daniel 7» (tomo IV).
+ * La del año que no es la de `santoral` va en `santoral_anio`, con su
+ * responsorio, y la elige el año ferial. */
 function delSanto(op, hora, cl, d) {
   if (!op.cel) return null;          // la de la Virgen en sábado no tiene día
   const L = E.horas, pre = op.cel[1] + '/' + op.cel[0] + '/';
+  const otroAnio = d && (L.santoral_anio || {})[pre + hora + '/' + cl];
+  if (otroAnio && otroAnio[d.a]) return otroAnio[d.a];
   const p = (d && d.t === 'Pascua' && pieza(L.santoral_pascua || {}, pre, hora, cl))
     || pieza(L.santoral, pre, hora, cl);
   // «La oración como en las Laudes»: en la Hora intermedia de una fiesta la
@@ -6744,38 +6751,46 @@ function opcionesSeccion(d, op, hora, cl) {
   }
   // «En las solemnidades, los salmos se toman de la salmodia complementaria,
   // a no ser que caigan en domingo, pues en este caso se toman de la semana
-  // I del Salterio» (Ordinario). La fuente guarda la del año en que cayó
-  // entre semana; si es la complementaria (salmos 119-131) y hoy es domingo,
-  // las antífonas de la solemnidad van sobre la salmodia del domingo I, que
-  // se reparte como la de cualquier domingo: la del día en una hora y la
-  // complementaria en las otras. Los salmos propios —la Epifanía tiene los
-  // suyos— no se tocan.
+  // I del Salterio» (Ordinario), y se reparten como los de cualquier
+  // domingo: «en una de las Horas se toma el salmo del domingo de la semana
+  // I; si se reza alguna de las otras Horas, la salmodia complementaria»
+  // (Cristo Rey, tomo IV). La Epifanía trae los suyos —«en una de las Horas
+  // se dicen los siguientes salmos», el 46, el 85 y el 97— y hacen de los
+  // del día. La fuente reza las tres horas y pone esos salmos en una sola,
+  // la que le parece (Cristo Rey, la Trinidad y la Epifanía, en Tercia), o
+  // en ninguna, si guarda la del año en que la solemnidad cayó entre
+  // semana. Así que en cada hora se rehacen las dos, con la antífona de la
+  // solemnidad, y se elige como cualquier domingo: la del día en Sexta.
   if (cl === 'salmodia' && INTERMEDIAS.includes(hora) && op.g === 'SOLEMNIDAD'
       && d.d === 0 && alts.length && i < 0) {
     const suya = despieza(alts[0].c.l);
     const numeros = (p) => p.salmos.map((s) => +((s[0][0][1].match(/\d+/) || [])[0]));
     const complementaria = (ns) => ns.every((n) => n >= 119 && n <= 131);
     const nums = numeros(suya);
-    // si en alguna de las tres horas trae salmos suyos, ésos hacen de los
-    // del día, y las otras horas se quedan con la complementaria
-    const conPropios = INTERMEDIAS.some((h) => {
-      const p = delSanto(op, h, 'salmodia', d);
-      return p && !complementaria(numeros(despieza(p.l)));
-    });
     const S = E.horas.salterio, I = E.horas.intermedia || { dia: {}, comp: {} };
     let dom = I.dia[d.t + '/1/0'] || I.dia['Ordinario/1/0'];
     if (typeof dom === 'string') {
       dom = S[d.t + '/1/0/' + dom] || S['Ordinario/1/0/' + dom];
     }
+    // los del día: los que la solemnidad trae en alguna de las tres horas
+    // y no son los graduales; si no trae ninguno, los del domingo I
+    const propia = INTERMEDIAS.map((h) => delSanto(op, h, 'salmodia', d))
+      .find((p) => p && !complementaria(numeros(despieza(p.l))));
+    const delDiaC = propia || dom;
     const comp = I.comp[hora];
-    if (suya.ants.length && nums.length && complementaria(nums) && !conPropios
-        && dom && comp) {
+    const esDom = dom && delDiaC
+      && numeros(despieza(delDiaC.l)).join() === numeros(despieza(dom.l)).join();
+    // y lo de esta hora tiene que ser una de las dos cosas: si no, no se toca
+    const conocida = complementaria(nums) || (delDiaC
+      && nums.join() === numeros(despieza(delDiaC.l)).join());
+    if (suya.ants.length && nums.length && conocida && delDiaC && comp) {
       const con = (c) => ({ r: alts[0].c.r, f: alts[0].c.f,
         l: compone(suya.ants, despieza(c.l).salmos) });
       return [
         { id: 'sal-dia', rot: 'Del día',
-          tit: 'Salmos del domingo I, con la antífona de la solemnidad',
-          c: con(dom) },
+          tit: (esDom ? 'Salmos del domingo I' : 'Salmos propios')
+            + ', con la antífona de la solemnidad',
+          c: con(delDiaC) },
         { id: 'sal-comp', rot: 'Complementaria',
           tit: 'Salmodia complementaria, con la antífona de la solemnidad',
           c: con(comp) }

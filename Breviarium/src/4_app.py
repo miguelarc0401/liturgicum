@@ -1411,6 +1411,57 @@ def main():
     # salía con las vísperas del Bautista. Si una celebración está en tres
     # fechas o más, cada pieza es la que dan más fechas, y todas las fechas
     # quedan con esa misma pieza.
+    #
+    # Menos la primera lectura del Oficio de Cristo Rey, que es la única de
+    # una celebración que el libro da por años: «Ciclo anual y bienal: Año I:
+    # Apocalipsis 1, 4-6…; Año II: Daniel 7, 1-27» (tomo IV; medido en los
+    # cuatro tomos, ninguna otra solemnidad ni fiesta parte así la lectura).
+    # La fuente, que en el tiempo sigue el ciclo de dos años, aquí dio la de
+    # Daniel sólo en 2020, y en 2022 y 2024 repitió la del Apocalipsis: la
+    # mayoría de las fechas se la comía, y salía la del año I todos los años.
+    # Se aparta antes, con su responsorio, en `santoral_anio`; el texto es
+    # el de la fuente, y el tomo sólo dice de qué año es.
+    POR_ANIOS = {'nuestro senor jesucristo rey universal': ('II', 'Daniel 7,')}
+    santoral_anio, por_anios_qa = {}, []
+
+    def cabeza(ls):
+        return next((t for ln in ls for t in [''.join(s for _, s in ln)]
+                     if t.strip()), '')
+
+    for santo, (anio, cita) in POR_ANIOS.items():
+        mds = sorted(casillas.get(santo, ()))
+
+        def piezas(cl):
+            for md in mds:
+                v = santoral.get(f'{md}/{santo}/oficio/{cl}')
+                if v:
+                    yield md, v['rotulo'], v['lineas'], v.get('testigos', 0)
+                    for x in v.get('variantes', []):
+                        yield md, None, x['lineas'], x.get('testigos', 0)
+        suyas = [p for p in piezas('lectura1') if cita in cabeza(p[2])]
+        lec = max(suyas, key=lambda p: (p[3], p[0])) if suyas else None
+        # el responsorio del otro año es el que más fechas dan; el suyo, el
+        # de la misma fecha que dice otra cosa
+        resp = Counter(json.dumps(p[2], ensure_ascii=False)
+                       for p in piezas('responsorio') if p[1] is not None)
+        comun = resp.most_common(1)[0][0] if resp else None
+        sus_resp = [p for p in piezas('responsorio') if lec and p[0] == lec[0]
+                    and json.dumps(p[2], ensure_ascii=False) != comun]
+        if not sus_resp:
+            por_anios_qa.append(f'{santo}: la fuente no trae la lectura del '
+                                f'año {anio} ({cita}) con su responsorio')
+            continue
+        res = max(sus_resp, key=lambda p: (p[1] is not None, p[3]))
+        for m in mds:
+            santoral_anio[f'{m}/{santo}/oficio/lectura1'] = {
+                anio: {'r': lec[1] or 'PRIMERA LECTURA', 'l': lec[2]}}
+            santoral_anio[f'{m}/{santo}/oficio/responsorio'] = {
+                anio: {'r': res[1] or 'RESPONSORIO', 'l': res[2]}}
+        por_anios_qa.append(f'{santo}: año {anio}, «{cabeza(lec[2]).strip()}» '
+                            f'(fuente, {lec[0]}), y {res[1] or "su responsorio"}')
+    for linea in por_anios_qa:
+        print(f'lectura del Oficio por años — {linea}', flush=True)
+
     reunidas = 0
     for santo, mds in casillas.items():
         if len(mds) < 3:
@@ -2701,6 +2752,7 @@ def main():
         'tiempo_ciclo': tiempo_ciclo,
         'santoral': santoral_app,
         'santoral_pascua': santoral_pascua,
+        'santoral_anio': santoral_anio,
         'comunes': comunes_app,
         'comunes_pascua': comunes_pascua,
         'otros_himnos': otros_himnos,
@@ -2776,6 +2828,10 @@ def main():
         f.write(f'{len(comun_de_santo):8d}  santos con común conocido\n')
         f.write(f'{len(tiempo_anio):8d}  lecturas del Oficio con texto propio '
                 f'del otro año del ciclo bienal\n')
+        f.write(f'{len(por_anios_qa):8d}  celebraciones con la lectura del '
+                f'Oficio por años (santoral_anio)\n')
+        for linea in por_anios_qa:
+            f.write(f'          {linea}\n')
         f.write(f'{len(de_misal):8d}  celebraciones del calendario de México '
                 f'sin oficio en ninguna parte: con su común y la colecta del '
                 f'Misal mexicano\n')

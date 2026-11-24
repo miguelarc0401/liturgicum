@@ -1,7 +1,7 @@
 Fase 4 — el libro de horas empaquetado para la app
 ==========================================================
 
-horas.json         23.2 MB
+horas.json         23.3 MB
 horas_dias.json     2.8 MB  15701 fechas
 
       77  casillas en ordinario
@@ -11,6 +11,8 @@ horas_dias.json     2.8 MB  15701 fechas
      406  casillas en comunes
      220  santos con común conocido
      735  lecturas del Oficio con texto propio del otro año del ciclo bienal
+       1  celebraciones con la lectura del Oficio por años (santoral_anio)
+          nuestro senor jesucristo rey universal: año II, «Del libro del profeta Daniel 7, 1-27» (fuente, 11-22), y RESPONSORIO Mc 13, 26-27; 14, 62
       21  celebraciones del calendario de México sin oficio en ninguna parte: con su común y la colecta del Misal mexicano
           Beato Sebastián de Aparicio, religioso  ->  santos varones para los santos religiosos
           San Gregorio de Narek, abad y doctor de la Iglesia  ->  doctores de la iglesia, santos varones para los santos religiosos

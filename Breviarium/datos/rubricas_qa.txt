@@ -1,12 +1,12 @@
-Las horas del 2026-11-18 al 2027-11-17, contra las rúbricas
+Las horas del 2026-11-22 al 2027-11-21, contra las rúbricas
 ============================================================
 
    362  vísperas revisadas
    365  completas revisadas
    362  oficio revisadas
+   428  secciones de solemnidad revisadas
    347  secciones de memoria libre revisadas
-   248  secciones de memoria revisadas
-   399  secciones de solemnidad revisadas
+   244  secciones de memoria revisadas
    711  secciones de fiesta revisadas
     30  intermedia de solemnidad revisadas
 

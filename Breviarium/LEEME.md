@@ -315,6 +315,14 @@ cambian los tomos.
   *dentro de cada año*, contando también las memorias, que leen la del
   tiempo, y lo deja en `bienal.json`; la fase 4 lleva a la app sólo el
   texto del año que no coincide con el de `tiempo.json`.
+
+  Una celebración hace lo mismo: Cristo Rey, «Ciclo anual y bienal: Año I:
+  Apocalipsis 1, 4-6…; Año II: Daniel 7, 1-27» (tomo IV; en los cuatro
+  tomos no hay otra). La fuente dio la de Daniel sólo en 2020, y la mayoría
+  de fechas con que se reúnen las fiestas móviles se la comía: salía la del
+  año I todos los años. Ahora se aparta antes, con su responsorio, en
+  `santoral_anio` (`POR_ANIOS` en `4_app.py`), y `delSanto` en la app la
+  elige por el año ferial, como `delDia` en el tiempo.
 * **La lectura bíblica del Oficio de las memorias.** «Se toma del Oficio
   corriente, es decir, del tiempo», salvo que el santo traiga la suya. Cuál
   la trae no se supone: lo que el santoral guarda como propio es casi

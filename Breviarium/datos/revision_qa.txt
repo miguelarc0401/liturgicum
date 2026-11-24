@@ -3,10 +3,10 @@ Revisión de las horas del 2026-10-22 al 2027-10-21, contra la fuente
 
 días de la fuente que rezan lo que la app pone ese día: 2555 de 2728
 secciones (celebración por omisión):
-    12672  igual
+    12585  igual
      1809  sin_testigo
-      418  otra_opcion
-      183  parecido
+      423  otra_opcion
+      265  parecido
        95  distinto
 
 Horas con secciones de menos o repetidas
