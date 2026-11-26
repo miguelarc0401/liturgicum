@@ -1,0 +1,27 @@
+{
+ "id": "e_20261125_422e93",
+ "fecha": "2026-11-26",
+ "creada": "2026-11-26T00:43:49",
+ "cambio": "el → él",
+ "cambios": [
+  {
+   "antes": "de bruces, aletargado; el me tocó y me puso en",
+   "despues": "de bruces, aletargado; él me tocó y me puso en",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo_anio",
+      "Ordinario/34/3/oficio/lectura1",
+      "II",
+      "l",
+      26,
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
