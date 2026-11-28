@@ -1,0 +1,26 @@
+{
+ "id": "e_20261127_bfbb7a",
+ "fecha": "2026-11-28",
+ "creada": "2026-11-28T04:49:45",
+ "cambio": "Como → como",
+ "cambios": [
+  {
+   "antes": "esperamos que venga Como salvador Cristo Jesús,",
+   "despues": "esperamos que venga como salvador Cristo Jesús,",
+   "sitios": [
+    {
+     "f": "horas.json",
+     "r": [
+      "tiempo",
+      "Ordinario/34/5/oficio/responsorio2",
+      "l",
+      1,
+      1,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "desde": "teléfono"
+}
